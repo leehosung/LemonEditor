@@ -18,18 +18,22 @@ typedef enum _IUGitType{
 
 @interface IUProject : IUFileGroup
 
-
 @property   BOOL            herokuOn;
 @property   IUGitType       gitType;
+@property   NSSize          *size;
+@property   NSRect          *rect;
+@property   CGRect          *cRect;
+@property   NSPoint          *point;
+@property   CGPoint          *cpoint;
+
 
 - (id)initAtDirectory:(NSString*)path name:(NSString*)name git:(IUGitType)gitType heroku:(BOOL)heroku error:(NSError *__autoreleasing *)error;
 + (id)projectWithContentsOfPackage:(NSString*)path;
 
--(BOOL)save;
+- (BOOL)save;
 
 - (void)build:(NSError**)error;
 - (void)sync:(NSError**)error;
-- (void)load:(NSString**)filePath;
 
 - (void)addImageResource:(NSImage*)image;
 -(NSString*)dirPath;

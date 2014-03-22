@@ -8,10 +8,24 @@
 
 #import "IUObj.h"
 #import "IUCSS.h"
+#import "NSObject+JDExtension.h"
+#import "NSCoder+JDExtension.h"
 
 @implementation IUObj
 {
     IUCSS *css;
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super init];
+    if (self) {
+        [aDecoder decodeToObject:self ]
+    }
+    return self;
+}
+
+-(void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeObject:self ofProperties:[IUObj properties]];
 }
 
 -(id)initWithDefaultSetting{

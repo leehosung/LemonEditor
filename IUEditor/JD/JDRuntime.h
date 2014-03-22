@@ -8,8 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "objc/runtime.h"
+
+
 @interface JDRuntime : NSObject
 
-+(NSString*) getPropertyType : (objc_property_t) property;
++(NSArray*)properties:(Class)class;
++(NSArray*)propertiesWithoutReadonly:(Class)class;
++(NSString *)propertyType:(NSString*)name class:(Class)class;
 
 @end

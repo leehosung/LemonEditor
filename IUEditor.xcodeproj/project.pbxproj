@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6919204718DCFC8200F8522B /* NSCoder+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6919204618DCFC8200F8522B /* NSCoder+JDExtension.m */; };
+		6919204A18DCFED000F8522B /* NSObject+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6919204918DCFED000F8522B /* NSObject+JDExtension.m */; };
 		6954812818D7640A00CA02F1 /* IUPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6954812718D7640A00CA02F1 /* IUPage.m */; };
 		69757AC218D7EB680095CBAC /* IUObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757AC118D7EB680095CBAC /* IUObj.m */; };
 		69757ACE18D801E70095CBAC /* LMCanvasV.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757ACD18D801E70095CBAC /* LMCanvasV.m */; };
@@ -20,7 +22,6 @@
 		69757B0718D95BBC0095CBAC /* JDHerokuUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757AE218D95BBC0095CBAC /* JDHerokuUtil.m */; };
 		69757B0818D95BBC0095CBAC /* JDKeyDelegatedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757AE418D95BBC0095CBAC /* JDKeyDelegatedTableView.m */; };
 		69757B0918D95BBC0095CBAC /* JDLogUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757AE618D95BBC0095CBAC /* JDLogUtil.m */; };
-		69757B0A18D95BBC0095CBAC /* JDObjectExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757AE818D95BBC0095CBAC /* JDObjectExtension.m */; };
 		69757B0B18D95BBC0095CBAC /* JDOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757AEA18D95BBC0095CBAC /* JDOutlineView.m */; };
 		69757B0C18D95BBC0095CBAC /* JDRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757AEC18D95BBC0095CBAC /* JDRuntime.m */; };
 		69757B0D18D95BBC0095CBAC /* NSFlipedScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757AEE18D95BBC0095CBAC /* NSFlipedScrollView.m */; };
@@ -78,6 +79,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6919204518DCFC8200F8522B /* NSCoder+JDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSCoder+JDExtension.h"; path = "JD/NSCoder+JDExtension.h"; sourceTree = "<group>"; };
+		6919204618DCFC8200F8522B /* NSCoder+JDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSCoder+JDExtension.m"; path = "JD/NSCoder+JDExtension.m"; sourceTree = "<group>"; };
+		6919204818DCFED000F8522B /* NSObject+JDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JDExtension.h"; sourceTree = "<group>"; };
+		6919204918DCFED000F8522B /* NSObject+JDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JDExtension.m"; sourceTree = "<group>"; };
 		6954812618D7640A00CA02F1 /* IUPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUPage.h; path = BaseObject/IUPage.h; sourceTree = "<group>"; };
 		6954812718D7640A00CA02F1 /* IUPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IUPage.m; path = BaseObject/IUPage.m; sourceTree = "<group>"; };
 		69757AC018D7EB680095CBAC /* IUObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUObj.h; sourceTree = "<group>"; };
@@ -104,8 +109,6 @@
 		69757AE418D95BBC0095CBAC /* JDKeyDelegatedTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JDKeyDelegatedTableView.m; path = JD/JDKeyDelegatedTableView.m; sourceTree = "<group>"; };
 		69757AE518D95BBC0095CBAC /* JDLogUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JDLogUtil.h; path = JD/JDLogUtil.h; sourceTree = "<group>"; };
 		69757AE618D95BBC0095CBAC /* JDLogUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JDLogUtil.m; path = JD/JDLogUtil.m; sourceTree = "<group>"; };
-		69757AE718D95BBC0095CBAC /* JDObjectExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JDObjectExtension.h; path = JD/JDObjectExtension.h; sourceTree = "<group>"; };
-		69757AE818D95BBC0095CBAC /* JDObjectExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JDObjectExtension.m; path = JD/JDObjectExtension.m; sourceTree = "<group>"; };
 		69757AE918D95BBC0095CBAC /* JDOutlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JDOutlineView.h; path = JD/JDOutlineView.h; sourceTree = "<group>"; };
 		69757AEA18D95BBC0095CBAC /* JDOutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JDOutlineView.m; path = JD/JDOutlineView.m; sourceTree = "<group>"; };
 		69757AEB18D95BBC0095CBAC /* JDRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JDRuntime.h; path = JD/JDRuntime.h; sourceTree = "<group>"; };
@@ -261,8 +264,6 @@
 				69757AE418D95BBC0095CBAC /* JDKeyDelegatedTableView.m */,
 				69757AE518D95BBC0095CBAC /* JDLogUtil.h */,
 				69757AE618D95BBC0095CBAC /* JDLogUtil.m */,
-				69757AE718D95BBC0095CBAC /* JDObjectExtension.h */,
-				69757AE818D95BBC0095CBAC /* JDObjectExtension.m */,
 				69757AE918D95BBC0095CBAC /* JDOutlineView.h */,
 				69757AEA18D95BBC0095CBAC /* JDOutlineView.m */,
 				69757AEB18D95BBC0095CBAC /* JDRuntime.h */,
@@ -286,6 +287,10 @@
 				69757B2618D98BEA0095CBAC /* NSView+JDExtension.h */,
 				69757B2718D98BEA0095CBAC /* NSView+JDExtension.m */,
 				69757B2B18DAC0180095CBAC /* JDShortcut.h */,
+				6919204518DCFC8200F8522B /* NSCoder+JDExtension.h */,
+				6919204618DCFC8200F8522B /* NSCoder+JDExtension.m */,
+				6919204818DCFED000F8522B /* NSObject+JDExtension.h */,
+				6919204918DCFED000F8522B /* NSObject+JDExtension.m */,
 			);
 			name = JD;
 			sourceTree = "<group>";
@@ -547,6 +552,7 @@
 				69C5763918D728CF0016F050 /* LMStackVC.m in Sources */,
 				69757B1418D95BBC0095CBAC /* NSMenu_JDExtension.m in Sources */,
 				69ABB14A18D733ED0065D584 /* IUCompiler.m in Sources */,
+				6919204718DCFC8200F8522B /* NSCoder+JDExtension.m in Sources */,
 				69C5760D18D6FE020016F050 /* IUDocument.m in Sources */,
 				69757B0918D95BBC0095CBAC /* JDLogUtil.m in Sources */,
 				69757B0318D95BBC0095CBAC /* JDDateTimeUtil.m in Sources */,
@@ -566,7 +572,6 @@
 				69757B1518D95BBC0095CBAC /* NSTextField+DragAndDrop.m in Sources */,
 				69C5760B18D6FE020016F050 /* IUComponent.m in Sources */,
 				69757ACE18D801E70095CBAC /* LMCanvasV.m in Sources */,
-				69757B0A18D95BBC0095CBAC /* JDObjectExtension.m in Sources */,
 				69757B1118D95BBC0095CBAC /* JDUIUtil.m in Sources */,
 				69757B0E18D95BBC0095CBAC /* JDTextField.m in Sources */,
 				69757AD118D953F10095CBAC /* LMStackCellV.m in Sources */,
@@ -590,6 +595,7 @@
 				69757B0618D95BBC0095CBAC /* JDGitUtil.m in Sources */,
 				69757B1018D95BBC0095CBAC /* JDTransformer.m in Sources */,
 				69757B0F18D95BBC0095CBAC /* JDTextFieldCell.m in Sources */,
+				6919204A18DCFED000F8522B /* NSObject+JDExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

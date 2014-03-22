@@ -9,9 +9,77 @@
 #import "JDRuntime.h"
 
 @implementation JDRuntime
-+(NSString *) getPropertyType : (objc_property_t) property{
+
+#if 0
++(NSArray*)properties:(Class)class{
+    unsigned count;
+    objc_property_t *properties = class_copyPropertyList(class, &count);
+    
+    NSMutableArray *rv = [NSMutableArray array];
+    
+    unsigned i;
+    for (i = 0; i < count; i++)
+    {
+        objc_property_t property = properties[i];
+        JDProperty  *jdProperty = [[JDProperty alloc] init];
+        jdProperty.name = [NSString stringWithUTF8String:property_getName(property)];
+        
+        NSString *name = [NSString stringWithUTF8String:property_getName(property)];
+        [rv addObject:name];
+    }
+    
+    free(properties);
+    
+    return rv;
+}
+
++(NSArray*)propertiesWithoutReadonly:(Class)class{
+    unsigned count;
+    objc_property_t *properties = class_copyPropertyList(class, &count);
+    
+    NSMutableArray *rv = [NSMutableArray array];
+    
+    unsigned i;
+    for (i = 0; i < count; i++)
+    {
+        objc_property_t property = properties[i];
+        if ([self isReadonlyProperty:property class:class] == NO) {
+            NSString *name = [NSString stringWithUTF8String:property_getName(property)];
+            [rv addObject:name];
+        }
+    }
+    
+    free(properties);
+    
+    return rv;
+}
+
+
++(BOOL)isReadonlyProperty:(objc_property_t)p class:(Class)class{
+    const char *attributes = property_getAttributes(p);
+    char buffer[1 + strlen(attributes)];
+    strcpy(buffer, attributes);
+    
+    char *state = buffer;
+    char *attribute;
+
+    strsep(&state, ","); //remove first
+    while ((attribute = strsep(&state, ",")) != NULL) {
+        if (strcmp(attribute, "R") == 0) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
++(NSString *)propertyType :(NSString*)name class:(Class)class{
+    objc_property_t p = class_getProperty(class, [name UTF8String]);
+    return [self propertyType:p];
+}
+
+
++(NSString *)propertyType : (objc_property_t) property{
     const char *attributes = property_getAttributes(property);
-    //printf("attributes=%s\n", attributes);
     char buffer[1 + strlen(attributes)];
     strcpy(buffer, attributes);
     char *state = buffer, *attribute;
@@ -36,4 +104,6 @@
     }
     return @"";
 }
+
+#endif
 @end

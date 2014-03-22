@@ -10,7 +10,7 @@
 
 #define IUCSSDefaultFrame -1
 
-@interface IUObj : NSObject
+@interface IUObj : NSObject <NSCoding>
 
 +(id)IUObj;
 +(NSArray*)propertyList;

@@ -18,6 +18,9 @@
 
 @implementation IUProject{
     NSString *IUMLPath;
+    IUFileGroup *masterFileGroup;
+    IUFileGroup *pageFileGroup;
+    IUFileGroup *compnentFileGroup;
 }
 
 - (void)encodeWithCoder:(NSCoder *)encoder{
@@ -25,12 +28,14 @@
     [encoder encodeObject:self.childNodes forKey:@"childNode"];
     [encoder encodeBool:_herokuOn forKey:@"herokuOn"];
     [encoder encodeInt:_gitType forKey:@"gitType"];
+    [encoder encodeObject:masterFileGroup forKey:@"masterFileGroup"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
     if (self) {
         NSArray *childNodes = [aDecoder decodeObjectForKey:@"childNode"];
+        masterFileGroup = [aDecoder decodeObjectForKey:@"masterFileGroup"];
         [[self mutableChildNodes] addObjectsFromArray:childNodes];
 
         _herokuOn = [aDecoder decodeBoolForKey:@"herokuOn"];
@@ -74,9 +79,9 @@
     [[self mutableChildNodes] addObject:compDir];
     //[[compDir mutableChildNodes] addObject:compFile];
     
-    IUFileGroup *masterDir = [[IUFileGroup alloc] initWithName:@"Master"];
+    masterFileGroup = [[IUFileGroup alloc] initWithName:@"Master"];
     //IUFile      *masterFile = [[[IUFile alloc] init] initAsMasterWithName:@"master"];
-    [[self mutableChildNodes] addObject:masterDir];
+    [[self mutableChildNodes] addObject:masterFileGroup];
     //[[compDir mutableChildNodes] addObject:masterFile];
     
     
@@ -111,7 +116,9 @@
     return YES;
 }
 
-
+- (void)build:(NSError**)error{
+    
+}
 
 
 -(BOOL)save{

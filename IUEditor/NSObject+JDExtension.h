@@ -1,19 +1,36 @@
 //
-//  JDObjectExtension.h
-//  Mango
+//  NSObject+JDExtension.h
+//  IUEditor
 //
-//  Created by JD on 13. 3. 31..
-/// Copyright (c) 2004-2013, JDLab  / Yang Joodong
-/// All rights reserved. Licensed under the GPL.
-/// See the GNU General Public License for more details. (/LICENSE)
-
+//  Created by jd on 3/22/14.
+//  Copyright (c) 2014 JDLab. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import "objc/runtime.h"
+
 #define kJDKeyPath @"JDKeyPath"
 #define kJDContext @"JDContext"
 
-@interface NSObject(JDObjectExtension)
+
+@interface JDProperty : NSObject
+
+-(id)initWithProperty:(objc_property_t)property;
+
+-(NSString*)name;
+-(BOOL)isReadonly;
+-(BOOL)isFloat;
+-(BOOL)isDouble;
+-(BOOL)isInteger;
+-(BOOL)isPoint;
+-(BOOL)isSize;
+-(BOOL)isRect;
+-(BOOL)isID;
+@end
+
+
+@interface NSObject (JDExtension)
+
 
 -(void)addObserver:(NSObject *)observer forKeyPaths:(NSArray *)keyPaths options:(NSKeyValueObservingOptions)options context:(void *)context;
 
@@ -22,4 +39,6 @@
 - (void)observeValueForKeyPath:(NSString *)_keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context;
 -(void)removeObserver:(NSObject *)observer forKeyPaths:(NSArray *)keyPaths context:(void *)context;
 -(void)addObserver:(NSObject *)observer forKeyPaths:(NSArray *)keyPaths options:(NSKeyValueObservingOptions)options contexts:(NSArray*)contexts;
+
++(NSArray*)properties;
 @end

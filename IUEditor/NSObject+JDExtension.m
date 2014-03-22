@@ -1,20 +1,108 @@
 //
-//  JDObjectExtension.m
-//  Mango
+//  NSObject+JDExtension.m
+//  IUEditor
 //
-//  Created by JD on 13. 3. 31..
-/// Copyright (c) 2004-2013, JDLab  / Yang Joodong
-/// All rights reserved. Licensed under the GPL.
-/// See the GNU General Public License for more details. (/LICENSE)
-
+//  Created by jd on 3/22/14.
+//  Copyright (c) 2014 JDLab. All rights reserved.
 //
 
-#import "JDObjectExtension.h"
-#import "NSDictionary+JDExtension.h"
+#import "NSObject+JDExtension.h"
 #import "NSString+JDExtension.h"
+#import "NSDictionary+JDExtension.h"
 
+@implementation JDProperty{
+    BOOL    isReadonly;
+    BOOL    isChar;
+    BOOL    isInteger;
+    BOOL    isFloat;
+    BOOL    isDouble;
+    BOOL    isPoint;
+    BOOL    isSize;
+    BOOL    isRect;
+    BOOL    isID;
+    NSString    *name;
+}
 
-@implementation NSObject(JDObjectExtension)
+-(id)initWithProperty:(objc_property_t)property{
+    self = [super init];
+    if (self) {
+        name = [NSString stringWithUTF8String:property_getName(property)];
+        
+        char *readonly = property_copyAttributeValue(property, "R");
+        if (readonly) {
+            isReadonly = YES;
+        }
+
+        char *type = property_copyAttributeValue(property, "T");
+        if (type[0] == 'c') {
+            isChar = YES;
+        }
+        else if (type[0] == 'l' || type[0]=='i' || type[0]=='s' || type[0] == 'I') {
+            isInteger = YES;
+        }
+        else if (type[0] == 'd') {
+            isDouble = YES;
+        }
+        else if (type[0] == 'f') {
+            isFloat = YES;
+        }
+        else if (strcmp(type, "^{CGRect={CGPoint=dd}{CGSize=dd}}")) {
+            isRect = YES;
+        }
+        else if (strcmp(type, "^{CGPoint=dd}")) {
+            isPoint = YES;
+        }
+        else if (strcmp(type, "^{CGSize=dd}")) {
+            isPoint = YES;
+        }
+        else if (strcmp(type, "T@")){
+            isID = YES;
+        }
+        else {
+            assert(0);
+        }
+    }
+    return self;
+}
+
+-(NSString*)name{
+    return name;
+}
+-(BOOL)isReadonly{
+    return isReadonly;
+}
+
+-(BOOL)isFloat{
+    return isFloat;
+}
+
+-(BOOL)isDouble{
+    return isDouble;
+}
+
+-(BOOL)isInteger{
+    return isInteger;
+}
+
+-(BOOL)isPoint{
+    return isPoint;
+}
+
+-(BOOL)isSize{
+    return isSize;
+}
+
+-(BOOL)isRect{
+    return isRect;
+}
+
+-(BOOL)isID{
+    return isID;
+}
+@end
+
+@implementation NSObject (JDExtension)
+
 -(void)addObserver:(NSObject *)observer forKeyPaths:(NSArray *)keyPaths options:(NSKeyValueObservingOptions)options context:(void *)context{
     for (NSString *keyPath in keyPaths) {
         [self addObserver:observer forKeyPath:keyPath options:options context:context];
@@ -56,12 +144,12 @@
     
     NSMutableDictionary *mchange = [[NSDictionary dictionaryWithDictionary:change] mutableCopy];
     [mchange setObject:_keyPath forKey:kJDKeyPath];
-
+    
     id contextID = (__bridge id)context;
     if ([contextID isKindOfClass:[NSString class]]) {
         contextStr = (__bridge NSString *)(context);
         [mchange setOrRemoveObject:contextStr forKey:kJDContext];
-    }    
+    }
     change = [NSDictionary dictionaryWithDictionary:mchange];
     
     NSString *keyPath = [_keyPath stringByReplacingOccurrencesOfString:@"." withString:@"_"];
@@ -75,7 +163,7 @@
      5) xxxContextDidChange:
      6) xxxContextDidChange:ofObject
      */
-
+    
     //xxxDidChange
     if ([[change objectForKey:NSKeyValueChangeNotificationIsPriorKey] boolValue] != YES) {
         selectorName = [NSString stringWithFormat:@"%@DidChange",keyPath];
@@ -91,7 +179,7 @@
         [self performSelector:s];
 #pragma clang diagnostic pop
     }
-
+    
     ///xxxDidChange:
     if ([[change objectForKey:NSKeyValueChangeNotificationIsPriorKey] boolValue] != YES) {
         selectorName = [NSString stringWithFormat:@"%@DidChange:",keyPath];
@@ -107,7 +195,7 @@
         [self performSelector:s  withObject:change];
 #pragma clang diagnostic pop
     }
-
+    
     ///xxxofObject:didChange:
     if ([[change objectForKey:NSKeyValueChangeNotificationIsPriorKey] boolValue] != YES) {
         selectorName = [NSString stringWithFormat:@"%@OfObject:didChange:",keyPath];
@@ -116,7 +204,7 @@
         selectorName = [NSString stringWithFormat:@"%@OfObject:willChange:",keyPath];
     }
     s = NSSelectorFromString(selectorName);
-
+    
     
     if ([self respondsToSelector:s]) {
 #pragma clang diagnostic push
@@ -187,5 +275,22 @@
     }
 }
 
-
++(NSArray*)properties{
+    unsigned count;
+    objc_property_t *properties = class_copyPropertyList([self class], &count);
+    
+    NSMutableArray *rv = [NSMutableArray array];
+    
+    unsigned i;
+    for (i = 0; i < count; i++)
+    {
+        objc_property_t property = properties[i];
+        JDProperty *jdProperty = [[JDProperty alloc] initWithProperty:property];
+        [rv addObject:jdProperty];
+    }
+    
+    free(properties);
+    
+    return rv;
+}
 @end
