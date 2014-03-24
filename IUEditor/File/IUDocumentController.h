@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "IUProject.h"
+#import "IUDocument.h"
 
 @interface IUDocumentController : NSTreeController
 
 @property (readonly) NSMutableArray *openedDocument;
 
--(void)loadProject:(IUProject*)project;
+-(id)initWithDocument:(IUDocument*)document;
 
 @end

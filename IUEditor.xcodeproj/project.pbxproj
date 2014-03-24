@@ -38,10 +38,16 @@
 		69757B2518D95FDA0095CBAC /* NSMutableDictionary+IUTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757B2418D95FDA0095CBAC /* NSMutableDictionary+IUTag.m */; };
 		69757B2818D98BEA0095CBAC /* NSView+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757B2718D98BEA0095CBAC /* NSView+JDExtension.m */; };
 		69757B2A18DAB7D40095CBAC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69757B2918DAB7D40095CBAC /* QuartzCore.framework */; };
-		69757B3118DAE19E0095CBAC /* IUFileGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757B3018DAE19E0095CBAC /* IUFileGroup.m */; };
-		69757B3418DAE1AD0095CBAC /* IUFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757B3318DAE1AD0095CBAC /* IUFile.m */; };
+		69757B3118DAE19E0095CBAC /* IUDocumentGroupNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757B3018DAE19E0095CBAC /* IUDocumentGroupNode.m */; };
+		69757B3418DAE1AD0095CBAC /* IUDocumentControllerNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757B3318DAE1AD0095CBAC /* IUDocumentControllerNode.m */; };
 		69757B3718DAF1AB0095CBAC /* IUResourceGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757B3618DAF1AB0095CBAC /* IUResourceGroup.m */; };
 		69ABB14A18D733ED0065D584 /* IUCompiler.m in Sources */ = {isa = PBXBuildFile; fileRef = 69ABB14918D733ED0065D584 /* IUCompiler.m */; };
+		69B37F0918DFC62000DE620F /* IUProjectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B37F0818DFC62000DE620F /* IUProjectController.m */; };
+		69B37F0D18DFDEE800DE620F /* LMFileNaviVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B37F0B18DFDEE800DE620F /* LMFileNaviVC.m */; };
+		69B37F0E18DFDEE800DE620F /* LMFileNaviVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69B37F0C18DFDEE800DE620F /* LMFileNaviVC.xib */; };
+		69B37F1118E0172E00DE620F /* IUDocumentFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B37F1018E0172E00DE620F /* IUDocumentFactory.m */; };
+		69B37F1818E01E9D00DE620F /* IUDocumentNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B37F1718E01E9D00DE620F /* IUDocumentNode.m */; };
+		69B37F1B18E0353F00DE620F /* LMFileNaviCellV.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B37F1A18E0353F00DE620F /* LMFileNaviCellV.m */; };
 		69C575AB18D6F61E0016F050 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69C575AA18D6F61E0016F050 /* Cocoa.framework */; };
 		69C575B518D6F61E0016F050 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 69C575B318D6F61E0016F050 /* InfoPlist.strings */; };
 		69C575B718D6F61E0016F050 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C575B618D6F61E0016F050 /* main.m */; };
@@ -65,7 +71,7 @@
 		69C5763918D728CF0016F050 /* LMStackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5763718D728CF0016F050 /* LMStackVC.m */; };
 		69C5763A18D728CF0016F050 /* LMStackVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69C5763818D728CF0016F050 /* LMStackVC.xib */; };
 		69C5764018D729830016F050 /* IUDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5763F18D729830016F050 /* IUDocumentController.m */; };
-		69C5764618D72C220016F050 /* IUController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5764518D72C220016F050 /* IUController.m */; };
+		69F1A37518E0624E004C5B30 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69F1A37418E0624E004C5B30 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,14 +147,25 @@
 		69757B2718D98BEA0095CBAC /* NSView+JDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+JDExtension.m"; sourceTree = "<group>"; };
 		69757B2918DAB7D40095CBAC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		69757B2B18DAC0180095CBAC /* JDShortcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDShortcut.h; sourceTree = "<group>"; };
-		69757B2F18DAE19E0095CBAC /* IUFileGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUFileGroup.h; sourceTree = "<group>"; };
-		69757B3018DAE19E0095CBAC /* IUFileGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUFileGroup.m; sourceTree = "<group>"; };
-		69757B3218DAE1AD0095CBAC /* IUFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUFile.h; sourceTree = "<group>"; };
-		69757B3318DAE1AD0095CBAC /* IUFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUFile.m; sourceTree = "<group>"; };
+		69757B2F18DAE19E0095CBAC /* IUDocumentGroupNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUDocumentGroupNode.h; sourceTree = "<group>"; };
+		69757B3018DAE19E0095CBAC /* IUDocumentGroupNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUDocumentGroupNode.m; sourceTree = "<group>"; };
+		69757B3218DAE1AD0095CBAC /* IUDocumentControllerNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUDocumentControllerNode.h; sourceTree = "<group>"; };
+		69757B3318DAE1AD0095CBAC /* IUDocumentControllerNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUDocumentControllerNode.m; sourceTree = "<group>"; };
 		69757B3518DAF1AB0095CBAC /* IUResourceGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUResourceGroup.h; sourceTree = "<group>"; };
 		69757B3618DAF1AB0095CBAC /* IUResourceGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUResourceGroup.m; sourceTree = "<group>"; };
 		69ABB14818D733ED0065D584 /* IUCompiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUCompiler.h; sourceTree = "<group>"; };
 		69ABB14918D733ED0065D584 /* IUCompiler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUCompiler.m; sourceTree = "<group>"; };
+		69B37F0718DFC62000DE620F /* IUProjectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUProjectController.h; sourceTree = "<group>"; };
+		69B37F0818DFC62000DE620F /* IUProjectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUProjectController.m; sourceTree = "<group>"; };
+		69B37F0A18DFDEE800DE620F /* LMFileNaviVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMFileNaviVC.h; path = Editor/LMFileNaviVC.h; sourceTree = "<group>"; };
+		69B37F0B18DFDEE800DE620F /* LMFileNaviVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMFileNaviVC.m; path = Editor/LMFileNaviVC.m; sourceTree = "<group>"; };
+		69B37F0C18DFDEE800DE620F /* LMFileNaviVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMFileNaviVC.xib; path = Editor/LMFileNaviVC.xib; sourceTree = "<group>"; };
+		69B37F0F18E0172E00DE620F /* IUDocumentFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUDocumentFactory.h; path = IU/IUDocumentFactory.h; sourceTree = "<group>"; };
+		69B37F1018E0172E00DE620F /* IUDocumentFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IUDocumentFactory.m; path = IU/IUDocumentFactory.m; sourceTree = "<group>"; };
+		69B37F1618E01E9D00DE620F /* IUDocumentNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUDocumentNode.h; sourceTree = "<group>"; };
+		69B37F1718E01E9D00DE620F /* IUDocumentNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUDocumentNode.m; sourceTree = "<group>"; };
+		69B37F1918E0353F00DE620F /* LMFileNaviCellV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMFileNaviCellV.h; sourceTree = "<group>"; };
+		69B37F1A18E0353F00DE620F /* LMFileNaviCellV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMFileNaviCellV.m; sourceTree = "<group>"; };
 		69C575A718D6F61E0016F050 /* IUEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IUEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69C575AA18D6F61E0016F050 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		69C575AD18D6F61E0016F050 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -190,8 +207,9 @@
 		69C5763818D728CF0016F050 /* LMStackVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMStackVC.xib; sourceTree = "<group>"; };
 		69C5763E18D729830016F050 /* IUDocumentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUDocumentController.h; sourceTree = "<group>"; };
 		69C5763F18D729830016F050 /* IUDocumentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUDocumentController.m; sourceTree = "<group>"; };
-		69C5764418D72C220016F050 /* IUController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUController.h; sourceTree = "<group>"; };
-		69C5764518D72C220016F050 /* IUController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUController.m; sourceTree = "<group>"; };
+		69F1A37418E0624E004C5B30 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		69F1A37618E06262004C5B30 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		69F1A37818E0627A004C5B30 /* AppleScriptKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptKit.framework; path = System/Library/Frameworks/AppleScriptKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +217,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69F1A37518E0624E004C5B30 /* WebKit.framework in Frameworks */,
 				69757B2A18DAB7D40095CBAC /* QuartzCore.framework in Frameworks */,
 				69C575AB18D6F61E0016F050 /* Cocoa.framework in Frameworks */,
 			);
@@ -233,6 +252,8 @@
 				69C5760718D6FE020016F050 /* IUTemplate.m */,
 				69757B2318D95FDA0095CBAC /* NSMutableDictionary+IUTag.h */,
 				69757B2418D95FDA0095CBAC /* NSMutableDictionary+IUTag.m */,
+				69B37F0F18E0172E00DE620F /* IUDocumentFactory.h */,
+				69B37F1018E0172E00DE620F /* IUDocumentFactory.m */,
 			);
 			name = IU;
 			sourceTree = "<group>";
@@ -317,6 +338,9 @@
 		69C575A918D6F61E0016F050 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				69F1A37818E0627A004C5B30 /* AppleScriptKit.framework */,
+				69F1A37618E06262004C5B30 /* Accelerate.framework */,
+				69F1A37418E0624E004C5B30 /* WebKit.framework */,
 				69757B2918DAB7D40095CBAC /* QuartzCore.framework */,
 				69C575AA18D6F61E0016F050 /* Cocoa.framework */,
 				69C575C918D6F61E0016F050 /* XCTest.framework */,
@@ -398,18 +422,20 @@
 		69C5761218D704970016F050 /* File */ = {
 			isa = PBXGroup;
 			children = (
+				69B37F0718DFC62000DE620F /* IUProjectController.h */,
+				69B37F0818DFC62000DE620F /* IUProjectController.m */,
 				69C5761C18D7051C0016F050 /* IUProject.h */,
 				69C5761D18D7051C0016F050 /* IUProject.m */,
-				69757B2F18DAE19E0095CBAC /* IUFileGroup.h */,
-				69757B3018DAE19E0095CBAC /* IUFileGroup.m */,
-				69757B3218DAE1AD0095CBAC /* IUFile.h */,
-				69757B3318DAE1AD0095CBAC /* IUFile.m */,
+				69757B2F18DAE19E0095CBAC /* IUDocumentGroupNode.h */,
+				69757B3018DAE19E0095CBAC /* IUDocumentGroupNode.m */,
+				69757B3218DAE1AD0095CBAC /* IUDocumentControllerNode.h */,
+				69757B3318DAE1AD0095CBAC /* IUDocumentControllerNode.m */,
 				69C5763E18D729830016F050 /* IUDocumentController.h */,
 				69C5763F18D729830016F050 /* IUDocumentController.m */,
-				69C5764418D72C220016F050 /* IUController.h */,
-				69C5764518D72C220016F050 /* IUController.m */,
 				69757B3518DAF1AB0095CBAC /* IUResourceGroup.h */,
 				69757B3618DAF1AB0095CBAC /* IUResourceGroup.m */,
+				69B37F1618E01E9D00DE620F /* IUDocumentNode.h */,
+				69B37F1718E01E9D00DE620F /* IUDocumentNode.m */,
 			);
 			path = File;
 			sourceTree = "<group>";
@@ -427,6 +453,11 @@
 				69757AD018D953F10095CBAC /* LMStackCellV.m */,
 				69757ACC18D801E70095CBAC /* LMCanvasV.h */,
 				69757ACD18D801E70095CBAC /* LMCanvasV.m */,
+				69B37F0A18DFDEE800DE620F /* LMFileNaviVC.h */,
+				69B37F0B18DFDEE800DE620F /* LMFileNaviVC.m */,
+				69B37F0C18DFDEE800DE620F /* LMFileNaviVC.xib */,
+				69B37F1918E0353F00DE620F /* LMFileNaviCellV.h */,
+				69B37F1A18E0353F00DE620F /* LMFileNaviCellV.m */,
 			);
 			name = Editor;
 			sourceTree = "<group>";
@@ -512,6 +543,7 @@
 				69C5763A18D728CF0016F050 /* LMStackVC.xib in Resources */,
 				69C575B518D6F61E0016F050 /* InfoPlist.strings in Resources */,
 				69C5762D18D70B850016F050 /* LMWC.xib in Resources */,
+				69B37F0E18DFDEE800DE620F /* LMFileNaviVC.xib in Resources */,
 				69C575C318D6F61E0016F050 /* Images.xcassets in Resources */,
 				69C575BB18D6F61E0016F050 /* Credits.rtf in Resources */,
 				69C575C118D6F61E0016F050 /* MainMenu.xib in Resources */,
@@ -557,10 +589,11 @@
 				69757B0918D95BBC0095CBAC /* JDLogUtil.m in Sources */,
 				69757B0318D95BBC0095CBAC /* JDDateTimeUtil.m in Sources */,
 				69757B0018D95BBC0095CBAC /* CALayer+JDExtension.m in Sources */,
+				69B37F1B18E0353F00DE620F /* LMFileNaviCellV.m in Sources */,
 				69757B0718D95BBC0095CBAC /* JDHerokuUtil.m in Sources */,
 				69C5760F18D6FE020016F050 /* IUTemplate.m in Sources */,
 				69C5761018D6FE020016F050 /* IUView.m in Sources */,
-				69757B3418DAE1AD0095CBAC /* IUFile.m in Sources */,
+				69757B3418DAE1AD0095CBAC /* IUDocumentControllerNode.m in Sources */,
 				69C575B718D6F61E0016F050 /* main.m in Sources */,
 				69757B1C18D95C980095CBAC /* NSArray+JDExtension.m in Sources */,
 				69757B0D18D95BBC0095CBAC /* NSFlipedScrollView.m in Sources */,
@@ -574,14 +607,17 @@
 				69757ACE18D801E70095CBAC /* LMCanvasV.m in Sources */,
 				69757B1118D95BBC0095CBAC /* JDUIUtil.m in Sources */,
 				69757B0E18D95BBC0095CBAC /* JDTextField.m in Sources */,
+				69B37F0918DFC62000DE620F /* IUProjectController.m in Sources */,
+				69B37F1818E01E9D00DE620F /* IUDocumentNode.m in Sources */,
 				69757AD118D953F10095CBAC /* LMStackCellV.m in Sources */,
 				69757B0518D95BBC0095CBAC /* JDFileUtil.m in Sources */,
 				69757B2218D95F420095CBAC /* NSString+JDExtension.m in Sources */,
+				69B37F1118E0172E00DE620F /* IUDocumentFactory.m in Sources */,
 				69757AC218D7EB680095CBAC /* IUObj.m in Sources */,
 				69C5760A18D6FE020016F050 /* IUClass.m in Sources */,
 				6954812818D7640A00CA02F1 /* IUPage.m in Sources */,
 				69C5764018D729830016F050 /* IUDocumentController.m in Sources */,
-				69757B3118DAE19E0095CBAC /* IUFileGroup.m in Sources */,
+				69757B3118DAE19E0095CBAC /* IUDocumentGroupNode.m in Sources */,
 				69757B0118D95BBC0095CBAC /* JDArrayDict.m in Sources */,
 				69757B0C18D95BBC0095CBAC /* JDRuntime.m in Sources */,
 				69C575BE18D6F61E0016F050 /* LMAppDelegate.m in Sources */,
@@ -589,7 +625,7 @@
 				69C5760C18D6FE020016F050 /* IUCSS.m in Sources */,
 				69757B2818D98BEA0095CBAC /* NSView+JDExtension.m in Sources */,
 				69C5761E18D7051C0016F050 /* IUProject.m in Sources */,
-				69C5764618D72C220016F050 /* IUController.m in Sources */,
+				69B37F0D18DFDEE800DE620F /* LMFileNaviVC.m in Sources */,
 				69757B1F18D95F1E0095CBAC /* NSDictionary+JDExtension.m in Sources */,
 				69757B0818D95BBC0095CBAC /* JDKeyDelegatedTableView.m in Sources */,
 				69757B0618D95BBC0095CBAC /* JDGitUtil.m in Sources */,

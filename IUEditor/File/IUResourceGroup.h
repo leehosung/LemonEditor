@@ -7,11 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "IUDocumentNode.h"
 
-@interface IUResourceGroup : NSTreeNode <NSCoding>
+@interface IUResourceGroup : IUDocumentNode <NSCoding>
 
-@property NSString  *name;
+@property IUDocumentNode    *parent;
 
 - (BOOL)syncDir;
 - (NSString*)path;
+
 @end

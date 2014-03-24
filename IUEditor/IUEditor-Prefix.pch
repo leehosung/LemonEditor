@@ -6,4 +6,21 @@
 
 #ifdef __OBJC__
     #import <Cocoa/Cocoa.h>
-#endif
+    #import "NSObject+JDExtension.h"
+    #import "NSCoder+JDExtension.h"
+    #import "NSDictionary+JDExtension.h"
+    #import "CALayer+JDExtension.h"
+    #import "JDArrayDict.h"
+    #import "NSArray+JDExtension.h"
+#import "JDLogUtil.h"
+#import "JDTextField.h"
+#import "JDTransformer.h"
+#import "JDWebUtil.h"
+#import "NSView+JDExtension.h"
+#import "JDShortcut.h"
+#import "JDEnvUtil.h"
+#import "JDGitUtil.h"
+#import "JDFileUtil.h"
+
+#define _binding_
+ #endif

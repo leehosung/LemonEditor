@@ -22,6 +22,7 @@
 -(BOOL)isFloat;
 -(BOOL)isDouble;
 -(BOOL)isInteger;
+-(BOOL)isChar;
 -(BOOL)isPoint;
 -(BOOL)isSize;
 -(BOOL)isRect;

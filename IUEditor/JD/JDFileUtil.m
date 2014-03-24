@@ -48,6 +48,7 @@ static JDFileUtil *sharedJDFileUtill;
 
 
 +(BOOL)mkdirPath:(NSString*)path{
+    NSAssert(path != nil, @"path is nil");
     NSString *stdErr;
     NSInteger resultCode = [JDFileUtil execute:@"/bin/mkdir" atDirectory:@"/" arguments:@[@"-p", path] stdOut:nil stdErr:&stdErr];
     if (resultCode !=0 ) {

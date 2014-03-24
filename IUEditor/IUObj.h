@@ -37,12 +37,10 @@
 
 @property (nonatomic) NSString *resourceID;
 @property (nonatomic) NSString *HTMLID;
-@property (nonatomic) NSString *IUName;
+@property (nonatomic) NSString *name;
 @property (nonatomic) BOOL      focus;
 
-@property (nonatomic, readonly) NSString* CSS;
-@property (nonatomic, readonly) NSString* HTML;
-
--(NSString*)requestUpdateJavascript;
+-(NSString*) outputCSS;
+-(NSString*) outputHTML;
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "IUFileGroup.h"
+#import "IUDocumentGroupNode.h"
 
 typedef enum _IUGitType{
     IUGitTypeNone = 0,
@@ -15,26 +15,35 @@ typedef enum _IUGitType{
     IUGitTypeOutput = 2
 } IUGitType;
 
+@class IUDocument;
 
-@interface IUProject : IUFileGroup
+@interface IUProject : IUDocumentGroupNode
 
 @property   BOOL            herokuOn;
 @property   IUGitType       gitType;
-@property   NSSize          *size;
-@property   NSRect          *rect;
-@property   CGRect          *cRect;
-@property   NSPoint          *point;
-@property   CGPoint          *cpoint;
 
 
-- (id)initAtDirectory:(NSString*)path name:(NSString*)name git:(IUGitType)gitType heroku:(BOOL)heroku error:(NSError *__autoreleasing *)error;
+//setting
+#define IUProjectKeyGit @"git"
+#define IUProjectKeyAppName @"appName"
+#define IUProjectKeyHeroku @"heroku"
+#define IUProjectKeyDirectory @"dir"
+
+- (id)init:(NSDictionary*)setting error:(NSError**)error;
 + (id)projectWithContentsOfPackage:(NSString*)path;
 
-- (BOOL)save;
+#define IUDocumentKeyType @"type"
+#define IUDocumentKeyName @"name"
+- (IUDocument*)createDocument:(NSDictionary*)document;
 
+- (BOOL)save;
 - (void)build:(NSError**)error;
 - (void)sync:(NSError**)error;
 
-- (void)addImageResource:(NSImage*)image;
--(NSString*)dirPath;
+- (void)addImage:(NSImage*)image;
+
+//used to check resource dir path
+- (NSString*)path;
+
+
 @end

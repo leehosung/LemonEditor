@@ -7,23 +7,27 @@
 //
 
 #import "LMCanvasV.h"
+#import <WebKit/WebKit.h>
 
-@implementation LMCanvasV
+@implementation LMCanvasV{
+    WebView *webView;
+}
 
-- (id)initWithFrame:(NSRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code here.
-    }
+-(id)init{
+    self = [super init];
+    webView = [[WebView alloc] init];
+    [self addSubviewFullFrame:webView];
     return self;
 }
 
-- (void)drawRect:(NSRect)dirtyRect
-{
-	[super drawRect:dirtyRect];
-	
-    // Drawing code here.
+- (void)setDocument:(IUDocument *)document{
+    NSAssert(self.resourcePath != nil, @"resourcePath is nil");
+    [_document setCanvas:nil];
+    _document = document;
+    [_document setCanvas:self];
+    
+    [[webView mainFrame] loadHTMLString:@"qwer" baseURL:[NSURL fileURLWithPath:self.resourcePath]];
 }
+
 
 @end

@@ -8,6 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface LMCanvasV : NSView
+#include "IUDocument.h"
+
+@interface LMCanvasV : NSView <IUDocumentCanvas>
+
+@property (nonatomic) _binding_ IUDocument  *document;
+@property (nonatomic) _binding_ NSString    *resourcePath;
 
 @end

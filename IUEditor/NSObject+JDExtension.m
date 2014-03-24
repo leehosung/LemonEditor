@@ -76,6 +76,11 @@
     return isFloat;
 }
 
+-(BOOL)isChar{
+    return isChar;
+}
+
+
 -(BOOL)isDouble{
     return isDouble;
 }
@@ -95,6 +100,8 @@
 -(BOOL)isRect{
     return isRect;
 }
+
+
 
 -(BOOL)isID{
     return isID;

@@ -9,11 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "IUDocumentController.h"
 
-@interface IUFile : NSTreeNode
+@interface IUDocumentControllerNode : NSTreeNode <NSCoding>
 
--(id)initAsPageWithName:(NSString*)name;
--(id)initAsMasterWithName:(NSString*)name;
--(id)initAsComponentWithName:(NSString*)name;
-
+-(id)initWithDocument:(IUDocument*)document;
 
 @end

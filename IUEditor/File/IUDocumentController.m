@@ -9,5 +9,12 @@
 #import "IUDocumentController.h"
 
 @implementation IUDocumentController
+-(id)initWithDocument:(IUDocument*)document{
+    self = [super init];
+    if (self) {
+        [self setContent:document];
+    }
+    return self;
+}
 
 @end
