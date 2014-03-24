@@ -10,31 +10,31 @@
 #import "IUProject.h"
 #import "JDFileUtil.h"
 
-@implementation IUResourceGroup
+@implementation IUResourceGroup{
+}
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];
     if (self) {
-        [self setName:[aDecoder decodeObjectForKey:@"name"]];
     }
     return self;
 }
 
 -(void)encodeWithCoder:(NSCoder *)aCoder{
-    [aCoder encodeObject:_name forKey:@"name"];
 }
+
 
 - (BOOL)syncDir{
     return [JDFileUtil mkdirPath:self.path];
 }
 
 -(NSString*)path{
-    if ([self.parentNode isKindOfClass:[IUProject class]]) {
-        NSString *parentPath = [(IUProject*)(self.parentNode) dirPath];
-        return [parentPath stringByAppendingPathComponent:_name];
+    if ([_parent isKindOfClass:[IUProject class]]) {
+        NSString *parentPath = [(IUProject*)(_parent) path];
+        return [parentPath stringByAppendingPathComponent:self.name];
     }
     else{
-        return [[(IUResourceGroup*)self.parentNode path] stringByAppendingPathComponent:_name];
+        return [[(IUResourceGroup*)(_parent) path] stringByAppendingPathComponent:self.name];
     }
 }
 

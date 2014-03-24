@@ -10,6 +10,14 @@
 
 @implementation IUDocument
 
+-(id)initWithSetting:(NSDictionary*)setting{
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
 -(NSString*)editorSource{
     return @"";
 }

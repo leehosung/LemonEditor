@@ -37,6 +37,10 @@
         else if ([property isRect]){
             [self encodeRect:[[obj valueForKey:property.name] rectValue] forKey:property.name];
         }
+        else if ([property isChar]){
+            [self encodeRect:[[obj valueForKey:property.name] rectValue] forKey:property.name];
+        }
+
         else{
             assert(0);
         }

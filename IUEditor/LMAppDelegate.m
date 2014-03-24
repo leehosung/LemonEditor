@@ -7,12 +7,15 @@
 //
 
 #import "LMAppDelegate.h"
-
-@implementation LMAppDelegate
+#import "LMWC.h"
+@implementation LMAppDelegate{
+    LMWC *wc;
+}
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
+    wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
+    [wc showWindow:self];
 }
 
 @end

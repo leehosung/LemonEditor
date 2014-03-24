@@ -9,7 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "IUView.h"
 
+@protocol IUDocumentCanvas <NSObject>
+
+
+@end
+
+
 @interface IUDocument : IUView
+
+-(id)initWithSetting:(NSDictionary*)setting;
 
 //connect with controller
 -(void)fetch;
@@ -26,4 +34,9 @@
 -(void)addReferenceFromIUDocument:(IUDocument*)document;
 -(void)removeReferenceFromIUDocument:(IUDocument*)document;
 
+
+-(NSArray*)outputCSSCollection;
+
+
+@property id <IUDocumentCanvas> canvas;
 @end

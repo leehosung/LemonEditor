@@ -14,16 +14,17 @@
 @implementation JDOutlineView
 
 
-- (id)initWithFrame:(NSRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code here.
+- (void)selectItem:(id)item {
+    NSInteger itemIndex = [self rowForItem:item];
+    if (itemIndex < 0) {
+        [self expandParentsOfItem: item];
+        itemIndex = [self rowForItem:item];
+        if (itemIndex < 0)
+            return;
     }
     
-    return self;
+    [self selectRowIndexes: [NSIndexSet indexSetWithIndex: itemIndex] byExtendingSelection: NO];
 }
-
 
 
 - (void)expandParentsOfItem:(id)_item {
@@ -32,7 +33,7 @@
 
     while (1) {
         while (item != nil) {
-            id parent = [item valueForKey:@"parent"];
+            id parent = [self parentForItem:_item];
             if (![self isExpandable: parent])
                 break;
             if (![self isItemExpanded: parent])
@@ -52,17 +53,7 @@
     }
 }
 
-- (void)selectItem:(id)item {
-    NSInteger itemIndex = [self rowForItem:item];
-    if (itemIndex < 0) {
-        [self expandParentsOfItem: item];
-        itemIndex = [self rowForItem:item];
-        if (itemIndex < 0)
-            return;
-    }
-    
-    [self selectRowIndexes: [NSIndexSet indexSetWithIndex: itemIndex] byExtendingSelection: NO];
-}
+#if 0
 
 -(NSMenu*)menuForEvent:(NSEvent*)evt
 {
@@ -124,5 +115,6 @@
     }
     [super mouseUp:theEvent];
 }
+#endif
 
 @end

@@ -19,18 +19,31 @@
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];
     if (self) {
-        [aDecoder decodeToObject:self ]
+        [aDecoder decodeToObject:self withProperties:[[IUObj class] properties]];
+        css = [aDecoder decodeObjectForKey:@"css"];
     }
     return self;
 }
 
 -(void)encodeWithCoder:(NSCoder *)aCoder{
-    [aCoder encodeObject:self ofProperties:[IUObj properties]];
+    [aCoder encodeFromObject:self withProperties:[[IUObj class] properties]];
+    [aCoder encodeObject:css forKey:@"css"];
 }
 
 -(id)initWithDefaultSetting{
-    self = [super init];
+    self = [super init];{
+        css = [[IUCSS alloc] init];
+    }
     return self;
 }
+
+-(NSString*) outputCSS{
+    return @"outputCSS";
+}
+
+-(NSString*) outputHTML{
+    return @"outputHTML";
+}
+
 
 @end

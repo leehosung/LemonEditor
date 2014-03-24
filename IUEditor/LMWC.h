@@ -10,4 +10,15 @@
 
 @interface LMWC : NSWindowController
 
+@property (nonatomic) _binding_ NSDocument *currentDocument;
+
+@property (weak) IBOutlet NSView *leftV;
+@property (weak) IBOutlet NSView *canvasV;
+@property (weak) IBOutlet NSView *toolbarV;
+@property (weak) IBOutlet NSView *rightV;
+@property (weak) IBOutlet NSView *bottomV;
+
+-(void)loadProject:(NSString*)path;
+-(void)startNewProject;
+
 @end

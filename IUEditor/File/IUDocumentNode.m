@@ -1,14 +1,16 @@
 //
-//  IUView.m
+//  IUFileNode.m
 //  IUEditor
 //
-//  Created by JD on 3/17/14.
+//  Created by JD on 3/24/14.
 //  Copyright (c) 2014 JDLab. All rights reserved.
 //
 
-#import "IUView.h"
+#import "IUDocumentNode.h"
 
-@implementation IUView
+@implementation IUDocumentNode{
+    NSMutableArray  *_children;
+}
 
 -(id)init{
     self = [super init];
@@ -16,6 +18,11 @@
         _children = [NSMutableArray array];
     }
     return self;
+}
+
+
+-(NSMutableArray*)children{
+    return _children;
 }
 
 @end
