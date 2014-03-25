@@ -7,7 +7,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="LMWC">
             <connections>
                 <outlet property="bottomV" destination="wfB-XB-ErH" id="c9d-Zw-9fC"/>
-                <outlet property="canvasV" destination="irC-ed-4sd" id="1Ge-w3-o3h"/>
+                <outlet property="centerV" destination="irC-ed-4sd" id="3Ou-nB-3gq"/>
                 <outlet property="leftV" destination="cuQ-6O-zlK" id="cAe-xq-zQf"/>
                 <outlet property="rightV" destination="PNY-WR-OAz" id="5rX-IG-SCG"/>
                 <outlet property="toolbarV" destination="YTs-oo-nxs" id="diP-nc-LCt"/>
@@ -33,7 +33,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="255" height="851"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
-                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="irC-ed-4sd" userLabel="CanvasV">
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="irC-ed-4sd" userLabel="centerV">
                         <rect key="frame" x="255" y="44" width="909" height="807"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>

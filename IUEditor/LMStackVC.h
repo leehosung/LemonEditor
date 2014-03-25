@@ -7,7 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "IUDocumentController.h"
 
-@interface LMStackVC : NSViewController
+@interface LMStackVC : NSViewController <NSOutlineViewDataSource, NSOutlineViewDelegate>
+
+@property (nonatomic)  IUDocument    *document;
 
 @end

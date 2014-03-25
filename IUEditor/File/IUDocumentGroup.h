@@ -7,15 +7,17 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "IUDocumentNode.h"
+#import "IUNode.h"
 
 @class IUDocument;
 
-@interface IUDocumentGroupNode : IUDocumentNode  <NSCoding>
+@interface IUDocumentGroup : NSObject <IUNode, NSCoding>
 
+@property (nonatomic)   NSString *name;
+@property (nonatomic, readonly) NSMutableArray *children;
 
 -(void)addDocument:(IUDocument*)document;
--(void)addDocumentGroup:(IUDocumentGroupNode*)node;
+-(void)addDocumentGroup:(IUDocumentGroup*)node;
 
 
 @end

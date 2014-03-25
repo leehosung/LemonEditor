@@ -7,11 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "IUDocumentNode.h"
+#import "IUNode.h"
 
-@interface IUResourceGroup : IUDocumentNode <NSCoding>
+@interface IUResourceGroup : NSObject <IUNode, NSCoding>
 
-@property IUDocumentNode    *parent;
+@property id <IUNode>  parent;
+@property NSString      *name;
+@property (nonatomic, readonly) NSMutableArray *children;
 
 - (BOOL)syncDir;
 - (NSString*)path;

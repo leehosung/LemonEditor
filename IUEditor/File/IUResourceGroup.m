@@ -23,6 +23,12 @@
 -(void)encodeWithCoder:(NSCoder *)aCoder{
 }
 
+-(id)init{
+    self = [super init];
+    _children = [NSMutableArray array];
+    return self;
+}
+
 
 - (BOOL)syncDir{
     return [JDFileUtil mkdirPath:self.path];

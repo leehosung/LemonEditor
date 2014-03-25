@@ -13,6 +13,6 @@
 
 @property NSString  *text;
 @property NSImage   *image;
-@property LMStackVC  *stackVC;
+@property LMStackVC  *stackV;
 
 @end

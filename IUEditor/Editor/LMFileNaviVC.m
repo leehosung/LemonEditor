@@ -9,12 +9,13 @@
 #import "LMFileNaviVC.h"
 
 @interface LMFileNaviVC ()
-@property (strong) IBOutlet NSTreeController *treeController;
+@property (strong, nonatomic) IBOutlet NSTreeController *treeController;
 
 @end
 
 @implementation LMFileNaviVC{
     BOOL    viewLoadedOK;
+    BOOL    loaded;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -29,18 +30,17 @@
     NSLog(@"selection");
 }
 
--(void)awakeFromNib{
-    [_treeController addObserver:self forKeyPath:@"selection" options:0 context:nil];
+
+-(void)setTreeController:(NSTreeController *)treeController{
+    _treeController = treeController;
+    [treeController addObserver:self forKeyPath:@"selection" options:0 context:nil];
 }
 
 
--(void)selectionDidChange{
-    IUDocumentNode  *selectedNode = [_treeController.selectedObjects firstObject];
-    if ([selectedNode isKindOfClass:[IUDocumentGroupNode class]] == NO) {
-        [self willChangeValueForKey:@"currentDocument"];
-        _currentDocument = [_treeController.selectedObjects firstObject];
-        [self didChangeValueForKey:@"currentDocument"];
-    }
+-(void)selectionDidChange:(NSDictionary*)dict{
+    [self willChangeValueForKey:@"selection"];
+    _selection = [_treeController.selectedObjects firstObject];
+    [self didChangeValueForKey:@"selection"];
 }
 
 
@@ -52,7 +52,6 @@
     // Everything is setup in bindings
     NSTableCellView *cell= [outlineView makeViewWithIdentifier:@"cell" owner:self];
     return cell;
-    
 }
 
 

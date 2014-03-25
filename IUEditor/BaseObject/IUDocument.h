@@ -17,6 +17,7 @@
 
 @interface IUDocument : IUView
 
+
 -(id)initWithSetting:(NSDictionary*)setting;
 
 //connect with controller

@@ -43,4 +43,6 @@
 -(NSString*) outputCSS;
 -(NSString*) outputHTML;
 
+@property (readonly) NSMutableArray *children;
+
 @end

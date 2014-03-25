@@ -26,7 +26,9 @@
     _document = document;
     [_document setCanvas:self];
     
-    [[webView mainFrame] loadHTMLString:@"qwer" baseURL:[NSURL fileURLWithPath:self.resourcePath]];
+    NSString *outputSource = _document.outputSource;
+    
+    [[webView mainFrame] loadHTMLString:outputSource baseURL:[NSURL fileURLWithPath:self.resourcePath]];
 }
 
 

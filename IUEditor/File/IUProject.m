@@ -8,15 +8,14 @@
 
 #import "IUProject.h"
 #import "IUPage.h"
-#import "IUDocumentGroupNode.h"
+#import "IUDocumentGroup.h"
 #import "IUResourceGroup.h"
-#import "IUDocumentControllerNode.h"
 
 @implementation IUProject{
     NSString *path;
-    IUDocumentGroupNode *pageDocumentGroup;
-    IUDocumentGroupNode *masterDocumentGroup;
-    IUDocumentGroupNode *componentDocumentGroup;
+    IUDocumentGroup *pageDocumentGroup;
+    IUDocumentGroup *masterDocumentGroup;
+    IUDocumentGroup *componentDocumentGroup;
 }
 
 - (void)encodeWithCoder:(NSCoder *)encoder{
@@ -43,8 +42,8 @@
 }
 
 -(id)init:(NSDictionary *)setting error:(NSError *__autoreleasing *)error{
+    NSAssert([setting objectForKey:IUProjectKeyAppName] != nil, @"appName is nil");
     self = [super init];
-    
     self.name = [setting objectForKey:IUProjectKeyAppName];
     
     NSString *dir = [setting objectForKey:IUProjectKeyDirectory];
@@ -52,21 +51,19 @@
     
     ReturnNilIfFalse([JDFileUtil mkdirPath:path]);
     
-    IUDocumentGroupNode *pageDir = [[IUDocumentGroupNode alloc] init];
+    IUDocumentGroup *pageDir = [[IUDocumentGroup alloc] init];
     pageDir.name = @"Page";
     [self addDocumentGroup:pageDir];
     pageDocumentGroup = pageDir;
-    
-    IUDocumentGroupNode *compDir = [[IUDocumentGroupNode alloc] init];
-    compDir.name = @"Compnent";
+/*
+    IUDocumentGroup *compDir = [[IUDocumentGroup alloc] initWithName:@"Component"];
     [self addDocumentGroup:compDir];
     componentDocumentGroup = compDir;
     
-    IUDocumentGroupNode *masterDocumentDir = [[IUDocumentGroupNode alloc] init];
-    masterDocumentDir.name = @"Master";
+    IUDocumentGroup *masterDocumentDir = [[IUDocumentGroup alloc] initWithName:@"Master"];
     [self addDocumentGroup:masterDocumentDir];
     masterDocumentGroup = masterDocumentDir;
-
+*/
     
     //make resource dir
     ReturnNilIfFalse([self makeResourceDir]);
@@ -99,16 +96,15 @@
     NSAssert(path != nil, @"path is nil");
     
     IUResourceGroup *resGroup = [[IUResourceGroup alloc] init];
+    resGroup.name = @"Resource";
     resGroup.parent = self;
-    [resGroup setName:@"Resource"];
     [[self children] addObject:resGroup];
-
-    IUResourceGroup *imageGroup = [[IUResourceGroup alloc] init];
+/*
+    IUResourceGroup *imageGroup = [[IUResourceGroup alloc] initWithName:@"Image"];
     imageGroup.parent = resGroup;
-    [imageGroup setName:@"Image"];
     [[resGroup children] addObject:imageGroup];
     ReturnNoIfFalse([imageGroup syncDir]);
-    
+  */
     return YES;
 }
 

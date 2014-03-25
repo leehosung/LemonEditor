@@ -10,11 +10,20 @@
 
 @implementation IUDocumentController
 -(id)initWithDocument:(IUDocument*)document{
+    NSAssert(document!=nil, @"document is nil");
     self = [super init];
     if (self) {
+        [self setChildrenKeyPath:@"children"];
+        [self setObjectClass:[IUObj class]];
         [self setContent:document];
     }
     return self;
 }
+
+-(IUDocument*)document{
+    NSAssert(self.content != nil, @"content is nil");
+    return [self.content objectAtIndex:0];
+}
+
 
 @end

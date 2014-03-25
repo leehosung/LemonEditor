@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "IUDocumentGroupNode.h"
+#import "IUDocumentGroup.h"
 
 typedef enum _IUGitType{
     IUGitTypeNone = 0,
@@ -17,7 +17,7 @@ typedef enum _IUGitType{
 
 @class IUDocument;
 
-@interface IUProject : IUDocumentGroupNode
+@interface IUProject : IUDocumentGroup
 
 @property   BOOL            herokuOn;
 @property   IUGitType       gitType;
