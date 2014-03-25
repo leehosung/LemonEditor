@@ -32,6 +32,7 @@
 
 -(id)initWithDefaultSetting{
     self = [super init];{
+        _children = [NSMutableArray array];
         css = [[IUCSS alloc] init];
     }
     return self;

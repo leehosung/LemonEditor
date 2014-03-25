@@ -12,8 +12,8 @@
 
 @interface IUDocumentController : NSTreeController
 
-@property (readonly) NSMutableArray *openedDocument;
-
 -(id)initWithDocument:(IUDocument*)document;
+
+@property (nonatomic, readonly) IUDocument *document;
 
 @end

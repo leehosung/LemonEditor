@@ -13,7 +13,6 @@
 -(id)init{
     self = [super init];
     if (self) {
-        _children = [NSMutableArray array];
     }
     return self;
 }

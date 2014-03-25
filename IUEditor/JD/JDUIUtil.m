@@ -204,18 +204,20 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
 }
 
 -(id)addSubviewFullFrame:(NSView*)subview{
-    
+    if (subview == nil) {
+        return nil;
+    }
     [self addSubview:subview];
 
     [subview setTranslatesAutoresizingMaskIntoConstraints:NO];
 
     [self addConstraints:[NSLayoutConstraint
-                               constraintsWithVisualFormat:@"H:|-0-[subview]-(0@1000)-|"
+                               constraintsWithVisualFormat:@"H:|-0-[subview]-0-|"
                                options:NSLayoutFormatDirectionLeadingToTrailing
                                metrics:nil
                                views:NSDictionaryOfVariableBindings(subview)]];
     [self addConstraints:[NSLayoutConstraint
-                          constraintsWithVisualFormat:@"V:|-0-[subview]-(0@1000)-|"
+                          constraintsWithVisualFormat:@"V:|-0-[subview]-0-|"
                           options:NSLayoutFormatDirectionLeadingToTrailing
                           metrics:nil
                           views:NSDictionaryOfVariableBindings(subview)]];

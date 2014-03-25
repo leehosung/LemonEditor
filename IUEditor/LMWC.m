@@ -10,7 +10,7 @@
 #import "LMFileNaviVC.h"
 #import "LMStackVC.h"
 #import "LMCanvasV.h"
-
+#import "IUDocumentController.h"
 #import "IUProject.h"
 
 @interface LMWC ()
@@ -37,15 +37,14 @@
     //setting window view
     
     fileNaviVC = [[LMFileNaviVC alloc] initWithNibName:@"LMFileNaviVC" bundle:nil];
-    [self bind:@"currentDocument" toObject:fileNaviVC withKeyPath:@"currentDocument" options:nil];
+    [self bind:@"selectedDocument" toObject:fileNaviVC withKeyPath:@"selection" options:nil];
     [_leftV addSubview:fileNaviVC.view];
     
     stackVC = [[LMStackVC alloc] initWithNibName:@"LMStackVC" bundle:nil];
-    [_rightV addSubview:stackVC.view];
+    [_rightV addSubviewFullFrame:stackVC.view];
 
     canvasV = [[LMCanvasV alloc] init];
-    [canvasV bind:@"document" toObject:self withKeyPath:@"currentDocument" options:nil];
-    [_canvasV addSubviewFullFrame:canvasV];
+    [_centerV addSubviewFullFrame:canvasV];
     
     [self startNewProject];
 }
@@ -53,6 +52,23 @@
 -(void)loadProject:(NSString*)path{
     IUProject *project = [IUProject projectWithContentsOfPackage:path];
     fileNaviVC.project = project;
+}
+
+-(void)setSelectedDocument:(id)selectedDocument{
+    _selectedDocument = selectedDocument;
+    if ([selectedDocument isKindOfClass:[IUDocument class]]) {
+        [stackVC setDocument:selectedDocument];
+        [canvasV setDocument:selectedDocument];
+    }
+    else if ([selectedDocument isKindOfClass:[IUProject class]]){
+        return;
+    }
+    else if ([selectedDocument isKindOfClass:[IUDocumentGroup class]]){
+        return;
+    }
+    else {
+        assert(0);
+    }
 }
 
 //FIXME: resourcePath

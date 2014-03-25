@@ -10,7 +10,6 @@
 
 @interface IUView : IUObj
 
-@property (readonly) NSMutableArray *children;
 @property (readonly) BOOL   textEditable;
 
 -(void)undoRemoveIU:(IUObj *)iu index:(NSInteger)index;

@@ -8,11 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 #import "IUProject.h"
-#import "IUProjectController.h"
+#import "IUDocumentController.h"
 
 @interface LMFileNaviVC : NSViewController
 
-@property (nonatomic, readonly) IUDocument  *currentDocument;
+@property (nonatomic, readonly) id  selection;
 @property (nonatomic) IUProject *project;
 
 @end

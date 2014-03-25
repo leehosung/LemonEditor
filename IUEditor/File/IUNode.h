@@ -1,5 +1,5 @@
 //
-//  IUDocumentFactory.h
+//  IUFileNode.h
 //  IUEditor
 //
 //  Created by JD on 3/24/14.
@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface IUDocumentFactory : NSObject
+@protocol IUNode <NSObject>
+
+@required
+-(NSString*)name;
+-(NSMutableArray*)children;
 
 @end

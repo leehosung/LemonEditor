@@ -9,18 +9,22 @@
 #import "LMStackVC.h"
 
 @interface LMStackVC ()
-
+@property (weak) IBOutlet NSOutlineView *outlineV;
 @end
 
 @implementation LMStackVC
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Initialization code here.
-    }
     return self;
 }
+
+
+
+- (NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(NSTreeNode*)item {
+    NSTableCellView *cell= [outlineView makeViewWithIdentifier:@"cell" owner:self];
+    return cell;
+}
+
 
 @end

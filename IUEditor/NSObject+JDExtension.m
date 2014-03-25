@@ -163,29 +163,11 @@
     SEL s;
     
     /*Execution order
-     1) xxxDidChange
      2) xxxDidChange:
-     3) xxxDidChange:ofObject
-     4) xxxContextDidChange
+     3) xxxDidChange:ofObject:
      5) xxxContextDidChange:
      6) xxxContextDidChange:ofObject
      */
-    
-    //xxxDidChange
-    if ([[change objectForKey:NSKeyValueChangeNotificationIsPriorKey] boolValue] != YES) {
-        selectorName = [NSString stringWithFormat:@"%@DidChange",keyPath];
-    }
-    else{
-        selectorName = [NSString stringWithFormat:@"%@WillChange",keyPath];
-    }
-    
-    s = NSSelectorFromString(selectorName);
-    if ([self respondsToSelector:s]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        [self performSelector:s];
-#pragma clang diagnostic pop
-    }
     
     ///xxxDidChange:
     if ([[change objectForKey:NSKeyValueChangeNotificationIsPriorKey] boolValue] != YES) {
@@ -222,22 +204,6 @@
     
     //context
     if (contextStr) {
-        if ([[change objectForKey:NSKeyValueChangeNotificationIsPriorKey] boolValue] != YES) {
-            selectorName = [NSString stringWithFormat:@"%@ContextDidChange",contextStr];
-        }
-        else{
-            selectorName = [NSString stringWithFormat:@"%@ContextWillChange",contextStr];
-        }
-        
-        s = NSSelectorFromString(selectorName);
-        if ([self respondsToSelector:s]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-            [self performSelector:s];
-#pragma clang diagnostic pop
-        }
-        
-        //
         if ([[change objectForKey:NSKeyValueChangeNotificationIsPriorKey] boolValue] != YES) {
             selectorName = [NSString stringWithFormat:@"%@ContextDidChange:",contextStr];
         }

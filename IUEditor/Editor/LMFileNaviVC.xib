@@ -83,11 +83,7 @@
             </scroller>
         </scrollView>
         <userDefaultsController representsSharedInstance="YES" id="czK-hJ-lvV"/>
-        <treeController objectClassName="IUDocumentNode" editable="NO" childrenKeyPath="children" id="gdF-Dg-Xge">
-            <declaredKeys>
-                <string>children</string>
-                <string>name</string>
-            </declaredKeys>
+        <treeController mode="entity" editable="NO" childrenKeyPath="children" id="gdF-Dg-Xge">
             <connections>
                 <binding destination="-2" name="contentObject" keyPath="project" id="dhJ-c7-5Xe"/>
             </connections>
