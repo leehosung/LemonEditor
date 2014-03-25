@@ -17,13 +17,22 @@
 
 @interface LMWC ()
 
+
+@property (weak) IBOutlet NSView *leftTopV;
+@property (weak) IBOutlet NSView *leftBottomV;
+
+@property (weak) IBOutlet NSView *centerV;
+@property (weak) IBOutlet NSView *toolbarV;
+@property (weak) IBOutlet NSView *rightV;
+@property (weak) IBOutlet NSView *bottomV;
+
 @end
 
 @implementation LMWC{
     LMFileNaviVC    *fileNaviVC;
     LMStackVC       *stackVC;
     LMCanvasV       *canvasV;
-    
+    LMWidgetLibraryVC   *widgetLibraryVC;
 }
 
 - (id)initWithWindow:(NSWindow *)window
@@ -56,6 +65,10 @@
     IUProject *project = [IUProject projectWithContentsOfPackage:path];
     fileNaviVC.project = project;
     canvasV.resourcePath = project.path;
+    
+    NSString *widgetFilePath = [[NSBundle mainBundle] pathForResource:@"widgetForDefault" ofType:@"plist"];
+    NSArray *availableWidget = [NSArray arrayWithContentsOfFile:widgetFilePath];
+    [widgetLibraryVC setWidget:availableWidget];
 }
 
 -(void)setSelectedDocument:(id)selectedDocument{

@@ -11,9 +11,10 @@
 		690A409518E1645B00095263 /* LMWidgetLibraryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 690A409318E1645B00095263 /* LMWidgetLibraryVC.m */; };
 		690A409618E1645B00095263 /* LMWidgetLibraryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 690A409418E1645B00095263 /* LMWidgetLibraryVC.xib */; };
 		690A409918E1665E00095263 /* LMGeneralObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 690A409818E1665E00095263 /* LMGeneralObject.m */; };
-		690A409B18E16E6E00095263 /* selectableWidgetDefault.plist in Resources */ = {isa = PBXBuildFile; fileRef = 690A409A18E16E6E00095263 /* selectableWidgetDefault.plist */; };
 		690A40A218E170E200095263 /* IUView.png in Resources */ = {isa = PBXBuildFile; fileRef = 690A40A118E170E200095263 /* IUView.png */; };
 		690A40A318E170E200095263 /* IUView.png in Resources */ = {isa = PBXBuildFile; fileRef = 690A40A118E170E200095263 /* IUView.png */; };
+		690A40A518E17C5700095263 /* widgetForDefault.plist in Resources */ = {isa = PBXBuildFile; fileRef = 690A40A418E17C5700095263 /* widgetForDefault.plist */; };
+		690A40A618E17C5700095263 /* widgetForDefault.plist in Resources */ = {isa = PBXBuildFile; fileRef = 690A40A418E17C5700095263 /* widgetForDefault.plist */; };
 		6919204718DCFC8200F8522B /* NSCoder+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6919204618DCFC8200F8522B /* NSCoder+JDExtension.m */; };
 		6919204A18DCFED000F8522B /* NSObject+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6919204918DCFED000F8522B /* NSObject+JDExtension.m */; };
 		6954812818D7640A00CA02F1 /* IUPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6954812718D7640A00CA02F1 /* IUPage.m */; };
@@ -94,8 +95,8 @@
 		690A409418E1645B00095263 /* LMWidgetLibraryVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMWidgetLibraryVC.xib; path = Editor/LMWidgetLibraryVC.xib; sourceTree = "<group>"; };
 		690A409718E1665E00095263 /* LMGeneralObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMGeneralObject.h; path = Editor/LMGeneralObject.h; sourceTree = "<group>"; };
 		690A409818E1665E00095263 /* LMGeneralObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMGeneralObject.m; path = Editor/LMGeneralObject.m; sourceTree = "<group>"; };
-		690A409A18E16E6E00095263 /* selectableWidgetDefault.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = selectableWidgetDefault.plist; sourceTree = "<group>"; };
 		690A40A118E170E200095263 /* IUView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IUView.png; sourceTree = "<group>"; };
+		690A40A418E17C5700095263 /* widgetForDefault.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = widgetForDefault.plist; sourceTree = "<group>"; };
 		6919204518DCFC8200F8522B /* NSCoder+JDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSCoder+JDExtension.h"; path = "JD/NSCoder+JDExtension.h"; sourceTree = "<group>"; };
 		6919204618DCFC8200F8522B /* NSCoder+JDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSCoder+JDExtension.m"; path = "JD/NSCoder+JDExtension.m"; sourceTree = "<group>"; };
 		6919204818DCFED000F8522B /* NSObject+JDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JDExtension.h"; sourceTree = "<group>"; };
@@ -258,6 +259,7 @@
 		690A40A018E170B700095263 /* classImage */ = {
 			isa = PBXGroup;
 			children = (
+				690A40A418E17C5700095263 /* widgetForDefault.plist */,
 				690A40A118E170E200095263 /* IUView.png */,
 			);
 			path = classImage;
@@ -412,7 +414,6 @@
 				69C575B618D6F61E0016F050 /* main.m */,
 				69C575B818D6F61E0016F050 /* IUEditor-Prefix.pch */,
 				69C575B918D6F61E0016F050 /* Credits.rtf */,
-				690A409A18E16E6E00095263 /* selectableWidgetDefault.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -576,8 +577,8 @@
 				69C5762D18D70B850016F050 /* LMWC.xib in Resources */,
 				690A409618E1645B00095263 /* LMWidgetLibraryVC.xib in Resources */,
 				69B37F0E18DFDEE800DE620F /* LMFileNaviVC.xib in Resources */,
-				690A409B18E16E6E00095263 /* selectableWidgetDefault.plist in Resources */,
 				69C575C318D6F61E0016F050 /* Images.xcassets in Resources */,
+				690A40A518E17C5700095263 /* widgetForDefault.plist in Resources */,
 				69C575BB18D6F61E0016F050 /* Credits.rtf in Resources */,
 				690A408E18E14A4E00095263 /* LMStackVC.xib in Resources */,
 				69C575C118D6F61E0016F050 /* MainMenu.xib in Resources */,
@@ -590,6 +591,7 @@
 			files = (
 				690A40A318E170E200095263 /* IUView.png in Resources */,
 				69C575D318D6F61E0016F050 /* InfoPlist.strings in Resources */,
+				690A40A618E17C5700095263 /* widgetForDefault.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

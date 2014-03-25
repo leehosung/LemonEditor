@@ -8,7 +8,8 @@
             <connections>
                 <outlet property="bottomV" destination="wfB-XB-ErH" id="c9d-Zw-9fC"/>
                 <outlet property="centerV" destination="irC-ed-4sd" id="3Ou-nB-3gq"/>
-                <outlet property="leftV" destination="cuQ-6O-zlK" id="cAe-xq-zQf"/>
+                <outlet property="leftBottomV" destination="cuQ-6O-zlK" id="vzw-Qu-mef"/>
+                <outlet property="leftTopV" destination="1yd-Yz-bba" id="Td2-HY-z9Q"/>
                 <outlet property="rightV" destination="PNY-WR-OAz" id="5rX-IG-SCG"/>
                 <outlet property="toolbarV" destination="YTs-oo-nxs" id="diP-nc-LCt"/>
                 <outlet property="window" destination="1" id="3"/>
@@ -29,16 +30,16 @@
                         <rect key="frame" x="0.0" y="848" width="1420" height="76"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
-                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cuQ-6O-zlK" userLabel="LeftV">
-                        <rect key="frame" x="0.0" y="0.0" width="255" height="851"/>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cuQ-6O-zlK" userLabel="leftBottomV">
+                        <rect key="frame" x="0.0" y="0.0" width="247" height="508"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="irC-ed-4sd" userLabel="centerV">
-                        <rect key="frame" x="255" y="44" width="909" height="807"/>
+                        <rect key="frame" x="276" y="44" width="888" height="718"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5yS-wf-SAQ">
-                                <rect key="frame" x="13" y="771" width="25" height="25"/>
+                                <rect key="frame" x="-8" y="771" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IfH-1n-MYJ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -53,6 +54,10 @@
                     </customView>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wfB-XB-ErH" userLabel="bottomV">
                         <rect key="frame" x="255" y="0.0" width="909" height="45"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1yd-Yz-bba" userLabel="leftTopV">
+                        <rect key="frame" x="0.0" y="516" width="242" height="324"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                 </subviews>
