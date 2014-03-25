@@ -38,7 +38,7 @@
             [self encodeRect:[[obj valueForKey:property.name] rectValue] forKey:property.name];
         }
         else if ([property isChar]){
-            [self encodeRect:[[obj valueForKey:property.name] rectValue] forKey:property.name];
+            [self encodeInt32:[[obj valueForKey:property.name] charValue] forKey:property.name];
         }
 
         else{
@@ -46,6 +46,8 @@
         }
     }
 }
+
+
 
 -(void) decodeToObject:(id)obj withProperties:(NSArray*)properties{
     for (JDProperty *property in properties) {
@@ -60,6 +62,9 @@
         }
         else if ([property isDouble]){
             [obj setValue:@([self decodeDoubleForKey:property.name]) forKey:property.name];
+        }
+        else if ([property isChar]){
+            [obj setValue:@([self decodeInt32ForKey:property.name]) forKey:property.name];
         }
         else if ([property isID]){
             [obj setValue:[self decodeObjectForKey:property.name] forKey:property.name];

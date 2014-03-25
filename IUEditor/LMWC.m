@@ -10,6 +10,8 @@
 #import "LMFileNaviVC.h"
 #import "LMStackVC.h"
 #import "LMCanvasV.h"
+#import "LMWidgetLibraryVC.h"
+
 #import "IUDocumentController.h"
 #import "IUProject.h"
 
@@ -21,6 +23,7 @@
     LMFileNaviVC    *fileNaviVC;
     LMStackVC       *stackVC;
     LMCanvasV       *canvasV;
+    
 }
 
 - (id)initWithWindow:(NSWindow *)window
@@ -52,6 +55,7 @@
 -(void)loadProject:(NSString*)path{
     IUProject *project = [IUProject projectWithContentsOfPackage:path];
     fileNaviVC.project = project;
+    canvasV.resourcePath = project.path;
 }
 
 -(void)setSelectedDocument:(id)selectedDocument{
@@ -71,7 +75,6 @@
     }
 }
 
-//FIXME: resourcePath
 -(void)startNewProject{
     NSError *error;
 
@@ -79,10 +82,12 @@
                            IUProjectKeyGit: @(NO),
                            IUProjectKeyHeroku: @(NO),
                            IUProjectKeyDirectory: [@"~/IUProjTemp" stringByExpandingTildeInPath]};
-    
-    IUProject *project = [[IUProject alloc] init:dict error:&error];
-    canvasV.resourcePath = project.path;
-    fileNaviVC.project = project;
+    [IUProject createProject:dict error:&error];
+    NSString *projectPath = [IUProject createProject:dict error:&error];
+    if (error != nil) {
+        assert(0);
+    }
+    [self loadProject:projectPath];
 }
 
 @end

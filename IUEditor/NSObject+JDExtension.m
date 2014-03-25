@@ -46,13 +46,13 @@
         else if (type[0] == 'f') {
             isFloat = YES;
         }
-        else if (strcmp(type, "^{CGRect={CGPoint=dd}{CGSize=dd}}")) {
+        else if (strcmp(type, "^{CGRect={CGPoint=dd}{CGSize=dd}}") == 0) {
             isRect = YES;
         }
-        else if (strcmp(type, "^{CGPoint=dd}")) {
+        else if (strcmp(type, "^{CGPoint=dd}") == 0) {
             isPoint = YES;
         }
-        else if (strcmp(type, "^{CGSize=dd}")) {
+        else if (strcmp(type, "^{CGSize=dd}") == 0) {
             isPoint = YES;
         }
         else if (strcmp(type, "T@")){
