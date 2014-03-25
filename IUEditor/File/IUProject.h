@@ -29,7 +29,7 @@ typedef enum _IUGitType{
 #define IUProjectKeyHeroku @"heroku"
 #define IUProjectKeyDirectory @"dir"
 
-- (id)init:(NSDictionary*)setting error:(NSError**)error;
++(NSString*)createProject:(NSDictionary*)setting error:(NSError**)error;
 + (id)projectWithContentsOfPackage:(NSString*)path;
 
 #define IUDocumentKeyType @"type"
@@ -44,6 +44,5 @@ typedef enum _IUGitType{
 
 //used to check resource dir path
 - (NSString*)path;
-
 
 @end

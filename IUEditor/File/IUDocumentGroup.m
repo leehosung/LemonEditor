@@ -13,11 +13,18 @@
 }
 
 - (void)encodeWithCoder:(NSCoder *)encoder{
+    [encoder encodeFromObject:self withProperties:[IUDocumentGroup properties]];
+    [encoder encodeObject:self.children forKey:@"children"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];
     if (self){
+        _children = [NSMutableArray array];
+
+        [aDecoder decodeToObject:self withProperties:[IUDocumentGroup properties]];
+        NSArray *array = [aDecoder decodeObjectForKey:@"children"];
+        [_children addObjectsFromArray:array];
     }
     return self;
 }

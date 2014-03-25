@@ -11,21 +11,22 @@
 #import "IUDocumentGroup.h"
 #import "IUResourceGroup.h"
 
+@interface IUProject()
+@property (nonatomic, copy) NSString          *path;
+@property IUDocumentGroup *pageDocumentGroup;
+@property IUDocumentGroup *masterDocumentGroup;
+@property IUDocumentGroup *componentDocumentGroup;
+@end
+
 @implementation IUProject{
-    NSString *path;
-    IUDocumentGroup *pageDocumentGroup;
-    IUDocumentGroup *masterDocumentGroup;
-    IUDocumentGroup *componentDocumentGroup;
 }
+
+
 
 - (void)encodeWithCoder:(NSCoder *)encoder{
     [super encodeWithCoder:encoder];
     
     [encoder encodeFromObject:self withProperties:[[IUProject class] properties]];
-    [encoder encodeObject:pageDocumentGroup   forKey:@"pageDocumentGroup"];
-    [encoder encodeObject:masterDocumentGroup     forKey:@"masterDocumentGroup"];
-    [encoder encodeObject:componentDocumentGroup forKey:@"componentDocumentGroup"];
-    [encoder encodeObject:path forKey:@"path"];
 
 }
 
@@ -33,47 +34,45 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         [aDecoder decodeToObject:self withProperties:[[IUProject class] properties]];
-        pageDocumentGroup     = [aDecoder decodeObjectForKey:@"pageDocumentGroup"];
-        masterDocumentGroup       = [aDecoder decodeObjectForKey:@"masterDocumentGroup"];
-        componentDocumentGroup   = [aDecoder decodeObjectForKey:@"componentDocumentGroup"];
-        path            = [aDecoder decodeObjectForKey:@"path"];
     }
     return self;
 }
 
--(id)init:(NSDictionary *)setting error:(NSError *__autoreleasing *)error{
-    NSAssert([setting objectForKey:IUProjectKeyAppName] != nil, @"appName is nil");
-    self = [super init];
-    self.name = [setting objectForKey:IUProjectKeyAppName];
++(NSString*)createProject:(NSDictionary*)setting error:(NSError**)error{
+    IUProject *project = [[IUProject alloc] init];
+    project.name = [setting objectForKey:IUProjectKeyAppName];
     
     NSString *dir = [setting objectForKey:IUProjectKeyDirectory];
-    path = [dir stringByAppendingPathComponent:[self.name stringByAppendingPathExtension:@"iuproject"]];
+    project.path = [dir stringByAppendingPathComponent:[project.name stringByAppendingPathExtension:@"iuproject"]];
     
-    ReturnNilIfFalse([JDFileUtil mkdirPath:path]);
+    ReturnNilIfFalse([JDFileUtil mkdirPath:project.path]);
     
     IUDocumentGroup *pageDir = [[IUDocumentGroup alloc] init];
     pageDir.name = @"Page";
-    [self addDocumentGroup:pageDir];
-    pageDocumentGroup = pageDir;
-/*
-    IUDocumentGroup *compDir = [[IUDocumentGroup alloc] initWithName:@"Component"];
-    [self addDocumentGroup:compDir];
-    componentDocumentGroup = compDir;
-    
-    IUDocumentGroup *masterDocumentDir = [[IUDocumentGroup alloc] initWithName:@"Master"];
-    [self addDocumentGroup:masterDocumentDir];
-    masterDocumentGroup = masterDocumentDir;
-*/
+    [project addDocumentGroup:pageDir];
+    project.pageDocumentGroup = pageDir;
+    /*
+     IUDocumentGroup *compDir = [[IUDocumentGroup alloc] initWithName:@"Component"];
+     [self addDocumentGroup:compDir];
+     componentDocumentGroup = compDir;
+     
+     IUDocumentGroup *masterDocumentDir = [[IUDocumentGroup alloc] initWithName:@"Master"];
+     [self addDocumentGroup:masterDocumentDir];
+     masterDocumentGroup = masterDocumentDir;
+     */
     
     //make resource dir
-    ReturnNilIfFalse([self makeResourceDir]);
-
+    ReturnNilIfFalse([project makeResourceDir]);
+    
     IUPage *page = [[IUPage alloc] init];
     page.name = @"index";
     [pageDir addDocument:page];
     
-    ReturnNilIfFalse([self save]);
-    
+    ReturnNilIfFalse([project save]);
+    return project.path;
+}
+
+-(id)init:(NSDictionary *)setting error:(NSError *__autoreleasing *)error{
     return self;
 }
 
@@ -83,17 +82,17 @@
 }
 
 -(NSString*)path{
-    return path;
+    return _path;
 }
 
 -(NSString*)IUMLPath{
-    return [path stringByAppendingPathComponent:@"IUML"];
+    return [_path stringByAppendingPathComponent:@"IUML"];
 }
 
 
 
 -(BOOL)makeResourceDir{
-    NSAssert(path != nil, @"path is nil");
+    NSAssert(_path != nil, @"path is nil");
     
     IUResourceGroup *resGroup = [[IUResourceGroup alloc] init];
     resGroup.name = @"Resource";
