@@ -14,12 +14,6 @@
 @property (nonatomic) _binding_ id selectedDocument;
 @property (nonatomic) _binding_ id selectedIU;
 
-@property (weak) IBOutlet NSView *leftV;
-@property (weak) IBOutlet NSView *centerV;
-@property (weak) IBOutlet NSView *toolbarV;
-@property (weak) IBOutlet NSView *rightV;
-@property (weak) IBOutlet NSView *bottomV;
-
 -(void)loadProject:(NSString*)path;
 -(void)startNewProject;
 
