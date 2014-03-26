@@ -7,21 +7,38 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "IUCSS.h"
 
 #define IUCSSDefaultFrame -1
 
 @interface IUObj : NSObject <NSCoding>
 
-+(id)IUObj;
-+(NSArray*)propertyList;
++(id)IU;
+@property (readonly) IUCSS *css; //used by subclass
+
+
+@property (readonly) NSMutableArray *children;
+
+// this is IU setting
+@property (nonatomic) NSString *resourceID;
+@property (nonatomic) NSString *name;
+
+@property (nonatomic) BOOL      hover;
+@property (nonatomic) BOOL      editHoverStatus;
+
+-(NSString*) outputHTML;
+-(NSString*) outputCSSForDefault;
+
+-(NSString*) editorHTML;
+-(NSString*) editorCSSForHover;
+
 
 // overide folloing method
 -(id)initWithDefaultSetting;
 -(id)loadWithDict:(NSDictionary*)dict error:(NSError**)error;
 -(void)prepareEditor;
 
-
-// user interface status
+//user interface status
 @property (readonly) BOOL draggable;
 @property (readonly) BOOL disableXInput;
 @property (readonly) BOOL disableYInput;
@@ -30,19 +47,6 @@
 
 -(IUObj*)iuHitTest:(NSPoint)point;
 
-// instance define
--(void)importFromDict:(NSDictionary*)dict;
--(NSMutableDictionary*)dict;
--(NSData*)serializedData;
 
-@property (nonatomic) NSString *resourceID;
-@property (nonatomic) NSString *HTMLID;
-@property (nonatomic) NSString *name;
-@property (nonatomic) BOOL      focus;
-
--(NSString*) outputCSS;
--(NSString*) outputHTML;
-
-@property (readonly) NSMutableArray *children;
 
 @end

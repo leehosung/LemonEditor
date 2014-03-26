@@ -46,17 +46,18 @@
 
 - (void)windowDidLoad
 {
-    //setting window view
-    
     fileNaviVC = [[LMFileNaviVC alloc] initWithNibName:@"LMFileNaviVC" bundle:nil];
     [self bind:@"selectedDocument" toObject:fileNaviVC withKeyPath:@"selection" options:nil];
-    [_leftV addSubview:fileNaviVC.view];
+    [_leftBottomV addSubview:fileNaviVC.view];
     
     stackVC = [[LMStackVC alloc] initWithNibName:@"LMStackVC" bundle:nil];
     [_rightV addSubviewFullFrame:stackVC.view];
 
     canvasV = [[LMCanvasV alloc] init];
     [_centerV addSubviewFullFrame:canvasV];
+    
+    widgetLibraryVC = [[LMWidgetLibraryVC alloc] initWithNibName:@"LMWidgetLibraryVC" bundle:nil];
+    [_leftTopV addSubview:widgetLibraryVC.view];
     
     [self startNewProject];
 }
@@ -65,10 +66,10 @@
     IUProject *project = [IUProject projectWithContentsOfPackage:path];
     fileNaviVC.project = project;
     canvasV.resourcePath = project.path;
-    
+
     NSString *widgetFilePath = [[NSBundle mainBundle] pathForResource:@"widgetForDefault" ofType:@"plist"];
-    NSArray *availableWidget = [NSArray arrayWithContentsOfFile:widgetFilePath];
-    [widgetLibraryVC setWidget:availableWidget];
+    NSArray *availableWidgetProperties = [NSArray arrayWithContentsOfFile:widgetFilePath];
+    [widgetLibraryVC setWidgetProperties:availableWidgetProperties];
 }
 
 -(void)setSelectedDocument:(id)selectedDocument{

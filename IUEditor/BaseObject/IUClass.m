@@ -36,10 +36,6 @@ NSArray* GetPropertyList(Class a){
     return self;
 }
 
-+(NSMutableArray*)propertyList{
-    return [NSMutableArray array];
-}
-
 // Save + Load
 -(void)importFromDict:(NSDictionary*)dict{
     return;
