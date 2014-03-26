@@ -9,5 +9,6 @@
 #import <Cocoa/Cocoa.h>
 
 @interface LMWidgetLibraryVC : NSViewController
-
+-(void)setWidgetProperties:(NSArray*)array;
+@property (nonatomic, readonly) NSArray *widgets;
 @end

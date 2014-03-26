@@ -7,43 +7,46 @@
 //
 
 #import "IUObj.h"
-#import "IUCSS.h"
 #import "NSObject+JDExtension.h"
 #import "NSCoder+JDExtension.h"
 
-@implementation IUObj
-{
-    IUCSS *css;
+@implementation IUObj{
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];
     if (self) {
         [aDecoder decodeToObject:self withProperties:[[IUObj class] properties]];
-        css = [aDecoder decodeObjectForKey:@"css"];
+        _css = [aDecoder decodeObjectForKey:@"css"];
     }
     return self;
 }
 
 -(void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeFromObject:self withProperties:[[IUObj class] properties]];
-    [aCoder encodeObject:css forKey:@"css"];
+    [aCoder encodeObject:self.css forKey:@"css"];
 }
 
 -(id)initWithDefaultSetting{
     self = [super init];{
         _children = [NSMutableArray array];
-        css = [[IUCSS alloc] init];
+        _css = [[IUCSS alloc] init];
     }
     return self;
 }
 
+-(NSString*) outputHTML{
+    
+}
 -(NSString*) outputCSS{
-    return @"outputCSS";
+    
 }
 
--(NSString*) outputHTML{
-    return @"outputHTML";
+-(NSString*) editorHTML{
+    
+}
+-(NSString*) editorCSS{
+    
 }
 
 

@@ -96,7 +96,7 @@
 		690A409718E1665E00095263 /* LMGeneralObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMGeneralObject.h; path = Editor/LMGeneralObject.h; sourceTree = "<group>"; };
 		690A409818E1665E00095263 /* LMGeneralObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMGeneralObject.m; path = Editor/LMGeneralObject.m; sourceTree = "<group>"; };
 		690A40A118E170E200095263 /* IUView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IUView.png; sourceTree = "<group>"; };
-		690A40A418E17C5700095263 /* widgetForDefault.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = widgetForDefault.plist; sourceTree = "<group>"; };
+		690A40A418E17C5700095263 /* widgetForDefault.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = widgetForDefault.plist; path = classImage/widgetForDefault.plist; sourceTree = "<group>"; };
 		6919204518DCFC8200F8522B /* NSCoder+JDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSCoder+JDExtension.h"; path = "JD/NSCoder+JDExtension.h"; sourceTree = "<group>"; };
 		6919204618DCFC8200F8522B /* NSCoder+JDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSCoder+JDExtension.m"; path = "JD/NSCoder+JDExtension.m"; sourceTree = "<group>"; };
 		6919204818DCFED000F8522B /* NSObject+JDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JDExtension.h"; sourceTree = "<group>"; };
@@ -250,6 +250,7 @@
 		690A409E18E170AC00095263 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				690A40A418E17C5700095263 /* widgetForDefault.plist */,
 				690A40A018E170B700095263 /* classImage */,
 			);
 			name = Resource;
@@ -259,7 +260,6 @@
 		690A40A018E170B700095263 /* classImage */ = {
 			isa = PBXGroup;
 			children = (
-				690A40A418E17C5700095263 /* widgetForDefault.plist */,
 				690A40A118E170E200095263 /* IUView.png */,
 			);
 			path = classImage;
