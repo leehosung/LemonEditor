@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "IUDocument.h"
 
-@interface IUTemplate : NSObject
+@interface IUTemplate : IUDocument
 
 @end

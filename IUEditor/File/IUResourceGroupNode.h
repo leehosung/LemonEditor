@@ -9,12 +9,9 @@
 #import <Cocoa/Cocoa.h>
 #import "IUNode.h"
 
-@interface IUResourceGroup : NSObject <IUNode, NSCoding>
+@interface IUResourceGroupNode : IUNode
 
-@property id <IUNode>  parent;
-@property NSString      *name;
-@property (nonatomic, readonly) NSMutableArray *children;
-
+@property (nonatomic) IUNode    *parent;
 - (BOOL)syncDir;
 - (NSString*)path;
 

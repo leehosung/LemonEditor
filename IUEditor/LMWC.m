@@ -14,6 +14,9 @@
 
 #import "IUDocumentController.h"
 #import "IUProject.h"
+#import "IUDocumentNode.h"
+#import "IUResourceGroupNode.h"
+#import "IUResourceNode.h"
 
 @interface LMWC ()
 
@@ -47,7 +50,7 @@
 - (void)windowDidLoad
 {
     fileNaviVC = [[LMFileNaviVC alloc] initWithNibName:@"LMFileNaviVC" bundle:nil];
-    [self bind:@"selectedDocument" toObject:fileNaviVC withKeyPath:@"selection" options:nil];
+    [self bind:@"selectedNode" toObject:fileNaviVC withKeyPath:@"selection" options:nil];
     [_leftBottomV addSubview:fileNaviVC.view];
     
     stackVC = [[LMStackVC alloc] initWithNibName:@"LMStackVC" bundle:nil];
@@ -72,20 +75,25 @@
     [widgetLibraryVC setWidgetProperties:availableWidgetProperties];
 }
 
--(void)setSelectedDocument:(id)selectedDocument{
-    _selectedDocument = selectedDocument;
-    if ([selectedDocument isKindOfClass:[IUDocument class]]) {
-        [stackVC setDocument:selectedDocument];
-        [canvasV setDocument:selectedDocument];
-    }
-    else if ([selectedDocument isKindOfClass:[IUProject class]]){
+-(void)setSelectedNode:(IUNode*)selectedNode{
+    _selectedNode = selectedNode;
+    if ([selectedNode isKindOfClass:[IUDocumentNode class]]) {
+        IUDocument *document = ((IUDocumentNode*)selectedNode).document;
+        [stackVC setDocument:document];
+        [canvasV setDocument:document];
         return;
     }
-    else if ([selectedDocument isKindOfClass:[IUDocumentGroup class]]){
+    else if ([selectedNode isKindOfClass:[IUProject class]]){
         return;
     }
-    else {
-        assert(0);
+    else if ([selectedNode isKindOfClass:[IUDocumentGroupNode class]]){
+        return;
+    }
+    else if ([selectedNode isKindOfClass:[IUResourceGroupNode class]]) {
+            return;
+    }
+    else if ([selectedNode isKindOfClass:[IUResourceNode class]]) {
+        return;
     }
 }
 
@@ -96,7 +104,7 @@
                            IUProjectKeyGit: @(NO),
                            IUProjectKeyHeroku: @(NO),
                            IUProjectKeyDirectory: [@"~/IUProjTemp" stringByExpandingTildeInPath]};
-    [IUProject createProject:dict error:&error];
+
     NSString *projectPath = [IUProject createProject:dict error:&error];
     if (error != nil) {
         assert(0);

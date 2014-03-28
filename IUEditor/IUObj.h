@@ -18,24 +18,29 @@
 
 
 @property (readonly) NSMutableArray *children;
+-(NSMutableArray*)allChildren;
+
+//initialize
+-(id)initWithSetting:(NSDictionary*)setting;
+
 
 // this is IU setting
-@property (nonatomic) NSString *resourceID;
+@property (nonatomic) NSString *htmlID;
 @property (nonatomic) NSString *name;
 
 @property (nonatomic) BOOL      hover;
 @property (nonatomic) BOOL      editHoverStatus;
 
--(NSString*) outputHTML;
--(NSString*) outputCSSForDefault;
 
--(NSString*) editorHTML;
--(NSString*) editorCSSForHover;
+// followings are IU build setting;
+-(NSString*)tag;
+-(BOOL)appendClosingTag;
+-(NSDictionary*)HTMLAtributes;
 
+-(NSDictionary*)CSSAttributesForDefault;
+-(NSDictionary*)CSSAttributesForWidth:(NSUInteger)width;
 
 // overide folloing method
--(id)initWithDefaultSetting;
--(id)loadWithDict:(NSDictionary*)dict error:(NSError**)error;
 -(void)prepareEditor;
 
 //user interface status

@@ -23,8 +23,6 @@
 - (NSString*)stringByAppendingPathComponents:(NSArray*)paths;
 - (NSString*)stringByPathDiff:(NSString*)path;
 
-- (NSString*)stringByTrimEndWithChar:(char)c;
-- (NSString*)trim;
 
 - (NSString*) relativePathTo: (NSString*) endPath;
 - (BOOL) containsString:(NSString*)string;
@@ -40,12 +38,13 @@
 #define RGXEmailPattern @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
 
 - (NSArray*) RGXMatchAllStringsWithPatten:(NSString*)patten;
-
-
+- (NSString*) stringByTrim;
+- (NSRange)fullRange;
 @end
 
 @interface NSMutableString(JDExtension)
 - (void)appendString:(NSString*)string multipleTimes:(NSUInteger)multipleTimes;
 - (void)appendStringIfNotNil:(NSString*)string;
+-(void)trim;
+-(void)trimWithCharacterInString:(NSString*)string;
 @end
-

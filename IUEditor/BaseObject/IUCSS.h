@@ -8,15 +8,18 @@
 
 #import "IUClass.h"
 
-@interface IUCSS : IUClass
+typedef enum _IUCSSType{
+    IUCSSTypePosition,
+    IUCSSTypeBGColor,
+    IUCSSTypeMouseCursor,
+}IUCSSType;
 
--(void)setStyle:(NSString*)name data:(id)data frame:(NSInteger)frame;
--(void)requestStyle:(NSString*)name;
+@interface IUCSS : NSObject <NSCoding>
 
--(void)setHoverStyle:(NSString*)name data:(id)data frame:(NSInteger)frame;
--(void)requestHoverStyle:(NSString*)name;
+-(void)setStyle:(IUCSSType)type value:(id)value;
 
--(void)importFromDict:(NSDictionary*)dict;
--(NSMutableDictionary*)exportAsDict;
+-(NSDictionary*)tagDictionaryForWidth:(int)width;
+
+-(NSString*)IUCSStypeToString;
 
 @end

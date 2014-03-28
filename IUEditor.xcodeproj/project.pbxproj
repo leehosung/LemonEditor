@@ -18,6 +18,10 @@
 		6919204718DCFC8200F8522B /* NSCoder+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6919204618DCFC8200F8522B /* NSCoder+JDExtension.m */; };
 		6919204A18DCFED000F8522B /* NSObject+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6919204918DCFED000F8522B /* NSObject+JDExtension.m */; };
 		6954812818D7640A00CA02F1 /* IUPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6954812718D7640A00CA02F1 /* IUPage.m */; };
+		696D1C9A18E5366400B4AB16 /* webTemplate.html in Resources */ = {isa = PBXBuildFile; fileRef = 696D1C9918E5366400B4AB16 /* webTemplate.html */; };
+		696D1C9B18E5366400B4AB16 /* webTemplate.html in Resources */ = {isa = PBXBuildFile; fileRef = 696D1C9918E5366400B4AB16 /* webTemplate.html */; };
+		696D1C9E18E5778400B4AB16 /* reset.css in Resources */ = {isa = PBXBuildFile; fileRef = 696D1C9D18E5778400B4AB16 /* reset.css */; };
+		696D1C9F18E5778400B4AB16 /* reset.css in Resources */ = {isa = PBXBuildFile; fileRef = 696D1C9D18E5778400B4AB16 /* reset.css */; };
 		69757AC218D7EB680095CBAC /* IUObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757AC118D7EB680095CBAC /* IUObj.m */; };
 		69757ACE18D801E70095CBAC /* LMCanvasV.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757ACD18D801E70095CBAC /* LMCanvasV.m */; };
 		69757AD118D953F10095CBAC /* LMStackCellV.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757AD018D953F10095CBAC /* LMStackCellV.m */; };
@@ -46,12 +50,17 @@
 		69757B2518D95FDA0095CBAC /* NSMutableDictionary+IUTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757B2418D95FDA0095CBAC /* NSMutableDictionary+IUTag.m */; };
 		69757B2818D98BEA0095CBAC /* NSView+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757B2718D98BEA0095CBAC /* NSView+JDExtension.m */; };
 		69757B2A18DAB7D40095CBAC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69757B2918DAB7D40095CBAC /* QuartzCore.framework */; };
-		69757B3118DAE19E0095CBAC /* IUDocumentGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757B3018DAE19E0095CBAC /* IUDocumentGroup.m */; };
-		69757B3718DAF1AB0095CBAC /* IUResourceGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757B3618DAF1AB0095CBAC /* IUResourceGroup.m */; };
+		69757B3118DAE19E0095CBAC /* IUDocumentGroupNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757B3018DAE19E0095CBAC /* IUDocumentGroupNode.m */; };
+		69757B3718DAF1AB0095CBAC /* IUResourceGroupNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757B3618DAF1AB0095CBAC /* IUResourceGroupNode.m */; };
+		6985CBA018E31558008DBF50 /* IUDocumentNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6985CB9F18E31558008DBF50 /* IUDocumentNode.m */; };
+		6985CBA118E31558008DBF50 /* IUDocumentNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6985CB9F18E31558008DBF50 /* IUDocumentNode.m */; };
+		6985CBA618E31D9B008DBF50 /* IUNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6985CBA518E31D9B008DBF50 /* IUNode.m */; };
+		6985CBA718E31D9B008DBF50 /* IUNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6985CBA518E31D9B008DBF50 /* IUNode.m */; };
 		69ABB14A18D733ED0065D584 /* IUCompiler.m in Sources */ = {isa = PBXBuildFile; fileRef = 69ABB14918D733ED0065D584 /* IUCompiler.m */; };
 		69B37F0D18DFDEE800DE620F /* LMFileNaviVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B37F0B18DFDEE800DE620F /* LMFileNaviVC.m */; };
 		69B37F0E18DFDEE800DE620F /* LMFileNaviVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69B37F0C18DFDEE800DE620F /* LMFileNaviVC.xib */; };
 		69B37F1B18E0353F00DE620F /* LMFileNaviCellV.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B37F1A18E0353F00DE620F /* LMFileNaviCellV.m */; };
+		69B9A39618E5A2A30007D6E2 /* IUResourceNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B9A39518E5A2A30007D6E2 /* IUResourceNode.m */; };
 		69C575AB18D6F61E0016F050 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69C575AA18D6F61E0016F050 /* Cocoa.framework */; };
 		69C575B518D6F61E0016F050 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 69C575B318D6F61E0016F050 /* InfoPlist.strings */; };
 		69C575B718D6F61E0016F050 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C575B618D6F61E0016F050 /* main.m */; };
@@ -103,6 +112,8 @@
 		6919204918DCFED000F8522B /* NSObject+JDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JDExtension.m"; sourceTree = "<group>"; };
 		6954812618D7640A00CA02F1 /* IUPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUPage.h; path = BaseObject/IUPage.h; sourceTree = "<group>"; };
 		6954812718D7640A00CA02F1 /* IUPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IUPage.m; path = BaseObject/IUPage.m; sourceTree = "<group>"; };
+		696D1C9918E5366400B4AB16 /* webTemplate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = webTemplate.html; sourceTree = "<group>"; };
+		696D1C9D18E5778400B4AB16 /* reset.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = reset.css; sourceTree = "<group>"; };
 		69757AC018D7EB680095CBAC /* IUObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUObj.h; sourceTree = "<group>"; };
 		69757AC118D7EB680095CBAC /* IUObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUObj.m; sourceTree = "<group>"; };
 		69757ACC18D801E70095CBAC /* LMCanvasV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMCanvasV.h; sourceTree = "<group>"; };
@@ -159,18 +170,23 @@
 		69757B2718D98BEA0095CBAC /* NSView+JDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+JDExtension.m"; sourceTree = "<group>"; };
 		69757B2918DAB7D40095CBAC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		69757B2B18DAC0180095CBAC /* JDShortcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDShortcut.h; sourceTree = "<group>"; };
-		69757B2F18DAE19E0095CBAC /* IUDocumentGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUDocumentGroup.h; sourceTree = "<group>"; };
-		69757B3018DAE19E0095CBAC /* IUDocumentGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUDocumentGroup.m; sourceTree = "<group>"; };
-		69757B3518DAF1AB0095CBAC /* IUResourceGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUResourceGroup.h; sourceTree = "<group>"; };
-		69757B3618DAF1AB0095CBAC /* IUResourceGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUResourceGroup.m; sourceTree = "<group>"; };
+		69757B2F18DAE19E0095CBAC /* IUDocumentGroupNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUDocumentGroupNode.h; sourceTree = "<group>"; };
+		69757B3018DAE19E0095CBAC /* IUDocumentGroupNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUDocumentGroupNode.m; sourceTree = "<group>"; };
+		69757B3518DAF1AB0095CBAC /* IUResourceGroupNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUResourceGroupNode.h; sourceTree = "<group>"; };
+		69757B3618DAF1AB0095CBAC /* IUResourceGroupNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUResourceGroupNode.m; sourceTree = "<group>"; };
+		6985CB9E18E31558008DBF50 /* IUDocumentNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUDocumentNode.h; sourceTree = "<group>"; };
+		6985CB9F18E31558008DBF50 /* IUDocumentNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUDocumentNode.m; sourceTree = "<group>"; };
+		6985CBA418E31D9B008DBF50 /* IUNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUNode.h; sourceTree = "<group>"; };
+		6985CBA518E31D9B008DBF50 /* IUNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUNode.m; sourceTree = "<group>"; };
 		69ABB14818D733ED0065D584 /* IUCompiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUCompiler.h; sourceTree = "<group>"; };
 		69ABB14918D733ED0065D584 /* IUCompiler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUCompiler.m; sourceTree = "<group>"; };
 		69B37F0A18DFDEE800DE620F /* LMFileNaviVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMFileNaviVC.h; path = Editor/LMFileNaviVC.h; sourceTree = "<group>"; };
 		69B37F0B18DFDEE800DE620F /* LMFileNaviVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMFileNaviVC.m; path = Editor/LMFileNaviVC.m; sourceTree = "<group>"; };
 		69B37F0C18DFDEE800DE620F /* LMFileNaviVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMFileNaviVC.xib; path = Editor/LMFileNaviVC.xib; sourceTree = "<group>"; };
-		69B37F1618E01E9D00DE620F /* IUNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUNode.h; sourceTree = "<group>"; };
 		69B37F1918E0353F00DE620F /* LMFileNaviCellV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMFileNaviCellV.h; sourceTree = "<group>"; };
 		69B37F1A18E0353F00DE620F /* LMFileNaviCellV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMFileNaviCellV.m; sourceTree = "<group>"; };
+		69B9A39418E5A2A30007D6E2 /* IUResourceNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUResourceNode.h; sourceTree = "<group>"; };
+		69B9A39518E5A2A30007D6E2 /* IUResourceNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUResourceNode.m; sourceTree = "<group>"; };
 		69C575A718D6F61E0016F050 /* IUEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IUEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69C575AA18D6F61E0016F050 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		69C575AD18D6F61E0016F050 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -251,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				690A40A418E17C5700095263 /* widgetForDefault.plist */,
+				696D1C9C18E5776200B4AB16 /* webResource */,
 				690A40A018E170B700095263 /* classImage */,
 			);
 			name = Resource;
@@ -284,6 +301,15 @@
 				69757B2418D95FDA0095CBAC /* NSMutableDictionary+IUTag.m */,
 			);
 			name = IU;
+			sourceTree = "<group>";
+		};
+		696D1C9C18E5776200B4AB16 /* webResource */ = {
+			isa = PBXGroup;
+			children = (
+				696D1C9918E5366400B4AB16 /* webTemplate.html */,
+				696D1C9D18E5778400B4AB16 /* reset.css */,
+			);
+			name = webResource;
 			sourceTree = "<group>";
 		};
 		69757AD218D95BB10095CBAC /* JD */ = {
@@ -452,15 +478,20 @@
 		69C5761218D704970016F050 /* File */ = {
 			isa = PBXGroup;
 			children = (
+				6985CB9E18E31558008DBF50 /* IUDocumentNode.h */,
+				6985CB9F18E31558008DBF50 /* IUDocumentNode.m */,
 				69C5761C18D7051C0016F050 /* IUProject.h */,
 				69C5761D18D7051C0016F050 /* IUProject.m */,
-				69757B2F18DAE19E0095CBAC /* IUDocumentGroup.h */,
-				69757B3018DAE19E0095CBAC /* IUDocumentGroup.m */,
+				69757B2F18DAE19E0095CBAC /* IUDocumentGroupNode.h */,
+				69757B3018DAE19E0095CBAC /* IUDocumentGroupNode.m */,
 				69C5763E18D729830016F050 /* IUDocumentController.h */,
 				69C5763F18D729830016F050 /* IUDocumentController.m */,
-				69757B3518DAF1AB0095CBAC /* IUResourceGroup.h */,
-				69757B3618DAF1AB0095CBAC /* IUResourceGroup.m */,
-				69B37F1618E01E9D00DE620F /* IUNode.h */,
+				69757B3518DAF1AB0095CBAC /* IUResourceGroupNode.h */,
+				69757B3618DAF1AB0095CBAC /* IUResourceGroupNode.m */,
+				6985CBA418E31D9B008DBF50 /* IUNode.h */,
+				6985CBA518E31D9B008DBF50 /* IUNode.m */,
+				69B9A39418E5A2A30007D6E2 /* IUResourceNode.h */,
+				69B9A39518E5A2A30007D6E2 /* IUResourceNode.m */,
 			);
 			path = File;
 			sourceTree = "<group>";
@@ -572,6 +603,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69C5763A18D728CF0016F050 /* LMStackCellV.xib in Resources */,
+				696D1C9A18E5366400B4AB16 /* webTemplate.html in Resources */,
 				690A40A218E170E200095263 /* IUView.png in Resources */,
 				69C575B518D6F61E0016F050 /* InfoPlist.strings in Resources */,
 				69C5762D18D70B850016F050 /* LMWC.xib in Resources */,
@@ -580,6 +612,7 @@
 				69C575C318D6F61E0016F050 /* Images.xcassets in Resources */,
 				690A40A518E17C5700095263 /* widgetForDefault.plist in Resources */,
 				69C575BB18D6F61E0016F050 /* Credits.rtf in Resources */,
+				696D1C9E18E5778400B4AB16 /* reset.css in Resources */,
 				690A408E18E14A4E00095263 /* LMStackVC.xib in Resources */,
 				69C575C118D6F61E0016F050 /* MainMenu.xib in Resources */,
 			);
@@ -590,6 +623,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				690A40A318E170E200095263 /* IUView.png in Resources */,
+				696D1C9F18E5778400B4AB16 /* reset.css in Resources */,
+				696D1C9B18E5366400B4AB16 /* webTemplate.html in Resources */,
 				69C575D318D6F61E0016F050 /* InfoPlist.strings in Resources */,
 				690A40A618E17C5700095263 /* widgetForDefault.plist in Resources */,
 			);
@@ -630,10 +665,12 @@
 				69757B0718D95BBC0095CBAC /* JDHerokuUtil.m in Sources */,
 				69C5760F18D6FE020016F050 /* IUTemplate.m in Sources */,
 				69C5761018D6FE020016F050 /* IUView.m in Sources */,
+				6985CBA018E31558008DBF50 /* IUDocumentNode.m in Sources */,
+				6985CBA618E31D9B008DBF50 /* IUNode.m in Sources */,
 				69C575B718D6F61E0016F050 /* main.m in Sources */,
 				69757B1C18D95C980095CBAC /* NSArray+JDExtension.m in Sources */,
 				69757B0D18D95BBC0095CBAC /* NSFlipedScrollView.m in Sources */,
-				69757B3718DAF1AB0095CBAC /* IUResourceGroup.m in Sources */,
+				69757B3718DAF1AB0095CBAC /* IUResourceGroupNode.m in Sources */,
 				69C5762C18D70B850016F050 /* LMWC.m in Sources */,
 				69757B2518D95FDA0095CBAC /* NSMutableDictionary+IUTag.m in Sources */,
 				69757B0418D95BBC0095CBAC /* JDEnvUtil.m in Sources */,
@@ -650,7 +687,7 @@
 				69C5760A18D6FE020016F050 /* IUClass.m in Sources */,
 				6954812818D7640A00CA02F1 /* IUPage.m in Sources */,
 				69C5764018D729830016F050 /* IUDocumentController.m in Sources */,
-				69757B3118DAE19E0095CBAC /* IUDocumentGroup.m in Sources */,
+				69757B3118DAE19E0095CBAC /* IUDocumentGroupNode.m in Sources */,
 				69757B0118D95BBC0095CBAC /* JDArrayDict.m in Sources */,
 				69757B0C18D95BBC0095CBAC /* JDRuntime.m in Sources */,
 				69C575BE18D6F61E0016F050 /* LMAppDelegate.m in Sources */,
@@ -659,6 +696,7 @@
 				69C5760C18D6FE020016F050 /* IUCSS.m in Sources */,
 				69757B2818D98BEA0095CBAC /* NSView+JDExtension.m in Sources */,
 				69C5761E18D7051C0016F050 /* IUProject.m in Sources */,
+				69B9A39618E5A2A30007D6E2 /* IUResourceNode.m in Sources */,
 				69B37F0D18DFDEE800DE620F /* LMFileNaviVC.m in Sources */,
 				690A409518E1645B00095263 /* LMWidgetLibraryVC.m in Sources */,
 				69757B1F18D95F1E0095CBAC /* NSDictionary+JDExtension.m in Sources */,
@@ -674,6 +712,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6985CBA118E31558008DBF50 /* IUDocumentNode.m in Sources */,
+				6985CBA718E31D9B008DBF50 /* IUNode.m in Sources */,
 				69C575D518D6F61E0016F050 /* IUEditorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

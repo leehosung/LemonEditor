@@ -8,46 +8,75 @@
 
 #import "IUProject.h"
 #import "IUPage.h"
-#import "IUDocumentGroup.h"
-#import "IUResourceGroup.h"
+#import "IUDocumentGroupNode.h"
+#import "IUResourceGroupNode.h"
+#import "IUCompiler.h"
+#import "IUDocumentNode.h"
+#import "IUResourceNode.h"
+#import "JDUIUtil.h"
 
 @interface IUProject()
 @property (nonatomic, copy) NSString          *path;
-@property IUDocumentGroup *pageDocumentGroup;
-@property IUDocumentGroup *masterDocumentGroup;
-@property IUDocumentGroup *componentDocumentGroup;
+@property IUDocumentGroupNode *pageDocumentGroup;
+@property IUDocumentGroupNode *masterDocumentGroup;
+@property IUDocumentGroupNode *componentDocumentGroup;
 @end
 
 @implementation IUProject{
+    NSMutableDictionary *IDDict;
 }
 
 
 
 - (void)encodeWithCoder:(NSCoder *)encoder{
     [super encodeWithCoder:encoder];
-    
-    [encoder encodeFromObject:self withProperties:[[IUProject class] properties]];
-
+    [encoder encodeBool:_herokuOn forKey:@"herokuOn"];
+    [encoder encodeInt32:_gitType forKey:@"gitType"];
+    [encoder encodeObject:_path forKey:@"path"];
+    [encoder encodeObject:IDDict forKey:@"IDDict"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
     if (self) {
-        [aDecoder decodeToObject:self withProperties:[[IUProject class] properties]];
+        _compiler = [[IUCompiler alloc] init];
+        _herokuOn = [aDecoder decodeBoolForKey:@"herokuOn"];
+        _gitType = [aDecoder decodeInt32ForKey:@"gitType"];
+        _path = [aDecoder decodeObjectForKey:@"path"];
+        IDDict = [aDecoder decodeObjectForKey:@"IDDict"];
+        
+        for (IUDocumentNode *node in self.allChildren) {
+            if ([node isKindOfClass:[IUDocumentNode class]]) {
+                [node.document bind:@"compiler" toObject:self withKeyPath:@"compiler" options:nil];
+            }
+        }
     }
     return self;
+}
+
+-(NSString*)requestNewID:(Class)class{
+    NSString *className = NSStringFromClass(class);
+    if (IDDict[className] == nil) {
+        IDDict[className] = @(0);
+    }
+    else {
+        IDDict[className] = @([IDDict[className] intValue] + 1);
+    }
+    int index = [IDDict[className] intValue];
+    return [NSString stringWithFormat:@"%@%d", [NSStringFromClass(class) substringFromIndex:2], index];
 }
 
 +(NSString*)createProject:(NSDictionary*)setting error:(NSError**)error{
     IUProject *project = [[IUProject alloc] init];
     project.name = [setting objectForKey:IUProjectKeyAppName];
+    project.compiler = [[IUCompiler alloc] init];
     
     NSString *dir = [setting objectForKey:IUProjectKeyDirectory];
     project.path = [dir stringByAppendingPathComponent:[project.name stringByAppendingPathExtension:@"iuproject"]];
     
     ReturnNilIfFalse([JDFileUtil mkdirPath:project.path]);
     
-    IUDocumentGroup *pageDir = [[IUDocumentGroup alloc] init];
+    IUDocumentGroupNode *pageDir = [[IUDocumentGroupNode alloc] init];
     pageDir.name = @"Page";
     [project addDocumentGroup:pageDir];
     project.pageDocumentGroup = pageDir;
@@ -64,17 +93,17 @@
     //make resource dir
     ReturnNilIfFalse([project makeResourceDir]);
     
-    IUPage *page = [[IUPage alloc] init];
-    page.name = @"index";
-    [pageDir addDocument:page];
+    IUPage *page = [[IUPage alloc] initWithSetting:nil];
+    page.name = @"root";
+    page.htmlID = [project requestNewID:[IUPage class]];
+    [page.css setStyle:IUCSSTypeBGColor value:[NSColor randomColor]]  ;
+    [pageDir addDocument:page name:@"page"];
     
+    [page bind:@"compiler" toObject:project withKeyPath:@"compiler" options:nil];
     ReturnNilIfFalse([project save]);
     return project.path;
 }
 
--(id)init:(NSDictionary *)setting error:(NSError *__autoreleasing *)error{
-    return self;
-}
 
 + (id)projectWithContentsOfPackage:(NSString*)path{
     IUProject *project = [NSKeyedUnarchiver unarchiveObjectWithFile:[path stringByAppendingPathComponent:@"IUML"]];
@@ -94,17 +123,36 @@
 -(BOOL)makeResourceDir{
     NSAssert(_path != nil, @"path is nil");
     
-    IUResourceGroup *resGroup = [[IUResourceGroup alloc] init];
+    IUResourceGroupNode *resGroup = [[IUResourceGroupNode alloc] init];
     resGroup.name = @"Resource";
     resGroup.parent = self;
-    [[self children] addObject:resGroup];
-/*
-    IUResourceGroup *imageGroup = [[IUResourceGroup alloc] initWithName:@"Image"];
+    [self addNode:resGroup];
+
+    IUResourceGroupNode *imageGroup = [[IUResourceGroupNode alloc] init];
+    imageGroup.name = @"Image";
     imageGroup.parent = resGroup;
-    [[resGroup children] addObject:imageGroup];
+    [resGroup addNode:imageGroup];
+    
+    IUResourceGroupNode *externalGroup = [[IUResourceGroupNode alloc] init];
+    externalGroup.name = @"External";
+    externalGroup.parent = resGroup;
+    [resGroup addNode:externalGroup];
+    
     ReturnNoIfFalse([imageGroup syncDir]);
-  */
+    
+    NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"reset" ofType:@"css"]];
+    [self insertData:data name:@"reset.css" group:externalGroup];
     return YES;
+}
+
+-(BOOL)insertData:(NSData*)data name:(NSString*)name group:(IUResourceGroupNode*)resourceGroup{
+    assert(data != nil && name!=nil && resourceGroup != nil);
+    ReturnNoIfFalse([data writeToFile:[resourceGroup.path stringByAppendingPathComponent:name] atomically:YES]);
+    IUResourceNode *newNode = [[IUResourceNode alloc] init];
+    newNode.name = name;
+    [resourceGroup addNode:newNode];
+    return YES;
+    
 }
 
 - (void)build:(NSError**)error{

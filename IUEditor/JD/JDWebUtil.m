@@ -16,7 +16,7 @@
     for (NSString *key in post) {
         [dataStr appendFormat:@"%@=%@&", key, [post objectForKey:key]];
     }
-    [dataStr stringByTrimEndWithChar:'&'];
+    [dataStr trimWithCharacterInString:@"&"];
     
     NSData *data=[dataStr dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
 	NSString *postLength = [NSString stringWithFormat:@"%ld", [data length]];
