@@ -9,7 +9,4 @@
 #import "IUTemplate.h"
 
 @implementation IUTemplate
--(id)qwe{
-    self.css = [[NSView alloc] init];
-}
 @end

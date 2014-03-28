@@ -26,9 +26,7 @@
     _document = document;
     [_document setCanvas:self];
     
-    NSString *outputSource = _document.outputSource;
-    
-    [[webView mainFrame] loadHTMLString:outputSource baseURL:[NSURL fileURLWithPath:self.resourcePath]];
+    [[webView mainFrame] loadHTMLString:document.editorSource baseURL:[NSURL fileURLWithPath:self.resourcePath]];
 }
 
 

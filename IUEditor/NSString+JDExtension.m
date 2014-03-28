@@ -75,29 +75,6 @@
     return NO;
 }
 
--(NSString*)trim{
-    return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-}
-
--(NSString*)stringByTrimEndWithChar:(char)c{
-    NSInteger idx = [self length] -1;
-    if (idx < 0) {
-        return nil;
-    }
-    while (1) {
-        char strC = [self characterAtIndex:idx];
-        if (strC == c) {
-            idx --;
-        }
-        else{
-            break;
-        }
-    }
-    if (idx == -1) {
-        return [self copy];
-    }
-    return [self substringToIndex:idx+1];
-}
 
 - (NSString*)nameWithoutExtensionAsFile{
     NSString *fileName = [self lastPathComponent];
@@ -117,17 +94,27 @@
 }
 
 - (NSString*)stringByIndent:(NSUInteger)indent{
-    NSMutableString *str = [NSMutableString string];
-    [str appendString:@"\n"];
-    [str appendString:@" " multipleTimes:indent];
+    BOOL lastNewLineFlag = NO;
+    if ([self characterAtIndex:[self length]-1] == '\n') {
+        lastNewLineFlag = YES;
+    }
     
-    NSString *newStr = [self stringByReplacingOccurrencesOfString:@"\n" withString:str];
+    NSMutableString *indentWhiteSpace = [NSMutableString string];
+    [indentWhiteSpace appendString:@" " multipleTimes:indent];
+
+    NSMutableString *returnStr = [NSMutableString string];
+    //add indent at first line
+    [returnStr appendString:indentWhiteSpace];
     
-    NSMutableString *resultStr = [NSMutableString string];
-    [resultStr appendString:@" " multipleTimes:indent];
-    [resultStr appendString:newStr];
-    NSString *fStr = [resultStr stringByTrimEndWithChar:' '];
-    return fStr;
+    NSString *replaceStr = [NSString stringWithFormat:@"\n%@", indentWhiteSpace];
+    NSString *newStr = [self stringByReplacingOccurrencesOfString:@"\n" withString:replaceStr];
+    [returnStr appendString:newStr];
+    
+    if (lastNewLineFlag) {
+        [returnStr deleteCharactersInRange:NSMakeRange([self length]-indent, indent)];
+    }
+    
+    return returnStr;
 }
 
 
@@ -219,8 +206,13 @@
 }
 
 
+- (NSString*) stringByTrim{
+    return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
 
-
+- (NSRange)fullRange{
+    return NSMakeRange(0, [self length]);
+}
 
 @end
 
@@ -230,6 +222,15 @@
         [self appendString:string];
     }
 }
+
+-(void)trim{
+    [self setString:[self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+}
+
+-(void)trimWithCharacterInString:(NSString*)string{
+    [self setString:[self stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:string]]];
+}
+
 
 - (void)appendStringIfNotNil:(NSString*)string{
     if (string == nil) {

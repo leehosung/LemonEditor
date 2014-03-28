@@ -298,21 +298,6 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
 }
 
 
-+ (NSColor *)randomOpaqueColor {
-    static int seeded;
-    if (seeded == 0) {
-        srand((unsigned int)time(NULL));
-        seeded++;
-    }
-
-    float c[4];
-    c[0] = ((float)(rand()%256))/256;
-    c[1] = ((float)(rand()%256))/256;
-    c[2] = ((float)(rand()%256))/256;
-    c[3] = 1.0;
-    
-    return [NSColor colorWithCalibratedRed:c[0] green:c[1] blue:c[2] alpha:c[3]];
-}
 
 /*
 +(CGColorRef)NSColorToCGColor:(NSColor*)color
@@ -436,6 +421,23 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
     return nil;
 
 }
+
++ (NSColor *)randomColor {
+    static int seeded;
+    if (seeded == 0) {
+        srand((unsigned int)time(NULL));
+        seeded++;
+    }
+    
+    float c[4];
+    c[0] = ((float)(rand()%256))/256;
+    c[1] = ((float)(rand()%256))/256;
+    c[2] = ((float)(rand()%256))/256;
+    c[3] = 1.0;
+    
+    return [NSColor colorWithCalibratedRed:c[0] green:c[1] blue:c[2] alpha:c[3]];
+}
+
 
 
 -(NSColor*) complementaryColor{

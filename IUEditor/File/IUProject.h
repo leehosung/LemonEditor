@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "IUDocumentGroup.h"
+#import "IUDocumentGroupNode.h"
 
+@class IUCompiler;
 typedef enum _IUGitType{
     IUGitTypeNone = 0,
     IUGitTypeSource = 1,
@@ -17,11 +18,11 @@ typedef enum _IUGitType{
 
 @class IUDocument;
 
-@interface IUProject : IUDocumentGroup
+@interface IUProject : IUDocumentGroupNode
 
 @property   BOOL            herokuOn;
 @property   IUGitType       gitType;
-
+@property   IUCompiler      *compiler;
 
 //setting
 #define IUProjectKeyGit @"git"
@@ -29,8 +30,8 @@ typedef enum _IUGitType{
 #define IUProjectKeyHeroku @"heroku"
 #define IUProjectKeyDirectory @"dir"
 
-+(NSString*)createProject:(NSDictionary*)setting error:(NSError**)error;
 + (id)projectWithContentsOfPackage:(NSString*)path;
++(NSString*)createProject:(NSDictionary*)setting error:(NSError**)error;
 
 #define IUDocumentKeyType @"type"
 #define IUDocumentKeyName @"name"
@@ -38,7 +39,7 @@ typedef enum _IUGitType{
 
 - (BOOL)save;
 - (void)build:(NSError**)error;
-- (void)sync:(NSError**)error;
+//- (void)sync:(NSError**)error;
 
 - (void)addImage:(NSImage*)image;
 

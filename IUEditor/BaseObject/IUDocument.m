@@ -10,16 +10,30 @@
 
 @implementation IUDocument
 
+
 -(id)initWithSetting:(NSDictionary*)setting{
-    self = [super init];
+    self = [super initWithSetting:setting];
     if (self) {
         
     }
     return self;
 }
 
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        
+    }
+    return self;
+}
+
+-(void)encodeWithCoder:(NSCoder *)aCoder{
+    [super encodeWithCoder:aCoder];
+}
+
+
 -(NSString*)editorSource{
-    return @"";
+    return [_compiler generateEditorSource:self];
 }
 
 -(NSArray*)widthWithCSS{

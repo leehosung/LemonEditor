@@ -1,17 +1,19 @@
 //
-//  IUFileNode.h
+//  IUNode.h
 //  IUEditor
 //
-//  Created by JD on 3/24/14.
+//  Created by JD on 3/26/14.
 //  Copyright (c) 2014 JDLab. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@protocol IUNode <NSObject>
+@interface IUNode : NSObject <NSCoding>
 
-@required
--(NSString*)name;
--(NSMutableArray*)children;
+@property (copy) NSString   *name;
+@property (readonly) NSArray *children;
+
+-(void)addNode:(IUNode*)node;
+-(NSArray*)allChildren;
 
 @end

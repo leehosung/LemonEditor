@@ -29,7 +29,7 @@ BOOL   isNSRectContainsRect(NSRect rect, NSRect subrect);
 
 @interface JDUIUtil : NSObject
 
-+(NSColor *)randomOpaqueColor;
+
 +(NSPoint)pointRound:(NSPoint)point;
 +(NSPoint)pointRoundf:(NSPoint)point;
 +(NSPoint)pointDiff:(NSPoint)point1 from:(NSPoint)point;
@@ -53,6 +53,7 @@ BOOL   isNSRectContainsRect(NSRect rect, NSRect subrect);
 @end
 
 @interface NSColor(JDExtenstion)
++(NSColor *)randomColor;
 -(NSString*) rgbString;
 -(NSColor*) complementaryColor;
 @end

@@ -6,28 +6,13 @@
 //  Copyright (c) 2014 JDLab. All rights reserved.
 //
 
-#import "IUResourceGroup.h"
+#import "IUResourceGroupNode.h"
 #import "IUProject.h"
 #import "JDFileUtil.h"
 
-@implementation IUResourceGroup{
+@implementation IUResourceGroupNode{
 }
 
--(id)initWithCoder:(NSCoder *)aDecoder{
-    self = [super init];
-    if (self) {
-    }
-    return self;
-}
-
--(void)encodeWithCoder:(NSCoder *)aCoder{
-}
-
--(id)init{
-    self = [super init];
-    _children = [NSMutableArray array];
-    return self;
-}
 
 
 - (BOOL)syncDir{
@@ -40,7 +25,7 @@
         return [parentPath stringByAppendingPathComponent:self.name];
     }
     else{
-        return [[(IUResourceGroup*)(_parent) path] stringByAppendingPathComponent:self.name];
+        return [[(IUResourceGroupNode*)(_parent) path] stringByAppendingPathComponent:self.name];
     }
 }
 

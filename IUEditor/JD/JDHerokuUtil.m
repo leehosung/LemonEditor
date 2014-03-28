@@ -47,7 +47,7 @@
     NSString *errLog, *log;
     NSInteger resultCode = [JDFileUtil execute:resPath atDirectory:@"/" arguments:nil stdOut:&log stdErr:&errLog];
     if (resultCode == 0) {
-        return [[log trim] lastLine];
+        return [[log stringByTrim] lastLine];
     }
     return nil;
 }

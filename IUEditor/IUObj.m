@@ -27,26 +27,43 @@
     [aCoder encodeObject:self.css forKey:@"css"];
 }
 
--(id)initWithDefaultSetting{
+-(id)initWithSetting:(NSDictionary*)setting{
     self = [super init];{
         _children = [NSMutableArray array];
         _css = [[IUCSS alloc] init];
+        [_css setStyle:IUCSSTypePosition value:@"relative"];
     }
     return self;
 }
 
--(NSString*) outputHTML{
-    
-}
--(NSString*) outputCSS{
-    
+
+-(id)init{
+    assert(0);
+    return nil;
 }
 
--(NSString*) editorHTML{
-    
+-(NSMutableArray*)allChildren{
+    if (self.children) {
+        NSMutableArray *array = [NSMutableArray array];
+        for (IUObj *iu in self.children) {
+            [array addObject:iu];
+            [array addObjectsFromArray:iu.allChildren];
+        }
+        return array;
+    }
+    return nil;
 }
--(NSString*) editorCSS{
-    
+
+-(NSDictionary*)HTMLAtributes{
+    return @{@"class":self.className, @"id":self.htmlID};
+}
+
+-(NSDictionary*)CSSAttributesForDefault{
+    return [_css tagDictionaryForWidth:-1];
+}
+
+-(NSDictionary*)CSSAttributesForWidth:(NSUInteger)width{
+    return [_css tagDictionaryForWidth:width];
 }
 
 

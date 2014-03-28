@@ -28,24 +28,21 @@
     [super tearDown];
 }
 
+-(void)bindingTest{
+    id a;
+    id b;
+    
+}
+
 -(void)testPrintProjectProperty{
     NSArray *jdproperty = [IUProject properties];
     NSLog([jdproperty description]);
 }
 
 - (void)testProjectInit{
-    NSString *testDir = [@"~/iutest" stringByExpandingTildeInPath];
-    NSError *error;
-    IUProject *project = [[IUProject alloc] initAtDirectory:testDir name:@"projectName" git:0 heroku:NO error:&error];
-    project = nil;
-    XCTAssertNil(error, @"error");
 }
 
 - (void)testProjectLoad{
-    NSString *testDir = [@"~/iutest/projectName.iuproject" stringByExpandingTildeInPath];
-    NSError *error;
-    IUProject *project = [IUProject projectWithContentsOfPackage:testDir];
-    XCTAssertTrue([[project name] isEqualToString:@"projectName"], @"project wrong");
 }
 
 
