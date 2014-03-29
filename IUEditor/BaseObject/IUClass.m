@@ -45,17 +45,5 @@ NSArray* GetPropertyList(Class a){
     return [NSMutableDictionary dictionary];
 }
 
-+(NSArray*)classPedigree{
-    NSMutableArray *arr = [NSMutableArray array];
-    Class currentClass = [self class];
-    while (1) {
-        if (currentClass == [IUClass class]) {
-            break;
-        }
-        [arr addObject:NSStringFromClass(currentClass)];
-        currentClass = [currentClass superclass];
-    }
-    return [NSArray arrayWithArray:arr];
-}
 
 @end

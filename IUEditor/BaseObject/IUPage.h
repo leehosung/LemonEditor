@@ -13,7 +13,6 @@
 
 @interface IUPage : IUDocument
 
--(NSString*)outputSource;
 @property (nonatomic) IUTemplate    *aTemplate;
 
 @end

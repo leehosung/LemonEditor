@@ -13,6 +13,7 @@
 
 @interface JDLogUtil : NSObject
 
++(void)enableLogSection:(NSString*)logSection;
 +(void)log:(NSString*)logSection log:(NSString*)log;
 +(void)log:(NSString*)logSection frame:(NSRect)frame;
 +(void)log:(NSString*)logSection size:(NSSize)size;

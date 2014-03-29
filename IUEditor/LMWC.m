@@ -67,8 +67,11 @@
 
 -(void)loadProject:(NSString*)path{
     IUProject *project = [IUProject projectWithContentsOfPackage:path];
+
     fileNaviVC.project = project;
     canvasV.resourcePath = project.path;
+    [fileNaviVC selectFirstDocument];
+
 
     NSString *widgetFilePath = [[NSBundle mainBundle] pathForResource:@"widgetForDefault" ofType:@"plist"];
     NSArray *availableWidgetProperties = [NSArray arrayWithContentsOfFile:widgetFilePath];
