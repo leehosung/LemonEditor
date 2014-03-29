@@ -248,6 +248,20 @@
     }
 }
 
++(NSArray*)classPedigreeTo:(Class)class{
+    NSMutableArray *arr = [NSMutableArray array];
+    Class currentClass = [self class];
+    while (1) {
+        [arr addObject:NSStringFromClass(currentClass)];
+        if (currentClass == class) {
+            break;
+        }
+        currentClass = [currentClass superclass];
+    }
+    return [NSArray arrayWithArray:arr];
+}
+
+
 +(NSArray*)properties{
     unsigned count;
     objc_property_t *properties = class_copyPropertyList([self class], &count);

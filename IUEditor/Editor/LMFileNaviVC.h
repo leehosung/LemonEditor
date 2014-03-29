@@ -15,4 +15,5 @@
 @property (nonatomic, readonly) id  selection;
 @property (nonatomic) IUProject *project;
 
+-(void)selectFirstDocument;
 @end

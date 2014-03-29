@@ -39,6 +39,7 @@
     }
     [source replaceOccurrencesOfString:@"<!--CSS_Replacement-->" withString:css options:0 range:[source fullRange]];
     
+    [JDLogUtil log:IULogSource  log:source];
     return source;
 }
 

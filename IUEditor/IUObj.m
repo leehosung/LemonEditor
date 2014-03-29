@@ -55,7 +55,14 @@
 }
 
 -(NSDictionary*)HTMLAtributes{
-    return @{@"class":self.className, @"id":self.htmlID};
+    NSArray *classPedigree = [[self class] classPedigreeTo:[IUObj class]];
+    NSMutableString *className = [NSMutableString stringWithString:@"'"];
+    for (NSString *str in classPedigree) {
+        [className appendString:str];
+        [className appendString:@" "];
+    }
+    [className appendString:@"'"];
+    return @{@"class":className, @"id":self.htmlID};
 }
 
 -(NSDictionary*)CSSAttributesForDefault{

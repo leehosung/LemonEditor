@@ -23,4 +23,6 @@
 #import "JDFileUtil.h"
 
 #define _binding_
+
+#define IULogSource @"source"
  #endif

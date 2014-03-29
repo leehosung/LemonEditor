@@ -7,6 +7,8 @@
 //
 
 #import "LMFileNaviVC.h"
+#import "IUDocumentNode.h"
+#import "NSTreeController+JDExtension.h"
 
 @interface LMFileNaviVC ()
 @property (strong, nonatomic) IBOutlet NSTreeController *treeController;
@@ -31,10 +33,6 @@
 }
 
 
--(void)setTreeController:(NSTreeController *)treeController{
-    _treeController = treeController;
-    [treeController addObserver:self forKeyPath:@"selection" options:0 context:nil];
-}
 
 
 -(void)selectionDidChange:(NSDictionary*)dict{
@@ -43,10 +41,27 @@
     [self didChangeValueForKey:@"selection"];
 }
 
-
 -(void)setProject:(IUProject *)project{
     _project = project;
+    
+    [_treeController setContent:_project];
+    [_treeController addObserver:self forKeyPath:@"selection" options:0 context:nil];
+    
 }
+
+-(void)selectFirstDocument{
+    //find first document
+    IUDocumentNode *documentNode;
+    NSArray *arr = [_project allChildren];
+    for (int i=0; i<[arr count]; i++) {
+        if ([[arr objectAtIndex:i] isKindOfClass:[IUDocumentNode class]]) {
+            documentNode = [arr objectAtIndex:i];
+            break;
+        }
+    }
+    [_treeController setSelectionObject:documentNode];
+}
+
 
 - (NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(NSTreeNode*)item {
     // Everything is setup in bindings

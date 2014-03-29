@@ -11,30 +11,51 @@
 
 #import "JDLogUtil.h"
 
+static NSMutableSet *enableLogSection;
+
 @implementation JDLogUtil
 
++(void)enableLogSection:(NSString*)logSection{
+    if (enableLogSection == nil) {
+        enableLogSection = [NSMutableSet set];
+    }
+    [enableLogSection addObject:logSection];
+}
+
 +(void)log:(NSString*)logSection log:(NSString*)log{
-    NSLog(@"%@: %@", logSection, log);
+    if ([enableLogSection containsObject:logSection]) {
+        NSLog(@"%@: %@", logSection, log);
+    }
 }
 
 +(void)log:(NSString*)logSection frame:(NSRect)frame{
-    NSLog(@"%@: fr <%.2f,%.2f,%.2f,%.2f>", logSection, frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
+    if ([enableLogSection containsObject:logSection]) {
+        NSLog(@"%@: fr <%.2f,%.2f,%.2f,%.2f>", logSection, frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
+    }
 }
 
 +(void)log:(NSString*)logSection point:(NSPoint)point{
-    NSLog(@"%@: pt: <%.1f, %.1f>", logSection, point.x, point.y);
+    if ([enableLogSection containsObject:logSection]) {
+        NSLog(@"%@: pt: <%.1f, %.1f>", logSection, point.x, point.y);
+    }
 }
 
 +(void)log:(NSString*)logSection size:(NSSize)size{
-    NSLog(@"%@: sz: <%.1f, %.1f>", logSection, size.width, size.height);
+    if ([enableLogSection containsObject:logSection]) {
+        NSLog(@"%@: sz: <%.1f, %.1f>", logSection, size.width, size.height);
+    }
 }
 
 +(void)log:(NSString*)logSection color:(NSColor*)color{
-//    NSLog(@"%@: rgba: <%.1f, %.1f, %.1f, %.1f>", logSection, color.redComponent, color.greenComponent, color.blueComponent, color.alphaComponent );
+    if ([enableLogSection containsObject:logSection]) {
+        NSLog(@"%@: rgba: <%.1f, %.1f, %.1f, %.1f>", logSection, color.redComponent, color.greenComponent, color.blueComponent, color.alphaComponent );
+    }
 }
 
 +(void)log:(NSString*)logSection err:(NSError*)err{
-    NSLog(@"%@: ERR %@",logSection, err.localizedFailureReason);
+    if ([enableLogSection containsObject:logSection]) {
+        NSLog(@"%@: ERR %@",logSection, err.localizedFailureReason);
+    }
 }
 
 +(void)alert:(NSString*)alertMsg{

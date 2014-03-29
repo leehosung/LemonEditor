@@ -8,12 +8,17 @@
 
 #import "LMAppDelegate.h"
 #import "LMWC.h"
+#import "JDLogUtil.h"
+
+
 @implementation LMAppDelegate{
     LMWC *wc;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    [JDLogUtil enableLogSection:IULogSource];
+    
     wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
     [wc showWindow:self];
 }

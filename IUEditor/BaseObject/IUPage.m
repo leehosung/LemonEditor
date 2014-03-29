@@ -14,8 +14,4 @@
     
 }
 
--(NSString*)outputSource{
-    return @"<html>qwer</html>";
-}
-
 @end
