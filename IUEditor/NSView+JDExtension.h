@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @interface NSView (JDExtension)
-
+/*
 -(id)addSubviewFullFrame:(NSView*)subview;
 -(id)addSubviewFullFrame:(NSView*)subview atPosition:(NSWindowOrderingMode)place;
 -(void)addSubviewFullFrame:(NSView *)aView positioned:(NSWindowOrderingMode)place relativeTo:(NSView *)otherView;
@@ -19,5 +19,5 @@
 -(void)setHeight:(CGFloat)height;
 -(BOOL)hasSubview:(NSView*)subview;
 -(void)removeAllSubview;
-
+*/
 @end

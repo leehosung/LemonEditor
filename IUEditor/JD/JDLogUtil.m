@@ -22,40 +22,39 @@ static NSMutableSet *enableLogSection;
     [enableLogSection addObject:logSection];
 }
 
-+(void)log:(NSString*)logSection log:(NSString*)log{
++(void)log:(NSString*)logSection key:(NSString*)key string:(NSString*)log{
     if ([enableLogSection containsObject:logSection]) {
-        NSLog(@"%@: %@", logSection, log);
+        NSLog(@"[%@] %@ : %@", logSection, key, log);
     }
 }
 
-+(void)log:(NSString*)logSection frame:(NSRect)frame{
++(void)log:(NSString*)logSection key:(NSString*)key frame:(NSRect)frame{
     if ([enableLogSection containsObject:logSection]) {
-        NSLog(@"%@: fr <%.2f,%.2f,%.2f,%.2f>", logSection, frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
+        NSLog(@"[%@] %@ : fr <%.2f,%.2f,%.2f,%.2f>", logSection, key, frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
     }
 }
 
-+(void)log:(NSString*)logSection point:(NSPoint)point{
++(void)log:(NSString*)logSection key:(NSString*)key point:(NSPoint)point{
     if ([enableLogSection containsObject:logSection]) {
-        NSLog(@"%@: pt: <%.1f, %.1f>", logSection, point.x, point.y);
+        NSLog(@"[%@] %@ : pt: <%.1f, %.1f>", logSection, key, point.x, point.y);
     }
 }
 
-+(void)log:(NSString*)logSection size:(NSSize)size{
++(void)log:(NSString*)logSection key:(NSString*)key size:(NSSize)size{
     if ([enableLogSection containsObject:logSection]) {
-        NSLog(@"%@: sz: <%.1f, %.1f>", logSection, size.width, size.height);
+        NSLog(@"[%@] %@ : sz: <%.1f, %.1f>", logSection, key, size.width, size.height);
     }
 }
 
+/*
 +(void)log:(NSString*)logSection color:(NSColor*)color{
     if ([enableLogSection containsObject:logSection]) {
         NSLog(@"%@: rgba: <%.1f, %.1f, %.1f, %.1f>", logSection, color.redComponent, color.greenComponent, color.blueComponent, color.alphaComponent );
     }
 }
-
-+(void)log:(NSString*)logSection err:(NSError*)err{
-    if ([enableLogSection containsObject:logSection]) {
-        NSLog(@"%@: ERR %@",logSection, err.localizedFailureReason);
-    }
+*/
++(void)log:(NSString*)key err:(NSError*)err{
+        NSLog(@"%@: ERR %@",key, err.localizedFailureReason);
 }
 
 +(void)alert:(NSString*)alertMsg{

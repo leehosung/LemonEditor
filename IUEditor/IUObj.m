@@ -31,7 +31,7 @@
     self = [super init];{
         _children = [NSMutableArray array];
         _css = [[IUCSS alloc] init];
-        [_css setStyle:IUCSSTypePosition value:@"relative"];
+        [_css setStyle:IUCSSTagPosition value:@"relative"];
     }
     return self;
 }
@@ -61,16 +61,14 @@
         [className appendString:str];
         [className appendString:@" "];
     }
+    [className trim];
     [className appendString:@"'"];
     return @{@"class":className, @"id":self.htmlID};
 }
 
--(NSDictionary*)CSSAttributesForDefault{
-    return [_css tagDictionaryForWidth:-1];
-}
 
--(NSDictionary*)CSSAttributesForWidth:(NSUInteger)width{
-    return [_css tagDictionaryForWidth:width];
+-(NSDictionary*)CSSAttributesForWidth:(NSInteger)width{
+    return [_css tagDictionaryForWidth:(int)width];
 }
 
 

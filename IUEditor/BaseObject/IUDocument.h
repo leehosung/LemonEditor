@@ -22,12 +22,10 @@
 
 -(id)initWithSetting:(NSDictionary*)setting;
 
-//connect with controller
--(void)fetch;
-
 #pragma mark editor source
 -(NSString*)editorSource;
--(NSString*)outputSource;
+
+//-(NSString*)outputSource;
 
 -(NSArray*)widthWithCSS;
 -(IUObj *)selectableIUAtPoint:(CGPoint)point;

@@ -9,11 +9,6 @@
 #import "IUCSS.h"
 #import "JDUIUtil.h"
 
-NSString const  *CSSTypeToString[] = {
-    [IUCSSTypePosition] = @"position",
-    [IUCSSTypeBGColor] = @"background-color",
-};
-
 @implementation IUCSS{
     NSMutableDictionary *data;
 }
@@ -34,30 +29,25 @@ NSString const  *CSSTypeToString[] = {
     return self;
 }
 
--(void)setStyle:(IUCSSType)type value:(id)value{
-    if (data[@-1] == nil) {
-        data[@-1] = [NSMutableDictionary dictionary];
+-(void)setStyle:(IUCSSTag)type value:(id)value{
+    [self setStyle:type value:value width:IUCSSTagDictionaryDefaultWidth];
+    if (data[@IUCSSTagDictionaryDefaultWidth] == nil) {
+        data[@IUCSSTagDictionaryDefaultWidth] = [NSMutableDictionary dictionary];
     }
-    data[@(-1)][CSSTypeToString[type]] = value;
+    [self setStyle:type value:value width:IUCSSTagDictionaryDefaultWidth];
 }
 
--(void)setStyle:(IUCSSType)type value:(id)value width:(NSInteger)width{
+-(void)setStyle:(IUCSSTag)type value:(id)value width:(NSInteger)width{
     if (data[@(width)] == nil) {
         data[@(width)] = [NSMutableDictionary dictionary];
     }
-    [self setStyle:type value:value];
-}
-
-
--(NSDictionary*)tagDictionaryForDefault{
-    return data[@(-1)];
+    data[@(width)][type] = value;
 }
 
 
 -(NSDictionary*)tagDictionaryForWidth:(int)width{
     return data[@(width)];
 }
-
 
 
 @end

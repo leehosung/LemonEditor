@@ -62,6 +62,17 @@ BOOL   isNSRectContainsRect(NSRect rect, NSRect subrect);
 -(NSColor*) color;
 @end
 
+@interface NSView(JDExtenstion)
+-(id)addSubviewFullFrame:(NSView*)subview;
+-(id)addSubviewFullFrame:(NSView*)subview atPosition:(NSWindowOrderingMode)place;
+-(void)addSubviewFullFrame:(NSView *)aView positioned:(NSWindowOrderingMode)place relativeTo:(NSView *)otherView;
+-(void)setX:(CGFloat)x;
+-(void)setY:(CGFloat)y;
+-(void)setWidth:(CGFloat)width;
+-(void)setHeight:(CGFloat)height;
+-(BOOL)hasSubview:(NSView*)subview;
+-(void)removeAllSubview;
+@end
 
 
 @interface NSUserDefaults(JDColorSupport)

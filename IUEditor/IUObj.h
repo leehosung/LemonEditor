@@ -33,12 +33,9 @@
 
 
 // followings are IU build setting;
--(NSString*)tag;
--(BOOL)appendClosingTag;
 -(NSDictionary*)HTMLAtributes;
 
--(NSDictionary*)CSSAttributesForDefault;
--(NSDictionary*)CSSAttributesForWidth:(NSUInteger)width;
+-(NSDictionary*)CSSAttributesForWidth:(NSInteger)width;
 
 // overide folloing method
 -(void)prepareEditor;

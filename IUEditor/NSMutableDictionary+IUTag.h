@@ -7,28 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSString+IUTag.h"
 
-#define kMDExIgnoreZero @"ignoreZero"
-#define kMDExIgnoreNil @"ignoreNil"
-#define kMDExModifier   @"modifier"
-#define kMDExModifierParam  @"modifierParam"
-#define kMDExOutputDictKey  @"outputDictKey"
-#define kMDExDictForTrue    @"dictForTrue"
-#define kMDExDefault    @"default"
+#define IUCSSStringDictionary NSMutableDictionary
 
-#define kMDExModifierPixel @"px"
-#define kMDExModifierURL @"url"
-#define kMDExModifierPercent @"percent"
-
+#define IUCSSUnit       char
+#define IUCSSUnitNone    0
+#define IUCSSUnitPixel   1
+#define IUCSSUnitPercent 2
 
 @interface NSMutableDictionary (IUTag)
 
--(void)putTag:(NSString*)tag intValue:(int)intValue param:(NSDictionary*)param;
--(void)putTag:(NSString*)tag floatValue:(float)intValue param:(NSDictionary*)param;
--(void)putTag:(NSString*)tag stringValue:(NSString*)stringValue param:(NSDictionary*)param;
--(void)removeTags:(NSArray*)tags;
--(void)removeTag:(id)key;
--(void)mergeTagDictionary:(NSDictionary*)tagDict;
+-(void)putTag:(NSString*)tag int:(int)intValue ignoreZero:(BOOL)ignoreZero unit:(IUCSSUnit)unit;
+-(void)putTag:(NSString*)tag float:(float)intValue ignoreZero:(BOOL)ignoreZero unit:(IUCSSUnit)unit;
+-(void)putTag:(NSString*)tag color:(NSColor*)color;
 
+-(void)putTag:(NSString*)tag string:(NSString*)stringValue;
+
+-(void)removeTags:(NSArray*)tags;
+-(void)removeTag:(NSString*)key;
 
 @end

@@ -33,7 +33,7 @@
 
 
 -(NSString*)editorSource{
-    return [_compiler generateEditorSource:self];
+    return [_compiler editorSource:self];
 }
 
 -(NSArray*)widthWithCSS{
