@@ -78,7 +78,6 @@
 		69C575CB18D6F61E0016F050 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69C575AA18D6F61E0016F050 /* Cocoa.framework */; };
 		69C575D318D6F61E0016F050 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 69C575D118D6F61E0016F050 /* InfoPlist.strings */; };
 		69C575D518D6F61E0016F050 /* IUEditorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C575D418D6F61E0016F050 /* IUEditorTests.m */; };
-		69C5760A18D6FE020016F050 /* IUClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C575FD18D6FE020016F050 /* IUClass.m */; };
 		69C5760B18D6FE020016F050 /* IUComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C575FF18D6FE020016F050 /* IUComponent.m */; };
 		69C5760C18D6FE020016F050 /* IUCSS.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5760118D6FE020016F050 /* IUCSS.m */; };
 		69C5760D18D6FE020016F050 /* IUDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5760318D6FE020016F050 /* IUDocument.m */; };
@@ -90,6 +89,7 @@
 		69C5763918D728CF0016F050 /* LMStackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5763718D728CF0016F050 /* LMStackVC.m */; };
 		69C5763A18D728CF0016F050 /* LMStackCellV.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69C5763818D728CF0016F050 /* LMStackCellV.xib */; };
 		69C5764018D729830016F050 /* IUDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5763F18D729830016F050 /* IUDocumentController.m */; };
+		69D15F6B18E73E690046FBB0 /* NSString+IUTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D15F6A18E73E690046FBB0 /* NSString+IUTag.m */; };
 		69F1A37518E0624E004C5B30 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69F1A37418E0624E004C5B30 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -216,8 +216,6 @@
 		69C575D018D6F61E0016F050 /* IUEditorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IUEditorTests-Info.plist"; sourceTree = "<group>"; };
 		69C575D218D6F61E0016F050 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		69C575D418D6F61E0016F050 /* IUEditorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IUEditorTests.m; sourceTree = "<group>"; };
-		69C575FC18D6FE020016F050 /* IUClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUClass.h; sourceTree = "<group>"; };
-		69C575FD18D6FE020016F050 /* IUClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUClass.m; sourceTree = "<group>"; };
 		69C575FE18D6FE020016F050 /* IUComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUComponent.h; path = BaseObject/IUComponent.h; sourceTree = "<group>"; };
 		69C575FF18D6FE020016F050 /* IUComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IUComponent.m; path = BaseObject/IUComponent.m; sourceTree = "<group>"; };
 		69C5760018D6FE020016F050 /* IUCSS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUCSS.h; sourceTree = "<group>"; };
@@ -238,6 +236,8 @@
 		69C5763818D728CF0016F050 /* LMStackCellV.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMStackCellV.xib; sourceTree = "<group>"; };
 		69C5763E18D729830016F050 /* IUDocumentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUDocumentController.h; sourceTree = "<group>"; };
 		69C5763F18D729830016F050 /* IUDocumentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUDocumentController.m; sourceTree = "<group>"; };
+		69D15F6918E73E690046FBB0 /* NSString+IUTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+IUTag.h"; sourceTree = "<group>"; };
+		69D15F6A18E73E690046FBB0 /* NSString+IUTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+IUTag.m"; sourceTree = "<group>"; };
 		69F1A37418E0624E004C5B30 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		69F1A37618E06262004C5B30 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		69F1A37818E0627A004C5B30 /* AppleScriptKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptKit.framework; path = System/Library/Frameworks/AppleScriptKit.framework; sourceTree = SDKROOT; };
@@ -309,6 +309,8 @@
 				69C5760718D6FE020016F050 /* IUTemplate.m */,
 				69757B2318D95FDA0095CBAC /* NSMutableDictionary+IUTag.h */,
 				69757B2418D95FDA0095CBAC /* NSMutableDictionary+IUTag.m */,
+				69D15F6918E73E690046FBB0 /* NSString+IUTag.h */,
+				69D15F6A18E73E690046FBB0 /* NSString+IUTag.m */,
 			);
 			name = IU;
 			sourceTree = "<group>";
@@ -479,8 +481,6 @@
 		69C575FB18D6FE020016F050 /* BaseObject */ = {
 			isa = PBXGroup;
 			children = (
-				69C575FC18D6FE020016F050 /* IUClass.h */,
-				69C575FD18D6FE020016F050 /* IUClass.m */,
 				69C5760018D6FE020016F050 /* IUCSS.h */,
 				69C5760118D6FE020016F050 /* IUCSS.m */,
 				69ABB14818D733ED0065D584 /* IUCompiler.h */,
@@ -701,7 +701,6 @@
 				69757B0518D95BBC0095CBAC /* JDFileUtil.m in Sources */,
 				69757B2218D95F420095CBAC /* NSString+JDExtension.m in Sources */,
 				69757AC218D7EB680095CBAC /* IUObj.m in Sources */,
-				69C5760A18D6FE020016F050 /* IUClass.m in Sources */,
 				6954812818D7640A00CA02F1 /* IUPage.m in Sources */,
 				69C5764018D729830016F050 /* IUDocumentController.m in Sources */,
 				69757B3118DAE19E0095CBAC /* IUDocumentGroupNode.m in Sources */,
@@ -720,6 +719,7 @@
 				69757B1F18D95F1E0095CBAC /* NSDictionary+JDExtension.m in Sources */,
 				69757B0818D95BBC0095CBAC /* JDKeyDelegatedTableView.m in Sources */,
 				69757B0618D95BBC0095CBAC /* JDGitUtil.m in Sources */,
+				69D15F6B18E73E690046FBB0 /* NSString+IUTag.m in Sources */,
 				69757B1018D95BBC0095CBAC /* JDTransformer.m in Sources */,
 				69757B0F18D95BBC0095CBAC /* JDTextFieldCell.m in Sources */,
 				6919204A18DCFED000F8522B /* NSObject+JDExtension.m in Sources */,

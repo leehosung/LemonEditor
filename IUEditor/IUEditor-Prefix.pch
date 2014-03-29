@@ -12,6 +12,9 @@
     #import "CALayer+JDExtension.h"
     #import "JDArrayDict.h"
     #import "NSArray+JDExtension.h"
+#import "NSString+JDExtension.h"
+#import "NSMutableDictionary+IUTag.h"
+#import "JDUIUtil.h"
 #import "JDLogUtil.h"
 #import "JDTextField.h"
 #import "JDTransformer.h"
@@ -21,6 +24,7 @@
 #import "JDEnvUtil.h"
 #import "JDGitUtil.h"
 #import "JDFileUtil.h"
+#import "NSString+IUTag.h"
 
 #define _binding_
 

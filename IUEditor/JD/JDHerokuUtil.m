@@ -42,7 +42,6 @@
 
 
 +(NSString*)loginID{
-    [JDLogUtil log:@"loginID" log:@"heroku"];
     NSString *resPath = [[NSBundle mainBundle] pathForResource:@"herokuauth.sh" ofType:nil];
     NSString *errLog, *log;
     NSInteger resultCode = [JDFileUtil execute:resPath atDirectory:@"/" arguments:nil stdOut:&log stdErr:&errLog];
@@ -53,7 +52,6 @@
 }
 
 -(BOOL)create:(NSString*)appName resultLog:(NSString**)resultLog{
-    [JDLogUtil log:@"create" log:@"heroku"];
     NSString *stdOut;
     NSString *stdErr;
     NSInteger returnCode = [JDFileUtil execute:@"/usr/bin/heroku" atDirectory:@"/" arguments:@[@"create",appName] stdOut:&stdOut stdErr:&stdErr];
@@ -70,7 +68,6 @@
 }
 
 -(void)login:(NSString*)myid password:(NSString*)mypasswd{
-    [JDLogUtil log:@"login" log:@"heroku"];
     NSString *resPath = [[NSBundle mainBundle] pathForResource:@"heroku_login" ofType:nil];
     self.logging = YES;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^(void){

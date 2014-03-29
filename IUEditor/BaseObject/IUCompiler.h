@@ -17,11 +17,11 @@ typedef enum _IUCompilerType{
 
 @interface IUCompiler : NSObject
 
--(NSString*)generateOutputSource:(IUDocument*)document;
--(NSString*)generateEditorSource:(IUDocument*)document;
+//-(NSString*)outputSource:(IUDocument*)document;
+-(NSString*)editorSource:(IUDocument*)document;
 
--(NSString*)generateEditorHTML:(IUObj*)iu;
--(NSString*)generateEditorCSS:(IUObj*)iu width:(NSInteger)width;
+-(NSString*)editorHTML:(IUObj*)iu;
+-(NSString*)editorCSS:(IUObj*)iu width:(NSInteger)width;
 
 
 @end

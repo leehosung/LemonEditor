@@ -419,7 +419,6 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
         return [NSString stringWithFormat:@"rgb(%d,%d,%d)", redIntValue, greenIntValue, blueIntValue];
     }
     return nil;
-
 }
 
 + (NSColor *)randomColor {

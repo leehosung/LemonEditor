@@ -96,7 +96,7 @@
     IUPage *page = [[IUPage alloc] initWithSetting:nil];
     page.name = @"root";
     page.htmlID = [project requestNewID:[IUPage class]];
-    [page.css setStyle:IUCSSTypeBGColor value:[NSColor randomColor]]  ;
+    [page.css setStyle:IUCSSTagBGColor value:[NSColor randomColor]]  ;
     [pageDir addDocument:page name:@"Index"];
     
     [page bind:@"compiler" toObject:project withKeyPath:@"compiler" options:nil];
@@ -139,12 +139,13 @@
     [resGroup addNode:externalGroup];
     
     ReturnNoIfFalse([imageGroup syncDir]);
+    ReturnNoIfFalse([externalGroup syncDir]);
     
     NSData *cssData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"reset" ofType:@"css"]];
-    [self insertData:cssData name:@"reset.css" group:externalGroup];
+    NSAssert([self insertData:cssData name:@"reset.css" group:externalGroup], @"reset.css failure");
     
     NSData *iuCssData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"iu" ofType:@"css"]];
-    [self insertData:iuCssData name:@"iu.css" group:externalGroup];
+    NSAssert([self insertData:iuCssData name:@"iu.css" group:externalGroup], @"iu.css failure");
 
     return YES;
 }
