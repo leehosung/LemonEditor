@@ -14,6 +14,6 @@
 @interface IUDocumentGroupNode : IUNode < NSCoding>
 
 -(void)addDocument:(IUDocument*)document name:(NSString*)name;
--(void)addDocumentGroup:(IUDocumentGroupNode*)node;
+-(void)addDocumentGroupNode:(IUDocumentGroupNode*)node;
 
 @end

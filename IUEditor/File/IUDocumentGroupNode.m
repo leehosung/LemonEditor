@@ -21,7 +21,7 @@
     [self addNode:node];
 }
 
--(void)addDocumentGroup:(IUDocumentGroupNode*)node{
+-(void)addDocumentGroupNode:(IUDocumentGroupNode*)node{
     [self addNode:node];
 }
 

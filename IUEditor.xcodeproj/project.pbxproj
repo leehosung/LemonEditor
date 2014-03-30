@@ -79,7 +79,6 @@
 		69C5760B18D6FE020016F050 /* IUComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C575FF18D6FE020016F050 /* IUComponent.m */; };
 		69C5760C18D6FE020016F050 /* IUCSS.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5760118D6FE020016F050 /* IUCSS.m */; };
 		69C5760D18D6FE020016F050 /* IUDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5760318D6FE020016F050 /* IUDocument.m */; };
-		69C5760F18D6FE020016F050 /* IUTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5760718D6FE020016F050 /* IUTemplate.m */; };
 		69C5761018D6FE020016F050 /* IUView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5760918D6FE020016F050 /* IUView.m */; };
 		69C5761E18D7051C0016F050 /* IUProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5761D18D7051C0016F050 /* IUProject.m */; };
 		69C5762C18D70B850016F050 /* LMWC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5762A18D70B850016F050 /* LMWC.m */; };
@@ -89,6 +88,7 @@
 		69D15F6B18E73E690046FBB0 /* NSString+IUTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D15F6A18E73E690046FBB0 /* NSString+IUTag.m */; };
 		69D15F6F18E893170046FBB0 /* LMToolbarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D15F6D18E893170046FBB0 /* LMToolbarVC.m */; };
 		69D15F7018E893170046FBB0 /* LMToolbarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69D15F6E18E893170046FBB0 /* LMToolbarVC.xib */; };
+		69D15F7318E898B10046FBB0 /* IUMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D15F7218E898B10046FBB0 /* IUMaster.m */; };
 		69F1A37518E0624E004C5B30 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69F1A37418E0624E004C5B30 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -217,8 +217,6 @@
 		69C5760118D6FE020016F050 /* IUCSS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUCSS.m; sourceTree = "<group>"; };
 		69C5760218D6FE020016F050 /* IUDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUDocument.h; path = BaseObject/IUDocument.h; sourceTree = "<group>"; };
 		69C5760318D6FE020016F050 /* IUDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IUDocument.m; path = BaseObject/IUDocument.m; sourceTree = "<group>"; };
-		69C5760618D6FE020016F050 /* IUTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUTemplate.h; path = BaseObject/IUTemplate.h; sourceTree = "<group>"; };
-		69C5760718D6FE020016F050 /* IUTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IUTemplate.m; path = BaseObject/IUTemplate.m; sourceTree = "<group>"; };
 		69C5760818D6FE020016F050 /* IUView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUView.h; path = BaseObject/IUView.h; sourceTree = "<group>"; };
 		69C5760918D6FE020016F050 /* IUView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IUView.m; path = BaseObject/IUView.m; sourceTree = "<group>"; };
 		69C5761C18D7051C0016F050 /* IUProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUProject.h; sourceTree = "<group>"; };
@@ -235,6 +233,8 @@
 		69D15F6C18E893170046FBB0 /* LMToolbarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMToolbarVC.h; sourceTree = "<group>"; };
 		69D15F6D18E893170046FBB0 /* LMToolbarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMToolbarVC.m; sourceTree = "<group>"; };
 		69D15F6E18E893170046FBB0 /* LMToolbarVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMToolbarVC.xib; sourceTree = "<group>"; };
+		69D15F7118E898B10046FBB0 /* IUMaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUMaster.h; path = File/IUMaster.h; sourceTree = "<group>"; };
+		69D15F7218E898B10046FBB0 /* IUMaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IUMaster.m; path = File/IUMaster.m; sourceTree = "<group>"; };
 		69F1A37418E0624E004C5B30 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		69F1A37618E06262004C5B30 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		69F1A37818E0627A004C5B30 /* AppleScriptKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptKit.framework; path = System/Library/Frameworks/AppleScriptKit.framework; sourceTree = SDKROOT; };
@@ -292,6 +292,8 @@
 		694233A118D7E1A500C96A92 /* IU */ = {
 			isa = PBXGroup;
 			children = (
+				69D15F7118E898B10046FBB0 /* IUMaster.h */,
+				69D15F7218E898B10046FBB0 /* IUMaster.m */,
 				69757AC018D7EB680095CBAC /* IUObj.h */,
 				69757AC118D7EB680095CBAC /* IUObj.m */,
 				69C5760218D6FE020016F050 /* IUDocument.h */,
@@ -302,8 +304,6 @@
 				69C5760918D6FE020016F050 /* IUView.m */,
 				69C575FE18D6FE020016F050 /* IUComponent.h */,
 				69C575FF18D6FE020016F050 /* IUComponent.m */,
-				69C5760618D6FE020016F050 /* IUTemplate.h */,
-				69C5760718D6FE020016F050 /* IUTemplate.m */,
 				69757B2318D95FDA0095CBAC /* NSMutableDictionary+IUTag.h */,
 				69757B2418D95FDA0095CBAC /* NSMutableDictionary+IUTag.m */,
 				69D15F6918E73E690046FBB0 /* NSString+IUTag.h */,
@@ -665,6 +665,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69C5763918D728CF0016F050 /* LMStackVC.m in Sources */,
+				69D15F7318E898B10046FBB0 /* IUMaster.m in Sources */,
 				69757B1418D95BBC0095CBAC /* NSMenu_JDExtension.m in Sources */,
 				69ABB14A18D733ED0065D584 /* IUCompiler.m in Sources */,
 				69B9A39B18E6B1860007D6E2 /* iu.js in Sources */,
@@ -674,7 +675,6 @@
 				69757B0318D95BBC0095CBAC /* JDDateTimeUtil.m in Sources */,
 				69757B0018D95BBC0095CBAC /* CALayer+JDExtension.m in Sources */,
 				69757B0718D95BBC0095CBAC /* JDHerokuUtil.m in Sources */,
-				69C5760F18D6FE020016F050 /* IUTemplate.m in Sources */,
 				69C5761018D6FE020016F050 /* IUView.m in Sources */,
 				6985CBA018E31558008DBF50 /* IUDocumentNode.m in Sources */,
 				6985CBA618E31D9B008DBF50 /* IUNode.m in Sources */,
