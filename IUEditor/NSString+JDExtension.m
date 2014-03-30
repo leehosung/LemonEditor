@@ -93,7 +93,7 @@
     return path;
 }
 
-- (NSString*)stringByIndent:(NSUInteger)indent{
+- (NSString*)stringByIndent:(NSUInteger)indent prependIndent:(BOOL)prependIndent;{
     BOOL lastNewLineFlag = NO;
     if ([self characterAtIndex:[self length]-1] == '\n') {
         lastNewLineFlag = YES;
@@ -104,14 +104,16 @@
 
     NSMutableString *returnStr = [NSMutableString string];
     //add indent at first line
-    [returnStr appendString:indentWhiteSpace];
+    if (prependIndent) {
+        [returnStr appendString:indentWhiteSpace];
+    }
     
     NSString *replaceStr = [NSString stringWithFormat:@"\n%@", indentWhiteSpace];
     NSString *newStr = [self stringByReplacingOccurrencesOfString:@"\n" withString:replaceStr];
     [returnStr appendString:newStr];
     
     if (lastNewLineFlag) {
-        [returnStr deleteCharactersInRange:NSMakeRange([self length]-indent, indent)];
+        [returnStr deleteCharactersInRange:NSMakeRange([returnStr length]-indent-1, indent+1)];
     }
     
     return returnStr;

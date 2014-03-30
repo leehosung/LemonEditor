@@ -12,7 +12,7 @@
 #define IUCSSTagPosition @"position"
 #define IUCSSTagBGColor @"background-color"
 
-#define IUCSSTagCollectionFrame @"frame"
+#define IUCSSTagFrameCollection @"frame"
 #define isSameTag isEqualToString
 
 @interface NSString (IUTag)

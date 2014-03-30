@@ -9,5 +9,8 @@
 #import "IUView.h"
 
 @implementation IUView
-
+-(BOOL)addIU:(IUObj *)iu error:(NSError**)error{
+    [self.children addObject:iu];
+    return YES;
+}
 @end

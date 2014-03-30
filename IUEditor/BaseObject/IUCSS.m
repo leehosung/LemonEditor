@@ -37,6 +37,10 @@
     [self setStyle:type value:value width:IUCSSTagDictionaryDefaultWidth];
 }
 
+-(void)removeStyle:(IUCSSTag)type{
+    [data[@IUCSSTagDictionaryDefaultWidth] removeObjectForKey:type];
+}
+
 -(void)setStyle:(IUCSSTag)type value:(id)value width:(NSInteger)width{
     if (data[@(width)] == nil) {
         data[@(width)] = [NSMutableDictionary dictionary];

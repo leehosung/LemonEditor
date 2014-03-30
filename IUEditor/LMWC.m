@@ -17,6 +17,7 @@
 #import "IUDocumentNode.h"
 #import "IUResourceGroupNode.h"
 #import "IUResourceNode.h"
+#import "LMToolbarVC.h"
 
 @interface LMWC ()
 
@@ -36,6 +37,7 @@
     LMStackVC       *stackVC;
     LMCanvasV       *canvasV;
     LMWidgetLibraryVC   *widgetLibraryVC;
+    LMToolbarVC     *toolbarVC;
 }
 
 - (id)initWithWindow:(NSWindow *)window
@@ -61,6 +63,9 @@
     
     widgetLibraryVC = [[LMWidgetLibraryVC alloc] initWithNibName:@"LMWidgetLibraryVC" bundle:nil];
     [_leftTopV addSubview:widgetLibraryVC.view];
+    
+    toolbarVC = [[LMToolbarVC alloc] initWithNibName:@"LMToolbarVC" bundle:nil];
+    [_toolbarV addSubview:toolbarVC.view];
     
     [self startNewProject];
 }

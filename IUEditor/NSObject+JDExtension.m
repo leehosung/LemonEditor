@@ -65,6 +65,10 @@
     return self;
 }
 
+-(NSString*)description{
+    return [[super description] stringByAppendingFormat:@" %@",name];
+}
+
 -(NSString*)name{
     return name;
 }

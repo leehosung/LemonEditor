@@ -36,13 +36,13 @@
     }
     switch (unit) {
         case IUCSSUnitNone:
-            self[tag] = [NSString stringWithFormat:@"%.4f", floatValue];
+            self[tag] = [[NSString stringWithFormat:@"%.4f", floatValue] stringByReplacingOccurrencesOfString:@".0000" withString:@""];
             break;
         case IUCSSUnitPercent:
-            self[tag] = [NSString stringWithFormat:@"%.4f%%", floatValue];
+            self[tag] = [[NSString stringWithFormat:@"%.4f%%", floatValue] stringByReplacingOccurrencesOfString:@".0000" withString:@""];
             break;
         case IUCSSUnitPixel:
-            self[tag] = [NSString stringWithFormat:@"%.4fpx", floatValue];
+            self[tag] = [[NSString stringWithFormat:@"%.4fpx", floatValue] stringByReplacingOccurrencesOfString:@".0000" withString:@""];
             break;
         default:
             assert(0);

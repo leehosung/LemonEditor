@@ -16,7 +16,7 @@
 @interface JDProperty : NSObject
 
 -(id)initWithProperty:(objc_property_t)property;
-
+-(NSString*)description;
 -(NSString*)name;
 -(BOOL)isReadonly;
 -(BOOL)isFloat;
