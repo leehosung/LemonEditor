@@ -14,4 +14,17 @@
     
 }
 
+- (id)initWithSetting:(NSDictionary *)setting{
+    self = [super initWithSetting:setting];
+    
+    //add some iu
+    IUObj *obj = [[IUObj alloc] initWithSetting:nil];
+    obj.htmlID = @"qwerq";
+    obj.name = @"sample object";
+    [self addIU:obj error:nil];
+    
+    [self.css removeStyle:IUCSSTagFrameCollection];
+    return self;
+}
+
 @end

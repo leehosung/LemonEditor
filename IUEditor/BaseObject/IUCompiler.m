@@ -18,7 +18,7 @@
 -(NSString*)editorSource:(IUDocument*)document{
     NSString *templateFilePath = [[NSBundle mainBundle] pathForResource:@"webTemplate" ofType:@"html"];
     NSMutableString *source = [NSMutableString stringWithContentsOfFile:templateFilePath encoding:NSUTF8StringEncoding error:nil];
-    NSString *html = [self editorHTML:document];
+    NSString *html = [[self editorHTML:document] stringByIndent:8 prependIndent:YES];
     [source replaceOccurrencesOfString:@"<!--HTML_Replacement-->" withString:html options:0 range:[source fullRange]];
     
     NSMutableString *css = [NSMutableString string];
@@ -28,14 +28,14 @@
     [css appendString:@"}"];
     [css appendString:@"\n"];
     for (IUObj *obj in document.allChildren) {
-        [css appendString:[NSString stringWithFormat:@"#%@:{", obj.htmlID]];
+        [css appendString:[NSString stringWithFormat:@"#%@ {", obj.htmlID]];
         [css appendString:[self CSSContent:[obj CSSAttributesForWidth:IUCSSTagDictionaryDefaultWidth]]];
         [css appendString:@"}"];
         [css appendString:@"\n"];
     }
-    [source replaceOccurrencesOfString:@"<!--CSS_Replacement-->" withString:css options:0 range:[source fullRange]];
+    [source replaceOccurrencesOfString:@"<!--CSS_Replacement-->" withString:[css stringByIndent:8 prependIndent:NO] options:0 range:[source fullRange]];
     
-    [JDLogUtil log:IULogSource key:@"source" string:source];
+    [JDLogUtil log:IULogSource key:@"source" string:[@"\n" stringByAppendingString:source]];
     return source;
 }
 
@@ -47,11 +47,15 @@
 
     if ([iu isKindOfClass:[IUObj class]]) {
         [code appendFormat:@"<div %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes]];
-        for (IUObj *child in iu.children) {
-            [code appendString:[self editorHTML:child]];
-        }
         [code appendString:@"testme"];
-        [code appendFormat:@"</>"];
+        if (iu.children.count) {
+            [code appendString:@"\n"];
+            for (IUObj *child in iu.children) {
+                [code appendString:[[self editorHTML:child] stringByIndent:4 prependIndent:YES]];
+                [code appendString:@"\n"];
+            }
+        }
+        [code appendFormat:@"</div>"];
         return code;
     }
     assert(0);
@@ -83,12 +87,12 @@
 -(IUCSSStringDictionary*)cssStringDictionaryWithCSSTagDictionary:(NSDictionary*)cssTagDict{
     IUCSSStringDictionary *dict = [IUCSSStringDictionary dictionary];
     for (IUCSSTag tag in cssTagDict) {
-        if ([tag isSameTag:IUCSSTagCollectionFrame]) {
+        if ([tag isSameTag:IUCSSTagFrameCollection]) {
             NSRect value = [cssTagDict[tag] rectValue];
-            [dict putTag:@"x" float:value.origin.x ignoreZero:YES unit:IUCSSUnitPixel];
-            [dict putTag:@"y" float:value.origin.y ignoreZero:YES unit:IUCSSUnitPixel];
-            [dict putTag:@"width" float:value.size.width ignoreZero:YES unit:IUCSSUnitPixel];
-            [dict putTag:@"height" float:value.size.height ignoreZero:YES unit:IUCSSUnitPixel];
+            [dict putTag:@"left"    float:value.origin.x ignoreZero:NO unit:IUCSSUnitPixel];
+            [dict putTag:@"top"     float:value.origin.y ignoreZero:YES unit:IUCSSUnitPixel];
+            [dict putTag:@"width"   float:value.size.width ignoreZero:NO unit:IUCSSUnitPixel];
+            [dict putTag:@"height"  float:value.size.height ignoreZero:NO unit:IUCSSUnitPixel];
         }
         else if ([tag isSameTag:IUCSSTagBGColor]){
             [dict putTag:@"background-color" color:cssTagDict[tag]];

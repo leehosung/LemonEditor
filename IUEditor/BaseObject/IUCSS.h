@@ -15,6 +15,7 @@
 @interface IUCSS : NSObject <NSCoding>
 
 -(void)setStyle:(IUCSSTag)type value:(id)value;
+-(void)removeStyle:(IUCSSTag)type;
 
 -(NSDictionary*)tagDictionaryForWidth:(int)width;
 

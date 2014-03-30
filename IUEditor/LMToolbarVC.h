@@ -1,13 +1,13 @@
 //
-//  LMFileNaviCellV.h
+//  LMToolbarVC.h
 //  IUEditor
 //
-//  Created by JD on 3/24/14.
+//  Created by jd on 3/31/14.
 //  Copyright (c) 2014 JDLab. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
 
-@interface LMFileNaviCellV : NSTableCellView
+@interface LMToolbarVC : NSViewController
 
 @end

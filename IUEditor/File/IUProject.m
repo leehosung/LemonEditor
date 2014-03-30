@@ -96,7 +96,6 @@
     IUPage *page = [[IUPage alloc] initWithSetting:nil];
     page.name = @"root";
     page.htmlID = [project requestNewID:[IUPage class]];
-    [page.css setStyle:IUCSSTagBGColor value:[NSColor randomColor]]  ;
     [pageDir addDocument:page name:@"Index"];
     
     [page bind:@"compiler" toObject:project withKeyPath:@"compiler" options:nil];
