@@ -78,17 +78,21 @@
     
     IUDocumentGroupNode *pageDir = [[IUDocumentGroupNode alloc] init];
     pageDir.name = @"Page";
-    [project addDocumentGroup:pageDir];
+    [project addDocumentGroupNode:pageDir];
     project.pageDocumentGroup = pageDir;
     /*
      IUDocumentGroup *compDir = [[IUDocumentGroup alloc] initWithName:@"Component"];
-     [self addDocumentGroup:compDir];
+     [self addDocumentGroupNode:compDir];
      componentDocumentGroup = compDir;
-     
-     IUDocumentGroup *masterDocumentDir = [[IUDocumentGroup alloc] initWithName:@"Master"];
-     [self addDocumentGroup:masterDocumentDir];
-     masterDocumentGroup = masterDocumentDir;
+
      */
+    
+    IUDocumentGroupNode *masterGroup = [[IUDocumentGroupNode alloc] init];
+    [project addDocumentGroupNode:masterGroup];
+    masterGroup.name = @"Master";
+    project.masterDocumentGroup = masterGroup;
+    
+    
     
     //make resource dir
     ReturnNilIfFalse([project makeResourceDir]);
