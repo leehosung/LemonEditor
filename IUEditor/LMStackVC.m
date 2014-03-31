@@ -26,5 +26,12 @@
     return cell;
 }
 
+-(void)setDocument:(IUDocument *)document{
+    _document = document;
+    for (IUObj *iu in document.allChildren) {
+        assert(iu.name.length);
+    }
+}
+
 
 @end

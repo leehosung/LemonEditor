@@ -18,8 +18,8 @@
 
 @interface NSMutableDictionary (IUTag)
 
--(void)putTag:(NSString*)tag int:(int)intValue ignoreZero:(BOOL)ignoreZero unit:(IUCSSUnit)unit;
--(void)putTag:(NSString*)tag float:(float)intValue ignoreZero:(BOOL)ignoreZero unit:(IUCSSUnit)unit;
+-(void)putTag:(NSString*)tag intValue:(int)intValue ignoreZero:(BOOL)ignoreZero unit:(IUCSSUnit)unit;
+-(void)putTag:(NSString*)tag floatValue:(float)intValue ignoreZero:(BOOL)ignoreZero unit:(IUCSSUnit)unit;
 -(void)putTag:(NSString*)tag color:(NSColor*)color;
 
 -(void)putTag:(NSString*)tag string:(NSString*)stringValue;

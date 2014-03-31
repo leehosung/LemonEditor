@@ -18,9 +18,6 @@
 
 @interface IUDocument : IUView
 
-@property (nonatomic) IUCompiler *compiler;
-
--(id)initWithSetting:(NSDictionary*)setting;
 
 #pragma mark editor source
 -(NSString*)editorSource;

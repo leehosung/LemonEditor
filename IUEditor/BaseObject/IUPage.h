@@ -9,10 +9,10 @@
 #import "IUObj.h"
 #import "IUDocument.h"
 
-@class IUTemplate;
+@class IUMaster;
 
 @interface IUPage : IUDocument
 
-@property (nonatomic) IUTemplate    *aTemplate;
+@property (nonatomic) IUMaster    *master;
 
 @end

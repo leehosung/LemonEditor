@@ -14,6 +14,7 @@
 #import "IUDocumentNode.h"
 #import "IUResourceNode.h"
 #import "JDUIUtil.h"
+#import "IUMaster.h"
 
 @interface IUProject()
 @property (nonatomic, copy) NSString          *path;
@@ -45,11 +46,6 @@
         _path = [aDecoder decodeObjectForKey:@"path"];
         IDDict = [aDecoder decodeObjectForKey:@"IDDict"];
         
-        for (IUDocumentNode *node in self.allChildren) {
-            if ([node isKindOfClass:[IUDocumentNode class]]) {
-                [node.document bind:@"compiler" toObject:self withKeyPath:@"compiler" options:nil];
-            }
-        }
     }
     return self;
 }
@@ -93,16 +89,22 @@
     project.masterDocumentGroup = masterGroup;
     
     
-    
     //make resource dir
     ReturnNilIfFalse([project makeResourceDir]);
     
-    IUPage *page = [[IUPage alloc] initWithSetting:nil];
+    IUPage *page = [[IUPage alloc] initWithProject:project setting:setting];
     page.name = @"root";
+    page.project = project;
     page.htmlID = [project requestNewID:[IUPage class]];
     [pageDir addDocument:page name:@"Index"];
     
-    [page bind:@"compiler" toObject:project withKeyPath:@"compiler" options:nil];
+    IUMaster *master = [[IUMaster alloc] initWithProject:project setting:setting];
+    master.name = @"master";
+    master.project = project;
+    master.htmlID = [project requestNewID:[IUPage class]];
+    [masterGroup addDocument:master name:@"Index"];
+    page.master = master;
+    
     ReturnNilIfFalse([project save]);
     return project.path;
 }
@@ -175,6 +177,18 @@
 
 - (void)addImageResource:(NSImage*)image{
     assert(0);
+}
+
+- (NSArray*)pageDocuments{
+    return _pageDocumentGroup.children;
+}
+
+- (NSArray*)masterDocuments{
+    return _masterDocumentGroup.children;
+}
+
+- (NSArray*)componentDocuments{
+    return _componentDocumentGroup.children;
 }
 
 

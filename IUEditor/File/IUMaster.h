@@ -7,8 +7,8 @@
 //
 
 #import "IUDocument.h"
+#import "IUHeader.h"
 
-@class IUHeader;
 
 @interface IUMaster : IUDocument
 

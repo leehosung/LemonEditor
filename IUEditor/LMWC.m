@@ -17,11 +17,10 @@
 #import "IUDocumentNode.h"
 #import "IUResourceGroupNode.h"
 #import "IUResourceNode.h"
+#import "LMResourceVC.h"
 #import "LMToolbarVC.h"
 
 @interface LMWC ()
-
-
 @property (weak) IBOutlet NSView *leftTopV;
 @property (weak) IBOutlet NSView *leftBottomV;
 
@@ -30,6 +29,7 @@
 @property (weak) IBOutlet NSView *rightV;
 @property (weak) IBOutlet NSView *bottomV;
 
+@property (weak) IBOutlet NSView *resourceV;
 @end
 
 @implementation LMWC{
@@ -38,6 +38,7 @@
     LMCanvasV       *canvasV;
     LMWidgetLibraryVC   *widgetLibraryVC;
     LMToolbarVC     *toolbarVC;
+    LMResourceVC    *resourceVC;
 }
 
 - (id)initWithWindow:(NSWindow *)window
@@ -67,6 +68,8 @@
     toolbarVC = [[LMToolbarVC alloc] initWithNibName:@"LMToolbarVC" bundle:nil];
     [_toolbarV addSubview:toolbarVC.view];
     
+    resourceVC = [[LMResourceVC alloc] initWithNibName:@"LMResourceVC" bundle:nil];
+    [_resourceV addSubview:resourceVC.view];
     [self startNewProject];
 }
 
@@ -81,6 +84,13 @@
     NSString *widgetFilePath = [[NSBundle mainBundle] pathForResource:@"widgetForDefault" ofType:@"plist"];
     NSArray *availableWidgetProperties = [NSArray arrayWithContentsOfFile:widgetFilePath];
     [widgetLibraryVC setWidgetProperties:availableWidgetProperties];
+    
+    for (IUNode *node in project.children) {
+        if ([node isKindOfClass:[IUResourceGroupNode class]]) {
+            [resourceVC setNode:(IUResourceGroupNode*)node];
+            break;
+        }
+    }
 }
 
 -(void)setSelectedNode:(IUNode*)selectedNode{
