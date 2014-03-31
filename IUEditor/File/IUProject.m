@@ -50,7 +50,14 @@
     return self;
 }
 
+- (id)init{
+    self = [super init];
+    IDDict = [NSMutableDictionary dictionary];
+    return self;
+}
+
 -(NSString*)requestNewID:(Class)class{
+    NSAssert(IDDict != nil, @"IUDict is nil");
     NSString *className = NSStringFromClass(class);
     if (IDDict[className] == nil) {
         IDDict[className] = @(0);
@@ -101,8 +108,8 @@
     IUMaster *master = [[IUMaster alloc] initWithProject:project setting:setting];
     master.name = @"master";
     master.project = project;
-    master.htmlID = [project requestNewID:[IUPage class]];
-    [masterGroup addDocument:master name:@"Index"];
+    master.htmlID = [project requestNewID:[IUMaster class]];
+    [masterGroup addDocument:master name:@"Master"];
     page.master = master;
     
     ReturnNilIfFalse([project save]);

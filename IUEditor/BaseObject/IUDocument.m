@@ -30,6 +30,7 @@
 
 
 -(NSString*)editorSource{
+    assert(self.project);
     return [self.project.compiler editorSource:self];
 }
 

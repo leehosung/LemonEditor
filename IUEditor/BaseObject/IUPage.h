@@ -13,6 +13,7 @@
 
 @interface IUPage : IUDocument
 
-@property (nonatomic) IUMaster    *master;
+-(void)setMaster:(IUMaster*)master;
+-(IUMaster*)master;
 
 @end
