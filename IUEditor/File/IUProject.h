@@ -33,10 +33,6 @@ typedef enum _IUGitType{
 + (id)projectWithContentsOfPackage:(NSString*)path;
 +(NSString*)createProject:(NSDictionary*)setting error:(NSError**)error;
 
-#define IUDocumentKeyType @"type"
-#define IUDocumentKeyName @"name"
-- (IUDocument*)createDocument:(NSDictionary*)document;
-
 - (BOOL)save;
 - (void)build:(NSError**)error;
 //- (void)sync:(NSError**)error;
@@ -45,5 +41,10 @@ typedef enum _IUGitType{
 
 //used to check resource dir path
 - (NSString*)path;
+- (NSString*)requestNewID:(Class)class;
+
+- (NSArray*)pageDocuments;
+- (NSArray*)masterDocuments;
+- (NSArray*)componentDocuments;
 
 @end

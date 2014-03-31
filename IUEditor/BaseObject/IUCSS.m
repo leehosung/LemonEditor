@@ -29,19 +29,19 @@
     return self;
 }
 
--(void)setStyle:(IUCSSTag)type value:(id)value{
-    [self setStyle:type value:value width:IUCSSTagDictionaryDefaultWidth];
+-(void)putTag:(IUCSSTag)type value:(id)value{
+    [self setTag:type value:value width:IUCSSTagDictionaryDefaultWidth];
     if (data[@IUCSSTagDictionaryDefaultWidth] == nil) {
         data[@IUCSSTagDictionaryDefaultWidth] = [NSMutableDictionary dictionary];
     }
-    [self setStyle:type value:value width:IUCSSTagDictionaryDefaultWidth];
+    [self setTag:type value:value width:IUCSSTagDictionaryDefaultWidth];
 }
 
--(void)removeStyle:(IUCSSTag)type{
+-(void)removeTag:(IUCSSTag)type{
     [data[@IUCSSTagDictionaryDefaultWidth] removeObjectForKey:type];
 }
 
--(void)setStyle:(IUCSSTag)type value:(id)value width:(NSInteger)width{
+-(void)setTag:(IUCSSTag)type value:(id)value width:(NSInteger)width{
     if (data[@(width)] == nil) {
         data[@(width)] = [NSMutableDictionary dictionary];
     }

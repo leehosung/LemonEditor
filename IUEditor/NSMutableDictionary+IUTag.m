@@ -11,7 +11,7 @@
 
 @implementation NSMutableDictionary (IUTag)
 
--(void)putTag:(NSString*)tag int:(int)intValue ignoreZero:(BOOL)ignoreZero unit:(IUCSSUnit)unit{
+-(void)putTag:(NSString*)tag intValue:(int)intValue ignoreZero:(BOOL)ignoreZero unit:(IUCSSUnit)unit{
     if (ignoreZero && intValue == 0) {
         return;
     }
@@ -30,7 +30,7 @@
             break;
     }
 }
--(void)putTag:(NSString*)tag float:(float)floatValue ignoreZero:(BOOL)ignoreZero unit:(IUCSSUnit)unit{
+-(void)putTag:(NSString*)tag floatValue:(float)floatValue ignoreZero:(BOOL)ignoreZero unit:(IUCSSUnit)unit{
     if (ignoreZero && floatValue == 0) {
         return;
     }

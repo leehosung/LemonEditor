@@ -34,7 +34,6 @@
 		69757B0818D95BBC0095CBAC /* JDKeyDelegatedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757AE418D95BBC0095CBAC /* JDKeyDelegatedTableView.m */; };
 		69757B0918D95BBC0095CBAC /* JDLogUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757AE618D95BBC0095CBAC /* JDLogUtil.m */; };
 		69757B0B18D95BBC0095CBAC /* JDOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757AEA18D95BBC0095CBAC /* JDOutlineView.m */; };
-		69757B0C18D95BBC0095CBAC /* JDRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757AEC18D95BBC0095CBAC /* JDRuntime.m */; };
 		69757B0D18D95BBC0095CBAC /* NSFlipedScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757AEE18D95BBC0095CBAC /* NSFlipedScrollView.m */; };
 		69757B0E18D95BBC0095CBAC /* JDTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757AF018D95BBC0095CBAC /* JDTextField.m */; };
 		69757B0F18D95BBC0095CBAC /* JDTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757AF218D95BBC0095CBAC /* JDTextFieldCell.m */; };
@@ -85,6 +84,11 @@
 		69C5762D18D70B850016F050 /* LMWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69C5762B18D70B850016F050 /* LMWC.xib */; };
 		69C5763918D728CF0016F050 /* LMStackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5763718D728CF0016F050 /* LMStackVC.m */; };
 		69C5764018D729830016F050 /* IUDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5763F18D729830016F050 /* IUDocumentController.m */; };
+		69CFCA9B18E9396C00E3048A /* IUHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CFCA9A18E9396C00E3048A /* IUHeader.m */; };
+		69CFCAB218E95A0C00E3048A /* LMResourceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CFCAB018E95A0C00E3048A /* LMResourceVC.m */; };
+		69CFCAB318E95A0C00E3048A /* LMResourceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CFCAB018E95A0C00E3048A /* LMResourceVC.m */; };
+		69CFCAB418E95A0C00E3048A /* LMResourceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69CFCAB118E95A0C00E3048A /* LMResourceVC.xib */; };
+		69CFCAB518E95A0C00E3048A /* LMResourceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69CFCAB118E95A0C00E3048A /* LMResourceVC.xib */; };
 		69D15F6B18E73E690046FBB0 /* NSString+IUTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D15F6A18E73E690046FBB0 /* NSString+IUTag.m */; };
 		69D15F6F18E893170046FBB0 /* LMToolbarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D15F6D18E893170046FBB0 /* LMToolbarVC.m */; };
 		69D15F7018E893170046FBB0 /* LMToolbarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69D15F6E18E893170046FBB0 /* LMToolbarVC.xib */; };
@@ -143,8 +147,6 @@
 		69757AE618D95BBC0095CBAC /* JDLogUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JDLogUtil.m; path = JD/JDLogUtil.m; sourceTree = "<group>"; };
 		69757AE918D95BBC0095CBAC /* JDOutlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JDOutlineView.h; path = JD/JDOutlineView.h; sourceTree = "<group>"; };
 		69757AEA18D95BBC0095CBAC /* JDOutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JDOutlineView.m; path = JD/JDOutlineView.m; sourceTree = "<group>"; };
-		69757AEB18D95BBC0095CBAC /* JDRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JDRuntime.h; path = JD/JDRuntime.h; sourceTree = "<group>"; };
-		69757AEC18D95BBC0095CBAC /* JDRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JDRuntime.m; path = JD/JDRuntime.m; sourceTree = "<group>"; };
 		69757AED18D95BBC0095CBAC /* NSFlipedScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSFlipedScrollView.h; path = JD/NSFlipedScrollView.h; sourceTree = "<group>"; };
 		69757AEE18D95BBC0095CBAC /* NSFlipedScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSFlipedScrollView.m; path = JD/NSFlipedScrollView.m; sourceTree = "<group>"; };
 		69757AEF18D95BBC0095CBAC /* JDTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JDTextField.h; path = JD/JDTextField.h; sourceTree = "<group>"; };
@@ -228,6 +230,11 @@
 		69C5763718D728CF0016F050 /* LMStackVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMStackVC.m; sourceTree = "<group>"; };
 		69C5763E18D729830016F050 /* IUDocumentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUDocumentController.h; sourceTree = "<group>"; };
 		69C5763F18D729830016F050 /* IUDocumentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUDocumentController.m; sourceTree = "<group>"; };
+		69CFCA9918E9396C00E3048A /* IUHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUHeader.h; sourceTree = "<group>"; };
+		69CFCA9A18E9396C00E3048A /* IUHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUHeader.m; sourceTree = "<group>"; };
+		69CFCAAF18E95A0C00E3048A /* LMResourceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMResourceVC.h; path = Editor/LMResourceVC.h; sourceTree = "<group>"; };
+		69CFCAB018E95A0C00E3048A /* LMResourceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMResourceVC.m; path = Editor/LMResourceVC.m; sourceTree = "<group>"; };
+		69CFCAB118E95A0C00E3048A /* LMResourceVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMResourceVC.xib; path = Editor/LMResourceVC.xib; sourceTree = "<group>"; };
 		69D15F6918E73E690046FBB0 /* NSString+IUTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+IUTag.h"; sourceTree = "<group>"; };
 		69D15F6A18E73E690046FBB0 /* NSString+IUTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+IUTag.m"; sourceTree = "<group>"; };
 		69D15F6C18E893170046FBB0 /* LMToolbarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMToolbarVC.h; sourceTree = "<group>"; };
@@ -308,6 +315,8 @@
 				69757B2418D95FDA0095CBAC /* NSMutableDictionary+IUTag.m */,
 				69D15F6918E73E690046FBB0 /* NSString+IUTag.h */,
 				69D15F6A18E73E690046FBB0 /* NSString+IUTag.m */,
+				69CFCA9918E9396C00E3048A /* IUHeader.h */,
+				69CFCA9A18E9396C00E3048A /* IUHeader.m */,
 			);
 			name = IU;
 			sourceTree = "<group>";
@@ -352,8 +361,6 @@
 				69757AE618D95BBC0095CBAC /* JDLogUtil.m */,
 				69757AE918D95BBC0095CBAC /* JDOutlineView.h */,
 				69757AEA18D95BBC0095CBAC /* JDOutlineView.m */,
-				69757AEB18D95BBC0095CBAC /* JDRuntime.h */,
-				69757AEC18D95BBC0095CBAC /* JDRuntime.m */,
 				69757AED18D95BBC0095CBAC /* NSFlipedScrollView.h */,
 				69757AEE18D95BBC0095CBAC /* NSFlipedScrollView.m */,
 				69757AEF18D95BBC0095CBAC /* JDTextField.h */,
@@ -529,6 +536,9 @@
 				69D15F6C18E893170046FBB0 /* LMToolbarVC.h */,
 				69D15F6D18E893170046FBB0 /* LMToolbarVC.m */,
 				69D15F6E18E893170046FBB0 /* LMToolbarVC.xib */,
+				69CFCAAF18E95A0C00E3048A /* LMResourceVC.h */,
+				69CFCAB018E95A0C00E3048A /* LMResourceVC.m */,
+				69CFCAB118E95A0C00E3048A /* LMResourceVC.xib */,
 			);
 			name = Editor;
 			sourceTree = "<group>";
@@ -616,6 +626,7 @@
 				69C575B518D6F61E0016F050 /* InfoPlist.strings in Resources */,
 				69C5762D18D70B850016F050 /* LMWC.xib in Resources */,
 				690A409618E1645B00095263 /* LMWidgetLibraryVC.xib in Resources */,
+				69CFCAB418E95A0C00E3048A /* LMResourceVC.xib in Resources */,
 				69D15F7018E893170046FBB0 /* LMToolbarVC.xib in Resources */,
 				69B37F0E18DFDEE800DE620F /* LMFileNaviVC.xib in Resources */,
 				69C575C318D6F61E0016F050 /* Images.xcassets in Resources */,
@@ -636,6 +647,7 @@
 				69B9A39918E697F70007D6E2 /* iu.css in Resources */,
 				696D1C9F18E5778400B4AB16 /* reset.css in Resources */,
 				696D1C9B18E5366400B4AB16 /* webTemplate.html in Resources */,
+				69CFCAB518E95A0C00E3048A /* LMResourceVC.xib in Resources */,
 				69C575D318D6F61E0016F050 /* InfoPlist.strings in Resources */,
 				690A40A618E17C5700095263 /* widgetForDefault.plist in Resources */,
 			);
@@ -687,6 +699,7 @@
 				69757B2518D95FDA0095CBAC /* NSMutableDictionary+IUTag.m in Sources */,
 				69757B0418D95BBC0095CBAC /* JDEnvUtil.m in Sources */,
 				69757B0B18D95BBC0095CBAC /* JDOutlineView.m in Sources */,
+				69CFCAB218E95A0C00E3048A /* LMResourceVC.m in Sources */,
 				69757B1518D95BBC0095CBAC /* NSTextField+DragAndDrop.m in Sources */,
 				69C5760B18D6FE020016F050 /* IUComponent.m in Sources */,
 				69757ACE18D801E70095CBAC /* LMCanvasV.m in Sources */,
@@ -699,9 +712,9 @@
 				69C5764018D729830016F050 /* IUDocumentController.m in Sources */,
 				69757B3118DAE19E0095CBAC /* IUDocumentGroupNode.m in Sources */,
 				69757B0118D95BBC0095CBAC /* JDArrayDict.m in Sources */,
-				69757B0C18D95BBC0095CBAC /* JDRuntime.m in Sources */,
 				69C575BE18D6F61E0016F050 /* LMAppDelegate.m in Sources */,
 				690A409918E1665E00095263 /* LMGeneralObject.m in Sources */,
+				69CFCA9B18E9396C00E3048A /* IUHeader.m in Sources */,
 				69B9A39F18E6B7E50007D6E2 /* NSTreeController+JDExtension.m in Sources */,
 				69757B1318D95BBC0095CBAC /* JDWebUtil.m in Sources */,
 				69C5760C18D6FE020016F050 /* IUCSS.m in Sources */,
@@ -729,6 +742,7 @@
 				69B9A39C18E6B1860007D6E2 /* iu.js in Sources */,
 				69B9A3A018E6B7E50007D6E2 /* NSTreeController+JDExtension.m in Sources */,
 				69C575D518D6F61E0016F050 /* IUEditorTests.m in Sources */,
+				69CFCAB318E95A0C00E3048A /* LMResourceVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

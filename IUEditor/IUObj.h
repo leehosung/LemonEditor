@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "IUCSS.h"
+#import "IUProject.h"
+
 
 #define IUCSSDefaultFrame -1
+
 
 @interface IUObj : NSObject <NSCoding>
 
@@ -21,8 +24,9 @@
 -(NSMutableArray*)allChildren;
 
 //initialize
--(id)initWithSetting:(NSDictionary*)setting;
+-(id)initWithProject:(IUProject*)project setting:(NSDictionary*)setting;
 
+@property IUProject *project;
 
 // this is IU setting
 @property (nonatomic) NSString *htmlID;
@@ -46,9 +50,6 @@
 @property (readonly) BOOL disableYInput;
 @property (readonly) BOOL disableWidthInput;
 @property (readonly) BOOL disableHeightInput;
-
--(IUObj*)iuHitTest:(NSPoint)point;
-
 
 
 @end

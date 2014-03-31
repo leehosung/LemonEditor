@@ -11,6 +11,7 @@
 @implementation IUView
 -(BOOL)addIU:(IUObj *)iu error:(NSError**)error{
     [self.children addObject:iu];
+    [iu bind:@"project" toObject:self withKeyPath:@"project" options:nil];
     return YES;
 }
 @end

@@ -10,20 +10,31 @@
 
 @implementation IUPage
 
-- (void)setATemplate:(IUTemplate *)aTemplate{
-    
+- (void)encodeWithCoder:(NSCoder *)aCoder{
+    [super encodeWithCoder:aCoder];
+    [aCoder encodeFromObject:self withProperties:[IUPage properties]];
 }
 
-- (id)initWithSetting:(NSDictionary *)setting{
-    self = [super initWithSetting:setting];
+- (id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+    [aDecoder decodeToObject:self withProperties:[IUPage properties]];
+    return self;
+}
+
+- (id)initWithProject:(IUProject *)project setting:(NSDictionary *)setting{
+    self = [super initWithProject:project setting:setting];
     
     //add some iu
-    IUObj *obj = [[IUObj alloc] initWithSetting:nil];
+    IUObj *obj = [[IUObj alloc] initWithProject:project setting:setting];
     obj.htmlID = @"qwerq";
     obj.name = @"sample object";
     [self addIU:obj error:nil];
     
-    [self.css removeStyle:IUCSSTagFrameCollection];
+    [self.css removeTag:IUCSSTagX];
+    [self.css removeTag:IUCSSTagY];
+    [self.css removeTag:IUCSSTagWidth];
+    [self.css removeTag:IUCSSTagHeight];
+
     return self;
 }
 
