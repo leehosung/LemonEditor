@@ -17,11 +17,7 @@
     self = [super init];
     if (self) {
         [aDecoder decodeToObject:self withProperties:[[IUObj class] properties]];
-        _children = [aDecoder decodeObjectForKey:@"children"];
         _css = [aDecoder decodeObjectForKey:@"css"];
-        for (IUObj *child in _children) {
-            [child bind:@"project" toObject:self withKeyPath:@"project" options:nil];
-        }
     }
     return self;
 }
@@ -31,14 +27,12 @@
         assert(0);
     }
     [aCoder encodeFromObject:self withProperties:[[IUObj class] properties]];
-    [aCoder encodeObject:_children forKey:@"children"];
     [aCoder encodeObject:self.css forKey:@"css"];
 }
 
 -(id)initWithProject:(IUProject*)project setting:(NSDictionary*)setting{
     self = [super init];{
         _project = project;
-        _children = [NSMutableArray array];
         _css = [[IUCSS alloc] init];
         [_css putTag:IUCSSTagWidth value:@(50)];
         [_css putTag:IUCSSTagHeight value:@(35)];
@@ -46,6 +40,7 @@
     }
     return self;
 }
+
 
 
 -(id)init{

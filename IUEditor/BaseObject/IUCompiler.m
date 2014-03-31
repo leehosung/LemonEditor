@@ -29,12 +29,6 @@
     for (IUObj *obj in document.allChildren) {
         [css appendString:[self cssSourceForIU:obj width:IUCSSTagDictionaryDefaultWidth]];
     }
-    if ([document isKindOfClass:[IUPage class]]) {
-        IUPage *page = (IUPage*)document;
-        for (IUObj *obj in page.master.allChildren) {
-            [css appendString:[self cssSourceForIU:obj width:IUCSSTagDictionaryDefaultWidth]];
-        }
-    }
     [source replaceOccurrencesOfString:@"<!--CSS_Replacement-->" withString:[css stringByIndent:8 prependIndent:NO] options:0 range:[source fullRange]];
 
     //change html

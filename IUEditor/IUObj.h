@@ -20,7 +20,7 @@
 @property (readonly) IUCSS *css; //used by subclass
 
 
-@property (readonly) NSMutableArray *children;
+@property (readonly) NSArray *children;
 -(NSMutableArray*)allChildren;
 
 //initialize

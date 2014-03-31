@@ -10,13 +10,14 @@
 
 @interface IUView : IUObj
 
+@property (readonly) NSMutableArray *children;
 @property (readonly) BOOL   textEditable;
 
 -(void)undoRemoveIU:(IUObj *)iu index:(NSInteger)index;
--(BOOL)removeIU:(IUObj *)iu;
 
 -(BOOL)addIU:(IUObj *)iu error:(NSError**)error;
 -(BOOL)insertIU:(IUObj *)iu atIndex:(NSInteger)index  error:(NSError**)error;
+-(BOOL)removeIU:(IUObj *)iu;
 
 -(void)moveIU:(IUObj*)IUObj to:(NSInteger)zIndex;
 

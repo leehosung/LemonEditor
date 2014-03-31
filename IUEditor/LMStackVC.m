@@ -29,7 +29,7 @@
 -(void)setDocument:(IUDocument *)document{
     _document = document;
     for (IUObj *iu in document.allChildren) {
-        assert(iu.name.length);
+        NSAssert(iu.name.length, @"%@ name is unset", [iu description]);
     }
 }
 
