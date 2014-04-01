@@ -7,8 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+@class IUProject;
 @interface LMWidgetLibraryVC : NSViewController
+
+@property (nonatomic) _binding_ IUProject   *project;
 -(void)setWidgetProperties:(NSArray*)array;
 @property (nonatomic, readonly) NSArray *widgets;
 @end

@@ -23,12 +23,13 @@
                         <rect key="frame" x="1" y="1" width="248" height="155"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView ambiguous="YES" id="2om-vk-8fx">
+                            <collectionView ambiguous="YES" selectable="YES" id="2om-vk-8fx">
                                 <rect key="frame" x="0.0" y="0.0" width="248" height="155"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <connections>
                                     <binding destination="-2" name="content" keyPath="widgets" id="z2b-3K-med"/>
+                                    <outlet property="delegate" destination="-2" id="c1Y-IT-huu"/>
                                     <outlet property="itemPrototype" destination="Y4D-g3-cxE" id="GaR-N3-9WR"/>
                                 </connections>
                             </collectionView>

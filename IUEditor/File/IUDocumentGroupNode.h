@@ -16,4 +16,6 @@
 -(void)addDocument:(IUDocument*)document name:(NSString*)name;
 -(void)addDocumentGroupNode:(IUDocumentGroupNode*)node;
 
+-(NSArray*)allDocuments;
+
 @end

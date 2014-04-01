@@ -25,20 +25,14 @@
 
 //initialize
 -(id)initWithProject:(IUProject*)project setting:(NSDictionary*)setting;
-
 @property IUProject *project;
 
 // this is IU setting
 @property (nonatomic) NSString *htmlID;
 @property (nonatomic) NSString *name;
 
-@property (nonatomic) BOOL      hover;
-@property (nonatomic) BOOL      editHoverStatus;
-
-
 // followings are IU build setting;
 -(NSDictionary*)HTMLAtributes;
-
 -(NSDictionary*)CSSAttributesForWidth:(NSInteger)width;
 
 // overide folloing method

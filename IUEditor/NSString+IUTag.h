@@ -15,7 +15,7 @@
 #define IUCSSTagY @"top"
 #define IUCSSTagWidth @"width"
 #define IUCSSTagHeight @"height"
-
+#define IUCSSTagImage @"image"
 
 #define isSameTag isEqualToString
 

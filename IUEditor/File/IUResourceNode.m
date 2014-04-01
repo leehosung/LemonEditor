@@ -7,7 +7,65 @@
 //
 
 #import "IUResourceNode.h"
+#import "IUResourceGroupNode.h"
 
-@implementation IUResourceNode
+@implementation IUResourceNode{
+    IUResourceGroupNode *_group;
+    NSImage *_image;
+    NSString *_UTI;
+}
+
+
+-(id)initWithName:(NSString*)name parent:(IUResourceGroupNode*)group{
+    self = [super init];
+    self.name = name;
+    _group = group;
+    
+    CFStringRef UTIRef = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension,                                                                       (__bridge CFStringRef)[self.name pathExtension],NULL);
+    _UTI = (NSString *)CFBridgingRelease(UTIRef);
+    
+    NSImage *image = [[NSImage alloc] initWithContentsOfFile:self.path];
+    if (image) {
+        _image = image;
+    }
+    return self;
+}
+
+-(id)init{
+    assert(0);
+    return nil;
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+    _image = [aDecoder decodeObjectForKey:@"image"];
+    _group = [aDecoder decodeObjectForKey:@"group"];
+    _UTI = [aDecoder decodeObjectForKey:@"UTI"];
+    return self;
+}
+
+-(void)encodeWithCoder:(NSCoder *)aCoder{
+    [super encodeWithCoder:aCoder];
+    [aCoder encodeObject:_image forKey:@"image"];
+    [aCoder encodeObject:_group forKey:@"group"];
+    [aCoder encodeObject:_UTI forKey:@"UTI"];
+}
+
+-(IUResourceGroupNode*)parent{
+    return _group;
+}
+
+-(NSString*)path{
+    return [_group.path stringByAppendingPathComponent:self.name];
+}
+
+-(NSImage*)image{
+    return _image;
+}
+
+-(NSString*)UTI{
+    return _UTI;
+}
+
 
 @end

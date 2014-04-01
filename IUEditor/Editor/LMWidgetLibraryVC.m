@@ -8,6 +8,7 @@
 
 #import "LMWidgetLibraryVC.h"
 #import "LMGeneralObject.h"
+#import "IUObj.h"
 
 @interface LMWidgetLibraryVC ()
 
@@ -15,6 +16,7 @@
 @end
 
 @implementation LMWidgetLibraryVC{
+    NSArray *widgetProperties;
 }
 
 
@@ -26,6 +28,24 @@
     }
     return self;
 }
+
+- (BOOL)collectionView:(NSCollectionView *)collectionView writeItemsAtIndexes:(NSIndexSet *)indexes toPasteboard:(NSPasteboard *)pasteboard{
+    NSUInteger index = [indexes firstIndex];
+    LMGeneralObject *object = [[collectionView itemAtIndex:index] representedObject];
+    NSString *className = object.title;
+    NSDictionary *setting = object.dict;
+    
+    IUObj *obj = [[NSClassFromString(className) alloc] initWithProject:_project setting:setting];
+    
+    Class class = NSClassFromString(className);
+    obj.htmlID = [self.project requestNewID:class];
+    obj.name = obj.htmlID;
+    
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:obj];
+    [pasteboard setData:data forType:@"IUObj"];
+    return YES;
+}
+
 
 -(void)setWidgetProperties:(NSArray*)array{
     NSMutableArray *temp = [NSMutableArray array];
