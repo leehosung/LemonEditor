@@ -9,6 +9,7 @@
 #import "IUResourceGroupNode.h"
 #import "IUProject.h"
 #import "JDFileUtil.h"
+#import "IUResourceNode.h"
 
 @implementation IUResourceGroupNode{
 }

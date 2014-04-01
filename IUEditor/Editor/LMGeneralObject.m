@@ -9,7 +9,6 @@
 #import "LMGeneralObject.h"
 
 @implementation LMGeneralObject{
-    NSMutableDictionary *_dict;
 }
 
 -(id)init{
@@ -18,11 +17,4 @@
     return self;
 }
 
--(void)setValue:(id)value forUndefinedKey:(NSString *)key{
-    [_dict setObject:value forKey:key];
-}
-
--(id)valueForUndefinedKey:(NSString *)key{
-    return [_dict objectForKey:key];
-}
 @end

@@ -12,8 +12,8 @@
 
 @property (copy) NSString   *name;
 @property (readonly) NSArray *children;
+@property (readonly) NSArray *allChildren;
 
 -(void)addNode:(IUNode*)node;
--(NSArray*)allChildren;
 
 @end

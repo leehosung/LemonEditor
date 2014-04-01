@@ -23,6 +23,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         <connections>
+                            <binding destination="-2" name="content" keyPath="contents" id="szi-oD-zz7"/>
+                            <outlet property="delegate" destination="-2" id="yal-kG-cof"/>
                             <outlet property="itemPrototype" destination="HCs-dR-xfB" id="Gzz-R6-vum"/>
                         </connections>
                     </collectionView>
@@ -43,8 +45,19 @@
             </connections>
         </collectionViewItem>
         <view id="lO4-k2-UhW">
-            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+            <rect key="frame" x="0.0" y="0.0" width="31" height="33"/>
             <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Ti-EC-CX8">
+                    <rect key="frame" x="-3" y="-2" width="37" height="38"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="b7m-25-vPs"/>
+                    <connections>
+                        <binding destination="HCs-dR-xfB" name="value" keyPath="representedObject.image" id="gUp-co-chs"/>
+                    </connections>
+                </imageView>
+            </subviews>
         </view>
+        <userDefaultsController representsSharedInstance="YES" id="Bh2-8w-sOn"/>
     </objects>
 </document>

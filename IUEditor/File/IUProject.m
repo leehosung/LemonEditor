@@ -57,7 +57,24 @@
 }
 
 -(NSString*)requestNewID:(Class)class{
+    int i=0;
+    NSArray *allIUs = self.allIUs;
+    
+    NSString    *newName;
+    while (1) {
+        i++;
+        newName = [NSString stringWithFormat:@"%@%d",[NSStringFromClass(class) substringFromIndex:2], i];
+        for (IUObj *iu in allIUs) {
+            if ([newName isEqualToString:iu.htmlID]) {
+                continue;
+            }
+        }
+        break;
+        
+    }
+    return newName;
     NSAssert(IDDict != nil, @"IUDict is nil");
+    
     NSString *className = NSStringFromClass(class);
     if (IDDict[className] == nil) {
         IDDict[className] = @(0);
@@ -96,9 +113,6 @@
     project.masterDocumentGroup = masterGroup;
     
     
-    //make resource dir
-    ReturnNilIfFalse([project makeResourceDir]);
-    
     IUPage *page = [[IUPage alloc] initWithProject:project setting:setting];
     page.name = @"root";
     page.project = project;
@@ -111,7 +125,11 @@
     master.htmlID = [project requestNewID:[IUMaster class]];
     [masterGroup addDocument:master name:@"Master"];
     page.master = master;
+
     
+    //make resource dir
+    ReturnNilIfFalse([project makeResourceDir]);
+
     ReturnNilIfFalse([project save]);
     return project.path;
 }
@@ -145,6 +163,9 @@
     imageGroup.parent = resGroup;
     [resGroup addNode:imageGroup];
     
+    NSData *sampleImg = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"sample" ofType:@"jpg"]];
+    NSAssert([self insertData:sampleImg name:@"sample.jpg" group:imageGroup], @"sample.jpg failure");
+    
     IUResourceGroupNode *externalGroup = [[IUResourceGroupNode alloc] init];
     externalGroup.name = @"External";
     externalGroup.parent = resGroup;
@@ -165,8 +186,7 @@
 -(BOOL)insertData:(NSData*)data name:(NSString*)name group:(IUResourceGroupNode*)resourceGroup{
     assert(data != nil && name!=nil && resourceGroup != nil);
     ReturnNoIfFalse([data writeToFile:[resourceGroup.path stringByAppendingPathComponent:name] atomically:YES]);
-    IUResourceNode *newNode = [[IUResourceNode alloc] init];
-    newNode.name = name;
+    IUResourceNode *newNode = [[IUResourceNode alloc] initWithName:name parent:resourceGroup];
     [resourceGroup addNode:newNode];
     return YES;
     
@@ -186,16 +206,32 @@
     assert(0);
 }
 
+-(NSArray*)allIUs{
+    NSMutableArray  *array = [NSMutableArray array];
+    for (IUDocument *document in self.allDocuments) {
+        [array addObject:document];
+        [array addObjectsFromArray:document.allChildren];
+    }
+    return array;
+}
+
+-(NSArray*)allDocuments{
+    NSMutableArray  *array = [NSMutableArray arrayWithArray:self.pageDocuments];
+    [array addObjectsFromArray:self.masterDocuments];
+    [array addObjectsFromArray:self.componentDocuments];
+    return [array copy];
+}
+
 - (NSArray*)pageDocuments{
-    return _pageDocumentGroup.children;
+    return [_pageDocumentGroup allDocuments];
 }
 
 - (NSArray*)masterDocuments{
-    return _masterDocumentGroup.children;
+    return [_masterDocumentGroup allDocuments];
 }
 
 - (NSArray*)componentDocuments{
-    return _componentDocumentGroup.children;
+    return [_componentDocumentGroup allDocuments];
 }
 
 

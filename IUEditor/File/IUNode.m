@@ -14,8 +14,16 @@
     if (self) {
         _name = [aDecoder decodeObjectForKey:@"name"];
         _children = [[aDecoder decodeObjectForKey:@"children"] mutableCopy];
+        for (IUNode *node in _children) {
+            [node addObserver:self forKeyPath:@"allChildren" options:0 context:nil];
+        }
     }
     return self;
+}
+
+-(void)allChildrenDidChange:(NSDictionary*)change{
+    [self willChangeValueForKey:@"allChildren"];
+    [self didChangeValueForKey:@"allChildren"];
 }
 
 -(void)encodeWithCoder:(NSCoder *)aCoder{
@@ -39,7 +47,13 @@
 }
 
 -(void)addNode:(IUNode*)node{
+    [self willChangeValueForKey:@"allChildren"];
     [(NSMutableArray*)_children addObject:node];
+    [node addObserver:self forKeyPath:@"allChildren" options:0 context:nil];
+    [self didChangeValueForKey:@"allChildren"];
 }
 
+-(NSString*)description{
+    return [[super description] stringByAppendingString:self.name];
+}
 @end

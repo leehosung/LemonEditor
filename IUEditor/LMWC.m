@@ -81,6 +81,8 @@
     [fileNaviVC selectFirstDocument];
 
 
+    //construct widget library
+    [widgetLibraryVC setProject:project];
     NSString *widgetFilePath = [[NSBundle mainBundle] pathForResource:@"widgetForDefault" ofType:@"plist"];
     NSArray *availableWidgetProperties = [NSArray arrayWithContentsOfFile:widgetFilePath];
     [widgetLibraryVC setWidgetProperties:availableWidgetProperties];

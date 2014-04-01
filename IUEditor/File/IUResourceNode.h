@@ -7,7 +7,17 @@
 //
 
 #import "IUNode.h"
+#import "IUResourceGroupNode.h"
 
 @interface IUResourceNode : IUNode
+
+
+-(id)initWithName:(NSString*)name parent:(IUResourceGroupNode*)group;
+
+-(IUResourceGroupNode*)parent;
+-(NSString*)path;
+-(NSImage*)image;
+-(NSString*)UTI;
+
 
 @end

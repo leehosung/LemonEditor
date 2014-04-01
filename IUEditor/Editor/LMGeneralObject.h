@@ -12,9 +12,6 @@
 @property   NSString    *title;
 @property   NSImage     *image;
 @property   NSString    *description;
-
-//override following objects
--(void)setValue:(id)value forUndefinedKey:(NSString *)key;
--(id)valueForUndefinedKey:(NSString *)key;
+@property   NSMutableDictionary *dict;
 
 @end
