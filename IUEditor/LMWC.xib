@@ -7,7 +7,6 @@
         <customObject id="-2" userLabel="File's Owner" customClass="LMWC">
             <connections>
                 <outlet property="bottomV" destination="wfB-XB-ErH" id="c9d-Zw-9fC"/>
-                <outlet property="centerV" destination="irC-ed-4sd" id="3Ou-nB-3gq"/>
                 <outlet property="leftBottomV" destination="cuQ-6O-zlK" id="vzw-Qu-mef"/>
                 <outlet property="leftTopV" destination="1yd-Yz-bba" id="Td2-HY-z9Q"/>
                 <outlet property="resourceV" destination="pVO-0J-xdh" id="X2v-HF-1hl"/>
@@ -18,7 +17,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application"/>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="1">
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="1" customClass="CanvasWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="1302" height="804"/>
@@ -35,20 +34,24 @@
                         <rect key="frame" x="0.0" y="214" width="268" height="214"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
-                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="irC-ed-4sd" userLabel="centerV">
-                        <rect key="frame" x="269" y="267" width="593" height="458"/>
+                    <splitView fixedFrame="YES" dividerStyle="thin" translatesAutoresizingMaskIntoConstraints="NO" id="kbC-0q-vrT" userLabel="CanvasView">
+                        <rect key="frame" x="269" y="256" width="593" height="469"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
-                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5yS-wf-SAQ">
-                                <rect key="frame" x="-8" y="511" width="25" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IfH-1n-MYJ">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
+                            <customView fixedFrame="YES" id="1Fr-1L-Ptu" customClass="SizeView">
+                                <rect key="frame" x="0.0" y="0.0" width="593" height="30"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </customView>
+                            <customView fixedFrame="YES" id="xO9-R4-btm" userLabel="Main View">
+                                <rect key="frame" x="0.0" y="31" width="593" height="438"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </customView>
                         </subviews>
-                    </customView>
+                        <holdingPriorities>
+                            <real value="250"/>
+                            <real value="250"/>
+                        </holdingPriorities>
+                    </splitView>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PNY-WR-OAz" userLabel="RightV">
                         <rect key="frame" x="864" y="208" width="194" height="517"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -69,6 +72,8 @@
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="4"/>
+                <outlet property="mainView" destination="xO9-R4-btm" id="Obb-n8-B0P"/>
+                <outlet property="sizeView" destination="1Fr-1L-Ptu" id="Ndu-hf-l1u"/>
             </connections>
         </window>
     </objects>

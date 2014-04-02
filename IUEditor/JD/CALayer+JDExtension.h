@@ -12,7 +12,15 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface CALayer (JDExtension)
--(void)setCenter:(NSPoint)point;
+
+- (void)disableAction;
+
+- (void)setCenter:(NSPoint)point;
 - (void)bringSublayerToFront:(CALayer *)layer;
 - (void)sendSublayerToBack:(CALayer *)layer;
+
+-(id)addSubLayerFullFrame:(CALayer *)sublayer;
+-(id)insertSubLayerFullFrame:(CALayer *)sublayer below:(CALayer *)belowLayer;
+
+
 @end
