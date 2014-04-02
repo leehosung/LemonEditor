@@ -242,6 +242,92 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
     return subview;
 }
 
+
+
+- (void)addSubviewMiddleInFrameWithFrame:(NSView *)aView positioned:(NSWindowOrderingMode)place relativeTo:(NSView *)otherView{
+    [self addSubview:aView positioned:place relativeTo:otherView];
+    [aView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    [self addConstraints:[NSLayoutConstraint
+                          constraintsWithVisualFormat:@"V:|-0-[aView]-(0@1000)-|"
+                          options:NSLayoutFormatDirectionLeadingToTrailing
+                          metrics:nil
+                          views:NSDictionaryOfVariableBindings(aView)]];
+    NSString *widthFormat = [NSString stringWithFormat:@"[aView(%.0f)]", aView.frame.size.width];
+    [self addConstraints:[NSLayoutConstraint
+                          constraintsWithVisualFormat:widthFormat
+                          options:0
+                          metrics:nil
+                          views:NSDictionaryOfVariableBindings(aView)]];
+    
+    
+    [self addConstraint:
+     [NSLayoutConstraint constraintWithItem:aView
+                                  attribute:NSLayoutAttributeCenterX
+                                  relatedBy:NSLayoutRelationEqual
+                                     toItem:self
+                                  attribute:NSLayoutAttributeCenterX
+                                 multiplier:1 constant:0]];
+    
+    
+}
+
+- (void)addSubviewMiddleInFrameWithFrame:(NSView *)aView{
+    [self addSubview:aView];
+    [aView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    [self addConstraints:[NSLayoutConstraint
+                          constraintsWithVisualFormat:@"V:|-0-[aView]-(0@1000)-|"
+                          options:NSLayoutFormatDirectionLeadingToTrailing
+                          metrics:nil
+                          views:NSDictionaryOfVariableBindings(aView)]];
+    NSString *widthFormat = [NSString stringWithFormat:@"[aView(%.0f)]", aView.frame.size.width];
+    [self addConstraints:[NSLayoutConstraint
+                          constraintsWithVisualFormat:widthFormat
+                          options:0
+                          metrics:nil
+                          views:NSDictionaryOfVariableBindings(aView)]];
+    
+    
+    [self addConstraint:
+     [NSLayoutConstraint constraintWithItem:aView
+                                  attribute:NSLayoutAttributeCenterX
+                                  relatedBy:NSLayoutRelationEqual
+                                     toItem:self
+                                  attribute:NSLayoutAttributeCenterX
+                                 multiplier:1 constant:0]];
+    
+    
+}
+
+- (void)addSubviewVeriticalCenterInFrameWithFrame:(NSView *)aView height:(CGFloat)height{
+    [self addSubview:aView];
+    [aView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    [self addConstraints:[NSLayoutConstraint
+                          constraintsWithVisualFormat:@"H:|-0-[aView]-(0@1000)-|"
+                          options:NSLayoutFormatDirectionLeadingToTrailing
+                          metrics:nil
+                          views:NSDictionaryOfVariableBindings(aView)]];
+    NSString *heightFormat = [NSString stringWithFormat:@"V:[aView(%.0f)]", height];
+    [self addConstraints:[NSLayoutConstraint
+                          constraintsWithVisualFormat:heightFormat
+                          options:0
+                          metrics:nil
+                          views:NSDictionaryOfVariableBindings(aView)]];
+    
+    
+    [self addConstraint:
+     [NSLayoutConstraint constraintWithItem:aView
+                                  attribute:NSLayoutAttributeCenterY
+                                  relatedBy:NSLayoutRelationEqual
+                                     toItem:self
+                                  attribute:NSLayoutAttributeCenterY
+                                 multiplier:1 constant:0]];
+    
+    
+}
+
 -(void)setX:(CGFloat)x{
     self.frame = NSRectModifyX(self.frame, x);
 }

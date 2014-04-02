@@ -52,7 +52,9 @@
 
 - (id)init{
     self = [super init];
-    IDDict = [NSMutableDictionary dictionary];
+    if(self){
+        IDDict = [NSMutableDictionary dictionary];
+    }
     return self;
 }
 
@@ -162,6 +164,8 @@
     imageGroup.name = @"Image";
     imageGroup.parent = resGroup;
     [resGroup addNode:imageGroup];
+    ReturnNoIfFalse([imageGroup syncDir]);
+    
     
     NSData *sampleImg = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"sample" ofType:@"jpg"]];
     NSAssert([self insertData:sampleImg name:@"sample.jpg" group:imageGroup], @"sample.jpg failure");
@@ -170,8 +174,6 @@
     externalGroup.name = @"External";
     externalGroup.parent = resGroup;
     [resGroup addNode:externalGroup];
-    
-    ReturnNoIfFalse([imageGroup syncDir]);
     ReturnNoIfFalse([externalGroup syncDir]);
     
     NSData *cssData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"reset" ofType:@"css"]];
@@ -179,6 +181,15 @@
     
     NSData *iuCssData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"iu" ofType:@"css"]];
     NSAssert([self insertData:iuCssData name:@"iu.css" group:externalGroup], @"iu.css failure");
+    
+    IUResourceGroupNode *jsGroup = [[IUResourceGroupNode alloc] init];
+    jsGroup.name = @"JS";
+    jsGroup.parent = externalGroup;
+    [externalGroup addNode:jsGroup];
+    ReturnNoIfFalse([jsGroup syncDir]);
+    
+    NSData *jsFrameData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"iuframe" ofType:@"js"]];
+    NSAssert([self insertData:cssData name:@"iuframe.js" group:jsGroup], @"iuframe.js failure");
 
     return YES;
 }
