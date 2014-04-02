@@ -189,7 +189,7 @@
     ReturnNoIfFalse([jsGroup syncDir]);
     
     NSData *jsFrameData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"iuframe" ofType:@"js"]];
-    NSAssert([self insertData:cssData name:@"iuframe.js" group:jsGroup], @"iuframe.js failure");
+    NSAssert([self insertData:jsFrameData name:@"iuframe.js" group:jsGroup], @"iuframe.js failure");
 
     return YES;
 }

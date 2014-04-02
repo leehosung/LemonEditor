@@ -19,6 +19,9 @@
 		3DB3ACE718EBEF9D0046DFB7 /* CursorRect.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACE418EBEF9D0046DFB7 /* CursorRect.m */; };
 		3DB3ACE818EBEF9D0046DFB7 /* IUFrameDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACE618EBEF9D0046DFB7 /* IUFrameDictionary.m */; };
 		3DB3ACED18EBF7200046DFB7 /* iuframe.js in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACEC18EBF7200046DFB7 /* iuframe.js */; };
+		3DB3ACF118EBFC4C0046DFB7 /* TestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACEF18EBFC4C0046DFB7 /* TestController.m */; };
+		3DB3ACF218EBFC4C0046DFB7 /* TestController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB3ACF018EBFC4C0046DFB7 /* TestController.xib */; };
+		3DB3ACF318EBFDE20046DFB7 /* iuframe.js in Resources */ = {isa = PBXBuildFile; fileRef = 3DB3ACEC18EBF7200046DFB7 /* iuframe.js */; };
 		690A408E18E14A4E00095263 /* LMStackVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 690A408D18E14A4E00095263 /* LMStackVC.xib */; };
 		690A409518E1645B00095263 /* LMWidgetLibraryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 690A409318E1645B00095263 /* LMWidgetLibraryVC.m */; };
 		690A409618E1645B00095263 /* LMWidgetLibraryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 690A409418E1645B00095263 /* LMWidgetLibraryVC.xib */; };
@@ -152,6 +155,9 @@
 		3DB3ACEA18EBEFD80046DFB7 /* IULog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IULog.h; sourceTree = "<group>"; };
 		3DB3ACEB18EBEFD80046DFB7 /* IUDefinition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IUDefinition.h; sourceTree = "<group>"; };
 		3DB3ACEC18EBF7200046DFB7 /* iuframe.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = iuframe.js; sourceTree = "<group>"; };
+		3DB3ACEE18EBFC4C0046DFB7 /* TestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestController.h; sourceTree = "<group>"; };
+		3DB3ACEF18EBFC4C0046DFB7 /* TestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestController.m; sourceTree = "<group>"; };
+		3DB3ACF018EBFC4C0046DFB7 /* TestController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestController.xib; sourceTree = "<group>"; };
 		690A408D18E14A4E00095263 /* LMStackVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMStackVC.xib; sourceTree = "<group>"; };
 		690A409218E1645B00095263 /* LMWidgetLibraryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMWidgetLibraryVC.h; path = Editor/LMWidgetLibraryVC.h; sourceTree = "<group>"; };
 		690A409318E1645B00095263 /* LMWidgetLibraryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMWidgetLibraryVC.m; path = Editor/LMWidgetLibraryVC.m; sourceTree = "<group>"; };
@@ -624,6 +630,9 @@
 		69C575CE18D6F61E0016F050 /* IUEditorTests */ = {
 			isa = PBXGroup;
 			children = (
+				3DB3ACEE18EBFC4C0046DFB7 /* TestController.h */,
+				3DB3ACEF18EBFC4C0046DFB7 /* TestController.m */,
+				3DB3ACF018EBFC4C0046DFB7 /* TestController.xib */,
 				69C575D418D6F61E0016F050 /* IUEditorTests.m */,
 				69C575CF18D6F61E0016F050 /* Supporting Files */,
 			);
@@ -761,6 +770,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DB3ACF318EBFDE20046DFB7 /* iuframe.js in Resources */,
 				696D1C9A18E5366400B4AB16 /* webTemplate.html in Resources */,
 				690A40A218E170E200095263 /* IUView.png in Resources */,
 				69C575B518D6F61E0016F050 /* InfoPlist.strings in Resources */,
@@ -784,6 +794,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DB3ACF218EBFC4C0046DFB7 /* TestController.xib in Resources */,
 				690A40A318E170E200095263 /* IUView.png in Resources */,
 				69B9A39918E697F70007D6E2 /* iu.css in Resources */,
 				696D1C9F18E5778400B4AB16 /* reset.css in Resources */,
@@ -903,6 +914,7 @@
 				69CFCABD18EA529C00E3048A /* NSPasteboard+LMPasteboard.m in Sources */,
 				69C575D518D6F61E0016F050 /* IUEditorTests.m in Sources */,
 				69CFCAB318E95A0C00E3048A /* LMResourceVC.m in Sources */,
+				3DB3ACF118EBFC4C0046DFB7 /* TestController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

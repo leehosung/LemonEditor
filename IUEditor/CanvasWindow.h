@@ -16,6 +16,7 @@
     BOOL isSelected, isDragged, isSelectDragged;
     NSPoint startDragPoint, middleDragPoint, endDragPoint;
 }
+@property (weak) IBOutlet NSSplitView *canvasView;
 @property (weak) IBOutlet SizeView *sizeView;
 @property (weak) IBOutlet NSView *mainView;
 
