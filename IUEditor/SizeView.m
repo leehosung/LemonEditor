@@ -8,7 +8,7 @@
 
 #import "SizeView.h"
 #import "JDUIUtil.h"
-#import "CanvasWindow.h"
+#import "LMCanvasView.h"
 #import "IUDefinition.h"
 
 @implementation SizeTextField : NSTextField
@@ -94,7 +94,7 @@
     
     
     [sizeTextField setStringValue:[NSString stringWithFormat:@"%.0f", selectBox.frame.size.width]];
-    [((CanvasWindow *)[self window]) setWidthOfMainView:selectBox.frame.size.width];
+    [(LMCanvasView *)self.superview setWidthOfMainView:selectBox.frame.size.width];
 }
 
 #pragma mark -

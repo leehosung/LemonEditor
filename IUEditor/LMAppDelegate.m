@@ -22,7 +22,6 @@
     wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
     [wc showWindow:self];
     
-    [wc addFrame:400];
 #pragma mark -
 #pragma mark canvas test
 #if 0

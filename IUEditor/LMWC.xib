@@ -7,6 +7,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="LMWC">
             <connections>
                 <outlet property="bottomV" destination="wfB-XB-ErH" id="c9d-Zw-9fC"/>
+                <outlet property="centerV" destination="LCo-BM-DQN" id="a81-Fm-UQ1"/>
                 <outlet property="leftBottomV" destination="cuQ-6O-zlK" id="vzw-Qu-mef"/>
                 <outlet property="leftTopV" destination="1yd-Yz-bba" id="Td2-HY-z9Q"/>
                 <outlet property="resourceV" destination="pVO-0J-xdh" id="X2v-HF-1hl"/>
@@ -34,24 +35,6 @@
                         <rect key="frame" x="0.0" y="214" width="268" height="214"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
-                    <splitView fixedFrame="YES" dividerStyle="thin" translatesAutoresizingMaskIntoConstraints="NO" id="kbC-0q-vrT" userLabel="CanvasView">
-                        <rect key="frame" x="269" y="256" width="593" height="469"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <subviews>
-                            <customView fixedFrame="YES" id="1Fr-1L-Ptu" customClass="SizeView">
-                                <rect key="frame" x="0.0" y="0.0" width="593" height="30"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </customView>
-                            <customView fixedFrame="YES" id="xO9-R4-btm" userLabel="Main View">
-                                <rect key="frame" x="0.0" y="31" width="593" height="438"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </customView>
-                        </subviews>
-                        <holdingPriorities>
-                            <real value="250"/>
-                            <real value="250"/>
-                        </holdingPriorities>
-                    </splitView>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PNY-WR-OAz" userLabel="RightV">
                         <rect key="frame" x="864" y="208" width="194" height="517"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -68,13 +51,14 @@
                         <rect key="frame" x="1061" y="186" width="234" height="618"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LCo-BM-DQN" userLabel="centerV">
+                        <rect key="frame" x="269" y="260" width="579" height="465"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
                 </subviews>
             </view>
             <connections>
-                <outlet property="canvasView" destination="kbC-0q-vrT" id="JKK-vW-Ygf"/>
                 <outlet property="delegate" destination="-2" id="4"/>
-                <outlet property="mainView" destination="xO9-R4-btm" id="Obb-n8-B0P"/>
-                <outlet property="sizeView" destination="1Fr-1L-Ptu" id="Ndu-hf-l1u"/>
             </connections>
         </window>
     </objects>
