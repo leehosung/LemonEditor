@@ -9,7 +9,7 @@
 #import "GridView.h"
 #import "PointLayer.h"
 #import "BorderLayer.h"
-#import "IULog.h"
+#import "JDLogUtil.h"
 #import "CursorRect.h"
 #import "JDUIUtil.h"
 #import "PointTextLayer.h"

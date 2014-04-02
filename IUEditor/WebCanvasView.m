@@ -8,7 +8,7 @@
 
 #import "WebCanvasView.h"
 #import "LMWC.h"
-#import "IULog.h"
+#import "JDLogUtil.h"
 #import "IUDefinition.h"
 
 @implementation WebCanvasView

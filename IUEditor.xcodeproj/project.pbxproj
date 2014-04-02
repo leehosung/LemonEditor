@@ -152,7 +152,6 @@
 		3DB3ACE418EBEF9D0046DFB7 /* CursorRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CursorRect.m; sourceTree = "<group>"; };
 		3DB3ACE518EBEF9D0046DFB7 /* IUFrameDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUFrameDictionary.h; sourceTree = "<group>"; };
 		3DB3ACE618EBEF9D0046DFB7 /* IUFrameDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUFrameDictionary.m; sourceTree = "<group>"; };
-		3DB3ACEA18EBEFD80046DFB7 /* IULog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IULog.h; sourceTree = "<group>"; };
 		3DB3ACEB18EBEFD80046DFB7 /* IUDefinition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IUDefinition.h; sourceTree = "<group>"; };
 		3DB3ACEC18EBF7200046DFB7 /* iuframe.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = iuframe.js; sourceTree = "<group>"; };
 		3DB3ACEE18EBFC4C0046DFB7 /* TestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestController.h; sourceTree = "<group>"; };
@@ -420,7 +419,6 @@
 		3DB3ACE918EBEFCF0046DFB7 /* IULib */ = {
 			isa = PBXGroup;
 			children = (
-				3DB3ACEA18EBEFD80046DFB7 /* IULog.h */,
 				3DB3ACEB18EBEFD80046DFB7 /* IUDefinition.h */,
 			);
 			name = IULib;
