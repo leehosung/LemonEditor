@@ -83,11 +83,15 @@
 
 
 - (void)selectBox:(InnerSizeBox *)selectBox{
-    if(boxManageView.subviews.count > 1){
+    NSUInteger newSelectIndex = [boxManageView.subviews indexOfObject:selectBox];
+    
+    if(newSelectIndex != selectIndex){
         InnerSizeBox *deselectBox = [boxManageView.subviews objectAtIndex:selectIndex];
         [deselectBox deselect];
+        
+        selectIndex = newSelectIndex;
     }
-    selectIndex = [boxManageView.subviews indexOfObject:selectBox];
+    
     
     [sizeTextField setStringValue:[NSString stringWithFormat:@"%.0f", selectBox.frame.size.width]];
     [((CanvasWindow *)[self window]) setWidthOfMainView:selectBox.frame.size.width];
@@ -104,7 +108,6 @@
     newBox.boxDelegate = self;
     NSInteger index = [[self sortedArray] indexOfObject:widthNumber];
     
-    //TODO: make layout, 한가운데 constraint
     if(index > 0){
         NSView *preView = boxManageView.subviews[index-1];
         [boxManageView addSubviewMiddleInFrameWithFrame:newBox positioned:NSWindowBelow relativeTo:preView];
