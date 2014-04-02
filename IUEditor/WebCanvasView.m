@@ -81,7 +81,7 @@
         htmlElement = [self textParentIUElement:htmlElement];
     }
     
-    return [self IUNameOfDomElement:htmlElement];
+    return htmlElement.idName;
 }
 
 #pragma mark -
@@ -211,8 +211,8 @@
 #pragma mark text
 
 - (DOMHTMLElement *)textParentIUElement:(DOMNode *)node{
-    NSString *iuName = [((DOMElement *)node.parentNode) getAttribute:@"iuname"];
-    if(iuName && iuName.length != 0){
+    NSString *iuClass = ((DOMElement *)node.parentNode).className;
+    if([iuClass containsString:@"IUObj"]){
         return (DOMHTMLElement *)node.parentNode;
     }
     else if ([node.parentNode isKindOfClass:[DOMHTMLHtmlElement class]] ){
@@ -278,10 +278,6 @@
 #pragma mark -
 #pragma mark manage IU
 
-- (NSString *)IUNameOfDomElement:(DOMElement *)element{
-    NSString *iuName = [element getAttribute:@"iuname"];
-    return iuName;
-}
 - (NSString *)IDOfCurrentIU{
     if( [currentNode isKindOfClass:[DOMHTMLElement class]] ){
         return [currentNode idName];
