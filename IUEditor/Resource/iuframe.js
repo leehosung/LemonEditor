@@ -2,7 +2,7 @@ document.sharedFrameDict = {};
 
 $.fn.updatePixel = function(){
 	return this.each(function(){
-                     var myName = $(this).attr('iuname');
+                     var myName = this.id;
                      if (this.position == undefined){
                      this.position = $(this).iuPosition();
                      if (document.sharedFrameDict[myName] == undefined){

@@ -21,6 +21,17 @@
     
     wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
     [wc showWindow:self];
+    
+    [wc addFrame:400];
+#pragma mark -
+#pragma mark canvas test
+#if 0
+    self.testController = [[TestController alloc] initWithWindowNibName:@"TestController"];
+    self.testController.mainWC = self.canvasWC;
+    [self.testController showWindow:nil];
+    [wc addSelectedIU:@"test"];
+    
+#endif
 }
 
 @end

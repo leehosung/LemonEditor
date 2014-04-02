@@ -26,7 +26,7 @@
 
 - (void)setWidthOfMainView:(CGFloat)width{
     [self.mainView setWidth:width];
-    CGFloat x = ([[self contentView] frame].size.width - width)/2;
+    CGFloat x = ([self.canvasView frame].size.width - width)/2;
     if(x < 0){
         x = 0;
     }

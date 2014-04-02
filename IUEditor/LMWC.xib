@@ -71,6 +71,7 @@
                 </subviews>
             </view>
             <connections>
+                <outlet property="canvasView" destination="kbC-0q-vrT" id="JKK-vW-Ygf"/>
                 <outlet property="delegate" destination="-2" id="4"/>
                 <outlet property="mainView" destination="xO9-R4-btm" id="Obb-n8-B0P"/>
                 <outlet property="sizeView" destination="1Fr-1L-Ptu" id="Ndu-hf-l1u"/>
