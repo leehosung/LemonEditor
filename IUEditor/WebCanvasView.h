@@ -13,6 +13,8 @@
     DOMHTMLElement *currentNode;
 }
 
+@property id delegate;
+
 - (void)updateFrameDict;
 - (NSString *)IDOfCurrentIU;
 - (BOOL)isDOMTextAtPoint:(NSPoint)point;

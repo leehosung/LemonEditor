@@ -26,6 +26,8 @@
     NSMutableDictionary *cursorDict;
 }
 
+@property id delegate;
+
 - (void)addRedPointLayer:(NSString *)iuID withFrame:(NSRect)frame;
 - (void)removeAllRedPointLayer;
 
