@@ -8,7 +8,7 @@
 
 #import "PointTextLayer.h"
 #import "JDUIUtil.h"
-#import "IULog.h"
+#import "JDLogUtil.h"
 
 @implementation PointTextLayer
 

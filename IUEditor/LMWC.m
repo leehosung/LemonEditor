@@ -9,7 +9,7 @@
 #import "LMWC.h"
 
 #import "CanvasWindow.h"
-#import "IULog.h"
+#import "JDLogUtil.h"
 #import "SizeView.h"
 
 #import "LMFileNaviVC.h"

@@ -35,6 +35,7 @@
 
 - (void)clearPath{
     [path removeAllPoints];
+    self.path = [path quartzPath];
 }
 
 - (void)drawLine:(NSArray *)array{

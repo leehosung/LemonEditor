@@ -9,7 +9,7 @@
 #import "CanvasWindow.h"
 #import "LMWC.h"
 #import "JDUIUtil.h"
-#import "IULog.h"
+#import "JDLogUtil.h"
 #import "IUDefinition.h"
 
 @implementation CanvasWindow
@@ -138,7 +138,6 @@
             }
             if(isDragged){
                 isDragged = NO;
-                [self.gridView clearGuideLine];
             }
             if(isSelectDragged){
                 isSelectDragged = NO;

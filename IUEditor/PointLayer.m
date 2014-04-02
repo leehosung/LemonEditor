@@ -7,7 +7,7 @@
 //
 
 #import "PointLayer.h"
-#import "IULog.h"
+#import "JDLogUtil.h"
 #import "CursorRect.h"
 #import "JDUIUtil.h"
 
