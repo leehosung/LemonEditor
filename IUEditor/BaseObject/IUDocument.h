@@ -30,13 +30,6 @@
 
 #pragma mark Reference Management
 
--(void)addReferenceToIUDocument:(IUDocument*)document;
--(void)removeReferenceToIUDocument:(IUDocument*)document;
-
--(void)addReferenceFromIUDocument:(IUDocument*)document;
--(void)removeReferenceFromIUDocument:(IUDocument*)document;
-
--(NSArray*)outputCSSCollection;
 
 
 @property id <IUDocumentCanvas> canvas;

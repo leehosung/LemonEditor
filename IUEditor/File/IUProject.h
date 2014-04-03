@@ -37,7 +37,7 @@ typedef enum _IUGitType{
 - (void)build:(NSError**)error;
 //- (void)sync:(NSError**)error;
 
-- (void)addImage:(NSImage*)image;
+//- (void)addImage:(NSImage*)image;
 
 //used to check resource dir path
 - (NSString*)path;

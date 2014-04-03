@@ -18,7 +18,6 @@
 		3DB3ACE018EBEF5F0046DFB7 /* GuideLineLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACDC18EBEF5F0046DFB7 /* GuideLineLayer.m */; };
 		3DB3ACE718EBEF9D0046DFB7 /* CursorRect.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACE418EBEF9D0046DFB7 /* CursorRect.m */; };
 		3DB3ACE818EBEF9D0046DFB7 /* IUFrameDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACE618EBEF9D0046DFB7 /* IUFrameDictionary.m */; };
-		3DB3ACED18EBF7200046DFB7 /* iuframe.js in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACEC18EBF7200046DFB7 /* iuframe.js */; };
 		3DB3ACF118EBFC4C0046DFB7 /* TestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACEF18EBFC4C0046DFB7 /* TestController.m */; };
 		3DB3ACF218EBFC4C0046DFB7 /* TestController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB3ACF018EBFC4C0046DFB7 /* TestController.xib */; };
 		3DB3ACF318EBFDE20046DFB7 /* iuframe.js in Resources */ = {isa = PBXBuildFile; fileRef = 3DB3ACEC18EBF7200046DFB7 /* iuframe.js */; };
@@ -77,8 +76,6 @@
 		69B9A39618E5A2A30007D6E2 /* IUResourceNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B9A39518E5A2A30007D6E2 /* IUResourceNode.m */; };
 		69B9A39818E697F70007D6E2 /* iu.css in Resources */ = {isa = PBXBuildFile; fileRef = 69B9A39718E697F70007D6E2 /* iu.css */; };
 		69B9A39918E697F70007D6E2 /* iu.css in Resources */ = {isa = PBXBuildFile; fileRef = 69B9A39718E697F70007D6E2 /* iu.css */; };
-		69B9A39B18E6B1860007D6E2 /* iu.js in Sources */ = {isa = PBXBuildFile; fileRef = 69B9A39A18E6B1860007D6E2 /* iu.js */; };
-		69B9A39C18E6B1860007D6E2 /* iu.js in Sources */ = {isa = PBXBuildFile; fileRef = 69B9A39A18E6B1860007D6E2 /* iu.js */; };
 		69B9A39F18E6B7E50007D6E2 /* NSTreeController+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B9A39E18E6B7E50007D6E2 /* NSTreeController+JDExtension.m */; };
 		69B9A3A018E6B7E50007D6E2 /* NSTreeController+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B9A39E18E6B7E50007D6E2 /* NSTreeController+JDExtension.m */; };
 		69C575AB18D6F61E0016F050 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69C575AA18D6F61E0016F050 /* Cocoa.framework */; };
@@ -843,7 +840,6 @@
 				3DB3ACD318EBEF4F0046DFB7 /* WebCanvasView.m in Sources */,
 				69757B1418D95BBC0095CBAC /* NSMenu_JDExtension.m in Sources */,
 				69ABB14A18D733ED0065D584 /* IUCompiler.m in Sources */,
-				69B9A39B18E6B1860007D6E2 /* iu.js in Sources */,
 				3DB3ACDF18EBEF5F0046DFB7 /* PointTextLayer.m in Sources */,
 				6919204718DCFC8200F8522B /* NSCoder+JDExtension.m in Sources */,
 				69C5760D18D6FE020016F050 /* IUDocument.m in Sources */,
@@ -894,7 +890,6 @@
 				69757B2818D98BEA0095CBAC /* NSView+JDExtension.m in Sources */,
 				69C5761E18D7051C0016F050 /* IUProject.m in Sources */,
 				69B9A39618E5A2A30007D6E2 /* IUResourceNode.m in Sources */,
-				3DB3ACED18EBF7200046DFB7 /* iuframe.js in Sources */,
 				69B37F0D18DFDEE800DE620F /* LMFileNaviVC.m in Sources */,
 				690A409518E1645B00095263 /* LMWidgetLibraryVC.m in Sources */,
 				69757B1F18D95F1E0095CBAC /* NSDictionary+JDExtension.m in Sources */,
@@ -916,7 +911,6 @@
 				69CFCAB918E972DA00E3048A /* IUPageContent.m in Sources */,
 				6985CBA118E31558008DBF50 /* IUDocumentNode.m in Sources */,
 				6985CBA718E31D9B008DBF50 /* IUNode.m in Sources */,
-				69B9A39C18E6B1860007D6E2 /* iu.js in Sources */,
 				69CFCAC118EA8D1700E3048A /* IUImage.m in Sources */,
 				69B9A3A018E6B7E50007D6E2 /* NSTreeController+JDExtension.m in Sources */,
 				69CFCABD18EA529C00E3048A /* NSPasteboard+LMPasteboard.m in Sources */,

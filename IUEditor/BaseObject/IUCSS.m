@@ -17,6 +17,11 @@
     NSDictionary  *_cssCollectionForEditWidth;
 }
 
+-(void)setValue:(id)value forKeyPath:(NSString *)keyPath{
+    assert(0);
+}
+
+
 -(id)init{
     self = [super init];
     _cssFrameDict = [[NSMutableDictionary alloc] init];
