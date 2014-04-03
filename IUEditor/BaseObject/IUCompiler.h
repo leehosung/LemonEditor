@@ -21,7 +21,5 @@ typedef enum _IUCompilerType{
 -(NSString*)editorSource:(IUDocument*)document;
 
 -(NSString*)editorHTML:(IUObj*)iu;
--(NSString*)editorCSS:(IUObj*)iu width:(NSInteger)width;
-
 
 @end

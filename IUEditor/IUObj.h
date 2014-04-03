@@ -16,7 +16,6 @@
 
 @interface IUObj : NSObject <NSCoding>
 
-+(id)IU;
 @property (readonly) IUCSS *css; //used by subclass
 
 
@@ -34,9 +33,6 @@
 // followings are IU build setting;
 -(NSDictionary*)HTMLAtributes;
 -(NSDictionary*)CSSAttributesForWidth:(NSInteger)width;
-
-// overide folloing method
--(void)prepareEditor;
 
 //user interface status
 @property (readonly) BOOL draggable;
