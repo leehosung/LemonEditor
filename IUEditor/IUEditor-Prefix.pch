@@ -27,5 +27,8 @@
 
 #define _binding_
 
+//#define IULogSource 0
 #define IULogSource @"source"
- #endif
+//#define IULogJS 0
+#define IULogJS @"JS"
+#endif
