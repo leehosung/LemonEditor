@@ -43,7 +43,6 @@
 		69757AC218D7EB680095CBAC /* IUObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757AC118D7EB680095CBAC /* IUObj.m */; };
 		69757ACE18D801E70095CBAC /* LMCanvasV.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757ACD18D801E70095CBAC /* LMCanvasV.m */; };
 		69757B0018D95BBC0095CBAC /* CALayer+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757AD418D95BBC0095CBAC /* CALayer+JDExtension.m */; };
-		69757B0118D95BBC0095CBAC /* JDArrayDict.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757AD618D95BBC0095CBAC /* JDArrayDict.m */; };
 		69757B0318D95BBC0095CBAC /* JDDateTimeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757ADA18D95BBC0095CBAC /* JDDateTimeUtil.m */; };
 		69757B0418D95BBC0095CBAC /* JDEnvUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757ADC18D95BBC0095CBAC /* JDEnvUtil.m */; };
 		69757B0518D95BBC0095CBAC /* JDFileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757ADE18D95BBC0095CBAC /* JDFileUtil.m */; };
@@ -187,8 +186,6 @@
 		69757ACD18D801E70095CBAC /* LMCanvasV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMCanvasV.m; sourceTree = "<group>"; };
 		69757AD318D95BBC0095CBAC /* CALayer+JDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CALayer+JDExtension.h"; path = "JD/CALayer+JDExtension.h"; sourceTree = "<group>"; };
 		69757AD418D95BBC0095CBAC /* CALayer+JDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CALayer+JDExtension.m"; path = "JD/CALayer+JDExtension.m"; sourceTree = "<group>"; };
-		69757AD518D95BBC0095CBAC /* JDArrayDict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JDArrayDict.h; path = JD/JDArrayDict.h; sourceTree = "<group>"; };
-		69757AD618D95BBC0095CBAC /* JDArrayDict.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JDArrayDict.m; path = JD/JDArrayDict.m; sourceTree = "<group>"; };
 		69757AD918D95BBC0095CBAC /* JDDateTimeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JDDateTimeUtil.h; path = JD/JDDateTimeUtil.h; sourceTree = "<group>"; };
 		69757ADA18D95BBC0095CBAC /* JDDateTimeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JDDateTimeUtil.m; path = JD/JDDateTimeUtil.m; sourceTree = "<group>"; };
 		69757ADB18D95BBC0095CBAC /* JDEnvUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JDEnvUtil.h; path = JD/JDEnvUtil.h; sourceTree = "<group>"; };
@@ -508,8 +505,6 @@
 			children = (
 				69757AD318D95BBC0095CBAC /* CALayer+JDExtension.h */,
 				69757AD418D95BBC0095CBAC /* CALayer+JDExtension.m */,
-				69757AD518D95BBC0095CBAC /* JDArrayDict.h */,
-				69757AD618D95BBC0095CBAC /* JDArrayDict.m */,
 				69757B1A18D95C980095CBAC /* NSArray+JDExtension.h */,
 				69757B1B18D95C980095CBAC /* NSArray+JDExtension.m */,
 				69757B1D18D95F1E0095CBAC /* NSDictionary+JDExtension.h */,
@@ -889,7 +884,6 @@
 				6954812818D7640A00CA02F1 /* IUPage.m in Sources */,
 				69C5764018D729830016F050 /* IUDocumentController.m in Sources */,
 				69757B3118DAE19E0095CBAC /* IUDocumentGroupNode.m in Sources */,
-				69757B0118D95BBC0095CBAC /* JDArrayDict.m in Sources */,
 				69C575BE18D6F61E0016F050 /* LMAppDelegate.m in Sources */,
 				690A409918E1665E00095263 /* LMGeneralObject.m in Sources */,
 				69CFCA9B18E9396C00E3048A /* IUHeader.m in Sources */,

@@ -9,49 +9,75 @@
 #import "IUCSS.h"
 #import "JDUIUtil.h"
 
+
 @implementation IUCSS{
-    NSMutableDictionary *data;
+    NSMutableDictionary  *_cssFrameDict;
+    NSArray       *_cssFrameSortedArray;
+
+    NSDictionary  *_cssCollectionForEditWidth;
 }
 
 -(id)init{
     self = [super init];
-    data = [NSMutableDictionary dictionary];
+    _cssFrameDict = [[NSMutableDictionary alloc] init];
     return self;
 }
 
 -(void)encodeWithCoder:(NSCoder *)aCoder{
-    [aCoder encodeObject:data forKey:@"data"];
+    [aCoder encodeObject:_cssFrameDict forKey:@"cssFrameDict"];
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];
-    data = [aDecoder decodeObjectForKey:@"data"];
+    _cssFrameDict = [aDecoder decodeObjectForKey:@"cssFrameDict"];
     return self;
 }
 
--(void)putTag:(IUCSSTag)type value:(id)value{
-    [self setTag:type value:value width:IUCSSTagDictionaryDefaultWidth];
-    if (data[@IUCSSTagDictionaryDefaultWidth] == nil) {
-        data[@IUCSSTagDictionaryDefaultWidth] = [NSMutableDictionary dictionary];
+-(void)setValue:(id)value forTag:(IUCSSTag)tag forWidth:(int)width{
+    NSMutableDictionary *cssDict = _cssFrameDict[@(width)];
+    if (cssDict == nil) {
+        cssDict = [NSMutableDictionary dictionary];
+        [_cssFrameDict setObject:cssDict forKey:@(width)];
     }
-    [self setTag:type value:value width:IUCSSTagDictionaryDefaultWidth];
+    cssDict[tag] = value;
 }
 
--(void)removeTag:(IUCSSTag)type{
-    [data[@IUCSSTagDictionaryDefaultWidth] removeObjectForKey:type];
+-(void)eradicateTag:(IUCSSTag)tag{
+    for (id key in _cssFrameDict) {
+        NSMutableDictionary *cssDict = _cssFrameDict[key];
+        [cssDict removeObjectForKey:tag];
+    }
 }
 
--(void)setTag:(IUCSSTag)type value:(id)value width:(NSInteger)width{
-    if (data[@(width)] == nil) {
-        data[@(width)] = [NSMutableDictionary dictionary];
-    }
-    data[@(width)][type] = value;
-}
 
 
 -(NSDictionary*)tagDictionaryForWidth:(int)width{
-    return data[@(width)];
+    return _cssFrameDict[@(width)];
 }
 
+-(void)setEditWidth:(int)editWidth{
+    _editWidth = editWidth;
+    [self willChangeValueForKey:@"cssCollection"];
+
+    
+    NSArray *widths = [_cssFrameDict allKeys];
+    NSSortDescriptor *desc = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:NO];
+    NSArray *sortedWidth = [widths sortedArrayUsingDescriptors:@[desc]];
+
+    NSMutableDictionary *newCollection = [NSMutableDictionary dictionary];
+    for (id key in sortedWidth){
+        if ([key intValue] < editWidth) {
+            break;
+        }
+        [newCollection overwrite: _cssFrameDict[key]];
+    }
+    _cssCollectionForEditWidth = [newCollection copy];
+    
+    [self didChangeValueForKey:@"cssCollection"];
+}
+
+-(NSDictionary*)cssCollectionForEditWidth{
+    return _cssCollectionForEditWidth;
+}
 
 @end

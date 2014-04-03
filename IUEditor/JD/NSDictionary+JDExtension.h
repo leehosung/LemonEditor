@@ -18,5 +18,5 @@
 @interface NSMutableDictionary (JDExtension)
 
 - (void)setOrRemoveObject:(id)object forKey:(id)key;
-
+- (void)overwrite:(NSDictionary*)dict;
 @end

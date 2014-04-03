@@ -34,9 +34,9 @@
     self = [super init];{
         _project = project;
         _css = [[IUCSS alloc] init];
-        [_css putTag:IUCSSTagWidth value:@(50)];
-        [_css putTag:IUCSSTagHeight value:@(35)];
-        [_css putTag:IUCSSTagBGColor value:[NSColor randomColor]];
+        [_css setValue:@(50) forTag:IUCSSTagWidth forWidth:IUCSSDefaultCollection];
+        [_css setValue:@35 forTag:IUCSSTagHeight forWidth:IUCSSDefaultCollection];
+        [_css setValue:[NSColor randomColor] forTag:IUCSSTagBGColor forWidth:IUCSSDefaultCollection];
     }
     return self;
 }

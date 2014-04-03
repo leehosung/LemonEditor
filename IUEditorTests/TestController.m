@@ -52,6 +52,8 @@
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 
+/*
+
 - (IBAction)clickCSSBtn:(id)sender {
     if(self.cssSize != nil){
         NSInteger size =[self.cssSize integerValue];
@@ -70,6 +72,7 @@
         [((LMWC *)self.mainWC)  removeIU:self.removeID];
     }
 }
+ */
 
 
 
