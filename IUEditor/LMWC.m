@@ -22,6 +22,7 @@
 #import "IUResourceNode.h"
 #import "LMResourceVC.h"
 #import "LMToolbarVC.h"
+#import "LMPropertyVC.h"
 
 @interface LMWC ()
 @property (weak) IBOutlet NSView *leftTopV;
@@ -31,8 +32,10 @@
 @property (weak) IBOutlet NSView *toolbarV;
 @property (weak) IBOutlet NSView *rightV;
 @property (weak) IBOutlet NSView *bottomV;
+@property (weak) IBOutlet NSView *propertyV;
 
 @property (weak) IBOutlet NSView *resourceV;
+
 @end
 
 @implementation LMWC{
@@ -42,7 +45,8 @@
     LMWidgetLibraryVC   *widgetLibraryVC;
     LMToolbarVC     *toolbarVC;
     LMResourceVC    *resourceVC;
-
+    LMPropertyVC    *propertyVC;
+    
     IUProject   *_project;
 
 }
@@ -57,7 +61,6 @@
 }
 
 
-
 - (void)windowDidLoad
 {
     fileNaviVC = [[LMFileNaviVC alloc] initWithNibName:@"LMFileNaviVC" bundle:nil];
@@ -65,22 +68,31 @@
     [_leftBottomV addSubview:fileNaviVC.view];
     
     stackVC = [[LMStackVC alloc] initWithNibName:@"LMStackVC" bundle:nil];
+    stackVC.wc = self;
+    [self bind:@"IUController" toObject:stackVC withKeyPath:@"IUController" options:nil];
     [_rightV addSubviewFullFrame:stackVC.view];
+
     
     canvasVC = [[LMCanvasVC alloc] initWithNibName:@"LMCanvasVC" bundle:nil];
     [_centerV addSubviewFullFrame:canvasVC.view];
     ((LMWindow *)self.window).canvasView =  (LMCanvasView *)canvasVC.view;
     
     widgetLibraryVC = [[LMWidgetLibraryVC alloc] initWithNibName:@"LMWidgetLibraryVC" bundle:nil];
-    [_leftTopV addSubview:widgetLibraryVC.view];
+    [_leftTopV addSubviewFullFrame:widgetLibraryVC.view];
     
     toolbarVC = [[LMToolbarVC alloc] initWithNibName:@"LMToolbarVC" bundle:nil];
-    [_toolbarV addSubview:toolbarVC.view];
+    [_toolbarV addSubviewFullFrame:toolbarVC.view];
     
     resourceVC = [[LMResourceVC alloc] initWithNibName:@"LMResourceVC" bundle:nil];
-    [_resourceV addSubview:resourceVC.view];
+    [_resourceV addSubviewFullFrame:resourceVC.view];
+    
+    propertyVC = [[LMPropertyVC alloc] initWithNibName:@"LMPropertyVC" bundle:nil];
+    [propertyVC bind:@"IUController" toObject:self withKeyPath:@"IUController" options:nil];
+    [_propertyV addSubviewFullFrame:propertyVC.view];
+    
     [self startNewProject];
 }
+
 
 -(void)loadProject:(NSString*)path{
     _project = [IUProject projectWithContentsOfPackage:path];

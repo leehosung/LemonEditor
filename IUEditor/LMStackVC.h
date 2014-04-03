@@ -8,9 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 #import "IUDocumentController.h"
+#import "LMWC.h"
+#import "IUController.h"
 
 @interface LMStackVC : NSViewController <NSOutlineViewDataSource, NSOutlineViewDelegate>
 
+@property LMWC  *wc;
 @property (nonatomic)  IUDocument    *document;
-
+@property (strong) IBOutlet NSTreeController *IUController;
 @end

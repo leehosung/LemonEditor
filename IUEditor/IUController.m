@@ -1,27 +1,21 @@
 //
-//  NSTreeController+JDExtension.m
+//  IUTreeController.m
 //  IUEditor
 //
-//  Created by JD on 3/29/14.
+//  Created by jd on 4/3/14.
 //  Copyright (c) 2014 JDLab. All rights reserved.
 //
 
-#import "NSTreeController+JDExtension.h"
+#import "IUController.h"
 
-@implementation NSTreeController (JDExtension)
+@implementation IUController
 
-- (void)setSelectionObject:(id)object{
-    [self setSelectionObjects:@[object]];
-}
-
-- (void)setSelectionObjects:(NSArray*)objects{
-    NSMutableArray *indexPaths = [NSMutableArray array];
-    for (id anObject in objects) {
-        id obj = [self indexPathOfObject:anObject];
-        assert(obj);
-        [indexPaths addObject:obj];
+- (void)setSelectionObject:(id)anObject{
+    [self willChangeValueForKey:@"selection"];
+    if (anObject == nil) {
+        return;
     }
-    [self setSelectionIndexPaths:indexPaths];
+    [self didChangeValueForKey:@"selection"];
 }
 
 - (NSIndexPath*)indexPathOfObject:(id)anObject

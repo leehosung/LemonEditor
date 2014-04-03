@@ -6,6 +6,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMStackVC">
             <connections>
+                <outlet property="IUController" destination="S9Z-Oj-DDl" id="h2G-wG-Ncx"/>
+                <outlet property="controller" destination="S9Z-Oj-DDl" id="Ugj-Ya-pNK"/>
                 <outlet property="outlineV" destination="OC9-HE-iPa" id="T3C-q6-on7"/>
                 <outlet property="view" destination="c22-O7-iKe" id="Vbq-6q-kIe"/>
             </connections>
@@ -69,6 +71,7 @@
                                 </tableColumns>
                                 <connections>
                                     <binding destination="S9Z-Oj-DDl" name="content" keyPath="arrangedObjects" id="6tp-if-3Te"/>
+                                    <binding destination="S9Z-Oj-DDl" name="selectionIndexPaths" keyPath="selectionIndexPaths" previousBinding="6tp-if-3Te" id="za2-gt-gbf"/>
                                     <outlet property="dataSource" destination="-2" id="hCe-H4-z3u"/>
                                     <outlet property="delegate" destination="-2" id="Zaj-MY-Bvd"/>
                                 </connections>
@@ -90,7 +93,8 @@
         <userDefaultsController representsSharedInstance="YES" id="r0p-NC-HRh"/>
         <treeController childrenKeyPath="children" id="S9Z-Oj-DDl">
             <connections>
-                <binding destination="-2" name="contentObject" keyPath="document" id="QLS-mH-fhu"/>
+                <binding destination="-2" name="contentObject" keyPath="document" previousBinding="NmU-gT-pOy" id="AMa-gG-ZsW"/>
+                <binding destination="-2" name="contentArrayForMultipleSelection" keyPath="selectedIUs" id="NmU-gT-pOy"/>
             </connections>
         </treeController>
     </objects>

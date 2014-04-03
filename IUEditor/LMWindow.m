@@ -18,11 +18,4 @@
 #pragma mark -
 #pragma mark mouse
 
--(void)sendEvent:(NSEvent *)theEvent{
-    
-    [self.canvasView receiveEvent:theEvent];
-    [super sendEvent:theEvent];
-
-}
-
 @end
