@@ -28,7 +28,7 @@
     NSString *gitPath = [[NSBundle mainBundle] pathForResource:@"git" ofType:@""];
     NSString *log, *errLog;
     NSInteger result = [JDFileUtil execute:gitPath atDirectory:filePath arguments:@[@"init"] stdOut:&log stdErr:&errLog];
-    NSLog (@"git init returned:\n%@ + %@", log, errLog);
+    JDInfoLog(@"git init returned:\n%@ + %@", log, errLog);
     return !result;
 }
 
@@ -36,7 +36,7 @@
     NSString *gitPath = [[NSBundle mainBundle] pathForResource:@"git" ofType:@""];
     NSString *log, *errLog;
     NSInteger resultCode = [JDFileUtil execute:gitPath atDirectory:filePath arguments:@[@"add", @"."] stdOut:&log stdErr:&errLog];
-    NSLog (@"git init returned:\n%@ + %@", log, errLog);
+    JDInfoLog(@"git init returned:\n%@ + %@", log, errLog);
     return !resultCode;
 }
 
@@ -45,7 +45,7 @@
     NSString *msg = [NSString stringWithFormat:@"'%@'", commitMsg];
     NSString *log, *errLog;
     NSInteger resultCode = [JDFileUtil execute:gitPath atDirectory:filePath arguments:@[@"commit", @"-a", @"-m",msg] stdOut:&log stdErr:&errLog];
-    NSLog (@"git init returned:\n%@ + %@", log, errLog);
+    JDInfoLog(@"git init returned:\n%@ + %@", log, errLog);
     return !resultCode;
 
 }

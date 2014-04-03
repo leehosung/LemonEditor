@@ -22,7 +22,7 @@
 
 - (void)setDocument:(IUDocument *)document{
     NSAssert(self.resourcePath != nil, @"resourcePath is nil");
-    [JDLogUtil log:IULogSource key:@"resourcePath" string:self.resourcePath];
+    JDSectionInfoLog(IULogSource, @"resourcePath : %@", self.resourcePath);
     [_document setCanvas:nil];
     _document = document;
     [_document setCanvas:self];

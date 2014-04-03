@@ -107,7 +107,7 @@
             value = NSMaxX(frame);
             break;
         default:
-            NSLog(@"warning : there is no type");
+            JDWarnLog( @"there is no type");
             break;
     }
     return value;

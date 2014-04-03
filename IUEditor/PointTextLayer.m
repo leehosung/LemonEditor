@@ -63,7 +63,7 @@
             [self setAlignmentMode:kCAAlignmentLeft];
             break;
         default:
-            IULog(@"this type cannot be");
+            JDWarnLog( @"this type cannot be");
             break;
     }
     

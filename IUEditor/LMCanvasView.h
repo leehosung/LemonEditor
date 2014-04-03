@@ -11,10 +11,7 @@
 #import "WebCanvasView.h"
 #import "GridView.h"
 
-@interface LMCanvasView : NSSplitView {
-    BOOL isSelected, isDragged, isSelectDragged;
-    NSPoint startDragPoint, middleDragPoint, endDragPoint;
-}
+@interface LMCanvasView : NSSplitView
 
 @property (weak) IBOutlet NSView *mainView;
 

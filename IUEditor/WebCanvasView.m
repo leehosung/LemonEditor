@@ -57,7 +57,7 @@
     }
     
 
-    IULog(@"[IU:%@], dragPoint(%.1f, %.1f)", iuName, dragPoint.x, dragPoint.y);
+    JDTraceLog( @"[IU:%@], dragPoint(%.1f, %.1f)", iuName, dragPoint.x, dragPoint.y);
 
     return NO;
 }
@@ -72,7 +72,7 @@
     }
     
     if(currentNode.idName){
-//        IULog(@"%@", currentNode.idName);
+        JDTraceLog( @"%@", currentNode.idName);
     }
 }
 
@@ -119,7 +119,7 @@
  */
 - (void)doOutputToLog:(NSString*)theMessage {
     
-    NSLog(@"LOG: %@", theMessage);
+    JDInfoLog( @"LOG: %@", theMessage);
     
 }
 
@@ -200,7 +200,7 @@
     
     [((LMCanvasVC *)(self.delegate)) updateIUFrameDictionary:iuFrameDict];
     [((LMCanvasVC *)(self.delegate)) updateGridFrameDictionary:gridFrameDict];
-    IULog(@"reportSharedFrameDict");
+    JDTraceLog( @"reportSharedFrameDict");
 }
 
 - (void)updateFrameDict{
@@ -251,7 +251,7 @@
 
     //insert Text
     if (isWritable){
-        NSLog(@"insert Text : %@", text);
+        JDTraceLog( @"insert Text : %@", text);
         DOMHTMLElement *insertedTextNode = [self textParentIUElement:node];
         
         if(insertedTextNode != nil){
@@ -264,7 +264,7 @@
 - (BOOL)webView:(WebView *)webView shouldApplyStyle:(DOMCSSStyleDeclaration *)style toElementsInDOMRange:(DOMRange *)range{
     
     
-    NSLog(@"insert CSS : %@", style.cssText);
+    JDTraceLog( @"insert CSS : %@", style.cssText);
     DOMHTMLElement *insertedTextNode = [self textParentIUElement:range.startContainer];
     
     if(insertedTextNode != nil){

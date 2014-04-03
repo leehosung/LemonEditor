@@ -55,7 +55,7 @@
 
 - (void)updateHTMLText:(NSString *)insertText atIU:(NSString *)iuID;
 
-- (void)moveDiffPoint:(NSPoint)point;
+- (void)moveIUToDiffPoint:(NSPoint)point;
 - (void)changeIUFrame:(NSRect)frame IUID:(NSString *)IUID;
 
 - (void)makeNewIU:(NSString *)iuname atPoint:(NSPoint)point atIU:(NSString *)IU;
