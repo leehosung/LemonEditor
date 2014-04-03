@@ -7,9 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "IUDocument.h"
 
-@interface LMCanvasViewController : NSViewController
+@interface LMCanvasVC : NSViewController <IUDocumentCanvas>
 
+@property (nonatomic) _binding_ IUDocument  *document;
+@property (nonatomic) _binding_ NSString    *resourcePath;
 
 #pragma mark -
 #pragma mark be set by IU
@@ -19,8 +22,7 @@
 - (void)removeFrame:(NSInteger)width;
 
 //load page
-- (void)loadRequest:(NSURLRequest *)request;
-- (void)loadHTMLString:(NSString *)htmlString baseURL:(NSURL *)URL;
+- (void)setDocument:(IUDocument *)document;
 
 //select IUs
 - (BOOL)containsIU:(NSString *)IU;

@@ -13,7 +13,7 @@
 #import "CursorRect.h"
 #import "JDUIUtil.h"
 #import "PointTextLayer.h"
-#import "LMCanvasViewController.h"
+#import "LMCanvasVC.h"
 
 
 @implementation GridView
@@ -116,7 +116,7 @@
         startPoint = convertedPoint;
         
         NSRect newframe = [selectedPointlayer makeNewFrameWithType:selectedPointType withDiffPoint:diffPoint];
-        [((LMCanvasViewController *)(self.delegate)) changeIUFrame:newframe IUID:selectedPointlayer.iuID];
+        [((LMCanvasVC *)(self.delegate)) changeIUFrame:newframe IUID:selectedPointlayer.iuID];
 
         //FIXME: temporarly 연결되면 updated frame으로 webkit에서 받아서 사용함
         //테스트용도로 우선 업데이트함-나중에 지울것

@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="LMCanvasViewController">
+        <customObject id="-2" userLabel="File's Owner" customClass="LMCanvasVC">
             <connections>
                 <outlet property="view" destination="oWu-dR-4Oy" id="Qcz-xT-6Cg"/>
             </connections>
