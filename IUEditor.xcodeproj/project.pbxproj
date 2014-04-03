@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D54D64B18ED5D2E00B5FEC2 /* ResizeNE-SW.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3D54D64918ED5D2E00B5FEC2 /* ResizeNE-SW.tiff */; };
+		3D54D64C18ED5D2E00B5FEC2 /* ResizeNW-SE.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3D54D64A18ED5D2E00B5FEC2 /* ResizeNW-SE.tiff */; };
 		3DB3ACC518EBEF180046DFB7 /* LMWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACC418EBEF180046DFB7 /* LMWindow.m */; };
 		3DB3ACCB18EBEF3D0046DFB7 /* SizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACC818EBEF3D0046DFB7 /* SizeView.m */; };
 		3DB3ACCC18EBEF3D0046DFB7 /* InnerSizeBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACCA18EBEF3D0046DFB7 /* InnerSizeBox.m */; };
@@ -129,6 +131,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D54D64918ED5D2E00B5FEC2 /* ResizeNE-SW.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "ResizeNE-SW.tiff"; sourceTree = "<group>"; };
+		3D54D64A18ED5D2E00B5FEC2 /* ResizeNW-SE.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "ResizeNW-SE.tiff"; sourceTree = "<group>"; };
 		3DB3ACC318EBEF180046DFB7 /* LMWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMWindow.h; sourceTree = "<group>"; };
 		3DB3ACC418EBEF180046DFB7 /* LMWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMWindow.m; sourceTree = "<group>"; };
 		3DB3ACC718EBEF3D0046DFB7 /* SizeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizeView.h; sourceTree = "<group>"; };
@@ -329,6 +333,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D54D64718ED5D1B00B5FEC2 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				3D54D64818ED5D2300B5FEC2 /* mouseIcon */,
+			);
+			name = Image;
+			sourceTree = "<group>";
+		};
+		3D54D64818ED5D2300B5FEC2 /* mouseIcon */ = {
+			isa = PBXGroup;
+			children = (
+				3D54D64918ED5D2E00B5FEC2 /* ResizeNE-SW.tiff */,
+				3D54D64A18ED5D2E00B5FEC2 /* ResizeNW-SE.tiff */,
+			);
+			name = mouseIcon;
+			sourceTree = "<group>";
+		};
 		3DB3ACC218EBEEFA0046DFB7 /* Canvas */ = {
 			isa = PBXGroup;
 			children = (
@@ -439,6 +460,7 @@
 		690A409E18E170AC00095263 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				3D54D64718ED5D1B00B5FEC2 /* Image */,
 				690A40A418E17C5700095263 /* widgetForDefault.plist */,
 				696D1C9C18E5776200B4AB16 /* webResource */,
 				690A40A018E170B700095263 /* classImage */,
@@ -778,11 +800,13 @@
 				690A40A218E170E200095263 /* IUView.png in Resources */,
 				69C575B518D6F61E0016F050 /* InfoPlist.strings in Resources */,
 				69C5762D18D70B850016F050 /* LMWC.xib in Resources */,
+				3D54D64B18ED5D2E00B5FEC2 /* ResizeNE-SW.tiff in Resources */,
 				690A409618E1645B00095263 /* LMWidgetLibraryVC.xib in Resources */,
 				69CFCAB418E95A0C00E3048A /* LMResourceVC.xib in Resources */,
 				69D15F7018E893170046FBB0 /* LMToolbarVC.xib in Resources */,
 				69B37F0E18DFDEE800DE620F /* LMFileNaviVC.xib in Resources */,
 				69C575C318D6F61E0016F050 /* Images.xcassets in Resources */,
+				3D54D64C18ED5D2E00B5FEC2 /* ResizeNW-SE.tiff in Resources */,
 				690A40A518E17C5700095263 /* widgetForDefault.plist in Resources */,
 				69B9A39818E697F70007D6E2 /* iu.css in Resources */,
 				69CFCAC318EAA21E00E3048A /* sample.jpg in Resources */,
