@@ -17,14 +17,24 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    [JDLogUtil showLogLevel:YES andFileName:YES andFunctionName:YES andLineNumber:YES];
+    [JDLogUtil setGlobalLevel:JDLog_Level_Debug];
     [JDLogUtil enableLogSection:IULogSource];
     
     wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
     [wc showWindow:self];
     
+
 #pragma mark -
 #pragma mark canvas test
 #if 0
+    JDFatalLog(@"fatal");
+    JDErrorLog(@"error");
+    JDWarnLog(@"warn");
+    JDInfoLog(@"info");
+    JDDebugLog(@"debug");
+    JDTraceLog(@"trace");
+    
     self.testController = [[TestController alloc] initWithWindowNibName:@"TestController"];
     self.testController.mainWC = self.canvasWC;
     [self.testController showWindow:nil];

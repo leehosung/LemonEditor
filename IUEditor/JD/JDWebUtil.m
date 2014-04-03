@@ -30,7 +30,7 @@
 	NSError *error;
 	NSData *responseData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
 	if (error!=nil) {
-        NSLog(@"%s error", __func__);
+        JDErrorLog( @"%s error", __func__);
 	}
 	return responseData;
 

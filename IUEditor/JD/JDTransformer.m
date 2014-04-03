@@ -172,7 +172,7 @@
 
 
 - (id)reverseTransformedValue:(NSMutableIndexSet*)value{
-    NSLog(@"reverse transformedValue : %@", [value description]);
+    JDInfoLog( @"reverse transformedValue : %@", [value description]);
     if ([value count] ==0) {
         return @0;
     }
@@ -181,7 +181,7 @@
 
 
 -(id)transformedValue:(NSNumber*)value {
-    NSLog(@"transformedValue : %d", [value intValue]);
+    JDInfoLog( @"transformedValue : %d", [value intValue]);
     if ( (NSInteger)value == -1) {
         return 0;
     }

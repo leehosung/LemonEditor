@@ -10,7 +10,10 @@
 #import "IUDefinition.h"
 #import "LMCanvasVC.h"
 
-@implementation LMCanvasView
+@implementation LMCanvasView{
+    BOOL isSelected, isDragged, isSelectDragged;
+    NSPoint startDragPoint, middleDragPoint, endDragPoint;
+}
 
 
 - (void)awakeFromNib{
@@ -85,7 +88,7 @@
         if( [self pointInMainView:convertedPoint]){
             
             if ( theEvent.type == NSLeftMouseDown){
-                IULog(@"mouse down");
+                JDTraceLog( @"mouse down");
                 NSString *currentIUID = [self.webView IDOfCurrentIU];
                 
                 if (theEvent.clickCount == 1){
@@ -108,7 +111,7 @@
                 }
             }
             else if (theEvent.type == NSLeftMouseDragged ){
-                IULog(@"mouse dragged");
+                JDTraceLog( @"mouse dragged");
                 endDragPoint = convertedPoint;
                 
                 //draw select rect
@@ -126,7 +129,7 @@
                 if(isSelected){
                     isDragged = YES;
                     NSPoint diffPoint = NSMakePoint(endDragPoint.x - middleDragPoint.x, endDragPoint.y - middleDragPoint.y);
-                    [((LMCanvasVC *)self.delegate) moveDiffPoint:diffPoint];
+                    [((LMCanvasVC *)self.delegate) moveIUToDiffPoint:diffPoint];
                 }
                 
                 
@@ -138,7 +141,7 @@
         
         
         if ( theEvent.type == NSLeftMouseUp ){
-            //        IULog(@"NSLeftMouseUp");
+            JDTraceLog( @"NSLeftMouseUp");
             
             [self.gridView clearGuideLine];
             
@@ -156,7 +159,7 @@
         }
     }
     else {
-        IULog(@"gridview select");
+        JDTraceLog( @"gridview select");
     }
 
     

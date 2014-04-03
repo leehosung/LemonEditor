@@ -52,7 +52,7 @@ static JDFileUtil *sharedJDFileUtill;
     NSString *stdErr;
     NSInteger resultCode = [JDFileUtil execute:@"/bin/mkdir" atDirectory:@"/" arguments:@[@"-p", path] stdOut:nil stdErr:&stdErr];
     if (resultCode !=0 ) {
-        NSLog(@"err at mkdirpath");
+        JDErrorLog(@"err at mkdirpath");
     }
     return !resultCode;
 }
@@ -174,7 +174,7 @@ static JDFileUtil *sharedJDFileUtill;
 -(BOOL) appendToFile:(NSString*)path content:(NSString*)content{
     NSFileHandle *myHandle = [NSFileHandle fileHandleForWritingAtPath:path];
     if (myHandle == nil){
-        NSLog(@"Failed to open file");
+        JDErrorLog(@"Failed to open file");
         return NO;
     }
 
@@ -191,7 +191,7 @@ static JDFileUtil *sharedJDFileUtill;
     NSString *newFilePath      =[directoryPath stringByAppendingFormat:@"/%@",filename];
     [[NSFileManager defaultManager] copyItemAtPath:resourceFilePath toPath:newFilePath error:&result];
     if (result) {
-        NSLog([result description],nil);
+        JDErrorLog(@"%@", [result description]);
     }
     return result;
 }

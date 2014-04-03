@@ -107,7 +107,7 @@
             frame = NSMakeRect(iuFrame.origin.x, iuFrame.origin.y, iuFrame.size.width+diffPoint.x, iuFrame.size.height+diffPoint.y);
             break;
         default:
-            IULog(@"Error : this type cannot be");
+            JDWarnLog( @"this type cannot be");
             break;
     }
     return frame;
@@ -146,7 +146,7 @@
             point = NSMakePoint(iuFrame.origin.x+iuFrame.size.width, iuFrame.origin.y+iuFrame.size.height);
             break;
         default:
-            IULog(@"Error : this type cannot be");
+            JDWarnLog( @"this type cannot be");
             break;
     }
     NSRect frame = NSMakeRect(round(point.x-IUPointSize/2), round(point.y-IUPointSize/2), IUPointSize, IUPointSize);
@@ -188,7 +188,7 @@
                 newCursorRect.cursor = [NSCursor resizeLeftRightCursor];
                 break;
             default:
-                IULog(@"Error : this type cannot be");
+                JDWarnLog( @"this type cannot be");
                 break;
         }
         

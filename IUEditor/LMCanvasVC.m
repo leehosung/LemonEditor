@@ -60,7 +60,7 @@
 
 - (void)setDocument:(IUDocument *)document{
     NSAssert(self.resourcePath != nil, @"resourcePath is nil");
-    [JDLogUtil log:IULogSource key:@"resourcePath" string:self.resourcePath];
+    JDSectionInfoLog( IULogSource, @"resourcePath  : %@", self.resourcePath);
     [_document setCanvas:nil];
     _document = document;
     [_document setCanvas:self];
@@ -254,7 +254,7 @@
 #pragma mark frameDict
 
 - (void)updateIUFrameDictionary:(NSMutableDictionary *)iuFrameDict{
-    IULog(@"report updated frame dict");
+    JDTraceLog(@"report updated frame dict");
     
     
     //TODO: updated frame dict to IU
@@ -282,12 +282,12 @@
 #pragma mark updatedText
 - (void)updateHTMLText:(NSString *)insertText atIU:(NSString *)iuID{
     
-    IULog(@"[IU:%@], %@", iuID, insertText);
+    JDTraceLog(@"[IU:%@], %@", iuID, insertText);
 }
 
 #pragma mark moveIU
 //drag & drop after select IU
-- (void)moveDiffPoint:(NSPoint)point{
+- (void)moveIUToDiffPoint:(NSPoint)point{
     for(NSString *IUName in selectedIUs){
         NSRect currentFrame = [[frameDict.dict objectForKey:IUName] rectValue];
         NSRect moveFrame = currentFrame;
@@ -297,7 +297,7 @@
         moveFrame.origin = guidePoint;
         //TODO: set TO IU
     }
-    IULog(@"Point:(%.1f %.1f)", point.x, point.y);
+    JDTraceLog(@"Point:(%.1f %.1f)", point.x, point.y);
 }
 //drag pointlayer // only one IU
 - (void)changeIUFrame:(NSRect)frame IUID:(NSString *)IUID{
@@ -307,13 +307,13 @@
     guideFrame.size = [frameDict guideSizeOfCurrentFrame:frame IU:IUID];
     
     //TODO: set TO IU
-    IULog(@"[IU:%@]\n origin: (%.1f, %.1f) \n size: (%.1f, %.1f)",
+    JDTraceLog( @"[IU:%@]\n origin: (%.1f, %.1f) \n size: (%.1f, %.1f)",
           IUID, guideFrame.origin.x, guideFrame.origin.y, guideFrame.size.width, guideFrame.size.height);
 }
 
 //FIXME: inner IU도 표시
 - (void)makeNewIU:(NSString *)iuname atPoint:(NSPoint)point atIU:(NSString *)IU{
-    IULog(@"[IU:%@] : point(%.1f, %.1f) atIU:%@", iuname, point.x, point.y, IU);
+    JDTraceLog( @"[IU:%@] : point(%.1f, %.1f) atIU:%@", iuname, point.x, point.y, IU);
 }
 
 @end

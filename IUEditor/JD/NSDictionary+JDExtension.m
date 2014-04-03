@@ -15,7 +15,7 @@
     NSError *error;
     NSData *data = [NSJSONSerialization dataWithJSONObject:self options:0 error:&error];
     if (error) {
-        [JDLogUtil log:@"WriteAsJSONFile" err:error];
+        JDErrorLog( @"WriteAsJsonFile : %@", error.localizedFailureReason);
         return NO;
     }
     return [data writeToFile:path atomically:atomically];
@@ -26,7 +26,7 @@
     NSError *error;
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
     if (error) {
-        [JDLogUtil log:@"dictionaryWithJSONContentsOfFile" err:error];
+        JDErrorLog( @"dictionaryWithJsonContentsOfFile : %@", error.localizedFailureReason);
         return nil;
     }
     return dict;

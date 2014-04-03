@@ -34,8 +34,9 @@
     //change html
     NSString *html = [[self editorHTML:document] stringByIndent:8 prependIndent:YES];
     [source replaceOccurrencesOfString:@"<!--HTML_Replacement-->" withString:html options:0 range:[source fullRange]];
+    
+    JDSectionInfoLog( IULogSource, @"source : %@", [@"\n" stringByAppendingString:source]);
 
-    [JDLogUtil log:IULogSource key:@"source" string:[@"\n" stringByAppendingString:source]];
     return source;
 }
 
