@@ -17,14 +17,17 @@
 
 @property (nonatomic) _binding_ int editWidth;
 
+
+//set tag, or delete tag
 -(void)setValue:(id)value forTag:(IUCSSTag)tag forWidth:(int)width;
 
+//remove tag of all tag dictionay in width
 -(void)eradicateTag:(IUCSSTag)type;
 
-
+//get css tag dictionary for specific width
 -(NSDictionary*)tagDictionaryForWidth:(int)width;
 
-@property (readonly) NSDictionary *cssCollectionForEditWidth;
--(void)setValue:(id)value forKeyPath:(NSString *)keyPath;
+//observable.
+@property (readonly) NSDictionary *affectingTagCollection;
 
 @end

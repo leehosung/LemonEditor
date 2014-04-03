@@ -11,7 +11,7 @@
 #import "NSTreeController+JDExtension.h"
 
 @interface LMFileNaviVC ()
-@property (strong, nonatomic) IBOutlet NSTreeController *treeController;
+@property (strong, nonatomic) IBOutlet NSTreeController *documentController;
 
 @end
 
@@ -37,15 +37,15 @@
 
 -(void)selectionDidChange:(NSDictionary*)dict{
     [self willChangeValueForKey:@"selection"];
-    _selection = [_treeController.selectedObjects firstObject];
+    _selection = [_documentController.selectedObjects firstObject];
     [self didChangeValueForKey:@"selection"];
 }
 
 -(void)setProject:(IUProject *)project{
     _project = project;
     
-    [_treeController setContent:_project];
-    [_treeController addObserver:self forKeyPath:@"selection" options:0 context:nil];
+    [_documentController setContent:_project];
+    [_documentController addObserver:self forKeyPath:@"selection" options:0 context:nil];
     
 }
 
@@ -59,7 +59,7 @@
             break;
         }
     }
-    [_treeController setSelectionObject:documentNode];
+    [_documentController setSelectionObject:documentNode];
 }
 
 

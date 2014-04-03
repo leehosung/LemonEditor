@@ -7,9 +7,13 @@
 //
 
 #import "LMStackVC.h"
+#import "IUController.h"
 
 @interface LMStackVC ()
+
 @property (weak) IBOutlet NSOutlineView *outlineV;
+//@property (strong) IBOutlet IUController *controller;
+
 @end
 
 @implementation LMStackVC
@@ -19,6 +23,12 @@
     return self;
 }
 
+-(void)awakeFromNib{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [_IUController addObserver:self forKeyPath:@"selectedObjects" options:0 context:nil];
+    });
+}
 
 
 - (NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(NSTreeNode*)item {

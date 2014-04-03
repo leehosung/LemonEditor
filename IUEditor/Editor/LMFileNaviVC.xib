@@ -6,7 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMFileNaviVC">
             <connections>
-                <outlet property="treeController" destination="gdF-Dg-Xge" id="bJg-mO-UIl"/>
+                <outlet property="documentController" destination="gdF-Dg-Xge" id="nP3-xi-aAd"/>
                 <outlet property="view" destination="1rP-oJ-jmG" id="aXR-PX-KA9"/>
             </connections>
         </customObject>

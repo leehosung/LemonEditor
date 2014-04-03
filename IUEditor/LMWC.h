@@ -10,12 +10,12 @@
 #import "IUDocumentController.h"
 #import "WebCanvasView.h"
 #import "IUFrameDictionary.h"
-
+@class LMWindow;
 
 @interface LMWC : NSWindowController <NSWindowDelegate>
 
 @property (nonatomic) _binding_ IUNode *selectedNode;
-@property (nonatomic) _binding_ id selectedIU;
+@property  _binding_ NSTreeController   *IUController;
 
 -(void)loadProject:(NSString*)path;
 -(void)startNewProject;
