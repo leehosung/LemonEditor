@@ -25,9 +25,9 @@
     NSMutableString *css = [NSMutableString string];
     
     
-    [css appendString:[self cssSourceForIU:document width:IUCSSTagDictionaryDefaultWidth]];
+    [css appendString:[self cssSourceForIU:document width:IUCSSDefaultCollection]];
     for (IUObj *obj in document.allChildren) {
-        [css appendString:[self cssSourceForIU:obj width:IUCSSTagDictionaryDefaultWidth]];
+        [css appendString:[self cssSourceForIU:obj width:IUCSSDefaultCollection]];
     }
     [source replaceOccurrencesOfString:@"<!--CSS_Replacement-->" withString:[css stringByIndent:8 prependIndent:NO] options:0 range:[source fullRange]];
 
@@ -42,7 +42,7 @@
 -(NSString*)cssSourceForIU:(IUObj*)iu width:(int)width{
     NSMutableString *css = [NSMutableString string];
     [css appendString:[NSString stringWithFormat:@"#%@ {", iu.htmlID]];
-    [css appendString:[self CSSContent:[iu CSSAttributesForWidth:IUCSSTagDictionaryDefaultWidth]]];
+    [css appendString:[self CSSContent:[iu CSSAttributesForWidth:IUCSSDefaultCollection]]];
     [css appendString:@"}"];
     [css appendString:@"\n"];
     return css;

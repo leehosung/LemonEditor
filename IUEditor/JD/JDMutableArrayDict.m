@@ -9,7 +9,7 @@
 
 //
 
-#import "JDArrayDict.h"
+#import "JDMutableArrayDict.h"
 
 @implementation JDMutableArrayDict
 
@@ -34,8 +34,8 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder{
 	if (self=[super init]) {
-		self.dict=[aDecoder decodeObjectForKey:@"dict"];
-		self.array=[aDecoder decodeObjectForKey:@"array"];
+		self.dict=[[aDecoder decodeObjectForKey:@"dict"] mutableCopy];
+		self.array=[[aDecoder decodeObjectForKey:@"array"] mutableCopy];
 	}
 	return self;
 }

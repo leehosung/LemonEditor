@@ -16,6 +16,7 @@
 #define IUCSSUnitPixel   1
 #define IUCSSUnitPercent 2
 
+
 @interface NSMutableDictionary (IUTag)
 
 -(void)putTag:(IUCSSTag)tag intValue:(int)intValue ignoreZero:(BOOL)ignoreZero unit:(IUCSSUnit)unit;
@@ -24,7 +25,6 @@
 
 -(void)putTag:(IUCSSTag)tag string:(NSString*)stringValue;
 
--(void)removeTags:(NSArray*)tags;
 -(void)removeTag:(IUCSSTag)key;
 
 @end

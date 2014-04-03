@@ -43,5 +43,26 @@
     [self setObject:object forKey:key];
 }
 
+-(void)overwrite:(NSDictionary *)overwriteDict{
+    for (id key in overwriteDict) {
+        if ([self objectForKey:key] != nil) {
+            if ([[self objectForKey:key] isKindOfClass:[NSDictionary class]] &&
+                [[overwriteDict objectForKey:key] isKindOfClass:[NSDictionary class]]) {
+                NSMutableDictionary *subDict = [[self objectForKey:key] mutableCopy];
+                [subDict overwrite:[overwriteDict objectForKey:key]];
+                [self setObject:subDict forKey:key];
+            }
+            else{
+                [self setObject:[overwriteDict objectForKey:key] forKey:key];
+            }
+        }
+        else{
+            [self setObject:[overwriteDict objectForKey:key] forKey:key];
+        }
+    }
+    return;
+}
+
+
 
 @end

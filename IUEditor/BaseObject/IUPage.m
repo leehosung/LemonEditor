@@ -82,10 +82,10 @@
     obj.name = @"sample object";
     [self addIU:obj error:nil];
     
-    [self.css removeTag:IUCSSTagX];
-    [self.css removeTag:IUCSSTagY];
-    [self.css removeTag:IUCSSTagWidth];
-    [self.css removeTag:IUCSSTagHeight];
+    [self.css eradicateTag:IUCSSTagX];
+    [self.css eradicateTag:IUCSSTagY];
+    [self.css eradicateTag:IUCSSTagWidth];
+    [self.css eradicateTag:IUCSSTagHeight];
 
     return self;
 }

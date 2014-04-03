@@ -10,14 +10,21 @@
 
 
 
-#define IUCSSTagDictionaryDefaultWidth -1
+#define IUCSSDefaultCollection 9999
+
 
 @interface IUCSS : NSObject <NSCoding>
 
--(void)putTag:(IUCSSTag)type value:(id)value;
--(void)removeTag:(IUCSSTag)type;
+@property (nonatomic) _binding_ int editWidth;
+
+-(void)setValue:(id)value forTag:(IUCSSTag)tag forWidth:(int)width;
+
+-(void)eradicateTag:(IUCSSTag)type;
+
 
 -(NSDictionary*)tagDictionaryForWidth:(int)width;
 
+@property (readonly) NSDictionary *cssCollectionForEditWidth;
+-(void)setValue:(id)value forKeyPath:(NSString *)keyPath;
 
 @end
