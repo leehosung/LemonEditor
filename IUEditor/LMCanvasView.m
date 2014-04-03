@@ -8,7 +8,7 @@
 
 #import "LMCanvasView.h"
 #import "IUDefinition.h"
-#import "LMCanvasViewController.h"
+#import "LMCanvasVC.h"
 
 @implementation LMCanvasView
 
@@ -47,7 +47,7 @@
 
 - (BOOL)canAddIU:(NSString *)IUID{
     if(IUID != nil){
-        if( [((LMCanvasViewController *)self.delegate) containsIU:IUID] == NO ){
+        if( [((LMCanvasVC *)self.delegate) containsIU:IUID] == NO ){
             return YES;
         }
     }
@@ -60,7 +60,7 @@
         return NO;
     }
     
-    if( [((LMCanvasViewController *)self.delegate) containsIU:IUID] == YES ){
+    if( [((LMCanvasVC *)self.delegate) containsIU:IUID] == YES ){
         return NO;
     }
     return YES;
@@ -74,7 +74,7 @@
 }
 
 //it's from CanvasWindow(not a NSView)
--(void)sendEvent:(NSEvent *)theEvent{
+-(void)receiveEvent:(NSEvent *)theEvent{
     
     NSPoint originalPoint = [theEvent locationInWindow];
     NSPoint convertedPoint = [self.mainView convertPoint:originalPoint fromView:nil];
@@ -92,12 +92,12 @@
                     
                     
                     if( [self canRemoveIU:theEvent IUID:currentIUID] ){
-                        [((LMCanvasViewController *)self.delegate) removeSelectedAllIUs];
+                        [((LMCanvasVC *)self.delegate) removeSelectedAllIUs];
                         
                     }
                     
                     if([self canAddIU:currentIUID]){
-                        [((LMCanvasViewController *)self.delegate) addSelectedIU:currentIUID];
+                        [((LMCanvasVC *)self.delegate) addSelectedIU:currentIUID];
                     }
                     
                     if([self.webView isDOMTextAtPoint:convertedPoint] == NO){
@@ -120,13 +120,13 @@
                     NSRect selectFrame = NSMakeRect(startDragPoint.x, startDragPoint.y, size.width, size.height);
                     
                     [self.gridView drawSelectionLayer:selectFrame];
-                    [((LMCanvasViewController *)self.delegate) selectIUInRect:selectFrame];
+                    [((LMCanvasVC *)self.delegate) selectIUInRect:selectFrame];
                     
                 }
                 if(isSelected){
                     isDragged = YES;
                     NSPoint diffPoint = NSMakePoint(endDragPoint.x - middleDragPoint.x, endDragPoint.y - middleDragPoint.y);
-                    [((LMCanvasViewController *)self.delegate) moveDiffPoint:diffPoint];
+                    [((LMCanvasVC *)self.delegate) moveDiffPoint:diffPoint];
                 }
                 
                 

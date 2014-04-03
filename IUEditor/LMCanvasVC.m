@@ -6,18 +6,18 @@
 //  Copyright (c) 2014년 JDLab. All rights reserved.
 //
 
-#import "LMCanvasViewController.h"
+#import "LMCanvasVC.h"
 
-#import "CanvasWindow.h"
+#import "LMWindow.h"
 #import "JDLogUtil.h"
 #import "SizeView.h"
 #import "IUFrameDictionary.h"
 
-@interface LMCanvasViewController ()
+@interface LMCanvasVC ()
 
 @end
 
-@implementation LMCanvasViewController{
+@implementation LMCanvasVC{
     NSMutableArray *selectedIUs;
     IUFrameDictionary *frameDict;
 }
@@ -58,12 +58,14 @@
     return [[[self webView] mainFrame] DOMDocument];
 }
 
-- (void)loadRequest:(NSURLRequest *)request{
-    [[((LMCanvasView *)self.view).webView mainFrame] loadRequest:request];
-}
-
-- (void)loadHTMLString:(NSString *)htmlString baseURL:(NSURL *)URL{
-    [[((LMCanvasView *)self.view).webView mainFrame] loadHTMLString:htmlString baseURL:URL];
+- (void)setDocument:(IUDocument *)document{
+    NSAssert(self.resourcePath != nil, @"resourcePath is nil");
+    [JDLogUtil log:IULogSource key:@"resourcePath" string:self.resourcePath];
+    [_document setCanvas:nil];
+    _document = document;
+    [_document setCanvas:self];
+    
+    [[[self webView] mainFrame] loadHTMLString:document.editorSource baseURL:[NSURL fileURLWithPath:self.resourcePath]];
 }
 
 #pragma mark -

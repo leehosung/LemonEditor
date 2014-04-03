@@ -10,7 +10,7 @@
 #import "LMCanvasView.h"
 
 
-@interface CanvasWindow : NSWindow
+@interface LMWindow : NSWindow
 @property  LMCanvasView *canvasView;
 
 @end

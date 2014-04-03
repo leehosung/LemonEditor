@@ -7,7 +7,7 @@
 //
 
 #import "WebCanvasView.h"
-#import "LMCanvasViewController.h"
+#import "LMCanvasVC.h"
 #import "JDLogUtil.h"
 #import "IUDefinition.h"
 
@@ -52,7 +52,7 @@
     if(iuName){
         //makeIU
         
-        [((LMCanvasViewController *)(self.delegate)) makeNewIU:iuName atPoint:dragPoint atIU:parentIUName];
+        [((LMCanvasVC *)(self.delegate)) makeNewIU:iuName atPoint:dragPoint atIU:parentIUName];
         return YES;
     }
     
@@ -198,8 +198,8 @@
     }
     
     
-    [((LMCanvasViewController *)(self.delegate)) updateIUFrameDictionary:iuFrameDict];
-    [((LMCanvasViewController *)(self.delegate)) updateGridFrameDictionary:gridFrameDict];
+    [((LMCanvasVC *)(self.delegate)) updateIUFrameDictionary:iuFrameDict];
+    [((LMCanvasVC *)(self.delegate)) updateGridFrameDictionary:gridFrameDict];
     IULog(@"reportSharedFrameDict");
 }
 
@@ -255,7 +255,7 @@
         DOMHTMLElement *insertedTextNode = [self textParentIUElement:node];
         
         if(insertedTextNode != nil){
-            [((LMCanvasViewController *)(self.delegate)) updateHTMLText:insertedTextNode.innerHTML atIU:insertedTextNode.idName];
+            [((LMCanvasVC *)(self.delegate)) updateHTMLText:insertedTextNode.innerHTML atIU:insertedTextNode.idName];
             return YES;
         }
     }
@@ -268,7 +268,7 @@
     DOMHTMLElement *insertedTextNode = [self textParentIUElement:range.startContainer];
     
     if(insertedTextNode != nil){
-        [((LMCanvasViewController *)(self.delegate)) updateHTMLText:insertedTextNode.innerHTML atIU:insertedTextNode.idName];
+        [((LMCanvasVC *)(self.delegate)) updateHTMLText:insertedTextNode.innerHTML atIU:insertedTextNode.idName];
         return YES;
     }
     else {

@@ -8,12 +8,12 @@
 
 #import "LMWC.h"
 
-#import "CanvasWindow.h"
+#import "LMWindow.h"
 
 #import "LMFileNaviVC.h"
 #import "LMStackVC.h"
 #import "LMWidgetLibraryVC.h"
-#import "LMCanvasViewController.h"
+#import "LMCanvasVC.h"
 
 #import "IUDocumentController.h"
 #import "IUProject.h"
@@ -38,7 +38,7 @@
 @implementation LMWC{
     LMFileNaviVC    *fileNaviVC;
     LMStackVC       *stackVC;
-    LMCanvasViewController *canvasVC;
+    LMCanvasVC *canvasVC;
     LMWidgetLibraryVC   *widgetLibraryVC;
     LMToolbarVC     *toolbarVC;
     LMResourceVC    *resourceVC;
@@ -67,9 +67,9 @@
     stackVC = [[LMStackVC alloc] initWithNibName:@"LMStackVC" bundle:nil];
     [_rightV addSubviewFullFrame:stackVC.view];
     
-    canvasVC = [[LMCanvasViewController alloc] initWithNibName:@"LMCanvasViewController" bundle:nil];
+    canvasVC = [[LMCanvasVC alloc] initWithNibName:@"LMCanvasVC" bundle:nil];
     [_centerV addSubviewFullFrame:canvasVC.view];
-    ((CanvasWindow *)self.window).canvasView =  (LMCanvasView *)canvasVC.view;
+    ((LMWindow *)self.window).canvasView =  (LMCanvasView *)canvasVC.view;
     
     widgetLibraryVC = [[LMWidgetLibraryVC alloc] initWithNibName:@"LMWidgetLibraryVC" bundle:nil];
     [_leftTopV addSubview:widgetLibraryVC.view];
@@ -86,7 +86,7 @@
     _project = [IUProject projectWithContentsOfPackage:path];
 
     fileNaviVC.project = _project;
-//    canvasV.resourcePath = _project.path;
+    canvasVC.resourcePath = _project.path;
     [fileNaviVC selectFirstDocument];
 
 
@@ -109,8 +109,8 @@
     if ([selectedNode isKindOfClass:[IUDocumentNode class]]) {
         IUDocument *document = ((IUDocumentNode*)selectedNode).document;
         [stackVC setDocument:document];
-        [canvasVC loadHTMLString:document.editorSource baseURL:[NSURL fileURLWithPath:_project.path]];
-//        [canvasV setDocument:document];
+        [canvasVC setDocument:document];
+
         return;
     }
     else if ([selectedNode isKindOfClass:[IUProject class]]){

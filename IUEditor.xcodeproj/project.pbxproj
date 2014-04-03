@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3DB3ACC518EBEF180046DFB7 /* CanvasWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACC418EBEF180046DFB7 /* CanvasWindow.m */; };
+		3DB3ACC518EBEF180046DFB7 /* LMWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACC418EBEF180046DFB7 /* LMWindow.m */; };
 		3DB3ACCB18EBEF3D0046DFB7 /* SizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACC818EBEF3D0046DFB7 /* SizeView.m */; };
 		3DB3ACCC18EBEF3D0046DFB7 /* InnerSizeBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACCA18EBEF3D0046DFB7 /* InnerSizeBox.m */; };
 		3DB3ACD218EBEF4F0046DFB7 /* GridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACCF18EBEF4F0046DFB7 /* GridView.m */; };
@@ -23,8 +23,8 @@
 		3DB3ACF218EBFC4C0046DFB7 /* TestController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB3ACF018EBFC4C0046DFB7 /* TestController.xib */; };
 		3DB3ACF318EBFDE20046DFB7 /* iuframe.js in Resources */ = {isa = PBXBuildFile; fileRef = 3DB3ACEC18EBF7200046DFB7 /* iuframe.js */; };
 		3DB3ACF618EC1E120046DFB7 /* LMCanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACF518EC1E120046DFB7 /* LMCanvasView.m */; };
-		3DB3ACFD18EC1F700046DFB7 /* LMCanvasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACFB18EC1F700046DFB7 /* LMCanvasViewController.m */; };
-		3DB3ACFE18EC1F700046DFB7 /* LMCanvasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB3ACFC18EC1F700046DFB7 /* LMCanvasViewController.xib */; };
+		3DB3ACFD18EC1F700046DFB7 /* LMCanvasVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACFB18EC1F700046DFB7 /* LMCanvasVC.m */; };
+		3DB3ACFE18EC1F700046DFB7 /* LMCanvasVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB3ACFC18EC1F700046DFB7 /* LMCanvasVC.xib */; };
 		690A408E18E14A4E00095263 /* LMStackVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 690A408D18E14A4E00095263 /* LMStackVC.xib */; };
 		690A409518E1645B00095263 /* LMWidgetLibraryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 690A409318E1645B00095263 /* LMWidgetLibraryVC.m */; };
 		690A409618E1645B00095263 /* LMWidgetLibraryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 690A409418E1645B00095263 /* LMWidgetLibraryVC.xib */; };
@@ -133,8 +133,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3DB3ACC318EBEF180046DFB7 /* CanvasWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasWindow.h; sourceTree = "<group>"; };
-		3DB3ACC418EBEF180046DFB7 /* CanvasWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanvasWindow.m; sourceTree = "<group>"; };
+		3DB3ACC318EBEF180046DFB7 /* LMWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMWindow.h; sourceTree = "<group>"; };
+		3DB3ACC418EBEF180046DFB7 /* LMWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMWindow.m; sourceTree = "<group>"; };
 		3DB3ACC718EBEF3D0046DFB7 /* SizeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizeView.h; sourceTree = "<group>"; };
 		3DB3ACC818EBEF3D0046DFB7 /* SizeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizeView.m; sourceTree = "<group>"; };
 		3DB3ACC918EBEF3D0046DFB7 /* InnerSizeBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InnerSizeBox.h; sourceTree = "<group>"; };
@@ -162,9 +162,9 @@
 		3DB3ACF018EBFC4C0046DFB7 /* TestController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestController.xib; sourceTree = "<group>"; };
 		3DB3ACF418EC1E120046DFB7 /* LMCanvasView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMCanvasView.h; sourceTree = "<group>"; };
 		3DB3ACF518EC1E120046DFB7 /* LMCanvasView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMCanvasView.m; sourceTree = "<group>"; };
-		3DB3ACFA18EC1F700046DFB7 /* LMCanvasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMCanvasViewController.h; sourceTree = "<group>"; };
-		3DB3ACFB18EC1F700046DFB7 /* LMCanvasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMCanvasViewController.m; sourceTree = "<group>"; };
-		3DB3ACFC18EC1F700046DFB7 /* LMCanvasViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMCanvasViewController.xib; sourceTree = "<group>"; };
+		3DB3ACFA18EC1F700046DFB7 /* LMCanvasVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMCanvasVC.h; sourceTree = "<group>"; };
+		3DB3ACFB18EC1F700046DFB7 /* LMCanvasVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMCanvasVC.m; sourceTree = "<group>"; };
+		3DB3ACFC18EC1F700046DFB7 /* LMCanvasVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMCanvasVC.xib; sourceTree = "<group>"; };
 		690A408D18E14A4E00095263 /* LMStackVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMStackVC.xib; sourceTree = "<group>"; };
 		690A409218E1645B00095263 /* LMWidgetLibraryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMWidgetLibraryVC.h; path = Editor/LMWidgetLibraryVC.h; sourceTree = "<group>"; };
 		690A409318E1645B00095263 /* LMWidgetLibraryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMWidgetLibraryVC.m; path = Editor/LMWidgetLibraryVC.m; sourceTree = "<group>"; };
@@ -343,9 +343,9 @@
 				3DB3ACFF18EC27CC0046DFB7 /* InnerCanvasView */,
 				3DB3ACF418EC1E120046DFB7 /* LMCanvasView.h */,
 				3DB3ACF518EC1E120046DFB7 /* LMCanvasView.m */,
-				3DB3ACFA18EC1F700046DFB7 /* LMCanvasViewController.h */,
-				3DB3ACFB18EC1F700046DFB7 /* LMCanvasViewController.m */,
-				3DB3ACFC18EC1F700046DFB7 /* LMCanvasViewController.xib */,
+				3DB3ACFA18EC1F700046DFB7 /* LMCanvasVC.h */,
+				3DB3ACFB18EC1F700046DFB7 /* LMCanvasVC.m */,
+				3DB3ACFC18EC1F700046DFB7 /* LMCanvasVC.xib */,
 			);
 			name = Canvas;
 			sourceTree = "<group>";
@@ -692,8 +692,8 @@
 		69C5762218D70A9D0016F050 /* Editor */ = {
 			isa = PBXGroup;
 			children = (
-				3DB3ACC318EBEF180046DFB7 /* CanvasWindow.h */,
-				3DB3ACC418EBEF180046DFB7 /* CanvasWindow.m */,
+				3DB3ACC318EBEF180046DFB7 /* LMWindow.h */,
+				3DB3ACC418EBEF180046DFB7 /* LMWindow.m */,
 				69C5762918D70B850016F050 /* LMWC.h */,
 				69C5762A18D70B850016F050 /* LMWC.m */,
 				69C5762B18D70B850016F050 /* LMWC.xib */,
@@ -794,7 +794,7 @@
 				690A40A518E17C5700095263 /* widgetForDefault.plist in Resources */,
 				69B9A39818E697F70007D6E2 /* iu.css in Resources */,
 				69CFCAC318EAA21E00E3048A /* sample.jpg in Resources */,
-				3DB3ACFE18EC1F700046DFB7 /* LMCanvasViewController.xib in Resources */,
+				3DB3ACFE18EC1F700046DFB7 /* LMCanvasVC.xib in Resources */,
 				69C575BB18D6F61E0016F050 /* Credits.rtf in Resources */,
 				696D1C9E18E5778400B4AB16 /* reset.css in Resources */,
 				690A408E18E14A4E00095263 /* LMStackVC.xib in Resources */,
@@ -852,14 +852,14 @@
 				3DB3ACDF18EBEF5F0046DFB7 /* PointTextLayer.m in Sources */,
 				6919204718DCFC8200F8522B /* NSCoder+JDExtension.m in Sources */,
 				69C5760D18D6FE020016F050 /* IUDocument.m in Sources */,
-				3DB3ACC518EBEF180046DFB7 /* CanvasWindow.m in Sources */,
+				3DB3ACC518EBEF180046DFB7 /* LMWindow.m in Sources */,
 				69757B0918D95BBC0095CBAC /* JDLogUtil.m in Sources */,
 				69757B0318D95BBC0095CBAC /* JDDateTimeUtil.m in Sources */,
 				69757B0018D95BBC0095CBAC /* CALayer+JDExtension.m in Sources */,
 				69757B0718D95BBC0095CBAC /* JDHerokuUtil.m in Sources */,
 				69C5761018D6FE020016F050 /* IUView.m in Sources */,
 				6985CBA018E31558008DBF50 /* IUDocumentNode.m in Sources */,
-				3DB3ACFD18EC1F700046DFB7 /* LMCanvasViewController.m in Sources */,
+				3DB3ACFD18EC1F700046DFB7 /* LMCanvasVC.m in Sources */,
 				6985CBA618E31D9B008DBF50 /* IUNode.m in Sources */,
 				69D15F6F18E893170046FBB0 /* LMToolbarVC.m in Sources */,
 				69C575B718D6F61E0016F050 /* main.m in Sources */,

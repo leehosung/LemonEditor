@@ -6,13 +6,13 @@
 //  Copyright (c) 2014년 ChoiSeungmi. All rights reserved.
 //
 
-#import "CanvasWindow.h"
+#import "LMWindow.h"
 #import "LMWC.h"
 #import "JDUIUtil.h"
 #import "JDLogUtil.h"
 #import "IUDefinition.h"
 
-@implementation CanvasWindow
+@implementation LMWindow
 
 
 #pragma mark -
@@ -20,7 +20,7 @@
 
 -(void)sendEvent:(NSEvent *)theEvent{
     
-    [self.canvasView sendEvent:theEvent];
+    [self.canvasView receiveEvent:theEvent];
     [super sendEvent:theEvent];
 
 }
