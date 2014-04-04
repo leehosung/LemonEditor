@@ -18,4 +18,38 @@
 #pragma mark -
 #pragma mark mouse
 
+- (BOOL)isMouseEvent:(NSEvent *)theEvent{
+    if(theEvent.type == NSLeftMouseDown ||
+       theEvent.type == NSLeftMouseUp   ||
+       theEvent.type ==  NSRightMouseDown ||
+       theEvent.type == NSRightMouseUp ||
+       theEvent.type == NSMouseMoved ||
+       theEvent.type == NSLeftMouseDragged ||
+       theEvent.type == NSRightMouseDragged ||
+       theEvent.type == NSMouseEntered ||
+       theEvent.type == NSMouseExited
+       ){
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL)isKeyEvent:(NSEvent *)theEvent{
+    if(theEvent.type == NSKeyDown ||
+       theEvent.type == NSKeyUp ||
+       theEvent.type == NSFlagsChanged
+       ){
+        return YES;
+    }
+    return NO;
+}
+
+-(void)sendEvent:(NSEvent *)theEvent{
+    
+    [super sendEvent:theEvent];
+    if([self isMouseEvent:theEvent]){
+        [self.canvasView receiveMouseEvent:theEvent];
+    }
+}
+
 @end

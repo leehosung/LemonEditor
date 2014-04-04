@@ -13,6 +13,7 @@
 @implementation LMCanvasView{
     BOOL isSelected, isDragged, isSelectDragged;
     NSPoint startDragPoint, middleDragPoint, endDragPoint;
+    NSUInteger keyModifierFlags;
 }
 
 
@@ -76,8 +77,10 @@
     return NO;
 }
 
-//it's from CanvasWindow(not a NSView)
--(void)receiveEvent:(NSEvent *)theEvent{
+#pragma mark event
+
+-(void)receiveMouseEvent:(NSEvent *)theEvent{
+    
     
     NSPoint originalPoint = [theEvent locationInWindow];
     NSPoint convertedPoint = [self.mainView convertPoint:originalPoint fromView:nil];
