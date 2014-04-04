@@ -19,7 +19,7 @@
 @property WebCanvasView *webView;
 @property GridView *gridView;
 
--(void)receiveEvent:(NSEvent *)theEvent;
+- (void)receiveMouseEvent:(NSEvent *)theEvent;
 - (void)setWidthOfMainView:(CGFloat)width;
 
 @end

@@ -274,6 +274,39 @@
     }
 }
 
+- (void)selectWholeRangeOfCurrentCursor{
+
+    DOMRange *range = [self selectedDOMRange];
+    
+    if([range.startContainer isKindOfClass:[DOMText class]]){
+        DOMText *currentContainer = (DOMText *)range.startContainer;
+        int size = (int)currentContainer.wholeText.length;
+        
+        [range setStart:range.startContainer offset:0];
+        [range setEnd:range.startContainer offset:size];
+        
+        [self setSelectedDOMRange:range affinity:0];
+    }
+
+}
+
+- (BOOL)performKeyEquivalent:(NSEvent *)theEvent{
+    
+    if(theEvent.type == NSKeyDown){
+        
+        if([theEvent modifierFlags] & NSCommandKeyMask){
+            unichar key = [[theEvent charactersIgnoringModifiers] characterAtIndex:0];
+            //select all
+            if(key == 'A' || key == 'a'){
+                [self selectWholeRangeOfCurrentCursor];
+                return YES;
+            }
+            
+        }
+    }
+    
+    return [super performKeyEquivalent:theEvent];
+}
 
 #pragma mark -
 #pragma mark manage IU
