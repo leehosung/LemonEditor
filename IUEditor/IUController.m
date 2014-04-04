@@ -10,7 +10,7 @@
 
 @implementation IUController
 
-- (void)setSelectionObject:(id)anObject{
+- (void)setSelectedObject:(id)anObject{
     [self willChangeValueForKey:@"selection"];
     if (anObject == nil) {
         return;

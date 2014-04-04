@@ -59,7 +59,7 @@
             break;
         }
     }
-    [_documentController setSelectionObject:documentNode];
+    [_documentController setSelectedObject:documentNode];
 }
 
 

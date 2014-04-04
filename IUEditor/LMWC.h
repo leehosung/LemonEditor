@@ -20,5 +20,6 @@
 -(void)loadProject:(NSString*)path;
 -(void)startNewProject;
 
+-(void)setSelectedObjectsByName:(NSArray *)selectedNames;
 
 @end

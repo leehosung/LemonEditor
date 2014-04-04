@@ -154,6 +154,9 @@
     [self loadProject:projectPath];
 }
 
-
-
+-(void)setSelectedObjectsByName:(NSArray *)selectedNames{
+    //TODO: set selection objects by name
+    
+    
+}
 @end
