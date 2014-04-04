@@ -8,6 +8,7 @@
 
 #import "LMCanvasVC.h"
 
+#import "LMWC.h"
 #import "LMWindow.h"
 #import "JDLogUtil.h"
 #import "SizeView.h"
@@ -82,6 +83,8 @@
     [selectedIUs removeAllObjects];
     [[self gridView] removeAllRedPointLayer];
     [[self gridView] removeAllTextPointLayer];
+    
+    [((LMWC *)[[self.view window] delegate]) setSelectedObjectsByName:selectedIUs];
 }
 - (void)addSelectedIU:(NSString *)IU{
     [selectedIUs addObject:IU];
@@ -90,7 +93,9 @@
         [[self gridView] addRedPointLayer:IU withFrame:frame];
         [[self gridView] addTextPointLayer:IU withFrame:frame];
     }
+    [((LMWC *)[[self.view window] delegate]) setSelectedObjectsByName:selectedIUs];
 }
+
 
 - (void)selectIUInRect:(NSRect)frame{
     NSArray *keys = [frameDict.dict allKeys];

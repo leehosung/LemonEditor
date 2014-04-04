@@ -12,7 +12,7 @@
 
 - (NSIndexPath*)indexPathOfObject:(id)anObject;
 
-- (void)setSelectionObject:(id)object;
-- (void)setSelectionObjects:(NSArray*)objects;
+- (void)setSelectedObject:(id)object;
+- (void)setSelectedObjects:(NSArray*)objects;
 
 @end
