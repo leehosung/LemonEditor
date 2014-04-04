@@ -252,9 +252,8 @@
     if (isWritable){
         JDTraceLog( @"insert Text : %@", text);
         DOMHTMLElement *insertedTextNode = [self textParentIUElement:node];
-        DOMHTMLElement *commonAncestorContainer = (DOMHTMLElement *)range.commonAncestorContainer;
         
-        if([insertedTextNode isEqualTo:commonAncestorContainer]){
+                if(insertedTextNode != nil){
             [((LMCanvasVC *)(self.delegate)) updateHTMLText:insertedTextNode.innerHTML atIU:insertedTextNode.idName];
             return YES;
         }
@@ -266,9 +265,8 @@
     
     JDTraceLog( @"insert CSS : %@", style.cssText);
     DOMHTMLElement *insertedTextNode = [self textParentIUElement:range.startContainer];
-    DOMHTMLElement *commonAncestorContainer = (DOMHTMLElement *)range.commonAncestorContainer;
     
-    if([insertedTextNode isEqualTo:commonAncestorContainer]){
+    if(insertedTextNode != nil){
         [((LMCanvasVC *)(self.delegate)) updateHTMLText:insertedTextNode.innerHTML atIU:insertedTextNode.idName];
         return YES;
     }
@@ -277,9 +275,32 @@
     }
 }
 
-- (BOOL)webView:(WebView *)webView shouldChangeSelectedDOMRange:(DOMRange *)currentRange toDOMRange:(DOMRange *)proposedRange affinity:(NSSelectionAffinity)selectionAffinity stillSelecting:(BOOL)flag{
+- (BOOL)isOneIUSTextelection:(DOMRange *)range{
+    DOMNode *startContainer = range.startContainer;
+    if([startContainer isKindOfClass:[DOMText class]]){
+        startContainer = [self textParentIUElement:startContainer];
+    }
+    DOMNode *ancestorContainer = range.commonAncestorContainer;
+    if([ancestorContainer isKindOfClass:[DOMText class]]){
+        ancestorContainer = [self textParentIUElement:ancestorContainer];
+    }
     
-    return YES;
+    if ([startContainer isEqualTo:ancestorContainer]){
+        return YES;
+    }
+    else{
+        return NO;
+    }
+    
+}
+
+- (BOOL)webView:(WebView *)webView shouldChangeSelectedDOMRange:(DOMRange *)currentRange toDOMRange:(DOMRange *)proposedRange affinity:(NSSelectionAffinity)selectionAffinity stillSelecting:(BOOL)flag{
+
+    if([self isOneIUSTextelection:proposedRange]){
+        return YES;
+    }
+    
+    return NO;
 }
 
 - (void)selectWholeRangeOfCurrentCursor{
