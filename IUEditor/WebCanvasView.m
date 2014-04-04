@@ -118,7 +118,7 @@
 /* Here is our Objective-C implementation for the JavaScript console.log() method.
  */
 - (void)doOutputToLog:(NSString*)theMessage {
-    JDInfoLog(IULogJS, @"LOG: %@", theMessage);
+    JDSectionInfoLog(IULogJS, @"LOG: %@", theMessage);
 }
 
 

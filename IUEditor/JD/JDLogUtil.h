@@ -63,12 +63,10 @@
 #define JDFatalLog(format, ...) JDLog(JDLog_Level_Fatal, format, ##__VA_ARGS__)
 #define JDErrorLog(format, ...) JDLog(JDLog_Level_Error, format, ##__VA_ARGS__)
 #define JDWarnLog(format, ...) JDLog(JDLog_Level_Warn, format, ##__VA_ARGS__)
-#define JDInfoLog(a, format, ...) if(a){JDLog(JDLog_Level_Info, format, ##__VA_ARGS__);}
+#define JDInfoLog(format, ...) JDLog(JDLog_Level_Info, format, ##__VA_ARGS__)
 #define JDDebugLog(format, ...) JDLog(JDLog_Level_Debug, format, ##__VA_ARGS__)
 #define JDTraceLog(format, ...) JDLog(JDLog_Level_Trace, format, ##__VA_ARGS__)
 
-#define JDSectionFatalLog(sectionName, format, ...)     JDSectionLog(JDLog_Level_Fatal, sectionName,  format, ##__VA_ARGS__)
-#define JDSectionErrorLog(sectionName, format, ...)     JDSectionLog(JDLog_Level_Error, sectionName,  format, ##__VA_ARGS__)
 #define JDSectionWarnLog(sectionName, format, ...)      JDSectionLog(JDLog_Level_Warn, sectionName, format, ##__VA_ARGS__)
 #define JDSectionInfoLog(sectionName, format, ...)      JDSectionLog(JDLog_Level_Info, sectionName, format, ##__VA_ARGS__)
 #define JDSectionDebugLog(sectionName, format, ...)     JDSectionLog(JDLog_Level_Debug, sectionName, format, ##__VA_ARGS__)
@@ -87,6 +85,16 @@ typedef enum {
 @interface JDLogUtil : NSObject
 
 //initialize
+/* Usage
+ 1. set show log : loglevel, filename, functionane, linenumber;
+ *  [JDLogUtil showLogLevel:YES andFileName:YES andFunctionName:YES andLineNumber:YES];
+ 2. set log level
+ *  [JDLogUtil setGlobalLevel:JDLog_Level_Debug];
+ 3. set section log
+ *   [JDLogUtil enableLogSection:IULogSource];
+ *   [JDLogUtil enableLogSection:IULogJS];
+ */
+
 +(void)setGlobalLevel:(JDLog_Level)level;
 +(void)enableLogSection:(NSString*)logSection;
 +(void)showLogLevel:(BOOL)showLevel andFileName:(BOOL)showFileName andFunctionName:(BOOL)showFunctionName  andLineNumber:(BOOL)showLineNumber;
