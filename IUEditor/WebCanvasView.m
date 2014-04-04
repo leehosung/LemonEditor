@@ -233,6 +233,7 @@
     DOMNode *node = range.startContainer;
     BOOL isWritable =  NO;
     
+    
     //check to insert Text
     if([node isKindOfClass:[DOMText class] ]){
         isWritable = YES;
@@ -251,8 +252,9 @@
     if (isWritable){
         JDTraceLog( @"insert Text : %@", text);
         DOMHTMLElement *insertedTextNode = [self textParentIUElement:node];
+        DOMHTMLElement *commonAncestorContainer = (DOMHTMLElement *)range.commonAncestorContainer;
         
-        if(insertedTextNode != nil){
+        if([insertedTextNode isEqualTo:commonAncestorContainer]){
             [((LMCanvasVC *)(self.delegate)) updateHTMLText:insertedTextNode.innerHTML atIU:insertedTextNode.idName];
             return YES;
         }
@@ -264,14 +266,20 @@
     
     JDTraceLog( @"insert CSS : %@", style.cssText);
     DOMHTMLElement *insertedTextNode = [self textParentIUElement:range.startContainer];
+    DOMHTMLElement *commonAncestorContainer = (DOMHTMLElement *)range.commonAncestorContainer;
     
-    if(insertedTextNode != nil){
+    if([insertedTextNode isEqualTo:commonAncestorContainer]){
         [((LMCanvasVC *)(self.delegate)) updateHTMLText:insertedTextNode.innerHTML atIU:insertedTextNode.idName];
         return YES;
     }
     else {
         return NO;
     }
+}
+
+- (BOOL)webView:(WebView *)webView shouldChangeSelectedDOMRange:(DOMRange *)currentRange toDOMRange:(DOMRange *)proposedRange affinity:(NSSelectionAffinity)selectionAffinity stillSelecting:(BOOL)flag{
+    
+    return YES;
 }
 
 - (void)selectWholeRangeOfCurrentCursor{
@@ -285,7 +293,7 @@
         [range setStart:range.startContainer offset:0];
         [range setEnd:range.startContainer offset:size];
         
-        [self setSelectedDOMRange:range affinity:0];
+        [self setSelectedDOMRange:range affinity:NSSelectionAffinityDownstream];
     }
 
 }
