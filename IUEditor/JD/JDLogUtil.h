@@ -70,6 +70,7 @@
 #define JDSectionWarnLog(sectionName, format, ...)      JDSectionLog(JDLog_Level_Warn, sectionName, format, ##__VA_ARGS__)
 #define JDSectionInfoLog(sectionName, format, ...)      JDSectionLog(JDLog_Level_Info, sectionName, format, ##__VA_ARGS__)
 #define JDSectionDebugLog(sectionName, format, ...)     JDSectionLog(JDLog_Level_Debug, sectionName, format, ##__VA_ARGS__)
+#define JLog JDSectionDebugLog
 #define JDSectionTraceLog(sectionName, format, ...)     JDSectionLog(JDLog_Level_Trace, sectionName, format, ##__VA_ARGS__)
 
 typedef enum {
@@ -110,6 +111,11 @@ typedef enum {
 +(void)alert:(NSString*)alertMsg;
 +(void)alert:(NSString*)alertMsg title:(NSString*)title;
 
+
++(void)log:(NSString*)logSection key:(NSString*)key string:(NSString*)log;
++(void)log:(NSString*)logSection key:(NSString*)key frame:(NSRect)frame;
++(void)log:(NSString*)logSection key:(NSString*)key point:(NSPoint)point;
++(void)log:(NSString*)logSection key:(NSString*)key size:(NSSize)size;
 
 
 @end

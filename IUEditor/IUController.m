@@ -13,9 +13,10 @@
 @implementation IUController
 
 #pragma mark LMCanvasVCDelegate
--(void)IUSelected:(NSArray *)identifiers{
+-(void)setSelectedObjectsByIdentifiers:(NSArray *)identifiers{
+    [JDLogUtil log:IULogAction key:@"canvas selected objects" string:[identifiers description]];
     IUDocument *document = [self.content firstObject];
-    NSArray *allChildren = [document allChildren];
+    NSArray *allChildren = [[document allChildren] arrayByAddingObject:document];
     NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUObj *iu, NSDictionary *bindings) {
         if ([identifiers containsObject:iu.htmlID]) {
             return YES;
