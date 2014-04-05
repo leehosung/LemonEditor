@@ -20,6 +20,5 @@
 -(void)loadProject:(NSString*)path;
 -(void)startNewProject;
 
--(void)setSelectedObjectsByName:(NSArray *)selectedNames;
-
+-(LMWindow *)window;
 @end

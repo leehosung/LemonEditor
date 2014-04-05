@@ -7,36 +7,24 @@
 //
 
 #import "IUController.h"
+#import "IUDocument.h"
+#import "NSTreeController+JDExtension.h"
 
 @implementation IUController
 
-- (void)setSelectedObject:(id)anObject{
-    [self willChangeValueForKey:@"selection"];
-    if (anObject == nil) {
-        return;
-    }
-    [self didChangeValueForKey:@"selection"];
-}
-
-- (NSIndexPath*)indexPathOfObject:(id)anObject
-{
-    return [self indexPathOfObject:anObject inNodes:[[self arrangedObjects] childNodes]];
-}
-
-- (NSIndexPath*)indexPathOfObject:(id)anObject inNodes:(NSArray*)nodes
-{
-    for(NSTreeNode* node in nodes)
-    {
-        if([[node representedObject] isEqual:anObject])
-            return [node indexPath];
-        if([[node childNodes] count])
-        {
-            NSIndexPath* path = [self indexPathOfObject:anObject inNodes:[node childNodes]];
-            if(path)
-                return path;
+#pragma mark LMCanvasVCDelegate
+-(void)IUSelected:(NSArray *)identifiers{
+    IUDocument *document = [self.content firstObject];
+    NSArray *allChildren = [document allChildren];
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUObj *iu, NSDictionary *bindings) {
+        if ([identifiers containsObject:iu.htmlID]) {
+            return YES;
         }
-    }
-    return nil;
+        return NO;
+    }];
+    NSArray *selectedChildren = [allChildren filteredArrayUsingPredicate:predicate];
+    [self setSelectedObjects:selectedChildren];
 }
+
 
 @end

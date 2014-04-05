@@ -23,6 +23,7 @@
 #import "LMResourceVC.h"
 #import "LMToolbarVC.h"
 #import "LMPropertyVC.h"
+#import "LMCanvasV.h"
 
 @interface LMWC ()
 @property (weak) IBOutlet NSView *leftTopV;
@@ -75,7 +76,8 @@
     
     canvasVC = [[LMCanvasVC alloc] initWithNibName:@"LMCanvasVC" bundle:nil];
     [_centerV addSubviewFullFrame:canvasVC.view];
-    ((LMWindow *)self.window).canvasView =  (LMCanvasView *)canvasVC.view;
+    [canvasVC bind:@"delegate" toObject:self withKeyPath:@"IUController" options:nil];
+    self.window.canvasView =  (LMCanvasView *)canvasVC.view;
     
     widgetLibraryVC = [[LMWidgetLibraryVC alloc] initWithNibName:@"LMWidgetLibraryVC" bundle:nil];
     [_leftTopV addSubviewFullFrame:widgetLibraryVC.view];
@@ -91,6 +93,10 @@
     [_propertyV addSubviewFullFrame:propertyVC.view];
     
     [self startNewProject];
+}
+
+-(LMWindow*)window{
+    return (LMWindow*)[super window];
 }
 
 
@@ -154,9 +160,4 @@
     [self loadProject:projectPath];
 }
 
--(void)setSelectedObjectsByName:(NSArray *)selectedNames{
-    //TODO: set selection objects by name
-    
-    
-}
 @end

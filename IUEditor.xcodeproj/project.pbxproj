@@ -233,6 +233,7 @@
 		69757B3018DAE19E0095CBAC /* IUDocumentGroupNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUDocumentGroupNode.m; sourceTree = "<group>"; };
 		69757B3518DAF1AB0095CBAC /* IUResourceGroupNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUResourceGroupNode.h; sourceTree = "<group>"; };
 		69757B3618DAF1AB0095CBAC /* IUResourceGroupNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUResourceGroupNode.m; sourceTree = "<group>"; };
+		69761BBF18EFF47C00C4EDC6 /* LMCanvasVCDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMCanvasVCDelegate.h; sourceTree = "<group>"; };
 		6979FC0418ED34E20060C3B4 /* LMPropertyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyVC.h; sourceTree = "<group>"; };
 		6979FC0518ED34E20060C3B4 /* LMPropertyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyVC.m; sourceTree = "<group>"; };
 		6979FC0618ED34E20060C3B4 /* LMPropertyVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyVC.xib; sourceTree = "<group>"; };
@@ -362,6 +363,7 @@
 				3DB3ACFA18EC1F700046DFB7 /* LMCanvasVC.h */,
 				3DB3ACFB18EC1F700046DFB7 /* LMCanvasVC.m */,
 				3DB3ACFC18EC1F700046DFB7 /* LMCanvasVC.xib */,
+				69761BBF18EFF47C00C4EDC6 /* LMCanvasVCDelegate.h */,
 			);
 			name = Canvas;
 			sourceTree = "<group>";
