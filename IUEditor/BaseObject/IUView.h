@@ -21,4 +21,5 @@
 
 //-(void)moveIU:(IUObj*)IUObj to:(NSInteger)zIndex;
 
+-(void)setDelegate:(id<IUDelegate>)delegate;
 @end

@@ -71,9 +71,9 @@
 - (void)setDocument:(IUDocument *)document{
     NSAssert(self.resourcePath != nil, @"resourcePath is nil");
     JDSectionInfoLog( IULogSource, @"resourcePath  : %@", self.resourcePath);
-    [_document setCanvas:nil];
+    [_document setDelegate:nil];
     _document = document;
-    [_document setCanvas:self];
+    [_document setDelegate:self];
     
     [[[self webView] mainFrame] loadHTMLString:document.editorSource baseURL:[NSURL fileURLWithPath:self.resourcePath]];
 }
@@ -328,6 +328,22 @@
 //FIXME: inner IU도 표시
 - (void)makeNewIU:(NSString *)iuname atPoint:(NSPoint)point atIU:(NSString *)IU{
     JDTraceLog( @"[IU:%@] : point(%.1f, %.1f) atIU:%@", iuname, point.x, point.y, IU);
+}
+
+
+#pragma mark -
+#pragma mark IUDelegate
+-(void)IU:(NSString*)identifier HTMLChanged:(NSString*)html{
+    NSLog(@"FIXME!!!!!!");
+}
+-(void)IU:(NSString*)identifier CSSChanged:(NSString*)css forWidth:(int)width{
+    NSLog(@"FIXME!!!!!!%@ / %@ ", identifier, css);
+}
+-(void)IU:(NSString*)identifier insertedTo:(NSString*)parentIdentifier atIndex:(NSInteger)index CSS:(NSString*)css HTML:(NSString*)html{
+    NSLog(@"FIXME!!!!!!");
+}
+-(void)IURemoved:(NSString*)identifier{
+    NSLog(@"FIXME!!!!!!");
 }
 
 @end
