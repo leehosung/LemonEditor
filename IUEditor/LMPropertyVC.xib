@@ -18,7 +18,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rmq-y4-bjz">
-                    <rect key="frame" x="44" y="282" width="96" height="22"/>
+                    <rect key="frame" x="44" y="279" width="96" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="hZy-gG-yhw">
                         <font key="font" metaFont="system"/>
@@ -27,6 +27,7 @@
                     </textFieldCell>
                     <connections>
                         <binding destination="-2" name="value" keyPath="IUController.selection.css.affectingTagCollection.width" id="oER-gF-gx7"/>
+                        <outlet property="delegate" destination="-2" id="LXC-Z4-eU8"/>
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IeP-o8-7EW">
@@ -39,6 +40,7 @@
                     </textFieldCell>
                     <connections>
                         <binding destination="-2" name="value" keyPath="IUController.selection.css.affectingTagCollection.height" id="HsV-UC-1RX"/>
+                        <outlet property="delegate" destination="-2" id="eTP-rA-Voc"/>
                     </connections>
                 </textField>
             </subviews>

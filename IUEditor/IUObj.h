@@ -34,6 +34,10 @@
 -(NSDictionary*)HTMLAtributes;
 -(NSDictionary*)CSSAttributesForWidth:(NSInteger)width;
 
+//source
+-(NSString*)html;
+-(NSString*)cssForWidth:(int)width;
+
 //user interface status
 @property (readonly) BOOL draggable;
 @property (readonly) BOOL disableXInput;
