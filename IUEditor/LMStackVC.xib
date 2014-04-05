@@ -91,7 +91,7 @@
             </subviews>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="r0p-NC-HRh"/>
-        <treeController childrenKeyPath="children" id="S9Z-Oj-DDl">
+        <treeController objectClassName="IUObj" childrenKeyPath="children" id="S9Z-Oj-DDl" customClass="IUController">
             <connections>
                 <binding destination="-2" name="contentObject" keyPath="document" previousBinding="NmU-gT-pOy" id="AMa-gG-ZsW"/>
                 <binding destination="-2" name="contentArrayForMultipleSelection" keyPath="selectedIUs" id="NmU-gT-pOy"/>

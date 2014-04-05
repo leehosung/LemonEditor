@@ -8,12 +8,16 @@
 
 #import <Cocoa/Cocoa.h>
 #import "IUDocument.h"
+#import "LMCanvasVCDelegate.h"
 
+@class LMCanvasV;
 @interface LMCanvasVC : NSViewController <IUDocumentCanvas>
 
 @property (nonatomic) _binding_ IUDocument  *document;
 @property (nonatomic) _binding_ NSString    *resourcePath;
+@property (nonatomic) id <LMCanvasVCDelegate> delegate;
 
+- (LMCanvasV*)view;
 #pragma mark -
 #pragma mark be set by IU
 

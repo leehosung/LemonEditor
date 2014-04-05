@@ -33,6 +33,9 @@
     return self;
 }
 
+-(LMCanvasV*)view{
+    return (LMCanvasV*)[super view];
+}
 
 #pragma mark -
 #pragma mark sizeView
@@ -84,7 +87,7 @@
     [[self gridView] removeAllRedPointLayer];
     [[self gridView] removeAllTextPointLayer];
     
-    [((LMWC *)[[self.view window] delegate]) setSelectedObjectsByName:selectedIUs];
+    [_delegate IUSelected:selectedIUs];
 }
 - (void)addSelectedIU:(NSString *)IU{
     [selectedIUs addObject:IU];
@@ -93,7 +96,7 @@
         [[self gridView] addRedPointLayer:IU withFrame:frame];
         [[self gridView] addTextPointLayer:IU withFrame:frame];
     }
-    [((LMWC *)[[self.view window] delegate]) setSelectedObjectsByName:selectedIUs];
+    [_delegate IUSelected:selectedIUs];
 }
 
 

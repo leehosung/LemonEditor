@@ -24,10 +24,6 @@
 }
 
 -(void)awakeFromNib{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        [_IUController addObserver:self forKeyPath:@"selectedObjects" options:0 context:nil];
-    });
 }
 
 
