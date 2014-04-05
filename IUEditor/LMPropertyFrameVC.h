@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface LMPropertyVC : NSViewController <NSTextFieldDelegate>
+@interface LMPropertyFrameVC : NSViewController <NSTextFieldDelegate>
 
 @property (nonatomic) NSTreeController *IUController;
 

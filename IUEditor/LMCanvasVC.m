@@ -336,7 +336,7 @@
 -(void)IU:(NSString*)identifier HTMLChanged:(NSString*)html{
     NSLog(@"FIXME!!!!!!");
 }
--(void)IU:(NSString*)identifier CSSChanged:(NSString*)css forWidth:(int)width{
+-(void)IU:(NSString*)identifier CSSChanged:(NSString*)css forWidth:(NSInteger)width{
     NSLog(@"FIXME!!!!!!%@ / %@ ", identifier, css);
 }
 -(void)IU:(NSString*)identifier insertedTo:(NSString*)parentIdentifier atIndex:(NSInteger)index CSS:(NSString*)css HTML:(NSString*)html{

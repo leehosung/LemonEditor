@@ -9,6 +9,7 @@
 #import "LMPropertyBaseVC.h"
 
 @interface LMPropertyBaseVC ()
+@property (weak) IBOutlet NSComboBox *imageNameComboBox;
 
 @end
 
@@ -23,4 +24,7 @@
     return self;
 }
 
+- (void)awakeFromNib{
+    [_imageNameComboBox bind:@"content" toObject:self withKeyPath:@"imageNames" options:nil];
+}
 @end
