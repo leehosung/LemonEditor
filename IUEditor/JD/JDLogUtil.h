@@ -107,9 +107,12 @@ typedef enum {
 
 //call by directly
 +(void)log:(NSString*)key err:(NSError*)err;
++(void)log:(NSString*)key string:(NSString*)string;
+
 
 +(void)alert:(NSString*)alertMsg;
 +(void)alert:(NSString*)alertMsg title:(NSString*)title;
+
 
 
 +(void)log:(NSString*)logSection key:(NSString*)key string:(NSString*)log;

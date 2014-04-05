@@ -138,6 +138,10 @@ static NSMutableSet *enableLogSection;
     }
 }
 
++(void)log:(NSString *)key string:(NSString *)string{
+    NSLog(@"[Log] %@ : %@", key, string);
+}
+
 +(void)log:(NSString*)logSection key:(NSString*)key frame:(NSRect)frame{
     if ([enableLogSection containsObject:logSection]) {
         NSLog(@"[%@] %@ : fr <%.2f,%.2f,%.2f,%.2f>", logSection, key, frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
