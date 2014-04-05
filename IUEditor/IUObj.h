@@ -10,11 +10,19 @@
 #import "IUCSS.h"
 #import "IUProject.h"
 
+@protocol IUDelegate <NSObject>
+@required
+-(void)IU:(NSString*)identifier HTMLChanged:(NSString*)html;
+-(void)IU:(NSString*)identifier CSSChanged:(NSString*)css forWidth:(int)width;
+-(void)IU:(NSString*)identifier insertedTo:(NSString*)parentIdentifier atIndex:(NSInteger)index CSS:(NSString*)css HTML:(NSString*)html;
+-(void)IURemoved:(NSString*)identifier;
+@end
+
 
 #define IUCSSDefaultFrame -1
 
 
-@interface IUObj : NSObject <NSCoding>
+@interface IUObj : NSObject <NSCoding, IUCSSDelegate>
 
 @property (readonly) IUCSS *css; //used by subclass
 
@@ -29,6 +37,7 @@
 // this is IU setting
 @property (nonatomic) NSString *htmlID;
 @property (nonatomic) NSString *name;
+@property id<IUDelegate> delegate;
 
 // followings are IU build setting;
 -(NSDictionary*)HTMLAtributes;
@@ -36,7 +45,7 @@
 
 //source
 -(NSString*)html;
--(NSString*)cssForWidth:(int)width;
+-(NSString*)cssForWidth:(NSInteger)width;
 
 //user interface status
 @property (readonly) BOOL draggable;

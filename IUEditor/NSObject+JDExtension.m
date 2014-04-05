@@ -284,4 +284,27 @@
     
     return rv;
 }
+
++(NSArray*)propertiesWithOut:(NSArray*)array{
+    unsigned count;
+    objc_property_t *properties = class_copyPropertyList([self class], &count);
+    
+    NSMutableArray *rv = [NSMutableArray array];
+    
+    unsigned i;
+    for (i = 0; i < count; i++)
+    {
+        objc_property_t property = properties[i];
+        JDProperty *jdProperty = [[JDProperty alloc] initWithProperty:property];
+        if ([array containsObject:jdProperty.name ]) {
+            continue;
+        }
+        [rv addObject:jdProperty];
+    }
+    
+    free(properties);
+    
+    return rv;
+}
+
 @end

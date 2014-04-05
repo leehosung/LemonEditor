@@ -43,7 +43,7 @@
 -(NSString*)cssSourceForIU:(IUObj*)iu width:(int)width{
     NSMutableString *css = [NSMutableString string];
     [css appendString:[NSString stringWithFormat:@"#%@ {", iu.htmlID]];
-    [css appendString:[self CSSContent:[iu CSSAttributesForWidth:IUCSSDefaultCollection]]];
+    [css appendString:[self CSSContentFromAttributes:[iu CSSAttributesForWidth:IUCSSDefaultCollection]]];
     [css appendString:@"}"];
     [css appendString:@"\n"];
     return css;
@@ -103,7 +103,7 @@
     return code;
 }
 
--(NSString*)CSSContent:(NSDictionary*)cssTagDictionary{
+-(NSString*)CSSContentFromAttributes:(NSDictionary*)cssTagDictionary{
     //convert css tag dictionry to css string dictionary
     NSDictionary *cssStringDict = [self cssStringDictionaryWithCSSTagDictionary:cssTagDictionary];
     

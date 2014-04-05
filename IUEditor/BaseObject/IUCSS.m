@@ -48,6 +48,7 @@
 //     [self.affectingTagCollection willChangeValueForKey:tag];
      [_affectingTagCollectionForEditWidth setObject:value forKey:tag];
 //     [self.affectingTagCollection didChangeValueForKey:tag];
+    [self.delegate CSSChanged:cssDict forWidth:width];
 }
 
 -(void)eradicateTag:(IUCSSTag)tag{

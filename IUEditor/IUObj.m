@@ -10,6 +10,7 @@
 #import "NSObject+JDExtension.h"
 #import "NSCoder+JDExtension.h"
 #import "IUCompiler.h"
+#import "IUDocument.h"
 
 @implementation IUObj{
 }
@@ -17,8 +18,9 @@
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];
     if (self) {
-        [aDecoder decodeToObject:self withProperties:[[IUObj class] properties]];
+        [aDecoder decodeToObject:self withProperties:[[IUObj class] propertiesWithOut:@[@"delegate"]]];
         _css = [aDecoder decodeObjectForKey:@"css"];
+        _css.delegate = self;
     }
     return self;
 }
@@ -35,6 +37,7 @@
     self = [super init];{
         _project = project;
         _css = [[IUCSS alloc] init];
+        _css.delegate = self;
         
         [_css setValue:@(50+rand()%300) forTag:IUCSSTagWidth forWidth:IUCSSDefaultCollection];
         [_css setValue:@(35) forTag:IUCSSTagHeight forWidth:IUCSSDefaultCollection];
@@ -84,10 +87,14 @@
     return [self.project.compiler editorHTML:self];
 }
 
--(NSString*)cssForWidth:(int)width{
-    //FIXME: WTF
-    return @"HERE IS CSS";
+-(NSString*)cssForWidth:(NSInteger)width{
+    return [self.project.compiler CSSContentFromAttributes:[self CSSAttributesForWidth:width]];
 }
+
+-(void)CSSChanged:(NSDictionary*)tagDictionary forWidth:(NSInteger)width{
+    [self.delegate IU:self.htmlID CSSChanged:[self cssForWidth:width] forWidth:width];
+}
+
 
 
 @end

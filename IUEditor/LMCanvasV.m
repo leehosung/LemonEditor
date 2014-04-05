@@ -23,12 +23,15 @@
 - (void)setDocument:(IUDocument *)document{
     NSAssert(self.resourcePath != nil, @"resourcePath is nil");
     JDSectionInfoLog(IULogSource, @"resourcePath : %@", self.resourcePath);
-    [_document setCanvas:nil];
+    [_document setDelegate:nil];
     _document = document;
-    [_document setCanvas:self];
+    [_document setDelegate:self];
     
     [[webView mainFrame] loadHTMLString:document.editorSource baseURL:[NSURL fileURLWithPath:self.resourcePath]];
 }
 
+-(void)IU:(NSString *)identifier CSSChanged:(NSString *)css forWidth:(int)width{
+    NSLog(@"_____________ YOU SHOULD CODE HERE ___________");
+}
 
 @end

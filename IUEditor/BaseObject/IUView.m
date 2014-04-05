@@ -30,6 +30,7 @@
 
 -(BOOL)addIU:(IUObj *)iu error:(NSError**)error{
     [_children addObject:iu];
+    iu.delegate = self.delegate;
     return YES;
 }
 
@@ -45,6 +46,13 @@
 
 -(NSMutableArray*)children{
     return _children;
+}
+
+-(void)setDelegate:(id<IUDelegate>)delegate{
+    [super setDelegate:delegate];
+    for (IUObj *obj in self.children) {
+        obj.delegate = delegate;
+    }
 }
 
 @end

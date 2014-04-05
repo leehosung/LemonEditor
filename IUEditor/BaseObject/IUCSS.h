@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-
+@protocol IUCSSDelegate
+-(void)CSSChanged:(NSDictionary*)tagDictionary forWidth:(NSInteger)width;
+@end
 
 #define IUCSSDefaultCollection 9999
 
@@ -16,7 +18,7 @@
 @interface IUCSS : NSObject <NSCoding>
 
 @property (nonatomic) _binding_ int editWidth;
-
+@property id <IUCSSDelegate> delegate;
 
 //set tag, or delete tag
 -(void)setValue:(id)value forTag:(IUCSSTag)tag forWidth:(int)width;
