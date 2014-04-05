@@ -6,17 +6,17 @@
 //  Copyright (c) 2014 JDLab. All rights reserved.
 //
 
-#import "LMPropertyVC.h"
+#import "LMPropertyFrameVC.h"
 #import "IUObj.h"
 #import "IUCSS.h"
 
-@interface LMPropertyVC ()
+@interface LMPropertyFrameVC ()
 @property (weak) IBOutlet NSTextField *wTF;
 @property (weak) IBOutlet NSTextField *hTF;
 
 @end
 
-@implementation LMPropertyVC
+@implementation LMPropertyFrameVC
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

@@ -24,6 +24,10 @@ typedef enum _IUGitType{
 @property   IUGitType       gitType;
 @property   IUCompiler      *compiler;
 
+
+//resource management
+@property  (readonly)  NSArray         *imageNames;
+
 //setting
 #define IUProjectKeyGit @"git"
 #define IUProjectKeyAppName @"appName"

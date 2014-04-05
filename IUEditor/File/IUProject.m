@@ -25,8 +25,8 @@
 
 @implementation IUProject{
     NSMutableDictionary *IDDict;
+    NSMutableArray  *__imageNames;
 }
-
 
 
 - (void)encodeWithCoder:(NSCoder *)encoder{
@@ -35,6 +35,7 @@
     [encoder encodeInt32:_gitType forKey:@"gitType"];
     [encoder encodeObject:_path forKey:@"path"];
     [encoder encodeObject:IDDict forKey:@"IDDict"];
+    [encoder encodeObject:__imageNames forKey:@"imageNames"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder{
@@ -45,7 +46,8 @@
         _gitType = [aDecoder decodeInt32ForKey:@"gitType"];
         _path = [aDecoder decodeObjectForKey:@"path"];
         IDDict = [aDecoder decodeObjectForKey:@"IDDict"];
-        
+        __imageNames = [aDecoder decodeObjectForKey:@"imageNames"];
+        _imageNames = [__imageNames copy];
     }
     return self;
 }
@@ -54,6 +56,7 @@
     self = [super init];
     if(self){
         IDDict = [NSMutableDictionary dictionary];
+        __imageNames = [NSMutableArray array];
     }
     return self;
 }
@@ -199,8 +202,15 @@
     ReturnNoIfFalse([data writeToFile:[resourceGroup.path stringByAppendingPathComponent:name] atomically:YES]);
     IUResourceNode *newNode = [[IUResourceNode alloc] initWithName:name parent:resourceGroup];
     [resourceGroup addNode:newNode];
-    return YES;
     
+    
+    if ([[NSImage alloc] initWithData:data]) {
+        [__imageNames addObject:name];
+    }
+    [self willChangeValueForKey:@"imageNames"];
+    _imageNames = [__imageNames copy];
+    [self didChangeValueForKey:@"imageNames"];
+    return YES;
 }
 
 - (void)build:(NSError**)error{

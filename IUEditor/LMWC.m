@@ -22,7 +22,8 @@
 #import "IUResourceNode.h"
 #import "LMResourceVC.h"
 #import "LMToolbarVC.h"
-#import "LMPropertyVC.h"
+#import "LMPropertyFrameVC.h"
+#import "LMPropertyBaseVC.h"
 #import "LMCanvasV.h"
 
 @interface LMWC ()
@@ -36,6 +37,7 @@
 @property (weak) IBOutlet NSView *propertyV;
 
 @property (weak) IBOutlet NSView *resourceV;
+@property (weak) IBOutlet NSView *propertyBaseV;
 
 @end
 
@@ -46,10 +48,9 @@
     LMWidgetLibraryVC   *widgetLibraryVC;
     LMToolbarVC     *toolbarVC;
     LMResourceVC    *resourceVC;
-    LMPropertyVC    *propertyVC;
-    
+    LMPropertyFrameVC    *propertyFrameVC;
+    LMPropertyBaseVC    *propertyBaseVC;
     IUProject   *_project;
-
 }
 
 - (id)initWithWindow:(NSWindow *)window
@@ -88,9 +89,13 @@
     resourceVC = [[LMResourceVC alloc] initWithNibName:@"LMResourceVC" bundle:nil];
     [_resourceV addSubviewFullFrame:resourceVC.view];
     
-    propertyVC = [[LMPropertyVC alloc] initWithNibName:@"LMPropertyVC" bundle:nil];
-    [propertyVC bind:@"IUController" toObject:self withKeyPath:@"IUController" options:nil];
-    [_propertyV addSubviewFullFrame:propertyVC.view];
+    propertyFrameVC = [[LMPropertyFrameVC alloc] initWithNibName:@"LMPropertyVC" bundle:nil];
+    [propertyFrameVC bind:@"IUController" toObject:self withKeyPath:@"IUController" options:nil];
+    [_propertyV addSubviewFullFrame:propertyFrameVC.view];
+    
+    propertyBaseVC = [[LMPropertyBaseVC alloc] initWithNibName:@"LMPropertyBaseVC" bundle:nil];
+    [propertyBaseVC bind:@"IUController" toObject:self withKeyPath:@"IUController" options:nil];
+    [_propertyBaseV addSubviewFullFrame:propertyBaseVC.view];
     
     [self startNewProject];
 }
@@ -120,6 +125,8 @@
             break;
         }
     }
+    
+    [propertyBaseVC bind:@"imageNames" toObject:_project withKeyPath:@"imageNames" options:nil];
 }
 
 -(void)setSelectedNode:(IUNode*)selectedNode{

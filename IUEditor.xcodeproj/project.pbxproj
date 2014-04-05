@@ -69,8 +69,10 @@
 		69757B2A18DAB7D40095CBAC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69757B2918DAB7D40095CBAC /* QuartzCore.framework */; };
 		69757B3118DAE19E0095CBAC /* IUDocumentGroupNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757B3018DAE19E0095CBAC /* IUDocumentGroupNode.m */; };
 		69757B3718DAF1AB0095CBAC /* IUResourceGroupNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757B3618DAF1AB0095CBAC /* IUResourceGroupNode.m */; };
-		6979FC0718ED34E20060C3B4 /* LMPropertyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6979FC0518ED34E20060C3B4 /* LMPropertyVC.m */; };
-		6979FC0818ED34E20060C3B4 /* LMPropertyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6979FC0618ED34E20060C3B4 /* LMPropertyVC.xib */; };
+		69761BC318F04ECD00C4EDC6 /* LMPropertyBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69761BC118F04ECD00C4EDC6 /* LMPropertyBaseVC.m */; };
+		69761BC418F04ECD00C4EDC6 /* LMPropertyBaseVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69761BC218F04ECD00C4EDC6 /* LMPropertyBaseVC.xib */; };
+		6979FC0718ED34E20060C3B4 /* LMPropertyFrameVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6979FC0518ED34E20060C3B4 /* LMPropertyFrameVC.m */; };
+		6979FC0818ED34E20060C3B4 /* LMPropertyFrameVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6979FC0618ED34E20060C3B4 /* LMPropertyFrameVC.xib */; };
 		6985CBA018E31558008DBF50 /* IUDocumentNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6985CB9F18E31558008DBF50 /* IUDocumentNode.m */; };
 		6985CBA618E31D9B008DBF50 /* IUNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6985CBA518E31D9B008DBF50 /* IUNode.m */; };
 		69ABB14A18D733ED0065D584 /* IUCompiler.m in Sources */ = {isa = PBXBuildFile; fileRef = 69ABB14918D733ED0065D584 /* IUCompiler.m */; };
@@ -234,9 +236,12 @@
 		69757B3518DAF1AB0095CBAC /* IUResourceGroupNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUResourceGroupNode.h; sourceTree = "<group>"; };
 		69757B3618DAF1AB0095CBAC /* IUResourceGroupNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUResourceGroupNode.m; sourceTree = "<group>"; };
 		69761BBF18EFF47C00C4EDC6 /* LMCanvasVCDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMCanvasVCDelegate.h; sourceTree = "<group>"; };
-		6979FC0418ED34E20060C3B4 /* LMPropertyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyVC.h; sourceTree = "<group>"; };
-		6979FC0518ED34E20060C3B4 /* LMPropertyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyVC.m; sourceTree = "<group>"; };
-		6979FC0618ED34E20060C3B4 /* LMPropertyVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyVC.xib; sourceTree = "<group>"; };
+		69761BC018F04ECD00C4EDC6 /* LMPropertyBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyBaseVC.h; sourceTree = "<group>"; };
+		69761BC118F04ECD00C4EDC6 /* LMPropertyBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyBaseVC.m; sourceTree = "<group>"; };
+		69761BC218F04ECD00C4EDC6 /* LMPropertyBaseVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyBaseVC.xib; sourceTree = "<group>"; };
+		6979FC0418ED34E20060C3B4 /* LMPropertyFrameVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyFrameVC.h; sourceTree = "<group>"; };
+		6979FC0518ED34E20060C3B4 /* LMPropertyFrameVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyFrameVC.m; sourceTree = "<group>"; };
+		6979FC0618ED34E20060C3B4 /* LMPropertyFrameVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyFrameVC.xib; sourceTree = "<group>"; };
 		6985CB9E18E31558008DBF50 /* IUDocumentNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUDocumentNode.h; sourceTree = "<group>"; };
 		6985CB9F18E31558008DBF50 /* IUDocumentNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUDocumentNode.m; sourceTree = "<group>"; };
 		6985CBA418E31D9B008DBF50 /* IUNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUNode.h; sourceTree = "<group>"; };
@@ -574,11 +579,14 @@
 				6919204918DCFED000F8522B /* NSObject+JDExtension.m */,
 				69B9A39D18E6B7E50007D6E2 /* NSTreeController+JDExtension.h */,
 				69B9A39E18E6B7E50007D6E2 /* NSTreeController+JDExtension.m */,
-				6979FC0418ED34E20060C3B4 /* LMPropertyVC.h */,
-				6979FC0518ED34E20060C3B4 /* LMPropertyVC.m */,
-				6979FC0618ED34E20060C3B4 /* LMPropertyVC.xib */,
+				6979FC0418ED34E20060C3B4 /* LMPropertyFrameVC.h */,
+				6979FC0518ED34E20060C3B4 /* LMPropertyFrameVC.m */,
+				6979FC0618ED34E20060C3B4 /* LMPropertyFrameVC.xib */,
 				6953852C18ED6EC800CC42E5 /* IUController.h */,
 				6953852D18ED6EC800CC42E5 /* IUController.m */,
+				69761BC018F04ECD00C4EDC6 /* LMPropertyBaseVC.h */,
+				69761BC118F04ECD00C4EDC6 /* LMPropertyBaseVC.m */,
+				69761BC218F04ECD00C4EDC6 /* LMPropertyBaseVC.xib */,
 			);
 			name = JD;
 			sourceTree = "<group>";
@@ -819,11 +827,12 @@
 				69B9A39818E697F70007D6E2 /* iu.css in Resources */,
 				69CFCAC318EAA21E00E3048A /* sample.jpg in Resources */,
 				3DB3ACFE18EC1F700046DFB7 /* LMCanvasVC.xib in Resources */,
-				6979FC0818ED34E20060C3B4 /* LMPropertyVC.xib in Resources */,
+				6979FC0818ED34E20060C3B4 /* LMPropertyFrameVC.xib in Resources */,
 				69C575BB18D6F61E0016F050 /* Credits.rtf in Resources */,
 				696D1C9E18E5778400B4AB16 /* reset.css in Resources */,
 				690A408E18E14A4E00095263 /* LMStackVC.xib in Resources */,
 				69C575C118D6F61E0016F050 /* MainMenu.xib in Resources */,
+				69761BC418F04ECD00C4EDC6 /* LMPropertyBaseVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -869,6 +878,7 @@
 				69C5763918D728CF0016F050 /* LMStackVC.m in Sources */,
 				3DB3ACCC18EBEF3D0046DFB7 /* InnerSizeBox.m in Sources */,
 				69D15F7318E898B10046FBB0 /* IUMaster.m in Sources */,
+				69761BC318F04ECD00C4EDC6 /* LMPropertyBaseVC.m in Sources */,
 				3DB3ACDE18EBEF5F0046DFB7 /* BorderLayer.m in Sources */,
 				3DB3ACD318EBEF4F0046DFB7 /* WebCanvasView.m in Sources */,
 				69757B1418D95BBC0095CBAC /* NSMenu_JDExtension.m in Sources */,
@@ -884,7 +894,7 @@
 				69C5761018D6FE020016F050 /* IUView.m in Sources */,
 				6985CBA018E31558008DBF50 /* IUDocumentNode.m in Sources */,
 				3DB3ACFD18EC1F700046DFB7 /* LMCanvasVC.m in Sources */,
-				6979FC0718ED34E20060C3B4 /* LMPropertyVC.m in Sources */,
+				6979FC0718ED34E20060C3B4 /* LMPropertyFrameVC.m in Sources */,
 				6985CBA618E31D9B008DBF50 /* IUNode.m in Sources */,
 				69D15F6F18E893170046FBB0 /* LMToolbarVC.m in Sources */,
 				69C575B718D6F61E0016F050 /* main.m in Sources */,
