@@ -13,6 +13,7 @@
 #import "IUDocument.h"
 
 @implementation IUObj{
+    int delegateEnableLevel;
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
@@ -21,6 +22,7 @@
         [aDecoder decodeToObject:self withProperties:[[IUObj class] propertiesWithOut:@[@"delegate"]]];
         _css = [aDecoder decodeObjectForKey:@"css"];
         _css.delegate = self;
+        delegateEnableLevel = 1;
     }
     return self;
 }
@@ -42,6 +44,7 @@
         [_css setValue:@(50+rand()%300) forTag:IUCSSTagWidth forWidth:IUCSSDefaultCollection];
         [_css setValue:@(35) forTag:IUCSSTagHeight forWidth:IUCSSDefaultCollection];
         [_css setValue:[NSColor randomColor] forTag:IUCSSTagBGColor forWidth:IUCSSDefaultCollection];
+        delegateEnableLevel = 1;
     }
     return self;
 }
@@ -92,7 +95,19 @@
 }
 
 -(void)CSSChanged:(NSDictionary*)tagDictionary forWidth:(NSInteger)width{
-    [self.delegate IU:self.htmlID CSSChanged:[self cssForWidth:width] forWidth:width];
+    if (delegateEnableLevel == 1) {
+        [self.delegate IU:self.htmlID CSSChanged:[self cssForWidth:width] forWidth:width];
+    }
+}
+
+
+
+-(void)enableDelegate:(id)sender{
+    delegateEnableLevel ++;
+}
+
+-(void)disableDelegate:(id)sender{
+    delegateEnableLevel --;
 }
 
 

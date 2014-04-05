@@ -13,7 +13,7 @@
 @protocol IUDelegate <NSObject>
 @required
 -(void)IU:(NSString*)identifier HTMLChanged:(NSString*)html;
--(void)IU:(NSString*)identifier CSSChanged:(NSString*)css forWidth:(int)width;
+-(void)IU:(NSString*)identifier CSSChanged:(NSString*)css forWidth:(NSInteger)width;
 -(void)IU:(NSString*)identifier insertedTo:(NSString*)parentIdentifier atIndex:(NSInteger)index CSS:(NSString*)css HTML:(NSString*)html;
 -(void)IURemoved:(NSString*)identifier;
 @end
@@ -54,5 +54,7 @@
 @property (readonly) BOOL disableWidthInput;
 @property (readonly) BOOL disableHeightInput;
 
+-(void)enableDelegate:(id)sender;
+-(void)disableDelegate:(id)sender;
 
 @end
