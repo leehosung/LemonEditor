@@ -87,7 +87,7 @@
     [[self gridView] removeAllRedPointLayer];
     [[self gridView] removeAllTextPointLayer];
     
-    [_delegate IUSelected:selectedIUs];
+    [_controller setSelectedObjectsByIdentifiers:selectedIUs];
 }
 - (void)addSelectedIU:(NSString *)IU{
     [selectedIUs addObject:IU];
@@ -96,7 +96,7 @@
         [[self gridView] addRedPointLayer:IU withFrame:frame];
         [[self gridView] addTextPointLayer:IU withFrame:frame];
     }
-    [_delegate IUSelected:selectedIUs];
+    [_controller setSelectedObjectsByIdentifiers:selectedIUs];
 }
 
 

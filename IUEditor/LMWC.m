@@ -76,7 +76,7 @@
     
     canvasVC = [[LMCanvasVC alloc] initWithNibName:@"LMCanvasVC" bundle:nil];
     [_centerV addSubviewFullFrame:canvasVC.view];
-    [canvasVC bind:@"delegate" toObject:self withKeyPath:@"IUController" options:nil];
+    [canvasVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
     self.window.canvasView =  (LMCanvasView *)canvasVC.view;
     
     widgetLibraryVC = [[LMWidgetLibraryVC alloc] initWithNibName:@"LMWidgetLibraryVC" bundle:nil];
