@@ -11,4 +11,6 @@
 @protocol LMCanvasVCDelegate <NSObject>
 @required
 -(void)setSelectedObjectsByIdentifiers:(NSArray*)identifiers;
+
+-(NSArray*)selectedIdentifiers;
 @end

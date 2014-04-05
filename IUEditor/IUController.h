@@ -15,4 +15,6 @@
 //@property (readonly) id selection;
 //- (NSIndexPath*)indexPathOfObject:(id)anObject;
 
+//KVC observable
+
 @end

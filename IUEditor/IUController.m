@@ -12,6 +12,7 @@
 
 @implementation IUController
 
+
 #pragma mark LMCanvasVCDelegate
 -(void)setSelectedObjectsByIdentifiers:(NSArray *)identifiers{
     [JDLogUtil log:IULogAction key:@"canvas selected objects" string:[identifiers description]];
@@ -27,5 +28,8 @@
     [self setSelectedObjects:selectedChildren];
 }
 
+-(NSArray*)selectedIdentifiers{
+    return [self.selectedObjects valueForKey:@"htmlID"];
+}
 
 @end

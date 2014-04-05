@@ -29,8 +29,13 @@
     if (self) {
         frameDict = [[IUFrameDictionary alloc] init];;
         selectedIUs = [NSMutableArray array];
+        [self addObserver:self forKeyPath:@"controller.selectedObjects" options:0 context:nil];
     }
     return self;
+}
+
+-(void)controller_selectedObjectsDidChange:(NSDictionary*)change{
+    [JDLogUtil log:IULogAction key:@"CanvasVC:observed" string:[self.controller.selectedIdentifiers description]];
 }
 
 -(LMCanvasV*)view{
@@ -61,6 +66,7 @@
 - (DOMDocument *)DOMDoc{
     return [[[self webView] mainFrame] DOMDocument];
 }
+
 
 - (void)setDocument:(IUDocument *)document{
     NSAssert(self.resourcePath != nil, @"resourcePath is nil");
