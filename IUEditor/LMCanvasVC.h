@@ -11,7 +11,7 @@
 #import "LMCanvasVCDelegate.h"
 
 @class LMCanvasV;
-@interface LMCanvasVC : NSViewController <IUDocumentCanvas>
+@interface LMCanvasVC : NSViewController <IUDocumentDelegate>
 
 @property (nonatomic) _binding_ IUDocument  *document;
 @property (nonatomic) _binding_ NSString    *resourcePath;

@@ -9,6 +9,7 @@
 #import "IUObj.h"
 #import "NSObject+JDExtension.h"
 #import "NSCoder+JDExtension.h"
+#import "IUCompiler.h"
 
 @implementation IUObj{
 }
@@ -76,6 +77,16 @@
 
 -(NSDictionary*)CSSAttributesForWidth:(NSInteger)width{
     return [_css tagDictionaryForWidth:(int)width];
+}
+
+//source
+-(NSString*)html{
+    return [self.project.compiler editorHTML:self];
+}
+
+-(NSString*)cssForWidth:(int)width{
+    //FIXME: WTF
+    return @"HERE IS CSS";
 }
 
 

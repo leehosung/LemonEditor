@@ -10,9 +10,12 @@
 #import "IUCompiler.h"
 #import "IUView.h"
 
-@protocol IUDocumentCanvas <NSObject>
-
-
+@protocol IUDocumentDelegate <NSObject>
+@required
+-(void)updateIU:(NSString*)identifier html:(NSString*)html;
+-(void)updateIU:(NSString*)identifier css:(NSString*)css forWidth:(int)width;
+-(void)addIU:(NSString*)identifier parentIU:(NSString*)parentIdentifier index:(NSInteger)index css:(NSString*)css html:(NSString*)html;
+-(void)removeIU:(NSString*)identifier;
 @end
 
 
@@ -32,5 +35,5 @@
 
 
 
-@property id <IUDocumentCanvas> canvas;
+@property id <IUDocumentDelegate> canvas;
 @end
