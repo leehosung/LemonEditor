@@ -31,7 +31,7 @@
 
 -(NSString*)absolutePath{
     if ([_parent isKindOfClass:[IUProject class]]) {
-        return [(IUProject*)(_parent) path];
+        return [[(IUProject*)(_parent) path] stringByAppendingPathComponent:self.name];
     }
     else{
         return [[(IUResourceGroupNode*)(_parent) absolutePath] stringByAppendingPathComponent:self.name];

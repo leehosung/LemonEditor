@@ -103,7 +103,7 @@
     
     NSString *dir = [setting objectForKey:IUProjectKeyDirectory];
     project.path = [dir stringByAppendingPathComponent:[project.name stringByAppendingPathExtension:@"iuproject"]];
-    
+    [JDFileUtil rmDirPath:[project.path stringByAppendingPathExtension:@"*"]];
     ReturnNilIfFalse([JDFileUtil mkdirPath:project.path]);
     
     IUDocumentGroupNode *pageDir = [[IUDocumentGroupNode alloc] init];
@@ -178,26 +178,26 @@
     NSData *sampleImg = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"sample" ofType:@"jpg"]];
     NSAssert([self insertData:sampleImg name:@"sample.jpg" group:imageGroup], @"sample.jpg failure");
     
-    IUResourceGroupNode *externalGroup = [[IUResourceGroupNode alloc] init];
-    externalGroup.name = @"External";
-    externalGroup.parent = resGroup;
-    [resGroup addNode:externalGroup];
-    ReturnNoIfFalse([externalGroup syncDir]);
+    IUResourceGroupNode *CSSGroup = [[IUResourceGroupNode alloc] init];
+    CSSGroup.name = @"CSS";
+    CSSGroup.parent = resGroup;
+    [resGroup addNode:CSSGroup];
+    ReturnNoIfFalse([CSSGroup syncDir]);
     
     NSData *cssData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"reset" ofType:@"css"]];
-    NSAssert([self insertData:cssData name:@"reset.css" group:externalGroup], @"reset.css failure");
+    NSAssert([self insertData:cssData name:@"reset.css" group:CSSGroup], @"reset.css failure");
     
     NSData *iuCssData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"iu" ofType:@"css"]];
-    NSAssert([self insertData:iuCssData name:@"iu.css" group:externalGroup], @"iu.css failure");
+    NSAssert([self insertData:iuCssData name:@"iu.css" group:CSSGroup], @"iu.css failure");
     
-    IUResourceGroupNode *jsGroup = [[IUResourceGroupNode alloc] init];
-    jsGroup.name = @"JS";
-    jsGroup.parent = externalGroup;
-    [externalGroup addNode:jsGroup];
-    ReturnNoIfFalse([jsGroup syncDir]);
+    IUResourceGroupNode *JSGroup = [[IUResourceGroupNode alloc] init];
+    JSGroup.name = @"JS";
+    JSGroup.parent = resGroup;
+    [resGroup addNode:JSGroup];
+    ReturnNoIfFalse([JSGroup syncDir]);
     
     NSData *jsFrameData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"iuframe" ofType:@"js"]];
-    NSAssert([self insertData:jsFrameData name:@"iuframe.js" group:jsGroup], @"iuframe.js failure");
+    NSAssert([self insertData:jsFrameData name:@"iuframe.js" group:JSGroup], @"iuframe.js failure");
 
     return YES;
 }
