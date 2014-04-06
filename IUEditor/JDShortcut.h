@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#define ReturnNilIfFalse(a)     if((a) == NO) return nil;
-#define ReturnNoIfFalse(a)      if((a) == NO) return NO;
+#define ReturnNilIfFalse(a)     if((a) == NO) {NSLog(@"ReturnNilIfFalse"); return nil;};
+#define ReturnNoIfFalse(a)      if((a) == NO){NSLog(@"ReturnNoIfFalse"); return NO;};
 #define ReturnNilIfError(a, b)  (a);    if ((b)!=nil) return nil; 

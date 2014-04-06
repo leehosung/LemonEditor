@@ -20,7 +20,9 @@
     return self;
 }
 
+//FIXME: not called.
 - (void)setDocument:(IUDocument *)document{
+    assert(0); //is this function called?
     NSAssert(self.resourcePath != nil, @"resourcePath is nil");
     JDSectionInfoLog(IULogSource, @"resourcePath : %@", self.resourcePath);
     [_document setDelegate:nil];

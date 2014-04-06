@@ -109,7 +109,7 @@
     _project = [IUProject projectWithContentsOfPackage:path];
 
     fileNaviVC.project = _project;
-    canvasVC.resourcePath = _project.path;
+    canvasVC.documentBasePath = _project.path;
     [fileNaviVC selectFirstDocument];
 
 
@@ -135,6 +135,11 @@
         IUDocument *document = ((IUDocumentNode*)selectedNode).document;
         [stackVC setDocument:document];
         [canvasVC setDocument:document];
+        
+        //save for debug
+        NSString *documentSavePath = [canvasVC.documentBasePath stringByAppendingPathComponent:[selectedNode.name stringByAppendingPathExtension:@"html"]];
+        [document.editorSource writeToFile:documentSavePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+
 
         return;
     }

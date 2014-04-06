@@ -69,13 +69,13 @@
 
 
 - (void)setDocument:(IUDocument *)document{
-    NSAssert(self.resourcePath != nil, @"resourcePath is nil");
-    JDSectionInfoLog( IULogSource, @"resourcePath  : %@", self.resourcePath);
+    NSAssert(self.documentBasePath != nil, @"resourcePath is nil");
+    JDSectionInfoLog( IULogSource, @"resourcePath  : %@", self.documentBasePath);
     [_document setDelegate:nil];
     _document = document;
     [_document setDelegate:self];
     
-    [[[self webView] mainFrame] loadHTMLString:document.editorSource baseURL:[NSURL fileURLWithPath:self.resourcePath]];
+    [[[self webView] mainFrame] loadHTMLString:document.editorSource baseURL:[NSURL fileURLWithPath:self.documentBasePath]];
 }
 
 #pragma mark -
