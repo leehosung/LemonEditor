@@ -42,5 +42,5 @@
 -(void)addObserver:(NSObject *)observer forKeyPaths:(NSArray *)keyPaths options:(NSKeyValueObservingOptions)options contexts:(NSArray*)contexts;
 +(NSArray*)classPedigreeTo:(Class)class;
 +(NSArray*)properties;
-+(NSArray*)propertiesWithOut:(NSArray*)array;
++(NSArray*)propertiesWithOutProperties:(NSArray*)array;
 @end

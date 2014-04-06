@@ -25,6 +25,9 @@
 }
 
 - (void)awakeFromNib{
+    //IUController.selection.css.affectingTagCollection.width
+    NSString *imageCSSBindingPath = [@"IUController.selection.css.affectingTagCollection." stringByAppendingString:IUCSSTagImage];
     [_imageNameComboBox bind:@"content" toObject:self withKeyPath:@"imageNames" options:nil];
+    [_imageNameComboBox bind:@"value" toObject:self withKeyPath:imageCSSBindingPath options:nil];
 }
 @end
