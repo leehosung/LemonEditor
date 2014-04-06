@@ -89,7 +89,7 @@
     resourceVC = [[LMResourceVC alloc] initWithNibName:@"LMResourceVC" bundle:nil];
     [_resourceV addSubviewFullFrame:resourceVC.view];
     
-    propertyFrameVC = [[LMPropertyFrameVC alloc] initWithNibName:@"LMPropertyVC" bundle:nil];
+    propertyFrameVC = [[LMPropertyFrameVC alloc] initWithNibName:@"LMPropertyFrameVC" bundle:nil];
     [propertyFrameVC bind:@"IUController" toObject:self withKeyPath:@"IUController" options:nil];
     [_propertyV addSubviewFullFrame:propertyFrameVC.view];
     

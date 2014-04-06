@@ -176,7 +176,7 @@
     
     
     NSData *sampleImg = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"sample" ofType:@"jpg"]];
-    NSAssert([self insertData:sampleImg name:@"sample.jpg" group:imageGroup], @"sample.jpg failure");
+    NSAssert([self insertResource:sampleImg name:@"sample.jpg" type:IUResourceNodeTypeImage group:imageGroup], @"sample.jpg failure");
     
     IUResourceGroupNode *CSSGroup = [[IUResourceGroupNode alloc] init];
     CSSGroup.name = @"CSS";
@@ -185,10 +185,10 @@
     ReturnNoIfFalse([CSSGroup syncDir]);
     
     NSData *cssData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"reset" ofType:@"css"]];
-    NSAssert([self insertData:cssData name:@"reset.css" group:CSSGroup], @"reset.css failure");
+    NSAssert([self insertResource:cssData name:@"reset.css" type:IUResourceNodeTypeCSS group:CSSGroup], @"reset.css failure");
     
     NSData *iuCssData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"iu" ofType:@"css"]];
-    NSAssert([self insertData:iuCssData name:@"iu.css" group:CSSGroup], @"iu.css failure");
+    NSAssert([self insertResource:iuCssData name:@"iu.css" type:IUResourceNodeTypeCSS group:CSSGroup], @"iu.css failure");
     
     IUResourceGroupNode *JSGroup = [[IUResourceGroupNode alloc] init];
     JSGroup.name = @"JS";
@@ -197,19 +197,19 @@
     ReturnNoIfFalse([JSGroup syncDir]);
     
     NSData *jsFrameData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"iuframe" ofType:@"js"]];
-    NSAssert([self insertData:jsFrameData name:@"iuframe.js" group:JSGroup], @"iuframe.js failure");
+    NSAssert([self insertResource:jsFrameData name:@"iuframe.js" type:IUResourceNodeTypeJS group:JSGroup], @"iuframe.js failure");
 
     return YES;
 }
 
--(BOOL)insertData:(NSData*)data name:(NSString*)name group:(IUResourceGroupNode*)resourceGroup{
+-(BOOL)insertResource:(NSData*)data name:(NSString*)name type:(IUResourceNodeType)type group:(IUResourceGroupNode*)resourceGroup{
     assert(data != nil && name!=nil && resourceGroup != nil);
     ReturnNoIfFalse([data writeToFile:[resourceGroup.absolutePath stringByAppendingPathComponent:name] atomically:YES]);
-    IUResourceNode *newNode = [[IUResourceNode alloc] initWithName:name parent:resourceGroup];
+    IUResourceNode *newNode = [[IUResourceNode alloc] initWithName:name parent:resourceGroup type:type];
     [resourceGroup addNode:newNode];
     
 
-    if ([[NSImage alloc] initWithData:data]) {
+    if (type == IUResourceNodeTypeImage) {
         [self willChangeValueForKey:@"imageNames"];
         [self willChangeValueForKey:@"resourcePaths"];
         [_imageNames addObject:name];
