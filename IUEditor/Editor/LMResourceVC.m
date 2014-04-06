@@ -31,13 +31,16 @@
 
 -(void)allChildrenDidChange:(NSDictionary*)change{
     NSArray *array = self.node.allChildren;
-    NSMutableArray *contents = [NSMutableArray array];
-    for (IUNode *node in array) {
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUNode *node, NSDictionary *bindings) {
         if ([node isKindOfClass:[IUResourceNode class]]) {
-            [contents addObject:node];
+            if ( ((IUResourceNode*)node).type == IUResourceNodeTypeImage) {
+                return YES;
+            }
         }
-    }
-    self.contents = contents;
+        return NO;
+    }];
+                              
+    self.contents = [array filteredArrayUsingPredicate:predicate];
 }
 
 @end
