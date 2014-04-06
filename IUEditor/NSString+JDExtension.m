@@ -19,6 +19,10 @@
     return str;
 }
 
+- (NSString*)CSSURLString{
+    return [NSString stringWithFormat:@"url('%@')", self];
+}
+
 - (NSString*)lastLine{
     NSInteger len = [self length];
     NSInteger i;

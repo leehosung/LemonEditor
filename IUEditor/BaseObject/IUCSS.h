@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @protocol IUCSSDelegate
+@required
 -(void)CSSChanged:(NSDictionary*)tagDictionary forWidth:(NSInteger)width;
+-(BOOL)CSSShouldChangeValue:(id)value forTag:(IUCSSTag)tag forWidth:(NSInteger)width;
 @end
 
 #define IUCSSDefaultCollection 9999

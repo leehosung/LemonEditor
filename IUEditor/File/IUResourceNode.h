@@ -15,7 +15,9 @@
 -(id)initWithName:(NSString*)name parent:(IUResourceGroupNode*)group;
 
 -(IUResourceGroupNode*)parent;
--(NSString*)path;
+-(NSString*)absolutePath;
+-(NSString*)relativePath;
+
 -(NSImage*)image;
 -(NSString*)UTI;
 

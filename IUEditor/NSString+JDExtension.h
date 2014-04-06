@@ -12,7 +12,7 @@
 
 - (NSString*)JSEscape;
 - (BOOL)isHTTPURL;
-
+- (NSString*)CSSURLString;
 
 - (NSString*)lastLine;
 

@@ -13,6 +13,7 @@
 
 @property (nonatomic) IUNode    *parent;
 - (BOOL)syncDir;
-- (NSString*)path;
+- (NSString*)relativePath;
+- (NSString*)absolutePath;
 
 @end

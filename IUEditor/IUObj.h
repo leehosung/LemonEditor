@@ -57,4 +57,5 @@
 -(void)enableDelegate:(id)sender;
 -(void)disableDelegate:(id)sender;
 
+
 @end

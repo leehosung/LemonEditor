@@ -26,7 +26,9 @@ typedef enum _IUGitType{
 
 
 //resource management
-@property  (readonly)  NSArray         *imageNames;
+//KVO - compliant
+-(NSArray*)imageNames;
+-(NSDictionary*)resourcePathes;
 
 //setting
 #define IUProjectKeyGit @"git"

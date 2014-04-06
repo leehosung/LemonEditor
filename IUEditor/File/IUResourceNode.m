@@ -24,7 +24,7 @@
     CFStringRef UTIRef = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension,                                                                       (__bridge CFStringRef)[self.name pathExtension],NULL);
     _UTI = (NSString *)CFBridgingRelease(UTIRef);
     
-    NSImage *image = [[NSImage alloc] initWithContentsOfFile:self.path];
+    NSImage *image = [[NSImage alloc] initWithContentsOfFile:self.absolutePath];
     if (image) {
         _image = image;
     }
@@ -55,9 +55,14 @@
     return _group;
 }
 
--(NSString*)path{
-    return [_group.path stringByAppendingPathComponent:self.name];
+-(NSString*)absolutePath{
+    return [_group.absolutePath stringByAppendingPathComponent:self.name];
 }
+
+-(NSString*)relativePath{
+    return [_group.relativePath stringByAppendingPathComponent:self.name];
+}
+
 
 -(NSImage*)image{
     return _image;

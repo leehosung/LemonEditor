@@ -19,7 +19,7 @@
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];
     if (self) {
-        [aDecoder decodeToObject:self withProperties:[[IUObj class] propertiesWithOut:@[@"delegate"]]];
+        [aDecoder decodeToObject:self withProperties:[[IUObj class] propertiesWithOutProperties:@[@"delegate"]]];
         _css = [aDecoder decodeObjectForKey:@"css"];
         _css.delegate = self;
         delegateEnableLevel = 1;
@@ -91,7 +91,7 @@
 }
 
 -(NSString*)cssForWidth:(NSInteger)width{
-    return [self.project.compiler CSSContentFromAttributes:[self CSSAttributesForWidth:width]];
+    return [self.project.compiler CSSContentFromAttributes:[self CSSAttributesForWidth:width] ofClass:self];
 }
 
 -(void)CSSChanged:(NSDictionary*)tagDictionary forWidth:(NSInteger)width{
@@ -110,6 +110,9 @@
     delegateEnableLevel --;
 }
 
-
+//delegation
+-(BOOL)CSSShouldChangeValue:(id)value forTag:(IUCSSTag)tag forWidth:(NSInteger)width{
+    return YES;
+}
 
 @end

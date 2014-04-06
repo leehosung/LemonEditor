@@ -25,7 +25,8 @@
 
 @implementation IUProject{
     NSMutableDictionary *IDDict;
-    NSMutableArray  *__imageNames;
+    NSMutableArray  *_imageNames;
+    NSMutableDictionary *_resourcePaths;
 }
 
 
@@ -35,19 +36,22 @@
     [encoder encodeInt32:_gitType forKey:@"gitType"];
     [encoder encodeObject:_path forKey:@"path"];
     [encoder encodeObject:IDDict forKey:@"IDDict"];
-    [encoder encodeObject:__imageNames forKey:@"imageNames"];
+    [encoder encodeObject:_imageNames forKey:@"imageNames"];
+    [encoder encodeObject:_resourcePaths forKey:@"resourcePaths"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
     if (self) {
         _compiler = [[IUCompiler alloc] init];
+        _resourcePaths = [[aDecoder decodeObjectForKey:@"resourcePaths"] mutableCopy];
+
+        [_compiler bind:@"resourcePaths" toObject:self withKeyPath:@"resourcePaths" options:nil];
         _herokuOn = [aDecoder decodeBoolForKey:@"herokuOn"];
         _gitType = [aDecoder decodeInt32ForKey:@"gitType"];
         _path = [aDecoder decodeObjectForKey:@"path"];
         IDDict = [aDecoder decodeObjectForKey:@"IDDict"];
-        __imageNames = [aDecoder decodeObjectForKey:@"imageNames"];
-        _imageNames = [__imageNames copy];
+        _imageNames = [[aDecoder decodeObjectForKey:@"imageNames"] mutableCopy];
     }
     return self;
 }
@@ -56,7 +60,8 @@
     self = [super init];
     if(self){
         IDDict = [NSMutableDictionary dictionary];
-        __imageNames = [NSMutableArray array];
+        _imageNames = [NSMutableArray array];
+        _resourcePaths = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -199,23 +204,35 @@
 
 -(BOOL)insertData:(NSData*)data name:(NSString*)name group:(IUResourceGroupNode*)resourceGroup{
     assert(data != nil && name!=nil && resourceGroup != nil);
-    ReturnNoIfFalse([data writeToFile:[resourceGroup.path stringByAppendingPathComponent:name] atomically:YES]);
+    ReturnNoIfFalse([data writeToFile:[resourceGroup.absolutePath stringByAppendingPathComponent:name] atomically:YES]);
     IUResourceNode *newNode = [[IUResourceNode alloc] initWithName:name parent:resourceGroup];
     [resourceGroup addNode:newNode];
     
-    
+
     if ([[NSImage alloc] initWithData:data]) {
-        [__imageNames addObject:name];
+        [self willChangeValueForKey:@"imageNames"];
+        [self willChangeValueForKey:@"resourcePaths"];
+        [_imageNames addObject:name];
+        [_resourcePaths setObject:newNode.relativePath forKey:name];
+        [self willChangeValueForKey:@"resourcePaths"];
+        [self didChangeValueForKey:@"imageNames"];
     }
-    [self willChangeValueForKey:@"imageNames"];
-    _imageNames = [__imageNames copy];
-    [self didChangeValueForKey:@"imageNames"];
+
     return YES;
+}
+
+-(NSArray*)imageNames{
+    return _imageNames;
+}
+
+-(NSDictionary*)resourcePaths{
+    return _resourcePaths;
 }
 
 - (void)build:(NSError**)error{
     
 }
+
 
 
 -(BOOL)save{

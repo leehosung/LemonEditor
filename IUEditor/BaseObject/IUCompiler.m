@@ -43,7 +43,7 @@
 -(NSString*)cssSourceForIU:(IUObj*)iu width:(int)width{
     NSMutableString *css = [NSMutableString string];
     [css appendString:[NSString stringWithFormat:@"#%@ {", iu.htmlID]];
-    [css appendString:[self CSSContentFromAttributes:[iu CSSAttributesForWidth:IUCSSDefaultCollection]]];
+    [css appendString:[self CSSContentFromAttributes:[iu CSSAttributesForWidth:IUCSSDefaultCollection] ofClass:self]];
     [css appendString:@"}"];
     [css appendString:@"\n"];
     return css;
@@ -103,9 +103,9 @@
     return code;
 }
 
--(NSString*)CSSContentFromAttributes:(NSDictionary*)cssTagDictionary{
+-(NSString*)CSSContentFromAttributes:(NSDictionary*)cssTagDictionary ofClass:(IUObj*)obj{
     //convert css tag dictionry to css string dictionary
-    NSDictionary *cssStringDict = [self cssStringDictionaryWithCSSTagDictionary:cssTagDictionary];
+    NSDictionary *cssStringDict = [self cssStringDictionaryWithCSSTagDictionary:cssTagDictionary ofClass:obj];
     
     //convert css string dictionary to css line
     NSMutableString *code = [NSMutableString string];
@@ -115,7 +115,7 @@
     return code;
 }
 
--(IUCSSStringDictionary*)cssStringDictionaryWithCSSTagDictionary:(NSDictionary*)cssTagDict{
+-(IUCSSStringDictionary*)cssStringDictionaryWithCSSTagDictionary:(NSDictionary*)cssTagDict ofClass:(IUObj*)obj{
     IUCSSStringDictionary *dict = [IUCSSStringDictionary dictionary];
     for (IUCSSTag tag in cssTagDict) {
         if ([tag isSameTag:IUCSSTagX]) {
@@ -132,6 +132,9 @@
         }
         else if ([tag isSameTag:IUCSSTagBGColor]){
             [dict putTag:@"background-color" color:cssTagDict[tag]];
+        }
+        else if ([tag isSameTag:IUCSSTagImage]){
+            [dict putTag:@"background-image" string:[_resourcePaths[cssTagDict[tag]] CSSURLString]];
         }
         else {
             [dict putTag:tag string:cssTagDict[tag]];

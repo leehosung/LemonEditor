@@ -17,17 +17,27 @@
 
 
 - (BOOL)syncDir{
-    return [JDFileUtil mkdirPath:self.path];
+    return [JDFileUtil mkdirPath:self.absolutePath];
 }
 
--(NSString*)path{
+-(NSString*)relativePath{
     if ([_parent isKindOfClass:[IUProject class]]) {
-        NSString *parentPath = [(IUProject*)(_parent) path];
-        return [parentPath stringByAppendingPathComponent:self.name];
+        return [NSString stringWithFormat:@"./%@", self.name];
     }
     else{
-        return [[(IUResourceGroupNode*)(_parent) path] stringByAppendingPathComponent:self.name];
+        return [[(IUResourceGroupNode*)(_parent) relativePath] stringByAppendingPathComponent:self.name];
     }
 }
+
+-(NSString*)absolutePath{
+    if ([_parent isKindOfClass:[IUProject class]]) {
+        return [(IUProject*)(_parent) path];
+    }
+    else{
+        return [[(IUResourceGroupNode*)(_parent) absolutePath] stringByAppendingPathComponent:self.name];
+    }
+}
+
+
 
 @end

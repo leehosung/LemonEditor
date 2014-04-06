@@ -285,7 +285,7 @@
     return rv;
 }
 
-+(NSArray*)propertiesWithOut:(NSArray*)array{
++(NSArray*)propertiesWithOutProperties:(NSArray*)array{
     unsigned count;
     objc_property_t *properties = class_copyPropertyList([self class], &count);
     
