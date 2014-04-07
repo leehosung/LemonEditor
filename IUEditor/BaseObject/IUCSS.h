@@ -23,7 +23,7 @@
 @property id <IUCSSDelegate> delegate;
 
 //set tag, or delete tag
--(void)setValue:(id)value forTag:(IUCSSTag)tag forWidth:(int)width;
+-(void)setValue:(id)value forTag:(IUCSSTag)tag forWidth:(NSInteger)width;
 
 //remove tag of all tag dictionay in width
 -(void)eradicateTag:(IUCSSTag)type;

@@ -76,9 +76,9 @@
 
 #pragma mark -
 #pragma mark select
-- (CGFloat)selectedFrameWidth{
+- (NSInteger)selectedFrameWidth{
     InnerSizeBox *selectedBox = [boxManageView.subviews objectAtIndex:selectIndex];
-    return [selectedBox frameSize];
+    return (NSInteger)(floor([selectedBox frameSize]));
 }
 
 

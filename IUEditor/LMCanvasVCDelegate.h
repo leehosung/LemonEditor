@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+/* to be removed */
+
 @protocol LMCanvasVCDelegate <NSObject>
 @required
 -(void)setSelectedObjectsByIdentifiers:(NSArray*)identifiers;

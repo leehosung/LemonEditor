@@ -31,6 +31,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="m8U-IP-QTk"/>
                 <outlet property="mainView" destination="A9f-iP-fE5" id="uHQ-iR-ldy"/>
+                <outlet property="sizeView" destination="7bm-eT-a4W" id="9tE-Ge-vu1"/>
             </connections>
         </splitView>
     </objects>
