@@ -165,6 +165,17 @@
 }
 -(void)IURemoved:(NSString*)identifier{
     JDDebugLog(@"FIXME!!!!!!");
+    
+}
+
+- (NSPoint)distanceIU:(NSString *)iuName withParent:(NSString *)parentName{
+    
+    NSRect iuFrame = [[frameDict.dict objectForKey:iuName] rectValue];
+    NSRect parentFrame = [[frameDict.dict objectForKey:iuName] rectValue];
+    
+    NSPoint distance = NSMakePoint(iuFrame.origin.x-parentFrame.origin.x,
+                                   iuFrame.origin.y - parentFrame.origin.y);
+    return distance;
 }
 
 #pragma mark -

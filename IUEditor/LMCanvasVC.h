@@ -54,6 +54,7 @@
 - (void)setGhostImage:(NSImage *)ghostImage;
 - (void)setGhostPosition:(NSPoint)position;
 
+
 #pragma mark -
 #pragma mark setIU
 //TODO: connect to IU - set value to IU
