@@ -10,8 +10,6 @@
 #import "IUResourceGroupNode.h"
 
 @implementation IUResourceNode{
-    NSImage *_image;
-    NSString *_UTI;
     IUResourceType _type;
 }
 
@@ -20,10 +18,7 @@
     self = [super init];
     self.name = name;
     _type = type;
-    
-    CFStringRef UTIRef = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension,                                                                       (__bridge CFStringRef)[self.name pathExtension],NULL);
-    _UTI = (NSString *)CFBridgingRelease(UTIRef);
-    
+        
     return self;
 }
 
@@ -41,19 +36,13 @@
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
-    _image = [aDecoder decodeObjectForKey:@"image"];
-    _UTI = [aDecoder decodeObjectForKey:@"UTI"];
     _type = [aDecoder decodeInt32ForKey:@"type"];
-    self.parent = [aDecoder decodeObjectForKey:@"parent"];
     return self;
 }
 
 -(void)encodeWithCoder:(NSCoder *)aCoder{
     [super encodeWithCoder:aCoder];
-    [aCoder encodeObject:_image forKey:@"image"];
-    [aCoder encodeObject:_UTI forKey:@"UTI"];
     [aCoder encodeInt32:_type forKey:@"type"];
-    [aCoder encodeObject:self.parent forKey:@"parent"];
 }
 
 -(NSString*)absolutePath{
@@ -66,13 +55,8 @@
 
 
 -(NSImage*)image{
-    return _image;
+    return [[NSImage alloc] initWithContentsOfFile:self.absolutePath];
 }
-
--(NSString*)UTI{
-    return _UTI;
-}
-
 
 
 @end

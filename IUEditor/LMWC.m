@@ -131,11 +131,7 @@
     _compiler = [[IUCompiler alloc] init];
 
     for (IUNode *node in _project.allChildren) {
-        if ([node isKindOfClass:[IUResourceGroupNode class]]) {
-            [resourceVC setNode:(IUResourceGroupNode*)node];
-            break;
-        }
-        else if ([node isKindOfClass:[IUDocumentNode class]]){
+        if ([node isKindOfClass:[IUDocumentNode class]]){
             [_IUManager registerIU:((IUDocumentNode*)node).document];
             [((IUDocumentNode*)node).document setManager:_IUManager];
             [((IUDocumentNode*)node).document setCompiler:_compiler];
@@ -149,6 +145,8 @@
     _resourceManager = [[IUResourceManager alloc] init];
     _resourceManager.rootNode = _project.resourceNode;
     _compiler.resourceSource = _resourceManager;
+    
+    [resourceVC setManager:_resourceManager];
     
     [propertyBaseVC setResourceManager:_resourceManager];
 }

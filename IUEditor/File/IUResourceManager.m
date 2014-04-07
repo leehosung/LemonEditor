@@ -35,12 +35,15 @@
     NSString *groupName;
     switch (type) {
         case IUResourceTypeCSS:{
-            [self willChangeValueForKey:@"imagePaths"];
-            [self willChangeValueForKey:@"imageNames"];
             groupName=@"CSS"; break;
         }
         case IUResourceTypeJS: groupName=@"JS"; break;
-        case IUResourceTypeImage: groupName=@"Image"; break;
+        case IUResourceTypeImage:{
+            [self willChangeValueForKey:@"imageResourceNodes"];
+            [self willChangeValueForKey:@"imageNames"];
+            [self willChangeValueForKey:@"imagePaths"];
+            groupName=@"Image"; break;
+        }
         default: assert(0);  break;
     }
     
@@ -50,6 +53,7 @@
     if (type == IUResourceTypeCSS) {
         [self didChangeValueForKey:@"imagePaths"];
         [self didChangeValueForKey:@"imageNames"];
+        [self didChangeValueForKey:@"imageResourceNodes"];
     }
     return resourceNode;
 }
@@ -70,14 +74,31 @@
 }
 
 -(void)setRootNode:(IUResourceGroupNode *)rootNode{
+    [self willChangeValueForKey:@"imageResourceNodes"];
+    [self willChangeValueForKey:@"imageNames"];
     [self willChangeValueForKey:@"imagePaths"];
     _rootNode = rootNode;
-    [self didChangeValueForKey:@"imaegPaths"];
+    [self didChangeValueForKey:@"imagePaths"];
+    [self didChangeValueForKey:@"imageNames"];
+    [self didChangeValueForKey:@"imageResourceNodes"];
 }
 
 -(NSArray*)imageNames{
     NSArray *ret = [self.imagePaths valueForKeyPath:@"lastPathComponent"];
     return ret;
 }
+
+-(NSArray*)imageResourceNodes{
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUResourceNode* evaluatedObject, NSDictionary *bindings) {
+        if ([evaluatedObject isKindOfClass:[IUResourceNode class]]) {
+            if (evaluatedObject.type == IUResourceTypeImage) {
+                return YES;
+            }
+        }
+        return NO;
+    }];
+    return [_rootNode.allChildren filteredArrayUsingPredicate:predicate];
+}
+
 
 @end

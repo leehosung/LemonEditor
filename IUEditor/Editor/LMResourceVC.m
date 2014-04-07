@@ -10,7 +10,7 @@
 #import "IUResourceNode.h"
 
 @interface LMResourceVC ()
-@property NSArray *contents;
+@property (weak) IBOutlet NSCollectionView *collectionV;
 @end
 
 @implementation LMResourceVC
@@ -24,9 +24,9 @@
     return self;
 }
 
--(void)setNode:(IUResourceGroupNode *)node{
-    _node = node;
+-(void)setManager:(IUResourceManager *)manager{
+    _manager = manager;
+    [_collectionV bind:@"content" toObject:manager withKeyPath:@"imageResourceNodes" options:nil];
 }
-
 
 @end
