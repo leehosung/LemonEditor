@@ -11,6 +11,11 @@
 #import "NSCoder+JDExtension.h"
 #import "IUCompiler.h"
 #import "IUDocument.h"
+#import "IUView.h"
+
+@interface IUObj()
+@property NSMutableArray *m_children;
+@end
 
 @implementation IUObj{
     int delegateEnableLevel;
@@ -22,6 +27,7 @@
         [aDecoder decodeToObject:self withProperties:[[IUObj class] propertiesWithOutProperties:@[@"delegate"]]];
         _css = [aDecoder decodeObjectForKey:@"css"];
         _css.delegate = self;
+        _m_children=[aDecoder decodeObjectForKey:@"children"];
         delegateEnableLevel = 1;
     }
     return self;
@@ -33,11 +39,11 @@
     }
     [aCoder encodeFromObject:self withProperties:[[IUObj class] properties]];
     [aCoder encodeObject:self.css forKey:@"css"];
+    [aCoder encodeObject:_m_children forKey:@"children"];
 }
 
--(id)initWithProject:(IUProject*)project setting:(NSDictionary*)setting{
+-(id)initWithSetting:(NSDictionary*)setting{
     self = [super init];{
-        _project = project;
         _css = [[IUCSS alloc] init];
         _css.delegate = self;
         
@@ -45,6 +51,8 @@
         [_css setValue:@(35) forTag:IUCSSTagHeight forWidth:IUCSSDefaultCollection];
         [_css setValue:[NSColor randomColor] forTag:IUCSSTagBGColor forWidth:IUCSSDefaultCollection];
         delegateEnableLevel = 1;
+        
+        _m_children = [NSMutableArray array];
     }
     return self;
 }
@@ -87,11 +95,11 @@
 
 //source
 -(NSString*)html{
-    return [self.project.compiler editorHTML:self];
+    return [self.document.compiler editorHTML:self];
 }
 
 -(NSString*)cssForWidth:(NSInteger)width{
-    return [self.project.compiler CSSContentFromAttributes:[self CSSAttributesForWidth:width] ofClass:self];
+    return [self.document.compiler CSSContentFromAttributes:[self CSSAttributesForWidth:width] ofClass:self];
 }
 
 -(void)CSSChanged:(NSDictionary*)tagDictionary forWidth:(NSInteger)width{
@@ -113,6 +121,74 @@
 //delegation
 -(BOOL)CSSShouldChangeValue:(id)value forTag:(IUCSSTag)tag forWidth:(NSInteger)width{
     return YES;
+}
+
+-(void)setHtmlID:(NSString *)htmlID{
+    if (self.name == nil || [self.name isEqualToString:_htmlID]) {
+        _htmlID = [htmlID copy];
+        [self willChangeValueForKey:@"name"];
+        _name = [htmlID copy];
+        [self didChangeValueForKey:@"name"];
+    }
+    else{
+        _htmlID = [htmlID copy];
+    }
+}
+
+-(BOOL)addIU:(IUObj *)iu error:(NSError**)error{
+    [_m_children addObject:iu];
+    if (iu.delegate == nil) {
+        iu.delegate = self.delegate;
+    }
+    iu.parent = self;
+    return YES;
+}
+
+-(BOOL)addIUReference:(IUObj *)iu error:(NSError**)error{
+    [_m_children addObject:iu];
+    if (self.delegate) {
+        iu.delegate = self.delegate;
+    }
+    return YES;
+}
+
+
+-(BOOL)removeIU:(IUObj *)iu{
+    [_m_children removeObject:iu];
+    return YES;
+}
+
+-(BOOL)insertIU:(IUObj *)iu atIndex:(NSInteger)index  error:(NSError**)error{
+    [_m_children insertObject:iu atIndex:index];
+    return YES;
+}
+
+-(NSArray*)children{
+    return [_m_children copy];
+}
+
+-(void)setDelegate:(id<IUSourceDelegate>)delegate{
+    NSLog(@"set delegate %@", self.description);
+    _delegate = delegate;
+    for (IUObj *obj in _m_children) {
+        obj.delegate = delegate;
+    }
+}
+
+-(IUDocument*)document{
+    if (self.parent) {
+        return self.parent.document;
+    }
+    else{
+        if ([self isKindOfClass:[IUDocument class]]) {
+            return (IUDocument*)self;
+        }
+    }
+    return nil;
+}
+
+-(NSString*)description{
+    return [[super description] stringByAppendingFormat:@" %@", self.htmlID];
 }
 
 @end

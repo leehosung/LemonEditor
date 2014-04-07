@@ -26,6 +26,10 @@
 #import "LMPropertyBaseVC.h"
 #import "LMCanvasV.h"
 
+#import "IUCompiler.h"
+#import "IUResourceManager.h"
+#import "IUManager.h"
+
 @interface LMWC ()
 @property (weak) IBOutlet NSView *leftTopV;
 @property (weak) IBOutlet NSView *leftBottomV;
@@ -42,6 +46,11 @@
 @end
 
 @implementation LMWC{
+    IUProject   *_project;
+    IUCompiler  *_compiler;
+    IUManager   *_IUManager;
+    IUResourceManager   *_resourceManager;
+
     LMFileNaviVC    *fileNaviVC;
     LMStackVC       *stackVC;
     LMCanvasVC *canvasVC;
@@ -50,7 +59,6 @@
     LMResourceVC    *resourceVC;
     LMPropertyFrameVC    *propertyFrameVC;
     LMPropertyBaseVC    *propertyBaseVC;
-    IUProject   *_project;
 }
 
 - (id)initWithWindow:(NSWindow *)window
@@ -70,7 +78,6 @@
     [_leftBottomV addSubview:fileNaviVC.view];
     
     stackVC = [[LMStackVC alloc] initWithNibName:@"LMStackVC" bundle:nil];
-    stackVC.wc = self;
     [self bind:@"IUController" toObject:stackVC withKeyPath:@"IUController" options:nil];
     [_rightV addSubviewFullFrame:stackVC.view];
 
@@ -106,27 +113,44 @@
 
 
 -(void)loadProject:(NSString*)path{
+    //create project class
     _project = [IUProject projectWithContentsOfPackage:path];
 
-    fileNaviVC.project = _project;
-    canvasVC.documentBasePath = _project.path;
-    [fileNaviVC selectFirstDocument];
-
-
+    //connect to file navi
+    canvasVC.documentBasePath = _project.absolutePath;
+    
+    
     //construct widget library
     [widgetLibraryVC setProject:_project];
     NSString *widgetFilePath = [[NSBundle mainBundle] pathForResource:@"widgetForDefault" ofType:@"plist"];
     NSArray *availableWidgetProperties = [NSArray arrayWithContentsOfFile:widgetFilePath];
     [widgetLibraryVC setWidgetProperties:availableWidgetProperties];
-    
-    for (IUNode *node in _project.children) {
+
+    //IU Setting
+    _IUManager = [[IUManager alloc] init];
+    _compiler = [[IUCompiler alloc] init];
+
+    for (IUNode *node in _project.allChildren) {
         if ([node isKindOfClass:[IUResourceGroupNode class]]) {
             [resourceVC setNode:(IUResourceGroupNode*)node];
             break;
         }
+        else if ([node isKindOfClass:[IUDocumentNode class]]){
+            [_IUManager registerIU:((IUDocumentNode*)node).document];
+            [((IUDocumentNode*)node).document setManager:_IUManager];
+            [((IUDocumentNode*)node).document setCompiler:_compiler];
+            break;
+        }
     }
     
-    [propertyBaseVC bind:@"imageNames" toObject:_project withKeyPath:@"imageNames" options:nil];
+    fileNaviVC.project = _project;
+    [fileNaviVC selectFirstDocument];
+    
+    _resourceManager = [[IUResourceManager alloc] init];
+    _resourceManager.rootNode = _project.resourceNode;
+    _compiler.resourceSource = _resourceManager;
+    
+    [propertyBaseVC setResourceManager:_resourceManager];
 }
 
 -(void)setSelectedNode:(IUNode*)selectedNode{

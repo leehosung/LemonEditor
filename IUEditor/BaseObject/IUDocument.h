@@ -8,12 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "IUCompiler.h"
+#import "IUManager.h"
 #import "IUView.h"
 
 
 
 @interface IUDocument : IUView
 
+@property IUCompiler *compiler;
+@property IUManager  *manager;
 
 #pragma mark editor source
 -(NSString*)editorSource;

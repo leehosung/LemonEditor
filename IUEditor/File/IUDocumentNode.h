@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "IUNode.h"
-#import "IUDocument.h"
+
 
 @interface IUDocumentNode : IUNode < NSCoding>
-@property (nonatomic)   IUDocument *document;
+@property (nonatomic)   id document;
 @end

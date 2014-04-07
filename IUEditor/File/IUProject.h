@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "IUDocumentGroupNode.h"
+#import "IUResourceGroupNode.h"
 
 @class IUCompiler;
 typedef enum _IUGitType{
@@ -18,17 +19,11 @@ typedef enum _IUGitType{
 
 @class IUDocument;
 
-@interface IUProject : IUDocumentGroupNode
+@interface IUProject : IUDocumentGroupNode <IUResourceGroupNode>
 
 @property   BOOL            herokuOn;
 @property   IUGitType       gitType;
-@property   IUCompiler      *compiler;
 
-
-//resource management
-//KVO - compliant
--(NSArray*)imageNames;
--(NSDictionary*)resourcePathes;
 
 //setting
 #define IUProjectKeyGit @"git"
@@ -41,16 +36,10 @@ typedef enum _IUGitType{
 
 - (BOOL)save;
 - (void)build:(NSError**)error;
-//- (void)sync:(NSError**)error;
-
-//- (void)addImage:(NSImage*)image;
-
-//used to check resource dir path
-- (NSString*)path;
-- (NSString*)requestNewID:(Class)class;
 
 - (NSArray*)pageDocuments;
 - (NSArray*)masterDocuments;
 - (NSArray*)componentDocuments;
 
+- (IUResourceGroupNode*)resourceNode;
 @end

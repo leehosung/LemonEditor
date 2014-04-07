@@ -7,13 +7,19 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "IUNode.h"
+#import "IUGroupNode.h"
+@class IUResourceNode;
 
-@interface IUResourceGroupNode : IUNode
-
-@property (nonatomic) IUNode    *parent;
-- (BOOL)syncDir;
+@protocol IUResourceGroupNode <NSObject>
+@required
 - (NSString*)relativePath;
 - (NSString*)absolutePath;
+-(void)addResourceGroupNode:(IUNode<IUResourceGroupNode> *)node;
+@end
+
+@interface IUResourceGroupNode : IUGroupNode <IUResourceGroupNode>
+
+-(void)addResourceNode:(IUResourceNode*)node data:(NSData*)data;
+-(void)addResourceNode:(IUResourceNode*)node path:(NSString*)path;
 
 @end

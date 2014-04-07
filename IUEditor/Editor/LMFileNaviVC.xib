@@ -83,6 +83,6 @@
             </scroller>
         </scrollView>
         <userDefaultsController representsSharedInstance="YES" id="czK-hJ-lvV"/>
-        <treeController mode="entity" editable="NO" childrenKeyPath="children" id="gdF-Dg-Xge"/>
+        <treeController mode="entity" editable="NO" childrenKeyPath="children" leafKeyPath="isLeaf" id="gdF-Dg-Xge"/>
     </objects>
 </document>

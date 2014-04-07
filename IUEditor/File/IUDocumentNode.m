@@ -21,8 +21,4 @@
     [aCoder encodeFromObject:self withProperties:[IUDocumentNode properties]];
 }
 
--(NSMutableArray*)children{
-    return nil;
-}
-
 @end

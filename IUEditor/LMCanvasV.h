@@ -10,7 +10,7 @@
 
 #include "IUDocument.h"
 
-@interface LMCanvasV : NSView <IUDelegate>
+@interface LMCanvasV : NSView <IUSourceDelegate>
 
 @property (nonatomic) _binding_ IUDocument  *document;
 @property (nonatomic) _binding_ NSString    *resourcePath;
