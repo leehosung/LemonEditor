@@ -78,6 +78,17 @@
     return array;
 }
 
+- (NSArray *)filteredArrayWithClass:(Class)class{
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+        if ([evaluatedObject isKindOfClass:class]) {
+            return YES;
+        }
+        return NO;
+    }];
+    return [self filteredArrayUsingPredicate:predicate];
+}
+
+
 
 @end
 

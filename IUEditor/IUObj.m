@@ -176,7 +176,6 @@
 }
 
 -(void)setDelegate:(id<IUSourceDelegate>)delegate{
-    NSLog(@"set delegate %@", self.description);
     _delegate = delegate;
     for (IUObj *obj in _m_children) {
         obj.delegate = delegate;
@@ -198,5 +197,6 @@
 -(NSString*)description{
     return [[super description] stringByAppendingFormat:@" %@", self.htmlID];
 }
+
 
 @end
