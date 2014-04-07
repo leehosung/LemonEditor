@@ -2,6 +2,7 @@
     position:absolute;
     width:400px;
     height:300px;
+    display:block;
 }
 
 .IUPage{
