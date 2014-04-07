@@ -34,7 +34,11 @@
 
 -(void)addResourceNode:(IUResourceNode*)node path:(NSString*)path{
     [super addNode:node];
-    [[NSFileManager defaultManager] copyItemAtPath:path toPath:node.absolutePath error:nil];
+    NSError *err;
+    if ([[NSFileManager defaultManager] fileExistsAtPath:node.absolutePath]) {
+        [[NSFileManager defaultManager] removeItemAtPath:node.absolutePath error:&err];
+    }
+    [[NSFileManager defaultManager] copyItemAtPath:path toPath:node.absolutePath error:&err];
 }
 
 
