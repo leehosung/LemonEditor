@@ -15,12 +15,11 @@
 
 @implementation IUMaster
 
--(id)initWithProject:(IUProject *)project setting:(NSDictionary *)setting{
-    self = [super initWithProject:project setting:setting];
+-(id)initWithSetting:(NSDictionary *)setting{
+    self = [super initWithSetting:setting];
     //create header
-    _header = [[IUHeader alloc] initWithProject:project setting:setting];
-    _header.name = @"Header";
-    _header.htmlID = [project requestNewID:[IUHeader class]];
+    _header = [[IUHeader alloc] initWithSetting:setting];
+    _header.htmlID = @"Header";
     [self addIU:_header error:nil];
     return self;
 }

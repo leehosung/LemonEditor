@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "IUObj.h"
+#import "IUCompilerResourceSource.h"
 
 @class IUDocument;
+@class IUResourceManager;
 
 typedef enum _IUCompilerType{
     IUCompilerTypeDefault,
@@ -17,10 +19,10 @@ typedef enum _IUCompilerType{
 
 @interface IUCompiler : NSObject
 
+@property id <IUCompilerResourceSource> resourceSource;
 -(NSString*)editorSource:(IUDocument*)document;
 
 -(NSString*)editorHTML:(IUObj*)iu;
 -(NSString*)CSSContentFromAttributes:(NSDictionary*)attributeDict ofClass:(IUObj*)obj;
 
-@property NSDictionary  *resourcePaths;
 @end

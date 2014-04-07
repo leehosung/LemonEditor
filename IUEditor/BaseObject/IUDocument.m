@@ -11,8 +11,8 @@
 @implementation IUDocument
 
 
--(id)initWithProject:(IUProject *)project setting:(NSDictionary *)setting{
-    self = [super initWithProject:project setting:setting];
+-(id)initWithSetting:(NSDictionary *)setting{
+    self = [super initWithSetting:setting];
     return self;
 }
 
@@ -30,8 +30,7 @@
 
 
 -(NSString*)editorSource{
-    assert(self.project);
-    return [self.project.compiler editorSource:self];
+    return [self.compiler editorSource:self];
 }
 
 -(NSArray*)widthWithCSS{

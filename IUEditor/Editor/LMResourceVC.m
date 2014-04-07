@@ -26,21 +26,7 @@
 
 -(void)setNode:(IUResourceGroupNode *)node{
     _node = node;
-    [node addObserver:self forKeyPath:@"allChildren" options:NSKeyValueObservingOptionInitial context:nil];
 }
 
--(void)allChildrenDidChange:(NSDictionary*)change{
-    NSArray *array = self.node.allChildren;
-    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUNode *node, NSDictionary *bindings) {
-        if ([node isKindOfClass:[IUResourceNode class]]) {
-            if ( ((IUResourceNode*)node).type == IUResourceNodeTypeImage) {
-                return YES;
-            }
-        }
-        return NO;
-    }];
-                              
-    self.contents = [array filteredArrayUsingPredicate:predicate];
-}
 
 @end

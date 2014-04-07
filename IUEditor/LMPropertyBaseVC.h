@@ -7,10 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "IUResourceGroupNode.h"
+#import "IUResourceManager.h"
 
 @interface LMPropertyBaseVC : NSViewController
 
 @property (nonatomic) NSTreeController      *IUController;
-@property (nonatomic) _binding_ NSArray     *imageNames;
+@property (nonatomic) IUResourceManager     *resourceManager;
+
+@property id content;
 @end

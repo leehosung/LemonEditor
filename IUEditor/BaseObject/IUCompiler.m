@@ -43,7 +43,7 @@
 -(NSString*)cssSourceForIU:(IUObj*)iu width:(int)width{
     NSMutableString *css = [NSMutableString string];
     [css appendString:[NSString stringWithFormat:@"#%@ {", iu.htmlID]];
-    [css appendString:[self CSSContentFromAttributes:[iu CSSAttributesForWidth:IUCSSDefaultCollection] ofClass:self]];
+    [css appendString:[self CSSContentFromAttributes:[iu CSSAttributesForWidth:IUCSSDefaultCollection] ofClass:iu]];
     [css appendString:@"}"];
     [css appendString:@"\n"];
     return css;
@@ -134,7 +134,11 @@
             [dict putTag:@"background-color" color:cssTagDict[tag]];
         }
         else if ([tag isSameTag:IUCSSTagImage]){
-            [dict putTag:@"background-image" string:[_resourcePaths[cssTagDict[tag]] CSSURLString]];
+            NSString *resourcePath = [_resourceSource relativePathForResource:cssTagDict[tag]];
+            if (resourcePath == nil) {
+                NSAssert(0, @"Destory!!!");
+            }
+            [dict putTag:@"background-image" string:[resourcePath CSSURLString]];
         }
         else {
             [dict putTag:tag string:cssTagDict[tag]];

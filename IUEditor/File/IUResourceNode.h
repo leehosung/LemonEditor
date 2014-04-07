@@ -9,24 +9,24 @@
 #import "IUNode.h"
 #import "IUResourceGroupNode.h"
 
-typedef enum _IUResourceNodeType{
-    IUResourceNodeTypeImage = 1,
-    IUResourceNodeTypeMovie,
-    IUResourceNodeTypeCSS,
-    IUResourceNodeTypeJS,
-}IUResourceNodeType;
+typedef enum _IUResourceType{
+    IUResourceTypeImage,
+    IUResourceTypeCSS,
+    IUResourceTypeJS,
+}IUResourceType;
+
 
 @interface IUResourceNode : IUNode
 
+@property IUResourceGroupNode *parent;
 
--(id)initWithName:(NSString*)name parent:(IUResourceGroupNode*)group type:(IUResourceNodeType)type;
+-(id)initWithName:(NSString*)name type:(IUResourceType)type;
 
--(IUResourceGroupNode*)parent;
 -(NSString*)absolutePath;
 -(NSString*)relativePath;
 
 -(NSImage*)image;
 -(NSString*)UTI;
--(IUResourceNodeType)type;
+-(IUResourceType)type;
 
 @end

@@ -7,35 +7,34 @@
 //
 
 #import "IUResourceGroupNode.h"
-#import "IUProject.h"
-#import "JDFileUtil.h"
 #import "IUResourceNode.h"
+#import "JDFileUtil.h"
 
 @implementation IUResourceGroupNode{
 }
 
-
-
-- (BOOL)syncDir{
-    return [JDFileUtil mkdirPath:self.absolutePath];
-}
-
 -(NSString*)relativePath{
-    if ([_parent isKindOfClass:[IUProject class]]) {
-        return [NSString stringWithFormat:@"./%@", self.name];
-    }
-    else{
-        return [[(IUResourceGroupNode*)(_parent) relativePath] stringByAppendingPathComponent:self.name];
-    }
+    return [[(IUResourceGroupNode*)self.parent relativePath] stringByAppendingPathComponent:self.name];
 }
 
 -(NSString*)absolutePath{
-    if ([_parent isKindOfClass:[IUProject class]]) {
-        return [[(IUProject*)(_parent) path] stringByAppendingPathComponent:self.name];
-    }
-    else{
-        return [[(IUResourceGroupNode*)(_parent) absolutePath] stringByAppendingPathComponent:self.name];
-    }
+    return [[(IUResourceGroupNode*)self.parent absolutePath] stringByAppendingPathComponent:self.name];
+}
+
+-(void)addResourceGroupNode:(IUNode<IUResourceGroupNode> *)node{
+    [super addNode:node];
+    [[NSFileManager defaultManager] createDirectoryAtPath:node.absolutePath withIntermediateDirectories:YES attributes:nil error:nil];
+}
+
+-(void)addResourceNode:(IUResourceNode*)node data:(NSData*)data{
+    [super addNode:node];
+    [[NSFileManager defaultManager] createFileAtPath:node.absolutePath contents:data attributes:nil];
+
+}
+
+-(void)addResourceNode:(IUResourceNode*)node path:(NSString*)path{
+    [super addNode:node];
+    [[NSFileManager defaultManager] copyItemAtPath:path toPath:node.absolutePath error:nil];
 }
 
 

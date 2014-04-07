@@ -42,7 +42,7 @@
     }
     if (myMaster == nil && master ) {
         NSArray *children = [self.children copy];
-        pageContent = [[IUPageContent alloc] initWithProject:self.project setting:nil];
+        pageContent = [[IUPageContent alloc] initWithSetting:nil];
         pageContent.htmlID = @"pageContent";
         pageContent.name = @"pageContent";
         
@@ -73,11 +73,11 @@
     }
 }
 
-- (id)initWithProject:(IUProject *)project setting:(NSDictionary *)setting{
-    self = [super initWithProject:project setting:setting];
+- (id)initWithSetting:(NSDictionary *)setting{
+    self = [super initWithSetting:setting];
     
     //add some iu
-    IUObj *obj = [[IUObj alloc] initWithProject:project setting:setting];
+    IUObj *obj = [[IUObj alloc] initWithSetting:setting];
     obj.htmlID = @"qwerq";
     obj.name = @"sample object";
     [self addIU:obj error:nil];

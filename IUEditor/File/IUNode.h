@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@class IUGroupNode;
 @interface IUNode : NSObject <NSCoding>
 
 @property (copy) NSString   *name;
-@property (readonly) NSArray *children;
-@property (readonly) NSArray *allChildren;
+@property IUGroupNode       *parent;
 
--(void)addNode:(IUNode*)node;
+- (BOOL)isLeaf;
 
 @end

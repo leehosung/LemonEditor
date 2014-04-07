@@ -10,7 +10,6 @@
 #import "IUPage.h"
 #import "IUDocumentGroupNode.h"
 #import "IUResourceGroupNode.h"
-#import "IUCompiler.h"
 #import "IUDocumentNode.h"
 #import "IUResourceNode.h"
 #import "JDUIUtil.h"
@@ -21,12 +20,12 @@
 @property IUDocumentGroupNode *pageDocumentGroup;
 @property IUDocumentGroupNode *masterDocumentGroup;
 @property IUDocumentGroupNode *componentDocumentGroup;
+
 @end
 
 @implementation IUProject{
     NSMutableDictionary *IDDict;
-    NSMutableArray  *_imageNames;
-    NSMutableDictionary *_resourcePaths;
+    IUResourceGroupNode *_resourceNode;
 }
 
 
@@ -36,22 +35,17 @@
     [encoder encodeInt32:_gitType forKey:@"gitType"];
     [encoder encodeObject:_path forKey:@"path"];
     [encoder encodeObject:IDDict forKey:@"IDDict"];
-    [encoder encodeObject:_imageNames forKey:@"imageNames"];
-    [encoder encodeObject:_resourcePaths forKey:@"resourcePaths"];
+    [encoder encodeObject:_resourceNode forKey:@"_resourceNode"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
     if (self) {
-        _compiler = [[IUCompiler alloc] init];
-        _resourcePaths = [[aDecoder decodeObjectForKey:@"resourcePaths"] mutableCopy];
-
-        [_compiler bind:@"resourcePaths" toObject:self withKeyPath:@"resourcePaths" options:nil];
         _herokuOn = [aDecoder decodeBoolForKey:@"herokuOn"];
         _gitType = [aDecoder decodeInt32ForKey:@"gitType"];
         _path = [aDecoder decodeObjectForKey:@"path"];
         IDDict = [aDecoder decodeObjectForKey:@"IDDict"];
-        _imageNames = [[aDecoder decodeObjectForKey:@"imageNames"] mutableCopy];
+        _resourceNode = [aDecoder decodeObjectForKey:@"_resourceNode"];
     }
     return self;
 }
@@ -60,8 +54,6 @@
     self = [super init];
     if(self){
         IDDict = [NSMutableDictionary dictionary];
-        _imageNames = [NSMutableArray array];
-        _resourcePaths = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -96,50 +88,55 @@
     return [NSString stringWithFormat:@"%@%d", [NSStringFromClass(class) substringFromIndex:2], index];
 }
 
+- (NSString*)relativePath{
+    return @".";
+}
+- (NSString*)absolutePath{
+    return _path;
+}
+
 +(NSString*)createProject:(NSDictionary*)setting error:(NSError**)error{
+
     IUProject *project = [[IUProject alloc] init];
     project.name = [setting objectForKey:IUProjectKeyAppName];
-    project.compiler = [[IUCompiler alloc] init];
     
     NSString *dir = [setting objectForKey:IUProjectKeyDirectory];
     project.path = [dir stringByAppendingPathComponent:[project.name stringByAppendingPathExtension:@"iuproject"]];
     [JDFileUtil rmDirPath:[project.path stringByAppendingPathExtension:@"*"]];
     ReturnNilIfFalse([JDFileUtil mkdirPath:project.path]);
     
+    //create document dir
+    
     IUDocumentGroupNode *pageDir = [[IUDocumentGroupNode alloc] init];
     pageDir.name = @"Page";
-    [project addDocumentGroupNode:pageDir];
+    [project addNode:pageDir];
     project.pageDocumentGroup = pageDir;
-    /*
-     IUDocumentGroup *compDir = [[IUDocumentGroup alloc] initWithName:@"Component"];
-     [self addDocumentGroupNode:compDir];
-     componentDocumentGroup = compDir;
-
-     */
     
     IUDocumentGroupNode *masterGroup = [[IUDocumentGroupNode alloc] init];
-    [project addDocumentGroupNode:masterGroup];
     masterGroup.name = @"Master";
+    [project addNode:masterGroup];
     project.masterDocumentGroup = masterGroup;
     
+    //create document
+    IUPage *page = [[IUPage alloc] initWithSetting:setting];
+    page.htmlID = @"Page";
     
-    IUPage *page = [[IUPage alloc] initWithProject:project setting:setting];
-    page.name = @"root";
-    page.project = project;
-    page.htmlID = [project requestNewID:[IUPage class]];
-    [pageDir addDocument:page name:@"Index"];
+    IUDocumentNode *pageNode = [[IUDocumentNode alloc] init];
+    pageNode.document = page;
+    pageNode.name = @"Index";
+    [pageDir addNode:pageNode];
     
-    IUMaster *master = [[IUMaster alloc] initWithProject:project setting:setting];
-    master.name = @"master";
-    master.project = project;
+    IUMaster *master = [[IUMaster alloc] initWithSetting:setting];
     master.htmlID = [project requestNewID:[IUMaster class]];
-    [masterGroup addDocument:master name:@"Master"];
     page.master = master;
-
     
-    //make resource dir
-    ReturnNilIfFalse([project makeResourceDir]);
+    IUDocumentNode *masterNode = [[IUDocumentNode alloc] init];
+    masterNode.document = master;
+    masterNode.name = @"Master";
+    [masterGroup addNode:masterNode];
 
+
+    [project initializeResource];
     ReturnNilIfFalse([project save]);
     return project.path;
 }
@@ -158,75 +155,9 @@
     return [_path stringByAppendingPathComponent:@"IUML"];
 }
 
-
-
--(BOOL)makeResourceDir{
-    NSAssert(_path != nil, @"path is nil");
-    
-    IUResourceGroupNode *resGroup = [[IUResourceGroupNode alloc] init];
-    resGroup.name = @"Resource";
-    resGroup.parent = self;
-    [self addNode:resGroup];
-
-    IUResourceGroupNode *imageGroup = [[IUResourceGroupNode alloc] init];
-    imageGroup.name = @"Image";
-    imageGroup.parent = resGroup;
-    [resGroup addNode:imageGroup];
-    ReturnNoIfFalse([imageGroup syncDir]);
-    
-    
-    NSData *sampleImg = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"sample" ofType:@"jpg"]];
-    NSAssert([self insertResource:sampleImg name:@"sample.jpg" type:IUResourceNodeTypeImage group:imageGroup], @"sample.jpg failure");
-    
-    IUResourceGroupNode *CSSGroup = [[IUResourceGroupNode alloc] init];
-    CSSGroup.name = @"CSS";
-    CSSGroup.parent = resGroup;
-    [resGroup addNode:CSSGroup];
-    ReturnNoIfFalse([CSSGroup syncDir]);
-    
-    NSData *cssData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"reset" ofType:@"css"]];
-    NSAssert([self insertResource:cssData name:@"reset.css" type:IUResourceNodeTypeCSS group:CSSGroup], @"reset.css failure");
-    
-    NSData *iuCssData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"iu" ofType:@"css"]];
-    NSAssert([self insertResource:iuCssData name:@"iu.css" type:IUResourceNodeTypeCSS group:CSSGroup], @"iu.css failure");
-    
-    IUResourceGroupNode *JSGroup = [[IUResourceGroupNode alloc] init];
-    JSGroup.name = @"JS";
-    JSGroup.parent = resGroup;
-    [resGroup addNode:JSGroup];
-    ReturnNoIfFalse([JSGroup syncDir]);
-    
-    NSData *jsFrameData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"iuframe" ofType:@"js"]];
-    NSAssert([self insertResource:jsFrameData name:@"iuframe.js" type:IUResourceNodeTypeJS group:JSGroup], @"iuframe.js failure");
-
-    return YES;
-}
-
--(BOOL)insertResource:(NSData*)data name:(NSString*)name type:(IUResourceNodeType)type group:(IUResourceGroupNode*)resourceGroup{
-    assert(data != nil && name!=nil && resourceGroup != nil);
-    ReturnNoIfFalse([data writeToFile:[resourceGroup.absolutePath stringByAppendingPathComponent:name] atomically:YES]);
-    IUResourceNode *newNode = [[IUResourceNode alloc] initWithName:name parent:resourceGroup type:type];
-    [resourceGroup addNode:newNode];
-    
-
-    if (type == IUResourceNodeTypeImage) {
-        [self willChangeValueForKey:@"imageNames"];
-        [self willChangeValueForKey:@"resourcePaths"];
-        [_imageNames addObject:name];
-        [_resourcePaths setObject:newNode.relativePath forKey:name];
-        [self willChangeValueForKey:@"resourcePaths"];
-        [self didChangeValueForKey:@"imageNames"];
-    }
-
-    return YES;
-}
-
--(NSArray*)imageNames{
-    return _imageNames;
-}
-
--(NSDictionary*)resourcePaths{
-    return _resourcePaths;
+-(void)addResourceGroupNode:(IUResourceNode*)node{
+    [super addNode:node];
+    [[NSFileManager defaultManager] createDirectoryAtPath:node.absolutePath withIntermediateDirectories:YES attributes:nil error:nil];
 }
 
 - (void)build:(NSError**)error{
@@ -272,5 +203,46 @@
     return [_componentDocumentGroup allDocuments];
 }
 
+- (IUResourceGroupNode*)resourceNode{
+    return _resourceNode;
+}
+
+- (void)initializeResource{
+    IUResourceGroupNode *rootNode = [[IUResourceGroupNode alloc] init];
+    rootNode.name = @"Resource";
+    [self addResourceGroupNode:rootNode];
+    _resourceNode = rootNode;
+    
+    IUResourceGroupNode *imageGroup = [[IUResourceGroupNode alloc] init];
+    imageGroup.name = @"Image";
+    [rootNode addResourceGroupNode:imageGroup];
+    
+    IUResourceGroupNode *CSSGroup = [[IUResourceGroupNode alloc] init];
+    CSSGroup.name = @"CSS";
+    [rootNode addResourceGroupNode:CSSGroup];
+    
+    IUResourceGroupNode *JSGroup = [[IUResourceGroupNode alloc] init];
+    JSGroup.name = @"JS";
+    [rootNode addResourceGroupNode:JSGroup];
+    
+    
+    NSString *sampleImgPath = [[NSBundle mainBundle] pathForResource:@"sample" ofType:@"jpg"];
+    IUResourceNode *imageNode = [[IUResourceNode alloc] initWithName:@"sample.jpg" type:IUResourceTypeImage];
+    [imageGroup addResourceNode:imageNode path:sampleImgPath];
+    
+    NSString *resetCSSPath = [[NSBundle mainBundle] pathForResource:@"reset" ofType:@"css"];
+    IUResourceNode *resetCSSNode = [[IUResourceNode alloc] initWithName:@"reset.css" type:IUResourceTypeCSS];
+    [CSSGroup addResourceNode:resetCSSNode path:resetCSSPath];
+    
+    NSString *iuCSSPath = [[NSBundle mainBundle] pathForResource:@"iu" ofType:@"css"];
+    IUResourceNode *iuCSSNode = [[IUResourceNode alloc] initWithName:@"iu.css" type:IUResourceTypeJS];
+    [CSSGroup addResourceNode:iuCSSNode path:iuCSSPath];
+    
+    NSString *iuFrameJSPath = [[NSBundle mainBundle] pathForResource:@"iuframe" ofType:@"js"];
+    IUResourceNode *iuFrameJSNode = [[IUResourceNode alloc] initWithName:@"iuframe.js" type:IUResourceTypeJS];
+    [imageGroup addResourceNode:iuFrameJSNode path:iuFrameJSPath];
+    
+
+}
 
 @end

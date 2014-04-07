@@ -8,9 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "IUCSS.h"
-#import "IUProject.h"
 
-@protocol IUDelegate <NSObject>
+@protocol IUSourceDelegate <NSObject>
 @required
 -(void)IU:(NSString*)identifier HTMLChanged:(NSString*)html;
 -(void)IU:(NSString*)identifier CSSChanged:(NSString*)css forWidth:(NSInteger)width;
@@ -21,23 +20,23 @@
 
 #define IUCSSDefaultFrame -1
 
+@class IUView;
+@class IUDocument;
 
 @interface IUObj : NSObject <NSCoding, IUCSSDelegate>
 
 @property (readonly) IUCSS *css; //used by subclass
-
-
-@property (readonly) NSArray *children;
--(NSMutableArray*)allChildren;
+-(IUDocument *)document;
 
 //initialize
--(id)initWithProject:(IUProject*)project setting:(NSDictionary*)setting;
-@property IUProject *project;
+-(id)initWithSetting:(NSDictionary*)setting;
 
 // this is IU setting
-@property (nonatomic) NSString *htmlID;
-@property (nonatomic) NSString *name;
-@property id<IUDelegate> delegate;
+@property (nonatomic, copy) NSString *htmlID;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic) id<IUSourceDelegate> delegate;
+@property IUObj    *parent;
+@property NSArray   *mutables;
 
 // followings are IU build setting;
 -(NSDictionary*)HTMLAtributes;
@@ -57,5 +56,14 @@
 -(void)enableDelegate:(id)sender;
 -(void)disableDelegate:(id)sender;
 
+
+-(NSArray*)children;
+@property (readonly) NSMutableArray *referenceChildren;
+-(NSMutableArray*)allChildren;
+
+-(BOOL)insertIU:(IUObj *)iu atIndex:(NSInteger)index  error:(NSError**)error;
+-(BOOL)addIU:(IUObj *)iu error:(NSError**)error;
+-(BOOL)addIUReference:(IUObj *)iu error:(NSError**)error;
+-(BOOL)removeIU:(IUObj *)iu;
 
 @end
