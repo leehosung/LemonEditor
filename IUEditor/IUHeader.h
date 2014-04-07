@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 JDLab. All rights reserved.
 //
 
-#import "IUView.h"
+#import "IUObj.h"
 
-@interface IUHeader : IUView
+@interface IUHeader : IUObj
 
 @end

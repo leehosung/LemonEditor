@@ -99,7 +99,6 @@
 		69C5760B18D6FE020016F050 /* IUComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C575FF18D6FE020016F050 /* IUComponent.m */; };
 		69C5760C18D6FE020016F050 /* IUCSS.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5760118D6FE020016F050 /* IUCSS.m */; };
 		69C5760D18D6FE020016F050 /* IUDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5760318D6FE020016F050 /* IUDocument.m */; };
-		69C5761018D6FE020016F050 /* IUView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5760918D6FE020016F050 /* IUView.m */; };
 		69C5761E18D7051C0016F050 /* IUProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5761D18D7051C0016F050 /* IUProject.m */; };
 		69C5762C18D70B850016F050 /* LMWC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5762A18D70B850016F050 /* LMWC.m */; };
 		69C5762D18D70B850016F050 /* LMWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69C5762B18D70B850016F050 /* LMWC.xib */; };
@@ -292,8 +291,6 @@
 		69C5760118D6FE020016F050 /* IUCSS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUCSS.m; sourceTree = "<group>"; };
 		69C5760218D6FE020016F050 /* IUDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUDocument.h; path = BaseObject/IUDocument.h; sourceTree = "<group>"; };
 		69C5760318D6FE020016F050 /* IUDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IUDocument.m; path = BaseObject/IUDocument.m; sourceTree = "<group>"; };
-		69C5760818D6FE020016F050 /* IUView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUView.h; path = BaseObject/IUView.h; sourceTree = "<group>"; };
-		69C5760918D6FE020016F050 /* IUView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IUView.m; path = BaseObject/IUView.m; sourceTree = "<group>"; };
 		69C5761C18D7051C0016F050 /* IUProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUProject.h; sourceTree = "<group>"; };
 		69C5761D18D7051C0016F050 /* IUProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUProject.m; sourceTree = "<group>"; };
 		69C5762918D70B850016F050 /* LMWC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMWC.h; sourceTree = "<group>"; };
@@ -512,8 +509,6 @@
 				6954812718D7640A00CA02F1 /* IUPage.m */,
 				69CFCAB618E972DA00E3048A /* IUPageContent.h */,
 				69CFCAB718E972DA00E3048A /* IUPageContent.m */,
-				69C5760818D6FE020016F050 /* IUView.h */,
-				69C5760918D6FE020016F050 /* IUView.m */,
 				69C575FE18D6FE020016F050 /* IUComponent.h */,
 				69C575FF18D6FE020016F050 /* IUComponent.m */,
 				69757B2318D95FDA0095CBAC /* NSMutableDictionary+IUTag.h */,
@@ -916,7 +911,6 @@
 				69757B0318D95BBC0095CBAC /* JDDateTimeUtil.m in Sources */,
 				69757B0018D95BBC0095CBAC /* CALayer+JDExtension.m in Sources */,
 				69757B0718D95BBC0095CBAC /* JDHerokuUtil.m in Sources */,
-				69C5761018D6FE020016F050 /* IUView.m in Sources */,
 				6985CBA018E31558008DBF50 /* IUDocumentNode.m in Sources */,
 				3DB3ACFD18EC1F700046DFB7 /* LMCanvasVC.m in Sources */,
 				6979FC0718ED34E20060C3B4 /* LMPropertyFrameVC.m in Sources */,

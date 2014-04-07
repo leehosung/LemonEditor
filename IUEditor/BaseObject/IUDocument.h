@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "IUCompiler.h"
 #import "IUManager.h"
-#import "IUView.h"
+#import "IUObj.h"
 
 
 
-@interface IUDocument : IUView
+@interface IUDocument : IUObj
 
 @property IUCompiler *compiler;
 @property IUManager  *manager;
