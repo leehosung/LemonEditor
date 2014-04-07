@@ -39,7 +39,7 @@ typedef enum{
 }
 
 - (id)initWithIUID:(NSString *)aIUID withFrame:(NSRect)frame;
-- (NSRect)makeNewFrameWithType:(IUPointLayerPosition)type withDiffPoint:(NSPoint)diffPoint;
+- (NSRect)diffPointAndSizeWithType:(IUPointLayerPosition)type withDiffPoint:(NSPoint)diffPoint;
 - (void)updateFrame:(NSRect)frame;
 - (NSString *)iuID;
 - (NSMutableArray *)cursorArray;

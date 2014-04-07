@@ -69,7 +69,7 @@
 }
 
 - (BOOL)isInGuideLine:(CGFloat)a b:(CGFloat)b{
-    if(abs(a-b) <=5.0){
+    if(abs(a-b) <=IUGuidePixel){
         return YES;
     }
     return NO;
@@ -115,8 +115,23 @@
 
 #pragma mark -
 #pragma mark check within 5pixel
+//TODO: guideSize;
+- (BOOL)isGuidePoint:(NSPoint)point{
+    return NO;
+    if(point.x > IUGuidePixel || point.y > IUGuidePixel){
+        return NO;
+    }
+    
+    return YES;
+}
 
-
+- (BOOL)isGuideSize:(NSSize)size{
+    return NO;
+    if(size.width > IUGuidePixel || size.height > IUGuidePixel){
+        return NO;
+    }
+    return YES;
+}
 
 - (NSPoint)guidePointOfCurrentFrame:(NSRect)frame IU:(NSString *)IU{
     

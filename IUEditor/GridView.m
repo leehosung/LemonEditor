@@ -105,6 +105,7 @@
     selectedPointType = [hitPointLayer type];
 
     startPoint = convertedPoint;
+    middlePoint = convertedPoint;
 }
 
 - (void)mouseDragged:(NSEvent *)theEvent{
@@ -112,12 +113,17 @@
         
         isDragged = YES;
         NSPoint convertedPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-        NSPoint diffPoint = NSMakePoint(convertedPoint.x-startPoint.x, convertedPoint.y-startPoint.y);
-        startPoint = convertedPoint;
+        NSPoint diffPoint = NSMakePoint(convertedPoint.x-middlePoint.x, convertedPoint.y-middlePoint.y);
+        NSPoint totalPoint = NSMakePoint(convertedPoint.x-startPoint.x, convertedPoint.y-startPoint.y);
+        NSSize totalSize = NSMakeSize(convertedPoint.x-startPoint.x, convertedPoint.y-startPoint.y);
+
+        middlePoint = convertedPoint;
+        
         
         for(PointLayer *pLayer in pointManagerLayer.sublayers){
-            NSRect newframe = [pLayer makeNewFrameWithType:selectedPointType withDiffPoint:diffPoint];
-            [((LMCanvasVC *)(self.delegate)) changeIUFrame:newframe IUID:pLayer.iuID];
+            NSRect newframe = [pLayer diffPointAndSizeWithType:selectedPointType withDiffPoint:diffPoint];
+            [((LMCanvasVC *)(self.delegate)) moveIUToDiffPoint:newframe.origin totalDiffPoint:totalPoint];
+            [((LMCanvasVC *)(self.delegate)) extendIUToDiffSize:newframe.size totalDiffSize:totalSize];
         }
         
         //reset cursor
