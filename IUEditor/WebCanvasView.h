@@ -19,4 +19,5 @@
 - (NSString *)IDOfCurrentIU;
 - (BOOL)isDOMTextAtPoint:(NSPoint)point;
 
+- (void)changeDOMRange:(NSPoint)point;
 @end
