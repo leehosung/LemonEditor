@@ -102,7 +102,6 @@
     isClicked = YES;
     NSPoint convertedPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
     InnerPointLayer *hitPointLayer = [self hitTestInnerPointLayer:convertedPoint];
-    selectedPointlayer = (PointLayer *)hitPointLayer.superlayer;
     selectedPointType = [hitPointLayer type];
 
     startPoint = convertedPoint;
@@ -115,21 +114,23 @@
         NSPoint diffPoint = NSMakePoint(convertedPoint.x-startPoint.x, convertedPoint.y-startPoint.y);
         startPoint = convertedPoint;
         
-        NSRect newframe = [selectedPointlayer makeNewFrameWithType:selectedPointType withDiffPoint:diffPoint];
-        [((LMCanvasVC *)(self.delegate)) changeIUFrame:newframe IUID:selectedPointlayer.iuID];
+        for(PointLayer *pLayer in pointManagerLayer.sublayers){
+            NSRect newframe = [pLayer makeNewFrameWithType:selectedPointType withDiffPoint:diffPoint];
+            [((LMCanvasVC *)(self.delegate)) changeIUFrame:newframe IUID:pLayer.iuID];
+            
+            //FIXME: temporarly 연결되면 updated frame으로 webkit에서 받아서 사용함
+            //테스트용도로 우선 업데이트함-나중에 지울것
+            //updateFrame은 무조건 dict에서 오는것으로만함!
+            [pLayer updateFrame:newframe];
 
-        //FIXME: temporarly 연결되면 updated frame으로 webkit에서 받아서 사용함
-        //테스트용도로 우선 업데이트함-나중에 지울것
-        //updateFrame은 무조건 dict에서 오는것으로만함!
-        [selectedPointlayer updateFrame:newframe];
+        }
+
         
         //reset cursor
         [[self window] invalidateCursorRectsForView:self];
-
-
-        //TODO: send diffPoint to selctedIUs
     }
 }
+
 
 - (void)mouseUp:(NSEvent *)theEvent{
     if(isClicked){
