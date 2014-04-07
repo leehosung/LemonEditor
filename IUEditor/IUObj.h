@@ -17,6 +17,8 @@
 -(void)IU:(NSString*)identifier CSSChanged:(NSString*)css forWidth:(NSInteger)width;
 -(void)IU:(NSString*)identifier insertedTo:(NSString*)parentIdentifier atIndex:(NSInteger)index CSS:(NSString*)css HTML:(NSString*)html;
 -(void)IURemoved:(NSString*)identifier;
+
+- (NSPoint)distanceIU:(NSString *)iuName withParent:(NSString *)parentName;
 @end
 
 
