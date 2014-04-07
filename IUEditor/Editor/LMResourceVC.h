@@ -7,10 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "IUResourceGroupNode.h"
+#import "IUResourceManager.h"
 
 @interface LMResourceVC : NSViewController
 
-@property (nonatomic) IUResourceGroupNode *node;
+@property (nonatomic) IUResourceManager *manager;
 
 @end

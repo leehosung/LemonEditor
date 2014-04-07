@@ -20,4 +20,6 @@
 
 //KVO compliance
 -(NSArray*)imagePaths;
+-(NSArray*)imageNames;
+-(NSArray*)imageResourceNodes;
 @end

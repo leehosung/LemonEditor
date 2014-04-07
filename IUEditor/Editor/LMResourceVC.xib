@@ -6,7 +6,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMResourceVC">
             <connections>
-                <outlet property="view" destination="1p5-j3-luq" id="Dpr-m5-2wO"/>
+                <outlet property="collectionV" destination="IeW-g4-6nd" id="2al-8E-StM"/>
+                <outlet property="view" destination="IeW-g4-6nd" id="xDH-WG-a27"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -23,7 +24,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         <connections>
-                            <binding destination="-2" name="content" keyPath="contents" id="szi-oD-zz7"/>
                             <outlet property="delegate" destination="-2" id="yal-kG-cof"/>
                             <outlet property="itemPrototype" destination="HCs-dR-xfB" id="Gzz-R6-vum"/>
                         </connections>

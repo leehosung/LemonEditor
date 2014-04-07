@@ -241,8 +241,6 @@
     NSString *iuFrameJSPath = [[NSBundle mainBundle] pathForResource:@"iuframe" ofType:@"js"];
     IUResourceNode *iuFrameJSNode = [[IUResourceNode alloc] initWithName:@"iuframe.js" type:IUResourceTypeJS];
     [imageGroup addResourceNode:iuFrameJSNode path:iuFrameJSPath];
-    
-
 }
 
 @end

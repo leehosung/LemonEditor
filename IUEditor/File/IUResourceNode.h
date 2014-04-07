@@ -26,7 +26,6 @@ typedef enum _IUResourceType{
 -(NSString*)relativePath;
 
 -(NSImage*)image;
--(NSString*)UTI;
 -(IUResourceType)type;
 
 @end
