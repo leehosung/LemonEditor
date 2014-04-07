@@ -38,7 +38,7 @@
 
 //insert tag
 //use css frame dict, and update affecting tag dictionary
--(void)setValue:(id)value forTag:(IUCSSTag)tag forWidth:(int)width{
+-(void)setValue:(id)value forTag:(IUCSSTag)tag forWidth:(NSInteger)width{
     if ([_delegate CSSShouldChangeValue:value forTag:tag forWidth:width]){
         NSMutableDictionary *cssDict = _cssFrameDict[@(width)];
         if (cssDict == nil) {

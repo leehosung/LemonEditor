@@ -9,12 +9,8 @@
 #import <Cocoa/Cocoa.h>
 #import "LMCanvasVCDelegate.h"
 @class IUDocument;
-@interface IUController : NSTreeController <LMCanvasVCDelegate>
+@interface IUController : NSTreeController 
 
-//@property IUDocument *content;
-//@property (readonly) id selection;
-//- (NSIndexPath*)indexPathOfObject:(id)anObject;
-
-//KVC observable
+-(void)setSelectedObjectsByIdentifiers:(NSArray*)identifiers;
 
 @end

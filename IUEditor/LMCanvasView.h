@@ -15,10 +15,10 @@
 @interface LMCanvasView : NSSplitView
 
 @property (weak) IBOutlet NSFlippedView *mainView;
-
-@property SizeView *sizeView;
 @property WebCanvasView *webView;
 @property GridView *gridView;
+
+@property (weak) IBOutlet SizeView *sizeView;
 
 - (void)receiveMouseEvent:(NSEvent *)theEvent;
 - (void)setWidthOfMainView:(CGFloat)width;

@@ -13,13 +13,13 @@
 #import "JDLogUtil.h"
 #import "SizeView.h"
 #import "IUFrameDictionary.h"
+#import "IUObj.h"
 
 @interface LMCanvasVC ()
 
 @end
 
 @implementation LMCanvasVC{
-    NSMutableArray *selectedIUs;
     IUFrameDictionary *frameDict;
 }
 
@@ -28,15 +28,10 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         frameDict = [[IUFrameDictionary alloc] init];;
-        selectedIUs = [NSMutableArray array];
-        [self addObserver:self forKeyPath:@"controller.selectedObjects" options:0 context:nil];
     }
     return self;
 }
 
--(void)controller_selectedObjectsDidChange:(NSDictionary*)change{
-    [JDLogUtil log:IULogAction key:@"CanvasVC:observed" string:[self.controller.selectedIdentifiers description]];
-}
 
 -(LMCanvasV*)view{
     return (LMCanvasV*)[super view];
@@ -81,10 +76,10 @@
 #pragma mark -
 #pragma mark manage IUs
 -(NSUInteger)countOfSelectedIUs{
-    return [selectedIUs count];
+    return [self.controller.selectedObjects count];
 }
 - (BOOL)containsIU:(NSString *)IU{
-    if ([selectedIUs containsObject:IU]){
+    if ([self.controller.selectedObjects containsObject:IU]){
         return YES;
     }
     else {
@@ -92,20 +87,18 @@
     }
 }
 - (void)removeSelectedAllIUs{
-    [selectedIUs removeAllObjects];
+    [self.controller setSelectionIndexPath:nil];
     [[self gridView] removeAllRedPointLayer];
     [[self gridView] removeAllTextPointLayer];
-    
-    [_controller setSelectedObjectsByIdentifiers:selectedIUs];
 }
 - (void)addSelectedIU:(NSString *)IU{
-    [selectedIUs addObject:IU];
+    NSArray *addArray = [NSArray arrayWithObject:IU];
+    [self.controller setSelectedObjectsByIdentifiers:addArray];
     if([frameDict.dict objectForKey:IU]){
         NSRect frame = [[frameDict.dict objectForKey:IU] rectValue];
         [[self gridView] addRedPointLayer:IU withFrame:frame];
         [[self gridView] addTextPointLayer:IU withFrame:frame];
     }
-    [_controller setSelectedObjectsByIdentifiers:selectedIUs];
 }
 
 
@@ -316,7 +309,7 @@
         [frameDict.dict setObject:[gridFrameDict objectForKey:key] forKey:key];
     }
     //draw guide line
-    for (NSString *IU in selectedIUs){
+    for (NSString *IU in self.controller.selectedObjects){
         [[self gridView] drawGuideLine:[frameDict lineToDrawSamePositionWithIU:IU]];
     }
     
@@ -331,32 +324,51 @@
 #pragma mark moveIU
 //drag & drop after select IU
 - (void)moveIUToDiffPoint:(NSPoint)point{
-    for(NSString *IUName in selectedIUs){
-        NSRect currentFrame = [[frameDict.dict objectForKey:IUName] rectValue];
+    
+    NSInteger currentWidth = [[self sizeView] selectedFrameWidth];
+    for(IUObj *obj in self.controller.selectedObjects){
+        NSString *IUID = obj.htmlID;
+        NSRect currentFrame = [[frameDict.dict objectForKey:IUID] rectValue];
         NSRect moveFrame = currentFrame;
         
         moveFrame.origin = NSMakePoint(currentFrame.origin.x+point.x, currentFrame.origin.y+point.y);
-        NSPoint guidePoint = [frameDict guidePointOfCurrentFrame:moveFrame IU:IUName];
+        NSPoint guidePoint = [frameDict guidePointOfCurrentFrame:moveFrame IU:IUID];
         moveFrame.origin = guidePoint;
-        //TODO: set TO IU
+
+        [obj.css setValue:@(moveFrame.origin.x) forTag:IUCSSTagX forWidth:currentWidth];
+        [obj.css setValue:@(moveFrame.origin.y) forTag:IUCSSTagY forWidth:currentWidth];
+        
+        
+        
+
     }
     JDTraceLog(@"Point:(%.1f %.1f)", point.x, point.y);
 }
 //drag pointlayer // only one IU
 - (void)changeIUFrame:(NSRect)frame IUID:(NSString *)IUID{
     
+    NSInteger currentWidth = [[self sizeView] selectedFrameWidth];
     NSRect guideFrame = frame;
     guideFrame.origin = [frameDict guidePointOfCurrentFrame:frame IU:IUID];
     guideFrame.size = [frameDict guideSizeOfCurrentFrame:frame IU:IUID];
     
-    //TODO: set TO IU
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @"htmlID", IUID];
+    IUObj *obj = [[self.controller.selectedObjects filteredArrayUsingPredicate:predicate] firstObject];
+    
+    [obj.css setValue:@(guideFrame.origin.x) forTag:IUCSSTagX forWidth:currentWidth];
+    [obj.css setValue:@(guideFrame.origin.y) forTag:IUCSSTagY forWidth:currentWidth];
+    [obj.css setValue:@(guideFrame.size.height) forTag:IUCSSTagHeight forWidth:currentWidth];
+    [obj.css setValue:@(guideFrame.size.width) forTag:IUCSSTagWidth forWidth:currentWidth];
+
+    
+    
     JDTraceLog( @"[IU:%@]\n origin: (%.1f, %.1f) \n size: (%.1f, %.1f)",
           IUID, guideFrame.origin.x, guideFrame.origin.y, guideFrame.size.width, guideFrame.size.height);
 }
 
 //FIXME: inner IU도 표시
-- (void)makeNewIU:(NSString *)iuname atPoint:(NSPoint)point atIU:(NSString *)IU{
-    JDTraceLog( @"[IU:%@] : point(%.1f, %.1f) atIU:%@", iuname, point.x, point.y, IU);
+- (void)makeNewIU:(NSString *)IUID atPoint:(NSPoint)point atIU:(NSString *)IU{
+    JDTraceLog( @"[IU:%@] : point(%.1f, %.1f) atIU:%@", IUID, point.x, point.y, IU);
 }
 
 

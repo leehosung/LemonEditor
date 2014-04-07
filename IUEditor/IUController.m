@@ -13,7 +13,8 @@
 @implementation IUController
 
 
-#pragma mark LMCanvasVCDelegate
+#pragma mark set By LMCanvasVC
+
 -(void)setSelectedObjectsByIdentifiers:(NSArray *)identifiers{
     [JDLogUtil log:IULogAction key:@"canvas selected objects" string:[identifiers description]];
     IUDocument *document = [self.content firstObject];

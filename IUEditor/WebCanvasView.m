@@ -47,17 +47,17 @@
     //make new IU
     NSPasteboard *pBoard = sender.draggingPasteboard;
     NSPoint dragPoint = sender.draggingLocation;
-    NSString *iuName = [pBoard stringForType:(id)kUTTypeIUType];
-    NSString *parentIUName = [self IUAtPoint:dragPoint];
-    if(iuName){
+    NSString *IUID = [pBoard stringForType:(id)kUTTypeIUType];
+    NSString *parentIUID = [self IUAtPoint:dragPoint];
+    if(IUID){
         //makeIU
         
-        [((LMCanvasVC *)(self.delegate)) makeNewIU:iuName atPoint:dragPoint atIU:parentIUName];
+        [((LMCanvasVC *)(self.delegate)) makeNewIU:IUID atPoint:dragPoint atIU:parentIUID];
         return YES;
     }
     
 
-    JDTraceLog( @"[IU:%@], dragPoint(%.1f, %.1f)", iuName, dragPoint.x, dragPoint.y);
+    JDTraceLog( @"[IU:%@], dragPoint(%.1f, %.1f)", IUID, dragPoint.x, dragPoint.y);
 
     return NO;
 }
