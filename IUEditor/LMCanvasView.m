@@ -24,6 +24,7 @@
     
     self.webView.delegate = self.delegate;
     self.gridView.delegate= self.delegate;
+    self.sizeView.delegate = self.delegate;
     
     [self.mainView addSubviewFullFrame:self.webView];
     [self.mainView addSubviewFullFrame:self.gridView];
@@ -76,7 +77,7 @@
 }
 
 -  (BOOL)pointInMainView:(NSPoint)point{
-    if (NSPointInRect(point, self.mainView.bounds)){
+    if (NSPointInRect(point, self.bounds)){
         return YES;
     }
     return NO;

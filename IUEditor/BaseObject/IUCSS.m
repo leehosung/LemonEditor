@@ -62,7 +62,7 @@
 }
 
 
--(NSDictionary*)tagDictionaryForWidth:(int)width{
+-(NSDictionary*)tagDictionaryForWidth:(NSInteger)width{
     return _cssFrameDict[@(width)];
 }
 
@@ -84,13 +84,17 @@
     [self didChangeValueForKey:@"affectingTagCollection"];
 }
 
--(void)setEditWidth:(int)editWidth{
+-(void)setEditWidth:(NSInteger)editWidth{
     _editWidth = editWidth;
     [self updateAffectingTagCollection];
 }
 
 -(NSDictionary*)affectingTagCollection{
     return _affectingTagCollectionForEditWidth;
+}
+
+-(void)setValue:(id)value forTag:(IUCSSTag)tag{
+    [self setValue:value forTag:tag forWidth:_editWidth];
 }
 
 -(void)setValue:(id)value forKeyPath:(NSString *)keyPath{

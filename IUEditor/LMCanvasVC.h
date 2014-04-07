@@ -16,13 +16,15 @@
 @property (nonatomic) _binding_ IUDocument  *document;
 @property (nonatomic) _binding_ NSString    *documentBasePath;
 @property (nonatomic) NSTreeController <LMCanvasVCDelegate> *controller;
+@property  _binding_ NSInteger selectedFrameWidth;
 
 - (LMCanvasV*)view;
 #pragma mark -
 #pragma mark be set by IU
 
 //set frame size
-- (void)addFrame:(NSInteger)width;
+- (NSInteger)frameWidth;
+- (id)addFrame:(NSInteger)width;
 - (void)removeFrame:(NSInteger)width;
 
 //load page

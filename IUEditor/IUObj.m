@@ -29,6 +29,7 @@
         _css.delegate = self;
         _m_children=[aDecoder decodeObjectForKey:@"children"];
         delegateEnableLevel = 1;
+        [self addObserver:self forKeyPath:@"delegate.selectedFrameWidth" options:0 context:nil];
     }
     return self;
 }
@@ -53,15 +54,22 @@
         delegateEnableLevel = 1;
         
         _m_children = [NSMutableArray array];
+        
+        [self addObserver:self forKeyPath:@"delegate.selectedFrameWidth" options:0 context:nil];
     }
     return self;
 }
 
 
-
 -(id)init{
     assert(0);
     return nil;
+}
+
+- (void)delegate_selectedFrameWidthDidChange:(NSDictionary*)change{
+    if (self.delegate) {
+        [_css setEditWidth:self.delegate.selectedFrameWidth];
+    }
 }
 
 -(NSMutableArray*)allChildren{

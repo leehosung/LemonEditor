@@ -14,6 +14,8 @@
 #import "SizeView.h"
 #import "IUFrameDictionary.h"
 #import "IUObj.h"
+#import "IUDefinition.h"
+#import "InnerSizeBox.h"
 
 @interface LMCanvasVC ()
 
@@ -32,6 +34,17 @@
     return self;
 }
 
+-(void)awakeFromNib{
+    InnerSizeBox *defaultBox = [self addFrame:defaultFrameWidth];
+    [defaultBox select];
+}
+
+
+-(void)setController:(NSTreeController<LMCanvasVCDelegate> *)controller{
+    _controller = controller;
+    [_controller addObserver:self forKeyPath:@"selectedObjects" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld|NSKeyValueObservingOptionPrior context:nil];
+}
+
 
 -(LMCanvasV*)view{
     return (LMCanvasV*)[super view];
@@ -45,12 +58,14 @@
     return ((LMCanvasView *)self.view).sizeView;
     
 }
-- (void)addFrame:(NSInteger)width{
-    [[self sizeView] addFrame:width];
+- (id)addFrame:(NSInteger)width{
+    return [[self sizeView] addFrame:width];
 }
 - (void)removeFrame:(NSInteger)width{
     [[self sizeView] removeFrame:width];
 }
+
+
 
 #pragma mark -
 #pragma mark webView
@@ -86,19 +101,27 @@
         return NO;
     }
 }
-- (void)removeSelectedAllIUs{
-    [self.controller setSelectionIndexPath:nil];
+
+-(void)selectedObjectsDidChange:(NSDictionary*)change{
+    [JDLogUtil log:IULogAction key:@"CanvasVC:observed" string:[self.controller.selectedIdentifiers description]];
+    
     [[self gridView] removeAllRedPointLayer];
     [[self gridView] removeAllTextPointLayer];
+
+    for(NSString *IUID in self.controller.selectedIdentifiers){
+        if([frameDict.dict objectForKey:IUID]){
+            NSRect frame = [[frameDict.dict objectForKey:IUID] rectValue];
+            [[self gridView] addRedPointLayer:IUID withFrame:frame];
+            [[self gridView] addTextPointLayer:IUID withFrame:frame];
+        }
+    }
+}
+- (void)removeSelectedAllIUs{
+    [self.controller setSelectionIndexPath:nil];
 }
 - (void)addSelectedIU:(NSString *)IU{
     NSArray *addArray = [NSArray arrayWithObject:IU];
     [self.controller setSelectedObjectsByIdentifiers:addArray];
-    if([frameDict.dict objectForKey:IU]){
-        NSRect frame = [[frameDict.dict objectForKey:IU] rectValue];
-        [[self gridView] addRedPointLayer:IU withFrame:frame];
-        [[self gridView] addTextPointLayer:IU withFrame:frame];
-    }
 }
 
 
@@ -244,6 +267,9 @@
     assert(currentSheet != nil);
     
     [self setCSSRuleInStyleSheet:currentSheet rule:cssText withID:iuID];
+    if(JDLOGGING){
+        [self checkCurrentCSSStyle:size];   
+    }
     
 }
 
@@ -255,6 +281,18 @@
     }
     [styleSheet insertRule:rule index:0];
     [[self webView] updateFrameDict];
+    
+}
+
+- (void)checkCurrentCSSStyle:(NSInteger)size{
+    DOMCSSStyleSheet *sheet = [self styleSheetWithSize:size];
+    JDInfoLog(@"mediaText : %@",sheet.media.mediaText);
+    DOMCSSRuleList *lists = [sheet rules];
+
+    for(unsigned i =0 ; i < lists.length; i++){
+       DOMCSSRule *rule = [lists item:i];
+        JDInfoLog(@"%d : %@", rule.type, rule.cssText);
+    }
 }
 
 #pragma mark -
@@ -324,8 +362,6 @@
 #pragma mark moveIU
 //drag & drop after select IU
 - (void)moveIUToDiffPoint:(NSPoint)point{
-    
-    NSInteger currentWidth = [[self sizeView] selectedFrameWidth];
     for(IUObj *obj in self.controller.selectedObjects){
         NSString *IUID = obj.htmlID;
         NSRect currentFrame = [[frameDict.dict objectForKey:IUID] rectValue];
@@ -335,8 +371,8 @@
         NSPoint guidePoint = [frameDict guidePointOfCurrentFrame:moveFrame IU:IUID];
         moveFrame.origin = guidePoint;
 
-        [obj.css setValue:@(moveFrame.origin.x) forTag:IUCSSTagX forWidth:currentWidth];
-        [obj.css setValue:@(moveFrame.origin.y) forTag:IUCSSTagY forWidth:currentWidth];
+        [obj.css setValue:@(moveFrame.origin.x) forTag:IUCSSTagX];
+        [obj.css setValue:@(moveFrame.origin.y) forTag:IUCSSTagY];
         
         
         
@@ -347,7 +383,6 @@
 //drag pointlayer // only one IU
 - (void)changeIUFrame:(NSRect)frame IUID:(NSString *)IUID{
     
-    NSInteger currentWidth = [[self sizeView] selectedFrameWidth];
     NSRect guideFrame = frame;
     guideFrame.origin = [frameDict guidePointOfCurrentFrame:frame IU:IUID];
     guideFrame.size = [frameDict guideSizeOfCurrentFrame:frame IU:IUID];
@@ -355,10 +390,10 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @"htmlID", IUID];
     IUObj *obj = [[self.controller.selectedObjects filteredArrayUsingPredicate:predicate] firstObject];
     
-    [obj.css setValue:@(guideFrame.origin.x) forTag:IUCSSTagX forWidth:currentWidth];
-    [obj.css setValue:@(guideFrame.origin.y) forTag:IUCSSTagY forWidth:currentWidth];
-    [obj.css setValue:@(guideFrame.size.height) forTag:IUCSSTagHeight forWidth:currentWidth];
-    [obj.css setValue:@(guideFrame.size.width) forTag:IUCSSTagWidth forWidth:currentWidth];
+    [obj.css setValue:@(guideFrame.origin.x) forTag:IUCSSTagX];
+    [obj.css setValue:@(guideFrame.origin.y) forTag:IUCSSTagY];
+    [obj.css setValue:@(guideFrame.size.height) forTag:IUCSSTagHeight];
+    [obj.css setValue:@(guideFrame.size.width) forTag:IUCSSTagWidth];
 
     
     

@@ -90,11 +90,11 @@ static NSMutableSet *enableLogSection;
             case JDLog_Level_Warn://green fg
                 NSLog(XCODE_COLORS_ESCAPE @"fg0,255,0;" @"%@" XCODE_COLORS_RESET, msg);
                 break;
-            case JDLog_Level_Info://light gray fg
-                NSLog(XCODE_COLORS_ESCAPE @"fg200,200,200;" @"%@" XCODE_COLORS_RESET, msg);
+            case JDLog_Level_Info://dark yellow
+                NSLog(XCODE_COLORS_ESCAPE @"fg102,102,0;" @"%@" XCODE_COLORS_RESET, msg);
                 break;
-            case JDLog_Level_Debug://light white fg
-                NSLog(XCODE_COLORS_ESCAPE @"fg255,255,255;" @"%@" XCODE_COLORS_RESET, msg);
+            case JDLog_Level_Debug://light gray fg
+                NSLog(XCODE_COLORS_ESCAPE @"fg200,200,200;" @"%@" XCODE_COLORS_RESET, msg);
                 break;
             case JDLog_Level_Trace:
                 NSLog(@"%@", msg);
