@@ -20,7 +20,7 @@
 
 #define IUCSSDefaultFrame -1
 
-@class IUView;
+@class IUObj;
 @class IUDocument;
 
 @interface IUObj : NSObject <NSCoding, IUCSSDelegate>

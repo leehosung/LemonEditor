@@ -11,7 +11,7 @@
 #import "NSCoder+JDExtension.h"
 #import "IUCompiler.h"
 #import "IUDocument.h"
-#import "IUView.h"
+#import "IUObj.h"
 
 @interface IUObj()
 @property NSMutableArray *m_children;
