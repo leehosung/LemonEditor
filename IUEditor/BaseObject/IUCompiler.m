@@ -117,33 +117,35 @@
 
 -(IUCSSStringDictionary*)cssStringDictionaryWithCSSTagDictionary:(NSDictionary*)cssTagDict ofClass:(IUObj*)obj{
     IUCSSStringDictionary *dict = [IUCSSStringDictionary dictionary];
-    for (IUCSSTag tag in cssTagDict) {
-        if ([tag isSameTag:IUCSSTagX]) {
-            [dict putTag:@"left"    floatValue:[cssTagDict[tag] floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
-        }
-        else if ([tag isSameTag:IUCSSTagY]){
-            [dict putTag:@"top"    floatValue:[cssTagDict[tag] floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
-        }
-        else if ([tag isSameTag:IUCSSTagWidth]){
-            [dict putTag:@"width"    floatValue:[cssTagDict[tag] floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
-        }
-        else if ([tag isSameTag:IUCSSTagHeight]){
-            [dict putTag:@"height"    floatValue:[cssTagDict[tag] floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
-        }
-        else if ([tag isSameTag:IUCSSTagBGColor]){
-            [dict putTag:@"background-color" color:cssTagDict[tag]];
-        }
-        else if ([tag isSameTag:IUCSSTagImage]){
-            NSString *resourcePath = [_resourceSource relativePathForResource:cssTagDict[tag]];
-            if (resourcePath == nil) {
-                NSAssert(0, @"Destory!!!");
-            }
-            [dict putTag:@"background-image" string:[resourcePath CSSURLString]];
-        }
-        else {
-            [dict putTag:tag string:cssTagDict[tag]];
-        }
+    id value;
+    
+    value = cssTagDict[IUCSSTagX];
+    if (value) {
+        [dict putTag:@"left" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
     }
+
+    value = cssTagDict[IUCSSTagY];
+    if (value) {
+        [dict putTag:@"top" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
+    }
+
+    value = cssTagDict[IUCSSTagWidth];
+    if (value) {
+        [dict putTag:@"width" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
+    }
+
+    value = cssTagDict[IUCSSTagHeight];
+    if (value) {
+        [dict putTag:@"height" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
+    }
+
+    value = cssTagDict[IUCSSTagBGColor];
+    [dict putTag:@"background-color" color:value];
+    
+    value = cssTagDict[IUCSSTagImage];
+    NSString *resourcePath = [_resourceSource relativePathForResource:value];
+    [dict putTag:@"background-image" string:[resourcePath CSSURLString]];
+
     return dict;
 }
 
