@@ -198,5 +198,24 @@
     return [[super description] stringByAppendingFormat:@" %@", self.htmlID];
 }
 
+- (void)moveX:(NSInteger)x Y:(NSInteger)y{
+    NSInteger currentX = [_css.affectingTagCollection[IUCSSTagX] integerValue];
+    currentX += x;
+    [_css setValue:@(currentX) forKeyPath:[@"affectingTagCollection" stringByAppendingPathExtension:IUCSSTagX]];
+    
+    NSInteger currentY = [_css.affectingTagCollection[IUCSSTagY] integerValue];
+    currentY += y;
+    [_css setValue:@(currentY) forKeyPath:[@"affectingTagCollection" stringByAppendingPathExtension:IUCSSTagY]];
+}
+
+- (void)increaseWidth:(NSInteger)width height:(NSInteger)height{
+    NSInteger currentWidth = [_css.affectingTagCollection[IUCSSTagWidth] integerValue];
+    currentWidth += width;
+    [_css setValue:@(currentWidth) forKeyPath:[@"affectingTagCollection" stringByAppendingPathExtension:IUCSSTagWidth]];
+    
+    NSInteger currentHeight = [_css.affectingTagCollection[IUCSSTagHeight] integerValue];
+    currentHeight += height;
+    [_css setValue:@(currentHeight) forKeyPath:[@"affectingTagCollection" stringByAppendingPathExtension:IUCSSTagHeight]];
+}
 
 @end

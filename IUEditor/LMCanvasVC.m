@@ -37,6 +37,8 @@
 -(void)awakeFromNib{
     InnerSizeBox *defaultBox = [self addFrame:defaultFrameWidth];
     [defaultBox select];
+    //TODO: test
+    [self addFrame:400];
 }
 
 
@@ -268,7 +270,7 @@
     
     [self setCSSRuleInStyleSheet:currentSheet rule:cssText withID:iuID];
     if(JDLOGGING){
-        [self checkCurrentCSSStyle:size];   
+        //[self checkCurrentCSSStyle:size];
     }
     
 }
@@ -361,44 +363,58 @@
 
 #pragma mark moveIU
 //drag & drop after select IU
-- (void)moveIUToDiffPoint:(NSPoint)point{
+- (void)moveIUToDiffPoint:(NSPoint)point totalDiffPoint:(NSPoint)totalPoint{
     for(IUObj *obj in self.controller.selectedObjects){
-        NSString *IUID = obj.htmlID;
-        NSRect currentFrame = [[frameDict.dict objectForKey:IUID] rectValue];
-        NSRect moveFrame = currentFrame;
         
-        moveFrame.origin = NSMakePoint(currentFrame.origin.x+point.x, currentFrame.origin.y+point.y);
-        NSPoint guidePoint = [frameDict guidePointOfCurrentFrame:moveFrame IU:IUID];
-        moveFrame.origin = guidePoint;
-
-        [obj.css setValue:@(moveFrame.origin.x) forTag:IUCSSTagX];
-        [obj.css setValue:@(moveFrame.origin.y) forTag:IUCSSTagY];
+        if([frameDict isGuidePoint:totalPoint]){
+            
+            NSString *IUID = obj.htmlID;
+            NSRect currentFrame = [[frameDict.dict objectForKey:IUID] rectValue];
+            NSRect moveFrame = currentFrame;
+            
+            moveFrame.origin = NSMakePoint(currentFrame.origin.x+point.x, currentFrame.origin.y+point.y);
+            NSPoint guidePoint = [frameDict guidePointOfCurrentFrame:moveFrame IU:IUID];
+            guidePoint= NSMakePoint(guidePoint.x - currentFrame.origin.x, guidePoint.y - currentFrame.origin.y);
+            
+            
+            [obj moveX:guidePoint.x Y:guidePoint.y];
+            JDInfoLog(@"Point:(%.1f %.1f)", moveFrame.origin.x, moveFrame.origin.y);
+        }
+        else{
+            [obj moveX:point.x Y:point.y];
+        }
         
-        
-        
-
     }
-    JDTraceLog(@"Point:(%.1f %.1f)", point.x, point.y);
-}
-//drag pointlayer // only one IU
-- (void)changeIUFrame:(NSRect)frame IUID:(NSString *)IUID{
-    
-    NSRect guideFrame = frame;
-    guideFrame.origin = [frameDict guidePointOfCurrentFrame:frame IU:IUID];
-    guideFrame.size = [frameDict guideSizeOfCurrentFrame:frame IU:IUID];
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @"htmlID", IUID];
-    IUObj *obj = [[self.controller.selectedObjects filteredArrayUsingPredicate:predicate] firstObject];
-    
-    [obj.css setValue:@(guideFrame.origin.x) forTag:IUCSSTagX];
-    [obj.css setValue:@(guideFrame.origin.y) forTag:IUCSSTagY];
-    [obj.css setValue:@(guideFrame.size.height) forTag:IUCSSTagHeight];
-    [obj.css setValue:@(guideFrame.size.width) forTag:IUCSSTagWidth];
 
+}
+
+- (void)extendIUToDiffSize:(NSSize)size totalDiffSize:(NSSize)totalSize{
+    //drag pointlayer
+    for(IUObj *obj in self.controller.selectedObjects){
+        
+        if([frameDict isGuideSize:totalSize]){
+            
+            NSString *IUID = obj.htmlID;
+            NSRect currentFrame = [[frameDict.dict objectForKey:IUID] rectValue];
+            NSRect moveFrame = currentFrame;
+            
+            moveFrame.size = NSMakeSize(currentFrame.size.width+size.width, currentFrame.size.height+size.height);
+            NSSize guideSize = [frameDict guideSizeOfCurrentFrame:moveFrame IU:IUID];
+            guideSize = NSMakeSize(guideSize.width- currentFrame.size.width, guideSize.height - currentFrame.size.height);
+            
+            [obj increaseWidth:guideSize.width height:guideSize.height];
+        }
+        else{
+            [obj increaseWidth:size.width height:size.height];
+        }
+        
+        /*
+        JDTraceLog( @"[IU:%@]\n origin: (%.1f, %.1f) \n size: (%.1f, %.1f)",
+                   IUID, guideFrame.origin.x, guideFrame.origin.y, guideFrame.size.width, guideFrame.size.height);
+         */
+        
+    }
     
-    
-    JDTraceLog( @"[IU:%@]\n origin: (%.1f, %.1f) \n size: (%.1f, %.1f)",
-          IUID, guideFrame.origin.x, guideFrame.origin.y, guideFrame.size.width, guideFrame.size.height);
 }
 
 //FIXME: inner IU도 표시

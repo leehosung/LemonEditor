@@ -112,12 +112,14 @@
                         [((LMCanvasVC *)self.delegate) addSelectedIU:currentIUID];
                     }
                     
-                    if([self.webView isDOMTextAtPoint:convertedPoint] == NO){
+                    if([self.webView isDOMTextAtPoint:convertedPoint] == NO
+                       || currentIUID){
                         isSelected = YES;
                     }
-                    startDragPoint = convertedPoint;
-                    middleDragPoint = startDragPoint;
+
                 }
+                startDragPoint = convertedPoint;
+                middleDragPoint = startDragPoint;
             }
             else if (theEvent.type == NSLeftMouseDragged ){
                 JDTraceLog( @"mouse dragged");
@@ -137,11 +139,11 @@
                 }
                 if(isSelected){
                     isDragged = YES;
+                    NSPoint totalPoint = NSMakePoint(endDragPoint.x-startDragPoint.x, endDragPoint.y-startDragPoint.y);
                     NSPoint diffPoint = NSMakePoint(endDragPoint.x - middleDragPoint.x, endDragPoint.y - middleDragPoint.y);
-                    [((LMCanvasVC *)self.delegate) moveIUToDiffPoint:diffPoint];
+                    [((LMCanvasVC *)self.delegate) moveIUToDiffPoint:diffPoint totalDiffPoint:totalPoint];
+                    
                 }
-                
-                
                 middleDragPoint = endDragPoint;
             }
             

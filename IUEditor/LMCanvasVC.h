@@ -62,8 +62,8 @@
 
 - (void)updateHTMLText:(NSString *)insertText atIU:(NSString *)iuID;
 
-- (void)moveIUToDiffPoint:(NSPoint)point;
-- (void)changeIUFrame:(NSRect)frame IUID:(NSString *)IUID;
+- (void)moveIUToDiffPoint:(NSPoint)point totalDiffPoint:(NSPoint)totalPoint;
+- (void)extendIUToDiffSize:(NSSize)size totalDiffSize:(NSSize)totalSize;;
 
 - (void)makeNewIU:(NSString *)IUID atPoint:(NSPoint)point atIU:(NSString *)IU;
 

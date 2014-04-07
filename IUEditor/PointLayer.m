@@ -78,33 +78,33 @@
     [self setNeedsDisplay];
 }
 
-- (NSRect)makeNewFrameWithType:(IUPointLayerPosition)type withDiffPoint:(NSPoint)diffPoint{
+- (NSRect)diffPointAndSizeWithType:(IUPointLayerPosition)type withDiffPoint:(NSPoint)diffPoint{
     
     NSRect frame;
     switch (type) {
         case IUPointLayerPositionLeftUp:
-            frame = NSMakeRect(iuFrame.origin.x+diffPoint.x, iuFrame.origin.y+diffPoint.y, iuFrame.size.width-diffPoint.x, iuFrame.size.height-diffPoint.y);
+            frame = NSMakeRect(diffPoint.x, diffPoint.y, -diffPoint.x, -diffPoint.y);
             break;
         case IUPointLayerPositionLeftMiddle:
-            frame = NSMakeRect(iuFrame.origin.x+diffPoint.x, iuFrame.origin.y, iuFrame.size.width-diffPoint.x, iuFrame.size.height);
+            frame = NSMakeRect(diffPoint.x, 0, -diffPoint.x, 0);
             break;
         case IUPointLayerPositionLeftDown:
-             frame = NSMakeRect(iuFrame.origin.x+diffPoint.x, iuFrame.origin.y, iuFrame.size.width-diffPoint.x, iuFrame.size.height+diffPoint.y);
+             frame = NSMakeRect(diffPoint.x, 0, -diffPoint.x, diffPoint.y);
             break;
         case IUPointLayerPositionUp:
-            frame = NSMakeRect(iuFrame.origin.x, iuFrame.origin.y+diffPoint.y, iuFrame.size.width, iuFrame.size.height-diffPoint.y);
+            frame = NSMakeRect(0, diffPoint.y, 0, -diffPoint.y);
             break;
         case IUPointLayerPositionDown:
-            frame = NSMakeRect(iuFrame.origin.x, iuFrame.origin.y, iuFrame.size.width, iuFrame.size.height+diffPoint.y);
+            frame = NSMakeRect(0, 0, 0,diffPoint.y);
             break;
         case IUPointLayerPositionRightUp:
-            frame = NSMakeRect(iuFrame.origin.x, iuFrame.origin.y+diffPoint.y, iuFrame.size.width+diffPoint.x, iuFrame.size.height-diffPoint.y);
+            frame = NSMakeRect(0, diffPoint.y, diffPoint.x, -diffPoint.y);
             break;
         case IUPointLayerPositionRightMiddle:
-            frame = NSMakeRect(iuFrame.origin.x, iuFrame.origin.y, iuFrame.size.width+diffPoint.x, iuFrame.size.height);
+            frame = NSMakeRect(0,0, diffPoint.x, 0);
             break;
         case IUPointLayerPositionRightDown:
-            frame = NSMakeRect(iuFrame.origin.x, iuFrame.origin.y, iuFrame.size.width+diffPoint.x, iuFrame.size.height+diffPoint.y);
+            frame = NSMakeRect(0,0, diffPoint.x, diffPoint.y);
             break;
         default:
             JDWarnLog( @"this type cannot be");

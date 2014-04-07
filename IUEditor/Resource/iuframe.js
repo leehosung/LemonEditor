@@ -12,7 +12,10 @@ $.fn.updatePixel = function(){
                      else{
                      /* check and update */
                      var newPosition = $(this).iuPosition();
-                     if (this.position.top != newPosition.top || this.position.left != newPosition.left || this.position.width != newPosition.width || this.position.height != newPosition.height ){
+                     if (this.position.top != newPosition.top || this.position.left != newPosition.left ||
+                         this.position.width != newPosition.width || this.position.height != newPosition.height ||
+                         this.position.x != newPosition.x || this.position.y != newPosition.y
+                         ){
                      document.sharedFrameDict[myName] = newPosition;
                      this.position = newPosition;
                      }
