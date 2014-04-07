@@ -85,6 +85,8 @@
 
 #pragma mark event
 
+
+
 -(void)receiveMouseEvent:(NSEvent *)theEvent{
     
     
@@ -113,7 +115,7 @@
                     }
                     
                     if([self.webView isDOMTextAtPoint:convertedPoint] == NO
-                       || currentIUID){
+                       && currentIUID){
                         isSelected = YES;
                     }
 

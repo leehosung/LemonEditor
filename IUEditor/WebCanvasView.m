@@ -37,7 +37,52 @@
 }
 
 #pragma mark -
+#pragma mark Event
+
+- (BOOL)performKeyEquivalent:(NSEvent *)theEvent{
+    
+    if(theEvent.type == NSKeyDown){
+        
+        if([theEvent modifierFlags] & NSCommandKeyMask){
+            unichar key = [[theEvent charactersIgnoringModifiers] characterAtIndex:0];
+            //select all
+            if(key == 'A' || key == 'a'){
+                [self selectWholeRangeOfCurrentCursor];
+                return YES;
+            }
+            
+        }
+        else{
+            
+            NSPoint diffPoint;
+            switch (theEvent.keyCode) {
+                case 126: //up
+                    diffPoint = NSMakePoint(0, -1.0);
+                    break;
+                case 123: // left
+                    diffPoint = NSMakePoint(-1.0, 0);
+                    break;
+                case 124: // right
+                    diffPoint = NSMakePoint(1.0, 0);
+                    break;
+                case 125: // down;
+                    diffPoint = NSMakePoint(0, 1.0);
+                    break;
+                default:
+                    diffPoint = NSZeroPoint;
+                    break;
+            }
+            
+            [((LMCanvasVC *)self.delegate) moveIUToDiffPoint:diffPoint totalDiffPoint:diffPoint];
+        }
+    }
+    
+    return [super performKeyEquivalent:theEvent];
+}
+
+#pragma mark -
 #pragma mark mouse operation
+
 
 - (NSDragOperation)draggingEntered:(id<NSDraggingInfo>)sender{
     return NSDragOperationEvery;
@@ -297,10 +342,26 @@
 - (BOOL)webView:(WebView *)webView shouldChangeSelectedDOMRange:(DOMRange *)currentRange toDOMRange:(DOMRange *)proposedRange affinity:(NSSelectionAffinity)selectionAffinity stillSelecting:(BOOL)flag{
 
     if([self isOneIUSTextelection:proposedRange]){
-        return YES;
+        NSArray * selectednames = ((LMCanvasVC *)(self.delegate)).controller.selectedIdentifiers;
+        DOMHTMLElement *proposedNode;
+        if([proposedRange.startContainer isKindOfClass:[DOMText class]]){
+            proposedNode = [self textParentIUElement:proposedRange.startContainer];
+        }
+        else{
+            proposedNode = (DOMHTMLElement *)proposedRange.startContainer;
+        }
+        
+        if(selectednames.count == 1 && [selectednames[0] isEqualToString:proposedNode.idName]){
+            return YES;
+        }
     }
     
     return NO;
+}
+
+- (void)changeDOMRange:(NSPoint)point{
+    DOMRange *range = [self editableDOMRangeForPoint:point];
+    [self setSelectedDOMRange:range affinity:NSSelectionAffinityDownstream];
 }
 
 - (void)selectWholeRangeOfCurrentCursor{
@@ -319,23 +380,7 @@
 
 }
 
-- (BOOL)performKeyEquivalent:(NSEvent *)theEvent{
-    
-    if(theEvent.type == NSKeyDown){
-        
-        if([theEvent modifierFlags] & NSCommandKeyMask){
-            unichar key = [[theEvent charactersIgnoringModifiers] characterAtIndex:0];
-            //select all
-            if(key == 'A' || key == 'a'){
-                [self selectWholeRangeOfCurrentCursor];
-                return YES;
-            }
-            
-        }
-    }
-    
-    return [super performKeyEquivalent:theEvent];
-}
+
 
 #pragma mark -
 #pragma mark manage IU

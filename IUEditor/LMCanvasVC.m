@@ -109,12 +109,14 @@
     
     [[self gridView] removeAllRedPointLayer];
     [[self gridView] removeAllTextPointLayer];
+    
 
     for(NSString *IUID in self.controller.selectedIdentifiers){
         if([frameDict.dict objectForKey:IUID]){
             NSRect frame = [[frameDict.dict objectForKey:IUID] rectValue];
             [[self gridView] addRedPointLayer:IUID withFrame:frame];
             [[self gridView] addTextPointLayer:IUID withFrame:frame];
+            [[self webView] changeDOMRange:frame.origin];
         }
     }
 }
