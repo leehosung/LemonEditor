@@ -19,17 +19,18 @@
 
 @interface IUCSS : NSObject <NSCoding>
 
-@property (nonatomic) _binding_ int editWidth;
+@property (nonatomic) _binding_ NSInteger editWidth;
 @property id <IUCSSDelegate> delegate;
 
 //set tag, or delete tag
+-(void)setValue:(id)value forTag:(IUCSSTag)tag;
 -(void)setValue:(id)value forTag:(IUCSSTag)tag forWidth:(NSInteger)width;
 
 //remove tag of all tag dictionay in width
 -(void)eradicateTag:(IUCSSTag)type;
 
 //get css tag dictionary for specific width
--(NSDictionary*)tagDictionaryForWidth:(int)width;
+-(NSDictionary*)tagDictionaryForWidth:(NSInteger)width;
 
 //observable.
 @property (readonly) NSDictionary *affectingTagCollection;

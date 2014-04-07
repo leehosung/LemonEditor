@@ -174,7 +174,8 @@
      */
     
     ///xxxDidChange:
-    if ([[change objectForKey:NSKeyValueChangeNotificationIsPriorKey] boolValue] != YES) {
+    bool priorKey = [[change objectForKey:NSKeyValueChangeNotificationIsPriorKey] boolValue];
+    if ([[change objectForKey:NSKeyValueChangeNotificationIsPriorKey] boolValue] == NO) {
         selectorName = [NSString stringWithFormat:@"%@DidChange:",keyPath];
     }
     else{
@@ -190,7 +191,7 @@
     }
     
     ///xxxofObject:didChange:
-    if ([[change objectForKey:NSKeyValueChangeNotificationIsPriorKey] boolValue] != YES) {
+    if ([[change objectForKey:NSKeyValueChangeNotificationIsPriorKey] boolValue] == NO) {
         selectorName = [NSString stringWithFormat:@"%@OfObject:didChange:",keyPath];
     }
     else{
@@ -208,7 +209,7 @@
     
     //context
     if (contextStr) {
-        if ([[change objectForKey:NSKeyValueChangeNotificationIsPriorKey] boolValue] != YES) {
+        if ([[change objectForKey:NSKeyValueChangeNotificationIsPriorKey] boolValue] == NO) {
             selectorName = [NSString stringWithFormat:@"%@ContextDidChange:",contextStr];
         }
         else{
@@ -224,7 +225,7 @@
         }
         
         //
-        if ([[change objectForKey:NSKeyValueChangeNotificationIsPriorKey] boolValue] != YES) {
+        if ([[change objectForKey:NSKeyValueChangeNotificationIsPriorKey] boolValue] == NO) {
             selectorName = [NSString stringWithFormat:@"%@ContextOfObject:didChange:",contextStr];
         }
         else{

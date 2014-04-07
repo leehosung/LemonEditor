@@ -19,8 +19,9 @@
     SizeTextField *sizeTextField;
 }
 
+@property id delegate;
+
 - (void)selectBox:(InnerSizeBox *)selectBox;
-- (NSInteger)selectedFrameWidth;
 
 - (id)addFrame:(NSInteger)width;
 - (void)removeFrame:(NSInteger)width;

@@ -13,6 +13,6 @@
 - (NSIndexPath*)indexPathOfObject:(id)anObject;
 
 - (void)setSelectedObject:(id)object;
-- (void)setSelectedObjects:(NSArray*)objects;
+- (void)_setSelectedObjects:(NSArray*)objects;
 
 @end

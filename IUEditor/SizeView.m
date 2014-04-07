@@ -9,6 +9,7 @@
 #import "SizeView.h"
 #import "JDUIUtil.h"
 #import "LMCanvasView.h"
+#import "LMCanvasVC.h"
 #import "IUDefinition.h"
 
 @implementation SizeTextField : NSTextField
@@ -49,18 +50,9 @@
         [self addSubviewVeriticalCenterInFrameWithFrame:sizeTextField height:sizeTextField.attributedStringValue.size.height];
         [self addSubviewFullFrame:boxManageView positioned:NSWindowBelow relativeTo:sizeTextField];
         
-        //defaultFrame
-        InnerSizeBox *defaultBox = [self addFrame:defaultFrameWidth];
-        [defaultBox select];
+       
     }
     return self;
-}
-
-- (void)drawRect:(NSRect)dirtyRect
-{
-    [super drawRect:dirtyRect];
-    
-    // Drawing code here.
 }
 
 - (void)resetCursorRects{
@@ -76,11 +68,6 @@
 
 #pragma mark -
 #pragma mark select
-- (NSInteger)selectedFrameWidth{
-    InnerSizeBox *selectedBox = [boxManageView.subviews objectAtIndex:selectIndex];
-    return (NSInteger)(floor([selectedBox frameSize]));
-}
-
 
 - (void)selectBox:(InnerSizeBox *)selectBox{
     NSUInteger newSelectIndex = [boxManageView.subviews indexOfObject:selectBox];
@@ -92,9 +79,12 @@
         selectIndex = newSelectIndex;
     }
     
+
+    CGFloat selectedWidth = selectBox.frame.size.width;
     
-    [sizeTextField setStringValue:[NSString stringWithFormat:@"%.0f", selectBox.frame.size.width]];
-    [(LMCanvasView *)self.superview setWidthOfMainView:selectBox.frame.size.width];
+    [sizeTextField setStringValue:[NSString stringWithFormat:@"%.0f", selectedWidth]];
+    [(LMCanvasView *)self.superview setWidthOfMainView:selectedWidth];
+    ((LMCanvasVC *)self.delegate).selectedFrameWidth = (NSInteger)(floor(selectedWidth));
 }
 
 #pragma mark -

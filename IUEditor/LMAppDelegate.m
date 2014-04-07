@@ -25,6 +25,7 @@
     
     wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
     [wc showWindow:self];
+
     
 
 #pragma mark -

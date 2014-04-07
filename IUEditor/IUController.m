@@ -26,7 +26,7 @@
         return NO;
     }];
     NSArray *selectedChildren = [allChildren filteredArrayUsingPredicate:predicate];
-    [self setSelectedObjects:selectedChildren];
+    [self _setSelectedObjects:selectedChildren];
 }
 
 -(NSArray*)selectedIdentifiers{

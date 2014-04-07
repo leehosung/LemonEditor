@@ -11,10 +11,10 @@
 @implementation NSTreeController (JDExtension)
 
 - (void)setSelectedObject:(id)object{
-    [self setSelectedObjects:@[object]];
+    [self _setSelectedObjects:@[object]];
 }
 
-- (void)setSelectedObjects:(NSArray*)objects{
+- (void)_setSelectedObjects:(NSArray*)objects{
     NSMutableArray *indexPaths = [NSMutableArray array];
     for (id anObject in objects) {
         id obj = [self indexPathOfObject:anObject];
