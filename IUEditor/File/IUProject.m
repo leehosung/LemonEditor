@@ -235,12 +235,12 @@
     [CSSGroup addResourceNode:resetCSSNode path:resetCSSPath];
     
     NSString *iuCSSPath = [[NSBundle mainBundle] pathForResource:@"iu" ofType:@"css"];
-    IUResourceNode *iuCSSNode = [[IUResourceNode alloc] initWithName:@"iu.css" type:IUResourceTypeJS];
+    IUResourceNode *iuCSSNode = [[IUResourceNode alloc] initWithName:@"iu.css" type:IUResourceTypeCSS];
     [CSSGroup addResourceNode:iuCSSNode path:iuCSSPath];
     
     NSString *iuFrameJSPath = [[NSBundle mainBundle] pathForResource:@"iuframe" ofType:@"js"];
     IUResourceNode *iuFrameJSNode = [[IUResourceNode alloc] initWithName:@"iuframe.js" type:IUResourceTypeJS];
-    [imageGroup addResourceNode:iuFrameJSNode path:iuFrameJSPath];
+    [JSGroup addResourceNode:iuFrameJSNode path:iuFrameJSPath];
 }
 
 @end
