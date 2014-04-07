@@ -32,6 +32,10 @@
     
 }
 
+- (BOOL)isFlipped{
+    return YES;
+}
+
 #pragma mark -
 #pragma mark sizeView
 
@@ -64,7 +68,8 @@
         return NO;
     }
     
-    if( [((LMCanvasVC *)self.delegate) containsIU:IUID] == YES ){
+    if( [((LMCanvasVC *)self.delegate) containsIU:IUID] == YES &&
+        [((LMCanvasVC *)self.delegate) countOfSelectedIUs] == 1){
         return NO;
     }
     return YES;

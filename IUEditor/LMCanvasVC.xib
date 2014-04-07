@@ -19,7 +19,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="621" height="40"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </customView>
-                <customView fixedFrame="YES" id="A9f-iP-fE5">
+                <customView fixedFrame="YES" id="A9f-iP-fE5" customClass="NSFlippedView">
                     <rect key="frame" x="0.0" y="41" width="621" height="603"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </customView>

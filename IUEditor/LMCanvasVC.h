@@ -30,6 +30,7 @@
 
 //select IUs
 - (BOOL)containsIU:(NSString *)IU;
+- (NSUInteger)countOfSelectedIUs;
 - (void)removeSelectedAllIUs;
 - (void)addSelectedIU:(NSString *)IU;
 - (void)selectIUInRect:(NSRect)frame;

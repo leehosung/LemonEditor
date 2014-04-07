@@ -80,6 +80,9 @@
 
 #pragma mark -
 #pragma mark manage IUs
+-(NSUInteger)countOfSelectedIUs{
+    return [selectedIUs count];
+}
 - (BOOL)containsIU:(NSString *)IU{
     if ([selectedIUs containsObject:IU]){
         return YES;
@@ -120,6 +123,31 @@
 }
 
 #pragma mark -
+#pragma mark IUDelegate
+-(void)IU:(NSString*)identifier HTMLChanged:(NSString*)html{
+    JDDebugLog(@"FIXME!:IU:[%@] %@", identifier, html);
+}
+-(void)IU:(NSString*)identifier CSSChanged:(NSString*)css forWidth:(NSInteger)width{
+    JDDebugLog(@"[%@:width:%ld] / %@ ", identifier, width, css);
+    
+    NSString *cssText = [NSString stringWithFormat:@"#%@{%@}", identifier, css];
+    if(width == IUCSSDefaultCollection){
+        //default setting
+        [self setIUStyle:cssText withID:identifier];
+    }
+    else{
+        [self setIUStyle:cssText withID:identifier size:width];
+        
+    }
+}
+-(void)IU:(NSString*)identifier insertedTo:(NSString*)parentIdentifier atIndex:(NSInteger)index CSS:(NSString*)css HTML:(NSString*)html{
+    JDDebugLog(@"FIXME!!!!!!");
+}
+-(void)IURemoved:(NSString*)identifier{
+    JDDebugLog(@"FIXME!!!!!!");
+}
+
+#pragma mark -
 #pragma mark HTML
 
 - (DOMHTMLElement *)getHTMLElementbyID:(NSString *)HTMLID{
@@ -157,7 +185,8 @@
 
 - (DOMCSSStyleSheet *)defaultStyleSheet{
     DOMStyleSheetList *list = [[self DOMDoc] styleSheets];
-    for(unsigned index =0 ; index < list.length; index++){
+    //index =0 은 reset.css, iu.css
+    for(unsigned index =1 ; index < list.length; index++){
         DOMCSSStyleSheet *sheet = (DOMCSSStyleSheet *)[list item:index];
         if(sheet.media.mediaText == nil
            || sheet.media.mediaText.length == 0){
@@ -331,19 +360,5 @@
 }
 
 
-#pragma mark -
-#pragma mark IUDelegate
--(void)IU:(NSString*)identifier HTMLChanged:(NSString*)html{
-    NSLog(@"FIXME!!!!!!");
-}
--(void)IU:(NSString*)identifier CSSChanged:(NSString*)css forWidth:(NSInteger)width{
-    NSLog(@"FIXME!!!!!!%@ / %@ ", identifier, css);
-}
--(void)IU:(NSString*)identifier insertedTo:(NSString*)parentIdentifier atIndex:(NSInteger)index CSS:(NSString*)css HTML:(NSString*)html{
-    NSLog(@"FIXME!!!!!!");
-}
--(void)IURemoved:(NSString*)identifier{
-    NSLog(@"FIXME!!!!!!");
-}
 
 @end

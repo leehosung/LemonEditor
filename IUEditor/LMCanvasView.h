@@ -10,10 +10,11 @@
 #import "SizeView.h"
 #import "WebCanvasView.h"
 #import "GridView.h"
+#import "NSFlippedView.h"
 
 @interface LMCanvasView : NSSplitView
 
-@property (weak) IBOutlet NSView *mainView;
+@property (weak) IBOutlet NSFlippedView *mainView;
 
 @property SizeView *sizeView;
 @property WebCanvasView *webView;

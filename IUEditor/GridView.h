@@ -19,7 +19,6 @@
     //for dragging - change width, height ofIU
     BOOL isClicked, isDragged;
     NSPoint startPoint;
-    PointLayer *selectedPointlayer;
     IUPointLayerPosition selectedPointType;
     
     //for managing cursor

@@ -26,6 +26,7 @@
 		3DB3ACF618EC1E120046DFB7 /* LMCanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACF518EC1E120046DFB7 /* LMCanvasView.m */; };
 		3DB3ACFD18EC1F700046DFB7 /* LMCanvasVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACFB18EC1F700046DFB7 /* LMCanvasVC.m */; };
 		3DB3ACFE18EC1F700046DFB7 /* LMCanvasVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB3ACFC18EC1F700046DFB7 /* LMCanvasVC.xib */; };
+		3DBC932E18F24FE000F217BD /* NSFlippedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBC932D18F24FE000F217BD /* NSFlippedView.m */; };
 		690A408E18E14A4E00095263 /* LMStackVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 690A408D18E14A4E00095263 /* LMStackVC.xib */; };
 		690A409518E1645B00095263 /* LMWidgetLibraryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 690A409318E1645B00095263 /* LMWidgetLibraryVC.m */; };
 		690A409618E1645B00095263 /* LMWidgetLibraryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 690A409418E1645B00095263 /* LMWidgetLibraryVC.xib */; };
@@ -163,6 +164,8 @@
 		3DB3ACFA18EC1F700046DFB7 /* LMCanvasVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMCanvasVC.h; sourceTree = "<group>"; };
 		3DB3ACFB18EC1F700046DFB7 /* LMCanvasVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMCanvasVC.m; sourceTree = "<group>"; };
 		3DB3ACFC18EC1F700046DFB7 /* LMCanvasVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMCanvasVC.xib; sourceTree = "<group>"; };
+		3DBC932C18F24FE000F217BD /* NSFlippedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSFlippedView.h; sourceTree = "<group>"; };
+		3DBC932D18F24FE000F217BD /* NSFlippedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSFlippedView.m; sourceTree = "<group>"; };
 		690A408D18E14A4E00095263 /* LMStackVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMStackVC.xib; sourceTree = "<group>"; };
 		690A409218E1645B00095263 /* LMWidgetLibraryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMWidgetLibraryVC.h; path = Editor/LMWidgetLibraryVC.h; sourceTree = "<group>"; };
 		690A409318E1645B00095263 /* LMWidgetLibraryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMWidgetLibraryVC.m; path = Editor/LMWidgetLibraryVC.m; sourceTree = "<group>"; };
@@ -587,6 +590,8 @@
 				69761BC018F04ECD00C4EDC6 /* LMPropertyBaseVC.h */,
 				69761BC118F04ECD00C4EDC6 /* LMPropertyBaseVC.m */,
 				69761BC218F04ECD00C4EDC6 /* LMPropertyBaseVC.xib */,
+				3DBC932C18F24FE000F217BD /* NSFlippedView.h */,
+				3DBC932D18F24FE000F217BD /* NSFlippedView.m */,
 			);
 			name = JD;
 			sourceTree = "<group>";
@@ -901,6 +906,7 @@
 				69757B1C18D95C980095CBAC /* NSArray+JDExtension.m in Sources */,
 				69757B0D18D95BBC0095CBAC /* NSFlipedScrollView.m in Sources */,
 				3DB3ACDD18EBEF5F0046DFB7 /* PointLayer.m in Sources */,
+				3DBC932E18F24FE000F217BD /* NSFlippedView.m in Sources */,
 				69757B3718DAF1AB0095CBAC /* IUResourceGroupNode.m in Sources */,
 				3DB3ACE818EBEF9D0046DFB7 /* IUFrameDictionary.m in Sources */,
 				69CFCAC018EA8D1700E3048A /* IUImage.m in Sources */,
