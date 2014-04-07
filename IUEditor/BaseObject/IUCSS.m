@@ -45,10 +45,14 @@
             cssDict = [NSMutableDictionary dictionary];
             [_cssFrameDict setObject:cssDict forKey:@(width)];
         }
-        cssDict[tag] = value;
-        //     [self.affectingTagCollection willChangeValueForKey:tag];
-        [_affectingTagCollectionForEditWidth setObject:value forKey:tag];
-        //     [self.affectingTagCollection didChangeValueForKey:tag];
+        if (value == nil) {
+            [cssDict removeObjectForKey:tag];
+            [_affectingTagCollectionForEditWidth removeTag:tag];
+        }
+        else {
+            cssDict[tag] = value;
+            [_affectingTagCollectionForEditWidth setObject:value forKey:tag];
+        }
         [self.delegate CSSChanged:cssDict forWidth:width];
     }
 }
