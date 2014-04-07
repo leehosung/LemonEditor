@@ -21,7 +21,7 @@
 - (id)objectForStringKey:(NSString*)itemKey key:(NSString*)key;
 
 - (NSArray *)reversedArray;
-
+- (NSArray *)filteredArrayWithClass:(Class)class;
 @end
 
 

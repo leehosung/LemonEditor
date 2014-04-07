@@ -130,13 +130,12 @@
     _IUManager = [[IUManager alloc] init];
     _compiler = [[IUCompiler alloc] init];
 
-    for (IUNode *node in _project.allChildren) {
-        if ([node isKindOfClass:[IUDocumentNode class]]){
-            [_IUManager registerIU:((IUDocumentNode*)node).document];
-            [((IUDocumentNode*)node).document setManager:_IUManager];
-            [((IUDocumentNode*)node).document setCompiler:_compiler];
-            break;
-        }
+    NSArray *documensNode = [_project.allChildren filteredArrayWithClass:[IUDocumentNode class]];
+    
+    for (IUDocumentNode *node in documensNode) {
+        [_IUManager registerIU:node.document];
+        [node.document setManager:_IUManager];
+        [node.document setCompiler:_compiler];
     }
     
     fileNaviVC.project = _project;
