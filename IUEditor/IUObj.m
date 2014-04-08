@@ -30,6 +30,7 @@
         _m_children=[aDecoder decodeObjectForKey:@"children"];
         delegateEnableLevel = 1;
         [self addObserver:self forKeyPath:@"delegate.selectedFrameWidth" options:0 context:nil];
+        [self addObserver:self forKeyPath:@"delegate.maxFrameWidth" options:0 context:nil];
     }
     return self;
 }
@@ -55,7 +56,9 @@
         
         _m_children = [NSMutableArray array];
         
-        [self addObserver:self forKeyPath:@"delegate.selectedFrameWidth" options:0 context:nil];
+        [self addObserver:self forKeyPath:@"delegate.maxFrameWidth" options:0 context:nil];
+        [self addObserver:self forKeyPath:@"delegate.maxFrameWidth" options:0 context:nil];
+
     }
     return self;
 }
@@ -69,6 +72,12 @@
 - (void)delegate_selectedFrameWidthDidChange:(NSDictionary*)change{
     if (self.delegate) {
         [_css setEditWidth:self.delegate.selectedFrameWidth];
+    }
+}
+
+- (void)delegate_maxFrameWidthDidChange:(NSDictionary *)change{
+    if (self.delegate){
+        [_css setMaxWidth:self.delegate.maxFrameWidth];
     }
 }
 

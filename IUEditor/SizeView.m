@@ -89,6 +89,13 @@
 
 #pragma mark -
 #pragma mark add, remove width
+- (void)setMaxWidth{
+    InnerSizeBox *maxBox = (InnerSizeBox *)boxManageView.subviews[0];
+    if(maxBox){
+        NSInteger maxWidth = (NSInteger)(floor(maxBox.frame.size.width));
+        ((LMCanvasVC *)self.delegate).maxFrameWidth = maxWidth;
+    }
+}
 
 - (id)addFrame:(NSInteger)width{
     NSNumber *widthNumber = [NSNumber numberWithInteger:width];
@@ -100,7 +107,7 @@
     
     if(index > 0){
         NSView *preView = boxManageView.subviews[index-1];
-        [boxManageView addSubviewMiddleInFrameWithFrame:newBox positioned:NSWindowBelow relativeTo:preView];
+        [boxManageView addSubviewMiddleInFrameWithFrame:newBox positioned:NSWindowAbove relativeTo:preView];
     }
     else if(boxManageView.subviews.count == 0){
         [boxManageView addSubviewMiddleInFrameWithFrame:newBox];
@@ -109,6 +116,7 @@
         NSView *frontView = boxManageView.subviews[boxManageView.subviews.count-1];
         [boxManageView addSubviewMiddleInFrameWithFrame:newBox positioned:NSWindowAbove relativeTo:frontView];
     }
+    [self setMaxWidth];
     return newBox;
 
 }
@@ -118,6 +126,7 @@
     
     NSView *removeView = boxManageView.subviews[index];
     [removeView removeFromSuperview];
+    [self setMaxWidth];
 }
 
 @end

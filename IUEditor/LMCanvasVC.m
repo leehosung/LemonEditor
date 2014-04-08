@@ -39,6 +39,7 @@
     [defaultBox select];
     //TODO: test
     [self addFrame:400];
+    [self addFrame:700];
 }
 
 
@@ -214,57 +215,64 @@
 #pragma mark -
 #pragma mark CSS
 
-- (DOMCSSStyleSheet *)defaultStyleSheet{
-    DOMStyleSheetList *list = [[self DOMDoc] styleSheets];
-    //index =0 은 reset.css, iu.css
-    for(unsigned index =1 ; index < list.length; index++){
-        DOMCSSStyleSheet *sheet = (DOMCSSStyleSheet *)[list item:index];
-        if(sheet.media.mediaText == nil
-           || sheet.media.mediaText.length == 0){
-            return sheet;
-        }
-    }
-    return nil;
-}
 
-- (DOMCSSStyleSheet *)styleSheetWithSize:(NSInteger)size{
-    NSString *sizeStr = [NSString stringWithFormat:@"%ld", size];
-    DOMStyleSheetList *list = [[self DOMDoc] styleSheets];
-    for(unsigned i =0 ; i < list.length; i++){
-        DOMCSSStyleSheet *sheet = (DOMCSSStyleSheet *)[list item:i];
-        if([sheet.media.mediaText rangeOfString:sizeStr].length != 0){
-            return sheet;
-        }
-    }
-    
-    return nil;
-    
-}
-- (void)makeNewStyleSheet:(NSInteger)size{
+- (id)makeNewStyleSheet:(NSInteger)size{
     
     DOMElement *newSheet = [[self DOMDoc] createElement:@"style"];
     NSString *mediaName = [NSString stringWithFormat:@"screen and (max-width:%ldpx)", size];
     [newSheet setAttribute:@"type" value:@"text/css"];
     [newSheet setAttribute:@"media" value:mediaName];
+    [newSheet setAttribute:@"id" value:[NSString stringWithFormat:@"style%ld", size]];
     [newSheet appendChild:[[self DOMDoc] createTextNode:@""]];
     DOMNode *headNode = [[[self DOMDoc] getElementsByTagName:@"head"] item:0];
     [headNode appendChild:newSheet];
+    return newSheet;
 }
 
-- (NSInteger)indexOfIDAtStyleSheet:(DOMCSSStyleSheet *)styleSheet withID:(NSString *)iuID{
-    DOMCSSRuleList *lists = [styleSheet rules];
-    for(unsigned i=0; i<lists.length; i++){
-        DOMCSSRule *rule = [lists item:i];
-        
-        NSArray *cssArray = [rule.cssText componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"#{"]];
-        NSString *ruleID = [cssArray[1] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        if([ruleID isEqualToString:iuID]){
-            return i;
+- (void)setIUStyle:(NSString *)cssText withID:(NSString *)iuID{
+    DOMHTMLStyleElement *sheetElement = (DOMHTMLStyleElement *)[[self DOMDoc] getElementById:@"default"];
+    [self setCSSRuleInStyleSheet:sheetElement cssText:cssText withID:iuID];
+    
+}
+- (void)setIUStyle:(NSString *)cssText withID:(NSString *)iuID size:(NSInteger)size{
+    DOMHTMLStyleElement *sheetElement = (DOMHTMLStyleElement *)[[self DOMDoc] getElementById:[NSString stringWithFormat:@"style%ld", size]];
+    if(sheetElement == nil){
+        sheetElement = [self makeNewStyleSheet:size];
+    }
+    [self setCSSRuleInStyleSheet:sheetElement cssText:cssText withID:iuID];;
+}
+
+- (void)setCSSRuleInStyleSheet:(DOMHTMLStyleElement *)styleSheet cssText:(NSString *)cssText withID:(NSString *)iuID{
+
+    NSString *newCSSText = [self innerCSSText:styleSheet.innerHTML byAddingCSSText:cssText withID:iuID];
+    [styleSheet setInnerHTML:newCSSText];
+    
+    [[self webView] updateFrameDict];
+    
+}
+
+- (NSString *)innerCSSText:(NSString *)innerCSSText byAddingCSSText:(NSString *)cssText withID:(NSString *)iuID
+{
+    NSMutableString *innerCSSHTML = [NSMutableString stringWithString:@"\n"];
+    NSString *trimmedInnerCSSHTML = [innerCSSText  stringByTrim];
+    NSArray *cssRuleList = [trimmedInnerCSSHTML componentsSeparatedByCharactersInSet:
+                            [NSCharacterSet characterSetWithCharactersInString:@"#"]];
+
+    for(NSString *rule in cssRuleList){
+        if([rule containsString:iuID] == NO
+           && [rule containsString:@"{"]
+           && [rule containsString:@"}"]){
+            [innerCSSHTML appendString:[NSString stringWithFormat:@"\t#%@\n", [rule stringByTrim]]];
         }
     }
-    return -1;
+    
+    [innerCSSHTML appendString:cssText];
+    [innerCSSHTML appendString:@"\n"];
+    
+    return innerCSSHTML;
 }
 
+/*
 //set default css
 - (void)setIUStyle:(NSString *)cssText withID:(NSString *)iuID{
     DOMCSSStyleSheet *currentSheet = [self defaultStyleSheet];
@@ -283,7 +291,7 @@
     
     [self setCSSRuleInStyleSheet:currentSheet rule:cssText withID:iuID];
     if(JDLOGGING){
-        //[self checkCurrentCSSStyle:size];
+        [self checkCurrentCSSStyle:size];
     }
     
 }
@@ -298,17 +306,7 @@
     [[self webView] updateFrameDict];
     
 }
-
-- (void)checkCurrentCSSStyle:(NSInteger)size{
-    DOMCSSStyleSheet *sheet = [self styleSheetWithSize:size];
-    JDInfoLog(@"mediaText : %@",sheet.media.mediaText);
-    DOMCSSRuleList *lists = [sheet rules];
-
-    for(unsigned i =0 ; i < lists.length; i++){
-       DOMCSSRule *rule = [lists item:i];
-        JDInfoLog(@"%d : %@", rule.type, rule.cssText);
-    }
-}
+ */
 
 #pragma mark -
 #pragma mark GridView
@@ -435,6 +433,18 @@
     JDTraceLog( @"[IU:%@] : point(%.1f, %.1f) atIU:%@", IUID, point.x, point.y, IU);
 }
 
+#pragma mark -
+
+-(NSString *)currentHTML{
+    NSString *htmlSource =  [(DOMHTMLElement *)[[[[self webView] mainFrame] DOMDocument] documentElement] outerHTML];
+    return htmlSource;
+}
+//TODO: remove it
+- (void)showCurrentSource{
+    NSString *htmlSource =  [(DOMHTMLElement *)[[[[self webView] mainFrame] DOMDocument] documentElement] outerHTML];
+    JDInfoLog(@"\n%@\n",htmlSource);
+
+}
 
 
 

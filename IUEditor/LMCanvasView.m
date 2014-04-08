@@ -26,10 +26,13 @@
     self.gridView.delegate= self.delegate;
     self.sizeView.delegate = self.delegate;
     
+    [self.mainView setFrame:self.splitBottomView.frame];
     [self.mainView addSubviewFullFrame:self.webView];
     [self.mainView addSubviewFullFrame:self.gridView];
     
     [self setWidthOfMainView:defaultFrameWidth];
+    
+    [self.mainView addObserver:self forKeyPath:@"frame" options:0 context:nil];
     
 }
 
@@ -40,14 +43,39 @@
 #pragma mark -
 #pragma mark sizeView
 
+- (void)frameDidChange:(NSDictionary *)change{
+    JDDebugLog(@"mainView: point(%.1f, %.1f) size(%.1f, %.1f)",
+               self.mainView.frame.origin.x,
+               self.mainView.frame.origin.y,
+               self.mainView.frame.size.width,
+               self.mainView.frame.size.height);
+    
+    JDDebugLog(@"gridView: point(%.1f, %.1f) size(%.1f, %.1f)",
+               self.gridView.frame.origin.x,
+               self.gridView.frame.origin.y,
+               self.gridView.frame.size.width,
+               self.gridView.frame.size.height);
+
+    JDDebugLog(@"webView: point(%.1f, %.1f) size(%.1f, %.1f)",
+               self.webView.frame.origin.x,
+               self.webView.frame.origin.y,
+               self.webView.frame.size.width,
+               self.webView.frame.size.height);
+}
+
 
 - (void)setWidthOfMainView:(CGFloat)width{
-    [self.mainView setWidth:width];
+    NSRect newFrame = self.mainView.frame;
+    newFrame.size.width = width;
+    
     CGFloat x = ([self frame].size.width - width)/2;
     if(x < 0){
         x = 0;
     }
-    [self.mainView setX:x];
+    newFrame.origin.x = x;
+    
+    [self.mainView setFrame:newFrame];
+    
 }
 
 #pragma mark -

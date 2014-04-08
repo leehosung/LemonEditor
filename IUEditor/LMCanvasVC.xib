@@ -19,9 +19,15 @@
                     <rect key="frame" x="0.0" y="0.0" width="621" height="40"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </customView>
-                <customView fixedFrame="YES" id="A9f-iP-fE5" customClass="NSFlippedView">
+                <customView fixedFrame="YES" id="A9f-iP-fE5">
                     <rect key="frame" x="0.0" y="41" width="621" height="603"/>
                     <autoresizingMask key="autoresizingMask"/>
+                    <subviews>
+                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T5H-SY-Axq" customClass="NSFlippedView">
+                            <rect key="frame" x="0.0" y="0.0" width="621" height="603"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </customView>
+                    </subviews>
                 </customView>
             </subviews>
             <holdingPriorities>
@@ -30,8 +36,9 @@
             </holdingPriorities>
             <connections>
                 <outlet property="delegate" destination="-2" id="m8U-IP-QTk"/>
-                <outlet property="mainView" destination="A9f-iP-fE5" id="uHQ-iR-ldy"/>
+                <outlet property="mainView" destination="T5H-SY-Axq" id="Gum-82-XuZ"/>
                 <outlet property="sizeView" destination="7bm-eT-a4W" id="9tE-Ge-vu1"/>
+                <outlet property="splitBottomView" destination="A9f-iP-fE5" id="gnF-IY-3DX"/>
             </connections>
         </splitView>
     </objects>
