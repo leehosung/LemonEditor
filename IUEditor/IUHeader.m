@@ -9,5 +9,7 @@
 #import "IUHeader.h"
 
 @implementation IUHeader
-
+- (BOOL)flow{
+    return YES;
+}
 @end

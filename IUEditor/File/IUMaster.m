@@ -36,4 +36,8 @@
 }
 
 
+-(BOOL)hasFrame{
+    return NO;
+}
+
 @end

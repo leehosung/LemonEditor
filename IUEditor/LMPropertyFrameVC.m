@@ -15,6 +15,7 @@
 @property (weak) IBOutlet NSTextField *yTF;
 @property (weak) IBOutlet NSTextField *wTF;
 @property (weak) IBOutlet NSTextField *hTF;
+@property (weak) IBOutlet NSView *contentV;
 
 @end
 
@@ -34,6 +35,8 @@
     [_yTF bind:@"value" toObject:self withKeyPath:[tagCollectionKeyPath stringByAppendingPathExtension:IUCSSTagY] options:nil];
     [_wTF bind:@"value" toObject:self withKeyPath:[tagCollectionKeyPath stringByAppendingPathExtension:IUCSSTagWidth] options:nil];
     [_hTF bind:@"value" toObject:self withKeyPath:[tagCollectionKeyPath stringByAppendingPathExtension:IUCSSTagHeight] options:nil];
+    
+    [_contentV bind:@"hidden" toObject:self withKeyPath:@"IUController.selection.hasFrame" options:@{NSValueTransformerNameBindingOption: @"NSNegateBoolean"}];
 }
 
 

@@ -211,22 +211,14 @@
     
     NSPoint distancePoint = [self.delegate distanceIU:self.htmlID withParent:self.parent.htmlID];
     
-    NSInteger currentX;
-    if ([_css.affectingTagCollection objectForKey:IUCSSTagX]){
-        currentX = [_css.affectingTagCollection[IUCSSTagX] integerValue];
-    }
-    else{
-        currentX = distancePoint.x;
-    }
-    
-    currentX += x;
+    NSInteger currentX = [_css.affectingTagCollection[IUCSSTagX] integerValue] + x;
     [_css setValue:@(currentX) forKeyPath:[@"affectingTagCollection" stringByAppendingPathExtension:IUCSSTagX]];
     
-    NSInteger currentY;
+    NSInteger currentY = 0;
     if ([_css.affectingTagCollection objectForKey:IUCSSTagY]){
         currentY = [_css.affectingTagCollection[IUCSSTagY] integerValue];
     }
-    else{
+    else if (self.flow == NO){
         currentY = distancePoint.y;
     }
     currentY += y;
@@ -241,6 +233,10 @@
     NSInteger currentHeight = [_css.affectingTagCollection[IUCSSTagHeight] integerValue];
     currentHeight += height;
     [_css setValue:@(currentHeight) forKeyPath:[@"affectingTagCollection" stringByAppendingPathExtension:IUCSSTagHeight]];
+}
+
+-(BOOL)hasFrame{
+    return YES;
 }
 
 @end
