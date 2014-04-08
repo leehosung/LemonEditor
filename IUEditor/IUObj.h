@@ -73,4 +73,7 @@
 
 - (void)moveX:(NSInteger)x Y:(NSInteger)y;
 - (void)increaseWidth:(NSInteger)width height:(NSInteger)height;
+
+@property BOOL flow;
+-(BOOL)hasFrame;
 @end

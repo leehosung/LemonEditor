@@ -12,10 +12,21 @@
 #import "NSDictionary+JDExtension.h"
 #import "JDUIUtil.h"
 #import "IUPage.h"
+#import "IUHeader.h"
+#import "IUPageContent.h"
 #import "IUMaster.h"
 
-@implementation IUCompiler
+@implementation IUCompiler{
+    NSArray *_flowIUs;
+}
 
+-(id)init{
+    self = [super init];
+    if (self) {
+        _flowIUs = @[[IUHeader class], [IUPageContent class]];
+    }
+    return self;
+}
 
 -(NSString*)editorSource:(IUDocument*)document{
     NSString *templateFilePath = [[NSBundle mainBundle] pathForResource:@"webTemplate" ofType:@"html"];
@@ -115,6 +126,7 @@
     return code;
 }
 
+
 -(IUCSSStringDictionary*)cssStringDictionaryWithCSSTagDictionary:(NSDictionary*)cssTagDict ofClass:(IUObj*)obj{
     IUCSSStringDictionary *dict = [IUCSSStringDictionary dictionary];
     id value;
@@ -126,7 +138,12 @@
 
     value = cssTagDict[IUCSSTagY];
     if (value) {
-        [dict putTag:@"top" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
+        if ([_flowIUs containsObject:[obj class]]) {
+            [dict putTag:@"margin-top" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
+        }
+        else {
+            [dict putTag:@"top" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
+        }
     }
 
     value = cssTagDict[IUCSSTagWidth];
@@ -136,6 +153,9 @@
 
     value = cssTagDict[IUCSSTagHeight];
     if (value) {
+        if ([obj isKindOfClass:[IUHeader class]]) {
+            
+        }
         [dict putTag:@"height" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
     }
 

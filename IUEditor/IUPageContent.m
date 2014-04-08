@@ -9,5 +9,8 @@
 #import "IUPageContent.h"
 
 @implementation IUPageContent
+- (BOOL)flow{
+    return YES;
+}
 
 @end
