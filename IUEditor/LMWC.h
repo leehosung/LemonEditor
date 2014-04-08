@@ -21,4 +21,5 @@
 -(void)startNewProject;
 
 -(LMWindow *)window;
+- (IBAction)getCurrentSource:(id)sender;
 @end

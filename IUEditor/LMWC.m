@@ -193,4 +193,11 @@
     [self loadProject:projectPath];
 }
 
+
+#pragma mark -
+//TODO: remove it :(test button)
+- (IBAction)getCurrentSource:(id)sender{
+    [canvasVC showCurrentSource];
+}
+
 @end

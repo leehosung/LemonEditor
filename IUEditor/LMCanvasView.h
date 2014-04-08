@@ -14,6 +14,7 @@
 
 @interface LMCanvasView : NSSplitView
 
+@property (weak) IBOutlet NSView *splitBottomView;
 @property (weak) IBOutlet NSFlippedView *mainView;
 @property WebCanvasView *webView;
 @property GridView *gridView;

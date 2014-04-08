@@ -16,7 +16,10 @@
 @property (nonatomic) _binding_ IUDocument  *document;
 @property (nonatomic) _binding_ NSString    *documentBasePath;
 @property (nonatomic) NSTreeController <LMCanvasVCDelegate> *controller;
-@property  _binding_ NSInteger selectedFrameWidth;
+
+@property _binding_ NSInteger selectedFrameWidth;
+@property _binding_ NSInteger maxFrameWidth;
+
 
 - (LMCanvasV*)view;
 #pragma mark -
@@ -68,4 +71,5 @@
 
 - (void)makeNewIU:(NSString *)IUID atPoint:(NSPoint)point atIU:(NSString *)IU;
 
+- (void)showCurrentSource;
 @end
