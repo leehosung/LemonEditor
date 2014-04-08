@@ -199,11 +199,27 @@
 }
 
 - (void)moveX:(NSInteger)x Y:(NSInteger)y{
-    NSInteger currentX = [_css.affectingTagCollection[IUCSSTagX] integerValue];
+    
+    NSPoint distancePoint = [self.delegate distanceIU:self.htmlID withParent:self.parent.htmlID];
+    
+    NSInteger currentX;
+    if ([_css.affectingTagCollection objectForKey:IUCSSTagX]){
+        currentX = [_css.affectingTagCollection[IUCSSTagX] integerValue];
+    }
+    else{
+        currentX = distancePoint.x;
+    }
+    
     currentX += x;
     [_css setValue:@(currentX) forKeyPath:[@"affectingTagCollection" stringByAppendingPathExtension:IUCSSTagX]];
     
-    NSInteger currentY = [_css.affectingTagCollection[IUCSSTagY] integerValue];
+    NSInteger currentY;
+    if ([_css.affectingTagCollection objectForKey:IUCSSTagY]){
+        currentY = [_css.affectingTagCollection[IUCSSTagY] integerValue];
+    }
+    else{
+        currentY = distancePoint.y;
+    }
     currentY += y;
     [_css setValue:@(currentY) forKeyPath:[@"affectingTagCollection" stringByAppendingPathExtension:IUCSSTagY]];
 }
