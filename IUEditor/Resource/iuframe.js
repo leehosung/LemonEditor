@@ -28,14 +28,14 @@ $.fn.iuPosition = function(){
 	var left = $(this).position().left + parseFloat($(this).css('margin-left'));
 	var width = parseFloat($(this).css('width'));
 	var height = parseFloat($(this).css('height'));
+    var x = $(this).offset().left;
+    var y = $(this).offset().top;
+
 	if($(this).css('position') == "relative"){
 		var marginTop =  parseFloat($(this).css('margin-top'));
 		var marginLeft = parseFloat($(this).css('margin-left'));
-		return { top: top, left: left, width: width, height: height, marginTop:marginTop, marginLeft:marginLeft }
+		return { top: top, left: left, width: width, height: height, marginTop:marginTop, marginLeft:marginLeft, x:x, y:y }
 	}
-    var x = $(this).offset().left;
-    var y = $(this).offset().top;
-    
 	return { top: top, left: left, width: width, height: height, x:x, y:y }
 }
 
