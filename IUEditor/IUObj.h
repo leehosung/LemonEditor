@@ -46,6 +46,7 @@
 // followings are IU build setting;
 -(NSDictionary*)HTMLAtributes;
 -(NSDictionary*)CSSAttributesForWidth:(NSInteger)width;
+-(NSDictionary*)CSSContents;
 
 //source
 -(NSString*)html;
