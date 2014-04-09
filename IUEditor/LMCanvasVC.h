@@ -35,7 +35,7 @@
 - (void)setDocument:(IUDocument *)document;
 
 //select IUs
-- (BOOL)containsIU:(NSString *)IU;
+- (BOOL)containsIU:(NSString *)IUID;
 - (NSUInteger)countOfSelectedIUs;
 - (void)removeSelectedAllIUs;
 - (void)addSelectedIU:(NSString *)IU;

@@ -62,7 +62,7 @@
 #pragma mark common methods
 
 - (BOOL)isSameFloat:(CGFloat)a b:(CGFloat)b{
-    if(abs(a-b) < 0.5){//0.5 pixel 이하면 같은 라인에 있는걸로.
+    if(abs(a-b) < 1){//1 pixel 이하면 같은 라인에 있는걸로.
         return YES;
     }
     return NO;
@@ -76,8 +76,8 @@
 }
 
 - (NSArray *)allKeysExceptKey:(NSString *)key{
-    NSMutableArray *allKeys = [[self.dict allKeys] mutableCopy];
-    //자기자신 제외
+    
+    NSMutableArray *allKeys =  [NSMutableArray arrayWithArray:[self.dict allKeys]];
     [allKeys removeObject:key];
 
     return allKeys;
