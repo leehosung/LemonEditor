@@ -10,6 +10,7 @@
 #import "LMCanvasVC.h"
 #import "JDLogUtil.h"
 #import "IUDefinition.h"
+#import "LMCanvasView.h"
 
 @implementation WebCanvasView
 
@@ -41,42 +42,49 @@
 
 - (BOOL)performKeyEquivalent:(NSEvent *)theEvent{
     
-    if(theEvent.type == NSKeyDown){
-        
-        if([theEvent modifierFlags] & NSCommandKeyMask){
-            unichar key = [[theEvent charactersIgnoringModifiers] characterAtIndex:0];
-            //select all
-            if(key == 'A' || key == 'a'){
-                [self selectWholeRangeOfCurrentCursor];
-                return YES;
+
+    NSResponder *currentResponder = [[self window] firstResponder];
+    NSView *mainView = ((LMCanvasVC *)self.delegate).view.mainView;
+    
+    if([currentResponder isKindOfClass:[NSView class]]
+       && [mainView hasSubview:(NSView *)currentResponder]){
+    
+        if(theEvent.type == NSKeyDown){
+            
+            if([theEvent modifierFlags] & NSCommandKeyMask){
+                unichar key = [[theEvent charactersIgnoringModifiers] characterAtIndex:0];
+                //select all
+                if(key == 'A' || key == 'a'){
+                    [self selectWholeRangeOfCurrentCursor];
+                    return YES;
+                }
+                
             }
-            
-        }
-        else{
-            
-            NSPoint diffPoint;
-            switch (theEvent.keyCode) {
-                case 126: //up
-                    diffPoint = NSMakePoint(0, -1.0);
-                    break;
-                case 123: // left
-                    diffPoint = NSMakePoint(-1.0, 0);
-                    break;
-                case 124: // right
-                    diffPoint = NSMakePoint(1.0, 0);
-                    break;
-                case 125: // down;
-                    diffPoint = NSMakePoint(0, 1.0);
-                    break;
-                default:
-                    diffPoint = NSZeroPoint;
-                    break;
+            else{
+                
+                NSPoint diffPoint;
+                switch (theEvent.keyCode) {
+                    case 126: //up
+                        diffPoint = NSMakePoint(0, -1.0);
+                        break;
+                    case 123: // left
+                        diffPoint = NSMakePoint(-1.0, 0);
+                        break;
+                    case 124: // right
+                        diffPoint = NSMakePoint(1.0, 0);
+                        break;
+                    case 125: // down;
+                        diffPoint = NSMakePoint(0, 1.0);
+                        break;
+                    default:
+                        diffPoint = NSZeroPoint;
+                        break;
+                }
+                
+                [((LMCanvasVC *)self.delegate) moveIUToDiffPoint:diffPoint totalDiffPoint:diffPoint];
             }
-            
-            [((LMCanvasVC *)self.delegate) moveIUToDiffPoint:diffPoint totalDiffPoint:diffPoint];
         }
     }
-    
     return [super performKeyEquivalent:theEvent];
 }
 

@@ -10,7 +10,7 @@
 #import "IUDocument.h"
 #import "LMCanvasVCDelegate.h"
 
-@class LMCanvasV;
+@class LMCanvasView;
 @interface LMCanvasVC : NSViewController <IUSourceDelegate>
 
 @property (nonatomic) _binding_ IUDocument  *document;
@@ -21,7 +21,7 @@
 @property _binding_ NSInteger maxFrameWidth;
 
 
-- (LMCanvasV*)view;
+- (LMCanvasView*)view;
 - (void)refreshGridFrameDictionary;
 #pragma mark -
 #pragma mark be set by IU

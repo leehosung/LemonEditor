@@ -49,8 +49,8 @@
 }
 
 
--(LMCanvasV*)view{
-    return (LMCanvasV*)[super view];
+-(LMCanvasView*)view{
+    return (LMCanvasView*)[super view];
 }
 
 - (void)refreshGridFrameDictionary{
