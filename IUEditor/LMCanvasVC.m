@@ -43,7 +43,7 @@
 }
 
 
--(void)setController:(NSTreeController<LMCanvasVCDelegate> *)controller{
+-(void)setController:(IUController *)controller{
     _controller = controller;
     [_controller addObserver:self forKeyPath:@"selectedObjects" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld|NSKeyValueObservingOptionPrior context:nil];
 }
@@ -293,41 +293,6 @@
     return innerCSSHTML;
 }
 
-/*
-//set default css
-- (void)setIUStyle:(NSString *)cssText withID:(NSString *)iuID{
-    DOMCSSStyleSheet *currentSheet = [self defaultStyleSheet];
-    assert(currentSheet != nil);
-    [self setCSSRuleInStyleSheet:currentSheet rule:cssText withID:iuID];
-}
-//set media query css
-- (void)setIUStyle:(NSString *)cssText withID:(NSString *)iuID size:(NSInteger)size{
-    DOMCSSStyleSheet *currentSheet = [self styleSheetWithSize:size];
-    if(currentSheet == nil){
-        [self makeNewStyleSheet:size];
-        currentSheet = [self styleSheetWithSize:size];
-    }
-    
-    assert(currentSheet != nil);
-    
-    [self setCSSRuleInStyleSheet:currentSheet rule:cssText withID:iuID];
-    if(JDLOGGING){
-        [self checkCurrentCSSStyle:size];
-    }
-    
-}
-
-- (void)setCSSRuleInStyleSheet:(DOMCSSStyleSheet *)styleSheet rule:(NSString *)rule withID:(NSString *)iuID{
-    NSInteger index = [self indexOfIDAtStyleSheet:styleSheet withID:iuID];
-    if(index >= 0){
-        //delete rule before change
-        [styleSheet deleteRule:(unsigned)index];
-    }
-    [styleSheet insertRule:rule index:0];
-    [[self webView] updateFrameDict];
-    
-}
- */
 
 #pragma mark -
 #pragma mark GridView
@@ -449,9 +414,17 @@
     
 }
 
-//FIXME: inner IU도 표시
-- (void)makeNewIU:(NSString *)IUID atPoint:(NSPoint)point atIU:(NSString *)IU{
-    JDTraceLog( @"[IU:%@] : point(%.1f, %.1f) atIU:%@", IUID, point.x, point.y, IU);
+- (void)makeNewIU:(IUObj *)newIU atPoint:(NSPoint)point atIU:(NSString *)parentIUID{
+    
+    IUObj *parentIU = [self.controller IUObjByIdentifier:parentIUID];
+    NSPoint position = [self distanceIU:newIU.htmlID withParent:parentIUID];
+    
+    //postion을 먼저 정한 후에 add 함
+    [newIU setPosition:position];
+    [parentIU addIU:newIU error:nil];
+    [self.controller rearrangeObjects];
+    
+    JDTraceLog( @"[IU:%@] : point(%.1f, %.1f) atIU:%@", newIU.htmlID, point.x, point.y, parentIUID);
 }
 
 #pragma mark -

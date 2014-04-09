@@ -71,6 +71,7 @@
 -(BOOL)addIUReference:(IUObj *)iu error:(NSError**)error;
 -(BOOL)removeIU:(IUObj *)iu;
 
+- (void)setPosition:(NSPoint)position;
 - (void)moveX:(NSInteger)x Y:(NSInteger)y;
 - (void)increaseWidth:(NSInteger)width height:(NSInteger)height;
 

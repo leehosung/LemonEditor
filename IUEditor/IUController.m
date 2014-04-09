@@ -33,4 +33,38 @@
     return [self.selectedObjects valueForKey:@"htmlID"];
 }
 
+-(IUObj *)IUObjByIdentifier:(NSString *)identifier{
+    IUDocument *document = [self.content firstObject];
+    NSArray *allChildren = [[document allChildren] arrayByAddingObject:document];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUObj *iu, NSDictionary *bindings) {
+        if ([identifier isEqualToString:iu.htmlID]) {
+            return YES;
+        }
+        return NO;
+    }];
+    NSArray *findIUs = [allChildren filteredArrayUsingPredicate:predicate];
+    if(findIUs.count  > 1){
+        JDErrorLog(@"Error : IUID can be unique");
+        return nil;
+    }
+    if(findIUs.count == 0){
+        JDWarnLog(@"there is no IUID");
+        return nil;
+    }
+    
+    return findIUs[0];
+}
+
+-(NSString*)requestNewIdentifierWithString:(NSString*)string{
+    int i=0;
+    while (1) {
+        i++;
+        NSString *identifier = [string stringByAppendingFormat:@"%d", i];
+        if ([self IUObjByIdentifier:identifier] == nil) {
+            return identifier;
+        }
+    }
+}
+
 @end
