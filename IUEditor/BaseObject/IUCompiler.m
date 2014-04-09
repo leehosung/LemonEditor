@@ -165,6 +165,17 @@
     value = cssTagDict[IUCSSTagImage];
     NSString *resourcePath = [_resourceSource relativePathForResource:value];
     [dict putTag:@"background-image" string:[resourcePath CSSURLString]];
+    
+    value = cssTagDict[IUCSSTagBGSize];
+    if ([value isEqualToString:@"Auto"] == NO) {
+        [dict putTag:@"background-size" string:value];
+    }
+    
+    value = cssTagDict[IUCSSTagBGXPosition];
+    [dict putTag:@"background-position-x" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];
+
+    value = cssTagDict[IUCSSTagBGYPosition];
+    [dict putTag:@"background-position-y" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];
 
     return dict;
 }

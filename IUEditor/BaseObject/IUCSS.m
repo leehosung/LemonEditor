@@ -9,11 +9,10 @@
 #import "IUCSS.h"
 #import "JDUIUtil.h"
 
-
 @implementation IUCSS{
     NSMutableDictionary  *_cssFrameDict;
 
-    NSMutableDictionary  *_affectingTagCollectionForEditWidth;
+    NSMutableDictionary  *_assembledTagDictionaryForEditWidth;
 }
 
 
@@ -32,7 +31,7 @@
     _cssFrameDict = [aDecoder decodeObjectForKey:@"cssFrameDict"];
     self.editWidth = IUCSSDefaultCollection;
     
-    [self updateAffectingTagCollection];
+    [self updateAssembledTagDictionary];
     return self;
 }
 
@@ -53,11 +52,11 @@
         }
         if (value == nil) {
             [cssDict removeObjectForKey:tag];
-            [_affectingTagCollectionForEditWidth removeTag:tag];
+            [_assembledTagDictionaryForEditWidth removeTag:tag];
         }
         else {
             cssDict[tag] = value;
-            [_affectingTagCollectionForEditWidth setObject:value forKey:tag];
+            [_assembledTagDictionaryForEditWidth setObject:value forKey:tag];
         }
         [self.delegate CSSChanged:cssDict forWidth:width];
     }
@@ -68,7 +67,7 @@
         NSMutableDictionary *cssDict = _cssFrameDict[key];
         [cssDict removeObjectForKey:tag];
     }
-    [self updateAffectingTagCollection];
+    [self updateAssembledTagDictionary];
 }
 
 
@@ -76,8 +75,8 @@
     return _cssFrameDict[@(width)];
 }
 
--(void)updateAffectingTagCollection{
-    [self willChangeValueForKey:@"affectingTagCollection"];
+-(void)updateAssembledTagDictionary{
+    [self willChangeValueForKey:@"assembledTagDictionary"];
     NSArray *widths = [_cssFrameDict allKeys];
     NSSortDescriptor *desc = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:NO];
     NSArray *sortedWidth = [widths sortedArrayUsingDescriptors:@[desc]];
@@ -89,18 +88,18 @@
         }
         [newCollection overwrite: _cssFrameDict[key]];
     }
-    _affectingTagCollectionForEditWidth = newCollection;
+    _assembledTagDictionaryForEditWidth = newCollection;
 
-    [self didChangeValueForKey:@"affectingTagCollection"];
+    [self didChangeValueForKey:@"assembledTagDictionary"];
 }
 
 -(void)setEditWidth:(NSInteger)editWidth{
     _editWidth = editWidth;
-    [self updateAffectingTagCollection];
+    [self updateAssembledTagDictionary];
 }
 
--(NSDictionary*)affectingTagCollection{
-    return _affectingTagCollectionForEditWidth;
+-(NSDictionary*)assembledTagDictionary{
+    return _assembledTagDictionaryForEditWidth;
 }
 
 -(void)setValue:(id)value forTag:(IUCSSTag)tag{
@@ -108,7 +107,7 @@
 }
 
 -(void)setValue:(id)value forKeyPath:(NSString *)keyPath{
-    if ([keyPath containsString:@"affectingTagCollection."]) {
+    if ([keyPath containsString:@"assembledTagDictionary."]) {
         NSString *tag = [keyPath substringFromIndex:23];
         [self setValue:value forTag:tag forWidth:_editWidth];
     }

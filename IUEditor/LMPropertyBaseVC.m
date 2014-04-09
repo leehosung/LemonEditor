@@ -10,7 +10,9 @@
 
 @interface LMPropertyBaseVC ()
 @property (weak) IBOutlet NSComboBox *imageNameComboBox;
-
+@property (weak) IBOutlet NSTextField *xPositionTF;
+@property (weak) IBOutlet NSTextField *yPositionTF;
+@property (weak) IBOutlet NSPopUpButton *sizeB;
 @end
 
 @implementation LMPropertyBaseVC
@@ -24,12 +26,20 @@
     return self;
 }
 
-- (void)awakeFromNib{
-    //IUController.selection.css.affectingTagCollection.width
-    [_imageNameComboBox bind:@"content" toObject:self withKeyPath:@"resourceManager.imageNames" options:nil];
-    
-    NSString *imageCSSBindingPath = [@"IUController.selection.css.affectingTagCollection." stringByAppendingString:IUCSSTagImage];
-    [_imageNameComboBox bind:@"value" toObject:self withKeyPath:imageCSSBindingPath options:nil];
+- (NSString*)CSSBindingPath:(IUCSSTag)tag{
+    return [@"IUController.selection.css.assembledTagDictionary." stringByAppendingString:tag];
 }
+
+- (void)awakeFromNib{
+    [_imageNameComboBox bind:@"content" toObject:self withKeyPath:@"resourceManager.imageNames" options:nil];
+    [_imageNameComboBox bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagImage] options:nil];
+    
+    [_xPositionTF bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagBGXPosition] options:nil];
+    [_yPositionTF bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagBGYPosition] options:nil];
+    
+    [_sizeB bind:@"selectedValue" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagBGSize] options:nil];
+    
+}
+
 
 @end

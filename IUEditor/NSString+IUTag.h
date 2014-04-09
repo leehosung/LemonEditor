@@ -16,6 +16,10 @@
 #define IUCSSTagWidth @"width"
 #define IUCSSTagHeight @"height"
 #define IUCSSTagImage @"background-image"
+#define IUCSSTagBGSize @"background-size"
+#define IUCSSTagBGXPosition @"bgX"
+#define IUCSSTagBGYPosition @"bgY"
+
 
 #define isSameTag isEqualToString
 
