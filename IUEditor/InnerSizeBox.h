@@ -12,7 +12,8 @@
 
 @property id boxDelegate;
 
-- (CGFloat)frameSize;
+- (id)initWithFrame:(NSRect)frame width:(NSInteger)aWidth;
+- (NSInteger)frameWidth;
 - (void)select;
 - (void)deselect;
 

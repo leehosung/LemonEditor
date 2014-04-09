@@ -21,6 +21,8 @@
 
 @property id delegate;
 
+- (NSInteger)nextSmallSize:(NSInteger)size;
+
 - (void)selectBox:(InnerSizeBox *)selectBox;
 
 - (id)addFrame:(NSInteger)width;
