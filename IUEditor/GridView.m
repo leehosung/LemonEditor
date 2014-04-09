@@ -25,6 +25,7 @@
         [self setLayer:[[CALayer alloc] init]];
         [self setWantsLayer:YES];
         [self.layer setBackgroundColor:[[NSColor clearColor] CGColor]];
+        
         [self.layer disableAction];
 
         

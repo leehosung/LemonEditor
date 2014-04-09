@@ -26,9 +26,12 @@
     self.gridView.delegate= self.delegate;
     self.sizeView.delegate = self.delegate;
     
-    [self.mainView setFrame:self.splitBottomView.frame];
     [self.mainView addSubviewFullFrame:self.webView];
     [self.mainView addSubviewFullFrame:self.gridView];
+    
+    NSRect mainViewFrame = self.splitBottomView.frame;
+    [self.mainView setFrameSize:mainViewFrame.size];
+    [self.mainView setFrameOrigin:NSZeroPoint];
     
     [self setWidthOfMainView:defaultFrameWidth];
     
@@ -65,16 +68,17 @@
 
 
 - (void)setWidthOfMainView:(CGFloat)width{
-    NSRect newFrame = self.mainView.frame;
-    newFrame.size.width = width;
+    [self.mainView setWidth:width];
+
+/*    NSRect innerNewFrame = NSMakeRect(0, 0, width, self.mainView.frame.size.height);
     
-    CGFloat x = ([self frame].size.width - width)/2;
-    if(x < 0){
-        x = 0;
-    }
-    newFrame.origin.x = x;
+    [self.webView setFrame:innerNewFrame];
+    [self.gridView setFrame:innerNewFrame];
+
     
-    [self.mainView setFrame:newFrame];
+    NSRect mainNewFrame = NSMakeRect(x, 0, width, self.mainView.frame.size.height);
+    [self.mainView setFrame:mainNewFrame];
+*/
     
 }
 

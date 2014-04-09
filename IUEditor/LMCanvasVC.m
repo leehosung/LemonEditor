@@ -53,6 +53,8 @@
     return (LMCanvasV*)[super view];
 }
 
+
+
 #pragma mark -
 #pragma mark sizeView
 

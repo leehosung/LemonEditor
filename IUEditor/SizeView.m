@@ -107,14 +107,14 @@
     
     if(index > 0){
         NSView *preView = boxManageView.subviews[index-1];
-        [boxManageView addSubviewMiddleInFrameWithFrame:newBox positioned:NSWindowAbove relativeTo:preView];
+        [boxManageView addSubviewLeftInFrameWithFrame:newBox positioned:NSWindowAbove relativeTo:preView];
     }
     else if(boxManageView.subviews.count == 0){
-        [boxManageView addSubviewMiddleInFrameWithFrame:newBox];
+        [boxManageView addSubviewLeftInFrameWithFrame:newBox];
     }
     else{
         NSView *frontView = boxManageView.subviews[boxManageView.subviews.count-1];
-        [boxManageView addSubviewMiddleInFrameWithFrame:newBox positioned:NSWindowAbove relativeTo:frontView];
+        [boxManageView addSubviewLeftInFrameWithFrame:newBox positioned:NSWindowAbove relativeTo:frontView];
     }
     [self setMaxWidth];
     return newBox;

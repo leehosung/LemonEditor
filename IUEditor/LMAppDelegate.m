@@ -27,6 +27,8 @@
     [wc showWindow:self];
 
     
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraints"];
+
 
 #pragma mark -
 #pragma mark canvas test
