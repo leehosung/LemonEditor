@@ -11,7 +11,7 @@
 #import "NSCoder+JDExtension.h"
 #import "IUCompiler.h"
 #import "IUDocument.h"
-#import "IUObj.h"
+#import "IUDefinition.h"
 
 @interface IUObj()
 @property NSMutableArray *m_children;
@@ -159,7 +159,7 @@
         iu.delegate = self.delegate;
     }
     iu.parent = self;
-    [self.delegate IU:iu.htmlID HTML:iu.html withParentID:self.htmlID tag:@"div"];
+    [self.delegate IU:iu.htmlID HTML:iu.html withParentID:self.htmlID];
     [self.delegate IU:iu.htmlID CSSChanged:[iu cssForWidth:IUCSSDefaultCollection] forWidth:IUCSSDefaultCollection];
     return YES;
 }

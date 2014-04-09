@@ -7,6 +7,7 @@
 //
 
 #import "IUCSS.h"
+#import "IUDefinition.h"
 #import "JDUIUtil.h"
 
 @implementation IUCSS{

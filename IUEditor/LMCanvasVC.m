@@ -151,29 +151,6 @@
 
 #pragma mark -
 #pragma mark IUDelegate
--(void)IU:(NSString*)identifier HTMLChanged:(NSString*)html{
-    JDDebugLog(@"FIXME!:IU:[%@] %@", identifier, html);
-}
--(void)IU:(NSString*)identifier CSSChanged:(NSString*)css forWidth:(NSInteger)width{
-    JDDebugLog(@"[%@:width:%ld] / %@ ", identifier, width, css);
-    
-    NSString *cssText = [NSString stringWithFormat:@"#%@{%@}", identifier, css];
-    if(width == IUCSSDefaultCollection){
-        //default setting
-        [self setIUStyle:cssText withID:identifier];
-    }
-    else{
-        [self setIUStyle:cssText withID:identifier size:width];
-        
-    }
-}
--(void)IU:(NSString*)identifier insertedTo:(NSString*)parentIdentifier atIndex:(NSInteger)index CSS:(NSString*)css HTML:(NSString*)html{
-    JDDebugLog(@"FIXME!!!!!!");
-}
--(void)IURemoved:(NSString*)identifier{
-    JDDebugLog(@"FIXME!!!!!!");
-    
-}
 
 - (NSPoint)distanceIU:(NSString *)iuName withParent:(NSString *)parentName{
     
@@ -194,20 +171,29 @@
     
 }
 
-//remake html
-- (void)setIUInnerHTML:(NSString *)HTML withParentID:(NSString *)parentID tag:(NSString *)tag{
-    
+- (NSString *)tagWithHTML:(NSString *)html{
+   NSString *incompleteTag = [html componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]][0];
+    NSString *tag = [incompleteTag componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]][1];
+    if(tag.length == 0){
+        JDErrorLog(@"Can't find tag");
+    }
+    return tag;
+}
+
+
+-(void)IU:(NSString*)identifier HTML:(NSString *)html withParentID:(NSString *)parentID{
+
     DOMHTMLElement *selectHTMLElement = [self getHTMLElementbyID:parentID];
-    DOMHTMLElement *newElement = (DOMHTMLElement *)[self.DOMDoc createElement:tag];
+    DOMHTMLElement *newElement = (DOMHTMLElement *)[self.DOMDoc createElement:[self tagWithHTML:html]];
     [selectHTMLElement appendChild:newElement];
-    selectHTMLElement.innerHTML = HTML;
-    
+
+    [newElement setOuterHTML:html];
     [self.webView setNeedsDisplay:YES];
 }
-//remove IU - delete html & css
-- (void)removeIU:(NSString *)iuID{
+
+- (void)IURemoved:(NSString*)identifier{
     //remove HTML
-    DOMHTMLElement *selectHTMLElement = [self getHTMLElementbyID:iuID];
+    DOMHTMLElement *selectHTMLElement = [self getHTMLElementbyID:identifier];
     DOMElement *parentElement = [selectHTMLElement parentElement];
     [parentElement removeChild:selectHTMLElement];
     
@@ -221,6 +207,20 @@
 #pragma mark -
 #pragma mark CSS
 
+
+-(void)IU:(NSString*)identifier CSSChanged:(NSString*)css forWidth:(NSInteger)width{
+    JDDebugLog(@"[%@:width:%ld] / %@ ", identifier, width, css);
+    
+    NSString *cssText = [NSString stringWithFormat:@"#%@{%@}", identifier, css];
+    if(width == IUCSSDefaultCollection){
+        //default setting
+        [self setIUStyle:cssText withID:identifier];
+    }
+    else{
+        [self setIUStyle:cssText withID:identifier size:width];
+        
+    }
+}
 
 - (id)makeNewStyleSheet:(NSInteger)size{
     

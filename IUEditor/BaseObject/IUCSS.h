@@ -14,7 +14,6 @@
 -(BOOL)CSSShouldChangeValue:(id)value forTag:(IUCSSTag)tag forWidth:(NSInteger)width;
 @end
 
-#define IUCSSDefaultCollection 9999
 
 
 @interface IUCSS : NSObject <NSCoding>
