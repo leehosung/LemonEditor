@@ -24,7 +24,6 @@
 #import "LMToolbarVC.h"
 #import "LMPropertyFrameVC.h"
 #import "LMPropertyBaseVC.h"
-#import "LMCanvasV.h"
 
 #import "IUCompiler.h"
 #import "IUResourceManager.h"

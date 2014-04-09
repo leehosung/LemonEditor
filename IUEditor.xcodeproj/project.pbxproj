@@ -44,7 +44,6 @@
 		696D1C9E18E5778400B4AB16 /* reset.css in Resources */ = {isa = PBXBuildFile; fileRef = 696D1C9D18E5778400B4AB16 /* reset.css */; };
 		696D1C9F18E5778400B4AB16 /* reset.css in Resources */ = {isa = PBXBuildFile; fileRef = 696D1C9D18E5778400B4AB16 /* reset.css */; };
 		69757AC218D7EB680095CBAC /* IUObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757AC118D7EB680095CBAC /* IUObj.m */; };
-		69757ACE18D801E70095CBAC /* LMCanvasV.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757ACD18D801E70095CBAC /* LMCanvasV.m */; };
 		69757B0018D95BBC0095CBAC /* CALayer+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757AD418D95BBC0095CBAC /* CALayer+JDExtension.m */; };
 		69757B0318D95BBC0095CBAC /* JDDateTimeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757ADA18D95BBC0095CBAC /* JDDateTimeUtil.m */; };
 		69757B0418D95BBC0095CBAC /* JDEnvUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757ADC18D95BBC0095CBAC /* JDEnvUtil.m */; };
@@ -188,8 +187,6 @@
 		696D1C9D18E5778400B4AB16 /* reset.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = reset.css; sourceTree = "<group>"; };
 		69757AC018D7EB680095CBAC /* IUObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUObj.h; sourceTree = "<group>"; };
 		69757AC118D7EB680095CBAC /* IUObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUObj.m; sourceTree = "<group>"; };
-		69757ACC18D801E70095CBAC /* LMCanvasV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMCanvasV.h; sourceTree = "<group>"; };
-		69757ACD18D801E70095CBAC /* LMCanvasV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMCanvasV.m; sourceTree = "<group>"; };
 		69757AD318D95BBC0095CBAC /* CALayer+JDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CALayer+JDExtension.h"; path = "JD/CALayer+JDExtension.h"; sourceTree = "<group>"; };
 		69757AD418D95BBC0095CBAC /* CALayer+JDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CALayer+JDExtension.m"; path = "JD/CALayer+JDExtension.m"; sourceTree = "<group>"; };
 		69757AD918D95BBC0095CBAC /* JDDateTimeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JDDateTimeUtil.h; path = JD/JDDateTimeUtil.h; sourceTree = "<group>"; };
@@ -416,8 +413,6 @@
 				69C5763618D728CF0016F050 /* LMStackVC.h */,
 				69C5763718D728CF0016F050 /* LMStackVC.m */,
 				690A408D18E14A4E00095263 /* LMStackVC.xib */,
-				69757ACC18D801E70095CBAC /* LMCanvasV.h */,
-				69757ACD18D801E70095CBAC /* LMCanvasV.m */,
 				69B37F0A18DFDEE800DE620F /* LMFileNaviVC.h */,
 				69B37F0B18DFDEE800DE620F /* LMFileNaviVC.m */,
 				69B37F0C18DFDEE800DE620F /* LMFileNaviVC.xib */,
@@ -933,7 +928,6 @@
 				69CFCAB218E95A0C00E3048A /* LMResourceVC.m in Sources */,
 				69757B1518D95BBC0095CBAC /* NSTextField+DragAndDrop.m in Sources */,
 				69C5760B18D6FE020016F050 /* IUComponent.m in Sources */,
-				69757ACE18D801E70095CBAC /* LMCanvasV.m in Sources */,
 				69761BCA18F168D700C4EDC6 /* IUResourceManager.m in Sources */,
 				69757B1118D95BBC0095CBAC /* JDUIUtil.m in Sources */,
 				3DB3ACE718EBEF9D0046DFB7 /* CursorRect.m in Sources */,
