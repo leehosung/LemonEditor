@@ -10,12 +10,14 @@
 #import "JDUIUtil.h"
 #import "SizeView.h"
 
-@implementation InnerSizeBox
+@implementation InnerSizeBox{
+    NSInteger width;
+}
 
-- (id)initWithFrame:(NSRect)frame
-{
+- (id)initWithFrame:(NSRect)frame width:(NSInteger)aWidth{
     self = [super initWithFrame:frame];
     if (self) {
+        width = aWidth;
         [self setFillColor:[NSColor whiteColor]];
         [self setTitlePosition:NSNoTitle];
         [self setBoxType:NSBoxCustom];
@@ -26,12 +28,6 @@
     return self;
 }
 
-- (void)drawRect:(NSRect)dirtyRect
-{
-    [super drawRect:dirtyRect];
-    
-    // Drawing code here.
-}
 
 #pragma mark -
 #pragma mark mouse
@@ -46,8 +42,8 @@
 #pragma mark -
 #pragma mark open
 
-- (CGFloat)frameSize{
-    return self.frame.size.width;
+- (NSInteger)frameWidth{
+    return width;
 }
 
 - (void)deselect{

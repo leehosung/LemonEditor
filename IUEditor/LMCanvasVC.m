@@ -230,8 +230,23 @@
     [newSheet setAttribute:@"media" value:mediaName];
     [newSheet setAttribute:@"id" value:[NSString stringWithFormat:@"style%ld", size]];
     [newSheet appendChild:[[self DOMDoc] createTextNode:@""]];
+    
     DOMNode *headNode = [[[self DOMDoc] getElementsByTagName:@"head"] item:0];
-    [headNode appendChild:newSheet];
+    NSInteger nextSize = [[self sizeView] nextSmallSize:size];
+    DOMElement *prevNode = [[self DOMDoc] getElementById:[NSString stringWithFormat:@"style%ld", nextSize]];
+
+    if(nextSize == 0
+       || prevNode == nil){
+        //case 1) default style and import style(reset.css, iu.css)
+        //case 2) add maximum size
+        //case 3) not yet report smaller size
+            [headNode appendChild:newSheet];
+    }
+    else{
+        //find next node
+        [headNode insertBefore:newSheet refChild:prevNode];
+    }
+
     return newSheet;
 }
 
