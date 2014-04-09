@@ -7,10 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "LMCanvasVCDelegate.h"
+#import "IUObj.h"
+
 @class IUDocument;
 @interface IUController : NSTreeController 
 
 -(void)setSelectedObjectsByIdentifiers:(NSArray*)identifiers;
+-(NSArray*)selectedIdentifiers;
 
+-(IUObj *)IUObjByIdentifier:(NSString *)identifier;
+-(NSString*)requestNewIdentifierWithString:(NSString*)string;
 @end

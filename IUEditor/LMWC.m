@@ -27,7 +27,6 @@
 
 #import "IUCompiler.h"
 #import "IUResourceManager.h"
-#import "IUManager.h"
 
 @interface LMWC ()
 @property (weak) IBOutlet NSView *leftTopV;
@@ -47,7 +46,6 @@
 @implementation LMWC{
     IUProject   *_project;
     IUCompiler  *_compiler;
-    IUManager   *_IUManager;
     IUResourceManager   *_resourceManager;
 
     LMFileNaviVC    *fileNaviVC;
@@ -88,6 +86,7 @@
     
     widgetLibraryVC = [[LMWidgetLibraryVC alloc] initWithNibName:@"LMWidgetLibraryVC" bundle:nil];
     [_leftTopV addSubviewFullFrame:widgetLibraryVC.view];
+    [widgetLibraryVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
     
     toolbarVC = [[LMToolbarVC alloc] initWithNibName:@"LMToolbarVC" bundle:nil];
     [_toolbarV addSubviewFullFrame:toolbarVC.view];
@@ -126,14 +125,11 @@
     [widgetLibraryVC setWidgetProperties:availableWidgetProperties];
 
     //IU Setting
-    _IUManager = [[IUManager alloc] init];
     _compiler = [[IUCompiler alloc] init];
 
     NSArray *documensNode = [_project.allChildren filteredArrayWithClass:[IUDocumentNode class]];
     
     for (IUDocumentNode *node in documensNode) {
-        [_IUManager registerIU:node.document];
-        [node.document setManager:_IUManager];
         [node.document setCompiler:_compiler];
     }
     
@@ -147,7 +143,6 @@
     [resourceVC setManager:_resourceManager];
     
     [propertyBaseVC setResourceManager:_resourceManager];
-    widgetLibraryVC.manager = _IUManager;
 }
 
 -(void)setSelectedNode:(IUNode*)selectedNode{

@@ -8,14 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 #import "IUDocument.h"
-#import "LMCanvasVCDelegate.h"
+#import "IUController.h"
 
 @class LMCanvasView;
 @interface LMCanvasVC : NSViewController <IUSourceDelegate>
 
 @property (nonatomic) _binding_ IUDocument  *document;
 @property (nonatomic) _binding_ NSString    *documentBasePath;
-@property (nonatomic) NSTreeController <LMCanvasVCDelegate> *controller;
+@property (nonatomic) IUController  *controller;
 
 @property _binding_ NSInteger selectedFrameWidth;
 @property _binding_ NSInteger maxFrameWidth;
@@ -70,7 +70,7 @@
 - (void)moveIUToDiffPoint:(NSPoint)point totalDiffPoint:(NSPoint)totalPoint;
 - (void)extendIUToDiffSize:(NSSize)size totalDiffSize:(NSSize)totalSize;;
 
-- (void)makeNewIU:(NSString *)IUID atPoint:(NSPoint)point atIU:(NSString *)IU;
+- (void)makeNewIU:(IUObj *)newIU atPoint:(NSPoint)point atIU:(NSString *)parentIUID;
 
 - (void)showCurrentSource;
 @end

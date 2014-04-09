@@ -208,6 +208,11 @@
     return [[super description] stringByAppendingFormat:@" %@", self.htmlID];
 }
 
+- (void)setPosition:(NSPoint)position{
+    [_css setValue:@(position.x) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagX]];
+    [_css setValue:@(position.y) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagY]];
+}
+
 - (void)moveX:(NSInteger)x Y:(NSInteger)y{
     
     NSPoint distancePoint = [self.delegate distanceIU:self.htmlID withParent:self.parent.htmlID];

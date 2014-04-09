@@ -11,6 +11,7 @@
 #import "JDLogUtil.h"
 #import "IUDefinition.h"
 #import "LMCanvasView.h"
+#import "IUObj.h"
 
 @implementation WebCanvasView
 
@@ -25,8 +26,7 @@
         [self setFrameLoadDelegate:self];
         [self setEditable:YES];
         
-        //FIXME: IUTYPE
-        [self registerForDraggedTypes:@[(id)kUTTypeIUType, NSStringPboardType]];
+        [self registerForDraggedTypes:@[(id)kUTTypeIUType]];
     }
     
     return self;
@@ -97,20 +97,20 @@
 }
 
 - (BOOL)performDragOperation:(id<NSDraggingInfo>)sender{
-    //make new IU
+    
     NSPasteboard *pBoard = sender.draggingPasteboard;
     NSPoint dragPoint = sender.draggingLocation;
-    NSString *IUID = [pBoard stringForType:(id)kUTTypeIUType];
+    
+    NSData *newData = [pBoard dataForType:(id)kUTTypeIUType];
+    IUObj *newIU = [NSKeyedUnarchiver unarchiveObjectWithData:newData];
     NSString *parentIUID = [self IUAtPoint:dragPoint];
-    if(IUID){
-        //makeIU
-        
-        [((LMCanvasVC *)(self.delegate)) makeNewIU:IUID atPoint:dragPoint atIU:parentIUID];
+    if(newIU){
+        [((LMCanvasVC *)(self.delegate)) makeNewIU:newIU atPoint:dragPoint atIU:parentIUID];
         return YES;
     }
     
 
-    JDTraceLog( @"[IU:%@], dragPoint(%.1f, %.1f)", IUID, dragPoint.x, dragPoint.y);
+    JDTraceLog( @"[IU:%@], dragPoint(%.1f, %.1f)", newIU.htmlID, dragPoint.x, dragPoint.y);
 
     return NO;
 }
