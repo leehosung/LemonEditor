@@ -49,7 +49,7 @@
         return nil;
     }
     if(findIUs.count == 0){
-        JDWarnLog(@"there is no IUID");
+        JDInfoLog(@"there is no IUID");
         return nil;
     }
     
