@@ -93,41 +93,28 @@
 
 
 - (NSDragOperation)draggingEntered:(id<NSDraggingInfo>)sender{
-    JDInfoLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-
     return NSDragOperationEvery;
 }
 
-- (BOOL)prepareForDragOperation:(id <NSDraggingInfo>)sender{
-    return YES;
+- (NSDragOperation)draggingUpdated:(id<NSDraggingInfo>)sender{
+    return NSDragOperationEvery;
 }
-
-
 
 - (BOOL)performDragOperation:(id<NSDraggingInfo>)sender{
-
-    return YES;
-}
-
-
-- (void)draggingEnded:(id <NSDraggingInfo>)sender{
-    
-}
-
-- (void)concludeDragOperation:(id<NSDraggingInfo>)sender{
     
     NSPasteboard *pBoard = sender.draggingPasteboard;
     NSPoint dragPoint = sender.draggingLocation;
+    NSPoint convertedPoint = [self convertPoint:dragPoint fromView:nil];
     
     NSData *newData = [pBoard dataForType:(id)kUTTypeIUType];
     IUObj *newIU = [NSKeyedUnarchiver unarchiveObjectWithData:newData];
     NSString *parentIUID = [self IUAtPoint:dragPoint];
     if(newIU){
-        [((LMCanvasVC *)(self.delegate)) makeNewIU:newIU atPoint:dragPoint atIU:parentIUID];
-        return ;
+        [((LMCanvasVC *)(self.delegate)) makeNewIU:newIU atPoint:convertedPoint atIU:parentIUID];
+        return YES;
     }
     
-
+    return NO;
     JDTraceLog( @"[IU:%@], dragPoint(%.1f, %.1f)", newIU.htmlID, dragPoint.x, dragPoint.y);
 }
 
