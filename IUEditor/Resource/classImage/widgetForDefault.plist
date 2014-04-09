@@ -4,7 +4,7 @@
 <array>
 	<dict>
 		<key>className</key>
-		<string>IUView</string>
+		<string>IUObj</string>
 		<key>classImage</key>
 		<string>IUView.png</string>
 	</dict>

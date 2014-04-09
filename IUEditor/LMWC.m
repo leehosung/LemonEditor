@@ -147,6 +147,7 @@
     [resourceVC setManager:_resourceManager];
     
     [propertyBaseVC setResourceManager:_resourceManager];
+    widgetLibraryVC.manager = _IUManager;
 }
 
 -(void)setSelectedNode:(IUNode*)selectedNode{

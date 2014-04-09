@@ -30,22 +30,18 @@
 }
 
 - (BOOL)collectionView:(NSCollectionView *)collectionView writeItemsAtIndexes:(NSIndexSet *)indexes toPasteboard:(NSPasteboard *)pasteboard{
-    /*
+    assert(self.manager);
     NSUInteger index = [indexes firstIndex];
     LMGeneralObject *object = [[collectionView itemAtIndex:index] representedObject];
     NSString *className = object.title;
     NSDictionary *setting = object.dict;
     
     IUObj *obj = [[NSClassFromString(className) alloc] initWithSetting:setting];
-    
-    Class class = NSClassFromString(className);
-    
-    obj.htmlID = [self.project requestNewID:class];
+    obj.htmlID = [_manager requestNewIDWithIdentifier:obj.className];
     obj.name = obj.htmlID;
     
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:obj];
     [pasteboard setData:data forType:@"IUObj"];
-     */
     return YES;
 }
 
