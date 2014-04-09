@@ -41,15 +41,7 @@
 - (void)addSelectedIU:(NSString *)IU;
 - (void)selectIUInRect:(NSRect)frame;
 
-//set css
-/*
- cssText: #test2{background-color:green; width:100px; height:100px}
- */
-- (void)setIUStyle:(NSString *)cssText withID:(NSString *)iuID;
-- (void)setIUStyle:(NSString *)cssText withID:(NSString *)iuID size:(NSInteger)size;
-
 //set html
-- (void)setIUInnerHTML:(NSString *)HTML withParentID:(NSString *)parentID tag:(NSString *)tag;
 - (void)removeIU:(NSString *)iuID;
 
 //border, ghost view
