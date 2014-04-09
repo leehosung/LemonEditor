@@ -15,15 +15,13 @@
 @property _binding_ NSInteger maxFrameWidth;
 
 -(void)IU:(NSString*)identifier CSSChanged:(NSString*)css forWidth:(NSInteger)width;
--(void)IU:(NSString*)identifier HTML:(NSString *)html withParentID:(NSString *)parentID tag:(NSString *)tag;
+-(void)IU:(NSString*)identifier HTML:(NSString *)html withParentID:(NSString *)parentID;
 
 -(void)IURemoved:(NSString*)identifier;
 
 - (NSPoint)distanceIU:(NSString *)iuName withParent:(NSString *)parentName;
 @end
 
-
-#define IUCSSDefaultFrame -1
 
 @class IUObj;
 @class IUDocument;
