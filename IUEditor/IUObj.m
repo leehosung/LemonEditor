@@ -208,6 +208,13 @@
     return [[super description] stringByAppendingFormat:@" %@", self.htmlID];
 }
 
+-(NSDictionary*)CSSContents{
+    NSDictionary *frameDict = [_css tagDictionaryForWidth:IUCSSDefaultCollection];
+    NSString *cssContent = [self.document.compiler CSSContentFromAttributes:frameDict ofClass:self];
+    return @{@(IUCSSDefaultCollection): cssContent};
+}
+
+
 - (void)setPosition:(NSPoint)position{
     [_css setValue:@(position.x) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagX]];
     [_css setValue:@(position.y) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagY]];
