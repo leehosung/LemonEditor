@@ -85,6 +85,7 @@
     [sizeTextField setStringValue:[NSString stringWithFormat:@"%.0f", selectedWidth]];
     [(LMCanvasView *)self.superview setWidthOfMainView:selectedWidth];
     ((LMCanvasVC *)self.delegate).selectedFrameWidth = (NSInteger)(floor(selectedWidth));
+    [((LMCanvasVC *)self.delegate) refreshGridFrameDictionary];
 }
 
 #pragma mark -

@@ -53,6 +53,10 @@
     return (LMCanvasV*)[super view];
 }
 
+- (void)refreshGridFrameDictionary{
+    [[self webView] updateFrameDict];
+}
+
 
 
 #pragma mark -

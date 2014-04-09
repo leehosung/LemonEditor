@@ -22,6 +22,7 @@
 
 
 - (LMCanvasV*)view;
+- (void)refreshGridFrameDictionary;
 #pragma mark -
 #pragma mark be set by IU
 

@@ -59,8 +59,4 @@ function getIUUpdatedFrameThread(){
 $(document).ready(function(){
             console.log("ready");
             getIUUpdatedFrameThread();
-            setInterval(function(){
-                              getIUUpdatedFrameThread();
-                              }, 3000);
-
 })
