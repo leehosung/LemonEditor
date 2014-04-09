@@ -14,9 +14,9 @@
 @property _binding_ NSInteger selectedFrameWidth;
 @property _binding_ NSInteger maxFrameWidth;
 
--(void)IU:(NSString*)identifier HTMLChanged:(NSString*)html;
 -(void)IU:(NSString*)identifier CSSChanged:(NSString*)css forWidth:(NSInteger)width;
--(void)IU:(NSString*)identifier insertedTo:(NSString*)parentIdentifier atIndex:(NSInteger)index CSS:(NSString*)css HTML:(NSString*)html;
+-(void)IU:(NSString*)identifier HTML:(NSString *)html withParentID:(NSString *)parentID tag:(NSString *)tag;
+
 -(void)IURemoved:(NSString*)identifier;
 
 - (NSPoint)distanceIU:(NSString *)iuName withParent:(NSString *)parentName;

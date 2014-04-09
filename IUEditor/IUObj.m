@@ -159,6 +159,8 @@
         iu.delegate = self.delegate;
     }
     iu.parent = self;
+    [self.delegate IU:iu.htmlID HTML:iu.html withParentID:self.htmlID tag:@"div"];
+    [self.delegate IU:iu.htmlID CSSChanged:[iu cssForWidth:IUCSSDefaultCollection] forWidth:IUCSSDefaultCollection];
     return YES;
 }
 
