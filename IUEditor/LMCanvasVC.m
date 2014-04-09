@@ -102,8 +102,8 @@
 -(NSUInteger)countOfSelectedIUs{
     return [self.controller.selectedObjects count];
 }
-- (BOOL)containsIU:(NSString *)IU{
-    if ([self.controller.selectedObjects containsObject:IU]){
+- (BOOL)containsIU:(NSString *)IUID{
+    if ([self.controller.selectedIdentifiers containsObject:IUID]){
         return YES;
     }
     else {
@@ -366,8 +366,8 @@
         [frameDict.dict setObject:[gridFrameDict objectForKey:key] forKey:key];
     }
     //draw guide line
-    for (NSString *IU in self.controller.selectedObjects){
-        [[self gridView] drawGuideLine:[frameDict lineToDrawSamePositionWithIU:IU]];
+    for (NSString *IUID in self.controller.selectedIdentifiers){
+        [[self gridView] drawGuideLine:[frameDict lineToDrawSamePositionWithIU:IUID]];
     }
     
 }
