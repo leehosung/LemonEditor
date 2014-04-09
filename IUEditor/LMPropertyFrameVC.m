@@ -30,7 +30,7 @@
 }
 
 -(void)awakeFromNib{
-    NSString *tagCollectionKeyPath = @"IUController.selection.css.affectingTagCollection";
+    NSString *tagCollectionKeyPath = @"IUController.selection.css.assembledTagDictionary";
     [_xTF bind:@"value" toObject:self withKeyPath:[tagCollectionKeyPath stringByAppendingPathExtension:IUCSSTagX] options:nil];
     [_yTF bind:@"value" toObject:self withKeyPath:[tagCollectionKeyPath stringByAppendingPathExtension:IUCSSTagY] options:nil];
     [_wTF bind:@"value" toObject:self withKeyPath:[tagCollectionKeyPath stringByAppendingPathExtension:IUCSSTagWidth] options:nil];

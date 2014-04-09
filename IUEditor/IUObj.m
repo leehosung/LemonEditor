@@ -52,6 +52,7 @@
         [_css setValue:@(50+rand()%300) forTag:IUCSSTagWidth forWidth:IUCSSDefaultCollection];
         [_css setValue:@(35) forTag:IUCSSTagHeight forWidth:IUCSSDefaultCollection];
         [_css setValue:[NSColor randomColor] forTag:IUCSSTagBGColor forWidth:IUCSSDefaultCollection];
+        [_css setValue:@"Auto" forTag:IUCSSTagBGSize forWidth:IUCSSDefaultCollection];
         delegateEnableLevel = 1;
         
         _m_children = [NSMutableArray array];
@@ -211,28 +212,28 @@
     
     NSPoint distancePoint = [self.delegate distanceIU:self.htmlID withParent:self.parent.htmlID];
     
-    NSInteger currentX = [_css.affectingTagCollection[IUCSSTagX] integerValue] + x;
-    [_css setValue:@(currentX) forKeyPath:[@"affectingTagCollection" stringByAppendingPathExtension:IUCSSTagX]];
+    NSInteger currentX = [_css.assembledTagDictionary[IUCSSTagX] integerValue] + x;
+    [_css setValue:@(currentX) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagX]];
     
     NSInteger currentY = 0;
-    if ([_css.affectingTagCollection objectForKey:IUCSSTagY]){
-        currentY = [_css.affectingTagCollection[IUCSSTagY] integerValue];
+    if ([_css.assembledTagDictionary objectForKey:IUCSSTagY]){
+        currentY = [_css.assembledTagDictionary[IUCSSTagY] integerValue];
     }
     else if (self.flow == NO){
         currentY = distancePoint.y;
     }
     currentY += y;
-    [_css setValue:@(currentY) forKeyPath:[@"affectingTagCollection" stringByAppendingPathExtension:IUCSSTagY]];
+    [_css setValue:@(currentY) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagY]];
 }
 
 - (void)increaseWidth:(NSInteger)width height:(NSInteger)height{
-    NSInteger currentWidth = [_css.affectingTagCollection[IUCSSTagWidth] integerValue];
+    NSInteger currentWidth = [_css.assembledTagDictionary[IUCSSTagWidth] integerValue];
     currentWidth += width;
-    [_css setValue:@(currentWidth) forKeyPath:[@"affectingTagCollection" stringByAppendingPathExtension:IUCSSTagWidth]];
+    [_css setValue:@(currentWidth) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagWidth]];
     
-    NSInteger currentHeight = [_css.affectingTagCollection[IUCSSTagHeight] integerValue];
+    NSInteger currentHeight = [_css.assembledTagDictionary[IUCSSTagHeight] integerValue];
     currentHeight += height;
-    [_css setValue:@(currentHeight) forKeyPath:[@"affectingTagCollection" stringByAppendingPathExtension:IUCSSTagHeight]];
+    [_css setValue:@(currentHeight) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagHeight]];
 }
 
 -(BOOL)hasFrame{

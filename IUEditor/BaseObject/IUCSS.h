@@ -34,6 +34,6 @@
 -(NSDictionary*)tagDictionaryForWidth:(NSInteger)width;
 
 //observable.
-@property (readonly) NSDictionary *affectingTagCollection;
+@property (readonly) NSMutableDictionary *assembledTagDictionary;
 
 @end
