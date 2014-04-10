@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "IUObj.h"
+#import "IUBox.h"
 #import "IUCompilerResourceSource.h"
 
 @class IUDocument;
@@ -22,7 +22,7 @@ typedef enum _IUCompilerType{
 @property id <IUCompilerResourceSource> resourceSource;
 -(NSString*)editorSource:(IUDocument*)document;
 
--(NSString*)editorHTML:(IUObj*)iu;
--(NSString*)CSSContentFromAttributes:(NSDictionary*)attributeDict ofClass:(IUObj*)obj;
+-(NSString*)editorHTML:(IUBox*)iu;
+-(NSString*)CSSContentFromAttributes:(NSDictionary*)attributeDict ofClass:(IUBox*)obj;
 
 @end

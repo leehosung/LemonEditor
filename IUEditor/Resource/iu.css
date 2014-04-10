@@ -1,4 +1,4 @@
-.IUObj{
+.IUBox{
     position:absolute;
     width:400px;
     height:300px;
@@ -12,8 +12,11 @@
 
 .IUHeader{
     position:relative;
+    width:100%;
 }
 
 .IUPageContent{
     position:relative;
+    min-height:100px;
+    width:100%;
 }

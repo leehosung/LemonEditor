@@ -14,7 +14,7 @@
     self = [super init];
     if (self) {
         [self setChildrenKeyPath:@"children"];
-        [self setObjectClass:[IUObj class]];
+        [self setObjectClass:[IUBox class]];
         [self setContent:document];
     }
     return self;

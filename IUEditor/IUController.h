@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "IUObj.h"
+#import "IUBox.h"
 
 @class IUDocument;
 @interface IUController : NSTreeController 
@@ -15,6 +15,6 @@
 -(void)setSelectedObjectsByIdentifiers:(NSArray*)identifiers;
 -(NSArray*)selectedIdentifiers;
 
--(IUObj *)IUObjByIdentifier:(NSString *)identifier;
+-(IUBox *)IUBoxByIdentifier:(NSString *)identifier;
 -(NSString*)requestNewIdentifierWithString:(NSString*)string;
 @end

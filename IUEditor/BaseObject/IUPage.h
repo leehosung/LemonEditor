@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 JDLab. All rights reserved.
 //
 
-#import "IUObj.h"
+#import "IUBox.h"
 #import "IUDocument.h"
 
 @class IUMaster;

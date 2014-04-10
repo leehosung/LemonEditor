@@ -43,7 +43,7 @@
 		696D1C9B18E5366400B4AB16 /* webTemplate.html in Resources */ = {isa = PBXBuildFile; fileRef = 696D1C9918E5366400B4AB16 /* webTemplate.html */; };
 		696D1C9E18E5778400B4AB16 /* reset.css in Resources */ = {isa = PBXBuildFile; fileRef = 696D1C9D18E5778400B4AB16 /* reset.css */; };
 		696D1C9F18E5778400B4AB16 /* reset.css in Resources */ = {isa = PBXBuildFile; fileRef = 696D1C9D18E5778400B4AB16 /* reset.css */; };
-		69757AC218D7EB680095CBAC /* IUObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757AC118D7EB680095CBAC /* IUObj.m */; };
+		69757AC218D7EB680095CBAC /* IUBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757AC118D7EB680095CBAC /* IUBox.m */; };
 		69757B0018D95BBC0095CBAC /* CALayer+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757AD418D95BBC0095CBAC /* CALayer+JDExtension.m */; };
 		69757B0318D95BBC0095CBAC /* JDDateTimeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757ADA18D95BBC0095CBAC /* JDDateTimeUtil.m */; };
 		69757B0418D95BBC0095CBAC /* JDEnvUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 69757ADC18D95BBC0095CBAC /* JDEnvUtil.m */; };
@@ -184,8 +184,8 @@
 		6954812718D7640A00CA02F1 /* IUPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IUPage.m; path = BaseObject/IUPage.m; sourceTree = "<group>"; };
 		696D1C9918E5366400B4AB16 /* webTemplate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = webTemplate.html; sourceTree = "<group>"; };
 		696D1C9D18E5778400B4AB16 /* reset.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = reset.css; sourceTree = "<group>"; };
-		69757AC018D7EB680095CBAC /* IUObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUObj.h; sourceTree = "<group>"; };
-		69757AC118D7EB680095CBAC /* IUObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUObj.m; sourceTree = "<group>"; };
+		69757AC018D7EB680095CBAC /* IUBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUBox.h; sourceTree = "<group>"; };
+		69757AC118D7EB680095CBAC /* IUBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUBox.m; sourceTree = "<group>"; };
 		69757AD318D95BBC0095CBAC /* CALayer+JDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CALayer+JDExtension.h"; path = "JD/CALayer+JDExtension.h"; sourceTree = "<group>"; };
 		69757AD418D95BBC0095CBAC /* CALayer+JDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CALayer+JDExtension.m"; path = "JD/CALayer+JDExtension.m"; sourceTree = "<group>"; };
 		69757AD918D95BBC0095CBAC /* JDDateTimeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JDDateTimeUtil.h; path = JD/JDDateTimeUtil.h; sourceTree = "<group>"; };
@@ -491,8 +491,8 @@
 			children = (
 				69D15F7118E898B10046FBB0 /* IUMaster.h */,
 				69D15F7218E898B10046FBB0 /* IUMaster.m */,
-				69757AC018D7EB680095CBAC /* IUObj.h */,
-				69757AC118D7EB680095CBAC /* IUObj.m */,
+				69757AC018D7EB680095CBAC /* IUBox.h */,
+				69757AC118D7EB680095CBAC /* IUBox.m */,
 				69C5760218D6FE020016F050 /* IUDocument.h */,
 				69C5760318D6FE020016F050 /* IUDocument.m */,
 				6954812618D7640A00CA02F1 /* IUPage.h */,
@@ -927,7 +927,7 @@
 				69757B0E18D95BBC0095CBAC /* JDTextField.m in Sources */,
 				69757B0518D95BBC0095CBAC /* JDFileUtil.m in Sources */,
 				69757B2218D95F420095CBAC /* NSString+JDExtension.m in Sources */,
-				69757AC218D7EB680095CBAC /* IUObj.m in Sources */,
+				69757AC218D7EB680095CBAC /* IUBox.m in Sources */,
 				3DB3ACF618EC1E120046DFB7 /* LMCanvasView.m in Sources */,
 				6954812818D7640A00CA02F1 /* IUPage.m in Sources */,
 				69C5764018D729830016F050 /* IUDocumentController.m in Sources */,

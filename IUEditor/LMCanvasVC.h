@@ -73,8 +73,9 @@
 - (void)moveIUToDiffPoint:(NSPoint)point totalDiffPoint:(NSPoint)totalPoint;
 - (void)extendIUToDiffSize:(NSSize)size totalDiffSize:(NSSize)totalSize;;
 
-- (void)makeNewIU:(IUObj *)newIU atPoint:(NSPoint)point atIU:(NSString *)parentIUID;
+- (void)makeNewIU:(IUBox *)newIU atPoint:(NSPoint)point atIU:(NSString *)parentIUID;
 - (NSString *)currentHTML;
+
 - (void)showCurrentSource;
 
 @end

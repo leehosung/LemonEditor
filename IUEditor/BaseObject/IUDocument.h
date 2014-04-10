@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "IUCompiler.h"
-#import "IUObj.h"
+#import "IUBox.h"
 
 
 
-@interface IUDocument : IUObj
+@interface IUDocument : IUBox
 
 @property IUCompiler *compiler;
 
@@ -22,7 +22,7 @@
 //-(NSString*)outputSource;
 
 -(NSArray*)widthWithCSS;
--(IUObj *)selectableIUAtPoint:(CGPoint)point;
+-(IUBox *)selectableIUAtPoint:(CGPoint)point;
 
 
 #pragma mark Reference Management
