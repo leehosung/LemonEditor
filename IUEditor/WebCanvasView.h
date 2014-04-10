@@ -22,6 +22,7 @@
 #pragma mark -
 
 - (NSString *)IDOfCurrentIU;
+- (NSString *)IUAtPoint:(NSPoint)point;
 - (BOOL)isDOMTextAtPoint:(NSPoint)point;
 - (void)changeDOMRange:(NSPoint)point;
 @end

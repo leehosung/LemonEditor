@@ -17,9 +17,18 @@
     NSView *boxManageView;
     NSUInteger selectIndex;
     SizeTextField *sizeTextField;
+    NSPopover *framePopover;
 }
 
 @property id delegate;
+
+//addFrameSize
+@property (weak) IBOutlet NSButton *addBtn;
+@property (weak) IBOutlet NSPopover *addFramePopover;
+@property (weak) IBOutlet NSTextField *addFrameSizeField;
+
+- (IBAction)addSizeBtnClick:(id)sender;
+- (IBAction)addSizeOKBtn:(id)sender;
 
 - (NSInteger)nextSmallSize:(NSInteger)size;
 
