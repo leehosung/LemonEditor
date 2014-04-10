@@ -33,7 +33,6 @@
 #pragma mark mouse
 
 - (void)mouseDown:(NSEvent *)theEvent{
-    [super mouseDown:theEvent];
     if(theEvent.clickCount == 1){
         [self select];
     }
@@ -50,8 +49,6 @@
         [NSMenu popUpContextMenu:sizeBoxMenu withEvent:theEvent forView:self];
     }
     
-    [super rightMouseDown:theEvent];
-
 }
 
 - (void)removeSelf{
