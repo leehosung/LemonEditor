@@ -79,6 +79,7 @@
     [[self layer] setContentsScale:[[self window] backingScaleFactor]];
 }
 
+
 #pragma mark -
 #pragma mark mouse operation
 

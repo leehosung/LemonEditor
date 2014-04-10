@@ -69,16 +69,6 @@
 
 - (void)setWidthOfMainView:(CGFloat)width{
     [self.mainView setWidth:width];
-
-/*    NSRect innerNewFrame = NSMakeRect(0, 0, width, self.mainView.frame.size.height);
-    
-    [self.webView setFrame:innerNewFrame];
-    [self.gridView setFrame:innerNewFrame];
-
-    
-    NSRect mainNewFrame = NSMakeRect(x, 0, width, self.mainView.frame.size.height);
-    [self.mainView setFrame:mainNewFrame];
-*/
     
 }
 
@@ -117,6 +107,27 @@
 
 #pragma mark event
 
+-(void)receiveKeyEvent:(NSEvent *)theEvent{
+    NSResponder *currentResponder = [[self window] firstResponder];
+    NSView *mainView = self.mainView;
+    
+    if([currentResponder isKindOfClass:[NSView class]]
+       && [mainView hasSubview:(NSView *)currentResponder]){
+        
+        if(theEvent.type == NSKeyDown){
+            unichar key = [[theEvent charactersIgnoringModifiers] characterAtIndex:0];
+            
+            
+            if([[self webView] isEditable]== NO){
+                //delete key
+                if(key == NSDeleteCharacter){
+                    [((LMCanvasVC *)self.delegate) removeSelectedIUs];
+                }
+                
+            }
+        }
+    }
+}
 
 
 -(void)receiveMouseEvent:(NSEvent *)theEvent{
