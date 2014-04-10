@@ -25,6 +25,7 @@
 }
 
 
+
 - (NSView *)hitTest:(NSPoint)aPoint{
     return nil;
 }
@@ -38,20 +39,22 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code here.
-        //textField
-        sizeTextField = [[SizeTextField alloc] init];
-       
-        //sizeBox
         sizeArray = [NSMutableArray array];
-        boxManageView = [[NSView alloc] init];
         selectIndex = 0;
-        [self addSubviewVeriticalCenterInFrameWithFrame:sizeTextField height:sizeTextField.attributedStringValue.size.height];
-        [self addSubviewFullFrame:boxManageView positioned:NSWindowBelow relativeTo:sizeTextField];
-        
-       
     }
     return self;
+}
+
+-(void)awakeFromNib{
+    //textField
+    sizeTextField = [[SizeTextField alloc] init];
+    
+    //sizeBox
+    boxManageView = [[NSView alloc] init];
+
+    [self addSubviewVeriticalCenterInFrameWithFrame:sizeTextField height:sizeTextField.attributedStringValue.size.height];
+    [self addSubviewFullFrame:boxManageView positioned:NSWindowBelow relativeTo:self.addBtn];
+
 }
 
 - (void)resetCursorRects{
@@ -110,6 +113,10 @@
 
 - (id)addFrame:(NSInteger)width{
     NSNumber *widthNumber = [NSNumber numberWithInteger:width];
+    if([sizeArray containsObject:widthNumber]){
+        JDWarnLog(@"already exist width");
+        return nil;
+    }
     [sizeArray addObject:widthNumber];
     NSRect boxFrame = NSMakeRect(0, 0, width, self.frame.size.height);
     InnerSizeBox *newBox = [[InnerSizeBox alloc] initWithFrame:boxFrame width:width];
@@ -127,7 +134,7 @@
     }
     else{
         //maximumsize임
-        NSView *frontView = boxManageView.subviews[boxManageView.subviews.count-1];
+        NSView *frontView = boxManageView.subviews[0];
         [boxManageView addSubviewLeftInFrameWithFrame:newBox positioned:NSWindowBelow relativeTo:frontView];
     }
     [self setMaxWidth];
@@ -141,6 +148,18 @@
     NSView *removeView = boxManageView.subviews[index];
     [removeView removeFromSuperview];
     [self setMaxWidth];
+}
+
+#pragma mark popover
+
+- (IBAction)addSizeBtnClick:(id)sender {
+    [self.addFramePopover showRelativeToRect:self.addBtn.frame ofView:sender preferredEdge:NSMinYEdge];
+}
+
+- (IBAction)addSizeOKBtn:(id)sender {
+    NSInteger newWidth = [self.addFrameSizeField integerValue];
+    [self addFrame:newWidth];
+    [self.addFramePopover close];
 }
 
 @end

@@ -18,6 +18,24 @@
                 <customView id="7bm-eT-a4W" customClass="SizeView">
                     <rect key="frame" x="0.0" y="0.0" width="621" height="40"/>
                     <autoresizingMask key="autoresizingMask"/>
+                    <subviews>
+                        <button verticalHuggingPriority="750" id="58Z-vT-KI3">
+                            <rect key="frame" x="14" y="3" width="51" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="push" title="+" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xvk-BU-iko">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="addSizeBtnClick:" target="7bm-eT-a4W" id="Iim-bD-wdu"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <connections>
+                        <outlet property="addBtn" destination="58Z-vT-KI3" id="rT4-we-F3t"/>
+                        <outlet property="addFramePopover" destination="Fk1-un-Wge" id="T0J-xi-A07"/>
+                        <outlet property="addFrameSizeField" destination="Icw-av-wQp" id="98P-Cr-zev"/>
+                    </connections>
                 </customView>
                 <customView autoresizesSubviews="NO" id="A9f-iP-fE5">
                     <rect key="frame" x="0.0" y="41" width="621" height="603"/>
@@ -55,9 +73,49 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="m8U-IP-QTk"/>
                 <outlet property="mainScrollView" destination="Ej4-Uz-enV" id="pyb-hk-Wuz"/>
-                <outlet property="sizeView" destination="7bm-eT-a4W" id="9tE-Ge-vu1"/>
+                <outlet property="sizeView" destination="7bm-eT-a4W" id="MAl-pl-igN"/>
                 <outlet property="splitBottomView" destination="A9f-iP-fE5" id="gnF-IY-3DX"/>
             </connections>
         </splitView>
+        <viewController id="6Hc-Zz-g6h" userLabel="Popover View Controller">
+            <connections>
+                <outlet property="view" destination="Aw1-yr-1Tz" id="2X6-eI-Hwf"/>
+            </connections>
+        </viewController>
+        <popover behavior="t" id="Fk1-un-Wge">
+            <connections>
+                <outlet property="contentViewController" destination="6Hc-Zz-g6h" id="bS6-Cp-Y8m"/>
+            </connections>
+        </popover>
+        <customView id="Aw1-yr-1Tz" userLabel="addFramePopoverView">
+            <rect key="frame" x="0.0" y="0.0" width="171" height="39"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField verticalHuggingPriority="750" id="Icw-av-wQp">
+                    <rect key="frame" x="12" y="8" width="96" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Iz4-fw-Twg">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" id="iV7-zn-3VP">
+                    <rect key="frame" x="110" y="2" width="54" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xTo-Gh-aQX">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                    </buttonCell>
+                    <connections>
+                        <action selector="addSizeOKBtn:" target="7bm-eT-a4W" id="W2J-G1-sF9"/>
+                    </connections>
+                </button>
+            </subviews>
+        </customView>
+        <userDefaultsController representsSharedInstance="YES" id="ePl-SI-IJG"/>
     </objects>
 </document>

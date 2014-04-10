@@ -147,7 +147,7 @@
             
             if ( theEvent.type == NSLeftMouseDown){
                 JDTraceLog( @"mouse down");
-                NSString *currentIUID = [self.webView IDOfCurrentIU];
+                NSString *currentIUID = [self.webView IUAtPoint:convertedPoint];
                 
                 if (theEvent.clickCount == 1
                     || theEvent.clickCount == 2){
