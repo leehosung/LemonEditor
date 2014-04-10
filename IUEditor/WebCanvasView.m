@@ -27,7 +27,7 @@
         
         [[[self mainFrame] frameView] setAllowsScrolling:NO];
         
-        [self registerForDraggedTypes:@[(id)kUTTypeIUType]];
+        [self registerForDraggedTypes:@[(id)kUTTypeIUType, (id)kUTTypeIUImageResource]];
     }
     
     return self;
@@ -138,18 +138,30 @@
     NSPoint dragPoint = sender.draggingLocation;
     NSPoint convertedPoint = [self convertPoint:dragPoint fromView:nil];
     
-    NSData *newData = [pBoard dataForType:(id)kUTTypeIUType];
-    IUBox *newIU = [NSKeyedUnarchiver unarchiveObjectWithData:newData];
-    if(newIU){
-        NSString *parentIUID = [self IUAtPoint:convertedPoint];
-        if(parentIUID){
-            [((LMCanvasVC *)(self.delegate)) makeNewIU:newIU atPoint:convertedPoint atIU:parentIUID];
-            return YES;
+    //type1) newIU
+    NSData *iuData = [pBoard dataForType:(id)kUTTypeIUType];
+    if(iuData){
+        IUBox *newIU = [NSKeyedUnarchiver unarchiveObjectWithData:iuData];
+        if(newIU){
+            NSString *parentIUID = [self IUAtPoint:convertedPoint];
+            if(parentIUID){
+                [((LMCanvasVC *)(self.delegate)) makeNewIU:newIU atPoint:convertedPoint atIU:parentIUID];
+                JDTraceLog( @"[IU:%@], dragPoint(%.1f, %.1f)", newIU.htmlID, dragPoint.x, dragPoint.y);
+                return YES;
+            }
+        }
+        return NO;
+    }
+    //type2) resourceImage
+    NSString *imageRelativePath = [pBoard stringForType:(id)kUTTypeIUImageResource];
+    if(imageRelativePath){
+        NSString *currentIUID = [self IUAtPoint:convertedPoint];
+        if(currentIUID){
+            [((LMCanvasVC *)(self.delegate))insertImage:imageRelativePath atIU:currentIUID];
         }
     }
     
     return NO;
-    JDTraceLog( @"[IU:%@], dragPoint(%.1f, %.1f)", newIU.htmlID, dragPoint.x, dragPoint.y);
 }
 
 
