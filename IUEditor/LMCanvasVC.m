@@ -388,14 +388,27 @@
 
 }
 
-- (void)extendIUToDiffSize:(NSSize)size totalDiffSize:(NSSize)totalSize{
+- (BOOL)checkExtendSelectedIU:(NSSize)size{
     //drag pointlayer
     for(IUBox *obj in self.controller.selectedObjects){
         
+        NSString *IUID = obj.htmlID;
+        NSRect currentFrame = [[frameDict.dict objectForKey:IUID] rectValue];
+        NSSize expectedSize = NSMakeSize(currentFrame.size.width+size.width, currentFrame.size.height+size.height);
+        if(expectedSize.width < 0 || expectedSize.height < 0){
+            return NO;
+        }
+    }
+    return YES;
+}
+
+- (void)extendIUToDiffSize:(NSSize)size totalDiffSize:(NSSize)totalSize{
+    //drag pointlayer
+    for(IUBox *obj in self.controller.selectedObjects){
         if([frameDict isGuideSize:totalSize]){
-            
             NSString *IUID = obj.htmlID;
             NSRect currentFrame = [[frameDict.dict objectForKey:IUID] rectValue];
+            NSSize expectedSize = NSMakeSize(currentFrame.size.width+size.width, currentFrame.size.height+size.height);
             NSRect moveFrame = currentFrame;
             
             moveFrame.size = NSMakeSize(currentFrame.size.width+size.width, currentFrame.size.height+size.height);
