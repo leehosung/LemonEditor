@@ -25,6 +25,8 @@
 #import "JDFileUtil.h"
 #import "NSString+IUTag.h"
 
+#import "IUDefinition.h"
+
 #define _binding_
 #define _observing_
 

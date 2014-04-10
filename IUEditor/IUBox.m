@@ -11,7 +11,6 @@
 #import "NSCoder+JDExtension.h"
 #import "IUCompiler.h"
 #import "IUDocument.h"
-#import "IUDefinition.h"
 #import "IUBox.h"
 
 @interface IUBox()

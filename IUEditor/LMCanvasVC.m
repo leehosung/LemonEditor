@@ -14,7 +14,6 @@
 #import "SizeView.h"
 #import "IUFrameDictionary.h"
 #import "IUBox.h"
-#import "IUDefinition.h"
 #import "InnerSizeBox.h"
 
 @interface LMCanvasVC ()
