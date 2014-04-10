@@ -34,11 +34,23 @@
     return NO;
 }
 
+- (BOOL)isKeyEvent:(NSEvent *)theEvent{
+    if(theEvent.type == NSKeyDown ||
+       theEvent.type == NSKeyUp
+       ){
+        return YES;
+    }
+    return NO;
+}
+
 -(void)sendEvent:(NSEvent *)theEvent{
     
     [super sendEvent:theEvent];
     if([self isMouseEvent:theEvent]){
         [self.canvasView receiveMouseEvent:theEvent];
+    }
+    if([self isKeyEvent:theEvent]){
+        [self.canvasView receiveKeyEvent:theEvent];
     }
 
 }

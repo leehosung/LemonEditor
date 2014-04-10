@@ -21,6 +21,7 @@
 
 @property (weak) IBOutlet SizeView *sizeView;
 
+-(void)receiveKeyEvent:(NSEvent *)theEvent;
 - (void)receiveMouseEvent:(NSEvent *)theEvent;
 - (void)setWidthOfMainView:(CGFloat)width;
 

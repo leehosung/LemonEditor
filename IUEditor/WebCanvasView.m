@@ -41,7 +41,11 @@
 #pragma mark Event
 
 - (BOOL)performKeyEquivalent:(NSEvent *)theEvent{
-    
+/*
+ * NOTE :
+ * deletekey는 performKeyequvalent로 들어오지않음
+ * window sendevent를 받아서 lmcanvasview에서 처리
+ */
 
     NSResponder *currentResponder = [[self window] firstResponder];
     NSView *mainView = ((LMCanvasVC *)self.delegate).view.mainView;
@@ -63,7 +67,7 @@
             else{
                 unsigned short keyCode = theEvent.keyCode;
 
-                if([self isEditable]){ 
+                if([self isEditable]){
                     //ESC key
                     if(keyCode == 53){
                         [self setEditable:NO];
@@ -111,12 +115,7 @@
     if([container isKindOfClass:[DOMText class]]){
         return YES;
     }
-//    DOMHTMLElement *iuNode = [self IUNodeAtCurrentNode:container];
-    //this is not deleting text , remove IU
-    
-[((LMCanvasVC *)self.delegate) removeSelectedIUs];
-    
-    return YES;
+    return NO;
 }
 
 
