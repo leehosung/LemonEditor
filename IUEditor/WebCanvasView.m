@@ -140,9 +140,8 @@
     
     NSData *newData = [pBoard dataForType:(id)kUTTypeIUType];
     IUBox *newIU = [NSKeyedUnarchiver unarchiveObjectWithData:newData];
-    NSString *parentIUID = [self IUAtPoint:dragPoint];
     if(newIU){
-        NSString *parentIUID = [self IUAtPoint:dragPoint];
+        NSString *parentIUID = [self IUAtPoint:convertedPoint];
         if(parentIUID){
             [((LMCanvasVC *)(self.delegate)) makeNewIU:newIU atPoint:convertedPoint atIU:parentIUID];
             return YES;
