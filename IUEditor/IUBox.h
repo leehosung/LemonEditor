@@ -20,8 +20,8 @@
 -(void)IURemoved:(NSString*)identifier;
 
 - (NSPoint)distanceIU:(NSString *)iuName withParent:(NSString *)parentName;
+- (void)changeIUPageHeight:(CGFloat)pageHeight;
 
--(void)changeIUPageHeight:(CGFloat)pageHeight;
 @end
 
 
@@ -75,6 +75,7 @@
 - (void)setPosition:(NSPoint)position;
 - (void)moveX:(NSInteger)x Y:(NSInteger)y;
 - (void)increaseWidth:(NSInteger)width height:(NSInteger)height;
+- (void)insertImagePath:(NSString *)relativePath;
 
 @property BOOL flow;
 -(BOOL)hasFrame;

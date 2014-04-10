@@ -57,23 +57,7 @@
 }
 #pragma mark -
 #pragma mark call by sizeView
-- (void)refreshGridFrameDictionary{
-    [[self webView] updateFrameDict];
-}
 
-#pragma mark -
-#pragma mark call by webView
-
-- (void)removeSelectedIUs{
-    for(IUBox *obj in self.controller.selectedObjects){
-        [obj.parent removeIU:obj];
-    }
-}
-
-
-
-#pragma mark -
-#pragma mark sizeView
 
 
 - (SizeView *)sizeView{
@@ -88,9 +72,13 @@
 }
 
 
+- (void)refreshGridFrameDictionary{
+    [[self webView] updateFrameDict];
+}
 
 #pragma mark -
-#pragma mark webView
+#pragma mark call by webView
+
 - (WebCanvasView *)webView{
     return ((LMCanvasView *)self.view).webView;
 }
@@ -109,6 +97,34 @@
     
     [[[self webView] mainFrame] loadHTMLString:document.editorSource baseURL:[NSURL fileURLWithPath:self.documentBasePath]];
 }
+
+- (void)makeNewIU:(IUBox *)newIU atPoint:(NSPoint)point atIU:(NSString *)parentIUID{
+    
+    IUBox *parentIU = [self.controller IUBoxByIdentifier:parentIUID];
+    NSPoint position = [self distanceIU:newIU.htmlID withParent:parentIUID];
+    
+    //postion을 먼저 정한 후에 add 함
+    [newIU setPosition:position];
+    [parentIU addIU:newIU error:nil];
+    [self.controller rearrangeObjects];
+    [self.controller setSelectedObjectsByIdentifiers:@[newIU.htmlID]];
+    
+    JDTraceLog( @"[IU:%@] : point(%.1f, %.1f) atIU:%@", newIU.htmlID, point.x, point.y, parentIUID);
+}
+
+- (void)removeSelectedIUs{
+    for(IUBox *obj in self.controller.selectedObjects){
+        [obj.parent removeIU:obj];
+    }
+}
+
+-(void)insertImage:(NSString *)path atIU:(NSString *)identifier{
+    IUBox *currentIU = [self.controller IUBoxByIdentifier:identifier];
+    [currentIU insertImagePath:path];
+}
+
+
+
 
 #pragma mark -
 #pragma mark manage IUs
@@ -427,20 +443,6 @@
         
     }
     
-}
-
-- (void)makeNewIU:(IUBox *)newIU atPoint:(NSPoint)point atIU:(NSString *)parentIUID{
-    
-    IUBox *parentIU = [self.controller IUBoxByIdentifier:parentIUID];
-    NSPoint position = [self distanceIU:newIU.htmlID withParent:parentIUID];
-    
-    //postion을 먼저 정한 후에 add 함
-    [newIU setPosition:position];
-    [parentIU addIU:newIU error:nil];
-    [self.controller rearrangeObjects];
-    [self.controller setSelectedObjectsByIdentifiers:@[newIU.htmlID]];
-    
-    JDTraceLog( @"[IU:%@] : point(%.1f, %.1f) atIU:%@", newIU.htmlID, point.x, point.y, parentIUID);
 }
 
 

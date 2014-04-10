@@ -251,6 +251,14 @@
     [_css setValue:@(currentHeight) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagHeight]];
 }
 
+- (void)insertImagePath:(NSString *)relativePath{
+    NSDictionary *defaultTagDictionary = [_css tagDictionaryForWidth:IUCSSDefaultCollection];
+    if (defaultTagDictionary) {
+        [_css setValue:relativePath forTag:IUCSSTagImage forWidth:_css.editWidth];
+    }
+    [_css setValue:relativePath forTag:IUCSSTagImage forWidth:IUCSSDefaultCollection];
+}
+
 -(BOOL)hasFrame{
     return YES;
 }
