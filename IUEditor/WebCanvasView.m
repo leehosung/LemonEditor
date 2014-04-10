@@ -153,11 +153,12 @@
         return NO;
     }
     //type2) resourceImage
-    NSString *imageRelativePath = [pBoard stringForType:(id)kUTTypeIUImageResource];
-    if(imageRelativePath){
+    NSString *imageName = [pBoard stringForType:(id)kUTTypeIUImageResource];
+    if(imageName){
         NSString *currentIUID = [self IUAtPoint:convertedPoint];
         if(currentIUID){
-            [((LMCanvasVC *)(self.delegate))insertImage:imageRelativePath atIU:currentIUID];
+            [((LMCanvasVC *)(self.delegate))insertImage:imageName atIU:currentIUID];
+            return YES;
         }
     }
     

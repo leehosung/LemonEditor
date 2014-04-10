@@ -75,7 +75,7 @@
 - (void)setPosition:(NSPoint)position;
 - (void)moveX:(NSInteger)x Y:(NSInteger)y;
 - (void)increaseWidth:(NSInteger)width height:(NSInteger)height;
-- (void)insertImagePath:(NSString *)relativePath;
+- (void)insertImage:(NSString *)imageName;
 
 @property BOOL flow;
 -(BOOL)hasFrame;

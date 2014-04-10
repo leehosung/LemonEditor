@@ -44,7 +44,7 @@
 #pragma mark -
 #pragma mark call by webView
 - (void)removeSelectedIUs;
-- (void)insertImage:(NSString *)path atIU:(NSString *)identifier;
+- (void)insertImage:(NSString *)name atIU:(NSString *)identifier;
 
 //select IUs
 - (BOOL)containsIU:(NSString *)IUID;
