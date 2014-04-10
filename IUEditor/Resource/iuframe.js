@@ -1,3 +1,4 @@
+//this file only used in editor
 document.sharedFrameDict = {};
 
 $.fn.updatePixel = function(){
@@ -56,18 +57,9 @@ function getIUUpdatedFrameThread(){
     }
 }
 
-function resize(){
-    if ( typeof isEditor == 'undefined'){
-        var height=0;
-        $('.IUPageContent').siblings().each(function(){height += $(this).height()});
-        height=$('.IUPageContent').parent().height()-height;
-        $('.IUPageContent').css('height', height+'px');
-    }
-}
 
 $(document).ready(function(){
-            console.log("ready");
+            console.log("ready : iuframe.js");
             getIUUpdatedFrameThread();
-                  $(window).resize(resize());
-                  });
-resize();
+});
+
