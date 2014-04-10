@@ -59,7 +59,7 @@
             cssDict[tag] = value;
             [_assembledTagDictionaryForEditWidth setObject:value forKey:tag];
         }
-        [self.delegate CSSChanged:cssDict forWidth:width];
+        [self.delegate CSSChanged:tag forWidth:width];
     }
 }
 

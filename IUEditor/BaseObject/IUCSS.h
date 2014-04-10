@@ -10,7 +10,7 @@
 
 @protocol IUCSSDelegate
 @required
--(void)CSSChanged:(NSDictionary*)tagDictionary forWidth:(NSInteger)width;
+-(void)CSSChanged:(IUCSSTag)tag forWidth:(NSInteger)width;
 -(BOOL)CSSShouldChangeValue:(id)value forTag:(IUCSSTag)tag forWidth:(NSInteger)width;
 @end
 

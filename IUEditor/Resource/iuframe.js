@@ -57,9 +57,19 @@ function getIUUpdatedFrameThread(){
     }
 }
 
+function resizePageContentHeight(){
+    var height=0;
+    $('.IUPageContent').siblings().each(function(){height += $(this).height()});
+    height=$('.IUPageContent').parent().height()-height;
+    $('.IUPageContent').css('height', height+'px');
+    
+    getIUUpdatedFrameThread();
+}
+
 
 $(document).ready(function(){
             console.log("ready : iuframe.js");
+            resizePageContentHeight();
             getIUUpdatedFrameThread();
 });
 

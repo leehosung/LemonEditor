@@ -26,6 +26,8 @@
         [self setFrameLoadDelegate:self];
         [self setEditable:NO];
         
+        [[[self mainFrame] frameView] setAllowsScrolling:NO];
+        
         [self registerForDraggedTypes:@[(id)kUTTypeIUType]];
     }
     
@@ -287,6 +289,9 @@
     [self stringByEvaluatingJavaScriptFromString:@"getIUUpdatedFrameThread()"];
 }
 
+- (void)resizePageContent{
+    [self stringByEvaluatingJavaScriptFromString:@"resizePageContentHeight()"];
+}
 
 #pragma mark -
 #pragma mark text
