@@ -606,12 +606,35 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
         [convertedColor getRed:&redFloatValue green:&greenFloatValue blue:&blueFloatValue alpha:NULL];
         
         // Convert the components to numbers (unsigned decimal integer) between 0 and 255
-        redIntValue=redFloatValue*255.99999f;
-        greenIntValue=greenFloatValue*255.99999f;
-        blueIntValue=blueFloatValue*255.99999f;
+        redIntValue=redFloatValue*0xff;
+        greenIntValue=greenFloatValue*0xff;
+        blueIntValue=blueFloatValue*0xff;
         
         // Concatenate the red, green, and blue components' hex strings together with a "#"
         return [NSString stringWithFormat:@"rgb(%d,%d,%d)", redIntValue, greenIntValue, blueIntValue];
+    }
+    return nil;
+}
+
+-(NSString*) rgbaString{
+    CGFloat redFloatValue, greenFloatValue, blueFloatValue, alphaFloatValue;
+    int redIntValue, greenIntValue, blueIntValue, alphaIntValue;
+    
+    //Convert the NSColor to the RGB color space before we can access its components
+    NSColor *convertedColor=[self colorUsingColorSpaceName:NSDeviceRGBColorSpace];
+    
+    if(convertedColor)
+    {
+        // Get the red, green, and blue components of the color
+        [convertedColor getRed:&redFloatValue green:&greenFloatValue blue:&blueFloatValue alpha:&alphaFloatValue];
+        
+        // Convert the components to numbers (unsigned decimal integer) between 0 and 255
+        redIntValue=redFloatValue*0xff;
+        greenIntValue=greenFloatValue*0xff;
+        blueIntValue=blueFloatValue*0xff;
+        
+        // Concatenate the red, green, and blue components' hex strings together with a "#"
+        return [NSString stringWithFormat:@"rgba(%d,%d,%d,%.2f)", redIntValue, greenIntValue, blueIntValue, alphaFloatValue];
     }
     return nil;
 }
@@ -649,13 +672,25 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
 
 -(NSColor*)color{
     NSArray *arr = [self RGXMatchAllStringsWithPatten:@"(\\d+)"];
-    
-    NSColor *result = [NSColor
-              colorWithDeviceRed:(CGFloat)[[arr objectAtIndex:0] intValue] / 0xff
-              green:(CGFloat)[[arr objectAtIndex:1] intValue] / 0xff
-              blue:(CGFloat)[[arr objectAtIndex:2] intValue] / 0xff
-              alpha:1.0];
-    return result;
+
+    if ([arr count] == 3) {
+        NSColor *result = [NSColor
+                           colorWithDeviceRed:(CGFloat)[[arr objectAtIndex:0] intValue] / 0xff
+                           green:(CGFloat)[[arr objectAtIndex:1] intValue] / 0xff
+                           blue:(CGFloat)[[arr objectAtIndex:2] intValue] / 0xff
+                           alpha:1.0];
+        return result;
+    }
+    else if ([arr count] == 4) {
+        NSColor *result = [NSColor
+                           colorWithDeviceRed:(CGFloat)[[arr objectAtIndex:0] intValue] / 0xff
+                           green:(CGFloat)[[arr objectAtIndex:1] intValue] / 0xff
+                           blue:(CGFloat)[[arr objectAtIndex:2] intValue] / 0xff
+                           alpha:(CGFloat)[[arr objectAtIndex:3] floatValue]];
+        return result;
+    }
+    assert(0);
+    return nil;
 }
 @end
 

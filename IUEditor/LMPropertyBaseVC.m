@@ -9,10 +9,16 @@
 #import "LMPropertyBaseVC.h"
 
 @interface LMPropertyBaseVC ()
+
+@property (weak) IBOutlet NSColorWell *bgColorWell;
+
+
 @property (weak) IBOutlet NSComboBox *imageNameComboBox;
 @property (weak) IBOutlet NSTextField *xPositionTF;
 @property (weak) IBOutlet NSTextField *yPositionTF;
+
 @property (weak) IBOutlet NSPopUpButton *sizeB;
+
 @end
 
 @implementation LMPropertyBaseVC
@@ -31,6 +37,9 @@
 }
 
 - (void)awakeFromNib{
+    [[NSColorPanel sharedColorPanel] setShowsAlpha:YES];
+    [NSColor setIgnoresAlpha:NO];
+
     [_imageNameComboBox bind:@"content" toObject:self withKeyPath:@"resourceManager.imageNames" options:nil];
     [_imageNameComboBox bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagImage] options:nil];
     
@@ -39,7 +48,10 @@
     
     [_sizeB bind:@"selectedValue" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagBGSize] options:nil];
     
+    [_bgColorWell bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagBGColor] options:nil];
+    
 }
+
 
 
 @end
