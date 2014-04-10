@@ -118,9 +118,9 @@
     }
 }
 
--(void)insertImage:(NSString *)path atIU:(NSString *)identifier{
+-(void)insertImage:(NSString *)name atIU:(NSString *)identifier{
     IUBox *currentIU = [self.controller IUBoxByIdentifier:identifier];
-    [currentIU insertImagePath:path];
+    [currentIU insertImage:name];
 }
 
 

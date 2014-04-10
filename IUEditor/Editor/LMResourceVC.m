@@ -33,7 +33,7 @@
     NSUInteger index = [indexes firstIndex];
     IUResourceNode *node = [_manager.imageResourceNodes objectAtIndex:index];
     
-    [pasteboard setString:node.relativePath forType:kUTTypeIUImageResource];
+    [pasteboard setString:node.name forType:kUTTypeIUImageResource];
     return YES;
 }
 
