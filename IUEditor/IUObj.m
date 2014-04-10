@@ -175,6 +175,7 @@
 
 -(BOOL)removeIU:(IUObj *)iu{
     [_m_children removeObject:iu];
+    [self.delegate IURemoved:iu.htmlID];
     return YES;
 }
 

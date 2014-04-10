@@ -24,7 +24,7 @@
         [self setResourceLoadDelegate:self];
         [self setEditingDelegate:self];
         [self setFrameLoadDelegate:self];
-        [self setEditable:YES];
+        [self setEditable:NO];
         
         [self registerForDraggedTypes:@[(id)kUTTypeIUType]];
     }
@@ -50,9 +50,9 @@
        && [mainView hasSubview:(NSView *)currentResponder]){
     
         if(theEvent.type == NSKeyDown){
+            unichar key = [[theEvent charactersIgnoringModifiers] characterAtIndex:0];
             
             if([theEvent modifierFlags] & NSCommandKeyMask){
-                unichar key = [[theEvent charactersIgnoringModifiers] characterAtIndex:0];
                 //select all
                 if(key == 'A' || key == 'a'){
                     [self selectWholeRangeOfCurrentCursor];
@@ -61,32 +61,64 @@
                 
             }
             else{
-                
-                NSPoint diffPoint;
-                switch (theEvent.keyCode) {
-                    case 126: //up
-                        diffPoint = NSMakePoint(0, -1.0);
-                        break;
-                    case 123: // left
-                        diffPoint = NSMakePoint(-1.0, 0);
-                        break;
-                    case 124: // right
-                        diffPoint = NSMakePoint(1.0, 0);
-                        break;
-                    case 125: // down;
-                        diffPoint = NSMakePoint(0, 1.0);
-                        break;
-                    default:
-                        diffPoint = NSZeroPoint;
-                        break;
+                unsigned short keyCode = theEvent.keyCode;
+
+                if([self isEditable]){ 
+                    //ESC key
+                    if(keyCode == 53){
+                        [self setEditable:NO];
+                    }
                 }
-                
-                [((LMCanvasVC *)self.delegate) moveIUToDiffPoint:diffPoint totalDiffPoint:diffPoint];
+                else{
+                    //arrow key
+                    if(keyCode < 127 && keyCode > 122){
+                        [self moveIUByKeyEvent:keyCode];
+                    }
+                }
             }
         }
     }
     return [super performKeyEquivalent:theEvent];
 }
+
+- (void)moveIUByKeyEvent:(unsigned short)keyCode{
+    NSPoint diffPoint;
+    switch (keyCode) {
+        case 126: //up
+            diffPoint = NSMakePoint(0, -1.0);
+            break;
+        case 123: // left
+            diffPoint = NSMakePoint(-1.0, 0);
+            break;
+        case 124: // right
+            diffPoint = NSMakePoint(1.0, 0);
+            break;
+        case 125: // down;
+            diffPoint = NSMakePoint(0, 1.0);
+            break;
+        default:
+            diffPoint = NSZeroPoint;
+            break;
+    }
+    
+    [((LMCanvasVC *)self.delegate) moveIUToDiffPoint:diffPoint totalDiffPoint:diffPoint];
+}
+
+#pragma mark -
+- (BOOL)webView:(WebView *)webView shouldDeleteDOMRange:(DOMRange *)range{
+
+    DOMNode *container = range.startContainer;
+    if([container isKindOfClass:[DOMText class]]){
+        return YES;
+    }
+//    DOMHTMLElement *iuNode = [self IUNodeAtCurrentNode:container];
+    //this is not deleting text , remove IU
+    
+[((LMCanvasVC *)self.delegate) removeSelectedIUs];
+    
+    return YES;
+}
+
 
 #pragma mark -
 #pragma mark mouse operation
@@ -268,24 +300,6 @@
 #pragma mark -
 #pragma mark text
 
-- (DOMHTMLElement *)textParentIUElement:(DOMNode *)node{
-    NSString *iuClass = ((DOMElement *)node.parentNode).className;
-    if([iuClass containsString:@"IUObj"]){
-        return (DOMHTMLElement *)node.parentNode;
-    }
-    else if ([node.parentNode isKindOfClass:[DOMHTMLHtmlElement class]] ){
-        //can't find div node
-        //- it can't be in IU model
-        //- IU model : text always have to be in Div class
-        //reach to html
-        assert(1);
-        return nil;
-    }
-    else {
-        return [self textParentIUElement:node.parentNode];
-    }
-}
-
 - (BOOL)webView:(WebView *)webView shouldInsertText:(NSString *)text replacingDOMRange:(DOMRange *)range givenAction:(WebViewInsertAction)action{
     
     DOMNode *node = range.startContainer;
@@ -417,6 +431,44 @@
         return YES;
     }
     return NO;
+}
+
+- (DOMHTMLElement *)IUNodeAtCurrentNode:(DOMNode *)node{
+    NSString *iuClass = ((DOMElement *)node).className;
+    if([iuClass containsString:@"IUObj"]){
+        return (DOMHTMLElement *)node.parentNode;
+    }
+    else if ([node.parentNode isKindOfClass:[DOMHTMLHtmlElement class]] ){
+        //can't find div node
+        //- it can't be in IU model
+        //- IU model : text always have to be in Div class
+        //reach to html
+        JDErrorLog(@"can't find IU node, reach to HTMLElement");
+        assert(1);
+        return nil;
+    }
+    else {
+        return [self IUNodeAtCurrentNode:node.parentNode];
+    }
+}
+
+- (DOMHTMLElement *)textParentIUElement:(DOMNode *)node{
+    NSString *iuClass = ((DOMElement *)node.parentNode).className;
+    if([iuClass containsString:@"IUObj"]){
+        return (DOMHTMLElement *)node.parentNode;
+    }
+    else if ([node.parentNode isKindOfClass:[DOMHTMLHtmlElement class]] ){
+        //can't find div node
+        //- it can't be in IU model
+        //- IU model : text always have to be in Div class
+        //reach to html
+        JDErrorLog(@"can't find IU node, reach to HTMLElement");
+        assert(1);
+        return nil;
+    }
+    else {
+        return [self textParentIUElement:node.parentNode];
+    }
 }
 
 

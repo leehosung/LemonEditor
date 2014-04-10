@@ -17,52 +17,64 @@
 @property (nonatomic) _binding_ NSString    *documentBasePath;
 @property (nonatomic) IUController  *controller;
 
-@property _binding_ NSInteger selectedFrameWidth;
-@property _binding_ NSInteger maxFrameWidth;
+@property _observing_ NSInteger selectedFrameWidth;
+@property _observing_ NSInteger maxFrameWidth;
 
 
 - (LMCanvasView*)view;
-- (void)refreshGridFrameDictionary;
+
 #pragma mark -
-#pragma mark be set by IU
-
-//set frame size
-- (NSInteger)frameWidth;
-- (id)addFrame:(NSInteger)width;
-- (void)removeFrame:(NSInteger)width;
-
-//load page
-- (void)setDocument:(IUDocument *)document;
-
-//select IUs
-- (BOOL)containsIU:(NSString *)IUID;
-- (NSUInteger)countOfSelectedIUs;
-- (void)removeSelectedAllIUs;
-- (void)addSelectedIU:(NSString *)IU;
-- (void)selectIUInRect:(NSRect)frame;
-
-//set html
-- (void)removeIU:(NSString *)iuID;
-
 //border, ghost view
 - (void)setBorder:(BOOL)border;
 - (void)setGhost:(BOOL)ghost;
 - (void)setGhostImage:(NSImage *)ghostImage;
 - (void)setGhostPosition:(NSPoint)position;
 
+#pragma mark -
+#pragma mark call by sizeView
+
+- (void)refreshGridFrameDictionary;
+
+//set frame size
+- (NSInteger)frameWidth;
+- (id)addFrame:(NSInteger)width;
+- (void)removeFrame:(NSInteger)width;
+
 
 #pragma mark -
-#pragma mark setIU
-//TODO: connect to IU - set value to IU
+#pragma mark call by webView
+- (void)removeSelectedIUs;
+
+//select IUs
+- (BOOL)containsIU:(NSString *)IUID;
+- (NSUInteger)countOfSelectedIUs;
+- (void)deselectedAllIUs;
+- (void)addSelectedIU:(NSString *)IU;
+- (void)selectIUInRect:(NSRect)frame;
+
+
+#pragma mark -
+#pragma mark be set by IU
+//load page
+- (void)setDocument:(IUDocument *)document;
+
+
+//set html
+- (void)removeIU:(NSString *)iuID;
+
+
+#pragma mark -
+#pragma mark set IU
+
 - (void)updateIUFrameDictionary:(NSMutableDictionary *)iuFrameDict;
 - (void)updateGridFrameDictionary:(NSMutableDictionary *)gridFrameDict;
-
 - (void)updateHTMLText:(NSString *)insertText atIU:(NSString *)iuID;
 
 - (void)moveIUToDiffPoint:(NSPoint)point totalDiffPoint:(NSPoint)totalPoint;
 - (void)extendIUToDiffSize:(NSSize)size totalDiffSize:(NSSize)totalSize;;
 
 - (void)makeNewIU:(IUObj *)newIU atPoint:(NSPoint)point atIU:(NSString *)parentIUID;
-
+- (NSString *)currentHTML;
 - (void)showCurrentSource;
+
 @end
