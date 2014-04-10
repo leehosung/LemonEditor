@@ -10,7 +10,6 @@
 #import "JDUIUtil.h"
 #import "LMCanvasView.h"
 #import "LMCanvasVC.h"
-#import "IUDefinition.h"
 
 @implementation SizeTextField : NSTextField
 - (id)init{
