@@ -15,9 +15,13 @@
 
 @property id delegate;
 
+//call javascript
 - (void)updateFrameDict;
+- (void)resizePageContent;
+
+#pragma mark -
+
 - (NSString *)IDOfCurrentIU;
 - (BOOL)isDOMTextAtPoint:(NSPoint)point;
-
 - (void)changeDOMRange:(NSPoint)point;
 @end

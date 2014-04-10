@@ -53,6 +53,9 @@
     return (LMCanvasView*)[super view];
 }
 
+-(void)changeIUPageHeight:(CGFloat)pageHeight{
+    [self.view setHeightOfMainView:pageHeight];
+}
 #pragma mark -
 #pragma mark call by sizeView
 - (void)refreshGridFrameDictionary{
@@ -446,7 +449,9 @@
     
 }
 
-#pragma mark -
+
+
+#pragma mark HTMLSource
 
 -(NSString *)currentHTML{
     NSString *htmlSource =  [(DOMHTMLElement *)[[[[self webView] mainFrame] DOMDocument] documentElement] outerHTML];

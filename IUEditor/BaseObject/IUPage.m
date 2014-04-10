@@ -22,6 +22,26 @@
 - (id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
     [aDecoder decodeToObject:self withProperties:[IUPage properties]];
+    
+    [self addObserver:self.css.assembledTagDictionary forKeyPath:@"css" options:0 context:nil];
+
+    return self;
+}
+
+- (id)initWithSetting:(NSDictionary *)setting{
+    self = [super initWithSetting:setting];
+    
+    //add some iu
+    IUBox *obj = [[IUBox alloc] initWithSetting:setting];
+    obj.htmlID = @"qwerq";
+    obj.name = @"sample object";
+    [self addIU:obj error:nil];
+    
+    [self.css eradicateTag:IUCSSTagX];
+    [self.css eradicateTag:IUCSSTagY];
+    [self.css eradicateTag:IUCSSTagWidth];
+    [self.css eradicateTag:IUCSSTagHeight];
+    
     return self;
 }
 
@@ -73,21 +93,13 @@
     }
 }
 
-- (id)initWithSetting:(NSDictionary *)setting{
-    self = [super initWithSetting:setting];
-    
-    //add some iu
-    IUBox *obj = [[IUBox alloc] initWithSetting:setting];
-    obj.htmlID = @"qwerq";
-    obj.name = @"sample object";
-    [self addIU:obj error:nil];
-    
-    [self.css eradicateTag:IUCSSTagX];
-    [self.css eradicateTag:IUCSSTagY];
-    [self.css eradicateTag:IUCSSTagWidth];
-    [self.css eradicateTag:IUCSSTagHeight];
-
-    return self;
+-(void)CSSChanged:(IUCSSTag)tag forWidth:(NSInteger)width{
+    [super CSSChanged:tag forWidth:width];
+    if([tag  isEqual: IUCSSTagHeight]){
+        CGFloat height = [[self.css tagDictionaryForWidth:width][IUCSSTagHeight] floatValue];
+        [self.delegate changeIUPageHeight:height];
+    }
 }
+
 
 @end

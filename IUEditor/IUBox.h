@@ -20,6 +20,8 @@
 -(void)IURemoved:(NSString*)identifier;
 
 - (NSPoint)distanceIU:(NSString *)iuName withParent:(NSString *)parentName;
+
+-(void)changeIUPageHeight:(CGFloat)pageHeight;
 @end
 
 

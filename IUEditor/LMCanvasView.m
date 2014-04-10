@@ -19,6 +19,7 @@
 
 - (void)awakeFromNib{
     
+    self.mainView = [[NSFlippedView alloc] init];
     self.webView = [[WebCanvasView alloc] init];
     self.gridView = [[GridView alloc] init];
     
@@ -26,14 +27,12 @@
     self.gridView.delegate= self.delegate;
     self.sizeView.delegate = self.delegate;
     
+    [self.mainScrollView setDocumentView:self.mainView];
     [self.mainView addSubviewFullFrame:self.webView];
     [self.mainView addSubviewFullFrame:self.gridView];
     
-    NSRect mainViewFrame = self.splitBottomView.frame;
-    [self.mainView setFrameSize:mainViewFrame.size];
     [self.mainView setFrameOrigin:NSZeroPoint];
-    
-    [self setWidthOfMainView:defaultFrameWidth];
+    [self.mainView setFrameSize:NSMakeSize(defaultFrameWidth, self.mainScrollView.frame.size.height)];
     
     [self.mainView addObserver:self forKeyPath:@"frame" options:0 context:nil];
     
@@ -70,6 +69,12 @@
 - (void)setWidthOfMainView:(CGFloat)width{
     [self.mainView setWidth:width];
     
+}
+
+- (void)setHeightOfMainView:(CGFloat)height{
+//    [self.mainScrollView.contentView setHeight:height];
+    [self.mainView setHeight:height];
+    [self.webView resizePageContent];
 }
 
 #pragma mark -

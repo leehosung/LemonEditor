@@ -23,10 +23,28 @@
                     <rect key="frame" x="0.0" y="41" width="621" height="603"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <subviews>
-                        <customView autoresizesSubviews="NO" id="T5H-SY-Axq" customClass="NSFlippedView">
-                            <rect key="frame" x="0.0" y="0.0" width="621" height="603"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        </customView>
+                        <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="Ej4-Uz-enV">
+                            <rect key="frame" x="0.0" y="0.0" width="621" height="608"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <clipView key="contentView" id="UH1-2M-61Q">
+                                <rect key="frame" x="1" y="1" width="619" height="606"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <view id="X7N-l5-iSJ" customClass="NSFlippedView">
+                                        <rect key="frame" x="0.0" y="0.0" width="619" height="606"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </view>
+                                </subviews>
+                            </clipView>
+                            <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="VLc-fs-1IH">
+                                <rect key="frame" x="1" y="591" width="619" height="16"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </scroller>
+                            <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="2yM-8c-esj">
+                                <rect key="frame" x="605" y="1" width="15" height="606"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </scroller>
+                        </scrollView>
                     </subviews>
                 </customView>
             </subviews>
@@ -36,7 +54,7 @@
             </holdingPriorities>
             <connections>
                 <outlet property="delegate" destination="-2" id="m8U-IP-QTk"/>
-                <outlet property="mainView" destination="T5H-SY-Axq" id="Gum-82-XuZ"/>
+                <outlet property="mainScrollView" destination="Ej4-Uz-enV" id="pyb-hk-Wuz"/>
                 <outlet property="sizeView" destination="7bm-eT-a4W" id="9tE-Ge-vu1"/>
                 <outlet property="splitBottomView" destination="A9f-iP-fE5" id="gnF-IY-3DX"/>
             </connections>
