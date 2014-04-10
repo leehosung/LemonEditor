@@ -35,6 +35,7 @@
     
     [self.mainView addObserver:self forKeyPath:@"frame" options:0 context:nil];
     
+    
 }
 
 - (BOOL)isFlipped{
@@ -67,7 +68,6 @@
 
 - (void)setWidthOfMainView:(CGFloat)width{
     [self.mainView setWidth:width];
-    
 }
 
 - (void)setHeightOfMainView:(CGFloat)height{
