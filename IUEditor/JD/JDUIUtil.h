@@ -55,6 +55,7 @@ BOOL   isNSRectContainsRect(NSRect rect, NSRect subrect);
 @interface NSColor(JDExtenstion)
 +(NSColor *)randomColor;
 -(NSString*) rgbString;
+-(NSString*) rgbaString;
 -(NSColor*) complementaryColor;
 @end
 

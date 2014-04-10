@@ -53,7 +53,7 @@
 
 -(void)putTag:(NSString*)tag color:(NSColor*)color{
     if (color) {
-        self[tag] = [color rgbString];
+        self[tag] = [color rgbaString];
     }
 }
 
