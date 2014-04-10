@@ -7,7 +7,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="LMResourceVC">
             <connections>
                 <outlet property="collectionV" destination="IeW-g4-6nd" id="2al-8E-StM"/>
-                <outlet property="view" destination="IeW-g4-6nd" id="xDH-WG-a27"/>
+                <outlet property="view" destination="1p5-j3-luq" id="pdW-xr-mM3"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -19,7 +19,7 @@
                 <rect key="frame" x="1" y="1" width="248" height="158"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <collectionView id="IeW-g4-6nd">
+                    <collectionView selectable="YES" id="IeW-g4-6nd">
                         <rect key="frame" x="0.0" y="0.0" width="248" height="158"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>

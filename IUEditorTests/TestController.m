@@ -7,7 +7,6 @@
 //
 
 #import "TestController.h"
-#import "IUDefinition.h"
 
 @implementation TestView: NSView
 

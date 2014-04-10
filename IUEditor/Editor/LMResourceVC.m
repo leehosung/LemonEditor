@@ -29,4 +29,12 @@
     [_collectionV bind:@"content" toObject:manager withKeyPath:@"imageResourceNodes" options:nil];
 }
 
+- (BOOL)collectionView:(NSCollectionView *)collectionView writeItemsAtIndexes:(NSIndexSet *)indexes toPasteboard:(NSPasteboard *)pasteboard{
+    NSUInteger index = [indexes firstIndex];
+    IUResourceNode *node = [_manager.imageResourceNodes objectAtIndex:index];
+    
+    [pasteboard setString:node.relativePath forType:kUTTypeIUImageResource];
+    return YES;
+}
+
 @end
