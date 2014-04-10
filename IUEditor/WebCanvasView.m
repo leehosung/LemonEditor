@@ -167,15 +167,7 @@
     }
 }
 
-- (NSString *)IUAtPoint:(NSPoint)point{
-    DOMHTMLElement *htmlElement = (DOMHTMLElement *)[self DOMElementAtPoint:point];
 
-    if([htmlElement isKindOfClass:[DOMText class]]){
-        htmlElement = [self textParentIUElement:htmlElement];
-    }
-    
-    return htmlElement.idName;
-}
 
 #pragma mark -
 #pragma mark Javascript with WebView
@@ -444,6 +436,18 @@
     return element;
 }
 
+- (NSString *)IUAtPoint:(NSPoint)point{
+    
+    DOMElement *domNode =[self DOMElementAtPoint:point];
+    if(domNode){
+        DOMHTMLElement *htmlElement =[self IUNodeAtCurrentNode:domNode];
+        return htmlElement.idName;
+    }
+    
+    return nil;
+}
+
+
 - (BOOL)isDOMTextAtPoint:(NSPoint)point{
     DOMElement *element = [self DOMElementAtPoint:point];
     if([element isKindOfClass:[DOMText class]]){
@@ -452,10 +456,11 @@
     return NO;
 }
 
+
 - (DOMHTMLElement *)IUNodeAtCurrentNode:(DOMNode *)node{
     NSString *iuClass = ((DOMElement *)node).className;
-    if([iuClass containsString:@"IUObj"]){
-        return (DOMHTMLElement *)node.parentNode;
+    if([iuClass containsString:@"IUBox"]){
+        return (DOMHTMLElement *)node;
     }
     else if ([node.parentNode isKindOfClass:[DOMHTMLHtmlElement class]] ){
         //can't find div node
