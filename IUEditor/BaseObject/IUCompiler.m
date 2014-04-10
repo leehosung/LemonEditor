@@ -164,7 +164,7 @@
     
 
     value = cssTagDict[IUCSSTagBGColor];
-    [dict putTag:@"background-color" color:value];
+    [dict putTag:@"background-color" color:value ignoreClearColor:YES];
     
     value = cssTagDict[IUCSSTagImage];
     NSString *resourcePath = [_resourceSource relativePathForResource:value];
