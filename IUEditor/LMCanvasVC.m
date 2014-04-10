@@ -34,11 +34,11 @@
 }
 
 -(void)awakeFromNib{
-    InnerSizeBox *defaultBox = [self addFrame:defaultFrameWidth];
+    InnerSizeBox *defaultBox = [[self sizeView] addFrame:defaultFrameWidth];
     [defaultBox select];
     //TODO: test
-    [self addFrame:400];
-    [self addFrame:700];
+    [[self sizeView] addFrame:400];
+    [[self sizeView] addFrame:700];
 }
 
 
@@ -55,22 +55,15 @@
 -(void)changeIUPageHeight:(CGFloat)pageHeight{
     [self.view setHeightOfMainView:pageHeight];
 }
+
 #pragma mark -
 #pragma mark call by sizeView
-
 
 
 - (SizeView *)sizeView{
     return ((LMCanvasView *)self.view).sizeView;
     
 }
-- (id)addFrame:(NSInteger)width{
-    return [[self sizeView] addFrame:width];
-}
-- (void)removeFrame:(NSInteger)width{
-    [[self sizeView] removeFrame:width];
-}
-
 
 - (void)refreshGridFrameDictionary{
     [[self webView] updateFrameDict];
@@ -238,6 +231,12 @@
         [self setIUStyle:cssText withID:identifier size:width];
         
     }
+}
+
+- (void)removeStyleSheet:(NSInteger)size{
+    DOMElement *cssNode = [[self DOMDoc] getElementById:[NSString stringWithFormat:@"style%ld", size]];
+    [cssNode.parentNode removeChild:cssNode];
+
 }
 
 - (id)makeNewStyleSheet:(NSInteger)size{

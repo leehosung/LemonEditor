@@ -34,12 +34,8 @@
 #pragma mark call by sizeView
 
 - (void)refreshGridFrameDictionary;
-
-//set frame size
 - (NSInteger)frameWidth;
-- (id)addFrame:(NSInteger)width;
-- (void)removeFrame:(NSInteger)width;
-
+- (void)removeStyleSheet:(NSInteger)size;
 
 #pragma mark -
 #pragma mark call by webView
