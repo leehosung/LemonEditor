@@ -26,6 +26,7 @@
 #import "NSString+IUTag.h"
 
 #define _binding_
+#define _observing_
 
 //#define IULogSource 0
 #define IULogSource @"source"

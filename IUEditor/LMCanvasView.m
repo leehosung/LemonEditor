@@ -134,16 +134,18 @@
                 JDTraceLog( @"mouse down");
                 NSString *currentIUID = [self.webView IDOfCurrentIU];
                 
-                if (theEvent.clickCount == 1){
-                    
+                if (theEvent.clickCount == 1
+                    || theEvent.clickCount == 2){
                     
                     if( [self canRemoveIU:theEvent IUID:currentIUID] ){
-                        [((LMCanvasVC *)self.delegate) removeSelectedAllIUs];
+                        [((LMCanvasVC *)self.delegate) deselectedAllIUs];
                         
                     }
                     
                     if([self canAddIU:currentIUID]){
                         [((LMCanvasVC *)self.delegate) addSelectedIU:currentIUID];
+                        //다른 iu를 선택하는 순간 editing mode out
+                        [[self webView] setEditable:NO];
                     }
                     
                     if([self.webView isDOMTextAtPoint:convertedPoint] == NO
@@ -151,6 +153,11 @@
                         isSelected = YES;
                     }
 
+                    //change editable mode
+                    if(theEvent.clickCount ==2){
+                        [[self webView] setEditable:YES];
+                        [[self webView] changeDOMRange:convertedPoint];
+                    }
                 }
                 startDragPoint = convertedPoint;
                 middleDragPoint = startDragPoint;
@@ -159,48 +166,23 @@
                 JDTraceLog( @"mouse dragged");
                 endDragPoint = convertedPoint;
                 
-                //draw select rect
                 if([theEvent modifierFlags] & NSCommandKeyMask ){
-                    isSelectDragged = YES;
-                    isSelected = NO;
-                    
-                    NSSize size = NSMakeSize(endDragPoint.x-startDragPoint.x, endDragPoint.y-startDragPoint.y);
-                    NSRect selectFrame = NSMakeRect(startDragPoint.x, startDragPoint.y, size.width, size.height);
-                    
-                    [self.gridView drawSelectionLayer:selectFrame];
-                    [((LMCanvasVC *)self.delegate) selectIUInRect:selectFrame];
-                    
+                    [self selectWithDrawRect];
                 }
                 if(isSelected){
-                    isDragged = YES;
-                    NSPoint totalPoint = NSMakePoint(endDragPoint.x-startDragPoint.x, endDragPoint.y-startDragPoint.y);
-                    NSPoint diffPoint = NSMakePoint(endDragPoint.x - middleDragPoint.x, endDragPoint.y - middleDragPoint.y);
-                    [((LMCanvasVC *)self.delegate) moveIUToDiffPoint:diffPoint totalDiffPoint:totalPoint];
-                    
+                    [self moveIUByDragging];
                 }
+              
                 middleDragPoint = endDragPoint;
             }
             
-            //END : mainView handling
         }
         
         
         if ( theEvent.type == NSLeftMouseUp ){
             JDTraceLog( @"NSLeftMouseUp");
+            [self clearMouseMovement];
             
-            [self.gridView clearGuideLine];
-            
-            if(isSelected){
-                isSelected = NO;
-            }
-            if(isDragged){
-                isDragged = NO;
-            }
-            if(isSelectDragged){
-                isSelectDragged = NO;
-                [NSCursor pop];
-                [self.gridView resetSelectionLayer];
-            }
         }
     }
     else {
@@ -211,6 +193,46 @@
     if(isSelectDragged){
         [[NSCursor crosshairCursor] push];
     }
+}
+
+
+#pragma mark -
+#pragma mark handle mouse event
+
+- (void)moveIUByDragging{
+    isDragged = YES;
+    NSPoint totalPoint = NSMakePoint(endDragPoint.x-startDragPoint.x, endDragPoint.y-startDragPoint.y);
+    NSPoint diffPoint = NSMakePoint(endDragPoint.x - middleDragPoint.x, endDragPoint.y - middleDragPoint.y);
+    [((LMCanvasVC *)self.delegate) moveIUToDiffPoint:diffPoint totalDiffPoint:totalPoint];
+    
+}
+
+- (void)selectWithDrawRect{
+    isSelectDragged = YES;
+    isSelected = NO;
+    
+    NSSize size = NSMakeSize(endDragPoint.x-startDragPoint.x, endDragPoint.y-startDragPoint.y);
+    NSRect selectFrame = NSMakeRect(startDragPoint.x, startDragPoint.y, size.width, size.height);
+    
+    [self.gridView drawSelectionLayer:selectFrame];
+    [((LMCanvasVC *)self.delegate) selectIUInRect:selectFrame];
+}
+
+- (void)clearMouseMovement{
+    [self.gridView clearGuideLine];
+    
+    if(isSelected){
+        isSelected = NO;
+    }
+    if(isDragged){
+        isDragged = NO;
+    }
+    if(isSelectDragged){
+        isSelectDragged = NO;
+        [NSCursor pop];
+        [self.gridView resetSelectionLayer];
+    }
+
 }
 
 @end

@@ -53,8 +53,19 @@
     return (LMCanvasView*)[super view];
 }
 
+#pragma mark -
+#pragma mark call by sizeView
 - (void)refreshGridFrameDictionary{
     [[self webView] updateFrameDict];
+}
+
+#pragma mark -
+#pragma mark call by webView
+
+- (void)removeSelectedIUs{
+    for(IUObj *obj in self.controller.selectedObjects){
+        [obj.parent removeIU:obj];
+    }
 }
 
 
@@ -127,7 +138,7 @@
         }
     }
 }
-- (void)removeSelectedAllIUs{
+- (void)deselectedAllIUs{
     [self.controller setSelectionIndexPath:nil];
 }
 - (void)addSelectedIU:(NSString *)IU{
@@ -139,7 +150,7 @@
 - (void)selectIUInRect:(NSRect)frame{
     NSArray *keys = [frameDict.dict allKeys];
     
-    [self removeSelectedAllIUs];
+    [self deselectedAllIUs];
     
     for(NSString *key in keys){
         NSRect iuframe = [[frameDict.dict objectForKey:key] rectValue];
@@ -191,18 +202,7 @@
     [self.webView setNeedsDisplay:YES];
 }
 
-- (void)IURemoved:(NSString*)identifier{
-    //remove HTML
-    DOMHTMLElement *selectHTMLElement = [self getHTMLElementbyID:identifier];
-    DOMElement *parentElement = [selectHTMLElement parentElement];
-    [parentElement removeChild:selectHTMLElement];
-    
-    
-    //TODO: remove CSS
-    // - 꼭 필요한가??
-    
-    
-}
+
 
 #pragma mark -
 #pragma mark CSS
@@ -423,8 +423,27 @@
     [newIU setPosition:position];
     [parentIU addIU:newIU error:nil];
     [self.controller rearrangeObjects];
+    [self.controller setSelectedObjectsByIdentifiers:@[newIU.htmlID]];
     
     JDTraceLog( @"[IU:%@] : point(%.1f, %.1f) atIU:%@", newIU.htmlID, point.x, point.y, parentIUID);
+}
+
+
+- (void)IURemoved:(NSString*)identifier{
+    //remove HTML
+    DOMHTMLElement *selectHTMLElement = [self getHTMLElementbyID:identifier];
+    DOMElement *parentElement = [selectHTMLElement parentElement];
+    [parentElement removeChild:selectHTMLElement];
+    
+    [self deselectedAllIUs];
+    [frameDict.dict removeObjectForKey:identifier];
+    [self.controller rearrangeObjects];
+    
+    
+    //TODO: remove CSS
+    // - 꼭 필요한가??
+    
+    
 }
 
 #pragma mark -
