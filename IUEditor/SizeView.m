@@ -142,12 +142,28 @@
 
 }
 - (void)removeFrame:(NSInteger)width{
+    if(sizeArray.count == 1){
+        JDWarnLog(@"last width : can't remove it");
+        return;
+    }
+    
+
     NSNumber *widthNumber = [NSNumber numberWithInteger:width];
     NSInteger index = [[self sortedArray] indexOfObject:widthNumber];
     
-    NSView *removeView = boxManageView.subviews[index];
+    InnerSizeBox *removeView = boxManageView.subviews[index];
+    //select next larger box
+    InnerSizeBox *nextBox = boxManageView.subviews[index-1];
+    [nextBox select];
+    
+    //remove css & view & array
+    [self.delegate removeStyleSheet:[removeView frameWidth]];
     [removeView removeFromSuperview];
+    [sizeArray removeObject:widthNumber];
+    
+    //set maxWidth in case of removing maxWidth 
     [self setMaxWidth];
+
 }
 
 #pragma mark popover

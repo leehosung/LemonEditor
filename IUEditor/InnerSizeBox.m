@@ -37,6 +37,25 @@
     if(theEvent.clickCount == 1){
         [self select];
     }
+    
+}
+
+- (void)rightMouseDown:(NSEvent *)theEvent{
+    
+    if(theEvent.clickCount == 1){
+        NSMenu *sizeBoxMenu = [[NSMenu alloc] initWithTitle:@"InnerSizeBox"];
+        NSMenuItem *removeMenu = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"Remove %ld",width] action:@selector(removeSelf) keyEquivalent:@""];
+        [sizeBoxMenu addItem:removeMenu];
+        
+        [NSMenu popUpContextMenu:sizeBoxMenu withEvent:theEvent forView:self];
+    }
+    
+    [super rightMouseDown:theEvent];
+
+}
+
+- (void)removeSelf{
+    [(SizeView *)self.boxDelegate removeFrame:width];
 }
 
 #pragma mark -
