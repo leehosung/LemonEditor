@@ -21,8 +21,7 @@
 
 -(void)putTag:(IUCSSTag)tag intValue:(int)intValue ignoreZero:(BOOL)ignoreZero unit:(IUCSSUnit)unit;
 -(void)putTag:(IUCSSTag)tag floatValue:(float)intValue ignoreZero:(BOOL)ignoreZero unit:(IUCSSUnit)unit;
--(void)putTag:(IUCSSTag)tag color:(NSColor*)color;
-
+-(void)putTag:(NSString*)tag color:(NSColor*)color ignoreClearColor:(BOOL)ignoreClearColor;
 -(void)putTag:(IUCSSTag)tag string:(NSString*)stringValue;
 
 -(void)removeTag:(IUCSSTag)key;

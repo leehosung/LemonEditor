@@ -51,8 +51,15 @@
     }
 }
 
--(void)putTag:(NSString*)tag color:(NSColor*)color{
+-(void)putTag:(NSString*)tag color:(NSColor*)color ignoreClearColor:(BOOL)ignoreClearColor{
     if (color) {
+        if (ignoreClearColor){
+            CGFloat alpha;
+            [color getRed:nil green:nil blue:nil alpha:&alpha];
+            if (alpha == 0 && ignoreClearColor) {
+                return;
+            }
+        }
         self[tag] = [color rgbaString];
     }
 }
