@@ -11,7 +11,7 @@
 #import "JDLogUtil.h"
 #import "IUDefinition.h"
 #import "LMCanvasView.h"
-#import "IUObj.h"
+#import "IUBox.h"
 
 @implementation WebCanvasView
 
@@ -139,7 +139,8 @@
     NSPoint convertedPoint = [self convertPoint:dragPoint fromView:nil];
     
     NSData *newData = [pBoard dataForType:(id)kUTTypeIUType];
-    IUObj *newIU = [NSKeyedUnarchiver unarchiveObjectWithData:newData];
+    IUBox *newIU = [NSKeyedUnarchiver unarchiveObjectWithData:newData];
+    NSString *parentIUID = [self IUAtPoint:dragPoint];
     if(newIU){
         NSString *parentIUID = [self IUAtPoint:dragPoint];
         if(parentIUID){
@@ -300,6 +301,24 @@
 #pragma mark -
 #pragma mark text
 
+- (DOMHTMLElement *)textParentIUElement:(DOMNode *)node{
+    NSString *iuClass = ((DOMElement *)node.parentNode).className;
+    if([iuClass containsString:@"IUBox"]){
+        return (DOMHTMLElement *)node.parentNode;
+    }
+    else if ([node.parentNode isKindOfClass:[DOMHTMLHtmlElement class]] ){
+        //can't find div node
+        //- it can't be in IU model
+        //- IU model : text always have to be in Div class
+        //reach to html
+        assert(1);
+        return nil;
+    }
+    else {
+        return [self textParentIUElement:node.parentNode];
+    }
+}
+
 - (BOOL)webView:(WebView *)webView shouldInsertText:(NSString *)text replacingDOMRange:(DOMRange *)range givenAction:(WebViewInsertAction)action{
     
     DOMNode *node = range.startContainer;
@@ -452,24 +471,7 @@
     }
 }
 
-- (DOMHTMLElement *)textParentIUElement:(DOMNode *)node{
-    NSString *iuClass = ((DOMElement *)node.parentNode).className;
-    if([iuClass containsString:@"IUObj"]){
-        return (DOMHTMLElement *)node.parentNode;
-    }
-    else if ([node.parentNode isKindOfClass:[DOMHTMLHtmlElement class]] ){
-        //can't find div node
-        //- it can't be in IU model
-        //- IU model : text always have to be in Div class
-        //reach to html
-        JDErrorLog(@"can't find IU node, reach to HTMLElement");
-        assert(1);
-        return nil;
-    }
-    else {
-        return [self textParentIUElement:node.parentNode];
-    }
-}
+
 
 
 @end

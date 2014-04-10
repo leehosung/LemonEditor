@@ -13,7 +13,7 @@
 #import "JDLogUtil.h"
 #import "SizeView.h"
 #import "IUFrameDictionary.h"
-#import "IUObj.h"
+#import "IUBox.h"
 #import "IUDefinition.h"
 #import "InnerSizeBox.h"
 
@@ -63,7 +63,7 @@
 #pragma mark call by webView
 
 - (void)removeSelectedIUs{
-    for(IUObj *obj in self.controller.selectedObjects){
+    for(IUBox *obj in self.controller.selectedObjects){
         [obj.parent removeIU:obj];
     }
 }
@@ -361,7 +361,7 @@
 #pragma mark moveIU
 //drag & drop after select IU
 - (void)moveIUToDiffPoint:(NSPoint)point totalDiffPoint:(NSPoint)totalPoint{
-    for(IUObj *obj in self.controller.selectedObjects){
+    for(IUBox *obj in self.controller.selectedObjects){
         
         if([frameDict isGuidePoint:totalPoint]){
             
@@ -387,7 +387,7 @@
 
 - (void)extendIUToDiffSize:(NSSize)size totalDiffSize:(NSSize)totalSize{
     //drag pointlayer
-    for(IUObj *obj in self.controller.selectedObjects){
+    for(IUBox *obj in self.controller.selectedObjects){
         
         if([frameDict isGuideSize:totalSize]){
             
@@ -414,9 +414,9 @@
     
 }
 
-- (void)makeNewIU:(IUObj *)newIU atPoint:(NSPoint)point atIU:(NSString *)parentIUID{
+- (void)makeNewIU:(IUBox *)newIU atPoint:(NSPoint)point atIU:(NSString *)parentIUID{
     
-    IUObj *parentIU = [self.controller IUObjByIdentifier:parentIUID];
+    IUBox *parentIU = [self.controller IUBoxByIdentifier:parentIUID];
     NSPoint position = [self distanceIU:newIU.htmlID withParent:parentIUID];
     
     //postion을 먼저 정한 후에 add 함

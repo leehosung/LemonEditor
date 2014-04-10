@@ -9,7 +9,7 @@
 #import "LMWidgetLibraryVC.h"
 #import "LMGeneralObject.h"
 #import "IUDefinition.h"
-#import "IUObj.h"
+#import "IUBox.h"
 
 @interface LMWidgetLibraryVC ()
 
@@ -36,7 +36,7 @@
     NSString *className = object.title;
     NSDictionary *setting = object.dict;
     
-    IUObj *obj = [[NSClassFromString(className) alloc] initWithSetting:setting];
+    IUBox *obj = [[NSClassFromString(className) alloc] initWithSetting:setting];
     obj.htmlID = [_controller requestNewIdentifierWithString:obj.className];
     obj.name = obj.htmlID;
     

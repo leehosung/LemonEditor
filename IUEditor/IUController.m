@@ -19,7 +19,7 @@
     [JDLogUtil log:IULogAction key:@"canvas selected objects" string:[identifiers description]];
     IUDocument *document = [self.content firstObject];
     NSArray *allChildren = [[document allChildren] arrayByAddingObject:document];
-    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUObj *iu, NSDictionary *bindings) {
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUBox *iu, NSDictionary *bindings) {
         if ([identifiers containsObject:iu.htmlID]) {
             return YES;
         }
@@ -33,11 +33,11 @@
     return [self.selectedObjects valueForKey:@"htmlID"];
 }
 
--(IUObj *)IUObjByIdentifier:(NSString *)identifier{
+-(IUBox *)IUBoxByIdentifier:(NSString *)identifier{
     IUDocument *document = [self.content firstObject];
     NSArray *allChildren = [[document allChildren] arrayByAddingObject:document];
     
-    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUObj *iu, NSDictionary *bindings) {
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUBox *iu, NSDictionary *bindings) {
         if ([identifier isEqualToString:iu.htmlID]) {
             return YES;
         }
@@ -61,7 +61,7 @@
     while (1) {
         i++;
         NSString *identifier = [string stringByAppendingFormat:@"%d", i];
-        if ([self IUObjByIdentifier:identifier] == nil) {
+        if ([self IUBoxByIdentifier:identifier] == nil) {
             return identifier;
         }
     }

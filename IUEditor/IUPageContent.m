@@ -12,5 +12,7 @@
 - (BOOL)flow{
     return YES;
 }
-
+-(BOOL)hasFrame{
+    return NO;
+}
 @end

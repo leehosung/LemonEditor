@@ -38,7 +38,7 @@
     
     
     [css appendString:[self cssSourceForIU:document width:IUCSSDefaultCollection]];
-    for (IUObj *obj in document.allChildren) {
+    for (IUBox *obj in document.allChildren) {
         [css appendString:[self cssSourceForIU:obj width:IUCSSDefaultCollection]];
     }
     [source replaceOccurrencesOfString:@"<!--CSS_Replacement-->" withString:[css stringByIndent:8 prependIndent:NO] options:0 range:[source fullRange]];
@@ -52,7 +52,7 @@
     return source;
 }
 
--(NSString*)cssSourceForIU:(IUObj*)iu width:(int)width{
+-(NSString*)cssSourceForIU:(IUBox*)iu width:(int)width{
     NSMutableString *css = [NSMutableString string];
     [css appendString:[NSString stringWithFormat:@"#%@ {", iu.htmlID]];
     [css appendString:[self CSSContentFromAttributes:[iu CSSAttributesForWidth:IUCSSDefaultCollection] ofClass:iu]];
@@ -62,38 +62,36 @@
 }
 
 
--(NSString*)editorHTML:(IUObj*)iu{
+-(NSString*)editorHTML:(IUBox*)iu{
     if ([iu isKindOfClass:[IUPage class]]) {
         IUPage *page = (IUPage*)iu;
         if (page.master) {
             NSMutableString *code = [NSMutableString string];
             [code appendFormat:@"<div %@>\n", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes]];
-            for (IUObj *obj in page.master.children) {
+            for (IUBox *obj in page.master.children) {
                 [code appendString:[[self editorHTML:obj] stringByIndent:4 prependIndent:YES]];
                 [code appendString:@"\n"];
             }
-            [code appendString:@"    <div class='IUPageContent'>\n"];
             if (iu.children.count) {
-                for (IUObj *child in iu.children) {
+                for (IUBox *child in iu.children) {
                     if (child == page.master) {
                         continue;
                     }
-                    [code appendString:[[self editorHTML:child] stringByIndent:8 prependIndent:YES]];
+                    [code appendString:[[self editorHTML:child] stringByIndent:4 prependIndent:YES]];
                     [code appendString:@"\n"];
                 }
             }
-            [code appendString:@"    </div>\n"];
             [code appendString:@"</div>"];
             return code;
         }
     }
-    if ([iu isKindOfClass:[IUObj class]]) {
+    if ([iu isKindOfClass:[IUBox class]]) {
         NSMutableString *code = [NSMutableString string];
         [code appendFormat:@"<div %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes]];
         [code appendString:@"testme"];
         if (iu.children.count) {
             [code appendString:@"\n"];
-            for (IUObj *child in iu.children) {
+            for (IUBox *child in iu.children) {
                 [code appendString:[[self editorHTML:child] stringByIndent:4 prependIndent:YES]];
                 [code appendString:@"\n"];
             }
@@ -115,7 +113,7 @@
     return code;
 }
 
--(NSString*)CSSContentFromAttributes:(NSDictionary*)cssTagDictionary ofClass:(IUObj*)obj{
+-(NSString*)CSSContentFromAttributes:(NSDictionary*)cssTagDictionary ofClass:(IUBox*)obj{
     //convert css tag dictionry to css string dictionary
     NSDictionary *cssStringDict = [self cssStringDictionaryWithCSSTagDictionary:cssTagDictionary ofClass:obj];
     
@@ -128,37 +126,42 @@
 }
 
 
--(IUCSSStringDictionary*)cssStringDictionaryWithCSSTagDictionary:(NSDictionary*)cssTagDict ofClass:(IUObj*)obj{
+-(IUCSSStringDictionary*)cssStringDictionaryWithCSSTagDictionary:(NSDictionary*)cssTagDict ofClass:(IUBox*)obj{
     IUCSSStringDictionary *dict = [IUCSSStringDictionary dictionary];
     id value;
     
-    value = cssTagDict[IUCSSTagX];
-    if (value) {
-        [dict putTag:@"left" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
-    }
-
-    value = cssTagDict[IUCSSTagY];
-    if (value) {
-        if ([_flowIUs containsObject:[obj class]]) {
-            [dict putTag:@"margin-top" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
+    if (obj.hasFrame) {
+        value = cssTagDict[IUCSSTagX];
+        if (value) {
+            [dict putTag:@"left" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
         }
-        else {
-            [dict putTag:@"top" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
+        
+        value = cssTagDict[IUCSSTagY];
+        if (value) {
+            if ([_flowIUs containsObject:[obj class]]) {
+                [dict putTag:@"margin-top" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
+            }
+            else {
+                [dict putTag:@"top" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
+            }
+        }
+
+        if ([obj isKindOfClass:[IUHeader class]] == NO) {
+            value = cssTagDict[IUCSSTagWidth];
+            if (value) {
+                [dict putTag:@"width" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
+            }
+        }
+        
+        value = cssTagDict[IUCSSTagHeight];
+        if (value) {
+            if ([obj isKindOfClass:[IUHeader class]]) {
+                
+            }
+            [dict putTag:@"height" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
         }
     }
-
-    value = cssTagDict[IUCSSTagWidth];
-    if (value) {
-        [dict putTag:@"width" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
-    }
-
-    value = cssTagDict[IUCSSTagHeight];
-    if (value) {
-        if ([obj isKindOfClass:[IUHeader class]]) {
-            
-        }
-        [dict putTag:@"height" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
-    }
+    
 
     value = cssTagDict[IUCSSTagBGColor];
     [dict putTag:@"background-color" color:value];

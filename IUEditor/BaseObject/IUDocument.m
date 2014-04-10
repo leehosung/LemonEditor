@@ -37,7 +37,7 @@
     return @[];
 }
 
--(IUObj *)selectableIUAtPoint:(CGPoint)point{
+-(IUBox *)selectableIUAtPoint:(CGPoint)point{
     return nil;
 }
 

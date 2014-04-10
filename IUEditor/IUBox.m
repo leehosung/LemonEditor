@@ -1,30 +1,31 @@
 //
-//  IUObj.m
+//  IUBox.m
 //  IUEditor
 //
 //  Created by JD on 3/18/14.
 //  Copyright (c) 2014 JDLab. All rights reserved.
 //
 
-#import "IUObj.h"
+#import "IUBox.h"
 #import "NSObject+JDExtension.h"
 #import "NSCoder+JDExtension.h"
 #import "IUCompiler.h"
 #import "IUDocument.h"
 #import "IUDefinition.h"
+#import "IUBox.h"
 
-@interface IUObj()
+@interface IUBox()
 @property NSMutableArray *m_children;
 @end
 
-@implementation IUObj{
+@implementation IUBox{
     int delegateEnableLevel;
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];
     if (self) {
-        [aDecoder decodeToObject:self withProperties:[[IUObj class] propertiesWithOutProperties:@[@"delegate"]]];
+        [aDecoder decodeToObject:self withProperties:[[IUBox class] propertiesWithOutProperties:@[@"delegate"]]];
         _css = [aDecoder decodeObjectForKey:@"css"];
         _css.delegate = self;
         _m_children=[aDecoder decodeObjectForKey:@"children"];
@@ -39,7 +40,7 @@
     if ([self.htmlID length] == 0) {
         assert(0);
     }
-    [aCoder encodeFromObject:self withProperties:[[IUObj class] properties]];
+    [aCoder encodeFromObject:self withProperties:[[IUBox class] properties]];
     [aCoder encodeObject:self.css forKey:@"css"];
     [aCoder encodeObject:_m_children forKey:@"children"];
 }
@@ -85,7 +86,7 @@
 -(NSMutableArray*)allChildren{
     if (self.children) {
         NSMutableArray *array = [NSMutableArray array];
-        for (IUObj *iu in self.children) {
+        for (IUBox *iu in self.children) {
             [array addObject:iu];
             [array addObjectsFromArray:iu.allChildren];
         }
@@ -95,7 +96,7 @@
 }
 
 -(NSDictionary*)HTMLAtributes{
-    NSArray *classPedigree = [[self class] classPedigreeTo:[IUObj class]];
+    NSArray *classPedigree = [[self class] classPedigreeTo:[IUBox class]];
     NSMutableString *className = [NSMutableString stringWithString:@"'"];
     for (NSString *str in classPedigree) {
         [className appendString:str];
@@ -153,7 +154,7 @@
     }
 }
 
--(BOOL)addIU:(IUObj *)iu error:(NSError**)error{
+-(BOOL)addIU:(IUBox *)iu error:(NSError**)error{
     [_m_children addObject:iu];
     if (iu.delegate == nil) {
         iu.delegate = self.delegate;
@@ -164,7 +165,7 @@
     return YES;
 }
 
--(BOOL)addIUReference:(IUObj *)iu error:(NSError**)error{
+-(BOOL)addIUReference:(IUBox *)iu error:(NSError**)error{
     [_m_children addObject:iu];
     if (self.delegate) {
         iu.delegate = self.delegate;
@@ -173,13 +174,13 @@
 }
 
 
--(BOOL)removeIU:(IUObj *)iu{
+-(BOOL)removeIU:(IUBox *)iu{
     [_m_children removeObject:iu];
     [self.delegate IURemoved:iu.htmlID];
     return YES;
 }
 
--(BOOL)insertIU:(IUObj *)iu atIndex:(NSInteger)index  error:(NSError**)error{
+-(BOOL)insertIU:(IUBox *)iu atIndex:(NSInteger)index  error:(NSError**)error{
     [_m_children insertObject:iu atIndex:index];
     return YES;
 }
@@ -190,7 +191,7 @@
 
 -(void)setDelegate:(id<IUSourceDelegate>)delegate{
     _delegate = delegate;
-    for (IUObj *obj in _m_children) {
+    for (IUBox *obj in _m_children) {
         obj.delegate = delegate;
     }
 }

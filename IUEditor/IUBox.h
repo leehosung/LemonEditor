@@ -1,5 +1,5 @@
 //
-//  IUObj.h
+//  IUBox.h
 //  IUEditor
 //
 //  Created by JD on 3/18/14.
@@ -23,10 +23,10 @@
 @end
 
 
-@class IUObj;
+@class IUBox;
 @class IUDocument;
 
-@interface IUObj : NSObject <NSCoding, IUCSSDelegate>
+@interface IUBox : NSObject <NSCoding, IUCSSDelegate>
 
 @property (readonly) IUCSS *css; //used by subclass
 -(IUDocument *)document;
@@ -38,7 +38,7 @@
 @property (nonatomic, copy) NSString *htmlID;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic) id<IUSourceDelegate> delegate;
-@property IUObj    *parent;
+@property IUBox    *parent;
 @property NSArray   *mutables;
 
 // followings are IU build setting;
@@ -65,10 +65,10 @@
 @property (readonly) NSMutableArray *referenceChildren;
 -(NSMutableArray*)allChildren;
 
--(BOOL)insertIU:(IUObj *)iu atIndex:(NSInteger)index  error:(NSError**)error;
--(BOOL)addIU:(IUObj *)iu error:(NSError**)error;
--(BOOL)addIUReference:(IUObj *)iu error:(NSError**)error;
--(BOOL)removeIU:(IUObj *)iu;
+-(BOOL)insertIU:(IUBox *)iu atIndex:(NSInteger)index  error:(NSError**)error;
+-(BOOL)addIU:(IUBox *)iu error:(NSError**)error;
+-(BOOL)addIUReference:(IUBox *)iu error:(NSError**)error;
+-(BOOL)removeIU:(IUBox *)iu;
 
 - (void)setPosition:(NSPoint)position;
 - (void)moveX:(NSInteger)x Y:(NSInteger)y;

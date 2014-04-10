@@ -7,7 +7,7 @@
 //
 
 #import "LMPropertyFrameVC.h"
-#import "IUObj.h"
+#import "IUBox.h"
 #import "IUCSS.h"
 
 @interface LMPropertyFrameVC ()

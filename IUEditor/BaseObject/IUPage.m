@@ -26,7 +26,7 @@
 }
 
 -(IUMaster*)master{
-    for (IUObj *obj in self.children) {
+    for (IUBox *obj in self.children) {
         if ([obj isKindOfClass:[IUMaster class]]) {
             return (IUMaster*)obj;
         }
@@ -46,11 +46,11 @@
         pageContent.htmlID = @"pageContent";
         pageContent.name = @"pageContent";
         
-        for (IUObj *iu in children) {
-            if (iu == (IUObj*)myMaster) {
+        for (IUBox *iu in children) {
+            if (iu == (IUBox*)myMaster) {
                 continue;
             }
-            IUObj *temp = iu;
+            IUBox *temp = iu;
             [self removeIU:temp];
             [pageContent addIU:temp error:nil];
         }
@@ -62,7 +62,7 @@
         NSArray *children = pageContent.children;
         [self removeIU:master];
         [self removeIU:pageContent];
-        for (IUObj *iu in children) {
+        for (IUBox *iu in children) {
             [pageContent removeIU:iu];
             [self addIU:iu error:nil];
         }
@@ -77,7 +77,7 @@
     self = [super initWithSetting:setting];
     
     //add some iu
-    IUObj *obj = [[IUObj alloc] initWithSetting:setting];
+    IUBox *obj = [[IUBox alloc] initWithSetting:setting];
     obj.htmlID = @"qwerq";
     obj.name = @"sample object";
     [self addIU:obj error:nil];

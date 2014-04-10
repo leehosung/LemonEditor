@@ -66,7 +66,7 @@
     while (1) {
         i++;
         newName = [NSString stringWithFormat:@"%@%d",[NSStringFromClass(class) substringFromIndex:2], i];
-        for (IUObj *iu in allIUs) {
+        for (IUBox *iu in allIUs) {
             if ([newName isEqualToString:iu.htmlID]) {
                 continue;
             }
