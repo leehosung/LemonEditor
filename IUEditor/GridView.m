@@ -121,12 +121,17 @@
 
         middlePoint = convertedPoint;
         
-        
         for(PointLayer *pLayer in pointManagerLayer.sublayers){
+            
             NSRect newframe = [pLayer diffPointAndSizeWithType:selectedPointType withDiffPoint:diffPoint];
-            [((LMCanvasVC *)(self.delegate)) moveIUToDiffPoint:newframe.origin totalDiffPoint:totalPoint];
-            [((LMCanvasVC *)(self.delegate)) extendIUToDiffSize:newframe.size totalDiffSize:totalSize];
+            BOOL checkExtend = [((LMCanvasVC *)(self.delegate)) checkExtendSelectedIU:newframe.size];
+            
+            if(checkExtend){
+                [((LMCanvasVC *)(self.delegate)) extendIUToDiffSize:newframe.size totalDiffSize:totalSize];
+                [((LMCanvasVC *)(self.delegate)) moveIUToDiffPoint:newframe.origin totalDiffPoint:totalPoint];
+            }
         }
+        
         
         //reset cursor
         [[self window] invalidateCursorRectsForView:self];
