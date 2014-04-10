@@ -7,7 +7,6 @@
 //
 
 #import "LMCanvasView.h"
-#import "IUDefinition.h"
 #import "LMCanvasVC.h"
 
 @implementation LMCanvasView{

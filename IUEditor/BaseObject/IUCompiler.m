@@ -15,7 +15,6 @@
 #import "IUHeader.h"
 #import "IUPageContent.h"
 #import "IUMaster.h"
-#import "IUDefinition.h"
 
 @implementation IUCompiler{
     NSArray *_flowIUs;

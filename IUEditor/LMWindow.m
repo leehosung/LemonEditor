@@ -10,7 +10,6 @@
 #import "LMWC.h"
 #import "JDUIUtil.h"
 #import "JDLogUtil.h"
-#import "IUDefinition.h"
 
 @implementation LMWindow
 
