@@ -1,14 +1,19 @@
 //
-//  LMPropertyApperenceVC.h
+//  LMPropertyBaseVC.h
 //  IUEditor
 //
-//  Created by jd on 4/10/14.
+//  Created by JD on 4/5/14.
 //  Copyright (c) 2014 JDLab. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
+#import "IUResourceManager.h"
 #import "IUController.h"
 
 @interface LMPropertyAppearanceVC : NSViewController
+
 @property (nonatomic) IUController      *controller;
+@property (nonatomic) IUResourceManager     *resourceManager;
+
+@property id content;
 @end
