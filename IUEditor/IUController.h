@@ -17,4 +17,8 @@
 
 -(IUBox *)IUBoxByIdentifier:(NSString *)identifier;
 -(NSString*)requestNewIdentifierWithString:(NSString*)string;
+
+-(NSString*)keyPathFromControllerToCSSTag:(IUCSSTag)tag;
+-(NSString*)keyPathFromControllerToProperty:(NSString*)property;
+
 @end

@@ -67,4 +67,12 @@
     }
 }
 
+-(NSString*)keyPathFromControllerToTag:(IUCSSTag)tag{
+    return [@"controller.selection.css.assembledTagDictionary" stringByAppendingPathExtension:tag];
+}
+
+-(NSString*)keyPathFromControllerToProperty:(NSString*)property{
+    return [@"controller.selection" stringByAppendingPathExtension:property];
+}
+
 @end

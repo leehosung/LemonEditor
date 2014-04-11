@@ -25,7 +25,7 @@
 #import "LMPropertyFrameVC.h"
 #import "LMPropertyAppearanceVC.h"
 #import "LMPropertyBorderVC.h"
-
+#import "LMPropertyBaseVC.h"
 #import "IUCompiler.h"
 #import "IUResourceManager.h"
 
@@ -37,11 +37,13 @@
 @property (weak) IBOutlet NSView *toolbarV;
 @property (weak) IBOutlet NSView *rightV;
 @property (weak) IBOutlet NSView *bottomV;
-@property (weak) IBOutlet NSView *propertyV;
 
 @property (weak) IBOutlet NSView *resourceV;
-@property (weak) IBOutlet NSView *propertyBaseV;
+
+@property (weak) IBOutlet NSView *propertyFrameV;
+@property (weak) IBOutlet NSView *propertyBorderV;
 @property (weak) IBOutlet NSView *propertyAppearenceV;
+@property (weak) IBOutlet NSView *propertyBaseV;
 
 @end
 
@@ -59,6 +61,7 @@
     LMPropertyFrameVC    *propertyFrameVC;
     LMPropertyAppearanceVC    *propertyAppearanceVC;
     LMPropertyBorderVC  *propertyBorderVC;
+    LMPropertyBaseVC    *propertyBaseVC;
 }
 
 - (id)initWithWindow:(NSWindow *)window
@@ -99,15 +102,19 @@
     
     propertyFrameVC = [[LMPropertyFrameVC alloc] initWithNibName:@"LMPropertyFrameVC" bundle:nil];
     [propertyFrameVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
-    [_propertyV addSubviewFullFrame:propertyFrameVC.view];
+    [_propertyFrameV addSubviewFullFrame:propertyFrameVC.view];
     
     propertyAppearanceVC = [[LMPropertyAppearanceVC alloc] initWithNibName:@"LMPropertyAppearanceVC" bundle:nil];
     [propertyAppearanceVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
-    [_propertyBaseV addSubviewFullFrame:propertyAppearanceVC.view];
+    [_propertyAppearenceV addSubviewFullFrame:propertyAppearanceVC.view];
     
     propertyBorderVC = [[LMPropertyBorderVC alloc] initWithNibName:@"LMPropertyBorderVC" bundle:nil];
     [propertyBorderVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
-    [_propertyAppearenceV addSubviewFullFrame:propertyBorderVC.view];
+    [_propertyBorderV addSubviewFullFrame:propertyBorderVC.view];
+    
+    propertyBaseVC = [[LMPropertyBaseVC alloc] initWithNibName:[LMPropertyBaseVC class].className bundle:nil];
+    [propertyBaseVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
+    [_propertyBaseV addSubview:propertyBaseVC.view];
     
     [self startNewProject];
 }

@@ -39,6 +39,8 @@
 		690A40A618E17C5700095263 /* widgetForDefault.plist in Resources */ = {isa = PBXBuildFile; fileRef = 690A40A418E17C5700095263 /* widgetForDefault.plist */; };
 		6919204718DCFC8200F8522B /* NSCoder+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6919204618DCFC8200F8522B /* NSCoder+JDExtension.m */; };
 		6919204A18DCFED000F8522B /* NSObject+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6919204918DCFED000F8522B /* NSObject+JDExtension.m */; };
+		692334BA18F783FE003E5224 /* LMPropertyBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 692334B818F783FE003E5224 /* LMPropertyBaseVC.m */; };
+		692334BB18F783FE003E5224 /* LMPropertyBaseVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 692334B918F783FE003E5224 /* LMPropertyBaseVC.xib */; };
 		6953852E18ED6EC800CC42E5 /* IUController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6953852D18ED6EC800CC42E5 /* IUController.m */; };
 		6954812818D7640A00CA02F1 /* IUPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6954812718D7640A00CA02F1 /* IUPage.m */; };
 		696D1C9A18E5366400B4AB16 /* webTemplate.html in Resources */ = {isa = PBXBuildFile; fileRef = 696D1C9918E5366400B4AB16 /* webTemplate.html */; };
@@ -184,6 +186,9 @@
 		6919204618DCFC8200F8522B /* NSCoder+JDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSCoder+JDExtension.m"; path = "JD/NSCoder+JDExtension.m"; sourceTree = "<group>"; };
 		6919204818DCFED000F8522B /* NSObject+JDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JDExtension.h"; sourceTree = "<group>"; };
 		6919204918DCFED000F8522B /* NSObject+JDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JDExtension.m"; sourceTree = "<group>"; };
+		692334B718F783FE003E5224 /* LMPropertyBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyBaseVC.h; sourceTree = "<group>"; };
+		692334B818F783FE003E5224 /* LMPropertyBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyBaseVC.m; sourceTree = "<group>"; };
+		692334B918F783FE003E5224 /* LMPropertyBaseVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyBaseVC.xib; sourceTree = "<group>"; };
 		6953852C18ED6EC800CC42E5 /* IUController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUController.h; sourceTree = "<group>"; };
 		6953852D18ED6EC800CC42E5 /* IUController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUController.m; sourceTree = "<group>"; };
 		6954812618D7640A00CA02F1 /* IUPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUPage.h; path = BaseObject/IUPage.h; sourceTree = "<group>"; };
@@ -737,6 +742,9 @@
 				6979FC0418ED34E20060C3B4 /* LMPropertyFrameVC.h */,
 				6979FC0518ED34E20060C3B4 /* LMPropertyFrameVC.m */,
 				6979FC0618ED34E20060C3B4 /* LMPropertyFrameVC.xib */,
+				692334B718F783FE003E5224 /* LMPropertyBaseVC.h */,
+				692334B818F783FE003E5224 /* LMPropertyBaseVC.m */,
+				692334B918F783FE003E5224 /* LMPropertyBaseVC.xib */,
 				69761BC018F04ECD00C4EDC6 /* LMPropertyAppearanceVC.h */,
 				69761BC118F04ECD00C4EDC6 /* LMPropertyAppearanceVC.m */,
 				69761BC218F04ECD00C4EDC6 /* LMPropertyAppearanceVC.xib */,
@@ -855,6 +863,7 @@
 				69A45DE118F6702C00C551D9 /* LMPropertyBorderVC.xib in Resources */,
 				690A408E18E14A4E00095263 /* LMStackVC.xib in Resources */,
 				69C575C118D6F61E0016F050 /* MainMenu.xib in Resources */,
+				692334BB18F783FE003E5224 /* LMPropertyBaseVC.xib in Resources */,
 				69761BC418F04ECD00C4EDC6 /* LMPropertyAppearanceVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -941,6 +950,7 @@
 				69761BCA18F168D700C4EDC6 /* IUResourceManager.m in Sources */,
 				69757B1118D95BBC0095CBAC /* JDUIUtil.m in Sources */,
 				3DB3ACE718EBEF9D0046DFB7 /* CursorRect.m in Sources */,
+				692334BA18F783FE003E5224 /* LMPropertyBaseVC.m in Sources */,
 				69757B0E18D95BBC0095CBAC /* JDTextField.m in Sources */,
 				69757B0518D95BBC0095CBAC /* JDFileUtil.m in Sources */,
 				69757B2218D95F420095CBAC /* NSString+JDExtension.m in Sources */,

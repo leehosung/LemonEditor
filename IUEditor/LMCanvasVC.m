@@ -190,7 +190,7 @@
     
     if(link==nil || link.length == 0){
         //remove link
-        [self removeLinkIU:identifier];
+//        [self removeLinkIU:identifier];
     }
     
     NSString *linkID =[NSString stringWithFormat:@"A_LINK_%@", identifier];
@@ -209,7 +209,7 @@
     }
     
 }
--(void)removeLinkIU:(NSString *)identifier{
+-(void)IURemoveLink:(NSString *)identifier{
     /*
      
      => IUView
