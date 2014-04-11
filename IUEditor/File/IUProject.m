@@ -226,9 +226,14 @@
     [rootNode addResourceGroupNode:JSGroup];
     
     
+    //Image Resource copy
+    
     NSString *sampleImgPath = [[NSBundle mainBundle] pathForResource:@"sample" ofType:@"jpg"];
     IUResourceNode *imageNode = [[IUResourceNode alloc] initWithName:@"sample.jpg" type:IUResourceTypeImage];
     [imageGroup addResourceNode:imageNode path:sampleImgPath];
+    
+    
+    //CSS Resource Copy
     
     NSString *resetCSSPath = [[NSBundle mainBundle] pathForResource:@"reset" ofType:@"css"];
     IUResourceNode *resetCSSNode = [[IUResourceNode alloc] initWithName:@"reset.css" type:IUResourceTypeCSS];
@@ -238,6 +243,9 @@
     IUResourceNode *iuCSSNode = [[IUResourceNode alloc] initWithName:@"iu.css" type:IUResourceTypeCSS];
     [CSSGroup addResourceNode:iuCSSNode path:iuCSSPath];
     
+    
+    //Java Script Resource copy
+    
     NSString *iuFrameJSPath = [[NSBundle mainBundle] pathForResource:@"iuframe" ofType:@"js"];
     IUResourceNode *iuFrameJSNode = [[IUResourceNode alloc] initWithName:@"iuframe.js" type:IUResourceTypeJS];
     [JSGroup addResourceNode:iuFrameJSNode path:iuFrameJSPath];
@@ -245,6 +253,7 @@
     NSString *iuJSPath = [[NSBundle mainBundle] pathForResource:@"iu" ofType:@"js"];
     IUResourceNode *iuJSNode = [[IUResourceNode alloc] initWithName:@"iu.js" type:IUResourceTypeJS];
     [JSGroup addResourceNode:iuJSNode path:iuJSPath];
+
 }
 
 @end
