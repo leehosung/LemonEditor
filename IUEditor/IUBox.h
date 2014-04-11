@@ -79,4 +79,7 @@
 
 @property BOOL flow;
 -(BOOL)hasFrame;
+
+-(void)startGrouping;
+-(void)endGrouping;
 @end

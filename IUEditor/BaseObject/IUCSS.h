@@ -10,8 +10,10 @@
 
 @protocol IUCSSDelegate
 @required
+-(void)startGrouping;
 -(void)CSSChanged:(IUCSSTag)tag forWidth:(NSInteger)width;
 -(BOOL)CSSShouldChangeValue:(id)value forTag:(IUCSSTag)tag forWidth:(NSInteger)width;
+-(void)endGrouping;
 @end
 
 

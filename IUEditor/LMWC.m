@@ -24,6 +24,7 @@
 #import "LMToolbarVC.h"
 #import "LMPropertyFrameVC.h"
 #import "LMPropertyBaseVC.h"
+#import "LMPropertyAppearanceVC.h"
 
 #import "IUCompiler.h"
 #import "IUResourceManager.h"
@@ -40,6 +41,7 @@
 
 @property (weak) IBOutlet NSView *resourceV;
 @property (weak) IBOutlet NSView *propertyBaseV;
+@property (weak) IBOutlet NSView *propertyAppearenceV;
 
 @end
 
@@ -56,6 +58,7 @@
     LMResourceVC    *resourceVC;
     LMPropertyFrameVC    *propertyFrameVC;
     LMPropertyBaseVC    *propertyBaseVC;
+    LMPropertyAppearanceVC  *propertyAppearanceVC;
 }
 
 - (id)initWithWindow:(NSWindow *)window
@@ -94,13 +97,18 @@
     resourceVC = [[LMResourceVC alloc] initWithNibName:@"LMResourceVC" bundle:nil];
     [_resourceV addSubviewFullFrame:resourceVC.view];
     
+    
     propertyFrameVC = [[LMPropertyFrameVC alloc] initWithNibName:@"LMPropertyFrameVC" bundle:nil];
-    [propertyFrameVC bind:@"IUController" toObject:self withKeyPath:@"IUController" options:nil];
+    [propertyFrameVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
     [_propertyV addSubviewFullFrame:propertyFrameVC.view];
     
     propertyBaseVC = [[LMPropertyBaseVC alloc] initWithNibName:@"LMPropertyBaseVC" bundle:nil];
-    [propertyBaseVC bind:@"IUController" toObject:self withKeyPath:@"IUController" options:nil];
+    [propertyBaseVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
     [_propertyBaseV addSubviewFullFrame:propertyBaseVC.view];
+    
+    propertyAppearanceVC = [[LMPropertyAppearanceVC alloc] initWithNibName:@"LMPropertyAppearanceVC" bundle:nil];
+    [propertyAppearanceVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
+    [_propertyAppearenceV addSubviewFullFrame:propertyAppearanceVC.view];
     
     [self startNewProject];
 }

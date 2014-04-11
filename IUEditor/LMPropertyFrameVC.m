@@ -30,13 +30,13 @@
 }
 
 -(void)awakeFromNib{
-    NSString *tagCollectionKeyPath = @"IUController.selection.css.assembledTagDictionary";
+    NSString *tagCollectionKeyPath = @"controller.selection.css.assembledTagDictionary";
     [_xTF bind:@"value" toObject:self withKeyPath:[tagCollectionKeyPath stringByAppendingPathExtension:IUCSSTagX] options:nil];
     [_yTF bind:@"value" toObject:self withKeyPath:[tagCollectionKeyPath stringByAppendingPathExtension:IUCSSTagY] options:nil];
     [_wTF bind:@"value" toObject:self withKeyPath:[tagCollectionKeyPath stringByAppendingPathExtension:IUCSSTagWidth] options:nil];
     [_hTF bind:@"value" toObject:self withKeyPath:[tagCollectionKeyPath stringByAppendingPathExtension:IUCSSTagHeight] options:nil];
     
-    [_contentV bind:@"hidden" toObject:self withKeyPath:@"IUController.selection.hasFrame" options:@{NSValueTransformerNameBindingOption: @"NSNegateBoolean"}];
+    [_contentV bind:@"hidden" toObject:self withKeyPath:@"controller.selection.hasFrame" options:@{NSValueTransformerNameBindingOption: @"NSNegateBoolean"}];
 }
 
 

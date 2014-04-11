@@ -45,6 +45,9 @@
     }
     
     if ([_delegate CSSShouldChangeValue:value forTag:tag forWidth:width]){
+        if ([tag isSameTag:IUCSSTagBorderTopWidth] || [tag isSameTag:IUCSSTagBorderLeftWidth] || [tag isSameTag:IUCSSTagBorderRightWidth] || [tag isSameTag:IUCSSTagBorderBottomWidth]) {
+            [self willChangeValueForKey:@"assembledTagDictionary"];
+        }
         NSMutableDictionary *cssDict = _cssFrameDict[@(width)];
         if (cssDict == nil) {
             cssDict = [NSMutableDictionary dictionary];
@@ -59,6 +62,9 @@
             [_assembledTagDictionaryForEditWidth setObject:value forKey:tag];
         }
         [self.delegate CSSChanged:tag forWidth:width];
+        if ([tag isSameTag:IUCSSTagBorderTopWidth] || [tag isSameTag:IUCSSTagBorderLeftWidth] || [tag isSameTag:IUCSSTagBorderRightWidth] || [tag isSameTag:IUCSSTagBorderBottomWidth]) {
+            [self didChangeValueForKey:@"assembledTagDictionary"];
+        }
     }
 }
 
@@ -110,9 +116,41 @@
     if ([keyPath containsString:@"assembledTagDictionary."]) {
         NSString *tag = [keyPath substringFromIndex:23];
         [self setValue:value forTag:tag forWidth:_editWidth];
+        return;
     }
     else {
         [super setValue:value forKey:keyPath];
+        return;
+    }
+}
+
+-(id)valueForKeyPath:(NSString *)keyPath{
+    if ([keyPath containsString:@"assembledTagDictionary."]) {
+        NSString *tag = [keyPath substringFromIndex:23];
+        if ([tag isSameTag:IUCSSTagBorderWidth]) {
+            NSNumber* value = [self.assembledTagDictionary objectForKey:IUCSSTagBorderTopWidth];
+            
+            if ([value isEqualToNumber:[self.assembledTagDictionary objectForKey:IUCSSTagBorderLeftWidth]] == NO) {
+                return NSMultipleValuesMarker;
+            }
+            
+            if ([value isEqualToNumber:[self.assembledTagDictionary objectForKey:IUCSSTagBorderRightWidth]] == NO) {
+                return NSMultipleValuesMarker;
+            }
+            
+            if ([value isEqualToNumber:[self.assembledTagDictionary objectForKey:IUCSSTagBorderBottomWidth]] == NO) {
+                return NSMultipleValuesMarker;
+            }
+            
+            if ([value isEqualToNumber:[self.assembledTagDictionary objectForKey:IUCSSTagBorderBottomWidth]] == NO) {
+                return NSMultipleValuesMarker;
+            }
+            return value;
+        }
+        return [_assembledTagDictionaryForEditWidth objectForKey:tag];
+    }
+    else {
+        return [super valueForKey:keyPath];
     }
 }
 

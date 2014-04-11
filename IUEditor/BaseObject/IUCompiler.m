@@ -180,6 +180,28 @@
     value = cssTagDict[IUCSSTagBGYPosition];
     [dict putTag:@"background-position-y" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];
 
+    value = cssTagDict[IUCSSTagBorderLeftWidth];
+    if (value) {
+        [dict putTag:@"border-left-width" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];
+        NSColor *color = cssTagDict[IUCSSTagBorderLeftColor];
+        [dict putTag:@"border-left-color" color:color ignoreClearColor:YES];
+    }
+    value = cssTagDict[IUCSSTagBorderRightWidth];
+    if (value) {
+        [dict putTag:@"border-right-width" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];
+        NSColor *color = cssTagDict[IUCSSTagBorderRightColor];
+        [dict putTag:@"border-right-color" color:color ignoreClearColor:YES];
+    }    value = cssTagDict[IUCSSTagBorderBottomWidth];
+    if (value) {
+        [dict putTag:@"border-bottom-width" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];
+        NSColor *color = cssTagDict[IUCSSTagBorderBottomColor];
+        [dict putTag:@"border-bottom-color" color:color ignoreClearColor:YES];
+    }    value = cssTagDict[IUCSSTagBorderTopWidth];
+    if (value) {
+        [dict putTag:@"border-top-width" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];
+        NSColor *color = cssTagDict[IUCSSTagBorderTopColor];
+        [dict putTag:@"border-top-color" color:color ignoreClearColor:YES];
+    }
     return dict;
 }
 
