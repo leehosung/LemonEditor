@@ -116,7 +116,6 @@
     [propertyBaseVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
     [_propertyBaseV addSubview:propertyBaseVC.view];
     
-    [self startNewProject];
 }
 
 -(LMWindow*)window{
@@ -187,20 +186,8 @@
     }
 }
 
--(void)startNewProject{
-    NSError *error;
 
-    NSDictionary *dict = @{IUProjectKeyAppName: @"myApp",
-                           IUProjectKeyGit: @(NO),
-                           IUProjectKeyHeroku: @(NO),
-                           IUProjectKeyDirectory: [@"~/IUProjTemp" stringByExpandingTildeInPath]};
 
-    NSString *projectPath = [IUProject createProject:dict error:&error];
-    if (error != nil) {
-        assert(0);
-    }
-    [self loadProject:projectPath];
-}
 
 
 #pragma mark -
@@ -208,5 +195,11 @@
 - (IBAction)getCurrentSource:(id)sender{
     [canvasVC showCurrentSource];
 }
+
+- (void)saveDocument:(id)sender{
+    JDInfoLog(@"saving document");
+    [_project save];
+}
+
 
 @end
