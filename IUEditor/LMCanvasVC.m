@@ -185,6 +185,36 @@
 }
 
 #pragma mark -
+#pragma mark link attributes
+-(void)IU:(NSString *)identifier addLink:(NSString *)link{
+    DOMHTMLElement *selectHTMLElement = [self getHTMLElementbyID:identifier];
+    NSString *linkHTML = [NSString stringWithFormat:@"<a link=\"%@\">%@</a>", link, selectHTMLElement.outerHTML];
+    
+    [selectHTMLElement setOuterHTML:linkHTML];
+    
+}
+-(void)removeLinkIU:(NSString *)identifier{
+    /*
+     
+     => IUView
+     IUParent-IUNode
+     => DOMNode View
+     IUParent - LINKNode - IUNode
+             (remove link)
+     */
+    DOMHTMLElement *selectHTMLElement = [self getHTMLElementbyID:identifier];
+    DOMNode *linkNode = selectHTMLElement.parentNode;
+    if([linkNode isKindOfClass:[DOMHTMLAnchorElement class]] == NO){
+        JDWarnLog(@"[IU:%@] don't have link", identifier);
+        return;
+    }
+    DOMNode *linkParentNode = linkNode.parentNode;
+    [linkParentNode removeChild:linkNode];
+    [linkParentNode appendChild:selectHTMLElement];
+}
+
+
+#pragma mark -
 #pragma mark HTML
 
 - (DOMHTMLElement *)getHTMLElementbyID:(NSString *)HTMLID{
