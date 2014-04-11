@@ -20,6 +20,19 @@
 #define IUCSSTagBGXPosition @"bgX"
 #define IUCSSTagBGYPosition @"bgY"
 
+#define IUCSSTagBorderWidth @"borderWeight"
+#define IUCSSTagBorderColor @"borderColor"
+
+#define IUCSSTagBorderTopWidth @"borderTWeight"
+#define IUCSSTagBorderTopColor @"borderTColor"
+#define IUCSSTagBorderRightWidth @"borderRWeight"
+#define IUCSSTagBorderRightColor @"borderRColor"
+#define IUCSSTagBorderLeftWidth @"borderLWeight"
+#define IUCSSTagBorderLeftColor @"borderLColor"
+#define IUCSSTagBorderBottomWidth @"borderBWeight"
+#define IUCSSTagBorderBottomColor @"borderBColor"
+
+
 
 #define isSameTag isEqualToString
 

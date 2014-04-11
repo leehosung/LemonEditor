@@ -19,6 +19,7 @@
 
 @implementation IUBox{
     int delegateEnableLevel;
+    NSMutableSet *changedCSSWidths;
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
@@ -31,6 +32,7 @@
         delegateEnableLevel = 1;
         [self addObserver:self forKeyPath:@"delegate.selectedFrameWidth" options:0 context:nil];
         [self addObserver:self forKeyPath:@"delegate.maxFrameWidth" options:0 context:nil];
+        changedCSSWidths = [NSMutableSet set];
     }
     return self;
 }
@@ -53,6 +55,16 @@
         [_css setValue:@(35) forTag:IUCSSTagHeight forWidth:IUCSSDefaultCollection];
         [_css setValue:[NSColor randomColor] forTag:IUCSSTagBGColor forWidth:IUCSSDefaultCollection];
         [_css setValue:@"Auto" forTag:IUCSSTagBGSize forWidth:IUCSSDefaultCollection];
+        [_css setValue:@(0) forTag:IUCSSTagBorderTopWidth forWidth:IUCSSDefaultCollection];
+        [_css setValue:@(0) forTag:IUCSSTagBorderLeftWidth forWidth:IUCSSDefaultCollection];
+        [_css setValue:@(0) forTag:IUCSSTagBorderRightWidth forWidth:IUCSSDefaultCollection];
+        [_css setValue:@(0) forTag:IUCSSTagBorderBottomWidth forWidth:IUCSSDefaultCollection];
+
+        [_css setValue:[NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:0] forTag:IUCSSTagBorderTopColor forWidth:IUCSSDefaultCollection];
+        [_css setValue:[NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:0] forTag:IUCSSTagBorderLeftColor forWidth:IUCSSDefaultCollection];
+        [_css setValue:[NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:0] forTag:IUCSSTagBorderRightColor forWidth:IUCSSDefaultCollection];
+        [_css setValue:[NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:0] forTag:IUCSSTagBorderBottomColor forWidth:IUCSSDefaultCollection];
+
         delegateEnableLevel = 1;
         
         _m_children = [NSMutableArray array];
@@ -60,6 +72,7 @@
         [self addObserver:self forKeyPath:@"delegate.maxFrameWidth" options:0 context:nil];
         [self addObserver:self forKeyPath:@"delegate.maxFrameWidth" options:0 context:nil];
 
+        changedCSSWidths = [NSMutableSet set];
     }
     return self;
 }
@@ -123,6 +136,9 @@
 -(void)CSSChanged:(NSDictionary*)tagDictionary forWidth:(NSInteger)width{
     if (delegateEnableLevel == 1) {
         [self.delegate IU:self.htmlID CSSChanged:[self cssForWidth:width] forWidth:width];
+    }
+    else {
+        [changedCSSWidths addObject:@(width)];
     }
 }
 
@@ -261,6 +277,18 @@
 
 -(BOOL)hasFrame{
     return YES;
+}
+
+-(void)startGrouping{
+    delegateEnableLevel --;
+}
+
+-(void)endGrouping{
+    delegateEnableLevel ++;
+    for (NSNumber *number in changedCSSWidths) {
+        [self.delegate IU:self.htmlID CSSChanged:[self cssForWidth:[number intValue]] forWidth:[number intValue]];
+    }
+
 }
 
 @end

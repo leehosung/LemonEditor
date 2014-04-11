@@ -33,7 +33,7 @@
 }
 
 - (NSString*)CSSBindingPath:(IUCSSTag)tag{
-    return [@"IUController.selection.css.assembledTagDictionary." stringByAppendingString:tag];
+    return [@"controller.selection.css.assembledTagDictionary." stringByAppendingString:tag];
 }
 
 - (void)awakeFromNib{

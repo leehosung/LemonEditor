@@ -8,10 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 #import "IUResourceManager.h"
+#import "IUController.h"
 
 @interface LMPropertyBaseVC : NSViewController
 
-@property (nonatomic) NSTreeController      *IUController;
+@property (nonatomic) IUController      *controller;
 @property (nonatomic) IUResourceManager     *resourceManager;
 
 @property id content;

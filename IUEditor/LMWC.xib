@@ -10,6 +10,7 @@
                 <outlet property="centerV" destination="LCo-BM-DQN" id="a81-Fm-UQ1"/>
                 <outlet property="leftBottomV" destination="cuQ-6O-zlK" id="vzw-Qu-mef"/>
                 <outlet property="leftTopV" destination="1yd-Yz-bba" id="Td2-HY-z9Q"/>
+                <outlet property="propertyAppearenceV" destination="HyI-BD-aOo" id="SPB-4D-zf6"/>
                 <outlet property="propertyBaseV" destination="vnK-kb-tq9" id="brO-8c-IXF"/>
                 <outlet property="propertyV" destination="gTB-kN-epN" id="6Io-QR-jld"/>
                 <outlet property="resourceV" destination="pVO-0J-xdh" id="X2v-HF-1hl"/>
@@ -24,7 +25,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="1819" height="845"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <view key="contentView" id="2">
                 <rect key="frame" x="0.0" y="0.0" width="1819" height="845"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -76,6 +77,10 @@
                             <action selector="getCurrentSource:" target="-2" id="cCS-Xb-2Rs"/>
                         </connections>
                     </button>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HyI-BD-aOo" userLabel="propertyAppearenceV">
+                        <rect key="frame" x="1478" y="80" width="194" height="220"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
                 </subviews>
             </view>
             <connections>
