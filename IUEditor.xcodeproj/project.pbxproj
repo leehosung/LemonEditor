@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3D14886318F6AE5700E8EE4C /* LMCenterClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D14886218F6AE5700E8EE4C /* LMCenterClipView.m */; };
+		3D14886718F7A1E500E8EE4C /* LMPropertyFontVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D14886518F7A1E500E8EE4C /* LMPropertyFontVC.m */; };
+		3D14886818F7A1E500E8EE4C /* LMPropertyFontVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D14886618F7A1E500E8EE4C /* LMPropertyFontVC.xib */; };
 		3D54D64B18ED5D2E00B5FEC2 /* ResizeNE-SW.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3D54D64918ED5D2E00B5FEC2 /* ResizeNE-SW.tiff */; };
 		3D54D64C18ED5D2E00B5FEC2 /* ResizeNW-SE.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3D54D64A18ED5D2E00B5FEC2 /* ResizeNW-SE.tiff */; };
 		3DB3ACC518EBEF180046DFB7 /* LMWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACC418EBEF180046DFB7 /* LMWindow.m */; };
@@ -138,6 +140,9 @@
 /* Begin PBXFileReference section */
 		3D14886118F6AE5700E8EE4C /* LMCenterClipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMCenterClipView.h; sourceTree = "<group>"; };
 		3D14886218F6AE5700E8EE4C /* LMCenterClipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMCenterClipView.m; sourceTree = "<group>"; };
+		3D14886418F7A1E500E8EE4C /* LMPropertyFontVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyFontVC.h; sourceTree = "<group>"; };
+		3D14886518F7A1E500E8EE4C /* LMPropertyFontVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyFontVC.m; sourceTree = "<group>"; };
+		3D14886618F7A1E500E8EE4C /* LMPropertyFontVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyFontVC.xib; sourceTree = "<group>"; };
 		3D54D64918ED5D2E00B5FEC2 /* ResizeNE-SW.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "ResizeNE-SW.tiff"; sourceTree = "<group>"; };
 		3D54D64A18ED5D2E00B5FEC2 /* ResizeNW-SE.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "ResizeNW-SE.tiff"; sourceTree = "<group>"; };
 		3DB3ACC318EBEF180046DFB7 /* LMWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMWindow.h; sourceTree = "<group>"; };
@@ -758,6 +763,9 @@
 				69C5762B18D70B850016F050 /* LMWC.xib */,
 				3DB3ACE118EBEF640046DFB7 /* InspectorView */,
 				3DB3ACC218EBEEFA0046DFB7 /* Canvas */,
+				3D14886418F7A1E500E8EE4C /* LMPropertyFontVC.h */,
+				3D14886518F7A1E500E8EE4C /* LMPropertyFontVC.m */,
+				3D14886618F7A1E500E8EE4C /* LMPropertyFontVC.xib */,
 			);
 			name = Editor;
 			sourceTree = "<group>";
@@ -847,6 +855,7 @@
 				69C575B518D6F61E0016F050 /* InfoPlist.strings in Resources */,
 				69C5762D18D70B850016F050 /* LMWC.xib in Resources */,
 				3D54D64B18ED5D2E00B5FEC2 /* ResizeNE-SW.tiff in Resources */,
+				3D14886818F7A1E500E8EE4C /* LMPropertyFontVC.xib in Resources */,
 				690A409618E1645B00095263 /* LMWidgetLibraryVC.xib in Resources */,
 				69CFCAB418E95A0C00E3048A /* LMResourceVC.xib in Resources */,
 				69D15F7018E893170046FBB0 /* LMToolbarVC.xib in Resources */,
@@ -938,6 +947,7 @@
 				69757B3718DAF1AB0095CBAC /* IUResourceGroupNode.m in Sources */,
 				3DB3ACE818EBEF9D0046DFB7 /* IUFrameDictionary.m in Sources */,
 				69CFCAC018EA8D1700E3048A /* IUImage.m in Sources */,
+				3D14886718F7A1E500E8EE4C /* LMPropertyFontVC.m in Sources */,
 				3DB3ACCB18EBEF3D0046DFB7 /* SizeView.m in Sources */,
 				69C5762C18D70B850016F050 /* LMWC.m in Sources */,
 				69757B2518D95FDA0095CBAC /* NSMutableDictionary+IUTag.m in Sources */,
