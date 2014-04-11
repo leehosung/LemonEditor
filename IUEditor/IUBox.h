@@ -79,6 +79,7 @@
 - (void)insertImage:(NSString *)imageName;
 
 @property BOOL flow;
+@property (nonatomic) NSString *link;
 -(BOOL)hasFrame;
 
 -(void)startGrouping;

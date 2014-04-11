@@ -10,9 +10,10 @@
                 <outlet property="centerV" destination="LCo-BM-DQN" id="a81-Fm-UQ1"/>
                 <outlet property="leftBottomV" destination="cuQ-6O-zlK" id="vzw-Qu-mef"/>
                 <outlet property="leftTopV" destination="1yd-Yz-bba" id="Td2-HY-z9Q"/>
-                <outlet property="propertyAppearenceV" destination="HyI-BD-aOo" id="SPB-4D-zf6"/>
-                <outlet property="propertyBaseV" destination="vnK-kb-tq9" id="brO-8c-IXF"/>
-                <outlet property="propertyV" destination="gTB-kN-epN" id="6Io-QR-jld"/>
+                <outlet property="propertyAppearenceV" destination="vnK-kb-tq9" id="mA2-VE-T3J"/>
+                <outlet property="propertyBaseV" destination="HyI-BD-aOo" id="TQT-Uy-ZVZ"/>
+                <outlet property="propertyBorderV" destination="ipe-Hh-GB2" id="5Pf-k1-Nfy"/>
+                <outlet property="propertyFrameV" destination="gTB-kN-epN" id="Tsq-sh-4hH"/>
                 <outlet property="resourceV" destination="pVO-0J-xdh" id="X2v-HF-1hl"/>
                 <outlet property="rightV" destination="PNY-WR-OAz" id="5rX-IG-SCG"/>
                 <outlet property="toolbarV" destination="YTs-oo-nxs" id="diP-nc-LCt"/>
@@ -24,14 +25,14 @@
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="1" customClass="LMWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="1819" height="845"/>
+            <rect key="contentRect" x="196" y="240" width="1349" height="845"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <view key="contentView" id="2">
-                <rect key="frame" x="0.0" y="0.0" width="1819" height="845"/>
+                <rect key="frame" x="0.0" y="0.0" width="1349" height="845"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YTs-oo-nxs" userLabel="Toolbar">
-                        <rect key="frame" x="0.0" y="784" width="1547" height="61"/>
+                        <rect key="frame" x="0.0" y="784" width="1065" height="61"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cuQ-6O-zlK" userLabel="leftBottomV">
@@ -39,7 +40,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PNY-WR-OAz" userLabel="RightV">
-                        <rect key="frame" x="1353" y="556" width="194" height="220"/>
+                        <rect key="frame" x="979" y="541" width="194" height="220"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wfB-XB-ErH" userLabel="bottomV">
@@ -51,23 +52,23 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pVO-0J-xdh" userLabel="resourceV">
-                        <rect key="frame" x="1585" y="634" width="234" height="211"/>
+                        <rect key="frame" x="1200" y="583" width="129" height="211"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LCo-BM-DQN" userLabel="centerV">
-                        <rect key="frame" x="276" y="171" width="1052" height="590"/>
+                        <rect key="frame" x="276" y="171" width="674" height="590"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gTB-kN-epN" userLabel="rightV">
-                        <rect key="frame" x="1705" y="266" width="114" height="354"/>
+                        <rect key="frame" x="1197" y="355" width="124" height="220"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
-                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vnK-kb-tq9" userLabel="propertyBaseV">
-                        <rect key="frame" x="1462" y="307" width="194" height="220"/>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vnK-kb-tq9" userLabel="propertyAppearanceV">
+                        <rect key="frame" x="971" y="275" width="194" height="220"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eFy-vu-fMK">
-                        <rect key="frame" x="1213" y="54" width="82" height="32"/>
+                        <rect key="frame" x="1201" y="287" width="82" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="get source" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RjS-Bh-cL9">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -77,8 +78,16 @@
                             <action selector="getCurrentSource:" target="-2" id="cCS-Xb-2Rs"/>
                         </connections>
                     </button>
-                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HyI-BD-aOo" userLabel="propertyAppearenceV">
-                        <rect key="frame" x="1478" y="80" width="194" height="220"/>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HyI-BD-aOo" userLabel="propertyBaseV">
+                        <rect key="frame" x="958" y="146" width="138" height="104"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LND-5h-SFC" userLabel="leftBottomV">
+                        <rect key="frame" x="0.0" y="20" width="268" height="214"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ipe-Hh-GB2" userLabel="propertyBorderV">
+                        <rect key="frame" x="1135" y="30" width="194" height="220"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                 </subviews>
