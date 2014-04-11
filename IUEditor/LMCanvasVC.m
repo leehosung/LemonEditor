@@ -186,11 +186,27 @@
 
 #pragma mark -
 #pragma mark link attributes
--(void)IU:(NSString *)identifier addLink:(NSString *)link{
-    DOMHTMLElement *selectHTMLElement = [self getHTMLElementbyID:identifier];
-    NSString *linkHTML = [NSString stringWithFormat:@"<a link=\"%@\">%@</a>", link, selectHTMLElement.outerHTML];
+-(void)IU:(NSString *)identifier setLink:(NSString *)link{
     
-    [selectHTMLElement setOuterHTML:linkHTML];
+    if(link==nil || link.length == 0){
+        //remove link
+        [self removeLinkIU:identifier];
+    }
+    
+    NSString *linkID =[NSString stringWithFormat:@"A_LINK_%@", identifier];
+    DOMHTMLElement *linkElement = [self getHTMLElementbyID:linkID];
+    //change link
+    if(linkElement){
+        [linkElement setAttribute:@"link" value:link];
+    }
+    //make new link
+    else{
+        DOMHTMLElement *selectHTMLElement = [self getHTMLElementbyID:identifier];
+        NSString *linkHTML = [NSString stringWithFormat:@"<a link=\"%@\" id=\"%@\">%@</a>",
+                              link, linkID, selectHTMLElement.outerHTML];
+    
+        [selectHTMLElement setOuterHTML:linkHTML];
+    }
     
 }
 -(void)removeLinkIU:(NSString *)identifier{
