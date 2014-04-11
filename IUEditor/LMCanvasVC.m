@@ -190,8 +190,10 @@
     
     if(link==nil || link.length == 0){
         //remove link
-//        [self removeLinkIU:identifier];
+        [self IURemoveLink:identifier];
+        return;
     }
+    
     
     NSString *linkID =[NSString stringWithFormat:@"A_LINK_%@", identifier];
     DOMHTMLElement *linkElement = [self getHTMLElementbyID:linkID];
@@ -224,9 +226,10 @@
         JDWarnLog(@"[IU:%@] don't have link", identifier);
         return;
     }
+    //replace nodes
     DOMNode *linkParentNode = linkNode.parentNode;
-    [linkParentNode removeChild:linkNode];
-    [linkParentNode appendChild:selectHTMLElement];
+    [linkParentNode replaceChild:selectHTMLElement oldChild:linkNode];
+    
 }
 
 
