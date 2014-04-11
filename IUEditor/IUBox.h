@@ -16,8 +16,7 @@
 
 -(void)IU:(NSString *)identifier CSSChanged:(NSString*)css forWidth:(NSInteger)width;
 -(void)IU:(NSString *)identifier HTML:(NSString *)html withParentID:(NSString *)parentID;
--(void)IU:(NSString *)identifier addLink:(NSString *)link;
--(void)removeLinkIU:(NSString *)identifier;
+-(void)IU:(NSString *)identifier setLink:(NSString *)link;
 
 -(void)IURemoved:(NSString*)identifier;
 
