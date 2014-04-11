@@ -152,9 +152,11 @@
     NSInteger index = [[self sortedArray] indexOfObject:widthNumber];
     
     InnerSizeBox *removeView = boxManageView.subviews[index];
-    //select next larger box
-    InnerSizeBox *nextBox = boxManageView.subviews[index-1];
-    [nextBox select];
+    if(selectIndex == index){
+        //select next larger box
+        InnerSizeBox *nextBox = boxManageView.subviews[index-1];
+        [nextBox select];
+    }
     
     //remove css & view & array
     [self.delegate removeStyleSheet:[removeView frameWidth]];
