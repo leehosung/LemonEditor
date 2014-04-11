@@ -24,14 +24,15 @@ $.fn.updatePixel = function(){
                      })
 }
 
+
 $.fn.iuPosition = function(){
 	var top = $(this).position().top + parseFloat($(this).css('margin-top'));
 	var left = $(this).position().left + parseFloat($(this).css('margin-left'));
-	var width = parseFloat($(this).css('width'));
-	var height = parseFloat($(this).css('height'));
+	var width = parseFloat($(this).css('width')) + parseFloat($(this).css('border-left-width'))+parseFloat($(this).css('border-right-width'));
+	var height = parseFloat($(this).css('height')) + parseFloat($(this).css('border-top-width'))+parseFloat($(this).css('border-bottom-width'));
     var x = $(this).offset().left;
     var y = $(this).offset().top;
-
+    
 	if($(this).css('position') == "relative"){
 		var marginTop =  parseFloat($(this).css('margin-top'));
 		var marginLeft = parseFloat($(this).css('margin-left'));
@@ -39,6 +40,7 @@ $.fn.iuPosition = function(){
 	}
 	return { top: top, left: left, width: width, height: height, x:x, y:y }
 }
+
 
 
 
