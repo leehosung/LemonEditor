@@ -477,13 +477,12 @@
     if([iuClass containsString:@"IUBox"]){
         return (DOMHTMLElement *)node;
     }
-    else if ([node.parentNode isKindOfClass:[DOMHTMLHtmlElement class]] ){
+    else if ([node isKindOfClass:[DOMHTMLHtmlElement class]] ){
         //can't find div node
         //- it can't be in IU model
         //- IU model : text always have to be in Div class
         //reach to html
-        JDErrorLog(@"can't find IU node, reach to HTMLElement");
-        assert(1);
+        JDWarnLog(@"can't find IU node, reach to HTMLElement");
         return nil;
     }
     else {
