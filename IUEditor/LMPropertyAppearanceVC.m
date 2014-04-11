@@ -1,22 +1,25 @@
 //
-//  LMPropertyApperenceVC.m
+//  LMPropertyBaseVC.m
 //  IUEditor
 //
-//  Created by jd on 4/10/14.
+//  Created by JD on 4/5/14.
 //  Copyright (c) 2014 JDLab. All rights reserved.
 //
 
 #import "LMPropertyAppearanceVC.h"
 
 @interface LMPropertyAppearanceVC ()
-@property (weak) IBOutlet NSTextField *borderTF;
-@property (weak) IBOutlet NSTextField *borderTopTF;
-@property (weak) IBOutlet NSTextField *borderRightTF;
-@property (weak) IBOutlet NSTextField *borderLeftTF;
-@property (weak) IBOutlet NSTextField *borderBottomTF;
+
+@property (weak) IBOutlet NSColorWell *bgColorWell;
+
+
+@property (weak) IBOutlet NSComboBox *imageNameComboBox;
+@property (weak) IBOutlet NSTextField *xPositionTF;
+@property (weak) IBOutlet NSTextField *yPositionTF;
+
+@property (weak) IBOutlet NSPopUpButton *sizeB;
+
 @end
-
-
 
 @implementation LMPropertyAppearanceVC
 
@@ -24,6 +27,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        // Initialization code here.
     }
     return self;
 }
@@ -32,68 +36,22 @@
     return [@"controller.selection.css.assembledTagDictionary." stringByAppendingString:tag];
 }
 
+- (void)awakeFromNib{
+    [[NSColorPanel sharedColorPanel] setShowsAlpha:YES];
+    [NSColor setIgnoresAlpha:NO];
 
--(void)awakeFromNib{
+    [_imageNameComboBox bind:@"content" toObject:self withKeyPath:@"resourceManager.imageNames" options:nil];
+    [_imageNameComboBox bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagImage] options:nil];
+    
+    [_xPositionTF bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagBGXPosition] options:nil];
+    [_yPositionTF bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagBGYPosition] options:nil];
+    
+    [_sizeB bind:@"selectedValue" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagBGSize] options:nil];
+    
+    [_bgColorWell bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagBGColor] options:nil];
+    
 }
 
--(void)setController:(IUController *)controller{
-    _controller = controller;
-    [controller addObserver:self forKeyPath:[@"selection.css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderBottomWidth] options:0 context:nil];
-    [controller addObserver:self forKeyPath:[@"selection.css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderTopWidth] options:0 context:nil];
-    [controller addObserver:self forKeyPath:[@"selection.css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderLeftWidth] options:0 context:nil];
-    [controller addObserver:self forKeyPath:[@"selection.css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderRightWidth] options:0 context:nil];
-
-}
-
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
-    if ([[keyPath pathExtension] isSameTag:IUCSSTagBorderTopWidth]) {
-        id value = [_controller valueForKeyPath:[@"selection.css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderTopWidth]];
-        [_borderTopTF setStringValue:value];
-    }
-    else if ([[keyPath pathExtension] isSameTag:IUCSSTagBorderLeftWidth]) {
-        id value = [_controller valueForKeyPath:[@"selection.css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderLeftWidth]];
-        [_borderLeftTF setStringValue:value];
-    }
-    else if ([[keyPath pathExtension] isSameTag:IUCSSTagBorderRightWidth]) {
-        id value = [_controller valueForKeyPath:[@"selection.css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderRightWidth]];
-        [_borderRightTF setStringValue:value];
-    }
-    else if ([[keyPath pathExtension] isSameTag:IUCSSTagBorderBottomWidth]) {
-        id value = [_controller valueForKeyPath:[@"selection.css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderBottomWidth]];
-        [_borderBottomTF setStringValue:value];
-    }
-    id value = [_controller valueForKeyPath:[@"selection.css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderWidth]];
-    [_borderTF setStringValue:value];
-}
-
-- (void)controlTextDidEndEditing:(NSNotification *)obj{
-    NSTextField *changedField = [obj object];
-    id value = @(_borderTF.integerValue);
-    if (changedField == _borderTF) {
-        for (IUBox *box in _controller.selectedObjects) {
-            [box startGrouping];
-        }
-        [_controller.selection setValue:value forKeyPath:[@"css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderTopWidth]];
-        [_controller.selection setValue:value forKeyPath:[@"css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderLeftWidth]];
-        [_controller.selection setValue:value forKeyPath:[@"css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderRightWidth]];
-        [_controller.selection setValue:value forKeyPath:[@"css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderBottomWidth]];
-        for (IUBox *box in _controller.selectedObjects) {
-            [box endGrouping];
-        }
-    }
-    else if (changedField == _borderTopTF) {
-        [_controller.selection setValue:@(_borderTopTF.integerValue) forKeyPath:[@"css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderTopWidth]];
-    }
-    else if (changedField == _borderLeftTF) {
-        [_controller.selection setValue:@(_borderLeftTF.integerValue) forKeyPath:[@"css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderLeftWidth]];
-    }
-    else if (changedField == _borderRightTF) {
-        [_controller.selection setValue:@(_borderRightTF.integerValue) forKeyPath:[@"css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderRightWidth]];
-    }
-    else if (changedField == _borderBottomTF) {
-        [_controller.selection setValue:@(_borderBottomTF.integerValue) forKeyPath:[@"css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderBottomWidth]];
-    }
-}
 
 
 @end

@@ -23,8 +23,8 @@
 #import "LMResourceVC.h"
 #import "LMToolbarVC.h"
 #import "LMPropertyFrameVC.h"
-#import "LMPropertyBaseVC.h"
 #import "LMPropertyAppearanceVC.h"
+#import "LMPropertyBorderVC.h"
 
 #import "IUCompiler.h"
 #import "IUResourceManager.h"
@@ -57,8 +57,8 @@
     LMToolbarVC     *toolbarVC;
     LMResourceVC    *resourceVC;
     LMPropertyFrameVC    *propertyFrameVC;
-    LMPropertyBaseVC    *propertyBaseVC;
-    LMPropertyAppearanceVC  *propertyAppearanceVC;
+    LMPropertyAppearanceVC    *propertyAppearanceVC;
+    LMPropertyBorderVC  *propertyBorderVC;
 }
 
 - (id)initWithWindow:(NSWindow *)window
@@ -97,18 +97,17 @@
     resourceVC = [[LMResourceVC alloc] initWithNibName:@"LMResourceVC" bundle:nil];
     [_resourceV addSubviewFullFrame:resourceVC.view];
     
-    
     propertyFrameVC = [[LMPropertyFrameVC alloc] initWithNibName:@"LMPropertyFrameVC" bundle:nil];
     [propertyFrameVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
     [_propertyV addSubviewFullFrame:propertyFrameVC.view];
     
-    propertyBaseVC = [[LMPropertyBaseVC alloc] initWithNibName:@"LMPropertyBaseVC" bundle:nil];
-    [propertyBaseVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
-    [_propertyBaseV addSubviewFullFrame:propertyBaseVC.view];
-    
     propertyAppearanceVC = [[LMPropertyAppearanceVC alloc] initWithNibName:@"LMPropertyAppearanceVC" bundle:nil];
     [propertyAppearanceVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
-    [_propertyAppearenceV addSubviewFullFrame:propertyAppearanceVC.view];
+    [_propertyBaseV addSubviewFullFrame:propertyAppearanceVC.view];
+    
+    propertyBorderVC = [[LMPropertyBorderVC alloc] initWithNibName:@"LMPropertyBorderVC" bundle:nil];
+    [propertyBorderVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
+    [_propertyAppearenceV addSubviewFullFrame:propertyBorderVC.view];
     
     [self startNewProject];
 }
@@ -150,7 +149,7 @@
     
     [resourceVC setManager:_resourceManager];
     
-    [propertyBaseVC setResourceManager:_resourceManager];
+    [propertyAppearanceVC setResourceManager:_resourceManager];
 }
 
 -(void)setSelectedNode:(IUNode*)selectedNode{
