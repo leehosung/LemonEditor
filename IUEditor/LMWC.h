@@ -18,8 +18,7 @@
 @property  _binding_ NSTreeController   *IUController;
 
 -(void)loadProject:(NSString*)path;
--(void)startNewProject;
 
--(LMWindow *)window;
+- (LMWindow *)window;
 - (IBAction)getCurrentSource:(id)sender;
 @end

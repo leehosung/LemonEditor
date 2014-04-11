@@ -12,7 +12,7 @@
 
 
 @implementation LMAppDelegate{
-    LMWC *wc;
+//    LMWC *wc;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -23,11 +23,7 @@
 //    [JDLogUtil enableLogSection:IULogJS];
     [JDLogUtil enableLogSection:IULogAction];
     
-    wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
-    [wc showWindow:self];
-
-    
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraints"];
+//    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraints"];
 
 
 #pragma mark -
@@ -44,8 +40,35 @@
     self.testController.mainWC = self.canvasWC;
     [self.testController showWindow:nil];
     [wc addSelectedIU:@"test"];
-    
 #endif
+    
+    [self openDocument:nil];
 }
+
+- (void)openDocument:(id)sender{
+    NSString *value = [[NSUserDefaults standardUserDefaults] valueForKey:@"lastDocument"];
+    LMWC *wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
+    [wc showWindow:self];
+    [wc loadProject:value];
+}
+
+-(void)newDocument:(id)sender{
+    NSError *error;
+    
+    NSDictionary *dict = @{IUProjectKeyAppName: @"myApp",
+                           IUProjectKeyGit: @(NO),
+                           IUProjectKeyHeroku: @(NO),
+                           IUProjectKeyDirectory: [@"~/IUProjTemp" stringByExpandingTildeInPath]};
+    
+    NSString *path = [IUProject createProject:dict error:&error];
+    if (error != nil) {
+        assert(0);
+    }
+    LMWC *wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
+    [wc showWindow:self];
+    [wc loadProject:path];
+    [[NSUserDefaults standardUserDefaults] setValue:path forKey:@"lastDocument"];
+}
+
 
 @end

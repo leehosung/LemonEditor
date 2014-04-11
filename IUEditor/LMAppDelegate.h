@@ -10,6 +10,5 @@
 
 @interface LMAppDelegate : NSObject <NSApplicationDelegate>
 
-@property (assign) IBOutlet NSWindow *window;
-
+-(void)startNewProject;
 @end
