@@ -171,6 +171,18 @@
     }
 }
 
+#pragma mark setText
+//text
+- (void)selectTextRange:(NSRange)range identifier:(NSString *)identifier{
+    
+}
+- (void)insertString:(NSString *)string identifier:(NSString *)identifier withRange:(NSRange)range{
+    
+}
+- (void)deleteStringRange:(NSRange)range identifier:(NSString *)identifier{
+    
+}
+
 #pragma mark -
 #pragma mark IUDelegate
 
