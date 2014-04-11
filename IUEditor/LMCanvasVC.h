@@ -49,6 +49,10 @@
 - (void)addSelectedIU:(NSString *)IU;
 - (void)selectIUInRect:(NSRect)frame;
 
+//text
+- (void)selectTextRange:(NSRange)range identifier:(NSString *)identifier;
+- (void)insertString:(NSString *)string identifier:(NSString *)identifier withRange:(NSRange)range;
+- (void)deleteStringRange:(NSRange)range identifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark be set by IU
@@ -65,7 +69,6 @@
 
 - (void)updateIUFrameDictionary:(NSMutableDictionary *)iuFrameDict;
 - (void)updateGridFrameDictionary:(NSMutableDictionary *)gridFrameDict;
-- (void)updateHTMLText:(NSString *)insertText atIU:(NSString *)iuID;
 
 - (void)moveIUToDiffPoint:(NSPoint)point totalDiffPoint:(NSPoint)totalPoint;
 - (void)extendIUToDiffSize:(NSSize)size totalDiffSize:(NSSize)totalSize;

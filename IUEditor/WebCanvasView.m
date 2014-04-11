@@ -109,16 +109,6 @@
     [((LMCanvasVC *)self.delegate) moveIUToDiffPoint:diffPoint totalDiffPoint:diffPoint];
 }
 
-#pragma mark -
-- (BOOL)webView:(WebView *)webView shouldDeleteDOMRange:(DOMRange *)range{
-
-    DOMNode *container = range.startContainer;
-    if([container isKindOfClass:[DOMText class]]){
-        return YES;
-    }
-    return NO;
-}
-
 
 #pragma mark -
 #pragma mark mouse operation
@@ -171,7 +161,7 @@
     currentNode = [elementInformation objectForKey:WebElementDOMNodeKey];
     
     if([currentNode isKindOfClass:[DOMText class]]){
-        currentNode = [self textParentIUElement:currentNode];
+        currentNode = [self IUNodeAtCurrentNode:currentNode];
     }
     
     if(currentNode.idName){
@@ -308,79 +298,16 @@
 #pragma mark -
 #pragma mark text
 
-- (DOMHTMLElement *)textParentIUElement:(DOMNode *)node{
-    NSString *iuClass = ((DOMElement *)node.parentNode).className;
-    if([iuClass containsString:@"IUBox"]){
-        return (DOMHTMLElement *)node.parentNode;
-    }
-    else if ([node.parentNode isKindOfClass:[DOMHTMLHtmlElement class]] ){
-        //can't find div node
-        //- it can't be in IU model
-        //- IU model : text always have to be in Div class
-        //reach to html
-        assert(1);
-        return nil;
-    }
-    else {
-        return [self textParentIUElement:node.parentNode];
-    }
-}
 
-- (BOOL)webView:(WebView *)webView shouldInsertText:(NSString *)text replacingDOMRange:(DOMRange *)range givenAction:(WebViewInsertAction)action{
-    
-    DOMNode *node = range.startContainer;
-    BOOL isWritable =  NO;
-    
-    
-    //check to insert Text
-    if([node isKindOfClass:[DOMText class] ]){
-        isWritable = YES;
-    }
-    else {
-        if([node isNotEqualTo:currentNode]){
-            return NO;
-        }
-        NSString *writableValue = [((DOMElement *)node) getAttribute:@"isWritable"];
-        if(writableValue){
-            isWritable = [writableValue boolValue];
-        }
-    }
-
-    //insert Text
-    if (isWritable){
-        JDTraceLog( @"insert Text : %@", text);
-        DOMHTMLElement *insertedTextNode = [self textParentIUElement:node];
-        
-                if(insertedTextNode != nil){
-            [((LMCanvasVC *)(self.delegate)) updateHTMLText:insertedTextNode.innerHTML atIU:insertedTextNode.idName];
-            return YES;
-        }
-    }
-    return NO;
-}
-- (BOOL)webView:(WebView *)webView shouldApplyStyle:(DOMCSSStyleDeclaration *)style toElementsInDOMRange:(DOMRange *)range{
-    
-    
-    JDTraceLog( @"insert CSS : %@", style.cssText);
-    DOMHTMLElement *insertedTextNode = [self textParentIUElement:range.startContainer];
-    
-    if(insertedTextNode != nil){
-        [((LMCanvasVC *)(self.delegate)) updateHTMLText:insertedTextNode.innerHTML atIU:insertedTextNode.idName];
-        return YES;
-    }
-    else {
-        return NO;
-    }
-}
 
 - (BOOL)isOneIUSTextelection:(DOMRange *)range{
     DOMNode *startContainer = range.startContainer;
     if([startContainer isKindOfClass:[DOMText class]]){
-        startContainer = [self textParentIUElement:startContainer];
+        startContainer = [self IUNodeAtCurrentNode:startContainer];
     }
     DOMNode *ancestorContainer = range.commonAncestorContainer;
     if([ancestorContainer isKindOfClass:[DOMText class]]){
-        ancestorContainer = [self textParentIUElement:ancestorContainer];
+        ancestorContainer = [self IUNodeAtCurrentNode:ancestorContainer];
     }
     
     if ([startContainer isEqualTo:ancestorContainer]){
@@ -392,19 +319,83 @@
     
 }
 
+- (NSRange)selectedRange:(DOMRange *)proposedRange InIU:(DOMHTMLElement *)proposedNode{
+    DOMRange *totalRange = [proposedRange cloneRange];
+    [totalRange selectNodeContents:proposedNode];
+    [totalRange setEnd:proposedRange.startContainer offset:proposedRange.startOffset];
+    
+   return NSMakeRange(totalRange.text.length , proposedRange.text.length);
+}
+
+- (BOOL)webView:(WebView *)webView shouldInsertText:(NSString *)text replacingDOMRange:(DOMRange *)range givenAction:(WebViewInsertAction)action{
+    
+    DOMHTMLElement *IUNode = [self IUNodeAtCurrentNode:range.startContainer];
+    if(IUNode == nil || [IUNode isNotEqualTo:currentNode]){
+        return NO;
+    }
+    
+    //FIXME: attribute isWirtable
+    BOOL isWritable = YES;
+    NSString *writableValue = [IUNode getAttribute:@"isWritable"];
+    if(writableValue != nil && writableValue.length != 0){
+        isWritable = [writableValue boolValue];
+    }
+    
+    //insert Text
+    if (isWritable){
+        NSRange iuRange = [self selectedRange:range InIU:IUNode];
+        [((LMCanvasVC *)self.delegate) insertString:text identifier:IUNode.idName withRange:iuRange];
+        JDInfoLog(@"insertText [IU:%@] : range(%ld, %ld) : %@ ", IUNode.idName, iuRange.location, iuRange.length, text);
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL)webView:(WebView *)webView shouldDeleteDOMRange:(DOMRange *)range{
+    
+    DOMHTMLElement *IUNode = [self IUNodeAtCurrentNode:range.startContainer];
+    if(IUNode == nil || [IUNode isNotEqualTo:currentNode]){
+        return NO;
+    }
+    if([self isOneIUSTextelection:range] == NO){
+        return NO;
+    }
+
+    
+    //FIXME: attribute isWirtable
+    BOOL isWritable = YES;
+    NSString *writableValue = [IUNode getAttribute:@"isWritable"];
+    if(writableValue != nil && writableValue.length != 0){
+        isWritable = [writableValue boolValue];
+    }
+    
+    //insert Text
+    if (isWritable){
+        NSRange iuRange = [self selectedRange:range InIU:IUNode];
+        [((LMCanvasVC *)self.delegate) deleteStringRange:iuRange identifier:IUNode.idName];
+        JDInfoLog(@"DeleteText[IU:%@] : range(%ld, %ld) ", IUNode.idName, iuRange.location, iuRange.length);
+        return YES;
+    }
+    return NO;
+
+}
+
+
 - (BOOL)webView:(WebView *)webView shouldChangeSelectedDOMRange:(DOMRange *)currentRange toDOMRange:(DOMRange *)proposedRange affinity:(NSSelectionAffinity)selectionAffinity stillSelecting:(BOOL)flag{
 
     if([self isOneIUSTextelection:proposedRange]){
         NSArray * selectednames = ((LMCanvasVC *)(self.delegate)).controller.selectedIdentifiers;
-        DOMHTMLElement *proposedNode;
-        if([proposedRange.startContainer isKindOfClass:[DOMText class]]){
-            proposedNode = [self textParentIUElement:proposedRange.startContainer];
-        }
-        else{
-            proposedNode = (DOMHTMLElement *)proposedRange.startContainer;
-        }
+        DOMHTMLElement *proposedNode = [self IUNodeAtCurrentNode:proposedRange.startContainer];
+        NSString *proposeIUID = proposedNode.idName;
         
-        if(selectednames.count == 1 && [selectednames[0] isEqualToString:proposedNode.idName]){
+        if(selectednames.count == 1 && [selectednames[0] isEqualToString:proposeIUID]){
+         
+            NSRange selectRangeInIU = [self selectedRange:proposedRange InIU:proposedNode];
+            if(selectRangeInIU.length > 0){
+                [((LMCanvasVC *)self.delegate) selectTextRange:selectRangeInIU identifier:proposeIUID];
+            }
+            JDInfoLog(@"SelectedRange : (%ld, %ld)", selectRangeInIU.location, selectRangeInIU.length);
+            
             return YES;
         }
     }
