@@ -255,7 +255,9 @@
 
 - (void)addTextPointLayer:(NSString *)iuID withFrame:(NSRect)frame{
     PointTextLayer *textOriginLayer = [[PointTextLayer alloc] initWithIUID:iuID withFrame:frame type:PointTextTypeOrigin];
+    textOriginLayer.contentsScale = [[NSScreen mainScreen] backingScaleFactor];
     PointTextLayer *textSizeLayer = [[PointTextLayer alloc] initWithIUID:iuID withFrame:frame type:PointTextTypeSize];
+    textSizeLayer.contentsScale = [[NSScreen mainScreen] backingScaleFactor];
     
     [textManageLayer addSublayer:textOriginLayer];
     [textManageLayer addSublayer:textSizeLayer];
