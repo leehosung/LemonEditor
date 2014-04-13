@@ -15,12 +15,13 @@
 
 -(NSArray*)allDocuments{
     NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
-        if ([evaluatedObject isKindOfClass:[IUDocument class]]) {
+        if ([evaluatedObject isKindOfClass:[IUDocumentNode class]]) {
             return YES;
         }
         return NO;
     }];
-    return [self.children filteredArrayUsingPredicate:predicate];
+    NSArray *documentsNodes = [self.children filteredArrayUsingPredicate:predicate];
+    return [documentsNodes valueForKey:@"document"];
 }
 
 @end

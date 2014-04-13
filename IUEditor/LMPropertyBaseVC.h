@@ -12,5 +12,7 @@
 @interface LMPropertyBaseVC : NSViewController
 
 @property (nonatomic) IUController *controller;
+@property (copy) NSArray *pageDocuments;
+@property (copy) NSArray *masterDocuments;
 
 @end

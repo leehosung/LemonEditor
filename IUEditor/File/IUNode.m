@@ -7,6 +7,7 @@
 //
 
 #import "IUNode.h"
+#import "IUGroupNode.h"
 
 @implementation IUNode
 -(id)initWithCoder:(NSCoder *)aDecoder{
@@ -38,4 +39,10 @@
     return YES;
 }
 
+- (IUGroupNode*)rootNode{
+    if (self.parent == nil) {
+        return (IUGroupNode*)self;
+    }
+    return (IUGroupNode*)(self.parent).rootNode;
+}
 @end

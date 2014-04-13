@@ -7,6 +7,7 @@
 //
 
 #import "IUGroupNode.h"
+#import "IUProject.h"
 
 @implementation IUGroupNode{
     NSMutableArray *_children;
@@ -54,6 +55,10 @@
     [_children addObject:node];
     node.parent = self;
     [self didChangeValueForKey:@"children"];
+    IUProject *project = (IUProject*)self.rootNode;
+    if ([project isKindOfClass:[IUProject class]]) {
+        [project.delegate project:(IUProject*)self.rootNode nodeAdded:node];
+    }
 }
 
 -(NSArray*)children{

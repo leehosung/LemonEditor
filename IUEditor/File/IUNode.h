@@ -15,5 +15,5 @@
 @property IUGroupNode       *parent;
 
 - (BOOL)isLeaf;
-
+- (IUGroupNode*)rootNode;
 @end

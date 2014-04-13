@@ -128,10 +128,11 @@
 -(void)loadProject:(NSString*)path{
     //create project class
     _project = [IUProject projectWithContentsOfPackage:path];
+    _project.delegate = self;
+    [self project:_project nodeAdded:nil];
 
     //connect to file navi
     canvasVC.documentBasePath = _project.absolutePath;
-    
     
     //construct widget library
     [widgetLibraryVC setProject:_project];
@@ -162,6 +163,7 @@
     [resourceVC setManager:_resourceManager];
     
     [propertyAppearanceVC setResourceManager:_resourceManager];
+
 }
 
 -(void)setSelectedNode:(IUNode*)selectedNode{
@@ -207,5 +209,9 @@
     [_project save];
 }
 
+
+- (void)project:(IUProject *)project nodeAdded:(IUNode *)node{
+    [propertyBaseVC setPageDocuments:project.pageDocuments];
+}
 
 @end

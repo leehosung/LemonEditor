@@ -37,6 +37,9 @@
     [encoder encodeObject:_path forKey:@"path"];
     [encoder encodeObject:IDDict forKey:@"IDDict"];
     [encoder encodeObject:_resourceNode forKey:@"_resourceNode"];
+    [encoder encodeObject:_pageDocumentGroup forKey:@"_pageDocumentGroup"];
+    [encoder encodeObject:_masterDocumentGroup forKey:@"_masterDocumentGroup"];
+    [encoder encodeObject:_componentDocumentGroup forKey:@"_componentDocumentGroup"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder{
@@ -47,6 +50,9 @@
         _path = [aDecoder decodeObjectForKey:@"path"];
         IDDict = [aDecoder decodeObjectForKey:@"IDDict"];
         _resourceNode = [aDecoder decodeObjectForKey:@"_resourceNode"];
+        _pageDocumentGroup = [aDecoder decodeObjectForKey:@"_pageDocumentGroup"];
+        _masterDocumentGroup = [aDecoder decodeObjectForKey:@"_masterDocumentGroup"];
+        _componentDocumentGroup = [aDecoder decodeObjectForKey:@"_componentDocumentGroup"];
     }
     return self;
 }
@@ -155,13 +161,6 @@
     return array;
 }
 
--(NSArray*)allDocuments{
-    NSMutableArray  *array = [NSMutableArray arrayWithArray:self.pageDocuments];
-    [array addObjectsFromArray:self.masterDocuments];
-    [array addObjectsFromArray:self.componentDocuments];
-    return [array copy];
-}
-
 - (NSArray*)pageDocuments{
     return [_pageDocumentGroup allDocuments];
 }
@@ -225,6 +224,10 @@
     IUResourceNode *iuJSNode = [[IUResourceNode alloc] initWithName:@"iu.js" type:IUResourceTypeJS];
     [JSGroup addResourceNode:iuJSNode path:iuJSPath];
 
+}
+
+-(void)dealloc{
+    JDInfoLog(@"Project Dealloc");
 }
 
 @end

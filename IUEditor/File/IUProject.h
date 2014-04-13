@@ -17,13 +17,19 @@ typedef enum _IUGitType{
     IUGitTypeOutput = 2
 } IUGitType;
 
+@class IUProject;
+@protocol IUProjectDelegate
+-(void)project:(IUProject*)project nodeAdded:(IUNode*)node;
+@end
+
+
 @class IUDocument;
 
 @interface IUProject : IUDocumentGroupNode <IUResourceGroupNode>
 
 @property   BOOL            herokuOn;
 @property   IUGitType       gitType;
-
+@property   id<IUProjectDelegate>  delegate;
 
 //setting
 #define IUProjectKeyGit @"git"
