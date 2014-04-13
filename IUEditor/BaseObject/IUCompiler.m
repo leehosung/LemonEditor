@@ -126,6 +126,9 @@
 
 
 -(IUCSSStringDictionary*)cssStringDictionaryWithCSSTagDictionary:(NSDictionary*)cssTagDict ofClass:(IUBox*)obj{
+    if (_resourceSource == nil) {
+        assert(0);
+    }
     IUCSSStringDictionary *dict = [IUCSSStringDictionary dictionary];
     id value;
     
