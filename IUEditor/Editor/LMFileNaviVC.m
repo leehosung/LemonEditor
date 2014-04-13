@@ -11,7 +11,6 @@
 #import "NSTreeController+JDExtension.h"
 
 @interface LMFileNaviVC ()
-@property (strong, nonatomic) IBOutlet NSTreeController *documentController;
 
 @end
 
@@ -43,7 +42,7 @@
 
 -(void)setProject:(IUProject *)project{
     _project = project;
-    
+    _project.delegate = self;
     [_documentController setContent:_project];
     [_documentController addObserver:self forKeyPath:@"selection" options:0 context:nil];
     
@@ -68,6 +67,5 @@
     NSTableCellView *cell= [outlineView makeViewWithIdentifier:@"cell" owner:self];
     return cell;
 }
-
 
 @end

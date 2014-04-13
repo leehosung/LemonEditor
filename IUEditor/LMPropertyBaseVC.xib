@@ -24,8 +24,17 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </comboBoxCell>
+                    <connections>
+                        <binding destination="Fjf-Eh-LJA" name="content" keyPath="arrangedObjects.name" id="PwE-LB-PUT"/>
+                    </connections>
                 </comboBox>
             </subviews>
         </customView>
+        <userDefaultsController representsSharedInstance="YES" id="lF8-LT-KhM"/>
+        <arrayController id="Fjf-Eh-LJA">
+            <connections>
+                <binding destination="-2" name="contentArray" keyPath="self.pageDocuments" id="fjP-sM-UEK"/>
+            </connections>
+        </arrayController>
     </objects>
 </document>

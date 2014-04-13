@@ -10,9 +10,10 @@
 #import "IUProject.h"
 #import "IUDocumentController.h"
 
-@interface LMFileNaviVC : NSViewController
+@interface LMFileNaviVC : NSViewController <IUProjectDelegate>
 
 @property (nonatomic, readonly) id  selection;
+@property (strong, nonatomic) IBOutlet NSTreeController *documentController;
 @property (nonatomic) IUProject *project;
 
 -(void)selectFirstDocument;
