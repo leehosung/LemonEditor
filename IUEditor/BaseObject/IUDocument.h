@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "IUCompiler.h"
 #import "IUBox.h"
-
+#import "IUIdentifierManager.h"
 
 
 @interface IUDocument : IUBox
@@ -23,9 +23,6 @@
 
 -(NSArray*)widthWithCSS;
 -(IUBox *)selectableIUAtPoint:(CGPoint)point;
-
-
-#pragma mark Reference Management
 
 
 
