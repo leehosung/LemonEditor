@@ -41,19 +41,4 @@
     return nil;
 }
 
-
--(void)addReferenceToIUDocument:(IUDocument*)document{
-    
-}
--(void)removeReferenceToIUDocument:(IUDocument*)document{
-    
-}
-
--(void)addReferenceFromIUDocument:(IUDocument*)document{
-    
-}
--(void)removeReferenceFromIUDocument:(IUDocument*)document{
-    
-}
-
 @end

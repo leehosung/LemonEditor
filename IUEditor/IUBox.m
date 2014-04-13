@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 JDLab. All rights reserved.
 //
 
+#import "IUIdentifierManager.h"
+
 #import "IUBox.h"
 #import "NSObject+JDExtension.h"
 #import "NSCoder+JDExtension.h"
@@ -33,6 +35,9 @@
         [self addObserver:self forKeyPath:@"delegate.selectedFrameWidth" options:0 context:nil];
         [self addObserver:self forKeyPath:@"delegate.maxFrameWidth" options:0 context:nil];
         changedCSSWidths = [NSMutableSet set];
+        for (IUBox *iu in self.children) {
+            [iu bind:@"identifierManager" toObject:self withKeyPath:@"identifierManager" options:nil];
+        }
     }
     return self;
 }
@@ -41,7 +46,7 @@
     if ([self.htmlID length] == 0) {
         assert(0);
     }
-    [aCoder encodeFromObject:self withProperties:[[IUBox class] properties]];
+    [aCoder encodeFromObject:self withProperties:[[IUBox class] propertiesWithOutProperties:@[@"identifierManager"]]];
     [aCoder encodeObject:self.css forKey:@"css"];
     [aCoder encodeObject:_m_children forKey:@"children"];
 }
@@ -70,7 +75,7 @@
         _m_children = [NSMutableArray array];
         
         [self addObserver:self forKeyPath:@"delegate.maxFrameWidth" options:0 context:nil];
-        [self addObserver:self forKeyPath:@"delegate.maxFrameWidth" options:0 context:nil];
+        [self addObserver:self forKeyPath:@"delegate.selectedFrameWidth" options:0 context:nil];
 
         changedCSSWidths = [NSMutableSet set];
     }
@@ -177,6 +182,8 @@
     iu.parent = self;
     [self.delegate IU:iu.htmlID HTML:iu.html withParentID:self.htmlID];
     [self.delegate IU:iu.htmlID CSSChanged:[iu cssForWidth:IUCSSDefaultCollection] forWidth:IUCSSDefaultCollection];
+    [_identifierManager addIU:iu];
+    [iu bind:@"identifierManager" toObject:self withKeyPath:@"identifierManager" options:nil];
     return YES;
 }
 
@@ -293,6 +300,13 @@
 
 -(void)setLink:(NSString *)link{
     [self.delegate IU:self.htmlID setLink:link];
+}
+
+-(void)dealloc{
+    [_identifierManager removeIdentifier:self.htmlID];
+    [self removeObserver:self forKeyPath:@"delegate.maxFrameWidth"];
+    [self removeObserver:self forKeyPath:@"delegate.selectedFrameWidth"];
+
 }
 
 @end

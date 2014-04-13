@@ -36,11 +36,13 @@
     NSDictionary *setting = object.dict;
     
     IUBox *obj = [[NSClassFromString(className) alloc] initWithSetting:setting];
-    obj.htmlID = [_controller requestNewIdentifierWithString:obj.className];
+    
+    obj.htmlID = [_identifierManager requestNewIdentifierWithKey:obj.className];
     obj.name = obj.htmlID;
     
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:obj];
     [pasteboard setData:data forType:kUTTypeIUType];
+
     return YES;
 }
 

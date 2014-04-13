@@ -56,17 +56,6 @@
     return findIUs[0];
 }
 
--(NSString*)requestNewIdentifierWithString:(NSString*)string{
-    int i=0;
-    while (1) {
-        i++;
-        NSString *identifier = [string stringByAppendingFormat:@"%d", i];
-        if ([self IUBoxByIdentifier:identifier] == nil) {
-            return identifier;
-        }
-    }
-}
-
 -(NSString*)keyPathFromControllerToTag:(IUCSSTag)tag{
     return [@"controller.selection.css.assembledTagDictionary" stringByAppendingPathExtension:tag];
 }

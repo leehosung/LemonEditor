@@ -45,6 +45,7 @@
 		692334BB18F783FE003E5224 /* LMPropertyBaseVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 692334B918F783FE003E5224 /* LMPropertyBaseVC.xib */; };
 		6953852E18ED6EC800CC42E5 /* IUController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6953852D18ED6EC800CC42E5 /* IUController.m */; };
 		6954812818D7640A00CA02F1 /* IUPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6954812718D7640A00CA02F1 /* IUPage.m */; };
+		6967425318F7D077008B7111 /* IUIdentifierManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6967425218F7D077008B7111 /* IUIdentifierManager.m */; };
 		696D1C9A18E5366400B4AB16 /* webTemplate.html in Resources */ = {isa = PBXBuildFile; fileRef = 696D1C9918E5366400B4AB16 /* webTemplate.html */; };
 		696D1C9B18E5366400B4AB16 /* webTemplate.html in Resources */ = {isa = PBXBuildFile; fileRef = 696D1C9918E5366400B4AB16 /* webTemplate.html */; };
 		696D1C9E18E5778400B4AB16 /* reset.css in Resources */ = {isa = PBXBuildFile; fileRef = 696D1C9D18E5778400B4AB16 /* reset.css */; };
@@ -198,6 +199,8 @@
 		6953852D18ED6EC800CC42E5 /* IUController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUController.m; sourceTree = "<group>"; };
 		6954812618D7640A00CA02F1 /* IUPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUPage.h; path = BaseObject/IUPage.h; sourceTree = "<group>"; };
 		6954812718D7640A00CA02F1 /* IUPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IUPage.m; path = BaseObject/IUPage.m; sourceTree = "<group>"; };
+		6967425118F7D077008B7111 /* IUIdentifierManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUIdentifierManager.h; sourceTree = "<group>"; };
+		6967425218F7D077008B7111 /* IUIdentifierManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUIdentifierManager.m; sourceTree = "<group>"; };
 		696D1C9918E5366400B4AB16 /* webTemplate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = webTemplate.html; sourceTree = "<group>"; };
 		696D1C9D18E5778400B4AB16 /* reset.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = reset.css; sourceTree = "<group>"; };
 		69757AC018D7EB680095CBAC /* IUBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUBox.h; sourceTree = "<group>"; };
@@ -530,6 +533,8 @@
 				69CFCA9A18E9396C00E3048A /* IUHeader.m */,
 				69CFCABE18EA8D1700E3048A /* IUImage.h */,
 				69CFCABF18EA8D1700E3048A /* IUImage.m */,
+				6967425118F7D077008B7111 /* IUIdentifierManager.h */,
+				6967425218F7D077008B7111 /* IUIdentifierManager.m */,
 			);
 			name = IU;
 			sourceTree = "<group>";
@@ -957,6 +962,7 @@
 				69CFCAB218E95A0C00E3048A /* LMResourceVC.m in Sources */,
 				69757B1518D95BBC0095CBAC /* NSTextField+DragAndDrop.m in Sources */,
 				69C5760B18D6FE020016F050 /* IUComponent.m in Sources */,
+				6967425318F7D077008B7111 /* IUIdentifierManager.m in Sources */,
 				69761BCA18F168D700C4EDC6 /* IUResourceManager.m in Sources */,
 				69757B1118D95BBC0095CBAC /* JDUIUtil.m in Sources */,
 				3DB3ACE718EBEF9D0046DFB7 /* CursorRect.m in Sources */,

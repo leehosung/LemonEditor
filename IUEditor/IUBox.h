@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "IUCSS.h"
 
+@class IUIdentifierManager;
+
 @protocol IUSourceDelegate <NSObject>
 @required
 @property _binding_ NSInteger selectedFrameWidth;
@@ -38,10 +40,11 @@
 -(id)initWithSetting:(NSDictionary*)setting;
 
 // this is IU setting
+@property (nonatomic, weak) IUIdentifierManager *identifierManager;
 @property (nonatomic, copy) NSString *htmlID;
 @property (nonatomic, copy) NSString *name;
-@property (nonatomic) id<IUSourceDelegate> delegate;
-@property IUBox    *parent;
+@property (nonatomic, weak) id<IUSourceDelegate> delegate;
+@property (weak) IUBox    *parent;
 @property NSArray   *mutables;
 
 // followings are IU build setting;
@@ -79,7 +82,7 @@
 - (void)insertImage:(NSString *)imageName;
 
 @property BOOL flow;
-@property (nonatomic) NSString *link;
+@property (nonatomic, copy) NSString *link;
 -(BOOL)hasFrame;
 
 -(void)startGrouping;

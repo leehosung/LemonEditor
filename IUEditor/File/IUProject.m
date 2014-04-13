@@ -15,6 +15,7 @@
 #import "JDUIUtil.h"
 #import "IUMaster.h"
 
+
 @interface IUProject()
 @property (nonatomic, copy) NSString          *path;
 @property IUDocumentGroupNode *pageDocumentGroup;
@@ -58,36 +59,6 @@
     return self;
 }
 
--(NSString*)requestNewID:(Class)class{
-    int i=0;
-    NSArray *allIUs = self.allIUs;
-    
-    NSString    *newName;
-    while (1) {
-        i++;
-        newName = [NSString stringWithFormat:@"%@%d",[NSStringFromClass(class) substringFromIndex:2], i];
-        for (IUBox *iu in allIUs) {
-            if ([newName isEqualToString:iu.htmlID]) {
-                continue;
-            }
-        }
-        break;
-        
-    }
-    return newName;
-    NSAssert(IDDict != nil, @"IUDict is nil");
-    
-    NSString *className = NSStringFromClass(class);
-    if (IDDict[className] == nil) {
-        IDDict[className] = @(0);
-    }
-    else {
-        IDDict[className] = @([IDDict[className] intValue] + 1);
-    }
-    int index = [IDDict[className] intValue];
-    return [NSString stringWithFormat:@"%@%d", [NSStringFromClass(class) substringFromIndex:2], index];
-}
-
 - (NSString*)relativePath{
     return @".";
 }
@@ -108,18 +79,18 @@
     //create document dir
     
     IUDocumentGroupNode *pageDir = [[IUDocumentGroupNode alloc] init];
-    pageDir.name = @"Page";
+    pageDir.name = @"Pages";
     [project addNode:pageDir];
     project.pageDocumentGroup = pageDir;
     
     IUDocumentGroupNode *masterGroup = [[IUDocumentGroupNode alloc] init];
-    masterGroup.name = @"Master";
+    masterGroup.name = @"Masters";
     [project addNode:masterGroup];
     project.masterDocumentGroup = masterGroup;
     
     //create document
     IUPage *page = [[IUPage alloc] initWithSetting:setting];
-    page.htmlID = @"Page";
+    page.htmlID = @"Page1Index";
     
     IUDocumentNode *pageNode = [[IUDocumentNode alloc] init];
     pageNode.document = page;
@@ -127,12 +98,12 @@
     [pageDir addNode:pageNode];
     
     IUMaster *master = [[IUMaster alloc] initWithSetting:setting];
-    master.htmlID = [project requestNewID:[IUMaster class]];
+    master.htmlID = @"Master1";
     page.master = master;
     
     IUDocumentNode *masterNode = [[IUDocumentNode alloc] init];
     masterNode.document = master;
-    masterNode.name = @"Master";
+    masterNode.name = @"Master1";
     [masterGroup addNode:masterNode];
 
 

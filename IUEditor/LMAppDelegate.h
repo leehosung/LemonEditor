@@ -10,5 +10,4 @@
 
 @interface LMAppDelegate : NSObject <NSApplicationDelegate>
 
--(void)startNewProject;
 @end

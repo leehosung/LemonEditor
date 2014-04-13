@@ -26,8 +26,6 @@
 //    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraints"];
 
 
-    JDErrorLog(@"-----");
-    JDErrorLog(@"%f", [[NSScreen mainScreen] backingScaleFactor]);
 #pragma mark -
 #pragma mark canvas test
 #if 0

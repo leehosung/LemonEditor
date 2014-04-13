@@ -28,6 +28,7 @@
 #import "LMPropertyBaseVC.h"
 #import "IUCompiler.h"
 #import "IUResourceManager.h"
+#import "IUIdentifierManager.h"
 
 @interface LMWC ()
 @property (weak) IBOutlet NSView *leftTopV;
@@ -51,6 +52,7 @@
     IUProject   *_project;
     IUCompiler  *_compiler;
     IUResourceManager   *_resourceManager;
+    IUIdentifierManager *_identifierManager;
 
     LMFileNaviVC    *fileNaviVC;
     LMStackVC       *stackVC;
@@ -139,12 +141,16 @@
 
     //IU Setting
     _compiler = [[IUCompiler alloc] init];
-
+    _identifierManager = [[IUIdentifierManager alloc] init];
+    
     NSArray *documensNode = [_project.allChildren filteredArrayWithClass:[IUDocumentNode class]];
     
     for (IUDocumentNode *node in documensNode) {
         [node.document setCompiler:_compiler];
+        [node.document setIdentifierManager:_identifierManager];
     }
+    
+    [widgetLibraryVC setIdentifierManager:_identifierManager];
     
     fileNaviVC.project = _project;
     [fileNaviVC selectFirstDocument];

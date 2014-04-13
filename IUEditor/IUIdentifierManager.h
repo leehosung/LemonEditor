@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "IUBox.h"
 
 @interface IUIdentifierManager : NSObject
-
+-(void)addIUs:(NSArray*)IUs;
+-(void)addIU:(IUBox*)IU;
+-(NSString*)requestNewIdentifierWithKey:(NSString*)identifier;
+-(void)removeIdentifier:(NSString*)identifier;
 @end
