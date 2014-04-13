@@ -143,6 +143,9 @@
     //IU Setting
     _compiler = [[IUCompiler alloc] init];
     _identifierManager = [[IUIdentifierManager alloc] init];
+    _resourceManager = [[IUResourceManager alloc] init];
+    _resourceManager.rootNode = _project.resourceNode;
+    _compiler.resourceSource = _resourceManager;
     
     NSArray *documensNode = [_project.allChildren filteredArrayWithClass:[IUDocumentNode class]];
     
@@ -156,9 +159,6 @@
     fileNaviVC.project = _project;
     [fileNaviVC selectFirstDocument];
     
-    _resourceManager = [[IUResourceManager alloc] init];
-    _resourceManager.rootNode = _project.resourceNode;
-    _compiler.resourceSource = _resourceManager;
     
     [resourceVC setManager:_resourceManager];
     
