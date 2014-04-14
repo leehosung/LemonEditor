@@ -13,7 +13,7 @@
 @interface LMFileNaviVC : NSViewController <IUProjectDelegate>
 
 @property (nonatomic, readonly) id  selection;
-@property (strong, nonatomic) IBOutlet NSTreeController *documentController;
+@property (strong, nonatomic) IBOutlet _binding_ IUDocumentController *documentController;
 @property (nonatomic) IUProject *project;
 
 -(void)selectFirstDocument;

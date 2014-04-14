@@ -80,6 +80,7 @@
 {
     fileNaviVC = [[LMFileNaviVC alloc] initWithNibName:@"LMFileNaviVC" bundle:nil];
     [self bind:@"selectedNode" toObject:fileNaviVC withKeyPath:@"selection" options:nil];
+    [self bind:@"documentController" toObject:fileNaviVC withKeyPath:@"documentController" options:nil];
     [_leftBottomV addSubview:fileNaviVC.view];
     
     stackVC = [[LMStackVC alloc] initWithNibName:@"LMStackVC" bundle:nil];
@@ -128,18 +129,11 @@
 -(void)loadProject:(NSString*)path{
     //create project class
     _project = [IUProject projectWithContentsOfPackage:path];
+    if (_project == nil) {
+        return;
+    }
     _project.delegate = self;
-    [self project:_project nodeAdded:nil];
-
-    //connect to file navi
-    canvasVC.documentBasePath = _project.absolutePath;
     
-    //construct widget library
-    [widgetLibraryVC setProject:_project];
-    NSString *widgetFilePath = [[NSBundle mainBundle] pathForResource:@"widgetForDefault" ofType:@"plist"];
-    NSArray *availableWidgetProperties = [NSArray arrayWithContentsOfFile:widgetFilePath];
-    [widgetLibraryVC setWidgetProperties:availableWidgetProperties];
-
     //IU Setting
     _compiler = [[IUCompiler alloc] init];
     _identifierManager = [[IUIdentifierManager alloc] init];
@@ -153,17 +147,30 @@
         [node.document setCompiler:_compiler];
         [node.document setIdentifierManager:_identifierManager];
     }
+
+    // vc setting
+    //construct toolbar
+    toolbarVC.documentController = fileNaviVC.documentController;
     
-    [widgetLibraryVC setIdentifierManager:_identifierManager];
-    
+    //construct to file navi
+    canvasVC.documentBasePath = _project.absolutePath;
     fileNaviVC.project = _project;
     [fileNaviVC selectFirstDocument];
     
+    //construct widget library vc
+    [widgetLibraryVC setProject:_project];
+    NSString *widgetFilePath = [[NSBundle mainBundle] pathForResource:@"widgetForDefault" ofType:@"plist"];
+    NSArray *availableWidgetProperties = [NSArray arrayWithContentsOfFile:widgetFilePath];
+    [widgetLibraryVC setWidgetProperties:availableWidgetProperties];
+    [widgetLibraryVC setIdentifierManager:_identifierManager];
     
+
+    //construct resource vc
     [resourceVC setManager:_resourceManager];
     
+    //construct property vc
     [propertyAppearanceVC setResourceManager:_resourceManager];
-
+    [propertyBaseVC setPageDocuments:_project.pageDocuments];
 }
 
 -(void)setSelectedNode:(IUNode*)selectedNode{

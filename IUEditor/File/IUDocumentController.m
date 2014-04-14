@@ -25,5 +25,9 @@
     return [self.content objectAtIndex:0];
 }
 
+-(IUProject*)project{
+    return [self.content firstObject];
+}
+
 
 @end

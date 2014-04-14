@@ -30,6 +30,9 @@ typedef enum _IUGitType{
 @property   BOOL            herokuOn;
 @property   IUGitType       gitType;
 @property   id<IUProjectDelegate>  delegate;
+@property   NSString        *buildDirectoryName;
+
+- (NSString*)path;
 
 //setting
 #define IUProjectKeyGit @"git"
@@ -38,14 +41,16 @@ typedef enum _IUGitType{
 #define IUProjectKeyDirectory @"dir"
 
 + (id)projectWithContentsOfPackage:(NSString*)path;
-+(NSString*)createProject:(NSDictionary*)setting error:(NSError**)error;
++ (NSString*)createProject:(NSDictionary*)setting error:(NSError**)error;
 
 - (BOOL)save;
-- (void)build:(NSError**)error;
+- (BOOL)build:(NSError**)error;
 
 - (NSArray*)pageDocuments;
 - (NSArray*)masterDocuments;
 - (NSArray*)componentDocuments;
 
 - (IUResourceGroupNode*)resourceNode;
+- (NSArray*)allDocumentNodes;
+- (NSArray*)pageDocumentNodes;
 @end

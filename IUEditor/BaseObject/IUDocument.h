@@ -18,8 +18,7 @@
 
 #pragma mark editor source
 -(NSString*)editorSource;
-
-//-(NSString*)outputSource;
+-(NSString*)outputSource;
 
 -(NSArray*)widthWithCSS;
 -(IUBox *)selectableIUAtPoint:(CGPoint)point;

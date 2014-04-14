@@ -13,6 +13,7 @@
 @interface IUDocumentController : NSTreeController
 
 -(id)initWithDocument:(IUDocument*)document;
+-(IUProject*)project;
 
 @property (nonatomic, readonly) IUDocument *document;
 

@@ -17,7 +17,8 @@
 @interface LMWC : NSWindowController <NSWindowDelegate, IUProjectDelegate>
 
 @property (nonatomic) _binding_ IUNode *selectedNode;
-@property  _binding_ IUController   *IUController;
+@property (nonatomic, weak) _binding_ IUController   *IUController;
+@property (nonatomic, weak) _binding_ IUDocumentController   *documentController;
 
 -(void)loadProject:(NSString*)path;
 

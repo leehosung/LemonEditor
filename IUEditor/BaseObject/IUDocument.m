@@ -33,6 +33,11 @@
     return [self.compiler editorSource:self];
 }
 
+- (NSString*)outputSource{
+    //TODO
+    return self.editorSource;
+}
+
 -(NSArray*)widthWithCSS{
     return @[];
 }
