@@ -8,6 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "IUDocumentController.h"
+
 @interface LMToolbarVC : NSViewController
+
+@property IUDocumentController *documentController;
 
 @end

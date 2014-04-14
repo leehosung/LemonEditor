@@ -7,6 +7,7 @@
 //
 
 #import "LMToolbarVC.h"
+#import "IUDocumentNode.h"
 
 @interface LMToolbarVC ()
 
@@ -21,6 +22,15 @@
         // Initialization code here.
     }
     return self;
+}
+
+- (IBAction)showBPressed:(id)sender {
+    IUProject *project = _documentController.project;
+    [project build:nil];
+    IUDocumentNode *firstNode = [[project pageDocumentNodes] firstObject];
+    NSString *firstPath = [project.path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@.html",project.buildDirectoryName, firstNode.name] ];
+    
+    [[NSWorkspace sharedWorkspace] openFile:firstPath];
 }
 
 @end

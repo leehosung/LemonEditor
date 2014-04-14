@@ -40,6 +40,7 @@
     [encoder encodeObject:_pageDocumentGroup forKey:@"_pageDocumentGroup"];
     [encoder encodeObject:_masterDocumentGroup forKey:@"_masterDocumentGroup"];
     [encoder encodeObject:_componentDocumentGroup forKey:@"_componentDocumentGroup"];
+    [encoder encodeObject:_buildDirectoryName forKey:@"buildPath"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder{
@@ -53,6 +54,7 @@
         _pageDocumentGroup = [aDecoder decodeObjectForKey:@"_pageDocumentGroup"];
         _masterDocumentGroup = [aDecoder decodeObjectForKey:@"_masterDocumentGroup"];
         _componentDocumentGroup = [aDecoder decodeObjectForKey:@"_componentDocumentGroup"];
+        _buildDirectoryName = [aDecoder decodeObjectForKey:@"buildPath"];
     }
     return self;
 }
@@ -60,6 +62,7 @@
 - (id)init{
     self = [super init];
     if(self){
+        _buildDirectoryName = @"build";
         IDDict = [NSMutableDictionary dictionary];
     }
     return self;
@@ -76,6 +79,7 @@
 
     IUProject *project = [[IUProject alloc] init];
     project.name = [setting objectForKey:IUProjectKeyAppName];
+    project.buildDirectoryName = @"build";
     
     NSString *dir = [setting objectForKey:IUProjectKeyDirectory];
     project.path = [dir stringByAppendingPathComponent:[project.name stringByAppendingPathExtension:@"iuproject"]];
@@ -137,8 +141,26 @@
     [[NSFileManager defaultManager] createDirectoryAtPath:node.absolutePath withIntermediateDirectories:YES attributes:nil error:nil];
 }
 
-- (void)build:(NSError**)error{
+- (BOOL)build:(NSError**)error{
+    assert(_buildDirectoryName != nil);
+    NSString *buildPath = [self.path stringByAppendingPathComponent:self.buildDirectoryName];
+
+    [[NSFileManager defaultManager] removeItemAtPath:buildPath error:error];
+
+    [[NSFileManager defaultManager] createDirectoryAtPath:buildPath withIntermediateDirectories:YES attributes:nil error:error];
     
+    [[NSFileManager defaultManager] createSymbolicLinkAtPath:[buildPath stringByAppendingPathComponent:@"Resource"] withDestinationPath:[self.path stringByAppendingPathComponent:@"Resource"] error:error];
+
+
+    for (IUDocumentNode *node in self.allDocumentNodes) {
+        NSString *outputString = [node.document outputSource];
+        
+        NSString *filePath = [[buildPath stringByAppendingPathComponent:node.name] stringByAppendingPathExtension:@"html"];
+        if ([outputString writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:error] == NO){
+            assert(0);
+        }
+    }
+    return YES;
 }
 
 
@@ -224,6 +246,27 @@
     IUResourceNode *iuJSNode = [[IUResourceNode alloc] initWithName:@"iu.js" type:IUResourceTypeJS];
     [JSGroup addResourceNode:iuJSNode path:iuJSPath];
 
+}
+
+- (NSArray*)allDocumentNodes{
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUDocumentNode* evaluatedObject, NSDictionary *bindings) {
+        if ([evaluatedObject isKindOfClass:[IUDocumentNode class]]) {
+            return YES;
+        }
+        return NO;
+    }];
+    return [self.allChildren filteredArrayUsingPredicate:predicate];
+}
+
+- (NSArray*)pageDocumentNodes{
+    NSArray *allDocumentNodes = self.allDocumentNodes;
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUDocumentNode* evaluatedObject, NSDictionary *bindings) {
+        if ([evaluatedObject.document isKindOfClass:[IUPage class]]) {
+            return YES;
+        }
+        return NO;
+    }];
+    return [allDocumentNodes filteredArrayUsingPredicate:predicate];
 }
 
 -(void)dealloc{
