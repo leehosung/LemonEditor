@@ -91,6 +91,9 @@
 -(BOOL)hasWidth;
 -(BOOL)hasHeight;
 
+@property (nonatomic) NSString *innerHTML;
+-(BOOL)hasInnerHTML;
+
 -(void)startGrouping;
 -(void)endGrouping;
 @end
