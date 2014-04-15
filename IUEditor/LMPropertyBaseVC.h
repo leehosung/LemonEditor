@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "IUController.h"
 
-@interface LMPropertyBaseVC : NSViewController
+@interface LMPropertyBaseVC : NSViewController <NSOutlineViewDataSource, NSOutlineViewDelegate>
 
 @property (nonatomic) IUController *controller;
 @property (copy) NSArray *pageDocumentNodes;

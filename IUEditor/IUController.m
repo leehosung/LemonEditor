@@ -13,7 +13,15 @@
 @implementation IUController
 
 
+- (id)selection{
+    if ([self.selectedObjects count] == 1) {
+        return [[self selectedObjects] objectAtIndex:0];
+    }
+    return [super selection];
+}
+
 #pragma mark set By LMCanvasVC
+
 
 -(void)setSelectedObjectsByIdentifiers:(NSArray *)identifiers{
     [JDLogUtil log:IULogAction key:@"canvas selected objects" string:[identifiers description]];
