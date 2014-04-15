@@ -62,10 +62,10 @@
 
 
 -(NSString*)editorHTML:(IUBox*)iu{
+    NSMutableString *code = [NSMutableString string];
     if ([iu isKindOfClass:[IUPage class]]) {
         IUPage *page = (IUPage*)iu;
         if (page.master) {
-            NSMutableString *code = [NSMutableString string];
             [code appendFormat:@"<div %@>\n", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes]];
             for (IUBox *obj in page.master.children) {
                 [code appendString:[[self editorHTML:obj] stringByIndent:4 prependIndent:YES]];
@@ -81,13 +81,11 @@
                 }
             }
             [code appendString:@"</div>"];
-            return code;
         }
     }
-    if ([iu isKindOfClass:[IUBox class]]) {
-        NSMutableString *code = [NSMutableString string];
+    else if ([iu isKindOfClass:[IUBox class]]) {
         [code appendFormat:@"<div %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes]];
-        [code appendString:@"testme"];
+        [code appendString:@"<p>testme</p>"];
         if (iu.children.count) {
             [code appendString:@"\n"];
             for (IUBox *child in iu.children) {
@@ -96,10 +94,15 @@
             }
         }
         [code appendFormat:@"</div>"];
-        return code;
     }
-    assert(0);
-    return nil;
+    if (iu.link) {
+        NSString *linkURL = iu.link;
+        if ([iu.link isHTTPURL] == NO) {
+            linkURL = [NSString stringWithFormat:@"./%@.html", iu.link];
+        }
+        code = [NSMutableString stringWithFormat:@"<a href='%@'>%@</a>", linkURL, code];
+    }
+    return code;
 }
 
 

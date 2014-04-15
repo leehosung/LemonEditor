@@ -216,7 +216,7 @@
     //make new link
     else{
         DOMHTMLElement *selectHTMLElement = [self getHTMLElementbyID:identifier];
-        NSString *linkHTML = [NSString stringWithFormat:@"<a link=\"%@\" id=\"%@\">%@</a>",
+        NSString *linkHTML = [NSString stringWithFormat:@"<a href=\"%@\" id=\"%@\">%@</a>",
                               link, linkID, selectHTMLElement.outerHTML];
     
         [selectHTMLElement setOuterHTML:linkHTML];

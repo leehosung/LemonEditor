@@ -299,6 +299,7 @@
 }
 
 -(void)setLink:(NSString *)link{
+    _link = link;
     [self.delegate IU:self.htmlID setLink:link];
 }
 
