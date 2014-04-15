@@ -10,4 +10,20 @@
 
 @implementation IUHTML
 
+-(id)initWithManager:(IUIdentifierManager*)manager{
+    self = [super initWithManager:manager];
+    if(self){
+        self.innerHTML = @"<div>test</div>";
+    }
+    return self;
+}
+
+-(BOOL)shouldADDIU{
+    return NO;
+}
+
+-(BOOL)hasInnerHTML{
+    return YES;
+}
+
 @end

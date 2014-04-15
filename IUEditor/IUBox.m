@@ -179,18 +179,27 @@
     }
 }
 
--(BOOL)addIU:(IUBox *)iu error:(NSError**)error{
-    assert(iu != self);
-    [_m_children addObject:iu];
-    if (iu.delegate == nil) {
-        iu.delegate = self.delegate;
-    }
-    iu.parent = self;
-    [self.delegate IU:iu.htmlID HTML:iu.html withParentID:self.htmlID];
-    [self.delegate IU:iu.htmlID CSSChanged:[iu cssForWidth:IUCSSDefaultCollection] forWidth:IUCSSDefaultCollection];
-    [_identifierManager addIU:iu];
-    [iu bind:@"identifierManager" toObject:self withKeyPath:@"identifierManager" options:nil];
+-(BOOL)shouleAddIU{
     return YES;
+}
+
+-(BOOL)addIU:(IUBox *)iu error:(NSError**)error{
+    
+    assert(iu != self);
+    
+    if([self shouleAddIU]){
+        [_m_children addObject:iu];
+        if (iu.delegate == nil) {
+            iu.delegate = self.delegate;
+        }
+        iu.parent = self;
+        [self.delegate IU:iu.htmlID HTML:iu.html withParentID:self.htmlID];
+        [self.delegate IU:iu.htmlID CSSChanged:[iu cssForWidth:IUCSSDefaultCollection] forWidth:IUCSSDefaultCollection];
+        [_identifierManager addIU:iu];
+        [iu bind:@"identifierManager" toObject:self withKeyPath:@"identifierManager" options:nil];
+        return YES;
+    }
+    return NO;
 }
 
 -(BOOL)addIUReference:(IUBox *)iu error:(NSError**)error{
@@ -216,8 +225,11 @@
 
 
 -(BOOL)insertIU:(IUBox *)iu atIndex:(NSInteger)index  error:(NSError**)error{
-    [_m_children insertObject:iu atIndex:index];
-    return YES;
+    if([self shouleAddIU]){
+        [_m_children insertObject:iu atIndex:index];
+        return YES;
+    }
+    return NO;
 }
 
 -(NSArray*)children{
@@ -307,6 +319,11 @@
 -(BOOL)hasHeight{
     return YES;
 }
+
+-(BOOL)hasInnerHTML{
+    return NO;
+}
+
 
 -(void)startGrouping{
     delegateEnableLevel --;

@@ -12,7 +12,6 @@
 #pragma mark -
 #pragma mark default
 @property (weak) IBOutlet NSOutlineView *outlineV;
-@property (strong) IBOutlet NSView *defaultView;
 
 #pragma mark each IU
 /* @@@important
@@ -28,6 +27,7 @@
 
 #pragma mark property View
 @property (weak) IBOutlet NSComboBox *linkCB;
+@property (unsafe_unretained) IBOutlet NSTextView *innerHTMLTextV;
 
 @end
 
@@ -45,6 +45,7 @@
 -(void)awakeFromNib{
     
     [_linkCB bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"link"] options:nil];
+    [_innerHTMLTextV bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"innerHTML"]  options:nil];
 }
 
 -(void)setController:(IUController *)controller{
@@ -63,13 +64,13 @@
 //return number of child
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(NSString *)item{
     if(self.controller.selectedObjects.count == 0){
-        return 1;
+        return 0;
     }
     if(item == nil){
         NSArray *classPedigree = [[self.controller.selection class] classPedigreeTo:[IUBox class]];
-        return classPedigree.count + 1;
+        return classPedigree.count;
     }
-    else if([item containsString:@"titleV"]){
+    else if([item containsString:@"TitleV"]){
         return 1;
     }
     else{
@@ -81,21 +82,19 @@
     
     //root
     if(item == nil){
-        if(index == 0){
-            return @"defaultView";
-        }
         //view title
-        else{
-            NSArray *classPedigree = [[self.controller.selection class] classPedigreeTo:[IUBox class]];
-            NSString *viewID = [NSString stringWithFormat:@"%@TitleV", classPedigree[index-1]];
-            return viewID;
-        }
+        NSArray *classPedigree = [[self.controller.selection class] classPedigreeTo:[IUBox class]];
+        NSString *viewID = [NSString stringWithFormat:@"%@TitleV", classPedigree[index]];
+        return viewID;
     }
     //view content
     else{
-        NSString *viewID = [NSString stringWithFormat:@"%@ContentV", item];
-        return viewID;
-
+        if([item containsString:@"TitleV"]){
+            NSString *classID = [item stringByReplacingOccurrencesOfString:@"TitleV" withString:@""];
+            NSString *viewID = [NSString stringWithFormat:@"%@ContentV", classID];
+            return viewID;
+        }
+        
     }
     JDWarnLog(@"there is no child");
     return nil;
@@ -105,7 +104,7 @@
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(NSString *)item{
     
-    if(item == nil || [item containsString:@"TitleV"]){
+    if([item containsString:@"TitleV"]){
         return YES;
     }
     return  NO;
@@ -119,7 +118,7 @@
 
 
 - (id)valueForUndefinedKey:(NSString *)key{
-    JDWarnLog(@"there is no define view");
+    JDWarnLog(@"there is no define view : %@", key);
     return nil;
 }
  

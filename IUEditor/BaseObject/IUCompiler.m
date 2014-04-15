@@ -86,6 +86,9 @@
     else if ([iu isKindOfClass:[IUBox class]]) {
         [code appendFormat:@"<div %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes]];
         [code appendString:@"<p>testme</p>"];
+        if(iu.hasInnerHTML){
+            [code appendString:iu.innerHTML];
+        }
         if (iu.children.count) {
             [code appendString:@"\n"];
             for (IUBox *child in iu.children) {

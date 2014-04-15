@@ -64,7 +64,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vnK-kb-tq9" userLabel="propertyAppearanceV">
-                        <rect key="frame" x="952" y="404" width="194" height="220"/>
+                        <rect key="frame" x="947" y="521" width="204" height="114"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eFy-vu-fMK">
@@ -79,7 +79,7 @@
                         </connections>
                     </button>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HyI-BD-aOo" userLabel="propertyBaseV">
-                        <rect key="frame" x="958" y="73" width="225" height="313"/>
+                        <rect key="frame" x="954" y="0.0" width="225" height="510"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LND-5h-SFC" userLabel="leftBottomV">
