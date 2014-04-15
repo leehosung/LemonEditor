@@ -36,7 +36,11 @@
     [_wTF bind:@"value" toObject:self withKeyPath:[tagCollectionKeyPath stringByAppendingPathExtension:IUCSSTagWidth] options:nil];
     [_hTF bind:@"value" toObject:self withKeyPath:[tagCollectionKeyPath stringByAppendingPathExtension:IUCSSTagHeight] options:nil];
     
-    [_contentV bind:@"hidden" toObject:self withKeyPath:@"controller.selection.hasFrame" options:@{NSValueTransformerNameBindingOption: @"NSNegateBoolean"}];
+    [_xTF bind:@"hidden" toObject:self withKeyPath:@"controller.selection.hasX" options:@{NSValueTransformerNameBindingOption: @"NSNegateBoolean"}];
+    [_yTF bind:@"hidden" toObject:self withKeyPath:@"controller.selection.hasY" options:@{NSValueTransformerNameBindingOption: @"NSNegateBoolean"}];
+    [_wTF bind:@"hidden" toObject:self withKeyPath:@"controller.selection.hasWidth" options:@{NSValueTransformerNameBindingOption: @"NSNegateBoolean"}];
+    [_hTF bind:@"hidden" toObject:self withKeyPath:@"controller.selection.hasHeight" options:@{NSValueTransformerNameBindingOption: @"NSNegateBoolean"}];
+
 }
 
 

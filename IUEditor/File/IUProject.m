@@ -99,7 +99,7 @@
     project.masterDocumentGroup = masterGroup;
     
     //create document
-    IUPage *page = [[IUPage alloc] initWithSetting:setting];
+    IUPage *page = [[IUPage alloc] initWithManager:nil];
     page.htmlID = @"Page1Index";
     
     IUDocumentNode *pageNode = [[IUDocumentNode alloc] init];
@@ -107,7 +107,7 @@
     pageNode.name = @"Index";
     [pageDir addNode:pageNode];
     
-    IUMaster *master = [[IUMaster alloc] initWithSetting:setting];
+    IUMaster *master = [[IUMaster alloc] initWithManager:nil];
     master.htmlID = @"Master1";
     page.master = master;
     

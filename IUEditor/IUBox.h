@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "IUCSS.h"
+#import "IUIdentifierManager.h"
 
 @class IUIdentifierManager;
 
@@ -37,7 +38,7 @@
 -(IUDocument *)document;
 
 //initialize
--(id)initWithSetting:(NSDictionary*)setting;
+-(id)initWithManager:(IUIdentifierManager*)identifierManager;
 
 // this is IU setting
 @property (nonatomic, weak) IUIdentifierManager *identifierManager;
@@ -74,6 +75,7 @@
 -(BOOL)insertIU:(IUBox *)iu atIndex:(NSInteger)index  error:(NSError**)error;
 -(BOOL)addIU:(IUBox *)iu error:(NSError**)error;
 -(BOOL)addIUReference:(IUBox *)iu error:(NSError**)error;
+-(BOOL)removeIUAtIndex:(NSUInteger)index;
 -(BOOL)removeIU:(IUBox *)iu;
 
 - (void)setPosition:(NSPoint)position;
@@ -83,7 +85,11 @@
 
 @property BOOL flow;
 @property (nonatomic, copy) NSString *link;
--(BOOL)hasFrame;
+
+-(BOOL)hasX;
+-(BOOL)hasY;
+-(BOOL)hasWidth;
+-(BOOL)hasHeight;
 
 -(void)startGrouping;
 -(void)endGrouping;

@@ -7,6 +7,7 @@
 //
 
 #import "IUIdentifierManager.h"
+#import "IUBox.h"
 
 @implementation IUIdentifierManager{
     NSMutableDictionary *set;

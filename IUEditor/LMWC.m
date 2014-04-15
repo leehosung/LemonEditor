@@ -70,7 +70,8 @@
 {
     self = [super initWithWindow:window];
     if (self) {
-   
+        _identifierManager = [[IUIdentifierManager alloc] init];
+        _resourceManager = [[IUResourceManager alloc] init];
     }
     return self;
 }
@@ -96,6 +97,7 @@
     widgetLibraryVC = [[LMWidgetLibraryVC alloc] initWithNibName:@"LMWidgetLibraryVC" bundle:nil];
     [_leftTopV addSubviewFullFrame:widgetLibraryVC.view];
     [widgetLibraryVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
+    [widgetLibraryVC setIdentifierManager:_identifierManager];
     
     toolbarVC = [[LMToolbarVC alloc] initWithNibName:@"LMToolbarVC" bundle:nil];
     [_toolbarV addSubviewFullFrame:toolbarVC.view];
@@ -136,8 +138,6 @@
     
     //IU Setting
     _compiler = [[IUCompiler alloc] init];
-    _identifierManager = [[IUIdentifierManager alloc] init];
-    _resourceManager = [[IUResourceManager alloc] init];
     _resourceManager.rootNode = _project.resourceNode;
     _compiler.resourceSource = _resourceManager;
     
@@ -162,7 +162,6 @@
     NSString *widgetFilePath = [[NSBundle mainBundle] pathForResource:@"widgetForDefault" ofType:@"plist"];
     NSArray *availableWidgetProperties = [NSArray arrayWithContentsOfFile:widgetFilePath];
     [widgetLibraryVC setWidgetProperties:availableWidgetProperties];
-    [widgetLibraryVC setIdentifierManager:_identifierManager];
     
 
     //construct resource vc

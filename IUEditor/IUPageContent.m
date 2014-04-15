@@ -12,7 +12,17 @@
 - (BOOL)flow{
     return YES;
 }
--(BOOL)hasFrame{
+-(BOOL)hasX{
     return NO;
 }
+-(BOOL)hasY{
+    return NO;
+}
+-(BOOL)hasWidth{
+    return NO;
+}
+-(BOOL)hasHeight{
+    return NO;
+}
+
 @end

@@ -28,11 +28,11 @@
     return self;
 }
 
-- (id)initWithSetting:(NSDictionary *)setting{
-    self = [super initWithSetting:setting];
+- (id)initWithManager:(IUIdentifierManager *)manager{
+    self = [super initWithManager:manager];
     
     //add some iu
-    IUBox *obj = [[IUBox alloc] initWithSetting:setting];
+    IUBox *obj = [[IUBox alloc] initWithManager:manager];
     obj.htmlID = @"qwerq";
     obj.name = @"sample object";
     [self addIU:obj error:nil];
@@ -62,7 +62,7 @@
     }
     if (myMaster == nil && master ) {
         NSArray *children = [self.children copy];
-        pageContent = [[IUPageContent alloc] initWithSetting:nil];
+        pageContent = [[IUPageContent alloc] initWithManager:nil];
         pageContent.htmlID = @"pageContent";
         pageContent.name = @"pageContent";
         

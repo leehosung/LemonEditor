@@ -11,8 +11,8 @@
 @implementation IUDocument
 
 
--(id)initWithSetting:(NSDictionary *)setting{
-    self = [super initWithSetting:setting];
+-(id)initWithManager:(IUIdentifierManager *)manager{
+    self = [super initWithManager:manager];
     return self;
 }
 

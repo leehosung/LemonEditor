@@ -35,7 +35,7 @@
     NSString *className = object.title;
     NSDictionary *setting = object.dict;
     
-    IUBox *obj = [[NSClassFromString(className) alloc] initWithSetting:setting];
+    IUBox *obj = [[NSClassFromString(className) alloc] initWithManager:_identifierManager];
     
     obj.htmlID = [_identifierManager requestNewIdentifierWithKey:obj.className];
     obj.name = obj.htmlID;

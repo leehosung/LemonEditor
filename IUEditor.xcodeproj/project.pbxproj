@@ -44,6 +44,8 @@
 		6919204A18DCFED000F8522B /* NSObject+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6919204918DCFED000F8522B /* NSObject+JDExtension.m */; };
 		692334BA18F783FE003E5224 /* LMPropertyBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 692334B818F783FE003E5224 /* LMPropertyBaseVC.m */; };
 		692334BB18F783FE003E5224 /* LMPropertyBaseVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 692334B918F783FE003E5224 /* LMPropertyBaseVC.xib */; };
+		694E3CDB18FCF739005077B3 /* IUCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 694E3CDA18FCF739005077B3 /* IUCarousel.m */; };
+		694E3CE118FCFDA6005077B3 /* IUItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 694E3CE018FCFDA6005077B3 /* IUItem.m */; };
 		6953852E18ED6EC800CC42E5 /* IUController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6953852D18ED6EC800CC42E5 /* IUController.m */; };
 		6954812818D7640A00CA02F1 /* IUPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6954812718D7640A00CA02F1 /* IUPage.m */; };
 		6967425318F7D077008B7111 /* IUIdentifierManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6967425218F7D077008B7111 /* IUIdentifierManager.m */; };
@@ -198,6 +200,10 @@
 		692334B718F783FE003E5224 /* LMPropertyBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyBaseVC.h; sourceTree = "<group>"; };
 		692334B818F783FE003E5224 /* LMPropertyBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyBaseVC.m; sourceTree = "<group>"; };
 		692334B918F783FE003E5224 /* LMPropertyBaseVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyBaseVC.xib; sourceTree = "<group>"; };
+		694E3CD918FCF739005077B3 /* IUCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUCarousel.h; sourceTree = "<group>"; };
+		694E3CDA18FCF739005077B3 /* IUCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUCarousel.m; sourceTree = "<group>"; };
+		694E3CDF18FCFDA6005077B3 /* IUItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUItem.h; path = IU/IUItem.h; sourceTree = "<group>"; };
+		694E3CE018FCFDA6005077B3 /* IUItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IUItem.m; path = IU/IUItem.m; sourceTree = "<group>"; };
 		6953852C18ED6EC800CC42E5 /* IUController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUController.h; sourceTree = "<group>"; };
 		6953852D18ED6EC800CC42E5 /* IUController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUController.m; sourceTree = "<group>"; };
 		6954812618D7640A00CA02F1 /* IUPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUPage.h; path = BaseObject/IUPage.h; sourceTree = "<group>"; };
@@ -540,6 +546,10 @@
 				6967425218F7D077008B7111 /* IUIdentifierManager.m */,
 				3DF8029818FD0B2500913505 /* IUHTML.h */,
 				3DF8029918FD0B2500913505 /* IUHTML.m */,
+				694E3CD918FCF739005077B3 /* IUCarousel.h */,
+				694E3CDA18FCF739005077B3 /* IUCarousel.m */,
+				694E3CDF18FCFDA6005077B3 /* IUItem.h */,
+				694E3CE018FCFDA6005077B3 /* IUItem.m */,
 			);
 			name = IU;
 			sourceTree = "<group>";
@@ -949,6 +959,7 @@
 				3D14886318F6AE5700E8EE4C /* LMCenterClipView.m in Sources */,
 				6985CBA618E31D9B008DBF50 /* IUNode.m in Sources */,
 				69D15F6F18E893170046FBB0 /* LMToolbarVC.m in Sources */,
+				694E3CDB18FCF739005077B3 /* IUCarousel.m in Sources */,
 				69C575B718D6F61E0016F050 /* main.m in Sources */,
 				69757B1C18D95C980095CBAC /* NSArray+JDExtension.m in Sources */,
 				69757B0D18D95BBC0095CBAC /* NSFlipedScrollView.m in Sources */,
@@ -968,6 +979,7 @@
 				69CFCAB218E95A0C00E3048A /* LMResourceVC.m in Sources */,
 				69757B1518D95BBC0095CBAC /* NSTextField+DragAndDrop.m in Sources */,
 				69C5760B18D6FE020016F050 /* IUComponent.m in Sources */,
+				694E3CE118FCFDA6005077B3 /* IUItem.m in Sources */,
 				6967425318F7D077008B7111 /* IUIdentifierManager.m in Sources */,
 				69761BCA18F168D700C4EDC6 /* IUResourceManager.m in Sources */,
 				69757B1118D95BBC0095CBAC /* JDUIUtil.m in Sources */,
