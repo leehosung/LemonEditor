@@ -135,12 +135,13 @@
     IUCSSStringDictionary *dict = [IUCSSStringDictionary dictionary];
     id value;
     
-    if (obj.hasFrame) {
+    if (obj.hasX) {
         value = cssTagDict[IUCSSTagX];
         if (value) {
             [dict putTag:@"left" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
         }
-        
+    }
+    if (obj.hasY) {
         value = cssTagDict[IUCSSTagY];
         if (value) {
             if ([_flowIUs containsObject:[obj class]]) {
@@ -150,14 +151,18 @@
                 [dict putTag:@"top" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
             }
         }
+    }
 
+    if (obj.hasWidth) {
         if ([obj isKindOfClass:[IUHeader class]] == NO) {
             value = cssTagDict[IUCSSTagWidth];
             if (value) {
                 [dict putTag:@"width" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
             }
         }
-        
+    }
+    
+    if (obj.hasHeight) {
         value = cssTagDict[IUCSSTagHeight];
         if (value) {
             if ([obj isKindOfClass:[IUHeader class]]) {

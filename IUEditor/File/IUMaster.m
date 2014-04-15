@@ -15,10 +15,10 @@
 
 @implementation IUMaster
 
--(id)initWithSetting:(NSDictionary *)setting{
-    self = [super initWithSetting:setting];
+-(id)initWithManager:(IUIdentifierManager *)manager{
+    self = [super initWithManager:manager];
     //create header
-    _header = [[IUHeader alloc] initWithSetting:setting];
+    _header = [[IUHeader alloc] initWithManager:manager];
     _header.htmlID = @"Header";
     [self addIU:_header error:nil];
     return self;
@@ -36,7 +36,19 @@
 }
 
 
--(BOOL)hasFrame{
+-(BOOL)hasX{
+    return NO;
+}
+
+-(BOOL)hasY{
+    return NO;
+}
+
+-(BOOL)hasWidth{
+    return NO;
+}
+
+-(BOOL)hasHeight{
     return NO;
 }
 

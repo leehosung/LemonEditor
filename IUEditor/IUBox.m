@@ -51,13 +51,18 @@
     [aCoder encodeObject:_m_children forKey:@"children"];
 }
 
--(id)initWithSetting:(NSDictionary*)setting{
+-(id)initWithManager:(IUIdentifierManager*)manager{
     self = [super init];{
         _css = [[IUCSS alloc] init];
         _css.delegate = self;
+        _identifierManager = manager;
         
-        [_css setValue:@(50+rand()%300) forTag:IUCSSTagWidth forWidth:IUCSSDefaultCollection];
-        [_css setValue:@(35) forTag:IUCSSTagHeight forWidth:IUCSSDefaultCollection];
+        if (self.hasWidth) {
+            [_css setValue:@(50+rand()%300) forTag:IUCSSTagWidth forWidth:IUCSSDefaultCollection];
+        }
+        if (self.hasHeight) {
+            [_css setValue:@(35) forTag:IUCSSTagHeight forWidth:IUCSSDefaultCollection];
+        }
         [_css setValue:[NSColor randomColor] forTag:IUCSSTagBGColor forWidth:IUCSSDefaultCollection];
         [_css setValue:@"Auto" forTag:IUCSSTagBGSize forWidth:IUCSSDefaultCollection];
         [_css setValue:@(0) forTag:IUCSSTagBorderTopWidth forWidth:IUCSSDefaultCollection];
@@ -175,6 +180,7 @@
 }
 
 -(BOOL)addIU:(IUBox *)iu error:(NSError**)error{
+    assert(iu != self);
     [_m_children addObject:iu];
     if (iu.delegate == nil) {
         iu.delegate = self.delegate;
@@ -201,6 +207,13 @@
     [self.delegate IURemoved:iu.htmlID];
     return YES;
 }
+
+-(BOOL)removeIUAtIndex:(NSUInteger)index{
+    IUBox *box = [_m_children objectAtIndex:index];
+    [self removeIU:box];
+    return YES;
+}
+
 
 -(BOOL)insertIU:(IUBox *)iu atIndex:(NSInteger)index  error:(NSError**)error{
     [_m_children insertObject:iu atIndex:index];
@@ -282,7 +295,16 @@
     [_css setValue:imageName forTag:IUCSSTagImage forWidth:IUCSSDefaultCollection];
 }
 
--(BOOL)hasFrame{
+-(BOOL)hasX{
+    return YES;
+}
+-(BOOL)hasY{
+    return YES;
+}
+-(BOOL)hasWidth{
+    return YES;
+}
+-(BOOL)hasHeight{
     return YES;
 }
 

@@ -14,5 +14,11 @@
 		<key>classImage</key>
 		<string>IUView.png</string>
 	</dict>
+	<dict>
+		<key>className</key>
+		<string>IUCarousel</string>
+		<key>classImage</key>
+		<string>IUView.png</string>
+	</dict>
 </array>
 </plist>

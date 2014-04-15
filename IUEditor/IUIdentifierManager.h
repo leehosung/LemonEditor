@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "IUBox.h"
 
+@class IUBox;
 @interface IUIdentifierManager : NSObject
 -(void)addIUs:(NSArray*)IUs;
 -(void)addIU:(IUBox*)IU;
