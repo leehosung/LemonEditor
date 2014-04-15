@@ -170,7 +170,7 @@
     
     //construct property vc
     [propertyAppearanceVC setResourceManager:_resourceManager];
-    [propertyBaseVC setPageDocuments:_project.pageDocuments];
+    propertyBaseVC.pageDocumentNodes = _project.pageDocumentNodes;
 }
 
 -(void)setSelectedNode:(IUNode*)selectedNode{
@@ -218,7 +218,7 @@
 
 
 - (void)project:(IUProject *)project nodeAdded:(IUNode *)node{
-    [propertyBaseVC setPageDocuments:project.pageDocuments];
+    [propertyBaseVC setPageDocumentNodes:project.pageDocumentNodes];
 }
 
 @end
