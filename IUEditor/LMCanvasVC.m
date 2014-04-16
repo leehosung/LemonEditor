@@ -132,6 +132,15 @@
         return NO;
     }
 }
+- (BOOL)isEditable{
+    if([self countOfSelectedIUs] == 1){
+        IUBox *currentIU = self.controller.selectedObjects[0];
+        if(currentIU.shouldEditText){
+            return YES;
+        }
+    }
+    return NO;
+}
 
 -(void)selectedObjectsDidChange:(NSDictionary*)change{
     [JDLogUtil log:IULogAction key:@"CanvasVC:observed" string:[self.controller.selectedIdentifiers description]];
@@ -266,11 +275,19 @@
 
 -(void)IU:(NSString*)identifier HTML:(NSString *)html withParentID:(NSString *)parentID{
 
-    DOMHTMLElement *selectHTMLElement = [self getHTMLElementbyID:parentID];
-    DOMHTMLElement *newElement = (DOMHTMLElement *)[self.DOMDoc createElement:[self tagWithHTML:html]];
-    [selectHTMLElement appendChild:newElement];
-
-    [newElement setOuterHTML:html];
+    DOMHTMLElement *currentElement = [self getHTMLElementbyID:identifier];
+    if(currentElement){
+        //change html text
+        [currentElement setOuterHTML:html];
+    }
+    else{
+        //insert html
+        DOMHTMLElement *selectHTMLElement = [self getHTMLElementbyID:parentID];
+        DOMHTMLElement *newElement = (DOMHTMLElement *)[self.DOMDoc createElement:[self tagWithHTML:html]];
+        [selectHTMLElement appendChild:newElement];
+        
+        [newElement setOuterHTML:html];
+    }
     [self.webView setNeedsDisplay:YES];
 }
 

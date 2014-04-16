@@ -15,6 +15,7 @@
 #import "IUHeader.h"
 #import "IUPageContent.h"
 #import "IUMaster.h"
+#import "IUHTML.h"
 
 @implementation IUCompiler{
     NSArray *_flowIUs;
@@ -83,11 +84,10 @@
             [code appendString:@"</div>"];
         }
     }
-    else if ([iu isKindOfClass:[IUBox class]]) {
+    else if([iu isKindOfClass:[IUHTML class]]){
         [code appendFormat:@"<div %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes]];
-        [code appendString:@"<p>testme</p>"];
-        if(iu.hasInnerHTML){
-            [code appendString:iu.innerHTML];
+        if(((IUHTML *)iu).hasInnerHTML){
+            [code appendString:((IUHTML *)iu).innerHTML];
         }
         if (iu.children.count) {
             [code appendString:@"\n"];
@@ -97,7 +97,21 @@
             }
         }
         [code appendFormat:@"</div>"];
+        
     }
+    else if ([iu isKindOfClass:[IUBox class]]) {
+        [code appendFormat:@"<div %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes]];
+        [code appendString:@"<p>testme</p>"];
+        if (iu.children.count) {
+            [code appendString:@"\n"];
+            for (IUBox *child in iu.children) {
+                [code appendString:[[self editorHTML:child] stringByIndent:4 prependIndent:YES]];
+                [code appendString:@"\n"];
+            }
+        }
+        [code appendFormat:@"</div>"];
+    }
+    
     if (iu.link) {
         NSString *linkURL = iu.link;
         if ([iu.link isHTTPURL] == NO) {

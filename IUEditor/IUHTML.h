@@ -10,4 +10,8 @@
 
 @interface IUHTML : IUBox
 
+@property (nonatomic) NSString *innerHTML;
+-(BOOL)hasInnerHTML;
+
+
 @end
