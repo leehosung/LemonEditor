@@ -119,7 +119,7 @@
     
     propertyBaseVC = [[LMPropertyBaseVC alloc] initWithNibName:[LMPropertyBaseVC class].className bundle:nil];
     [propertyBaseVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
-    [_propertyBaseV addSubview:propertyBaseVC.view];
+    [_propertyBaseV addSubviewFullFrame:propertyBaseVC.view];
     
 }
 

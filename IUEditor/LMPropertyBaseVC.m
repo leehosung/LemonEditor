@@ -25,10 +25,13 @@
 
 @property (strong) IBOutlet NSView *IUHTMLTitleV;
 @property (strong) IBOutlet NSView *IUHTMLContentV;
+@property (strong) IBOutlet NSView *IUWebMovieTitleV;
+@property (strong) IBOutlet NSView *IUWebMovieContentV;
 
 #pragma mark property View
 @property (weak) IBOutlet NSComboBox *linkCB;
 @property (unsafe_unretained) IBOutlet NSTextView *innerHTMLTextV;
+@property (unsafe_unretained) IBOutlet NSTextView *webMovieSourceTextV;
 
 @end
 
@@ -50,6 +53,7 @@
                                    dictionaryWithObjects:@[[NSNumber numberWithBool:NO], [NSNumber numberWithBool:YES]]
                                    forKeys:@[NSRaisesForNotApplicableKeysBindingOption, NSContinuouslyUpdatesValueBindingOption]];
     [_innerHTMLTextV bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"innerHTML"]  options:bindingOption];
+    [_webMovieSourceTextV bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"webMovieSource"]  options:bindingOption];
 }
 
 -(void)setController:(IUController *)controller{

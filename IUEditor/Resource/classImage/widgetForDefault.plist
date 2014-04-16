@@ -4,6 +4,12 @@
 <array>
 	<dict>
 		<key>className</key>
+		<string>IUWebMovie</string>
+		<key>classImage</key>
+		<string>IUView.png</string>
+	</dict>
+	<dict>
+		<key>className</key>
 		<string>IUHTML</string>
 		<key>classImage</key>
 		<string>IUView.png</string>

@@ -23,6 +23,7 @@
         [self setResourceLoadDelegate:self];
         [self setEditingDelegate:self];
         [self setFrameLoadDelegate:self];
+        [self setPolicyDelegate:self];
         [self setEditable:NO];
         
         [[[self mainFrame] frameView] setAllowsScrolling:NO];
@@ -382,6 +383,9 @@
 
 
 - (BOOL)webView:(WebView *)webView shouldChangeSelectedDOMRange:(DOMRange *)currentRange toDOMRange:(DOMRange *)proposedRange affinity:(NSSelectionAffinity)selectionAffinity stillSelecting:(BOOL)flag{
+    if([self isEditable] == NO){
+        return NO;
+    }
 
     if([self isOneIUSTextelection:proposedRange]){
         NSArray * selectednames = ((LMCanvasVC *)(self.delegate)).controller.selectedIdentifiers;
@@ -468,7 +472,11 @@
     if([iuClass containsString:@"IUBox"]){
         return (DOMHTMLElement *)node;
     }
-    else if ([node isKindOfClass:[DOMHTMLHtmlElement class]] ){
+    else if ([node isKindOfClass:[DOMHTMLIFrameElement class]]){
+        JDWarnLog(@"");
+        return nil;
+    }
+    else if (node.parentNode == nil ){
         //can't find div node
         //- it can't be in IU model
         //- IU model : text always have to be in Div class
@@ -480,6 +488,44 @@
         return [self IUNodeAtCurrentNode:node.parentNode];
     }
 }
+
+#pragma mark -
+#pragma mark web policy
+
+- (NSArray *)webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element
+    defaultMenuItems:(NSArray *)defaultMenuItems
+{
+    // disable right-click context menu
+    return nil;
+}
+
+/*
+
+- (BOOL)webView:(WebView *)webView shouldPerformAction:(SEL)action fromSender:(id)sender{
+    JDWarnLog(@"");
+
+    return [ super webView:webView shouldPerformAction:action fromSender:sender];
+}
+
+- (BOOL)webView:(WebView *)webView validateUserInterfaceItem:(id<NSValidatedUserInterfaceItem>)item defaultValidation:(BOOL)defaultValidation{
+    JDWarnLog(@"");
+
+    return [super webView:webView validateUserInterfaceItem:item defaultValidation:defaultValidation];
+}
+- (WebView *)webView:(WebView *)sender createWebViewWithRequest:(NSURLRequest *)request{
+    JDWarnLog(@"");
+    return [super webView:sender createWebViewWithRequest:request];
+}
+- (void)webView:(WebView *)webView decidePolicyForNavigationAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request frame:(WebFrame *)frame decisionListener:(id < WebPolicyDecisionListener >)listener
+{
+    [listener use];
+}
+
+- (void)webView:(WebView *)webView decidePolicyForNewWindowAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request newFrameName:(NSString *)frameName decisionListener:(id < WebPolicyDecisionListener >)listener
+{
+    [listener use];
+}
+*/
 
 
 @end
