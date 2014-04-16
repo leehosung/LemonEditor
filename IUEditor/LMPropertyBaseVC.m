@@ -18,6 +18,7 @@
 * IUBoxTitleV, IUBoxContentV
 * 각각의 property view는 titleV와 contentV처럼 위와 같은
 * name convention 을 가진다.
+* 각각의 이름은 identifier로 저장
 */
 @property (strong) IBOutlet NSView *IUBoxTitleV;
 @property (strong) IBOutlet NSView *IUBoxContentV;
@@ -62,15 +63,17 @@
 #pragma mark outlineView
 
 //return number of child
-- (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(NSString *)item{
+- (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(NSView *)item{
+    
     if(self.controller.selectedObjects.count == 0){
         return 0;
     }
+    
     if(item == nil){
-        NSArray *classPedigree = [[self.controller.selection class] classPedigreeTo:[IUBox class]];
+        NSArray *classPedigree = [self viewArrayInClassPedigree];
         return classPedigree.count;
     }
-    else if([item containsString:@"TitleV"]){
+    else if([[item identifier] containsString:@"TitleV"]){
         return 1;
     }
     else{
@@ -78,21 +81,21 @@
     }
 }
 //return child item
-- (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(NSString *)item{
-    
+- (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(NSView *)item{
     //root
     if(item == nil){
         //view title
-        NSArray *classPedigree = [[self.controller.selection class] classPedigreeTo:[IUBox class]];
+        NSArray *classPedigree = [self viewArrayInClassPedigree];
         NSString *viewID = [NSString stringWithFormat:@"%@TitleV", classPedigree[index]];
-        return viewID;
+        return [self valueForKey:viewID];
     }
     //view content
     else{
-        if([item containsString:@"TitleV"]){
-            NSString *classID = [item stringByReplacingOccurrencesOfString:@"TitleV" withString:@""];
+        NSString *identifier = [item identifier];
+        if([identifier containsString:@"TitleV"]){
+            NSString *classID = [identifier stringByReplacingOccurrencesOfString:@"TitleV" withString:@""];
             NSString *viewID = [NSString stringWithFormat:@"%@ContentV", classID];
-            return viewID;
+            return [self valueForKey:viewID];
         }
         
     }
@@ -102,9 +105,9 @@
 
 
 
-- (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(NSString *)item{
+- (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(NSView *)item{
     
-    if([item containsString:@"TitleV"]){
+    if([[item identifier] containsString:@"TitleV"]){
         return YES;
     }
     return  NO;
@@ -112,16 +115,36 @@
 
 
 
-- (id)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(NSString *)item{
-    return [self valueForKey:item];
+- (id)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(id)item{
+    return item;
 }
 
+- (CGFloat)outlineView:(NSOutlineView *)outlineView heightOfRowByItem:(NSView *)item{
+    assert(item != nil);
+    CGFloat height = item.frame.size.height;
+    if(height <=0){
+        height = 0.1;
+    }
+    return height;
+   
+}
 
+-(NSArray *)viewArrayInClassPedigree{
+    NSMutableArray *viewArray = [NSMutableArray array];
+    NSArray *classPedigree = [[self.controller.selection class] classPedigreeTo:[IUBox class]];
+
+    for(NSString *className in classPedigree){
+        NSString *viewID = [NSString stringWithFormat:@"%@TitleV", className];
+        if([self valueForKey:viewID]){
+            [viewArray addObject:className];
+        }
+    }
+    return viewArray;
+}
 - (id)valueForUndefinedKey:(NSString *)key{
     JDWarnLog(@"there is no define view : %@", key);
     return nil;
 }
- 
 
 
 
