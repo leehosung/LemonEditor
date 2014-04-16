@@ -44,6 +44,7 @@
 
 //select IUs
 - (BOOL)containsIU:(NSString *)IUID;
+- (BOOL)isEditable;
 - (NSUInteger)countOfSelectedIUs;
 - (void)deselectedAllIUs;
 - (void)addSelectedIU:(NSString *)IU;

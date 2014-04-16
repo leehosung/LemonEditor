@@ -320,10 +320,6 @@
     return YES;
 }
 
--(BOOL)hasInnerHTML{
-    return NO;
-}
-
 
 -(void)startGrouping{
     delegateEnableLevel --;
@@ -348,5 +344,10 @@
     [self removeObserver:self forKeyPath:@"delegate.selectedFrameWidth"];
 
 }
+
+-(BOOL)shouldEditText{
+    return YES;
+}
+
 
 @end

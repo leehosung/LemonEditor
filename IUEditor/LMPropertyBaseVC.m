@@ -46,7 +46,10 @@
 -(void)awakeFromNib{
     
     [_linkCB bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"link"] options:nil];
-    [_innerHTMLTextV bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"innerHTML"]  options:nil];
+    NSDictionary *bindingOption = [NSDictionary
+                                   dictionaryWithObjects:@[[NSNumber numberWithBool:NO], [NSNumber numberWithBool:YES]]
+                                   forKeys:@[NSRaisesForNotApplicableKeysBindingOption, NSContinuouslyUpdatesValueBindingOption]];
+    [_innerHTMLTextV bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"innerHTML"]  options:bindingOption];
 }
 
 -(void)setController:(IUController *)controller{

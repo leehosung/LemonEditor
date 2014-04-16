@@ -170,8 +170,10 @@
 
                     //change editable mode
                     if(theEvent.clickCount ==2){
-                        [[self webView] setEditable:YES];
-                        [[self webView] changeDOMRange:convertedPoint];
+                        if([((LMCanvasVC *)self.delegate) isEditable]){
+                            [[self webView] setEditable:YES];
+                            [[self webView] changeDOMRange:convertedPoint];
+                        }
                     }
                 }
                 startDragPoint = convertedPoint;

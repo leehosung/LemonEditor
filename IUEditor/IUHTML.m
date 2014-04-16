@@ -13,9 +13,21 @@
 -(id)initWithManager:(IUIdentifierManager*)manager{
     self = [super initWithManager:manager];
     if(self){
-        self.innerHTML = @"<div>test</div>";
+        _innerHTML = @"<div>test IUHTML</div>";
     }
     return self;
+}
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    self =  [super initWithCoder:aDecoder];
+    if(self){
+        [aDecoder decodeToObject:self withProperties:[[IUHTML class] properties]];
+    }
+    return self;
+}
+-(void)encodeWithCoder:(NSCoder *)aCoder{
+    [super encodeWithCoder:aCoder];
+    [aCoder encodeFromObject:self withProperties:[[IUHTML class] properties]];
+
 }
 
 -(BOOL)shouldADDIU{
@@ -23,7 +35,19 @@
 }
 
 -(BOOL)hasInnerHTML{
-    return YES;
+    if(_innerHTML){
+        return YES;
+    }
+    return NO;
+}
+-(BOOL)shouldEditText{
+    return NO;
+}
+-(void)setInnerHTML:(NSString *)aInnerHTML{
+    _innerHTML = aInnerHTML;
+    JDInfoLog(@"%@", aInnerHTML);
+
+    [self.delegate IU:self.htmlID HTML:self.html withParentID:self.htmlID];
 }
 
 @end
