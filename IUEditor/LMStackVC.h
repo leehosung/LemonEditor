@@ -12,6 +12,6 @@
 
 @interface LMStackVC : NSViewController <NSOutlineViewDataSource, NSOutlineViewDelegate>
 
-@property (nonatomic)  IUDocument    *document;
-@property (strong) IBOutlet NSTreeController *IUController;
+@property  IUDocument    *document;
+@property (strong) IBOutlet IUController *IUController;
 @end

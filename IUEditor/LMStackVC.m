@@ -26,12 +26,6 @@
 -(void)awakeFromNib{
 }
 
--(void)setDocument:(IUDocument *)document{
-    _document = document;
-    for (IUBox *iu in document.allChildren) {
-        NSAssert(iu.name.length, @"%@ name is unset", [iu description]);
-    }
-}
 
 - (NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(NSTreeNode*)item {
 
