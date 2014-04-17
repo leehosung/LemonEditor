@@ -53,6 +53,7 @@
     if (self) {
         sizeArray = [NSMutableArray array];
         selectIndex = 0;
+        selectedWidth = 0;
     }
     return self;
 }
@@ -65,16 +66,25 @@
      */
     
     //sizeBox
-    boxManageView = [[NSView alloc] init];
+    boxManageView = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 0, 30)];
 
 //    [self addSubviewVeriticalCenterInFrameWithFrame:sizeTextField height:sizeTextField.attributedStringValue.size.height];
-    [self addSubviewFullFrame:boxManageView positioned:NSWindowBelow relativeTo:self.addBtn];
+    [self addSubview:boxManageView positioned:NSWindowBelow relativeTo:self.addBtn];
 
 }
 
 - (void)resetCursorRects{
     InnerSizeBox *maxBox = (InnerSizeBox *)boxManageView.subviews[0];
     [self addCursorRect:[maxBox frame] cursor:[NSCursor pointingHandCursor]];
+}
+
+- (void)moveSizeView:(NSPoint)point withWidth:(CGFloat)width{
+    if(selectedWidth <width){
+        CGFloat modifiX = (boxManageView.bounds.size.width - width)/2;
+        [boxManageView setBoundsOrigin:NSMakePoint(modifiX, 0)];
+        return;
+    }
+    [boxManageView setBoundsOrigin:point];
 }
 
 #pragma mark -
@@ -97,7 +107,7 @@
         selectIndex = newSelectIndex;
     }
     
-    NSInteger selectedWidth = selectBox.frameWidth;
+    selectedWidth = selectBox.frameWidth;
     
 //    [sizeTextField setStringValue:[NSString stringWithFormat:@"%ld", selectedWidth]];
     [(LMCanvasView *)self.superview setWidthOfMainView:selectedWidth];
@@ -123,6 +133,9 @@
     InnerSizeBox *maxBox = (InnerSizeBox *)boxManageView.subviews[0];
     if(maxBox){
         ((LMCanvasVC *)self.delegate).maxFrameWidth = maxBox.frameWidth;
+        if(maxBox.frameWidth > boxManageView.frame.size.width){
+            [boxManageView setWidth:maxBox.frameWidth];
+        }
     }
 }
 
@@ -194,5 +207,8 @@
     [self addFrame:newWidth];
     [self.addFramePopover close];
 }
+
+#pragma mark add view
+
 
 @end

@@ -16,6 +16,7 @@
     NSMutableArray *sizeArray;
     NSView *boxManageView;
     NSUInteger selectIndex;
+    NSUInteger selectedWidth;
     SizeTextField *sizeTextField;
     NSPopover *framePopover;
 }
@@ -29,6 +30,8 @@
 
 - (IBAction)addSizeBtnClick:(id)sender;
 - (IBAction)addSizeOKBtn:(id)sender;
+
+- (void)moveSizeView:(NSPoint)point withWidth:(CGFloat)width;
 
 - (NSInteger)nextSmallSize:(NSInteger)size;
 
