@@ -11,4 +11,8 @@
 
 @interface LMPropertyBorderVC : NSViewController
 @property (nonatomic) IUController      *controller;
+
+@property (weak) IBOutlet NSBox *borderTitleV;
+@property (weak) IBOutlet NSBox *borderContentV;
+
 @end

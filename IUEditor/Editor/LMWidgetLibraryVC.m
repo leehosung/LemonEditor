@@ -52,7 +52,8 @@
     for (NSDictionary *dict in array) {
         LMGeneralObject *obj = [[LMGeneralObject alloc] init];
         obj.title = dict[@"className"];
-        obj.image = [NSImage imageNamed:dict[@"classImage"]];
+        NSString *imageName = dict[@"classImage"];
+        obj.image = [NSImage imageNamed:imageName];
         [temp addObject:obj];
     }
     [self willChangeValueForKey:@"widgets"];

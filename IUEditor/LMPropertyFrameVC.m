@@ -15,7 +15,7 @@
 @property (weak) IBOutlet NSTextField *yTF;
 @property (weak) IBOutlet NSTextField *wTF;
 @property (weak) IBOutlet NSTextField *hTF;
-@property (weak) IBOutlet NSView *contentV;
+
 
 @end
 
