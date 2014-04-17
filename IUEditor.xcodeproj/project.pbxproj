@@ -109,7 +109,6 @@
 		3DF8045018FE62FC00913505 /* tool_transition@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DF8043618FE62FC00913505 /* tool_transition@2x.png */; };
 		3DF8045818FE874400913505 /* LMAppearanceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8045618FE874400913505 /* LMAppearanceVC.m */; };
 		3DF8045918FE874400913505 /* LMAppearanceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF8045718FE874400913505 /* LMAppearanceVC.xib */; };
-		3DF8045C18FE8AFE00913505 /* JDOutlineCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8045B18FE8AFE00913505 /* JDOutlineCellView.m */; };
 		3DF8046018FF75CF00913505 /* LMPropertyBGColorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8045E18FF75CF00913505 /* LMPropertyBGColorVC.m */; };
 		3DF8046118FF75CF00913505 /* LMPropertyBGColorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF8045F18FF75CF00913505 /* LMPropertyBGColorVC.xib */; };
 		3DF8046518FF784500913505 /* LMPropertyTextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8046318FF784500913505 /* LMPropertyTextVC.m */; };
@@ -167,6 +166,7 @@
 		69761BCD18F17A3800C4EDC6 /* IUGroupNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 69761BCC18F17A3800C4EDC6 /* IUGroupNode.m */; };
 		6979FC0718ED34E20060C3B4 /* LMPropertyFrameVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6979FC0518ED34E20060C3B4 /* LMPropertyFrameVC.m */; };
 		6979FC0818ED34E20060C3B4 /* LMPropertyFrameVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6979FC0618ED34E20060C3B4 /* LMPropertyFrameVC.xib */; };
+		6983E71D18FFF54600D424B8 /* JDOutlineCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6983E71C18FFF54600D424B8 /* JDOutlineCellView.m */; };
 		6985CBA018E31558008DBF50 /* IUDocumentNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6985CB9F18E31558008DBF50 /* IUDocumentNode.m */; };
 		6985CBA618E31D9B008DBF50 /* IUNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6985CBA518E31D9B008DBF50 /* IUNode.m */; };
 		699E0D3418FD9CE2001CE633 /* IUTextManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E0D3318FD9CE2001CE633 /* IUTextManager.m */; };
@@ -347,8 +347,6 @@
 		3DF8045518FE874400913505 /* LMAppearanceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMAppearanceVC.h; sourceTree = "<group>"; };
 		3DF8045618FE874400913505 /* LMAppearanceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMAppearanceVC.m; sourceTree = "<group>"; };
 		3DF8045718FE874400913505 /* LMAppearanceVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMAppearanceVC.xib; sourceTree = "<group>"; };
-		3DF8045A18FE8AFE00913505 /* JDOutlineCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JDOutlineCellView.h; path = ../../../Movies/JDOutlineCellView.h; sourceTree = "<group>"; };
-		3DF8045B18FE8AFE00913505 /* JDOutlineCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JDOutlineCellView.m; path = ../../../Movies/JDOutlineCellView.m; sourceTree = "<group>"; };
 		3DF8045D18FF75CF00913505 /* LMPropertyBGColorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyBGColorVC.h; sourceTree = "<group>"; };
 		3DF8045E18FF75CF00913505 /* LMPropertyBGColorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyBGColorVC.m; sourceTree = "<group>"; };
 		3DF8045F18FF75CF00913505 /* LMPropertyBGColorVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyBGColorVC.xib; sourceTree = "<group>"; };
@@ -446,6 +444,8 @@
 		6979FC0418ED34E20060C3B4 /* LMPropertyFrameVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyFrameVC.h; sourceTree = "<group>"; };
 		6979FC0518ED34E20060C3B4 /* LMPropertyFrameVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyFrameVC.m; sourceTree = "<group>"; };
 		6979FC0618ED34E20060C3B4 /* LMPropertyFrameVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyFrameVC.xib; sourceTree = "<group>"; };
+		6983E71B18FFF54600D424B8 /* JDOutlineCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JDOutlineCellView.h; path = JD/JDOutlineCellView.h; sourceTree = "<group>"; };
+		6983E71C18FFF54600D424B8 /* JDOutlineCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JDOutlineCellView.m; path = JD/JDOutlineCellView.m; sourceTree = "<group>"; };
 		6985CB9E18E31558008DBF50 /* IUDocumentNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUDocumentNode.h; sourceTree = "<group>"; };
 		6985CB9F18E31558008DBF50 /* IUDocumentNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUDocumentNode.m; sourceTree = "<group>"; };
 		6985CBA418E31D9B008DBF50 /* IUNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUNode.h; sourceTree = "<group>"; };
@@ -872,6 +872,8 @@
 		69757AD218D95BB10095CBAC /* JD */ = {
 			isa = PBXGroup;
 			children = (
+				6983E71B18FFF54600D424B8 /* JDOutlineCellView.h */,
+				6983E71C18FFF54600D424B8 /* JDOutlineCellView.m */,
 				69757AD318D95BBC0095CBAC /* CALayer+JDExtension.h */,
 				69757AD418D95BBC0095CBAC /* CALayer+JDExtension.m */,
 				69757B1A18D95C980095CBAC /* NSArray+JDExtension.h */,
@@ -925,8 +927,6 @@
 				6953852D18ED6EC800CC42E5 /* IUController.m */,
 				3DBC932C18F24FE000F217BD /* NSFlippedView.h */,
 				3DBC932D18F24FE000F217BD /* NSFlippedView.m */,
-				3DF8045A18FE8AFE00913505 /* JDOutlineCellView.h */,
-				3DF8045B18FE8AFE00913505 /* JDOutlineCellView.m */,
 			);
 			name = JD;
 			sourceTree = "<group>";
@@ -1363,7 +1363,6 @@
 				6967425318F7D077008B7111 /* IUIdentifierManager.m in Sources */,
 				69761BCA18F168D700C4EDC6 /* IUResourceManager.m in Sources */,
 				69757B1118D95BBC0095CBAC /* JDUIUtil.m in Sources */,
-				3DF8045C18FE8AFE00913505 /* JDOutlineCellView.m in Sources */,
 				3DB3ACE718EBEF9D0046DFB7 /* CursorRect.m in Sources */,
 				692334BA18F783FE003E5224 /* LMPropertyBaseVC.m in Sources */,
 				69757B0E18D95BBC0095CBAC /* JDTextField.m in Sources */,
@@ -1376,6 +1375,7 @@
 				6954812818D7640A00CA02F1 /* IUPage.m in Sources */,
 				69C5764018D729830016F050 /* IUDocumentController.m in Sources */,
 				69757B3118DAE19E0095CBAC /* IUDocumentGroupNode.m in Sources */,
+				6983E71D18FFF54600D424B8 /* JDOutlineCellView.m in Sources */,
 				3DF8046A18FF790400913505 /* LMPropertyShadowVC.m in Sources */,
 				69C575BE18D6F61E0016F050 /* LMAppDelegate.m in Sources */,
 				690A409918E1665E00095263 /* LMGeneralObject.m in Sources */,
