@@ -22,28 +22,35 @@
 #import "IUResourceNode.h"
 #import "LMResourceVC.h"
 #import "LMToolbarVC.h"
-#import "LMPropertyFrameVC.h"
-#import "LMPropertyAppearanceVC.h"
-#import "LMPropertyBorderVC.h"
 #import "LMPropertyBaseVC.h"
 #import "IUCompiler.h"
 #import "IUResourceManager.h"
 #import "IUIdentifierManager.h"
+#import "LMAppearanceVC.h"
 
 @interface LMWC ()
+
+//toolbar (bottom)
+@property (weak) IBOutlet NSView *toolbarV;
+
+//Left
 @property (weak) IBOutlet NSView *leftTopV;
 @property (weak) IBOutlet NSView *leftBottomV;
 
-@property (weak) IBOutlet NSView *centerV;
-@property (weak) IBOutlet NSView *toolbarV;
-@property (weak) IBOutlet NSView *rightV;
-@property (weak) IBOutlet NSView *bottomV;
+//Right-top
+@property (weak) IBOutlet NSTabView *propertyV;
+@property (weak) IBOutlet NSView *appearanceV;
 
+//Right-bottom
+@property (weak) IBOutlet NSTabView *widgetTabV;
+
+@property (weak) IBOutlet NSView *widgetV;
 @property (weak) IBOutlet NSView *resourceV;
 
-@property (weak) IBOutlet NSView *propertyFrameV;
-@property (weak) IBOutlet NSView *propertyBorderV;
-@property (weak) IBOutlet NSView *propertyAppearenceV;
+//befor merge
+
+
+@property (weak) IBOutlet NSView *centerV;
 @property (weak) IBOutlet NSView *propertyBaseV;
 
 @end
@@ -60,10 +67,10 @@
     LMWidgetLibraryVC   *widgetLibraryVC;
     LMToolbarVC     *toolbarVC;
     LMResourceVC    *resourceVC;
-    LMPropertyFrameVC    *propertyFrameVC;
-    LMPropertyAppearanceVC    *propertyAppearanceVC;
-    LMPropertyBorderVC  *propertyBorderVC;
+
     LMPropertyBaseVC    *propertyBaseVC;
+    
+    LMAppearanceVC  *appearanceVC;
 }
 
 - (id)initWithWindow:(NSWindow *)window
@@ -79,14 +86,18 @@
 
 - (void)windowDidLoad
 {
+    
+    //Setting For LeftView
+    stackVC = [[LMStackVC alloc] initWithNibName:@"LMStackVC" bundle:nil];
+    [self bind:@"IUController" toObject:stackVC withKeyPath:@"IUController" options:nil];
+    [_leftTopV addSubviewFullFrame:stackVC.view];
+
+    
     fileNaviVC = [[LMFileNaviVC alloc] initWithNibName:@"LMFileNaviVC" bundle:nil];
     [self bind:@"selectedNode" toObject:fileNaviVC withKeyPath:@"selection" options:nil];
     [self bind:@"documentController" toObject:fileNaviVC withKeyPath:@"documentController" options:nil];
-    [_leftBottomV addSubview:fileNaviVC.view];
+    [_leftBottomV addSubviewFullFrame:fileNaviVC.view];
     
-    stackVC = [[LMStackVC alloc] initWithNibName:@"LMStackVC" bundle:nil];
-    [self bind:@"IUController" toObject:stackVC withKeyPath:@"IUController" options:nil];
-    [_rightV addSubviewFullFrame:stackVC.view];
 
     
     canvasVC = [[LMCanvasVC alloc] initWithNibName:@"LMCanvasVC" bundle:nil];
@@ -95,7 +106,7 @@
     self.window.canvasView =  (LMCanvasView *)canvasVC.view;
     
     widgetLibraryVC = [[LMWidgetLibraryVC alloc] initWithNibName:@"LMWidgetLibraryVC" bundle:nil];
-    [_leftTopV addSubviewFullFrame:widgetLibraryVC.view];
+    [_widgetV addSubviewFullFrame:widgetLibraryVC.view];
     [widgetLibraryVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
     [widgetLibraryVC setIdentifierManager:_identifierManager];
     
@@ -105,18 +116,11 @@
     resourceVC = [[LMResourceVC alloc] initWithNibName:@"LMResourceVC" bundle:nil];
     [_resourceV addSubviewFullFrame:resourceVC.view];
     
-    propertyFrameVC = [[LMPropertyFrameVC alloc] initWithNibName:@"LMPropertyFrameVC" bundle:nil];
-    [propertyFrameVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
-    [_propertyFrameV addSubviewFullFrame:propertyFrameVC.view];
+    appearanceVC = [[LMAppearanceVC alloc] initWithNibName:@"LMAppearanceVC" bundle:nil];
+    [appearanceVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
+    [_appearanceV addSubviewFullFrame:appearanceVC.view];
     
-    propertyAppearanceVC = [[LMPropertyAppearanceVC alloc] initWithNibName:@"LMPropertyAppearanceVC" bundle:nil];
-    [propertyAppearanceVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
-    [_propertyAppearenceV addSubviewFullFrame:propertyAppearanceVC.view];
-    
-    propertyBorderVC = [[LMPropertyBorderVC alloc] initWithNibName:@"LMPropertyBorderVC" bundle:nil];
-    [propertyBorderVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
-    [_propertyBorderV addSubviewFullFrame:propertyBorderVC.view];
-    
+       
     propertyBaseVC = [[LMPropertyBaseVC alloc] initWithNibName:[LMPropertyBaseVC class].className bundle:nil];
     [propertyBaseVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
     [_propertyBaseV addSubviewFullFrame:propertyBaseVC.view];
@@ -168,7 +172,7 @@
     [resourceVC setManager:_resourceManager];
     
     //construct property vc
-    [propertyAppearanceVC setResourceManager:_resourceManager];
+    [appearanceVC.propertyBGImageVC setResourceManager:_resourceManager];
     propertyBaseVC.pageDocumentNodes = _project.pageDocumentNodes;
 }
 
@@ -218,6 +222,23 @@
 
 - (void)project:(IUProject *)project nodeAdded:(IUNode *)node{
     [propertyBaseVC setPageDocumentNodes:project.pageDocumentNodes];
+}
+
+#pragma mark -
+#pragma mark select TavView
+
+- (IBAction)clickPropertyMatrix:(id)sender {
+    NSMatrix *propertyMatrix = sender;
+    NSInteger index = [propertyMatrix selectedColumn];
+    
+    [_propertyV selectTabViewItemAtIndex:index];
+}
+- (IBAction)clickWidgetMatrix:(id)sender {
+    NSMatrix *propertyMatrix = sender;
+    NSInteger index = [propertyMatrix selectedColumn];
+    
+    [_widgetTabV selectTabViewItemAtIndex:index];
+
 }
 
 @end

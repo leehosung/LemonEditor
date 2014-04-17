@@ -10,7 +10,9 @@
 #import "IUResourceNode.h"
 
 @interface LMResourceVC ()
-@property (weak) IBOutlet NSCollectionView *collectionV;
+@property (weak) IBOutlet NSTabView *tabView;
+@property (weak) IBOutlet NSCollectionView *collectionListV;
+@property (weak) IBOutlet NSCollectionView *collectionIconV;
 @end
 
 @implementation LMResourceVC
@@ -26,7 +28,8 @@
 
 -(void)setManager:(IUResourceManager *)manager{
     _manager = manager;
-    [_collectionV bind:@"content" toObject:manager withKeyPath:@"imageResourceNodes" options:nil];
+    [_collectionListV bind:@"content" toObject:manager withKeyPath:@"imageResourceNodes" options:nil];
+    [_collectionIconV bind:@"content" toObject:manager withKeyPath:@"imageResourceNodes" options:nil];
 }
 
 - (BOOL)collectionView:(NSCollectionView *)collectionView writeItemsAtIndexes:(NSIndexSet *)indexes toPasteboard:(NSPasteboard *)pasteboard{
@@ -36,5 +39,12 @@
     [pasteboard setString:node.name forType:kUTTypeIUImageResource];
     return YES;
 }
+- (IBAction)clickListBtn:(id)sender {
+    [_tabView selectTabViewItemAtIndex:0];
+}
+- (IBAction)clickIconBtn:(id)sender {
+    [_tabView selectTabViewItemAtIndex:1];
+}
+
 
 @end

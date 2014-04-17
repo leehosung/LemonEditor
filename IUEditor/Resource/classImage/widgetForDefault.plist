@@ -6,25 +6,25 @@
 		<key>className</key>
 		<string>IUWebMovie</string>
 		<key>classImage</key>
-		<string>IUView.png</string>
+		<string>tool_webmovie</string>
 	</dict>
 	<dict>
 		<key>className</key>
 		<string>IUHTML</string>
 		<key>classImage</key>
-		<string>IUView.png</string>
+		<string>tool_html</string>
 	</dict>
 	<dict>
 		<key>className</key>
 		<string>IUBox</string>
 		<key>classImage</key>
-		<string>IUView.png</string>
+		<string>tool_view</string>
 	</dict>
 	<dict>
 		<key>className</key>
 		<string>IUCarousel</string>
 		<key>classImage</key>
-		<string>IUView.png</string>
+		<string>tool_carousel</string>
 	</dict>
 </array>
 </plist>

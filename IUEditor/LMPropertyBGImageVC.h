@@ -9,11 +9,13 @@
 #import <Cocoa/Cocoa.h>
 #import "IUResourceManager.h"
 #import "IUController.h"
+#import "JDOutlineCellView.h"
 
-@interface LMPropertyAppearanceVC : NSViewController
+@interface LMPropertyBGImageVC : NSViewController
 
 @property (nonatomic) IUController      *controller;
 @property (nonatomic) IUResourceManager     *resourceManager;
+
 
 @property id content;
 @end

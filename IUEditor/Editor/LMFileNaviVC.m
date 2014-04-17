@@ -8,6 +8,7 @@
 
 #import "LMFileNaviVC.h"
 #import "IUDocumentNode.h"
+#import "IUResourceNode.h"
 #import "NSTreeController+JDExtension.h"
 
 @interface LMFileNaviVC ()
@@ -63,9 +64,80 @@
 
 
 - (NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(NSTreeNode*)item {
-    // Everything is setup in bindings
-    NSTableCellView *cell= [outlineView makeViewWithIdentifier:@"cell" owner:self];
-    return cell;
+    
+    id representObject = [item representedObject];
+    
+    //root
+    if(item.indexPath.length == 1){
+        NSTableCellView *root= [outlineView makeViewWithIdentifier:@"root" owner:self];
+        return root;
+
+    }
+    //folder
+    else if([representObject isKindOfClass:[IUDocumentGroupNode class]]){
+        IUDocumentGroupNode *groupNode = representObject;
+        NSTableCellView *folder;
+        if([groupNode.name isEqualToString:@"Pages"]){
+            folder= [outlineView makeViewWithIdentifier:@"pageFolder" owner:self];
+        }
+        else if([groupNode.name isEqualToString:@"Masters"]){
+            folder= [outlineView makeViewWithIdentifier:@"pageFolder" owner:self];
+        }
+        else if([groupNode.name isEqualToString:@"Resource"]){
+            folder= [outlineView makeViewWithIdentifier:@"pageFolder" owner:self];
+        }
+        else if([groupNode.name isEqualToString:@"Image"]){
+            folder= [outlineView makeViewWithIdentifier:@"pageFolder" owner:self];
+        }
+        else if([groupNode.name isEqualToString:@"CSS"]){
+            folder= [outlineView makeViewWithIdentifier:@"pageFolder" owner:self];
+        }
+        else if([groupNode.name isEqualToString:@"JS"]){
+            folder= [outlineView makeViewWithIdentifier:@"pageFolder" owner:self];
+        }
+        else{
+            JDErrorLog(@"there is no group");
+        }
+        return folder;
+
+    }
+    //folder
+    else if([representObject isKindOfClass:[IUResourceGroupNode class]]){
+        IUResourceGroupNode *groupNode = representObject;
+        NSTableCellView *folder;
+        if([groupNode.name isEqualToString:@"Resource"]){
+            folder= [outlineView makeViewWithIdentifier:@"pageFolder" owner:self];
+        }
+        else if([groupNode.name isEqualToString:@"Image"]){
+            folder= [outlineView makeViewWithIdentifier:@"pageFolder" owner:self];
+        }
+        else if([groupNode.name isEqualToString:@"CSS"]){
+            folder= [outlineView makeViewWithIdentifier:@"pageFolder" owner:self];
+        }
+        else if([groupNode.name isEqualToString:@"JS"]){
+            folder= [outlineView makeViewWithIdentifier:@"pageFolder" owner:self];
+        }
+        else{
+            JDErrorLog(@"there is no group");
+        }
+        return folder;
+    }
+    //file
+    else{
+        NSTableCellView *file;
+        if ([[item representedObject] isKindOfClass:[IUDocumentNode class]]){
+            file= [outlineView makeViewWithIdentifier:@"pageFile" owner:self];
+        }
+        else if( [[item representedObject] isKindOfClass:[IUResourceNode class]] ){
+
+            file= [outlineView makeViewWithIdentifier:@"pageFile" owner:self];
+        }
+        
+        return file;
+    }
+    
+    
+    return nil;
 }
 
 @end

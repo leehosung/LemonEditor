@@ -26,12 +26,6 @@
 -(void)awakeFromNib{
 }
 
-
-- (NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(NSTreeNode*)item {
-    NSTableCellView *cell= [outlineView makeViewWithIdentifier:@"cell" owner:self];
-    return cell;
-}
-
 -(void)setDocument:(IUDocument *)document{
     _document = document;
     for (IUBox *iu in document.allChildren) {
@@ -39,5 +33,29 @@
     }
 }
 
+- (NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(NSTreeNode*)item {
+
+    id representObject = [item representedObject];
+    NSImage *classImage = [self currentImage:[representObject className]];
+    
+    NSTableCellView *cell= [outlineView makeViewWithIdentifier:@"cell" owner:self];
+    [cell.imageView setImage:classImage];
+    [cell.imageView setImageScaling:NSImageScaleProportionallyDown];
+    return cell;
+}
+
+- (NSImage *)currentImage:(NSString *)className{
+    NSString *widgetFilePath = [[NSBundle mainBundle] pathForResource:@"widgetForDefault" ofType:@"plist"];
+    NSArray *availableWidgetProperties = [NSArray arrayWithContentsOfFile:widgetFilePath];
+    for (NSDictionary *dict in availableWidgetProperties) {
+        NSString *name = dict[@"className"];
+        if([name isEqualToString:className]){
+            NSImage *classImage = [NSImage imageNamed:dict[@"classImage"]];
+            return classImage;
+        }
+    }
+
+    return nil;
+}
 
 @end
