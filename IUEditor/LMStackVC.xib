@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMStackVC">
@@ -15,10 +15,18 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application"/>
         <userDefaultsController representsSharedInstance="YES" id="r0p-NC-HRh"/>
-        <treeController objectClassName="IUObj" childrenKeyPath="children" id="S9Z-Oj-DDl" customClass="IUController">
+        <treeController objectClassName="IUBox" editable="NO" childrenKeyPath="children" id="S9Z-Oj-DDl" customClass="IUController">
             <connections>
-                <binding destination="-2" name="contentObject" keyPath="document" previousBinding="NmU-gT-pOy" id="AMa-gG-ZsW"/>
-                <binding destination="-2" name="contentArrayForMultipleSelection" keyPath="selectedIUs" id="NmU-gT-pOy"/>
+                <binding destination="-2" name="contentArrayForMultipleSelection" keyPath="selectedIUs" id="yUP-GX-YVM">
+                    <dictionary key="options">
+                        <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                    </dictionary>
+                </binding>
+                <binding destination="-2" name="contentObject" keyPath="document" previousBinding="yUP-GX-YVM" id="erk-5O-gxp">
+                    <dictionary key="options">
+                        <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                    </dictionary>
+                </binding>
             </connections>
         </treeController>
         <customView id="IoX-Be-25j" userLabel="Stack">
