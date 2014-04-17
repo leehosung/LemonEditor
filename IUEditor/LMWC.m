@@ -7,31 +7,37 @@
 //
 
 #import "LMWC.h"
-
 #import "LMWindow.h"
-
-#import "LMFileNaviVC.h"
-#import "LMStackVC.h"
-#import "LMWidgetLibraryVC.h"
-#import "LMCanvasVC.h"
 
 #import "IUDocumentController.h"
 #import "IUProject.h"
 #import "IUDocumentNode.h"
 #import "IUResourceGroupNode.h"
 #import "IUResourceNode.h"
-#import "LMResourceVC.h"
-#import "LMToolbarVC.h"
-#import "LMPropertyBaseVC.h"
+
 #import "IUCompiler.h"
+
 #import "IUResourceManager.h"
 #import "IUIdentifierManager.h"
+
+//connect VC
 #import "LMAppearanceVC.h"
+#import "LMResourceVC.h"
+#import "LMFileNaviVC.h"
+#import "LMStackVC.h"
+#import "LMWidgetLibraryVC.h"
+#import "LMCanvasVC.h"
+
+#import "LMTopToolbarVC.h"
+#import "LMBottomToolbarVC.h"
+#import "LMPropertyBaseVC.h"
+
 
 @interface LMWC ()
 
-//toolbar (bottom)
-@property (weak) IBOutlet NSView *toolbarV;
+//toolbar
+@property (weak) IBOutlet NSView *topToolbarV;
+@property (weak) IBOutlet NSView *bottomToolbarV;
 
 //Left
 @property (weak) IBOutlet NSView *leftTopV;
@@ -47,10 +53,12 @@
 @property (weak) IBOutlet NSView *widgetV;
 @property (weak) IBOutlet NSView *resourceV;
 
+//canvas
+@property (weak) IBOutlet NSView *centerV;
 //befor merge
 
 
-@property (weak) IBOutlet NSView *centerV;
+
 @property (weak) IBOutlet NSView *propertyBaseV;
 
 @end
@@ -61,16 +69,24 @@
     IUResourceManager   *_resourceManager;
     IUIdentifierManager *_identifierManager;
 
+    //VC for view
+    //left
     LMFileNaviVC    *fileNaviVC;
     LMStackVC       *stackVC;
+    
+    //center
     LMCanvasVC *canvasVC;
+    LMTopToolbarVC  *topToolbarVC;
+    LMBottomToolbarVC     *bottomToolbarVC;
+    
+    //right top
+    LMPropertyBaseVC    *propertyBaseVC;
+    LMAppearanceVC  *appearanceVC;
+    
+    //right bottom
     LMWidgetLibraryVC   *widgetLibraryVC;
-    LMToolbarVC     *toolbarVC;
     LMResourceVC    *resourceVC;
 
-    LMPropertyBaseVC    *propertyBaseVC;
-    
-    LMAppearanceVC  *appearanceVC;
 }
 
 - (id)initWithWindow:(NSWindow *)window
@@ -87,7 +103,7 @@
 - (void)windowDidLoad
 {
     
-    //Setting For LeftView
+////////////////left view/////////////////////////    
     stackVC = [[LMStackVC alloc] initWithNibName:@"LMStackVC" bundle:nil];
     [self bind:@"IUController" toObject:stackVC withKeyPath:@"IUController" options:nil];
     [_leftTopV addSubviewFullFrame:stackVC.view];
@@ -99,19 +115,24 @@
     [_leftBottomV addSubviewFullFrame:fileNaviVC.view];
     
 
-    
+////////////////center view/////////////////////////
     canvasVC = [[LMCanvasVC alloc] initWithNibName:@"LMCanvasVC" bundle:nil];
     [_centerV addSubviewFullFrame:canvasVC.view];
     [canvasVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
     self.window.canvasView =  (LMCanvasView *)canvasVC.view;
     
+    topToolbarVC = [[LMTopToolbarVC alloc] initWithNibName:@"LMTopToolbarVC" bundle:nil];
+    [_topToolbarV addSubviewFullFrame:topToolbarVC.view];
+    
+    bottomToolbarVC = [[LMBottomToolbarVC alloc] initWithNibName:@"LMBottomToolbarVC" bundle:nil];
+    [_bottomToolbarV addSubviewFullFrame:bottomToolbarVC.view];
+
+////////////////right view/////////////////////////
     widgetLibraryVC = [[LMWidgetLibraryVC alloc] initWithNibName:@"LMWidgetLibraryVC" bundle:nil];
     [_widgetV addSubviewFullFrame:widgetLibraryVC.view];
     [widgetLibraryVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
     [widgetLibraryVC setIdentifierManager:_identifierManager];
     
-    toolbarVC = [[LMToolbarVC alloc] initWithNibName:@"LMToolbarVC" bundle:nil];
-    [_toolbarV addSubviewFullFrame:toolbarVC.view];
     
     resourceVC = [[LMResourceVC alloc] initWithNibName:@"LMResourceVC" bundle:nil];
     [_resourceV addSubviewFullFrame:resourceVC.view];
@@ -154,7 +175,7 @@
 
     // vc setting
     //construct toolbar
-    toolbarVC.documentController = fileNaviVC.documentController;
+    topToolbarVC.documentController = fileNaviVC.documentController;
     
     //construct to file navi
     canvasVC.documentBasePath = _project.absolutePath;

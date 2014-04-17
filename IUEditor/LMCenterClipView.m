@@ -38,12 +38,14 @@
         constrainedClipViewBoundsRect.origin.x = centeredCoordinateUnitWithProposedContentViewBoundsDimensionAndDocumentViewFrameDimension(proposedClipViewBoundsRect.size.width, documentViewFrameRect.size.width);
     }
     
+    /*
     // If proposed clip view bounds is hight is greater than document view frame height, center it vertically.
     if (proposedClipViewBoundsRect.size.height >= documentViewFrameRect.size.height) {
         
         // Adjust the proposed origin.y
         constrainedClipViewBoundsRect.origin.y = centeredCoordinateUnitWithProposedContentViewBoundsDimensionAndDocumentViewFrameDimension(proposedClipViewBoundsRect.size.height, documentViewFrameRect.size.height);
     }
+     */
     
     return constrainedClipViewBoundsRect;
 }

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMWC">
             <connections>
                 <outlet property="appearanceV" destination="209-eo-kDy" id="Vjs-mp-RBg"/>
+                <outlet property="bottomToolbarV" destination="YTs-oo-nxs" id="Had-lh-RkA"/>
                 <outlet property="centerV" destination="LCo-BM-DQN" id="a81-Fm-UQ1"/>
                 <outlet property="leftBottomV" destination="4Tl-hR-JBi" id="Hgo-4P-SU6"/>
                 <outlet property="leftTopV" destination="efd-DN-4Bq" id="c6b-do-zjc"/>
@@ -14,7 +15,7 @@
                 <outlet property="propertyMatrix" destination="zhv-IX-K54" id="UL0-4t-TMq"/>
                 <outlet property="propertyV" destination="VEQ-BG-SDd" id="57t-X7-13c"/>
                 <outlet property="resourceV" destination="yuK-jm-moa" id="vww-Rv-ZVx"/>
-                <outlet property="toolbarV" destination="YTs-oo-nxs" id="diP-nc-LCt"/>
+                <outlet property="topToolbarV" destination="4es-7h-bcl" id="SBG-S6-dhA"/>
                 <outlet property="widgetTabV" destination="Rvr-f8-CYQ" id="rJr-Fz-ouO"/>
                 <outlet property="widgetV" destination="CwY-UY-xV5" id="Jrf-Fl-b8L"/>
                 <outlet property="window" destination="1" id="3"/>
@@ -31,18 +32,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="1418" height="887"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="YTs-oo-nxs" userLabel="Toolbar">
-                        <rect key="frame" x="218" y="0.0" width="900" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="30" id="Nfh-yS-t1z"/>
-                            <constraint firstAttribute="width" constant="900" id="VHY-52-N2L"/>
-                        </constraints>
-                    </customView>
-                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="LCo-BM-DQN" userLabel="centerV">
-                        <rect key="frame" x="218" y="30" width="900" height="857"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    </customView>
                     <splitView dividerStyle="thin" translatesAutoresizingMaskIntoConstraints="NO" id="6xJ-ed-1uG" userLabel="left">
                         <rect key="frame" x="-2" y="0.0" width="220" height="887"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -87,13 +76,13 @@
                                         <cells>
                                             <column>
                                                 <buttonCell type="square" bezelStyle="shadowlessSquare" image="tab_appearance" imagePosition="overlaps" alignment="center" state="on" tag="1" inset="2" id="KYs-cJ-7K5">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                                     <font key="font" metaFont="titleBar" size="12"/>
                                                 </buttonCell>
                                             </column>
                                             <column>
                                                 <buttonCell type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" state="on" inset="2" id="Bck-qq-gPw">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                                     <font key="font" metaFont="titleBar" size="12"/>
                                                 </buttonCell>
                                             </column>
@@ -203,7 +192,7 @@
                                         <tabViewItems>
                                             <tabViewItem label="Appearance" identifier="1" id="U4R-eF-goh" userLabel="Tab View Item - Widget">
                                                 <view key="view" id="CwY-UY-xV5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="423"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="379"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </view>
                                             </tabViewItem>
@@ -241,17 +230,39 @@
                             <real value="250"/>
                         </holdingPriorities>
                     </splitView>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="4es-7h-bcl" userLabel="topToolbar">
+                        <rect key="frame" x="218" y="857" width="900" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="fKA-iL-Bai"/>
+                        </constraints>
+                    </customView>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="YTs-oo-nxs" userLabel="bottomToolbar">
+                        <rect key="frame" x="218" y="0.0" width="900" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="Nfh-yS-t1z"/>
+                            <constraint firstAttribute="width" constant="900" id="VHY-52-N2L"/>
+                        </constraints>
+                    </customView>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="LCo-BM-DQN" userLabel="centerV">
+                        <rect key="frame" x="218" y="30" width="900" height="827"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Ci0-yr-ElZ" firstAttribute="top" secondItem="2" secondAttribute="top" id="1iW-qd-WjN"/>
                     <constraint firstAttribute="bottom" secondItem="6xJ-ed-1uG" secondAttribute="bottom" id="7Ud-JD-cV2"/>
                     <constraint firstItem="YTs-oo-nxs" firstAttribute="leading" secondItem="6xJ-ed-1uG" secondAttribute="trailing" id="7ao-5H-osd"/>
+                    <constraint firstItem="4es-7h-bcl" firstAttribute="top" secondItem="2" secondAttribute="top" id="8d3-TJ-kaQ"/>
                     <constraint firstItem="YTs-oo-nxs" firstAttribute="top" secondItem="LCo-BM-DQN" secondAttribute="bottom" id="GQ0-Em-jpo"/>
-                    <constraint firstItem="LCo-BM-DQN" firstAttribute="top" secondItem="2" secondAttribute="top" id="HaI-6N-vfg"/>
                     <constraint firstItem="LCo-BM-DQN" firstAttribute="leading" secondItem="6xJ-ed-1uG" secondAttribute="trailing" id="I5H-4j-OLE"/>
+                    <constraint firstItem="4es-7h-bcl" firstAttribute="leading" secondItem="6xJ-ed-1uG" secondAttribute="trailing" id="ZVa-aF-8YA"/>
                     <constraint firstAttribute="trailing" secondItem="Ci0-yr-ElZ" secondAttribute="trailing" id="cR7-qD-bfW"/>
                     <constraint firstItem="Ci0-yr-ElZ" firstAttribute="leading" secondItem="YTs-oo-nxs" secondAttribute="trailing" id="e04-Kj-u8P"/>
+                    <constraint firstItem="Ci0-yr-ElZ" firstAttribute="leading" secondItem="4es-7h-bcl" secondAttribute="trailing" id="hFH-qc-qPu"/>
                     <constraint firstItem="6xJ-ed-1uG" firstAttribute="top" secondItem="2" secondAttribute="top" id="mBI-fX-DJb"/>
+                    <constraint firstItem="LCo-BM-DQN" firstAttribute="top" secondItem="4es-7h-bcl" secondAttribute="bottom" id="p2m-ml-A6w"/>
                     <constraint firstAttribute="bottom" secondItem="Ci0-yr-ElZ" secondAttribute="bottom" id="rmn-By-mP6"/>
                     <constraint firstItem="Ci0-yr-ElZ" firstAttribute="leading" secondItem="LCo-BM-DQN" secondAttribute="trailing" id="sWI-yU-IfB"/>
                     <constraint firstAttribute="bottom" secondItem="YTs-oo-nxs" secondAttribute="bottom" id="vM1-Fg-HPG"/>
