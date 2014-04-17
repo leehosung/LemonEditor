@@ -33,7 +33,8 @@
 #define IUCSSTagBorderBottomColor @"borderBColor"
 
 
-#define IUCSSTagFont @"font"
+#define IUCSSTagFontName @"font-name"
+#define IUCSSTagFontSize @"font-size"
 
 
 #define isSameTag isEqualToString

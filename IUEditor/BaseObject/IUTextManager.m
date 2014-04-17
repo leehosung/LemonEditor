@@ -13,7 +13,9 @@
 @property (copy) id  info;
 @end
 
-@implementation TextIndexInfo
+@implementation TextIndexInfo{
+}
+
 - (id)copyWithZone:(NSZone *)zone{
     TextIndexInfo *info = [[TextIndexInfo allocWithZone:zone] init];
     info.index = _index;
@@ -31,6 +33,9 @@
     NSMutableArray *fontInfos;
     NSMutableDictionary *fontSizeInfoCollection;
     NSMutableString *text;
+    
+    NSInteger preparedFontSize;
+    NSString *preparedFontName;
 }
 
 - (id)init{
@@ -38,6 +43,10 @@
     fontInfos = [NSMutableArray array];
     text = [NSMutableString string];
     fontSizeInfoCollection = [NSMutableDictionary dictionary];
+
+    [self setValue:@"Helvatica" forRange:NSZeroRange inInfos:fontInfos];
+    [fontSizeInfoCollection setObject:[NSMutableArray array] forKey:@(IUCSSDefaultCollection)];
+    [self setValue:@(25) forRange:NSZeroRange inInfos:fontSizeInfoCollection[@(IUCSSDefaultCollection)]];
     return self;
 }
 
@@ -259,6 +268,9 @@
 
 
 - (NSString*)HTML{
+    if (text.length == 0) {
+        return nil;
+    }
     NSMutableString *returnValue = [NSMutableString string];
     NSIndexSet *rangeSet = [self rangeSet];
     NSUInteger currentIndex = [rangeSet firstIndex];
@@ -315,10 +327,10 @@
             NSMutableDictionary *cssDict = [NSMutableDictionary dictionary];
             [cssIDDict setObject:cssDict forKey:[NSString stringWithFormat:@"%@TNode%ld", _idKey, range]];
             NSNumber *size = [self infoObjectAtArray:fontSizeInfos beforeOrEqualIndex:range].info;
-            [cssDict setObject:size forKey:@"font-size"];
+            [cssDict setObject:size forKey:IUCSSTagFontSize];
             if (viewPort == IUCSSDefaultCollection) {
                 NSString *fontName = [self infoObjectAtArray:fontInfos beforeOrEqualIndex:range].info;
-                [cssDict setObject:fontName forKey:@"font-name"];
+                [cssDict setObject:fontName forKey:IUCSSTagFontName];
             }
         }];
     }];
@@ -330,6 +342,24 @@
 - (void)removeMediaQuery:(NSInteger)viewPortWidth{
     assert(viewPortWidth != IUCSSDefaultCollection);
     [fontSizeInfoCollection removeObjectForKey:@(viewPortWidth)];
+}
+
+
+- (void)prepareTextFont:(NSString*)name{
+    preparedFontName = [name copy];
+}
+
+- (void)prepareTextFontSize:(NSUInteger)size{
+    preparedFontSize = size;
+}
+
+- (void)insertString:(NSString*)insertText atIndex:(NSUInteger)index{
+    //index 보다 뒤에 있는 폰트 정보를 text length만큼 뒤로 밈
+    //replace 와 다른 점은 prepare 된 정보를 이용한다는 것
+    [self replaceText:insertText atRange:NSMakeRange(index, 0)];
+    if (preparedFontName) {
+        [self setFont:preparedFontName atRange:NSMakeRange(index, insertText.length)];
+    }
 }
 
 @end

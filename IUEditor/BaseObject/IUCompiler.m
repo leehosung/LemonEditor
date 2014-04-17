@@ -101,7 +101,9 @@
     }
     else if ([iu isKindOfClass:[IUBox class]]) {
         [code appendFormat:@"<div %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes]];
-        [code appendString:@"<p>testme</p>"];
+        if (iu.textHTML) {
+            [code appendFormat:@"<p>%@</p>", iu.textHTML];
+        }
         if (iu.children.count) {
             [code appendString:@"\n"];
             for (IUBox *child in iu.children) {
@@ -121,6 +123,7 @@
     }
     return code;
 }
+
 
 
 -(NSString*)HTMLAttributeStringWithTagDict:(NSDictionary*)tagDictionary{
@@ -232,6 +235,20 @@
     }
     return dict;
 }
+
+-(NSString*)fontCSSContentFromAttributes:(NSDictionary*)attributeDict{
+    NSMutableString *retStr = [NSMutableString string];
+    NSString *fontName = attributeDict[IUCSSTagFontName];
+    if (fontName) {
+        [retStr appendFormat:@"font-name : %@;\n", fontName];
+    }
+    NSNumber *fontSize = attributeDict[IUCSSTagFontSize];
+    if (fontSize) {
+        [retStr appendFormat:@"font-size : %dpx;\n", [fontSize intValue]];
+    }
+    return retStr;
+}
+
 
 /*
 -(void)insert:(NSMutableDictionary*)dict style:(NSString*)tag value:(id)value{

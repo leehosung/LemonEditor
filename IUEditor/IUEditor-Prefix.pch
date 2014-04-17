@@ -35,4 +35,6 @@
 //#define IULogJS 0
 #define IULogJS @"JS"
 #define IULogAction @"Action"
+
+static NSRange NSZeroRange;
 #endif

@@ -96,4 +96,9 @@
 
 -(void)startGrouping;
 -(void)endGrouping;
+
+/// text managing
+
+- (void)insertText:(NSString*)text withRange:(NSRange)range;
+- (NSString*)textHTML;
 @end

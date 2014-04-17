@@ -143,6 +143,7 @@
 }
 
 -(void)selectedObjectsDidChange:(NSDictionary*)change{
+    self.selectedTextRange = NSZeroRange;
     [JDLogUtil log:IULogAction key:@"CanvasVC:observed" string:[self.controller.selectedIdentifiers description]];
     
     [[self gridView] removeAllRedPointLayer];
@@ -183,11 +184,15 @@
 #pragma mark setText
 //text
 - (void)selectTextRange:(NSRange)range identifier:(NSString *)identifier{
-    
+    self.selectedTextRange = range;
 }
+
 - (void)insertString:(NSString *)string identifier:(NSString *)identifier withRange:(NSRange)range{
-    
+    IUBox *iu = [self.controller IUBoxByIdentifier:identifier];
+    assert(iu != nil);
+    [iu insertText:string withRange:range];
 }
+
 - (void)deleteStringRange:(NSRange)range identifier:(NSString *)identifier{
     
 }

@@ -14,6 +14,7 @@
 #import "IUCompiler.h"
 #import "IUDocument.h"
 #import "IUBox.h"
+#import "IUTextManager.h"
 
 @interface IUBox()
 @property NSMutableArray *m_children;
@@ -22,6 +23,7 @@
 @implementation IUBox{
     int delegateEnableLevel;
     NSMutableSet *changedCSSWidths;
+    IUTextManager *textManager;
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
@@ -38,6 +40,8 @@
         for (IUBox *iu in self.children) {
             [iu bind:@"identifierManager" toObject:self withKeyPath:@"identifierManager" options:nil];
         }
+        textManager = [[IUTextManager alloc] init];
+        [textManager bind:@"idKey" toObject:self withKeyPath:@"htmlID" options:nil];
     }
     return self;
 }
@@ -347,6 +351,32 @@
 
 -(BOOL)shouldEditText{
     return YES;
+}
+
+- (void)replaceText:(NSString*)text withRange:(NSRange)range{
+    [textManager replaceText:text atRange:range];
+    [self.delegate IU:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
+    NSMutableDictionary *cssDict = [textManager.css mutableCopy];
+    NSDictionary *defaultCSS = cssDict[@(IUCSSDefaultCollection)];
+    for (NSString *identifier in defaultCSS) {
+        NSString *src = [self.document.compiler fontCSSContentFromAttributes:defaultCSS[identifier]];
+        [self.delegate IU:identifier CSSChanged:src forWidth:IUCSSDefaultCollection];
+    }
+}
+
+- (void)insertText:(NSString*)text withRange:(NSRange)range{
+    NSLog(@"insertText");
+    [self replaceText:text withRange:range];
+}
+
+
+- (void)deleteTextInRange:(NSRange)range{
+    [textManager deleteTextInRange:range];
+}
+
+
+- (NSString*)textHTML{
+    return textManager.HTML;
 }
 
 

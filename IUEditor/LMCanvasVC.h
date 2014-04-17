@@ -20,6 +20,7 @@
 @property _observing_ NSInteger selectedFrameWidth;
 @property _observing_ NSInteger maxFrameWidth;
 
+@property NSRange selectedTextRange;
 
 - (LMCanvasView*)view;
 
