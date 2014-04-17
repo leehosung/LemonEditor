@@ -55,11 +55,12 @@ DQ
             <rect key="frame" x="0.0" y="0.0" width="836" height="808"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7bm-eT-a4W" customClass="SizeView">
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="7bm-eT-a4W" customClass="SizeView">
+                    <rect key="frame" x="0.0" y="778" width="836" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                     <subviews>
-                        <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mjU-2x-qHQ" userLabel="addFrameBtn">
-                            <rect key="frame" x="0.0" y="-30" width="30" height="30"/>
+                        <button translatesAutoresizingMaskIntoConstraints="NO" id="mjU-2x-qHQ" userLabel="addFrameBtn">
+                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="30" id="hIg-CR-hiU"/>
@@ -85,7 +86,7 @@ DQ
                         <outlet property="addFrameSizeField" destination="Icw-av-wQp" id="98P-Cr-zev"/>
                     </connections>
                 </customView>
-                <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ej4-Uz-enV" userLabel="Canvas Scroll View - Flipped View">
+                <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="Ej4-Uz-enV" userLabel="Canvas Scroll View - Flipped View">
                     <rect key="frame" x="0.0" y="0.0" width="836" height="778"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="UH1-2M-61Q" customClass="LMCenterClipView">
@@ -109,7 +110,7 @@ DQ
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="2yM-8c-esj">
-                        <rect key="frame" x="821" y="0.0" width="15" height="778"/>
+                        <rect key="frame" x="820" y="0.0" width="16" height="778"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>

@@ -35,11 +35,20 @@
     
     [self.mainView addObserver:self forKeyPath:@"frame" options:0 context:nil];
     
+    [[self.mainScrollView contentView] setPostsBoundsChangedNotifications:YES];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(boundsDidChange:) name:NSViewBoundsDidChangeNotification object:[self.mainScrollView contentView]];
+
+
     
 }
 
 - (BOOL)isFlipped{
     return YES;
+}
+
+-(void)boundsDidChange:(NSNotification *)notification{
+    NSRect contentBounds = [self.mainScrollView contentView].bounds;
+    [self.sizeView moveSizeView:contentBounds.origin withWidth:contentBounds.size.width];
 }
 
 #pragma mark -
