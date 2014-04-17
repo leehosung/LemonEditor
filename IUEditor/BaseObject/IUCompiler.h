@@ -24,5 +24,5 @@ typedef enum _IUCompilerType{
 
 -(NSString*)editorHTML:(IUBox*)iu;
 -(NSString*)CSSContentFromAttributes:(NSDictionary*)attributeDict ofClass:(IUBox*)obj;
-
+-(NSString*)fontCSSContentFromAttributes:(NSDictionary*)attributeDict;
 @end

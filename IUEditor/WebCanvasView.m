@@ -329,6 +329,7 @@
 }
 
 - (BOOL)webView:(WebView *)webView shouldInsertText:(NSString *)text replacingDOMRange:(DOMRange *)range givenAction:(WebViewInsertAction)action{
+    assert(0); // span 수정할 때에 고쳐야함
     
     DOMHTMLElement *IUNode = [self IUNodeAtCurrentNode:range.startContainer];
     if(IUNode == nil || [IUNode isNotEqualTo:currentNode]){
@@ -395,9 +396,7 @@
         if(selectednames.count == 1 && [selectednames[0] isEqualToString:proposeIUID]){
          
             NSRange selectRangeInIU = [self selectedRange:proposedRange InIU:proposedNode];
-            if(selectRangeInIU.length > 0){
-                [((LMCanvasVC *)self.delegate) selectTextRange:selectRangeInIU identifier:proposeIUID];
-            }
+            [((LMCanvasVC *)self.delegate) selectTextRange:selectRangeInIU identifier:proposeIUID];
             JDInfoLog(@"SelectedRange : (%ld, %ld)", selectRangeInIU.location, selectRangeInIU.length);
             
             return YES;

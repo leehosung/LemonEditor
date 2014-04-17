@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+#define IUTextInfoFont @"font"
+#define IUTextInfoFontSize @"font-size"
+
 @interface IUTextManager : NSObject
 
 @property NSInteger editViewPortWidth;
@@ -23,8 +26,14 @@
 
 - (void)replaceText:(NSString*)string atRange:(NSRange)range;
 - (void)deleteTextInRange:(NSRange)range;
-- (void)removeMediaQuery:(NSInteger)viewPortWidth;
 - (NSString*)HTML;
+
+
+- (NSDictionary*)fontInfoAtPoint:(NSUInteger)point;
+
+- (void)prepareTextFont:(NSString*)name;
+- (void)prepareTextFontSize:(NSUInteger)size;
+- (void)insertString:(NSString*)at atIndex:(NSUInteger)index;
 
 // css
 // return key    : NSNumber with media query width
