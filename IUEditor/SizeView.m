@@ -20,10 +20,22 @@
         [self setEditable:NO];
         [self setSelectable:NO];
         [self setAlignment:NSCenterTextAlignment];
+
     }
     return self;
 }
 
+-(id)initWithFrame:(NSRect)frameRect{
+    self = [super initWithFrame:frameRect];
+    if(self){
+        [self setBezeled:NO];
+        [self setDrawsBackground:NO];
+        [self setEditable:NO];
+        [self setSelectable:NO];
+        [self setAlignment:NSCenterTextAlignment];
+    }
+    return self;
+}
 
 
 - (NSView *)hitTest:(NSPoint)aPoint{
@@ -47,12 +59,15 @@
 
 -(void)awakeFromNib{
     //textField
+    /*
     sizeTextField = [[SizeTextField alloc] init];
+    [sizeTextField setFont:[NSFont systemFontOfSize:10]];
+     */
     
     //sizeBox
     boxManageView = [[NSView alloc] init];
 
-    [self addSubviewVeriticalCenterInFrameWithFrame:sizeTextField height:sizeTextField.attributedStringValue.size.height];
+//    [self addSubviewVeriticalCenterInFrameWithFrame:sizeTextField height:sizeTextField.attributedStringValue.size.height];
     [self addSubviewFullFrame:boxManageView positioned:NSWindowBelow relativeTo:self.addBtn];
 
 }
@@ -84,7 +99,7 @@
     
     NSInteger selectedWidth = selectBox.frameWidth;
     
-    [sizeTextField setStringValue:[NSString stringWithFormat:@"%ld", selectedWidth]];
+//    [sizeTextField setStringValue:[NSString stringWithFormat:@"%ld", selectedWidth]];
     [(LMCanvasView *)self.superview setWidthOfMainView:selectedWidth];
     ((LMCanvasVC *)self.delegate).selectedFrameWidth = selectedWidth;
     [((LMCanvasVC *)self.delegate) refreshGridFrameDictionary];

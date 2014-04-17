@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="LMToolbarVC">
+        <customObject id="-2" userLabel="File's Owner" customClass="LMBottomToolbarVC">
             <connections>
                 <outlet property="view" destination="tnw-Pb-ALu" id="Zz2-Pd-Ons"/>
             </connections>
@@ -137,29 +137,12 @@
                                     <constraint firstAttribute="width" constant="150" id="EGP-Ly-V1x"/>
                                 </constraints>
                             </customView>
-                            <button translatesAutoresizingMaskIntoConstraints="NO" id="Bp6-gS-boE">
-                                <rect key="frame" x="719" y="-1" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="TWq-P7-hNC"/>
-                                    <constraint firstAttribute="height" constant="30" id="kKw-kU-tda"/>
-                                </constraints>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="export" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BIg-2P-pAx">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="showBPressed:" target="-2" id="ZHs-n6-hCs"/>
-                                </connections>
-                            </button>
                         </subviews>
                     </view>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="fph-Bf-9zu" secondAttribute="bottom" id="3Aq-Qa-aga"/>
-                        <constraint firstItem="fph-Bf-9zu" firstAttribute="leading" secondItem="Bp6-gS-boE" secondAttribute="trailing" id="5du-mG-4Ij"/>
                         <constraint firstItem="7kz-xZ-eTb" firstAttribute="top" secondItem="GO3-gA-Qc1" secondAttribute="top" id="PIc-iU-JXI"/>
                         <constraint firstItem="7kz-xZ-eTb" firstAttribute="leading" secondItem="GO3-gA-Qc1" secondAttribute="leading" id="W04-mt-N5K"/>
-                        <constraint firstItem="Bp6-gS-boE" firstAttribute="top" secondItem="GO3-gA-Qc1" secondAttribute="top" id="ad2-aF-4Rh"/>
                         <constraint firstAttribute="trailing" secondItem="fph-Bf-9zu" secondAttribute="trailing" id="bfh-cW-EaL"/>
                         <constraint firstItem="fph-Bf-9zu" firstAttribute="top" secondItem="GO3-gA-Qc1" secondAttribute="top" id="dgs-2J-9VF"/>
                         <constraint firstAttribute="bottom" secondItem="7kz-xZ-eTb" secondAttribute="bottom" id="yw1-kk-G8W"/>
@@ -181,7 +164,6 @@
     <resources>
         <image name="NSRefreshTemplate" width="10" height="12"/>
         <image name="add_ghost" width="10" height="10"/>
-        <image name="export" width="14" height="14"/>
         <image name="panel_left" width="14" height="10"/>
         <image name="panel_right" width="14" height="10"/>
         <image name="send_mail" width="14" height="10"/>

@@ -12,7 +12,9 @@
 #import "GridView.h"
 #import "NSFlippedView.h"
 
-@interface LMCanvasView : NSSplitView
+@interface LMCanvasView : NSView
+
+@property id delegate;
 
 @property (weak) IBOutlet NSScrollView *mainScrollView;
 @property  NSFlippedView *mainView;

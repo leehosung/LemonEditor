@@ -1,19 +1,19 @@
 //
-//  LMToolbarVC.m
+//  LMTopToolbarVC.m
 //  IUEditor
 //
-//  Created by jd on 3/31/14.
-//  Copyright (c) 2014 JDLab. All rights reserved.
+//  Created by ChoiSeungmi on 2014. 4. 17..
+//  Copyright (c) 2014년 JDLab. All rights reserved.
 //
 
-#import "LMToolbarVC.h"
+#import "LMTopToolbarVC.h"
 #import "IUDocumentNode.h"
 
-@interface LMToolbarVC ()
+@interface LMTopToolbarVC ()
 
 @end
 
-@implementation LMToolbarVC
+@implementation LMTopToolbarVC
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,5 +32,6 @@
     
     [[NSWorkspace sharedWorkspace] openFile:firstPath];
 }
+
 
 @end

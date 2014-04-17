@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D0D480918FFAF24000A5B53 /* LMTopToolbarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D480718FFAF24000A5B53 /* LMTopToolbarVC.m */; };
+		3D0D480A18FFAF24000A5B53 /* LMTopToolbarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D0D480818FFAF24000A5B53 /* LMTopToolbarVC.xib */; };
 		3D14886318F6AE5700E8EE4C /* LMCenterClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D14886218F6AE5700E8EE4C /* LMCenterClipView.m */; };
 		3D14886718F7A1E500E8EE4C /* LMPropertyFontVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D14886518F7A1E500E8EE4C /* LMPropertyFontVC.m */; };
 		3D14886818F7A1E500E8EE4C /* LMPropertyFontVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D14886618F7A1E500E8EE4C /* LMPropertyFontVC.xib */; };
@@ -201,13 +203,12 @@
 		69CFCAB418E95A0C00E3048A /* LMResourceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69CFCAB118E95A0C00E3048A /* LMResourceVC.xib */; };
 		69CFCAB518E95A0C00E3048A /* LMResourceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69CFCAB118E95A0C00E3048A /* LMResourceVC.xib */; };
 		69CFCAB818E972DA00E3048A /* IUPageContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CFCAB718E972DA00E3048A /* IUPageContent.m */; };
-		69CFCABC18EA529C00E3048A /* NSPasteboard+LMPasteboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CFCABB18EA529C00E3048A /* NSPasteboard+LMPasteboard.m */; };
 		69CFCAC018EA8D1700E3048A /* IUImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CFCABF18EA8D1700E3048A /* IUImage.m */; };
 		69CFCAC318EAA21E00E3048A /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69CFCAC218EAA21E00E3048A /* sample.jpg */; };
 		69CFCAC418EAA21E00E3048A /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69CFCAC218EAA21E00E3048A /* sample.jpg */; };
 		69D15F6B18E73E690046FBB0 /* NSString+IUTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D15F6A18E73E690046FBB0 /* NSString+IUTag.m */; };
-		69D15F6F18E893170046FBB0 /* LMToolbarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D15F6D18E893170046FBB0 /* LMToolbarVC.m */; };
-		69D15F7018E893170046FBB0 /* LMToolbarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69D15F6E18E893170046FBB0 /* LMToolbarVC.xib */; };
+		69D15F6F18E893170046FBB0 /* LMBottomToolbarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D15F6D18E893170046FBB0 /* LMBottomToolbarVC.m */; };
+		69D15F7018E893170046FBB0 /* LMBottomToolbarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69D15F6E18E893170046FBB0 /* LMBottomToolbarVC.xib */; };
 		69D15F7318E898B10046FBB0 /* IUMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D15F7218E898B10046FBB0 /* IUMaster.m */; };
 		69F1A37518E0624E004C5B30 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69F1A37418E0624E004C5B30 /* WebKit.framework */; };
 /* End PBXBuildFile section */
@@ -223,6 +224,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D0D480618FFAF24000A5B53 /* LMTopToolbarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMTopToolbarVC.h; sourceTree = "<group>"; };
+		3D0D480718FFAF24000A5B53 /* LMTopToolbarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMTopToolbarVC.m; sourceTree = "<group>"; };
+		3D0D480818FFAF24000A5B53 /* LMTopToolbarVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMTopToolbarVC.xib; sourceTree = "<group>"; };
 		3D14886118F6AE5700E8EE4C /* LMCenterClipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMCenterClipView.h; sourceTree = "<group>"; };
 		3D14886218F6AE5700E8EE4C /* LMCenterClipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMCenterClipView.m; sourceTree = "<group>"; };
 		3D14886418F7A1E500E8EE4C /* LMPropertyFontVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyFontVC.h; sourceTree = "<group>"; };
@@ -503,16 +507,14 @@
 		69CFCAB118E95A0C00E3048A /* LMResourceVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMResourceVC.xib; path = Editor/LMResourceVC.xib; sourceTree = "<group>"; };
 		69CFCAB618E972DA00E3048A /* IUPageContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUPageContent.h; sourceTree = "<group>"; };
 		69CFCAB718E972DA00E3048A /* IUPageContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUPageContent.m; sourceTree = "<group>"; };
-		69CFCABA18EA529C00E3048A /* NSPasteboard+LMPasteboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSPasteboard+LMPasteboard.h"; sourceTree = "<group>"; };
-		69CFCABB18EA529C00E3048A /* NSPasteboard+LMPasteboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPasteboard+LMPasteboard.m"; sourceTree = "<group>"; };
 		69CFCABE18EA8D1700E3048A /* IUImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUImage.h; path = IU/IUImage.h; sourceTree = "<group>"; };
 		69CFCABF18EA8D1700E3048A /* IUImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IUImage.m; path = IU/IUImage.m; sourceTree = "<group>"; };
 		69CFCAC218EAA21E00E3048A /* sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample.jpg; sourceTree = "<group>"; };
 		69D15F6918E73E690046FBB0 /* NSString+IUTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+IUTag.h"; sourceTree = "<group>"; };
 		69D15F6A18E73E690046FBB0 /* NSString+IUTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+IUTag.m"; sourceTree = "<group>"; };
-		69D15F6C18E893170046FBB0 /* LMToolbarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMToolbarVC.h; sourceTree = "<group>"; };
-		69D15F6D18E893170046FBB0 /* LMToolbarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMToolbarVC.m; sourceTree = "<group>"; };
-		69D15F6E18E893170046FBB0 /* LMToolbarVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMToolbarVC.xib; sourceTree = "<group>"; };
+		69D15F6C18E893170046FBB0 /* LMBottomToolbarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMBottomToolbarVC.h; sourceTree = "<group>"; };
+		69D15F6D18E893170046FBB0 /* LMBottomToolbarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMBottomToolbarVC.m; sourceTree = "<group>"; };
+		69D15F6E18E893170046FBB0 /* LMBottomToolbarVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMBottomToolbarVC.xib; sourceTree = "<group>"; };
 		69D15F7118E898B10046FBB0 /* IUMaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUMaster.h; path = File/IUMaster.h; sourceTree = "<group>"; };
 		69D15F7218E898B10046FBB0 /* IUMaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IUMaster.m; path = File/IUMaster.m; sourceTree = "<group>"; };
 		69D5B68F18F247C100E9FB11 /* LMCompilerResourceSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMCompilerResourceSource.h; sourceTree = "<group>"; };
@@ -545,6 +547,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D0D480518FF9767000A5B53 /* RightWidget */ = {
+			isa = PBXGroup;
+			children = (
+				690A409218E1645B00095263 /* LMWidgetLibraryVC.h */,
+				690A409318E1645B00095263 /* LMWidgetLibraryVC.m */,
+				690A409418E1645B00095263 /* LMWidgetLibraryVC.xib */,
+				69CFCAAF18E95A0C00E3048A /* LMResourceVC.h */,
+				69CFCAB018E95A0C00E3048A /* LMResourceVC.m */,
+				69CFCAB118E95A0C00E3048A /* LMResourceVC.xib */,
+			);
+			name = RightWidget;
+			sourceTree = "<group>";
+		};
 		3D54D64718ED5D1B00B5FEC2 /* Image */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,24 +620,17 @@
 			name = GridLayers;
 			sourceTree = "<group>";
 		};
-		3DB3ACE118EBEF640046DFB7 /* InspectorView */ = {
+		3DB3ACE118EBEF640046DFB7 /* ToolBar */ = {
 			isa = PBXGroup;
 			children = (
-				690A409218E1645B00095263 /* LMWidgetLibraryVC.h */,
-				690A409318E1645B00095263 /* LMWidgetLibraryVC.m */,
-				690A409418E1645B00095263 /* LMWidgetLibraryVC.xib */,
-				690A409718E1665E00095263 /* LMGeneralObject.h */,
-				690A409818E1665E00095263 /* LMGeneralObject.m */,
-				69D15F6C18E893170046FBB0 /* LMToolbarVC.h */,
-				69D15F6D18E893170046FBB0 /* LMToolbarVC.m */,
-				69D15F6E18E893170046FBB0 /* LMToolbarVC.xib */,
-				69CFCAAF18E95A0C00E3048A /* LMResourceVC.h */,
-				69CFCAB018E95A0C00E3048A /* LMResourceVC.m */,
-				69CFCAB118E95A0C00E3048A /* LMResourceVC.xib */,
-				69CFCABA18EA529C00E3048A /* NSPasteboard+LMPasteboard.h */,
-				69CFCABB18EA529C00E3048A /* NSPasteboard+LMPasteboard.m */,
+				69D15F6C18E893170046FBB0 /* LMBottomToolbarVC.h */,
+				69D15F6D18E893170046FBB0 /* LMBottomToolbarVC.m */,
+				69D15F6E18E893170046FBB0 /* LMBottomToolbarVC.xib */,
+				3D0D480618FFAF24000A5B53 /* LMTopToolbarVC.h */,
+				3D0D480718FFAF24000A5B53 /* LMTopToolbarVC.m */,
+				3D0D480818FFAF24000A5B53 /* LMTopToolbarVC.xib */,
 			);
-			name = InspectorView;
+			name = ToolBar;
 			sourceTree = "<group>";
 		};
 		3DB3ACE218EBEF920046DFB7 /* CanvasLib */ = {
@@ -722,7 +730,7 @@
 			path = uiImage;
 			sourceTree = "<group>";
 		};
-		3DF8045118FE7F6E00913505 /* RightLMAppearance */ = {
+		3DF8045118FE7F6E00913505 /* RightAppearance */ = {
 			isa = PBXGroup;
 			children = (
 				3DF8045518FE874400913505 /* LMAppearanceVC.h */,
@@ -747,7 +755,7 @@
 				3DF8046818FF790400913505 /* LMPropertyShadowVC.m */,
 				3DF8046918FF790400913505 /* LMPropertyShadowVC.xib */,
 			);
-			name = RightLMAppearance;
+			name = RightAppearance;
 			sourceTree = "<group>";
 		};
 		3DF8046C18FF7ADB00913505 /* LeftFileNavigation */ = {
@@ -1062,8 +1070,11 @@
 		69C5762218D70A9D0016F050 /* Editor */ = {
 			isa = PBXGroup;
 			children = (
+				690A409718E1665E00095263 /* LMGeneralObject.h */,
+				690A409818E1665E00095263 /* LMGeneralObject.m */,
 				3DF8046C18FF7ADB00913505 /* LeftFileNavigation */,
-				3DF8045118FE7F6E00913505 /* RightLMAppearance */,
+				3DF8045118FE7F6E00913505 /* RightAppearance */,
+				3D0D480518FF9767000A5B53 /* RightWidget */,
 				692334B718F783FE003E5224 /* LMPropertyBaseVC.h */,
 				692334B818F783FE003E5224 /* LMPropertyBaseVC.m */,
 				692334B918F783FE003E5224 /* LMPropertyBaseVC.xib */,
@@ -1072,7 +1083,7 @@
 				69C5762918D70B850016F050 /* LMWC.h */,
 				69C5762A18D70B850016F050 /* LMWC.m */,
 				69C5762B18D70B850016F050 /* LMWC.xib */,
-				3DB3ACE118EBEF640046DFB7 /* InspectorView */,
+				3DB3ACE118EBEF640046DFB7 /* ToolBar */,
 				3DB3ACC218EBEEFA0046DFB7 /* Canvas */,
 				3D14886418F7A1E500E8EE4C /* LMPropertyFontVC.h */,
 				3D14886518F7A1E500E8EE4C /* LMPropertyFontVC.m */,
@@ -1193,7 +1204,8 @@
 				3DF803DC18FE62C900913505 /* tab_toolbar.png in Resources */,
 				690A409618E1645B00095263 /* LMWidgetLibraryVC.xib in Resources */,
 				69CFCAB418E95A0C00E3048A /* LMResourceVC.xib in Resources */,
-				69D15F7018E893170046FBB0 /* LMToolbarVC.xib in Resources */,
+				69D15F7018E893170046FBB0 /* LMBottomToolbarVC.xib in Resources */,
+				3D0D480A18FFAF24000A5B53 /* LMTopToolbarVC.xib in Resources */,
 				3DF803EA18FE62C900913505 /* ic_page.png in Resources */,
 				3DF803DA18FE62C900913505 /* panel_left.png in Resources */,
 				3DF8044718FE62FC00913505 /* tool_mail.png in Resources */,
@@ -1325,7 +1337,7 @@
 				6979FC0718ED34E20060C3B4 /* LMPropertyFrameVC.m in Sources */,
 				3D14886318F6AE5700E8EE4C /* LMCenterClipView.m in Sources */,
 				6985CBA618E31D9B008DBF50 /* IUNode.m in Sources */,
-				69D15F6F18E893170046FBB0 /* LMToolbarVC.m in Sources */,
+				69D15F6F18E893170046FBB0 /* LMBottomToolbarVC.m in Sources */,
 				694E3CDB18FCF739005077B3 /* IUCarousel.m in Sources */,
 				69C575B718D6F61E0016F050 /* main.m in Sources */,
 				69757B1C18D95C980095CBAC /* NSArray+JDExtension.m in Sources */,
@@ -1384,7 +1396,7 @@
 				3DB3ACD218EBEF4F0046DFB7 /* GridView.m in Sources */,
 				69D15F6B18E73E690046FBB0 /* NSString+IUTag.m in Sources */,
 				69757B1018D95BBC0095CBAC /* JDTransformer.m in Sources */,
-				69CFCABC18EA529C00E3048A /* NSPasteboard+LMPasteboard.m in Sources */,
+				3D0D480918FFAF24000A5B53 /* LMTopToolbarVC.m in Sources */,
 				69757B0F18D95BBC0095CBAC /* JDTextFieldCell.m in Sources */,
 				6919204A18DCFED000F8522B /* NSObject+JDExtension.m in Sources */,
 				6953852E18ED6EC800CC42E5 /* IUController.m in Sources */,

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="LMTopToolbarVC">
+            <connections>
+                <outlet property="view" destination="Lyx-P5-2VK" id="W5V-N6-Jku"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" id="Lyx-P5-2VK">
+            <rect key="frame" x="0.0" y="0.0" width="900" height="30"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <view key="contentView">
+                <rect key="frame" x="1" y="1" width="898" height="28"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="Mnq-Yt-P1D">
+                        <rect key="frame" x="869" y="-1" width="30" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="VQJ-iL-859"/>
+                            <constraint firstAttribute="width" constant="30" id="eUO-mr-de9"/>
+                        </constraints>
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="next" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="lML-If-vHw">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="25h-oS-rOZ">
+                        <rect key="frame" x="29" y="-1" width="140" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="06X-a2-1LZ"/>
+                            <constraint firstAttribute="width" constant="140" id="nGW-vv-40P"/>
+                        </constraints>
+                        <buttonCell key="cell" type="square" title="index.pgiu" bezelStyle="shadowlessSquare" image="tab_close" imagePosition="right" alignment="left" borderStyle="border" inset="2" id="8Qw-6u-mvq">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                        </buttonCell>
+                    </button>
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="uqg-1k-jPd">
+                        <rect key="frame" x="169" y="-1" width="140" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="BMh-Et-dqE"/>
+                            <constraint firstAttribute="width" constant="140" id="BYy-3i-pCi"/>
+                        </constraints>
+                        <buttonCell key="cell" type="square" title="comp.coiu" bezelStyle="shadowlessSquare" image="tab_close" imagePosition="right" alignment="left" borderStyle="border" inset="2" id="Uvy-7C-fcO">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" size="11" name="LucidaGrande"/>
+                        </buttonCell>
+                    </button>
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="ss0-x8-YLr">
+                        <rect key="frame" x="-1" y="-1" width="30" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="YfB-be-WdU"/>
+                            <constraint firstAttribute="height" constant="30" id="mXi-8o-0NL"/>
+                        </constraints>
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="export" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="YoF-zK-Epi">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="showBPressed:" target="-2" id="JKO-3P-c4a"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="uqg-1k-jPd" firstAttribute="leading" secondItem="25h-oS-rOZ" secondAttribute="trailing" id="EsJ-OE-eNA"/>
+                <constraint firstItem="ss0-x8-YLr" firstAttribute="leading" secondItem="Lyx-P5-2VK" secondAttribute="leading" id="HBy-6X-o7h"/>
+                <constraint firstAttribute="bottom" secondItem="ss0-x8-YLr" secondAttribute="bottom" id="N1c-o5-a8g"/>
+                <constraint firstItem="uqg-1k-jPd" firstAttribute="top" secondItem="Lyx-P5-2VK" secondAttribute="top" id="QFg-FH-GDn"/>
+                <constraint firstItem="25h-oS-rOZ" firstAttribute="leading" secondItem="ss0-x8-YLr" secondAttribute="trailing" id="VAZ-Mw-BGQ"/>
+                <constraint firstItem="ss0-x8-YLr" firstAttribute="top" secondItem="Lyx-P5-2VK" secondAttribute="top" id="bNX-Jx-yvf"/>
+                <constraint firstItem="Mnq-Yt-P1D" firstAttribute="top" secondItem="Lyx-P5-2VK" secondAttribute="top" id="keC-16-ufu"/>
+                <constraint firstAttribute="trailing" secondItem="Mnq-Yt-P1D" secondAttribute="trailing" id="ntw-Eg-GmJ"/>
+                <constraint firstItem="uqg-1k-jPd" firstAttribute="leading" secondItem="25h-oS-rOZ" secondAttribute="trailing" id="rUO-nQ-Pve"/>
+                <constraint firstItem="25h-oS-rOZ" firstAttribute="top" secondItem="Lyx-P5-2VK" secondAttribute="top" id="tx8-Vs-7gg"/>
+            </constraints>
+            <color key="borderColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="fillColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+        </box>
+    </objects>
+    <resources>
+        <image name="export" width="14" height="14"/>
+        <image name="next" width="13" height="9"/>
+        <image name="tab_close" width="10" height="10"/>
+    </resources>
+</document>
