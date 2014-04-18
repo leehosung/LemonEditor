@@ -22,6 +22,23 @@
 
 #pragma mark set By LMCanvasVC
 
+- (BOOL)setSelectionIndexPaths:(NSArray *)indexPaths{
+    [self willChangeValueForKey:@"selectedTextRange"];
+    _selectedTextRange = NSZeroRange;
+    BOOL result = [super setSelectionIndexPaths:indexPaths];
+    [self didChangeValueForKey:@"selectedTextRange"];
+    return result;
+}
+
+- (BOOL)setSelectionIndexPath:(NSIndexPath *)indexPath{
+    [self willChangeValueForKey:@"selectedTextRange"];
+    _selectedTextRange = NSZeroRange;
+    BOOL result = [super setSelectionIndexPath:indexPath];
+    [self didChangeValueForKey:@"selectedTextRange"];
+    return result;
+}
+
+
 
 -(void)setSelectedObjectsByIdentifiers:(NSArray *)identifiers{
     [JDLogUtil log:IULogAction key:@"canvas selected objects" string:[identifiers description]];

@@ -7,7 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "IUController.h"
 
 @interface LMPropertyTextVC : NSViewController
+
+@property (nonatomic) _binding_ IUController      *controller;
 
 @end

@@ -143,7 +143,6 @@
 }
 
 -(void)selectedObjectsDidChange:(NSDictionary*)change{
-    self.selectedTextRange = NSZeroRange;
     [JDLogUtil log:IULogAction key:@"CanvasVC:observed" string:[self.controller.selectedIdentifiers description]];
     
     [[self gridView] removeAllRedPointLayer];
@@ -184,7 +183,7 @@
 #pragma mark setText
 //text
 - (void)selectTextRange:(NSRange)range identifier:(NSString *)identifier{
-    self.selectedTextRange = range;
+    self.controller.selectedTextRange = range;
 }
 
 - (void)insertString:(NSString *)string identifier:(NSString *)identifier withRange:(NSRange)range{

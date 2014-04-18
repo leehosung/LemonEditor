@@ -120,6 +120,7 @@
     [_centerV addSubviewFullFrame:canvasVC.view];
     [canvasVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
     self.window.canvasView =  (LMCanvasView *)canvasVC.view;
+    [self bind:@"selectedTextRange" toObject:self withKeyPath:@"selectedTextRange" options:nil];
     
     topToolbarVC = [[LMTopToolbarVC alloc] initWithNibName:@"LMTopToolbarVC" bundle:nil];
     [_topToolbarV addSubviewFullFrame:topToolbarVC.view];

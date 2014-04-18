@@ -18,9 +18,18 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Initialization code here.
     }
     return self;
+}
+
+- (void)setController:(IUController *)controller{
+    assert(_controller == nil); // should called only once
+    _controller = controller;
+    [_controller addObserver:self forKeyPath:@"selectedTextRange" options:0 context:nil];
+}
+
+- (void)selectedTextRangeDidChange:(NSDictionary*)change{
+    
 }
 
 @end
