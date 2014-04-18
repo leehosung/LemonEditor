@@ -12,8 +12,6 @@
 		3D0D481318FFDC96000A5B53 /* LMFileTabItemVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D481118FFDC96000A5B53 /* LMFileTabItemVC.m */; };
 		3D0D481418FFDC96000A5B53 /* LMFileTabItemVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D0D481218FFDC96000A5B53 /* LMFileTabItemVC.xib */; };
 		3D14886318F6AE5700E8EE4C /* LMCenterClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D14886218F6AE5700E8EE4C /* LMCenterClipView.m */; };
-		3D14886718F7A1E500E8EE4C /* LMPropertyFontVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D14886518F7A1E500E8EE4C /* LMPropertyFontVC.m */; };
-		3D14886818F7A1E500E8EE4C /* LMPropertyFontVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D14886618F7A1E500E8EE4C /* LMPropertyFontVC.xib */; };
 		3D54D64B18ED5D2E00B5FEC2 /* ResizeNE-SW.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3D54D64918ED5D2E00B5FEC2 /* ResizeNE-SW.tiff */; };
 		3D54D64C18ED5D2E00B5FEC2 /* ResizeNW-SE.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3D54D64A18ED5D2E00B5FEC2 /* ResizeNW-SE.tiff */; };
 		3DB3ACC518EBEF180046DFB7 /* LMWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACC418EBEF180046DFB7 /* LMWindow.m */; };
@@ -122,6 +120,9 @@
 		3DED270119010C55001A1D67 /* LMPropertyIUTransitionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26FF19010C55001A1D67 /* LMPropertyIUTransitionVC.xib */; };
 		3DED270519010C71001A1D67 /* LMPropertyIUFBLikeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED270319010C71001A1D67 /* LMPropertyIUFBLikeVC.m */; };
 		3DED270619010C71001A1D67 /* LMPropertyIUFBLikeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED270419010C71001A1D67 /* LMPropertyIUFBLikeVC.xib */; };
+		3DED2709190125F1001A1D67 /* ruler.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED2707190125F1001A1D67 /* ruler.png */; };
+		3DED270A190125F1001A1D67 /* ruler@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED2708190125F1001A1D67 /* ruler@2x.png */; };
+		3DED270D19012788001A1D67 /* LMRulerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED270C19012788001A1D67 /* LMRulerView.m */; };
 		3DF8029A18FD0B2500913505 /* IUHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8029918FD0B2500913505 /* IUHTML.m */; };
 		3DF8029D18FE3D6000913505 /* IUWebMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8029C18FE3D6000913505 /* IUWebMovie.m */; };
 		3DF803D818FE62C900913505 /* dotted_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DF803C118FE62C900913505 /* dotted_line.png */; };
@@ -321,9 +322,6 @@
 		3D0D481218FFDC96000A5B53 /* LMFileTabItemVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMFileTabItemVC.xib; sourceTree = "<group>"; };
 		3D14886118F6AE5700E8EE4C /* LMCenterClipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMCenterClipView.h; sourceTree = "<group>"; };
 		3D14886218F6AE5700E8EE4C /* LMCenterClipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMCenterClipView.m; sourceTree = "<group>"; };
-		3D14886418F7A1E500E8EE4C /* LMPropertyFontVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyFontVC.h; sourceTree = "<group>"; };
-		3D14886518F7A1E500E8EE4C /* LMPropertyFontVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyFontVC.m; sourceTree = "<group>"; };
-		3D14886618F7A1E500E8EE4C /* LMPropertyFontVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyFontVC.xib; sourceTree = "<group>"; };
 		3D54D64918ED5D2E00B5FEC2 /* ResizeNE-SW.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "ResizeNE-SW.tiff"; sourceTree = "<group>"; };
 		3D54D64A18ED5D2E00B5FEC2 /* ResizeNW-SE.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "ResizeNW-SE.tiff"; sourceTree = "<group>"; };
 		3DB3ACC318EBEF180046DFB7 /* LMWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMWindow.h; sourceTree = "<group>"; };
@@ -457,6 +455,10 @@
 		3DED270219010C71001A1D67 /* LMPropertyIUFBLikeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyIUFBLikeVC.h; sourceTree = "<group>"; };
 		3DED270319010C71001A1D67 /* LMPropertyIUFBLikeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyIUFBLikeVC.m; sourceTree = "<group>"; };
 		3DED270419010C71001A1D67 /* LMPropertyIUFBLikeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyIUFBLikeVC.xib; sourceTree = "<group>"; };
+		3DED2707190125F1001A1D67 /* ruler.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ruler.png; sourceTree = "<group>"; };
+		3DED2708190125F1001A1D67 /* ruler@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ruler@2x.png"; sourceTree = "<group>"; };
+		3DED270B19012788001A1D67 /* LMRulerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMRulerView.h; sourceTree = "<group>"; };
+		3DED270C19012788001A1D67 /* LMRulerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMRulerView.m; sourceTree = "<group>"; };
 		3DF8029818FD0B2500913505 /* IUHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUHTML.h; sourceTree = "<group>"; };
 		3DF8029918FD0B2500913505 /* IUHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUHTML.m; sourceTree = "<group>"; };
 		3DF8029B18FE3D6000913505 /* IUWebMovie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUWebMovie.h; sourceTree = "<group>"; };
@@ -790,6 +792,8 @@
 				3DB3ACC818EBEF3D0046DFB7 /* SizeView.m */,
 				3DB3ACC918EBEF3D0046DFB7 /* InnerSizeBox.h */,
 				3DB3ACCA18EBEF3D0046DFB7 /* InnerSizeBox.m */,
+				3DED270B19012788001A1D67 /* LMRulerView.h */,
+				3DED270C19012788001A1D67 /* LMRulerView.m */,
 			);
 			name = SizeView;
 			sourceTree = "<group>";
@@ -922,6 +926,8 @@
 		3DED26A41900D435001A1D67 /* menu */ = {
 			isa = PBXGroup;
 			children = (
+				3DED2707190125F1001A1D67 /* ruler.png */,
+				3DED2708190125F1001A1D67 /* ruler@2x.png */,
 				3DED26CC1900FD75001A1D67 /* add_ghost_off.png */,
 				3DED26CD1900FD75001A1D67 /* add_ghost_off@2x.png */,
 				3DED26CE1900FD75001A1D67 /* add_ghost_on.png */,
@@ -1407,9 +1413,6 @@
 				69C5762B18D70B850016F050 /* LMWC.xib */,
 				3DB3ACE118EBEF640046DFB7 /* ToolBar */,
 				3DB3ACC218EBEEFA0046DFB7 /* Canvas */,
-				3D14886418F7A1E500E8EE4C /* LMPropertyFontVC.h */,
-				3D14886518F7A1E500E8EE4C /* LMPropertyFontVC.m */,
-				3D14886618F7A1E500E8EE4C /* LMPropertyFontVC.xib */,
 			);
 			name = Editor;
 			sourceTree = "<group>";
@@ -1530,7 +1533,6 @@
 				3DED264B1900D2EE001A1D67 /* align_full@2x.png in Resources */,
 				3DED26601900D313001A1D67 /* next@2x.png in Resources */,
 				3DF8043D18FE62FC00913505 /* tool_fblike.png in Resources */,
-				3D14886818F7A1E500E8EE4C /* LMPropertyFontVC.xib in Resources */,
 				3DF8044918FE62FC00913505 /* tool_textfield.png in Resources */,
 				3DF8043918FE62FC00913505 /* tool_movie.png in Resources */,
 				3DF8041518FE62F200913505 /* add_mediaquery@2x.png in Resources */,
@@ -1565,6 +1567,7 @@
 				3DF8040B18FE62F200913505 /* tab_library.png in Resources */,
 				3D54D64C18ED5D2E00B5FEC2 /* ResizeNW-SE.tiff in Resources */,
 				690A40A518E17C5700095263 /* widgetForDefault.plist in Resources */,
+				3DED2709190125F1001A1D67 /* ruler.png in Resources */,
 				3DED26801900D329001A1D67 /* stack_fblike.png in Resources */,
 				69B9A39818E697F70007D6E2 /* iu.css in Resources */,
 				3DF8041918FE62F200913505 /* view_border.png in Resources */,
@@ -1670,6 +1673,7 @@
 				3DF803EC18FE62C900913505 /* tab.png in Resources */,
 				3DED269B1900D33A001A1D67 /* tab_clipart.png in Resources */,
 				3DF803E518FE62C900913505 /* stack_transition.png in Resources */,
+				3DED270A190125F1001A1D67 /* ruler@2x.png in Resources */,
 				3DED26F219010BB0001A1D67 /* LMPropertyIURenderVC.xib in Resources */,
 				3DF8043A18FE62FC00913505 /* tool_movie@2x.png in Resources */,
 			);
@@ -1751,7 +1755,6 @@
 				3DB3ACE818EBEF9D0046DFB7 /* IUFrameDictionary.m in Sources */,
 				3DF8029A18FD0B2500913505 /* IUHTML.m in Sources */,
 				69CFCAC018EA8D1700E3048A /* IUImage.m in Sources */,
-				3D14886718F7A1E500E8EE4C /* LMPropertyFontVC.m in Sources */,
 				3DF8046018FF75CF00913505 /* LMPropertyBGColorVC.m in Sources */,
 				3DB3ACCB18EBEF3D0046DFB7 /* SizeView.m in Sources */,
 				69C5762C18D70B850016F050 /* LMWC.m in Sources */,
@@ -1804,6 +1807,7 @@
 				69757B0618D95BBC0095CBAC /* JDGitUtil.m in Sources */,
 				3DB3ACD218EBEF4F0046DFB7 /* GridView.m in Sources */,
 				3D0D481318FFDC96000A5B53 /* LMFileTabItemVC.m in Sources */,
+				3DED270D19012788001A1D67 /* LMRulerView.m in Sources */,
 				3DED26FB19010BD6001A1D67 /* LMPropertyIUMailLinkVC.m in Sources */,
 				69D15F6B18E73E690046FBB0 /* NSString+IUTag.m in Sources */,
 				69757B1018D95BBC0095CBAC /* JDTransformer.m in Sources */,

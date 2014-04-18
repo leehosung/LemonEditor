@@ -10,6 +10,7 @@
 #import "JDUIUtil.h"
 #import "LMCanvasView.h"
 #import "LMCanvasVC.h"
+#import "LMRulerView.h"
 
 @implementation SizeTextField : NSTextField
 - (id)init{
@@ -44,6 +45,21 @@
 
 @end
 
+@interface SizeView(){
+    
+    NSMutableArray *sizeArray;
+    NSUInteger selectIndex;
+    NSUInteger selectedWidth;
+    SizeTextField *sizeTextField;
+    NSPopover *framePopover;
+    
+    NSView *boxManageView;
+    LMRulerView *rulerView;
+    
+}
+
+@end
+
 
 @implementation SizeView
 
@@ -62,10 +78,18 @@
 
     //sizeBox
     boxManageView = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 0, 30)];
-    [self addSubview:boxManageView positioned:NSWindowBelow relativeTo:self.addBtn];
+    rulerView = [[LMRulerView alloc] init];
     
-    [self addObserver:self forKeyPath:@"frame" options:0 context:nil];
-
+    /*
+     * hierarchy
+     rulerview
+     addBtn
+     boxManageView
+     
+     */
+    [self addSubview:boxManageView positioned:NSWindowBelow relativeTo:self.addBtn];
+    [self addSubviewFullFrame:rulerView withLeft:30 positioned:NSWindowAbove relativeTo:self.addBtn];
+    
 }
 
 - (void)resetCursorRects{
@@ -89,17 +113,27 @@
 #pragma mark -
 #pragma mark select
 
+- (void)setColorBox:(InnerSizeBox *)sizeBox{
+    if(sizeBox.frameWidth <= selectedWidth){
+        [sizeBox setSmallerColor];
+    }else{
+        [sizeBox setLargerColor];
+    }
+}
+
 - (void)selectBox:(InnerSizeBox *)selectBox{
     NSUInteger newSelectIndex = [boxManageView.subviews indexOfObject:selectBox];
     
     if(newSelectIndex != selectIndex){
-        InnerSizeBox *deselectBox = [boxManageView.subviews objectAtIndex:selectIndex];
-        [deselectBox deselect];
-        
         selectIndex = newSelectIndex;
     }
     
     selectedWidth = selectBox.frameWidth;
+    
+    for(InnerSizeBox *sizeBox in boxManageView.subviews){
+        [self setColorBox:sizeBox];
+        
+    }
     
     [(LMCanvasView *)self.superview setWidthOfMainView:selectedWidth];
     ((LMCanvasVC *)self.delegate).selectedFrameWidth = selectedWidth;
@@ -159,6 +193,7 @@
         [boxManageView addSubviewLeftInFrameWithFrame:newBox positioned:NSWindowBelow relativeTo:frontView];
     }
     [self setMaxWidth];
+    [self setColorBox:newBox];
 
 }
 - (void)removeFrame:(NSInteger)width{
@@ -200,7 +235,6 @@
     [self.addFramePopover close];
 }
 
-#pragma mark add view
 
 
 @end

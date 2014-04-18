@@ -41,9 +41,26 @@
     [self setConstraints:[NSArray arrayWithObjects:minX, maxX,minY, maxY, width, height, nil]];
 }
 
+- (void)setBottomFrameContstraint{
+    CAConstraint *minX = [CAConstraint constraintWithAttribute:kCAConstraintMinX relativeTo:@"superlayer" attribute:kCAConstraintMinX];
+    CAConstraint *maxX =[CAConstraint constraintWithAttribute:kCAConstraintMaxX relativeTo:@"superlayer" attribute:kCAConstraintMaxX];
+    CAConstraint *minY = [CAConstraint constraintWithAttribute:kCAConstraintMinY relativeTo:@"superlayer" attribute:kCAConstraintMinY];
+    CAConstraint *width =[CAConstraint constraintWithAttribute:kCAConstraintWidth relativeTo:@"superlayer" attribute:kCAConstraintWidth];
+    
+    [self setConstraints:[NSArray arrayWithObjects:minX, maxX,minY, width, nil]];
+}
+
+
 -(id)addSubLayerFullFrame:(CALayer *)sublayer{
     self.layoutManager = [CAConstraintLayoutManager layoutManager];
     [sublayer setFullFrameConstraint];
+    [self addSublayer:sublayer];
+    return sublayer;
+}
+
+-(id)addSubLayerBottomFrame:(CALayer *)sublayer{
+    self.layoutManager = [CAConstraintLayoutManager layoutManager];
+    [sublayer setBottomFrameContstraint];
     [self addSublayer:sublayer];
     return sublayer;
 }
