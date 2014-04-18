@@ -161,9 +161,7 @@
     //whem mouse move, save current element!
     currentNode = [elementInformation objectForKey:WebElementDOMNodeKey];
     
-    if([currentNode isKindOfClass:[DOMText class]]){
-        currentNode = [self IUNodeAtCurrentNode:currentNode];
-    }
+    currentNode = [self IUNodeAtCurrentNode:currentNode];
     
     if(currentNode.idName){
         JDTraceLog( @"%@", currentNode.idName);
@@ -329,10 +327,11 @@
 }
 
 - (BOOL)webView:(WebView *)webView shouldInsertText:(NSString *)text replacingDOMRange:(DOMRange *)range givenAction:(WebViewInsertAction)action{
-    assert(0); // span 수정할 때에 고쳐야함
     
     DOMHTMLElement *IUNode = [self IUNodeAtCurrentNode:range.startContainer];
-    if(IUNode == nil || [IUNode isNotEqualTo:currentNode]){
+    if(IUNode == nil){
+        //TODO: check selectedNode
+        //|| [IUNode isNotEqualTo:currentNode]){
         return NO;
     }
     

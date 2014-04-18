@@ -194,7 +194,8 @@
 }
 
 - (void)deleteStringRange:(NSRange)range identifier:(NSString *)identifier{
-    
+    IUBox *iu = [self.controller IUBoxByIdentifier:identifier];
+    [iu deleteTextInRange:range];
 }
 
 #pragma mark -
