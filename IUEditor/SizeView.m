@@ -74,33 +74,11 @@
 }
 
 //call from scroll view
-/*
+
 - (void)moveSizeView:(NSPoint)point withWidth:(CGFloat)width{
-    if(selectedWidth <width){
-        CGFloat modifiX = (boxManageView.bounds.size.width - width)/2;
-        [boxManageView setBoundsOrigin:NSMakePoint(modifiX, 0)];
-        return;
-    }
     [boxManageView setBoundsOrigin:point];
 }
 
-- (void)frameDidChange:(NSDictionary *)change{
-
-    InnerSizeBox *maxBox = (InnerSizeBox *)boxManageView.subviews[0];
-    CGFloat maxWidth = maxBox.frame.size.width;
-    CGFloat sizeViewWidth = self.frame.size.width;
-    
-    if(sizeViewWidth > maxWidth){
-        CGFloat modifiX = (sizeViewWidth - boxManageView.frame.size.width)/2 * -0.1;
-        [boxManageView setBoundsOrigin:NSMakePoint(modifiX, 0)];
-        [boxManageView setWidth:sizeViewWidth];
-    }
-    else{
-        [boxManageView setBoundsOrigin:NSMakePoint(0, 0)];
-        [boxManageView setWidth:maxWidth];
-    }
-}
-*/
 #pragma mark -
 
 - (NSArray *)sortedArray{

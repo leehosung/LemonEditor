@@ -38,4 +38,7 @@
 - (id)addFrame:(NSInteger)width;
 - (void)removeFrame:(NSInteger)width;
 
+//scroll by canvasV
+- (void)moveSizeView:(NSPoint)point withWidth:(CGFloat)width;
+
 @end

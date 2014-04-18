@@ -11,7 +11,8 @@
 @interface LMGeneralObject : NSObject
 @property   NSString    *title;
 @property   NSImage     *image;
-@property   NSString    *description;
+@property   NSString    *shortDesc;
+@property   NSString    *longDesc;
 @property   NSMutableDictionary *dict;
 
 @end

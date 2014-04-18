@@ -88,7 +88,7 @@
                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ekM-CH-Zbt" userLabel="rightInspectorBtn">
                                         <rect key="frame" x="60" y="0.0" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="panel_right" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="Xvg-9G-vMA">
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="panel_right_on" imagePosition="only" alignment="center" alternateImage="panel_right_off" imageScaling="proportionallyDown" inset="2" id="Xvg-9G-vMA">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -96,7 +96,7 @@
                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TnF-d8-4GY" userLabel="LeftInspectorBtn">
                                         <rect key="frame" x="31" y="0.0" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="panel_left" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="QK0-yL-BXt">
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="panel_left_on" imagePosition="only" alignment="center" alternateImage="panel_left_off" imageScaling="proportionallyDown" inset="2" id="QK0-yL-BXt">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -112,7 +112,7 @@
                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AtM-vo-UJw" userLabel="borderBtn">
                                         <rect key="frame" x="89" y="0.0" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="view_border" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="PLi-0i-BHM">
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="view_border_on" imagePosition="only" alignment="center" alternateImage="view_border_off" imageScaling="proportionallyDown" inset="2" id="PLi-0i-BHM">
                                             <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -178,9 +178,12 @@
     <resources>
         <image name="NSRefreshTemplate" width="10" height="12"/>
         <image name="add_ghost" width="12" height="12"/>
-        <image name="panel_left" width="14" height="10"/>
-        <image name="panel_right" width="14" height="10"/>
+        <image name="panel_left_off" width="14" height="10"/>
+        <image name="panel_left_on" width="14" height="10"/>
+        <image name="panel_right_off" width="14" height="10"/>
+        <image name="panel_right_on" width="14" height="10"/>
         <image name="send_mail" width="14" height="10"/>
-        <image name="view_border" width="14" height="10"/>
+        <image name="view_border_off" width="14" height="10"/>
+        <image name="view_border_on" width="14" height="10"/>
     </resources>
 </document>
