@@ -244,28 +244,6 @@
     }
 }
 
-- (void)replaceText:(NSString*)string atRange:(NSRange)range{
-    NSRange modifiedRange = range;
-    if (range.length != 0) {
-        // 0일때는 지우지 않음
-        if (modifiedRange.location == 0) {
-            modifiedRange.location = 1;
-            modifiedRange.length --;
-        }
-        [self deleteInfoArray:fontInfos atRange:modifiedRange];
-        [self moveInfoArray:fontInfos from:modifiedRange.location distance:string.length - modifiedRange.length];
-        [self removeDuplicatedInfo:fontInfos];
-        
-        for (NSNumber *viewPort in fontSizeInfoCollection) {
-            NSMutableArray *fontSizes = [fontSizeInfoCollection objectForKey:viewPort];
-            [self deleteInfoArray:fontSizes atRange:modifiedRange];
-            [self moveInfoArray:fontSizes from:modifiedRange.location distance:string.length - modifiedRange.length];
-            [self removeDuplicatedInfo:fontSizes];
-        }
-    }
-    [text replaceCharactersInRange:range withString:string];
-}
-
 
 - (NSString*)HTML{
     if (text.length == 0) {
@@ -361,5 +339,52 @@
         [self setFont:preparedFontName atRange:NSMakeRange(index, insertText.length)];
     }
 }
+
+- (void)replaceText:(NSString*)string atRange:(NSRange)range{
+    NSRange modifiedRange = range;
+    if (range.length != 0) {
+        // 0일때는 지우지 않음
+        if (modifiedRange.location == 0) {
+            modifiedRange.location = 1;
+            modifiedRange.length --;
+        }
+        [self deleteInfoArray:fontInfos atRange:modifiedRange];
+        [self moveInfoArray:fontInfos from:modifiedRange.location distance:string.length - modifiedRange.length];
+        [self removeDuplicatedInfo:fontInfos];
+        
+        for (NSNumber *viewPort in fontSizeInfoCollection) {
+            NSMutableArray *fontSizes = [fontSizeInfoCollection objectForKey:viewPort];
+            [self deleteInfoArray:fontSizes atRange:modifiedRange];
+            [self moveInfoArray:fontSizes from:modifiedRange.location distance:string.length - modifiedRange.length];
+            [self removeDuplicatedInfo:fontSizes];
+        }
+    }
+    [text replaceCharactersInRange:range withString:string];
+}
+
+
+- (void)deleteTextInRange:(NSRange)range{
+    assert(range.length != 0);
+    
+    //css는 제일 앞 부분이 삭제 되지 않게 조정한다.
+    if (range.location == 0) {
+        range.location = 1;
+        range.length --;
+        if (range.length == 0) {
+            return;
+        }
+    }
+    [self deleteInfoArray:fontInfos atRange:range];
+    [self removeDuplicatedInfo:fontInfos];
+    
+    for (NSNumber *viewPort in fontSizeInfoCollection) {
+        NSMutableArray *fontSizes = [fontSizeInfoCollection objectForKey:viewPort];
+        [self deleteInfoArray:fontSizes atRange:range];
+        [self removeDuplicatedInfo:fontSizes];
+    }
+    //text 삭제
+    [text deleteCharactersInRange:range];
+}
+
 
 @end

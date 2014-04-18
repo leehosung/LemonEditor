@@ -100,5 +100,6 @@
 /// text managing
 
 - (void)insertText:(NSString*)text withRange:(NSRange)range;
+- (void)deleteTextInRange:(NSRange)range;
 - (NSString*)textHTML;
 @end

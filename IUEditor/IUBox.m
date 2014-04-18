@@ -366,7 +366,7 @@
 
 - (void)insertText:(NSString*)text withRange:(NSRange)range{
     NSLog(@"insertText");
-    [self replaceText:text withRange:range];
+    [textManager insertString:text atIndex:range.location];
 }
 
 
