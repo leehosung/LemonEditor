@@ -20,6 +20,28 @@
     return [super selection];
 }
 
+
+-(NSArray*)selectedPedigree{
+    if ([self.selectedObjects count]==0) {
+        return nil;
+    }
+    
+    IUBox *firstObj = [self.selectedObjects objectAtIndex:0];
+    NSMutableArray *firstPedigrees = [[[firstObj class] classPedigreeTo:[IUBox class]] mutableCopy];
+    NSMutableArray *retArray = [firstPedigrees mutableCopy];
+    
+    for (NSString *aPedigree in firstPedigrees) {
+        for (IUBox *obj in self.selectedObjects) {
+            Class class = NSClassFromString(aPedigree);
+            if ([obj isKindOfClass:class] == NO) {
+                [retArray removeObject:aPedigree];
+            }
+        }
+    }
+    
+    return retArray;
+}
+
 #pragma mark set By LMCanvasVC
 
 - (BOOL)setSelectionIndexPaths:(NSArray *)indexPaths{

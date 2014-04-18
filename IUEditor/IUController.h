@@ -10,7 +10,9 @@
 #import "IUBox.h"
 
 @class IUDocument;
-@interface IUController : NSTreeController 
+@interface IUController : NSTreeController
+
+-(NSArray*)selectedPedigree;
 
 -(void)setSelectedObjectsByIdentifiers:(NSArray*)identifiers;
 -(NSArray*)selectedIdentifiers;

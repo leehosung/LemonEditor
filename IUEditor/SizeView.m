@@ -130,11 +130,11 @@
     }
 }
 
-- (id)addFrame:(NSInteger)width{
+- (void)addFrame:(NSInteger)width{
     NSNumber *widthNumber = [NSNumber numberWithInteger:width];
     if([sizeArray containsObject:widthNumber]){
         JDWarnLog(@"already exist width");
-        return nil;
+        return ;
     }
     [sizeArray addObject:widthNumber];
     NSRect boxFrame = NSMakeRect(0, 0, width, self.frame.size.height);
@@ -149,7 +149,9 @@
         [boxManageView addSubviewLeftInFrameWithFrame:newBox positioned:NSWindowAbove relativeTo:preView];
     }
     else if(boxManageView.subviews.count == 0){
+        //make first 
         [boxManageView addSubviewLeftInFrameWithFrame:newBox];
+        [newBox select];
     }
     else{
         //maximumsize임
@@ -157,7 +159,6 @@
         [boxManageView addSubviewLeftInFrameWithFrame:newBox positioned:NSWindowBelow relativeTo:frontView];
     }
     [self setMaxWidth];
-    return newBox;
 
 }
 - (void)removeFrame:(NSInteger)width{

@@ -34,9 +34,7 @@
 }
 
 -(void)awakeFromNib{
-    InnerSizeBox *defaultBox = [[self sizeView] addFrame:defaultFrameWidth];
-    [defaultBox select];
-    //TODO: test
+    [[self sizeView] addFrame:defaultFrameWidth];
     [[self sizeView] addFrame:400];
     [[self sizeView] addFrame:700];
 }
