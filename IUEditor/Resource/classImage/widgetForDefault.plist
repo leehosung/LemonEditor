@@ -3,6 +3,7 @@
 <plist version="1.0">
 <array>
 	<!-- widget IU -->
+	<!-- isWidget(false) : shoule be make, not yet complete -->
 	<dict>
 		<key>isWidget</key>
 		<true/>
@@ -12,6 +13,66 @@
 		<string>tool_view</string>
 		<key>navImage</key>
 		<string>stack_view</string>
+		<key>shortDesc</key>
+		<string></string>
+		<key>longDesc</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>isWidget</key>
+		<false/>
+		<key>className</key>
+		<string>IUImage</string>
+		<key>classImage</key>
+		<string>tool_image</string>
+		<key>navImage</key>
+		<string>stack_image</string>
+		<key>shortDesc</key>
+		<string></string>
+		<key>longDesc</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>isWidget</key>
+		<false/>
+		<key>className</key>
+		<string>IUInput</string>
+		<key>classImage</key>
+		<string>tool_textfield</string>
+		<key>navImage</key>
+		<string>stack_textfield</string>
+		<key>shortDesc</key>
+		<string></string>
+		<key>longDesc</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>isWidget</key>
+		<false/>
+		<key>className</key>
+		<string>IURender</string>
+		<key>classImage</key>
+		<string>tool_render</string>
+		<key>navImage</key>
+		<string>stack_render</string>
+		<key>shortDesc</key>
+		<string></string>
+		<key>longDesc</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>isWidget</key>
+		<false/>
+		<key>className</key>
+		<string>IUMovie</string>
+		<key>classImage</key>
+		<string>tool_movie</string>
+		<key>navImage</key>
+		<string>stack_movie</string>
+		<key>shortDesc</key>
+		<string></string>
+		<key>longDesc</key>
+		<string></string>
 	</dict>
 	<dict>
 		<key>isWidget</key>
@@ -22,6 +83,10 @@
 		<string>tool_html</string>
 		<key>navImage</key>
 		<string>stack_html</string>
+		<key>shortDesc</key>
+		<string></string>
+		<key>longDesc</key>
+		<string></string>
 	</dict>
 	<dict>
 		<key>isWidget</key>
@@ -32,6 +97,80 @@
 		<string>tool_webmovie</string>
 		<key>navImage</key>
 		<string>stack_webmovie</string>
+		<key>shortDesc</key>
+		<string></string>
+		<key>longDesc</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>isWidget</key>
+		<false/>
+		<key>className</key>
+		<string>IUFBLike</string>
+		<key>classImage</key>
+		<string>tool_fblike</string>
+		<key>navImage</key>
+		<string>stack_fblike</string>
+		<key>shortDesc</key>
+		<string></string>
+		<key>longDesc</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>isWidget</key>
+		<false/>
+		<key>className</key>
+		<string>IUTwitter</string>
+		<key>classImage</key>
+		<string>tool_twitter</string>
+		<key>navImage</key>
+		<string>stack_twitter</string>
+		<key>shortDesc</key>
+		<string></string>
+		<key>longDesc</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>isWidget</key>
+		<false/>
+		<key>className</key>
+		<string>IUMail</string>
+		<key>classImage</key>
+		<string>tool_mail</string>
+		<key>navImage</key>
+		<string>stack_mail</string>
+		<key>shortDesc</key>
+		<string></string>
+		<key>longDesc</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>isWidget</key>
+		<false/>
+		<key>className</key>
+		<string>IUTransition</string>
+		<key>classImage</key>
+		<string>tool_transition</string>
+		<key>navImage</key>
+		<string>stack_transition</string>
+		<key>shortDesc</key>
+		<string></string>
+		<key>longDesc</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>isWidget</key>
+		<false/>
+		<key>className</key>
+		<string>IUNavigation</string>
+		<key>classImage</key>
+		<string>tool_navi</string>
+		<key>navImage</key>
+		<string>stack_navi</string>
+		<key>shortDesc</key>
+		<string></string>
+		<key>longDesc</key>
+		<string></string>
 	</dict>
 	<dict>
 		<key>isWidget</key>
@@ -42,7 +181,12 @@
 		<string>tool_carousel</string>
 		<key>navImage</key>
 		<string>stack_carousel</string>
+		<key>shortDesc</key>
+		<string></string>
+		<key>longDesc</key>
+		<string></string>
 	</dict>
+
 	
 	<!-- IU : not widget for stack image -->
 	<dict>

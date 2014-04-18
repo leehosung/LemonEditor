@@ -75,6 +75,10 @@
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s1Y-fM-b9U">
                                                         <rect key="frame" x="8" y="8" width="14" height="10"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="14" id="B2d-Nn-nTO"/>
+                                                            <constraint firstAttribute="height" constant="10" id="DRu-gC-vLK"/>
+                                                        </constraints>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ic_folder" id="Dvh-dM-wY7"/>
                                                     </imageView>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="hgM-4r-R1e">
@@ -109,7 +113,11 @@
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mM7-gX-W1U">
                                                         <rect key="frame" x="8" y="6" width="12" height="14"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ic_page" id="Bsb-Yk-6RD"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="12" id="1xW-4X-udl"/>
+                                                            <constraint firstAttribute="height" constant="14" id="P4y-HD-Zcl"/>
+                                                        </constraints>
+                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="ic_page" id="Bsb-Yk-6RD"/>
                                                     </imageView>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Dw3-VS-Njg">
                                                         <rect key="frame" x="21" y="6" width="198" height="14"/>
@@ -177,7 +185,7 @@
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EeA-UN-IXX">
                                                         <rect key="frame" x="8" y="6" width="12" height="14"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ic_comp" id="TaL-UW-AMC"/>
+                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ic_image" id="TaL-UW-AMC"/>
                                                     </imageView>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="fv6-wY-h54">
                                                         <rect key="frame" x="21" y="6" width="198" height="14"/>
@@ -211,7 +219,7 @@
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NPt-8b-0nz">
                                                         <rect key="frame" x="8" y="6" width="12" height="14"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ic_comp" id="krE-rr-jll"/>
+                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ic_css" id="krE-rr-jll"/>
                                                     </imageView>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Xwe-zu-n9A">
                                                         <rect key="frame" x="21" y="6" width="198" height="14"/>
@@ -245,7 +253,7 @@
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zqW-gx-UL3">
                                                         <rect key="frame" x="8" y="6" width="12" height="14"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ic_comp" id="Z5u-C1-NjV"/>
+                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ic_js" id="Z5u-C1-NjV"/>
                                                     </imageView>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="DEl-Au-e6B">
                                                         <rect key="frame" x="21" y="6" width="198" height="14"/>
@@ -310,8 +318,10 @@
         <treeController mode="entity" editable="NO" childrenKeyPath="children" leafKeyPath="isLeaf" id="gdF-Dg-Xge" customClass="IUDocumentController"/>
     </objects>
     <resources>
-        <image name="ic_comp" width="12" height="14"/>
+        <image name="ic_css" width="12" height="14"/>
         <image name="ic_folder" width="14" height="10"/>
+        <image name="ic_image" width="12" height="14"/>
+        <image name="ic_js" width="12" height="14"/>
         <image name="ic_master" width="12" height="14"/>
         <image name="ic_page" width="12" height="14"/>
     </resources>
