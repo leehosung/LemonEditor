@@ -55,8 +55,8 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="gGF-Sl-u29"/>
                                     <constraint firstAttribute="height" constant="30" id="kuY-cK-O7b"/>
                                 </constraints>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="add_ghost" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mkB-7C-Coa">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="add_ghost_off" imagePosition="only" alignment="center" alternateImage="add_ghost_on" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mkB-7C-Coa">
+                                    <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
@@ -88,16 +88,16 @@
                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ekM-CH-Zbt" userLabel="rightInspectorBtn">
                                         <rect key="frame" x="60" y="0.0" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="panel_right_on" imagePosition="only" alignment="center" alternateImage="panel_right_off" imageScaling="proportionallyDown" inset="2" id="Xvg-9G-vMA">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="panel_right_off" imagePosition="only" alignment="center" alternateImage="panel_right_on" state="on" imageScaling="proportionallyDown" inset="2" id="Xvg-9G-vMA">
+                                            <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                     </button>
                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TnF-d8-4GY" userLabel="LeftInspectorBtn">
                                         <rect key="frame" x="31" y="0.0" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="panel_left_on" imagePosition="only" alignment="center" alternateImage="panel_left_off" imageScaling="proportionallyDown" inset="2" id="QK0-yL-BXt">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="panel_left_off" imagePosition="only" alignment="center" alternateImage="panel_left_on" state="on" imageScaling="proportionallyDown" inset="2" id="QK0-yL-BXt">
+                                            <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                     </button>
@@ -112,7 +112,7 @@
                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AtM-vo-UJw" userLabel="borderBtn">
                                         <rect key="frame" x="89" y="0.0" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="view_border_on" imagePosition="only" alignment="center" alternateImage="view_border_off" imageScaling="proportionallyDown" inset="2" id="PLi-0i-BHM">
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="view_border_off" imagePosition="only" alignment="center" alternateImage="view_border_on" state="on" imageScaling="proportionallyDown" inset="2" id="PLi-0i-BHM">
                                             <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -177,7 +177,8 @@
     </objects>
     <resources>
         <image name="NSRefreshTemplate" width="10" height="12"/>
-        <image name="add_ghost" width="12" height="12"/>
+        <image name="add_ghost_off" width="12" height="12"/>
+        <image name="add_ghost_on" width="12" height="12"/>
         <image name="panel_left_off" width="14" height="10"/>
         <image name="panel_left_on" width="14" height="10"/>
         <image name="panel_right_off" width="14" height="10"/>
