@@ -404,12 +404,7 @@
 
 #pragma mark -
 #pragma mark border, ghost view
-- (void)setBorder:(BOOL)border{
-    [[self gridView] setBorder:border];
-}
-- (void)setGhost:(BOOL)ghost{
-    [[self gridView] setGhost:ghost];
-}
+
 - (void)setGhostImage:(NSImage *)ghostImage{
     [[self gridView] setGhostImage:ghostImage];
 }

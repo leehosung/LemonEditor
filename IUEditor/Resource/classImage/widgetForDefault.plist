@@ -3,6 +3,8 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>isWidget</key>
+		<true/>
 		<key>className</key>
 		<string>IUWebMovie</string>
 		<key>classImage</key>

@@ -75,20 +75,20 @@
                                         </buttonCell>
                                         <cells>
                                             <column>
-                                                <buttonCell type="square" bezelStyle="shadowlessSquare" image="tab_appearance" imagePosition="overlaps" alignment="center" state="on" tag="1" inset="2" id="KYs-cJ-7K5">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                                <buttonCell type="square" bezelStyle="shadowlessSquare" image="tab_appearance" imagePosition="only" alignment="center" state="on" tag="1" inset="2" id="KYs-cJ-7K5">
+                                                    <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="titleBar" size="12"/>
                                                 </buttonCell>
                                             </column>
                                             <column>
-                                                <buttonCell type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" state="on" inset="2" id="Bck-qq-gPw">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                                <buttonCell type="square" bezelStyle="shadowlessSquare" image="tab_property" imagePosition="only" alignment="center" state="on" inset="2" id="Bck-qq-gPw">
+                                                    <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="titleBar" size="12"/>
                                                 </buttonCell>
                                             </column>
                                             <column>
-                                                <buttonCell type="smallSquare" bezelStyle="smallSquare" imagePosition="only" alignment="center" inset="2" id="b4e-Nq-kFe">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <buttonCell type="square" bezelStyle="shadowlessSquare" image="tab_event" imagePosition="only" alignment="center" state="on" inset="2" id="b4e-Nq-kFe">
+                                                    <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                             </column>
@@ -163,20 +163,20 @@
                                         </buttonCell>
                                         <cells>
                                             <column>
-                                                <buttonCell type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" state="on" tag="1" inset="2" id="srz-8T-lQj">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <buttonCell type="square" bezelStyle="shadowlessSquare" image="tab_tools" imagePosition="only" alignment="center" state="on" tag="1" inset="2" id="srz-8T-lQj">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                                     <font key="font" metaFont="titleBar" size="12"/>
                                                 </buttonCell>
                                             </column>
                                             <column>
-                                                <buttonCell type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" state="on" inset="2" id="EXV-Pb-E2Z">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <buttonCell type="square" bezelStyle="shadowlessSquare" image="tab_library" imagePosition="overlaps" alignment="center" state="on" inset="2" id="EXV-Pb-E2Z">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                                     <font key="font" metaFont="titleBar" size="12"/>
                                                 </buttonCell>
                                             </column>
                                             <column>
-                                                <buttonCell type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="left" inset="2" id="1t2-0v-62p">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <buttonCell type="square" bezelStyle="shadowlessSquare" image="tab_clipart" imagePosition="overlaps" alignment="left" inset="2" id="1t2-0v-62p">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                             </column>
@@ -274,6 +274,11 @@
         </window>
     </objects>
     <resources>
-        <image name="tab_appearance" width="92" height="30"/>
+        <image name="tab_appearance" width="16" height="15"/>
+        <image name="tab_clipart" width="14" height="14"/>
+        <image name="tab_event" width="17" height="18"/>
+        <image name="tab_library" width="14" height="13"/>
+        <image name="tab_property" width="16" height="16"/>
+        <image name="tab_tools" width="14" height="14"/>
     </resources>
 </document>
