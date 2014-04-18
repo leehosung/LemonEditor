@@ -7,7 +7,6 @@
         <customObject id="-2" userLabel="File's Owner" customClass="LMStackVC">
             <connections>
                 <outlet property="IUController" destination="S9Z-Oj-DDl" id="h2G-wG-Ncx"/>
-                <outlet property="controller" destination="S9Z-Oj-DDl" id="Ugj-Ya-pNK"/>
                 <outlet property="outlineV" destination="Oxr-EL-PIx" id="p05-Jw-Xt9"/>
                 <outlet property="view" destination="IoX-Be-25j" id="9vS-cV-pyo"/>
             </connections>
@@ -17,12 +16,7 @@
         <userDefaultsController representsSharedInstance="YES" id="r0p-NC-HRh"/>
         <treeController objectClassName="IUBox" editable="NO" childrenKeyPath="children" id="S9Z-Oj-DDl" customClass="IUController">
             <connections>
-                <binding destination="-2" name="contentArrayForMultipleSelection" keyPath="selectedIUs" id="yUP-GX-YVM">
-                    <dictionary key="options">
-                        <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                    </dictionary>
-                </binding>
-                <binding destination="-2" name="contentObject" keyPath="document" previousBinding="yUP-GX-YVM" id="erk-5O-gxp">
+                <binding destination="-2" name="contentObject" keyPath="document" id="eXG-Ny-93E">
                     <dictionary key="options">
                         <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
                     </dictionary>
