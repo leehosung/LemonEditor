@@ -2,6 +2,27 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
+	<!-- widget IU -->
+	<dict>
+		<key>isWidget</key>
+		<true/>
+		<key>className</key>
+		<string>IUBox</string>
+		<key>classImage</key>
+		<string>tool_view</string>
+		<key>navImage</key>
+		<string>stack_view</string>
+	</dict>
+	<dict>
+		<key>isWidget</key>
+		<true/>
+		<key>className</key>
+		<string>IUHTML</string>
+		<key>classImage</key>
+		<string>tool_html</string>
+		<key>navImage</key>
+		<string>stack_html</string>
+	</dict>
 	<dict>
 		<key>isWidget</key>
 		<true/>
@@ -9,24 +30,52 @@
 		<string>IUWebMovie</string>
 		<key>classImage</key>
 		<string>tool_webmovie</string>
+		<key>navImage</key>
+		<string>stack_webmovie</string>
 	</dict>
 	<dict>
-		<key>className</key>
-		<string>IUHTML</string>
-		<key>classImage</key>
-		<string>tool_html</string>
-	</dict>
-	<dict>
-		<key>className</key>
-		<string>IUBox</string>
-		<key>classImage</key>
-		<string>tool_view</string>
-	</dict>
-	<dict>
+		<key>isWidget</key>
+		<true/>
 		<key>className</key>
 		<string>IUCarousel</string>
 		<key>classImage</key>
 		<string>tool_carousel</string>
+		<key>navImage</key>
+		<string>stack_carousel</string>
+	</dict>
+	
+	<!-- IU : not widget for stack image -->
+	<dict>
+		<key>isWidget</key>
+		<false/>
+		<key>className</key>
+		<string>IUPage</string>
+		<key>navImage</key>
+		<string>ic_page</string>
+	</dict>
+	<dict>
+		<key>isWidget</key>
+		<false/>
+		<key>className</key>
+		<string>IUMaster</string>
+		<key>navImage</key>
+		<string>ic_master</string>
+	</dict>
+	<dict>
+		<key>isWidget</key>
+		<false/>
+		<key>className</key>
+		<string>IUPageContent</string>
+		<key>navImage</key>
+		<string>ic_contents</string>
+	</dict>
+	<dict>
+		<key>isWidget</key>
+		<false/>
+		<key>className</key>
+		<string>IUHeader</string>
+		<key>navImage</key>
+		<string>stack_header</string>
 	</dict>
 </array>
 </plist>

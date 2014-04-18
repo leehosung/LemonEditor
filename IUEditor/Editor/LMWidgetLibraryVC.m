@@ -50,11 +50,15 @@
 -(void)setWidgetProperties:(NSArray*)array{
     NSMutableArray *temp = [NSMutableArray array];
     for (NSDictionary *dict in array) {
-        LMGeneralObject *obj = [[LMGeneralObject alloc] init];
-        obj.title = dict[@"className"];
-        NSString *imageName = dict[@"classImage"];
-        obj.image = [NSImage imageNamed:imageName];
-        [temp addObject:obj];
+        
+        BOOL isWidget = [dict[@"isWidget"] boolValue];
+        if (isWidget){
+            LMGeneralObject *obj = [[LMGeneralObject alloc] init];
+            obj.title = dict[@"className"];
+            NSString *imageName = dict[@"classImage"];
+            obj.image = [NSImage imageNamed:imageName];
+            [temp addObject:obj];
+        }
     }
     [self willChangeValueForKey:@"widgets"];
     _widgets = [NSArray arrayWithArray:temp];

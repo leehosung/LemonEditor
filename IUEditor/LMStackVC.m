@@ -44,7 +44,7 @@
     for (NSDictionary *dict in availableWidgetProperties) {
         NSString *name = dict[@"className"];
         if([name isEqualToString:className]){
-            NSImage *classImage = [NSImage imageNamed:dict[@"classImage"]];
+            NSImage *classImage = [NSImage imageNamed:dict[@"navImage"]];
             return classImage;
         }
     }
