@@ -12,14 +12,7 @@
 
 @end
 
-@interface SizeView : NSView{
-    NSMutableArray *sizeArray;
-    NSView *boxManageView;
-    NSUInteger selectIndex;
-    NSUInteger selectedWidth;
-    SizeTextField *sizeTextField;
-    NSPopover *framePopover;
-}
+@interface SizeView : NSView
 
 @property id delegate;
 

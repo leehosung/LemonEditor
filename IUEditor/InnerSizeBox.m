@@ -20,7 +20,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         width = aWidth;
-        [self setFillColor:[NSColor whiteColor]];
+        [self setFillColor:[NSColor secondarySelectedControlColor]];
         [self setTitlePosition:NSNoTitle];
         [self setBoxType:NSBoxCustom];
         [self setBorderType:NSLineBorder];
@@ -81,12 +81,8 @@
     return width;
 }
 
-- (void)deselect{
-    [self setFillColor:[NSColor whiteColor]];
-}
 
 - (void)select{
-    [self setFillColor:[NSColor lightGrayColor]];
     
     //send other sizeBox release
     if(self.boxDelegate && [self.boxDelegate respondsToSelector:@selector(selectBox:)]){
@@ -95,5 +91,12 @@
     }
 }
 
+- (void)setSmallerColor{
+    [self setFillColor:[NSColor whiteColor]];
+}
+
+- (void)setLargerColor{
+    [self setFillColor:[NSColor secondarySelectedControlColor]];
+}
 
 @end
