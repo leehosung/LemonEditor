@@ -10,4 +10,8 @@
 
 @interface IUImage : IUBox
 
+@property NSString *src;
+@property NSString *variable;
+@property NSString *altText;
+
 @end

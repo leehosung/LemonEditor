@@ -35,7 +35,7 @@
 
 - (void)selectBox:(InnerSizeBox *)selectBox;
 
-- (id)addFrame:(NSInteger)width;
+- (void)addFrame:(NSInteger)width;
 - (void)removeFrame:(NSInteger)width;
 
 //scroll by canvasV

@@ -102,6 +102,26 @@
 		3DED26D11900FD75001A1D67 /* add_ghost_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26CD1900FD75001A1D67 /* add_ghost_off@2x.png */; };
 		3DED26D21900FD75001A1D67 /* add_ghost_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26CE1900FD75001A1D67 /* add_ghost_on.png */; };
 		3DED26D31900FD75001A1D67 /* add_ghost_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26CF1900FD75001A1D67 /* add_ghost_on@2x.png */; };
+		3DED26D819010A6D001A1D67 /* LMPropertyIUBoxVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED26D619010A6D001A1D67 /* LMPropertyIUBoxVC.m */; };
+		3DED26D919010A6D001A1D67 /* LMPropertyIUBoxVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26D719010A6D001A1D67 /* LMPropertyIUBoxVC.xib */; };
+		3DED26DD19010B56001A1D67 /* LMPropertyIUHTMLVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED26DB19010B56001A1D67 /* LMPropertyIUHTMLVC.m */; };
+		3DED26DE19010B56001A1D67 /* LMPropertyIUHTMLVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26DC19010B56001A1D67 /* LMPropertyIUHTMLVC.xib */; };
+		3DED26E219010B6B001A1D67 /* LMPropertyIUcarouselVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED26E019010B6B001A1D67 /* LMPropertyIUcarouselVC.m */; };
+		3DED26E319010B6B001A1D67 /* LMPropertyIUcarouselVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26E119010B6B001A1D67 /* LMPropertyIUcarouselVC.xib */; };
+		3DED26E719010B82001A1D67 /* LMPropertyIUMovieVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED26E519010B82001A1D67 /* LMPropertyIUMovieVC.m */; };
+		3DED26E819010B82001A1D67 /* LMPropertyIUMovieVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26E619010B82001A1D67 /* LMPropertyIUMovieVC.xib */; };
+		3DED26EC19010B94001A1D67 /* LMPropertyIUWebMovieVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED26EA19010B94001A1D67 /* LMPropertyIUWebMovieVC.m */; };
+		3DED26ED19010B94001A1D67 /* LMPropertyIUWebMovieVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26EB19010B94001A1D67 /* LMPropertyIUWebMovieVC.xib */; };
+		3DED26F119010BB0001A1D67 /* LMPropertyIURenderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED26EF19010BB0001A1D67 /* LMPropertyIURenderVC.m */; };
+		3DED26F219010BB0001A1D67 /* LMPropertyIURenderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26F019010BB0001A1D67 /* LMPropertyIURenderVC.xib */; };
+		3DED26F619010BC0001A1D67 /* LMPropertyIUImageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED26F419010BC0001A1D67 /* LMPropertyIUImageVC.m */; };
+		3DED26F719010BC0001A1D67 /* LMPropertyIUImageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26F519010BC0001A1D67 /* LMPropertyIUImageVC.xib */; };
+		3DED26FB19010BD6001A1D67 /* LMPropertyIUMailLinkVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED26F919010BD6001A1D67 /* LMPropertyIUMailLinkVC.m */; };
+		3DED26FC19010BD6001A1D67 /* LMPropertyIUMailLinkVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26FA19010BD6001A1D67 /* LMPropertyIUMailLinkVC.xib */; };
+		3DED270019010C55001A1D67 /* LMPropertyIUTransitionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED26FE19010C55001A1D67 /* LMPropertyIUTransitionVC.m */; };
+		3DED270119010C55001A1D67 /* LMPropertyIUTransitionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26FF19010C55001A1D67 /* LMPropertyIUTransitionVC.xib */; };
+		3DED270519010C71001A1D67 /* LMPropertyIUFBLikeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED270319010C71001A1D67 /* LMPropertyIUFBLikeVC.m */; };
+		3DED270619010C71001A1D67 /* LMPropertyIUFBLikeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED270419010C71001A1D67 /* LMPropertyIUFBLikeVC.xib */; };
 		3DF8029A18FD0B2500913505 /* IUHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8029918FD0B2500913505 /* IUHTML.m */; };
 		3DF8029D18FE3D6000913505 /* IUWebMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8029C18FE3D6000913505 /* IUWebMovie.m */; };
 		3DF803D818FE62C900913505 /* dotted_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DF803C118FE62C900913505 /* dotted_line.png */; };
@@ -192,8 +212,8 @@
 		690A40A618E17C5700095263 /* widgetForDefault.plist in Resources */ = {isa = PBXBuildFile; fileRef = 690A40A418E17C5700095263 /* widgetForDefault.plist */; };
 		6919204718DCFC8200F8522B /* NSCoder+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6919204618DCFC8200F8522B /* NSCoder+JDExtension.m */; };
 		6919204A18DCFED000F8522B /* NSObject+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6919204918DCFED000F8522B /* NSObject+JDExtension.m */; };
-		692334BA18F783FE003E5224 /* LMPropertyBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 692334B818F783FE003E5224 /* LMPropertyBaseVC.m */; };
-		692334BB18F783FE003E5224 /* LMPropertyBaseVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 692334B918F783FE003E5224 /* LMPropertyBaseVC.xib */; };
+		692334BA18F783FE003E5224 /* LMIUInspectorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 692334B818F783FE003E5224 /* LMIUInspectorVC.m */; };
+		692334BB18F783FE003E5224 /* LMIUInspectorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 692334B918F783FE003E5224 /* LMIUInspectorVC.xib */; };
 		694E3CDB18FCF739005077B3 /* IUCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 694E3CDA18FCF739005077B3 /* IUCarousel.m */; };
 		694E3CE118FCFDA6005077B3 /* IUItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 694E3CE018FCFDA6005077B3 /* IUItem.m */; };
 		6953852E18ED6EC800CC42E5 /* IUController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6953852D18ED6EC800CC42E5 /* IUController.m */; };
@@ -407,6 +427,36 @@
 		3DED26CD1900FD75001A1D67 /* add_ghost_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_ghost_off@2x.png"; sourceTree = "<group>"; };
 		3DED26CE1900FD75001A1D67 /* add_ghost_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_ghost_on.png; sourceTree = "<group>"; };
 		3DED26CF1900FD75001A1D67 /* add_ghost_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_ghost_on@2x.png"; sourceTree = "<group>"; };
+		3DED26D519010A6D001A1D67 /* LMPropertyIUBoxVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyIUBoxVC.h; sourceTree = "<group>"; };
+		3DED26D619010A6D001A1D67 /* LMPropertyIUBoxVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyIUBoxVC.m; sourceTree = "<group>"; };
+		3DED26D719010A6D001A1D67 /* LMPropertyIUBoxVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyIUBoxVC.xib; sourceTree = "<group>"; };
+		3DED26DA19010B56001A1D67 /* LMPropertyIUHTMLVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyIUHTMLVC.h; sourceTree = "<group>"; };
+		3DED26DB19010B56001A1D67 /* LMPropertyIUHTMLVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyIUHTMLVC.m; sourceTree = "<group>"; };
+		3DED26DC19010B56001A1D67 /* LMPropertyIUHTMLVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyIUHTMLVC.xib; sourceTree = "<group>"; };
+		3DED26DF19010B6B001A1D67 /* LMPropertyIUcarouselVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyIUcarouselVC.h; sourceTree = "<group>"; };
+		3DED26E019010B6B001A1D67 /* LMPropertyIUcarouselVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyIUcarouselVC.m; sourceTree = "<group>"; };
+		3DED26E119010B6B001A1D67 /* LMPropertyIUcarouselVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyIUcarouselVC.xib; sourceTree = "<group>"; };
+		3DED26E419010B82001A1D67 /* LMPropertyIUMovieVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyIUMovieVC.h; sourceTree = "<group>"; };
+		3DED26E519010B82001A1D67 /* LMPropertyIUMovieVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyIUMovieVC.m; sourceTree = "<group>"; };
+		3DED26E619010B82001A1D67 /* LMPropertyIUMovieVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyIUMovieVC.xib; sourceTree = "<group>"; };
+		3DED26E919010B94001A1D67 /* LMPropertyIUWebMovieVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyIUWebMovieVC.h; sourceTree = "<group>"; };
+		3DED26EA19010B94001A1D67 /* LMPropertyIUWebMovieVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyIUWebMovieVC.m; sourceTree = "<group>"; };
+		3DED26EB19010B94001A1D67 /* LMPropertyIUWebMovieVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyIUWebMovieVC.xib; sourceTree = "<group>"; };
+		3DED26EE19010BB0001A1D67 /* LMPropertyIURenderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyIURenderVC.h; sourceTree = "<group>"; };
+		3DED26EF19010BB0001A1D67 /* LMPropertyIURenderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyIURenderVC.m; sourceTree = "<group>"; };
+		3DED26F019010BB0001A1D67 /* LMPropertyIURenderVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyIURenderVC.xib; sourceTree = "<group>"; };
+		3DED26F319010BC0001A1D67 /* LMPropertyIUImageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyIUImageVC.h; sourceTree = "<group>"; };
+		3DED26F419010BC0001A1D67 /* LMPropertyIUImageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyIUImageVC.m; sourceTree = "<group>"; };
+		3DED26F519010BC0001A1D67 /* LMPropertyIUImageVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyIUImageVC.xib; sourceTree = "<group>"; };
+		3DED26F819010BD6001A1D67 /* LMPropertyIUMailLinkVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyIUMailLinkVC.h; sourceTree = "<group>"; };
+		3DED26F919010BD6001A1D67 /* LMPropertyIUMailLinkVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyIUMailLinkVC.m; sourceTree = "<group>"; };
+		3DED26FA19010BD6001A1D67 /* LMPropertyIUMailLinkVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyIUMailLinkVC.xib; sourceTree = "<group>"; };
+		3DED26FD19010C55001A1D67 /* LMPropertyIUTransitionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyIUTransitionVC.h; sourceTree = "<group>"; };
+		3DED26FE19010C55001A1D67 /* LMPropertyIUTransitionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyIUTransitionVC.m; sourceTree = "<group>"; };
+		3DED26FF19010C55001A1D67 /* LMPropertyIUTransitionVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyIUTransitionVC.xib; sourceTree = "<group>"; };
+		3DED270219010C71001A1D67 /* LMPropertyIUFBLikeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyIUFBLikeVC.h; sourceTree = "<group>"; };
+		3DED270319010C71001A1D67 /* LMPropertyIUFBLikeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyIUFBLikeVC.m; sourceTree = "<group>"; };
+		3DED270419010C71001A1D67 /* LMPropertyIUFBLikeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyIUFBLikeVC.xib; sourceTree = "<group>"; };
 		3DF8029818FD0B2500913505 /* IUHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUHTML.h; sourceTree = "<group>"; };
 		3DF8029918FD0B2500913505 /* IUHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUHTML.m; sourceTree = "<group>"; };
 		3DF8029B18FE3D6000913505 /* IUWebMovie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUWebMovie.h; sourceTree = "<group>"; };
@@ -506,9 +556,9 @@
 		6919204618DCFC8200F8522B /* NSCoder+JDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSCoder+JDExtension.m"; path = "JD/NSCoder+JDExtension.m"; sourceTree = "<group>"; };
 		6919204818DCFED000F8522B /* NSObject+JDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JDExtension.h"; sourceTree = "<group>"; };
 		6919204918DCFED000F8522B /* NSObject+JDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JDExtension.m"; sourceTree = "<group>"; };
-		692334B718F783FE003E5224 /* LMPropertyBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyBaseVC.h; sourceTree = "<group>"; };
-		692334B818F783FE003E5224 /* LMPropertyBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyBaseVC.m; sourceTree = "<group>"; };
-		692334B918F783FE003E5224 /* LMPropertyBaseVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyBaseVC.xib; sourceTree = "<group>"; };
+		692334B718F783FE003E5224 /* LMIUInspectorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMIUInspectorVC.h; sourceTree = "<group>"; };
+		692334B818F783FE003E5224 /* LMIUInspectorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMIUInspectorVC.m; sourceTree = "<group>"; };
+		692334B918F783FE003E5224 /* LMIUInspectorVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMIUInspectorVC.xib; sourceTree = "<group>"; };
 		694E3CD918FCF739005077B3 /* IUCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUCarousel.h; sourceTree = "<group>"; };
 		694E3CDA18FCF739005077B3 /* IUCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUCarousel.m; sourceTree = "<group>"; };
 		694E3CDF18FCFDA6005077B3 /* IUItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUItem.h; path = IU/IUItem.h; sourceTree = "<group>"; };
@@ -943,6 +993,46 @@
 			name = menu;
 			sourceTree = "<group>";
 		};
+		3DED26D4190108B6001A1D67 /* RightIUInspector */ = {
+			isa = PBXGroup;
+			children = (
+				692334B718F783FE003E5224 /* LMIUInspectorVC.h */,
+				692334B818F783FE003E5224 /* LMIUInspectorVC.m */,
+				692334B918F783FE003E5224 /* LMIUInspectorVC.xib */,
+				3DED26D519010A6D001A1D67 /* LMPropertyIUBoxVC.h */,
+				3DED26D619010A6D001A1D67 /* LMPropertyIUBoxVC.m */,
+				3DED26D719010A6D001A1D67 /* LMPropertyIUBoxVC.xib */,
+				3DED26DA19010B56001A1D67 /* LMPropertyIUHTMLVC.h */,
+				3DED26DB19010B56001A1D67 /* LMPropertyIUHTMLVC.m */,
+				3DED26DC19010B56001A1D67 /* LMPropertyIUHTMLVC.xib */,
+				3DED26DF19010B6B001A1D67 /* LMPropertyIUcarouselVC.h */,
+				3DED26E019010B6B001A1D67 /* LMPropertyIUcarouselVC.m */,
+				3DED26E119010B6B001A1D67 /* LMPropertyIUcarouselVC.xib */,
+				3DED26E419010B82001A1D67 /* LMPropertyIUMovieVC.h */,
+				3DED26E519010B82001A1D67 /* LMPropertyIUMovieVC.m */,
+				3DED26E619010B82001A1D67 /* LMPropertyIUMovieVC.xib */,
+				3DED26E919010B94001A1D67 /* LMPropertyIUWebMovieVC.h */,
+				3DED26EA19010B94001A1D67 /* LMPropertyIUWebMovieVC.m */,
+				3DED26EB19010B94001A1D67 /* LMPropertyIUWebMovieVC.xib */,
+				3DED26EE19010BB0001A1D67 /* LMPropertyIURenderVC.h */,
+				3DED26EF19010BB0001A1D67 /* LMPropertyIURenderVC.m */,
+				3DED26F019010BB0001A1D67 /* LMPropertyIURenderVC.xib */,
+				3DED26F319010BC0001A1D67 /* LMPropertyIUImageVC.h */,
+				3DED26F419010BC0001A1D67 /* LMPropertyIUImageVC.m */,
+				3DED26F519010BC0001A1D67 /* LMPropertyIUImageVC.xib */,
+				3DED26F819010BD6001A1D67 /* LMPropertyIUMailLinkVC.h */,
+				3DED26F919010BD6001A1D67 /* LMPropertyIUMailLinkVC.m */,
+				3DED26FA19010BD6001A1D67 /* LMPropertyIUMailLinkVC.xib */,
+				3DED26FD19010C55001A1D67 /* LMPropertyIUTransitionVC.h */,
+				3DED26FE19010C55001A1D67 /* LMPropertyIUTransitionVC.m */,
+				3DED26FF19010C55001A1D67 /* LMPropertyIUTransitionVC.xib */,
+				3DED270219010C71001A1D67 /* LMPropertyIUFBLikeVC.h */,
+				3DED270319010C71001A1D67 /* LMPropertyIUFBLikeVC.m */,
+				3DED270419010C71001A1D67 /* LMPropertyIUFBLikeVC.xib */,
+			);
+			name = RightIUInspector;
+			sourceTree = "<group>";
+		};
 		3DF8029E18FE3F1A00913505 /* IUHTMLGroup */ = {
 			isa = PBXGroup;
 			children = (
@@ -1308,10 +1398,8 @@
 				690A409818E1665E00095263 /* LMGeneralObject.m */,
 				3DF8046C18FF7ADB00913505 /* LeftFileNavigation */,
 				3DF8045118FE7F6E00913505 /* RightAppearance */,
+				3DED26D4190108B6001A1D67 /* RightIUInspector */,
 				3D0D480518FF9767000A5B53 /* RightWidget */,
-				692334B718F783FE003E5224 /* LMPropertyBaseVC.h */,
-				692334B818F783FE003E5224 /* LMPropertyBaseVC.m */,
-				692334B918F783FE003E5224 /* LMPropertyBaseVC.xib */,
 				3DB3ACC318EBEF180046DFB7 /* LMWindow.h */,
 				3DB3ACC418EBEF180046DFB7 /* LMWindow.m */,
 				69C5762918D70B850016F050 /* LMWC.h */,
@@ -1435,6 +1523,7 @@
 				3DED26BF1900F450001A1D67 /* panel_right_on.png in Resources */,
 				3DF803DF18FE62C900913505 /* align_right.png in Resources */,
 				3DF803E118FE62C900913505 /* ic_folder.png in Resources */,
+				3DED26F719010BC0001A1D67 /* LMPropertyIUImageVC.xib in Resources */,
 				69C5762D18D70B850016F050 /* LMWC.xib in Resources */,
 				3DF8044318FE62FC00913505 /* tool_twitter.png in Resources */,
 				3D54D64B18ED5D2E00B5FEC2 /* ResizeNE-SW.tiff in Resources */,
@@ -1446,6 +1535,7 @@
 				3DF8043918FE62FC00913505 /* tool_movie.png in Resources */,
 				3DF8041518FE62F200913505 /* add_mediaquery@2x.png in Resources */,
 				3DF8046618FF784500913505 /* LMPropertyTextVC.xib in Resources */,
+				3DED26D919010A6D001A1D67 /* LMPropertyIUBoxVC.xib in Resources */,
 				3DF8044618FE62FC00913505 /* tool_html@2x.png in Resources */,
 				3DF803D818FE62C900913505 /* dotted_line.png in Resources */,
 				3DF8044C18FE62FC00913505 /* tool_view@2x.png in Resources */,
@@ -1490,6 +1580,7 @@
 				3DF8041618FE62F200913505 /* add_mediaquery.png in Resources */,
 				3DED26811900D329001A1D67 /* stack_twitter@2x.png in Resources */,
 				3DF803ED18FE62C900913505 /* next.png in Resources */,
+				3DED270119010C55001A1D67 /* LMPropertyIUTransitionVC.xib in Resources */,
 				3DF8044218FE62FC00913505 /* tool_navi@2x.png in Resources */,
 				3DB3ACFE18EC1F700046DFB7 /* LMCanvasVC.xib in Resources */,
 				3DED26BB1900F450001A1D67 /* panel_left_on.png in Resources */,
@@ -1505,6 +1596,7 @@
 				3DED26911900D329001A1D67 /* stack_carousel@2x.png in Resources */,
 				3DED265C1900D313001A1D67 /* view_list@2x.png in Resources */,
 				3DED26C71900F65C001A1D67 /* ic_image@2x.png in Resources */,
+				3DED26E319010B6B001A1D67 /* LMPropertyIUcarouselVC.xib in Resources */,
 				3DF803DE18FE62C900913505 /* align_full.png in Resources */,
 				3DF8044B18FE62FC00913505 /* tool_view.png in Resources */,
 				3DF803E018FE62C900913505 /* align_center.png in Resources */,
@@ -1528,6 +1620,8 @@
 				3DF803E818FE62C900913505 /* ic_template.png in Resources */,
 				3DF8041118FE62F200913505 /* tab_secondary.png in Resources */,
 				3DF8044518FE62FC00913505 /* tool_html.png in Resources */,
+				3DED26FC19010BD6001A1D67 /* LMPropertyIUMailLinkVC.xib in Resources */,
+				3DED26DE19010B56001A1D67 /* LMPropertyIUHTMLVC.xib in Resources */,
 				3DED268F1900D329001A1D67 /* stack_image@2x.png in Resources */,
 				69C575BB18D6F61E0016F050 /* Credits.rtf in Resources */,
 				3DED26A01900D33A001A1D67 /* stack_header.png in Resources */,
@@ -1545,6 +1639,8 @@
 				69A45DE118F6702C00C551D9 /* LMPropertyBorderVC.xib in Resources */,
 				3DED265F1900D313001A1D67 /* panel_left@2x.png in Resources */,
 				690A408E18E14A4E00095263 /* LMStackVC.xib in Resources */,
+				3DED270619010C71001A1D67 /* LMPropertyIUFBLikeVC.xib in Resources */,
+				3DED26ED19010B94001A1D67 /* LMPropertyIUWebMovieVC.xib in Resources */,
 				3DF8044E18FE62FC00913505 /* tool_render@2x.png in Resources */,
 				69C575C118D6F61E0016F050 /* MainMenu.xib in Resources */,
 				3DF8040818FE62F200913505 /* tab_close.png in Resources */,
@@ -1555,9 +1651,10 @@
 				3DED26BC1900F450001A1D67 /* panel_left_on@2x.png in Resources */,
 				3DED269A1900D33A001A1D67 /* tab_clipart@2x.png in Resources */,
 				3DF8040918FE62F200913505 /* tab_close@2x.png in Resources */,
-				692334BB18F783FE003E5224 /* LMPropertyBaseVC.xib in Resources */,
+				692334BB18F783FE003E5224 /* LMIUInspectorVC.xib in Resources */,
 				3DED26881900D329001A1D67 /* stack_html.png in Resources */,
 				3DF8044818FE62FC00913505 /* tool_mail@2x.png in Resources */,
+				3DED26E819010B82001A1D67 /* LMPropertyIUMovieVC.xib in Resources */,
 				3DED267D1900D329001A1D67 /* stack_textfield.png in Resources */,
 				3DF8040718FE62F200913505 /* tab_property@2x.png in Resources */,
 				3DF8040C18FE62F200913505 /* tab_library@2x.png in Resources */,
@@ -1573,6 +1670,7 @@
 				3DF803EC18FE62C900913505 /* tab.png in Resources */,
 				3DED269B1900D33A001A1D67 /* tab_clipart.png in Resources */,
 				3DF803E518FE62C900913505 /* stack_transition.png in Resources */,
+				3DED26F219010BB0001A1D67 /* LMPropertyIURenderVC.xib in Resources */,
 				3DF8043A18FE62FC00913505 /* tool_movie@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1620,6 +1718,7 @@
 				69761BCD18F17A3800C4EDC6 /* IUGroupNode.m in Sources */,
 				69D15F7318E898B10046FBB0 /* IUMaster.m in Sources */,
 				699E0D3418FD9CE2001CE633 /* IUTextManager.m in Sources */,
+				3DED26E719010B82001A1D67 /* LMPropertyIUMovieVC.m in Sources */,
 				69761BC318F04ECD00C4EDC6 /* LMPropertyBGImageVC.m in Sources */,
 				3DF8029D18FE3D6000913505 /* IUWebMovie.m in Sources */,
 				3DB3ACDE18EBEF5F0046DFB7 /* BorderLayer.m in Sources */,
@@ -1632,6 +1731,7 @@
 				3DB3ACC518EBEF180046DFB7 /* LMWindow.m in Sources */,
 				69757B0918D95BBC0095CBAC /* JDLogUtil.m in Sources */,
 				69757B0318D95BBC0095CBAC /* JDDateTimeUtil.m in Sources */,
+				3DED26DD19010B56001A1D67 /* LMPropertyIUHTMLVC.m in Sources */,
 				69757B0018D95BBC0095CBAC /* CALayer+JDExtension.m in Sources */,
 				69757B0718D95BBC0095CBAC /* JDHerokuUtil.m in Sources */,
 				6985CBA018E31558008DBF50 /* IUDocumentNode.m in Sources */,
@@ -1644,6 +1744,7 @@
 				69C575B718D6F61E0016F050 /* main.m in Sources */,
 				69757B1C18D95C980095CBAC /* NSArray+JDExtension.m in Sources */,
 				69757B0D18D95BBC0095CBAC /* NSFlipedScrollView.m in Sources */,
+				3DED26EC19010B94001A1D67 /* LMPropertyIUWebMovieVC.m in Sources */,
 				3DB3ACDD18EBEF5F0046DFB7 /* PointLayer.m in Sources */,
 				3DBC932E18F24FE000F217BD /* NSFlippedView.m in Sources */,
 				69757B3718DAF1AB0095CBAC /* IUResourceGroupNode.m in Sources */,
@@ -1660,24 +1761,29 @@
 				69757B0B18D95BBC0095CBAC /* JDOutlineView.m in Sources */,
 				69CFCAB218E95A0C00E3048A /* LMResourceVC.m in Sources */,
 				69757B1518D95BBC0095CBAC /* NSTextField+DragAndDrop.m in Sources */,
+				3DED26D819010A6D001A1D67 /* LMPropertyIUBoxVC.m in Sources */,
 				69C5760B18D6FE020016F050 /* IUComponent.m in Sources */,
 				694E3CE118FCFDA6005077B3 /* IUItem.m in Sources */,
 				6967425318F7D077008B7111 /* IUIdentifierManager.m in Sources */,
 				69761BCA18F168D700C4EDC6 /* IUResourceManager.m in Sources */,
 				69757B1118D95BBC0095CBAC /* JDUIUtil.m in Sources */,
 				3DB3ACE718EBEF9D0046DFB7 /* CursorRect.m in Sources */,
-				692334BA18F783FE003E5224 /* LMPropertyBaseVC.m in Sources */,
+				692334BA18F783FE003E5224 /* LMIUInspectorVC.m in Sources */,
 				69757B0E18D95BBC0095CBAC /* JDTextField.m in Sources */,
 				3DF8045818FE874400913505 /* LMAppearanceVC.m in Sources */,
 				69757B0518D95BBC0095CBAC /* JDFileUtil.m in Sources */,
 				69757B2218D95F420095CBAC /* NSString+JDExtension.m in Sources */,
 				69757AC218D7EB680095CBAC /* IUBox.m in Sources */,
+				3DED26F619010BC0001A1D67 /* LMPropertyIUImageVC.m in Sources */,
 				3DB3ACF618EC1E120046DFB7 /* LMCanvasView.m in Sources */,
+				3DED26F119010BB0001A1D67 /* LMPropertyIURenderVC.m in Sources */,
 				69A45DE018F6702C00C551D9 /* LMPropertyBorderVC.m in Sources */,
 				6954812818D7640A00CA02F1 /* IUPage.m in Sources */,
 				69C5764018D729830016F050 /* IUDocumentController.m in Sources */,
 				69757B3118DAE19E0095CBAC /* IUDocumentGroupNode.m in Sources */,
 				6983E71D18FFF54600D424B8 /* JDOutlineCellView.m in Sources */,
+				3DED270519010C71001A1D67 /* LMPropertyIUFBLikeVC.m in Sources */,
+				3DED270019010C55001A1D67 /* LMPropertyIUTransitionVC.m in Sources */,
 				3DF8046A18FF790400913505 /* LMPropertyShadowVC.m in Sources */,
 				69C575BE18D6F61E0016F050 /* LMAppDelegate.m in Sources */,
 				690A409918E1665E00095263 /* LMGeneralObject.m in Sources */,
@@ -1687,6 +1793,7 @@
 				69757B1318D95BBC0095CBAC /* JDWebUtil.m in Sources */,
 				69C5760C18D6FE020016F050 /* IUCSS.m in Sources */,
 				69757B2818D98BEA0095CBAC /* NSView+JDExtension.m in Sources */,
+				3DED26E219010B6B001A1D67 /* LMPropertyIUcarouselVC.m in Sources */,
 				3DF8046518FF784500913505 /* LMPropertyTextVC.m in Sources */,
 				69C5761E18D7051C0016F050 /* IUProject.m in Sources */,
 				69B9A39618E5A2A30007D6E2 /* IUResourceNode.m in Sources */,
@@ -1697,6 +1804,7 @@
 				69757B0618D95BBC0095CBAC /* JDGitUtil.m in Sources */,
 				3DB3ACD218EBEF4F0046DFB7 /* GridView.m in Sources */,
 				3D0D481318FFDC96000A5B53 /* LMFileTabItemVC.m in Sources */,
+				3DED26FB19010BD6001A1D67 /* LMPropertyIUMailLinkVC.m in Sources */,
 				69D15F6B18E73E690046FBB0 /* NSString+IUTag.m in Sources */,
 				69757B1018D95BBC0095CBAC /* JDTransformer.m in Sources */,
 				3D0D480918FFAF24000A5B53 /* LMTopToolbarVC.m in Sources */,

@@ -1,5 +1,5 @@
 //
-//  LMPropertyBaseVC.m
+//  LMPropertyBGImageVC.m
 //  IUEditor
 //
 //  Created by JD on 4/5/14.

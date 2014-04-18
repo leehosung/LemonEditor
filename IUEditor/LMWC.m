@@ -30,7 +30,7 @@
 
 #import "LMTopToolbarVC.h"
 #import "LMBottomToolbarVC.h"
-#import "LMPropertyBaseVC.h"
+#import "LMIUInspectorVC.h"
 
 
 @interface LMWC ()
@@ -80,7 +80,7 @@
     LMBottomToolbarVC     *bottomToolbarVC;
     
     //right top
-    LMPropertyBaseVC    *propertyBaseVC;
+    LMIUInspectorVC    *iuInspectorVC;
     LMAppearanceVC  *appearanceVC;
     
     //right bottom
@@ -143,9 +143,9 @@
     [_appearanceV addSubviewFullFrame:appearanceVC.view];
     
        
-//    propertyBaseVC = [[LMPropertyBaseVC alloc] initWithNibName:[LMPropertyBaseVC class].className bundle:nil];
-    [propertyBaseVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
-    [_propertyBaseV addSubviewFullFrame:propertyBaseVC.view];
+    iuInspectorVC = [[LMIUInspectorVC alloc] initWithNibName:[LMIUInspectorVC class].className bundle:nil];
+    [iuInspectorVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
+    [_propertyBaseV addSubviewFullFrame:iuInspectorVC.view];
     
 }
 
@@ -195,7 +195,7 @@
     
     //construct property vc
     [appearanceVC.propertyBGImageVC setResourceManager:_resourceManager];
-    propertyBaseVC.pageDocumentNodes = _project.pageDocumentNodes;
+    iuInspectorVC.propertyIUBoxVC.pageDocumentNodes = _project.pageDocumentNodes;
 }
 
 -(void)setSelectedNode:(IUNode*)selectedNode{
@@ -204,7 +204,7 @@
         IUDocument *document = ((IUDocumentNode*)selectedNode).document;
         [stackVC setDocument:document];
         [canvasVC setDocument:document];
-        [topToolbarVC setDocumentNode:selectedNode];
+        [topToolbarVC setDocumentNode:(IUDocumentNode *)selectedNode];
         
         //save for debug
         NSString *documentSavePath = [canvasVC.documentBasePath stringByAppendingPathComponent:[selectedNode.name stringByAppendingPathExtension:@"html"]];
@@ -244,7 +244,7 @@
 
 
 - (void)project:(IUProject *)project nodeAdded:(IUNode *)node{
-    [propertyBaseVC setPageDocumentNodes:project.pageDocumentNodes];
+    [iuInspectorVC.propertyIUBoxVC setPageDocumentNodes:project.pageDocumentNodes];
 }
 
 #pragma mark -
