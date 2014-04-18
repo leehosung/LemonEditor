@@ -26,8 +26,6 @@
 
 #pragma mark -
 //border, ghost view
-- (void)setBorder:(BOOL)border;
-- (void)setGhost:(BOOL)ghost;
 - (void)setGhostImage:(NSImage *)ghostImage;
 - (void)setGhostPosition:(NSPoint)position;
 

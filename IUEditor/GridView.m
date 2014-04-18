@@ -46,12 +46,17 @@
         [borderManagerLayer setHidden:YES];
         [self.layer insertSubLayerFullFrame:borderManagerLayer below:textManageLayer];
         
+        [[NSUserDefaults standardUserDefaults] addObserver:self forKeyPath:@"showBorder" options:NSKeyValueObservingOptionInitial context:nil];
+        
         //initialize ghost Layer
         ghostLayer = [CALayer layer];
         [ghostLayer setBackgroundColor:[[NSColor clearColor] CGColor]];
         [ghostLayer setOpacity:0.3];
         [ghostLayer disableAction];
         [self.layer insertSubLayerFullFrame:ghostLayer below:borderManagerLayer];
+        
+        [[NSUserDefaults standardUserDefaults] addObserver:self forKeyPath:@"showShadow" options:NSKeyValueObservingOptionInitial context:nil];
+        
         
         //initialize selection Layer
         selectionLayer = [CALayer layer];
@@ -287,8 +292,19 @@
 
 #pragma mark -
 #pragma mark ghostImage, border
+
+- (void)showBorderDidChange:(NSDictionary *)change{
+    BOOL border = [[NSUserDefaults  standardUserDefaults] boolForKey:@"showBorder"];
+    [self setBorder:border];
+}
+
 - (void)setBorder:(BOOL)border{
     [borderManagerLayer setHidden:!border];
+}
+
+- (void)showGhostDidChange:(NSDictionary *)change{
+    BOOL ghost = [[NSUserDefaults  standardUserDefaults] boolForKey:@"showGhost"];
+    [self setGhost:ghost];
 }
 - (void)setGhost:(BOOL)ghost{
     [ghostLayer setHidden:!ghost];

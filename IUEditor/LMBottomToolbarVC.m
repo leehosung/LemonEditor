@@ -10,6 +10,15 @@
 
 @interface LMBottomToolbarVC ()
 
+
+@property (weak) IBOutlet NSButton *refreshBtn;
+@property (weak) IBOutlet NSButton *leftInspectorBtn;
+@property (weak) IBOutlet NSButton *rightInspectorBtn;
+@property (weak) IBOutlet NSButton *mailBtn;
+
+@property (weak) IBOutlet NSButton *ghostBtn;
+@property (weak) IBOutlet NSButton *borderBtn;
+
 @end
 
 @implementation LMBottomToolbarVC
@@ -23,5 +32,18 @@
     return self;
 }
 
+- (void)awakeFromNib{
+    [self.ghostBtn bind:@"state" toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"showBorder" options:nil];
+    [self.borderBtn bind:@"state" toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"showGhost" options:nil];
+}
+
+- (IBAction)clickBorderBtn:(id)sender {
+    BOOL showBorder = [[NSUserDefaults standardUserDefaults] boolForKey:@"showBorder"];
+    [[NSUserDefaults standardUserDefaults] setBool:!showBorder forKey:@"showBorder"];
+}
+- (IBAction)clickGhostBtn:(id)sender {
+    BOOL showGhost = [[NSUserDefaults standardUserDefaults] boolForKey:@"showGhost"];
+    [[NSUserDefaults standardUserDefaults] setBool:!showGhost forKey:@"showGhost"];
+}
 
 @end
