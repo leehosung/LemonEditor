@@ -7,9 +7,16 @@
 //
 
 #import "LMTopToolbarVC.h"
-#import "IUDocumentNode.h"
+#import "LMFileTabItemVC.h"
+#import "NSTreeController+JDExtension.h"
 
-@interface LMTopToolbarVC ()
+
+@interface LMTopToolbarVC (){
+    NSMutableArray  *openTabDocuments;
+    NSMutableArray  *hiddenTabDocuments;
+}
+
+@property (weak) IBOutlet NSView *fileTabView;
 
 @end
 
@@ -20,9 +27,132 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Initialization code here.
+        openTabDocuments = [NSMutableArray array];
+        hiddenTabDocuments = [NSMutableArray array];
     }
     return self;
 }
+- (void)awakeFromNib{
+    
+}
+
+//set from lmwc
+-(void)setDocumentNode:(IUDocumentNode *)documentNode{
+    _documentNode = documentNode;
+    //find tab or make new box
+    LMTabDocumentType currentState = [self stateOfDocumnet:documentNode];
+    switch (currentState) {
+        case LMTabDocumentTypeHidden:
+            //remove hidden state
+            [hiddenTabDocuments removeObject:documentNode];
+            
+        case LMTabDocumentTypeNone:
+            //1. check enough size -> ignore or move one to hidden tab
+            if([self hasEnoughSize] == NO){
+                IUDocumentNode *lastOpenedDocument = [openTabDocuments objectAtIndex:[openTabDocuments count] -1];
+                [self removeOpenTabDocument:lastOpenedDocument];
+            }
+            
+            //2. add opentabdocuments
+            [self addOpenTabDocuments:documentNode];
+        case LMTabDocumentTypeOpen:
+            //select
+            [self selectTab:documentNode];
+        default:
+            break;
+    }
+}
+
+#pragma mark -
+#pragma mark tabview
+
+- (void)removeOpenTabDocument:(IUDocumentNode *)document{
+    [openTabDocuments removeObject:document];
+    
+    LMFileTabItemVC *item = [self tabItemOfDocumentNode:document];
+    [item.view removeFromSuperviewWithDirectionLeftToRight];
+
+    [hiddenTabDocuments addObject:document];
+}
+
+- (void)addOpenTabDocuments:(IUDocumentNode *)documentNode{
+    [openTabDocuments addObject:documentNode];
+    
+    LMFileTabItemVC *itemVC = [[LMFileTabItemVC alloc] initWithNibName:@"LMFileTabItemVC" bundle:nil];
+    [itemVC setDocumentNode:documentNode];
+    itemVC.delegate = self;
+    
+    [_fileTabView addSubviewDirectionLeftToRight:itemVC.view width:140];
+}
+
+
+
+- (LMFileTabItemVC *)tabItemOfDocumentNode:(IUDocumentNode *)documentNode{
+    for(LMTabBox *item in _fileTabView.subviews){
+        assert([item isKindOfClass:[LMTabBox class]]);
+        LMFileTabItemVC *itemVC = ((LMFileTabItemVC *)item.delegate);
+        if([itemVC.documentNode isEqualTo:documentNode]){
+            return itemVC;
+        }
+    }
+    return nil;
+}
+
+- (BOOL)hasEnoughSize{
+    CGFloat size = _fileTabView.frame.size.width - 400 * openTabDocuments.count;
+    if(size  > 400){
+        return YES;
+    }
+    else{
+        return NO;
+    }
+}
+
+- (LMTabDocumentType)stateOfDocumnet:(IUDocumentNode *)document{
+    if([openTabDocuments containsObject:document]){
+        return LMTabDocumentTypeOpen;
+    }
+    else if([hiddenTabDocuments containsObject:document]){
+        return LMTabDocumentTypeHidden;
+    }
+    else{
+        return LMTabDocumentTypeNone;
+    }
+}
+
+- (BOOL)isAddToOpenTab{
+    return YES;
+}
+
+#pragma mark -
+#pragma mark tab item  delegate
+- (void)selectTab:(IUDocumentNode *)documentNode{
+    [_documentController setSelectedObject:documentNode];
+    
+}
+
+- (void)closeTab:(LMFileTabItemVC *)tabItem{
+    if(openTabDocuments.count == 1){
+        return ;
+    }
+    [tabItem.view removeFromSuperviewWithDirectionLeftToRight];
+    
+    
+    NSInteger index = [openTabDocuments indexOfObject:tabItem.documentNode]-1;
+    
+    assert(index < openTabDocuments.count);
+    
+    IUDocumentNode *leftTabNode = [openTabDocuments objectAtIndex:index];
+    [_documentController setSelectedObject:leftTabNode];
+    
+    [openTabDocuments removeObject:tabItem.documentNode];
+    
+    
+}
+
+
+#pragma mark -
+#pragma mark build
 
 - (IBAction)showBPressed:(id)sender {
     IUProject *project = _documentController.project;
@@ -32,6 +162,7 @@
     
     [[NSWorkspace sharedWorkspace] openFile:firstPath];
 }
+
 
 
 @end

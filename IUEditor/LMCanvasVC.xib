@@ -89,7 +89,7 @@ DQ
                 <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="Ej4-Uz-enV" userLabel="Canvas Scroll View - Flipped View">
                     <rect key="frame" x="0.0" y="0.0" width="836" height="778"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <clipView key="contentView" id="UH1-2M-61Q" customClass="LMCenterClipView">
+                    <clipView key="contentView" id="UH1-2M-61Q">
                         <rect key="frame" x="0.0" y="0.0" width="836" height="778"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

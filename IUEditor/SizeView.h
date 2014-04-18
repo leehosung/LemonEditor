@@ -31,8 +31,6 @@
 - (IBAction)addSizeBtnClick:(id)sender;
 - (IBAction)addSizeOKBtn:(id)sender;
 
-- (void)moveSizeView:(NSPoint)point withWidth:(CGFloat)width;
-
 - (NSInteger)nextSmallSize:(NSInteger)size;
 
 - (void)selectBox:(InnerSizeBox *)selectBox;

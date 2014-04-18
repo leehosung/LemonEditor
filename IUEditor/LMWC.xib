@@ -26,14 +26,14 @@
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="1" customClass="LMWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="1418" height="887"/>
+            <rect key="contentRect" x="196" y="240" width="1420" height="887"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
             <view key="contentView" id="2">
-                <rect key="frame" x="0.0" y="0.0" width="1418" height="887"/>
+                <rect key="frame" x="0.0" y="0.0" width="1420" height="887"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <splitView dividerStyle="thin" translatesAutoresizingMaskIntoConstraints="NO" id="6xJ-ed-1uG" userLabel="left">
-                        <rect key="frame" x="-2" y="0.0" width="220" height="887"/>
+                        <rect key="frame" x="0.0" y="0.0" width="220" height="887"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <customView fixedFrame="YES" id="efd-DN-4Bq" userLabel="leftTopV">
@@ -54,7 +54,7 @@
                         </holdingPriorities>
                     </splitView>
                     <splitView dividerStyle="thin" translatesAutoresizingMaskIntoConstraints="NO" id="Ci0-yr-ElZ" userLabel="RightV">
-                        <rect key="frame" x="1118" y="0.0" width="300" height="887"/>
+                        <rect key="frame" x="1120" y="0.0" width="300" height="887"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <customView id="aaF-Ys-G65" userLabel="propertyV">
@@ -231,22 +231,21 @@
                         </holdingPriorities>
                     </splitView>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="4es-7h-bcl" userLabel="topToolbar">
-                        <rect key="frame" x="218" y="857" width="900" height="30"/>
+                        <rect key="frame" x="220" y="857" width="900" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="fKA-iL-Bai"/>
                         </constraints>
                     </customView>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="YTs-oo-nxs" userLabel="bottomToolbar">
-                        <rect key="frame" x="218" y="0.0" width="900" height="30"/>
+                        <rect key="frame" x="220" y="0.0" width="900" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="Nfh-yS-t1z"/>
-                            <constraint firstAttribute="width" constant="900" id="VHY-52-N2L"/>
                         </constraints>
                     </customView>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="LCo-BM-DQN" userLabel="centerV">
-                        <rect key="frame" x="218" y="30" width="900" height="827"/>
+                        <rect key="frame" x="220" y="30" width="900" height="827"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                 </subviews>
@@ -266,6 +265,7 @@
                     <constraint firstAttribute="bottom" secondItem="Ci0-yr-ElZ" secondAttribute="bottom" id="rmn-By-mP6"/>
                     <constraint firstItem="Ci0-yr-ElZ" firstAttribute="leading" secondItem="LCo-BM-DQN" secondAttribute="trailing" id="sWI-yU-IfB"/>
                     <constraint firstAttribute="bottom" secondItem="YTs-oo-nxs" secondAttribute="bottom" id="vM1-Fg-HPG"/>
+                    <constraint firstItem="6xJ-ed-1uG" firstAttribute="leading" secondItem="2" secondAttribute="leading" id="xZF-qx-AO8"/>
                 </constraints>
             </view>
             <connections>
