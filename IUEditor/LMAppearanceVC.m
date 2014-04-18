@@ -45,6 +45,8 @@
         [propertyBGColorVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
         
         propertyTextVC = [[LMPropertyTextVC alloc] initWithNibName:@"LMPropertyTextVC" bundle:nil];
+        [propertyTextVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+
         propertyShadowVC = [[LMPropertyShadowVC alloc] initWithNibName:@"LMPropertyShadowVC" bundle:nil];
         
     }

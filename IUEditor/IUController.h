@@ -20,4 +20,6 @@
 -(NSString*)keyPathFromControllerToCSSTag:(IUCSSTag)tag;
 -(NSString*)keyPathFromControllerToProperty:(NSString*)property;
 
+@property _binding_ NSRange selectedTextRange;
+
 @end

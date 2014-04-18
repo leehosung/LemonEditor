@@ -19,6 +19,7 @@
 @property (nonatomic) _binding_ IUNode *selectedNode;
 @property (nonatomic, weak) _binding_ IUController   *IUController;
 @property (nonatomic, weak) _binding_ IUDocumentController   *documentController;
+@property _binding_ NSRange selectedTextRange;
 
 -(void)loadProject:(NSString*)path;
 
