@@ -67,72 +67,44 @@
     
     id representObject = [item representedObject];
     
-    //root
-    if(item.indexPath.length == 1){
-        NSTableCellView *root= [outlineView makeViewWithIdentifier:@"root" owner:self];
-        return root;
-
-    }
     //folder
-    else if([representObject isKindOfClass:[IUDocumentGroupNode class]]){
-        IUDocumentGroupNode *groupNode = representObject;
-        NSTableCellView *folder;
-        if([groupNode.name isEqualToString:@"Pages"]){
-            folder= [outlineView makeViewWithIdentifier:@"pageFolder" owner:self];
-        }
-        else if([groupNode.name isEqualToString:@"Masters"]){
-            folder= [outlineView makeViewWithIdentifier:@"pageFolder" owner:self];
-        }
-        else if([groupNode.name isEqualToString:@"Resource"]){
-            folder= [outlineView makeViewWithIdentifier:@"pageFolder" owner:self];
-        }
-        else if([groupNode.name isEqualToString:@"Image"]){
-            folder= [outlineView makeViewWithIdentifier:@"pageFolder" owner:self];
-        }
-        else if([groupNode.name isEqualToString:@"CSS"]){
-            folder= [outlineView makeViewWithIdentifier:@"pageFolder" owner:self];
-        }
-        else if([groupNode.name isEqualToString:@"JS"]){
-            folder= [outlineView makeViewWithIdentifier:@"pageFolder" owner:self];
-        }
-        else{
-            JDErrorLog(@"there is no group");
-        }
+    if(item.indexPath.length == 1 ||
+       [representObject isKindOfClass:[IUDocumentGroupNode class]] ||
+       [representObject isKindOfClass:[IUResourceGroupNode class]] ){
+        
+        NSTableCellView *folder = [outlineView makeViewWithIdentifier:@"folder" owner:self];
         return folder;
 
-    }
-    //folder
-    else if([representObject isKindOfClass:[IUResourceGroupNode class]]){
-        IUResourceGroupNode *groupNode = representObject;
-        NSTableCellView *folder;
-        if([groupNode.name isEqualToString:@"Resource"]){
-            folder= [outlineView makeViewWithIdentifier:@"pageFolder" owner:self];
-        }
-        else if([groupNode.name isEqualToString:@"Image"]){
-            folder= [outlineView makeViewWithIdentifier:@"pageFolder" owner:self];
-        }
-        else if([groupNode.name isEqualToString:@"CSS"]){
-            folder= [outlineView makeViewWithIdentifier:@"pageFolder" owner:self];
-        }
-        else if([groupNode.name isEqualToString:@"JS"]){
-            folder= [outlineView makeViewWithIdentifier:@"pageFolder" owner:self];
-        }
-        else{
-            JDErrorLog(@"there is no group");
-        }
-        return folder;
     }
     //file
     else{
-        NSTableCellView *file;
+        NSString *cellIdentifier;
+
         if ([[item representedObject] isKindOfClass:[IUDocumentNode class]]){
-            file= [outlineView makeViewWithIdentifier:@"pageFile" owner:self];
+            IUDocumentNode *node = [item representedObject];
+            if([node.parent.name isEqualToString:@"Pages"]){
+                cellIdentifier = @"pageFile";
+            }
+            else if([node.parent.name isEqualToString:@"Masters"]){
+                cellIdentifier = @"masterFile";
+            }
         }
         else if( [[item representedObject] isKindOfClass:[IUResourceNode class]] ){
-
-            file= [outlineView makeViewWithIdentifier:@"pageFile" owner:self];
+            IUResourceGroupNode *node = [item representedObject];
+            
+            if([node.parent.name isEqualToString:@"Image"]){
+                cellIdentifier = @"imageFile";
+            }
+            else if([node.parent.name isEqualToString:@"CSS"]){
+                cellIdentifier = @"cssFile";
+            }
+            else if([node.parent.name isEqualToString:@"JS"]){
+                cellIdentifier = @"JSFile";
+            }
         }
+        assert(cellIdentifier != nil);
         
+        NSTableCellView *file = [outlineView makeViewWithIdentifier:cellIdentifier owner:self];
         return file;
     }
     
