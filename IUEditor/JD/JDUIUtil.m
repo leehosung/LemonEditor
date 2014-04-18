@@ -176,12 +176,8 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
 -(id)addSubviewWithFixTopSpace:(NSView*)subview{
     [self addSubview:subview];
     [subview setTranslatesAutoresizingMaskIntoConstraints:NO];
-    NSString *stringFormat = [NSString stringWithFormat:@"H:|-%f-[subview]-(>=0)-|",subview.frame.origin.y];
-    [self addConstraints:[NSLayoutConstraint
-                          constraintsWithVisualFormat:stringFormat
-                          options:NSLayoutFormatDirectionLeadingToTrailing
-                          metrics:nil
-                          views:NSDictionaryOfVariableBindings(subview)]];
+    
+    [self addConstraint:[self viewConstraint:subview equalToHeight:subview.frame.origin.y ]];
     
     return subview;
 }
@@ -191,16 +187,77 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
     [self addSubview:subview positioned:place relativeTo:otherView];
     [subview setTranslatesAutoresizingMaskIntoConstraints:NO];
     
-    [self addConstraints:[NSLayoutConstraint
-                          constraintsWithVisualFormat:@"H:|-0-[subview]-(0@1000)-|"
-                          options:NSLayoutFormatDirectionLeadingToTrailing
-                          metrics:nil
-                          views:NSDictionaryOfVariableBindings(subview)]];
-    [self addConstraints:[NSLayoutConstraint
-                          constraintsWithVisualFormat:@"V:|-0-[subview]-(0@1000)-|"
-                          options:NSLayoutFormatDirectionLeadingToTrailing
-                          metrics:nil
-                          views:NSDictionaryOfVariableBindings(subview)]];
+    [self addConstraint:[self viewConstraint:subview toSuperview:self leading:0]];
+    [self addConstraint:[self viewConstraint:subview toSuperview:self trailing:0]];
+    [self addConstraint:[self viewConstraint:subview toSuperview:self top:0]];
+    [self addConstraint:[self viewConstraint:subview toSuperview:self bottom:0]];
+}
+
+-(id)addSubviewDirectionLeftToRight:(NSView *)subview width:(CGFloat)width{
+    if (subview == nil) {
+        return nil;
+    }
+    [self addSubview:subview];
+    
+    [subview setTranslatesAutoresizingMaskIntoConstraints:NO];
+    NSLayoutConstraint *constraint;
+    
+    //left to right
+    if(self.subviews.count == 1){
+        
+        constraint = [NSLayoutConstraint constraintWithItem:subview
+                                                  attribute:NSLayoutAttributeLeading
+                                                  relatedBy:NSLayoutRelationEqual
+                                                     toItem:self
+                                                  attribute:NSLayoutAttributeLeading
+                                                 multiplier:1 constant:0];
+    }
+    else{
+        NSView *leftView = [self subviews][self.subviews.count-2];
+        
+        constraint = [NSLayoutConstraint constraintWithItem:subview
+                                                  attribute:NSLayoutAttributeLeading
+                                                  relatedBy:NSLayoutRelationEqual
+                                                     toItem:leftView
+                                                  attribute:NSLayoutAttributeTrailing
+                                                 multiplier:1 constant:0];
+    }
+    constraint.priority = NSLayoutPriorityRequired;
+    [self addConstraint:constraint];
+    
+    [self addConstraint:[self viewConstraint:subview equalToWidth:width ]];
+    [self addConstraint:[self viewConstraint:subview toSuperview:self top:0]];
+    [self addConstraint:[self viewConstraint:subview toSuperview:self bottom:0]];
+    
+    
+    return subview;
+}
+
+
+
+-(void)removeFromSuperviewWithDirectionLeftToRight{
+    NSView *superview = [self superview];
+    NSInteger index = [superview.subviews indexOfObject:self];
+    
+    if(index + 1 >= superview.subviews.count){
+        [self removeFromSuperview];
+        return ;
+    }
+    
+    NSView *leftView = [superview.subviews objectAtIndex:index-1];
+    NSView *rightView =[superview.subviews objectAtIndex:index+1];
+    
+    
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:leftView
+                                                                  attribute:NSLayoutAttributeRight
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:rightView
+                                                                  attribute:NSLayoutAttributeLeft
+                                                                 multiplier:1 constant:0];
+    constraint.priority = NSLayoutPriorityRequired;
+    [superview addConstraint:constraint];
+    
+    
 }
 
 -(id)addSubviewFullFrame:(NSView*)subview{
@@ -210,70 +267,11 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
     [self addSubview:subview];
     
     [subview setTranslatesAutoresizingMaskIntoConstraints:NO];
-
-    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:subview
-                                  attribute:NSLayoutAttributeTop
-                                  relatedBy:NSLayoutRelationEqual
-                                     toItem:self
-                                  attribute:NSLayoutAttributeTop
-                                 multiplier:1 constant:0];
-    constraint.priority = NSLayoutPriorityRequired;
-    [self addConstraint:constraint];
     
-    
-    
-     constraint = [NSLayoutConstraint constraintWithItem:subview
-                                  attribute:NSLayoutAttributeLeading
-                                  relatedBy:NSLayoutRelationEqual
-                                     toItem:self
-                                  attribute:NSLayoutAttributeLeading
-                                 multiplier:1 constant:0];
-    constraint.priority = NSLayoutPriorityRequired;
-    [self addConstraint:constraint];
-    
-    
-    
-
-     constraint = [NSLayoutConstraint constraintWithItem:subview
-                                  attribute:NSLayoutAttributeBottom
-                                  relatedBy:NSLayoutRelationEqual
-                                     toItem:self
-                                  attribute:NSLayoutAttributeBottom
-                                 multiplier:1 constant:0];
-    constraint.priority = NSLayoutPriorityRequired;
-    [self addConstraint:constraint];
-    
-    
-     constraint = [NSLayoutConstraint constraintWithItem:subview
-                                  attribute:NSLayoutAttributeTrailing
-                                  relatedBy:NSLayoutRelationEqual
-                                     toItem:self
-                                  attribute:NSLayoutAttributeTrailing
-                                 multiplier:1 constant:0];
-    constraint.priority = NSLayoutPriorityRequired;
-    [self addConstraint:constraint];
-    
-    
-    
-    /*
-     
-     [self addConstraint:
-     [NSLayoutConstraint constraintWithItem:subview
-     attribute:NSLayoutAttributeWidth
-     relatedBy:NSLayoutRelationEqual
-     toItem:self
-     attribute:NSLayoutAttributeWidth
-     multiplier:1 constant:0]];
-     
-     [self addConstraint:
-     [NSLayoutConstraint constraintWithItem:subview
-                                  attribute:NSLayoutAttributeHeight
-                                  relatedBy:NSLayoutRelationEqual
-                                     toItem:self
-                                  attribute:NSLayoutAttributeHeight
-                                 multiplier:1 constant:0]];
-    */
-
+    [self addConstraint:[self viewConstraint:subview toSuperview:self top:0]];
+    [self addConstraint:[self viewConstraint:subview toSuperview:self leading:0]];
+    [self addConstraint:[self viewConstraint:subview toSuperview:self bottom:0]];
+    [self addConstraint:[self viewConstraint:subview toSuperview:self trailing:0]];
     
 
     return subview;
@@ -282,16 +280,10 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
     [self addSubview:subview positioned:place relativeTo:nil];
     [subview setTranslatesAutoresizingMaskIntoConstraints:NO];
     
-    [self addConstraints:[NSLayoutConstraint
-                          constraintsWithVisualFormat:@"H:|-0-[subview]-(<=0)-|"
-                          options:NSLayoutFormatDirectionLeadingToTrailing
-                          metrics:nil
-                          views:NSDictionaryOfVariableBindings(subview)]];
-    [self addConstraints:[NSLayoutConstraint
-                          constraintsWithVisualFormat:@"V:|-0-[subview]-(<=0)-|"
-                          options:NSLayoutFormatDirectionLeadingToTrailing
-                          metrics:nil
-                          views:NSDictionaryOfVariableBindings(subview)]];
+    [self addConstraint:[self viewConstraint:subview toSuperview:self top:0]];
+    [self addConstraint:[self viewConstraint:subview toSuperview:self leading:0]];
+    [self addConstraint:[self viewConstraint:subview toSuperview:self bottom:0]];
+    [self addConstraint:[self viewConstraint:subview toSuperview:self trailing:0]];
     
     return subview;
 }
@@ -300,28 +292,12 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
     [self addSubview:aView positioned:place relativeTo:otherView];
     [aView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
-    [self addConstraints:[NSLayoutConstraint
-                          constraintsWithVisualFormat:@"V:|-0-[aView]-(0@1000)-|"
-                          options:NSLayoutFormatDirectionLeadingToTrailing
-                          metrics:nil
-                          views:NSDictionaryOfVariableBindings(aView)]];
-    NSString *widthFormat = [NSString stringWithFormat:@"[aView(%.0f)]", aView.frame.size.width];
-    [self addConstraints:[NSLayoutConstraint
-                          constraintsWithVisualFormat:widthFormat
-                          options:0
-                          metrics:nil
-                          views:NSDictionaryOfVariableBindings(aView)]];
-    
-    
-    [self addConstraint:
-     [NSLayoutConstraint constraintWithItem:aView
-                                  attribute:NSLayoutAttributeLeft
-                                  relatedBy:NSLayoutRelationEqual
-                                     toItem:self
-                                  attribute:NSLayoutAttributeLeft
-                                 multiplier:1 constant:0]];
-    
-    
+    [self addConstraint:[self viewConstraint:aView toSuperview:self top:0]];
+    [self addConstraint:[self viewConstraint:aView toSuperview:self bottom:0]];
+
+    [self addConstraint:[self viewConstraint:aView equalToWidth:aView.frame.size.width ]];
+    [self addConstraint:[self viewConstraint:aView toSuperview:self left:0]];
+
 }
 
 
@@ -329,55 +305,25 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
     [self addSubview:aView positioned:place relativeTo:otherView];
     [aView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
-    [self addConstraints:[NSLayoutConstraint
-                          constraintsWithVisualFormat:@"V:|-0-[aView]-(0@1000)-|"
-                          options:NSLayoutFormatDirectionLeadingToTrailing
-                          metrics:nil
-                          views:NSDictionaryOfVariableBindings(aView)]];
-    NSString *widthFormat = [NSString stringWithFormat:@"[aView(%.0f)]", aView.frame.size.width];
-    [self addConstraints:[NSLayoutConstraint
-                          constraintsWithVisualFormat:widthFormat
-                          options:0
-                          metrics:nil
-                          views:NSDictionaryOfVariableBindings(aView)]];
+    [self addConstraint:[self viewConstraint:aView toSuperview:self top:0]];
+    [self addConstraint:[self viewConstraint:aView toSuperview:self bottom:0]];
+
     
-    
-    [self addConstraint:
-     [NSLayoutConstraint constraintWithItem:aView
-                                  attribute:NSLayoutAttributeCenterX
-                                  relatedBy:NSLayoutRelationEqual
-                                     toItem:self
-                                  attribute:NSLayoutAttributeCenterX
-                                 multiplier:1 constant:0]];
-    
-    
+    [self addConstraint:[self viewConstraint:aView equalToWidth:aView.frame.size.width ]];
+    [self addConstraint:[self viewConstraint:aView toSuperview:self centerX:0]];
+
 }
 
 - (void)addSubviewLeftInFrameWithFrame:(NSView *)aView{
     [self addSubview:aView];
     [aView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
-    [self addConstraints:[NSLayoutConstraint
-                          constraintsWithVisualFormat:@"V:|-0-[aView]-(0@1000)-|"
-                          options:NSLayoutFormatDirectionLeadingToTrailing
-                          metrics:nil
-                          views:NSDictionaryOfVariableBindings(aView)]];
-    NSString *widthFormat = [NSString stringWithFormat:@"[aView(%.0f)]", aView.frame.size.width];
-    [self addConstraints:[NSLayoutConstraint
-                          constraintsWithVisualFormat:widthFormat
-                          options:0
-                          metrics:nil
-                          views:NSDictionaryOfVariableBindings(aView)]];
+    [self addConstraint:[self viewConstraint:aView toSuperview:self top:0]];
+    [self addConstraint:[self viewConstraint:aView toSuperview:self bottom:0]];
+
     
-    
-    [self addConstraint:
-     [NSLayoutConstraint constraintWithItem:aView
-                                  attribute:NSLayoutAttributeLeft
-                                  relatedBy:NSLayoutRelationEqual
-                                     toItem:self
-                                  attribute:NSLayoutAttributeLeft
-                                 multiplier:1 constant:0]];
-    
+    [self addConstraint:[self viewConstraint:aView equalToWidth:aView.frame.size.width ]];
+    [self addConstraint:[self viewConstraint:aView toSuperview:self left:0]];
     
 }
 
@@ -385,27 +331,11 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
     [self addSubview:aView];
     [aView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
-    [self addConstraints:[NSLayoutConstraint
-                          constraintsWithVisualFormat:@"V:|-0-[aView]-(0@1000)-|"
-                          options:NSLayoutFormatDirectionLeadingToTrailing
-                          metrics:nil
-                          views:NSDictionaryOfVariableBindings(aView)]];
-    NSString *widthFormat = [NSString stringWithFormat:@"[aView(%.0f)]", aView.frame.size.width];
-    [self addConstraints:[NSLayoutConstraint
-                          constraintsWithVisualFormat:widthFormat
-                          options:0
-                          metrics:nil
-                          views:NSDictionaryOfVariableBindings(aView)]];
+    [self addConstraint:[self viewConstraint:aView toSuperview:self top:0]];
+    [self addConstraint:[self viewConstraint:aView toSuperview:self bottom:0]];
     
-    
-    [self addConstraint:
-     [NSLayoutConstraint constraintWithItem:aView
-                                  attribute:NSLayoutAttributeCenterX
-                                  relatedBy:NSLayoutRelationEqual
-                                     toItem:self
-                                  attribute:NSLayoutAttributeCenterX
-                                 multiplier:1 constant:0]];
-    
+    [self addConstraint:[self viewConstraint:aView equalToWidth:aView.frame.size.width ]];
+    [self addConstraint:[self viewConstraint:aView toSuperview:self centerX:0]];
     
 }
 
@@ -413,28 +343,10 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
     [self addSubview:aView];
     [aView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
-    [self addConstraints:[NSLayoutConstraint
-                          constraintsWithVisualFormat:@"H:|-0-[aView]-(0@1000)-|"
-                          options:NSLayoutFormatDirectionLeadingToTrailing
-                          metrics:nil
-                          views:NSDictionaryOfVariableBindings(aView)]];
-    NSString *heightFormat = [NSString stringWithFormat:@"V:[aView(%.0f)]", height];
-    [self addConstraints:[NSLayoutConstraint
-                          constraintsWithVisualFormat:heightFormat
-                          options:0
-                          metrics:nil
-                          views:NSDictionaryOfVariableBindings(aView)]];
-    
-    
-    [self addConstraint:
-     [NSLayoutConstraint constraintWithItem:aView
-                                  attribute:NSLayoutAttributeCenterY
-                                  relatedBy:NSLayoutRelationEqual
-                                     toItem:self
-                                  attribute:NSLayoutAttributeCenterY
-                                 multiplier:1 constant:0]];
-    
-    
+    [self addConstraint:[self viewConstraint:aView equalToHeight:height]];
+    [self addConstraint:[self viewConstraint:aView toSuperview:self centerY:0]];
+    [self addConstraint:[self viewConstraint:aView toSuperview:self leading:0]];
+    [self addConstraint:[self viewConstraint:aView toSuperview:self trailing:0]];
 }
 
 -(void)setX:(CGFloat)x{
@@ -449,6 +361,118 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
 -(void)setHeight:(CGFloat)height{
     self.frame = NSRectModifyHeight(self.frame, height);
 }
+
+
+-(NSLayoutConstraint *)viewConstraint:(NSView *)view equalToWidth:(CGFloat)width{
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:view
+                                              attribute:NSLayoutAttributeWidth
+                                              relatedBy:NSLayoutRelationEqual
+                                                 toItem:nil
+                                              attribute:0
+                                             multiplier:1
+                                               constant:width];
+    constraint.priority = NSLayoutPriorityRequired;
+    return constraint;
+}
+
+-(NSLayoutConstraint *)viewConstraint:(NSView *)view equalToHeight:(CGFloat)height{
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:view
+                                                                  attribute:NSLayoutAttributeHeight
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:nil
+                                                                  attribute:0
+                                                                 multiplier:1
+                                                                   constant:height];
+    constraint.priority = NSLayoutPriorityRequired;
+    return constraint;
+}
+
+-(NSLayoutConstraint *)viewConstraint:(NSView *)view toSuperview:(NSView *)superview top:(CGFloat)top{
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:view
+                                                                  attribute:NSLayoutAttributeTop
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:superview
+                                                                  attribute:NSLayoutAttributeTop
+                                                                 multiplier:1
+                                                                   constant:top];
+    constraint.priority = NSLayoutPriorityRequired;
+    return constraint;
+}
+
+-(NSLayoutConstraint *)viewConstraint:(NSView *)view toSuperview:(NSView *)superview bottom:(CGFloat)bottom{
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:view
+                                                                  attribute:NSLayoutAttributeBottom
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:superview
+                                                                  attribute:NSLayoutAttributeBottom
+                                                                 multiplier:1
+                                                                   constant:bottom];
+    constraint.priority = NSLayoutPriorityRequired;
+    return constraint;
+}
+
+
+-(NSLayoutConstraint *)viewConstraint:(NSView *)view toSuperview:(NSView *)superview leading:(CGFloat)leading{
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:view
+                                                                  attribute:NSLayoutAttributeLeading
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:superview
+                                                                  attribute:NSLayoutAttributeLeading
+                                                                 multiplier:1
+                                                                   constant:leading];
+    constraint.priority = NSLayoutPriorityRequired;
+    return constraint;
+}
+
+-(NSLayoutConstraint *)viewConstraint:(NSView *)view toSuperview:(NSView *)superview trailing:(CGFloat)trailing{
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:view
+                                                                  attribute:NSLayoutAttributeTrailing
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:superview
+                                                                  attribute:NSLayoutAttributeTrailing
+                                                                 multiplier:1
+                                                                   constant:trailing];
+    constraint.priority = NSLayoutPriorityRequired;
+    return constraint;
+}
+
+-(NSLayoutConstraint *)viewConstraint:(NSView *)view toSuperview:(NSView *)superview left:(CGFloat)left{
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:view
+                                                                  attribute:NSLayoutAttributeLeft
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:superview
+                                                                  attribute:NSLayoutAttributeLeft
+                                                                 multiplier:1
+                                                                   constant:left];
+    constraint.priority = NSLayoutPriorityRequired;
+    return constraint;
+}
+
+-(NSLayoutConstraint *)viewConstraint:(NSView *)view toSuperview:(NSView *)superview centerX:(CGFloat)centerX{
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:view
+                                                                  attribute:NSLayoutAttributeCenterX
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:superview
+                                                                  attribute:NSLayoutAttributeCenterX
+                                                                 multiplier:1
+                                                                   constant:centerX];
+    constraint.priority = NSLayoutPriorityRequired;
+    return constraint;
+}
+
+-(NSLayoutConstraint *)viewConstraint:(NSView *)view toSuperview:(NSView *)superview centerY:(CGFloat)centerY{
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:view
+                                                                  attribute:NSLayoutAttributeCenterY
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:superview
+                                                                  attribute:NSLayoutAttributeCenterY
+                                                                 multiplier:1
+                                                                   constant:centerY];
+    constraint.priority = NSLayoutPriorityRequired;
+    return constraint;
+}
+
+
 
 @end
 

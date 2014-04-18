@@ -27,20 +27,22 @@
         [self setBorderWidth:0.5];
         [self setBorderColor:[NSColor grayColor]];
         
-        //
         NSString *tfTitle = [NSString stringWithFormat:@"%ld", aWidth];
-        leftTF = [[SizeTextField alloc] initWithFrame:NSMakeRect(0, 4, 40, 11)];
-        [leftTF setFont:[NSFont systemFontOfSize:9]];
-        [leftTF setAlignment:NSLeftTextAlignment];
-        [leftTF setStringValue:tfTitle];
-        [self addSubview:leftTF];
         
         rightTF = [[SizeTextField alloc] initWithFrame:NSMakeRect(aWidth-50, 4, 40, 11)];
         [rightTF setFont:[NSFont systemFontOfSize:9]];
         [rightTF setAlignment:NSRightTextAlignment];
         [rightTF setStringValue:tfTitle];
         [self addSubview:rightTF];
-
+        
+        //For center
+        /*
+        leftTF = [[SizeTextField alloc] initWithFrame:NSMakeRect(0, 4, 40, 11)];
+        [leftTF setFont:[NSFont systemFontOfSize:9]];
+        [leftTF setAlignment:NSLeftTextAlignment];
+        [leftTF setStringValue:tfTitle];
+        [self addSubview:leftTF];
+         */
         
     }
     return self;

@@ -59,17 +59,12 @@
 }
 
 -(void)awakeFromNib{
-    //textField
-    /*
-    sizeTextField = [[SizeTextField alloc] init];
-    [sizeTextField setFont:[NSFont systemFontOfSize:10]];
-     */
-    
+
     //sizeBox
     boxManageView = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 0, 30)];
-
-//    [self addSubviewVeriticalCenterInFrameWithFrame:sizeTextField height:sizeTextField.attributedStringValue.size.height];
     [self addSubview:boxManageView positioned:NSWindowBelow relativeTo:self.addBtn];
+    
+    [self addObserver:self forKeyPath:@"frame" options:0 context:nil];
 
 }
 
@@ -78,6 +73,8 @@
     [self addCursorRect:[maxBox frame] cursor:[NSCursor pointingHandCursor]];
 }
 
+//call from scroll view
+/*
 - (void)moveSizeView:(NSPoint)point withWidth:(CGFloat)width{
     if(selectedWidth <width){
         CGFloat modifiX = (boxManageView.bounds.size.width - width)/2;
@@ -87,6 +84,23 @@
     [boxManageView setBoundsOrigin:point];
 }
 
+- (void)frameDidChange:(NSDictionary *)change{
+
+    InnerSizeBox *maxBox = (InnerSizeBox *)boxManageView.subviews[0];
+    CGFloat maxWidth = maxBox.frame.size.width;
+    CGFloat sizeViewWidth = self.frame.size.width;
+    
+    if(sizeViewWidth > maxWidth){
+        CGFloat modifiX = (sizeViewWidth - boxManageView.frame.size.width)/2 * -0.1;
+        [boxManageView setBoundsOrigin:NSMakePoint(modifiX, 0)];
+        [boxManageView setWidth:sizeViewWidth];
+    }
+    else{
+        [boxManageView setBoundsOrigin:NSMakePoint(0, 0)];
+        [boxManageView setWidth:maxWidth];
+    }
+}
+*/
 #pragma mark -
 
 - (NSArray *)sortedArray{
@@ -109,7 +123,6 @@
     
     selectedWidth = selectBox.frameWidth;
     
-//    [sizeTextField setStringValue:[NSString stringWithFormat:@"%ld", selectedWidth]];
     [(LMCanvasView *)self.superview setWidthOfMainView:selectedWidth];
     ((LMCanvasVC *)self.delegate).selectedFrameWidth = selectedWidth;
     [((LMCanvasVC *)self.delegate) refreshGridFrameDictionary];
@@ -155,15 +168,15 @@
         //view가 중간에 들어갈때
         //size 큰것보다 하나 위로 들어감
         NSView *preView = boxManageView.subviews[index-1];
-        [boxManageView addSubviewMiddleInFrameWithFrame:newBox positioned:NSWindowAbove relativeTo:preView];
+        [boxManageView addSubviewLeftInFrameWithFrame:newBox positioned:NSWindowAbove relativeTo:preView];
     }
     else if(boxManageView.subviews.count == 0){
-        [boxManageView addSubviewMiddleInFrameWithFrame:newBox];
+        [boxManageView addSubviewLeftInFrameWithFrame:newBox];
     }
     else{
         //maximumsize임
         NSView *frontView = boxManageView.subviews[0];
-        [boxManageView addSubviewMiddleInFrameWithFrame:newBox positioned:NSWindowBelow relativeTo:frontView];
+        [boxManageView addSubviewLeftInFrameWithFrame:newBox positioned:NSWindowBelow relativeTo:frontView];
     }
     [self setMaxWidth];
     return newBox;

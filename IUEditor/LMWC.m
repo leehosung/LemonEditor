@@ -203,6 +203,7 @@
         IUDocument *document = ((IUDocumentNode*)selectedNode).document;
         [stackVC setDocument:document];
         [canvasVC setDocument:document];
+        [topToolbarVC setDocumentNode:selectedNode];
         
         //save for debug
         NSString *documentSavePath = [canvasVC.documentBasePath stringByAppendingPathComponent:[selectedNode.name stringByAppendingPathExtension:@"html"]];

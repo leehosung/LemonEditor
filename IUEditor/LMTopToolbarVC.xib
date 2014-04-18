@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMTopToolbarVC">
             <connections>
+                <outlet property="fileTabView" destination="IIW-4c-pEg" id="Rfh-Zm-BDj"/>
                 <outlet property="view" destination="Lyx-P5-2VK" id="W5V-N6-Jku"/>
             </connections>
         </customObject>
@@ -30,30 +31,6 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                     </button>
-                    <button translatesAutoresizingMaskIntoConstraints="NO" id="25h-oS-rOZ">
-                        <rect key="frame" x="29" y="-1" width="140" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="30" id="06X-a2-1LZ"/>
-                            <constraint firstAttribute="width" constant="140" id="nGW-vv-40P"/>
-                        </constraints>
-                        <buttonCell key="cell" type="square" title="index.pgiu" bezelStyle="shadowlessSquare" image="tab_close" imagePosition="right" alignment="left" borderStyle="border" inset="2" id="8Qw-6u-mvq">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="smallSystem"/>
-                        </buttonCell>
-                    </button>
-                    <button translatesAutoresizingMaskIntoConstraints="NO" id="uqg-1k-jPd">
-                        <rect key="frame" x="169" y="-1" width="140" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="30" id="BMh-Et-dqE"/>
-                            <constraint firstAttribute="width" constant="140" id="BYy-3i-pCi"/>
-                        </constraints>
-                        <buttonCell key="cell" type="square" title="comp.coiu" bezelStyle="shadowlessSquare" image="tab_close" imagePosition="right" alignment="left" borderStyle="border" inset="2" id="Uvy-7C-fcO">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="11" name="LucidaGrande"/>
-                        </buttonCell>
-                    </button>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="ss0-x8-YLr">
                         <rect key="frame" x="-1" y="-1" width="30" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -69,23 +46,38 @@
                             <action selector="showBPressed:" target="-2" id="JKO-3P-c4a"/>
                         </connections>
                     </button>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="IIW-4c-pEg" userLabel="tabView">
+                        <rect key="frame" x="29" y="-1" width="840" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="uqg-1k-jPd" firstAttribute="leading" secondItem="25h-oS-rOZ" secondAttribute="trailing" id="EsJ-OE-eNA"/>
+                <constraint firstItem="Mnq-Yt-P1D" firstAttribute="leading" secondItem="IIW-4c-pEg" secondAttribute="trailing" id="Bbu-8O-0pS"/>
                 <constraint firstItem="ss0-x8-YLr" firstAttribute="leading" secondItem="Lyx-P5-2VK" secondAttribute="leading" id="HBy-6X-o7h"/>
                 <constraint firstAttribute="bottom" secondItem="ss0-x8-YLr" secondAttribute="bottom" id="N1c-o5-a8g"/>
-                <constraint firstItem="uqg-1k-jPd" firstAttribute="top" secondItem="Lyx-P5-2VK" secondAttribute="top" id="QFg-FH-GDn"/>
-                <constraint firstItem="25h-oS-rOZ" firstAttribute="leading" secondItem="ss0-x8-YLr" secondAttribute="trailing" id="VAZ-Mw-BGQ"/>
                 <constraint firstItem="ss0-x8-YLr" firstAttribute="top" secondItem="Lyx-P5-2VK" secondAttribute="top" id="bNX-Jx-yvf"/>
+                <constraint firstItem="IIW-4c-pEg" firstAttribute="top" secondItem="Lyx-P5-2VK" secondAttribute="top" id="dDQ-jf-1Qk"/>
                 <constraint firstItem="Mnq-Yt-P1D" firstAttribute="top" secondItem="Lyx-P5-2VK" secondAttribute="top" id="keC-16-ufu"/>
+                <constraint firstItem="IIW-4c-pEg" firstAttribute="leading" secondItem="ss0-x8-YLr" secondAttribute="trailing" id="loC-n5-HDM"/>
                 <constraint firstAttribute="trailing" secondItem="Mnq-Yt-P1D" secondAttribute="trailing" id="ntw-Eg-GmJ"/>
-                <constraint firstItem="uqg-1k-jPd" firstAttribute="leading" secondItem="25h-oS-rOZ" secondAttribute="trailing" id="rUO-nQ-Pve"/>
-                <constraint firstItem="25h-oS-rOZ" firstAttribute="top" secondItem="Lyx-P5-2VK" secondAttribute="top" id="tx8-Vs-7gg"/>
+                <constraint firstAttribute="bottom" secondItem="IIW-4c-pEg" secondAttribute="bottom" id="qWT-vg-R8K"/>
             </constraints>
             <color key="borderColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
             <color key="fillColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
         </box>
+        <button translatesAutoresizingMaskIntoConstraints="NO" id="25h-oS-rOZ">
+            <rect key="frame" x="0.0" y="0.0" width="140" height="30"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <constraints>
+                <constraint firstAttribute="height" constant="30" id="06X-a2-1LZ"/>
+                <constraint firstAttribute="width" constant="140" id="nGW-vv-40P"/>
+            </constraints>
+            <buttonCell key="cell" type="square" title="index.pgiu" bezelStyle="shadowlessSquare" image="tab_close" imagePosition="right" alignment="left" borderStyle="border" inset="2" id="8Qw-6u-mvq">
+                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                <font key="font" metaFont="smallSystem"/>
+            </buttonCell>
+        </button>
     </objects>
     <resources>
         <image name="export" width="14" height="14"/>

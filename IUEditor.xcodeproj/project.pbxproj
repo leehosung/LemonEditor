@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3D0D480918FFAF24000A5B53 /* LMTopToolbarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D480718FFAF24000A5B53 /* LMTopToolbarVC.m */; };
 		3D0D480A18FFAF24000A5B53 /* LMTopToolbarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D0D480818FFAF24000A5B53 /* LMTopToolbarVC.xib */; };
+		3D0D481318FFDC96000A5B53 /* LMFileTabItemVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D481118FFDC96000A5B53 /* LMFileTabItemVC.m */; };
+		3D0D481418FFDC96000A5B53 /* LMFileTabItemVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D0D481218FFDC96000A5B53 /* LMFileTabItemVC.xib */; };
 		3D14886318F6AE5700E8EE4C /* LMCenterClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D14886218F6AE5700E8EE4C /* LMCenterClipView.m */; };
 		3D14886718F7A1E500E8EE4C /* LMPropertyFontVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D14886518F7A1E500E8EE4C /* LMPropertyFontVC.m */; };
 		3D14886818F7A1E500E8EE4C /* LMPropertyFontVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D14886618F7A1E500E8EE4C /* LMPropertyFontVC.xib */; };
@@ -227,6 +229,9 @@
 		3D0D480618FFAF24000A5B53 /* LMTopToolbarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMTopToolbarVC.h; sourceTree = "<group>"; };
 		3D0D480718FFAF24000A5B53 /* LMTopToolbarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMTopToolbarVC.m; sourceTree = "<group>"; };
 		3D0D480818FFAF24000A5B53 /* LMTopToolbarVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMTopToolbarVC.xib; sourceTree = "<group>"; };
+		3D0D481018FFDC96000A5B53 /* LMFileTabItemVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMFileTabItemVC.h; sourceTree = "<group>"; };
+		3D0D481118FFDC96000A5B53 /* LMFileTabItemVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMFileTabItemVC.m; sourceTree = "<group>"; };
+		3D0D481218FFDC96000A5B53 /* LMFileTabItemVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMFileTabItemVC.xib; sourceTree = "<group>"; };
 		3D14886118F6AE5700E8EE4C /* LMCenterClipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMCenterClipView.h; sourceTree = "<group>"; };
 		3D14886218F6AE5700E8EE4C /* LMCenterClipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMCenterClipView.m; sourceTree = "<group>"; };
 		3D14886418F7A1E500E8EE4C /* LMPropertyFontVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyFontVC.h; sourceTree = "<group>"; };
@@ -629,6 +634,9 @@
 				3D0D480618FFAF24000A5B53 /* LMTopToolbarVC.h */,
 				3D0D480718FFAF24000A5B53 /* LMTopToolbarVC.m */,
 				3D0D480818FFAF24000A5B53 /* LMTopToolbarVC.xib */,
+				3D0D481018FFDC96000A5B53 /* LMFileTabItemVC.h */,
+				3D0D481118FFDC96000A5B53 /* LMFileTabItemVC.m */,
+				3D0D481218FFDC96000A5B53 /* LMFileTabItemVC.xib */,
 			);
 			name = ToolBar;
 			sourceTree = "<group>";
@@ -1180,6 +1188,7 @@
 				3DF803DB18FE62C900913505 /* panel_right.png in Resources */,
 				3DF803EE18FE62C900913505 /* grid.png in Resources */,
 				3DF8043718FE62FC00913505 /* tool_image.png in Resources */,
+				3D0D481418FFDC96000A5B53 /* LMFileTabItemVC.xib in Resources */,
 				3DF803E618FE62C900913505 /* stack_render.png in Resources */,
 				3DF8044D18FE62FC00913505 /* tool_render.png in Resources */,
 				69C575B518D6F61E0016F050 /* InfoPlist.strings in Resources */,
@@ -1394,6 +1403,7 @@
 				69757B0818D95BBC0095CBAC /* JDKeyDelegatedTableView.m in Sources */,
 				69757B0618D95BBC0095CBAC /* JDGitUtil.m in Sources */,
 				3DB3ACD218EBEF4F0046DFB7 /* GridView.m in Sources */,
+				3D0D481318FFDC96000A5B53 /* LMFileTabItemVC.m in Sources */,
 				69D15F6B18E73E690046FBB0 /* NSString+IUTag.m in Sources */,
 				69757B1018D95BBC0095CBAC /* JDTransformer.m in Sources */,
 				3D0D480918FFAF24000A5B53 /* LMTopToolbarVC.m in Sources */,
