@@ -74,6 +74,7 @@
         [cssDict removeObjectForKey:tag];
     }
     [self updateAssembledTagDictionary];
+    [self.delegate CSSChanged:tag forWidth:9999];
 }
 
 

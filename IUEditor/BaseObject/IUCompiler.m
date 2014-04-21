@@ -342,6 +342,19 @@
     if ([value integerValue]) {
         [dict putTag:@"overflow" string:@"visible"];
     }
+
+    NSInteger hOff = [cssTagDict[IUCSSTagShadowHorizontal] integerValue];
+    NSInteger vOff = [cssTagDict[IUCSSTagShadowVertical] integerValue];
+    NSInteger blur = [cssTagDict[IUCSSTagShadowBlur] integerValue];
+    NSInteger spread = [cssTagDict[IUCSSTagShadowSpread] integerValue];
+    NSColor *color = cssTagDict[IUCSSTagShadowColor];
+    NSString *colorString = [color rgbaString];
+    if (colorString == nil){
+        colorString = @"black";
+    }
+    if (hOff || vOff || blur || spread){
+        [dict putTag:@"box-shadow" string:[NSString stringWithFormat:@"%ldpx %ldpx %ldpx %ldpx %@", hOff, vOff, blur, spread, colorString]];
+    }
     return dict;
 }
 

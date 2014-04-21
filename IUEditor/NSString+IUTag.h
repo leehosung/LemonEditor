@@ -32,11 +32,16 @@
 #define IUCSSTagBorderBottomWidth @"borderBWeight"
 #define IUCSSTagBorderBottomColor @"borderBColor"
 
-
 #define IUCSSTagFontName @"font-name"
 #define IUCSSTagFontSize @"font-size"
 
 #define IUCSSTagOverflow @"overflow"
+
+#define IUCSSTagShadowColor @"shadowColor"
+#define IUCSSTagShadowVertical @"shadowVertical"
+#define IUCSSTagShadowHorizontal @"shadowHorizontal"
+#define IUCSSTagShadowSpread @"shadowSpread"
+#define IUCSSTagShadowBlur @"shadowBlur"
 
 #define isSameTag isEqualToString
 

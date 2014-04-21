@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyShadowVC">
             <connections>
+                <outlet property="shadowBlr" destination="p9R-Lx-z49" id="ZCz-bi-BHi"/>
+                <outlet property="shadowColor" destination="EWp-qK-gmi" id="QaD-7U-J9R"/>
+                <outlet property="shadowH" destination="Aoe-SB-85S" id="rHf-8V-JPO"/>
+                <outlet property="shadowSprd" destination="kVp-4x-uO2" id="Nyr-Jb-taP"/>
+                <outlet property="shadowV" destination="wmj-qP-Vvw" id="XsC-Ra-cn8"/>
                 <outlet property="view" destination="33F-UJ-27v" id="JSq-1b-bEv"/>
             </connections>
         </customObject>
@@ -22,8 +27,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="275" height="30"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <colorWell fixedFrame="YES" bordered="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EWp-qK-gmi">
-                                <rect key="frame" x="248" y="9" width="18" height="18"/>
+                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EWp-qK-gmi">
+                                <rect key="frame" x="248" y="6" width="18" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="color" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                             </colorWell>
@@ -122,7 +127,7 @@
                             <slider toolTip="Shadow Y position to go down." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aoe-SB-85S">
                                 <rect key="frame" x="75" y="58" width="148" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <sliderCell key="cell" controlSize="small" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" numberOfTickMarks="1" sliderType="linear" id="QxZ-XM-nJd"/>
+                                <sliderCell key="cell" controlSize="small" state="on" alignment="left" minValue="-20" maxValue="20" doubleValue="20" tickMarkPosition="above" numberOfTickMarks="1" sliderType="linear" id="QxZ-XM-nJd"/>
                             </slider>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HF3-pP-vRf">
                                 <rect key="frame" x="8" y="78" width="61" height="17"/>
@@ -145,7 +150,7 @@
                             <slider toolTip="Shadow Y position to go down." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wmj-qP-Vvw">
                                 <rect key="frame" x="75" y="80" width="148" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <sliderCell key="cell" controlSize="small" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" numberOfTickMarks="1" sliderType="linear" id="9UZ-EK-NBe"/>
+                                <sliderCell key="cell" controlSize="small" continuous="YES" state="on" alignment="left" minValue="-20" maxValue="20" doubleValue="20" tickMarkPosition="above" numberOfTickMarks="1" sliderType="linear" id="9UZ-EK-NBe"/>
                             </slider>
                         </subviews>
                     </view>
@@ -158,5 +163,11 @@
                 <outlet property="titleV" destination="EHG-kf-12d" id="vtK-hq-2Fh"/>
             </connections>
         </customView>
+        <colorWell id="PdW-kP-nZL">
+            <rect key="frame" x="0.0" y="0.0" width="44" height="23"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+        </colorWell>
+        <userDefaultsController representsSharedInstance="YES" id="vuW-ma-3L4"/>
     </objects>
 </document>

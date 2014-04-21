@@ -27,6 +27,10 @@
     NSMutableArray *outlineVOrderArray;
 }
 
+- (NSString*)CSSBindingPath:(IUCSSTag)tag{
+    return [@"controller.selection.css.assembledTagDictionary." stringByAppendingString:tag];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -48,7 +52,7 @@
         [propertyTextVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
 
         propertyShadowVC = [[LMPropertyShadowVC alloc] initWithNibName:@"LMPropertyShadowVC" bundle:nil];
-        
+        [propertyShadowVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     }
     return self;
 }
