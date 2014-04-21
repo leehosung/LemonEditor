@@ -293,8 +293,11 @@
     return tag;
 }
 
--(void)IU:(NSString*)identifier textHTML:(NSString *)html withParentID:(NSString *)parentID{    
+-(void)IU:(NSString*)identifier textHTML:(NSString *)html withParentID:(NSString *)parentID nearestID:(NSString *)nID index:(NSUInteger)index{
+    
     [self IU:identifier HTML:html withParentID:parentID];
+    [[self webView] selectTextRange:[self getHTMLElementbyID:nID] index:index];
+
 }
 
 

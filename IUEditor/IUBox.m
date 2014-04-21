@@ -365,7 +365,12 @@
 
 - (void)replaceText:(NSString*)text withRange:(NSRange)range{
     [textManager replaceText:text atRange:range];
-    [self.delegate IU:self.htmlID textHTML:self.html withParentID:self.parent.htmlID];
+    
+    NSUInteger index = [[self cursorTextCursorLocation][IUTextCursorLocationIndex] integerValue];
+    NSString   *nID =[self cursorTextCursorLocation][IUTextCursorLocationID];
+    
+    [self.delegate IU:self.htmlID textHTML:self.html withParentID:self.parent.htmlID nearestID:nID index:index];
+    
     NSMutableDictionary *cssDict = [textManager.css mutableCopy];
     NSDictionary *defaultCSS = cssDict[@(IUCSSDefaultCollection)];
     for (NSString *identifier in defaultCSS) {
@@ -377,13 +382,19 @@
 - (void)insertText:(NSString*)text withRange:(NSRange)range{
     NSLog(@"insertText");
     [textManager insertString:text atIndex:range.location];
-    [self.delegate IU:self.htmlID textHTML:self.html withParentID:self.parent.htmlID];
+    NSUInteger index = [[self cursorTextCursorLocation][IUTextCursorLocationIndex] integerValue];
+    NSString   *nID =[self cursorTextCursorLocation][IUTextCursorLocationID];
+    
+    [self.delegate IU:self.htmlID textHTML:self.html withParentID:self.parent.htmlID nearestID:nID index:index];
 }
 
 
 - (void)deleteTextInRange:(NSRange)range{
     [textManager deleteTextInRange:range];
-    [self.delegate IU:self.htmlID textHTML:self.html withParentID:self.parent.htmlID];
+    NSUInteger index = [[self cursorTextCursorLocation][IUTextCursorLocationIndex] integerValue];
+    NSString   *nID =[self cursorTextCursorLocation][IUTextCursorLocationID];
+    
+    [self.delegate IU:self.htmlID textHTML:self.html withParentID:self.parent.htmlID nearestID:nID index:index];
 }
 
 
@@ -391,5 +402,8 @@
     return textManager.HTML;
 }
 
+- (NSDictionary*)cursorTextCursorLocation{
+    return @{IUTextCursorLocationID: @"IUBox1TNode0", IUTextCursorLocationIndex: @(0)};
+}
 
 @end
