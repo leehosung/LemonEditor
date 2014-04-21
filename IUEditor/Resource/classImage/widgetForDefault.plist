@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
-	<!-- widget IU -->
-	<!-- isWidget(false) : shoule be make, not yet complete -->
 	<dict>
 		<key>isWidget</key>
 		<true/>
@@ -20,7 +18,7 @@
 	</dict>
 	<dict>
 		<key>isWidget</key>
-		<false/>
+		<true/>
 		<key>className</key>
 		<string>IUImage</string>
 		<key>classImage</key>
@@ -186,9 +184,6 @@
 		<key>longDesc</key>
 		<string></string>
 	</dict>
-
-	
-	<!-- IU : not widget for stack image -->
 	<dict>
 		<key>isWidget</key>
 		<false/>

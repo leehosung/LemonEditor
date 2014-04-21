@@ -107,6 +107,13 @@
 
 }
 
+- (void)setResourceManager:(IUResourceManager *)resourceManager{
+    _resourceManager = resourceManager;
+    
+    //resource manager 가 필요한 것들은 여기서 bind
+    [propertyIUImageVC bind:@"resourceManager" toObject:self withKeyPath:@"resourceManager" options:nil];
+}
+
 - (void)reloadSelectedIUArray{
     [selectedIUCellVArray removeAllObjects];
     if(self.controller.selection == nil){

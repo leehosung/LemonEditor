@@ -200,6 +200,7 @@
     
     //construct property vc
     [appearanceVC.propertyBGImageVC setResourceManager:_resourceManager];
+    [iuInspectorVC setResourceManager:_resourceManager];
     iuInspectorVC.propertyIUBoxVC.pageDocumentNodes = _project.pageDocumentNodes;
 }
 
