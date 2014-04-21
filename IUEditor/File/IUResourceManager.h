@@ -26,5 +26,6 @@
 -(NSArray*)resourceNodes;
 
 - (IUResourceGroupNode *)imageNode;
+- (IUResourceGroupNode *)videoNode;
 
 @end

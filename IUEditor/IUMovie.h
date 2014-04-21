@@ -10,7 +10,7 @@
 
 @interface IUMovie : IUBox
 
-@property (nonatomic) NSString *movieFile;
+@property (nonatomic) NSString *videoPath;
 @property NSString  *posterPath;
 @property NSString  *altText;
 
