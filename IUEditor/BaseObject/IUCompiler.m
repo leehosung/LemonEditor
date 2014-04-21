@@ -337,6 +337,11 @@
         NSColor *color = cssTagDict[IUCSSTagBorderTopColor];
         [dict putTag:@"border-top-color" color:color ignoreClearColor:YES];
     }
+    
+    value = cssTagDict[IUCSSTagOverflow];
+    if ([value integerValue]) {
+        [dict putTag:@"overflow" string:@"visible"];
+    }
     return dict;
 }
 

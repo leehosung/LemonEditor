@@ -103,7 +103,7 @@
     return findIUs[0];
 }
 
--(NSString*)keyPathFromControllerToTag:(IUCSSTag)tag{
+-(NSString*)keyPathFromControllerToCSSTag:(IUCSSTag)tag{
     return [@"controller.selection.css.assembledTagDictionary" stringByAppendingPathExtension:tag];
 }
 
