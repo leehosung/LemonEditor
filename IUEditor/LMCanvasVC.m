@@ -92,7 +92,8 @@
 - (void)makeNewIU:(IUBox *)newIU atPoint:(NSPoint)point atIU:(NSString *)parentIUID{
     
     IUBox *parentIU = [self.controller IUBoxByIdentifier:parentIUID];
-    NSPoint position = [self distanceIU:newIU.htmlID withParent:parentIUID];
+ //   parentIU.
+    NSPoint position = [self distanceFromIU:parentIU.htmlID toPointFromWebView:point];
     
     //postion을 먼저 정한 후에 add 함
     [newIU setPosition:position];
@@ -198,13 +199,22 @@
 #pragma mark -
 #pragma mark IUDelegate
 
-- (NSPoint)distanceIU:(NSString *)iuName withParent:(NSString *)parentName{
-    
+- (NSPoint)distanceFromIU:(NSString *)parentName to:(NSString *)iuName{
     NSRect iuFrame = [[frameDict.dict objectForKey:iuName] rectValue];
     NSRect parentFrame = [[frameDict.dict objectForKey:parentName] rectValue];
     
     NSPoint distance = NSMakePoint(iuFrame.origin.x-parentFrame.origin.x,
                                    iuFrame.origin.y - parentFrame.origin.y);
+    return distance;
+}
+
+
+- (NSPoint)distanceFromIU:(NSString*)parentName toPointFromWebView:(NSPoint)point{
+    
+    NSRect parentFrame = [[frameDict.dict objectForKey:parentName] rectValue];
+    
+    NSPoint distance = NSMakePoint(point.x-parentFrame.origin.x,
+                                   point.y - parentFrame.origin.y);
     return distance;
 }
 

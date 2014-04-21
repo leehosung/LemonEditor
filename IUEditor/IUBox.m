@@ -282,7 +282,7 @@
 
 - (void)moveX:(NSInteger)x Y:(NSInteger)y{
     
-    NSPoint distancePoint = [self.delegate distanceIU:self.htmlID withParent:self.parent.htmlID];
+    NSPoint distancePoint = [self.delegate distanceFromIU:self.htmlID to:self.parent.htmlID];
     
     NSInteger currentX = [_css.assembledTagDictionary[IUCSSTagX] integerValue] + x;
     [_css setValue:@(currentX) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagX]];
