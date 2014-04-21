@@ -105,7 +105,7 @@
 - (void)deleteTextInRange:(NSRange)range;
 - (NSString*)textHTML;
 
-#define IUTextCursorLocationID      @"id"
-#define IUTextCursorLocationIndex   @"index"
-- (NSDictionary*)cursorTextCursorLocation;
+//#define IUTextCursorLocationID    @"id"
+//#define IUTextCursorLocationIndex @"index"
+- (NSDictionary*)cursor;
 @end

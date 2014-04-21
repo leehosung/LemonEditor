@@ -36,6 +36,8 @@
     
     NSInteger preparedFontSize;
     NSString *preparedFontName;
+    
+    NSInteger _cursorLocationInText;
 }
 
 - (id)init{
@@ -339,6 +341,7 @@
     if (preparedFontName) {
         [self setFont:preparedFontName atRange:NSMakeRange(index, insertText.length)];
     }
+    _cursorLocationInText = index + insertText.length;
 }
 
 - (void)replaceText:(NSString*)string atRange:(NSRange)range{
@@ -361,6 +364,7 @@
         }
     }
     [text replaceCharactersInRange:range withString:string];
+    _cursorLocationInText = range.location + string.length;
 }
 
 
@@ -388,6 +392,16 @@
     //text 삭제
     //css 삭제보다 뒤로 둔다. assert 문 돌리기 위해서.
     [text deleteCharactersInRange:range];
+    _cursorLocationInText = range.location;
+}
+
+- (NSDictionary*)cursor{
+    NSIndexSet *indexSet = [self rangeSet];
+    NSInteger indexOfSpan = [indexSet indexLessThanOrEqualToIndex:_cursorLocationInText];
+//    NSInteger spanCount = [indexSet countOfIndexesInRange:NSMakeRange(0, indexOfSpan)];
+    NSString *cursorLocation = [NSString stringWithFormat:@"%@TNode%ld", _idKey, indexOfSpan];
+
+    return @{IUTextCursorLocationID: cursorLocation, IUTextCursorLocationIndex:@(_cursorLocationInText - indexOfSpan)};
 }
 
 
