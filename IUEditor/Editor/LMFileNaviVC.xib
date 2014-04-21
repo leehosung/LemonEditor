@@ -17,14 +17,14 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="daW-AY-TqR">
-                    <rect key="frame" x="0.0" y="240" width="220" height="30"/>
+                    <rect key="frame" x="-1" y="240" width="222" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView">
-                        <rect key="frame" x="1" y="1" width="218" height="28"/>
+                        <rect key="frame" x="1" y="1" width="220" height="29"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EkG-KP-GvP">
-                                <rect key="frame" x="6" y="7" width="97" height="14"/>
+                                <rect key="frame" x="6" y="8" width="97" height="14"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Page Navigation" id="QuJ-w5-AX4">
                                     <font key="font" metaFont="smallSystemBold"/>
@@ -37,20 +37,20 @@
                     <constraints>
                         <constraint firstAttribute="centerY" secondItem="EkG-KP-GvP" secondAttribute="centerY" id="NcS-nm-ukn"/>
                         <constraint firstItem="EkG-KP-GvP" firstAttribute="leading" secondItem="daW-AY-TqR" secondAttribute="leading" constant="9" id="kPH-3X-oOW"/>
-                        <constraint firstAttribute="height" constant="30" id="ygC-Rv-1SS"/>
+                        <constraint firstAttribute="height" constant="31" id="ygC-Rv-1SS"/>
                     </constraints>
                     <color key="borderColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="fillColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                 </box>
-                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="26" horizontalPageScroll="10" verticalLineScroll="26" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FrB-qu-8vr" userLabel="Page navigation">
-                    <rect key="frame" x="0.0" y="0.0" width="220" height="240"/>
+                <scrollView misplaced="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="26" horizontalPageScroll="10" verticalLineScroll="26" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FrB-qu-8vr" userLabel="Page navigation">
+                    <rect key="frame" x="0.0" y="0.0" width="220" height="239"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <clipView key="contentView" id="MON-n8-pf1">
-                        <rect key="frame" x="0.0" y="0.0" width="220" height="240"/>
+                    <clipView key="contentView" misplaced="YES" id="MON-n8-pf1">
+                        <rect key="frame" x="0.0" y="0.0" width="220" height="239"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowHeight="26" viewBased="YES" indentationPerLevel="4" outlineTableColumn="IcS-xl-hS5" id="1aw-gA-pJZ">
-                                <rect key="frame" x="0.0" y="0.0" width="220" height="240"/>
+                                <rect key="frame" x="0.0" y="0.0" width="220" height="239"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -304,14 +304,14 @@
                 </scrollView>
             </subviews>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="daW-AY-TqR" secondAttribute="trailing" id="3aV-rq-aM8"/>
                 <constraint firstItem="FrB-qu-8vr" firstAttribute="top" secondItem="daW-AY-TqR" secondAttribute="bottom" id="7fL-gx-0qQ"/>
                 <constraint firstItem="FrB-qu-8vr" firstAttribute="leading" secondItem="2vD-fN-bWc" secondAttribute="leading" id="N2r-WT-3LT"/>
+                <constraint firstAttribute="trailing" secondItem="daW-AY-TqR" secondAttribute="trailing" constant="-1" id="Nl7-qs-WyY"/>
+                <constraint firstItem="daW-AY-TqR" firstAttribute="top" secondItem="2vD-fN-bWc" secondAttribute="top" constant="-1" id="Uel-EI-EJn"/>
                 <constraint firstItem="FrB-qu-8vr" firstAttribute="top" secondItem="daW-AY-TqR" secondAttribute="bottom" id="XXl-Fe-Q0f"/>
-                <constraint firstItem="daW-AY-TqR" firstAttribute="leading" secondItem="2vD-fN-bWc" secondAttribute="leading" id="gJr-rA-efv"/>
-                <constraint firstItem="daW-AY-TqR" firstAttribute="top" secondItem="2vD-fN-bWc" secondAttribute="top" id="ggW-dr-DHj"/>
                 <constraint firstAttribute="bottom" secondItem="FrB-qu-8vr" secondAttribute="bottom" id="iUm-ad-YKY"/>
                 <constraint firstAttribute="trailing" secondItem="FrB-qu-8vr" secondAttribute="trailing" id="sUL-xp-rZY"/>
+                <constraint firstItem="daW-AY-TqR" firstAttribute="leading" secondItem="2vD-fN-bWc" secondAttribute="leading" constant="-1" id="zZI-9n-TZd"/>
             </constraints>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="czK-hJ-lvV"/>
