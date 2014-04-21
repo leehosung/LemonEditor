@@ -9,6 +9,11 @@
 #import "LMPropertyShadowVC.h"
 
 @interface LMPropertyShadowVC ()
+@property (weak) IBOutlet NSColorWell *shadowColor;
+@property (weak) IBOutlet NSSlider *shadowV;
+@property (weak) IBOutlet NSSlider *shadowH;
+@property (weak) IBOutlet NSSlider *shadowSprd;
+@property (weak) IBOutlet NSSlider *shadowBlr;
 
 @end
 
@@ -18,9 +23,20 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Initialization code here.
+        
     }
     return self;
 }
 
+- (NSString*)CSSBindingPath:(IUCSSTag)tag{
+    return [@"controller.selection.css.assembledTagDictionary." stringByAppendingString:tag];
+}
+
+-(void)awakeFromNib{
+    [_shadowColor bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagShadowColor] options:nil];
+    [_shadowV bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagShadowVertical] options:nil];
+    [_shadowH bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagShadowHorizontal] options:nil];
+    [_shadowSprd bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagShadowSpread] options:nil];
+    [_shadowBlr bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagShadowBlur] options:nil];
+}
 @end
