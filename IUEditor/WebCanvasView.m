@@ -114,6 +114,9 @@
 #pragma mark -
 #pragma mark mouse operation
 
+- (NSUInteger)webView:(WebView *)webView dragSourceActionMaskForPoint:(NSPoint)point{
+    return WebDragSourceActionNone;
+}
 
 - (NSDragOperation)draggingEntered:(id<NSDraggingInfo>)sender{
     return NSDragOperationEvery;

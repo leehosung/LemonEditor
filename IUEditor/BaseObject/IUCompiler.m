@@ -15,7 +15,9 @@
 #import "IUHeader.h"
 #import "IUPageContent.h"
 #import "IUMaster.h"
+
 #import "IUHTML.h"
+#import "IUImage.h"
 
 @implementation IUCompiler{
     NSArray *_flowIUs;
@@ -84,6 +86,13 @@
             [code appendString:@"</div>"];
         }
     }
+#pragma mark IUImage
+    else if([iu isKindOfClass:[IUImage class]]){
+        [code appendFormat:@"<img %@", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes]];
+        [code appendString:@">"];
+        
+    }
+#pragma mark IUHTML
     else if([iu isKindOfClass:[IUHTML class]]){
         [code appendFormat:@"<div %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes]];
         if(((IUHTML *)iu).hasInnerHTML){
@@ -99,6 +108,7 @@
         [code appendFormat:@"</div>"];
         
     }
+#pragma mark IUBox
     else if ([iu isKindOfClass:[IUBox class]]) {
         [code appendFormat:@"<div %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes]];
         if (iu.textHTML) {
@@ -129,7 +139,15 @@
 -(NSString*)HTMLAttributeStringWithTagDict:(NSDictionary*)tagDictionary{
     NSMutableString *code = [NSMutableString string];
     for (NSString *key in tagDictionary) {
-        [code appendFormat:@"%@=%@ ", key, tagDictionary[key]];
+        
+        //image tag attributes
+        if([key isEqualToString:@"src"]){
+            NSString *imagePath = [_resourceSource relativePathForResource:tagDictionary[key]];
+            [code appendFormat:@"%@='%@' ", key, imagePath];
+        }
+        else{
+            [code appendFormat:@"%@=%@ ", key, tagDictionary[key]];
+        }
     }
     [code trim];
     return code;

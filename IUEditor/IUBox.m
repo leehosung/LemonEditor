@@ -183,7 +183,7 @@
     }
 }
 
--(BOOL)shouleAddIU{
+-(BOOL)shouldAddIU{
     return YES;
 }
 
@@ -191,7 +191,7 @@
     
     assert(iu != self);
     
-    if([self shouleAddIU]){
+    if([self shouldAddIU]){
         [_m_children addObject:iu];
         if (iu.delegate == nil) {
             iu.delegate = self.delegate;
@@ -229,7 +229,7 @@
 
 
 -(BOOL)insertIU:(IUBox *)iu atIndex:(NSInteger)index  error:(NSError**)error{
-    if([self shouleAddIU]){
+    if([self shouldAddIU]){
         [_m_children insertObject:iu atIndex:index];
         return YES;
     }

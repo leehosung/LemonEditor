@@ -8,11 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 #import "IUController.h"
+#import "IUResourceManager.h"
 #import "LMPropertyIUBoxVC.h"
 
 @interface LMIUInspectorVC : NSViewController <NSOutlineViewDataSource, NSOutlineViewDelegate>
 
 @property (nonatomic) IUController *controller;
+@property (nonatomic) IUResourceManager     *resourceManager;
 
 //Connect to LMWC
 @property  LMPropertyIUBoxVC   *propertyIUBoxVC;

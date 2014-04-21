@@ -10,6 +10,10 @@
 
 @interface LMPropertyIUImageVC ()
 
+@property (weak) IBOutlet NSTextField *variableTF;
+@property (weak) IBOutlet NSTextField *altTextTF;
+@property (weak) IBOutlet NSComboBox *imageResourceComboBox;
+
 @end
 
 @implementation LMPropertyIUImageVC
@@ -21,6 +25,15 @@
         // Initialization code here.
     }
     return self;
+}
+
+- (void)awakeFromNib{
+    [_variableTF bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"variable"] options:nil];
+    [_altTextTF bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"altText"] options:nil];
+    
+    [_imageResourceComboBox bind:@"content" toObject:self withKeyPath:@"resourceManager.imageNames" options:nil];
+    [_imageResourceComboBox bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"imageName"] options:nil];
+
 }
 
 @end
