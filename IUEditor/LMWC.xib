@@ -9,11 +9,12 @@
                 <outlet property="appearanceV" destination="209-eo-kDy" id="Vjs-mp-RBg"/>
                 <outlet property="bottomToolbarV" destination="YTs-oo-nxs" id="Had-lh-RkA"/>
                 <outlet property="centerV" destination="LCo-BM-DQN" id="a81-Fm-UQ1"/>
+                <outlet property="eventV" destination="cND-E8-FNH" id="L2T-JZ-w7f"/>
                 <outlet property="leftBottomV" destination="4Tl-hR-JBi" id="Hgo-4P-SU6"/>
                 <outlet property="leftTopV" destination="efd-DN-4Bq" id="c6b-do-zjc"/>
-                <outlet property="propertyBaseV" destination="HyI-BD-aOo" id="TQT-Uy-ZVZ"/>
                 <outlet property="propertyMatrix" destination="zhv-IX-K54" id="UL0-4t-TMq"/>
-                <outlet property="propertyV" destination="VEQ-BG-SDd" id="57t-X7-13c"/>
+                <outlet property="propertyTabV" destination="VEQ-BG-SDd" id="pKx-vM-P1p"/>
+                <outlet property="propertyV" destination="Ucu-5b-khM" id="mOL-zc-gXE"/>
                 <outlet property="resourceV" destination="yuK-jm-moa" id="vww-Rv-ZVx"/>
                 <outlet property="topToolbarV" destination="4es-7h-bcl" id="SBG-S6-dhA"/>
                 <outlet property="widgetTabV" destination="Rvr-f8-CYQ" id="rJr-Fz-ouO"/>
@@ -112,23 +113,11 @@
                                                 <view key="view" id="Ucu-5b-khM">
                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="447"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <subviews>
-                                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="HyI-BD-aOo" userLabel="propertyBaseV">
-                                                            <rect key="frame" x="0.0" y="0.0" width="300" height="447"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        </customView>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="HyI-BD-aOo" firstAttribute="top" secondItem="Ucu-5b-khM" secondAttribute="top" id="7L5-Wg-cj7"/>
-                                                        <constraint firstAttribute="bottom" secondItem="HyI-BD-aOo" secondAttribute="bottom" id="cb3-qL-6xL"/>
-                                                        <constraint firstItem="HyI-BD-aOo" firstAttribute="leading" secondItem="Ucu-5b-khM" secondAttribute="leading" id="qLb-ie-Gno"/>
-                                                        <constraint firstAttribute="trailing" secondItem="HyI-BD-aOo" secondAttribute="trailing" id="zZh-hl-qmx"/>
-                                                    </constraints>
                                                 </view>
                                             </tabViewItem>
                                             <tabViewItem label="Event" identifier="" id="FWx-cE-GEy">
                                                 <view key="view" id="cND-E8-FNH">
-                                                    <rect key="frame" x="10" y="33" width="280" height="78"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="447"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </view>
                                             </tabViewItem>

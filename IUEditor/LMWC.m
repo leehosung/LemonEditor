@@ -27,6 +27,7 @@
 #import "LMStackVC.h"
 #import "LMWidgetLibraryVC.h"
 #import "LMCanvasVC.h"
+#import "LMEventVC.h"
 
 #import "LMTopToolbarVC.h"
 #import "LMBottomToolbarVC.h"
@@ -44,8 +45,12 @@
 @property (weak) IBOutlet NSView *leftBottomV;
 
 //Right-top
-@property (weak) IBOutlet NSTabView *propertyV;
+
+@property (weak) IBOutlet NSTabView *propertyTabV;
+
+@property (weak) IBOutlet NSView *propertyV;
 @property (weak) IBOutlet NSView *appearanceV;
+@property (weak) IBOutlet NSView *eventV;
 
 //Right-bottom
 @property (weak) IBOutlet NSTabView *widgetTabV;
@@ -55,11 +60,6 @@
 
 //canvas
 @property (weak) IBOutlet NSView *centerV;
-//befor merge
-
-
-
-@property (weak) IBOutlet NSView *propertyBaseV;
 
 @end
 
@@ -80,8 +80,9 @@
     LMBottomToolbarVC     *bottomToolbarVC;
     
     //right top
-    LMIUInspectorVC    *iuInspectorVC;
+    LMIUInspectorVC  *iuInspectorVC;
     LMAppearanceVC  *appearanceVC;
+    LMEventVC       *eventVC;
     
     //right bottom
     LMWidgetLibraryVC   *widgetLibraryVC;
@@ -145,7 +146,11 @@
        
     iuInspectorVC = [[LMIUInspectorVC alloc] initWithNibName:[LMIUInspectorVC class].className bundle:nil];
     [iuInspectorVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
-    [_propertyBaseV addSubviewFullFrame:iuInspectorVC.view];
+    [_propertyV addSubviewFullFrame:iuInspectorVC.view];
+    
+    eventVC = [[LMEventVC alloc] initWithNibName:@"LMEventVC" bundle:nil];
+    [eventVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
+    [_eventV addSubviewFullFrame:eventVC.view];
     
 }
 
@@ -254,7 +259,7 @@
     NSMatrix *propertyMatrix = sender;
     NSInteger index = [propertyMatrix selectedColumn];
     
-    [_propertyV selectTabViewItemAtIndex:index];
+    [_propertyTabV selectTabViewItemAtIndex:index];
 }
 - (IBAction)clickWidgetMatrix:(id)sender {
     NSMatrix *propertyMatrix = sender;

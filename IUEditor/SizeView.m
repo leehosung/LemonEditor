@@ -88,7 +88,7 @@
      
      */
     [self addSubview:boxManageView positioned:NSWindowBelow relativeTo:self.addBtn];
-    [self addSubviewFullFrame:rulerView withLeft:30 positioned:NSWindowAbove relativeTo:self.addBtn];
+    [self addSubviewFullFrame:rulerView withLeft:30 positioned:NSWindowBelow relativeTo:self.addBtn];
     
 }
 
