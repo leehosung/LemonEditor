@@ -18,7 +18,7 @@
 @property _binding_ NSInteger maxFrameWidth;
 
 -(void)IU:(NSString *)identifier CSSChanged:(NSString*)css forWidth:(NSInteger)width;
--(void)IU:(NSString*)identifier textHTML:(NSString *)html withParentID:(NSString *)parentID;
+-(void)IU:(NSString*)identifier textHTML:(NSString *)html withParentID:(NSString *)parentID nearestID:(NSString *)nID index:(NSUInteger)index;
 -(void)IU:(NSString *)identifier HTML:(NSString *)html withParentID:(NSString *)parentID;
 -(void)IU:(NSString *)identifier setLink:(NSString *)link;
 
@@ -104,4 +104,8 @@
 - (void)insertText:(NSString*)text withRange:(NSRange)range;
 - (void)deleteTextInRange:(NSRange)range;
 - (NSString*)textHTML;
+
+#define IUTextCursorLocationID      @"id"
+#define IUTextCursorLocationIndex   @"index"
+- (NSDictionary*)cursorTextCursorLocation;
 @end

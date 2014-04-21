@@ -160,16 +160,6 @@
 }
 
 
-- (void)webView:(WebView *)sender mouseDidMoveOverElement:(NSDictionary *)elementInformation modifierFlags:(NSUInteger)modifierFlags{
-    //whem mouse move, save current element!
-    currentNode = [elementInformation objectForKey:WebElementDOMNodeKey];
-    
-    currentNode = [self IUNodeAtCurrentNode:currentNode];
-    
-    if(currentNode.idName){
-        JDTraceLog( @"%@", currentNode.idName);
-    }
-}
 
 
 
@@ -301,7 +291,6 @@
 #pragma mark text
 
 
-
 - (BOOL)isOneIUSTextelection:(DOMRange *)range{
     DOMNode *startContainer = range.startContainer;
     if([startContainer isKindOfClass:[DOMText class]]){
@@ -337,6 +326,10 @@
         return NO;
     }
     
+    if([self isOneIUSTextelection:range] == NO){
+        return NO;
+    }
+    
     //FIXME: attribute isWirtable
     BOOL isWritable = YES;
     NSString *writableValue = [IUNode getAttribute:@"isWritable"];
@@ -351,6 +344,7 @@
 
         JDInfoLog(@"insertText [IU:%@] : range(%ld, %ld) : %@ ", IUNode.idName, iuRange.location, iuRange.length, text);
     }
+    
     return NO;
 }
 
@@ -429,12 +423,13 @@
 
 }
 
-- (void)selectTextRange:(DOMHTMLElement *)element start:(int)start end:(int)end{
+- (void)selectTextRange:(DOMHTMLElement *)element index:(NSUInteger)index{
+    
     DOMRange *range = [self selectedDOMRange];
-    [range selectNodeContents:element];
-
-    [range setStart:element offset:start];
-    [range setEnd:element offset:end];
+    
+    [range selectNode:element];
+    [range setStart:range.startContainer offset:(int)index];
+    [range setEnd:range.endContainer offset:(int)index];
     
     [self setSelectedDOMRange:range affinity:NSSelectionAffinityDownstream];
 
@@ -445,12 +440,6 @@
 #pragma mark -
 #pragma mark manage IU
 
-- (NSString *)IDOfCurrentIU{
-    if( [currentNode isKindOfClass:[DOMHTMLElement class]] ){
-        return [currentNode idName];
-    }
-    return nil;
-}
 
 - (DOMElement *)DOMElementAtPoint:(NSPoint)point{
     NSDictionary *dict  =[self elementAtPoint:point];

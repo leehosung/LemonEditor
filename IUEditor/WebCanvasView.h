@@ -10,7 +10,6 @@
 #import <WebKit/WebKit.h>
 
 @interface WebCanvasView : WebView {
-    DOMHTMLElement *currentNode;
 }
 
 @property id delegate;
@@ -21,9 +20,8 @@
 
 #pragma mark -
 
-- (NSString *)IDOfCurrentIU;
 - (NSString *)IUAtPoint:(NSPoint)point;
 - (BOOL)isDOMTextAtPoint:(NSPoint)point;
 - (void)changeDOMRange:(NSPoint)point;
-- (void)selectTextRange:(DOMHTMLElement *)element;
+- (void)selectTextRange:(DOMHTMLElement *)element index:(NSUInteger)index;
 @end
