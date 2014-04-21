@@ -25,4 +25,5 @@
 - (NSString *)IUAtPoint:(NSPoint)point;
 - (BOOL)isDOMTextAtPoint:(NSPoint)point;
 - (void)changeDOMRange:(NSPoint)point;
+- (void)selectTextRange:(DOMHTMLElement *)element;
 @end

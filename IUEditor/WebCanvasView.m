@@ -332,9 +332,8 @@
 - (BOOL)webView:(WebView *)webView shouldInsertText:(NSString *)text replacingDOMRange:(DOMRange *)range givenAction:(WebViewInsertAction)action{
     
     DOMHTMLElement *IUNode = [self IUNodeAtCurrentNode:range.startContainer];
-    if(IUNode == nil){
-        //TODO: check selectedNode
-        //|| [IUNode isNotEqualTo:currentNode]){
+    if(IUNode == nil
+        || [IUNode.idName isNotEqualTo:[((LMCanvasVC *)self.delegate) selectedIUIdentifier]]){
         return NO;
     }
     
@@ -349,8 +348,8 @@
     if (isWritable){
         NSRange iuRange = [self selectedRange:range InIU:IUNode];
         [((LMCanvasVC *)self.delegate) insertString:text identifier:IUNode.idName withRange:iuRange];
+
         JDInfoLog(@"insertText [IU:%@] : range(%ld, %ld) : %@ ", IUNode.idName, iuRange.location, iuRange.length, text);
-        return YES;
     }
     return NO;
 }
@@ -358,7 +357,9 @@
 - (BOOL)webView:(WebView *)webView shouldDeleteDOMRange:(DOMRange *)range{
     
     DOMHTMLElement *IUNode = [self IUNodeAtCurrentNode:range.startContainer];
-    if(IUNode == nil || [IUNode isNotEqualTo:currentNode]){
+    if(IUNode == nil
+        || [IUNode.idName isNotEqualTo:[((LMCanvasVC *)self.delegate) selectedIUIdentifier]]){
+
         return NO;
     }
     if([self isOneIUSTextelection:range] == NO){
@@ -378,7 +379,6 @@
         NSRange iuRange = [self selectedRange:range InIU:IUNode];
         [((LMCanvasVC *)self.delegate) deleteStringRange:iuRange identifier:IUNode.idName];
         JDInfoLog(@"DeleteText[IU:%@] : range(%ld, %ld) ", IUNode.idName, iuRange.location, iuRange.length);
-        return YES;
     }
     return NO;
 
@@ -426,6 +426,17 @@
         
         [self setSelectedDOMRange:range affinity:NSSelectionAffinityDownstream];
     }
+
+}
+
+- (void)selectTextRange:(DOMHTMLElement *)element start:(int)start end:(int)end{
+    DOMRange *range = [self selectedDOMRange];
+    [range selectNodeContents:element];
+
+    [range setStart:element offset:start];
+    [range setEnd:element offset:end];
+    
+    [self setSelectedDOMRange:range affinity:NSSelectionAffinityDownstream];
 
 }
 

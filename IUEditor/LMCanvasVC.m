@@ -141,6 +141,14 @@
     return NO;
 }
 
+- (NSString *)selectedIUIdentifier{
+    if([self countOfSelectedIUs] == 1){
+        IUBox *currentIU = self.controller.selectedObjects[0];
+        return currentIU.htmlID;
+    }
+    return nil;
+}
+
 -(void)selectedObjectsDidChange:(NSDictionary*)change{
     [JDLogUtil log:IULogAction key:@"CanvasVC:observed" string:[self.controller.selectedIdentifiers description]];
     
@@ -283,6 +291,10 @@
         JDErrorLog(@"Can't find tag");
     }
     return tag;
+}
+
+-(void)IU:(NSString*)identifier textHTML:(NSString *)html withParentID:(NSString *)parentID{    
+    [self IU:identifier HTML:html withParentID:parentID];
 }
 
 
