@@ -40,5 +40,9 @@
 //        value  : NSDictionary with key-value
 - (NSDictionary*)css;
 
+#define IUTextCursorLocationID    @"id"
+#define IUTextCursorLocationIndex @"index"
+- (NSDictionary*)cursor;
+
 @property NSString *idKey;
 @end

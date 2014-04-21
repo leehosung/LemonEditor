@@ -426,10 +426,18 @@
 - (void)selectTextRange:(DOMHTMLElement *)element index:(NSUInteger)index{
     
     DOMRange *range = [self selectedDOMRange];
-    
-    [range selectNode:element];
-    [range setStart:range.startContainer offset:(int)index];
-    [range setEnd:range.endContainer offset:(int)index];
+    [range selectNodeContents:element];
+    NSUInteger size = element.innerText.length;
+
+    if(size == index){
+        [range setStart:range.startContainer offset:range.endOffset];
+    }
+    else{
+//        int newIndex = (int)index -1;
+        [range setStart:range.startContainer offset:0];
+        [range setEnd:range.startContainer offset:1];
+
+    }
     
     [self setSelectedDOMRange:range affinity:NSSelectionAffinityDownstream];
 

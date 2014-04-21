@@ -366,8 +366,8 @@
 - (void)replaceText:(NSString*)text withRange:(NSRange)range{
     [textManager replaceText:text atRange:range];
     
-    NSUInteger index = [[self cursorTextCursorLocation][IUTextCursorLocationIndex] integerValue];
-    NSString   *nID =[self cursorTextCursorLocation][IUTextCursorLocationID];
+    NSUInteger index = [[self cursor][IUTextCursorLocationIndex] integerValue];
+    NSString   *nID =[self cursor][IUTextCursorLocationID];
     
     [self.delegate IU:self.htmlID textHTML:self.html withParentID:self.parent.htmlID nearestID:nID index:index];
     
@@ -382,8 +382,8 @@
 - (void)insertText:(NSString*)text withRange:(NSRange)range{
     NSLog(@"insertText");
     [textManager insertString:text atIndex:range.location];
-    NSUInteger index = [[self cursorTextCursorLocation][IUTextCursorLocationIndex] integerValue];
-    NSString   *nID =[self cursorTextCursorLocation][IUTextCursorLocationID];
+    NSUInteger index = [[self cursor][IUTextCursorLocationIndex] integerValue];
+    NSString   *nID =[self cursor][IUTextCursorLocationID];
     
     [self.delegate IU:self.htmlID textHTML:self.html withParentID:self.parent.htmlID nearestID:nID index:index];
 }
@@ -391,8 +391,8 @@
 
 - (void)deleteTextInRange:(NSRange)range{
     [textManager deleteTextInRange:range];
-    NSUInteger index = [[self cursorTextCursorLocation][IUTextCursorLocationIndex] integerValue];
-    NSString   *nID =[self cursorTextCursorLocation][IUTextCursorLocationID];
+    NSUInteger index = [[self cursor][IUTextCursorLocationIndex] integerValue];
+    NSString   *nID =[self cursor][IUTextCursorLocationID];
     
     [self.delegate IU:self.htmlID textHTML:self.html withParentID:self.parent.htmlID nearestID:nID index:index];
 }
@@ -402,8 +402,8 @@
     return textManager.HTML;
 }
 
-- (NSDictionary*)cursorTextCursorLocation{
-    return @{IUTextCursorLocationID: @"IUBox1TNode0", IUTextCursorLocationIndex: @(0)};
+- (NSDictionary*)cursor{
+    return [textManager cursor];
 }
 
 @end
