@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMFileNaviVC">
@@ -212,8 +212,42 @@
                                                     <outlet property="textField" destination="fv6-wY-h54" id="rbY-hX-gBW"/>
                                                 </connections>
                                             </tableCellView>
-                                            <tableCellView identifier="cssFile" autoresizesSubviews="NO" id="amj-x3-yZx" userLabel="css file">
+                                            <tableCellView identifier="videoFile" autoresizesSubviews="NO" id="Mjq-0T-CVg" userLabel="video">
                                                 <rect key="frame" x="0.0" y="104" width="220" height="26"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d32-js-1v1">
+                                                        <rect key="frame" x="8" y="6" width="12" height="14"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ic_movie" id="dCv-wS-SYW"/>
+                                                    </imageView>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="S2i-Ki-GAe">
+                                                        <rect key="frame" x="21" y="6" width="198" height="14"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="video file" id="YfO-fB-acb">
+                                                            <font key="font" size="11" name="LucidaGrande"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="Mjq-0T-CVg" name="value" keyPath="objectValue.name" id="QIy-Bg-Erl"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="S2i-Ki-GAe" firstAttribute="leading" secondItem="d32-js-1v1" secondAttribute="trailing" constant="3" id="Jrj-ag-Vjc"/>
+                                                    <constraint firstAttribute="trailing" secondItem="S2i-Ki-GAe" secondAttribute="trailing" constant="3" id="POJ-hL-pvY"/>
+                                                    <constraint firstAttribute="centerY" secondItem="d32-js-1v1" secondAttribute="centerY" id="SA1-Sg-zui"/>
+                                                    <constraint firstItem="d32-js-1v1" firstAttribute="leading" secondItem="Mjq-0T-CVg" secondAttribute="leading" constant="8" id="ZKT-1U-4T9"/>
+                                                    <constraint firstAttribute="centerY" secondItem="S2i-Ki-GAe" secondAttribute="centerY" id="rNI-St-9a5"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="imageView" destination="d32-js-1v1" id="rlh-6N-WdE"/>
+                                                    <outlet property="textField" destination="S2i-Ki-GAe" id="1dT-Wv-xCg"/>
+                                                </connections>
+                                            </tableCellView>
+                                            <tableCellView identifier="cssFile" autoresizesSubviews="NO" id="amj-x3-yZx" userLabel="css file">
+                                                <rect key="frame" x="0.0" y="130" width="220" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NPt-8b-0nz">
@@ -247,7 +281,7 @@
                                                 </connections>
                                             </tableCellView>
                                             <tableCellView identifier="JSFile" autoresizesSubviews="NO" id="LF9-oT-gcv" userLabel="comp file">
-                                                <rect key="frame" x="0.0" y="130" width="220" height="26"/>
+                                                <rect key="frame" x="0.0" y="156" width="220" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zqW-gx-UL3">
@@ -323,6 +357,7 @@
         <image name="ic_image" width="12" height="14"/>
         <image name="ic_js" width="12" height="14"/>
         <image name="ic_master" width="12" height="14"/>
+        <image name="ic_movie" width="12" height="14"/>
         <image name="ic_page" width="12" height="14"/>
     </resources>
 </document>

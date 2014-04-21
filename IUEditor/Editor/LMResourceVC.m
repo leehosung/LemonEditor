@@ -28,13 +28,13 @@
 
 -(void)setManager:(IUResourceManager *)manager{
     _manager = manager;
-    [_collectionListV bind:@"content" toObject:manager withKeyPath:@"imageResourceNodes" options:nil];
-    [_collectionIconV bind:@"content" toObject:manager withKeyPath:@"imageResourceNodes" options:nil];
+    [_collectionListV bind:@"content" toObject:manager withKeyPath:@"resourceNodes" options:nil];
+    [_collectionIconV bind:@"content" toObject:manager withKeyPath:@"resourceNodes" options:nil];
 }
 
 - (BOOL)collectionView:(NSCollectionView *)collectionView writeItemsAtIndexes:(NSIndexSet *)indexes toPasteboard:(NSPasteboard *)pasteboard{
     NSUInteger index = [indexes firstIndex];
-    IUResourceNode *node = [_manager.imageResourceNodes objectAtIndex:index];
+    IUResourceNode *node = [_manager.resourceNodes objectAtIndex:index];
     
     [pasteboard setString:node.name forType:kUTTypeIUImageResource];
     return YES;

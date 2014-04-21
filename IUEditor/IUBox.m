@@ -133,6 +133,11 @@
     return @{@"class":className, @"id":self.htmlID};
 }
 
+-(NSArray *)HTMLOneAttribute{
+    NSArray *array = [NSArray array];
+    return array;
+}
+
 
 -(NSDictionary*)CSSAttributesForWidth:(NSInteger)width{
     return [_css tagDictionaryForWidth:(int)width];

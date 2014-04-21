@@ -8,9 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 #import "IUController.h"
+#import "IUResourceManager.h"
 
 @interface LMPropertyIUMovieVC : NSViewController
 
+@property (nonatomic) IUResourceManager *resourceManager;
 @property (nonatomic) IUController      *controller;
 
 @end

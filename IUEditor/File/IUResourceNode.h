@@ -13,6 +13,7 @@ typedef enum _IUResourceType{
     IUResourceTypeImage,
     IUResourceTypeCSS,
     IUResourceTypeJS,
+    IUResourceTypeVideo,
 }IUResourceType;
 
 

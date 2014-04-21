@@ -19,6 +19,11 @@
     return node.relativePath;
 }
 
+-(NSString*)absolutePathForResource:(NSString*)name{
+    IUResourceNode *node = (IUResourceNode*)[self nodeWithName:name];
+    return node.absolutePath;
+}
+
 
 -(IUResourceNode*)insertResourceWithData:(NSData*)data type:(IUResourceType)type{
     assert(0);
@@ -38,11 +43,18 @@
             groupName=@"CSS"; break;
         }
         case IUResourceTypeJS: groupName=@"JS"; break;
+        case IUResourceTypeVideo:{
+            [self willChangeValueForKey:@"resourceNodes"];
+            [self willChangeValueForKey:@"videoNames"];
+            [self willChangeValueForKey:@"videoPaths"];
+            groupName=@"Video"; break;
+        }
         case IUResourceTypeImage:{
-            [self willChangeValueForKey:@"imageResourceNodes"];
+            [self willChangeValueForKey:@"resourceNodes"];
             [self willChangeValueForKey:@"imageNames"];
             [self willChangeValueForKey:@"imagePaths"];
             groupName=@"Image"; break;
+            
         }
         default: assert(0);  break;
     }
@@ -51,9 +63,11 @@
     IUResourceGroupNode *parent = (IUResourceGroupNode*)[self nodeWithName:groupName];
     [parent addResourceNode:resourceNode path:path];
     if (type == IUResourceTypeCSS) {
+        [self didChangeValueForKey:@"videoPaths"];
+        [self didChangeValueForKey:@"videoNames"];
         [self didChangeValueForKey:@"imagePaths"];
         [self didChangeValueForKey:@"imageNames"];
-        [self didChangeValueForKey:@"imageResourceNodes"];
+        [self didChangeValueForKey:@"resourceNodes"];
     }
     return resourceNode;
 }
@@ -73,25 +87,52 @@
     return ret;
 }
 
--(void)setRootNode:(IUResourceGroupNode *)rootNode{
-    [self willChangeValueForKey:@"imageResourceNodes"];
-    [self willChangeValueForKey:@"imageNames"];
-    [self willChangeValueForKey:@"imagePaths"];
-    _rootNode = rootNode;
-    [self didChangeValueForKey:@"imagePaths"];
-    [self didChangeValueForKey:@"imageNames"];
-    [self didChangeValueForKey:@"imageResourceNodes"];
+-(NSArray*)videoPaths{
+    NSArray *nodes = _rootNode.allChildren;
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUNode* evaluatedObject, NSDictionary *bindings) {
+        if ([evaluatedObject isKindOfClass:[IUResourceNode class]]) {
+            if (((IUResourceNode*)evaluatedObject).type == IUResourceTypeVideo) {
+                return YES;
+            }
+        }
+        return NO;
+    }];
+    NSArray *imageNodes = [nodes filteredArrayUsingPredicate:predicate];
+    NSArray *ret = [imageNodes valueForKeyPath:@"relativePath"];
+    return ret;
 }
 
--(NSArray*)imageNames{
+-(void)setRootNode:(IUResourceGroupNode *)rootNode{
+    [self willChangeValueForKey:@"resourceNodes"];
+    [self willChangeValueForKey:@"imageNames"];
+    [self willChangeValueForKey:@"imagePaths"];
+    [self willChangeValueForKey:@"videoPaths"];
+    [self willChangeValueForKey:@"videoNames"];
+
+    _rootNode = rootNode;
+    [self didChangeValueForKey:@"videoPaths"];
+    [self didChangeValueForKey:@"videoNames"];
+
+    [self didChangeValueForKey:@"imagePaths"];
+    [self didChangeValueForKey:@"imageNames"];
+    [self didChangeValueForKey:@"resourceNodes"];
+}
+
+-(NSArray *)imageNames{
     NSArray *ret = [self.imagePaths valueForKeyPath:@"lastPathComponent"];
     return ret;
 }
 
--(NSArray*)imageResourceNodes{
+-(NSArray *)videoNames{
+    NSArray *ret = [self.videoPaths valueForKeyPath:@"lastPathComponent"];
+    return ret;
+}
+
+-(NSArray*)resourceNodes{
     NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUResourceNode* evaluatedObject, NSDictionary *bindings) {
         if ([evaluatedObject isKindOfClass:[IUResourceNode class]]) {
-            if (evaluatedObject.type == IUResourceTypeImage) {
+            if (evaluatedObject.type == IUResourceTypeImage ||
+                evaluatedObject.type == IUResourceTypeVideo) {
                 return YES;
             }
         }
@@ -100,5 +141,14 @@
     return [_rootNode.allChildren filteredArrayUsingPredicate:predicate];
 }
 
+
+- (IUResourceGroupNode *)imageNode{
+    for(IUResourceGroupNode *child in _rootNode.children){
+        if([child.name isEqualToString:@"Image"]){
+            return child;
+        }
+    }
+    return nil;
+}
 
 @end

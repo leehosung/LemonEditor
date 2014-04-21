@@ -18,6 +18,7 @@
 
 #import "IUHTML.h"
 #import "IUImage.h"
+#import "IUMovie.h"
 
 @implementation IUCompiler{
     NSArray *_flowIUs;
@@ -46,7 +47,7 @@
     [source replaceOccurrencesOfString:@"<!--CSS_Replacement-->" withString:[css stringByIndent:8 prependIndent:NO] options:0 range:[source fullRange]];
 
     //change html
-    NSString *html = [[self editorHTML:document] stringByIndent:8 prependIndent:YES];
+    NSString *html = [[self outputHTML:document] stringByIndent:8 prependIndent:YES];
     [source replaceOccurrencesOfString:@"<!--HTML_Replacement-->" withString:html options:0 range:[source fullRange]];
     
     JDSectionInfoLog( IULogSource, @"source : %@", [@"\n" stringByAppendingString:source]);
@@ -63,13 +64,89 @@
     return css;
 }
 
-
--(NSString*)editorHTML:(IUBox*)iu{
+-(NSString *)outputHTML:(IUBox *)iu{
     NSMutableString *code = [NSMutableString string];
     if ([iu isKindOfClass:[IUPage class]]) {
         IUPage *page = (IUPage*)iu;
         if (page.master) {
-            [code appendFormat:@"<div %@>\n", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes]];
+            [code appendFormat:@"<div %@ %@>\n", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
+            for (IUBox *obj in page.master.children) {
+                [code appendString:[[self editorHTML:obj] stringByIndent:4 prependIndent:YES]];
+                [code appendString:@"\n"];
+            }
+            if (iu.children.count) {
+                for (IUBox *child in iu.children) {
+                    if (child == page.master) {
+                        continue;
+                    }
+                    [code appendString:[[self editorHTML:child] stringByIndent:4 prependIndent:YES]];
+                    [code appendString:@"\n"];
+                }
+            }
+            [code appendString:@"</div>"];
+        }
+    }
+    
+#pragma mark IUMovie
+    else if([iu isKindOfClass:[IUMovie class]]){
+        [code appendFormat:@"<div %@ %@", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
+        [code appendString:@">"];
+    }
+#pragma mark IUImage
+    else if([iu isKindOfClass:[IUImage class]]){
+        [code appendFormat:@"<img %@ %@", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
+        [code appendString:@">"];
+        
+    }
+#pragma mark IUHTML
+    else if([iu isKindOfClass:[IUHTML class]]){
+        [code appendFormat:@"<div %@ %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
+        if(((IUHTML *)iu).hasInnerHTML){
+            [code appendString:((IUHTML *)iu).innerHTML];
+        }
+        if (iu.children.count) {
+            [code appendString:@"\n"];
+            for (IUBox *child in iu.children) {
+                [code appendString:[[self editorHTML:child] stringByIndent:4 prependIndent:YES]];
+                [code appendString:@"\n"];
+            }
+        }
+        [code appendFormat:@"</div>"];
+        
+    }
+#pragma mark IUBox
+    else if ([iu isKindOfClass:[IUBox class]]) {
+        [code appendFormat:@"<div %@ %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
+        if (iu.textHTML) {
+            [code appendFormat:@"<p>%@</p>", iu.textHTML];
+        }
+        if (iu.children.count) {
+            [code appendString:@"\n"];
+            for (IUBox *child in iu.children) {
+                [code appendString:[[self editorHTML:child] stringByIndent:4 prependIndent:YES]];
+                [code appendString:@"\n"];
+            }
+        }
+        [code appendFormat:@"</div>"];
+    }
+    
+    if (iu.link) {
+        NSString *linkURL = iu.link;
+        if ([iu.link isHTTPURL] == NO) {
+            linkURL = [NSString stringWithFormat:@"./%@.html", iu.link];
+        }
+        code = [NSMutableString stringWithFormat:@"<a href='%@'>%@</a>", linkURL, code];
+    }
+    return code;
+
+}
+
+-(NSString *)editorHTML:(IUBox*)iu{
+    NSMutableString *code = [NSMutableString string];
+    if ([iu isKindOfClass:[IUPage class]]) {
+        IUPage *page = (IUPage*)iu;
+        if (page.master) {
+            [code appendFormat:@"<div %@ %@>\n", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
             for (IUBox *obj in page.master.children) {
                 [code appendString:[[self editorHTML:obj] stringByIndent:4 prependIndent:YES]];
                 [code appendString:@"\n"];
@@ -88,13 +165,13 @@
     }
 #pragma mark IUImage
     else if([iu isKindOfClass:[IUImage class]]){
-        [code appendFormat:@"<img %@", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes]];
+        [code appendFormat:@"<img %@ %@", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
         [code appendString:@">"];
         
     }
 #pragma mark IUHTML
     else if([iu isKindOfClass:[IUHTML class]]){
-        [code appendFormat:@"<div %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes]];
+        [code appendFormat:@"<div %@ %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
         if(((IUHTML *)iu).hasInnerHTML){
             [code appendString:((IUHTML *)iu).innerHTML];
         }
@@ -110,7 +187,7 @@
     }
 #pragma mark IUBox
     else if ([iu isKindOfClass:[IUBox class]]) {
-        [code appendFormat:@"<div %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes]];
+        [code appendFormat:@"<div %@ %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
         if (iu.textHTML) {
             [code appendFormat:@"<p>%@</p>", iu.textHTML];
         }
@@ -135,6 +212,15 @@
 }
 
 
+-(NSString *)HTMLOneAttributeStringWithTagArray:(NSArray *)tagArray{
+    NSMutableString *code = [NSMutableString string];
+    for (NSString *key in tagArray) {
+        [code appendFormat:@"%@ ", key];
+
+    }
+    [code trim];
+    return code;
+}
 
 -(NSString*)HTMLAttributeStringWithTagDict:(NSDictionary*)tagDictionary{
     NSMutableString *code = [NSMutableString string];

@@ -43,7 +43,7 @@
 
 -(void)setProject:(IUProject *)project{
     _project = project;
-    _project.delegate = self;
+//    _project.delegate = self;
     [_documentController setContent:_project];
     [_documentController addObserver:self forKeyPath:@"selection" options:0 context:nil];
     
@@ -94,6 +94,9 @@
             
             if([node.parent.name isEqualToString:@"Image"]){
                 cellIdentifier = @"imageFile";
+            }
+            else if([node.parent.name isEqualToString:@"Video"]){
+                cellIdentifier = @"videoFile";
             }
             else if([node.parent.name isEqualToString:@"CSS"]){
                 cellIdentifier = @"cssFile";
