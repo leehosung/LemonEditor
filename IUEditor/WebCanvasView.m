@@ -485,7 +485,7 @@
         return (DOMHTMLElement *)node;
     }
     else if ([node isKindOfClass:[DOMHTMLIFrameElement class]]){
-        JDWarnLog(@"");
+        JDTraceLog(@"");
         return nil;
     }
     else if (node.parentNode == nil ){
@@ -493,7 +493,7 @@
         //- it can't be in IU model
         //- IU model : text always have to be in Div class
         //reach to html
-        JDWarnLog(@"can't find IU node, reach to HTMLElement");
+        JDTraceLog(@"can't find IU node, reach to HTMLElement");
         return nil;
     }
     else {
