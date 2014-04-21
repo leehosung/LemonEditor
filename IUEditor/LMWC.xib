@@ -63,12 +63,12 @@
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <matrix verticalHuggingPriority="750" drawsBackground="YES" allowsEmptySelection="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhv-IX-K54" userLabel="Matrix (Appearance, Property, Event)">
-                                        <rect key="frame" x="0.0" y="447" width="300" height="30"/>
+                                        <rect key="frame" x="1" y="447" width="300" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="H1b-tu-OSk"/>
                                         </constraints>
-                                        <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
                                         <size key="cellSize" width="100" height="30"/>
                                         <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="7TJ-Bj-3EO">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -98,14 +98,14 @@
                                             <action selector="clickPropertyMatrix:" target="-2" id="e8p-ad-XCy"/>
                                         </connections>
                                     </matrix>
-                                    <tabView type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="VEQ-BG-SDd" userLabel="Tab View (Appearance, Property, Event)">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="447"/>
+                                    <tabView misplaced="YES" type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="VEQ-BG-SDd" userLabel="Tab View (Appearance, Property, Event)">
+                                        <rect key="frame" x="0.0" y="0.0" width="301" height="447"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <font key="font" metaFont="system"/>
                                         <tabViewItems>
                                             <tabViewItem label="Appearance" identifier="1" id="Rtk-aD-9fK">
                                                 <view key="view" id="209-eo-kDy" userLabel="appearanceV">
-                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="447"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="301" height="449"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </view>
                                             </tabViewItem>
@@ -125,13 +125,13 @@
                                     </tabView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="VEQ-BG-SDd" firstAttribute="top" secondItem="zhv-IX-K54" secondAttribute="bottom" id="AvT-IN-yFJ"/>
-                                    <constraint firstItem="VEQ-BG-SDd" firstAttribute="leading" secondItem="aaF-Ys-G65" secondAttribute="leading" id="Bnt-Cd-gTb"/>
-                                    <constraint firstAttribute="trailing" secondItem="zhv-IX-K54" secondAttribute="trailing" id="EBg-H7-SsP"/>
-                                    <constraint firstItem="zhv-IX-K54" firstAttribute="leading" secondItem="aaF-Ys-G65" secondAttribute="leading" id="TPO-nw-TqW"/>
-                                    <constraint firstAttribute="trailing" secondItem="VEQ-BG-SDd" secondAttribute="trailing" id="hn4-Z5-xBe"/>
-                                    <constraint firstAttribute="bottom" secondItem="VEQ-BG-SDd" secondAttribute="bottom" id="iR9-oe-Qwl"/>
+                                    <constraint firstItem="VEQ-BG-SDd" firstAttribute="top" secondItem="aaF-Ys-G65" secondAttribute="top" constant="29" id="APY-gg-9bO"/>
+                                    <constraint firstAttribute="trailing" secondItem="VEQ-BG-SDd" secondAttribute="trailing" id="UjU-Yg-WIh"/>
+                                    <constraint firstAttribute="bottom" secondItem="VEQ-BG-SDd" secondAttribute="bottom" constant="-1" id="dvf-fI-O2r"/>
                                     <constraint firstItem="zhv-IX-K54" firstAttribute="top" secondItem="aaF-Ys-G65" secondAttribute="top" id="kEC-wm-IPb"/>
+                                    <constraint firstItem="VEQ-BG-SDd" firstAttribute="leading" secondItem="aaF-Ys-G65" secondAttribute="leading" id="sJG-gh-59B"/>
+                                    <constraint firstAttribute="trailing" secondItem="VEQ-BG-SDd" secondAttribute="trailing" constant="-1" id="xPC-LT-STT"/>
+                                    <constraint firstAttribute="trailing" secondItem="zhv-IX-K54" secondAttribute="trailing" constant="-1" id="xwZ-vI-yJk"/>
                                 </constraints>
                             </customView>
                             <customView id="iad-v4-Qjv" userLabel="widgetV">
@@ -144,7 +144,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="yj6-bI-vWX"/>
                                         </constraints>
-                                        <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.50196081399917603" green="0.0" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
                                         <size key="cellSize" width="100" height="30"/>
                                         <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="1zw-6w-UDe">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -174,14 +174,24 @@
                                             <action selector="clickWidgetMatrix:" target="-2" id="1dA-Xi-zQt"/>
                                         </connections>
                                     </matrix>
-                                    <tabView type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="Rvr-f8-CYQ" userLabel="Tab View (Tools, Library, Clipart)">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="379"/>
+                                    <box autoresizesSubviews="NO" fixedFrame="YES" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="1oh-1N-1pP">
+                                        <rect key="frame" x="0.0" y="379" width="301" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <view key="contentView">
+                                            <rect key="frame" x="1" y="1" width="299" height="29"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                        <color key="borderColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </box>
+                                    <tabView misplaced="YES" type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="Rvr-f8-CYQ" userLabel="Tab View (Tools, Library, Clipart)">
+                                        <rect key="frame" x="0.0" y="0.0" width="299" height="379"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <font key="font" metaFont="system"/>
                                         <tabViewItems>
                                             <tabViewItem label="Appearance" identifier="1" id="U4R-eF-goh" userLabel="Tab View Item - Widget">
                                                 <view key="view" id="CwY-UY-xV5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="379"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="380"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </view>
                                             </tabViewItem>
@@ -204,7 +214,7 @@
                                     <constraint firstItem="vUX-uW-fTu" firstAttribute="top" secondItem="iad-v4-Qjv" secondAttribute="top" id="De1-ct-iAa"/>
                                     <constraint firstItem="Rvr-f8-CYQ" firstAttribute="leading" secondItem="iad-v4-Qjv" secondAttribute="leading" id="HgX-JL-p1v"/>
                                     <constraint firstItem="Rvr-f8-CYQ" firstAttribute="top" secondItem="vUX-uW-fTu" secondAttribute="bottom" id="QF5-ov-iN6"/>
-                                    <constraint firstAttribute="bottom" secondItem="Rvr-f8-CYQ" secondAttribute="bottom" id="c1C-zy-p0r"/>
+                                    <constraint firstAttribute="bottom" secondItem="Rvr-f8-CYQ" secondAttribute="bottom" constant="-1" id="c1C-zy-p0r"/>
                                     <constraint firstItem="vUX-uW-fTu" firstAttribute="leading" secondItem="iad-v4-Qjv" secondAttribute="leading" id="oBP-vp-fKx"/>
                                     <constraint firstAttribute="trailing" secondItem="Rvr-f8-CYQ" secondAttribute="trailing" id="xal-RJ-odn"/>
                                     <constraint firstAttribute="trailing" secondItem="vUX-uW-fTu" secondAttribute="trailing" id="xyk-Xp-Uyb"/>
@@ -219,11 +229,11 @@
                             <real value="250"/>
                         </holdingPriorities>
                     </splitView>
-                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="4es-7h-bcl" userLabel="topToolbar">
-                        <rect key="frame" x="220" y="857" width="900" height="30"/>
+                    <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4es-7h-bcl" userLabel="topToolbar">
+                        <rect key="frame" x="220" y="858" width="901" height="31"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="fKA-iL-Bai"/>
+                            <constraint firstAttribute="height" constant="31" id="fKA-iL-Bai"/>
                         </constraints>
                     </customView>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="YTs-oo-nxs" userLabel="bottomToolbar">
@@ -240,19 +250,19 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="Ci0-yr-ElZ" firstAttribute="top" secondItem="2" secondAttribute="top" id="1iW-qd-WjN"/>
+                    <constraint firstAttribute="trailing" secondItem="4es-7h-bcl" secondAttribute="trailing" constant="299" id="6M1-lh-hzf"/>
                     <constraint firstAttribute="bottom" secondItem="6xJ-ed-1uG" secondAttribute="bottom" id="7Ud-JD-cV2"/>
                     <constraint firstItem="YTs-oo-nxs" firstAttribute="leading" secondItem="6xJ-ed-1uG" secondAttribute="trailing" id="7ao-5H-osd"/>
-                    <constraint firstItem="4es-7h-bcl" firstAttribute="top" secondItem="2" secondAttribute="top" id="8d3-TJ-kaQ"/>
+                    <constraint firstItem="4es-7h-bcl" firstAttribute="leading" secondItem="6xJ-ed-1uG" secondAttribute="trailing" constant="-1" id="EpC-3u-0yj"/>
                     <constraint firstItem="YTs-oo-nxs" firstAttribute="top" secondItem="LCo-BM-DQN" secondAttribute="bottom" id="GQ0-Em-jpo"/>
+                    <constraint firstItem="Ci0-yr-ElZ" firstAttribute="leading" secondItem="LCo-BM-DQN" secondAttribute="trailing" id="HNJ-kJ-gm5"/>
                     <constraint firstItem="LCo-BM-DQN" firstAttribute="leading" secondItem="6xJ-ed-1uG" secondAttribute="trailing" id="I5H-4j-OLE"/>
-                    <constraint firstItem="4es-7h-bcl" firstAttribute="leading" secondItem="6xJ-ed-1uG" secondAttribute="trailing" id="ZVa-aF-8YA"/>
+                    <constraint firstItem="4es-7h-bcl" firstAttribute="top" secondItem="2" secondAttribute="top" constant="-1" id="U8O-Sv-A1u"/>
                     <constraint firstAttribute="trailing" secondItem="Ci0-yr-ElZ" secondAttribute="trailing" id="cR7-qD-bfW"/>
                     <constraint firstItem="Ci0-yr-ElZ" firstAttribute="leading" secondItem="YTs-oo-nxs" secondAttribute="trailing" id="e04-Kj-u8P"/>
-                    <constraint firstItem="Ci0-yr-ElZ" firstAttribute="leading" secondItem="4es-7h-bcl" secondAttribute="trailing" id="hFH-qc-qPu"/>
                     <constraint firstItem="6xJ-ed-1uG" firstAttribute="top" secondItem="2" secondAttribute="top" id="mBI-fX-DJb"/>
                     <constraint firstItem="LCo-BM-DQN" firstAttribute="top" secondItem="4es-7h-bcl" secondAttribute="bottom" id="p2m-ml-A6w"/>
                     <constraint firstAttribute="bottom" secondItem="Ci0-yr-ElZ" secondAttribute="bottom" id="rmn-By-mP6"/>
-                    <constraint firstItem="Ci0-yr-ElZ" firstAttribute="leading" secondItem="LCo-BM-DQN" secondAttribute="trailing" id="sWI-yU-IfB"/>
                     <constraint firstAttribute="bottom" secondItem="YTs-oo-nxs" secondAttribute="bottom" id="vM1-Fg-HPG"/>
                     <constraint firstItem="6xJ-ed-1uG" firstAttribute="leading" secondItem="2" secondAttribute="leading" id="xZF-qx-AO8"/>
                 </constraints>
