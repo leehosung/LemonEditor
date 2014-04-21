@@ -214,17 +214,22 @@
     return YES;
 }
 
+- (BOOL)shouldRemoveIU{
+    return YES;
+}
 
 -(BOOL)removeIU:(IUBox *)iu{
-    [_m_children removeObject:iu];
-    [self.delegate IURemoved:iu.htmlID];
-    return YES;
+    if([iu shouldRemoveIU]){
+        [_m_children removeObject:iu];
+        [self.delegate IURemoved:iu.htmlID];
+        return YES;
+    }
+    return NO;
 }
 
 -(BOOL)removeIUAtIndex:(NSUInteger)index{
     IUBox *box = [_m_children objectAtIndex:index];
-    [self removeIU:box];
-    return YES;
+    return [self removeIU:box];
 }
 
 

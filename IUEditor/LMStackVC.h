@@ -10,6 +10,10 @@
 #import "IUDocumentController.h"
 #import "IUController.h"
 
+@interface LMStackOutlineView : NSOutlineView
+
+@end
+
 @interface LMStackVC : NSViewController <NSOutlineViewDataSource, NSOutlineViewDelegate>
 
 @property  IUDocument    *document;

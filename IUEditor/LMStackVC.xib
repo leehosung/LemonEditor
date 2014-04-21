@@ -60,7 +60,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="220" height="464"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowHeight="26" viewBased="YES" indentationPerLevel="4" outlineTableColumn="PHW-2j-9jH" id="Oxr-EL-PIx">
+                            <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowHeight="26" viewBased="YES" indentationPerLevel="4" outlineTableColumn="PHW-2j-9jH" id="Oxr-EL-PIx" customClass="LMStackOutlineView">
                                 <rect key="frame" x="0.0" y="0.0" width="220" height="464"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" red="0.93725496529999996" green="0.93725496529999996" blue="0.93725496529999996" alpha="1" colorSpace="deviceRGB"/>
