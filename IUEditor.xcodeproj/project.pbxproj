@@ -133,6 +133,7 @@
 		3DED27231904AE1A001A1D67 /* LMPropertyVisibleVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED27211904AE1A001A1D67 /* LMPropertyVisibleVC.xib */; };
 		3DED27271904AE53001A1D67 /* LMPropertyVRFrameVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED27251904AE53001A1D67 /* LMPropertyVRFrameVC.m */; };
 		3DED27281904AE53001A1D67 /* LMPropertyVRFrameVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED27261904AE53001A1D67 /* LMPropertyVRFrameVC.xib */; };
+		3DED272B1904DFD1001A1D67 /* IUInput.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED272A1904DFD1001A1D67 /* IUInput.m */; };
 		3DF8029A18FD0B2500913505 /* IUHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8029918FD0B2500913505 /* IUHTML.m */; };
 		3DF8029D18FE3D6000913505 /* IUWebMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8029C18FE3D6000913505 /* IUWebMovie.m */; };
 		3DF803D818FE62C900913505 /* dotted_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DF803C118FE62C900913505 /* dotted_line.png */; };
@@ -484,6 +485,8 @@
 		3DED27241904AE53001A1D67 /* LMPropertyVRFrameVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyVRFrameVC.h; sourceTree = "<group>"; };
 		3DED27251904AE53001A1D67 /* LMPropertyVRFrameVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyVRFrameVC.m; sourceTree = "<group>"; };
 		3DED27261904AE53001A1D67 /* LMPropertyVRFrameVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyVRFrameVC.xib; sourceTree = "<group>"; };
+		3DED27291904DFD1001A1D67 /* IUInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUInput.h; sourceTree = "<group>"; };
+		3DED272A1904DFD1001A1D67 /* IUInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUInput.m; sourceTree = "<group>"; };
 		3DF8029818FD0B2500913505 /* IUHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUHTML.h; sourceTree = "<group>"; };
 		3DF8029918FD0B2500913505 /* IUHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUHTML.m; sourceTree = "<group>"; };
 		3DF8029B18FE3D6000913505 /* IUWebMovie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUWebMovie.h; sourceTree = "<group>"; };
@@ -1229,6 +1232,8 @@
 				694E3CDA18FCF739005077B3 /* IUCarousel.m */,
 				694E3CDF18FCFDA6005077B3 /* IUItem.h */,
 				694E3CE018FCFDA6005077B3 /* IUItem.m */,
+				3DED27291904DFD1001A1D67 /* IUInput.h */,
+				3DED272A1904DFD1001A1D67 /* IUInput.m */,
 			);
 			name = IU;
 			sourceTree = "<group>";
@@ -1812,6 +1817,7 @@
 				3DB3ACCB18EBEF3D0046DFB7 /* SizeView.m in Sources */,
 				69C5762C18D70B850016F050 /* LMWC.m in Sources */,
 				69757B2518D95FDA0095CBAC /* NSMutableDictionary+IUTag.m in Sources */,
+				3DED272B1904DFD1001A1D67 /* IUInput.m in Sources */,
 				69757B0418D95BBC0095CBAC /* JDEnvUtil.m in Sources */,
 				3DB3ACE018EBEF5F0046DFB7 /* GuideLineLayer.m in Sources */,
 				69757B0B18D95BBC0095CBAC /* JDOutlineView.m in Sources */,
