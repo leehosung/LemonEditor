@@ -36,4 +36,8 @@
     [_bgColorWell bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagBGColor] options:nil];
 }
 
+- (void)makeClearColor:(id)sender{
+    [self setValue:nil forKeyPath:[self CSSBindingPath:IUCSSTagBGColor]];
+}
+
 @end
