@@ -15,6 +15,7 @@
 @property (weak) IBOutlet NSTextField *yTF;
 @property (weak) IBOutlet NSTextField *wTF;
 @property (weak) IBOutlet NSTextField *hTF;
+@property (weak) IBOutlet NSButton *overflowB;
 
 
 @end
@@ -29,6 +30,7 @@
     return self;
 }
 
+
 -(void)awakeFromNib{
     NSString *tagCollectionKeyPath = @"controller.selection.css.assembledTagDictionary";
     [_xTF bind:@"value" toObject:self withKeyPath:[tagCollectionKeyPath stringByAppendingPathExtension:IUCSSTagX] options:nil];
@@ -41,6 +43,8 @@
     [_wTF bind:@"hidden" toObject:self withKeyPath:@"controller.selection.hasWidth" options:@{NSValueTransformerNameBindingOption: @"NSNegateBoolean"}];
     [_hTF bind:@"hidden" toObject:self withKeyPath:@"controller.selection.hasHeight" options:@{NSValueTransformerNameBindingOption: @"NSNegateBoolean"}];
 
+    NSString *keyPath = [_controller keyPathFromControllerToCSSTag:IUCSSTagOverflow];
+    [_overflowB bind:@"value" toObject:self withKeyPath:keyPath options:nil];
 }
 
 

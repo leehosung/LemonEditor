@@ -4,6 +4,7 @@
     height:300px;
     display:block;
     border-style:solid;
+    overflow:hidden;
 }
 
 .IUPage{

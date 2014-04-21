@@ -36,6 +36,7 @@
 #define IUCSSTagFontName @"font-name"
 #define IUCSSTagFontSize @"font-size"
 
+#define IUCSSTagOverflow @"overflow"
 
 #define isSameTag isEqualToString
 
