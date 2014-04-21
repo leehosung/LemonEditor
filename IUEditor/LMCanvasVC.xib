@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMCanvasVC">
@@ -52,15 +52,15 @@ DQ
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="ePl-SI-IJG"/>
         <customView id="rQA-9M-gyW" customClass="LMCanvasView">
-            <rect key="frame" x="0.0" y="0.0" width="836" height="808"/>
+            <rect key="frame" x="0.0" y="0.0" width="835" height="808"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="7bm-eT-a4W" customClass="SizeView">
-                    <rect key="frame" x="0.0" y="778" width="836" height="30"/>
+                    <rect key="frame" x="0.0" y="779" width="835" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                     <subviews>
                         <button translatesAutoresizingMaskIntoConstraints="NO" id="mjU-2x-qHQ" userLabel="addFrameBtn">
-                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                            <rect key="frame" x="-1" y="0.0" width="30" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="30" id="hIg-CR-hiU"/>
@@ -76,9 +76,9 @@ DQ
                         </button>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="mjU-2x-qHQ" firstAttribute="leading" secondItem="7bm-eT-a4W" secondAttribute="leading" constant="-1" id="DXk-qF-GB1"/>
                         <constraint firstItem="mjU-2x-qHQ" firstAttribute="top" secondItem="7bm-eT-a4W" secondAttribute="top" id="KHY-Iw-6Wc"/>
                         <constraint firstAttribute="height" constant="30" id="biq-Zz-04e"/>
-                        <constraint firstItem="mjU-2x-qHQ" firstAttribute="leading" secondItem="7bm-eT-a4W" secondAttribute="leading" id="yJn-iv-6qu"/>
                     </constraints>
                     <connections>
                         <outlet property="addBtn" destination="mjU-2x-qHQ" id="JRh-1V-8JA"/>
@@ -87,14 +87,14 @@ DQ
                     </connections>
                 </customView>
                 <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="Ej4-Uz-enV" userLabel="Canvas Scroll View - Flipped View">
-                    <rect key="frame" x="0.0" y="0.0" width="836" height="778"/>
+                    <rect key="frame" x="0.0" y="0.0" width="835" height="779"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="UH1-2M-61Q">
-                        <rect key="frame" x="0.0" y="0.0" width="836" height="778"/>
+                        <rect key="frame" x="0.0" y="0.0" width="835" height="779"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view translatesAutoresizingMaskIntoConstraints="NO" id="X7N-l5-iSJ" customClass="NSFlippedView">
-                                <rect key="frame" x="0.0" y="0.0" width="836" height="778"/>
+                                <rect key="frame" x="0.0" y="0.0" width="835" height="779"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </view>
                         </subviews>
@@ -104,25 +104,26 @@ DQ
                             <constraint firstItem="X7N-l5-iSJ" firstAttribute="leading" secondItem="UH1-2M-61Q" secondAttribute="leading" id="MaP-EE-cWH"/>
                             <constraint firstAttribute="trailing" secondItem="X7N-l5-iSJ" secondAttribute="trailing" id="spc-14-naw"/>
                         </constraints>
+                        <color key="backgroundColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
                     </clipView>
                     <scroller key="horizontalScroller" verticalHuggingPriority="750" doubleValue="0.10526315789473684" horizontal="YES" id="VLc-fs-1IH">
-                        <rect key="frame" x="0.0" y="762" width="836" height="16"/>
+                        <rect key="frame" x="0.0" y="763" width="835" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="2yM-8c-esj">
-                        <rect key="frame" x="820" y="0.0" width="16" height="778"/>
+                        <rect key="frame" x="819" y="0.0" width="16" height="779"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
             </subviews>
             <constraints>
                 <constraint firstItem="Ej4-Uz-enV" firstAttribute="leading" secondItem="rQA-9M-gyW" secondAttribute="leading" id="2fq-bN-u1T"/>
+                <constraint firstItem="Ej4-Uz-enV" firstAttribute="top" secondItem="7bm-eT-a4W" secondAttribute="bottom" id="932-Qv-lLH"/>
                 <constraint firstAttribute="trailing" secondItem="7bm-eT-a4W" secondAttribute="trailing" id="M0z-XG-zMg"/>
                 <constraint firstAttribute="trailing" secondItem="Ej4-Uz-enV" secondAttribute="trailing" id="MVV-xF-Ftb"/>
                 <constraint firstAttribute="bottom" secondItem="Ej4-Uz-enV" secondAttribute="bottom" id="V8d-dN-KQx"/>
-                <constraint firstItem="7bm-eT-a4W" firstAttribute="top" secondItem="rQA-9M-gyW" secondAttribute="top" id="XGz-Aj-ADb"/>
                 <constraint firstItem="7bm-eT-a4W" firstAttribute="leading" secondItem="rQA-9M-gyW" secondAttribute="leading" id="Yau-bU-KCb"/>
-                <constraint firstItem="Ej4-Uz-enV" firstAttribute="top" secondItem="rQA-9M-gyW" secondAttribute="top" constant="30" id="nwV-PS-2re"/>
+                <constraint firstItem="7bm-eT-a4W" firstAttribute="top" secondItem="rQA-9M-gyW" secondAttribute="top" constant="-1" id="hIl-rW-sSK"/>
             </constraints>
             <connections>
                 <outlet property="delegate" destination="-2" id="Xjo-Il-xWw"/>

@@ -24,18 +24,18 @@
             </connections>
         </treeController>
         <customView id="IoX-Be-25j" userLabel="Stack">
-            <rect key="frame" x="0.0" y="0.0" width="220" height="494"/>
+            <rect key="frame" x="0.0" y="0.0" width="221" height="494"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="7hl-8X-7jj">
-                    <rect key="frame" x="0.0" y="464" width="220" height="30"/>
+                <box autoresizesSubviews="NO" ambiguous="YES" misplaced="YES" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="7hl-8X-7jj">
+                    <rect key="frame" x="-1" y="464" width="223" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView">
-                        <rect key="frame" x="1" y="1" width="218" height="28"/>
+                        <rect key="frame" x="1" y="1" width="221" height="29"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="B5k-h0-2Mj">
-                                <rect key="frame" x="6" y="7" width="35" height="14"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B5k-h0-2Mj">
+                                <rect key="frame" x="6" y="8" width="35" height="14"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Stack" id="i3U-fk-oFS">
                                     <font key="font" metaFont="smallSystemBold"/>
@@ -46,18 +46,17 @@
                         </subviews>
                     </view>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="cHg-Xv-oHN"/>
                         <constraint firstAttribute="centerY" secondItem="B5k-h0-2Mj" secondAttribute="centerY" id="jR9-gB-O9K"/>
                         <constraint firstItem="B5k-h0-2Mj" firstAttribute="leading" secondItem="7hl-8X-7jj" secondAttribute="leading" constant="9" id="wfE-TR-9nx"/>
                     </constraints>
-                    <color key="borderColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="borderColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="fillColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                 </box>
-                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="26" horizontalPageScroll="10" verticalLineScroll="26" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Osv-wT-Jh4" userLabel="Stack">
-                    <rect key="frame" x="0.0" y="0.0" width="220" height="464"/>
+                <scrollView autohidesScrollers="YES" horizontalLineScroll="26" horizontalPageScroll="10" verticalLineScroll="26" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Osv-wT-Jh4" userLabel="Stack">
+                    <rect key="frame" x="-1" y="-1" width="222" height="466"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" id="l93-mx-g7q">
-                        <rect key="frame" x="0.0" y="0.0" width="220" height="464"/>
+                        <rect key="frame" x="1" y="1" width="220" height="464"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowHeight="26" viewBased="YES" indentationPerLevel="4" outlineTableColumn="PHW-2j-9jH" id="Oxr-EL-PIx" customClass="LMStackOutlineView">
@@ -179,13 +178,13 @@
                 </scrollView>
             </subviews>
             <constraints>
-                <constraint firstItem="7hl-8X-7jj" firstAttribute="leading" secondItem="IoX-Be-25j" secondAttribute="leading" id="23c-aM-q3I"/>
-                <constraint firstAttribute="bottom" secondItem="Osv-wT-Jh4" secondAttribute="bottom" id="3Yr-WQ-mRX"/>
-                <constraint firstAttribute="trailing" secondItem="7hl-8X-7jj" secondAttribute="trailing" id="84P-FM-5U0"/>
-                <constraint firstItem="Osv-wT-Jh4" firstAttribute="top" secondItem="7hl-8X-7jj" secondAttribute="bottom" id="IlH-Wm-Z2y"/>
-                <constraint firstItem="7hl-8X-7jj" firstAttribute="top" secondItem="IoX-Be-25j" secondAttribute="top" id="cYG-AL-xD1"/>
-                <constraint firstItem="Osv-wT-Jh4" firstAttribute="leading" secondItem="IoX-Be-25j" secondAttribute="leading" id="hIq-Da-zMR"/>
-                <constraint firstAttribute="trailing" secondItem="Osv-wT-Jh4" secondAttribute="trailing" id="uBO-2m-qZW"/>
+                <constraint firstItem="7hl-8X-7jj" firstAttribute="top" secondItem="IoX-Be-25j" secondAttribute="top" constant="-1" id="2Zv-Va-uVL"/>
+                <constraint firstAttribute="trailing" secondItem="Osv-wT-Jh4" secondAttribute="trailing" id="3Pi-ik-XaV"/>
+                <constraint firstItem="Osv-wT-Jh4" firstAttribute="top" secondItem="IoX-Be-25j" secondAttribute="top" constant="29" id="8Hh-o0-UX2"/>
+                <constraint firstAttribute="bottom" secondItem="Osv-wT-Jh4" secondAttribute="bottom" constant="-1" id="IkS-bx-VbX"/>
+                <constraint firstItem="Osv-wT-Jh4" firstAttribute="leading" secondItem="IoX-Be-25j" secondAttribute="leading" constant="-1" id="P6G-By-xni"/>
+                <constraint firstAttribute="trailing" secondItem="7hl-8X-7jj" secondAttribute="trailing" constant="-1" id="Vjn-wy-Usz"/>
+                <constraint firstItem="7hl-8X-7jj" firstAttribute="leading" secondItem="IoX-Be-25j" secondAttribute="leading" constant="-1" id="bnQ-IG-n1j"/>
             </constraints>
         </customView>
     </objects>

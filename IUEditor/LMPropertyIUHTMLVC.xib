@@ -81,7 +81,7 @@
                                 <font key="titleFont" metaFont="system"/>
                             </box>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fBG-dM-0qT">
-                                <rect key="frame" x="4" y="7" width="104" height="17"/>
+                                <rect key="frame" x="4" y="6" width="104" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="IUHTML" id="vJD-Td-qdP">
                                     <font key="font" metaFont="smallSystemBold"/>

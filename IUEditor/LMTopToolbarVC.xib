@@ -31,11 +31,11 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                     </button>
-                    <button translatesAutoresizingMaskIntoConstraints="NO" id="ss0-x8-YLr">
-                        <rect key="frame" x="-1" y="-1" width="30" height="30"/>
+                    <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ss0-x8-YLr">
+                        <rect key="frame" x="-1" y="-1" width="31" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="YfB-be-WdU"/>
+                            <constraint firstAttribute="width" constant="31" id="bdt-Hn-qN1"/>
                             <constraint firstAttribute="height" constant="30" id="mXi-8o-0NL"/>
                         </constraints>
                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="export" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="YoF-zK-Epi">
@@ -46,15 +46,15 @@
                             <action selector="showBPressed:" target="-2" id="JKO-3P-c4a"/>
                         </connections>
                     </button>
-                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="IIW-4c-pEg" userLabel="tabView">
-                        <rect key="frame" x="29" y="-1" width="840" height="30"/>
+                    <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IIW-4c-pEg" userLabel="tabView">
+                        <rect key="frame" x="30" y="-1" width="839" height="31"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="Mnq-Yt-P1D" firstAttribute="leading" secondItem="IIW-4c-pEg" secondAttribute="trailing" id="Bbu-8O-0pS"/>
-                <constraint firstItem="ss0-x8-YLr" firstAttribute="leading" secondItem="Lyx-P5-2VK" secondAttribute="leading" id="HBy-6X-o7h"/>
+                <constraint firstItem="ss0-x8-YLr" firstAttribute="leading" secondItem="Lyx-P5-2VK" secondAttribute="leading" constant="-1" id="Idv-p5-6VV"/>
                 <constraint firstAttribute="bottom" secondItem="ss0-x8-YLr" secondAttribute="bottom" id="N1c-o5-a8g"/>
                 <constraint firstItem="ss0-x8-YLr" firstAttribute="top" secondItem="Lyx-P5-2VK" secondAttribute="top" id="bNX-Jx-yvf"/>
                 <constraint firstItem="IIW-4c-pEg" firstAttribute="top" secondItem="Lyx-P5-2VK" secondAttribute="top" id="dDQ-jf-1Qk"/>
@@ -73,7 +73,7 @@
                 <constraint firstAttribute="height" constant="30" id="06X-a2-1LZ"/>
                 <constraint firstAttribute="width" constant="140" id="nGW-vv-40P"/>
             </constraints>
-            <buttonCell key="cell" type="square" title="index.pgiu" bezelStyle="shadowlessSquare" image="tab_close" imagePosition="right" alignment="left" borderStyle="border" inset="2" id="8Qw-6u-mvq">
+            <buttonCell key="cell" type="square" title="index.pgiu" bezelStyle="shadowlessSquare" image="tab_close" imagePosition="right" alignment="left" inset="2" id="8Qw-6u-mvq">
                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                 <font key="font" metaFont="smallSystem"/>
             </buttonCell>
