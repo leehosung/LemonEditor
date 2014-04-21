@@ -49,7 +49,9 @@
 - (void)openDocument:(id)sender{
     NSString *value = [[NSUserDefaults standardUserDefaults] valueForKey:@"lastDocument"];
     if(value==nil){
-        return;
+        //open new document
+        [self newDocument:self];
+        //return;
     }
     LMWC *wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
     [wc showWindow:self];
