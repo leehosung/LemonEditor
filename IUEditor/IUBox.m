@@ -377,6 +377,7 @@
 - (void)insertText:(NSString*)text withRange:(NSRange)range{
     NSLog(@"insertText");
     [textManager insertString:text atIndex:range.location];
+    [self.delegate IU:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
 }
 
 

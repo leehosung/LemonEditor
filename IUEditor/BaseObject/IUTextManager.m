@@ -216,6 +216,7 @@
     // string의 끝까지 지울 경우 : 그냥 범위안을 다 지운다.
     // string의 끝까지 지우지 않을 경우 + Range 밖 처음의 Info가 바로 따라 붙을 경우 : 범위안을 다 지운다.
     // string의 끝까지 지우지 않을 경우 + Range 밖 처음의 Info가 떨어져 있을경우 : 마지막 Info를 뒤로 밀어둔다.
+    NSLog(text);
     assert(text.length >= range.location + range.length);
 
     NSArray *deleteArray = [self infoObjectsAtArray:array ofRange:range];
@@ -365,24 +366,26 @@
 
 - (void)deleteTextInRange:(NSRange)range{
     assert(range.length != 0);
-    
+    NSRange modifiedRange = range;
     //css는 제일 앞 부분이 삭제 되지 않게 조정한다.
-    if (range.location == 0) {
-        range.location = 1;
-        range.length --;
-        if (range.length == 0) {
+    if (modifiedRange.location == 0) {
+        modifiedRange.location = 1;
+        modifiedRange.length --;
+        if (modifiedRange.length == 0) {
             return;
         }
     }
-    [self deleteInfoArray:fontInfos atRange:range];
+    [self deleteInfoArray:fontInfos atRange:modifiedRange];
     [self removeDuplicatedInfo:fontInfos];
     
     for (NSNumber *viewPort in fontSizeInfoCollection) {
         NSMutableArray *fontSizes = [fontSizeInfoCollection objectForKey:viewPort];
-        [self deleteInfoArray:fontSizes atRange:range];
+        [self deleteInfoArray:fontSizes atRange:modifiedRange];
         [self removeDuplicatedInfo:fontSizes];
     }
+    
     //text 삭제
+    //css 삭제보다 뒤로 둔다. assert 문 돌리기 위해서.
     [text deleteCharactersInRange:range];
 }
 
