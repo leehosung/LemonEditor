@@ -199,6 +199,7 @@
     return _resourceNode;
 }
 
+
 - (void)initializeResource{
     IUResourceGroupNode *rootNode = [[IUResourceGroupNode alloc] init];
     rootNode.name = @"Resource";
@@ -208,6 +209,11 @@
     IUResourceGroupNode *imageGroup = [[IUResourceGroupNode alloc] init];
     imageGroup.name = @"Image";
     [rootNode addResourceGroupNode:imageGroup];
+    
+    IUResourceGroupNode *videoGroup = [[IUResourceGroupNode alloc] init];
+    videoGroup.name = @"Video";
+    [rootNode addResourceGroupNode:videoGroup];
+    
     
     IUResourceGroupNode *CSSGroup = [[IUResourceGroupNode alloc] init];
     CSSGroup.name = @"CSS";
@@ -224,6 +230,10 @@
     IUResourceNode *imageNode = [[IUResourceNode alloc] initWithName:@"sample.jpg" type:IUResourceTypeImage];
     [imageGroup addResourceNode:imageNode path:sampleImgPath];
     
+    //Video Resource copy
+    NSString *sampleVideoPath = [[NSBundle mainBundle] pathForResource:@"movie" ofType:@"mp4"];
+    IUResourceNode *videoNode = [[IUResourceNode alloc] initWithName:@"movie.mp4" type:IUResourceTypeVideo];
+    [videoGroup addResourceNode:videoNode path:sampleVideoPath];
     
     //CSS Resource Copy
     

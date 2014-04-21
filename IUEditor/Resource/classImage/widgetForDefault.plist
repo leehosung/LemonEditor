@@ -32,7 +32,7 @@
 	</dict>
 	<dict>
 		<key>isWidget</key>
-		<true/>
+		<false/>
 		<key>className</key>
 		<string>IUInput</string>
 		<key>classImage</key>
@@ -60,7 +60,7 @@
 	</dict>
 	<dict>
 		<key>isWidget</key>
-		<false/>
+		<true/>
 		<key>className</key>
 		<string>IUMovie</string>
 		<key>classImage</key>

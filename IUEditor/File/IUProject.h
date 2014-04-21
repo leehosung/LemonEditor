@@ -50,7 +50,7 @@ typedef enum _IUGitType{
 - (NSArray*)masterDocuments;
 - (NSArray*)componentDocuments;
 
-- (IUResourceGroupNode*)resourceNode;
+- (IUResourceGroupNode *)resourceNode;
 - (NSArray*)allDocumentNodes;
 - (NSArray*)pageDocumentNodes;
 @end

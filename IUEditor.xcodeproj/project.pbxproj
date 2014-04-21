@@ -134,6 +134,13 @@
 		3DED27271904AE53001A1D67 /* LMPropertyVRFrameVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED27251904AE53001A1D67 /* LMPropertyVRFrameVC.m */; };
 		3DED27281904AE53001A1D67 /* LMPropertyVRFrameVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED27261904AE53001A1D67 /* LMPropertyVRFrameVC.xib */; };
 		3DED272B1904DFD1001A1D67 /* IUInput.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED272A1904DFD1001A1D67 /* IUInput.m */; };
+		3DED272E1904E17E001A1D67 /* IUMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED272D1904E17E001A1D67 /* IUMovie.m */; };
+		3DED27311904EDF0001A1D67 /* movie.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3DED27301904ED15001A1D67 /* movie.mp4 */; };
+		3DED27341904F13B001A1D67 /* ic_movie.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED27321904F13B001A1D67 /* ic_movie.png */; };
+		3DED27351904F13B001A1D67 /* ic_movie@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED27331904F13B001A1D67 /* ic_movie@2x.png */; };
+		3DED27371904F240001A1D67 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DED27361904F240001A1D67 /* AVFoundation.framework */; };
+		3DED273A1904F271001A1D67 /* IUImageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED27391904F271001A1D67 /* IUImageUtil.m */; };
+		3DED273C1904F9E0001A1D67 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DED273B1904F9E0001A1D67 /* CoreMedia.framework */; };
 		3DF8029A18FD0B2500913505 /* IUHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8029918FD0B2500913505 /* IUHTML.m */; };
 		3DF8029D18FE3D6000913505 /* IUWebMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8029C18FE3D6000913505 /* IUWebMovie.m */; };
 		3DF803D818FE62C900913505 /* dotted_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DF803C118FE62C900913505 /* dotted_line.png */; };
@@ -487,6 +494,15 @@
 		3DED27261904AE53001A1D67 /* LMPropertyVRFrameVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyVRFrameVC.xib; sourceTree = "<group>"; };
 		3DED27291904DFD1001A1D67 /* IUInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUInput.h; sourceTree = "<group>"; };
 		3DED272A1904DFD1001A1D67 /* IUInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUInput.m; sourceTree = "<group>"; };
+		3DED272C1904E17E001A1D67 /* IUMovie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUMovie.h; sourceTree = "<group>"; };
+		3DED272D1904E17E001A1D67 /* IUMovie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUMovie.m; sourceTree = "<group>"; };
+		3DED27301904ED15001A1D67 /* movie.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = movie.mp4; sourceTree = "<group>"; };
+		3DED27321904F13B001A1D67 /* ic_movie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_movie.png; sourceTree = "<group>"; };
+		3DED27331904F13B001A1D67 /* ic_movie@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_movie@2x.png"; sourceTree = "<group>"; };
+		3DED27361904F240001A1D67 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		3DED27381904F271001A1D67 /* IUImageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUImageUtil.h; sourceTree = "<group>"; };
+		3DED27391904F271001A1D67 /* IUImageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUImageUtil.m; sourceTree = "<group>"; };
+		3DED273B1904F9E0001A1D67 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		3DF8029818FD0B2500913505 /* IUHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUHTML.h; sourceTree = "<group>"; };
 		3DF8029918FD0B2500913505 /* IUHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUHTML.m; sourceTree = "<group>"; };
 		3DF8029B18FE3D6000913505 /* IUWebMovie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUWebMovie.h; sourceTree = "<group>"; };
@@ -748,6 +764,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DED273C1904F9E0001A1D67 /* CoreMedia.framework in Frameworks */,
+				3DED27371904F240001A1D67 /* AVFoundation.framework in Frameworks */,
 				69F1A37518E0624E004C5B30 /* WebKit.framework in Frameworks */,
 				69757B2A18DAB7D40095CBAC /* QuartzCore.framework in Frameworks */,
 				69C575AB18D6F61E0016F050 /* Cocoa.framework in Frameworks */,
@@ -871,6 +889,8 @@
 		3DB3ACE918EBEFCF0046DFB7 /* IULib */ = {
 			isa = PBXGroup;
 			children = (
+				3DED27381904F271001A1D67 /* IUImageUtil.h */,
+				3DED27391904F271001A1D67 /* IUImageUtil.m */,
 				3DB3ACEB18EBEFD80046DFB7 /* IUDefinition.h */,
 			);
 			name = IULib;
@@ -929,6 +949,8 @@
 		3DED26A31900D401001A1D67 /* fileNav */ = {
 			isa = PBXGroup;
 			children = (
+				3DED27321904F13B001A1D67 /* ic_movie.png */,
+				3DED27331904F13B001A1D67 /* ic_movie@2x.png */,
 				3DED26C51900F65C001A1D67 /* ic_image@2x.png */,
 				3DED26C61900F65C001A1D67 /* ic_image.png */,
 				3DED26A51900F43F001A1D67 /* ic_css.png */,
@@ -1089,6 +1111,14 @@
 			name = RightEvent;
 			sourceTree = "<group>";
 		};
+		3DED272F1904ECC8001A1D67 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				3DED27301904ED15001A1D67 /* movie.mp4 */,
+			);
+			name = Video;
+			sourceTree = "<group>";
+		};
 		3DF8029E18FE3F1A00913505 /* IUHTMLGroup */ = {
 			isa = PBXGroup;
 			children = (
@@ -1234,6 +1264,8 @@
 				694E3CE018FCFDA6005077B3 /* IUItem.m */,
 				3DED27291904DFD1001A1D67 /* IUInput.h */,
 				3DED272A1904DFD1001A1D67 /* IUInput.m */,
+				3DED272C1904E17E001A1D67 /* IUMovie.h */,
+				3DED272D1904E17E001A1D67 /* IUMovie.m */,
 			);
 			name = IU;
 			sourceTree = "<group>";
@@ -1241,6 +1273,7 @@
 		696D1C9C18E5776200B4AB16 /* webResource */ = {
 			isa = PBXGroup;
 			children = (
+				3DED272F1904ECC8001A1D67 /* Video */,
 				3DB3ACEC18EBF7200046DFB7 /* iuframe.js */,
 				69CFCAC218EAA21E00E3048A /* sample.jpg */,
 				696D1C9918E5366400B4AB16 /* webTemplate.html */,
@@ -1336,6 +1369,8 @@
 		69C575A918D6F61E0016F050 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3DED273B1904F9E0001A1D67 /* CoreMedia.framework */,
+				3DED27361904F240001A1D67 /* AVFoundation.framework */,
 				69F1A37818E0627A004C5B30 /* AppleScriptKit.framework */,
 				69F1A37618E06262004C5B30 /* Accelerate.framework */,
 				69F1A37418E0624E004C5B30 /* WebKit.framework */,
@@ -1548,6 +1583,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DED27311904EDF0001A1D67 /* movie.mp4 in Resources */,
 				3DED26BA1900F450001A1D67 /* panel_left_off@2x.png in Resources */,
 				3DED26651900D313001A1D67 /* ic_master@2x.png in Resources */,
 				3DED268A1900D329001A1D67 /* stack_navi.png in Resources */,
@@ -1591,6 +1627,7 @@
 				3DF8043D18FE62FC00913505 /* tool_fblike.png in Resources */,
 				3DF8044918FE62FC00913505 /* tool_textfield.png in Resources */,
 				3DF8043918FE62FC00913505 /* tool_movie.png in Resources */,
+				3DED27351904F13B001A1D67 /* ic_movie@2x.png in Resources */,
 				3DF8041518FE62F200913505 /* add_mediaquery@2x.png in Resources */,
 				3DF8046618FF784500913505 /* LMPropertyTextVC.xib in Resources */,
 				3DED26D919010A6D001A1D67 /* LMPropertyIUBoxVC.xib in Resources */,
@@ -1601,6 +1638,7 @@
 				3DED268E1900D329001A1D67 /* stack_movie@2x.png in Resources */,
 				3DED26871900D329001A1D67 /* stack_html@2x.png in Resources */,
 				3DF8040618FE62F200913505 /* tab_property.png in Resources */,
+				3DED27341904F13B001A1D67 /* ic_movie.png in Resources */,
 				3DED26BD1900F450001A1D67 /* panel_right_off.png in Resources */,
 				3DF803DC18FE62C900913505 /* tab_toolbar.png in Resources */,
 				3DED26B91900F450001A1D67 /* panel_left_off.png in Resources */,
@@ -1824,6 +1862,7 @@
 				69CFCAB218E95A0C00E3048A /* LMResourceVC.m in Sources */,
 				69757B1518D95BBC0095CBAC /* NSTextField+DragAndDrop.m in Sources */,
 				3DED26D819010A6D001A1D67 /* LMPropertyIUBoxVC.m in Sources */,
+				3DED273A1904F271001A1D67 /* IUImageUtil.m in Sources */,
 				69C5760B18D6FE020016F050 /* IUComponent.m in Sources */,
 				3DED271D1904ADD9001A1D67 /* LMPropertyVTriggerVC.m in Sources */,
 				694E3CE118FCFDA6005077B3 /* IUItem.m in Sources */,
@@ -1866,6 +1905,7 @@
 				69B37F0D18DFDEE800DE620F /* LMFileNaviVC.m in Sources */,
 				690A409518E1645B00095263 /* LMWidgetLibraryVC.m in Sources */,
 				69757B1F18D95F1E0095CBAC /* NSDictionary+JDExtension.m in Sources */,
+				3DED272E1904E17E001A1D67 /* IUMovie.m in Sources */,
 				69757B0818D95BBC0095CBAC /* JDKeyDelegatedTableView.m in Sources */,
 				69757B0618D95BBC0095CBAC /* JDGitUtil.m in Sources */,
 				3DED27181904AD7D001A1D67 /* LMPropertyMouseEventVC.m in Sources */,
