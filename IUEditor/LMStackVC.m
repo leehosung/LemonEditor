@@ -57,7 +57,13 @@
     id representObject = [item representedObject];
     NSImage *classImage = [self currentImage:[representObject className]];
     
-    NSTableCellView *cell= [outlineView makeViewWithIdentifier:@"cell" owner:self];
+    NSTableCellView *cell;
+    if( item.indexPath.length < 3 ){
+        cell= [outlineView makeViewWithIdentifier:@"cell" owner:self];
+    }
+    else{
+        cell= [outlineView makeViewWithIdentifier:@"node" owner:self];
+    }
     [cell.imageView setImage:classImage];
     [cell.imageView setImageScaling:NSImageScaleProportionallyDown];
     return cell;

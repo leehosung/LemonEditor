@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMStackVC">
@@ -117,6 +117,44 @@
                                                     <outlet property="textField" destination="SgW-PA-7Lq" id="K7p-fZ-Mvs"/>
                                                 </connections>
                                             </tableCellView>
+                                            <tableCellView identifier="node" autoresizesSubviews="NO" id="8em-YS-mRf">
+                                                <rect key="frame" x="0.0" y="26" width="220" height="26"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hBB-Wr-0X9">
+                                                        <rect key="frame" x="8" y="8" width="14" height="10"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="10" id="CjS-oh-83D"/>
+                                                            <constraint firstAttribute="width" constant="14" id="uE4-cK-p86"/>
+                                                        </constraints>
+                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="stack_carousel" id="Xql-Cm-Ndm"/>
+                                                    </imageView>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="rKY-Ty-el9">
+                                                        <rect key="frame" x="27" y="6" width="188" height="14"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="IUpage_1 [z:0]" id="283-6o-E35">
+                                                            <font key="font" size="11" name="LucidaGrande"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="8em-YS-mRf" name="value" keyPath="objectValue.name" id="ObO-hD-pTf"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="centerY" secondItem="hBB-Wr-0X9" secondAttribute="centerY" id="B55-ld-NwQ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="rKY-Ty-el9" secondAttribute="trailing" constant="7" id="StD-Zt-687"/>
+                                                    <constraint firstItem="rKY-Ty-el9" firstAttribute="leading" secondItem="hBB-Wr-0X9" secondAttribute="trailing" constant="7" id="dr2-za-IWb"/>
+                                                    <constraint firstAttribute="centerY" secondItem="rKY-Ty-el9" secondAttribute="centerY" id="rkt-fN-Qef"/>
+                                                    <constraint firstItem="hBB-Wr-0X9" firstAttribute="leading" secondItem="8em-YS-mRf" secondAttribute="leading" constant="8" id="z2A-fm-Zoq"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="imageView" destination="hBB-Wr-0X9" id="nTh-7b-neF"/>
+                                                    <outlet property="textField" destination="rKY-Ty-el9" id="iQ5-JH-ZhH"/>
+                                                </connections>
+                                            </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
                                 </tableColumns>
@@ -153,5 +191,6 @@
     </objects>
     <resources>
         <image name="ic_page" width="12" height="14"/>
+        <image name="stack_carousel" width="14" height="10"/>
     </resources>
 </document>
