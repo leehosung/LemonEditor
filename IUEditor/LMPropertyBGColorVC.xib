@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyBGColorVC">
@@ -23,23 +23,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="276" height="30"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <colorWell ambiguous="YES" misplaced="YES" bordered="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGW-rU-ESd">
-                                <rect key="frame" x="248" y="9" width="18" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="18" id="C3y-KC-nWy"/>
-                                    <constraint firstAttribute="height" constant="18" id="Oec-Yy-dKw"/>
-                                </constraints>
-                                <color key="color" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
-                            </colorWell>
-                            <colorWell ambiguous="YES" misplaced="YES" bordered="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8jm-t6-qvy">
+                            <colorWell ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8jm-t6-qvy">
                                 <rect key="frame" x="225" y="9" width="18" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="lP2-Jh-5qR"/>
                                     <constraint firstAttribute="width" constant="18" id="myE-Ks-ZiX"/>
                                 </constraints>
-                                <color key="color" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="color" red="0.7763671875" green="0.6162341613746124" blue="0.13118332992846193" alpha="1" colorSpace="calibratedRGB"/>
                             </colorWell>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8A0-lf-EHh">
                                 <rect key="frame" x="4" y="9" width="106" height="14"/>
@@ -51,12 +42,23 @@
                                 </textFieldCell>
                             </textField>
                             <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="baY-eS-BR1">
-                                <rect key="frame" x="6" y="0.0" width="260" height="4"/>
+                                <rect key="frame" x="6" y="0.0" width="260" height="5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <font key="titleFont" metaFont="system"/>
                             </box>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5jf-H9-xcI">
+                                <rect key="frame" x="239" y="-1" width="39" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="cc" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="48C-S6-ksS">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="makeClearColor:" target="-2" id="ec7-DN-bL4"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -116,5 +118,14 @@
                 <outlet property="titleV" destination="Mmv-BW-5ZJ" id="9jI-ui-i5b"/>
             </connections>
         </customView>
+        <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="bGW-rU-ESd">
+            <rect key="frame" x="0.0" y="0.0" width="18" height="18"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <constraints>
+                <constraint firstAttribute="width" constant="18" id="C3y-KC-nWy"/>
+                <constraint firstAttribute="height" constant="18" id="Oec-Yy-dKw"/>
+            </constraints>
+            <color key="color" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+        </colorWell>
     </objects>
 </document>
