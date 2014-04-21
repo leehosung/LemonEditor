@@ -372,6 +372,7 @@
         modifiedRange.location = 1;
         modifiedRange.length --;
         if (modifiedRange.length == 0) {
+            [text deleteCharactersInRange:range];
             return;
         }
     }
