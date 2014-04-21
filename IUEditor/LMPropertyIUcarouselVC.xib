@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yoB-Af-Hh3">
-                                <rect key="frame" x="2" y="13" width="80" height="20"/>
+                                <rect key="frame" x="4" y="13" width="80" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Prev Arrow" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="2Hq-go-fv9">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -31,7 +31,7 @@
                                 </buttonCell>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eQ3-ge-ndJ">
-                                <rect key="frame" x="86" y="13" width="82" height="20"/>
+                                <rect key="frame" x="88" y="13" width="82" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Next Arrow" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="Fww-8I-TcR">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -39,7 +39,7 @@
                                 </buttonCell>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f1z-XK-ohr">
-                                <rect key="frame" x="173" y="13" width="83" height="20"/>
+                                <rect key="frame" x="175" y="13" width="83" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Bar Control" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="vXm-uV-gGi">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
