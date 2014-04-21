@@ -177,6 +177,7 @@
     for (IUDocumentNode *node in documensNode) {
         [node.document setCompiler:_compiler];
         [node.document setIdentifierManager:_identifierManager];
+        [_identifierManager addIU:node.document];
     }
 
     // vc setting
