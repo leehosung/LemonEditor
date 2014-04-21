@@ -428,14 +428,16 @@
     DOMRange *range = [self selectedDOMRange];
     [range selectNodeContents:element];
     NSUInteger size = element.innerText.length;
-
+    
     if(size == index){
         [range setStart:range.startContainer offset:range.endOffset];
     }
     else{
-//        int newIndex = (int)index -1;
-        [range setStart:range.startContainer offset:0];
-        [range setEnd:range.startContainer offset:1];
+        DOMText *childNode = (DOMText *)[[element childNodes] item:0];
+        assert([childNode isKindOfClass:[DOMText class]]);
+        
+        [range setStart:childNode offset:(int)index];
+        [range setEnd:childNode offset:(int)index];
 
     }
     

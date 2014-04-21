@@ -151,4 +151,13 @@
     return nil;
 }
 
+- (IUResourceGroupNode *)videoNode{
+    for(IUResourceGroupNode *child in _rootNode.children){
+        if([child.name isEqualToString:@"Video"]){
+            return child;
+        }
+    }
+    return nil;
+}
+
 @end

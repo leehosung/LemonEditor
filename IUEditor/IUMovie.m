@@ -16,6 +16,11 @@
 
 @implementation IUMovie
 
+-(id)initWithManager:(IUIdentifierManager *)identifierManager{
+    self = [super initWithManager:identifierManager];
+    return self;
+}
+
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self =  [super initWithCoder:aDecoder];
     if(self){

@@ -51,10 +51,15 @@
 
 }
 
+- (NSString*)CSSBindingPath:(IUCSSTag)tag{
+    return [@"controller.selection.css.assembledTagDictionary." stringByAppendingString:tag];
+}
+
 - (IBAction)clickFileNameComboBox:(id)sender {
    NSString *videoFileName =  [[self.fileNameComboBox selectedCell] stringValue];
     gettingInfo = YES;
     if(videoFileName){
+        
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^(void){
             //get thumbnail from video file
             NSURL *movefileURL;
@@ -82,21 +87,21 @@
                 IUResourceNode *thumbnailNode = [[IUResourceNode alloc] initWithName:thumbFileName type:IUResourceTypeImage];
                 NSString *thumbImgPath = [NSString stringWithFormat:@"%@%@", imageAbsolutePath, thumbFileName];
                 [imageGroupNode addResourceNode:thumbnailNode path:thumbImgPath];
+                
+                
+                IUResourceGroupNode *videoGroupNode = [self.resourceManager videoNode];
+                NSString *videoPath = [NSString stringWithFormat:@"%@/%@", videoGroupNode.relativePath, videoFileName];
+                [[_controller keyPathFromControllerToProperty:@"videoPath"] setValue:videoPath];
+                NSString *posterPath = [NSString stringWithFormat:@"%@/%@", imageGroupNode.relativePath, thumbFileName];
+                [[_controller keyPathFromControllerToProperty:@"posterPath"] setValue:posterPath];
+                
+                [[self CSSBindingPath:IUCSSTagWidth] setValue:@(thumbnail.size.width)];
+                [[self CSSBindingPath:IUCSSTagHeight] setValue:@(thumbnail.size.height)];
+                
             }
-            dispatch_async(dispatch_get_main_queue(), ^(void){
-                //set ImageFileSize
-                /*
-                 [self setNeedsDisplayStartGrouping];
-                 self.width  = thumbnail.size.width;
-                 self.height = thumbnail.size.height;
-                 self.posterPath = [self.iuManager.pWC.project.resDir stringByAppendingString:thumbFileName];
-                 [self setNeedsDisplay:IUNeedsDisplayActionHTML];
-                 [self setNeedsDisplayEndGrouping];
-                 */
-                gettingInfo = NO;
-            });
         });
     }
+    
 }
 
 
