@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMTopToolbarVC">
@@ -31,7 +31,7 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                     </button>
-                    <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ss0-x8-YLr">
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="ss0-x8-YLr">
                         <rect key="frame" x="-1" y="-1" width="31" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <constraints>
@@ -46,15 +46,15 @@
                             <action selector="showBPressed:" target="-2" id="JKO-3P-c4a"/>
                         </connections>
                     </button>
-                    <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IIW-4c-pEg" userLabel="tabView">
-                        <rect key="frame" x="30" y="-1" width="839" height="31"/>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="IIW-4c-pEg" userLabel="tabView">
+                        <rect key="frame" x="30" y="-1" width="839" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="Mnq-Yt-P1D" firstAttribute="leading" secondItem="IIW-4c-pEg" secondAttribute="trailing" id="Bbu-8O-0pS"/>
-                <constraint firstItem="ss0-x8-YLr" firstAttribute="leading" secondItem="Lyx-P5-2VK" secondAttribute="leading" constant="-1" id="Idv-p5-6VV"/>
+                <constraint firstItem="ss0-x8-YLr" firstAttribute="leading" secondItem="Lyx-P5-2VK" secondAttribute="leading" id="Idv-p5-6VV"/>
                 <constraint firstAttribute="bottom" secondItem="ss0-x8-YLr" secondAttribute="bottom" id="N1c-o5-a8g"/>
                 <constraint firstItem="ss0-x8-YLr" firstAttribute="top" secondItem="Lyx-P5-2VK" secondAttribute="top" id="bNX-Jx-yvf"/>
                 <constraint firstItem="IIW-4c-pEg" firstAttribute="top" secondItem="Lyx-P5-2VK" secondAttribute="top" id="dDQ-jf-1Qk"/>
