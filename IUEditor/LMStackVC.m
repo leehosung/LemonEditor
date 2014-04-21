@@ -9,9 +9,25 @@
 #import "LMStackVC.h"
 #import "IUController.h"
 
+@implementation LMStackOutlineView
+
+
+- (void)keyDown:(NSEvent *)theEvent{
+    unichar key = [[theEvent charactersIgnoringModifiers] characterAtIndex:0];
+    if(key == NSDeleteCharacter && self.delegate)
+    {
+        [(LMStackVC *)self.delegate keyDown:theEvent];
+        
+    }
+    
+}
+
+@end
+
+
 @interface LMStackVC ()
 
-@property (weak) IBOutlet NSOutlineView *outlineV;
+@property (weak) IBOutlet LMStackOutlineView *outlineV;
 //@property (strong) IBOutlet IUController *controller;
 
 @end
@@ -24,8 +40,17 @@
 }
 
 -(void)awakeFromNib{
+    self.outlineV.delegate = self;
 }
 
+-(void)keyDown:(NSEvent *)theEvent{
+    unichar key = [[theEvent charactersIgnoringModifiers] characterAtIndex:0];
+    if (key == NSDeleteCharacter) {
+        for(IUBox *box in [self.IUController selectedObjects]){
+            [box.parent removeIU:box];
+        }
+    }
+}
 
 - (NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(NSTreeNode*)item {
 

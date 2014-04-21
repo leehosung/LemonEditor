@@ -25,4 +25,8 @@
     return NO;
 }
 
+-(BOOL)shouldRemoveIU{
+    return NO;
+}
+
 @end

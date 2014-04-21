@@ -12,4 +12,9 @@
 - (BOOL)flow{
     return YES;
 }
+
+-(BOOL)shouldRemoveIU{
+    return NO;
+}
+
 @end
