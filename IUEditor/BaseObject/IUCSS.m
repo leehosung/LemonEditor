@@ -58,8 +58,9 @@
             [_assembledTagDictionaryForEditWidth removeTag:tag];
         }
         else {
-            cssDict[tag] = value;
-            [_assembledTagDictionaryForEditWidth setObject:value forKey:tag];
+            int v = [value intValue];
+            cssDict[tag] = @(v);
+            [_assembledTagDictionaryForEditWidth setObject:@(v) forKey:tag];
         }
         [self.delegate CSSChanged:tag forWidth:width];
         if ([tag isSameTag:IUCSSTagBorderTopWidth] || [tag isSameTag:IUCSSTagBorderLeftWidth] || [tag isSameTag:IUCSSTagBorderRightWidth] || [tag isSameTag:IUCSSTagBorderBottomWidth]) {
