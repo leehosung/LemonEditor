@@ -37,10 +37,6 @@
 }
 
 - (void)awakeFromNib{
-    NSDictionary *updateBinding = [NSDictionary
-                                   dictionaryWithObjects:@[[NSNumber numberWithBool:YES]]
-                                   forKeys:@[NSContinuouslyUpdatesValueBindingOption]];
-
     [_altTextTF bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"altText"] options:@{NSContinuouslyUpdatesValueBindingOption: @(YES)}];
     [_fileNameComboBox bind:@"content" toObject:self withKeyPath:@"resourceManager.videoNames" options:IUDictNotRaisesForNotApplicable];
     [_controlBtn bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableControl"] options:IUDictNotRaisesForNotApplicable];
