@@ -316,6 +316,8 @@
         
         [newElement setOuterHTML:html];
     }
+    
+    JDDebugLog(@"%@:%@", identifier, html);
     [self.webView setNeedsDisplay:YES];
 }
 

@@ -89,8 +89,28 @@
     
 #pragma mark IUMovie
     else if([iu isKindOfClass:[IUMovie class]]){
-        [code appendFormat:@"<div %@ %@", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
+        [code appendString:@"<video "];
+        [code appendFormat:@"%@ %@", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
         [code appendString:@">"];
+        
+        if(((IUMovie *)iu).videoPath){
+            NSMutableString *compatibilitySrc = [NSMutableString stringWithString:@"\
+                                                 \n\t<source src=\"$moviename$\" type=\"video/$type$\">\
+                                                 \n\t<object data=\"$moviename$\" width=\"100%\" height=\"100%\">\
+                                                 \n\t\t<embed width=\"100%\" height=\"100%\" src=\"$moviename$\">\
+                                                 \n\t</object>\
+                                                 \n"];
+            
+            [compatibilitySrc replaceOccurrencesOfString:@"$moviename$" withString:((IUMovie *)iu).videoPath options:0 range:NSMakeRange(0, compatibilitySrc.length)];
+            [compatibilitySrc replaceOccurrencesOfString:@"$type$" withString:((IUMovie *)iu).videoPath.pathExtension options:0 range:NSMakeRange(0, compatibilitySrc.length)];
+            
+            [code appendString:compatibilitySrc];
+        }
+        if( ((IUMovie *)iu).altText){
+            [code appendString:((IUMovie *)iu).altText];
+        }
+
+        [code appendString:@"</video>"];
     }
 #pragma mark IUImage
     else if([iu isKindOfClass:[IUImage class]]){
@@ -168,6 +188,33 @@
         [code appendFormat:@"<img %@ %@", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
         [code appendString:@">"];
         
+    }
+#pragma mark IUMovie
+    else if([iu isKindOfClass:[IUMovie class]]){
+        [code appendString:@"<video "];
+        NSMutableArray *oneAttributeArray = [iu.HTMLOneAttribute mutableCopy];
+        [oneAttributeArray removeObject:@"autoplay"];
+        [code appendFormat:@"%@ %@", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes], [self HTMLOneAttributeStringWithTagArray:oneAttributeArray]];
+        [code appendString:@">"];
+        
+        if(((IUMovie *)iu).videoPath){
+            NSMutableString *compatibilitySrc = [NSMutableString stringWithString:@"\
+                                                 \n\t<source src=\"$moviename$\" type=\"video/$type$\">\
+                                                 \n\t<object data=\"$moviename$\" width=\"100%\" height=\"100%\">\
+                                                 \n\t\t<embed width=\"100%\" height=\"100%\" src=\"$moviename$\">\
+                                                 \n\t</object>\
+                                                 \n"];
+            
+            [compatibilitySrc replaceOccurrencesOfString:@"$moviename$" withString:((IUMovie *)iu).videoPath options:0 range:NSMakeRange(0, compatibilitySrc.length)];
+            [compatibilitySrc replaceOccurrencesOfString:@"$type$" withString:((IUMovie *)iu).videoPath.pathExtension options:0 range:NSMakeRange(0, compatibilitySrc.length)];
+            
+            [code appendString:compatibilitySrc];
+        }
+        
+        if( ((IUMovie *)iu).altText){
+            [code appendString:((IUMovie *)iu).altText];
+        }
+        [code appendString:@"</video>"];
     }
 #pragma mark IUHTML
     else if([iu isKindOfClass:[IUHTML class]]){

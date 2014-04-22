@@ -16,8 +16,12 @@
 
 @implementation IUMovie
 
+
 -(id)initWithManager:(IUIdentifierManager *)identifierManager{
     self = [super initWithManager:identifierManager];
+    if(self){
+        [self addObserver:self forKeyPaths:@[@"enableControl", @"enableLoop", @"enableMute", @"enableAutoPlay",@"cover", @"altText"] options:0 context:@"attributes"];
+    }
     return self;
 }
 
@@ -25,6 +29,7 @@
     self =  [super initWithCoder:aDecoder];
     if(self){
         [aDecoder decodeToObject:self withProperties:[[IUMovie class] properties]];
+        [self addObserver:self forKeyPaths:@[@"enableControl", @"enableLoop", @"enableMute", @"enableAutoPlay",@"cover", @"altText"] options:0 context:@"attributes"];
     }
     return self;
 }
@@ -37,6 +42,16 @@
 - (BOOL)shouldAddIU{
     return NO;
 }
+
+- (void)setVideoPath:(NSString *)videoPath{
+    _videoPath = videoPath;
+    [self.delegate IU:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
+}
+
+- (void)attributesContextDidChange:(NSDictionary *)change{
+    [self.delegate IU:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
+}
+
 - (NSArray *)HTMLOneAttribute{
     NSMutableArray *array = [[super HTMLOneAttribute] mutableCopy];
     
@@ -63,10 +78,10 @@
         [dict setObject:@(1) forKey:@"movieNoControl"];
     }
     
-    if(self.enablePoster){
+    if(self.posterPath){
         [dict setObject:self.posterPath forKey:@"poster"];
     }
-
+    
     return dict;
 }
 
