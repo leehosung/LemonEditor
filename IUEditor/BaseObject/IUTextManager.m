@@ -376,6 +376,7 @@
         modifiedRange.location = 1;
         modifiedRange.length --;
         if (modifiedRange.length == 0) {
+            _cursorLocationInText = range.location;
             [text deleteCharactersInRange:range];
             return;
         }
@@ -396,6 +397,10 @@
 }
 
 - (NSDictionary*)cursor{
+    if ([text length] == 0) {
+        // no text
+        return @{IUTextCursorLocationID: _idKey, IUTextCursorLocationIndex:@(0)};
+    }
     NSIndexSet *indexSet = [self rangeSet];
     NSInteger indexOfSpan = [indexSet indexLessThanOrEqualToIndex:_cursorLocationInText];
 //    NSInteger spanCount = [indexSet countOfIndexesInRange:NSMakeRange(0, indexOfSpan)];
