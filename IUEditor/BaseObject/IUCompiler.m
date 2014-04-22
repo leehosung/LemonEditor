@@ -61,11 +61,15 @@
     [css appendString:[self CSSContentFromAttributes:[iu CSSAttributesForWidth:width] ofClass:iu isHover:NO]];
     [css appendString:@"}"];
     [css appendString:@"\n"];
-    [css appendString:[NSString stringWithFormat:@"#%@:hover {", iu.htmlID]];
-    [css appendString:[self CSSContentFromAttributes:[iu CSSAttributesForWidth:width] ofClass:iu isHover:YES]];
-    [css appendString:@"}"];
-    [css appendString:@"\n"];
-
+    
+    NSString *hoverCSS = [self CSSContentFromAttributes:[iu CSSAttributesForWidth:width] ofClass:iu isHover:YES];
+    if (hoverCSS){
+        [css appendString:[NSString stringWithFormat:@"#%@:hover {", iu.htmlID]];
+        [css appendString:hoverCSS];
+        [css appendString:@"}"];
+        [css appendString:@"\n"];
+        
+    }
     return css;
 }
 
@@ -327,6 +331,9 @@
     }
     
     else {
+        if ([obj.className isEqualToString:@"IUItem"]) {
+            int i=0;
+        }
         if (obj.hasX) {
             value = cssTagDict[IUCSSTagX];
             if (value) {
@@ -364,6 +371,8 @@
             }
         }
         
+        value = cssTagDict[IUCSSTagHidden];
+        [dict putTag:@"hidden" string:@"visibility"];
         
         value = cssTagDict[IUCSSTagBGColor];
         [dict putTag:@"background-color" color:value ignoreClearColor:YES];

@@ -48,6 +48,8 @@
 #define IUCSSTagShadowSpread @"shadowSpread"
 #define IUCSSTagShadowBlur @"shadowBlur"
 
+#define IUCSSTagHidden @"hidden"
+
 #define isSameTag isEqualToString
 
 @interface NSString (IUTag)

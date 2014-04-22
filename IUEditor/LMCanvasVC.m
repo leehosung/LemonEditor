@@ -170,7 +170,7 @@
 }
 - (void)addSelectedIU:(NSString *)IU{
     NSArray *addArray = [NSArray arrayWithObject:IU];
-    [self.controller setSelectedObjectsByIdentifiers:addArray];
+    [self.controller trySetSelectedObjectsByIdentifiers:addArray];
 }
 
 

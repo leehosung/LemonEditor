@@ -28,16 +28,11 @@
 }
 
 - (void)awakeFromNib{
+    [_variableTF bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"variable"] options:IUDictNotRaisesForNotApplicable];
+    [_altTextTF bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"altText"] options:IUDictNotRaisesForNotApplicable];
     
-    NSDictionary *bindingOption = [NSDictionary
-                                   dictionaryWithObjects:@[[NSNumber numberWithBool:NO]]
-                                   forKeys:@[NSRaisesForNotApplicableKeysBindingOption]];
-
-    [_variableTF bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"variable"] options:bindingOption];
-    [_altTextTF bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"altText"] options:bindingOption];
-    
-    [_imageResourceComboBox bind:@"content" toObject:self withKeyPath:@"resourceManager.imageNames" options:bindingOption];
-    [_imageResourceComboBox bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"imageName"] options:bindingOption];
+    [_imageResourceComboBox bind:@"content" toObject:self withKeyPath:@"resourceManager.imageNames" options:IUDictNotRaisesForNotApplicable];
+    [_imageResourceComboBox bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"imageName"] options:IUDictNotRaisesForNotApplicable];
 
 }
 

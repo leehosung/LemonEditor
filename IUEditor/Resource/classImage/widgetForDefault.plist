@@ -144,7 +144,7 @@
 	</dict>
 	<dict>
 		<key>isWidget</key>
-		<false/>
+		<true/>
 		<key>className</key>
 		<string>IUTransition</string>
 		<key>classImage</key>
