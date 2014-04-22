@@ -23,6 +23,6 @@ typedef enum _IUCompilerType{
 -(NSString*)editorSource:(IUDocument*)document;
 
 -(NSString*)editorHTML:(IUBox*)iu;
--(NSString*)CSSContentFromAttributes:(NSDictionary*)attributeDict ofClass:(IUBox*)obj;
+-(NSString*)CSSContentFromAttributes:(NSDictionary*)attributeDict ofClass:(IUBox*)obj isHover:(BOOL)isHover;
 -(NSString*)fontCSSContentFromAttributes:(NSDictionary*)attributeDict;
 @end

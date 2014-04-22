@@ -149,7 +149,7 @@
 }
 
 -(NSString*)cssForWidth:(NSInteger)width{
-    return [self.document.compiler CSSContentFromAttributes:[self CSSAttributesForWidth:width] ofClass:self];
+    return [self.document.compiler CSSContentFromAttributes:[self CSSAttributesForWidth:width] ofClass:self isHover:NO];
 }
 
 -(void)CSSChanged:(NSDictionary*)tagDictionary forWidth:(NSInteger)width{
@@ -271,12 +271,6 @@
 
 -(NSString*)description{
     return [[super description] stringByAppendingFormat:@" %@", self.htmlID];
-}
-
--(NSDictionary*)CSSContents{
-    NSDictionary *frameDict = [_css tagDictionaryForWidth:IUCSSDefaultCollection];
-    NSString *cssContent = [self.document.compiler CSSContentFromAttributes:frameDict ofClass:self];
-    return @{@(IUCSSDefaultCollection): cssContent};
 }
 
 

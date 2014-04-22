@@ -58,11 +58,17 @@
 -(NSString*)cssSourceForIU:(IUBox*)iu width:(int)width{
     NSMutableString *css = [NSMutableString string];
     [css appendString:[NSString stringWithFormat:@"#%@ {", iu.htmlID]];
-    [css appendString:[self CSSContentFromAttributes:[iu CSSAttributesForWidth:IUCSSDefaultCollection] ofClass:iu]];
+    [css appendString:[self CSSContentFromAttributes:[iu CSSAttributesForWidth:width] ofClass:iu isHover:NO]];
     [css appendString:@"}"];
     [css appendString:@"\n"];
+    [css appendString:[NSString stringWithFormat:@"#%@:hover {", iu.htmlID]];
+    [css appendString:[self CSSContentFromAttributes:[iu CSSAttributesForWidth:width] ofClass:iu isHover:YES]];
+    [css appendString:@"}"];
+    [css appendString:@"\n"];
+
     return css;
 }
+
 
 -(NSString *)outputHTML:(IUBox *)iu{
     NSMutableString *code = [NSMutableString string];
@@ -286,9 +292,9 @@
     return code;
 }
 
--(NSString*)CSSContentFromAttributes:(NSDictionary*)cssTagDictionary ofClass:(IUBox*)obj{
+-(NSString*)CSSContentFromAttributes:(NSDictionary*)cssTagDictionary ofClass:(IUBox*)obj isHover:(BOOL)isHover{
     //convert css tag dictionry to css string dictionary
-    NSDictionary *cssStringDict = [self cssStringDictionaryWithCSSTagDictionary:cssTagDictionary ofClass:obj];
+    NSDictionary *cssStringDict = [self cssStringDictionaryWithCSSTagDictionary:cssTagDictionary ofClass:obj isHover:isHover];
     
     //convert css string dictionary to css line
     NSMutableString *code = [NSMutableString string];
@@ -299,110 +305,126 @@
 }
 
 
--(IUCSSStringDictionary*)cssStringDictionaryWithCSSTagDictionary:(NSDictionary*)cssTagDict ofClass:(IUBox*)obj{
+-(IUCSSStringDictionary*)cssStringDictionaryWithCSSTagDictionary:(NSDictionary*)cssTagDict ofClass:(IUBox*)obj isHover:(BOOL)isHover{
     if (_resourceSource == nil) {
         assert(0);
     }
     IUCSSStringDictionary *dict = [IUCSSStringDictionary dictionary];
     id value;
     
-    if (obj.hasX) {
-        value = cssTagDict[IUCSSTagX];
-        if (value) {
-            [dict putTag:@"left" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
-        }
-    }
-    if (obj.hasY) {
-        value = cssTagDict[IUCSSTagY];
-        if (value) {
-            if ([_flowIUs containsObject:[obj class]]) {
-                [dict putTag:@"margin-top" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
-            }
-            else {
-                [dict putTag:@"top" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
-            }
-        }
-    }
-
-    if (obj.hasWidth) {
-        if ([obj isKindOfClass:[IUHeader class]] == NO) {
-            value = cssTagDict[IUCSSTagWidth];
+    if (isHover){
+        if ([cssTagDict[IUCSSTagHoverBGImagePositionEnable] boolValue]) {
+            value = cssTagDict[IUCSSTagHoverBGImageX];
             if (value) {
-                [dict putTag:@"width" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
+                [dict putTag:@"background-position-x" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
+            }
+            value = cssTagDict[IUCSSTagHoverBGImageY];
+            if (value) {
+                [dict putTag:@"background-position-y" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
             }
         }
+        return dict;
     }
     
-    if (obj.hasHeight) {
-        value = cssTagDict[IUCSSTagHeight];
+    else {
+        if (obj.hasX) {
+            value = cssTagDict[IUCSSTagX];
+            if (value) {
+                [dict putTag:@"left" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
+            }
+        }
+        if (obj.hasY) {
+            value = cssTagDict[IUCSSTagY];
+            if (value) {
+                if ([_flowIUs containsObject:[obj class]]) {
+                    [dict putTag:@"margin-top" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
+                }
+                else {
+                    [dict putTag:@"top" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
+                }
+            }
+        }
+        
+        if (obj.hasWidth) {
+            if ([obj isKindOfClass:[IUHeader class]] == NO) {
+                value = cssTagDict[IUCSSTagWidth];
+                if (value) {
+                    [dict putTag:@"width" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
+                }
+            }
+        }
+        
+        if (obj.hasHeight) {
+            value = cssTagDict[IUCSSTagHeight];
+            if (value) {
+                if ([obj isKindOfClass:[IUHeader class]]) {
+                    
+                }
+                [dict putTag:@"height" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
+            }
+        }
+        
+        
+        value = cssTagDict[IUCSSTagBGColor];
+        [dict putTag:@"background-color" color:value ignoreClearColor:YES];
+        
+        value = cssTagDict[IUCSSTagImage];
+        NSString *resourcePath = [_resourceSource relativePathForResource:value];
+        [dict putTag:@"background-image" string:[resourcePath CSSURLString]];
+        
+        value = cssTagDict[IUCSSTagBGSize];
+        if ([value isEqualToString:@"Auto"] == NO) {
+            [dict putTag:@"background-size" string:value];
+        }
+        
+        value = cssTagDict[IUCSSTagBGXPosition];
+        [dict putTag:@"background-position-x" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];
+        
+        value = cssTagDict[IUCSSTagBGYPosition];
+        [dict putTag:@"background-position-y" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];
+        
+        value = cssTagDict[IUCSSTagBorderLeftWidth];
         if (value) {
-            if ([obj isKindOfClass:[IUHeader class]]) {
-                
-            }
-            [dict putTag:@"height" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
+            [dict putTag:@"border-left-width" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];
+            NSColor *color = cssTagDict[IUCSSTagBorderLeftColor];
+            [dict putTag:@"border-left-color" color:color ignoreClearColor:YES];
         }
+        value = cssTagDict[IUCSSTagBorderRightWidth];
+        if (value) {
+            [dict putTag:@"border-right-width" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];
+            NSColor *color = cssTagDict[IUCSSTagBorderRightColor];
+            [dict putTag:@"border-right-color" color:color ignoreClearColor:YES];
+        }    value = cssTagDict[IUCSSTagBorderBottomWidth];
+        if (value) {
+            [dict putTag:@"border-bottom-width" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];
+            NSColor *color = cssTagDict[IUCSSTagBorderBottomColor];
+            [dict putTag:@"border-bottom-color" color:color ignoreClearColor:YES];
+        }    value = cssTagDict[IUCSSTagBorderTopWidth];
+        if (value) {
+            [dict putTag:@"border-top-width" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];
+            NSColor *color = cssTagDict[IUCSSTagBorderTopColor];
+            [dict putTag:@"border-top-color" color:color ignoreClearColor:YES];
+        }
+        
+        value = cssTagDict[IUCSSTagOverflow];
+        if ([value integerValue]) {
+            [dict putTag:@"overflow" string:@"visible"];
+        }
+        
+        NSInteger hOff = [cssTagDict[IUCSSTagShadowHorizontal] integerValue];
+        NSInteger vOff = [cssTagDict[IUCSSTagShadowVertical] integerValue];
+        NSInteger blur = [cssTagDict[IUCSSTagShadowBlur] integerValue];
+        NSInteger spread = [cssTagDict[IUCSSTagShadowSpread] integerValue];
+        NSColor *color = cssTagDict[IUCSSTagShadowColor];
+        NSString *colorString = [color rgbaString];
+        if (colorString == nil){
+            colorString = @"black";
+        }
+        if (hOff || vOff || blur || spread){
+            [dict putTag:@"box-shadow" string:[NSString stringWithFormat:@"%ldpx %ldpx %ldpx %ldpx %@", hOff, vOff, blur, spread, colorString]];
+        }
+        return dict;
     }
-    
-
-    value = cssTagDict[IUCSSTagBGColor];
-    [dict putTag:@"background-color" color:value ignoreClearColor:YES];
-    
-    value = cssTagDict[IUCSSTagImage];
-    NSString *resourcePath = [_resourceSource relativePathForResource:value];
-    [dict putTag:@"background-image" string:[resourcePath CSSURLString]];
-    
-    value = cssTagDict[IUCSSTagBGSize];
-    if ([value isEqualToString:@"Auto"] == NO) {
-        [dict putTag:@"background-size" string:value];
-    }
-    
-    value = cssTagDict[IUCSSTagBGXPosition];
-    [dict putTag:@"background-position-x" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];
-
-    value = cssTagDict[IUCSSTagBGYPosition];
-    [dict putTag:@"background-position-y" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];
-
-    value = cssTagDict[IUCSSTagBorderLeftWidth];
-    if (value) {
-        [dict putTag:@"border-left-width" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];
-        NSColor *color = cssTagDict[IUCSSTagBorderLeftColor];
-        [dict putTag:@"border-left-color" color:color ignoreClearColor:YES];
-    }
-    value = cssTagDict[IUCSSTagBorderRightWidth];
-    if (value) {
-        [dict putTag:@"border-right-width" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];
-        NSColor *color = cssTagDict[IUCSSTagBorderRightColor];
-        [dict putTag:@"border-right-color" color:color ignoreClearColor:YES];
-    }    value = cssTagDict[IUCSSTagBorderBottomWidth];
-    if (value) {
-        [dict putTag:@"border-bottom-width" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];
-        NSColor *color = cssTagDict[IUCSSTagBorderBottomColor];
-        [dict putTag:@"border-bottom-color" color:color ignoreClearColor:YES];
-    }    value = cssTagDict[IUCSSTagBorderTopWidth];
-    if (value) {
-        [dict putTag:@"border-top-width" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];
-        NSColor *color = cssTagDict[IUCSSTagBorderTopColor];
-        [dict putTag:@"border-top-color" color:color ignoreClearColor:YES];
-    }
-    
-    value = cssTagDict[IUCSSTagOverflow];
-    if ([value integerValue]) {
-        [dict putTag:@"overflow" string:@"visible"];
-    }
-
-    NSInteger hOff = [cssTagDict[IUCSSTagShadowHorizontal] integerValue];
-    NSInteger vOff = [cssTagDict[IUCSSTagShadowVertical] integerValue];
-    NSInteger blur = [cssTagDict[IUCSSTagShadowBlur] integerValue];
-    NSInteger spread = [cssTagDict[IUCSSTagShadowSpread] integerValue];
-    NSColor *color = cssTagDict[IUCSSTagShadowColor];
-    NSString *colorString = [color rgbaString];
-    if (colorString == nil){
-        colorString = @"black";
-    }
-    if (hOff || vOff || blur || spread){
-        [dict putTag:@"box-shadow" string:[NSString stringWithFormat:@"%ldpx %ldpx %ldpx %ldpx %@", hOff, vOff, blur, spread, colorString]];
-    }
-    return dict;
 }
 
 -(NSString*)fontCSSContentFromAttributes:(NSDictionary*)attributeDict{
