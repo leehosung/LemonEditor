@@ -33,7 +33,6 @@
     NSUInteger index = [indexes firstIndex];
     LMGeneralObject *object = [[collectionView itemAtIndex:index] representedObject];
     NSString *className = object.title;
-    NSDictionary *setting = object.dict;
     
     IUBox *obj = [[NSClassFromString(className) alloc] initWithManager:_identifierManager];
     
@@ -42,8 +41,18 @@
     
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:obj];
     [pasteboard setData:data forType:kUTTypeIUType];
+    
 
     return YES;
+}
+
+
+- (NSImage *)collectionView:(NSCollectionView *)collectionView draggingImageForItemsAtIndexes:(NSIndexSet *)indexes withEvent:(NSEvent *)event offset:(NSPointPointer)dragImageOffset{
+    
+    NSUInteger index = [indexes firstIndex];
+    LMGeneralObject *object = [[collectionView itemAtIndex:index] representedObject];
+
+    return object.image;
 }
 
 
