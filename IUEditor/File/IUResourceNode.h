@@ -10,6 +10,7 @@
 #import "IUResourceGroupNode.h"
 
 typedef enum _IUResourceType{
+    IUResourceTypeNone,
     IUResourceTypeImage,
     IUResourceTypeCSS,
     IUResourceTypeJS,

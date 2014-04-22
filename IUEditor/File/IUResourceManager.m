@@ -37,38 +37,75 @@
 
 -(IUResourceNode*)insertResourceWithContentOfPath:(NSString*)path type:(IUResourceType)type{
     
+    if(type == IUResourceTypeNone){
+        return nil;
+    }
+    
     NSString *groupName;
+    
     switch (type) {
-        case IUResourceTypeCSS:{
-            groupName=@"CSS"; break;
-        }
-        case IUResourceTypeJS: groupName=@"JS"; break;
+        case IUResourceTypeCSS:
+            groupName=@"CSS";
+            break;
+        case IUResourceTypeJS:
+            groupName=@"JS";
+            break;
         case IUResourceTypeVideo:{
-            [self willChangeValueForKey:@"resourceNodes"];
-            [self willChangeValueForKey:@"videoNames"];
-            [self willChangeValueForKey:@"videoPaths"];
-            groupName=@"Video"; break;
+            groupName=@"Video";
+            break;
         }
         case IUResourceTypeImage:{
-            [self willChangeValueForKey:@"resourceNodes"];
+            groupName=@"Image";
+            break;
+        }
+        default: assert(0);  break;
+    }
+    
+    IUResourceGroupNode *parent = (IUResourceGroupNode*)[self nodeWithName:groupName];
+    NSString *fileName = [path lastPathComponent];
+    if([parent containName:fileName]){
+        return nil;
+    }
+    
+    [self willChangeValueForKey:@"resourceNodes"];
+    switch (type) {
+        case IUResourceTypeCSS:
+            break;
+        case IUResourceTypeJS:
+            break;
+        case IUResourceTypeVideo:{
+            [self willChangeValueForKey:@"videoNames"];
+            [self willChangeValueForKey:@"videoPaths"];
+            break;
+        }
+        case IUResourceTypeImage:{
             [self willChangeValueForKey:@"imageNames"];
             [self willChangeValueForKey:@"imagePaths"];
-            groupName=@"Image"; break;
+            break;
             
         }
         default: assert(0);  break;
     }
     
     IUResourceNode *resourceNode = [[IUResourceNode alloc] initWithName:[path lastPathComponent] type:type];
-    IUResourceGroupNode *parent = (IUResourceGroupNode*)[self nodeWithName:groupName];
+
     [parent addResourceNode:resourceNode path:path];
-    if (type == IUResourceTypeCSS) {
-        [self didChangeValueForKey:@"videoPaths"];
-        [self didChangeValueForKey:@"videoNames"];
-        [self didChangeValueForKey:@"imagePaths"];
-        [self didChangeValueForKey:@"imageNames"];
-        [self didChangeValueForKey:@"resourceNodes"];
+    
+    //notify didchange
+    switch (type) {
+        case IUResourceTypeImage:
+            [self didChangeValueForKey:@"imagePaths"];
+            [self didChangeValueForKey:@"imageNames"];
+            break;
+        case IUResourceTypeVideo:
+            [self didChangeValueForKey:@"videoPaths"];
+            [self didChangeValueForKey:@"videoNames"];
+            break;
+            
+        default:
+            break;
     }
+    [self didChangeValueForKey:@"resourceNodes"];
     return resourceNode;
 }
 
@@ -160,4 +197,42 @@
     return nil;
 }
 
+- (IUResourceGroupNode *)jsNode{
+    for(IUResourceGroupNode *child in _rootNode.children){
+        if([child.name isEqualToString:@"JS"]){
+            return child;
+        }
+    }
+    return nil;
+}
+
+- (IUResourceGroupNode *)cssNode{
+    for(IUResourceGroupNode *child in _rootNode.children){
+        if([child.name isEqualToString:@"CSS"]){
+            return child;
+        }
+    }
+    return nil;
+}
+
+-(IUResourceType)resourceType:(NSString *)anExtension{
+    
+    NSString *extension = [anExtension lowercaseString];
+    
+    NSArray *imageExtensions = @[@"jpg", @"png", @"gif", @"jpeg", @"bmp", @"tiff"];
+    NSArray *videoExtensions = @[@"mp4"];
+    if([imageExtensions containsObject:extension]){
+        return IUResourceTypeImage;
+    }
+    else if([videoExtensions containsObject:extension]){
+        return IUResourceTypeVideo;
+    }
+    else if([extension isEqualToString:@"js"]){
+        return IUResourceTypeJS;
+    }
+    else if([extension isEqualToString:@"css"]){
+        return IUResourceTypeCSS;
+    }
+    return IUResourceTypeNone;
+}
 @end

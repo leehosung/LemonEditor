@@ -27,5 +27,9 @@
 
 - (IUResourceGroupNode *)imageNode;
 - (IUResourceGroupNode *)videoNode;
+- (IUResourceGroupNode *)jsNode;
+- (IUResourceGroupNode *)cssNode;
+
+-(IUResourceType)resourceType:(NSString *)anExtension;
 
 @end

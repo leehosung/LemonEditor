@@ -20,7 +20,7 @@
 -(id)initWithManager:(IUIdentifierManager *)identifierManager{
     self = [super initWithManager:identifierManager];
     if(self){
-        [self addObserver:self forKeyPaths:@[@"enableControl", @"enableLoop", @"enableMute", @"enableAutoPlay",@"cover", @"altText"] options:0 context:@"attributes"];
+        [self addObserver:self forKeyPaths:@[@"enableControl", @"enableLoop", @"enableMute", @"enableAutoPlay",@"cover", @"altText", @"posterPath"] options:0 context:@"attributes"];
     }
     return self;
 }
@@ -29,7 +29,7 @@
     self =  [super initWithCoder:aDecoder];
     if(self){
         [aDecoder decodeToObject:self withProperties:[[IUMovie class] properties]];
-        [self addObserver:self forKeyPaths:@[@"enableControl", @"enableLoop", @"enableMute", @"enableAutoPlay",@"cover", @"altText"] options:0 context:@"attributes"];
+        [self addObserver:self forKeyPaths:@[@"enableControl", @"enableLoop", @"enableMute", @"enableAutoPlay",@"cover", @"altText", @"posterPath"] options:0 context:@"attributes"];
     }
     return self;
 }
