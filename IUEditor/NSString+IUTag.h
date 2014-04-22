@@ -13,6 +13,11 @@
 #define IUCSSTagBGColor @"background-color"
 #define IUCSSTagX @"left"
 #define IUCSSTagY @"top"
+
+#define IUCSSTagHoverBGImagePositionEnable @"HoverBGImagePositionEnable"
+#define IUCSSTagHoverBGImageX @"hoverBGImageX"
+#define IUCSSTagHoverBGImageY @"hoverBGImageY"
+
 #define IUCSSTagWidth @"width"
 #define IUCSSTagHeight @"height"
 #define IUCSSTagImage @"background-image"

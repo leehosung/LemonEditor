@@ -53,7 +53,6 @@
 -(NSArray *)HTMLOneAttribute;
 -(NSDictionary*)HTMLAtributes;
 -(NSDictionary*)CSSAttributesForWidth:(NSInteger)width;
--(NSDictionary*)CSSContents;
 
 //source
 -(NSString*)html;
