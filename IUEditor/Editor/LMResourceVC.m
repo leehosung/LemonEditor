@@ -13,6 +13,7 @@
 @property (weak) IBOutlet NSTabView *tabView;
 @property (weak) IBOutlet NSCollectionView *collectionListV;
 @property (weak) IBOutlet NSCollectionView *collectionIconV;
+@property (strong) IBOutlet NSArrayController *resourceArrayController;
 @end
 
 @implementation LMResourceVC
@@ -28,13 +29,14 @@
 
 -(void)setManager:(IUResourceManager *)manager{
     _manager = manager;
-    [_collectionListV bind:@"content" toObject:manager withKeyPath:@"resourceNodes" options:nil];
-    [_collectionIconV bind:@"content" toObject:manager withKeyPath:@"resourceNodes" options:nil];
+    [_resourceArrayController bind:@"content" toObject:manager withKeyPath:@"resourceNodes" options:nil];
+    [_collectionListV bind:@"content" toObject:_resourceArrayController withKeyPath:@"arrangedObjects" options:nil];
+    [_collectionIconV bind:@"content" toObject:_resourceArrayController withKeyPath:@"arrangedObjects" options:nil];
 }
 
 - (BOOL)collectionView:(NSCollectionView *)collectionView writeItemsAtIndexes:(NSIndexSet *)indexes toPasteboard:(NSPasteboard *)pasteboard{
     NSUInteger index = [indexes firstIndex];
-    IUResourceNode *node = [_manager.resourceNodes objectAtIndex:index];
+    IUResourceNode *node = [[_resourceArrayController arrangedObjects] objectAtIndex:index];
     
     [pasteboard setString:node.name forType:kUTTypeIUImageResource];
     return YES;
