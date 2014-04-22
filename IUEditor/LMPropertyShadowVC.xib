@@ -7,10 +7,15 @@
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyShadowVC">
             <connections>
                 <outlet property="shadowBlr" destination="p9R-Lx-z49" id="ZCz-bi-BHi"/>
+                <outlet property="shadowBlurText" destination="HPX-Mk-5Ql" id="akZ-Qu-10S"/>
                 <outlet property="shadowColor" destination="EWp-qK-gmi" id="QaD-7U-J9R"/>
                 <outlet property="shadowH" destination="Aoe-SB-85S" id="rHf-8V-JPO"/>
+                <outlet property="shadowHText" destination="ah4-8b-rIy" id="ITY-Wb-ITS"/>
                 <outlet property="shadowSprd" destination="kVp-4x-uO2" id="Nyr-Jb-taP"/>
+                <outlet property="shadowSpreadText" destination="nDw-yV-JEA" id="qTU-ms-63d"/>
                 <outlet property="shadowV" destination="wmj-qP-Vvw" id="XsC-Ra-cn8"/>
+                <outlet property="shadowVText" destination="w0y-HD-dSp" id="eKi-sE-OSK"/>
+                <outlet property="verticalText" destination="mSQ-Wk-JoE" id="Aca-mh-uEW"/>
                 <outlet property="view" destination="33F-UJ-27v" id="JSq-1b-bEv"/>
             </connections>
         </customObject>
