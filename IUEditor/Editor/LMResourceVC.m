@@ -29,7 +29,7 @@
 
 -(void)setManager:(IUResourceManager *)manager{
     _manager = manager;
-    [_resourceArrayController bind:@"content" toObject:manager withKeyPath:@"resourceNodes" options:nil];
+    [_resourceArrayController bind:@"contentArray" toObject:manager withKeyPath:@"resourceNodes" options:nil];
     [_collectionListV bind:@"content" toObject:_resourceArrayController withKeyPath:@"arrangedObjects" options:nil];
     [_collectionIconV bind:@"content" toObject:_resourceArrayController withKeyPath:@"arrangedObjects" options:nil];
 }
@@ -41,11 +41,48 @@
     [pasteboard setString:node.name forType:kUTTypeIUImageResource];
     return YES;
 }
+
+#pragma mark -
+#pragma mark click BTN
 - (IBAction)clickListBtn:(id)sender {
     [_tabView selectTabViewItemAtIndex:0];
 }
 - (IBAction)clickIconBtn:(id)sender {
     [_tabView selectTabViewItemAtIndex:1];
+}
+
+- (IBAction)clickAddResourceBtn:(id)sender {
+    
+    NSOpenPanel* openDlg = [NSOpenPanel openPanel];
+    [openDlg setCanChooseFiles:YES];
+    [openDlg setCanChooseDirectories:NO];
+    
+    if([openDlg runModal]){
+        // Get an array containing the full filenames of all
+        // files and directories selected.
+        NSArray* files = [openDlg URLs];
+        
+        // Loop through all the files and process them.
+        for(int i = 0; i < [files count]; i++ )
+        {
+            NSURL* filePath = [files objectAtIndex:i];
+            IUResourceType type = [_manager resourceType:[filePath pathExtension]];
+            [self addResource:filePath type:type];
+            
+        }
+    }
+    
+    [_resourceArrayController rearrangeObjects];
+}
+- (IBAction)clickRefreshBtn:(id)sender {
+    [_resourceArrayController rearrangeObjects];
+}
+
+#pragma mark - 
+#pragma mark addResource
+
+- (void)addResource:(NSURL *)url type:(IUResourceType)type{
+    [_manager insertResourceWithContentOfPath:[url relativePath] type:type];
 }
 
 

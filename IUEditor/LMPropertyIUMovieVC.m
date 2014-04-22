@@ -77,15 +77,20 @@
     if(videoFileName && videoFileName.length > 0){
         
         //get thumbnail from video file
-        NSURL *movefileURL;
+        NSURL *moviefileURL;
         if ([videoFileName isHTTPURL]) {
-            movefileURL = [NSURL URLWithString:videoFileName];
+            moviefileURL = [NSURL URLWithString:videoFileName];
+            [self setValue:moviefileURL.absoluteString forKeyPath:[_controller keyPathFromControllerToProperty:@"videoPath"] ];
         }
         else{
             NSString * moviefilePath = [self.resourceManager absolutePathForResource:videoFileName];
-            movefileURL = [NSURL fileURLWithPath:moviefilePath];
+            moviefileURL = [NSURL fileURLWithPath:moviefilePath];
+            
+            NSString *relativePath = [self.resourceManager relativePathForResource:videoFileName];
+            [self setValue:relativePath forKeyPath:[_controller keyPathFromControllerToProperty:@"videoPath"] ];
+
         }
-        NSImage *thumbnail = [self thumbnailOfVideo:movefileURL];
+        NSImage *thumbnail = [self thumbnailOfVideo:moviefileURL];
         
         if(thumbnail){
             //save thumbnail
@@ -98,26 +103,21 @@
             
             
             //save image resourceNode
-            //TODO: resource nodes (이미 존재했을때 안넣을것)
-            IUResourceNode *thumbnailNode = [[IUResourceNode alloc] initWithName:thumbFileName type:IUResourceTypeImage];
             NSString *thumbImgPath = [NSString stringWithFormat:@"%@%@", imageAbsolutePath, thumbFileName];
-            if([imageGroupNode containName:thumbFileName] == NO){
-                [imageGroupNode addResourceNode:thumbnailNode path:thumbImgPath];
-            }
+            [_resourceManager insertResourceWithContentOfPath:thumbImgPath type:IUResourceTypeImage];
             
             
-            IUResourceGroupNode *videoGroupNode = [self.resourceManager videoNode];
+            
             NSString *posterPath = [NSString stringWithFormat:@"%@/%@", imageGroupNode.relativePath, thumbFileName];
             [self setValue:posterPath forKeyPath:[_controller keyPathFromControllerToProperty:@"posterPath"] ];
             
-            NSString *videoPath = [NSString stringWithFormat:@"%@/%@", videoGroupNode.relativePath, videoFileName];
-            [self setValue:videoPath forKeyPath:[_controller keyPathFromControllerToProperty:@"videoPath"] ];
             
             [self setValue:@(thumbnail.size.width) forKeyPath:[self CSSBindingPath:IUCSSTagWidth]];
             [self setValue:@(thumbnail.size.height) forKeyPath:[self CSSBindingPath:IUCSSTagHeight]];
             
             
         }
+        
     }
     
 }
