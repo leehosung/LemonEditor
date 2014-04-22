@@ -15,6 +15,7 @@
 -(NSArray*)selectedPedigree;
 
 -(void)setSelectedObjectsByIdentifiers:(NSArray*)identifiers;
+-(void)trySetSelectedObjectsByIdentifiers:(NSArray *)identifiers;
 -(NSArray*)selectedIdentifiers;
 
 -(IUBox *)IUBoxByIdentifier:(NSString *)identifier;

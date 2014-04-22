@@ -32,11 +32,7 @@
 }
 
 - (void)awakeFromNib{
-    NSDictionary *bindingOption = [NSDictionary
-                                   dictionaryWithObjects:@[[NSNumber numberWithBool:NO]]
-                                   forKeys:@[NSRaisesForNotApplicableKeysBindingOption]];
-
-    [_fileNameBtn bind:@"title" toObject:self withKeyPath:@"documentNode.name" options:bindingOption];
+    [_fileNameBtn bind:@"title" toObject:self withKeyPath:@"documentNode.name" options:IUDictNotRaisesForNotApplicable];
 }
 
 

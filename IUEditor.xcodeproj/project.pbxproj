@@ -280,6 +280,7 @@
 		699E0D3418FD9CE2001CE633 /* IUTextManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E0D3318FD9CE2001CE633 /* IUTextManager.m */; };
 		69A45DE018F6702C00C551D9 /* LMPropertyBorderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A45DDE18F6702C00C551D9 /* LMPropertyBorderVC.m */; };
 		69A45DE118F6702C00C551D9 /* LMPropertyBorderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69A45DDF18F6702C00C551D9 /* LMPropertyBorderVC.xib */; };
+		69AB7EAC19062598009E5195 /* IUTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB7EAB19062598009E5195 /* IUTransition.m */; };
 		69ABB14A18D733ED0065D584 /* IUCompiler.m in Sources */ = {isa = PBXBuildFile; fileRef = 69ABB14918D733ED0065D584 /* IUCompiler.m */; };
 		69B37F0D18DFDEE800DE620F /* LMFileNaviVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B37F0B18DFDEE800DE620F /* LMFileNaviVC.m */; };
 		69B37F0E18DFDEE800DE620F /* LMFileNaviVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69B37F0C18DFDEE800DE620F /* LMFileNaviVC.xib */; };
@@ -690,6 +691,8 @@
 		69A45DDD18F6702C00C551D9 /* LMPropertyBorderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyBorderVC.h; sourceTree = "<group>"; };
 		69A45DDE18F6702C00C551D9 /* LMPropertyBorderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyBorderVC.m; sourceTree = "<group>"; };
 		69A45DDF18F6702C00C551D9 /* LMPropertyBorderVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyBorderVC.xib; sourceTree = "<group>"; };
+		69AB7EAA19062598009E5195 /* IUTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUTransition.h; sourceTree = "<group>"; };
+		69AB7EAB19062598009E5195 /* IUTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUTransition.m; sourceTree = "<group>"; };
 		69ABB14818D733ED0065D584 /* IUCompiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUCompiler.h; sourceTree = "<group>"; };
 		69ABB14918D733ED0065D584 /* IUCompiler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUCompiler.m; sourceTree = "<group>"; };
 		69B37F0A18DFDEE800DE620F /* LMFileNaviVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMFileNaviVC.h; path = Editor/LMFileNaviVC.h; sourceTree = "<group>"; };
@@ -1266,6 +1269,8 @@
 				3DED272A1904DFD1001A1D67 /* IUInput.m */,
 				3DED272C1904E17E001A1D67 /* IUMovie.h */,
 				3DED272D1904E17E001A1D67 /* IUMovie.m */,
+				69AB7EAA19062598009E5195 /* IUTransition.h */,
+				69AB7EAB19062598009E5195 /* IUTransition.m */,
 			);
 			name = IU;
 			sourceTree = "<group>";
@@ -1883,6 +1888,7 @@
 				6954812818D7640A00CA02F1 /* IUPage.m in Sources */,
 				69C5764018D729830016F050 /* IUDocumentController.m in Sources */,
 				69757B3118DAE19E0095CBAC /* IUDocumentGroupNode.m in Sources */,
+				69AB7EAC19062598009E5195 /* IUTransition.m in Sources */,
 				6983E71D18FFF54600D424B8 /* JDOutlineCellView.m in Sources */,
 				3DED270519010C71001A1D67 /* LMPropertyIUFBLikeVC.m in Sources */,
 				3DED270019010C55001A1D67 /* LMPropertyIUTransitionVC.m in Sources */,

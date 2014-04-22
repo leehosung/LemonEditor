@@ -60,6 +60,21 @@
     return result;
 }
 
+-(void)trySetSelectedObjectsByIdentifiers:(NSArray *)identifiers{
+    [JDLogUtil log:IULogAction key:@"canvas selected objects" string:[identifiers description]];
+    IUDocument *document = [self.content firstObject];
+    NSArray *allChildren = [[document allChildren] arrayByAddingObject:document];
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUBox *iu, NSDictionary *bindings) {
+        if ([identifiers containsObject:iu.htmlID]) {
+            return YES;
+        }
+        return NO;
+    }];
+    NSArray *selectedChildren = [allChildren filteredArrayUsingPredicate:predicate];
+    // if selection is IUItem subclass, it's parent should be selected before
+    //FIXME: need to change
+    [self _setSelectedObjects:selectedChildren];
+}
 
 
 -(void)setSelectedObjectsByIdentifiers:(NSArray *)identifiers{

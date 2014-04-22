@@ -37,21 +37,17 @@
 }
 
 - (void)awakeFromNib{
-    NSDictionary *bindingOption = [NSDictionary
-                                   dictionaryWithObjects:@[[NSNumber numberWithBool:NO]]
-                                   forKeys:@[NSRaisesForNotApplicableKeysBindingOption]];
-    
     NSDictionary *updateBinding = [NSDictionary
                                    dictionaryWithObjects:@[[NSNumber numberWithBool:YES]]
                                    forKeys:@[NSContinuouslyUpdatesValueBindingOption]];
 
-    [_altTextTF bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"altText"] options:updateBinding];
-    [_fileNameComboBox bind:@"content" toObject:self withKeyPath:@"resourceManager.videoNames" options:bindingOption];
-    [_controlBtn bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableControl"] options:bindingOption];
-    [_loopBtn bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableLoop"] options:bindingOption];
-    [_autoplayBtn bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableAutoPlay"] options:bindingOption];
-    [_coverBtn bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"cover"] options:bindingOption];
-    [_muteBtn bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableMute"] options:bindingOption];
+    [_altTextTF bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"altText"] options:@{NSContinuouslyUpdatesValueBindingOption: @(YES)}];
+    [_fileNameComboBox bind:@"content" toObject:self withKeyPath:@"resourceManager.videoNames" options:IUDictNotRaisesForNotApplicable];
+    [_controlBtn bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableControl"] options:IUDictNotRaisesForNotApplicable];
+    [_loopBtn bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableLoop"] options:IUDictNotRaisesForNotApplicable];
+    [_autoplayBtn bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableAutoPlay"] options:IUDictNotRaisesForNotApplicable];
+    [_coverBtn bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"cover"] options:IUDictNotRaisesForNotApplicable];
+    [_muteBtn bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableMute"] options:IUDictNotRaisesForNotApplicable];
     
     NSString *videoPath =[self valueForKeyPath:[_controller keyPathFromControllerToProperty:@"videoPath"]];
     if(videoPath){

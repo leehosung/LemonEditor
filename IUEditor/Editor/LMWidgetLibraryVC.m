@@ -35,6 +35,9 @@
     NSString *className = object.title;
     
     IUBox *obj = [[NSClassFromString(className) alloc] initWithManager:_identifierManager];
+    if (obj == nil) {
+        assert(0);
+    }
     
     obj.htmlID = [_identifierManager requestNewIdentifierWithKey:obj.className];
     obj.name = obj.htmlID;
