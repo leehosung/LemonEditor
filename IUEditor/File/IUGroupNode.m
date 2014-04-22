@@ -61,6 +61,16 @@
     }
 }
 
+-(BOOL)containName:(NSString *)name{
+    for(IUNode *child in _children){
+        if([child.name isEqualToString:name]){
+            return YES;
+        }
+    }
+    return NO;
+}
+
+
 -(NSArray*)children{
     return [_children copy];
 }

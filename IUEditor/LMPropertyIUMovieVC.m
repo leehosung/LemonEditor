@@ -41,13 +41,29 @@
                                    dictionaryWithObjects:@[[NSNumber numberWithBool:NO]]
                                    forKeys:@[NSRaisesForNotApplicableKeysBindingOption]];
     
+    NSDictionary *updateBinding = [NSDictionary
+                                   dictionaryWithObjects:@[[NSNumber numberWithBool:YES]]
+                                   forKeys:@[NSContinuouslyUpdatesValueBindingOption]];
+
+    [_altTextTF bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"altText"] options:updateBinding];
     [_fileNameComboBox bind:@"content" toObject:self withKeyPath:@"resourceManager.videoNames" options:bindingOption];
-    [_altTextTF bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"altText"] options:nil];
-    [_controlBtn bind:@"state" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableControl"] options:bindingOption];
-    [_loopBtn bind:@"state" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableLoop"] options:bindingOption];
-    [_autoplayBtn bind:@"state" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableAutoPlay"] options:bindingOption];
-    [_coverBtn bind:@"state" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"cover"] options:bindingOption];
-    [_muteBtn bind:@"state" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableMute"] options:bindingOption];
+    [_controlBtn bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableControl"] options:bindingOption];
+    [_loopBtn bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableLoop"] options:bindingOption];
+    [_autoplayBtn bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableAutoPlay"] options:bindingOption];
+    [_coverBtn bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"cover"] options:bindingOption];
+    [_muteBtn bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableMute"] options:bindingOption];
+    
+    NSString *videoPath =[self valueForKeyPath:[_controller keyPathFromControllerToProperty:@"videoPath"]];
+    if(videoPath){
+        NSString *videoFileName = [videoPath lastPathComponent];
+        NSInteger index = [_fileNameComboBox indexOfItemWithObjectValue:videoFileName];
+        if(index >= 0){
+            [_fileNameComboBox selectItemAtIndex:index];
+        }
+        else{
+            [_fileNameComboBox setStringValue:videoPath];
+        }
+    }
 
 }
 
@@ -58,48 +74,50 @@
 - (IBAction)clickFileNameComboBox:(id)sender {
    NSString *videoFileName =  [[self.fileNameComboBox selectedCell] stringValue];
     gettingInfo = YES;
-    if(videoFileName){
+    if(videoFileName && videoFileName.length > 0){
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^(void){
-            //get thumbnail from video file
-            NSURL *movefileURL;
-            if ([videoFileName isHTTPURL]) {
-                movefileURL = [NSURL URLWithString:videoFileName];
-            }
-            else{
-                NSString * moviefilePath = [self.resourceManager absolutePathForResource:videoFileName];
-                movefileURL = [NSURL fileURLWithPath:moviefilePath];
-            }
-            NSImage *thumbnail = [self thumbnailOfVideo:movefileURL];
+        //get thumbnail from video file
+        NSURL *movefileURL;
+        if ([videoFileName isHTTPURL]) {
+            movefileURL = [NSURL URLWithString:videoFileName];
+        }
+        else{
+            NSString * moviefilePath = [self.resourceManager absolutePathForResource:videoFileName];
+            movefileURL = [NSURL fileURLWithPath:moviefilePath];
+        }
+        NSImage *thumbnail = [self thumbnailOfVideo:movefileURL];
+        
+        if(thumbnail){
+            //save thumbnail
+            NSString *videoname = [[videoFileName lastPathComponent] stringByDeletingPathExtension];
+            NSString *thumbFileName = [[NSString alloc] initWithFormat:@"%@_thumbnail.png", videoname];
             
-            if(thumbnail){
-                //save thumbnail
-                NSString *videoname = [[videoFileName lastPathComponent] stringByDeletingPathExtension];
-                NSString *thumbFileName = [[NSString alloc] initWithFormat:@"%@_thumbnail.png", videoname];
-                
-                IUResourceGroupNode *imageGroupNode = [self.resourceManager imageNode];
-                NSString *imageAbsolutePath = [NSString stringWithFormat:@"%@/", imageGroupNode.absolutePath];
-                thumbFileName = [IUImageUtil writeToFile:thumbnail filePath:imageAbsolutePath fileName:thumbFileName checkFileName:NO];
-                
-                
-                //save image resourceNode
-                //TODO: resource nodes (이미 존재했을때 안넣을것)
-                IUResourceNode *thumbnailNode = [[IUResourceNode alloc] initWithName:thumbFileName type:IUResourceTypeImage];
-                NSString *thumbImgPath = [NSString stringWithFormat:@"%@%@", imageAbsolutePath, thumbFileName];
+            IUResourceGroupNode *imageGroupNode = [self.resourceManager imageNode];
+            NSString *imageAbsolutePath = [NSString stringWithFormat:@"%@/", imageGroupNode.absolutePath];
+            thumbFileName = [IUImageUtil writeToFile:thumbnail filePath:imageAbsolutePath fileName:thumbFileName checkFileName:NO];
+            
+            
+            //save image resourceNode
+            //TODO: resource nodes (이미 존재했을때 안넣을것)
+            IUResourceNode *thumbnailNode = [[IUResourceNode alloc] initWithName:thumbFileName type:IUResourceTypeImage];
+            NSString *thumbImgPath = [NSString stringWithFormat:@"%@%@", imageAbsolutePath, thumbFileName];
+            if([imageGroupNode containName:thumbFileName] == NO){
                 [imageGroupNode addResourceNode:thumbnailNode path:thumbImgPath];
-                
-                
-                IUResourceGroupNode *videoGroupNode = [self.resourceManager videoNode];
-                NSString *videoPath = [NSString stringWithFormat:@"%@/%@", videoGroupNode.relativePath, videoFileName];
-                [[_controller keyPathFromControllerToProperty:@"videoPath"] setValue:videoPath];
-                NSString *posterPath = [NSString stringWithFormat:@"%@/%@", imageGroupNode.relativePath, thumbFileName];
-                [[_controller keyPathFromControllerToProperty:@"posterPath"] setValue:posterPath];
-                
-                [[self CSSBindingPath:IUCSSTagWidth] setValue:@(thumbnail.size.width)];
-                [[self CSSBindingPath:IUCSSTagHeight] setValue:@(thumbnail.size.height)];
-                
             }
-        });
+            
+            
+            IUResourceGroupNode *videoGroupNode = [self.resourceManager videoNode];
+            NSString *posterPath = [NSString stringWithFormat:@"%@/%@", imageGroupNode.relativePath, thumbFileName];
+            [self setValue:posterPath forKeyPath:[_controller keyPathFromControllerToProperty:@"posterPath"] ];
+            
+            NSString *videoPath = [NSString stringWithFormat:@"%@/%@", videoGroupNode.relativePath, videoFileName];
+            [self setValue:videoPath forKeyPath:[_controller keyPathFromControllerToProperty:@"videoPath"] ];
+            
+            [self setValue:@(thumbnail.size.width) forKeyPath:[self CSSBindingPath:IUCSSTagWidth]];
+            [self setValue:@(thumbnail.size.height) forKeyPath:[self CSSBindingPath:IUCSSTagHeight]];
+            
+            
+        }
     }
     
 }

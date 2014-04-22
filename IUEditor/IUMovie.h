@@ -14,10 +14,7 @@
 @property NSString  *posterPath;
 @property NSString  *altText;
 
-@property BOOL enableControl, enablePreload, enableLoop, enableAutoPlay, enableMute, enablePoster;
+@property BOOL enableControl, enableLoop, enableAutoPlay, enableMute;
 @property BOOL cover;
-
-@property (readonly) CGFloat width, height;
-@property BOOL  gettingInfo;
 
 @end
