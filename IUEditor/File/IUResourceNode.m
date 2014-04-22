@@ -55,7 +55,19 @@
 
 
 -(NSImage*)image{
-    return [[NSImage alloc] initWithContentsOfFile:self.absolutePath];
+    NSImage *image;
+    switch (_type) {
+        case IUResourceTypeImage:
+            image = [[NSImage alloc] initWithContentsOfFile:self.absolutePath];
+            break;
+        case IUResourceTypeVideo:
+            image = [NSImage imageNamed:@"tool_movie"];
+        default:
+            break;
+    }
+
+    
+    return image;
 }
 
 

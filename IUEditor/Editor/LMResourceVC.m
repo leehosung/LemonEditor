@@ -37,10 +37,22 @@
 - (BOOL)collectionView:(NSCollectionView *)collectionView writeItemsAtIndexes:(NSIndexSet *)indexes toPasteboard:(NSPasteboard *)pasteboard{
     NSUInteger index = [indexes firstIndex];
     IUResourceNode *node = [[_resourceArrayController arrangedObjects] objectAtIndex:index];
-    
-    [pasteboard setString:node.name forType:kUTTypeIUImageResource];
-    return YES;
+    if(node.type == IUResourceTypeImage){
+        [pasteboard setString:node.name forType:kUTTypeIUImageResource];
+        return YES;
+    }
+
+    return NO;
 }
+
+- (NSImage *)collectionView:(NSCollectionView *)collectionView draggingImageForItemsAtIndexes:(NSIndexSet *)indexes withEvent:(NSEvent *)event offset:(NSPointPointer)dragImageOffset{
+    
+    NSUInteger index = [indexes firstIndex];
+    IUResourceNode *node = [[_resourceArrayController arrangedObjects] objectAtIndex:index];
+    
+    return node.image;
+}
+
 
 #pragma mark -
 #pragma mark click BTN
