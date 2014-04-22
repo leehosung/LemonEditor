@@ -15,4 +15,11 @@
 @property (weak) IBOutlet NSBox *borderTitleV;
 @property (weak) IBOutlet NSBox *borderContentV;
 
+@property (nonatomic) NSColor *borderColor;
+@property (nonatomic) NSColor *borderTopColor;
+@property (nonatomic) NSColor *borderLeftColor;
+@property (nonatomic) NSColor *borderRightColor;
+@property (nonatomic) NSColor *borderBottomColor;
+
+
 @end

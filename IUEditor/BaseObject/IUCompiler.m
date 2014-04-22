@@ -420,6 +420,19 @@
             [dict putTag:@"overflow" string:@"visible"];
         }
         
+        value = cssTagDict[IUCSSTagBorderRadiusTopLeft];
+        if(value){
+            [dict putTag:@"border-top-left-radius" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];}
+        value = cssTagDict[IUCSSTagBorderRadiusTopRight];
+        if(value){
+            [dict putTag:@"border-top-right-radius" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];}
+        value = cssTagDict[IUCSSTagBorderRadiusBottomLeft];
+        if(value){
+            [dict putTag:@"border-bottom-left-radius" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];}
+        value = cssTagDict[IUCSSTagBorderRadiusBottomRight];
+        if(value){
+            [dict putTag:@"border-bottom-right-radius" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];}
+        
         NSInteger hOff = [cssTagDict[IUCSSTagShadowHorizontal] integerValue];
         NSInteger vOff = [cssTagDict[IUCSSTagShadowVertical] integerValue];
         NSInteger blur = [cssTagDict[IUCSSTagShadowBlur] integerValue];

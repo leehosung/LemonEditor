@@ -45,7 +45,8 @@
     }
     
     if ([_delegate CSSShouldChangeValue:value forTag:tag forWidth:width]){
-        if ([tag isSameTag:IUCSSTagBorderTopWidth] || [tag isSameTag:IUCSSTagBorderLeftWidth] || [tag isSameTag:IUCSSTagBorderRightWidth] || [tag isSameTag:IUCSSTagBorderBottomWidth]) {
+        if ([tag isSameTag:IUCSSTagBorderTopWidth] || [tag isSameTag:IUCSSTagBorderLeftWidth] || [tag isSameTag:IUCSSTagBorderRightWidth] || [tag isSameTag:IUCSSTagBorderBottomWidth]
+        ) {
             [self willChangeValueForKey:@"assembledTagDictionary"];
         }
         NSMutableDictionary *cssDict = _cssFrameDict[@(width)];
@@ -58,9 +59,15 @@
             [_assembledTagDictionaryForEditWidth removeTag:tag];
         }
         else {
-            int v = [value intValue];
-            cssDict[tag] = @(v);
-            [_assembledTagDictionaryForEditWidth setObject:@(v) forKey:tag];
+            if ([tag isSameTag:IUCSSTagBorderTopWidth] || [tag isSameTag:IUCSSTagBorderLeftWidth] || [tag isSameTag:IUCSSTagBorderRightWidth] ) {
+                int v = [value intValue];
+                cssDict[tag] = @(v);
+                [_assembledTagDictionaryForEditWidth setObject:@(v) forKey:tag];
+            }
+            else {
+                cssDict[tag] = value;
+                [_assembledTagDictionaryForEditWidth setObject:value forKey:tag];
+            }
         }
         [self.delegate CSSChanged:tag forWidth:width];
         if ([tag isSameTag:IUCSSTagBorderTopWidth] || [tag isSameTag:IUCSSTagBorderLeftWidth] || [tag isSameTag:IUCSSTagBorderRightWidth] || [tag isSameTag:IUCSSTagBorderBottomWidth]) {
@@ -144,10 +151,42 @@
                 return NSMultipleValuesMarker;
             }
             
-            if ([value isEqualToNumber:[self.assembledTagDictionary objectForKey:IUCSSTagBorderBottomWidth]] == NO) {
+            return value;
+        }
+        //color multiple
+        if ([tag isSameTag:IUCSSTagBorderColor]){
+   
+            NSColor *topColor = [self.assembledTagDictionary objectForKey:IUCSSTagBorderTopColor];
+            NSString *colorString = [topColor rgbaString];
+            
+            if ([colorString isEqualToString:[[self.assembledTagDictionary objectForKey:IUCSSTagBorderLeftColor] rgbaString]] == NO) {
                 return NSMultipleValuesMarker;
             }
-            return value;
+            if ([colorString isEqualToString:[[self.assembledTagDictionary objectForKey:IUCSSTagBorderRightColor] rgbaString]] == NO) {
+                return NSMultipleValuesMarker;
+            }
+            if ([colorString isEqualToString:[[self.assembledTagDictionary objectForKey:IUCSSTagBorderBottomColor] rgbaString]] == NO) {
+                return NSMultipleValuesMarker;
+            }
+            return topColor;
+        }
+        //radius multiple
+        if ([tag isSameTag:IUCSSTagBorderRadius]) {
+            NSInteger borderTLRadius = [self.assembledTagDictionary[IUCSSTagBorderRadiusTopLeft] integerValue];
+            NSInteger borderTRRadius = [self.assembledTagDictionary[IUCSSTagBorderRadiusTopRight] integerValue];
+            NSInteger borderBLRadius = [self.assembledTagDictionary[IUCSSTagBorderRadiusBottomLeft] integerValue];
+            NSInteger borderBRRadius = [self.assembledTagDictionary[IUCSSTagBorderRadiusBottomRight] integerValue];
+            
+            if (borderTLRadius == 0 && borderTRRadius == 0 \
+                && borderBLRadius == 0 && borderBRRadius == 0) {
+                return @(0);
+            }
+            
+            if (borderTLRadius == borderTRRadius && borderTLRadius == borderBLRadius
+                && borderTLRadius == borderBRRadius) {
+                return @(borderTLRadius);
+            }
+            return NSMultipleValuesMarker;
         }
         return [_assembledTagDictionaryForEditWidth objectForKey:tag];
     }
