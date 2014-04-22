@@ -37,6 +37,14 @@
 #define IUCSSTagBorderBottomWidth @"borderBWeight"
 #define IUCSSTagBorderBottomColor @"borderBColor"
 
+#define IUCSSTagBorderRadius @"borderRadius"
+#define IUCSSTagBorderRadiusTopLeft @"borderTLRadius"
+#define IUCSSTagBorderRadiusTopRight @"borderTRRadius"
+#define IUCSSTagBorderRadiusBottomLeft @"borderBLRadius"
+#define IUCSSTagBorderRadiusBottomRight @"borderBRRadius"
+
+
+
 #define IUCSSTagFontName @"font-name"
 #define IUCSSTagFontSize @"font-size"
 
