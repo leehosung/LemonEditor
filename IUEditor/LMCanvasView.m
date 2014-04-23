@@ -86,7 +86,8 @@
 #pragma mark mouseEvent
 
 
-- (BOOL)canAddIU:(NSString *)IUID{
+- (BOOL)isDifferentIU:(NSString *)IUID{
+
     if(IUID != nil){
         if( [((LMCanvasVC *)self.delegate) containsIU:IUID] == NO ){
             return YES;
@@ -158,16 +159,19 @@
                 if (theEvent.clickCount == 1
                     || theEvent.clickCount == 2){
                     
-                    if( [self canRemoveIU:theEvent IUID:currentIUID] ){
-                        [((LMCanvasVC *)self.delegate) deselectedAllIUs];
-                        
-                    }
-                    
-                    if([self canAddIU:currentIUID]){
-                        [((LMCanvasVC *)self.delegate) addSelectedIU:currentIUID];
-                        //다른 iu를 선택하는 순간 editing mode out
+                    if( [theEvent modifierFlags] & NSCommandKeyMask ){
+                        //여러개 select 하는 순간 editing mode out
                         [[self webView] setEditable:NO];
+                        [((LMCanvasVC *)self.delegate) addSelectedIU:currentIUID];
                     }
+                    else{
+                        //다른 iu를 선택하는 순간 editing mode out
+                        if([self isDifferentIU:currentIUID]){
+                            [[self webView] setEditable:NO];
+
+                        }
+                        [((LMCanvasVC *)self.delegate) setSelectedIU:currentIUID];
+                    }                    
                     
                     if([self.webView isDOMTextAtPoint:convertedPoint] == NO
                        && currentIUID){

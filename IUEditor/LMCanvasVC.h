@@ -46,6 +46,7 @@
 - (NSUInteger)countOfSelectedIUs;
 - (void)deselectedAllIUs;
 - (void)addSelectedIU:(NSString *)IU;
+- (void)setSelectedIU:(NSString *)IU;
 - (void)selectIUInRect:(NSRect)frame;
 
 //text
