@@ -23,13 +23,11 @@
 #import "IUFBLike.h"
 
 @implementation IUCompiler{
-    NSArray *_flowIUs;
 }
 
 -(id)init{
     self = [super init];
     if (self) {
-        _flowIUs = @[[IUHeader class], [IUPageContent class]];
     }
     return self;
 }
@@ -445,6 +443,9 @@
     }
     
     else {
+        if (obj.flow) {
+            [dict putTag:@"position" string:@"static"];
+        }
         if (obj.hasX) {
             BOOL enablePercent =[cssTagDict[IUCSSTagXUnit] boolValue];
             IUCSSUnit unit =  [self unitWithBool:enablePercent];
@@ -457,7 +458,12 @@
             }
             
             if (value) {
-                [dict putTag:@"left" floatValue:[value floatValue] ignoreZero:NO unit:unit];
+                if (obj.flow) {
+                    [dict putTag:@"margin-left" floatValue:[value floatValue] ignoreZero:NO unit:unit];
+                }
+                else {
+                    [dict putTag:@"left" floatValue:[value floatValue] ignoreZero:NO unit:unit];
+                }
             }
         }
         if (obj.hasY) {
@@ -472,8 +478,7 @@
             }
             
             if (value) {
-                
-                if ([_flowIUs containsObject:[obj class]]) {
+                if (obj.flow) {
                     [dict putTag:@"margin-top" floatValue:[value floatValue] ignoreZero:NO unit:unit];
                 }
                 else {

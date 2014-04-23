@@ -9,9 +9,7 @@
 #import "IUPageContent.h"
 
 @implementation IUPageContent
-- (BOOL)flow{
-    return YES;
-}
+
 -(BOOL)hasX{
     return NO;
 }
@@ -23,6 +21,10 @@
 }
 -(BOOL)hasHeight{
     return NO;
+}
+
+- (BOOL)flow{
+    return YES;
 }
 
 -(BOOL)shouldRemoveIU{

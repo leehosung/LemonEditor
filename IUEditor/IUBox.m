@@ -483,4 +483,16 @@
     return [textManager cursor];
 }
 
+- (BOOL)flowChangeable{
+    return YES;
+}
+
+- (void)setFlow:(BOOL)flow{
+    _flow = flow;
+    [self.css eradicateTag:IUCSSTagX];
+    [self.css eradicateTag:IUCSSTagY];
+    
+    [self.delegate IU:self.htmlID CSSChanged:[self cssForWidth:IUCSSDefaultCollection] forWidth:IUCSSDefaultCollection];
+}
+
 @end

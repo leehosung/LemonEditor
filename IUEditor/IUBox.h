@@ -87,7 +87,7 @@
 - (void)increaseWidth:(NSInteger)width height:(NSInteger)height;
 - (void)insertImage:(NSString *)imageName;
 
-@property BOOL flow;
+
 @property (nonatomic, copy) NSString *link;
 
 -(BOOL)hasX;
@@ -110,4 +110,7 @@
 //#define IUTextCursorLocationID    @"id"
 //#define IUTextCursorLocationIndex @"index"
 - (NSDictionary*)cursor;
+
+@property (nonatomic) BOOL flow;
+- (BOOL)flowChangeable;
 @end
