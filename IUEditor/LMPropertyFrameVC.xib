@@ -7,6 +7,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyFrameVC">
             <connections>
                 <outlet property="contentV" destination="lqf-yQ-SWP" id="y7w-mo-EcP"/>
+                <outlet property="flowB" destination="P5X-KI-ojA" id="kKv-1J-3q3"/>
                 <outlet property="hTF" destination="YN6-me-PMV" id="dQF-5j-WjB"/>
                 <outlet property="hUnitBtn" destination="kP7-oO-Gqx" id="EPA-24-dHe"/>
                 <outlet property="overflowB" destination="xa2-Jd-iG8" id="YVG-P4-nLy"/>
@@ -38,7 +39,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="zBr-Jq-Xap">
-                                <rect key="frame" x="6" y="0.0" width="260" height="5"/>
+                                <rect key="frame" x="6" y="0.0" width="260" height="4"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

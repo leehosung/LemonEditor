@@ -15,6 +15,7 @@
 
 
 @interface LMPropertyFrameVC ()
+@property (weak) IBOutlet NSButton *flowB;
 
 //pixel TextField
 @property (weak) IBOutlet NSTextField *xTF;
@@ -92,6 +93,7 @@
     [_phTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagHeightUnit] options:percentHiddeBindingOption];
 
 
+    [_flowB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagFlow] options:IUBindingDictNotRaisesApplicable];
     
     
     NSDictionary *bindingOption = [NSDictionary

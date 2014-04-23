@@ -32,7 +32,7 @@
 }
 
 - (void)awakeFromNib{
-    [_fileNameBtn bind:@"title" toObject:self withKeyPath:@"documentNode.name" options:IUDictNotRaisesForNotApplicable];
+    [_fileNameBtn bind:@"title" toObject:self withKeyPath:@"documentNode.name" options:IUBindingDictNotRaisesApplicable];
 }
 
 
