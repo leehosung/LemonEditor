@@ -7,6 +7,7 @@
 //
 
 #import "LMBottomToolbarVC.h"
+#import "LMWC.h"
 
 @interface LMBottomToolbarVC ()
 
@@ -44,6 +45,10 @@
 - (IBAction)clickGhostBtn:(id)sender {
     BOOL showGhost = [[NSUserDefaults standardUserDefaults] boolForKey:@"showGhost"];
     [[NSUserDefaults standardUserDefaults] setBool:!showGhost forKey:@"showGhost"];
+}
+- (IBAction)clickRefreshBtn:(id)sender {
+    LMWC *lmWC = [NSApp mainWindow].windowController;
+    [lmWC reloadCurrentDocument];
 }
 
 @end

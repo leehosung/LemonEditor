@@ -234,8 +234,12 @@
     }
 }
 
-
-
+- (void)reloadCurrentDocument{
+    if ([_selectedNode isKindOfClass:[IUDocumentNode class]]) {
+        IUDocument *document = ((IUDocumentNode*)_selectedNode).document;
+        [canvasVC setDocument:document];
+    }
+}
 
 
 #pragma mark -

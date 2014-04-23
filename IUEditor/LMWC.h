@@ -24,5 +24,6 @@
 -(void)loadProject:(NSString*)path;
 
 - (LMWindow *)window;
+- (void)reloadCurrentDocument;
 - (IBAction)getCurrentSource:(id)sender;
 @end
