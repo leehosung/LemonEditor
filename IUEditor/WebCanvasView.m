@@ -62,6 +62,7 @@
                 //select all
                 if(key == 'A' || key == 'a'){
                     [self selectWholeRangeOfCurrentCursor];
+                    return YES;
                 }
             }
             else{
@@ -71,16 +72,17 @@
                     //ESC key
                     if(keyCode == 53){
                         [self setEditable:NO];
+                        return YES;
                     }
                 }
                 else{
                     //arrow key
                     if(keyCode < 127 && keyCode > 122){
                         [self moveIUByKeyEvent:keyCode];
+                        return YES;
                     }
                 }
             }
-            return YES;
         }
     }
 
