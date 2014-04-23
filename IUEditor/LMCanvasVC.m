@@ -168,10 +168,24 @@
     [self.controller setSelectionIndexPath:nil];
 }
 - (void)addSelectedIU:(NSString *)IU{
-    NSArray *addArray = [NSArray arrayWithObject:IU];
-    [self.controller trySetSelectedObjectsByIdentifiers:addArray];
+    if(IU == nil){
+        return;
+    }
+    if([self.controller.selectedIdentifiers containsObject:IU]){
+        return;
+    }
+    NSArray *array = [self.controller.selectedIdentifiers arrayByAddingObject:IU];
+    [self.controller trySetSelectedObjectsByIdentifiers:array];
 }
 
+- (void)setSelectedIU:(NSString *)IU{
+    if(IU == nil){
+        return;
+    }
+    NSArray *addArray = [NSArray arrayWithObject:IU];
+    [self.controller trySetSelectedObjectsByIdentifiers:addArray];
+
+}
 
 - (void)selectIUInRect:(NSRect)frame{
     NSArray *keys = [frameDict.dict allKeys];
