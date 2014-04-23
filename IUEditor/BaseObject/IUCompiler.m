@@ -90,7 +90,7 @@
     [css appendNewline];
     
     NSString *hoverCSS = [self CSSContentFromAttributes:[iu CSSAttributesForWidth:width] ofClass:iu isHover:YES];
-    if (hoverCSS){
+    if ([hoverCSS length]){
         [css appendString:[NSString stringWithFormat:@"#%@:hover {", iu.htmlID]];
         [css appendString:hoverCSS];
         [css appendString:@"}"];
@@ -395,9 +395,6 @@
     }
     
     else {
-        if ([obj.className isEqualToString:@"IUItem"]) {
-            int i=0;
-        }
         if (obj.hasX) {
             BOOL enablePercent =[cssTagDict[IUCSSTagXUnit] boolValue];
             IUCSSUnit unit =  [self unitWithBool:enablePercent];
@@ -476,7 +473,9 @@
         }
         
         value = cssTagDict[IUCSSTagHidden];
-        [dict putTag:@"hidden" string:@"visibility"];
+        if ([value boolValue]) {
+            [dict putTag:@"visibility" string:@"hidden"];
+        }
         
         
         //background-image and color
