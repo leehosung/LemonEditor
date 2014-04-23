@@ -25,6 +25,7 @@
 -(void)IURemoved:(NSString*)identifier;
 
 - (NSPoint)distanceFromIU:(NSString *)iuName to:(NSString *)parentName;
+- (NSSize)frameSize:(NSString *)identifier;
 - (void)changeIUPageHeight:(CGFloat)pageHeight;
 
 @end
@@ -79,6 +80,8 @@
 -(BOOL)removeIUAtIndex:(NSUInteger)index;
 -(BOOL)removeIU:(IUBox *)iu;
 
+- (void)setPixelFrame:(NSRect)frame;
+- (void)setPercentFrame:(NSRect)frame;
 - (void)setPosition:(NSPoint)position;
 - (void)moveX:(NSInteger)x Y:(NSInteger)y;
 - (void)increaseWidth:(NSInteger)width height:(NSInteger)height;

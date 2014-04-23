@@ -8,11 +8,19 @@
             <connections>
                 <outlet property="contentV" destination="lqf-yQ-SWP" id="y7w-mo-EcP"/>
                 <outlet property="hTF" destination="YN6-me-PMV" id="dQF-5j-WjB"/>
+                <outlet property="hUnitBtn" destination="kP7-oO-Gqx" id="EPA-24-dHe"/>
                 <outlet property="overflowB" destination="xa2-Jd-iG8" id="YVG-P4-nLy"/>
+                <outlet property="phTF" destination="gSS-1I-mW5" id="J4u-AA-PBQ"/>
+                <outlet property="pwTF" destination="O4g-8k-nkT" id="deZ-C9-BH5"/>
+                <outlet property="pxTF" destination="nyY-Ki-gIn" id="tFg-91-WNG"/>
+                <outlet property="pyTF" destination="oq1-w9-bwR" id="KhF-cq-ExB"/>
                 <outlet property="view" destination="W2Z-Yo-bpM" id="zqF-ET-qCV"/>
                 <outlet property="wTF" destination="guM-cE-jfN" id="Y1A-fp-etq"/>
+                <outlet property="wUnitBtn" destination="wIY-3C-wNX" id="pNI-Gd-sod"/>
                 <outlet property="xTF" destination="Qa9-Z5-Qsd" id="0lQ-xR-IlU"/>
+                <outlet property="xUnitBtn" destination="OYS-Ch-QAO" id="0rR-hE-yJ8"/>
                 <outlet property="yTF" destination="8FY-e4-Z7F" id="dkp-Vg-rMk"/>
+                <outlet property="yUnitBtn" destination="JBO-80-z6h" id="8wa-2t-NSq"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -113,11 +121,26 @@
                                     <outlet property="delegate" destination="-2" id="AzI-e4-0Tt"/>
                                 </connections>
                             </textField>
+                            <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nyY-Ki-gIn" userLabel="pxTF">
+                                <rect key="frame" x="14" y="37" width="50" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="pdw-T4-4T7"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="r3L-k8-dWX">
+                                    <font key="font" metaFont="system" size="10"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <outlet property="delegate" destination="-2" id="8pF-Zu-zyw"/>
+                                </connections>
+                            </textField>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OYS-Ch-QAO">
                                 <rect key="frame" x="65" y="38" width="24" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="square" title="px" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FbY-As-PJe">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <buttonCell key="cell" type="square" title="px" alternateTitle="%" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FbY-As-PJe">
+                                    <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
                             </button>
@@ -133,11 +156,23 @@
                                     <outlet property="delegate" destination="-2" id="o7P-lG-QQo"/>
                                 </connections>
                             </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oq1-w9-bwR" userLabel="pyTF">
+                                <rect key="frame" x="14" y="11" width="50" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="3Jw-88-Ohf">
+                                    <font key="font" metaFont="system" size="10"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <outlet property="delegate" destination="-2" id="5ZI-Tc-nvQ"/>
+                                </connections>
+                            </textField>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JBO-80-z6h">
                                 <rect key="frame" x="65" y="11" width="24" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="square" title="px" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yog-hE-EdS">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <buttonCell key="cell" type="square" title="px" alternateTitle="%" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yog-hE-EdS">
+                                    <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
                             </button>
@@ -153,11 +188,23 @@
                                     <outlet property="delegate" destination="-2" id="jX9-oo-1KJ"/>
                                 </connections>
                             </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O4g-8k-nkT" userLabel="pwTF">
+                                <rect key="frame" x="143" y="38" width="50" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="zzL-Gw-WoW">
+                                    <font key="font" metaFont="system" size="10"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <outlet property="delegate" destination="-2" id="qAZ-Dy-H7o"/>
+                                </connections>
+                            </textField>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wIY-3C-wNX">
                                 <rect key="frame" x="194" y="38" width="24" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="square" title="px" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WvH-ZJ-EF1">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <buttonCell key="cell" type="square" title="px" alternateTitle="%" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WvH-ZJ-EF1">
+                                    <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
                             </button>
@@ -173,11 +220,23 @@
                                     <outlet property="delegate" destination="-2" id="2YL-EZ-iQG"/>
                                 </connections>
                             </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gSS-1I-mW5" userLabel="phTF">
+                                <rect key="frame" x="143" y="10" width="50" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Ifr-SR-mFM">
+                                    <font key="font" metaFont="system" size="10"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <outlet property="delegate" destination="-2" id="kL5-Il-Aej"/>
+                                </connections>
+                            </textField>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kP7-oO-Gqx">
                                 <rect key="frame" x="194" y="11" width="24" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="square" title="px" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DWa-TR-CdZ">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <buttonCell key="cell" type="square" title="px" alternateTitle="%" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DWa-TR-CdZ">
+                                    <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
                             </button>

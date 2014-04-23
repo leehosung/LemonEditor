@@ -1,5 +1,6 @@
 //this file only used in editor
 document.sharedFrameDict = {};
+document.sharedPercentFrameDict = {}
 
 $.fn.updatePixel = function(){
 	return this.each(function(){
@@ -8,6 +9,7 @@ $.fn.updatePixel = function(){
                      this.position = $(this).iuPosition();
                      if (document.sharedFrameDict[myName] == undefined){
                         document.sharedFrameDict[myName] = this.position;
+                        document.sharedPercentFrameDict[myName] = $(this).iuPercentFrame();
                      }
                      }
                      else{
@@ -18,6 +20,7 @@ $.fn.updatePixel = function(){
                          this.position.x != newPosition.x || this.position.y != newPosition.y
                          ){
                      document.sharedFrameDict[myName] = newPosition;
+                     document.sharedPercentFrameDict[myName] = $(this).iuPercentFrame();
                      this.position = newPosition;
                      }
                      }
@@ -42,6 +45,36 @@ $.fn.iuPosition = function(){
 }
 
 
+$.fn.iuPercentFrame = function(){
+    var iu = $(this);
+    var parent = $(iu).parent();
+    
+    
+    var pWidth = parseFloat(parent.iuPosition().width);
+    var pHeight = parseFloat(parent.iuPosition().height);
+    
+    var top, height;
+    if(pHeight == 0){
+        top =0;
+        height = 0;
+    }
+    else{
+        top = (parseFloat($(iu).iuPosition().top) / pHeight) *100;
+        height = (parseFloat($(iu).iuPosition().height) / pHeight )*100;
+    }
+    var left, width;
+    if(pWidth == 0){
+        left = 0;
+        height = 0;
+    }
+    else{
+        left = (parseFloat($(iu).iuPosition().left) / pWidth)*100;
+        width = (parseFloat($(iu).iuPosition().width) / pWidth)*100;
+    }
+    
+    return { top: top, left: left, width: width, height: height};
+    
+}
 
 
 function getDictionaryKeys(dictionary){
@@ -54,7 +87,11 @@ function getIUUpdatedFrameThread(){
     
     if (Object.keys(document.sharedFrameDict).length > 0
         && console.reportFrameDict ){
+        
         console.reportFrameDict(document.sharedFrameDict);
+        console.reportPercentFrame(document.sharedPercentFrameDict);
+        
+        document.sharedPercentFrameDict = {};
         document.sharedFrameDict = {};
     }
 }

@@ -66,6 +66,7 @@
 #pragma mark -
 #pragma mark set IU
 
+- (void)updateIUPercentFrameDictionary:(NSMutableDictionary *)iuFrameDict;
 - (void)updateIUFrameDictionary:(NSMutableDictionary *)iuFrameDict;
 - (void)updateGridFrameDictionary:(NSMutableDictionary *)gridFrameDict;
 

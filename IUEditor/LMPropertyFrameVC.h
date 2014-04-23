@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "IUController.h"
 
+
 @interface LMPropertyFrameVC : NSViewController <NSTextFieldDelegate>
 
 @property (nonatomic) IUController *controller;
