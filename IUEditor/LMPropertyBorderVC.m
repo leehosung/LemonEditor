@@ -58,8 +58,10 @@
 }
 
 - (void)setBorderTopColor:(NSColor *)borderTopColor{
-    _borderTopColor = borderTopColor;
-    [self setValue:borderTopColor forKeyPath:[self CSSBindingPath:IUCSSTagBorderTopColor]];
+    if (_borderTopColor != borderTopColor) {
+        _borderTopColor = borderTopColor;
+        [self setValue:borderTopColor forKeyPath:[self CSSBindingPath:IUCSSTagBorderTopColor]];
+    }
 }
 
 - (void)setBorderLeftColor:(NSColor *)borderLeftColor{
@@ -145,7 +147,7 @@
     
     NSColor *borderColor = [self valueForKeyPath:keyPath2];
     if (self.borderColor != borderColor) {
-        self.borderColor = borderColor;
+        [_borderColorWell setColor:borderColor];
     }
     //border radius
     if ([[keyPath pathExtension] isSameTag:IUCSSTagBorderRadiusTopLeft]) {
