@@ -502,8 +502,11 @@
 #pragma mark moveIU
 //drag & drop after select IU
 - (void)moveIUToDiffPoint:(NSPoint)point totalDiffPoint:(NSPoint)totalPoint{
+    if (point.x == 0 && point.y == 0) {
+        return;
+    }
     for(IUBox *obj in self.controller.selectedObjects){
-        
+        [obj startGrouping];
         if([frameDict isGuidePoint:totalPoint]){
             
             NSString *IUID = obj.htmlID;
@@ -521,9 +524,8 @@
         else{
             [obj moveX:point.x Y:point.y];
         }
-        
+        [obj endGrouping];
     }
-
 }
 
 - (BOOL)checkExtendSelectedIU:(NSSize)size{
@@ -556,7 +558,9 @@
             [obj increaseWidth:guideSize.width height:guideSize.height];
         }
         else{
+            [obj startGrouping];
             [obj increaseWidth:size.width height:size.height];
+            [obj endGrouping];
         }
         
         /*
