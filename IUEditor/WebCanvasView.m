@@ -62,9 +62,7 @@
                 //select all
                 if(key == 'A' || key == 'a'){
                     [self selectWholeRangeOfCurrentCursor];
-                    return YES;
                 }
-                
             }
             else{
                 unsigned short keyCode = theEvent.keyCode;
@@ -82,8 +80,10 @@
                     }
                 }
             }
+            return YES;
         }
     }
+
     return [super performKeyEquivalent:theEvent];
 }
 
