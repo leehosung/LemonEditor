@@ -20,6 +20,7 @@
 #import "IUImage.h"
 #import "IUMovie.h"
 #import "IUWebMovie.h"
+#import "IUFBLike.h"
 
 @implementation IUCompiler{
     NSArray *_flowIUs;
@@ -280,6 +281,19 @@
         [code appendNewline];
         [code appendString:@"</div>"];
 
+    }
+#pragma mark IUFBLike
+    else if([iu isKindOfClass:[IUFBLike class]]){
+        
+        [code appendFormat:@"<div %@ %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
+        [code appendNewline];
+        
+        NSString *fbPath = [[NSBundle mainBundle] pathForResource:@"FBSampleImage" ofType:@"png"];
+        NSString *editorHTML = [NSString stringWithFormat:@"<img src=\"%@\" align=\"middle\" style=\"float:left;margin:0 5px 0 0; \" ><p style=\"font-size:11px ; font-family:'Helvetica Neue', Helvetica, Arial, 'lucida grande',tahoma,verdana,arial,sans-serif\">263,929 people like this. Be the first of your friends.</p>", fbPath];
+        [code appendString:editorHTML];
+        
+        [code appendNewline];
+        [code appendString:@"</div>"];
     }
 #pragma mark IUHTML
     else if([iu isKindOfClass:[IUHTML class]]){

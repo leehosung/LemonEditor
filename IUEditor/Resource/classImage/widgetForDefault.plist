@@ -102,7 +102,7 @@
 	</dict>
 	<dict>
 		<key>isWidget</key>
-		<false/>
+		<true/>
 		<key>className</key>
 		<string>IUFBLike</string>
 		<key>classImage</key>

@@ -145,6 +145,8 @@
 		3DED27441907898A001A1D67 /* video_play.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED27401907898A001A1D67 /* video_play.png */; };
 		3DED274919078991001A1D67 /* clear_color.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED274719078991001A1D67 /* clear_color.png */; };
 		3DED274A19078991001A1D67 /* clear_color@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED274819078991001A1D67 /* clear_color@2x.png */; };
+		3DED274D1907C140001A1D67 /* IUFBLike.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED274C1907C140001A1D67 /* IUFBLike.m */; };
+		3DED274F1907C4D0001A1D67 /* FBSampleImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED274E1907C4D0001A1D67 /* FBSampleImage.png */; };
 		3DF8029A18FD0B2500913505 /* IUHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8029918FD0B2500913505 /* IUHTML.m */; };
 		3DF8029D18FE3D6000913505 /* IUWebMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8029C18FE3D6000913505 /* IUWebMovie.m */; };
 		3DF803D818FE62C900913505 /* dotted_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DF803C118FE62C900913505 /* dotted_line.png */; };
@@ -512,6 +514,9 @@
 		3DED27401907898A001A1D67 /* video_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = video_play.png; sourceTree = "<group>"; };
 		3DED274719078991001A1D67 /* clear_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clear_color.png; sourceTree = "<group>"; };
 		3DED274819078991001A1D67 /* clear_color@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clear_color@2x.png"; sourceTree = "<group>"; };
+		3DED274B1907C140001A1D67 /* IUFBLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUFBLike.h; sourceTree = "<group>"; };
+		3DED274C1907C140001A1D67 /* IUFBLike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUFBLike.m; sourceTree = "<group>"; };
+		3DED274E1907C4D0001A1D67 /* FBSampleImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FBSampleImage.png; sourceTree = "<group>"; };
 		3DF8029818FD0B2500913505 /* IUHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUHTML.h; sourceTree = "<group>"; };
 		3DF8029918FD0B2500913505 /* IUHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUHTML.m; sourceTree = "<group>"; };
 		3DF8029B18FE3D6000913505 /* IUWebMovie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUWebMovie.h; sourceTree = "<group>"; };
@@ -1133,6 +1138,7 @@
 		3DED273D19078917001A1D67 /* canvasImage */ = {
 			isa = PBXGroup;
 			children = (
+				3DED274E1907C4D0001A1D67 /* FBSampleImage.png */,
 				3DED273F1907898A001A1D67 /* video_bg.png */,
 				3DED27401907898A001A1D67 /* video_play.png */,
 			);
@@ -1155,6 +1161,8 @@
 				3DF8029918FD0B2500913505 /* IUHTML.m */,
 				3DF8029B18FE3D6000913505 /* IUWebMovie.h */,
 				3DF8029C18FE3D6000913505 /* IUWebMovie.m */,
+				3DED274B1907C140001A1D67 /* IUFBLike.h */,
+				3DED274C1907C140001A1D67 /* IUFBLike.m */,
 			);
 			name = IUHTMLGroup;
 			sourceTree = "<group>";
@@ -1687,6 +1695,7 @@
 				3DF803DA18FE62C900913505 /* panel_left.png in Resources */,
 				3DF8044718FE62FC00913505 /* tool_mail.png in Resources */,
 				3DED268D1900D329001A1D67 /* stack_render@2x.png in Resources */,
+				3DED274F1907C4D0001A1D67 /* FBSampleImage.png in Resources */,
 				3DF8041018FE62F200913505 /* tab_primary@2x.png in Resources */,
 				69B37F0E18DFDEE800DE620F /* LMFileNaviVC.xib in Resources */,
 				69C575C318D6F61E0016F050 /* Images.xcassets in Resources */,
@@ -1890,6 +1899,7 @@
 				69CFCAC018EA8D1700E3048A /* IUImage.m in Sources */,
 				3DF8046018FF75CF00913505 /* LMPropertyBGColorVC.m in Sources */,
 				3DB3ACCB18EBEF3D0046DFB7 /* SizeView.m in Sources */,
+				3DED274D1907C140001A1D67 /* IUFBLike.m in Sources */,
 				69C5762C18D70B850016F050 /* LMWC.m in Sources */,
 				69757B2518D95FDA0095CBAC /* NSMutableDictionary+IUTag.m in Sources */,
 				3DED272B1904DFD1001A1D67 /* IUInput.m in Sources */,
