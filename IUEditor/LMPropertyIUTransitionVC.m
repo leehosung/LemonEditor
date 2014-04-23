@@ -9,7 +9,7 @@
 #import "LMPropertyIUTransitionVC.h"
 
 @interface LMPropertyIUTransitionVC ()
-@property (weak) IBOutlet NSPopUpButton *currentEdit;
+@property (weak) IBOutlet NSPopUpButton *currentEditB;
 @property (weak) IBOutlet NSPopUpButton *eventB;
 @property (weak) IBOutlet NSPopUpButton *animationB;
 @property (weak) IBOutlet NSPopUpButton *opacityB;
@@ -27,11 +27,9 @@
 }
 
 - (void)awakeFromNib{
-    [_currentEdit bind:@"selectedIndex" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"currentEdit"] options:IUDictNotRaisesForNotApplicable];
-//  [_eventB bind:@"selectedValue" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"event"] options:nil];
-//    [_animationB bind:@"selectedValue" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"animation"] options:nil];
-//    [_opacityB bind:@"selectedValue" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"opacity"] options:nil];
-
+    [_currentEditB bind:@"selectedIndex" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"currentEdit"] options:IUDictNotRaisesForNotApplicable];
+    [_eventB bind:@"selectedValue" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"event"] options:IUDictNotRaisesForNotApplicable];
+    [_animationB bind:@"selectedValue" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"animation"] options:IUDictNotRaisesForNotApplicable];
 }
 
 @end
