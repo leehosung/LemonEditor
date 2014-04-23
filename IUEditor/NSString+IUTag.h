@@ -12,11 +12,6 @@
 #define IUCSSTagPosition @"position"
 #define IUCSSTagFlow @"flow"
 
-#define IUCSSTagBGColor @"background-color"
-#define IUCSSTagBGGradient @"bg-gradient"
-#define IUCSSTagBGGradientStartColor @"bg-gradient-start"
-#define IUCSSTagBGGradientEndColor @"bg-gradient-end"
-
 #define IUCSSTagX @"left"
 #define IUCSSTagY @"top"
 
@@ -37,10 +32,18 @@
 #define IUCSSTagPercentWidth    @"percentWidth"
 #define IUCSSTagPercentHeight   @"percentHeight"
 
+
+//background-image css
 #define IUCSSTagImage @"background-image"
 #define IUCSSTagBGSize @"background-size"
 #define IUCSSTagBGXPosition @"bgX"
 #define IUCSSTagBGYPosition @"bgY"
+#define IUCSSTagBGColor @"background-color"
+#define IUCSSTagBGGradient @"bg-gradient"
+#define IUCSSTagBGGradientStartColor @"bg-gradient-start"
+#define IUCSSTagBGGradientEndColor @"bg-gradient-end"
+#define IUCSSTagBGRepeat    @"bacground-repeat"
+
 
 #define IUCSSTagBorderWidth @"borderWeight"
 #define IUCSSTagBorderColor @"borderColor"

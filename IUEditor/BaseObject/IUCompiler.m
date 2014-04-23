@@ -486,6 +486,35 @@
         if(value){
             NSString *resourcePath = [_resourceSource relativePathForResource:value];
             [dict putTag:@"background-image" string:[resourcePath CSSURLString]];
+            
+            id bgValue = cssTagDict[IUCSSTagBGSize];
+            if ([bgValue isEqualToString:@"Auto"] == NO) {
+                
+                if([bgValue isEqualToString:@"Stretch"]){
+                    [dict putTag:@"background-size" string:@"100%% 100%%"];
+                }
+                else if([bgValue isEqualToString:@"Center"]){
+                    [dict putTag:@"background-position" string:@"center"];
+                }
+                else{
+                    [dict putTag:@"background-size" string:bgValue];
+                }
+            }
+            
+            bgValue = cssTagDict[IUCSSTagBGXPosition];
+            [dict putTag:@"background-position-x" intValue:[bgValue intValue] ignoreZero:YES unit:IUCSSUnitPixel];
+            
+            bgValue = cssTagDict[IUCSSTagBGYPosition];
+            [dict putTag:@"background-position-y" intValue:[bgValue intValue] ignoreZero:YES unit:IUCSSUnitPixel];
+            
+            bgValue = cssTagDict[IUCSSTagBGRepeat];
+            BOOL repeat = [bgValue boolValue];
+            if(repeat){
+                [dict putTag:@"background-repeat" string:@"repeat"];
+            }
+            else{
+                [dict putTag:@"background-repeat" string:@"no-repeat"];
+            }
         }
         else{
             BOOL enableGraident = [cssTagDict[IUCSSTagBGGradient] boolValue];
@@ -512,16 +541,7 @@
             }
             
         }
-        value = cssTagDict[IUCSSTagBGSize];
-        if ([value isEqualToString:@"Auto"] == NO) {
-            [dict putTag:@"background-size" string:value];
-        }
-        
-        value = cssTagDict[IUCSSTagBGXPosition];
-        [dict putTag:@"background-position-x" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];
-        
-        value = cssTagDict[IUCSSTagBGYPosition];
-        [dict putTag:@"background-position-y" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];
+     
         
         //CSS - Border
         value = cssTagDict[IUCSSTagBorderLeftWidth];

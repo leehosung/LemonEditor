@@ -73,8 +73,14 @@
         if (self.hasHeight) {
             [_css setValue:@(35) forTag:IUCSSTagHeight forWidth:IUCSSDefaultCollection];
         }
+        
+        //background
         [_css setValue:[NSColor randomColor] forTag:IUCSSTagBGColor forWidth:IUCSSDefaultCollection];
         [_css setValue:@"Auto" forTag:IUCSSTagBGSize forWidth:IUCSSDefaultCollection];
+        [_css setValue:@(0) forTag:IUCSSTagBGXPosition forWidth:IUCSSDefaultCollection];
+        [_css setValue:@(0) forTag:IUCSSTagBGYPosition forWidth:IUCSSDefaultCollection];
+        
+        //border
         [_css setValue:@(0) forTag:IUCSSTagBorderTopWidth forWidth:IUCSSDefaultCollection];
         [_css setValue:@(0) forTag:IUCSSTagBorderLeftWidth forWidth:IUCSSDefaultCollection];
         [_css setValue:@(0) forTag:IUCSSTagBorderRightWidth forWidth:IUCSSDefaultCollection];
