@@ -10,6 +10,8 @@
 
 @interface IUWebMovie : IUHTML
 
+@property BOOL      thumbnail;
+@property  NSString *thumbnailPath;
 @property (nonatomic) NSString *webMovieSource;
 
 @end

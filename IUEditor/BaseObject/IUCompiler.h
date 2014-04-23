@@ -20,9 +20,13 @@ typedef enum _IUCompilerType{
 @interface IUCompiler : NSObject
 
 @property id <IUCompilerResourceSource> resourceSource;
+//build source
+-(NSString*)outputSource:(IUDocument*)document;
+-(NSString *)outputHTML:(IUBox *)iu;
+//editor source
 -(NSString*)editorSource:(IUDocument*)document;
-
 -(NSString*)editorHTML:(IUBox*)iu;
+
 -(NSString*)CSSContentFromAttributes:(NSDictionary*)attributeDict ofClass:(IUBox*)obj isHover:(BOOL)isHover;
 -(NSString*)fontCSSContentFromAttributes:(NSDictionary*)attributeDict;
 @end
