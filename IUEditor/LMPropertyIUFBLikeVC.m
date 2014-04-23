@@ -10,6 +10,9 @@
 
 @interface LMPropertyIUFBLikeVC ()
 
+@property (weak) IBOutlet NSTextField *likePageTF;
+@property (weak) IBOutlet NSButton *friendFaceBtn;
+
 @end
 
 @implementation LMPropertyIUFBLikeVC
@@ -21,6 +24,19 @@
         // Initialization code here.
     }
     return self;
+}
+
+- (void)awakeFromNib{
+    [_likePageTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"likePage"] options:IUBindingDictNotRaisesApplicable];
+    [_friendFaceBtn bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"showFriendsFace"] options:nil];
+
+    //enable
+    NSDictionary *enableBindingOption = [NSDictionary
+                                           dictionaryWithObjects:@[NSIsNotNilTransformerName]
+                                           forKeys:@[NSValueTransformerNameBindingOption]];
+
+    [_friendFaceBtn bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"likePage"] options:enableBindingOption];
+    
 }
 
 @end
