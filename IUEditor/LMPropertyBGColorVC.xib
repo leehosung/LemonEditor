@@ -9,6 +9,7 @@
                 <outlet property="bgColorWell" destination="8jm-t6-qvy" id="phq-LL-ui5"/>
                 <outlet property="bgGradientEndColorWell" destination="8ek-TO-Gky" id="24q-B9-b4n"/>
                 <outlet property="bgGradientStartColorWell" destination="qpq-Zk-sjj" id="v1k-Sb-Vsg"/>
+                <outlet property="enableGradientBtn" destination="cTc-xo-tpy" id="0A6-ne-5au"/>
                 <outlet property="view" destination="8H1-W6-tuM" id="2ZE-sg-s5r"/>
             </connections>
         </customObject>

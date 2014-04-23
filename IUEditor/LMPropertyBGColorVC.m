@@ -13,6 +13,7 @@
 @property (weak) IBOutlet NSColorWell *bgColorWell;
 @property (weak) IBOutlet NSColorWell *bgGradientStartColorWell;
 @property (weak) IBOutlet NSColorWell *bgGradientEndColorWell;
+@property (weak) IBOutlet NSButton *enableGradientBtn;
 
 @end
 
@@ -31,9 +32,11 @@
     [[NSColorPanel sharedColorPanel] setShowsAlpha:YES];
     [NSColor setIgnoresAlpha:NO];
 
-    [_bgColorWell bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBGColor] options:nil];
-    [_bgGradientStartColorWell bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBGGradientStartColor] options:nil];
-    [_bgGradientEndColorWell bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBGGradientEndColor] options:nil];
+    [_bgColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBGColor] options:nil];
+    [_bgGradientStartColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBGGradientStartColor] options:nil];
+    [_bgGradientEndColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBGGradientEndColor] options:nil];
+    
+    [_enableGradientBtn bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBGGradient] options:nil];
 
 
 }
