@@ -399,7 +399,41 @@
     [[self webView] updateFrameDict];
     
 }
-
+/*
+ 
+ -(NSString *)cssIDInCSSRule:(NSString *)cssrule{
+ NSMutableString *css = [cssrule mutableCopy];
+ [css trim];
+ NSArray *cssItems = [css componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"{}"]];
+ 
+ return cssItems[0];
+ }
+ 
+ 
+ - (NSString *)innerCSSText:(NSString *)innerCSSText byAddingCSSText:(NSString *)cssText withID:(NSString *)iuID
+ {
+ NSMutableString *innerCSSHTML = [NSMutableString stringWithString:@"\n"];
+ NSString *trimmedInnerCSSHTML = [innerCSSText  stringByTrim];
+ NSArray *cssRuleList = [trimmedInnerCSSHTML componentsSeparatedByCharactersInSet:
+ [NSCharacterSet characterSetWithCharactersInString:@"#"]];
+ 
+ for(NSString *rule in cssRuleList){
+ if(rule.length ==0) {
+ continue;
+ }
+ NSString *ruleID = [self cssIDInCSSRule:rule];
+ if([ruleID isEqualToString:iuID] == NO){
+ [innerCSSHTML appendString:[NSString stringWithFormat:@"\t#%@\n", [rule stringByTrim]]];
+ }
+ }
+ 
+ [innerCSSHTML appendString:cssText];
+ [innerCSSHTML appendString:@"\n"];
+ 
+ return innerCSSHTML;
+ }
+ 
+*/
 - (NSString *)innerCSSText:(NSString *)innerCSSText byAddingCSSText:(NSString *)cssText withID:(NSString *)iuID
 {
     NSMutableString *innerCSSHTML = [NSMutableString stringWithString:@"\n"];
