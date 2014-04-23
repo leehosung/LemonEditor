@@ -223,6 +223,10 @@
 @end
 
 @implementation NSMutableString(JDExtension)
+
+- (void)appendNewline{
+    [self appendString:@"\n"];
+}
 - (void)appendString:(NSString*)string multipleTimes:(NSUInteger)multipleTimes{
     for (int i=0; i<multipleTimes; i++) {
         [self appendString:string];

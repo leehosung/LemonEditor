@@ -43,6 +43,7 @@
 @end
 
 @interface NSMutableString(JDExtension)
+- (void)appendNewline;
 - (void)appendString:(NSString*)string multipleTimes:(NSUInteger)multipleTimes;
 - (void)appendStringIfNotNil:(NSString*)string;
 -(void)trim;

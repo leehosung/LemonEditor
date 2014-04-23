@@ -19,6 +19,7 @@
 #import "IUHTML.h"
 #import "IUImage.h"
 #import "IUMovie.h"
+#import "IUWebMovie.h"
 
 @implementation IUCompiler{
     NSArray *_flowIUs;
@@ -30,6 +31,32 @@
         _flowIUs = @[[IUHeader class], [IUPageContent class]];
     }
     return self;
+}
+
+
+-(NSString*)outputSource:(IUDocument*)document{
+    NSString *templateFilePath = [[NSBundle mainBundle] pathForResource:@"webTemplate" ofType:@"html"];
+    NSMutableString *source = [NSMutableString stringWithContentsOfFile:templateFilePath encoding:NSUTF8StringEncoding error:nil];
+    
+    //TODO: remove iuframe.js
+    
+    //change css
+    NSMutableString *css = [NSMutableString string];
+    
+    
+    [css appendString:[self cssSourceForIU:document width:IUCSSDefaultCollection]];
+    for (IUBox *obj in document.allChildren) {
+        [css appendString:[self cssSourceForIU:obj width:IUCSSDefaultCollection]];
+    }
+    [source replaceOccurrencesOfString:@"<!--CSS_Replacement-->" withString:[css stringByIndent:8 prependIndent:NO] options:0 range:[source fullRange]];
+    
+    //change html
+    NSString *html = [[self outputHTML:document] stringByIndent:8 prependIndent:YES];
+    [source replaceOccurrencesOfString:@"<!--HTML_Replacement-->" withString:html options:0 range:[source fullRange]];
+    
+    JDSectionInfoLog( IULogSource, @"source : %@", [@"\n" stringByAppendingString:source]);
+    
+    return source;
 }
 
 -(NSString*)editorSource:(IUDocument*)document{
@@ -47,7 +74,7 @@
     [source replaceOccurrencesOfString:@"<!--CSS_Replacement-->" withString:[css stringByIndent:8 prependIndent:NO] options:0 range:[source fullRange]];
 
     //change html
-    NSString *html = [[self outputHTML:document] stringByIndent:8 prependIndent:YES];
+    NSString *html = [[self editorHTML:document] stringByIndent:8 prependIndent:YES];
     [source replaceOccurrencesOfString:@"<!--HTML_Replacement-->" withString:html options:0 range:[source fullRange]];
     
     JDSectionInfoLog( IULogSource, @"source : %@", [@"\n" stringByAppendingString:source]);
@@ -60,14 +87,14 @@
     [css appendString:[NSString stringWithFormat:@"#%@ {", iu.htmlID]];
     [css appendString:[self CSSContentFromAttributes:[iu CSSAttributesForWidth:width] ofClass:iu isHover:NO]];
     [css appendString:@"}"];
-    [css appendString:@"\n"];
+    [css appendNewline];
     
     NSString *hoverCSS = [self CSSContentFromAttributes:[iu CSSAttributesForWidth:width] ofClass:iu isHover:YES];
     if (hoverCSS){
         [css appendString:[NSString stringWithFormat:@"#%@:hover {", iu.htmlID]];
         [css appendString:hoverCSS];
         [css appendString:@"}"];
-        [css appendString:@"\n"];
+        [css appendNewline];
         
     }
     return css;
@@ -81,16 +108,16 @@
         if (page.master) {
             [code appendFormat:@"<div %@ %@>\n", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
             for (IUBox *obj in page.master.children) {
-                [code appendString:[[self editorHTML:obj] stringByIndent:4 prependIndent:YES]];
-                [code appendString:@"\n"];
+                [code appendString:[[self outputHTML:obj] stringByIndent:4 prependIndent:YES]];
+                [code appendNewline];
             }
             if (iu.children.count) {
                 for (IUBox *child in iu.children) {
                     if (child == page.master) {
                         continue;
                     }
-                    [code appendString:[[self editorHTML:child] stringByIndent:4 prependIndent:YES]];
-                    [code appendString:@"\n"];
+                    [code appendString:[[self outputHTML:child] stringByIndent:4 prependIndent:YES]];
+                    [code appendNewline];
                 }
             }
             [code appendString:@"</div>"];
@@ -135,10 +162,10 @@
             [code appendString:((IUHTML *)iu).innerHTML];
         }
         if (iu.children.count) {
-            [code appendString:@"\n"];
+            [code appendNewline];
             for (IUBox *child in iu.children) {
-                [code appendString:[[self editorHTML:child] stringByIndent:4 prependIndent:YES]];
-                [code appendString:@"\n"];
+                [code appendString:[[self outputHTML:child] stringByIndent:4 prependIndent:YES]];
+                [code appendNewline];
             }
         }
         [code appendFormat:@"</div>"];
@@ -151,10 +178,10 @@
             [code appendFormat:@"<p>%@</p>", iu.textHTML];
         }
         if (iu.children.count) {
-            [code appendString:@"\n"];
+            [code appendNewline];
             for (IUBox *child in iu.children) {
-                [code appendString:[[self editorHTML:child] stringByIndent:4 prependIndent:YES]];
-                [code appendString:@"\n"];
+                [code appendString:[[self outputHTML:child] stringByIndent:4 prependIndent:YES]];
+                [code appendNewline];
             }
         }
         [code appendFormat:@"</div>"];
@@ -179,7 +206,7 @@
             [code appendFormat:@"<div %@ %@>\n", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
             for (IUBox *obj in page.master.children) {
                 [code appendString:[[self editorHTML:obj] stringByIndent:4 prependIndent:YES]];
-                [code appendString:@"\n"];
+                [code appendNewline];
             }
             if (iu.children.count) {
                 for (IUBox *child in iu.children) {
@@ -187,7 +214,7 @@
                         continue;
                     }
                     [code appendString:[[self editorHTML:child] stringByIndent:4 prependIndent:YES]];
-                    [code appendString:@"\n"];
+                    [code appendNewline];
                 }
             }
             [code appendString:@"</div>"];
@@ -226,6 +253,34 @@
         }
         [code appendString:@"</video>"];
     }
+#pragma mark IUWebMovie
+    else if([iu isKindOfClass:[IUWebMovie class]]){
+        IUWebMovie *iuWebMovie = (IUWebMovie *)iu;
+        
+        [code appendFormat:@"<div %@ %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
+        [code appendNewline];
+        NSString *thumbnailPath;
+        if(iuWebMovie.thumbnail){
+            thumbnailPath = [NSString stringWithString:iuWebMovie.thumbnailPath];
+        }
+        else{
+            thumbnailPath = [[NSBundle mainBundle] pathForResource:@"video_bg" ofType:@"png"];
+        }
+        
+        [code appendFormat:@"<img src = \"%@\" width='100%%' height='100%%' style='position:absolute'>", thumbnailPath];
+        [code appendNewline];
+        
+        NSString *videoPlayImagePath = [[NSBundle mainBundle] pathForResource:@"video_play" ofType:@"png"];
+        [code appendFormat:@"<div style=\"background-image:url('%@'); \
+         background-size:20%%;\
+         background-repeat:no-repeat; \
+         background-position:center; \
+         position:absolute;  width:100%%; height:100%%; \">", videoPlayImagePath];
+        
+        [code appendNewline];
+        [code appendString:@"</div>"];
+
+    }
 #pragma mark IUHTML
     else if([iu isKindOfClass:[IUHTML class]]){
         [code appendFormat:@"<div %@ %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
@@ -233,10 +288,11 @@
             [code appendString:((IUHTML *)iu).innerHTML];
         }
         if (iu.children.count) {
-            [code appendString:@"\n"];
+            [code appendNewline];
+            
             for (IUBox *child in iu.children) {
                 [code appendString:[[self editorHTML:child] stringByIndent:4 prependIndent:YES]];
-                [code appendString:@"\n"];
+                [code appendNewline];
             }
         }
         [code appendFormat:@"</div>"];
@@ -249,10 +305,10 @@
             [code appendFormat:@"<p>%@</p>", iu.textHTML];
         }
         if (iu.children.count) {
-            [code appendString:@"\n"];
+            [code appendNewline];
             for (IUBox *child in iu.children) {
                 [code appendString:[[self editorHTML:child] stringByIndent:4 prependIndent:YES]];
-                [code appendString:@"\n"];
+                [code appendNewline];
             }
         }
         [code appendFormat:@"</div>"];

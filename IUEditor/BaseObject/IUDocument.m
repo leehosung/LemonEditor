@@ -34,8 +34,7 @@
 }
 
 - (NSString*)outputSource{
-    //TODO
-    return self.editorSource;
+    return [self.compiler outputSource:self];;
 }
 
 -(NSArray*)widthWithCSS{
