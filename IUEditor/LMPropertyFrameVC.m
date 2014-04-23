@@ -93,8 +93,8 @@
     [_phTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagHeightUnit] options:percentHiddeBindingOption];
 
 
-    [_flowB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagFlow] options:IUBindingDictNotRaisesApplicable];
-    
+    [_flowB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"flow"] options:nil];
+    [_flowB bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"flowChangeable"] options:nil];
     
     NSDictionary *bindingOption = [NSDictionary
                                    dictionaryWithObjects:@[[NSNumber numberWithBool:NO]]

@@ -9,11 +9,16 @@
 #import "IUHeader.h"
 
 @implementation IUHeader
+
+-(BOOL)shouldRemoveIU{
+    return NO;
+}
+
 - (BOOL)flow{
     return YES;
 }
 
--(BOOL)shouldRemoveIU{
+- (BOOL)flowChangeable{
     return NO;
 }
 
