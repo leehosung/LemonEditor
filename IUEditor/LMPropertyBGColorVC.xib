@@ -27,7 +27,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <colorWell ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8jm-t6-qvy">
-                                <rect key="frame" x="225" y="9" width="18" height="18"/>
+                                <rect key="frame" x="222" y="7" width="18" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="lP2-Jh-5qR"/>
@@ -45,18 +45,18 @@
                                 </textFieldCell>
                             </textField>
                             <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="baY-eS-BR1">
-                                <rect key="frame" x="6" y="0.0" width="260" height="5"/>
+                                <rect key="frame" x="6" y="0.0" width="260" height="4"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <font key="titleFont" metaFont="system"/>
                             </box>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5jf-H9-xcI">
-                                <rect key="frame" x="239" y="-1" width="39" height="32"/>
+                                <rect key="frame" x="248" y="7" width="18" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="cc" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="48C-S6-ksS">
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="clear_color" imagePosition="only" alignment="center" controlSize="small" imageScaling="axesIndependently" inset="2" id="48C-S6-ksS">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="makeClearColor:" target="-2" id="ec7-DN-bL4"/>
@@ -131,4 +131,7 @@
             <color key="color" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
         </colorWell>
     </objects>
+    <resources>
+        <image name="clear_color" width="18" height="18"/>
+    </resources>
 </document>
