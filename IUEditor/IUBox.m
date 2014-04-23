@@ -213,6 +213,9 @@
         iu.parent = self;
         [self.delegate IU:iu.htmlID HTML:iu.html withParentID:self.htmlID];
         [self.delegate IU:iu.htmlID CSSChanged:[iu cssForWidth:IUCSSDefaultCollection] forWidth:IUCSSDefaultCollection];
+        for (IUBox *child in iu.children) {
+            [self.delegate IU:child.htmlID CSSChanged:[child cssForWidth:IUCSSDefaultCollection] forWidth:IUCSSDefaultCollection];
+        }
         [_identifierManager addIU:iu];
         [iu bind:@"identifierManager" toObject:self withKeyPath:@"identifierManager" options:nil];
         return YES;
