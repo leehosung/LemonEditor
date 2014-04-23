@@ -11,6 +11,7 @@
 #define IUCSSTag NSString*
 #define IUCSSTagPosition @"position"
 #define IUCSSTagBGColor @"background-color"
+
 #define IUCSSTagX @"left"
 #define IUCSSTagY @"top"
 
@@ -20,6 +21,17 @@
 
 #define IUCSSTagWidth @"width"
 #define IUCSSTagHeight @"height"
+
+#define IUCSSTagXUnit   @"xUnit"
+#define IUCSSTagYUnit   @"yUnit"
+#define IUCSSTagWidthUnit   @"wUnit"
+#define IUCSSTagHeightUnit   @"hUnit"
+
+#define IUCSSTagPercentX        @"percentLeft"
+#define IUCSSTagPercentY        @"percentTop"
+#define IUCSSTagPercentWidth    @"percentWidth"
+#define IUCSSTagPercentHeight   @"percentHeight"
+
 #define IUCSSTagImage @"background-image"
 #define IUCSSTagBGSize @"background-size"
 #define IUCSSTagBGXPosition @"bgX"

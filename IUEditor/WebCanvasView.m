@@ -177,6 +177,9 @@
     else if(selector == @selector(reportFrameDict:)){
         return @"reportFrameDict";
     }
+    else if(selector == @selector(reportPercentFrame:)){
+        return @"reportPercentFrame";
+    }
     else{
         return nil;
     }
@@ -185,6 +188,7 @@
 + (BOOL)isSelectorExcludedFromWebScript:(SEL)selector {
     if (selector == @selector(reportFrameDict:)
         || selector == @selector(doOutputToLog:)
+        || selector == @selector(reportPercentFrame:)
         ){
         return NO;
     }
@@ -273,9 +277,30 @@
     }
     
     
-    [((LMCanvasVC *)(self.delegate)) updateIUFrameDictionary:iuFrameDict];
+//    [((LMCanvasVC *)(self.delegate)) updateIUFrameDictionary:iuFrameDict];
     [((LMCanvasVC *)(self.delegate)) updateGridFrameDictionary:gridFrameDict];
     JDTraceLog( @"reportSharedFrameDict");
+}
+
+- (void)reportPercentFrame:(WebScriptObject *)scriptObj{
+    NSMutableDictionary *scriptDict = [self convertWebScriptObjectToNSDictionary:scriptObj];
+    NSMutableDictionary *iuFrameDict = [NSMutableDictionary dictionary];
+    
+    NSArray *keys = [scriptDict allKeys];
+    for(NSString *key in keys){
+        NSDictionary *innerDict = [scriptDict objectForKey:key];
+        
+        CGFloat left = [[innerDict objectForKey:@"left"] floatValue];
+        CGFloat top = [[innerDict objectForKey:@"top"] floatValue];
+        CGFloat w = [[innerDict objectForKey:@"width"] floatValue];
+        CGFloat h = [[innerDict objectForKey:@"height"] floatValue];
+        
+        NSRect iuFrame = NSMakeRect(left, top, w, h);
+        [iuFrameDict setObject:[NSValue valueWithRect:iuFrame] forKey:key];
+    }
+    
+    
+    [((LMCanvasVC *)(self.delegate)) updateIUPercentFrameDictionary:iuFrameDict];
 }
 
 - (void)updateFrameDict{
@@ -286,6 +311,7 @@
 - (void)resizePageContent{
     [self stringByEvaluatingJavaScriptFromString:@"resizePageContentHeight()"];
 }
+
 
 #pragma mark -
 #pragma mark text

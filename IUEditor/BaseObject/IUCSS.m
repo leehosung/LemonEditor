@@ -35,6 +35,22 @@
     return self;
 }
 
+- (BOOL)isPercentTag:(IUCSSTag)tag{
+    if([tag isEqualToString:IUCSSTagPercentX]){
+        return YES;
+    }
+    else if([tag isEqualToString:IUCSSTagPercentY]){
+        return YES;
+    }
+    else if([tag isEqualToString:IUCSSTagPercentWidth]){
+        return YES;
+    }
+    else if([tag isEqualToString:IUCSSTagPercentHeight]){
+        return YES;
+    }
+    return NO;
+}
+
 //insert tag
 //use css frame dict, and update affecting tag dictionary
 -(void)setValue:(id)value forTag:(IUCSSTag)tag forWidth:(NSInteger)width{
@@ -69,7 +85,11 @@
                 [_assembledTagDictionaryForEditWidth setObject:value forKey:tag];
             }
         }
-        [self.delegate CSSChanged:tag forWidth:width];
+        
+        if([self isPercentTag:tag] == NO){
+            [self.delegate CSSChanged:tag forWidth:width];
+        }
+        
         if ([tag isSameTag:IUCSSTagBorderTopWidth] || [tag isSameTag:IUCSSTagBorderLeftWidth] || [tag isSameTag:IUCSSTagBorderRightWidth] || [tag isSameTag:IUCSSTagBorderBottomWidth]) {
             [self didChangeValueForKey:@"assembledTagDictionary"];
         }

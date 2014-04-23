@@ -92,7 +92,6 @@
 - (void)makeNewIU:(IUBox *)newIU atPoint:(NSPoint)point atIU:(NSString *)parentIUID{
     
     IUBox *parentIU = [self.controller IUBoxByIdentifier:parentIUID];
- //   parentIU.
     NSPoint position = [self distanceFromIU:parentIU.htmlID toPointFromWebView:point];
     
     //postion을 먼저 정한 후에 add 함
@@ -216,6 +215,10 @@
     return distance;
 }
 
+- (NSSize)frameSize:(NSString *)identifier{
+    NSRect iuFrame = [[frameDict.dict objectForKey:identifier] rectValue];
+    return iuFrame.size;
+}
 
 - (NSPoint)distanceFromIU:(NSString*)parentName toPointFromWebView:(NSPoint)point{
     
@@ -448,10 +451,28 @@
 
 - (void)updateIUFrameDictionary:(NSMutableDictionary *)iuFrameDict{
     JDTraceLog(@"report updated frame dict");
-    
-    
-    //TODO: updated frame dict to IU
+
+    for(NSString *identifier in iuFrameDict.allKeys){
+        NSRect pixelFrame = [[iuFrameDict objectForKey:identifier] rectValue];
+        IUBox *iu = [self.controller IUBoxByIdentifier:identifier];
+        [iu setPixelFrame:pixelFrame];
+    }
 }
+
+- (void)updateIUPercentFrameDictionary:(NSMutableDictionary *)iuFrameDict{
+ 
+    for(NSString *identifier in iuFrameDict.allKeys){
+        NSRect percentFrame = [[iuFrameDict objectForKey:identifier] rectValue];
+        IUBox *iu = [self.controller IUBoxByIdentifier:identifier];
+        [iu setPercentFrame:percentFrame];
+        
+        JDWarnLog(@"(%@ : %.1f,%.1f,%.1f,%.1f)",identifier,
+                  percentFrame.origin.x, percentFrame.origin.y,
+                  percentFrame.size.width, percentFrame.size.height);
+    }
+
+}
+
 
 - (void)updateGridFrameDictionary:(NSMutableDictionary *)gridFrameDict{
     

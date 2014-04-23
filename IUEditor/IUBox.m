@@ -61,6 +61,12 @@
         _css.delegate = self;
         _identifierManager = manager;
         
+        //NO - Pixel
+        [_css setValue:@(0) forTag:IUCSSTagXUnit forWidth:IUCSSDefaultCollection];
+        [_css setValue:@(0) forTag:IUCSSTagYUnit forWidth:IUCSSDefaultCollection];
+        [_css setValue:@(0) forTag:IUCSSTagWidthUnit forWidth:IUCSSDefaultCollection];
+        [_css setValue:@(0) forTag:IUCSSTagHeightUnit forWidth:IUCSSDefaultCollection];
+        
         if (self.hasWidth) {
             [_css setValue:@(50+rand()%300) forTag:IUCSSTagWidth forWidth:IUCSSDefaultCollection];
         }
@@ -73,6 +79,7 @@
         [_css setValue:@(0) forTag:IUCSSTagBorderLeftWidth forWidth:IUCSSDefaultCollection];
         [_css setValue:@(0) forTag:IUCSSTagBorderRightWidth forWidth:IUCSSDefaultCollection];
         [_css setValue:@(0) forTag:IUCSSTagBorderBottomWidth forWidth:IUCSSDefaultCollection];
+        
 
         [_css setValue:[NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:0] forTag:IUCSSTagBorderTopColor forWidth:IUCSSDefaultCollection];
         [_css setValue:[NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:0] forTag:IUCSSTagBorderLeftColor forWidth:IUCSSDefaultCollection];
@@ -279,10 +286,32 @@
     [_css setValue:@(position.y) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagY]];
 }
 
+- (void)setPercentFrame:(NSRect)frame{
+    [_css setValue:@(frame.origin.x) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentX]];
+    [_css setValue:@(frame.origin.y) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentY]];
+    [_css setValue:@(frame.size.height) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentHeight]];
+    [_css setValue:@(frame.size.width) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentWidth]];
+
+}
+
+- (void)setPixelFrame:(NSRect)frame{
+    [_css setValue:@(frame.origin.x) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagX]];
+    [_css setValue:@(frame.origin.y) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagY]];
+    [_css setValue:@(frame.size.height) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagHeight]];
+    [_css setValue:@(frame.size.width) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagWidth]];
+    
+}
+
+-(BOOL)percentUnitAtCSSTag:(IUCSSTag)tag{
+    BOOL unit = [[_css valueForKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:tag]] boolValue];
+    return unit;
+}
+
 - (void)moveX:(NSInteger)x Y:(NSInteger)y{
     
     NSPoint distancePoint = [self.delegate distanceFromIU:self.htmlID to:self.parent.htmlID];
     
+    //Set Pixel
     NSInteger currentX = [_css.assembledTagDictionary[IUCSSTagX] integerValue] + x;
     [_css setValue:@(currentX) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagX]];
     
@@ -295,9 +324,32 @@
     }
     currentY += y;
     [_css setValue:@(currentY) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagY]];
+    
+    //set Percent if enablePercent
+    NSSize parentSize = [self.delegate frameSize:self.parent.htmlID];
+    BOOL enablePercentX = [self percentUnitAtCSSTag:IUCSSTagXUnit];
+    if(enablePercentX){
+        CGFloat percentX = 0;
+        if(parentSize.width!=0){
+            percentX = (currentX / parentSize.width) * 100;
+        }
+        [_css setValue:@(percentX) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentX]];
+
+    }
+    BOOL enablePercentY = [self percentUnitAtCSSTag:IUCSSTagYUnit];
+    if(enablePercentY){
+        CGFloat percentY = 0;
+        if(parentSize.height!=0){
+            percentY = (currentY / parentSize.height) * 100;
+        }
+        [_css setValue:@(percentY) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentY]];
+    }
+    
 }
 
 - (void)increaseWidth:(NSInteger)width height:(NSInteger)height{
+    
+    //Set Pixel
     NSInteger currentWidth = [_css.assembledTagDictionary[IUCSSTagWidth] integerValue];
     currentWidth += width;
     [_css setValue:@(currentWidth) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagWidth]];
@@ -305,6 +357,26 @@
     NSInteger currentHeight = [_css.assembledTagDictionary[IUCSSTagHeight] integerValue];
     currentHeight += height;
     [_css setValue:@(currentHeight) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagHeight]];
+    
+    //set Percent if enable percent
+    NSSize parentSize = [self.delegate frameSize:self.parent.htmlID];
+    BOOL enablePercentWidth = [self percentUnitAtCSSTag:IUCSSTagWidthUnit];
+    if(enablePercentWidth){
+        CGFloat percentWidth = 0;
+        if(parentSize.width!=0){
+            percentWidth = (currentWidth / parentSize.width) *100;
+        }
+        [_css setValue:@(percentWidth) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentWidth]];
+        
+    }
+    BOOL enablePercentHeight = [self percentUnitAtCSSTag:IUCSSTagHeightUnit];
+    if(enablePercentHeight){
+        CGFloat percentHeight = 0;
+        if(parentSize.height!=0){
+            percentHeight = (currentHeight / parentSize.height) *100;
+        }
+        [_css setValue:@(percentHeight) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentHeight]];
+    }
 }
 
 - (void)insertImage:(NSString *)imageName{

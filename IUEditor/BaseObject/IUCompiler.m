@@ -308,6 +308,15 @@
     return code;
 }
 
+-(IUCSSUnit)unitWithBool:(BOOL)value{
+    if(value){
+        return IUCSSUnitPercent;
+    }
+    else{
+        return IUCSSUnitPixel;
+    }
+}
+
 
 -(IUCSSStringDictionary*)cssStringDictionaryWithCSSTagDictionary:(NSDictionary*)cssTagDict ofClass:(IUBox*)obj isHover:(BOOL)isHover{
     if (_resourceSource == nil) {
@@ -327,7 +336,6 @@
                 [dict putTag:@"background-position-y" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
             }
         }
-        return dict;
     }
     
     else {
@@ -335,40 +343,80 @@
             int i=0;
         }
         if (obj.hasX) {
-            value = cssTagDict[IUCSSTagX];
+            BOOL enablePercent =[cssTagDict[IUCSSTagXUnit] boolValue];
+            IUCSSUnit unit =  [self unitWithBool:enablePercent];
+            
+            if(enablePercent){
+                value = cssTagDict[IUCSSTagPercentX];
+            }
+            else{
+                value = cssTagDict[IUCSSTagX];
+            }
+            
             if (value) {
-                [dict putTag:@"left" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
+                [dict putTag:@"left" floatValue:[value floatValue] ignoreZero:NO unit:unit];
             }
         }
         if (obj.hasY) {
-            value = cssTagDict[IUCSSTagY];
+            BOOL enablePercent =[cssTagDict[IUCSSTagYUnit] boolValue];
+            IUCSSUnit unit = [self unitWithBool:enablePercent];
+            
+            if(enablePercent){
+                value = cssTagDict[IUCSSTagPercentY];
+            }
+            else{
+                value = cssTagDict[IUCSSTagY];
+            }
+            
             if (value) {
+                
                 if ([_flowIUs containsObject:[obj class]]) {
-                    [dict putTag:@"margin-top" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
+                    [dict putTag:@"margin-top" floatValue:[value floatValue] ignoreZero:NO unit:unit];
                 }
                 else {
-                    [dict putTag:@"top" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
+                    [dict putTag:@"top" floatValue:[value floatValue] ignoreZero:NO unit:unit];
                 }
+                
+                
             }
         }
-        
         if (obj.hasWidth) {
             if ([obj isKindOfClass:[IUHeader class]] == NO) {
-                value = cssTagDict[IUCSSTagWidth];
+                
+                BOOL enablePercent =[cssTagDict[IUCSSTagWidthUnit] boolValue];
+                IUCSSUnit unit = [self unitWithBool:enablePercent];
+                
+                if(enablePercent){
+                    value = cssTagDict[IUCSSTagPercentWidth];
+                }
+                else{
+                    value = cssTagDict[IUCSSTagWidth];
+                }
                 if (value) {
-                    [dict putTag:@"width" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
+                    
+                    [dict putTag:@"width" floatValue:[value floatValue] ignoreZero:NO unit:unit];
                 }
             }
         }
         
         if (obj.hasHeight) {
-            value = cssTagDict[IUCSSTagHeight];
+            
+            BOOL enablePercent =[cssTagDict[IUCSSTagHeightUnit] boolValue];
+            IUCSSUnit unit = [self unitWithBool:enablePercent];
+            
+            if(enablePercent){
+                value = cssTagDict[IUCSSTagPercentHeight];
+            }
+            else{
+                value = cssTagDict[IUCSSTagHeight];
+            }
             if (value) {
                 if ([obj isKindOfClass:[IUHeader class]]) {
                     
                 }
-                [dict putTag:@"height" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
+                [dict putTag:@"height" floatValue:[value floatValue] ignoreZero:NO unit:unit];
             }
+            
         }
         
         value = cssTagDict[IUCSSTagHidden];
@@ -392,6 +440,7 @@
         value = cssTagDict[IUCSSTagBGYPosition];
         [dict putTag:@"background-position-y" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];
         
+        //CSS - Border
         value = cssTagDict[IUCSSTagBorderLeftWidth];
         if (value) {
             [dict putTag:@"border-left-width" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];
@@ -445,11 +494,13 @@
         if (hOff || vOff || blur || spread){
             [dict putTag:@"box-shadow" string:[NSString stringWithFormat:@"%ldpx %ldpx %ldpx %ldpx %@", hOff, vOff, blur, spread, colorString]];
         }
-        return dict;
-    }
+        
+    }//========= end of else(not hover)=========
+    return dict;
 }
 
--(NSString*)fontCSSContentFromAttributes:(NSDictionary*)attributeDict{
+
+-(NSString *)fontCSSContentFromAttributes:(NSDictionary*)attributeDict{
     NSMutableString *retStr = [NSMutableString string];
     NSString *fontName = attributeDict[IUCSSTagFontName];
     if (fontName) {
