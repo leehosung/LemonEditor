@@ -422,36 +422,41 @@
         value = cssTagDict[IUCSSTagHidden];
         [dict putTag:@"hidden" string:@"visibility"];
         
-        NSColor *bgColor1 = cssTagDict[IUCSSTagBGGradientStartColor];
-        NSColor *bgColor2 = cssTagDict[IUCSSTagBGGradientEndColor];
         
-        if(bgColor1 || bgColor2){
-            if(bgColor2 == nil){
-                bgColor2 = [NSColor blackColor];
-            }
-            if(bgColor1 == nil){
-                bgColor1 = [NSColor blackColor];
-            }
-            [dict putTag:@"background-color" color:bgColor1 ignoreClearColor:YES];
-            
-
-            NSString    *webKitStr = [NSString stringWithFormat:@"-webkit-gradient(linear, left top, left bottom, color-stop(0.05, %@), color-stop(1, %@));", bgColor1.rgbString, bgColor2.rgbString];
-            NSString    *mozStr = [NSString stringWithFormat:@"	background:-moz-linear-gradient( center top, %@ 5%%, %@ 100%% );", bgColor1.rgbString, bgColor2.rgbString];
-            NSString    *ieStr = [NSString stringWithFormat:@"filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='%@', endColorstr='%@', GradientType=0)", bgColor1.rgbString, bgColor2.rgbString];
-            NSString *gradientStr = [webKitStr stringByAppendingFormat:@"%@ %@", mozStr, ieStr];
-            
-            [dict putTag:@"background" string:gradientStr];
-
-        }
-        else{
-            value = cssTagDict[IUCSSTagBGColor];
-            [dict putTag:@"background-color" color:value ignoreClearColor:YES];
-        }
+        //background-image and color
+        value = cssTagDict[IUCSSTagBGColor];
+        [dict putTag:@"background-color" color:value ignoreClearColor:YES];
         
         value = cssTagDict[IUCSSTagImage];
-        NSString *resourcePath = [_resourceSource relativePathForResource:value];
-        [dict putTag:@"background-image" string:[resourcePath CSSURLString]];
-        
+        if(value){
+            NSString *resourcePath = [_resourceSource relativePathForResource:value];
+            [dict putTag:@"background-image" string:[resourcePath CSSURLString]];
+        }
+        else{
+            BOOL enableGraident = [cssTagDict[IUCSSTagBGGradient] boolValue];
+            NSColor *bgColor1 = cssTagDict[IUCSSTagBGGradientStartColor];
+            NSColor *bgColor2 = cssTagDict[IUCSSTagBGGradientEndColor];
+            
+            if(enableGraident){
+                if(bgColor2 == nil){
+                    bgColor2 = [NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:1];
+                }
+                if(bgColor1 == nil){
+                    bgColor1 = [NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:1];
+                }
+                [dict putTag:@"background-color" color:bgColor1 ignoreClearColor:YES];
+                
+                
+                NSString    *webKitStr = [NSString stringWithFormat:@"-webkit-gradient(linear, left top, left bottom, color-stop(0.05, %@), color-stop(1, %@));", bgColor1.rgbString, bgColor2.rgbString];
+                NSString    *mozStr = [NSString stringWithFormat:@"	background:-moz-linear-gradient( center top, %@ 5%%, %@ 100%% );", bgColor1.rgbString, bgColor2.rgbString];
+                NSString    *ieStr = [NSString stringWithFormat:@"filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='%@', endColorstr='%@', GradientType=0)", bgColor1.rgbString, bgColor2.rgbString];
+                NSString *gradientStr = [webKitStr stringByAppendingFormat:@"%@ %@", mozStr, ieStr];
+                
+                [dict putTag:@"background" string:gradientStr];
+                
+            }
+            
+        }
         value = cssTagDict[IUCSSTagBGSize];
         if ([value isEqualToString:@"Auto"] == NO) {
             [dict putTag:@"background-size" string:value];

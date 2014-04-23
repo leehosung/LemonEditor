@@ -81,6 +81,8 @@
         [_css setValue:@(0) forTag:IUCSSTagBorderBottomWidth forWidth:IUCSSDefaultCollection];
         
 
+        [_css setValue:@"NO" forTag:IUCSSTagBGGradient forWidth:IUCSSDefaultCollection];
+        
         [_css setValue:[NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:0] forTag:IUCSSTagBorderTopColor forWidth:IUCSSDefaultCollection];
         [_css setValue:[NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:0] forTag:IUCSSTagBorderLeftColor forWidth:IUCSSDefaultCollection];
         [_css setValue:[NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:0] forTag:IUCSSTagBorderRightColor forWidth:IUCSSDefaultCollection];
