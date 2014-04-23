@@ -11,6 +11,8 @@
 #define IUCSSTag NSString*
 #define IUCSSTagPosition @"position"
 #define IUCSSTagBGColor @"background-color"
+#define IUCSSTagBGGradientStartColor @"bg-gradient-start"
+#define IUCSSTagBGGradientEndColor @"bg-gradient-end"
 
 #define IUCSSTagX @"left"
 #define IUCSSTagY @"top"

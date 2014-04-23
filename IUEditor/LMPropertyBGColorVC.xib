@@ -7,6 +7,8 @@
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyBGColorVC">
             <connections>
                 <outlet property="bgColorWell" destination="8jm-t6-qvy" id="phq-LL-ui5"/>
+                <outlet property="bgGradientEndColorWell" destination="8ek-TO-Gky" id="24q-B9-b4n"/>
+                <outlet property="bgGradientStartColorWell" destination="qpq-Zk-sjj" id="v1k-Sb-Vsg"/>
                 <outlet property="view" destination="8H1-W6-tuM" id="2ZE-sg-s5r"/>
             </connections>
         </customObject>
@@ -71,7 +73,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="276" height="41"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <colorWell ambiguous="YES" misplaced="YES" bordered="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qpq-Zk-sjj">
+                            <colorWell ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qpq-Zk-sjj">
                                 <rect key="frame" x="77" y="15" width="18" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
@@ -80,7 +82,7 @@
                                 </constraints>
                                 <color key="color" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                             </colorWell>
-                            <colorWell ambiguous="YES" misplaced="YES" bordered="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ek-TO-Gky">
+                            <colorWell ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8ek-TO-Gky">
                                 <rect key="frame" x="113" y="15" width="18" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
