@@ -28,11 +28,11 @@
 }
 
 - (void)awakeFromNib{
-    [_variableTF bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"variable"] options:IUDictNotRaisesForNotApplicable];
-    [_altTextTF bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"altText"] options:IUDictNotRaisesForNotApplicable];
+    [_variableTF bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"variable"] options:IUBindingDictNotRaisesApplicable];
+    [_altTextTF bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"altText"] options:IUBindingDictNotRaisesApplicable];
     
-    [_imageResourceComboBox bind:@"content" toObject:self withKeyPath:@"resourceManager.imageNames" options:IUDictNotRaisesForNotApplicable];
-    [_imageResourceComboBox bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"imageName"] options:IUDictNotRaisesForNotApplicable];
+    [_imageResourceComboBox bind:@"content" toObject:self withKeyPath:@"resourceManager.imageNames" options:IUBindingDictNotRaisesApplicable];
+    [_imageResourceComboBox bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"imageName"] options:IUBindingDictNotRaisesApplicable];
 
 }
 
