@@ -13,6 +13,5 @@
 @property (nonatomic) NSInteger currentEdit;
 @property (nonatomic) NSString  *event;
 @property (nonatomic) NSString  *animation;
-@property (nonatomic) float     opacity;
 
 @end
