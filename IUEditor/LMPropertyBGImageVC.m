@@ -15,6 +15,7 @@
 @property (weak) IBOutlet NSTextField *yPositionTF;
 
 @property (weak) IBOutlet NSPopUpButton *sizeB;
+@property (weak) IBOutlet NSButton *repeatBtn;
 
 @end
 
@@ -29,23 +30,31 @@
     return self;
 }
 
-- (NSString*)CSSBindingPath:(IUCSSTag)tag{
-    return [@"controller.selection.css.assembledTagDictionary." stringByAppendingString:tag];
-}
-
 - (void)awakeFromNib{
 
-    [_imageNameComboBox bind:@"content" toObject:self withKeyPath:@"resourceManager.imageNames" options:nil];
-    [_imageNameComboBox bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagImage] options:nil];
+    [_imageNameComboBox bind:NSContentBinding toObject:self withKeyPath:@"resourceManager.imageNames" options:nil];
+    [_imageNameComboBox bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagImage] options:nil];
     
-    [_xPositionTF bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagBGXPosition] options:nil];
-    [_yPositionTF bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagBGYPosition] options:nil];
+    [_xPositionTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBGXPosition] options:IUBindingDictNotRaisesApplicable];
+    [_yPositionTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBGYPosition] options:IUBindingDictNotRaisesApplicable];
     
-    [_sizeB bind:@"selectedValue" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagBGSize] options:nil];
+    [_sizeB bind:NSSelectedValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBGSize] options:IUBindingDictNotRaisesApplicable];
+    [_repeatBtn bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBGRepeat] options:nil];
+    
+    //enable
+    NSDictionary *bgEnableBindingOption = [NSDictionary
+                                            dictionaryWithObjects:@[NSIsNotNilTransformerName]
+                                            forKeys:@[NSValueTransformerNameBindingOption]];
+    
+    [_xPositionTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagImage] options:bgEnableBindingOption];
+    [_yPositionTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagImage] options:bgEnableBindingOption];
+    [_sizeB bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagImage] options:bgEnableBindingOption];
+    [_repeatBtn bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagImage] options:bgEnableBindingOption];
+    
+    [self addObserver:self forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagImage] options:0 context:@"image"];
     
     
 }
-
 
 
 @end
