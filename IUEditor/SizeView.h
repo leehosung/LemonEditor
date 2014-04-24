@@ -34,4 +34,7 @@
 //scroll by canvasV
 - (void)moveSizeView:(NSPoint)point withWidth:(CGFloat)width;
 
+@property NSMutableArray *sizeArray;
+- (NSArray *)sortedArray;
+
 @end

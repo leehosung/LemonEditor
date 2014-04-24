@@ -28,12 +28,12 @@
 
 - (void)awakeFromNib{
     [_likePageTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"likePage"] options:IUBindingDictNotRaisesApplicable];
-    [_friendFaceBtn bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"showFriendsFace"] options:nil];
+    [_friendFaceBtn bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"showFriendsFace"] options:IUBindingDictNotRaisesApplicable];
 
     //enable
     NSDictionary *enableBindingOption = [NSDictionary
-                                           dictionaryWithObjects:@[NSIsNotNilTransformerName]
-                                           forKeys:@[NSValueTransformerNameBindingOption]];
+                                         dictionaryWithObjects:@[[NSNumber numberWithBool:NO], NSIsNotNilTransformerName]
+                                           forKeys:@[NSRaisesForNotApplicableKeysBindingOption, NSValueTransformerNameBindingOption]];
 
     [_friendFaceBtn bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"likePage"] options:enableBindingOption];
     

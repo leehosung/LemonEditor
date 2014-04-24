@@ -35,20 +35,22 @@
 }
 
 
--(NSString*)outputSource:(IUDocument*)document{
+-(NSString*)outputSource:(IUDocument*)document mqSizeArray:(NSArray *)mqSizeArray{
     NSString *templateFilePath = [[NSBundle mainBundle] pathForResource:@"webTemplate" ofType:@"html"];
     NSMutableString *source = [NSMutableString stringWithContentsOfFile:templateFilePath encoding:NSUTF8StringEncoding error:nil];
-    
-    //TODO: remove iuframe.js
+
+    //remove iuframe.js to make outputSource
+    NSRange removeStart = [source rangeOfString:@"<!--IUFrame.JS_REMOVE_START-->"];
+    NSRange removeEnd =[source rangeOfString:@"<!--IUFrame.JS_REMOVE_END-->"];
+    NSRange removeRange = NSMakeRange(removeStart.location, removeEnd.location+removeEnd.length-removeStart.location);
+    [source deleteCharactersInRange:removeRange];
     
     //change css
-    NSMutableString *css = [NSMutableString string];
+    NSMutableArray *cssSizeArray = [mqSizeArray mutableCopy];
+    //remove default size
+    [cssSizeArray removeObjectAtIndex:0];
+    NSString *css = [self cssSource:document cssSizeArray:cssSizeArray];
     
-    
-    [css appendString:[self cssSourceForIU:document width:IUCSSDefaultCollection]];
-    for (IUBox *obj in document.allChildren) {
-        [css appendString:[self cssSourceForIU:obj width:IUCSSDefaultCollection]];
-    }
     [source replaceOccurrencesOfString:@"<!--CSS_Replacement-->" withString:[css stringByIndent:8 prependIndent:NO] options:0 range:[source fullRange]];
     
     //change html
@@ -60,18 +62,16 @@
     return source;
 }
 
--(NSString*)editorSource:(IUDocument*)document{
+-(NSString*)editorSource:(IUDocument*)document mqSizeArray:(NSArray *)mqSizeArray{
     NSString *templateFilePath = [[NSBundle mainBundle] pathForResource:@"webTemplate" ofType:@"html"];
     NSMutableString *source = [NSMutableString stringWithContentsOfFile:templateFilePath encoding:NSUTF8StringEncoding error:nil];
-
+    
     //change css
-    NSMutableString *css = [NSMutableString string];
+    NSMutableArray *cssSizeArray = [mqSizeArray mutableCopy];
+    //remove default size
+    [cssSizeArray removeObjectAtIndex:0];
+    NSString *css = [self cssSource:document cssSizeArray:cssSizeArray];
     
-    
-    [css appendString:[self cssSourceForIU:document width:IUCSSDefaultCollection]];
-    for (IUBox *obj in document.allChildren) {
-        [css appendString:[self cssSourceForIU:obj width:IUCSSDefaultCollection]];
-    }
     [source replaceOccurrencesOfString:@"<!--CSS_Replacement-->" withString:[css stringByIndent:8 prependIndent:NO] options:0 range:[source fullRange]];
 
     //change html
@@ -81,6 +81,42 @@
     JDSectionInfoLog( IULogSource, @"source : %@", [@"\n" stringByAppendingString:source]);
 
     return source;
+}
+
+-(NSString *)cssSource:(IUDocument *)document cssSizeArray:(NSArray *)cssSizeArray{
+    NSMutableString *css = [NSMutableString string];
+    //default-
+    [css appendTabAndString:@"<style id=default>"];
+    [css appendNewline];
+    [css appendTabAndString:[self cssSourceForIU:document width:IUCSSDefaultCollection]];
+    for (IUBox *obj in document.allChildren) {
+        [css appendTabAndString:[self cssSourceForIU:obj width:IUCSSDefaultCollection]];
+    }
+    [css appendString:@"</style>"];
+    
+#pragma mark extract MQ css
+    //mediaQuery css
+    //remove default size
+    for(NSNumber *sizeNumber in cssSizeArray){
+        [css appendNewline];
+        int size = [sizeNumber intValue];
+        
+        //        <style type="text/css" media="screen and (max-width:400px)" id="style400">
+        [css appendString:@"<style type=\"text/css\" "];
+        [css appendFormat:@"media ='screen and (max-width:%dpx)' id='style%d'>" , size, size];
+        [css appendNewline];
+        
+        [css appendTabAndString:[self cssSourceForIU:document width:size]];
+        for (IUBox *obj in document.allChildren) {
+            [css appendTabAndString:[self cssSourceForIU:obj width:size]];
+        }
+        
+        
+        [css appendString:@"</style>"];
+        [css appendNewline];
+    }
+    
+    return css;
 }
 
 -(NSString*)cssSourceForIU:(IUBox*)iu width:(int)width{

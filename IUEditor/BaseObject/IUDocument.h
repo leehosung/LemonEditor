@@ -15,6 +15,7 @@
 @interface IUDocument : IUBox
 
 @property IUCompiler *compiler;
+@property NSArray *mqSizeArray;
 
 #pragma mark editor source
 -(NSString*)editorSource;

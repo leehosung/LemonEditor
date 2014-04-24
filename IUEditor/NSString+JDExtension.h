@@ -44,8 +44,9 @@
 
 @interface NSMutableString(JDExtension)
 - (void)appendNewline;
+- (void)appendTabAndString:(NSString *)aString;
 - (void)appendString:(NSString*)string multipleTimes:(NSUInteger)multipleTimes;
 - (void)appendStringIfNotNil:(NSString*)string;
--(void)trim;
--(void)trimWithCharacterInString:(NSString*)string;
+- (void)trim;
+- (void)trimWithCharacterInString:(NSString*)string;
 @end
