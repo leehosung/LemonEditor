@@ -30,11 +30,11 @@
 
 
 -(NSString*)editorSource{
-    return [self.compiler editorSource:self];
+    return [self.compiler editorSource:self mqSizeArray:_mqSizeArray];
 }
 
 - (NSString*)outputSource{
-    return [self.compiler outputSource:self];;
+    return [self.compiler outputSource:self mqSizeArray:_mqSizeArray];;
 }
 
 -(NSArray*)widthWithCSS{

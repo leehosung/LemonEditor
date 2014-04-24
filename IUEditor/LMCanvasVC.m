@@ -37,6 +37,8 @@
     [[self sizeView] addFrame:defaultFrameWidth];
     [[self sizeView] addFrame:400];
     [[self sizeView] addFrame:700];
+    
+    [self addObserver:self forKeyPath:@"view.sizeView.sizeArray" options:NSKeyValueObservingOptionInitial context:@"mqCount"];
 }
 
 
@@ -67,6 +69,10 @@
     [[self webView] updateFrameDict];
 }
 
+- (void)mqCountContextDidChange:(NSDictionary *)change{
+    _document.mqSizeArray = [self sizeView].sortedArray;
+}
+
 #pragma mark -
 #pragma mark call by webView
 
@@ -84,6 +90,7 @@
     JDSectionInfoLog( IULogSource, @"resourcePath  : %@", self.documentBasePath);
     [_document setDelegate:nil];
     _document = document;
+    _document.mqSizeArray = [self sizeView].sortedArray;
     [_document setDelegate:self];
     
     [[[self webView] mainFrame] loadHTMLString:document.editorSource baseURL:[NSURL fileURLWithPath:self.documentBasePath]];

@@ -227,6 +227,9 @@
 - (void)appendNewline{
     [self appendString:@"\n"];
 }
+- (void)appendTabAndString:(NSString *)aString{
+    [self appendFormat:@"\t%@", aString];
+}
 - (void)appendString:(NSString*)string multipleTimes:(NSUInteger)multipleTimes{
     for (int i=0; i<multipleTimes; i++) {
         [self appendString:string];

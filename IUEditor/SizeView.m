@@ -47,7 +47,6 @@
 
 @interface SizeView(){
     
-    NSMutableArray *sizeArray;
     NSUInteger selectIndex;
     NSUInteger selectedWidth;
     SizeTextField *sizeTextField;
@@ -67,7 +66,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        sizeArray = [NSMutableArray array];
+        _sizeArray = [NSMutableArray array];
         selectIndex = 0;
         selectedWidth = 0;
     }
@@ -107,7 +106,7 @@
 
 - (NSArray *)sortedArray{
     NSSortDescriptor* sortOrder = [NSSortDescriptor sortDescriptorWithKey: @"self" ascending: NO];
-    return [sizeArray sortedArrayUsingDescriptors: [NSArray arrayWithObject: sortOrder]];
+    return [_sizeArray sortedArrayUsingDescriptors: [NSArray arrayWithObject: sortOrder]];
 }
 
 #pragma mark -
@@ -166,11 +165,12 @@
 
 - (void)addFrame:(NSInteger)width{
     NSNumber *widthNumber = [NSNumber numberWithInteger:width];
-    if([sizeArray containsObject:widthNumber]){
+    if([_sizeArray containsObject:widthNumber]){
         JDWarnLog(@"already exist width");
         return ;
     }
-    [sizeArray addObject:widthNumber];
+    
+    [_sizeArray addObject:widthNumber];
     NSRect boxFrame = NSMakeRect(0, 0, width, self.frame.size.height);
     InnerSizeBox *newBox = [[InnerSizeBox alloc] initWithFrame:boxFrame width:width];
     newBox.boxDelegate = self;
@@ -197,7 +197,7 @@
 
 }
 - (void)removeFrame:(NSInteger)width{
-    if(sizeArray.count == 1){
+    if(_sizeArray.count == 1){
         JDWarnLog(@"last width : can't remove it");
         return;
     }
@@ -216,7 +216,7 @@
     //remove css & view & array
     [self.delegate removeStyleSheet:[removeView frameWidth]];
     [removeView removeFromSuperview];
-    [sizeArray removeObject:widthNumber];
+    [_sizeArray removeObject:widthNumber];
     
     //set maxWidth in case of removing maxWidth 
     [self setMaxWidth];

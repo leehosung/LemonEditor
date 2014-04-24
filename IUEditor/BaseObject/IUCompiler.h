@@ -21,10 +21,11 @@ typedef enum _IUCompilerType{
 
 @property id <IUCompilerResourceSource> resourceSource;
 //build source
--(NSString*)outputSource:(IUDocument*)document;
+-(NSString*)outputSource:(IUDocument*)document mqSizeArray:(NSArray *)mqSizeArray;
 -(NSString *)outputHTML:(IUBox *)iu;
+
 //editor source
--(NSString*)editorSource:(IUDocument*)document;
+-(NSString*)editorSource:(IUDocument*)document mqSizeArray:(NSArray *)mqSizeArray;
 -(NSString*)editorHTML:(IUBox*)iu;
 
 -(NSString*)CSSContentFromAttributes:(NSDictionary*)attributeDict ofClass:(IUBox*)obj isHover:(BOOL)isHover;
