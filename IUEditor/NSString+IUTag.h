@@ -59,10 +59,15 @@
 #define IUCSSTagBorderRadiusBottomLeft @"borderBLRadius"
 #define IUCSSTagBorderRadiusBottomRight @"borderBRRadius"
 
+#define IUCSSTagFontName @"fontName"
+#define IUCSSTagFontSize @"fontSize"
+#define IUCSSTagFontColor @"fontColor"
 
-
-#define IUCSSTagFontName @"font-name"
-#define IUCSSTagFontSize @"font-size"
+#define IUCSSTagFontWeight @"fontWeight"
+#define IUCSSTagFontStyle @"fontStyle"
+#define IUCSSTagTextDecoration @"textDecoration"
+#define IUCSSTagTextAlign @"textAlign"
+#define IUCSSTagLineHeight @"lineHeight"
 
 #define IUCSSTagOverflow @"overflow"
 

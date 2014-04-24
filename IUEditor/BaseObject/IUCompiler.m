@@ -675,8 +675,54 @@
             [dict putTag:@"box-shadow" string:[NSString stringWithFormat:@"%ldpx %ldpx %ldpx %ldpx %@", hOff, vOff, blur, spread, colorString]];
         }
         
-    }//========= end of else(not hover)=========
+        value = cssTagDict[IUCSSTagFontName];
+        if(value){
+            NSString *font=cssTagDict[IUCSSTagFontName];
+            [dict putTag:@"font-family" string:font];
+        }
+        value = cssTagDict[IUCSSTagFontSize];
+        if(value){
+            [dict putTag:@"font-size" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];}
+        value = cssTagDict[IUCSSTagFontColor];
+        if(value){
+            NSColor *color=cssTagDict[IUCSSTagFontColor];
+            [dict putTag:@"color" color:color ignoreClearColor:YES];
+        }
+        
+        value = cssTagDict[IUCSSTagLineHeight];
+        if(value){
+            if([value isEqualToString:@"Auto"]== YES)
+            {
+                value = cssTagDict[IUCSSTagHeight];
+                [dict putTag:@"line-height" floatValue:[value floatValue] ignoreZero:YES unit: IUCSSUnitPixel];
+            }
+            else {
+                [dict putTag:@"line-height" floatValue:[value floatValue] ignoreZero:YES unit:IUCSSUnitNone];
+            }
+        }
+        
+        BOOL boolValue =[cssTagDict[IUCSSTagFontWeight] boolValue];
+        if(boolValue){
+            [dict putTag:@"font-weight" string:@"bold"];
+        }
+        boolValue = [cssTagDict[IUCSSTagFontStyle] boolValue];
+        if(boolValue){
+            [dict putTag:@"font-style" string:@"italic"];
+        }
+        boolValue = [cssTagDict[IUCSSTagTextDecoration] boolValue];
+        if(boolValue){
+            [dict putTag:@"text-decoration" string:@"underline"];
+        }
+        
+        value = cssTagDict[IUCSSTagTextAlign];
+        if(value){
+            [dict putTag:@"text-align" string:value];
+        }
+
+    }
+    //end of else (not hover)
     return dict;
+
 }
 
 
