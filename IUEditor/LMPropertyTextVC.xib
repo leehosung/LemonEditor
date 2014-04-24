@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyTextVC">
             <connections>
+                <outlet property="fontB" destination="Yle-zg-jre" id="3NT-fU-1xD"/>
+                <outlet property="fontColorWell" destination="EF9-cy-hVF" id="LtQ-n0-TiY"/>
+                <outlet property="fontSizeB" destination="nc6-kb-J7I" id="P78-EQ-Hrb"/>
+                <outlet property="fontStyleB" destination="uve-V4-Xm0" id="fuP-ac-K4F"/>
+                <outlet property="lineHeight" destination="T6Q-UK-fkM" id="8GY-DA-fMA"/>
+                <outlet property="lineHeightB" destination="T6Q-UK-fkM" id="o0e-i4-YGe"/>
+                <outlet property="textAlign" destination="zW3-ml-lwr" id="f8i-DW-pox"/>
+                <outlet property="textAlignB" destination="FLi-Cj-znY" id="uTr-fN-yRw"/>
+                <outlet property="textFontSizeTF" destination="C5b-dc-4Sm" id="UhS-x0-0H8"/>
                 <outlet property="view" destination="xNk-L9-0dh" id="7Sw-xN-aUO"/>
             </connections>
         </customObject>
@@ -42,9 +51,12 @@
                                         </segment>
                                     </segments>
                                 </segmentedCell>
+                                <connections>
+                                    <action selector="textAligneBPressed:" target="-2" id="A4Z-t2-4Ie"/>
+                                </connections>
                             </segmentedControl>
                             <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uve-V4-Xm0">
-                                <rect key="frame" x="1" y="8" width="80" height="20"/>
+                                <rect key="frame" x="4" y="8" width="80" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <segmentedCell key="cell" controlSize="small" alignment="left" style="rounded" trackingMode="selectAny" id="SyL-Bz-UYM">
                                     <font key="font" metaFont="smallSystem"/>
@@ -54,11 +66,14 @@
                                         <segment label="U" width="24"/>
                                     </segments>
                                 </segmentedCell>
+                                <connections>
+                                    <action selector="fontDecoBPressed:" target="-2" id="I7m-jS-Ncf"/>
+                                </connections>
                             </segmentedControl>
                             <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T6Q-UK-fkM">
                                 <rect key="frame" x="204" y="8" width="60" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <comboBoxCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Auto" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="woc-yV-A3J">
+                                <comboBoxCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Auto" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="woc-yV-A3J" userLabel="Combo Box Cell - Automobile">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -83,134 +98,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="276" height="30"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zk3-rw-ghn">
-                                <rect key="frame" x="74" y="6" width="120" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="RZn-YR-O4K" id="qid-NS-94m">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="smallSystem"/>
-                                    <menu key="menu" title="OtherViews" id="Fwb-SG-zpc">
-                                        <items>
-                                            <menuItem title="Item 1" state="on" hidden="YES" id="RZn-YR-O4K"/>
-                                            <menuItem title="Item 2" id="Oev-2f-arN"/>
-                                            <menuItem title="Window" id="Pov-Iw-vG6">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                                <menu key="submenu" title="Window" systemMenu="window" id="6Ih-yn-Man">
-                                                    <items>
-                                                        <menuItem title="Minimize" id="lcR-jW-mfg"/>
-                                                        <menuItem title="Zoom" id="sJB-p4-gyq">
-                                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                                        </menuItem>
-                                                        <menuItem isSeparatorItem="YES" id="4re-gG-UnQ"/>
-                                                        <menuItem title="Bring All to Front" id="wfF-xE-pWK">
-                                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                                        </menuItem>
-                                                    </items>
-                                                </menu>
-                                            </menuItem>
-                                            <menuItem title="Menu" id="YLn-tB-Ngm">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                                <menu key="submenu" title="Menu" id="HI7-M2-ljM">
-                                                    <items>
-                                                        <menuItem title="Item" id="0bJ-oo-J0B">
-                                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                                        </menuItem>
-                                                        <menuItem title="Font" id="1ga-8f-1pl">
-                                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                                            <menu key="submenu" title="Font" systemMenu="font" id="Dl1-Yn-RuV">
-                                                                <items>
-                                                                    <menuItem title="Show Fonts" keyEquivalent="t" id="3kE-IN-VWZ"/>
-                                                                    <menuItem title="Bold" tag="2" keyEquivalent="b" id="1UK-3q-ojU"/>
-                                                                    <menuItem title="Italic" tag="1" keyEquivalent="i" id="Q5v-Oi-OpE"/>
-                                                                    <menuItem title="Underline" keyEquivalent="u" id="vpF-GQ-9Rz"/>
-                                                                    <menuItem isSeparatorItem="YES" id="Pic-dF-WL0"/>
-                                                                    <menuItem title="Bigger" tag="3" keyEquivalent="+" id="dPC-2C-WEX"/>
-                                                                    <menuItem title="Smaller" tag="4" keyEquivalent="-" id="LUH-0p-aaf"/>
-                                                                    <menuItem isSeparatorItem="YES" id="YPc-3I-j6h"/>
-                                                                    <menuItem title="Kern" id="n8O-Tu-gCw">
-                                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                                        <menu key="submenu" title="Kern" id="bQi-DQ-29y">
-                                                                            <items>
-                                                                                <menuItem title="Use Default" id="1NM-cT-yuv">
-                                                                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                                                                </menuItem>
-                                                                                <menuItem title="Use None" id="XU2-Gf-eXQ">
-                                                                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                                                                </menuItem>
-                                                                                <menuItem title="Tighten" id="0VC-td-KBZ">
-                                                                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                                                                </menuItem>
-                                                                                <menuItem title="Loosen" id="cHT-2H-kLT">
-                                                                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                                                                </menuItem>
-                                                                            </items>
-                                                                        </menu>
-                                                                    </menuItem>
-                                                                    <menuItem title="Ligatures" id="3j2-2u-TgM">
-                                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                                        <menu key="submenu" title="Ligatures" id="4O3-zo-n2B">
-                                                                            <items>
-                                                                                <menuItem title="Use Default" id="3J3-b1-ZMO">
-                                                                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                                                                </menuItem>
-                                                                                <menuItem title="Use None" id="c1t-Yj-r45">
-                                                                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                                                                </menuItem>
-                                                                                <menuItem title="Use All" id="9hS-r7-23D">
-                                                                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                                                                </menuItem>
-                                                                            </items>
-                                                                        </menu>
-                                                                    </menuItem>
-                                                                    <menuItem title="Baseline" id="rRD-2Y-juz">
-                                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                                        <menu key="submenu" title="Baseline" id="Fi4-Dw-sff">
-                                                                            <items>
-                                                                                <menuItem title="Use Default" id="sMp-Yd-5ch">
-                                                                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                                                                </menuItem>
-                                                                                <menuItem title="Superscript" id="gi1-dW-hrW">
-                                                                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                                                                </menuItem>
-                                                                                <menuItem title="Subscript" id="Dyv-Lk-HQX">
-                                                                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                                                                </menuItem>
-                                                                                <menuItem title="Raise" id="3mo-lW-9by">
-                                                                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                                                                </menuItem>
-                                                                                <menuItem title="Lower" id="V5c-Z9-Vz8">
-                                                                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                                                                </menuItem>
-                                                                            </items>
-                                                                        </menu>
-                                                                    </menuItem>
-                                                                    <menuItem isSeparatorItem="YES" id="Yku-H3-BkA"/>
-                                                                    <menuItem title="Show Colors" keyEquivalent="C" id="f3l-lO-3cO"/>
-                                                                    <menuItem isSeparatorItem="YES" id="YDn-5T-T3W"/>
-                                                                    <menuItem title="Copy Style" keyEquivalent="c" id="te3-ty-0gz">
-                                                                        <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
-                                                                    </menuItem>
-                                                                    <menuItem title="Paste Style" keyEquivalent="v" id="IMf-GP-boB">
-                                                                        <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
-                                                                    </menuItem>
-                                                                </items>
-                                                            </menu>
-                                                        </menuItem>
-                                                    </items>
-                                                </menu>
-                                            </menuItem>
-                                            <menuItem title="Item" id="0yt-x6-mEc">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="Enter Full Screen" id="y3s-Om-eqK">
-                                                <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
-                                            </menuItem>
-                                            <menuItem isSeparatorItem="YES" id="z59-gx-eaC"/>
-                                            <menuItem title="Item 3" id="IqA-2U-3Wc"/>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                            </popUpButton>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nc6-kb-J7I">
                                 <rect key="frame" x="199" y="9" width="30" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -225,7 +112,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <stepperCell key="cell" controlSize="mini" continuous="YES" alignment="left" maxValue="100" id="c9T-D0-KSn"/>
                             </stepper>
-                            <colorWell fixedFrame="YES" bordered="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EF9-cy-hVF">
+                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EF9-cy-hVF">
                                 <rect key="frame" x="248" y="9" width="18" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="color" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -246,6 +133,15 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yle-zg-jre">
+                                <rect key="frame" x="80" y="4" width="99" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="Ks2-Pd-wc2">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </comboBoxCell>
+                            </comboBox>
                         </subviews>
                     </view>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
