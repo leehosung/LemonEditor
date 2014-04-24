@@ -8,6 +8,9 @@
             <connections>
                 <outlet property="borderBtn" destination="AtM-vo-UJw" id="9bO-hK-CHv"/>
                 <outlet property="ghostBtn" destination="7kz-xZ-eTb" id="6qY-jM-ghB"/>
+                <outlet property="ghostImageComboBox" destination="dbv-8G-uEg" id="jjb-mH-mzA"/>
+                <outlet property="ghostXTF" destination="dRi-Rm-hE7" id="7dL-VP-Jda"/>
+                <outlet property="ghostYTF" destination="Ybl-bH-hL5" id="zIe-yh-6xI"/>
                 <outlet property="leftInspectorBtn" destination="TnF-d8-4GY" id="2Sa-Lw-TfB"/>
                 <outlet property="mailBtn" destination="Ic4-uz-kiy" id="R75-eS-KtM"/>
                 <outlet property="refreshBtn" destination="ZgI-8w-DCs" id="HUE-ET-IhF"/>
@@ -190,6 +193,15 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dbv-8G-uEg">
+                                <rect key="frame" x="210" y="2" width="192" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <comboBoxCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="pfN-rD-Rf1">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </comboBoxCell>
+                            </comboBox>
                         </subviews>
                     </view>
                     <constraints>

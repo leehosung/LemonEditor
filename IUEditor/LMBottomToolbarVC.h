@@ -7,8 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "IUResourceManager.h"
+#import "IUDocument.h"
 
 @interface LMBottomToolbarVC : NSViewController
 
+@property (nonatomic) IUResourceManager     *resourceManager;
+@property (nonatomic) IUDocument    *document;
 
 @end

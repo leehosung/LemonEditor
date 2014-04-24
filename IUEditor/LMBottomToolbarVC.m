@@ -11,14 +11,17 @@
 
 @interface LMBottomToolbarVC ()
 
+@property (weak) IBOutlet NSComboBox *ghostImageComboBox;
+@property (weak) IBOutlet NSButton *ghostBtn;
+@property (weak) IBOutlet NSTextField *ghostXTF;
+@property (weak) IBOutlet NSTextField *ghostYTF;
+
 
 @property (weak) IBOutlet NSButton *refreshBtn;
 @property (weak) IBOutlet NSButton *leftInspectorBtn;
 @property (weak) IBOutlet NSButton *rightInspectorBtn;
-@property (weak) IBOutlet NSButton *mailBtn;
-
-@property (weak) IBOutlet NSButton *ghostBtn;
 @property (weak) IBOutlet NSButton *borderBtn;
+@property (weak) IBOutlet NSButton *mailBtn;
 
 @end
 
@@ -34,8 +37,27 @@
 }
 
 - (void)awakeFromNib{
-    [self.ghostBtn bind:@"state" toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"showGhost" options:nil];
-    [self.borderBtn bind:@"state" toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"showBorder" options:nil];
+#pragma mark ghost
+    [_ghostBtn bind:@"state" toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"showGhost" options:nil];
+    
+    [_ghostImageComboBox bind:NSEnabledBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"showGhost" options:IUBindingDictNotRaisesApplicable];
+    [_ghostXTF bind:NSEnabledBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"showGhost" options:IUBindingDictNotRaisesApplicable];
+    [_ghostYTF bind:NSEnabledBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"showGhost" options:IUBindingDictNotRaisesApplicable];
+    
+    [_ghostImageComboBox bind:NSContentBinding toObject:self withKeyPath:@"resourceManager.imageNames" options:IUBindingDictNotRaisesApplicable];
+    [_ghostXTF bind:NSValueBinding toObject:self withKeyPath:@"document.ghostX" options:IUBindingDictNotRaisesApplicable];
+    [_ghostYTF bind:NSValueBinding toObject:self withKeyPath:@"document.ghostY" options:IUBindingDictNotRaisesApplicable];
+    
+    [_ghostImageComboBox bind:NSValueBinding toObject:self withKeyPath:@"document.ghostImagePath" options:IUBindingDictNotRaisesApplicable];
+    
+#pragma mark bottom right tools
+    [_borderBtn bind:@"state" toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"showBorder" options:nil];
+    
+    
+}
+
+- (void)setResourceManager:(IUResourceManager *)resourceManager{
+    _resourceManager = resourceManager;
 }
 
 - (IBAction)clickBorderBtn:(id)sender {
