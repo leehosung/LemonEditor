@@ -15,10 +15,6 @@
 #define IUCSSTagX @"left"
 #define IUCSSTagY @"top"
 
-#define IUCSSTagHoverBGImagePositionEnable @"HoverBGImagePositionEnable"
-#define IUCSSTagHoverBGImageX @"hoverBGImageX"
-#define IUCSSTagHoverBGImageY @"hoverBGImageY"
-
 #define IUCSSTagWidth @"width"
 #define IUCSSTagHeight @"height"
 
@@ -77,6 +73,15 @@
 #define IUCSSTagShadowBlur @"shadowBlur"
 
 #define IUCSSTagHidden @"hidden"
+
+//hover CSS
+#define IUCSSTagHoverBGImagePositionEnable @"HoverBGImagePositionEnable"
+#define IUCSSTagHoverBGImageX @"hoverBGImageX"
+#define IUCSSTagHoverBGImageY @"hoverBGImageY"
+#define IUCSSTagHoverBGColorEnable  @"hoverBGColorEnable"
+#define IUCSSTagHoverBGColor  @"hoverBGColor"
+#define IUCSSTagHoverTextColorEnable  @"hoverTextColorEnable"
+#define IUCSSTagHoverTextColor  @"hoverTextColor"
 
 #define isSameTag isEqualToString
 

@@ -126,7 +126,7 @@
     
     NSString *hoverCSS = [self CSSContentFromAttributes:[iu CSSAttributesForWidth:width] ofClass:iu isHover:YES];
     if ([hoverCSS length]){
-        [css appendString:[NSString stringWithFormat:@"#%@:hover {", iu.htmlID]];
+        [css appendTabAndString:[NSString stringWithFormat:@"#%@:hover {", iu.htmlID]];
         [css appendString:hoverCSS];
         [css appendString:@"}"];
         [css appendNewline];
@@ -438,6 +438,20 @@
             value = cssTagDict[IUCSSTagHoverBGImageY];
             if (value) {
                 [dict putTag:@"background-position-y" floatValue:[value floatValue] ignoreZero:NO unit:IUCSSUnitPixel];
+            }
+        }
+        
+        if ([cssTagDict[IUCSSTagHoverBGColorEnable] boolValue]){
+            value = cssTagDict[IUCSSTagHoverBGColor];
+            if(value){
+                [dict putTag:@"background-color" color:value ignoreClearColor:YES];
+            }
+        }
+        
+        if ([cssTagDict[IUCSSTagHoverTextColorEnable] boolValue]){
+            value = cssTagDict[IUCSSTagHoverTextColor];
+            if(value){
+                [dict putTag:@"color" color:value ignoreClearColor:YES];
             }
         }
     }
