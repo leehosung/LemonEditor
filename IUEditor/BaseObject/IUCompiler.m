@@ -208,6 +208,20 @@
         [code appendFormat:@"</div>"];
         
     }
+#pragma mark IUImport
+    else if([iu isKindOfClass:[IUHTML class]]){
+        [code appendFormat:@"<div %@ %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
+        if (iu.children.count) {
+            [code appendNewline];
+            for (IUBox *child in iu.children) {
+                [code appendString:[[self outputHTML:child] stringByIndent:4 prependIndent:YES]];
+                [code appendNewline];
+            }
+        }
+        [code appendFormat:@"</div>"];
+        
+    }
+    
 #pragma mark IUBox
     else if ([iu isKindOfClass:[IUBox class]]) {
         [code appendFormat:@"<div %@ %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];

@@ -110,8 +110,8 @@
 		3DED26E819010B82001A1D67 /* LMPropertyIUMovieVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26E619010B82001A1D67 /* LMPropertyIUMovieVC.xib */; };
 		3DED26EC19010B94001A1D67 /* LMPropertyIUWebMovieVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED26EA19010B94001A1D67 /* LMPropertyIUWebMovieVC.m */; };
 		3DED26ED19010B94001A1D67 /* LMPropertyIUWebMovieVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26EB19010B94001A1D67 /* LMPropertyIUWebMovieVC.xib */; };
-		3DED26F119010BB0001A1D67 /* LMPropertyIURenderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED26EF19010BB0001A1D67 /* LMPropertyIURenderVC.m */; };
-		3DED26F219010BB0001A1D67 /* LMPropertyIURenderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26F019010BB0001A1D67 /* LMPropertyIURenderVC.xib */; };
+		3DED26F119010BB0001A1D67 /* LMPropertyIUImportVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED26EF19010BB0001A1D67 /* LMPropertyIUImportVC.m */; };
+		3DED26F219010BB0001A1D67 /* LMPropertyIUImportVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26F019010BB0001A1D67 /* LMPropertyIUImportVC.xib */; };
 		3DED26F619010BC0001A1D67 /* LMPropertyIUImageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED26F419010BC0001A1D67 /* LMPropertyIUImageVC.m */; };
 		3DED26F719010BC0001A1D67 /* LMPropertyIUImageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26F519010BC0001A1D67 /* LMPropertyIUImageVC.xib */; };
 		3DED26FB19010BD6001A1D67 /* LMPropertyIUMailLinkVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED26F919010BD6001A1D67 /* LMPropertyIUMailLinkVC.m */; };
@@ -296,6 +296,8 @@
 		69B9A39818E697F70007D6E2 /* iu.css in Resources */ = {isa = PBXBuildFile; fileRef = 69B9A39718E697F70007D6E2 /* iu.css */; };
 		69B9A39918E697F70007D6E2 /* iu.css in Resources */ = {isa = PBXBuildFile; fileRef = 69B9A39718E697F70007D6E2 /* iu.css */; };
 		69B9A39F18E6B7E50007D6E2 /* NSTreeController+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B9A39E18E6B7E50007D6E2 /* NSTreeController+JDExtension.m */; };
+		69C4AA1A1908E82900CF75E7 /* IUResponsiveSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C4AA191908E82900CF75E7 /* IUResponsiveSection.m */; };
+		69C4AA1D1908E96F00CF75E7 /* IUImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C4AA1C1908E96F00CF75E7 /* IUImport.m */; };
 		69C575AB18D6F61E0016F050 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69C575AA18D6F61E0016F050 /* Cocoa.framework */; };
 		69C575B518D6F61E0016F050 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 69C575B318D6F61E0016F050 /* InfoPlist.strings */; };
 		69C575B718D6F61E0016F050 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C575B618D6F61E0016F050 /* main.m */; };
@@ -307,7 +309,7 @@
 		69C575CB18D6F61E0016F050 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69C575AA18D6F61E0016F050 /* Cocoa.framework */; };
 		69C575D318D6F61E0016F050 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 69C575D118D6F61E0016F050 /* InfoPlist.strings */; };
 		69C575D518D6F61E0016F050 /* IUEditorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C575D418D6F61E0016F050 /* IUEditorTests.m */; };
-		69C5760B18D6FE020016F050 /* IUComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C575FF18D6FE020016F050 /* IUComponent.m */; };
+		69C5760B18D6FE020016F050 /* IUClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C575FF18D6FE020016F050 /* IUClass.m */; };
 		69C5760C18D6FE020016F050 /* IUCSS.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5760118D6FE020016F050 /* IUCSS.m */; };
 		69C5760D18D6FE020016F050 /* IUDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5760318D6FE020016F050 /* IUDocument.m */; };
 		69C5761E18D7051C0016F050 /* IUProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5761D18D7051C0016F050 /* IUProject.m */; };
@@ -467,9 +469,9 @@
 		3DED26E919010B94001A1D67 /* LMPropertyIUWebMovieVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyIUWebMovieVC.h; sourceTree = "<group>"; };
 		3DED26EA19010B94001A1D67 /* LMPropertyIUWebMovieVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyIUWebMovieVC.m; sourceTree = "<group>"; };
 		3DED26EB19010B94001A1D67 /* LMPropertyIUWebMovieVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyIUWebMovieVC.xib; sourceTree = "<group>"; };
-		3DED26EE19010BB0001A1D67 /* LMPropertyIURenderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyIURenderVC.h; sourceTree = "<group>"; };
-		3DED26EF19010BB0001A1D67 /* LMPropertyIURenderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyIURenderVC.m; sourceTree = "<group>"; };
-		3DED26F019010BB0001A1D67 /* LMPropertyIURenderVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyIURenderVC.xib; sourceTree = "<group>"; };
+		3DED26EE19010BB0001A1D67 /* LMPropertyIUImportVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyIUImportVC.h; sourceTree = "<group>"; };
+		3DED26EF19010BB0001A1D67 /* LMPropertyIUImportVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyIUImportVC.m; sourceTree = "<group>"; };
+		3DED26F019010BB0001A1D67 /* LMPropertyIUImportVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyIUImportVC.xib; sourceTree = "<group>"; };
 		3DED26F319010BC0001A1D67 /* LMPropertyIUImageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyIUImageVC.h; sourceTree = "<group>"; };
 		3DED26F419010BC0001A1D67 /* LMPropertyIUImageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyIUImageVC.m; sourceTree = "<group>"; };
 		3DED26F519010BC0001A1D67 /* LMPropertyIUImageVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyIUImageVC.xib; sourceTree = "<group>"; };
@@ -721,6 +723,10 @@
 		69B9A39A18E6B1860007D6E2 /* iu.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = iu.js; sourceTree = "<group>"; };
 		69B9A39D18E6B7E50007D6E2 /* NSTreeController+JDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTreeController+JDExtension.h"; sourceTree = "<group>"; };
 		69B9A39E18E6B7E50007D6E2 /* NSTreeController+JDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTreeController+JDExtension.m"; sourceTree = "<group>"; };
+		69C4AA181908E82900CF75E7 /* IUResponsiveSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUResponsiveSection.h; sourceTree = "<group>"; };
+		69C4AA191908E82900CF75E7 /* IUResponsiveSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUResponsiveSection.m; sourceTree = "<group>"; };
+		69C4AA1B1908E96F00CF75E7 /* IUImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUImport.h; sourceTree = "<group>"; };
+		69C4AA1C1908E96F00CF75E7 /* IUImport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUImport.m; sourceTree = "<group>"; };
 		69C575A718D6F61E0016F050 /* IUEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IUEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69C575AA18D6F61E0016F050 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		69C575AD18D6F61E0016F050 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -740,8 +746,8 @@
 		69C575D018D6F61E0016F050 /* IUEditorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IUEditorTests-Info.plist"; sourceTree = "<group>"; };
 		69C575D218D6F61E0016F050 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		69C575D418D6F61E0016F050 /* IUEditorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IUEditorTests.m; sourceTree = "<group>"; };
-		69C575FE18D6FE020016F050 /* IUComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUComponent.h; path = BaseObject/IUComponent.h; sourceTree = "<group>"; };
-		69C575FF18D6FE020016F050 /* IUComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IUComponent.m; path = BaseObject/IUComponent.m; sourceTree = "<group>"; };
+		69C575FE18D6FE020016F050 /* IUClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUClass.h; path = BaseObject/IUClass.h; sourceTree = "<group>"; };
+		69C575FF18D6FE020016F050 /* IUClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IUClass.m; path = BaseObject/IUClass.m; sourceTree = "<group>"; };
 		69C5760018D6FE020016F050 /* IUCSS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUCSS.h; sourceTree = "<group>"; };
 		69C5760118D6FE020016F050 /* IUCSS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUCSS.m; sourceTree = "<group>"; };
 		69C5760218D6FE020016F050 /* IUDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUDocument.h; path = BaseObject/IUDocument.h; sourceTree = "<group>"; };
@@ -1090,9 +1096,9 @@
 				3DED26E919010B94001A1D67 /* LMPropertyIUWebMovieVC.h */,
 				3DED26EA19010B94001A1D67 /* LMPropertyIUWebMovieVC.m */,
 				3DED26EB19010B94001A1D67 /* LMPropertyIUWebMovieVC.xib */,
-				3DED26EE19010BB0001A1D67 /* LMPropertyIURenderVC.h */,
-				3DED26EF19010BB0001A1D67 /* LMPropertyIURenderVC.m */,
-				3DED26F019010BB0001A1D67 /* LMPropertyIURenderVC.xib */,
+				3DED26EE19010BB0001A1D67 /* LMPropertyIUImportVC.h */,
+				3DED26EF19010BB0001A1D67 /* LMPropertyIUImportVC.m */,
+				3DED26F019010BB0001A1D67 /* LMPropertyIUImportVC.xib */,
 				3DED26F319010BC0001A1D67 /* LMPropertyIUImageVC.h */,
 				3DED26F419010BC0001A1D67 /* LMPropertyIUImageVC.m */,
 				3DED26F519010BC0001A1D67 /* LMPropertyIUImageVC.xib */,
@@ -1291,8 +1297,6 @@
 				6954812718D7640A00CA02F1 /* IUPage.m */,
 				69CFCAB618E972DA00E3048A /* IUPageContent.h */,
 				69CFCAB718E972DA00E3048A /* IUPageContent.m */,
-				69C575FE18D6FE020016F050 /* IUComponent.h */,
-				69C575FF18D6FE020016F050 /* IUComponent.m */,
 				69757B2318D95FDA0095CBAC /* NSMutableDictionary+IUTag.h */,
 				69757B2418D95FDA0095CBAC /* NSMutableDictionary+IUTag.m */,
 				69D15F6918E73E690046FBB0 /* NSString+IUTag.h */,
@@ -1313,6 +1317,12 @@
 				3DED272D1904E17E001A1D67 /* IUMovie.m */,
 				69AB7EAA19062598009E5195 /* IUTransition.h */,
 				69AB7EAB19062598009E5195 /* IUTransition.m */,
+				69C4AA181908E82900CF75E7 /* IUResponsiveSection.h */,
+				69C4AA191908E82900CF75E7 /* IUResponsiveSection.m */,
+				69C575FE18D6FE020016F050 /* IUClass.h */,
+				69C575FF18D6FE020016F050 /* IUClass.m */,
+				69C4AA1B1908E96F00CF75E7 /* IUImport.h */,
+				69C4AA1C1908E96F00CF75E7 /* IUImport.m */,
 			);
 			name = IU;
 			sourceTree = "<group>";
@@ -1824,7 +1834,7 @@
 				3DED269B1900D33A001A1D67 /* tab_clipart.png in Resources */,
 				3DF803E518FE62C900913505 /* stack_transition.png in Resources */,
 				3DED270A190125F1001A1D67 /* ruler@2x.png in Resources */,
-				3DED26F219010BB0001A1D67 /* LMPropertyIURenderVC.xib in Resources */,
+				3DED26F219010BB0001A1D67 /* LMPropertyIUImportVC.xib in Resources */,
 				3DF8043A18FE62FC00913505 /* tool_movie@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1878,6 +1888,7 @@
 				3DB3ACDE18EBEF5F0046DFB7 /* BorderLayer.m in Sources */,
 				3DB3ACD318EBEF4F0046DFB7 /* WebCanvasView.m in Sources */,
 				69757B1418D95BBC0095CBAC /* NSMenu_JDExtension.m in Sources */,
+				69C4AA1A1908E82900CF75E7 /* IUResponsiveSection.m in Sources */,
 				69ABB14A18D733ED0065D584 /* IUCompiler.m in Sources */,
 				3DB3ACDF18EBEF5F0046DFB7 /* PointTextLayer.m in Sources */,
 				6919204718DCFC8200F8522B /* NSCoder+JDExtension.m in Sources */,
@@ -1918,13 +1929,14 @@
 				69757B1518D95BBC0095CBAC /* NSTextField+DragAndDrop.m in Sources */,
 				3DED26D819010A6D001A1D67 /* LMPropertyIUBoxVC.m in Sources */,
 				3DED273A1904F271001A1D67 /* IUImageUtil.m in Sources */,
-				69C5760B18D6FE020016F050 /* IUComponent.m in Sources */,
+				69C5760B18D6FE020016F050 /* IUClass.m in Sources */,
 				3DED271D1904ADD9001A1D67 /* LMPropertyVTriggerVC.m in Sources */,
 				694E3CE118FCFDA6005077B3 /* IUItem.m in Sources */,
 				6967425318F7D077008B7111 /* IUIdentifierManager.m in Sources */,
 				69761BCA18F168D700C4EDC6 /* IUResourceManager.m in Sources */,
 				69757B1118D95BBC0095CBAC /* JDUIUtil.m in Sources */,
 				3DB3ACE718EBEF9D0046DFB7 /* CursorRect.m in Sources */,
+				69C4AA1D1908E96F00CF75E7 /* IUImport.m in Sources */,
 				692334BA18F783FE003E5224 /* LMIUInspectorVC.m in Sources */,
 				69757B0E18D95BBC0095CBAC /* JDTextField.m in Sources */,
 				3DF8045818FE874400913505 /* LMAppearanceVC.m in Sources */,
@@ -1933,7 +1945,7 @@
 				69757AC218D7EB680095CBAC /* IUBox.m in Sources */,
 				3DED26F619010BC0001A1D67 /* LMPropertyIUImageVC.m in Sources */,
 				3DB3ACF618EC1E120046DFB7 /* LMCanvasView.m in Sources */,
-				3DED26F119010BB0001A1D67 /* LMPropertyIURenderVC.m in Sources */,
+				3DED26F119010BB0001A1D67 /* LMPropertyIUImportVC.m in Sources */,
 				69A45DE018F6702C00C551D9 /* LMPropertyBorderVC.m in Sources */,
 				6954812818D7640A00CA02F1 /* IUPage.m in Sources */,
 				69C5764018D729830016F050 /* IUDocumentController.m in Sources */,

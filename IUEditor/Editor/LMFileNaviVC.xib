@@ -178,8 +178,42 @@
                                                     <outlet property="textField" destination="q7g-kV-gNd" id="FG8-4c-i0W"/>
                                                 </connections>
                                             </tableCellView>
-                                            <tableCellView identifier="imageFile" autoresizesSubviews="NO" id="uu9-qM-3y2" userLabel="image">
+                                            <tableCellView identifier="classFile" autoresizesSubviews="NO" id="05k-SR-JPG" userLabel="class file">
                                                 <rect key="frame" x="0.0" y="78" width="220" height="26"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HHQ-QB-U4H">
+                                                        <rect key="frame" x="8" y="6" width="12" height="14"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ic_comp" id="lKq-aV-QRE"/>
+                                                    </imageView>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Ln7-nC-PoA">
+                                                        <rect key="frame" x="21" y="6" width="198" height="14"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="master" id="BJh-uz-sc7">
+                                                            <font key="font" size="11" name="LucidaGrande"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="05k-SR-JPG" name="value" keyPath="objectValue.name" id="Hiz-iT-ukc"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="Ln7-nC-PoA" secondAttribute="trailing" constant="3" id="51q-Ls-pmB"/>
+                                                    <constraint firstAttribute="centerY" secondItem="Ln7-nC-PoA" secondAttribute="centerY" id="G6B-Xa-Nud"/>
+                                                    <constraint firstAttribute="centerY" secondItem="HHQ-QB-U4H" secondAttribute="centerY" id="Kv0-Fx-c8j"/>
+                                                    <constraint firstItem="HHQ-QB-U4H" firstAttribute="leading" secondItem="05k-SR-JPG" secondAttribute="leading" constant="8" id="Rpk-po-AJ8"/>
+                                                    <constraint firstItem="Ln7-nC-PoA" firstAttribute="leading" secondItem="HHQ-QB-U4H" secondAttribute="trailing" constant="3" id="tnI-uH-jZP"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="imageView" destination="HHQ-QB-U4H" id="rLH-Qo-185"/>
+                                                    <outlet property="textField" destination="Ln7-nC-PoA" id="bnA-jC-5nx"/>
+                                                </connections>
+                                            </tableCellView>
+                                            <tableCellView identifier="imageFile" autoresizesSubviews="NO" id="uu9-qM-3y2" userLabel="image">
+                                                <rect key="frame" x="0.0" y="104" width="220" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EeA-UN-IXX">
@@ -213,7 +247,7 @@
                                                 </connections>
                                             </tableCellView>
                                             <tableCellView identifier="videoFile" autoresizesSubviews="NO" id="Mjq-0T-CVg" userLabel="video">
-                                                <rect key="frame" x="0.0" y="104" width="220" height="26"/>
+                                                <rect key="frame" x="0.0" y="130" width="220" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d32-js-1v1">
@@ -247,7 +281,7 @@
                                                 </connections>
                                             </tableCellView>
                                             <tableCellView identifier="cssFile" autoresizesSubviews="NO" id="amj-x3-yZx" userLabel="css file">
-                                                <rect key="frame" x="0.0" y="130" width="220" height="26"/>
+                                                <rect key="frame" x="0.0" y="156" width="220" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NPt-8b-0nz">
@@ -281,7 +315,7 @@
                                                 </connections>
                                             </tableCellView>
                                             <tableCellView identifier="JSFile" autoresizesSubviews="NO" id="LF9-oT-gcv" userLabel="comp file">
-                                                <rect key="frame" x="0.0" y="156" width="220" height="26"/>
+                                                <rect key="frame" x="0.0" y="182" width="220" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zqW-gx-UL3">
@@ -352,6 +386,7 @@
         <treeController mode="entity" editable="NO" childrenKeyPath="children" leafKeyPath="isLeaf" id="gdF-Dg-Xge" customClass="IUDocumentController"/>
     </objects>
     <resources>
+        <image name="ic_comp" width="12" height="14"/>
         <image name="ic_css" width="12" height="14"/>
         <image name="ic_folder" width="14" height="10"/>
         <image name="ic_image" width="12" height="14"/>

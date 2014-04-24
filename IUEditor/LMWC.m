@@ -204,6 +204,7 @@
     [iuInspectorVC setResourceManager:_resourceManager];
     [bottomToolbarVC setResourceManager:_resourceManager];
     iuInspectorVC.pageDocumentNodes = _project.pageDocumentNodes;
+    iuInspectorVC.classDocumentNodes = _project.classDocumentNodes;
 }
 
 -(void)setSelectedNode:(IUNode*)selectedNode{
@@ -258,6 +259,7 @@
 
 - (void)project:(IUProject *)project nodeAdded:(IUNode *)node{
     [iuInspectorVC setPageDocumentNodes:project.pageDocumentNodes];
+    [iuInspectorVC setClassDocumentNodes:project.classDocumentNodes];
 }
 
 #pragma mark -

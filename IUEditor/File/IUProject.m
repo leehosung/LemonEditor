@@ -14,13 +14,13 @@
 #import "IUResourceNode.h"
 #import "JDUIUtil.h"
 #import "IUMaster.h"
-
+#import "IUClass.h"
 
 @interface IUProject()
 @property (nonatomic, copy) NSString          *path;
 @property IUDocumentGroupNode *pageDocumentGroup;
 @property IUDocumentGroupNode *masterDocumentGroup;
-@property IUDocumentGroupNode *componentDocumentGroup;
+@property IUDocumentGroupNode *classDocumentGroup;
 
 @end
 
@@ -39,7 +39,7 @@
     [encoder encodeObject:_resourceNode forKey:@"_resourceNode"];
     [encoder encodeObject:_pageDocumentGroup forKey:@"_pageDocumentGroup"];
     [encoder encodeObject:_masterDocumentGroup forKey:@"_masterDocumentGroup"];
-    [encoder encodeObject:_componentDocumentGroup forKey:@"_componentDocumentGroup"];
+    [encoder encodeObject:_classDocumentGroup forKey:@"_classDocumentGroup"];
     [encoder encodeObject:_buildDirectoryName forKey:@"buildPath"];
 }
 
@@ -53,7 +53,7 @@
         _resourceNode = [aDecoder decodeObjectForKey:@"_resourceNode"];
         _pageDocumentGroup = [aDecoder decodeObjectForKey:@"_pageDocumentGroup"];
         _masterDocumentGroup = [aDecoder decodeObjectForKey:@"_masterDocumentGroup"];
-        _componentDocumentGroup = [aDecoder decodeObjectForKey:@"_componentDocumentGroup"];
+        _classDocumentGroup = [aDecoder decodeObjectForKey:@"_classDocumentGroup"];
         _buildDirectoryName = [aDecoder decodeObjectForKey:@"buildPath"];
     }
     return self;
@@ -98,6 +98,11 @@
     [project addNode:masterGroup];
     project.masterDocumentGroup = masterGroup;
     
+    IUDocumentGroupNode *classGroup = [[IUDocumentGroupNode alloc] init];
+    classGroup.name = @"Classes";
+    [project addNode:classGroup];
+    project.classDocumentGroup = masterGroup;
+
     //create document
     IUPage *page = [[IUPage alloc] initWithManager:nil];
     page.htmlID = @"Page1Index";
@@ -115,6 +120,24 @@
     masterNode.document = master;
     masterNode.name = @"Master1";
     [masterGroup addNode:masterNode];
+    
+    IUClass *class = [[IUClass alloc] initWithManager:nil];
+    class.htmlID = @"Class1";
+    class.name = @"Class1";
+    
+    IUDocumentNode *classNode = [[IUDocumentNode alloc] init];
+    classNode.document = class;
+    classNode.name = @"Class1";
+    [classGroup addNode:classNode];
+
+    IUClass *class2 = [[IUClass alloc] initWithManager:nil];
+    class2.htmlID = @"Class2";
+    class2.name = @"Class2";
+    
+    IUDocumentNode *classNode2 = [[IUDocumentNode alloc] init];
+    classNode2.document = class2;
+    classNode2.name = @"Class2";
+    [classGroup addNode:classNode2];
 
 
     [project initializeResource];
@@ -191,8 +214,8 @@
     return [_masterDocumentGroup allDocuments];
 }
 
-- (NSArray*)componentDocuments{
-    return [_componentDocumentGroup allDocuments];
+- (NSArray*)classDocuments{
+    return [_classDocumentGroup allDocuments];
 }
 
 - (IUResourceGroupNode*)resourceNode{
@@ -272,6 +295,17 @@
     NSArray *allDocumentNodes = self.allDocumentNodes;
     NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUDocumentNode* evaluatedObject, NSDictionary *bindings) {
         if ([evaluatedObject.document isKindOfClass:[IUPage class]]) {
+            return YES;
+        }
+        return NO;
+    }];
+    return [allDocumentNodes filteredArrayUsingPredicate:predicate];
+}
+
+- (NSArray*)classDocumentNodes{
+    NSArray *allDocumentNodes = self.allDocumentNodes;
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUDocumentNode* evaluatedObject, NSDictionary *bindings) {
+        if ([evaluatedObject.document isKindOfClass:[IUClass class]]) {
             return YES;
         }
         return NO;
