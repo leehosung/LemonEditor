@@ -462,6 +462,9 @@
         if (obj.flow) {
             [dict putTag:@"position" string:@"static"];
         }
+        if ([obj isKindOfClass:[IUPageContent class]] || [obj isKindOfClass:[IUHeader class]]) {
+            [dict putTag:@"position" string:@"relative"];
+        }
         if (obj.hasX) {
             BOOL enablePercent =[cssTagDict[IUCSSTagXUnit] boolValue];
             IUCSSUnit unit =  [self unitWithBool:enablePercent];
