@@ -39,6 +39,10 @@
     [[self sizeView] addFrame:700];
     
     [self addObserver:self forKeyPath:@"view.sizeView.sizeArray" options:NSKeyValueObservingOptionInitial context:@"mqCount"];
+    [self addObserver:self forKeyPaths:@[@"document.ghostImagePath",
+                                         @"document.ghostX",
+                                         @"document.ghostY"]
+              options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew context:@"ghostImage"];
 }
 
 
@@ -55,6 +59,7 @@
 -(void)changeIUPageHeight:(CGFloat)pageHeight{
     [self.view setHeightOfMainView:pageHeight];
 }
+
 
 #pragma mark -
 #pragma mark call by sizeView
@@ -85,16 +90,6 @@
 }
 
 
-- (void)setDocument:(IUDocument *)document{
-    NSAssert(self.documentBasePath != nil, @"resourcePath is nil");
-    JDSectionInfoLog( IULogSource, @"resourcePath  : %@", self.documentBasePath);
-    [_document setDelegate:nil];
-    _document = document;
-    _document.mqSizeArray = [self sizeView].sortedArray;
-    [_document setDelegate:self];
-    
-    [[[self webView] mainFrame] loadHTMLString:document.editorSource baseURL:[NSURL fileURLWithPath:self.documentBasePath]];
-}
 
 - (void)makeNewIU:(IUBox *)newIU atPoint:(NSPoint)point atIU:(NSString *)parentIUID{
     
@@ -121,7 +116,29 @@
     [currentIU insertImage:name];
 }
 
+#pragma mark -
+#pragma mark call by Document
 
+- (void)setDocument:(IUDocument *)document{
+    NSAssert(self.documentBasePath != nil, @"resourcePath is nil");
+    JDSectionInfoLog( IULogSource, @"resourcePath  : %@", self.documentBasePath);
+    [_document setDelegate:nil];
+    _document = document;
+    _document.mqSizeArray = [self sizeView].sortedArray;
+    [_document setDelegate:self];
+    
+    [[[self webView] mainFrame] loadHTMLString:document.editorSource baseURL:[NSURL fileURLWithPath:self.documentBasePath]];
+}
+
+- (void)ghostImageContextDidChange:(NSDictionary *)change{
+    NSString *ghostImagePath = _document.ghostImagePath;
+    NSImage *ghostImage = [NSImage imageNamed:ghostImagePath];
+    
+    [[self gridView] setGhostImage:ghostImage];
+    
+    NSPoint ghostPosition = NSMakePoint(_document.ghostX, _document.ghostY);
+    [[self gridView] setGhostPosition:ghostPosition];
+}
 
 
 #pragma mark -

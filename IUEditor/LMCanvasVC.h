@@ -58,8 +58,6 @@
 #pragma mark be set by IU
 //load page
 - (void)setDocument:(IUDocument *)document;
-
-
 //set html
 - (void)removeIU:(NSString *)iuID;
 

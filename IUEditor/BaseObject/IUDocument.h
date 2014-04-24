@@ -17,6 +17,9 @@
 @property IUCompiler *compiler;
 @property NSArray *mqSizeArray;
 
+@property CGFloat ghostX, ghostY;
+@property NSString *ghostImagePath;
+
 #pragma mark editor source
 -(NSString*)editorSource;
 -(NSString*)outputSource;

@@ -202,6 +202,7 @@
     //construct property vc
     [appearanceVC.propertyBGImageVC setResourceManager:_resourceManager];
     [iuInspectorVC setResourceManager:_resourceManager];
+    [bottomToolbarVC setResourceManager:_resourceManager];
     iuInspectorVC.pageDocumentNodes = _project.pageDocumentNodes;
 }
 
@@ -211,6 +212,7 @@
         IUDocument *document = ((IUDocumentNode*)selectedNode).document;
         [stackVC setDocument:document];
         [canvasVC setDocument:document];
+        [bottomToolbarVC setDocument:document];
         [topToolbarVC setDocumentNode:(IUDocumentNode *)selectedNode];
         
         //save for debug

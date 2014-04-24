@@ -55,7 +55,7 @@
         [ghostLayer disableAction];
         [self.layer insertSubLayerFullFrame:ghostLayer below:borderManagerLayer];
         
-        [[NSUserDefaults standardUserDefaults] addObserver:self forKeyPath:@"showShadow" options:NSKeyValueObservingOptionInitial context:nil];
+        [[NSUserDefaults standardUserDefaults] addObserver:self forKeyPath:@"showGhost" options:NSKeyValueObservingOptionInitial context:nil];
         
         
         //initialize selection Layer
@@ -313,7 +313,17 @@
     [ghostLayer setContents:image];
 }
 - (void)setGhostPosition:(NSPoint)position{
-    [ghostLayer setPosition:position];
+    NSSize imageSize = NSZeroSize;
+    NSImage *ghostImage = [ghostLayer contents];
+    
+    NSPoint percentPosition = NSZeroPoint;
+    if(ghostImage){
+        imageSize = NSMakeSize(ghostImage.size.width, ghostImage.size.height);
+        if(imageSize.width !=0 && imageSize.height !=0){
+            percentPosition = NSMakePoint((-1)*position.x/imageSize.width, (-1)*position.y/imageSize.height);
+        }
+    }
+    [ghostLayer setContentsRect:NSMakeRect(percentPosition.x, percentPosition.y, 1, 1)];
 }
 
 #pragma mark -
