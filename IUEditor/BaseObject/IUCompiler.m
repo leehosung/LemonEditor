@@ -36,12 +36,14 @@
 -(NSString*)outputSource:(IUDocument*)document mqSizeArray:(NSArray *)mqSizeArray{
     NSString *templateFilePath = [[NSBundle mainBundle] pathForResource:@"webTemplate" ofType:@"html"];
     NSMutableString *source = [NSMutableString stringWithContentsOfFile:templateFilePath encoding:NSUTF8StringEncoding error:nil];
-
+/*
+ 일단 지우지 말자. 디버그할때 힘들더라.
     //remove iuframe.js to make outputSource
     NSRange removeStart = [source rangeOfString:@"<!--IUFrame.JS_REMOVE_START-->"];
     NSRange removeEnd =[source rangeOfString:@"<!--IUFrame.JS_REMOVE_END-->"];
     NSRange removeRange = NSMakeRange(removeStart.location, removeEnd.location+removeEnd.length-removeStart.location);
     [source deleteCharactersInRange:removeRange];
+ */
     
     //change css
     NSMutableArray *cssSizeArray = [mqSizeArray mutableCopy];
