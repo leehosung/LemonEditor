@@ -202,7 +202,7 @@
     //construct property vc
     [appearanceVC.propertyBGImageVC setResourceManager:_resourceManager];
     [iuInspectorVC setResourceManager:_resourceManager];
-    iuInspectorVC.propertyIUBoxVC.pageDocumentNodes = _project.pageDocumentNodes;
+    iuInspectorVC.pageDocumentNodes = _project.pageDocumentNodes;
 }
 
 -(void)setSelectedNode:(IUNode*)selectedNode{
@@ -255,7 +255,7 @@
 
 
 - (void)project:(IUProject *)project nodeAdded:(IUNode *)node{
-    [iuInspectorVC.propertyIUBoxVC setPageDocumentNodes:project.pageDocumentNodes];
+    [iuInspectorVC setPageDocumentNodes:project.pageDocumentNodes];
 }
 
 #pragma mark -
