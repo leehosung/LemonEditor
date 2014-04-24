@@ -16,6 +16,6 @@
 @property (nonatomic) IUController *controller;
 @property (nonatomic) IUResourceManager     *resourceManager;
 @property (nonatomic) NSArray   *pageDocumentNodes;
-
+@property (nonatomic) NSArray   *classDocumentNodes;
 
 @end

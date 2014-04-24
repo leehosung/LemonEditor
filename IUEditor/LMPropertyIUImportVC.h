@@ -9,8 +9,9 @@
 #import <Cocoa/Cocoa.h>
 #import "IUController.h"
 
-@interface LMPropertyIURenderVC : NSViewController
+@interface LMPropertyIUImportVC : NSViewController
 
 @property (nonatomic) IUController      *controller;
-
+@property NSArray   *classDocumentNodes;
+@property NSArray   *selectedObjs;
 @end

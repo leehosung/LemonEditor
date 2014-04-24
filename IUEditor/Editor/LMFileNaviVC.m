@@ -88,6 +88,9 @@
             else if([node.parent.name isEqualToString:@"Masters"]){
                 cellIdentifier = @"masterFile";
             }
+            else if ([node.parent.name isEqualToString:@"Classes"]){
+                cellIdentifier = @"classFile";
+            }
         }
         else if( [[item representedObject] isKindOfClass:[IUResourceNode class]] ){
             IUResourceGroupNode *node = [item representedObject];

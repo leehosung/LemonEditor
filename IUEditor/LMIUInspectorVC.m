@@ -19,7 +19,7 @@
 #import "LMPropertyIUMailLinkVC.h"
 #import "LMPropertyIUTransitionVC.h"
 #import "LMPropertyIUWebMovieVC.h"
-#import "LMPropertyIURenderVC.h"
+#import "LMPropertyIUImportVC.h"
 
 @interface LMIUInspectorVC (){
     
@@ -33,7 +33,7 @@
     
     LMPropertyIUTransitionVC *propertyIUTransitionVC;
     LMPropertyIUWebMovieVC  *propertyIUWebMovieVC;
-    LMPropertyIURenderVC    *propertyIURenderVC;
+    LMPropertyIUImportVC    *propertyIUImportVC;
     
     LMPropertyIUMailLinkVC  *propertyIUMailLinkVC;
     
@@ -62,9 +62,10 @@
         
         propertyIUTransitionVC = [[LMPropertyIUTransitionVC alloc] initWithNibName:[LMPropertyIUTransitionVC class].className bundle:nil];
         propertyIUWebMovieVC = [[LMPropertyIUWebMovieVC alloc] initWithNibName:[LMPropertyIUWebMovieVC class].className bundle:nil];
-        propertyIURenderVC = [[LMPropertyIURenderVC alloc] initWithNibName:[LMPropertyIURenderVC class].className bundle:nil];
+        propertyIUImportVC = [[LMPropertyIUImportVC alloc] initWithNibName:[LMPropertyIUImportVC class].className bundle:nil];
         
         propertyIUMailLinkVC = [[LMPropertyIUMailLinkVC alloc] initWithNibName:[LMPropertyIUMailLinkVC class].className bundle:nil];
+        
         
         
         propertyVCArray = [NSArray arrayWithObjects:
@@ -76,7 +77,7 @@
                            @"propertyIUCarouselVC",
                            @"propertyIUTransitionVC",
                            @"propertyIUWebMovieVC",
-                           @"propertyIURenderVC",
+                           @"propertyIUImportVC",
                            @"propertyIUMailLinkVC",
                            nil];
         selectedIUCellVArray = [NSMutableArray array];
@@ -96,7 +97,9 @@
     
     [propertyIUTransitionVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     [propertyIUWebMovieVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
-    [propertyIURenderVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+
+    [propertyIUImportVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+    [propertyIUImportVC bind:@"classDocumentNodes" toObject:self withKeyPath:@"classDocumentNodes" options:nil];
     
     [propertyIUMailLinkVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     
