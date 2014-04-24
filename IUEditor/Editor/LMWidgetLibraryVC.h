@@ -19,6 +19,7 @@
 @property (nonatomic, weak) IUIdentifierManager   *identifierManager;
 
 -(void)setWidgetProperties:(NSArray*)array;
-@property (nonatomic, readonly) NSArray *widgets;
+@property (nonatomic, readonly) NSArray *primaryWidgets;
+@property (nonatomic, readonly) NSArray *secondaryWidgets;
 
 @end
