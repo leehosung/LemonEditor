@@ -6,9 +6,15 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyMouseEventVC">
             <connections>
+                <outlet property="bgColorWell" destination="En6-DS-qAD" id="6FC-lk-zbO"/>
+                <outlet property="bgXStepper" destination="qLB-XX-V8n" id="Y7i-JB-gto"/>
                 <outlet property="bgXTF" destination="Pc9-ui-fc1" id="WRs-Bj-Ww6"/>
+                <outlet property="bgYStepper" destination="xJT-zP-1B5" id="pU0-Sq-e7A"/>
                 <outlet property="bgYTF" destination="cGy-bm-A17" id="WC9-nQ-ZoG"/>
+                <outlet property="changeBGColorBtn" destination="HQ6-Mg-XE0" id="wMI-Kz-eIU"/>
                 <outlet property="changeBGImagePositionB" destination="TGE-sQ-fHK" id="Vzw-Fq-GhR"/>
+                <outlet property="changeTextColorBtn" destination="t4a-Qa-jwm" id="XRS-Rh-cmA"/>
+                <outlet property="textColorWell" destination="F6v-Zz-3V4" id="ycL-d6-wcT"/>
                 <outlet property="view" destination="YmZ-ra-Pv6" id="TlA-3n-3iM"/>
             </connections>
         </customObject>
