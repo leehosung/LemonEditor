@@ -495,4 +495,10 @@
     [self.delegate IU:self.htmlID CSSChanged:[self cssForWidth:IUCSSDefaultCollection] forWidth:IUCSSDefaultCollection];
 }
 
+//FIXME: undefineKey,
+//iucontroller & inspectorVC sync가 안맞는듯.
+- (id)valueForUndefinedKey:(NSString *)key{
+    return nil;
+}
+
 @end
