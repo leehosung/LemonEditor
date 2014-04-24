@@ -431,6 +431,8 @@
     IUCSSStringDictionary *dict = [IUCSSStringDictionary dictionary];
     id value;
     
+#pragma mark - 
+#pragma mark mouseHover CSS
     if (isHover){
         if ([cssTagDict[IUCSSTagHoverBGImagePositionEnable] boolValue]) {
             value = cssTagDict[IUCSSTagHoverBGImageX];
@@ -457,7 +459,8 @@
             }
         }
     }
-    
+#pragma mark -
+#pragma mark normal CSS
     else {
         if (obj.flow) {
             [dict putTag:@"position" string:@"static"];

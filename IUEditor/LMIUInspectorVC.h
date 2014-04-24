@@ -15,8 +15,7 @@
 
 @property (nonatomic) IUController *controller;
 @property (nonatomic) IUResourceManager     *resourceManager;
+@property (nonatomic) NSArray   *pageDocumentNodes;
 
-//Connect to LMWC
-@property  LMPropertyIUBoxVC   *propertyIUBoxVC;
 
 @end

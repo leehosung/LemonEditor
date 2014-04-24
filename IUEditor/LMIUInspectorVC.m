@@ -22,6 +22,8 @@
 #import "LMPropertyIURenderVC.h"
 
 @interface LMIUInspectorVC (){
+    
+    LMPropertyIUBoxVC   *propertyIUBoxVC;
     LMPropertyIUImageVC *propertyIUImageVC;
     LMPropertyIUHTMLVC  *propertyIUHTMLVC;
     
@@ -50,7 +52,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
-        self.propertyIUBoxVC = [[LMPropertyIUBoxVC alloc] initWithNibName:[LMPropertyIUBoxVC class].className bundle:nil];
+        propertyIUBoxVC = [[LMPropertyIUBoxVC alloc] initWithNibName:[LMPropertyIUBoxVC class].className bundle:nil];
         propertyIUImageVC = [[LMPropertyIUImageVC alloc] initWithNibName:[LMPropertyIUImageVC class].className bundle:nil];
         propertyIUHTMLVC = [[LMPropertyIUHTMLVC alloc] initWithNibName:[LMPropertyIUHTMLVC class].className bundle:nil];
         
@@ -79,13 +81,12 @@
                            nil];
         selectedIUCellVArray = [NSMutableArray array];
         
-        
     }
     return self;
 }
 
 -(void)awakeFromNib{
-    [self.propertyIUBoxVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+    [propertyIUBoxVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     [propertyIUImageVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     [propertyIUHTMLVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     
@@ -101,10 +102,15 @@
     
 }
 
+- (void)setPageDocumentNodes:(NSArray *)pageDocumentNodes{
+    _pageDocumentNodes = pageDocumentNodes;
+    propertyIUBoxVC.pageDocumentNodes = pageDocumentNodes;
+    
+}
+
 -(void)setController:(IUController *)controller{
     _controller = controller;
     [_controller addObserver:self forKeyPath:@"selectedObjects" options:0 context:nil];
-
 }
 
 - (void)setResourceManager:(IUResourceManager *)resourceManager{
