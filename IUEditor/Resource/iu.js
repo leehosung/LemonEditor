@@ -9,6 +9,5 @@ function resize(){
 
 $(document).ready(function(){
                   console.log("ready : iu.js");
-                  getIUUpdatedFrameThread();
                   $(window).resize(resize());
 });
