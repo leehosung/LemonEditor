@@ -13,13 +13,13 @@
 #import "IUDocumentNode.h"
 #import "IUResourceNode.h"
 #import "JDUIUtil.h"
-#import "IUMaster.h"
+#import "IUBackground.h"
 #import "IUClass.h"
 
 @interface IUProject()
 @property (nonatomic, copy) NSString          *path;
 @property IUDocumentGroupNode *pageDocumentGroup;
-@property IUDocumentGroupNode *masterDocumentGroup;
+@property IUDocumentGroupNode *backgroundDocumentGroup;
 @property IUDocumentGroupNode *classDocumentGroup;
 
 @end
@@ -38,7 +38,7 @@
     [encoder encodeObject:IDDict forKey:@"IDDict"];
     [encoder encodeObject:_resourceNode forKey:@"_resourceNode"];
     [encoder encodeObject:_pageDocumentGroup forKey:@"_pageDocumentGroup"];
-    [encoder encodeObject:_masterDocumentGroup forKey:@"_masterDocumentGroup"];
+    [encoder encodeObject:_backgroundDocumentGroup forKey:@"_backgroundDocumentGroup"];
     [encoder encodeObject:_classDocumentGroup forKey:@"_classDocumentGroup"];
     [encoder encodeObject:_buildDirectoryName forKey:@"buildPath"];
 }
@@ -52,7 +52,7 @@
         IDDict = [aDecoder decodeObjectForKey:@"IDDict"];
         _resourceNode = [aDecoder decodeObjectForKey:@"_resourceNode"];
         _pageDocumentGroup = [aDecoder decodeObjectForKey:@"_pageDocumentGroup"];
-        _masterDocumentGroup = [aDecoder decodeObjectForKey:@"_masterDocumentGroup"];
+        _backgroundDocumentGroup = [aDecoder decodeObjectForKey:@"_backgroundDocumentGroup"];
         _classDocumentGroup = [aDecoder decodeObjectForKey:@"_classDocumentGroup"];
         _buildDirectoryName = [aDecoder decodeObjectForKey:@"buildPath"];
     }
@@ -93,15 +93,15 @@
     [project addNode:pageDir];
     project.pageDocumentGroup = pageDir;
     
-    IUDocumentGroupNode *masterGroup = [[IUDocumentGroupNode alloc] init];
-    masterGroup.name = @"Masters";
-    [project addNode:masterGroup];
-    project.masterDocumentGroup = masterGroup;
+    IUDocumentGroupNode *backgroundGroup = [[IUDocumentGroupNode alloc] init];
+    backgroundGroup.name = @"Backgrounds";
+    [project addNode:backgroundGroup];
+    project.backgroundDocumentGroup = backgroundGroup;
     
     IUDocumentGroupNode *classGroup = [[IUDocumentGroupNode alloc] init];
     classGroup.name = @"Classes";
     [project addNode:classGroup];
-    project.classDocumentGroup = masterGroup;
+    project.classDocumentGroup = backgroundGroup;
 
     //create document
     IUPage *page = [[IUPage alloc] initWithManager:nil];
@@ -112,14 +112,15 @@
     pageNode.name = @"Index";
     [pageDir addNode:pageNode];
     
-    IUMaster *master = [[IUMaster alloc] initWithManager:nil];
-    master.htmlID = @"Master1";
-    page.master = master;
+    IUBackground *background = [[IUBackground alloc] initWithManager:nil];
+    background.htmlID = @"Background1";
+    background.name = @"Background1";
+    page.background = background;
     
-    IUDocumentNode *masterNode = [[IUDocumentNode alloc] init];
-    masterNode.document = master;
-    masterNode.name = @"Master1";
-    [masterGroup addNode:masterNode];
+    IUDocumentNode *backgroundNode = [[IUDocumentNode alloc] init];
+    backgroundNode.document = background;
+    backgroundNode.name = @"Background1";
+    [backgroundGroup addNode:backgroundNode];
     
     IUClass *class = [[IUClass alloc] initWithManager:nil];
     class.htmlID = @"Class1";
@@ -210,8 +211,8 @@
     return [_pageDocumentGroup allDocuments];
 }
 
-- (NSArray*)masterDocuments{
-    return [_masterDocumentGroup allDocuments];
+- (NSArray*)backgroundDocuments{
+    return [_backgroundDocumentGroup allDocuments];
 }
 
 - (NSArray*)classDocuments{

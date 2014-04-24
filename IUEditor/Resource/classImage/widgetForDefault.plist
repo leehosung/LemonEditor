@@ -225,10 +225,9 @@
 		<key>isWidget</key>
 		<false/>
 		<key>className</key>
-		<string>IUMaster</string>
+		<string>IUBackground</string>
 		<key>navImage</key>
-		<string>ic_master</string>
-		
+		<string>ic_background</string>
 	</dict>
 	<dict>
 		<key>isWidget</key>

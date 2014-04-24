@@ -14,7 +14,7 @@
 #import "IUPage.h"
 #import "IUHeader.h"
 #import "IUPageContent.h"
-#import "IUMaster.h"
+#import "IUBackground.h"
 
 #import "IUHTML.h"
 #import "IUImage.h"
@@ -142,15 +142,15 @@
     NSMutableString *code = [NSMutableString string];
     if ([iu isKindOfClass:[IUPage class]]) {
         IUPage *page = (IUPage*)iu;
-        if (page.master) {
+        if (page.background) {
             [code appendFormat:@"<div %@ %@>\n", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
-            for (IUBox *obj in page.master.children) {
+            for (IUBox *obj in page.background.children) {
                 [code appendString:[[self outputHTML:obj] stringByIndent:4 prependIndent:YES]];
                 [code appendNewline];
             }
             if (iu.children.count) {
                 for (IUBox *child in iu.children) {
-                    if (child == page.master) {
+                    if (child == page.background) {
                         continue;
                     }
                     [code appendString:[[self outputHTML:child] stringByIndent:4 prependIndent:YES]];
@@ -253,15 +253,15 @@
     NSMutableString *code = [NSMutableString string];
     if ([iu isKindOfClass:[IUPage class]]) {
         IUPage *page = (IUPage*)iu;
-        if (page.master) {
+        if (page.background) {
             [code appendFormat:@"<div %@ %@>\n", [self HTMLAttributeStringWithTagDict:iu.HTMLAtributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
-            for (IUBox *obj in page.master.children) {
+            for (IUBox *obj in page.background.children) {
                 [code appendString:[[self editorHTML:obj] stringByIndent:4 prependIndent:YES]];
                 [code appendNewline];
             }
             if (iu.children.count) {
                 for (IUBox *child in iu.children) {
-                    if (child == page.master) {
+                    if (child == page.background) {
                         continue;
                     }
                     [code appendString:[[self editorHTML:child] stringByIndent:4 prependIndent:YES]];

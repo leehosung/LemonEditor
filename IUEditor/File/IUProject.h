@@ -47,7 +47,7 @@ typedef enum _IUGitType{
 - (BOOL)build:(NSError**)error;
 
 - (NSArray*)pageDocuments;
-- (NSArray*)masterDocuments;
+- (NSArray*)backgroundDocuments;
 - (NSArray*)classDocuments;
 
 - (IUResourceGroupNode *)resourceNode;
