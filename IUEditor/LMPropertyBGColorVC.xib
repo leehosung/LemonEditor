@@ -54,7 +54,7 @@
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5jf-H9-xcI">
                                 <rect key="frame" x="248" y="7" width="18" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="clear_color" imagePosition="only" alignment="center" controlSize="small" imageScaling="axesIndependently" inset="2" id="48C-S6-ksS">
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="clear_color_border" imagePosition="only" alignment="center" controlSize="small" imageScaling="axesIndependently" inset="2" id="48C-S6-ksS">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
@@ -132,6 +132,6 @@
         </colorWell>
     </objects>
     <resources>
-        <image name="clear_color" width="18" height="18"/>
+        <image name="clear_color_border" width="18" height="18"/>
     </resources>
 </document>
