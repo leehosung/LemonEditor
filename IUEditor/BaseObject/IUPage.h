@@ -9,11 +9,11 @@
 #import "IUBox.h"
 #import "IUDocument.h"
 
-@class IUMaster;
+@class IUBackground;
 
 @interface IUPage : IUDocument
 
--(void)setMaster:(IUMaster*)master;
--(IUMaster*)master;
+-(void)setBackground:(IUBackground*)background;
+-(IUBackground*)background;
 
 @end

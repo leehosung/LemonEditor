@@ -1,5 +1,5 @@
 //
-//  IUMaster.h
+//  IUBackground.h
 //  IUEditor
 //
 //  Created by jd on 3/31/14.
@@ -10,7 +10,7 @@
 #import "IUHeader.h"
 
 
-@interface IUMaster : IUDocument
+@interface IUBackground : IUDocument
 
 @property  IUHeader    *header;
 @property  (readonly)  NSArray     *bodyParts;

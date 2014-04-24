@@ -7,7 +7,7 @@
 //
 
 #import "IUPage.h"
-#import "IUMaster.h"
+#import "IUBackground.h"
 #import "IUPageContent.h"
 
 @implementation IUPage{
@@ -45,29 +45,29 @@
     return self;
 }
 
--(IUMaster*)master{
+-(IUBackground*)background{
     for (IUBox *obj in self.children) {
-        if ([obj isKindOfClass:[IUMaster class]]) {
-            return (IUMaster*)obj;
+        if ([obj isKindOfClass:[IUBackground class]]) {
+            return (IUBackground*)obj;
         }
     }
     return nil;
 }
 
--(void)setMaster:(IUMaster *)master{
-    IUMaster *myMaster = self.master;
+-(void)setBackground:(IUBackground *)background{
+    IUBackground *myBackground = self.background;
     
-    if (myMaster == master) {
+    if (myBackground == background) {
         return;
     }
-    if (myMaster == nil && master ) {
+    if (myBackground == nil && background ) {
         NSArray *children = [self.children copy];
         pageContent = [[IUPageContent alloc] initWithManager:nil];
         pageContent.htmlID = @"pageContent";
         pageContent.name = @"pageContent";
         
         for (IUBox *iu in children) {
-            if (iu == (IUBox*)myMaster) {
+            if (iu == (IUBox*)myBackground) {
                 continue;
             }
             IUBox *temp = iu;
@@ -75,12 +75,12 @@
             [pageContent addIU:temp error:nil];
         }
         
-        [self addIU:master error:nil];
+        [self addIU:background error:nil];
         [self addIU:pageContent error:nil];
     }
-    else if (myMaster && master == nil){
+    else if (myBackground && background == nil){
         NSArray *children = pageContent.children;
-        [self removeIU:master];
+        [self removeIU:background];
         [self removeIU:pageContent];
         for (IUBox *iu in children) {
             [pageContent removeIU:iu];
@@ -88,8 +88,8 @@
         }
     }
     else {
-        [self removeIU:self.master];
-        [self insertIU:master atIndex:0 error:nil];
+        [self removeIU:self.background];
+        [self insertIU:background atIndex:0 error:nil];
     }
 }
 

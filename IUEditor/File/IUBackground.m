@@ -1,19 +1,19 @@
 //
-//  IUMaster.m
+//  IUBackground.m
 //  IUEditor
 //
 //  Created by jd on 3/31/14.
 //  Copyright (c) 2014 JDLab. All rights reserved.
 //
 
-#import "IUMaster.h"
+#import "IUBackground.h"
 
-@interface IUMaster()
+@interface IUBackground()
 @property NSMutableArray    *bodyParts;
 @end
 
 
-@implementation IUMaster
+@implementation IUBackground
 
 -(id)initWithManager:(IUIdentifierManager *)manager{
     self = [super initWithManager:manager];
@@ -26,13 +26,13 @@
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
-    [aDecoder decodeToObject:self withProperties:[IUMaster properties]];
+    [aDecoder decodeToObject:self withProperties:[IUBackground properties]];
     return self;
 }
 
 -(void)encodeWithCoder:(NSCoder *)aCoder{
     [super encodeWithCoder:aCoder];
-    [aCoder encodeFromObject:self withProperties:[IUMaster properties]];
+    [aCoder encodeFromObject:self withProperties:[IUBackground properties]];
 }
 
 

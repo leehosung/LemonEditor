@@ -85,8 +85,8 @@
             if([node.parent.name isEqualToString:@"Pages"]){
                 cellIdentifier = @"pageFile";
             }
-            else if([node.parent.name isEqualToString:@"Masters"]){
-                cellIdentifier = @"masterFile";
+            else if([node.parent.name isEqualToString:@"Backgrounds"]){
+                cellIdentifier = @"backgroundFile";
             }
             else if ([node.parent.name isEqualToString:@"Classes"]){
                 cellIdentifier = @"classFile";
