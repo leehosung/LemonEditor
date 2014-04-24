@@ -12,7 +12,11 @@
 
 @interface LMWidgetLibraryVC ()
 
-@property (weak) IBOutlet NSCollectionView *collectionV;
+@property (weak) IBOutlet NSTabView *collectionTabV;
+
+@property (weak) IBOutlet NSCollectionView *primaryCollectionV;
+@property (weak) IBOutlet NSCollectionView *secondaryCollectionV;
+
 @end
 
 @implementation LMWidgetLibraryVC{
@@ -60,7 +64,8 @@
 
 
 -(void)setWidgetProperties:(NSArray*)array{
-    NSMutableArray *temp = [NSMutableArray array];
+    NSMutableArray *primaryArray = [NSMutableArray array];
+    NSMutableArray *secondaryArray = [NSMutableArray array];
     for (NSDictionary *dict in array) {
         
         BOOL isWidget = [dict[@"isWidget"] boolValue];
@@ -69,12 +74,27 @@
             obj.title = dict[@"className"];
             NSString *imageName = dict[@"classImage"];
             obj.image = [NSImage imageNamed:imageName];
-            [temp addObject:obj];
+            int widgetClass = [dict[@"widgetClass"] intValue];
+            if(widgetClass == WidgetClassTypePrimary){
+                [primaryArray addObject:obj];
+            }
+            else if(widgetClass == WidgetClassTypeSecondary){
+                [secondaryArray addObject:obj];
+            }
         }
     }
-    [self willChangeValueForKey:@"widgets"];
-    _widgets = [NSArray arrayWithArray:temp];
-    [self didChangeValueForKey:@"widgets"];
+    [self willChangeValueForKey:@"primaryWidgets"];
+    _primaryWidgets = primaryArray;
+    [self didChangeValueForKey:@"primaryWidgets"];
+
+    [self willChangeValueForKey:@"secondaryWidgets"];
+    _secondaryWidgets = secondaryArray;
+    [self didChangeValueForKey:@"secondaryWidgets"];
 }
 
+- (IBAction)clickWidgetTabMatrix:(id)sender {
+    NSInteger selectedIndex = [sender selectedRow];
+    [_collectionTabV selectTabViewItemAtIndex:selectedIndex];
+    
+}
 @end
