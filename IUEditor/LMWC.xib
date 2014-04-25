@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMWC">
@@ -28,7 +28,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="1420" height="887"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
             <view key="contentView" id="2">
                 <rect key="frame" x="0.0" y="0.0" width="1420" height="887"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -99,13 +99,13 @@
                                         </connections>
                                     </matrix>
                                     <tabView type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="VEQ-BG-SDd" userLabel="Tab View (Appearance, Property, Event)">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="448"/>
+                                        <rect key="frame" x="0.0" y="-1" width="301" height="449"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <font key="font" metaFont="system"/>
                                         <tabViewItems>
                                             <tabViewItem label="Appearance" identifier="1" id="Rtk-aD-9fK">
                                                 <view key="view" id="209-eo-kDy" userLabel="appearanceV">
-                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="448"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="301" height="449"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </view>
                                             </tabViewItem>
@@ -126,8 +126,8 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="VEQ-BG-SDd" firstAttribute="top" secondItem="aaF-Ys-G65" secondAttribute="top" constant="29" id="APY-gg-9bO"/>
-                                    <constraint firstAttribute="trailing" secondItem="VEQ-BG-SDd" secondAttribute="trailing" id="UjU-Yg-WIh"/>
-                                    <constraint firstAttribute="bottom" secondItem="VEQ-BG-SDd" secondAttribute="bottom" id="dvf-fI-O2r"/>
+                                    <constraint firstAttribute="trailing" secondItem="VEQ-BG-SDd" secondAttribute="trailing" constant="-1" id="UjU-Yg-WIh"/>
+                                    <constraint firstAttribute="bottom" secondItem="VEQ-BG-SDd" secondAttribute="bottom" constant="-1" id="dvf-fI-O2r"/>
                                     <constraint firstItem="zhv-IX-K54" firstAttribute="top" secondItem="aaF-Ys-G65" secondAttribute="top" id="kEC-wm-IPb"/>
                                     <constraint firstItem="VEQ-BG-SDd" firstAttribute="leading" secondItem="aaF-Ys-G65" secondAttribute="leading" id="sJG-gh-59B"/>
                                     <constraint firstAttribute="trailing" secondItem="zhv-IX-K54" secondAttribute="trailing" id="xwZ-vI-yJk"/>
@@ -174,10 +174,10 @@
                                         </connections>
                                     </matrix>
                                     <box autoresizesSubviews="NO" fixedFrame="YES" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="1oh-1N-1pP">
-                                        <rect key="frame" x="187" y="165" width="64" height="170"/>
+                                        <rect key="frame" x="0.0" y="379" width="301" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView">
-                                            <rect key="frame" x="1" y="1" width="62" height="168"/>
+                                            <rect key="frame" x="1" y="1" width="299" height="29"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
                                         <color key="borderColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
@@ -229,10 +229,10 @@
                         </holdingPriorities>
                     </splitView>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="4es-7h-bcl" userLabel="topToolbar">
-                        <rect key="frame" x="220" y="857" width="900" height="30"/>
+                        <rect key="frame" x="219" y="857" width="902" height="31"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="fKA-iL-Bai"/>
+                            <constraint firstAttribute="height" constant="31" id="fKA-iL-Bai"/>
                         </constraints>
                     </customView>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="YTs-oo-nxs" userLabel="bottomToolbar">
@@ -246,28 +246,17 @@
                         <rect key="frame" x="220" y="30" width="900" height="827"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6aP-Ej-OBA">
-                        <rect key="frame" x="182" y="839" width="82" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="avK-Is-tJe">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="getCurrentSource:" target="-2" id="Reg-Kv-Kwc"/>
-                        </connections>
-                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Ci0-yr-ElZ" firstAttribute="top" secondItem="2" secondAttribute="top" id="1iW-qd-WjN"/>
                     <constraint firstAttribute="bottom" secondItem="6xJ-ed-1uG" secondAttribute="bottom" id="7Ud-JD-cV2"/>
                     <constraint firstItem="YTs-oo-nxs" firstAttribute="leading" secondItem="6xJ-ed-1uG" secondAttribute="trailing" id="7ao-5H-osd"/>
-                    <constraint firstItem="4es-7h-bcl" firstAttribute="leading" secondItem="6xJ-ed-1uG" secondAttribute="trailing" id="EpC-3u-0yj"/>
-                    <constraint firstItem="Ci0-yr-ElZ" firstAttribute="leading" secondItem="4es-7h-bcl" secondAttribute="trailing" id="Fih-Px-6MG"/>
+                    <constraint firstItem="4es-7h-bcl" firstAttribute="leading" secondItem="6xJ-ed-1uG" secondAttribute="trailing" constant="-1" id="EpC-3u-0yj"/>
+                    <constraint firstItem="Ci0-yr-ElZ" firstAttribute="leading" secondItem="4es-7h-bcl" secondAttribute="trailing" constant="-1" id="Fih-Px-6MG"/>
                     <constraint firstItem="YTs-oo-nxs" firstAttribute="top" secondItem="LCo-BM-DQN" secondAttribute="bottom" id="GQ0-Em-jpo"/>
                     <constraint firstItem="Ci0-yr-ElZ" firstAttribute="leading" secondItem="LCo-BM-DQN" secondAttribute="trailing" id="HNJ-kJ-gm5"/>
                     <constraint firstItem="LCo-BM-DQN" firstAttribute="leading" secondItem="6xJ-ed-1uG" secondAttribute="trailing" id="I5H-4j-OLE"/>
-                    <constraint firstItem="4es-7h-bcl" firstAttribute="top" secondItem="2" secondAttribute="top" id="U8O-Sv-A1u"/>
+                    <constraint firstItem="4es-7h-bcl" firstAttribute="top" secondItem="2" secondAttribute="top" constant="-1" id="U8O-Sv-A1u"/>
                     <constraint firstAttribute="trailing" secondItem="Ci0-yr-ElZ" secondAttribute="trailing" id="cR7-qD-bfW"/>
                     <constraint firstItem="Ci0-yr-ElZ" firstAttribute="leading" secondItem="YTs-oo-nxs" secondAttribute="trailing" id="e04-Kj-u8P"/>
                     <constraint firstItem="6xJ-ed-1uG" firstAttribute="top" secondItem="2" secondAttribute="top" id="mBI-fX-DJb"/>
