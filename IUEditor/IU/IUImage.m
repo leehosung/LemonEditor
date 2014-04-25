@@ -39,8 +39,8 @@
     [self.delegate IU:self.htmlID HTML:self.html withParentID:self.htmlID];
 }
 
-- (NSDictionary *)HTMLAtributes{
-    NSMutableDictionary *dict = [[super HTMLAtributes] mutableCopy];
+- (NSMutableDictionary *)HTMLAttributes{
+    NSMutableDictionary *dict = [super HTMLAttributes];
     
     if(self.imageName){
         [dict setObject:self.imageName forKey:@"src"];

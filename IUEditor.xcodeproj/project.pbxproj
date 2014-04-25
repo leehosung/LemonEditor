@@ -237,6 +237,20 @@
 		690A409918E1665E00095263 /* LMGeneralObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 690A409818E1665E00095263 /* LMGeneralObject.m */; };
 		690A40A518E17C5700095263 /* widgetForDefault.plist in Resources */ = {isa = PBXBuildFile; fileRef = 690A40A418E17C5700095263 /* widgetForDefault.plist */; };
 		690A40A618E17C5700095263 /* widgetForDefault.plist in Resources */ = {isa = PBXBuildFile; fileRef = 690A40A418E17C5700095263 /* widgetForDefault.plist */; };
+		690A82561909EB1B00DDBA86 /* IUTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 690A82551909EB1B00DDBA86 /* IUTextField.m */; };
+		690A82591909EB2500DDBA86 /* IUTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 690A82581909EB2500DDBA86 /* IUTextView.m */; };
+		690A825D190A047300DDBA86 /* LMPropertyIUTextFieldVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 690A825B190A047300DDBA86 /* LMPropertyIUTextFieldVC.m */; };
+		690A825E190A047300DDBA86 /* LMPropertyIUTextFieldVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 690A825C190A047300DDBA86 /* LMPropertyIUTextFieldVC.xib */; };
+		690A8260190A238600DDBA86 /* StartPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 690A825F190A238600DDBA86 /* StartPage.xib */; };
+		690A8267190A23F500DDBA86 /* LMStartWC.m in Sources */ = {isa = PBXBuildFile; fileRef = 690A8265190A23F500DDBA86 /* LMStartWC.m */; };
+		690A8268190A23F500DDBA86 /* LMStartWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 690A8266190A23F500DDBA86 /* LMStartWC.xib */; };
+		690A826B190A25D500DDBA86 /* IUDjangoProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 690A826A190A25D500DDBA86 /* IUDjangoProject.m */; };
+		690A8272190A2CC200DDBA86 /* new_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 690A826C190A2CC200DDBA86 /* new_default@2x.png */; };
+		690A8273190A2CC200DDBA86 /* new_django@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 690A826D190A2CC200DDBA86 /* new_django@2x.png */; };
+		690A8274190A2CC200DDBA86 /* new_pt.png in Resources */ = {isa = PBXBuildFile; fileRef = 690A826E190A2CC200DDBA86 /* new_pt.png */; };
+		690A8275190A2CC200DDBA86 /* new_django.png in Resources */ = {isa = PBXBuildFile; fileRef = 690A826F190A2CC200DDBA86 /* new_django.png */; };
+		690A8276190A2CC200DDBA86 /* new_pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 690A8270190A2CC200DDBA86 /* new_pt@2x.png */; };
+		690A8277190A2CC200DDBA86 /* new_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 690A8271190A2CC200DDBA86 /* new_default.png */; };
 		6919204718DCFC8200F8522B /* NSCoder+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6919204618DCFC8200F8522B /* NSCoder+JDExtension.m */; };
 		6919204A18DCFED000F8522B /* NSObject+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6919204918DCFED000F8522B /* NSObject+JDExtension.m */; };
 		692334BA18F783FE003E5224 /* LMIUInspectorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 692334B818F783FE003E5224 /* LMIUInspectorVC.m */; };
@@ -298,6 +312,7 @@
 		69B9A39F18E6B7E50007D6E2 /* NSTreeController+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B9A39E18E6B7E50007D6E2 /* NSTreeController+JDExtension.m */; };
 		69C4AA1A1908E82900CF75E7 /* IUResponsiveSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C4AA191908E82900CF75E7 /* IUResponsiveSection.m */; };
 		69C4AA1D1908E96F00CF75E7 /* IUImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C4AA1C1908E96F00CF75E7 /* IUImport.m */; };
+		69C4AA231909905500CF75E7 /* IUCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C4AA221909905500CF75E7 /* IUCollection.m */; };
 		69C575AB18D6F61E0016F050 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69C575AA18D6F61E0016F050 /* Cocoa.framework */; };
 		69C575B518D6F61E0016F050 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 69C575B318D6F61E0016F050 /* InfoPlist.strings */; };
 		69C575B718D6F61E0016F050 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C575B618D6F61E0016F050 /* main.m */; };
@@ -618,6 +633,25 @@
 		690A409718E1665E00095263 /* LMGeneralObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMGeneralObject.h; path = Editor/LMGeneralObject.h; sourceTree = "<group>"; };
 		690A409818E1665E00095263 /* LMGeneralObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMGeneralObject.m; path = Editor/LMGeneralObject.m; sourceTree = "<group>"; };
 		690A40A418E17C5700095263 /* widgetForDefault.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = widgetForDefault.plist; path = classImage/widgetForDefault.plist; sourceTree = "<group>"; };
+		690A82541909EB1B00DDBA86 /* IUTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUTextField.h; sourceTree = "<group>"; };
+		690A82551909EB1B00DDBA86 /* IUTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUTextField.m; sourceTree = "<group>"; };
+		690A82571909EB2500DDBA86 /* IUTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUTextView.h; sourceTree = "<group>"; };
+		690A82581909EB2500DDBA86 /* IUTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUTextView.m; sourceTree = "<group>"; };
+		690A825A190A047300DDBA86 /* LMPropertyIUTextFieldVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyIUTextFieldVC.h; sourceTree = "<group>"; };
+		690A825B190A047300DDBA86 /* LMPropertyIUTextFieldVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyIUTextFieldVC.m; sourceTree = "<group>"; };
+		690A825C190A047300DDBA86 /* LMPropertyIUTextFieldVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyIUTextFieldVC.xib; sourceTree = "<group>"; };
+		690A825F190A238600DDBA86 /* StartPage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartPage.xib; sourceTree = "<group>"; };
+		690A8264190A23F500DDBA86 /* LMStartWC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMStartWC.h; sourceTree = "<group>"; };
+		690A8265190A23F500DDBA86 /* LMStartWC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMStartWC.m; sourceTree = "<group>"; };
+		690A8266190A23F500DDBA86 /* LMStartWC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMStartWC.xib; sourceTree = "<group>"; };
+		690A8269190A25D500DDBA86 /* IUDjangoProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUDjangoProject.h; path = ../../IUDjangoProject.h; sourceTree = "<group>"; };
+		690A826A190A25D500DDBA86 /* IUDjangoProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IUDjangoProject.m; path = ../../IUDjangoProject.m; sourceTree = "<group>"; };
+		690A826C190A2CC200DDBA86 /* new_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new_default@2x.png"; sourceTree = "<group>"; };
+		690A826D190A2CC200DDBA86 /* new_django@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new_django@2x.png"; sourceTree = "<group>"; };
+		690A826E190A2CC200DDBA86 /* new_pt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_pt.png; sourceTree = "<group>"; };
+		690A826F190A2CC200DDBA86 /* new_django.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_django.png; sourceTree = "<group>"; };
+		690A8270190A2CC200DDBA86 /* new_pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new_pt@2x.png"; sourceTree = "<group>"; };
+		690A8271190A2CC200DDBA86 /* new_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_default.png; sourceTree = "<group>"; };
 		6919204518DCFC8200F8522B /* NSCoder+JDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSCoder+JDExtension.h"; path = "JD/NSCoder+JDExtension.h"; sourceTree = "<group>"; };
 		6919204618DCFC8200F8522B /* NSCoder+JDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSCoder+JDExtension.m"; path = "JD/NSCoder+JDExtension.m"; sourceTree = "<group>"; };
 		6919204818DCFED000F8522B /* NSObject+JDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JDExtension.h"; sourceTree = "<group>"; };
@@ -727,6 +761,8 @@
 		69C4AA191908E82900CF75E7 /* IUResponsiveSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUResponsiveSection.m; sourceTree = "<group>"; };
 		69C4AA1B1908E96F00CF75E7 /* IUImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUImport.h; sourceTree = "<group>"; };
 		69C4AA1C1908E96F00CF75E7 /* IUImport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUImport.m; sourceTree = "<group>"; };
+		69C4AA211909905500CF75E7 /* IUCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUCollection.h; sourceTree = "<group>"; };
+		69C4AA221909905500CF75E7 /* IUCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUCollection.m; sourceTree = "<group>"; };
 		69C575A718D6F61E0016F050 /* IUEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IUEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69C575AA18D6F61E0016F050 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		69C575AD18D6F61E0016F050 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -826,6 +862,12 @@
 		3D54D64718ED5D1B00B5FEC2 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				690A826C190A2CC200DDBA86 /* new_default@2x.png */,
+				690A826D190A2CC200DDBA86 /* new_django@2x.png */,
+				690A826E190A2CC200DDBA86 /* new_pt.png */,
+				690A826F190A2CC200DDBA86 /* new_django.png */,
+				690A8270190A2CC200DDBA86 /* new_pt@2x.png */,
+				690A8271190A2CC200DDBA86 /* new_default.png */,
 				690A40A018E170B700095263 /* classImage */,
 				3DF8033018FE624000913505 /* uiImage */,
 				3D54D64818ED5D2300B5FEC2 /* mouseIcon */,
@@ -1111,6 +1153,9 @@
 				3DED270219010C71001A1D67 /* LMPropertyIUFBLikeVC.h */,
 				3DED270319010C71001A1D67 /* LMPropertyIUFBLikeVC.m */,
 				3DED270419010C71001A1D67 /* LMPropertyIUFBLikeVC.xib */,
+				690A825A190A047300DDBA86 /* LMPropertyIUTextFieldVC.h */,
+				690A825B190A047300DDBA86 /* LMPropertyIUTextFieldVC.m */,
+				690A825C190A047300DDBA86 /* LMPropertyIUTextFieldVC.xib */,
 			);
 			name = RightIUInspector;
 			sourceTree = "<group>";
@@ -1242,6 +1287,7 @@
 		690A409E18E170AC00095263 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				690A825F190A238600DDBA86 /* StartPage.xib */,
 				3D54D64718ED5D1B00B5FEC2 /* Image */,
 				690A40A418E17C5700095263 /* widgetForDefault.plist */,
 				696D1C9C18E5776200B4AB16 /* webResource */,
@@ -1323,6 +1369,12 @@
 				69C575FF18D6FE020016F050 /* IUClass.m */,
 				69C4AA1B1908E96F00CF75E7 /* IUImport.h */,
 				69C4AA1C1908E96F00CF75E7 /* IUImport.m */,
+				69C4AA211909905500CF75E7 /* IUCollection.h */,
+				69C4AA221909905500CF75E7 /* IUCollection.m */,
+				690A82541909EB1B00DDBA86 /* IUTextField.h */,
+				690A82551909EB1B00DDBA86 /* IUTextField.m */,
+				690A82571909EB2500DDBA86 /* IUTextView.h */,
+				690A82581909EB2500DDBA86 /* IUTextView.m */,
 			);
 			name = IU;
 			sourceTree = "<group>";
@@ -1464,6 +1516,9 @@
 				69C575C218D6F61E0016F050 /* Images.xcassets */,
 				69C575B118D6F61E0016F050 /* Supporting Files */,
 				69D5B69018F2675C00E9FB11 /* IUCompilerResourceSource.h */,
+				690A8264190A23F500DDBA86 /* LMStartWC.h */,
+				690A8265190A23F500DDBA86 /* LMStartWC.m */,
+				690A8266190A23F500DDBA86 /* LMStartWC.xib */,
 			);
 			path = IUEditor;
 			sourceTree = "<group>";
@@ -1523,6 +1578,8 @@
 				6985CB9F18E31558008DBF50 /* IUDocumentNode.m */,
 				69C5761C18D7051C0016F050 /* IUProject.h */,
 				69C5761D18D7051C0016F050 /* IUProject.m */,
+				690A8269190A25D500DDBA86 /* IUDjangoProject.h */,
+				690A826A190A25D500DDBA86 /* IUDjangoProject.m */,
 				69757B2F18DAE19E0095CBAC /* IUDocumentGroupNode.h */,
 				69757B3018DAE19E0095CBAC /* IUDocumentGroupNode.m */,
 				69C5763E18D729830016F050 /* IUDocumentController.h */,
@@ -1657,6 +1714,7 @@
 				3DED26BE1900F450001A1D67 /* panel_right_off@2x.png in Resources */,
 				3DED26671900D313001A1D67 /* ic_comp@2x.png in Resources */,
 				3DED27231904AE1A001A1D67 /* LMPropertyVisibleVC.xib in Resources */,
+				690A8260190A238600DDBA86 /* StartPage.xib in Resources */,
 				3DB3ACF318EBFDE20046DFB7 /* iuframe.js in Resources */,
 				3DED26901900D329001A1D67 /* stack_header@2x.png in Resources */,
 				696D1C9A18E5366400B4AB16 /* webTemplate.html in Resources */,
@@ -1676,11 +1734,13 @@
 				3DED27281904AE53001A1D67 /* LMPropertyVRFrameVC.xib in Resources */,
 				3DF803E118FE62C900913505 /* ic_folder.png in Resources */,
 				3DED26F719010BC0001A1D67 /* LMPropertyIUImageVC.xib in Resources */,
+				690A8268190A23F500DDBA86 /* LMStartWC.xib in Resources */,
 				69C5762D18D70B850016F050 /* LMWC.xib in Resources */,
 				3DF8044318FE62FC00913505 /* tool_twitter.png in Resources */,
 				3D54D64B18ED5D2E00B5FEC2 /* ResizeNE-SW.tiff in Resources */,
 				3DED27431907898A001A1D67 /* video_bg.png in Resources */,
 				3DED264B1900D2EE001A1D67 /* align_full@2x.png in Resources */,
+				690A8276190A2CC200DDBA86 /* new_pt@2x.png in Resources */,
 				3DED26601900D313001A1D67 /* next@2x.png in Resources */,
 				3DF8043D18FE62FC00913505 /* tool_fblike.png in Resources */,
 				3DF8044918FE62FC00913505 /* tool_textfield.png in Resources */,
@@ -1736,6 +1796,7 @@
 				3DF8041618FE62F200913505 /* add_mediaquery.png in Resources */,
 				3DED26811900D329001A1D67 /* stack_twitter@2x.png in Resources */,
 				3DF803ED18FE62C900913505 /* next.png in Resources */,
+				690A8274190A2CC200DDBA86 /* new_pt.png in Resources */,
 				3DED270119010C55001A1D67 /* LMPropertyIUTransitionVC.xib in Resources */,
 				3DF8044218FE62FC00913505 /* tool_navi@2x.png in Resources */,
 				3DB3ACFE18EC1F700046DFB7 /* LMCanvasVC.xib in Resources */,
@@ -1748,6 +1809,7 @@
 				3DF8043E18FE62FC00913505 /* tool_carousel.png in Resources */,
 				3DED26661900D313001A1D67 /* ic_page@2x.png in Resources */,
 				3DED268C1900D329001A1D67 /* stack_transition@2x.png in Resources */,
+				690A8277190A2CC200DDBA86 /* new_default.png in Resources */,
 				3DED27141904AC8A001A1D67 /* LMEventVC.xib in Resources */,
 				3DED26D31900FD75001A1D67 /* add_ghost_on@2x.png in Resources */,
 				3DED26911900D329001A1D67 /* stack_carousel@2x.png in Resources */,
@@ -1803,6 +1865,7 @@
 				3DED26ED19010B94001A1D67 /* LMPropertyIUWebMovieVC.xib in Resources */,
 				3DF8044E18FE62FC00913505 /* tool_render@2x.png in Resources */,
 				69C575C118D6F61E0016F050 /* MainMenu.xib in Resources */,
+				690A8275190A2CC200DDBA86 /* new_django.png in Resources */,
 				3DF8040818FE62F200913505 /* tab_close.png in Resources */,
 				3DF8044418FE62FC00913505 /* tool_twitter@2x.png in Resources */,
 				3DF8041818FE62F200913505 /* send_mail@2x.png in Resources */,
@@ -1811,6 +1874,7 @@
 				3DED26BC1900F450001A1D67 /* panel_left_on@2x.png in Resources */,
 				3DED269A1900D33A001A1D67 /* tab_clipart@2x.png in Resources */,
 				3DF8040918FE62F200913505 /* tab_close@2x.png in Resources */,
+				690A8272190A2CC200DDBA86 /* new_default@2x.png in Resources */,
 				692334BB18F783FE003E5224 /* LMIUInspectorVC.xib in Resources */,
 				3DED271E1904ADD9001A1D67 /* LMPropertyVTriggerVC.xib in Resources */,
 				3DED26881900D329001A1D67 /* stack_html.png in Resources */,
@@ -1831,8 +1895,10 @@
 				3DED26861900D329001A1D67 /* stack_mail.png in Resources */,
 				3DED26A11900D33A001A1D67 /* ic_background.png in Resources */,
 				3DF803EC18FE62C900913505 /* tab.png in Resources */,
+				690A825E190A047300DDBA86 /* LMPropertyIUTextFieldVC.xib in Resources */,
 				3DED269B1900D33A001A1D67 /* tab_clipart.png in Resources */,
 				3DF803E518FE62C900913505 /* stack_transition.png in Resources */,
+				690A8273190A2CC200DDBA86 /* new_django@2x.png in Resources */,
 				3DED270A190125F1001A1D67 /* ruler@2x.png in Resources */,
 				3DED26F219010BB0001A1D67 /* LMPropertyIUImportVC.xib in Resources */,
 				3DF8043A18FE62FC00913505 /* tool_movie@2x.png in Resources */,
@@ -1877,6 +1943,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69C4AA231909905500CF75E7 /* IUCollection.m in Sources */,
 				69C5763918D728CF0016F050 /* LMStackVC.m in Sources */,
 				3DB3ACCC18EBEF3D0046DFB7 /* InnerSizeBox.m in Sources */,
 				69761BCD18F17A3800C4EDC6 /* IUGroupNode.m in Sources */,
@@ -1932,6 +1999,8 @@
 				69C5760B18D6FE020016F050 /* IUClass.m in Sources */,
 				3DED271D1904ADD9001A1D67 /* LMPropertyVTriggerVC.m in Sources */,
 				694E3CE118FCFDA6005077B3 /* IUItem.m in Sources */,
+				690A826B190A25D500DDBA86 /* IUDjangoProject.m in Sources */,
+				690A825D190A047300DDBA86 /* LMPropertyIUTextFieldVC.m in Sources */,
 				6967425318F7D077008B7111 /* IUIdentifierManager.m in Sources */,
 				69761BCA18F168D700C4EDC6 /* IUResourceManager.m in Sources */,
 				69757B1118D95BBC0095CBAC /* JDUIUtil.m in Sources */,
@@ -1971,6 +2040,7 @@
 				69B9A39618E5A2A30007D6E2 /* IUResourceNode.m in Sources */,
 				3DED27221904AE1A001A1D67 /* LMPropertyVisibleVC.m in Sources */,
 				69B37F0D18DFDEE800DE620F /* LMFileNaviVC.m in Sources */,
+				690A82561909EB1B00DDBA86 /* IUTextField.m in Sources */,
 				690A409518E1645B00095263 /* LMWidgetLibraryVC.m in Sources */,
 				69757B1F18D95F1E0095CBAC /* NSDictionary+JDExtension.m in Sources */,
 				3DED272E1904E17E001A1D67 /* IUMovie.m in Sources */,
@@ -1984,9 +2054,11 @@
 				69D15F6B18E73E690046FBB0 /* NSString+IUTag.m in Sources */,
 				69757B1018D95BBC0095CBAC /* JDTransformer.m in Sources */,
 				3D0D480918FFAF24000A5B53 /* LMTopToolbarVC.m in Sources */,
+				690A8267190A23F500DDBA86 /* LMStartWC.m in Sources */,
 				69757B0F18D95BBC0095CBAC /* JDTextFieldCell.m in Sources */,
 				6919204A18DCFED000F8522B /* NSObject+JDExtension.m in Sources */,
 				6953852E18ED6EC800CC42E5 /* IUController.m in Sources */,
+				690A82591909EB2500DDBA86 /* IUTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

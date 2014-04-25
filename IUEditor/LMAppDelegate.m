@@ -9,9 +9,10 @@
 #import "LMAppDelegate.h"
 #import "LMWC.h"
 #import "JDLogUtil.h"
-
+#import "LMStartWC.h"
 
 @implementation LMAppDelegate{
+    LMStartWC *startWC;
 //    LMWC *wc;
 }
 
@@ -42,8 +43,11 @@
     [self.testController showWindow:nil];
     [wc addSelectedIU:@"test"];
 #endif
-    
-    [self openDocument:nil];
+//    startWC = [[NSWindowController alloc] init];
+//    [startWC showWindow:nil];
+    startWC = [[LMStartWC alloc] initWithWindowNibName:@"LMStartWC"];
+    [startWC showWindow:self];
+//    [self openDocument:nil];
 }
 
 - (void)openDocument:(id)sender{
@@ -53,6 +57,7 @@
         [self newDocument:self];
         //return;
     }
+    
     LMWC *wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
     [wc showWindow:self];
     [wc loadProject:value];

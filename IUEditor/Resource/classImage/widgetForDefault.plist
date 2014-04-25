@@ -166,6 +166,38 @@
 		<key>isWidget</key>
 		<true/>
 		<key>className</key>
+		<string>IUTextField</string>
+		<key>classImage</key>
+		<string>tool_view</string>
+		<key>navImage</key>
+		<string>stack_view</string>
+		<key>shortDesc</key>
+		<string></string>
+		<key>longDesc</key>
+		<string></string>
+		<key>widgetClass</key>
+		<integer>0</integer>
+	</dict>
+		<dict>
+		<key>isWidget</key>
+		<true/>
+		<key>className</key>
+		<string>IUTextView</string>
+		<key>classImage</key>
+		<string>tool_view</string>
+		<key>navImage</key>
+		<string>stack_view</string>
+		<key>shortDesc</key>
+		<string></string>
+		<key>longDesc</key>
+		<string></string>
+		<key>widgetClass</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>isWidget</key>
+		<true/>
+		<key>className</key>
 		<string>IUTransition</string>
 		<key>classImage</key>
 		<string>tool_transition</string>
@@ -220,7 +252,6 @@
 		<key>widgetClass</key>
 		<integer>0</integer>
 	</dict>
-	
 	<dict>
 		<key>isWidget</key>
 		<false/>

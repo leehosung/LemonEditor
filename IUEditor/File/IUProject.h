@@ -26,6 +26,11 @@ typedef enum _IUGitType{
 @class IUDocument;
 
 @interface IUProject : IUDocumentGroupNode <IUResourceGroupNode>
+@property (nonatomic, copy) NSString          *path;
+@property IUDocumentGroupNode *pageDocumentGroup;
+@property IUDocumentGroupNode *backgroundDocumentGroup;
+@property IUDocumentGroupNode *classDocumentGroup;
+- (void)initializeResource;
 
 @property   BOOL            herokuOn;
 @property   IUGitType       gitType;
