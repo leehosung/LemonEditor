@@ -32,6 +32,9 @@
         [aDecoder decodeToObject:self withProperties:[[IUBox class] propertiesWithOutProperties:@[@"delegate"]]];
         _css = [aDecoder decodeObjectForKey:@"css"];
         _css.delegate = self;
+        
+        _event = [aDecoder decodeObjectForKey:@"event"];
+        
         _m_children=[aDecoder decodeObjectForKey:@"children"];
         delegateEnableLevel = 1;
         [self addObserver:self forKeyPath:@"delegate.selectedFrameWidth" options:0 context:nil];
@@ -52,6 +55,7 @@
     }
     [aCoder encodeFromObject:self withProperties:[[IUBox class] propertiesWithOutProperties:@[@"identifierManager"]]];
     [aCoder encodeObject:self.css forKey:@"css"];
+    [aCoder encodeObject:self.event forKey:@"event"];
     [aCoder encodeObject:_m_children forKey:@"children"];
 }
 
@@ -60,6 +64,7 @@
         _css = [[IUCSS alloc] init];
         _css.delegate = self;
         _identifierManager = manager;
+        _event = [[IUEvent alloc] init];
         
         //NO - Pixel
         [_css setValue:@(0) forTag:IUCSSTagXUnit forWidth:IUCSSDefaultCollection];

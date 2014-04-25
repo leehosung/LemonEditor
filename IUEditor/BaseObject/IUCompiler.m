@@ -47,6 +47,10 @@
     [source deleteCharactersInRange:removeRange];
  */
     
+    //insert event.js
+    NSString *eventJs = @"<script type=\"text/javascript\" src=\"Resource/JS/iuevent.js\"></script>";
+    [source replaceOccurrencesOfString:@"<!--IUEvent.JS_Replacement-->" withString:[eventJs stringByIndent:8 prependIndent:NO] options:0 range:[source fullRange]];
+    
     //change css
     NSMutableArray *cssSizeArray = [mqSizeArray mutableCopy];
     //remove default size
@@ -647,32 +651,29 @@
         
         //CSS - Border
         value = cssTagDict[IUCSSTagBorderLeftWidth];
-        if (value) {
+        if ([value intValue] > 0) {
             [dict putTag:@"border-left-width" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];
             NSColor *color = cssTagDict[IUCSSTagBorderLeftColor];
             [dict putTag:@"border-left-color" color:color ignoreClearColor:YES];
         }
         value = cssTagDict[IUCSSTagBorderRightWidth];
-        if (value) {
+        if ([value intValue] > 0) {
             [dict putTag:@"border-right-width" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];
             NSColor *color = cssTagDict[IUCSSTagBorderRightColor];
             [dict putTag:@"border-right-color" color:color ignoreClearColor:YES];
         }    value = cssTagDict[IUCSSTagBorderBottomWidth];
-        if (value) {
+        if ([value intValue] > 0) {
             [dict putTag:@"border-bottom-width" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];
             NSColor *color = cssTagDict[IUCSSTagBorderBottomColor];
             [dict putTag:@"border-bottom-color" color:color ignoreClearColor:YES];
         }    value = cssTagDict[IUCSSTagBorderTopWidth];
-        if (value) {
+        if ([value intValue] > 0) {
             [dict putTag:@"border-top-width" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];
             NSColor *color = cssTagDict[IUCSSTagBorderTopColor];
             [dict putTag:@"border-top-color" color:color ignoreClearColor:YES];
         }
         
-        value = cssTagDict[IUCSSTagOverflow];
-        if ([value integerValue]) {
-            [dict putTag:@"overflow" string:@"visible"];
-        }
+
         
         value = cssTagDict[IUCSSTagBorderRadiusTopLeft];
         if(value){
@@ -686,6 +687,11 @@
         value = cssTagDict[IUCSSTagBorderRadiusBottomRight];
         if(value){
             [dict putTag:@"border-bottom-right-radius" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];}
+        
+        value = cssTagDict[IUCSSTagOverflow];
+        if ([value integerValue]) {
+            [dict putTag:@"overflow" string:@"visible"];
+        }
         
         NSInteger hOff = [cssTagDict[IUCSSTagShadowHorizontal] integerValue];
         NSInteger vOff = [cssTagDict[IUCSSTagShadowVertical] integerValue];
@@ -785,7 +791,6 @@
     }
 }
 */
-
 
 
 @end

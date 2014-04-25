@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		26C2C2BB190A3CF900C03391 /* tool_textview.png in Resources */ = {isa = PBXBuildFile; fileRef = 26C2C2B9190A3CF900C03391 /* tool_textview.png */; };
-		26C2C2BC190A3CF900C03391 /* tool_textview@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26C2C2BA190A3CF900C03391 /* tool_textview@2x.png */; };
 		3D0D480918FFAF24000A5B53 /* LMTopToolbarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D480718FFAF24000A5B53 /* LMTopToolbarVC.m */; };
 		3D0D480A18FFAF24000A5B53 /* LMTopToolbarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D0D480818FFAF24000A5B53 /* LMTopToolbarVC.xib */; };
 		3D0D481318FFDC96000A5B53 /* LMFileTabItemVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D481118FFDC96000A5B53 /* LMFileTabItemVC.m */; };
@@ -151,6 +149,8 @@
 		3DED274F1907C4D0001A1D67 /* FBSampleImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED274E1907C4D0001A1D67 /* FBSampleImage.png */; };
 		3DED27521908C393001A1D67 /* clear_color_border.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED27501908C393001A1D67 /* clear_color_border.png */; };
 		3DED27531908C393001A1D67 /* clear_color_border@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED27511908C393001A1D67 /* clear_color_border@2x.png */; };
+		3DED2759190A1DA6001A1D67 /* IUEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED2758190A1DA6001A1D67 /* IUEvent.m */; };
+		3DED275C190A2630001A1D67 /* IUEventVariable.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED275B190A2630001A1D67 /* IUEventVariable.m */; };
 		3DF8029A18FD0B2500913505 /* IUHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8029918FD0B2500913505 /* IUHTML.m */; };
 		3DF8029D18FE3D6000913505 /* IUWebMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8029C18FE3D6000913505 /* IUWebMovie.m */; };
 		3DF803D818FE62C900913505 /* dotted_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DF803C118FE62C900913505 /* dotted_line.png */; };
@@ -360,8 +360,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		26C2C2B9190A3CF900C03391 /* tool_textview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tool_textview.png; path = ../../../../../Documents/IU/IU_ui/IU_ui/Images/tool_textview.png; sourceTree = "<group>"; };
-		26C2C2BA190A3CF900C03391 /* tool_textview@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tool_textview@2x.png"; path = "../../../../../Documents/IU/IU_ui/IU_ui/Images/tool_textview@2x.png"; sourceTree = "<group>"; };
 		3D0D480618FFAF24000A5B53 /* LMTopToolbarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMTopToolbarVC.h; sourceTree = "<group>"; };
 		3D0D480718FFAF24000A5B53 /* LMTopToolbarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMTopToolbarVC.m; sourceTree = "<group>"; };
 		3D0D480818FFAF24000A5B53 /* LMTopToolbarVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMTopToolbarVC.xib; sourceTree = "<group>"; };
@@ -542,6 +540,10 @@
 		3DED274E1907C4D0001A1D67 /* FBSampleImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FBSampleImage.png; sourceTree = "<group>"; };
 		3DED27501908C393001A1D67 /* clear_color_border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clear_color_border.png; sourceTree = "<group>"; };
 		3DED27511908C393001A1D67 /* clear_color_border@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clear_color_border@2x.png"; sourceTree = "<group>"; };
+		3DED2757190A1DA6001A1D67 /* IUEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUEvent.h; sourceTree = "<group>"; };
+		3DED2758190A1DA6001A1D67 /* IUEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUEvent.m; sourceTree = "<group>"; };
+		3DED275A190A2630001A1D67 /* IUEventVariable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUEventVariable.h; sourceTree = "<group>"; };
+		3DED275B190A2630001A1D67 /* IUEventVariable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUEventVariable.m; sourceTree = "<group>"; };
 		3DF8029818FD0B2500913505 /* IUHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUHTML.h; sourceTree = "<group>"; };
 		3DF8029918FD0B2500913505 /* IUHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUHTML.m; sourceTree = "<group>"; };
 		3DF8029B18FE3D6000913505 /* IUWebMovie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUWebMovie.h; sourceTree = "<group>"; };
@@ -1329,8 +1331,6 @@
 				3DF8043418FE62FC00913505 /* tool_render@2x.png */,
 				3DF8043518FE62FC00913505 /* tool_transition.png */,
 				3DF8043618FE62FC00913505 /* tool_transition@2x.png */,
-				26C2C2B9190A3CF900C03391 /* tool_textview.png */,
-				26C2C2BA190A3CF900C03391 /* tool_textview@2x.png */,
 			);
 			path = classImage;
 			sourceTree = "<group>";
@@ -1573,6 +1573,10 @@
 				69D5B68F18F247C100E9FB11 /* LMCompilerResourceSource.h */,
 				699E0D3218FD9CE2001CE633 /* IUTextManager.h */,
 				699E0D3318FD9CE2001CE633 /* IUTextManager.m */,
+				3DED2757190A1DA6001A1D67 /* IUEvent.h */,
+				3DED2758190A1DA6001A1D67 /* IUEvent.m */,
+				3DED275A190A2630001A1D67 /* IUEventVariable.h */,
+				3DED275B190A2630001A1D67 /* IUEventVariable.m */,
 			);
 			path = BaseObject;
 			sourceTree = "<group>";
@@ -1762,7 +1766,6 @@
 				3DED268E1900D329001A1D67 /* stack_movie@2x.png in Resources */,
 				3DED26871900D329001A1D67 /* stack_html@2x.png in Resources */,
 				3DF8040618FE62F200913505 /* tab_property.png in Resources */,
-				26C2C2BC190A3CF900C03391 /* tool_textview@2x.png in Resources */,
 				3DED27341904F13B001A1D67 /* ic_movie.png in Resources */,
 				3DED26BD1900F450001A1D67 /* panel_right_off.png in Resources */,
 				3DF803DC18FE62C900913505 /* tab_toolbar.png in Resources */,
@@ -1871,7 +1874,6 @@
 				3DED270619010C71001A1D67 /* LMPropertyIUFBLikeVC.xib in Resources */,
 				3DED26ED19010B94001A1D67 /* LMPropertyIUWebMovieVC.xib in Resources */,
 				3DF8044E18FE62FC00913505 /* tool_render@2x.png in Resources */,
-				26C2C2BB190A3CF900C03391 /* tool_textview.png in Resources */,
 				69C575C118D6F61E0016F050 /* MainMenu.xib in Resources */,
 				690A8275190A2CC200DDBA86 /* new_django.png in Resources */,
 				3DF8040818FE62F200913505 /* tab_close.png in Resources */,
@@ -2035,6 +2037,7 @@
 				3DF8046A18FF790400913505 /* LMPropertyShadowVC.m in Sources */,
 				69C575BE18D6F61E0016F050 /* LMAppDelegate.m in Sources */,
 				690A409918E1665E00095263 /* LMGeneralObject.m in Sources */,
+				3DED2759190A1DA6001A1D67 /* IUEvent.m in Sources */,
 				69CFCA9B18E9396C00E3048A /* IUHeader.m in Sources */,
 				69CFCAB818E972DA00E3048A /* IUPageContent.m in Sources */,
 				3DED27271904AE53001A1D67 /* LMPropertyVRFrameVC.m in Sources */,
@@ -2050,6 +2053,7 @@
 				69B37F0D18DFDEE800DE620F /* LMFileNaviVC.m in Sources */,
 				690A82561909EB1B00DDBA86 /* IUTextField.m in Sources */,
 				690A409518E1645B00095263 /* LMWidgetLibraryVC.m in Sources */,
+				3DED275C190A2630001A1D67 /* IUEventVariable.m in Sources */,
 				69757B1F18D95F1E0095CBAC /* NSDictionary+JDExtension.m in Sources */,
 				3DED272E1904E17E001A1D67 /* IUMovie.m in Sources */,
 				69757B0818D95BBC0095CBAC /* JDKeyDelegatedTableView.m in Sources */,

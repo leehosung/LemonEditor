@@ -13,8 +13,10 @@
 @interface IUDocumentController : NSTreeController
 
 -(id)initWithDocument:(IUDocument*)document;
--(IUProject*)project;
+-(NSString*)keyPathFromDocumentControllerToEventVariables;
 
 @property (nonatomic, readonly) IUDocument *document;
+@property (nonatomic, readonly) IUProject *project;
+
 
 @end
