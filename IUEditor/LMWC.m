@@ -104,6 +104,8 @@
 - (void)windowDidLoad
 {
     
+
+    
 ////////////////left view/////////////////////////    
     stackVC = [[LMStackVC alloc] initWithNibName:@"LMStackVC" bundle:nil];
     [self bind:@"IUController" toObject:stackVC withKeyPath:@"IUController" options:nil];
@@ -151,6 +153,7 @@
     eventVC = [[LMEventVC alloc] initWithNibName:@"LMEventVC" bundle:nil];
     [eventVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
     [_eventV addSubviewFullFrame:eventVC.view];
+    
     
 }
 

@@ -57,6 +57,7 @@
                                nil];
 }
 
+
 - (NSView *)contentViewOfTitleView:(NSView *)titleV{
     for(JDOutlineCellView *cellV in eventOutlineVOrderArray){
         if( [cellV.titleV isEqualTo:titleV] ){

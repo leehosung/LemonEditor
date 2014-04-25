@@ -15,6 +15,7 @@
 #import "JDUIUtil.h"
 #import "IUBackground.h"
 #import "IUClass.h"
+#import "IUEventVariable.h"
 
 @interface IUProject()
 
@@ -136,7 +137,7 @@
     classNode2.name = @"Class2";
     [classGroup addNode:classNode2];
 
-
+    
     [project initializeResource];
     ReturnNilIfFalse([project save]);
     return project.path;
@@ -172,6 +173,8 @@
     [[NSFileManager defaultManager] createSymbolicLinkAtPath:[buildPath stringByAppendingPathComponent:@"Resource"] withDestinationPath:[self.path stringByAppendingPathComponent:@"Resource"] error:error];
 
 
+    IUEventVariable *eventVariable = [[IUEventVariable alloc] init];
+
     for (IUDocumentNode *node in self.allDocumentNodes) {
         NSString *outputString = [node.document outputSource];
         
@@ -179,7 +182,18 @@
         if ([outputString writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:error] == NO){
             assert(0);
         }
+        
+        [eventVariable makeEventDictionary:node.document];
     }
+    
+    NSString *eventJSString = [eventVariable outputEventJSSource];
+    NSString *resourceJSPath = [[self.path stringByAppendingPathComponent:@"Resource"] stringByAppendingPathComponent:@"JS"];
+    NSString *eventJSFilePath = [[resourceJSPath stringByAppendingPathComponent:@"iuevent"] stringByAppendingPathExtension:@"js"];
+    if ([eventJSString writeToFile:eventJSFilePath atomically:YES encoding:NSUTF8StringEncoding error:error] == NO){
+        assert(0);
+    }
+    
+    
     return YES;
 }
 

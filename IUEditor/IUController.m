@@ -10,6 +10,7 @@
 #import "IUDocument.h"
 #import "NSTreeController+JDExtension.h"
 
+
 @implementation IUController
 
 
@@ -120,6 +121,10 @@
 
 -(NSString*)keyPathFromControllerToCSSTag:(IUCSSTag)tag{
     return [@"controller.selection.css.assembledTagDictionary" stringByAppendingPathExtension:tag];
+}
+
+-(NSString*)keyPathFromControllerToEventTag:(IUEventTag)tag{
+    return [@"controller.selection.event" stringByAppendingPathExtension:tag];
 }
 
 -(NSString*)keyPathFromControllerToProperty:(NSString*)property{

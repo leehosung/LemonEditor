@@ -29,5 +29,8 @@
     return [self.content firstObject];
 }
 
+-(NSString*)keyPathFromDocumentControllerToEventVariables{
+    return @"documentController.project.eventVariable.eventVariableArray";
+}
 
 @end

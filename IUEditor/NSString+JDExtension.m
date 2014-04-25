@@ -124,6 +124,19 @@
 }
 
 
+- (NSString*)stringByAddingTab{
+    
+    NSArray *array = [self componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    NSMutableString *addingTabStr = [NSMutableString string];
+    for(NSString *str in array){
+        [addingTabStr appendFormat:@"\t%@\n", str];
+    }
+    return addingTabStr;
+}
+
+
+
+
 - (NSString*)stringByAppendFileNameWithExtensionUntouched:(NSString*)appendingString{
     NSString *path = [self stringByDeletingLastPathComponent];
     NSString *fileName = [self nameWithoutExtensionAsFile];
@@ -230,6 +243,7 @@
 - (void)appendTabAndString:(NSString *)aString{
     [self appendFormat:@"\t%@", aString];
 }
+
 - (void)appendString:(NSString*)string multipleTimes:(NSUInteger)multipleTimes{
     for (int i=0; i<multipleTimes; i++) {
         [self appendString:string];

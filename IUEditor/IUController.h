@@ -21,6 +21,7 @@
 -(IUBox *)IUBoxByIdentifier:(NSString *)identifier;
 
 -(NSString*)keyPathFromControllerToCSSTag:(IUCSSTag)tag;
+-(NSString*)keyPathFromControllerToEventTag:(IUEventTag)tag;
 -(NSString*)keyPathFromControllerToProperty:(NSString*)property;
 
 @property _binding_ NSRange selectedTextRange;

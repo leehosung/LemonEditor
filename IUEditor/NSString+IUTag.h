@@ -8,6 +8,35 @@
 
 #import <Foundation/Foundation.h>
 
+////////EventTag
+#define IUEventTag NSString*
+
+#define IUEventTagIUID      @"iuID"
+#define IUEventTagVariable  @"variable"
+#define IUEventTagMaxValue  @"maxValue"
+#define IUEventTagInitialValue  @"initialValue"
+#define IUEventTagActionType    @"actionType"
+
+//equation Dict
+#define IUEventTagReceiverArray @"eventReceiverArray"
+#define IUEventTagReceiverType @"receiverType"
+
+#define IUEventTagEnableVisible @"enableVisible"
+#define IUEventTagVisibleID     @"visibleID"
+#define IUEventTagVisibleEqVariable @"eqVisibleVariable"
+#define IUEventTagVisibleEquation @"eqVisible"
+#define IUEventTagVisibleDuration @"eqVisibleDuration"
+#define IUEventTagVisibleDirection @"directionType"
+
+#define IUEventTagEnableFrame   @"enableFrame"
+#define IUEventTagFrameID       @"frameID"
+#define IUEventTagFrameEqVariable @"eqFrameVariable"
+#define IUEventTagFrameEquation    @"eqFrame"
+#define IUEventTagFrameDuration @"eqFrameDuration"
+#define IUEventTagFrameWidth    @"eqFrameWidth"
+#define IUEventTagFrameHeight   @"eqFrameHeight"
+
+///////CSSTag
 #define IUCSSTag NSString*
 #define IUCSSTagPosition @"position"
 #define IUCSSTagFlow @"flow"

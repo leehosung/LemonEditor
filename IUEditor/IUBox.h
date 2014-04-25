@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "IUCSS.h"
+#import "IUEvent.h"
 #import "IUIdentifierManager.h"
 
 @class IUIdentifierManager;
@@ -37,6 +38,8 @@
 @interface IUBox : NSObject <NSCoding, IUCSSDelegate>
 
 @property (readonly) IUCSS *css; //used by subclass
+@property IUEvent *event;
+
 -(IUDocument *)document;
 
 //initialize
