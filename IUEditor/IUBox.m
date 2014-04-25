@@ -86,7 +86,6 @@
         [_css setValue:@(0) forTag:IUCSSTagBorderRightWidth forWidth:IUCSSDefaultCollection];
         [_css setValue:@(0) forTag:IUCSSTagBorderBottomWidth forWidth:IUCSSDefaultCollection];
         
-
         [_css setValue:@"NO" forTag:IUCSSTagBGGradient forWidth:IUCSSDefaultCollection];
         
         [_css setValue:[NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:1] forTag:IUCSSTagBorderTopColor forWidth:IUCSSDefaultCollection];
@@ -94,6 +93,10 @@
         [_css setValue:[NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:1] forTag:IUCSSTagBorderRightColor forWidth:IUCSSDefaultCollection];
         [_css setValue:[NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:1] forTag:IUCSSTagBorderBottomColor forWidth:IUCSSDefaultCollection];
 
+        //type
+        [_css setValue:@"Arial" forTag:IUCSSTagFontName forWidth:IUCSSDefaultCollection];
+        [_css setValue:@(12) forTag:IUCSSTagFontSize forWidth:IUCSSDefaultCollection];
+        
         delegateEnableLevel = 1;
         
         _m_children = [NSMutableArray array];
