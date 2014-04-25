@@ -13,7 +13,6 @@
 
 @implementation LMAppDelegate{
     LMStartWC *startWC;
-//    LMWC *wc;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -43,11 +42,15 @@
     [self.testController showWindow:nil];
     [wc addSelectedIU:@"test"];
 #endif
-//    startWC = [[NSWindowController alloc] init];
-//    [startWC showWindow:nil];
+    [self openDocument:nil];
+}
+
+- (IBAction)showStartWC:(id)sender{
+    for (NSWindow *window in [NSApp windows]){
+        [window close];
+    }
     startWC = [[LMStartWC alloc] initWithWindowNibName:@"LMStartWC"];
     [startWC showWindow:self];
-//    [self openDocument:nil];
 }
 
 - (void)openDocument:(id)sender{
@@ -64,6 +67,24 @@
 }
 
 -(void)newDocument:(id)sender{
+    NSError *error;
+    
+    NSDictionary *dict = @{IUProjectKeyAppName: @"myApp",
+                           IUProjectKeyGit: @(NO),
+                           IUProjectKeyHeroku: @(NO),
+                           IUProjectKeyDirectory: [@"~/IUProjTemp" stringByExpandingTildeInPath]};
+    
+    NSString *path = [IUProject createProject:dict error:&error];
+    if (error != nil) {
+        assert(0);
+    }
+    LMWC *wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
+    [wc showWindow:self];
+    [wc loadProject:path];
+    [[NSUserDefaults standardUserDefaults] setValue:path forKey:@"lastDocument"];
+}
+
+-(void)newDjangoDocument:(id)sender{
     NSError *error;
     
     NSDictionary *dict = @{IUProjectKeyAppName: @"myApp",
