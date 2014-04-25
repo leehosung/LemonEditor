@@ -128,6 +128,7 @@
                                     <constraint firstItem="VEQ-BG-SDd" firstAttribute="top" secondItem="aaF-Ys-G65" secondAttribute="top" constant="29" id="APY-gg-9bO"/>
                                     <constraint firstAttribute="trailing" secondItem="VEQ-BG-SDd" secondAttribute="trailing" constant="-1" id="UjU-Yg-WIh"/>
                                     <constraint firstAttribute="bottom" secondItem="VEQ-BG-SDd" secondAttribute="bottom" constant="-1" id="dvf-fI-O2r"/>
+                                    <constraint firstItem="VEQ-BG-SDd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="aaF-Ys-G65" secondAttribute="top" constant="29" id="fxp-QQ-K0B"/>
                                     <constraint firstItem="zhv-IX-K54" firstAttribute="top" secondItem="aaF-Ys-G65" secondAttribute="top" id="kEC-wm-IPb"/>
                                     <constraint firstItem="VEQ-BG-SDd" firstAttribute="leading" secondItem="aaF-Ys-G65" secondAttribute="leading" id="sJG-gh-59B"/>
                                     <constraint firstAttribute="trailing" secondItem="zhv-IX-K54" secondAttribute="trailing" id="xwZ-vI-yJk"/>
