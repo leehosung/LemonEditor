@@ -125,6 +125,9 @@
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="pressDefaultNew:" target="-2" id="OWK-nG-yEh"/>
+                                            </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wgd-aQ-a5j">
                                             <rect key="frame" x="557" y="282" width="115" height="32"/>
@@ -133,6 +136,9 @@
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="pressDjangoNew:" target="-2" id="9ov-RJ-Nc0"/>
+                                            </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xJF-vn-RZB">
                                             <rect key="frame" x="665" y="315" width="119" height="32"/>
@@ -141,6 +147,9 @@
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="pressDefaultLoad:" target="-2" id="XvC-CP-gAb"/>
+                                            </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sJ7-he-BFa">
                                             <rect key="frame" x="665" y="282" width="118" height="32"/>
@@ -149,6 +158,9 @@
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="pressDjangoLoad:" target="-2" id="HMc-of-GRr"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </view>
@@ -167,7 +179,7 @@
                                 </buttonCell>
                                 <cells>
                                     <column>
-                                        <buttonCell type="recessed" title="Template Project" bezelStyle="recessed" image="9CF81400-EC88-4DD4-BC51-8326DB6415F9" imagePosition="overlaps" alignment="center" borderStyle="border" tag="1" inset="2" id="q8f-Dl-DTd">
+                                        <buttonCell type="recessed" title="Template Project" bezelStyle="recessed" image="5806D617-CE45-4750-BFC1-A4F60C2BBC29" imagePosition="overlaps" alignment="center" borderStyle="border" tag="1" inset="2" id="q8f-Dl-DTd">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                             <font key="font" metaFont="smallSystemBold"/>
                                         </buttonCell>
@@ -209,7 +221,7 @@
         </window>
     </objects>
     <resources>
-        <image name="9CF81400-EC88-4DD4-BC51-8326DB6415F9" width="1" height="1">
+        <image name="5806D617-CE45-4750-BFC1-A4F60C2BBC29" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

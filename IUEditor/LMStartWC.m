@@ -7,6 +7,7 @@
 //
 
 #import "LMStartWC.h"
+#import "LMAppDelegate.h"
 
 @interface LMStartWC ()
 
@@ -28,6 +29,15 @@
     [super windowDidLoad];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+}
+- (IBAction)pressDefaultNew:(id)sender {
+    LMAppDelegate *delegate = [NSApplication sharedApplication].delegate;
+}
+- (IBAction)pressDjangoNew:(id)sender {
+}
+- (IBAction)pressDefaultLoad:(id)sender {
+}
+- (IBAction)pressDjangoLoad:(id)sender {
 }
 
 @end
