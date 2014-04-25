@@ -71,8 +71,8 @@
     return array;
 }
 
-- (NSDictionary *)HTMLAtributes{
-    NSMutableDictionary *dict = [[super HTMLAtributes] mutableCopy];
+- (NSDictionary *)HTMLAttributes{
+    NSMutableDictionary *dict = [[super HTMLAttributes] mutableCopy];
     
     if(self.enableControl == NO){
         [dict setObject:@(1) forKey:@"movieNoControl"];

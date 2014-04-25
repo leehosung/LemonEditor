@@ -52,7 +52,7 @@
 
 // followings are IU build setting;
 -(NSArray *)HTMLOneAttribute;
--(NSDictionary*)HTMLAtributes;
+-(NSMutableDictionary*)HTMLAttributes;
 -(NSDictionary*)CSSAttributesForWidth:(NSInteger)width;
 
 //source

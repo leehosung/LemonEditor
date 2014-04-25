@@ -17,10 +17,6 @@
 #import "IUClass.h"
 
 @interface IUProject()
-@property (nonatomic, copy) NSString          *path;
-@property IUDocumentGroupNode *pageDocumentGroup;
-@property IUDocumentGroupNode *backgroundDocumentGroup;
-@property IUDocumentGroupNode *classDocumentGroup;
 
 @end
 
@@ -77,7 +73,7 @@
 
 +(NSString*)createProject:(NSDictionary*)setting error:(NSError**)error{
 
-    IUProject *project = [[IUProject alloc] init];
+    IUProject *project = [[self alloc] init];
     project.name = [setting objectForKey:IUProjectKeyAppName];
     project.buildDirectoryName = @"build";
     

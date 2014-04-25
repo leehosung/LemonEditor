@@ -58,6 +58,9 @@
 }
 
 - (void)setBorderTopColor:(NSColor *)borderTopColor{
+    if ([borderTopColor.colorSpaceName isEqualToString:NSDeviceRGBColorSpace] == NO) {
+        borderTopColor = [borderTopColor colorUsingColorSpaceName:NSDeviceRGBColorSpace];
+    }
     if (_borderTopColor != borderTopColor) {
         _borderTopColor = borderTopColor;
         [self setValue:borderTopColor forKeyPath:[self CSSBindingPath:IUCSSTagBorderTopColor]];
@@ -65,16 +68,25 @@
 }
 
 - (void)setBorderLeftColor:(NSColor *)borderLeftColor{
+    if ([borderLeftColor.colorSpaceName isEqualToString:NSDeviceRGBColorSpace] == NO) {
+        borderLeftColor = [borderLeftColor colorUsingColorSpaceName:NSDeviceRGBColorSpace];
+    }
     _borderLeftColor = borderLeftColor;
     [self setValue:borderLeftColor forKeyPath:[self CSSBindingPath:IUCSSTagBorderLeftColor]];
 }
 
 - (void)setBorderRightColor:(NSColor *)borderRightColor{
+    if ([borderRightColor.colorSpaceName isEqualToString:NSDeviceRGBColorSpace] == NO) {
+        borderRightColor = [borderRightColor colorUsingColorSpaceName:NSDeviceRGBColorSpace];
+    }
     _borderRightColor = borderRightColor;
     [self setValue:borderRightColor forKeyPath:[self CSSBindingPath:IUCSSTagBorderRightColor]];
 }
 
 - (void)setBorderBottomColor:(NSColor *)borderBottomColor{
+    if ([borderBottomColor.colorSpaceName isEqualToString:NSDeviceRGBColorSpace] == NO) {
+        borderBottomColor = [borderBottomColor colorUsingColorSpaceName:NSDeviceRGBColorSpace];
+    }
     _borderBottomColor = borderBottomColor;
     [self setValue:borderBottomColor forKeyPath:[self CSSBindingPath:IUCSSTagBorderBottomColor]];
 }
