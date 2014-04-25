@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26C2C2BB190A3CF900C03391 /* tool_textview.png in Resources */ = {isa = PBXBuildFile; fileRef = 26C2C2B9190A3CF900C03391 /* tool_textview.png */; };
+		26C2C2BC190A3CF900C03391 /* tool_textview@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26C2C2BA190A3CF900C03391 /* tool_textview@2x.png */; };
 		3D0D480918FFAF24000A5B53 /* LMTopToolbarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D480718FFAF24000A5B53 /* LMTopToolbarVC.m */; };
 		3D0D480A18FFAF24000A5B53 /* LMTopToolbarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D0D480818FFAF24000A5B53 /* LMTopToolbarVC.xib */; };
 		3D0D481318FFDC96000A5B53 /* LMFileTabItemVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D481118FFDC96000A5B53 /* LMFileTabItemVC.m */; };
@@ -358,6 +360,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		26C2C2B9190A3CF900C03391 /* tool_textview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tool_textview.png; path = ../../../../../Documents/IU/IU_ui/IU_ui/Images/tool_textview.png; sourceTree = "<group>"; };
+		26C2C2BA190A3CF900C03391 /* tool_textview@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tool_textview@2x.png"; path = "../../../../../Documents/IU/IU_ui/IU_ui/Images/tool_textview@2x.png"; sourceTree = "<group>"; };
 		3D0D480618FFAF24000A5B53 /* LMTopToolbarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMTopToolbarVC.h; sourceTree = "<group>"; };
 		3D0D480718FFAF24000A5B53 /* LMTopToolbarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMTopToolbarVC.m; sourceTree = "<group>"; };
 		3D0D480818FFAF24000A5B53 /* LMTopToolbarVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMTopToolbarVC.xib; sourceTree = "<group>"; };
@@ -1325,6 +1329,8 @@
 				3DF8043418FE62FC00913505 /* tool_render@2x.png */,
 				3DF8043518FE62FC00913505 /* tool_transition.png */,
 				3DF8043618FE62FC00913505 /* tool_transition@2x.png */,
+				26C2C2B9190A3CF900C03391 /* tool_textview.png */,
+				26C2C2BA190A3CF900C03391 /* tool_textview@2x.png */,
 			);
 			path = classImage;
 			sourceTree = "<group>";
@@ -1756,6 +1762,7 @@
 				3DED268E1900D329001A1D67 /* stack_movie@2x.png in Resources */,
 				3DED26871900D329001A1D67 /* stack_html@2x.png in Resources */,
 				3DF8040618FE62F200913505 /* tab_property.png in Resources */,
+				26C2C2BC190A3CF900C03391 /* tool_textview@2x.png in Resources */,
 				3DED27341904F13B001A1D67 /* ic_movie.png in Resources */,
 				3DED26BD1900F450001A1D67 /* panel_right_off.png in Resources */,
 				3DF803DC18FE62C900913505 /* tab_toolbar.png in Resources */,
@@ -1864,6 +1871,7 @@
 				3DED270619010C71001A1D67 /* LMPropertyIUFBLikeVC.xib in Resources */,
 				3DED26ED19010B94001A1D67 /* LMPropertyIUWebMovieVC.xib in Resources */,
 				3DF8044E18FE62FC00913505 /* tool_render@2x.png in Resources */,
+				26C2C2BB190A3CF900C03391 /* tool_textview.png in Resources */,
 				69C575C118D6F61E0016F050 /* MainMenu.xib in Resources */,
 				690A8275190A2CC200DDBA86 /* new_django.png in Resources */,
 				3DF8040818FE62F200913505 /* tab_close.png in Resources */,
