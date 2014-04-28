@@ -32,9 +32,13 @@
 }
 - (IBAction)pressDefaultNew:(id)sender {
     LMAppDelegate *delegate = [NSApplication sharedApplication].delegate;
+    [delegate newDocument:nil];
 }
 - (IBAction)pressDjangoNew:(id)sender {
+    LMAppDelegate *delegate = [NSApplication sharedApplication].delegate;
+    [delegate newDjangoDocument:nil];
 }
+
 - (IBAction)pressDefaultLoad:(id)sender {
 }
 - (IBAction)pressDjangoLoad:(id)sender {
