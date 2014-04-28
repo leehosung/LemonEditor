@@ -73,12 +73,11 @@
                         <rect key="frame" x="1" y="1" width="39" height="378"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <matrix verticalHuggingPriority="750" misplaced="YES" drawsBackground="YES" allowsEmptySelection="NO" autosizesCells="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Qj-z8-WNI" userLabel="Tool Tab">
-                                <rect key="frame" x="-1" y="299" width="40" height="80"/>
+                            <matrix verticalHuggingPriority="750" drawsBackground="YES" allowsEmptySelection="NO" autosizesCells="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Qj-z8-WNI" userLabel="Tool Tab">
+                                <rect key="frame" x="-1" y="299" width="42" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="1p0-mQ-fSV"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="S4H-2R-Ltv"/>
                                 </constraints>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <size key="cellSize" width="42" height="40"/>

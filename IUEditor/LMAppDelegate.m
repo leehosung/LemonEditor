@@ -25,7 +25,7 @@
 //    [JDLogUtil enableLogSection:IULogJS];
     [JDLogUtil enableLogSection:IULogAction];
     
-//    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraints"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraints"];
 
 
 #pragma mark -

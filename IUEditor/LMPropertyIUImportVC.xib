@@ -17,25 +17,33 @@
             <rect key="frame" x="0.0" y="0.0" width="276" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <box autoresizesSubviews="NO" fixedFrame="YES" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Ptq-ri-svx" userLabel="content">
-                    <rect key="frame" x="0.0" y="0.0" width="285" height="40"/>
+                <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Ptq-ri-svx" userLabel="content">
+                    <rect key="frame" x="0.0" y="0.0" width="276" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView">
-                        <rect key="frame" x="0.0" y="0.0" width="285" height="40"/>
+                        <rect key="frame" x="0.0" y="0.0" width="276" height="40"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="efE-Z6-hfV">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="efE-Z6-hfV">
                                 <rect key="frame" x="2" y="14" width="70" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="66" id="BSg-ON-pE2"/>
+                                    <constraint firstAttribute="height" constant="17" id="MBA-PT-eWS"/>
+                                </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Prototype" id="vJB-Wg-eY4">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jQA-Nu-yUj">
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jQA-Nu-yUj">
                                 <rect key="frame" x="74" y="11" width="190" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="184" id="ala-V8-qGB"/>
+                                    <constraint firstAttribute="height" constant="18" id="axo-eR-zkm"/>
+                                </constraints>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="ibd-zx-Izb" id="Uep-n8-RRY">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
@@ -54,11 +62,18 @@
                             </popUpButton>
                         </subviews>
                     </view>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="d4e-xc-13f"/>
+                        <constraint firstItem="jQA-Nu-yUj" firstAttribute="leading" secondItem="efE-Z6-hfV" secondAttribute="trailing" constant="7" id="tfi-NB-apW"/>
+                        <constraint firstItem="efE-Z6-hfV" firstAttribute="top" secondItem="Ptq-ri-svx" secondAttribute="top" constant="9" id="vAJ-8v-8MB"/>
+                        <constraint firstItem="jQA-Nu-yUj" firstAttribute="top" secondItem="Ptq-ri-svx" secondAttribute="top" constant="8" id="vj9-vx-XLp"/>
+                        <constraint firstItem="efE-Z6-hfV" firstAttribute="leading" secondItem="Ptq-ri-svx" secondAttribute="leading" constant="4" id="yVt-Xv-bXV"/>
+                    </constraints>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </box>
-                <box autoresizesSubviews="NO" fixedFrame="YES" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="reG-Mc-eQn" userLabel="title">
-                    <rect key="frame" x="0.0" y="41" width="276" height="30"/>
+                <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="reG-Mc-eQn" userLabel="title">
+                    <rect key="frame" x="0.0" y="40" width="276" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView">
                         <rect key="frame" x="0.0" y="0.0" width="276" height="30"/>
@@ -73,19 +88,37 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ToB-GB-ms2">
+                            <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ToB-GB-ms2">
                                 <rect key="frame" x="6" y="0.0" width="260" height="5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="260" id="7k6-32-loF"/>
+                                    <constraint firstAttribute="height" constant="1" id="zHX-5e-gmg"/>
+                                </constraints>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <font key="titleFont" metaFont="system"/>
                             </box>
                         </subviews>
                     </view>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="ToB-GB-ms2" secondAttribute="bottom" constant="2" id="HYC-mi-SdK"/>
+                        <constraint firstItem="ToB-GB-ms2" firstAttribute="leading" secondItem="reG-Mc-eQn" secondAttribute="leading" constant="6" id="WVR-K2-21Y"/>
+                        <constraint firstAttribute="height" constant="30" id="daw-4M-pjD"/>
+                    </constraints>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </box>
             </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="reG-Mc-eQn" secondAttribute="trailing" id="143-Ww-EGR"/>
+                <constraint firstAttribute="bottom" secondItem="Ptq-ri-svx" secondAttribute="bottom" id="1lV-nF-bVX"/>
+                <constraint firstItem="Ptq-ri-svx" firstAttribute="leading" secondItem="uZe-KR-dBO" secondAttribute="leading" id="50y-CQ-gsV"/>
+                <constraint firstItem="reG-Mc-eQn" firstAttribute="top" secondItem="uZe-KR-dBO" secondAttribute="top" id="SEx-m6-HFQ"/>
+                <constraint firstAttribute="trailing" secondItem="Ptq-ri-svx" secondAttribute="trailing" id="fTI-QQ-xPR"/>
+                <constraint firstItem="reG-Mc-eQn" firstAttribute="leading" secondItem="uZe-KR-dBO" secondAttribute="leading" id="kCB-sf-TMB"/>
+                <constraint firstItem="Ptq-ri-svx" firstAttribute="top" secondItem="reG-Mc-eQn" secondAttribute="bottom" id="oAZ-of-Olx"/>
+            </constraints>
             <connections>
                 <outlet property="contentV" destination="Ptq-ri-svx" id="Koy-xK-IY6"/>
                 <outlet property="titleV" destination="reG-Mc-eQn" id="aYT-VR-JoB"/>
