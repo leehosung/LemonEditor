@@ -151,6 +151,16 @@
 		3DED27531908C393001A1D67 /* clear_color_border@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED27511908C393001A1D67 /* clear_color_border@2x.png */; };
 		3DED2759190A1DA6001A1D67 /* IUEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED2758190A1DA6001A1D67 /* IUEvent.m */; };
 		3DED275C190A2630001A1D67 /* IUEventVariable.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED275B190A2630001A1D67 /* IUEventVariable.m */; };
+		3DED2763190E38C5001A1D67 /* bx_loader.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3DED2760190E38C5001A1D67 /* bx_loader.gif */; };
+		3DED2764190E38C5001A1D67 /* controls.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED2761190E38C5001A1D67 /* controls.png */; };
+		3DED2765190E38C5001A1D67 /* jquery.bxslider.js in Sources */ = {isa = PBXBuildFile; fileRef = 3DED2762190E38C5001A1D67 /* jquery.bxslider.js */; };
+		3DED2767190E38E5001A1D67 /* jquery.bxslider.min.js in Sources */ = {isa = PBXBuildFile; fileRef = 3DED2766190E38E5001A1D67 /* jquery.bxslider.min.js */; };
+		3DED276B190E3956001A1D67 /* jquery.easing.1.3.js in Sources */ = {isa = PBXBuildFile; fileRef = 3DED2769190E3956001A1D67 /* jquery.easing.1.3.js */; };
+		3DED276C190E3956001A1D67 /* jquery.fitvids.js in Sources */ = {isa = PBXBuildFile; fileRef = 3DED276A190E3956001A1D67 /* jquery.fitvids.js */; };
+		3DED276E190E3976001A1D67 /* jquery.bxslider.css in Resources */ = {isa = PBXBuildFile; fileRef = 3DED276D190E3976001A1D67 /* jquery.bxslider.css */; };
+		3DED276F190E3CAC001A1D67 /* jquery.bxslider.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 3DED2766190E38E5001A1D67 /* jquery.bxslider.min.js */; };
+		3DED2770190E3CAC001A1D67 /* jquery.bxslider.js in Resources */ = {isa = PBXBuildFile; fileRef = 3DED2762190E38C5001A1D67 /* jquery.bxslider.js */; };
+		3DED2773190E4148001A1D67 /* IUCarouselItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED2772190E4148001A1D67 /* IUCarouselItem.m */; };
 		3DF8029A18FD0B2500913505 /* IUHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8029918FD0B2500913505 /* IUHTML.m */; };
 		3DF8029D18FE3D6000913505 /* IUWebMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8029C18FE3D6000913505 /* IUWebMovie.m */; };
 		3DF803D818FE62C900913505 /* dotted_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DF803C118FE62C900913505 /* dotted_line.png */; };
@@ -544,6 +554,15 @@
 		3DED2758190A1DA6001A1D67 /* IUEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUEvent.m; sourceTree = "<group>"; };
 		3DED275A190A2630001A1D67 /* IUEventVariable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUEventVariable.h; sourceTree = "<group>"; };
 		3DED275B190A2630001A1D67 /* IUEventVariable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUEventVariable.m; sourceTree = "<group>"; };
+		3DED2760190E38C5001A1D67 /* bx_loader.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bx_loader.gif; sourceTree = "<group>"; };
+		3DED2761190E38C5001A1D67 /* controls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = controls.png; sourceTree = "<group>"; };
+		3DED2762190E38C5001A1D67 /* jquery.bxslider.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.bxslider.js; sourceTree = "<group>"; };
+		3DED2766190E38E5001A1D67 /* jquery.bxslider.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.bxslider.min.js; sourceTree = "<group>"; };
+		3DED2769190E3956001A1D67 /* jquery.easing.1.3.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.easing.1.3.js; sourceTree = "<group>"; };
+		3DED276A190E3956001A1D67 /* jquery.fitvids.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.fitvids.js; sourceTree = "<group>"; };
+		3DED276D190E3976001A1D67 /* jquery.bxslider.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = jquery.bxslider.css; sourceTree = "<group>"; };
+		3DED2771190E4148001A1D67 /* IUCarouselItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUCarouselItem.h; sourceTree = "<group>"; };
+		3DED2772190E4148001A1D67 /* IUCarouselItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUCarouselItem.m; sourceTree = "<group>"; };
 		3DF8029818FD0B2500913505 /* IUHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUHTML.h; sourceTree = "<group>"; };
 		3DF8029918FD0B2500913505 /* IUHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUHTML.m; sourceTree = "<group>"; };
 		3DF8029B18FE3D6000913505 /* IUWebMovie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUWebMovie.h; sourceTree = "<group>"; };
@@ -1217,6 +1236,58 @@
 			name = rightInspector;
 			sourceTree = "<group>";
 		};
+		3DED275D190E388F001A1D67 /* JS */ = {
+			isa = PBXGroup;
+			children = (
+				3DED2768190E3956001A1D67 /* plugins */,
+				3DED2766190E38E5001A1D67 /* jquery.bxslider.min.js */,
+				3DED2762190E38C5001A1D67 /* jquery.bxslider.js */,
+				3DB3ACEC18EBF7200046DFB7 /* iuframe.js */,
+				69B9A39A18E6B1860007D6E2 /* iu.js */,
+			);
+			name = JS;
+			sourceTree = "<group>";
+		};
+		3DED275E190E389B001A1D67 /* CSS */ = {
+			isa = PBXGroup;
+			children = (
+				3DED275F190E38C5001A1D67 /* images */,
+				3DED276D190E3976001A1D67 /* jquery.bxslider.css */,
+				696D1C9D18E5778400B4AB16 /* reset.css */,
+				69B9A39718E697F70007D6E2 /* iu.css */,
+			);
+			name = CSS;
+			sourceTree = "<group>";
+		};
+		3DED275F190E38C5001A1D67 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				3DED2760190E38C5001A1D67 /* bx_loader.gif */,
+				3DED2761190E38C5001A1D67 /* controls.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		3DED2768190E3956001A1D67 /* plugins */ = {
+			isa = PBXGroup;
+			children = (
+				3DED2769190E3956001A1D67 /* jquery.easing.1.3.js */,
+				3DED276A190E3956001A1D67 /* jquery.fitvids.js */,
+			);
+			path = plugins;
+			sourceTree = "<group>";
+		};
+		3DED2774190E4151001A1D67 /* IUCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				694E3CD918FCF739005077B3 /* IUCarousel.h */,
+				694E3CDA18FCF739005077B3 /* IUCarousel.m */,
+				3DED2771190E4148001A1D67 /* IUCarouselItem.h */,
+				3DED2772190E4148001A1D67 /* IUCarouselItem.m */,
+			);
+			name = IUCarousel;
+			sourceTree = "<group>";
+		};
 		3DF8029E18FE3F1A00913505 /* IUHTMLGroup */ = {
 			isa = PBXGroup;
 			children = (
@@ -1338,6 +1409,7 @@
 		694233A118D7E1A500C96A92 /* IU */ = {
 			isa = PBXGroup;
 			children = (
+				3DED2774190E4151001A1D67 /* IUCarousel */,
 				3DF8029E18FE3F1A00913505 /* IUHTMLGroup */,
 				69D15F7118E898B10046FBB0 /* IUBackground.h */,
 				69D15F7218E898B10046FBB0 /* IUBackground.m */,
@@ -1359,8 +1431,6 @@
 				69CFCABF18EA8D1700E3048A /* IUImage.m */,
 				6967425118F7D077008B7111 /* IUIdentifierManager.h */,
 				6967425218F7D077008B7111 /* IUIdentifierManager.m */,
-				694E3CD918FCF739005077B3 /* IUCarousel.h */,
-				694E3CDA18FCF739005077B3 /* IUCarousel.m */,
 				694E3CDF18FCFDA6005077B3 /* IUItem.h */,
 				694E3CE018FCFDA6005077B3 /* IUItem.m */,
 				3DED27291904DFD1001A1D67 /* IUInput.h */,
@@ -1388,13 +1458,11 @@
 		696D1C9C18E5776200B4AB16 /* webResource */ = {
 			isa = PBXGroup;
 			children = (
+				3DED275E190E389B001A1D67 /* CSS */,
+				3DED275D190E388F001A1D67 /* JS */,
 				3DED272F1904ECC8001A1D67 /* Video */,
-				3DB3ACEC18EBF7200046DFB7 /* iuframe.js */,
 				69CFCAC218EAA21E00E3048A /* sample.jpg */,
 				696D1C9918E5366400B4AB16 /* webTemplate.html */,
-				696D1C9D18E5778400B4AB16 /* reset.css */,
-				69B9A39718E697F70007D6E2 /* iu.css */,
-				69B9A39A18E6B1860007D6E2 /* iu.js */,
 			);
 			name = webResource;
 			sourceTree = "<group>";
@@ -1707,11 +1775,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DED276F190E3CAC001A1D67 /* jquery.bxslider.min.js in Resources */,
+				3DED2770190E3CAC001A1D67 /* jquery.bxslider.js in Resources */,
 				3DED27311904EDF0001A1D67 /* movie.mp4 in Resources */,
 				3DED26BA1900F450001A1D67 /* panel_left_off@2x.png in Resources */,
 				3DED26651900D313001A1D67 /* ic_background@2x.png in Resources */,
 				3DED268A1900D329001A1D67 /* stack_navi.png in Resources */,
 				3DF8044A18FE62FC00913505 /* tool_textfield@2x.png in Resources */,
+				3DED2764190E38C5001A1D67 /* controls.png in Resources */,
 				3DED269F1900D33A001A1D67 /* ic_contents.png in Resources */,
 				3DED27191904AD7D001A1D67 /* LMPropertyMouseEventVC.xib in Resources */,
 				3DBC932F18F647EC00F217BD /* iu.js in Resources */,
@@ -1727,6 +1798,7 @@
 				690A8260190A238600DDBA86 /* StartPage.xib in Resources */,
 				3DB3ACF318EBFDE20046DFB7 /* iuframe.js in Resources */,
 				3DED26901900D329001A1D67 /* stack_header@2x.png in Resources */,
+				3DED276E190E3976001A1D67 /* jquery.bxslider.css in Resources */,
 				696D1C9A18E5366400B4AB16 /* webTemplate.html in Resources */,
 				3DF803DB18FE62C900913505 /* panel_right.png in Resources */,
 				3DF803EE18FE62C900913505 /* grid.png in Resources */,
@@ -1902,6 +1974,7 @@
 				3DED274919078991001A1D67 /* clear_color.png in Resources */,
 				3DED26491900D2DE001A1D67 /* align_center@2x.png in Resources */,
 				69761BC418F04ECD00C4EDC6 /* LMPropertyBGImageVC.xib in Resources */,
+				3DED2763190E38C5001A1D67 /* bx_loader.gif in Resources */,
 				3DED26861900D329001A1D67 /* stack_mail.png in Resources */,
 				3DED26A11900D33A001A1D67 /* ic_background.png in Resources */,
 				3DF803EC18FE62C900913505 /* tab.png in Resources */,
@@ -1969,6 +2042,7 @@
 				69ABB14A18D733ED0065D584 /* IUCompiler.m in Sources */,
 				3DB3ACDF18EBEF5F0046DFB7 /* PointTextLayer.m in Sources */,
 				6919204718DCFC8200F8522B /* NSCoder+JDExtension.m in Sources */,
+				3DED276B190E3956001A1D67 /* jquery.easing.1.3.js in Sources */,
 				69C5760D18D6FE020016F050 /* IUDocument.m in Sources */,
 				3DB3ACC518EBEF180046DFB7 /* LMWindow.m in Sources */,
 				69757B0918D95BBC0095CBAC /* JDLogUtil.m in Sources */,
@@ -2009,12 +2083,14 @@
 				69C5760B18D6FE020016F050 /* IUClass.m in Sources */,
 				3DED271D1904ADD9001A1D67 /* LMPropertyVTriggerVC.m in Sources */,
 				694E3CE118FCFDA6005077B3 /* IUItem.m in Sources */,
+				3DED276C190E3956001A1D67 /* jquery.fitvids.js in Sources */,
 				690A826B190A25D500DDBA86 /* IUDjangoProject.m in Sources */,
 				690A825D190A047300DDBA86 /* LMPropertyIUTextFieldVC.m in Sources */,
 				6967425318F7D077008B7111 /* IUIdentifierManager.m in Sources */,
 				69761BCA18F168D700C4EDC6 /* IUResourceManager.m in Sources */,
 				69757B1118D95BBC0095CBAC /* JDUIUtil.m in Sources */,
 				3DB3ACE718EBEF9D0046DFB7 /* CursorRect.m in Sources */,
+				3DED2767190E38E5001A1D67 /* jquery.bxslider.min.js in Sources */,
 				69C4AA1D1908E96F00CF75E7 /* IUImport.m in Sources */,
 				692334BA18F783FE003E5224 /* LMIUInspectorVC.m in Sources */,
 				69757B0E18D95BBC0095CBAC /* JDTextField.m in Sources */,
@@ -2069,6 +2145,8 @@
 				690A8267190A23F500DDBA86 /* LMStartWC.m in Sources */,
 				69757B0F18D95BBC0095CBAC /* JDTextFieldCell.m in Sources */,
 				6919204A18DCFED000F8522B /* NSObject+JDExtension.m in Sources */,
+				3DED2773190E4148001A1D67 /* IUCarouselItem.m in Sources */,
+				3DED2765190E38C5001A1D67 /* jquery.bxslider.js in Sources */,
 				6953852E18ED6EC800CC42E5 /* IUController.m in Sources */,
 				690A82591909EB2500DDBA86 /* IUTextView.m in Sources */,
 			);

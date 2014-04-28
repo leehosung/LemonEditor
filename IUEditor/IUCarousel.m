@@ -7,7 +7,7 @@
 //
 
 #import "IUCarousel.h"
-#import "IUItem.h"
+#import "IUCarouselItem.h"
 
 @implementation IUCarousel{
     NSInteger   _count;
@@ -16,7 +16,7 @@
 -(id)initWithManager:(IUIdentifierManager *)manager{
     assert(manager!=nil);
     self = [super initWithManager:manager];
-    self.count = 2;
+    self.count = 3;
     return self;
 }
 
@@ -32,10 +32,10 @@
     BOOL loopFlag = 0;
     while (_count < count) {
         loopFlag = 1;
-        IUItem *item = [[IUItem alloc] initWithManager:nil];
+        IUCarouselItem *item = [[IUCarouselItem alloc] initWithManager:nil];
         item.htmlID = [self.identifierManager requestNewIdentifierWithKey:@"IUCarouselItem"];
         [self.identifierManager addIU:item];
-        item.name = @"View";
+        item.name = @"Item";
         [self addIU:item error:nil];
         count--;
     }
@@ -63,5 +63,6 @@
 -(NSInteger)count{
     return _count;
 }
+
 
 @end

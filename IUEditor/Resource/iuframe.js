@@ -83,7 +83,11 @@ function getDictionaryKeys(dictionary){
 }
 
 function getIUUpdatedFrameThread(){
+    
+    //새로운 인풋이 들어왔을때 변해야 하면 이곳에서 호출
+    //editor mode 에서
     $('.IUBox').updatePixel();
+    $('.bxslider').bxSlider();
     
     if (Object.keys(document.sharedFrameDict).length > 0
         && console.reportFrameDict ){

@@ -264,10 +264,19 @@
     IUResourceNode *imageNode = [[IUResourceNode alloc] initWithName:@"sample.jpg" type:IUResourceTypeImage];
     [imageGroup addResourceNode:imageNode path:sampleImgPath];
     
+    NSString *carouselImagePath = [[NSBundle mainBundle] pathForResource:@"bx_loader" ofType:@"gif"];
+    IUResourceNode *carouselImageNode = [[IUResourceNode alloc] initWithName:@"bx_loader.gif" type:IUResourceTypeImage];
+    [imageGroup addResourceNode:carouselImageNode path:carouselImagePath];
+    
+    NSString *carouselImagePath2 = [[NSBundle mainBundle] pathForResource:@"controls" ofType:@"png"];
+    IUResourceNode *carouselImageNode2 = [[IUResourceNode alloc] initWithName:@"controls.png" type:IUResourceTypeImage];
+    [imageGroup addResourceNode:carouselImageNode2 path:carouselImagePath2];
+    
     //Video Resource copy
     NSString *sampleVideoPath = [[NSBundle mainBundle] pathForResource:@"movie" ofType:@"mp4"];
     IUResourceNode *videoNode = [[IUResourceNode alloc] initWithName:@"movie.mp4" type:IUResourceTypeVideo];
     [videoGroup addResourceNode:videoNode path:sampleVideoPath];
+    
     
     //CSS Resource Copy
     
@@ -279,6 +288,10 @@
     IUResourceNode *iuCSSNode = [[IUResourceNode alloc] initWithName:@"iu.css" type:IUResourceTypeCSS];
     [CSSGroup addResourceNode:iuCSSNode path:iuCSSPath];
     
+    NSString *carouselCSSPath = [[NSBundle mainBundle] pathForResource:@"jquery.bxslider" ofType:@"css"];
+    IUResourceNode *carouselCSSNode = [[IUResourceNode alloc] initWithName:@"jquery.bxslider.css" type:IUResourceTypeCSS];
+    [CSSGroup addResourceNode:carouselCSSNode path:carouselCSSPath];
+    
     
     //Java Script Resource copy
     
@@ -289,6 +302,11 @@
     NSString *iuJSPath = [[NSBundle mainBundle] pathForResource:@"iu" ofType:@"js"];
     IUResourceNode *iuJSNode = [[IUResourceNode alloc] initWithName:@"iu.js" type:IUResourceTypeJS];
     [JSGroup addResourceNode:iuJSNode path:iuJSPath];
+    
+    NSString *carouselJSPath = [[NSBundle mainBundle] pathForResource:@"jquery.bxslider" ofType:@"js"];
+    IUResourceNode *carouselJSNode = [[IUResourceNode alloc] initWithName:@"jquery.bxslider.js" type:IUResourceTypeJS];
+    [JSGroup addResourceNode:carouselJSNode path:carouselJSPath];
+
 
 }
 
