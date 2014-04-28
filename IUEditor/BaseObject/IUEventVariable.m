@@ -98,6 +98,9 @@
     NSMutableString *header = [NSMutableString string];
     NSMutableString *bodyHeader = [NSMutableString string];
     NSMutableString *body = [NSMutableString string];
+    NSMutableString *visibleFnStr = [NSMutableString string];
+    NSMutableString *frameFnStr = [NSMutableString string];
+    NSMutableString *initializeFn = [NSMutableString string];
     
     for(NSString *variable in variableArray){
         NSDictionary *oneDict = [_variablesDict objectForKey:variable];
@@ -128,6 +131,7 @@
             
             value = [oneDict objectForKey:IUEventTagIUID];
             if(value){
+                [eventString appendFormat:@"/* [IU:%@] Event Declaration */\n", value];
                 [eventString appendFormat:@"$(\"#%@\").", value];
                 
                 IUEventActionType type = [[oneDict objectForKey:IUEventTagActionType] intValue];
@@ -141,10 +145,9 @@
                     JDFatalLog(@"no action type");
                 }
                 [eventString appendNewline];
-                
-                [eventString appendFormat:@"%@++;",variable];
+                [eventString appendTabAndString:[NSString stringWithFormat:@"%@++;",variable]];
                 [eventString appendNewline];
-                [eventString appendFormat:@"if( %@ > MAX_IU_%@ ){ %@ = INIT_IU_%@ }",variable, variable, variable, variable];
+                [eventString appendTabAndString:[NSString stringWithFormat:@"if( %@ > MAX_IU_%@ ){ %@ = INIT_IU_%@ }\n",variable, variable, variable, variable]];
                 [eventString appendNewline];
                 
                 
@@ -156,25 +159,49 @@
 #pragma mark Visible Src
                     value = [receiverDict objectForKey:IUEventTagVisibleEquation];
                     if(value){
-                        
                         NSString *visibleID = [receiverDict objectForKey:IUEventTagVisibleID];
+
+                        NSString *fnName;
+                        if(type == IUEventActionTypeClick){
+                            fnName =  [NSString stringWithFormat:@"%@ClickVisible%@Fn", variable, visibleID];
+                        }
+                        else if(type == IUEventActionTypeHover){
+                            fnName =  [NSString stringWithFormat:@"%@HoverVisible%@Fn", variable, visibleID];
+                        }
+                        [innerfunctionStr appendFormat:@"%@();\n", fnName];
+
+                        NSMutableString *fnStr = [NSMutableString string];
                         NSInteger duration = [[receiverDict objectForKey:IUEventTagVisibleDuration] integerValue];
+                        IUEventVisibleType type = [[receiverDict objectForKey:IUEventTagVisibleDirection] intValue];
+                        NSString *typeStr;
+                        if(type == IUEventVisibleTypeVertical){
+                            typeStr = @"up";
+                        }
+                        else if(type == IUEventVisibleTypeHorizontal){
+                            typeStr = @"left";
+                        }
                         
-                        
-                        [innerfunctionStr appendFormat:@"if( %@%@ ){", variable, value];
+                        [fnStr appendFormat:@"if( %@ ){\n", value];
                         
                         NSMutableString *innerJS = [NSMutableString string];
                         [innerJS appendFormat:@"$(\"#%@\").show(", visibleID];
-                        [innerJS appendFormat:@"%ld);", duration];
+                        [innerJS appendFormat:@"\"slide\", {direction:\"%@\"}, %ld);",typeStr, duration];
                         
-                        [innerfunctionStr appendString:[innerJS stringByAddingTab]];
-                        [innerfunctionStr appendString:@"}"];
-                        [innerfunctionStr appendNewline];
+                        [fnStr appendString:[innerJS stringByAddingTab]];
+                        [fnStr appendString:@"}"];
+                        [fnStr appendNewline];
                         
-                        [innerfunctionStr appendString:@"else{\n"];
-                        [innerfunctionStr appendFormat:@"\t$(\"#%@\").hide(%ld)\n", visibleID, duration];
-                        [innerfunctionStr appendString:@"}"];
-                        [innerfunctionStr appendNewline];
+                        [fnStr appendString:@"else{\n"];
+                        [fnStr appendFormat:@"\t$(\"#%@\").hide()\n", visibleID];
+                        [fnStr appendString:@"}"];
+                        [fnStr appendNewline];
+                        
+                        [visibleFnStr appendFormat:@"function %@(){\n", fnName ];
+                        [visibleFnStr appendString:[fnStr stringByAddingTab]];
+                        [visibleFnStr appendString:@"}\n"];
+
+                        
+                        
                     }
 #pragma mark Frame Src
                     value = [receiverDict objectForKey:IUEventTagFrameEquation];
@@ -182,8 +209,19 @@
                         
                         NSString *frameID = [receiverDict objectForKey:IUEventTagFrameID];
                         
-                        [innerfunctionStr appendFormat:@"if( %@ ){", value];
-                        [innerfunctionStr appendNewline];
+                        NSString *fnName;
+                        if(type == IUEventActionTypeClick){
+                            fnName =  [NSString stringWithFormat:@"%@ClickVisible%@Fn", variable, frameID];
+                        }
+                        else if(type == IUEventActionTypeHover){
+                            fnName =  [NSString stringWithFormat:@"%@HoverVisible%@Fn", variable, frameID];
+                        }
+                        
+                        [innerfunctionStr appendFormat:@"%@();\n", fnName];
+
+                        NSMutableString *fnStr = [NSMutableString string];
+                        [fnStr appendFormat:@"if( %@ ){", value];
+                        [fnStr appendNewline];
                         
                         NSMutableString *innerJS = [NSMutableString string];
                         [innerJS appendFormat:@"$(\"#%@\").animate({", frameID];
@@ -195,16 +233,22 @@
                         NSInteger duration = [[receiverDict objectForKey:IUEventTagFrameDuration] integerValue];
                         [innerJS appendFormat:@", %ld);", duration];
                         
-                        [innerfunctionStr appendString:[innerJS stringByAddingTab]];
-                        [innerfunctionStr appendString:@"}"];
-                        [innerfunctionStr appendNewline];
-                        [innerfunctionStr appendString:@"else{\n"];
-                        [innerfunctionStr appendFormat:@"\t$(\"#%@\").removeAttr('style')\n", frameID];
-                        [innerfunctionStr appendString:@"}"];
+                        [fnStr appendString:[innerJS stringByAddingTab]];
+                        [fnStr appendString:@"}"];
+                        [fnStr appendNewline];
+                        [fnStr appendString:@"else{\n"];
+                        [fnStr appendFormat:@"\t$(\"#%@\").removeAttr('style')\n", frameID];
+                        [fnStr appendString:@"}"];
                         
-                        [innerfunctionStr appendNewline];
+                        [fnStr appendNewline];
+                        
+                        [frameFnStr appendFormat:@"function %@(){\n", fnName ];
+                        [frameFnStr appendString:[fnStr stringByAddingTab]];
+                        [frameFnStr appendString:@"}\n"];
                     }
                 }//End of receiverArray
+                [initializeFn appendString:innerfunctionStr];
+                
                 [eventString appendString:[innerfunctionStr stringByAddingTab]];
                 [eventString appendString:@"});"];
                 [eventString appendNewline];
@@ -224,11 +268,24 @@
     NSMutableString *eventJSStr = [NSMutableString string];
     [eventJSStr appendString:header];
     [eventJSStr appendNewline];
+    
+    [eventJSStr appendString:@" /* Decleare Visible Fn */ \n"];
+    [eventJSStr appendString:visibleFnStr];
+    [eventJSStr appendNewline];
+
+    [eventJSStr appendString:@" /* Decleare Frame Fn */ \n"];
+    [eventJSStr appendString:frameFnStr];
+    [eventJSStr appendNewline];
+    
     [eventJSStr appendString:@"$(document).ready(function(){"];
     [eventJSStr appendNewline];
     [eventJSStr appendString:[bodyHeader stringByAddingTab]];
     [eventJSStr appendNewline];
     [eventJSStr appendString:[body stringByAddingTab]];
+    [eventJSStr appendNewline];
+    
+    [eventJSStr appendString:@" /* initialize fn */ \n"];
+    [eventJSStr appendString:[initializeFn stringByAddingTab]];
     [eventJSStr appendNewline];
     [eventJSStr appendString:@"});"];
     
