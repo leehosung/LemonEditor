@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyIUWebMovieVC">
@@ -16,21 +16,21 @@
             <rect key="frame" x="0.0" y="0.0" width="276" height="190"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <box autoresizesSubviews="NO" fixedFrame="YES" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="V06-ln-ivR" userLabel="content">
-                    <rect key="frame" x="0.0" y="0.0" width="285" height="160"/>
+                <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="V06-ln-ivR" userLabel="content">
+                    <rect key="frame" x="0.0" y="0.0" width="276" height="160"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView">
-                        <rect key="frame" x="0.0" y="0.0" width="285" height="160"/>
+                        <rect key="frame" x="0.0" y="0.0" width="276" height="160"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPH-MK-5mw">
+                            <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPH-MK-5mw">
                                 <rect key="frame" x="3" y="11" width="260" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <clipView key="contentView" ambiguous="YES" misplaced="YES" id="JEs-lP-lXp">
+                                <clipView key="contentView" id="JEs-lP-lXp">
                                     <rect key="frame" x="1" y="1" width="258" height="118"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView ambiguous="YES" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Jms-7m-RhY">
+                                        <textView importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Jms-7m-RhY">
                                             <rect key="frame" x="0.0" y="0.0" width="258" height="118"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -43,6 +43,10 @@
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="6TG-Fs-rdQ"/>
+                                    <constraint firstAttribute="width" constant="260" id="dse-8e-zYl"/>
+                                </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="vxS-ua-Tk0">
                                     <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                                     <autoresizingMask key="autoresizingMask"/>
@@ -52,7 +56,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tzN-U2-FVH">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tzN-U2-FVH">
                                 <rect key="frame" x="4" y="133" width="101" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Web Movie Source" id="AvN-cZ-RNb">
@@ -63,26 +67,43 @@
                             </textField>
                         </subviews>
                     </view>
+                    <constraints>
+                        <constraint firstItem="tzN-U2-FVH" firstAttribute="top" secondItem="V06-ln-ivR" secondAttribute="top" constant="10" id="CaC-V8-glm"/>
+                        <constraint firstItem="tzN-U2-FVH" firstAttribute="leading" secondItem="V06-ln-ivR" secondAttribute="leading" constant="6" id="EOq-0G-eiz"/>
+                        <constraint firstAttribute="height" constant="160" id="FB8-JM-w6i"/>
+                        <constraint firstAttribute="bottom" secondItem="jPH-MK-5mw" secondAttribute="bottom" constant="11" id="Fpy-5k-9Am"/>
+                        <constraint firstAttribute="trailing" secondItem="jPH-MK-5mw" secondAttribute="trailing" constant="13" id="HDN-QK-xwS"/>
+                        <constraint firstItem="jPH-MK-5mw" firstAttribute="top" secondItem="tzN-U2-FVH" secondAttribute="bottom" constant="2" id="JhT-Rg-0Sz"/>
+                        <constraint firstItem="jPH-MK-5mw" firstAttribute="leading" secondItem="V06-ln-ivR" secondAttribute="leading" constant="3" id="MDR-Yj-yYy"/>
+                    </constraints>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </box>
-                <box autoresizesSubviews="NO" fixedFrame="YES" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="xTp-jq-Zv5" userLabel="box">
-                    <rect key="frame" x="0.0" y="161" width="276" height="30"/>
+                <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="xTp-jq-Zv5" userLabel="box">
+                    <rect key="frame" x="0.0" y="160" width="276" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView">
                         <rect key="frame" x="0.0" y="0.0" width="276" height="30"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="CTZ-qa-1CR">
+                            <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="CTZ-qa-1CR">
                                 <rect key="frame" x="6" y="0.0" width="260" height="5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="260" id="D8O-Z1-34v"/>
+                                    <constraint firstAttribute="height" constant="1" id="hmn-m5-mfN"/>
+                                </constraints>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <font key="titleFont" metaFont="system"/>
                             </box>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yto-Cx-RZV">
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yto-Cx-RZV">
                                 <rect key="frame" x="4" y="7" width="104" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="f5d-C9-2nh"/>
+                                    <constraint firstAttribute="height" constant="17" id="gS4-I7-3LE"/>
+                                </constraints>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="IUWebMovie" id="NEB-bO-0GA">
                                     <font key="font" metaFont="smallSystemBold"/>
                                     <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -91,10 +112,25 @@
                             </textField>
                         </subviews>
                     </view>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Mvw-Hi-sDW"/>
+                        <constraint firstItem="yto-Cx-RZV" firstAttribute="top" secondItem="xTp-jq-Zv5" secondAttribute="top" constant="6" id="TcF-Qx-O6v"/>
+                        <constraint firstAttribute="bottom" secondItem="CTZ-qa-1CR" secondAttribute="bottom" constant="2" id="Yo2-Ca-HDl"/>
+                        <constraint firstItem="yto-Cx-RZV" firstAttribute="leading" secondItem="xTp-jq-Zv5" secondAttribute="leading" constant="6" id="jtt-WO-dMD"/>
+                        <constraint firstItem="CTZ-qa-1CR" firstAttribute="leading" secondItem="xTp-jq-Zv5" secondAttribute="leading" constant="6" id="smv-aT-MI4"/>
+                    </constraints>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </box>
             </subviews>
+            <constraints>
+                <constraint firstItem="V06-ln-ivR" firstAttribute="leading" secondItem="D4W-nd-Z3f" secondAttribute="leading" id="8oW-ap-HJd"/>
+                <constraint firstItem="xTp-jq-Zv5" firstAttribute="leading" secondItem="D4W-nd-Z3f" secondAttribute="leading" id="AcT-5S-qie"/>
+                <constraint firstAttribute="bottom" secondItem="V06-ln-ivR" secondAttribute="bottom" id="aNi-cs-b9n"/>
+                <constraint firstAttribute="trailing" secondItem="xTp-jq-Zv5" secondAttribute="trailing" id="dTd-5x-5Mp"/>
+                <constraint firstItem="V06-ln-ivR" firstAttribute="top" secondItem="xTp-jq-Zv5" secondAttribute="bottom" id="ivV-bu-oek"/>
+                <constraint firstItem="xTp-jq-Zv5" firstAttribute="top" secondItem="D4W-nd-Z3f" secondAttribute="top" id="rgi-ry-fmL"/>
+            </constraints>
             <connections>
                 <outlet property="contentV" destination="V06-ln-ivR" id="mfa-4O-QSX"/>
                 <outlet property="titleV" destination="xTp-jq-Zv5" id="Auq-Xk-7eC"/>

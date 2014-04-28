@@ -124,16 +124,20 @@
                     <rect key="frame" x="0.0" y="0.0" width="300" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
-                        <box autoresizesSubviews="NO" fixedFrame="YES" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="jYn-7S-9Ff">
+                        <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="jYn-7S-9Ff">
                             <rect key="frame" x="0.0" y="0.0" width="300" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <view key="contentView">
                                 <rect key="frame" x="1" y="1" width="298" height="29"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <searchField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YjH-N9-QL8">
+                                    <searchField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YjH-N9-QL8">
                                         <rect key="frame" x="64" y="6" width="170" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="19" id="dWs-Yf-xcv"/>
+                                            <constraint firstAttribute="width" constant="170" id="fZG-wE-swR"/>
+                                        </constraints>
                                         <searchFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="Ynw-pJ-wrH">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -149,9 +153,13 @@
                                             </binding>
                                         </connections>
                                     </searchField>
-                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2K0-2Z-gF9" userLabel="addBtn">
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="2K0-2Z-gF9" userLabel="addBtn">
                                         <rect key="frame" x="269" y="0.0" width="30" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="gtS-aw-dJJ"/>
+                                            <constraint firstAttribute="height" constant="31" id="zYL-1M-f8b"/>
+                                        </constraints>
                                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="pND-Y3-4p8">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -160,9 +168,13 @@
                                             <action selector="clickAddResourceBtn:" target="-2" id="OCU-uV-ilw"/>
                                         </connections>
                                     </button>
-                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TwY-rm-TIF" userLabel="refreshBtn">
-                                        <rect key="frame" x="240" y="0.0" width="30" height="31"/>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="TwY-rm-TIF" userLabel="refreshBtn">
+                                        <rect key="frame" x="239" y="0.0" width="30" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31" id="Rew-Ls-6yO"/>
+                                            <constraint firstAttribute="width" constant="30" id="k6n-YS-QYP"/>
+                                        </constraints>
                                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRefreshTemplate" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="XIQ-SX-TV2">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -173,12 +185,26 @@
                                     </button>
                                 </subviews>
                             </view>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="2K0-2Z-gF9" secondAttribute="bottom" constant="1" id="Hld-fC-9rI"/>
+                                <constraint firstAttribute="bottom" secondItem="YjH-N9-QL8" secondAttribute="bottom" constant="7" id="OhS-RR-PLG"/>
+                                <constraint firstAttribute="height" constant="31" id="bCG-dd-p8G"/>
+                                <constraint firstAttribute="bottom" secondItem="TwY-rm-TIF" secondAttribute="bottom" constant="1" id="bgV-wl-4bz"/>
+                                <constraint firstItem="YjH-N9-QL8" firstAttribute="leading" secondItem="jYn-7S-9Ff" secondAttribute="leading" constant="65" id="gUf-KL-vOf"/>
+                                <constraint firstAttribute="width" constant="300" id="igz-TN-Mrg"/>
+                                <constraint firstAttribute="trailing" secondItem="2K0-2Z-gF9" secondAttribute="trailing" id="iyc-GW-79o"/>
+                                <constraint firstItem="2K0-2Z-gF9" firstAttribute="leading" secondItem="TwY-rm-TIF" secondAttribute="trailing" id="tky-Tt-6Xc"/>
+                            </constraints>
                             <color key="borderColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="fillColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         </box>
-                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i50-VL-0Xr" userLabel="iconBtn">
+                        <button translatesAutoresizingMaskIntoConstraints="NO" id="i50-VL-0Xr" userLabel="iconBtn">
                             <rect key="frame" x="29" y="2" width="29" height="28"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="28" id="Aok-F9-XWX"/>
+                                <constraint firstAttribute="width" constant="29" id="BwY-9R-vlt"/>
+                            </constraints>
                             <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="view_collection" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="Rsf-Tl-k3X">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -187,9 +213,13 @@
                                 <action selector="clickIconBtn:" target="-2" id="Bj9-bd-ZAa"/>
                             </connections>
                         </button>
-                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="12v-kS-W80" userLabel="listBtn">
+                        <button translatesAutoresizingMaskIntoConstraints="NO" id="12v-kS-W80" userLabel="listBtn">
                             <rect key="frame" x="1" y="2" width="28" height="28"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="28" id="LEc-Zb-Rct"/>
+                                <constraint firstAttribute="height" constant="28" id="p8n-Gk-3W7"/>
+                            </constraints>
                             <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="view_list" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="D1O-id-RDh">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -200,7 +230,15 @@
                         </button>
                     </subviews>
                     <constraints>
+                        <constraint firstAttribute="bottom" secondItem="i50-VL-0Xr" secondAttribute="bottom" constant="2" id="3Ge-89-JyA"/>
+                        <constraint firstItem="jYn-7S-9Ff" firstAttribute="top" secondItem="x7y-Oy-DDd" secondAttribute="top" id="5jE-fL-P0G"/>
+                        <constraint firstItem="12v-kS-W80" firstAttribute="leading" secondItem="x7y-Oy-DDd" secondAttribute="leading" constant="1" id="EYE-Q0-nr5"/>
                         <constraint firstAttribute="height" constant="31" id="Iuw-X9-ajM"/>
+                        <constraint firstAttribute="bottom" secondItem="jYn-7S-9Ff" secondAttribute="bottom" id="Q92-mh-Yfv"/>
+                        <constraint firstItem="jYn-7S-9Ff" firstAttribute="leading" secondItem="x7y-Oy-DDd" secondAttribute="leading" id="QLm-Nk-mKE"/>
+                        <constraint firstAttribute="bottom" secondItem="12v-kS-W80" secondAttribute="bottom" constant="2" id="fxl-gi-Sxk"/>
+                        <constraint firstAttribute="trailing" secondItem="jYn-7S-9Ff" secondAttribute="trailing" id="old-zP-Kfe"/>
+                        <constraint firstItem="i50-VL-0Xr" firstAttribute="leading" secondItem="12v-kS-W80" secondAttribute="trailing" id="yNO-d1-y9V"/>
                     </constraints>
                 </customView>
             </subviews>

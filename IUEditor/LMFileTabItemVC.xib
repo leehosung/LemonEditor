@@ -29,8 +29,8 @@
                         <color key="borderColor" red="0.50196081399917603" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="fillColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </box>
-                    <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oMZ-tw-aO4">
-                        <rect key="frame" x="116" y="0.0" width="20" height="32"/>
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="oMZ-tw-aO4">
+                        <rect key="frame" x="117" y="-1" width="20" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="kEl-AQ-Rl8"/>
@@ -43,8 +43,8 @@
                             <action selector="clickCloseFile:" target="-2" id="fY7-vx-k3I"/>
                         </connections>
                     </button>
-                    <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bzh-bY-W6W">
-                        <rect key="frame" x="5" y="0.0" width="110" height="32"/>
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="bzh-bY-W6W">
+                        <rect key="frame" x="6" y="-1" width="110" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="110" id="7Jv-Zg-d4g"/>

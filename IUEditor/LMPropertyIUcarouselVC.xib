@@ -11,36 +11,48 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application"/>
-        <customView id="Q3L-Eb-iN0" userLabel="IUCarousel" customClass="JDOutlineCellView">
+        <customView identifier="iucarousel" id="Q3L-Eb-iN0" userLabel="IUCarousel" customClass="JDOutlineCellView">
             <rect key="frame" x="0.0" y="0.0" width="276" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <box autoresizesSubviews="NO" fixedFrame="YES" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="2Ad-gK-MZK" userLabel="content">
-                    <rect key="frame" x="0.0" y="0.0" width="285" height="40"/>
+                <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="2Ad-gK-MZK" userLabel="content">
+                    <rect key="frame" x="0.0" y="0.0" width="276" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView">
-                        <rect key="frame" x="0.0" y="0.0" width="285" height="40"/>
+                        <rect key="frame" x="0.0" y="0.0" width="276" height="40"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yoB-Af-Hh3">
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="yoB-Af-Hh3">
                                 <rect key="frame" x="4" y="13" width="80" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="14" id="IVS-La-ogw"/>
+                                    <constraint firstAttribute="width" constant="75" id="fcS-kr-Vxf"/>
+                                </constraints>
                                 <buttonCell key="cell" type="check" title="Prev Arrow" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="2Hq-go-fv9">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
                             </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eQ3-ge-ndJ">
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="eQ3-ge-ndJ">
                                 <rect key="frame" x="88" y="13" width="82" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="77" id="FDb-jF-gEd"/>
+                                    <constraint firstAttribute="height" constant="14" id="yX4-Pb-Byf"/>
+                                </constraints>
                                 <buttonCell key="cell" type="check" title="Next Arrow" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="Fww-8I-TcR">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
                             </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f1z-XK-ohr">
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="f1z-XK-ohr">
                                 <rect key="frame" x="175" y="13" width="83" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="14" id="Apf-M4-Elp"/>
+                                    <constraint firstAttribute="width" constant="78" id="LJH-U8-4xp"/>
+                                </constraints>
                                 <buttonCell key="cell" type="check" title="Bar Control" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="vXm-uV-gGi">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
@@ -48,26 +60,43 @@
                             </button>
                         </subviews>
                     </view>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="M4T-gF-9Nt"/>
+                        <constraint firstItem="f1z-XK-ohr" firstAttribute="leading" secondItem="eQ3-ge-ndJ" secondAttribute="trailing" constant="10" id="YwA-h2-vi3"/>
+                        <constraint firstItem="yoB-Af-Hh3" firstAttribute="leading" secondItem="2Ad-gK-MZK" secondAttribute="leading" constant="7" id="cfi-HM-o8D"/>
+                        <constraint firstItem="yoB-Af-Hh3" firstAttribute="top" secondItem="2Ad-gK-MZK" secondAttribute="top" constant="10" id="fT8-iC-Mhc"/>
+                        <constraint firstItem="eQ3-ge-ndJ" firstAttribute="leading" secondItem="yoB-Af-Hh3" secondAttribute="trailing" constant="9" id="nU6-XI-o6Q"/>
+                        <constraint firstItem="eQ3-ge-ndJ" firstAttribute="top" secondItem="2Ad-gK-MZK" secondAttribute="top" constant="10" id="xLD-cp-Cyc"/>
+                        <constraint firstItem="f1z-XK-ohr" firstAttribute="top" secondItem="2Ad-gK-MZK" secondAttribute="top" constant="10" id="ywH-tV-wxO"/>
+                    </constraints>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </box>
-                <box autoresizesSubviews="NO" fixedFrame="YES" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="vRj-GP-3wm" userLabel="title">
-                    <rect key="frame" x="0.0" y="41" width="276" height="30"/>
+                <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="vRj-GP-3wm" userLabel="title">
+                    <rect key="frame" x="0.0" y="40" width="276" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView">
                         <rect key="frame" x="0.0" y="0.0" width="276" height="30"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="MB1-PZ-wBA">
+                            <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="MB1-PZ-wBA">
                                 <rect key="frame" x="6" y="0.0" width="260" height="5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="AUW-S5-8ka"/>
+                                    <constraint firstAttribute="width" constant="260" id="Isl-9m-Egt"/>
+                                </constraints>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <font key="titleFont" metaFont="system"/>
                             </box>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SRF-So-9Ld">
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SRF-So-9Ld">
                                 <rect key="frame" x="4" y="7" width="104" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="7BW-Jq-qNM"/>
+                                    <constraint firstAttribute="height" constant="17" id="CZu-Us-eQ8"/>
+                                </constraints>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="IUCarousel" id="5W0-dl-8z7">
                                     <font key="font" metaFont="smallSystemBold"/>
                                     <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -76,10 +105,27 @@
                             </textField>
                         </subviews>
                     </view>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="KaC-mD-9Qo"/>
+                        <constraint firstItem="MB1-PZ-wBA" firstAttribute="leading" secondItem="vRj-GP-3wm" secondAttribute="leading" constant="6" id="dCK-Ad-Pty"/>
+                        <constraint firstAttribute="bottom" secondItem="MB1-PZ-wBA" secondAttribute="bottom" constant="2" id="lij-hW-BFS"/>
+                        <constraint firstItem="SRF-So-9Ld" firstAttribute="leading" secondItem="vRj-GP-3wm" secondAttribute="leading" constant="6" id="s5a-8Q-6dh"/>
+                        <constraint firstItem="SRF-So-9Ld" firstAttribute="top" secondItem="vRj-GP-3wm" secondAttribute="top" constant="6" id="xah-7B-vZ7"/>
+                    </constraints>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </box>
             </subviews>
+            <constraints>
+                <constraint firstItem="2Ad-gK-MZK" firstAttribute="top" secondItem="vRj-GP-3wm" secondAttribute="bottom" id="DV7-nq-B98"/>
+                <constraint firstItem="vRj-GP-3wm" firstAttribute="leading" secondItem="Q3L-Eb-iN0" secondAttribute="leading" id="E7a-md-X6w"/>
+                <constraint firstItem="2Ad-gK-MZK" firstAttribute="top" secondItem="vRj-GP-3wm" secondAttribute="bottom" id="HpL-0o-RiD"/>
+                <constraint firstItem="2Ad-gK-MZK" firstAttribute="leading" secondItem="Q3L-Eb-iN0" secondAttribute="leading" id="g86-Mm-0o6"/>
+                <constraint firstAttribute="trailing" secondItem="2Ad-gK-MZK" secondAttribute="trailing" id="j3a-Zu-jgb"/>
+                <constraint firstAttribute="bottom" secondItem="2Ad-gK-MZK" secondAttribute="bottom" id="m3g-lk-OQ0"/>
+                <constraint firstItem="vRj-GP-3wm" firstAttribute="top" secondItem="Q3L-Eb-iN0" secondAttribute="top" id="oMd-Go-Ggc"/>
+                <constraint firstAttribute="trailing" secondItem="vRj-GP-3wm" secondAttribute="trailing" id="wEh-Rk-xTd"/>
+            </constraints>
             <connections>
                 <outlet property="contentV" destination="2Ad-gK-MZK" id="mSa-34-vFg"/>
                 <outlet property="titleV" destination="vRj-GP-3wm" id="iqw-m4-pjD"/>
