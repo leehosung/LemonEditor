@@ -199,7 +199,8 @@
 #pragma mark IUCarousel
     else if([iu isKindOfClass:[IUCarousel class]]){
         [code appendFormat:@"<div %@ %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAttributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
-        [code appendString:@"<ul class='bxslider'>\n"];
+        [code appendFormat:@"<ul class='bxslider' id='bxslider_%@'>\n", iu.htmlID];
+        
         for(IUItem *item in iu.children){
             [code appendString:[[self editorHTML:item] stringByIndent:4 prependIndent:YES]];
             [code appendNewline];
@@ -339,14 +340,16 @@
 #pragma mark IUCarouselItem
     else if([iu isKindOfClass:[IUCarouselItem class]]){
         [code appendString:@"<li>"];
-        [code appendFormat:@"<img src='http://31.media.tumblr.com/d83b99e22981d5e58e2bd74ed2494087/tumblr_n4ef3ynCZP1st5lhmo1_1280.jpg' />"];
+        [code appendString:[self editorHTMLAsBOX:iu]];
+        //[code appendFormat:@"<img src='http://31.media.tumblr.com/d83b99e22981d5e58e2bd74ed2494087/tumblr_n4ef3ynCZP1st5lhmo1_1280.jpg' />"];
         
         [code appendString:@"</li>"];
     }
 #pragma mark IUCarousel
     else if([iu isKindOfClass:[IUCarousel class]]){
         [code appendFormat:@"<div %@ %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAttributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
-        [code appendString:@"<ul class='bxslider'>\n"];
+        [code appendFormat:@"<ul class='bxslider' id='bxslider_%@'>\n", iu.htmlID];
+
         for(IUItem *item in iu.children){
             [code appendString:[[self editorHTML:item] stringByIndent:4 prependIndent:YES]];
             [code appendNewline];

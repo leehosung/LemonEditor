@@ -329,72 +329,83 @@
 - (void)moveX:(NSInteger)x Y:(NSInteger)y{
     
     NSPoint distancePoint = [self.delegate distanceFromIU:self.htmlID to:self.parent.htmlID];
+    NSSize parentSize = [self.delegate frameSize:self.parent.htmlID];
     
     //Set Pixel
-    NSInteger currentX = [_css.assembledTagDictionary[IUCSSTagX] integerValue] + x;
-    [_css setValue:@(currentX) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagX]];
-    
-    NSInteger currentY = 0;
-    if ([_css.assembledTagDictionary objectForKey:IUCSSTagY]){
-        currentY = [_css.assembledTagDictionary[IUCSSTagY] integerValue];
-    }
-    else if (self.flow == NO){
-        currentY = distancePoint.y;
-    }
-    currentY += y;
-    [_css setValue:@(currentY) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagY]];
-    
-    //set Percent if enablePercent
-    NSSize parentSize = [self.delegate frameSize:self.parent.htmlID];
-    BOOL enablePercentX = [self percentUnitAtCSSTag:IUCSSTagXUnit];
-    if(enablePercentX){
-        CGFloat percentX = 0;
-        if(parentSize.width!=0){
-            percentX = (currentX / parentSize.width) * 100;
+    if([self hasX]){
+        NSInteger currentX = [_css.assembledTagDictionary[IUCSSTagX] integerValue] + x;
+        
+        [_css setValue:@(currentX) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagX]];
+        //set Percent if enablePercent
+        BOOL enablePercentX = [self percentUnitAtCSSTag:IUCSSTagXUnit];
+        if(enablePercentX){
+            CGFloat percentX = 0;
+            if(parentSize.width!=0){
+                percentX = (currentX / parentSize.width) * 100;
+            }
+            [_css setValue:@(percentX) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentX]];
+            
         }
-        [_css setValue:@(percentX) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentX]];
-
     }
-    BOOL enablePercentY = [self percentUnitAtCSSTag:IUCSSTagYUnit];
-    if(enablePercentY){
-        CGFloat percentY = 0;
-        if(parentSize.height!=0){
-            percentY = (currentY / parentSize.height) * 100;
+    
+    if([self hasY]){
+        
+        NSInteger currentY = 0;
+        if ([_css.assembledTagDictionary objectForKey:IUCSSTagY]){
+            currentY = [_css.assembledTagDictionary[IUCSSTagY] integerValue];
         }
-        [_css setValue:@(percentY) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentY]];
+        else if (self.flow == NO){
+            currentY = distancePoint.y;
+        }
+        currentY += y;
+        [_css setValue:@(currentY) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagY]];
+        
+        
+        BOOL enablePercentY = [self percentUnitAtCSSTag:IUCSSTagYUnit];
+        if(enablePercentY){
+            CGFloat percentY = 0;
+            if(parentSize.height!=0){
+                percentY = (currentY / parentSize.height) * 100;
+            }
+            [_css setValue:@(percentY) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentY]];
+        }
     }
     
 }
 
 - (void)increaseWidth:(NSInteger)width height:(NSInteger)height{
     
-    //Set Pixel
-    NSInteger currentWidth = [_css.assembledTagDictionary[IUCSSTagWidth] integerValue];
-    currentWidth += width;
-    [_css setValue:@(currentWidth) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagWidth]];
-    
-    NSInteger currentHeight = [_css.assembledTagDictionary[IUCSSTagHeight] integerValue];
-    currentHeight += height;
-    [_css setValue:@(currentHeight) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagHeight]];
-    
-    //set Percent if enable percent
     NSSize parentSize = [self.delegate frameSize:self.parent.htmlID];
-    BOOL enablePercentWidth = [self percentUnitAtCSSTag:IUCSSTagWidthUnit];
-    if(enablePercentWidth){
-        CGFloat percentWidth = 0;
-        if(parentSize.width!=0){
-            percentWidth = (currentWidth / parentSize.width) *100;
-        }
-        [_css setValue:@(percentWidth) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentWidth]];
+    
+    if([self hasWidth]){
+        NSInteger currentWidth = [_css.assembledTagDictionary[IUCSSTagWidth] integerValue];
+        currentWidth += width;
+        [_css setValue:@(currentWidth) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagWidth]];
         
-    }
-    BOOL enablePercentHeight = [self percentUnitAtCSSTag:IUCSSTagHeightUnit];
-    if(enablePercentHeight){
-        CGFloat percentHeight = 0;
-        if(parentSize.height!=0){
-            percentHeight = (currentHeight / parentSize.height) *100;
+        BOOL enablePercentWidth = [self percentUnitAtCSSTag:IUCSSTagWidthUnit];
+        if(enablePercentWidth){
+            CGFloat percentWidth = 0;
+            if(parentSize.width!=0){
+                percentWidth = (currentWidth / parentSize.width) *100;
+            }
+            [_css setValue:@(percentWidth) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentWidth]];
+            
         }
-        [_css setValue:@(percentHeight) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentHeight]];
+    }
+    if([self hasHeight]){
+        NSInteger currentHeight = [_css.assembledTagDictionary[IUCSSTagHeight] integerValue];
+        currentHeight += height;
+        [_css setValue:@(currentHeight) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagHeight]];
+        
+        //set Percent if enable percent
+        BOOL enablePercentHeight = [self percentUnitAtCSSTag:IUCSSTagHeightUnit];
+        if(enablePercentHeight){
+            CGFloat percentHeight = 0;
+            if(parentSize.height!=0){
+                percentHeight = (currentHeight / parentSize.height) *100;
+            }
+            [_css setValue:@(percentHeight) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentHeight]];
+        }
     }
 }
 

@@ -201,7 +201,7 @@
 /* Here is our Objective-C implementation for the JavaScript console.log() method.
  */
 - (void)doOutputToLog:(NSString*)theMessage {
-    JDSectionInfoLog(IULogJS, @"LOG: %@", theMessage);
+    JDInfoLog(@"LOG: %@", theMessage);
 }
 
 
@@ -308,6 +308,20 @@
 - (void)updateFrameDict{
     //reportFrameDict(after call setIUCSSStyle)
     [self stringByEvaluatingJavaScriptFromString:@"getIUUpdatedFrameThread()"];
+}
+- (void)insertNewCarousel:(NSString *)identifier{
+//    NSString *newCarouselFn = [NSString stringWithFormat:@"insertNewCarousel(%@)", identifier];
+//    NSString *result = [self stringByEvaluatingJavaScriptFromString:newCarouselFn];
+    NSArray* args = [NSArray arrayWithObjects:
+                     identifier,
+                     nil];
+    [[self windowScriptObject] callWebScriptMethod:@"insertNewCarousel" withArguments:args];
+
+
+}
+
+- (void)reloadCarousels{
+    [self stringByEvaluatingJavaScriptFromString:@"reloadCarousels()"];
 }
 
 - (void)resizePageContent{
