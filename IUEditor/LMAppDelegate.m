@@ -10,6 +10,7 @@
 #import "LMWC.h"
 #import "JDLogUtil.h"
 #import "LMStartWC.h"
+#import "IUDjangoProject.h"
 
 @implementation LMAppDelegate{
     LMStartWC *startWC;
@@ -92,7 +93,7 @@
                            IUProjectKeyHeroku: @(NO),
                            IUProjectKeyDirectory: [@"~/IUProjTemp" stringByExpandingTildeInPath]};
     
-    NSString *path = [IUProject createProject:dict error:&error];
+    NSString *path = [IUDjangoProject createProject:dict error:&error];
     if (error != nil) {
         assert(0);
     }

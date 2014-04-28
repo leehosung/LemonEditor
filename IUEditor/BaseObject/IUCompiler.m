@@ -81,7 +81,8 @@
     [source replaceOccurrencesOfString:@"<!--CSS_Replacement-->" withString:[css stringByIndent:8 prependIndent:NO] options:0 range:[source fullRange]];
 
     //change html
-    NSString *html = [[self editorHTML:document] stringByIndent:8 prependIndent:YES];
+    NSString *htmlBeforeIndent = [self editorHTML:document];
+    NSString *html = [htmlBeforeIndent stringByIndent:8 prependIndent:YES];
     [source replaceOccurrencesOfString:@"<!--HTML_Replacement-->" withString:html options:0 range:[source fullRange]];
     
     JDSectionInfoLog( IULogSource, @"source : %@", [@"\n" stringByAppendingString:source]);
@@ -143,6 +144,22 @@
     return css;
 }
 
+-(NSString*)outputHTMLAsBox:(IUBox*)iu{
+    NSMutableString *code = [NSMutableString string];
+    [code appendFormat:@"<div %@ %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAttributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
+    if (iu.textHTML) {
+        [code appendFormat:@"<p>%@</p>", iu.textHTML];
+    }
+    if (iu.children.count) {
+        [code appendNewline];
+        for (IUBox *child in iu.children) {
+            [code appendString:[[self outputHTML:child] stringByIndent:4 prependIndent:YES]];
+            [code appendNewline];
+        }
+    }
+    [code appendFormat:@"</div>"];
+    return code;
+}
 
 -(NSString *)outputHTML:(IUBox *)iu{
     NSMutableString *code = [NSMutableString string];
@@ -164,6 +181,9 @@
                 }
             }
             [code appendString:@"</div>"];
+        }
+        else {
+            [code appendString:[self outputHTMLAsBox:iu]];
         }
     }
     
@@ -239,18 +259,7 @@
     
 #pragma mark IUBox
     else if ([iu isKindOfClass:[IUBox class]]) {
-        [code appendFormat:@"<div %@ %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAttributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
-        if (iu.textHTML) {
-            [code appendFormat:@"<p>%@</p>", iu.textHTML];
-        }
-        if (iu.children.count) {
-            [code appendNewline];
-            for (IUBox *child in iu.children) {
-                [code appendString:[[self outputHTML:child] stringByIndent:4 prependIndent:YES]];
-                [code appendNewline];
-            }
-        }
-        [code appendFormat:@"</div>"];
+        [code appendString:[self outputHTMLAsBox:iu]];
     }
     
     if (iu.link) {
@@ -262,6 +271,23 @@
     }
     return code;
 
+}
+
+- (NSString*)editorHTMLAsBOX:(IUBox *)iu{
+    NSMutableString *code = [NSMutableString string];
+    [code appendFormat:@"<div %@ %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAttributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
+    if (iu.textHTML) {
+        [code appendFormat:@"<p>%@</p>", iu.textHTML];
+    }
+    if (iu.children.count) {
+        [code appendNewline];
+        for (IUBox *child in iu.children) {
+            [code appendString:[[self editorHTML:child] stringByIndent:4 prependIndent:YES]];
+            [code appendNewline];
+        }
+    }
+    [code appendFormat:@"</div>"];
+    return code;
 }
 
 -(NSString *)editorHTML:(IUBox*)iu{
@@ -284,6 +310,9 @@
                 }
             }
             [code appendString:@"</div>"];
+        }
+        else {
+            [code appendString:[self editorHTMLAsBOX:iu]];
         }
     }
 #pragma mark IUImage
@@ -379,18 +408,7 @@
     }
 #pragma mark IUBox
     else if ([iu isKindOfClass:[IUBox class]]) {
-        [code appendFormat:@"<div %@ %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAttributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
-        if (iu.textHTML) {
-            [code appendFormat:@"<p>%@</p>", iu.textHTML];
-        }
-        if (iu.children.count) {
-            [code appendNewline];
-            for (IUBox *child in iu.children) {
-                [code appendString:[[self editorHTML:child] stringByIndent:4 prependIndent:YES]];
-                [code appendNewline];
-            }
-        }
-        [code appendFormat:@"</div>"];
+        [code appendString:[self editorHTMLAsBOX:iu]];
     }
     
     if (iu.link) {
