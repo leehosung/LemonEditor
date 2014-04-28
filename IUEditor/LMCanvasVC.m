@@ -369,7 +369,7 @@
 
 
 -(void)IU:(NSString*)identifier CSSChanged:(NSString*)css forWidth:(NSInteger)width{
-    JDDebugLog(@"[%@:width:%ld] / %@ ", identifier, width, css);
+    JDTraceLog(@"[%@:width:%ld] / %@ ", identifier, width, css);
     
     NSString *cssText = [NSString stringWithFormat:@"#%@{%@}", identifier, css];
     if(width == IUCSSDefaultCollection){

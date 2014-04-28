@@ -23,6 +23,9 @@
 #import "IUMovie.h"
 #import "IUWebMovie.h"
 #import "IUFBLike.h"
+#import "IUCarousel.h"
+#import "IUItem.h"
+#import "IUCarouselItem.h"
 
 @implementation IUCompiler{
 }
@@ -186,6 +189,24 @@
             [code appendString:[self outputHTMLAsBox:iu]];
         }
     }
+#pragma mark IUCarouselItem
+    else if([iu isKindOfClass:[IUCarouselItem class]]){
+        [code appendString:@"<li>"];
+        [code appendFormat:@"<img src='http://31.media.tumblr.com/d83b99e22981d5e58e2bd74ed2494087/tumblr_n4ef3ynCZP1st5lhmo1_1280.jpg' />"];
+        
+        [code appendString:@"</li>"];
+    }
+#pragma mark IUCarousel
+    else if([iu isKindOfClass:[IUCarousel class]]){
+        [code appendFormat:@"<div %@ %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAttributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
+        [code appendString:@"<ul class='bxslider'>\n"];
+        for(IUItem *item in iu.children){
+            [code appendString:[[self editorHTML:item] stringByIndent:4 prependIndent:YES]];
+            [code appendNewline];
+        }
+        
+        [code appendString:@"</ul></div>"];
+    }
     
 #pragma mark IUMovie
     else if([iu isKindOfClass:[IUMovie class]]){
@@ -314,6 +335,24 @@
         else {
             [code appendString:[self editorHTMLAsBOX:iu]];
         }
+    }
+#pragma mark IUCarouselItem
+    else if([iu isKindOfClass:[IUCarouselItem class]]){
+        [code appendString:@"<li>"];
+        [code appendFormat:@"<img src='http://31.media.tumblr.com/d83b99e22981d5e58e2bd74ed2494087/tumblr_n4ef3ynCZP1st5lhmo1_1280.jpg' />"];
+        
+        [code appendString:@"</li>"];
+    }
+#pragma mark IUCarousel
+    else if([iu isKindOfClass:[IUCarousel class]]){
+        [code appendFormat:@"<div %@ %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAttributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
+        [code appendString:@"<ul class='bxslider'>\n"];
+        for(IUItem *item in iu.children){
+            [code appendString:[[self editorHTML:item] stringByIndent:4 prependIndent:YES]];
+            [code appendNewline];
+        }
+        
+        [code appendString:@"</ul></div>"];
     }
 #pragma mark IUImage
     else if([iu isKindOfClass:[IUImage class]]){
