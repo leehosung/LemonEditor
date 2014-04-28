@@ -35,8 +35,7 @@
     
     [_directionMatrix bind:NSSelectedIndexBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagVisibleDirection] options:IUBindingDictNotRaisesApplicable];
     
-    
-
+ 
 }
 
 
