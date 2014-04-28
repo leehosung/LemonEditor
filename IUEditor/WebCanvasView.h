@@ -16,6 +16,8 @@
 
 //call javascript
 - (void)updateFrameDict;
+- (void)insertNewCarousel:(NSString *)identifier;
+- (void)reloadCarousels;
 - (void)resizePageContent;
 
 #pragma mark -

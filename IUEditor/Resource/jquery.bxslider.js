@@ -8,6 +8,10 @@
  * Released under the MIT license - http://opensource.org/licenses/MIT
  */
 
+
+var carouselArray = [];
+var loadedCarouselArray = [];
+
 ;(function($){
 
 	var plugin = {};
@@ -88,13 +92,8 @@
 	}
 
 	$.fn.bxSlider = function(options){
-        console.log("bxslider");
-		if(this.length == 0) return this;
 
-        if(this.parent().attr('class') == "bx-viewport"){
-            this.reloadSlider();
-            return this;
-        }
+		if(this.length == 0) return this;
 
 		// support mutltiple elements
 		if(this.length > 1){
@@ -116,7 +115,6 @@
 		var windowHeight = $(window).height();
 
 
-
 		/**
 		 * ===================================================================================
 		 * = PRIVATE FUNCTIONS
@@ -127,6 +125,7 @@
 		 * Initializes namespace settings to be used throughout plugin
 		 */
 		var init = function(){
+
 			// merge user-supplied options with the defaults
 			slider.settings = $.extend({}, defaults, options);
 			// parse slideWidth setting
@@ -188,20 +187,12 @@
 		 */
 		var setup = function(){
             console.log("setup")
-            if(slider.iu != undefined){
-                slider.iu.removeAttr('style');
-                console.log("style remove");
-            }
-  
+
             if(el.parent().attr('class') != "bx-viewport"){
                 slider.iu = el.parent();
                 console.log("iu set");
             }
-            if(slider.iu != undefined){
-                slider.iuHeight = parseFloat(slider.iu.css('height'));
-                slider.iu.css('height', 'auto');
-                console.log("reset");
-            }
+
 			// wrap el in a wrapper
 			el.wrap('<div class="' + slider.settings.wrapperClass + '"><div class="bx-viewport"></div></div>');
 			// store a namspace reference to .bx-viewport
@@ -213,7 +204,9 @@
 			// also strip any margin and padding from el
 			el.css({
 				width: slider.settings.mode == 'horizontal' ? (slider.children.length * 100 + 215) + '%' : 'auto',
-				position: 'relative'
+				position: 'relative',
+                height: '100%'
+                   
 			});
 			// if using CSS, add the easing property
 			if(slider.usingCSS && slider.settings.easing){
@@ -242,7 +235,8 @@
 			slider.children.css({
 				'float': slider.settings.mode == 'horizontal' ? 'left' : 'none',
 				listStyle: 'none',
-				position: 'relative'
+				position: 'relative',
+                height:'100%'
 			});
 			// apply the calculated width after the float is applied to prevent scrollbar interference
 			slider.children.css('width', getSlideWidth());
@@ -385,12 +379,23 @@
 				}
 			// if not "vertical" mode, calculate the max height of the children
 			}else{
-                height = slider.iuHeight;
-				/*
-                 height = Math.max.apply(Math, children.map(function(){
-					return $(this).outerHeight(false);
-				}).get());
-                 */
+
+  
+            height = Math.max.apply(Math, children.map(function(){
+                    return $(this).outerHeight(false);
+            }).get());
+  
+  
+            if(slider.iu != undefined){
+  
+  
+                slider.iu.removeAttr('style');
+                console.log("style remove");
+                height = slider.iu.css('height');
+                slider.iu.css('height', 'auto');
+                console.log("reset");
+                }
+  
 			}
 
 			if(slider.viewport.css('box-sizing') == 'border-box'){
@@ -1365,7 +1370,31 @@
 
 })(jQuery);
 
+
+function insertNewCarousel(iuid){
+    console.log(iuid);
+    console.log($('#bxslider_')+iuid);
+    
+    if(loadedCarouselArray.indexOf(iuid) < 0 ){
+        console.log("insertNewCarousel");
+        var newCarousel = $('#bxslider_'+iuid).bxSlider();
+        carouselArray.push(newCarousel);
+        loadedCarouselArray.push(iuid);
+    }
+}
+
+function reloadCarousels(){
+    $.each(carouselArray, function(index, slider){
+           slider.redrawSlider();
+           }); 
+}
+
+
 $(document).ready(function(){
-        $('.bxslider').bxSlider();
+     console.log("ready : bxslider(carousel)")
+    $('.IUCarousel').each(function(){
+            var iuid = $(this).attr('id');
+            insertNewCarousel(iuid);
+    });
 });
 

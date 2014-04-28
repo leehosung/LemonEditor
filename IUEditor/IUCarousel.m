@@ -16,7 +16,13 @@
 -(id)initWithManager:(IUIdentifierManager *)manager{
     assert(manager!=nil);
     self = [super initWithManager:manager];
-    self.count = 3;
+    if(self){
+        self.count = 3;
+        
+        [self.css setValue:@(500) forTag:IUCSSTagWidth forWidth:IUCSSDefaultCollection];
+        [self.css setValue:@(300) forTag:IUCSSTagHeight forWidth:IUCSSDefaultCollection];
+    }
+
     return self;
 }
 
@@ -36,6 +42,7 @@
         item.htmlID = [self.identifierManager requestNewIdentifierWithKey:@"IUCarouselItem"];
         [self.identifierManager addIU:item];
         item.name = @"Item";
+        item.carousel = self;
         [self addIU:item error:nil];
         count--;
     }

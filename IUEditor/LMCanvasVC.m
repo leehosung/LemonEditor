@@ -14,6 +14,7 @@
 #import "SizeView.h"
 #import "IUFrameDictionary.h"
 #import "IUBox.h"
+#import "IUCarousel.h"
 #import "InnerSizeBox.h"
 
 @interface LMCanvasVC ()
@@ -356,6 +357,11 @@
         [selectHTMLElement appendChild:newElement];
         
         [newElement setOuterHTML:html];
+        
+        IUBox *iu = [_controller IUBoxByIdentifier:identifier];
+        if([iu isKindOfClass:[IUCarousel class]]){
+            [[self webView] insertNewCarousel:identifier];
+        }
     }
     
     JDDebugLog(@"%@:%@", identifier, html);
@@ -437,6 +443,7 @@
     [styleSheet setInnerHTML:newCSSText];
     
     [[self webView] updateFrameDict];
+    [[self webView] reloadCarousels];
     
 }
 
@@ -649,11 +656,11 @@
     NSString *htmlSource =  [(DOMHTMLElement *)[[[[self webView] mainFrame] DOMDocument] documentElement] outerHTML];
     return htmlSource;
 }
-//TODO: remove it
-- (void)showCurrentSource{
+
+//FIXME: debug
+- (IBAction)showCurrentSource:(id)sender {
     NSString *htmlSource =  [(DOMHTMLElement *)[[[[self webView] mainFrame] DOMDocument] documentElement] outerHTML];
     JDInfoLog(@"\n%@\n",htmlSource);
-
 }
 
 

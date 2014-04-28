@@ -10,4 +10,8 @@
 
 @implementation IUCarouselItem
 
+- (BOOL)shouldAddIU{
+    return NO;
+}
+
 @end
