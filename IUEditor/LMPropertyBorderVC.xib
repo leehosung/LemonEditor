@@ -108,7 +108,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <stepperCell key="cell" controlSize="mini" continuous="YES" alignment="left" maxValue="100" id="joi-36-P9L"/>
                             </stepper>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rjf-EA-9xh">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rjf-EA-9xh">
                                 <rect key="frame" x="161" y="11" width="39" height="14"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Radius" id="ggh-uq-Gzm">
@@ -126,6 +126,12 @@
                             </box>
                         </subviews>
                     </view>
+                    <constraints>
+                        <constraint firstItem="ZJ9-1e-ySj" firstAttribute="top" secondItem="4Qf-r2-GGk" secondAttribute="top" constant="3" id="I0Z-UL-evB"/>
+                        <constraint firstAttribute="trailing" secondItem="Bx6-hg-VhV" secondAttribute="trailing" constant="10" id="UMA-VG-YXR"/>
+                        <constraint firstItem="ZJ9-1e-ySj" firstAttribute="leading" secondItem="Rjf-EA-9xh" secondAttribute="trailing" constant="2" id="pp1-Kb-wep"/>
+                        <constraint firstItem="Bx6-hg-VhV" firstAttribute="top" secondItem="4Qf-r2-GGk" secondAttribute="top" constant="3" id="yeV-dj-HsM"/>
+                    </constraints>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </box>
@@ -174,7 +180,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aqx-yn-FIK">
+                            <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aqx-yn-FIK">
                                 <rect key="frame" x="65" y="128" width="13" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <stepperCell key="cell" controlSize="mini" continuous="YES" alignment="left" maxValue="100" id="j9w-en-YEW"/>
@@ -191,7 +197,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LUP-A5-LCd">
+                            <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LUP-A5-LCd">
                                 <rect key="frame" x="220" y="128" width="13" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <stepperCell key="cell" controlSize="mini" continuous="YES" alignment="left" maxValue="100" id="OrJ-oI-vVi"/>
@@ -208,7 +214,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Ao-Py-il5">
+                            <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Ao-Py-il5">
                                 <rect key="frame" x="144" y="18" width="13" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <stepperCell key="cell" controlSize="mini" continuous="YES" alignment="left" maxValue="100" id="Dq5-Zd-75X"/>
@@ -359,6 +365,28 @@
                             </colorWell>
                         </subviews>
                     </view>
+                    <constraints>
+                        <constraint firstItem="uMd-ZN-vr7" firstAttribute="top" secondItem="LJs-io-JRl" secondAttribute="top" constant="16" id="3R1-Fg-1Jh"/>
+                        <constraint firstItem="gj9-l1-xeC" firstAttribute="top" secondItem="zdN-bv-ZAE" secondAttribute="bottom" constant="28" id="3SF-Sf-018"/>
+                        <constraint firstItem="DPb-av-Mr0" firstAttribute="top" secondItem="LJs-io-JRl" secondAttribute="top" constant="55" id="5Ef-ht-VB7"/>
+                        <constraint firstItem="gj9-l1-xeC" firstAttribute="leading" secondItem="llO-Y9-nON" secondAttribute="trailing" constant="19" id="6fu-Rb-ekt"/>
+                        <constraint firstItem="SN2-YK-SV7" firstAttribute="top" secondItem="zPV-Mp-FE9" secondAttribute="bottom" constant="21" id="96e-fr-h6s"/>
+                        <constraint firstItem="Pcy-BM-GwJ" firstAttribute="top" secondItem="LJs-io-JRl" secondAttribute="top" constant="16" id="CV9-Ue-Ey9"/>
+                        <constraint firstItem="zdN-bv-ZAE" firstAttribute="leading" secondItem="llO-Y9-nON" secondAttribute="trailing" constant="19" id="DTw-OL-Sx0"/>
+                        <constraint firstItem="zPV-Mp-FE9" firstAttribute="leading" secondItem="Aqx-yn-FIK" secondAttribute="trailing" constant="37" id="HKy-Sq-YIu"/>
+                        <constraint firstItem="zPV-Mp-FE9" firstAttribute="top" secondItem="LJs-io-JRl" secondAttribute="top" constant="16" id="IT2-Rg-eBq"/>
+                        <constraint firstItem="hd3-du-ZEe" firstAttribute="top" secondItem="SN2-YK-SV7" secondAttribute="bottom" constant="15" id="MUD-cA-xbb"/>
+                        <constraint firstItem="4em-hr-cgq" firstAttribute="leading" secondItem="7Ao-Py-il5" secondAttribute="trailing" constant="34" id="WDw-NC-auy"/>
+                        <constraint firstItem="SN2-YK-SV7" firstAttribute="leading" secondItem="LJs-io-JRl" secondAttribute="leading" constant="104" id="eQ6-38-4gO"/>
+                        <constraint firstAttribute="bottom" secondItem="4em-hr-cgq" secondAttribute="bottom" constant="16" id="eXF-My-2xX"/>
+                        <constraint firstItem="t8x-MP-oQs" firstAttribute="leading" secondItem="DPb-av-Mr0" secondAttribute="trailing" constant="29" id="f8a-Zc-R1N"/>
+                        <constraint firstItem="9ho-jI-YY6" firstAttribute="leading" secondItem="LJs-io-JRl" secondAttribute="leading" constant="35" id="gCL-L8-r5z"/>
+                        <constraint firstItem="zdN-bv-ZAE" firstAttribute="top" secondItem="zPV-Mp-FE9" secondAttribute="bottom" constant="14" id="hsB-nq-cl7"/>
+                        <constraint firstItem="t8x-MP-oQs" firstAttribute="leading" secondItem="hd3-du-ZEe" secondAttribute="trailing" constant="21" id="mqf-DM-iNq"/>
+                        <constraint firstItem="LUP-A5-LCd" firstAttribute="leading" secondItem="Pcy-BM-GwJ" secondAttribute="trailing" constant="3" id="p8s-xL-ogj"/>
+                        <constraint firstItem="uMd-ZN-vr7" firstAttribute="leading" secondItem="LJs-io-JRl" secondAttribute="leading" constant="35" id="yXr-j4-rJS"/>
+                        <constraint firstItem="9ho-jI-YY6" firstAttribute="top" secondItem="uMd-ZN-vr7" secondAttribute="bottom" constant="37" id="zOh-r3-AK7"/>
+                    </constraints>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </box>

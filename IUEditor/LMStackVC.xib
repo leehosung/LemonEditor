@@ -27,14 +27,14 @@
             <rect key="frame" x="0.0" y="0.0" width="221" height="494"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <box autoresizesSubviews="NO" ambiguous="YES" misplaced="YES" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="7hl-8X-7jj">
+                <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="7hl-8X-7jj">
                     <rect key="frame" x="-1" y="464" width="223" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView">
                         <rect key="frame" x="1" y="1" width="221" height="29"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B5k-h0-2Mj">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="B5k-h0-2Mj">
                                 <rect key="frame" x="6" y="8" width="35" height="14"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Stack" id="i3U-fk-oFS">
@@ -46,6 +46,7 @@
                         </subviews>
                     </view>
                     <constraints>
+                        <constraint firstAttribute="height" constant="31" id="Ldc-92-6ps"/>
                         <constraint firstAttribute="centerY" secondItem="B5k-h0-2Mj" secondAttribute="centerY" id="jR9-gB-O9K"/>
                         <constraint firstItem="B5k-h0-2Mj" firstAttribute="leading" secondItem="7hl-8X-7jj" secondAttribute="leading" constant="9" id="wfE-TR-9nx"/>
                     </constraints>
