@@ -6,6 +6,10 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyVisibleVC">
             <connections>
+                <outlet property="directionMatrix" destination="Zam-ff-ZkH" id="hdn-rU-SML"/>
+                <outlet property="durationStepper" destination="joG-uB-on2" id="txb-83-DPB"/>
+                <outlet property="durationTF" destination="lQA-co-gTM" id="g41-XK-tcr"/>
+                <outlet property="equationTF" destination="GzX-IT-wOn" id="EAe-uH-AsA"/>
                 <outlet property="view" destination="f6W-oU-jjU" id="auE-05-KRz"/>
             </connections>
         </customObject>
