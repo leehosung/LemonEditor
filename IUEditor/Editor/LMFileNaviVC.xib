@@ -42,11 +42,11 @@
                     <color key="borderColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="fillColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                 </box>
-                <scrollView misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="26" horizontalPageScroll="10" verticalLineScroll="26" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FrB-qu-8vr" userLabel="Page navigation">
-                    <rect key="frame" x="0.0" y="0.0" width="220" height="240"/>
+                <scrollView autohidesScrollers="YES" horizontalLineScroll="26" horizontalPageScroll="10" verticalLineScroll="26" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FrB-qu-8vr" userLabel="Page navigation">
+                    <rect key="frame" x="-1" y="-1" width="221" height="242"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <clipView key="contentView" misplaced="YES" id="MON-n8-pf1">
-                        <rect key="frame" x="1" y="1" width="218" height="238"/>
+                    <clipView key="contentView" id="MON-n8-pf1">
+                        <rect key="frame" x="1" y="1" width="219" height="240"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowHeight="26" viewBased="YES" indentationPerLevel="4" outlineTableColumn="IcS-xl-hS5" id="1aw-gA-pJZ">
@@ -55,7 +55,7 @@
                                 <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn width="218" minWidth="16" maxWidth="1000" id="IcS-xl-hS5">
+                                    <tableColumn width="219" minWidth="16" maxWidth="1000" id="IcS-xl-hS5">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -69,11 +69,11 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView identifier="folder" autoresizesSubviews="NO" id="g4r-sk-ZPU" userLabel="folder">
-                                                <rect key="frame" x="0.0" y="0.0" width="218" height="26"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="219" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s1Y-fM-b9U">
-                                                        <rect key="frame" x="8" y="8" width="18" height="14"/>
+                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s1Y-fM-b9U">
+                                                        <rect key="frame" x="8" y="6" width="18" height="14"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="18" id="B2d-Nn-nTO"/>
@@ -81,8 +81,8 @@
                                                         </constraints>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ic_folder" id="Dvh-dM-wY7"/>
                                                     </imageView>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hgM-4r-R1e">
-                                                        <rect key="frame" x="29" y="7" width="190" height="14"/>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="hgM-4r-R1e">
+                                                        <rect key="frame" x="27" y="6" width="191" height="14"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Page" id="mhN-tV-G5U">
                                                             <font key="font" size="11" name="LucidaGrande"/>
@@ -107,11 +107,11 @@
                                                 </connections>
                                             </tableCellView>
                                             <tableCellView identifier="pageFile" autoresizesSubviews="NO" id="5zw-S7-8PC" userLabel="page file">
-                                                <rect key="frame" x="0.0" y="26" width="218" height="26"/>
+                                                <rect key="frame" x="0.0" y="26" width="219" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mM7-gX-W1U">
-                                                        <rect key="frame" x="8" y="6" width="14" height="18"/>
+                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mM7-gX-W1U">
+                                                        <rect key="frame" x="8" y="4" width="14" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="14" id="1xW-4X-udl"/>
@@ -119,8 +119,8 @@
                                                         </constraints>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="ic_page" id="Bsb-Yk-6RD"/>
                                                     </imageView>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dw3-VS-Njg">
-                                                        <rect key="frame" x="25" y="7" width="194" height="14"/>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Dw3-VS-Njg">
+                                                        <rect key="frame" x="23" y="6" width="195" height="14"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="index.pgiu" id="X36-9M-OGa">
                                                             <font key="font" size="11" name="LucidaGrande"/>
@@ -145,16 +145,16 @@
                                                 </connections>
                                             </tableCellView>
                                             <tableCellView identifier="backgroundFile" autoresizesSubviews="NO" id="LdS-gs-NuF" userLabel="master file">
-                                                <rect key="frame" x="0.0" y="52" width="218" height="26"/>
+                                                <rect key="frame" x="0.0" y="52" width="219" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AUw-qz-03g">
-                                                        <rect key="frame" x="8" y="6" width="14" height="18"/>
+                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AUw-qz-03g">
+                                                        <rect key="frame" x="8" y="4" width="14" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ic_background" id="4Me-Hi-DVC"/>
                                                     </imageView>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q7g-kV-gNd">
-                                                        <rect key="frame" x="25" y="7" width="194" height="14"/>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="q7g-kV-gNd">
+                                                        <rect key="frame" x="23" y="6" width="195" height="14"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="master" id="xxF-yW-1Xa">
                                                             <font key="font" size="11" name="LucidaGrande"/>
@@ -179,16 +179,16 @@
                                                 </connections>
                                             </tableCellView>
                                             <tableCellView identifier="classFile" autoresizesSubviews="NO" id="05k-SR-JPG" userLabel="class file">
-                                                <rect key="frame" x="0.0" y="78" width="218" height="26"/>
+                                                <rect key="frame" x="0.0" y="78" width="219" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HHQ-QB-U4H">
-                                                        <rect key="frame" x="8" y="6" width="14" height="18"/>
+                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HHQ-QB-U4H">
+                                                        <rect key="frame" x="8" y="4" width="14" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ic_comp" id="lKq-aV-QRE"/>
                                                     </imageView>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ln7-nC-PoA">
-                                                        <rect key="frame" x="25" y="7" width="194" height="14"/>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Ln7-nC-PoA">
+                                                        <rect key="frame" x="23" y="6" width="195" height="14"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="master" id="BJh-uz-sc7">
                                                             <font key="font" size="11" name="LucidaGrande"/>
@@ -213,16 +213,16 @@
                                                 </connections>
                                             </tableCellView>
                                             <tableCellView identifier="imageFile" autoresizesSubviews="NO" id="uu9-qM-3y2" userLabel="image">
-                                                <rect key="frame" x="0.0" y="104" width="218" height="26"/>
+                                                <rect key="frame" x="0.0" y="104" width="219" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EeA-UN-IXX">
-                                                        <rect key="frame" x="8" y="6" width="14" height="18"/>
+                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EeA-UN-IXX">
+                                                        <rect key="frame" x="8" y="4" width="14" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ic_image" id="TaL-UW-AMC"/>
                                                     </imageView>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fv6-wY-h54">
-                                                        <rect key="frame" x="25" y="7" width="194" height="14"/>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="fv6-wY-h54">
+                                                        <rect key="frame" x="23" y="6" width="195" height="14"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="image file" id="nYU-C2-bIg">
                                                             <font key="font" size="11" name="LucidaGrande"/>
@@ -247,16 +247,16 @@
                                                 </connections>
                                             </tableCellView>
                                             <tableCellView identifier="videoFile" autoresizesSubviews="NO" id="Mjq-0T-CVg" userLabel="video">
-                                                <rect key="frame" x="0.0" y="130" width="218" height="26"/>
+                                                <rect key="frame" x="0.0" y="130" width="219" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d32-js-1v1">
-                                                        <rect key="frame" x="8" y="6" width="14" height="18"/>
+                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d32-js-1v1">
+                                                        <rect key="frame" x="8" y="4" width="14" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ic_movie" id="dCv-wS-SYW"/>
                                                     </imageView>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S2i-Ki-GAe">
-                                                        <rect key="frame" x="25" y="7" width="194" height="14"/>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="S2i-Ki-GAe">
+                                                        <rect key="frame" x="23" y="6" width="195" height="14"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="video file" id="YfO-fB-acb">
                                                             <font key="font" size="11" name="LucidaGrande"/>
@@ -281,16 +281,16 @@
                                                 </connections>
                                             </tableCellView>
                                             <tableCellView identifier="cssFile" autoresizesSubviews="NO" id="amj-x3-yZx" userLabel="css file">
-                                                <rect key="frame" x="0.0" y="156" width="218" height="26"/>
+                                                <rect key="frame" x="0.0" y="156" width="219" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NPt-8b-0nz">
-                                                        <rect key="frame" x="8" y="6" width="14" height="18"/>
+                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NPt-8b-0nz">
+                                                        <rect key="frame" x="8" y="4" width="14" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ic_css" id="krE-rr-jll"/>
                                                     </imageView>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xwe-zu-n9A">
-                                                        <rect key="frame" x="25" y="7" width="194" height="14"/>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Xwe-zu-n9A">
+                                                        <rect key="frame" x="23" y="6" width="195" height="14"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="css file" id="DBO-yL-T66">
                                                             <font key="font" size="11" name="LucidaGrande"/>
@@ -315,16 +315,16 @@
                                                 </connections>
                                             </tableCellView>
                                             <tableCellView identifier="JSFile" autoresizesSubviews="NO" id="LF9-oT-gcv" userLabel="comp file">
-                                                <rect key="frame" x="0.0" y="182" width="218" height="26"/>
+                                                <rect key="frame" x="0.0" y="182" width="219" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zqW-gx-UL3">
-                                                        <rect key="frame" x="8" y="6" width="14" height="18"/>
+                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zqW-gx-UL3">
+                                                        <rect key="frame" x="8" y="4" width="14" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ic_js" id="Z5u-C1-NjV"/>
                                                     </imageView>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DEl-Au-e6B">
-                                                        <rect key="frame" x="25" y="7" width="194" height="14"/>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="DEl-Au-e6B">
+                                                        <rect key="frame" x="23" y="6" width="195" height="14"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="js file" id="y60-K6-XFD">
                                                             <font key="font" size="11" name="LucidaGrande"/>
