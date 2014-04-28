@@ -28,7 +28,7 @@
 
 - (void)awakeFromNib{
     [_currentEditB bind:@"selectedIndex" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"currentEdit"] options:IUBindingDictNotRaisesApplicable];
-    [_eventB bind:@"selectedValue" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"event"] options:IUBindingDictNotRaisesApplicable];
+    [_eventB bind:@"selectedValue" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"eventType"] options:IUBindingDictNotRaisesApplicable];
     [_animationB bind:@"selectedValue" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"animation"] options:IUBindingDictNotRaisesApplicable];
 }
 

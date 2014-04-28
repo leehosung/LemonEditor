@@ -11,7 +11,7 @@
 @interface IUTransition : IUBox
 
 @property (nonatomic) NSInteger currentEdit;
-@property (nonatomic) NSString  *event;
+@property (nonatomic) NSString  *eventType;
 @property (nonatomic) NSString  *animation;
 
 @end

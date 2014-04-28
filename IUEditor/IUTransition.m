@@ -43,7 +43,7 @@
     [self addIU:_firstItem error:nil];
     [self addIU:_secondItem error:nil];
     self.currentEdit = 0;
-    self.event = @"Click";
+    self.eventType = @"Click";
     self.animation = @"Overlap";
     return self;
 }
