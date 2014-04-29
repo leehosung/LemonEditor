@@ -36,6 +36,14 @@ $.fn.iuPosition = function(){
     var x = $(this).offset().left;
     var y = $(this).offset().top;
     
+    //carouselitem position
+    var carouselID = $(this).attr('carouselID');
+    
+    if(carouselID != undefined){
+        var carousel = document.getElementById(carouselID)
+        x = $(carousel).iuPosition().x
+    }
+    
 	if($(this).css('position') == "relative"){
 		var marginTop =  parseFloat($(this).css('margin-top'));
 		var marginLeft = parseFloat($(this).css('margin-left'));
@@ -87,7 +95,6 @@ function getIUUpdatedFrameThread(){
     //새로운 인풋이 들어왔을때 변해야 하면 이곳에서 호출
     //editor mode 에서
     $('.IUBox').updatePixel();
-    $('.bxslider').bxSlider();
     
     if (Object.keys(document.sharedFrameDict).length > 0
         && console.reportFrameDict ){
