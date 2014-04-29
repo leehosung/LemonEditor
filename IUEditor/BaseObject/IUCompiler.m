@@ -628,21 +628,25 @@
             NSString *resourcePath = [_resourceSource relativePathForResource:value];
             [dict putTag:@"background-image" string:[resourcePath CSSURLString]];
             
-            id bgValue = cssTagDict[IUCSSTagBGSize];
-            if ([bgValue isEqualToString:@"Auto"] == NO) {
-                
-                if([bgValue isEqualToString:@"Stretch"]){
-                    [dict putTag:@"background-size" string:@"100%% 100%%"];
-                }
-                else if([bgValue isEqualToString:@"Center"]){
+            int bgSizeType = [cssTagDict[IUCSSTagBGSize] intValue];
+            switch (bgSizeType) {
+                case IUBGSizeTypeCenter:
                     [dict putTag:@"background-position" string:@"center"];
-                }
-                else{
-                    [dict putTag:@"background-size" string:bgValue];
-                }
+                    break;
+                case IUBGSizeTypeStretch:
+                    [dict putTag:@"background-size" string:@"100%% 100%%"];
+                    break;
+                case IUBGSizeTypeContain:
+                    [dict putTag:@"background-size" string:@"contain"];
+                    break;
+                case IUBGSizeTypeCover:
+                    [dict putTag:@"background-size" string:@"cover"];
+                    break;
+                default:
+                    break;
             }
             
-            bgValue = cssTagDict[IUCSSTagBGXPosition];
+            id bgValue = cssTagDict[IUCSSTagBGXPosition];
             [dict putTag:@"background-position-x" intValue:[bgValue intValue] ignoreZero:YES unit:IUCSSUnitPixel];
             
             bgValue = cssTagDict[IUCSSTagBGYPosition];
