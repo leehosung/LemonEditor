@@ -81,7 +81,7 @@
         
         //background
         [_css setValue:[NSColor randomColor] forTag:IUCSSTagBGColor forWidth:IUCSSDefaultCollection];
-        [_css setValue:@"Auto" forTag:IUCSSTagBGSize forWidth:IUCSSDefaultCollection];
+        [_css setValue:@(0) forTag:IUCSSTagBGSize forWidth:IUCSSDefaultCollection];
         [_css setValue:@(0) forTag:IUCSSTagBGXPosition forWidth:IUCSSDefaultCollection];
         [_css setValue:@(0) forTag:IUCSSTagBGYPosition forWidth:IUCSSDefaultCollection];
         

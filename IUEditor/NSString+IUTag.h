@@ -61,6 +61,14 @@
 //background-image css
 #define IUCSSTagImage @"background-image"
 #define IUCSSTagBGSize @"background-size"
+typedef enum{
+    IUBGSizeTypeAuto,
+    IUBGSizeTypeCover,
+    IUBGSizeTypeContain,
+    IUBGSizeTypeStretch,
+    IUBGSizeTypeCenter,
+}IUBGSizeType;
+
 #define IUCSSTagBGXPosition @"bgX"
 #define IUCSSTagBGYPosition @"bgY"
 #define IUCSSTagBGColor @"background-color"
