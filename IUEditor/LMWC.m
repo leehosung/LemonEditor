@@ -175,12 +175,11 @@
     _compiler = [[IUCompiler alloc] init];
     _resourceManager.rootNode = _project.resourceNode;
     _compiler.resourceSource = _resourceManager;
-    IUCompileRule rule;
     if ([_project isKindOfClass:[IUDjangoProject class]]) {
-        rule = IUCompileRuleDjango;
+        _compiler.rule = IUCompileRuleDjango;
     }
     else {
-        rule = IUCompileRuleDefault;
+        _compiler.rule = IUCompileRuleDefault;
     }
     
     NSArray *documensNode = [_project.allChildren filteredArrayWithClass:[IUDocumentNode class]];

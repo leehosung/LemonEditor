@@ -21,6 +21,7 @@
 #import "LMPropertyIUWebMovieVC.h"
 #import "LMPropertyIUImportVC.h"
 #import "LMPropertyIUTextFieldVC.h"
+#import "LMPropertyIUCollectionVC.h"
 
 @interface LMIUInspectorVC (){
     
@@ -38,6 +39,7 @@
     
     LMPropertyIUMailLinkVC  *propertyIUMailLinkVC;
     LMPropertyIUTextFieldVC *propertyIUTextFieldVC;
+    LMPropertyIUCollectionVC  *propertyIUCollectionVC;
     
     NSArray *propertyVCArray;
     NSMutableArray *selectedIUCellVArray;
@@ -69,6 +71,7 @@
         propertyIUMailLinkVC = [[LMPropertyIUMailLinkVC alloc] initWithNibName:[LMPropertyIUMailLinkVC class].className bundle:nil];
 
         propertyIUTextFieldVC = [[LMPropertyIUTextFieldVC alloc] initWithNibName:[LMPropertyIUTextFieldVC class].className bundle:nil];
+        propertyIUCollectionVC = [[LMPropertyIUCollectionVC alloc] initWithNibName:[LMPropertyIUCollectionVC class].className bundle:nil];
 
         
         
@@ -84,6 +87,7 @@
                            @"propertyIUImportVC",
                            @"propertyIUMailLinkVC",
                            @"propertyIUTextFieldVC",
+                           @"propertyIUCollectionVC",
                            nil];
         selectedIUCellVArray = [NSMutableArray array];
         
@@ -108,6 +112,9 @@
     
     [propertyIUMailLinkVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     [propertyIUTextFieldVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+    
+    [propertyIUCollectionVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+
 }
 
 - (void)setPageDocumentNodes:(NSArray *)pageDocumentNodes{

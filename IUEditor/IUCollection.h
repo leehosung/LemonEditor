@@ -9,5 +9,5 @@
 #import "IUImport.h"
 
 @interface IUCollection : IUImport
-
+@property NSString *collectionVariable;
 @end

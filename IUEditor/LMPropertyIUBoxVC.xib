@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyIUBoxVC">
             <connections>
                 <outlet property="linkCB" destination="gJ1-3i-9Vd" id="RJH-5h-a2Y"/>
+                <outlet property="textVariableTF" destination="l8W-uL-Jnw" id="WCH-oZ-VhG"/>
                 <outlet property="view" destination="BvW-sU-T2v" id="sPh-Xq-ao6"/>
             </connections>
         </customObject>
@@ -49,8 +50,8 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </comboBoxCell>
                             </comboBox>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BsP-Ge-rDV">
-                                <rect key="frame" x="4" y="22" width="70" height="17"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BsP-Ge-rDV">
+                                <rect key="frame" x="4" y="26" width="70" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="66" id="HK8-2c-dzC"/>
@@ -62,8 +63,8 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gJ1-3i-9Vd" userLabel="Link">
-                                <rect key="frame" x="78" y="18" width="187" height="22"/>
+                            <comboBox verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gJ1-3i-9Vd" userLabel="Link">
+                                <rect key="frame" x="78" y="22" width="187" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="184" id="QBz-A2-pLI"/>
@@ -78,6 +79,28 @@
                                     <binding destination="toG-DQ-ma4" name="content" keyPath="arrangedObjects.name" id="L7d-QZ-XF2"/>
                                 </connections>
                             </comboBox>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hMg-A5-d1n">
+                                <rect key="frame" x="4" y="10" width="70" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="5BI-9r-0Wb"/>
+                                    <constraint firstAttribute="width" constant="66" id="LoP-eb-ofq"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="text variable" id="PJJ-oY-SGF">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l8W-uL-Jnw">
+                                <rect key="frame" x="80" y="8" width="184" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="w2W-u8-p3m">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <constraints>
@@ -85,10 +108,12 @@
                         <constraint firstItem="eM8-xB-Lv7" firstAttribute="leading" secondItem="y69-aG-7Gm" secondAttribute="leading" constant="6" id="6tT-N0-caP"/>
                         <constraint firstItem="gJ1-3i-9Vd" firstAttribute="top" secondItem="USX-Qg-Ons" secondAttribute="bottom" constant="10" id="B4k-VK-ndk"/>
                         <constraint firstItem="BsP-Ge-rDV" firstAttribute="leading" secondItem="y69-aG-7Gm" secondAttribute="leading" constant="6" id="JEP-cn-KSH"/>
+                        <constraint firstItem="hMg-A5-d1n" firstAttribute="leading" secondItem="BsP-Ge-rDV" secondAttribute="leading" id="WdN-nz-RoP"/>
                         <constraint firstItem="BsP-Ge-rDV" firstAttribute="top" secondItem="eM8-xB-Lv7" secondAttribute="bottom" constant="8" id="Xp3-IF-rVz"/>
                         <constraint firstAttribute="height" constant="70" id="cYe-26-QhH"/>
                         <constraint firstItem="USX-Qg-Ons" firstAttribute="leading" secondItem="eM8-xB-Lv7" secondAttribute="trailing" constant="6" id="eF5-iE-oLW"/>
                         <constraint firstItem="gJ1-3i-9Vd" firstAttribute="leading" secondItem="BsP-Ge-rDV" secondAttribute="trailing" constant="6" id="faT-uQ-JYY"/>
+                        <constraint firstItem="hMg-A5-d1n" firstAttribute="top" secondItem="BsP-Ge-rDV" secondAttribute="bottom" constant="8" symbolic="YES" id="jI6-aj-R03"/>
                         <constraint firstItem="USX-Qg-Ons" firstAttribute="top" secondItem="y69-aG-7Gm" secondAttribute="top" constant="4" id="liB-ZC-5ee"/>
                     </constraints>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
