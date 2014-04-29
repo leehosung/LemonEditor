@@ -9,11 +9,4 @@
 #import "IUTextField.h"
 
 @implementation IUTextField
--(NSMutableDictionary*)HTMLAttributes{
-    NSMutableDictionary *dict = [super HTMLAttributes];
-    if (_formName) {
-        [dict setObject:_formName forKey:@"name"];
-    }
-    return dict;
-}
 @end

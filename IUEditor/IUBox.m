@@ -144,22 +144,6 @@
     return nil;
 }
 
--(NSMutableDictionary*)HTMLAttributes{
-    NSArray *classPedigree = [[self class] classPedigreeTo:[IUBox class]];
-    NSMutableString *className = [NSMutableString stringWithString:@"'"];
-    for (NSString *str in classPedigree) {
-        [className appendString:str];
-        [className appendString:@" "];
-    }
-    [className trim];
-    [className appendString:@"'"];
-    return [@{@"class":className, @"id":self.htmlID} mutableCopy];
-}
-
--(NSArray *)HTMLOneAttribute{
-    NSArray *array = [NSArray array];
-    return array;
-}
 
 
 -(NSDictionary*)CSSAttributesForWidth:(NSInteger)width{

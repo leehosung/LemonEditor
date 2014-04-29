@@ -39,18 +39,5 @@
     [self.delegate IU:self.htmlID HTML:self.html withParentID:self.htmlID];
 }
 
-- (NSMutableDictionary *)HTMLAttributes{
-    NSMutableDictionary *dict = [super HTMLAttributes];
-    
-    if(self.imageName){
-        [dict setObject:self.imageName forKey:@"src"];
-    }
-    
-    if(self.altText){
-        [dict setObject:self.altText forKey:@"alt"];
-    }
-    
-    return dict;
-}
 
 @end

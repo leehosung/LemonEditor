@@ -149,7 +149,7 @@
 
 -(NSString*)outputHTMLAsBox:(IUBox*)iu{
     NSMutableString *code = [NSMutableString string];
-    [code appendFormat:@"<div %@ %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAttributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
+    [code appendFormat:@"<div %@>", [self editorHTMLAttributes:iu]];
     if (iu.textHTML) {
         [code appendFormat:@"<p>%@</p>", iu.textHTML];
     }
@@ -169,7 +169,7 @@
     if ([iu isKindOfClass:[IUPage class]]) {
         IUPage *page = (IUPage*)iu;
         if (page.background) {
-            [code appendFormat:@"<div %@ %@>\n", [self HTMLAttributeStringWithTagDict:iu.HTMLAttributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
+            [code appendFormat:@"<div %@ >\n", [self editorHTMLAttributes:iu]];
             for (IUBox *obj in page.background.children) {
                 [code appendString:[[self outputHTML:obj] stringByIndent:4 prependIndent:YES]];
                 [code appendNewline];
@@ -211,9 +211,7 @@
     
 #pragma mark IUMovie
     else if([iu isKindOfClass:[IUMovie class]]){
-        [code appendString:@"<video "];
-        [code appendFormat:@"%@ %@", [self HTMLAttributeStringWithTagDict:iu.HTMLAttributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
-        [code appendString:@">"];
+        [code appendFormat:@"<video %@>", [self editorHTMLAttributes:iu]];
         
         if(((IUMovie *)iu).videoPath){
             NSMutableString *compatibilitySrc = [NSMutableString stringWithString:@"\
@@ -236,13 +234,12 @@
     }
 #pragma mark IUImage
     else if([iu isKindOfClass:[IUImage class]]){
-        [code appendFormat:@"<img %@ %@", [self HTMLAttributeStringWithTagDict:iu.HTMLAttributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
-        [code appendString:@">"];
+        [code appendFormat:@"<img %@ >", [self editorHTMLAttributes:iu]];
         
     }
 #pragma mark IUHTML
     else if([iu isKindOfClass:[IUHTML class]]){
-        [code appendFormat:@"<div %@ %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAttributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
+        [code appendFormat:@"<div %@>", [self editorHTMLAttributes:iu]];
         if(((IUHTML *)iu).hasInnerHTML){
             [code appendString:((IUHTML *)iu).innerHTML];
         }
@@ -258,7 +255,7 @@
     }
 #pragma mark IUImport
     else if([iu isKindOfClass:[IUHTML class]]){
-        [code appendFormat:@"<div %@ %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAttributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
+        [code appendFormat:@"<div %@ >", [self editorHTMLAttributes:iu]];
         if (iu.children.count) {
             [code appendNewline];
             for (IUBox *child in iu.children) {
@@ -271,12 +268,11 @@
     }
     
     else if ([iu isKindOfClass:[IUTextField class]]){
-        NSDictionary *attributes = [iu HTMLAttributes];
-        [code appendFormat:@"<input %@ %@></input>", [self HTMLAttributeStringWithTagDict:attributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
+        [code appendFormat:@"<input %@ ></input>", [self editorHTMLAttributes:iu]];
     }
     
     else if ([iu isKindOfClass:[IUTextView class]]){
-        [code appendFormat:@"<textarea %@ %@></textarea>", [self HTMLAttributeStringWithTagDict:iu.HTMLAttributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
+        [code appendFormat:@"<textarea %@ ></textarea>", [self editorHTMLAttributes:iu]];
     }
     
 #pragma mark IUBox
@@ -297,7 +293,7 @@
 
 - (NSString*)editorHTMLAsBOX:(IUBox *)iu{
     NSMutableString *code = [NSMutableString string];
-    [code appendFormat:@"<div %@ %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAttributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
+    [code appendFormat:@"<div %@ >", [self editorHTMLAttributes:iu]];
     if (iu.textHTML) {
         [code appendFormat:@"<p>%@</p>", iu.textHTML];
     }
@@ -317,7 +313,7 @@
     if ([iu isKindOfClass:[IUPage class]]) {
         IUPage *page = (IUPage*)iu;
         if (page.background) {
-            [code appendFormat:@"<div %@ %@>\n", [self HTMLAttributeStringWithTagDict:iu.HTMLAttributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
+            [code appendFormat:@"<div %@ >\n", [self editorHTMLAttributes:iu]];
             for (IUBox *obj in page.background.children) {
                 [code appendString:[[self editorHTML:obj] stringByIndent:4 prependIndent:YES]];
                 [code appendNewline];
@@ -359,17 +355,13 @@
     }
 #pragma mark IUImage
     else if([iu isKindOfClass:[IUImage class]]){
-        [code appendFormat:@"<img %@ %@", [self HTMLAttributeStringWithTagDict:iu.HTMLAttributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
+        [code appendFormat:@"<img %@ ", [self editorHTMLAttributes:iu]];
         [code appendString:@">"];
         
     }
 #pragma mark IUMovie
     else if([iu isKindOfClass:[IUMovie class]]){
-        [code appendString:@"<video "];
-        NSMutableArray *oneAttributeArray = [iu.HTMLOneAttribute mutableCopy];
-        [oneAttributeArray removeObject:@"autoplay"];
-        [code appendFormat:@"%@ %@", [self HTMLAttributeStringWithTagDict:iu.HTMLAttributes], [self HTMLOneAttributeStringWithTagArray:oneAttributeArray]];
-        [code appendString:@">"];
+        [code appendFormat:@"<video %@ >", [self editorHTMLAttributes:iu]];
         
         if(((IUMovie *)iu).videoPath){
             NSMutableString *compatibilitySrc = [NSMutableString stringWithString:@"\
@@ -394,7 +386,7 @@
     else if([iu isKindOfClass:[IUWebMovie class]]){
         IUWebMovie *iuWebMovie = (IUWebMovie *)iu;
         
-        [code appendFormat:@"<div %@ %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAttributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
+        [code appendFormat:@"<div %@ >", [self editorHTMLAttributes:iu]];
         [code appendNewline];
         NSString *thumbnailPath;
         if(iuWebMovie.thumbnail){
@@ -421,7 +413,7 @@
 #pragma mark IUFBLike
     else if([iu isKindOfClass:[IUFBLike class]]){
         
-        [code appendFormat:@"<div %@ %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAttributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
+        [code appendFormat:@"<div %@ ", [self editorHTMLAttributes:iu]];
         [code appendNewline];
         
         NSString *fbPath = [[NSBundle mainBundle] pathForResource:@"FBSampleImage" ofType:@"png"];
@@ -433,7 +425,7 @@
     }
 #pragma mark IUHTML
     else if([iu isKindOfClass:[IUHTML class]]){
-        [code appendFormat:@"<div %@ %@>", [self HTMLAttributeStringWithTagDict:iu.HTMLAttributes], [self HTMLOneAttributeStringWithTagArray:iu.HTMLOneAttribute]];
+        [code appendFormat:@"<div %@ >", [self editorHTMLAttributes:iu]];
         if(((IUHTML *)iu).hasInnerHTML){
             [code appendString:((IUHTML *)iu).innerHTML];
         }
@@ -474,22 +466,6 @@
     return code;
 }
 
--(NSString*)HTMLAttributeStringWithTagDict:(NSDictionary*)tagDictionary{
-    NSMutableString *code = [NSMutableString string];
-    for (NSString *key in tagDictionary) {
-        
-        //image tag attributes
-        if([key isEqualToString:@"src"]){
-            NSString *imagePath = [_resourceSource relativePathForResource:tagDictionary[key]];
-            [code appendFormat:@"%@='%@' ", key, imagePath];
-        }
-        else{
-            [code appendFormat:@"%@=%@ ", key, tagDictionary[key]];
-        }
-    }
-    [code trim];
-    return code;
-}
 
 -(NSString*)CSSContentFromAttributes:(NSDictionary*)cssTagDictionary ofClass:(IUBox*)obj isHover:(BOOL)isHover{
     //convert css tag dictionry to css string dictionary
@@ -851,6 +827,50 @@
     }
 }
 */
+
+- (NSString*)editorHTMLAttributes:(IUBox*)iu{
+    NSMutableString *retString = [NSMutableString string];
+    [retString appendFormat:@"id=%@", iu.htmlID];
+    
+    NSArray *classPedigree = [[iu class] classPedigreeTo:[IUBox class]];
+    NSMutableString *className = [NSMutableString string];
+    for (NSString *str in classPedigree) {
+        [className appendString:str];
+        [className appendString:@" "];
+    }
+    [className trim];
+    [retString appendFormat:@" class='%@'", className];
+
+    if ([iu isKindOfClass:[IUImage class]]) {
+        IUImage *iuImage = (IUImage*)iu;
+        if (iuImage.variable && _rule == IUCompileRuleDjango) {
+            [retString appendFormat:@" src=<%% %@ %%>", iuImage.variable];
+        }
+    }
+
+    if ([iu isKindOfClass:[IUMovie class]]) {
+        IUMovie *iuMovie = (IUMovie*)iu;
+        if (iuMovie.enableControl) {
+            [retString appendString:@" controls"];
+        }
+        if (iuMovie.enableLoop) {
+            [retString appendString:@" loop"];
+        }
+        if (iuMovie.enableMute) {
+            [retString appendString:@" muted"];
+        }
+        if (iuMovie.enableAutoPlay) {
+            [retString appendString:@" autoplay"];
+        }
+        if (iuMovie.posterPath) {
+            [retString appendFormat:@" poster=%@", iuMovie.posterPath];
+        }
+    }
+    
+
+    return retString;
+}
+
 
 
 @end
