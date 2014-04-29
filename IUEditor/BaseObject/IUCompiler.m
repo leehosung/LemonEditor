@@ -14,6 +14,7 @@
 #import "IUPage.h"
 #import "IUHeader.h"
 #import "IUPageContent.h"
+#import "IUClass.h"
 #import "IUBackground.h"
 #import "IUTextField.h"
 #import "IUTextView.h"
@@ -26,6 +27,7 @@
 #import "IUCarousel.h"
 #import "IUItem.h"
 #import "IUCarouselItem.h"
+#import "IUCollection.h"
 
 @implementation IUCompiler{
 }
@@ -39,6 +41,9 @@
 
 
 -(NSString*)outputSource:(IUDocument*)document mqSizeArray:(NSArray *)mqSizeArray{
+    if ([document isKindOfClass:[IUClass class]]) {
+        return [self outputHTML:document];
+    }
     NSString *templateFilePath = [[NSBundle mainBundle] pathForResource:@"webTemplate" ofType:@"html"];
     NSMutableString *source = [NSMutableString stringWithContentsOfFile:templateFilePath encoding:NSUTF8StringEncoding error:nil];
 /*
@@ -58,7 +63,7 @@
     NSMutableArray *cssSizeArray = [mqSizeArray mutableCopy];
     //remove default size
     [cssSizeArray removeObjectAtIndex:0];
-    NSString *css = [self cssSource:document cssSizeArray:cssSizeArray];
+    NSMutableString *css = [[self cssSource:document cssSizeArray:cssSizeArray] mutableCopy];
     
     [source replaceOccurrencesOfString:@"<!--CSS_Replacement-->" withString:[css stringByIndent:8 prependIndent:NO] options:0 range:[source fullRange]];
     
@@ -150,7 +155,15 @@
 -(NSString*)outputHTMLAsBox:(IUBox*)iu{
     NSMutableString *code = [NSMutableString string];
     [code appendFormat:@"<div %@>", [self editorHTMLAttributes:iu]];
-    if (iu.textHTML) {
+    if (_rule == IUCompileRuleDjango && iu.textVariable) {
+        if ([iu.document isKindOfClass:[IUClass class]]){
+            [code appendFormat:@"<p>{{ object.%@ }}</p>", iu.textVariable];
+        }
+        else {
+            [code appendFormat:@"<p>{{ %@ }}</p>", iu.textVariable];
+        }
+    }
+    else if (iu.textHTML) {
         NSString *brHTMLText = [iu.textHTML stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
         [code appendFormat:@"<p>%@</p>", brHTMLText];
     }
@@ -188,6 +201,19 @@
         }
         else {
             [code appendString:[self outputHTMLAsBox:iu]];
+        }
+    }
+    else if ([iu isKindOfClass:[IUCollection class]]){
+        IUCollection *iuCollection = (IUCollection*)iu;
+        if (_rule == IUCompileRuleDjango ) {
+            [code appendFormat:@"<div %@>", [self editorHTMLAttributes:iuCollection]];
+            [code appendFormat:@"    {%% for object in %@ %%}", iuCollection.collectionVariable];
+            [code appendFormat:@"        {%% include '%@.html' %%}", iuCollection.prototypeClass.name];
+            [code appendString:@"    {% endfor %}"];
+            [code appendFormat:@"</div>"];
+        }
+        else {
+            assert(0);
         }
     }
 #pragma mark IUCarouselItem
@@ -254,7 +280,7 @@
         
     }
 #pragma mark IUImport
-    else if([iu isKindOfClass:[IUHTML class]]){
+    else if([iu isKindOfClass:[IUImport class]]){
         [code appendFormat:@"<div %@ >", [self editorHTMLAttributes:iu]];
         if (iu.children.count) {
             [code appendNewline];
@@ -864,14 +890,20 @@
     [className trim];
     [retString appendFormat:@" class='%@'", className];
 
+    
     if ([iu isKindOfClass:[IUImage class]]) {
         IUImage *iuImage = (IUImage*)iu;
         if (iuImage.variable && _rule == IUCompileRuleDjango) {
-            [retString appendFormat:@" src=<%% %@ %%>", iuImage.variable];
+            if ([iu.document isKindOfClass:[IUClass class]]) {
+                [retString appendFormat:@" src={{ object.%@ }}", iuImage.variable];
+            }
+            else {
+                [retString appendFormat:@" src={{ %@ }}>", iuImage.variable];
+            }
         }
     }
 
-    if ([iu isKindOfClass:[IUMovie class]]) {
+    else if ([iu isKindOfClass:[IUMovie class]]) {
         IUMovie *iuMovie = (IUMovie*)iu;
         if (iuMovie.enableControl) {
             [retString appendString:@" controls"];

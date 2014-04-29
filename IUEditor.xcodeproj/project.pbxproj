@@ -343,6 +343,8 @@
 		6983E71D18FFF54600D424B8 /* JDOutlineCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6983E71C18FFF54600D424B8 /* JDOutlineCellView.m */; };
 		6985CBA018E31558008DBF50 /* IUDocumentNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6985CB9F18E31558008DBF50 /* IUDocumentNode.m */; };
 		6985CBA618E31D9B008DBF50 /* IUNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6985CBA518E31D9B008DBF50 /* IUNode.m */; };
+		69965420190F9F1D000379DA /* LMPropertyIUCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6996541E190F9F1D000379DA /* LMPropertyIUCollectionVC.m */; };
+		69965421190F9F1D000379DA /* LMPropertyIUCollectionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6996541F190F9F1D000379DA /* LMPropertyIUCollectionVC.xib */; };
 		699E0D3418FD9CE2001CE633 /* IUTextManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E0D3318FD9CE2001CE633 /* IUTextManager.m */; };
 		69A45DE018F6702C00C551D9 /* LMPropertyBorderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A45DDE18F6702C00C551D9 /* LMPropertyBorderVC.m */; };
 		69A45DE118F6702C00C551D9 /* LMPropertyBorderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69A45DDF18F6702C00C551D9 /* LMPropertyBorderVC.xib */; };
@@ -828,6 +830,9 @@
 		6985CB9F18E31558008DBF50 /* IUDocumentNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUDocumentNode.m; sourceTree = "<group>"; };
 		6985CBA418E31D9B008DBF50 /* IUNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUNode.h; sourceTree = "<group>"; };
 		6985CBA518E31D9B008DBF50 /* IUNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUNode.m; sourceTree = "<group>"; };
+		6996541D190F9F1D000379DA /* LMPropertyIUCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyIUCollectionVC.h; sourceTree = "<group>"; };
+		6996541E190F9F1D000379DA /* LMPropertyIUCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyIUCollectionVC.m; sourceTree = "<group>"; };
+		6996541F190F9F1D000379DA /* LMPropertyIUCollectionVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyIUCollectionVC.xib; sourceTree = "<group>"; };
 		699E0D3218FD9CE2001CE633 /* IUTextManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUTextManager.h; sourceTree = "<group>"; };
 		699E0D3318FD9CE2001CE633 /* IUTextManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUTextManager.m; sourceTree = "<group>"; };
 		69A45DDD18F6702C00C551D9 /* LMPropertyBorderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyBorderVC.h; sourceTree = "<group>"; };
@@ -1277,6 +1282,9 @@
 				690A825A190A047300DDBA86 /* LMPropertyIUTextFieldVC.h */,
 				690A825B190A047300DDBA86 /* LMPropertyIUTextFieldVC.m */,
 				690A825C190A047300DDBA86 /* LMPropertyIUTextFieldVC.xib */,
+				6996541D190F9F1D000379DA /* LMPropertyIUCollectionVC.h */,
+				6996541E190F9F1D000379DA /* LMPropertyIUCollectionVC.m */,
+				6996541F190F9F1D000379DA /* LMPropertyIUCollectionVC.xib */,
 			);
 			name = RightIUInspector;
 			sourceTree = "<group>";
@@ -2081,6 +2089,9 @@
 				3DF8041C18FE62F200913505 /* export@2x.png in Resources */,
 				3DF8041718FE62F200913505 /* send_mail.png in Resources */,
 				3DED26BC1900F450001A1D67 /* panel_left_on@2x.png in Resources */,
+				3DED269A1900D33A001A1D67 /* tab_clipart@2x.png in Resources */,
+				3DF8040918FE62F200913505 /* tab_close@2x.png in Resources */,
+				69965421190F9F1D000379DA /* LMPropertyIUCollectionVC.xib in Resources */,
 				690A8272190A2CC200DDBA86 /* new_default@2x.png in Resources */,
 				692334BB18F783FE003E5224 /* LMIUInspectorVC.xib in Resources */,
 				3DED271E1904ADD9001A1D67 /* LMPropertyVTriggerVC.xib in Resources */,
@@ -2156,6 +2167,7 @@
 			files = (
 				69C4AA231909905500CF75E7 /* IUCollection.m in Sources */,
 				69C5763918D728CF0016F050 /* LMStackVC.m in Sources */,
+				69965420190F9F1D000379DA /* LMPropertyIUCollectionVC.m in Sources */,
 				3DB3ACCC18EBEF3D0046DFB7 /* InnerSizeBox.m in Sources */,
 				69761BCD18F17A3800C4EDC6 /* IUGroupNode.m in Sources */,
 				69D15F7318E898B10046FBB0 /* IUBackground.m in Sources */,

@@ -270,13 +270,11 @@
 }
 
 -(IUDocument*)document{
+    if ([self isKindOfClass:[IUDocument class]]) {
+        return (IUDocument*)self;
+    }
     if (self.parent) {
         return self.parent.document;
-    }
-    else{
-        if ([self isKindOfClass:[IUDocument class]]) {
-            return (IUDocument*)self;
-        }
     }
     return nil;
 }

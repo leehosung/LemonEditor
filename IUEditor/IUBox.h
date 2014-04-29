@@ -90,6 +90,7 @@
 
 
 @property (nonatomic, copy) NSString *link;
+@property (nonatomic, copy) NSString *textVariable;
 
 -(BOOL)hasX;
 -(BOOL)hasY;

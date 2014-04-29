@@ -27,6 +27,7 @@
     height: 100%;
 }
 
-.IUCollection .IUItem{
+.IUCollection > div{
     float:left !important;
+    position:relative !important;
 }

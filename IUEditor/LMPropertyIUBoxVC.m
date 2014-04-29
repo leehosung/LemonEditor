@@ -11,6 +11,7 @@
 @interface LMPropertyIUBoxVC ()
 
 @property (weak) IBOutlet NSComboBox *linkCB;
+@property (weak) IBOutlet NSTextField *textVariableTF;
 
 @end
 
@@ -27,6 +28,7 @@
 
 - (void)awakeFromNib{
     [_linkCB bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"link"] options:nil];
+    [_textVariableTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"textVariable"] options:nil];
 
 }
 
