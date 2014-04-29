@@ -534,7 +534,7 @@
         IUBox *iu = [self.controller IUBoxByIdentifier:identifier];
         [iu setPercentFrame:percentFrame];
         
-        JDWarnLog(@"(%@ : %.1f,%.1f,%.1f,%.1f)",identifier,
+        JDTraceLog(@"(%@ : %.1f,%.1f,%.1f,%.1f)",identifier,
                   percentFrame.origin.x, percentFrame.origin.y,
                   percentFrame.size.width, percentFrame.size.height);
     }
