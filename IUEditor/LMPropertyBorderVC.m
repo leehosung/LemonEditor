@@ -58,8 +58,9 @@
 }
 
 - (void)setBorderTopColor:(NSColor *)borderTopColor{
-    
-    if(borderTopColor == NSNoSelectionMarker) return;
+    if (borderTopColor == NSNoSelectionMarker) {
+        return;
+    }
     if ([borderTopColor.colorSpaceName isEqualToString:NSDeviceRGBColorSpace] == NO) {
         borderTopColor = [borderTopColor colorUsingColorSpaceName:NSDeviceRGBColorSpace];
     }
@@ -70,7 +71,9 @@
 }
 
 - (void)setBorderLeftColor:(NSColor *)borderLeftColor{
-    if(borderLeftColor == NSNoSelectionMarker) return;
+    if (borderLeftColor == NSNoSelectionMarker) {
+        return;
+    }
     if ([borderLeftColor.colorSpaceName isEqualToString:NSDeviceRGBColorSpace] == NO) {
         borderLeftColor = [borderLeftColor colorUsingColorSpaceName:NSDeviceRGBColorSpace];
     }
@@ -79,7 +82,9 @@
 }
 
 - (void)setBorderRightColor:(NSColor *)borderRightColor{
-    if(borderRightColor == NSNoSelectionMarker) return;
+    if (borderRightColor == NSNoSelectionMarker) {
+        return;
+    }
     if ([borderRightColor.colorSpaceName isEqualToString:NSDeviceRGBColorSpace] == NO) {
         borderRightColor = [borderRightColor colorUsingColorSpaceName:NSDeviceRGBColorSpace];
     }
@@ -88,7 +93,9 @@
 }
 
 - (void)setBorderBottomColor:(NSColor *)borderBottomColor{
-    if(borderBottomColor == NSNoSelectionMarker) return;
+    if (borderBottomColor == NSNoSelectionMarker) {
+        return;
+    }
     if ([borderBottomColor.colorSpaceName isEqualToString:NSDeviceRGBColorSpace] == NO) {
         borderBottomColor = [borderBottomColor colorUsingColorSpaceName:NSDeviceRGBColorSpace];
     }

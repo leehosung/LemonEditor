@@ -88,7 +88,7 @@
 -(void)newDjangoDocument:(id)sender{
     NSError *error;
     
-    NSDictionary *dict = @{IUProjectKeyAppName: @"myApp",
+    NSDictionary *dict = @{IUProjectKeyAppName: @"gallery",
                            IUProjectKeyGit: @(NO),
                            IUProjectKeyHeroku: @(NO),
                            IUProjectKeyDirectory: [@"~/IUProjTemp" stringByExpandingTildeInPath]};

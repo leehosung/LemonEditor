@@ -33,6 +33,7 @@
 #import "LMBottomToolbarVC.h"
 #import "LMIUInspectorVC.h"
 
+#import "IUDjangoProject.h"
 
 @interface LMWC ()
 
@@ -174,6 +175,13 @@
     _compiler = [[IUCompiler alloc] init];
     _resourceManager.rootNode = _project.resourceNode;
     _compiler.resourceSource = _resourceManager;
+    IUCompileRule rule;
+    if ([_project isKindOfClass:[IUDjangoProject class]]) {
+        rule = IUCompileRuleDjango;
+    }
+    else {
+        rule = IUCompileRuleDefault;
+    }
     
     NSArray *documensNode = [_project.allChildren filteredArrayWithClass:[IUDocumentNode class]];
     
