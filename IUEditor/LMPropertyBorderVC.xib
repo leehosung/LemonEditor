@@ -142,12 +142,9 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="59w-c9-pfX">
-                                <rect key="frame" x="6" y="0.0" width="260" height="5"/>
+                            <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="59w-c9-pfX">
+                                <rect key="frame" x="6" y="0.0" width="264" height="5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="260" id="k46-Tg-6yO"/>
-                                </constraints>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <font key="titleFont" metaFont="system"/>
@@ -166,13 +163,11 @@
                         <constraint firstItem="Bx6-hg-VhV" firstAttribute="leading" secondItem="dn2-GB-dsR" secondAttribute="trailing" constant="8" id="JIO-dO-gkX"/>
                         <constraint firstItem="Rjf-EA-9xh" firstAttribute="leading" secondItem="AwO-9V-rNg" secondAttribute="trailing" constant="10" id="Mxv-2X-MfM"/>
                         <constraint firstItem="dn2-GB-dsR" firstAttribute="top" secondItem="4Qf-r2-GGk" secondAttribute="top" constant="4" id="OgD-tD-Y8i"/>
-                        <constraint firstItem="59w-c9-pfX" firstAttribute="leading" secondItem="4Qf-r2-GGk" secondAttribute="leading" constant="6" id="Psa-H8-RYQ"/>
                         <constraint firstAttribute="height" constant="30" id="RL2-uo-HpB"/>
                         <constraint firstItem="AwO-9V-rNg" firstAttribute="leading" secondItem="eQk-yr-3Le" secondAttribute="trailing" constant="2" id="fFt-fW-cjg"/>
                         <constraint firstItem="ZJ9-1e-ySj" firstAttribute="leading" secondItem="Rjf-EA-9xh" secondAttribute="trailing" constant="2" id="hGS-tV-QDW"/>
                         <constraint firstItem="Rjf-EA-9xh" firstAttribute="top" secondItem="4Qf-r2-GGk" secondAttribute="top" constant="5" id="jZQ-rq-O7x"/>
                         <constraint firstItem="dn2-GB-dsR" firstAttribute="leading" secondItem="ZJ9-1e-ySj" secondAttribute="trailing" constant="1" id="ueY-7r-Rg3"/>
-                        <constraint firstAttribute="bottom" secondItem="59w-c9-pfX" secondAttribute="bottom" constant="2" id="wHy-HU-ini"/>
                         <constraint firstItem="ZJ9-1e-ySj" firstAttribute="top" secondItem="4Qf-r2-GGk" secondAttribute="top" constant="3" id="xRa-5M-44H"/>
                     </constraints>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>

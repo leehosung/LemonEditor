@@ -150,13 +150,9 @@
                                 </constraints>
                                 <color key="color" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                             </colorWell>
-                            <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Ims-D3-Uwo">
-                                <rect key="frame" x="6" y="0.0" width="260" height="5"/>
+                            <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Ims-D3-Uwo">
+                                <rect key="frame" x="6" y="0.0" width="264" height="5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="WAs-bC-qbC"/>
-                                    <constraint firstAttribute="width" constant="260" id="uje-dp-9he"/>
-                                </constraints>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <font key="titleFont" metaFont="system"/>
@@ -187,12 +183,10 @@
                     </view>
                     <constraints>
                         <constraint firstItem="nc6-kb-J7I" firstAttribute="top" secondItem="8Lc-u6-K0I" secondAttribute="top" constant="3" id="4R8-jS-Ou5"/>
-                        <constraint firstItem="Ims-D3-Uwo" firstAttribute="leading" secondItem="8Lc-u6-K0I" secondAttribute="leading" constant="6" id="58d-b9-pSY"/>
                         <constraint firstItem="nc6-kb-J7I" firstAttribute="leading" secondItem="Yle-zg-jre" secondAttribute="trailing" constant="8" id="7zU-24-AcE"/>
                         <constraint firstItem="EF9-cy-hVF" firstAttribute="leading" secondItem="G73-ed-fS4" secondAttribute="trailing" constant="8" id="ClD-D1-Ala"/>
                         <constraint firstItem="EF9-cy-hVF" firstAttribute="top" secondItem="8Lc-u6-K0I" secondAttribute="top" constant="3" id="KCn-Mu-xcr"/>
                         <constraint firstAttribute="trailing" secondItem="EF9-cy-hVF" secondAttribute="trailing" constant="10" id="MfW-an-wnR"/>
-                        <constraint firstAttribute="bottom" secondItem="Ims-D3-Uwo" secondAttribute="bottom" constant="2" id="Ndo-kH-FBY"/>
                         <constraint firstItem="Yle-zg-jre" firstAttribute="top" secondItem="8Lc-u6-K0I" secondAttribute="top" constant="2" id="UUD-Q2-Ujw"/>
                         <constraint firstAttribute="height" constant="30" id="Ux7-TH-Ag8"/>
                         <constraint firstItem="G73-ed-fS4" firstAttribute="top" secondItem="8Lc-u6-K0I" secondAttribute="top" constant="4" id="hb0-EK-X1O"/>
