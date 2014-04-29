@@ -348,13 +348,11 @@
 
 - (BOOL)isOneIUSTextelection:(DOMRange *)range{
     DOMNode *startContainer = range.startContainer;
-    if([startContainer isKindOfClass:[DOMText class]]){
-        startContainer = [self IUNodeAtCurrentNode:startContainer];
-    }
+    startContainer = [self IUNodeAtCurrentNode:startContainer];
+    
     DOMNode *ancestorContainer = range.commonAncestorContainer;
-    if([ancestorContainer isKindOfClass:[DOMText class]]){
-        ancestorContainer = [self IUNodeAtCurrentNode:ancestorContainer];
-    }
+    ancestorContainer = [self IUNodeAtCurrentNode:ancestorContainer];
+    
     
     if ([startContainer isEqualTo:ancestorContainer]){
         return YES;
@@ -462,16 +460,28 @@
     [self setSelectedDOMRange:range affinity:NSSelectionAffinityDownstream];
 }
 
+- (DOMHTMLParagraphElement *)pElementOfNode:(DOMNode *)node{
+    if([node isKindOfClass:[DOMHTMLParagraphElement class]]){
+        return (DOMHTMLParagraphElement *)node;
+    }
+    else if([node isKindOfClass:[DOMHTMLBodyElement class]]){
+        return nil;
+    }
+    else{
+        return [self pElementOfNode:node.parentNode];
+    }
+}
+
 - (void)selectWholeRangeOfCurrentCursor{
 
     DOMRange *range = [self selectedDOMRange];
     
     if([range.startContainer isKindOfClass:[DOMText class]]){
-        DOMText *currentContainer = (DOMText *)range.startContainer;
-        int size = (int)currentContainer.wholeText.length;
+        DOMHTMLParagraphElement *pElement = [self pElementOfNode:range.startContainer];
+        [range selectNode:pElement];
         
-        [range setStart:range.startContainer offset:0];
-        [range setEnd:range.startContainer offset:size];
+//        [range setStart:range.startContainer offset:0];
+//        [range setEnd:range.startContainer offset:size];
         
         [self setSelectedDOMRange:range affinity:NSSelectionAffinityDownstream];
     }
@@ -488,12 +498,35 @@
         [range setStart:range.startContainer offset:range.endOffset];
     }
     else{
-        DOMText *childNode = (DOMText *)[[element childNodes] item:0];
-        assert([childNode isKindOfClass:[DOMText class]]);
         
-        [range setStart:childNode offset:(int)index];
-        [range setEnd:childNode offset:(int)index];
+        int childcount = [[element childNodes] length];
+        int textlength = 0;
+        for(int i=0; i<childcount; i++){
+            BOOL brflag = NO;
+            DOMNode *child = [[element childNodes] item:i];
+            if([child isKindOfClass:[DOMText class]]){
+                textlength += ((DOMText *)child).wholeText.length;
+            }
+            //br element
+            else{
+                textlength += 1;
+                brflag = YES;
+            }
+            if(index <= textlength){
+                if(brflag){
+                    child = [[element childNodes] item:i+1];
+                    [range setStart:child offset:0];
+                    [range setEnd:child offset:0];
+                }
+                else{
+                    [range setStart:child offset:textlength - (int)index];
+                    [range setEnd:child offset:textlength -(int)index];
+                }
+                break;
 
+            }
+        }
+       
     }
     
     [self setSelectedDOMRange:range affinity:NSSelectionAffinityDownstream];

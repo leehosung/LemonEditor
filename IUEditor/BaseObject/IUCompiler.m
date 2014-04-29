@@ -151,7 +151,8 @@
     NSMutableString *code = [NSMutableString string];
     [code appendFormat:@"<div %@>", [self editorHTMLAttributes:iu]];
     if (iu.textHTML) {
-        [code appendFormat:@"<p>%@</p>", iu.textHTML];
+        NSString *brHTMLText = [iu.textHTML stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
+        [code appendFormat:@"<p>%@</p>", brHTMLText];
     }
     if (iu.children.count) {
         [code appendNewline];
@@ -294,7 +295,9 @@
     NSMutableString *code = [NSMutableString string];
     [code appendFormat:@"<div %@ >", [self editorHTMLAttributes:iu]];
     if (iu.textHTML) {
-        [code appendFormat:@"<p>%@</p>", iu.textHTML];
+        NSString *brHTMLText = [iu.textHTML stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
+        [code appendFormat:@"<p>%@</p>", brHTMLText];
+
     }
     if (iu.children.count) {
         [code appendNewline];
