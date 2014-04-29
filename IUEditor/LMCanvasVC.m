@@ -15,6 +15,7 @@
 #import "IUFrameDictionary.h"
 #import "IUBox.h"
 #import "IUCarousel.h"
+#import "IUCarouselItem.h"
 #import "InnerSizeBox.h"
 
 @interface LMCanvasVC ()
@@ -173,6 +174,7 @@
     return nil;
 }
 
+
 -(void)selectedObjectsDidChange:(NSDictionary*)change{
     [JDLogUtil log:IULogAction key:@"CanvasVC:observed" string:[self.controller.selectedIdentifiers description]];
     
@@ -180,6 +182,13 @@
     [[self gridView] removeAllTextPointLayer];
     
 
+    for(IUBox *box in self.controller.selectedObjects){
+        if([box isKindOfClass:[IUCarouselItem class]]){
+            NSInteger index = [box.parent.children indexOfObject:box];
+            [[self webView] selectCarousel:box.parent.htmlID atIndex:index];
+        }
+    }
+    
     for(NSString *IUID in self.controller.selectedIdentifiers){
         if([frameDict.dict objectForKey:IUID]){
             NSRect frame = [[frameDict.dict objectForKey:IUID] rectValue];
@@ -188,6 +197,7 @@
             [[self webView] changeDOMRange:frame.origin];
         }
     }
+    
 }
 - (void)deselectedAllIUs{
     [self.controller setSelectionIndexPath:nil];

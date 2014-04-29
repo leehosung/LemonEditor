@@ -18,6 +18,7 @@
 - (void)updateFrameDict;
 - (void)insertNewCarousel:(NSString *)identifier;
 - (void)reloadCarousels;
+- (void)selectCarousel:(NSString *)identifier atIndex:(NSInteger)index;
 - (void)resizePageContent;
 
 #pragma mark -

@@ -309,6 +309,8 @@
     //reportFrameDict(after call setIUCSSStyle)
     [self stringByEvaluatingJavaScriptFromString:@"getIUUpdatedFrameThread()"];
 }
+
+#pragma mark call carousel.JS
 - (void)insertNewCarousel:(NSString *)identifier{
 //    NSString *newCarouselFn = [NSString stringWithFormat:@"insertNewCarousel(%@)", identifier];
 //    NSString *result = [self stringByEvaluatingJavaScriptFromString:newCarouselFn];
@@ -322,6 +324,17 @@
 
 - (void)reloadCarousels{
     [self stringByEvaluatingJavaScriptFromString:@"reloadCarousels()"];
+}
+
+- (void)selectCarousel:(NSString *)identifier atIndex:(NSInteger)index{
+    //function selectCarousel(iuid, index)
+    
+    NSArray* args = [NSArray arrayWithObjects:
+                     identifier,
+                     [NSNumber numberWithInteger:index],
+                     nil];
+    [[self windowScriptObject] callWebScriptMethod:@"selectCarousel" withArguments:args];
+    
 }
 
 - (void)resizePageContent{

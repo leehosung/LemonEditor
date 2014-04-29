@@ -9,7 +9,7 @@
  */
 
 
-var carouselArray = [];
+var carouselDict = {};
 var loadedCarouselArray = [];
 
 ;(function($){
@@ -186,11 +186,9 @@ var loadedCarouselArray = [];
 		 * Performs all DOM and CSS modifications
 		 */
 		var setup = function(){
-            console.log("setup")
 
             if(el.parent().attr('class') != "bx-viewport"){
                 slider.iu = el.parent();
-                console.log("iu set");
             }
 
 			// wrap el in a wrapper
@@ -387,13 +385,9 @@ var loadedCarouselArray = [];
   
   
             if(slider.iu != undefined){
-  
-  
                 slider.iu.removeAttr('style');
-                console.log("style remove");
                 height = slider.iu.css('height');
                 slider.iu.css('height', 'auto');
-                console.log("reset");
                 }
   
 			}
@@ -1372,21 +1366,23 @@ var loadedCarouselArray = [];
 
 
 function insertNewCarousel(iuid){
-    console.log(iuid);
-    console.log($('#bxslider_')+iuid);
     
     if(loadedCarouselArray.indexOf(iuid) < 0 ){
-        console.log("insertNewCarousel");
         var newCarousel = $('#bxslider_'+iuid).bxSlider();
-        carouselArray.push(newCarousel);
+        carouselDict[iuid] = newCarousel;
         loadedCarouselArray.push(iuid);
     }
 }
 
 function reloadCarousels(){
-    $.each(carouselArray, function(index, slider){
-           slider.redrawSlider();
+    $.each(carouselDict, function(iuid, carousel){
+           carousel.redrawSlider();
            }); 
+}
+
+function selectCarousel(iuid, index){
+    var carousel = carouselDict[iuid];
+    carousel.goToSlide(index);
 }
 
 

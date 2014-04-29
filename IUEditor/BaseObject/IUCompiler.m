@@ -866,6 +866,10 @@
         }
     }
     
+    if([iu isKindOfClass:[IUCarouselItem class]]){
+        [retString appendFormat:@" carouselID=%@", iu.parent.htmlID];
+    }
+    
 
     return retString;
 }
