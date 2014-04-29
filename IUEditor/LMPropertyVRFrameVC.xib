@@ -174,7 +174,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Li2-iE-avX">
-                                <rect key="frame" x="6" y="-4" width="260" height="5"/>
+                                <rect key="frame" x="6" y="0.0" width="260" height="5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="ek7-an-j5a"/>
@@ -200,11 +200,11 @@
                         </subviews>
                     </view>
                     <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Li2-iE-avX" secondAttribute="bottom" constant="2" id="4Jk-8z-Tjh"/>
                         <constraint firstItem="3sT-tD-QVd" firstAttribute="leading" secondItem="25N-fk-Kyl" secondAttribute="leading" constant="6" id="93a-hV-TBt"/>
                         <constraint firstItem="3sT-tD-QVd" firstAttribute="top" secondItem="25N-fk-Kyl" secondAttribute="top" constant="7" id="952-hB-YKo"/>
                         <constraint firstItem="Li2-iE-avX" firstAttribute="leading" secondItem="25N-fk-Kyl" secondAttribute="leading" constant="6" id="W5H-Ua-wBN"/>
                         <constraint firstAttribute="height" constant="30" id="ovH-qS-4ZS"/>
-                        <constraint firstAttribute="bottom" secondItem="Li2-iE-avX" secondAttribute="bottom" constant="-2" id="xUY-YY-yDP"/>
                     </constraints>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
