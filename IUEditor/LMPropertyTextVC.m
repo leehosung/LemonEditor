@@ -7,13 +7,15 @@
 //
 
 #import "LMPropertyTextVC.h"
+#import "IUCSS.h"
+#import "IUBox.h"
 
 @interface LMPropertyTextVC ()
 
 @property (weak) IBOutlet NSComboBox *fontB;
 @property (weak) IBOutlet NSTextField *fontSizeB;
+@property (weak) IBOutlet NSStepper *fontSizeStepper;
 @property (weak) IBOutlet NSColorWell *fontColorWell;
-@property NSArray *fonts;
 
 @property (weak) IBOutlet NSSegmentedControl *fontStyleB;
 @property (weak) IBOutlet NSSegmentedControl *textAlignB;
@@ -27,52 +29,52 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.fonts = @[@"Georgia", @"Times New Roman", @"Arial" ];
     }
     return self;
 }
 
-- (NSString*)CSSBindingPath:(IUCSSTag)tag{
-    return [@"controller.selection.css.assembledTagDictionary." stringByAppendingString:tag];
+
+- (void)awakeFromNib{
+    
+    [_fontB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagFontName] options:nil];
+    [_fontB bind:NSContentBinding toObject:[NSFontManager sharedFontManager] withKeyPath:@"availableFontFamilies" options:nil];
+    [_fontSizeB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagFontSize] options:nil];
+    [_fontSizeStepper bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagFontSize] options:nil];
+    [_fontColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagFontColor] options:nil];
+    [_lineHeightB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagLineHeight] options:nil];
+    [_textAlignB bind:NSSelectedIndexBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagTextAlign] options:nil];
+    
+    [self addObserver:self forKeyPath:@"controller.selection"
+              options:NSKeyValueObservingOptionInitial context:@"fontDeco"];
+    
 }
+
+- (void)fontDecoContextDidChange:(NSDictionary *)change{
+    if([_controller.selection isKindOfClass:[IUBox class]]){
+        BOOL weight = [((IUBox *)_controller.selection).css.assembledTagDictionary[IUCSSTagFontWeight] boolValue];
+        [_fontStyleB setSelected:weight forSegment:0];
+        
+        BOOL italic = [((IUBox *)_controller.selection).css.assembledTagDictionary[IUCSSTagFontStyle] boolValue];
+        [_fontStyleB setSelected:italic forSegment:1];
+        
+        BOOL underline = [((IUBox *)_controller.selection).css.assembledTagDictionary[IUCSSTagTextDecoration] boolValue];
+        [_fontStyleB setSelected:underline forSegment:2];
+    }
+}
+
 
 - (IBAction)fontDecoBPressed:(id)sender {
-
+    
     BOOL value;
     value = [sender isSelectedForSegment:0];
-    [self setValue:@(value) forKeyPath:[self CSSBindingPath:IUCSSTagFontWeight]];
+    [self setValue:@(value) forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagFontWeight]];
     
     value = [sender isSelectedForSegment:1];
-    [self setValue:@(value) forKeyPath:[self CSSBindingPath:IUCSSTagFontStyle]];
+    [self setValue:@(value) forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagFontStyle]];
     
     value = [sender isSelectedForSegment:2];
-    [self setValue:@(value) forKeyPath:[self CSSBindingPath:IUCSSTagTextDecoration]];
+    [self setValue:@(value) forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagTextDecoration]];
     
 }
-
-- (IBAction)textAligneBPressed:(id)sender {
-    
-    NSString *textalign;
-    if([sender isSelectedForSegment:0]){
-        textalign= @"left";    }
-    if([sender isSelectedForSegment:1]){
-        textalign=@"center";    }
-    if([sender isSelectedForSegment:2]){
-        textalign=@"right";    }
-    if([sender isSelectedForSegment:3]){
-        textalign= @"stretch";    }
-    
-    [self setValue:textalign forKeyPath:[self CSSBindingPath:IUCSSTagTextAlign]];
-}
-
-
--(void)awakeFromNib{
-    
-    [_fontB bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagFontName] options:nil];
-    [_fontB bind:@"contentValues" toObject:self withKeyPath:@"fonts" options:nil];
-    [_fontSizeB bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagFontSize] options:nil];
-    [_fontColorWell bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagFontColor] options:nil];
-    [_lineHeightB bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagLineHeight] options:nil];
- }
 
 @end

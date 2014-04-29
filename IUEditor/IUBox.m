@@ -78,10 +78,12 @@
         if (self.hasHeight) {
             [_css setValue:@(35) forTag:IUCSSTagHeight forWidth:IUCSSDefaultCollection];
         }
+        //text align default
+        [_css setValue:@(IUTextAlignLeft) forTag:IUCSSTagTextAlign forWidth:IUCSSDefaultCollection];
         
         //background
         [_css setValue:[NSColor randomColor] forTag:IUCSSTagBGColor forWidth:IUCSSDefaultCollection];
-        [_css setValue:@(0) forTag:IUCSSTagBGSize forWidth:IUCSSDefaultCollection];
+        [_css setValue:@(IUBGSizeTypeAuto) forTag:IUCSSTagBGSize forWidth:IUCSSDefaultCollection];
         [_css setValue:@(0) forTag:IUCSSTagBGXPosition forWidth:IUCSSDefaultCollection];
         [_css setValue:@(0) forTag:IUCSSTagBGYPosition forWidth:IUCSSDefaultCollection];
         
