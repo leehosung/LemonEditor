@@ -13,13 +13,16 @@
 @class IUDocument;
 @class IUResourceManager;
 
-typedef enum _IUCompilerType{
-    IUCompilerTypeDefault,
-}IUCompilerType;
+typedef enum _IUCompileRule{
+    IUCompileRuleDefault,
+    IUCompileRuleDjango,
+}IUCompileRule;
 
 @interface IUCompiler : NSObject
 
 @property id <IUCompilerResourceSource> resourceSource;
+@property IUCompileRule    rule;
+
 //build source
 -(NSString*)outputSource:(IUDocument*)document mqSizeArray:(NSArray *)mqSizeArray;
 -(NSString *)outputHTML:(IUBox *)iu;

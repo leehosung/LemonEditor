@@ -54,8 +54,6 @@
 @property NSArray   *mutables;
 
 // followings are IU build setting;
--(NSArray *)HTMLOneAttribute;
--(NSMutableDictionary*)HTMLAttributes;
 -(NSDictionary*)CSSAttributesForWidth:(NSInteger)width;
 
 //source

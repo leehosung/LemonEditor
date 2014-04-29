@@ -52,38 +52,4 @@
     [self.delegate IU:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
 }
 
-- (NSArray *)HTMLOneAttribute{
-    NSMutableArray *array = [[super HTMLOneAttribute] mutableCopy];
-    
-    if(self.enableControl){
-        [array addObject:@"controls"];
-    }
-    if(self.enableLoop){
-        [array addObject:@"loop"];
-    }
-    if(self.enableMute){
-        [array addObject:@"muted"];
-    }
-    if(self.enableAutoPlay){
-        [array addObject:@"autoplay"];
-    }
-    
-    return array;
-}
-
-- (NSDictionary *)HTMLAttributes{
-    NSMutableDictionary *dict = [[super HTMLAttributes] mutableCopy];
-    
-    if(self.enableControl == NO){
-        [dict setObject:@(1) forKey:@"movieNoControl"];
-    }
-    
-    if(self.posterPath){
-        [dict setObject:self.posterPath forKey:@"poster"];
-    }
-    
-    return dict;
-}
-
-
 @end
