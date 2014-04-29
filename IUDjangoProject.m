@@ -19,7 +19,7 @@
     project.buildDirectoryName = @"../templates";
     
     NSString *dir = [setting objectForKey:IUProjectKeyDirectory];
-    project.path = [dir stringByAppendingPathComponent:[project.name stringByAppendingPathExtension:@"iuproject"]];
+    project.path = [dir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/iuSource", project.name]];
     [JDFileUtil rmDirPath:[project.path stringByAppendingPathExtension:@"*"]];
     ReturnNilIfFalse([JDFileUtil mkdirPath:project.path]);
     
@@ -58,12 +58,12 @@
     [backgroundGroup addNode:backgroundNode];
     
     IUClass *class = [[IUClass alloc] initWithManager:nil];
-    class.htmlID = @"Class1";
-    class.name = @"Class1";
+    class.htmlID = @"Picture";
+    class.name = @"Picture";
     
     IUDocumentNode *classNode = [[IUDocumentNode alloc] init];
     classNode.document = class;
-    classNode.name = @"Class1";
+    classNode.name = @"Picture";
     [classGroup addNode:classNode];
     
     IUClass *class2 = [[IUClass alloc] initWithManager:nil];

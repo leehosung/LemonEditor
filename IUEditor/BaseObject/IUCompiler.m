@@ -25,7 +25,7 @@
 #import "IUFBLike.h"
 #import "IUCarousel.h"
 #import "IUItem.h"
-#import "IUCarouselItem.h"
+//#import "IUCarouselItem.h"
 
 @implementation IUCompiler{
 }
@@ -190,6 +190,7 @@
         }
     }
 #pragma mark IUCarouselItem
+    /*
     else if([iu isKindOfClass:[IUCarouselItem class]]){
         [code appendString:@"<li>"];
         [code appendFormat:@"<img src='http://31.media.tumblr.com/d83b99e22981d5e58e2bd74ed2494087/tumblr_n4ef3ynCZP1st5lhmo1_1280.jpg' />"];
@@ -208,7 +209,7 @@
         
         [code appendString:@"</ul></div>"];
     }
-    
+    */
 #pragma mark IUMovie
     else if([iu isKindOfClass:[IUMovie class]]){
         [code appendFormat:@"<video %@>", [self editorHTMLAttributes:iu]];
@@ -334,6 +335,7 @@
         }
     }
 #pragma mark IUCarouselItem
+    /*
     else if([iu isKindOfClass:[IUCarouselItem class]]){
         [code appendString:@"<li>"];
         [code appendString:[self editorHTMLAsBOX:iu]];
@@ -353,6 +355,7 @@
         
         [code appendString:@"</ul></div>"];
     }
+     */
 #pragma mark IUImage
     else if([iu isKindOfClass:[IUImage class]]){
         [code appendFormat:@"<img %@ ", [self editorHTMLAttributes:iu]];
