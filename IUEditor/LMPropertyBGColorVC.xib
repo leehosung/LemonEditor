@@ -48,13 +48,9 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="baY-eS-BR1">
-                                <rect key="frame" x="6" y="0.0" width="260" height="5"/>
+                            <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="baY-eS-BR1">
+                                <rect key="frame" x="6" y="0.0" width="264" height="5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="Ju6-ji-roN"/>
-                                    <constraint firstAttribute="width" constant="260" id="tl6-fe-Dh7"/>
-                                </constraints>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <font key="titleFont" metaFont="system"/>
@@ -78,8 +74,6 @@
                     </view>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="5jf-H9-xcI" secondAttribute="trailing" constant="10" id="1So-YO-vLc"/>
-                        <constraint firstItem="baY-eS-BR1" firstAttribute="leading" secondItem="Mmv-BW-5ZJ" secondAttribute="leading" constant="6" id="4g8-hy-3kU"/>
-                        <constraint firstAttribute="bottom" secondItem="baY-eS-BR1" secondAttribute="bottom" constant="2" id="7uh-zh-Ulc"/>
                         <constraint firstItem="8A0-lf-EHh" firstAttribute="top" secondItem="Mmv-BW-5ZJ" secondAttribute="top" constant="7" id="8SC-sQ-JAd"/>
                         <constraint firstAttribute="height" constant="30" id="DGO-SL-C0g"/>
                         <constraint firstItem="5jf-H9-xcI" firstAttribute="top" secondItem="Mmv-BW-5ZJ" secondAttribute="top" constant="5" id="MQV-CC-5kU"/>

@@ -41,13 +41,9 @@
                                 </constraints>
                                 <color key="color" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                             </colorWell>
-                            <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="z2G-4F-eKG">
-                                <rect key="frame" x="6" y="0.0" width="260" height="5"/>
+                            <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="z2G-4F-eKG">
+                                <rect key="frame" x="6" y="0.0" width="264" height="5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="4GJ-73-qaL"/>
-                                    <constraint firstAttribute="width" constant="260" id="9ZV-q5-6zA"/>
-                                </constraints>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <font key="titleFont" metaFont="system"/>
@@ -69,12 +65,10 @@
                     </view>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="EWp-qK-gmi" secondAttribute="trailing" constant="10" id="2Pd-6p-Ihp"/>
-                        <constraint firstAttribute="bottom" secondItem="z2G-4F-eKG" secondAttribute="bottom" constant="2" id="6ng-3J-rSF"/>
                         <constraint firstItem="PuE-Qi-0lO" firstAttribute="top" secondItem="EHG-kf-12d" secondAttribute="top" constant="7" id="A1R-aG-KVQ"/>
                         <constraint firstItem="PuE-Qi-0lO" firstAttribute="leading" secondItem="EHG-kf-12d" secondAttribute="leading" constant="6" id="BuN-O0-Z2c"/>
                         <constraint firstAttribute="height" constant="30" id="b08-Cv-8Li"/>
                         <constraint firstItem="EWp-qK-gmi" firstAttribute="top" secondItem="EHG-kf-12d" secondAttribute="top" constant="2" id="chR-jN-heX"/>
-                        <constraint firstItem="z2G-4F-eKG" firstAttribute="leading" secondItem="EHG-kf-12d" secondAttribute="leading" constant="6" id="uJO-ty-OMJ"/>
                     </constraints>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
