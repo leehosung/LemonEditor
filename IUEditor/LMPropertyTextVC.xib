@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyTextVC">
@@ -9,6 +9,7 @@
                 <outlet property="fontB" destination="Yle-zg-jre" id="3NT-fU-1xD"/>
                 <outlet property="fontColorWell" destination="EF9-cy-hVF" id="LtQ-n0-TiY"/>
                 <outlet property="fontSizeB" destination="nc6-kb-J7I" id="P78-EQ-Hrb"/>
+                <outlet property="fontSizeStepper" destination="G73-ed-fS4" id="MRx-n2-bZB"/>
                 <outlet property="fontStyleB" destination="uve-V4-Xm0" id="fuP-ac-K4F"/>
                 <outlet property="lineHeight" destination="T6Q-UK-fkM" id="8GY-DA-fMA"/>
                 <outlet property="lineHeightB" destination="T6Q-UK-fkM" id="o0e-i4-YGe"/>
@@ -55,9 +56,6 @@
                                         </segment>
                                     </segments>
                                 </segmentedCell>
-                                <connections>
-                                    <action selector="textAligneBPressed:" target="-2" id="A4Z-t2-4Ie"/>
-                                </connections>
                             </segmentedControl>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uve-V4-Xm0">
                                 <rect key="frame" x="4" y="8" width="80" height="20"/>

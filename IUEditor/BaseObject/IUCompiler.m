@@ -628,7 +628,7 @@
             NSString *resourcePath = [_resourceSource relativePathForResource:value];
             [dict putTag:@"background-image" string:[resourcePath CSSURLString]];
             
-            int bgSizeType = [cssTagDict[IUCSSTagBGSize] intValue];
+            IUBGSizeType bgSizeType = [cssTagDict[IUCSSTagBGSize] intValue];
             switch (bgSizeType) {
                 case IUBGSizeTypeCenter:
                     [dict putTag:@"background-position" string:@"center"];
@@ -784,9 +784,26 @@
             [dict putTag:@"text-decoration" string:@"underline"];
         }
         
-        value = cssTagDict[IUCSSTagTextAlign];
-        if(value){
-            [dict putTag:@"text-align" string:value];
+        IUTextAlign align = [cssTagDict[IUCSSTagTextAlign] intValue];
+        NSString *alignText;
+        switch (align) {
+            case IUTextAlignLeft:
+                alignText = @"left";
+                break;
+            case IUTextAlignCenter:
+                alignText = @"center";
+                break;
+            case IUTextAlignRight:
+                alignText = @"right";
+                break;
+            case IUTextAlignJustify:
+                alignText = @"stretch";
+                break;
+            default:
+                JDErrorLog(@"no align type");
+        }
+        if(alignText){
+            [dict putTag:@"text-align" string:alignText];
         }
 
     }

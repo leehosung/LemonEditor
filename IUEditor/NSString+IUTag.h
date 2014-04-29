@@ -103,7 +103,15 @@ typedef enum{
 #define IUCSSTagFontWeight @"fontWeight"
 #define IUCSSTagFontStyle @"fontStyle"
 #define IUCSSTagTextDecoration @"textDecoration"
+
 #define IUCSSTagTextAlign @"textAlign"
+typedef enum{
+    IUTextAlignLeft,
+    IUTextAlignCenter,
+    IUTextAlignRight,
+    IUTextAlignJustify,
+}IUTextAlign;
+
 #define IUCSSTagLineHeight @"lineHeight"
 
 #define IUCSSTagOverflow @"overflow"
