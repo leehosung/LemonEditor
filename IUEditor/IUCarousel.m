@@ -8,6 +8,7 @@
 
 #import "IUCarousel.h"
 #import "IUCarouselItem.h"
+#import "IUDocument.h"
 
 @implementation IUCarousel{
     NSInteger   _count;
@@ -21,6 +22,8 @@
         
         [self.css setValue:@(500) forTag:IUCSSTagWidth forWidth:IUCSSDefaultCollection];
         [self.css setValue:@(300) forTag:IUCSSTagHeight forWidth:IUCSSDefaultCollection];
+        _selectColor = [NSColor blackColor];
+        _deselectColor = [NSColor grayColor];
     }
 
     return self;
@@ -75,6 +78,27 @@
     return _count;
 }
 
+- (void)setSelectColor:(NSColor *)selectColor{
+    _selectColor = selectColor;
+    [self cssForItemColor];
+}
+- (void)setDeselectColor:(NSColor *)deselectColor{
+    _deselectColor = deselectColor;
+    [self cssForItemColor];
+}
+
+- (void)cssForItemColor{
+    
+    NSString *itemID = [NSString stringWithFormat:@"%@pager-item", self.htmlID];
+    [self.delegate IU:itemID CSSChanged:[self.document.compiler cssContentForIUCarousel:self hover:NO] forWidth:IUCSSDefaultCollection];
+    
+    NSString *hoverItemID = [NSString stringWithFormat:@"%@:hover", itemID];
+    [self.delegate IU:hoverItemID CSSChanged:[self.document.compiler cssContentForIUCarousel:self hover:YES] forWidth:IUCSSDefaultCollection];
+    
+    NSString *activeItemID = [NSString stringWithFormat:@"%@.active", itemID];
+    [self.delegate IU:activeItemID CSSChanged:[self.document.compiler cssContentForIUCarousel:self hover:YES] forWidth:IUCSSDefaultCollection];
+    
+}
 
 
 

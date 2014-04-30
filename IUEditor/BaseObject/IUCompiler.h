@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "IUBox.h"
+#import "IUCarousel.h"
 #import "IUCompilerResourceSource.h"
 
 @class IUDocument;
@@ -33,4 +34,8 @@ typedef enum _IUCompileRule{
 
 -(NSString*)CSSContentFromAttributes:(NSDictionary*)attributeDict ofClass:(IUBox*)obj isHover:(BOOL)isHover;
 -(NSString*)fontCSSContentFromAttributes:(NSDictionary*)attributeDict;
+-(NSString *)cssContentForIUCarousel:(IUCarousel *)iu hover:(BOOL)hover;
+
+#pragma mark manage JS source
+-(NSString*)outputJSInitializeSource:(IUDocument *)document;
 @end

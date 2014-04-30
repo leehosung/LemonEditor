@@ -255,6 +255,10 @@
 #pragma mark -
 #pragma mark IUDelegate
 
+- (id)callWebScriptMethod:(NSString *)function withArguments:(NSArray *)args{
+    return [[self webView] callWebScriptMethod:function withArguments:args];
+}
+
 - (NSPoint)distanceFromIU:(NSString *)parentName to:(NSString *)iuName{
     NSRect iuFrame = [[frameDict.dict objectForKey:iuName] rectValue];
     NSRect parentFrame = [[frameDict.dict objectForKey:parentName] rectValue];
@@ -385,7 +389,7 @@
 
 
 -(void)IU:(NSString*)identifier CSSChanged:(NSString*)css forWidth:(NSInteger)width{
-    JDTraceLog(@"[%@:width:%ld] / %@ ", identifier, width, css);
+    JDWarnLog(@"[%@:width:%ld] / %@ ", identifier, width, css);
     
     NSString *cssText = [NSString stringWithFormat:@"#%@{%@}", identifier, css];
     if(width == IUCSSDefaultCollection){
