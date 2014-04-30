@@ -66,7 +66,7 @@
 
 //source
 -(NSString*)html;
--(NSString*)cssForWidth:(NSInteger)width;
+-(NSString*)cssForWidth:(NSInteger)width isHover:(BOOL)isHover;
 
 //user interface status
 @property (readonly) BOOL draggable;

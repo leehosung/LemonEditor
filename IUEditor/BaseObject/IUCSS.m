@@ -82,7 +82,12 @@
         }
         
         if ([tag isFrameTag] == NO) {
-            [self.delegate CSSUpdated:tag forWidth:width];
+            if ([tag isHoverTag]) {
+                [self.delegate CSSUpdated:tag forWidth:width isHover:YES];
+            }
+            else {
+                [self.delegate CSSUpdated:tag forWidth:width isHover:NO];
+            }
         }
         
         if ([tag isSameTag:IUCSSTagBorderTopWidth] || [tag isSameTag:IUCSSTagBorderLeftWidth] || [tag isSameTag:IUCSSTagBorderRightWidth] || [tag isSameTag:IUCSSTagBorderBottomWidth]) {
@@ -98,7 +103,7 @@
         [cssDict removeObjectForKey:tag];
     }
     [self updateAssembledTagDictionary];
-    [self.delegate CSSUpdated:tag forWidth:9999];
+    [self.delegate CSSUpdated:tag forWidth:IUCSSMaxViewPortWidth isHover:NO];
 }
 
 
