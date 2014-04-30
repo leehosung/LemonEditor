@@ -96,8 +96,8 @@
     }
 }
 
--(void)CSSChanged:(IUCSSTag)tag forWidth:(NSInteger)width{
-    [super CSSChanged:tag forWidth:width];
+-(void)CSSUpdated:(IUCSSTag)tag forWidth:(NSInteger)width{
+    [super CSSUpdated:tag forWidth:width];
     if([tag  isEqual: IUCSSTagHeight]){
         CGFloat height = [[self.css tagDictionaryForWidth:width][IUCSSTagHeight] floatValue];
         [self.delegate changeIUPageHeight:height];

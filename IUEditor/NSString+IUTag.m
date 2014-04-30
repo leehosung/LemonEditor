@@ -15,4 +15,13 @@
 -(NSString*)percentString{
     return [self stringByAppendingString:@"%"];
 }
+
+-(BOOL)isFrameTag{
+    if ([self isSameTag:IUCSSTagWidth] || [self isSameTag:IUCSSTagHeight] || [self isSameTag:IUCSSTagPercentHeight] || [self isSameTag:IUCSSTagPercentWidth]
+        || [self isSameTag:IUCSSTagX] || [self isSameTag:IUCSSTagPercentX] || [self isSameTag:IUCSSTagY] || [self isSameTag:IUCSSTagPercentY]) {
+        return YES;
+    }
+    return NO;
+}
+
 @end

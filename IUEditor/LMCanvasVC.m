@@ -388,11 +388,12 @@
 #pragma mark CSS
 
 
--(void)IU:(NSString*)identifier CSSChanged:(NSString*)css forWidth:(NSInteger)width{
-    JDWarnLog(@"[%@:width:%ld] / %@ ", identifier, width, css);
+
+-(void)IU:(NSString*)identifier CSSUpdated:(NSString*)css forWidth:(NSInteger)width{
+    [JDLogUtil log:IULogSource key:@"css" string:css];
     
     NSString *cssText = [NSString stringWithFormat:@"#%@{%@}", identifier, css];
-    if(width == IUCSSDefaultCollection){
+    if(width == IUCSSMaxViewPortWidth){
         //default setting
         [self setIUStyle:cssText withID:identifier];
     }
@@ -578,7 +579,6 @@
         return;
     }
     for(IUBox *obj in self.controller.selectedObjects){
-        [obj startGrouping];
         if([frameDict isGuidePoint:totalPoint]){
             
             NSString *IUID = obj.htmlID;
@@ -592,11 +592,12 @@
             
             [obj moveX:guidePoint.x Y:guidePoint.y];
             JDInfoLog(@"Point:(%.1f %.1f)", moveFrame.origin.x, moveFrame.origin.y);
+            [obj updateCSSForEditViewPort];
         }
         else{
             [obj moveX:point.x Y:point.y];
+            [obj updateCSSForEditViewPort];
         }
-        [obj endGrouping];
     }
 }
 
@@ -628,11 +629,11 @@
             guideSize = NSMakeSize(guideSize.width- currentFrame.size.width, guideSize.height - currentFrame.size.height);
             
             [obj increaseWidth:guideSize.width height:guideSize.height];
+            [obj updateCSSForEditViewPort];
         }
         else{
-            [obj startGrouping];
             [obj increaseWidth:size.width height:size.height];
-            [obj endGrouping];
+            [obj updateCSSForEditViewPort];
         }
         
         /*

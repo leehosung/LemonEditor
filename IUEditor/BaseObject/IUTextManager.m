@@ -69,8 +69,8 @@
     _preparedFontSize = 25;
 
     [self setValue:@"Helvatica" forRange:NSZeroRange inInfos:_fontInfos];
-    [_fontSizeInfoCollection setObject:[NSMutableArray array] forKey:@(IUCSSDefaultCollection)];
-    [self setValue:@(25) forRange:NSZeroRange inInfos:_fontSizeInfoCollection[@(IUCSSDefaultCollection)]];
+    [_fontSizeInfoCollection setObject:[NSMutableArray array] forKey:@(IUCSSMaxViewPortWidth)];
+    [self setValue:@(25) forRange:NSZeroRange inInfos:_fontSizeInfoCollection[@(IUCSSMaxViewPortWidth)]];
     return self;
 }
 
@@ -217,7 +217,7 @@
     NSMutableArray *fontSizeInfos = [_fontSizeInfoCollection objectForKey:@(_editViewPortWidth)];
     if (fontSizeInfos == nil) {
         //디폴트를 카피해온다
-        NSArray *defaultFontSizes = [_fontSizeInfoCollection objectForKey:@(IUCSSDefaultCollection)];
+        NSArray *defaultFontSizes = [_fontSizeInfoCollection objectForKey:@(IUCSSMaxViewPortWidth)];
         fontSizeInfos = [[NSMutableArray alloc] initWithArray:defaultFontSizes copyItems:YES];
         [_fontSizeInfoCollection setObject:fontSizeInfos forKey:@(_editViewPortWidth)];
     }
@@ -352,7 +352,7 @@
             [cssIDDict setObject:cssDict forKey:[NSString stringWithFormat:@"%@TNode%ld", _idKey, range]];
             NSNumber *size = [self infoObjectAtArray:fontSizeInfos beforeOrEqualIndex:range].info;
             [cssDict setObject:size forKey:IUCSSTagFontSize];
-            if (viewPort == IUCSSDefaultCollection) {
+            if (viewPort == IUCSSMaxViewPortWidth) {
                 NSString *fontName = [self infoObjectAtArray:_fontInfos beforeOrEqualIndex:range].info;
                 [cssDict setObject:fontName forKey:IUCSSTagFontName];
             }
@@ -364,7 +364,7 @@
 }
 
 - (void)removeMediaQuery:(NSInteger)viewPortWidth{
-    assert(viewPortWidth != IUCSSDefaultCollection);
+    assert(viewPortWidth != IUCSSMaxViewPortWidth);
     [_fontSizeInfoCollection removeObjectForKey:@(viewPortWidth)];
 }
 

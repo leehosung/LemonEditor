@@ -35,7 +35,7 @@
     NSRange zeroRange = NSMakeRange(0, 0);
     IUTextManager *tm = [[IUTextManager alloc] init];
     tm.idKey = @"Obj";
-    tm.editViewPortWidth = IUCSSDefaultCollection;
+    tm.editViewPortWidth = IUCSSMaxViewPortWidth;
     [tm setFont:@"Helvetica" atRange:zeroRange];
     [tm setFontSize:20 atRange:zeroRange];
     
@@ -79,7 +79,7 @@
     NSRange zeroRange = NSMakeRange(0, 0);
     IUTextManager *tm = [[IUTextManager alloc] init];
     tm.idKey = @"Obj";
-    tm.editViewPortWidth = IUCSSDefaultCollection;
+    tm.editViewPortWidth = IUCSSMaxViewPortWidth;
     [tm setFont:@"Helvetica" atRange:zeroRange];
     [tm setFontSize:20 atRange:zeroRange];
     
@@ -143,7 +143,7 @@
     NSRange zeroRange = NSMakeRange(0, 0);
     IUTextManager *tm = [[IUTextManager alloc] init];
     tm.idKey = @"Obj";
-    tm.editViewPortWidth = IUCSSDefaultCollection;
+    tm.editViewPortWidth = IUCSSMaxViewPortWidth;
     [tm setFont:@"Helvetica" atRange:zeroRange];
     [tm setFontSize:20 atRange:zeroRange];
     
@@ -157,7 +157,7 @@
     NSDictionary *thirdDict = @{@"font-name": @"Gulim", @"font-size": @(10)};
     NSDictionary *fourthDict = @{@"font-name": @"Helvetica", @"font-size": @(10)};
     
-    NSDictionary *resultDictionary = @{@(IUCSSDefaultCollection):@{@"ObjTNode0":firstDict, @"ObjTNode2":secondDict, @"ObjTNode3": thirdDict, @"ObjTNode4":fourthDict}};
+    NSDictionary *resultDictionary = @{@(IUCSSMaxViewPortWidth):@{@"ObjTNode0":firstDict, @"ObjTNode2":secondDict, @"ObjTNode3": thirdDict, @"ObjTNode4":fourthDict}};
     XCTAssertEqualObjects(tm.css, resultDictionary, @"tt");
     XCTAssertEqualObjects(tm.HTML, resultString, @"tt");
 }
@@ -166,13 +166,13 @@
     NSRange zeroRange = NSMakeRange(0, 0);
     IUTextManager *tm = [[IUTextManager alloc] init];
     tm.idKey = @"Obj";
-    tm.editViewPortWidth = IUCSSDefaultCollection;
+    tm.editViewPortWidth = IUCSSMaxViewPortWidth;
     [tm setFont:@"Helvetica" atRange:zeroRange];
     [tm setFontSize:20 atRange:zeroRange];
     
     [tm replaceText:@"ABCDE" atRange:zeroRange];
     NSString *resultString = @"<span id='ObjTNode0'>ABCDE</span>";
-    NSDictionary *resultDictionary = @{@(IUCSSDefaultCollection):@{@"ObjTNode0": @{@"font-name": @"Helvetica", @"font-size":@(20)}}};
+    NSDictionary *resultDictionary = @{@(IUCSSMaxViewPortWidth):@{@"ObjTNode0": @{@"font-name": @"Helvetica", @"font-size":@(20)}}};
     XCTAssertEqualObjects(tm.css, resultDictionary, @"tt");
     XCTAssertEqualObjects(tm.HTML, resultString, @"tt");
 }
@@ -181,7 +181,7 @@
     NSRange zeroRange = NSMakeRange(0, 0);
     IUTextManager *tm = [[IUTextManager alloc] init];
     tm.idKey = @"Obj";
-    tm.editViewPortWidth = IUCSSDefaultCollection;
+    tm.editViewPortWidth = IUCSSMaxViewPortWidth;
     [tm setFont:@"Helvetica" atRange:zeroRange];
     [tm setFontSize:20 atRange:zeroRange];
     
@@ -192,7 +192,7 @@
     NSDictionary *secondDict =  @{@"font-name": @"Gulim", @"font-size": @(20)};
     NSDictionary *thirdDict = @{@"font-name": @"Helvetica", @"font-size": @(20)};
 
-    NSDictionary *resultDictionary = @{@(IUCSSDefaultCollection):@{@"ObjTNode0":firstDict, @"ObjTNode2":secondDict, @"ObjTNode4":thirdDict}};
+    NSDictionary *resultDictionary = @{@(IUCSSMaxViewPortWidth):@{@"ObjTNode0":firstDict, @"ObjTNode2":secondDict, @"ObjTNode4":thirdDict}};
     XCTAssertEqualObjects(tm.css, resultDictionary, @"CSS");
     XCTAssertEqualObjects(tm.HTML, resultString, @"HTML");
 }
@@ -201,7 +201,7 @@
     NSRange zeroRange = NSMakeRange(0, 0);
     IUTextManager *tm = [[IUTextManager alloc] init];
     tm.idKey = @"Obj";
-    tm.editViewPortWidth = IUCSSDefaultCollection;
+    tm.editViewPortWidth = IUCSSMaxViewPortWidth;
     [tm setFont:@"Helvetica" atRange:zeroRange];
     [tm setFontSize:20 atRange:zeroRange];
     
@@ -214,7 +214,7 @@
     NSDictionary *thirdDict = @{@"font-name": @"Gulim", @"font-size": @(10)};
     NSDictionary *fourthDict = @{@"font-name": @"Helvetica", @"font-size": @(10)};
     
-    NSDictionary *resultDictionary = @{@(IUCSSDefaultCollection):@{@"ObjTNode0":firstDict, @"ObjTNode2":secondDict, @"ObjTNode3": thirdDict, @"ObjTNode4":fourthDict}};
+    NSDictionary *resultDictionary = @{@(IUCSSMaxViewPortWidth):@{@"ObjTNode0":firstDict, @"ObjTNode2":secondDict, @"ObjTNode3": thirdDict, @"ObjTNode4":fourthDict}};
     XCTAssertEqualObjects(tm.css, resultDictionary, @"CSS");
     XCTAssertEqualObjects(tm.HTML, resultString, @"HTML");
 }
@@ -223,7 +223,7 @@
     NSRange zeroRange = NSMakeRange(0, 0);
     IUTextManager *tm = [[IUTextManager alloc] init];
     tm.idKey = @"Obj";
-    tm.editViewPortWidth = IUCSSDefaultCollection;
+    tm.editViewPortWidth = IUCSSMaxViewPortWidth;
     [tm setFont:@"Helvetica" atRange:zeroRange];
     [tm setFontSize:20 atRange:zeroRange];
     
@@ -250,7 +250,7 @@
     NSRange zeroRange = NSMakeRange(0, 0);
     IUTextManager *tm = [[IUTextManager alloc] init];
     tm.idKey = @"Obj";
-    tm.editViewPortWidth = IUCSSDefaultCollection;
+    tm.editViewPortWidth = IUCSSMaxViewPortWidth;
     [tm setFont:@"Helvetica" atRange:zeroRange];
     [tm setFontSize:20 atRange:zeroRange];
     
@@ -259,7 +259,7 @@
     [tm setFontSize:10 atRange:NSMakeRange(3, 2)];
     [tm replaceText:@"qwer" atRange:NSMakeRange(0, 5)];
     NSString *resultString = @"<span id='ObjTNode0'>qwer</span>";
-    NSDictionary *resultDictionary = @{@(IUCSSDefaultCollection):@{@"ObjTNode0": @{@"font-name": @"Helvetica", @"font-size":@(20)}}};
+    NSDictionary *resultDictionary = @{@(IUCSSMaxViewPortWidth):@{@"ObjTNode0": @{@"font-name": @"Helvetica", @"font-size":@(20)}}};
     XCTAssertEqualObjects(tm.css, resultDictionary, @"tt");
     XCTAssertEqualObjects(tm.HTML, resultString, @"tt");
 }

@@ -16,7 +16,7 @@
 //for makeing default size view size (initialize)
 #define defaultFrameWidth 960
 //for media-query default size(== maximum size는 default collection으로 분료)
-#define IUCSSDefaultCollection 9999
+#define IUCSSMaxViewPortWidth 9999
 
 
 #endif
