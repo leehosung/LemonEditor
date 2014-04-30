@@ -64,11 +64,6 @@
     return self;
 }
 
-
-- (CALayer *)hitTest:(CGPoint)p{
-    CGPoint convertedPoint = [self convertPoint:p fromLayer:nil];
-    return [super hitTest:convertedPoint];
-}
 - (void)updateFrame:(NSRect)frame{
     iuFrame = frame;
     for(InnerPointLayer *layer in self.sublayers){
