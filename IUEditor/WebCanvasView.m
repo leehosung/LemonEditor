@@ -472,16 +472,28 @@
     }
 }
 
+- (BOOL)isTextElement:(DOMHTMLElement *)element{
+    if([element isKindOfClass:[DOMText class]]
+       || [element isKindOfClass:[DOMHTMLParagraphElement class]]
+       || [element isKindOfClass:[DOMHTMLBRElement class]]){
+        return YES;
+    }
+    if([element isKindOfClass:[DOMHTMLElement class]]){
+        NSString *tagName = element.tagName;
+        if([tagName isEqualToString:@"SPAN"]){
+            return YES;
+        }
+    }
+    return NO;
+}
+
 - (void)selectWholeRangeOfCurrentCursor{
 
     DOMRange *range = [self selectedDOMRange];
     
-    if([range.startContainer isKindOfClass:[DOMText class]]){
+    if([self isTextElement:(DOMHTMLElement *)range.startContainer]){
         DOMHTMLParagraphElement *pElement = [self pElementOfNode:range.startContainer];
         [range selectNode:pElement];
-        
-//        [range setStart:range.startContainer offset:0];
-//        [range setEnd:range.startContainer offset:size];
         
         [self setSelectedDOMRange:range affinity:NSSelectionAffinityDownstream];
     }
@@ -500,7 +512,7 @@
     else{
         
         int childcount = [[element childNodes] length];
-        int textlength = 0;
+        int textlength = 0, oldtextlength=0;
         for(int i=0; i<childcount; i++){
             BOOL brflag = NO;
             DOMNode *child = [[element childNodes] item:i];
@@ -517,14 +529,20 @@
                     child = [[element childNodes] item:i+1];
                     [range setStart:child offset:0];
                     [range setEnd:child offset:0];
+                    
                 }
                 else{
-                    [range setStart:child offset:textlength - (int)index];
-                    [range setEnd:child offset:textlength -(int)index];
+                    NSUInteger indexInNode = index;
+                    if(i != 0){
+                        indexInNode = index-oldtextlength;
+                    }
+                    [range setStart:child offset:(int)indexInNode];
+                    [range setEnd:child offset:(int)indexInNode];
                 }
                 break;
 
             }
+            oldtextlength = textlength;
         }
        
     }

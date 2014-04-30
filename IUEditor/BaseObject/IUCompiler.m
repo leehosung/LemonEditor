@@ -164,8 +164,8 @@
         }
     }
     else if (iu.textHTML) {
-        NSString *brHTMLText = [iu.textHTML stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
-        [code appendFormat:@"<p>%@</p>", brHTMLText];
+        [code appendFormat:@"<p>%@</p>", iu.textHTML];
+
     }
     if (iu.children.count) {
         [code appendNewline];
@@ -321,8 +321,7 @@
     NSMutableString *code = [NSMutableString string];
     [code appendFormat:@"<div %@ >", [self editorHTMLAttributes:iu]];
     if (iu.textHTML) {
-        NSString *brHTMLText = [iu.textHTML stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
-        [code appendFormat:@"<p>%@</p>", brHTMLText];
+        [code appendFormat:@"<p>%@</p>", iu.textHTML];
 
     }
     if (iu.children.count) {
