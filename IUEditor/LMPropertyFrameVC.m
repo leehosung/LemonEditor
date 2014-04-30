@@ -127,7 +127,40 @@
     [self addObserver:self forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagYUnit]  options:0 context:@"percentY"];
     [self addObserver:self forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagWidthUnit]  options:0 context:@"percentWidth"];
     [self addObserver:self forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagHeightUnit]  options:0 context:@"percentHeight"];
+}
+
+- (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor{
+    IUCSSTag tag;
+    if (control == _xTF) {
+        tag = IUCSSTagX;
+    }
+    else if (control == _pxTF) {
+        tag = IUCSSTagPercentX;
+    }
+    else if (control == _yTF) {
+        tag = IUCSSTagY;
+    }
+    else if (control == _pyTF) {
+        tag = IUCSSTagPercentY;
+    }
+    else if (control == _wTF) {
+        tag = IUCSSTagWidth;
+    }
+    else if (control == _pwTF) {
+        tag = IUCSSTagPercentWidth;
+    }
+    else if (control == _hTF) {
+        tag = IUCSSTagHeight;
+    }
+    else if (control == _phTF) {
+        tag = IUCSSTagPercentHeight;
+    }
     
+    [self setValue:[control stringValue] forKeyPath:[_controller keyPathFromControllerToCSSTag:tag]];
+    for (IUBox *iu in _controller.selectedObjects) {
+        [iu updateCSSForEditViewPort];
+    }
+    return YES;
 }
 
 
