@@ -96,13 +96,13 @@
                                 </buttonCell>
                                 <cells>
                                     <column>
-                                        <buttonCell type="radio" title="True" imagePosition="left" alignment="left" controlSize="small" state="on" tag="1" inset="2" id="69y-di-5Oh">
+                                        <buttonCell type="radio" title="False" imagePosition="left" alignment="left" controlSize="small" state="on" tag="1" inset="2" id="69y-di-5Oh">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="smallSystem"/>
                                         </buttonCell>
                                     </column>
                                     <column>
-                                        <buttonCell type="radio" title="False" imagePosition="left" alignment="left" controlSize="small" inset="2" id="KZ3-B6-83S">
+                                        <buttonCell type="radio" title="True" imagePosition="left" alignment="left" controlSize="small" inset="2" id="KZ3-B6-83S">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="smallSystem"/>
                                         </buttonCell>

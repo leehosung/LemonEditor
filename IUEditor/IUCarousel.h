@@ -17,9 +17,9 @@ typedef enum{
 
 @interface IUCarousel : IUBox
 
-@property BOOL autoplay;
-@property BOOL enableArrowControl;
-@property IUCarouselControlType controlType;
+@property (nonatomic) BOOL autoplay;
+@property (nonatomic) BOOL disableArrowControl;
+@property (nonatomic) IUCarouselControlType controlType;
 @property (nonatomic) NSColor *selectColor;
 @property (nonatomic) NSColor *deselectColor;
 

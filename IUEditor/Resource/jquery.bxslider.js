@@ -1401,8 +1401,11 @@ http://bxslider.com/examples/reload-slider-settings
     speed: 500
   }
 */
-function reloadCaoursels(iuid, propertyDict){
+function reloadCarousels(iuid, propertyStr){
+    console.log('reloadCarousels : '+iuid);
+    console.log('property : '+propertyStr);
 	var carousel = carouselDict[iuid];
+    var property = eval("("+propertyStr+")")
 	carousel.reloadSlider(property);
 }
 
