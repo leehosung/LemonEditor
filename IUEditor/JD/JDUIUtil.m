@@ -653,7 +653,7 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
 
 -(NSString*) rgbaString{
     CGFloat redFloatValue, greenFloatValue, blueFloatValue, alphaFloatValue;
-    int redIntValue, greenIntValue, blueIntValue, alphaIntValue;
+    int redIntValue, greenIntValue, blueIntValue;
     
     //Convert the NSColor to the RGB color space before we can access its components
     NSColor *convertedColor=[self colorUsingColorSpaceName:NSDeviceRGBColorSpace];

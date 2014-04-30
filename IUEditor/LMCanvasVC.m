@@ -453,7 +453,7 @@
     [styleSheet setInnerHTML:newCSSText];
     
     [[self webView] updateFrameDict];
-    [[self webView] reloadCarousels];
+    [[self webView] redrawCarousels];
     
 }
 
@@ -616,7 +616,7 @@
         if([frameDict isGuideSize:totalSize]){
             NSString *IUID = obj.htmlID;
             NSRect currentFrame = [[frameDict.dict objectForKey:IUID] rectValue];
-            NSSize expectedSize = NSMakeSize(currentFrame.size.width+size.width, currentFrame.size.height+size.height);
+            //NSSize expectedSize = NSMakeSize(currentFrame.size.width+size.width, currentFrame.size.height+size.height);
             NSRect moveFrame = currentFrame;
             
             moveFrame.size = NSMakeSize(currentFrame.size.width+size.width, currentFrame.size.height+size.height);
@@ -651,11 +651,7 @@
     [frameDict.dict removeObjectForKey:identifier];
     [self.controller rearrangeObjects];
     
-    
-    //TODO: remove CSS
-    // - 꼭 필요한가??
-    
-    
+
 }
 
 
