@@ -98,7 +98,7 @@
 }
 
 - (InnerPointLayer *)hitTestInnerPointLayer:(NSPoint)aPoint{
-    CALayer *hitLayer = [self.layer hitTest:aPoint];
+    CALayer *hitLayer = [pointManagerLayer hitTest:aPoint];
     if([hitLayer isKindOfClass:[InnerPointLayer class]]){
         return (InnerPointLayer *)hitLayer;
     }

@@ -99,7 +99,8 @@
 //call from scroll view
 
 - (void)moveSizeView:(NSPoint)point withWidth:(CGFloat)width{
-    [boxManageView setBoundsOrigin:point];
+    NSPoint movePoint = NSMakePoint(point.x, 0);
+    [boxManageView setBoundsOrigin:movePoint];
 }
 
 #pragma mark -
