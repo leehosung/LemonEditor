@@ -26,6 +26,10 @@
     return self;
 }
 
+-(BOOL)shouldEditText{
+    return NO;
+}
+
 -(void)setCount:(NSInteger)count{
     assert(self.identifierManager != nil);
     if (count == 0 || count > 30) {
@@ -70,6 +74,8 @@
 -(NSInteger)count{
     return _count;
 }
+
+
 
 
 @end

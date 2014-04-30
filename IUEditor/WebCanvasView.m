@@ -383,20 +383,12 @@
         return NO;
     }
     
-    //FIXME: attribute isWirtable
-    BOOL isWritable = YES;
-    NSString *writableValue = [IUNode getAttribute:@"isWritable"];
-    if(writableValue != nil && writableValue.length != 0){
-        isWritable = [writableValue boolValue];
-    }
-    
     //insert Text
-    if (isWritable){
-        NSRange iuRange = [self selectedRange:range InIU:IUNode];
-        [((LMCanvasVC *)self.delegate) insertString:text identifier:IUNode.idName withRange:iuRange];
-
-        JDInfoLog(@"insertText [IU:%@] : range(%ld, %ld) : %@ ", IUNode.idName, iuRange.location, iuRange.length, text);
-    }
+    NSRange iuRange = [self selectedRange:range InIU:IUNode];
+    [((LMCanvasVC *)self.delegate) insertString:text identifier:IUNode.idName withRange:iuRange];
+    
+    JDInfoLog(@"insertText [IU:%@] : range(%ld, %ld) : %@ ", IUNode.idName, iuRange.location, iuRange.length, text);
+    
     
     return NO;
 }
@@ -405,30 +397,21 @@
     
     DOMHTMLElement *IUNode = [self IUNodeAtCurrentNode:range.startContainer];
     if(IUNode == nil
-        || [IUNode.idName isNotEqualTo:[((LMCanvasVC *)self.delegate) selectedIUIdentifier]]){
-
+       || [IUNode.idName isNotEqualTo:[((LMCanvasVC *)self.delegate) selectedIUIdentifier]]){
+        
         return NO;
     }
     if([self isOneIUSTextelection:range] == NO){
         return NO;
     }
-
-    
-    //FIXME: attribute isWirtable
-    BOOL isWritable = YES;
-    NSString *writableValue = [IUNode getAttribute:@"isWritable"];
-    if(writableValue != nil && writableValue.length != 0){
-        isWritable = [writableValue boolValue];
-    }
     
     //insert Text
-    if (isWritable){
-        NSRange iuRange = [self selectedRange:range InIU:IUNode];
-        [((LMCanvasVC *)self.delegate) deleteStringRange:iuRange identifier:IUNode.idName];
-        JDInfoLog(@"DeleteText[IU:%@] : range(%ld, %ld) ", IUNode.idName, iuRange.location, iuRange.length);
-    }
+    NSRange iuRange = [self selectedRange:range InIU:IUNode];
+    [((LMCanvasVC *)self.delegate) deleteStringRange:iuRange identifier:IUNode.idName];
+    JDInfoLog(@"DeleteText[IU:%@] : range(%ld, %ld) ", IUNode.idName, iuRange.location, iuRange.length);
+    
     return NO;
-
+    
 }
 
 

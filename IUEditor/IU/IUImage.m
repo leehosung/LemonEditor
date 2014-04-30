@@ -30,6 +30,10 @@
     return NO;
 }
 
+-(BOOL)shouldEditText{
+    return NO;
+}
+
 - (void)insertImage:(NSString *)imageName{
     self.imageName = imageName;
 }

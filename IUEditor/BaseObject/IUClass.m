@@ -10,4 +10,9 @@
 
 @implementation IUClass
 
+-(BOOL)shouldEditText{
+    return NO;
+}
+
+
 @end

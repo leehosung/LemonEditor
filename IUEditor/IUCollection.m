@@ -20,4 +20,9 @@
     [super encodeWithCoder:aCoder];
     [aCoder encodeObject:_collectionVariable forKey:@"collectionVariable"];
 }
+
+-(BOOL)shouldEditText{
+    return NO;
+}
+
 @end

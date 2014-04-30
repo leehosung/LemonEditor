@@ -43,6 +43,11 @@
     return NO;
 }
 
+-(BOOL)shouldEditText{
+    return NO;
+}
+
+
 - (void)setVideoPath:(NSString *)videoPath{
     _videoPath = videoPath;
     [self.delegate IU:self.htmlID HTML:self.html withParentID:self.parent.htmlID];

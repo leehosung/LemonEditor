@@ -31,4 +31,8 @@
     return NO;
 }
 
+-(BOOL)shouldEditText{
+    return NO;
+}
+
 @end
