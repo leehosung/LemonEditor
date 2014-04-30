@@ -11,7 +11,7 @@
 #define IUTextInfoFont @"font"
 #define IUTextInfoFontSize @"font-size"
 
-@interface IUTextManager : NSObject
+@interface IUTextManager : NSObject 
 
 @property NSInteger editViewPortWidth;
 
