@@ -89,6 +89,7 @@
 - (void)cssForItemColor{
     
     NSString *itemID = [NSString stringWithFormat:@"%@pager-item", self.htmlID];
+    
     [self.delegate IU:itemID CSSUpdated:[self.document.compiler cssContentForIUCarousel:self hover:NO] forWidth:IUCSSMaxViewPortWidth];
     
     NSString *hoverItemID = [NSString stringWithFormat:@"%@:hover", itemID];

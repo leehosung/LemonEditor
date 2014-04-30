@@ -24,4 +24,16 @@
     return NO;
 }
 
+-(NSString*)hoverIdentifier{
+    return [self stringByAppendingString:@":hover"];
+}
+
+- (BOOL)isHoverTag{
+    if ([self isSameTag:IUCSSTagHoverBGImagePositionEnable] || [self isSameTag:IUCSSTagHoverBGImageX] || [self isSameTag:IUCSSTagHoverBGImageY]
+        || [self isSameTag:IUCSSTagHoverBGColorEnable]|| [self isSameTag:IUCSSTagHoverBGColor]|| [self isSameTag:IUCSSTagHoverTextColorEnable]
+        || [self isSameTag:IUCSSTagHoverTextColor]) {
+        return YES;
+    }
+    return NO;
+}
 @end

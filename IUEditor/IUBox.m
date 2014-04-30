@@ -159,14 +159,19 @@
     return [self.document.compiler editorHTML:self];
 }
 
--(NSString*)cssForWidth:(NSInteger)width{
-    return [self.document.compiler CSSContentFromAttributes:[self CSSAttributesForWidth:width] ofClass:self isHover:NO];
+-(NSString*)cssForWidth:(NSInteger)width isHover:(BOOL)isHover{
+    return [self.document.compiler CSSContentFromAttributes:[self CSSAttributesForWidth:width] ofClass:self isHover:isHover];
 }
 
--(void)CSSUpdated:(NSDictionary*)tagDictionary forWidth:(NSInteger)width{
+-(void)CSSUpdated:(NSDictionary*)tagDictionary forWidth:(NSInteger)width isHover:(BOOL)isHover{
     if (delegateEnableLevel == 1) {
-        NSString *css = [self cssForWidth:width];
-        [self.delegate IU:self.htmlID CSSUpdated:css forWidth:width];
+        NSString *css = [self cssForWidth:width isHover:isHover];
+        if (isHover) {
+            [self.delegate IU:[self.htmlID hoverIdentifier] CSSUpdated:css forWidth:width];
+        }
+        else {
+            [self.delegate IU:self.htmlID CSSUpdated:css forWidth:width];
+        }
     }
     else {
         [changedCSSWidths addObject:@(width)];
@@ -215,9 +220,9 @@
         }
         iu.parent = self;
         [self.delegate IU:iu.htmlID HTML:iu.html withParentID:self.htmlID];
-        [self.delegate IU:iu.htmlID CSSUpdated:[iu cssForWidth:IUCSSMaxViewPortWidth] forWidth:IUCSSMaxViewPortWidth];
+        [self.delegate IU:iu.htmlID CSSUpdated:[iu cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
         for (IUBox *child in iu.children) {
-            [self.delegate IU:child.htmlID CSSUpdated:[child cssForWidth:IUCSSMaxViewPortWidth] forWidth:IUCSSMaxViewPortWidth];
+            [self.delegate IU:child.htmlID CSSUpdated:[child cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
         }
         [_identifierManager addIU:iu];
         [iu bind:@"identifierManager" toObject:self withKeyPath:@"identifierManager" options:nil];
@@ -370,7 +375,8 @@
 }
 
 - (void)updateCSSForEditViewPort{
-    [self.delegate IU:_htmlID CSSUpdated:[self cssForWidth:_css.editWidth] forWidth:_css.editWidth];
+    [self.delegate IU:_htmlID CSSUpdated:[self cssForWidth:_css.editWidth isHover:NO] forWidth:_css.editWidth];
+    [self.delegate IU:[_htmlID hoverIdentifier] CSSUpdated:[self cssForWidth:_css.editWidth isHover:YES] forWidth:_css.editWidth];
 }
 
 - (void)increaseWidth:(NSInteger)width height:(NSInteger)height{
@@ -438,9 +444,9 @@
 -(void)endGrouping{
     delegateEnableLevel ++;
     for (NSNumber *number in changedCSSWidths) {
-        [self.delegate IU:self.htmlID CSSUpdated:[self cssForWidth:[number intValue]] forWidth:[number intValue]];
+        [self.delegate IU:self.htmlID CSSUpdated:[self cssForWidth:[number intValue] isHover:NO] forWidth:[number intValue]];
+        [self.delegate IU:[self.htmlID hoverIdentifier] CSSUpdated:[self cssForWidth:[number intValue] isHover:YES] forWidth:[number intValue]];
     }
-
 }
 
 -(void)setLink:(NSString *)link{
@@ -516,7 +522,7 @@
     [self.css eradicateTag:IUCSSTagX];
     [self.css eradicateTag:IUCSSTagY];
     
-    [self.delegate IU:self.htmlID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth] forWidth:IUCSSMaxViewPortWidth];
+    [self.delegate IU:self.htmlID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
 }
 
 //FIXME: undefineKey,

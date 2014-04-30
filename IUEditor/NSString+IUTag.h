@@ -136,7 +136,9 @@ typedef enum{
 #define isSameTag isEqualToString
 
 @interface NSString (IUTag)
--(NSString*)pixelString;
--(NSString*)percentString;
--(BOOL)isFrameTag;
+- (NSString*)pixelString;
+- (NSString*)percentString;
+- (BOOL)isFrameTag;
+- (NSString*)hoverIdentifier;
+- (BOOL)isHoverTag;
 @end
