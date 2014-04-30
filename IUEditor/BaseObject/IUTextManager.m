@@ -261,7 +261,10 @@
             nextIndex = [text length];
         }
         [returnValue appendFormat:@"<span id='%@TNode%lu'>", _idKey, currentIndex];
-        [returnValue appendString:[text substringFromIndex:currentIndex toIndex:nextIndex]];
+        NSString *originalText = [text substringFromIndex:currentIndex toIndex:nextIndex];
+        NSString *spaceText = [originalText stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
+        spaceText = [spaceText stringByReplacingOccurrencesOfString:@" " withString:@"&nbsp;"];
+        [returnValue appendString:spaceText];
         [returnValue appendString:@"</span>"];
         if (nextIndex == [text length]) {
             break;
