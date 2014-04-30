@@ -971,35 +971,36 @@
         IUCarousel *carouselIU = (IUCarousel *)iu;
         [argStr appendString:@"{"];
         if(carouselIU.autoplay){
-            [argStr appendString:@"auto:true,"];
+            [argStr appendString:@"auto:true, "];
         }
         else{
-            [argStr appendString:@"auto:false,"];
+            [argStr appendString:@"auto:false, "];
         }
-        if(carouselIU.enableArrowControl){
-            [argStr appendString:@"controls:true,"];
+        if(carouselIU.disableArrowControl){
+            [argStr appendString:@"controls:false, "];
         }
         else{
-            [argStr appendString:@"controls:false,"];
+            [argStr appendString:@"controls:true, "];
         }
         switch (carouselIU.controlType) {
             case IUCarouselControlTypeNone:
-                [argStr appendString:@"autoControls:false,"];
-                break;
-            case IUCarouselControlBottomNPlay:
-                [argStr appendString:@"autoControls:true,"];
-                break;
-            case IUCarouselControlBottom:
                 [argStr appendString:@"pager:false"];
                 break;
+            case IUCarouselControlBottomNPlay:
+                [argStr appendString:@"autoControls:true"];
+                break;
+            case IUCarouselControlBottom:
+                [argStr appendString:@"autoControls:false"];
+                break;
         }
+        [argStr appendString:@"}"];
     }
     
     return argStr;
 }
 
 -(NSString*)outputJSInitializeSource:(IUDocument *)document{
-    NSString *jsSource = [[self outputHTML:document] stringByIndent:8 prependIndent:YES];
+    NSString *jsSource = [[self outputJSSource:document] stringByIndent:8 prependIndent:YES];
     return jsSource;
 }
 

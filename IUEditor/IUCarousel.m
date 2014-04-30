@@ -28,6 +28,21 @@
     return self;
 }
 
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    self =  [super initWithCoder:aDecoder];
+    if(self){
+        [aDecoder decodeToObject:self withProperties:[[IUCarousel class] properties]];
+    }
+    return self;
+}
+-(void)encodeWithCoder:(NSCoder *)aCoder{
+    [super encodeWithCoder:aCoder];
+    [aCoder encodeFromObject:self withProperties:[[IUCarousel class] properties]];
+    
+}
+
+
+
 -(BOOL)shouldEditText{
     return NO;
 }
@@ -77,6 +92,8 @@
     return _count;
 }
 
+#pragma mark Inner CSS (Carousel)
+
 - (void)setSelectColor:(NSColor *)selectColor{
     _selectColor = selectColor;
     [self cssForItemColor];
@@ -100,6 +117,24 @@
     
 }
 
+#pragma mark JS reload
+- (void)setAutoplay:(BOOL)autoplay{
+    _autoplay = autoplay;
+    [self jsReloadForController];
+}
+- (void)setDisableArrowControl:(BOOL)disableArrowControl{
+    _disableArrowControl = disableArrowControl;
+    [self jsReloadForController];
+}
+- (void)setControlType:(IUCarouselControlType)controlType{
+    _controlType = controlType;
+    [self jsReloadForController];
+}
 
-
+- (void)jsReloadForController{
+    NSString *jsArgs = [self.document.compiler outputJSArgs:self];
+    if(jsArgs){
+        [self.delegate callWebScriptMethod:@"reloadCarousels" withArguments:@[self.htmlID, jsArgs]];
+    }
+}
 @end

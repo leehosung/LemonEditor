@@ -37,5 +37,6 @@ typedef enum _IUCompileRule{
 -(NSString *)cssContentForIUCarousel:(IUCarousel *)iu hover:(BOOL)hover;
 
 #pragma mark manage JS source
--(NSString*)outputJSInitializeSource:(IUDocument *)document;
+-(NSString *)outputJSArgs:(IUBox *)iu;
+-(NSString *)outputJSInitializeSource:(IUDocument *)document;
 @end
