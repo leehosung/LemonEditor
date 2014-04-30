@@ -322,8 +322,8 @@
 
 }
 
-- (void)reloadCarousels{
-    [self stringByEvaluatingJavaScriptFromString:@"reloadCarousels()"];
+- (void)redrawCarousels{
+    [self stringByEvaluatingJavaScriptFromString:@"redrawCarousels()"];
 }
 
 - (void)selectCarousel:(NSString *)identifier atIndex:(NSInteger)index{

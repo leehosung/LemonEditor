@@ -31,7 +31,6 @@
 #pragma mark call by sizeView
 
 - (void)refreshGridFrameDictionary;
-- (NSInteger)frameWidth;
 - (void)removeStyleSheet:(NSInteger)size;
 
 #pragma mark -
@@ -58,9 +57,6 @@
 #pragma mark be set by IU
 //load page
 - (void)setDocument:(IUDocument *)document;
-//set html
-- (void)removeIU:(NSString *)iuID;
-
 
 #pragma mark -
 #pragma mark set IU
@@ -77,6 +73,5 @@
 - (void)makeNewIU:(IUBox *)newIU atPoint:(NSPoint)point atIU:(NSString *)parentIUID;
 - (NSString *)currentHTML;
 
-- (void)showCurrentSource;
 
 @end

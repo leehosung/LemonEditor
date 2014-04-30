@@ -25,5 +25,4 @@
 
 - (LMWindow *)window;
 - (void)reloadCurrentDocument;
-- (IBAction)getCurrentSource:(id)sender;
 @end

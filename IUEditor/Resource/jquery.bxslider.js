@@ -1374,10 +1374,25 @@ function insertNewCarousel(iuid){
     }
 }
 
-function reloadCarousels(){
+function redrawCarousels(){
     $.each(carouselDict, function(iuid, carousel){
            carousel.redrawSlider();
            }); 
+}
+
+/*
+ - property format :dictionary
+http://bxslider.com/examples/reload-slider-settings
+{
+    mode: 'fade',
+    auto: true,
+    pause: 1000,
+    speed: 500
+  }
+*/
+function reloadCaoursels(iuid, propertyDict){
+	var carousel = carouselDict[iuid];
+	carousel.reloadSlider(property);
 }
 
 function selectCarousel(iuid, index){

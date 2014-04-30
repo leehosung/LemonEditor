@@ -256,11 +256,6 @@
 
 
 #pragma mark -
-//TODO: remove it :(test button)
-- (IBAction)getCurrentSource:(id)sender{
-    [canvasVC showCurrentSource];
-}
-
 - (void)saveDocument:(id)sender{
     JDInfoLog(@"saving document");
     [_project save];

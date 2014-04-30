@@ -174,7 +174,6 @@
      */
     
     ///xxxDidChange:
-    bool priorKey = [[change objectForKey:NSKeyValueChangeNotificationIsPriorKey] boolValue];
     if ([[change objectForKey:NSKeyValueChangeNotificationIsPriorKey] boolValue] == NO) {
         selectorName = [NSString stringWithFormat:@"%@DidChange:",keyPath];
     }
