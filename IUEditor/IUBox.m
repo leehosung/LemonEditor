@@ -70,42 +70,42 @@
         [textManager bind:@"idKey" toObject:self withKeyPath:@"htmlID" options:nil];
         
         //NO - Pixel
-        [_css setValue:@(0) forTag:IUCSSTagXUnit forWidth:IUCSSDefaultCollection];
-        [_css setValue:@(0) forTag:IUCSSTagYUnit forWidth:IUCSSDefaultCollection];
-        [_css setValue:@(0) forTag:IUCSSTagWidthUnit forWidth:IUCSSDefaultCollection];
-        [_css setValue:@(0) forTag:IUCSSTagHeightUnit forWidth:IUCSSDefaultCollection];
+        [_css setValue:@(0) forTag:IUCSSTagXUnit forWidth:IUCSSMaxViewPortWidth];
+        [_css setValue:@(0) forTag:IUCSSTagYUnit forWidth:IUCSSMaxViewPortWidth];
+        [_css setValue:@(0) forTag:IUCSSTagWidthUnit forWidth:IUCSSMaxViewPortWidth];
+        [_css setValue:@(0) forTag:IUCSSTagHeightUnit forWidth:IUCSSMaxViewPortWidth];
         
         if (self.hasWidth) {
-            [_css setValue:@(50+rand()%300) forTag:IUCSSTagWidth forWidth:IUCSSDefaultCollection];
+            [_css setValue:@(50+rand()%300) forTag:IUCSSTagWidth forWidth:IUCSSMaxViewPortWidth];
         }
         if (self.hasHeight) {
-            [_css setValue:@(35) forTag:IUCSSTagHeight forWidth:IUCSSDefaultCollection];
+            [_css setValue:@(35) forTag:IUCSSTagHeight forWidth:IUCSSMaxViewPortWidth];
         }
         //text align default
-        [_css setValue:@(IUTextAlignLeft) forTag:IUCSSTagTextAlign forWidth:IUCSSDefaultCollection];
+        [_css setValue:@(IUTextAlignLeft) forTag:IUCSSTagTextAlign forWidth:IUCSSMaxViewPortWidth];
         
         //background
-        [_css setValue:[NSColor randomColor] forTag:IUCSSTagBGColor forWidth:IUCSSDefaultCollection];
-        [_css setValue:@(IUBGSizeTypeAuto) forTag:IUCSSTagBGSize forWidth:IUCSSDefaultCollection];
-        [_css setValue:@(0) forTag:IUCSSTagBGXPosition forWidth:IUCSSDefaultCollection];
-        [_css setValue:@(0) forTag:IUCSSTagBGYPosition forWidth:IUCSSDefaultCollection];
+        [_css setValue:[NSColor randomColor] forTag:IUCSSTagBGColor forWidth:IUCSSMaxViewPortWidth];
+        [_css setValue:@(IUBGSizeTypeAuto) forTag:IUCSSTagBGSize forWidth:IUCSSMaxViewPortWidth];
+        [_css setValue:@(0) forTag:IUCSSTagBGXPosition forWidth:IUCSSMaxViewPortWidth];
+        [_css setValue:@(0) forTag:IUCSSTagBGYPosition forWidth:IUCSSMaxViewPortWidth];
         
         //border
-        [_css setValue:@(0) forTag:IUCSSTagBorderTopWidth forWidth:IUCSSDefaultCollection];
-        [_css setValue:@(0) forTag:IUCSSTagBorderLeftWidth forWidth:IUCSSDefaultCollection];
-        [_css setValue:@(0) forTag:IUCSSTagBorderRightWidth forWidth:IUCSSDefaultCollection];
-        [_css setValue:@(0) forTag:IUCSSTagBorderBottomWidth forWidth:IUCSSDefaultCollection];
+        [_css setValue:@(0) forTag:IUCSSTagBorderTopWidth forWidth:IUCSSMaxViewPortWidth];
+        [_css setValue:@(0) forTag:IUCSSTagBorderLeftWidth forWidth:IUCSSMaxViewPortWidth];
+        [_css setValue:@(0) forTag:IUCSSTagBorderRightWidth forWidth:IUCSSMaxViewPortWidth];
+        [_css setValue:@(0) forTag:IUCSSTagBorderBottomWidth forWidth:IUCSSMaxViewPortWidth];
         
-        [_css setValue:@"NO" forTag:IUCSSTagBGGradient forWidth:IUCSSDefaultCollection];
+        [_css setValue:@"NO" forTag:IUCSSTagBGGradient forWidth:IUCSSMaxViewPortWidth];
         
-        [_css setValue:[NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:1] forTag:IUCSSTagBorderTopColor forWidth:IUCSSDefaultCollection];
-        [_css setValue:[NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:1] forTag:IUCSSTagBorderLeftColor forWidth:IUCSSDefaultCollection];
-        [_css setValue:[NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:1] forTag:IUCSSTagBorderRightColor forWidth:IUCSSDefaultCollection];
-        [_css setValue:[NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:1] forTag:IUCSSTagBorderBottomColor forWidth:IUCSSDefaultCollection];
+        [_css setValue:[NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:1] forTag:IUCSSTagBorderTopColor forWidth:IUCSSMaxViewPortWidth];
+        [_css setValue:[NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:1] forTag:IUCSSTagBorderLeftColor forWidth:IUCSSMaxViewPortWidth];
+        [_css setValue:[NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:1] forTag:IUCSSTagBorderRightColor forWidth:IUCSSMaxViewPortWidth];
+        [_css setValue:[NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:1] forTag:IUCSSTagBorderBottomColor forWidth:IUCSSMaxViewPortWidth];
 
         //type
-        [_css setValue:@"Arial" forTag:IUCSSTagFontName forWidth:IUCSSDefaultCollection];
-        [_css setValue:@(12) forTag:IUCSSTagFontSize forWidth:IUCSSDefaultCollection];
+        [_css setValue:@"Arial" forTag:IUCSSTagFontName forWidth:IUCSSMaxViewPortWidth];
+        [_css setValue:@(12) forTag:IUCSSTagFontSize forWidth:IUCSSMaxViewPortWidth];
         
         delegateEnableLevel = 1;
         
@@ -127,13 +127,12 @@
 
 - (void)delegate_selectedFrameWidthDidChange:(NSDictionary*)change{
     if (self.delegate) {
-        [_css setEditWidth:self.delegate.selectedFrameWidth];
-    }
-}
-
-- (void)delegate_maxFrameWidthDidChange:(NSDictionary *)change{
-    if (self.delegate){
-        [_css setMaxWidth:self.delegate.maxFrameWidth];
+        if (self.delegate.maxFrameWidth == self.delegate.selectedFrameWidth) {
+            [_css setEditWidth:IUCSSMaxViewPortWidth];
+        }
+        else {
+            [_css setEditWidth:self.delegate.selectedFrameWidth];
+        }
     }
 }
 
@@ -164,9 +163,10 @@
     return [self.document.compiler CSSContentFromAttributes:[self CSSAttributesForWidth:width] ofClass:self isHover:NO];
 }
 
--(void)CSSChanged:(NSDictionary*)tagDictionary forWidth:(NSInteger)width{
+-(void)CSSUpdated:(NSDictionary*)tagDictionary forWidth:(NSInteger)width{
     if (delegateEnableLevel == 1) {
-        [self.delegate IU:self.htmlID CSSChanged:[self cssForWidth:width] forWidth:width];
+        NSString *css = [self cssForWidth:width];
+        [self.delegate IU:self.htmlID CSSUpdated:css forWidth:width];
     }
     else {
         [changedCSSWidths addObject:@(width)];
@@ -215,9 +215,9 @@
         }
         iu.parent = self;
         [self.delegate IU:iu.htmlID HTML:iu.html withParentID:self.htmlID];
-        [self.delegate IU:iu.htmlID CSSChanged:[iu cssForWidth:IUCSSDefaultCollection] forWidth:IUCSSDefaultCollection];
+        [self.delegate IU:iu.htmlID CSSUpdated:[iu cssForWidth:IUCSSMaxViewPortWidth] forWidth:IUCSSMaxViewPortWidth];
         for (IUBox *child in iu.children) {
-            [self.delegate IU:child.htmlID CSSChanged:[child cssForWidth:IUCSSDefaultCollection] forWidth:IUCSSDefaultCollection];
+            [self.delegate IU:child.htmlID CSSUpdated:[child cssForWidth:IUCSSMaxViewPortWidth] forWidth:IUCSSMaxViewPortWidth];
         }
         [_identifierManager addIU:iu];
         [iu bind:@"identifierManager" toObject:self withKeyPath:@"identifierManager" options:nil];
@@ -293,11 +293,20 @@
 }
 
 - (void)setPercentFrame:(NSRect)frame{
-    [_css setValue:@(frame.origin.x) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentX]];
-    [_css setValue:@(frame.origin.y) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentY]];
-    [_css setValue:@(frame.size.height) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentHeight]];
-    [_css setValue:@(frame.size.width) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentWidth]];
-
+    CGFloat x = frame.origin.x;
+    CGFloat xExist =[[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentX] floatValue];
+    if (x != xExist) {
+        [_css setValue:@(frame.origin.x) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentX]];
+    }
+    if (frame.origin.x != [[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentY] floatValue]) {
+        [_css setValue:@(frame.origin.y) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentY]];
+    }
+    if (frame.origin.x != [[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentHeight] floatValue]) {
+        [_css setValue:@(frame.size.height) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentHeight]];
+    }
+    if (frame.origin.x != [[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentWidth] floatValue]) {
+        [_css setValue:@(frame.size.width) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentWidth]];
+    }
 }
 
 - (void)setPixelFrame:(NSRect)frame{
@@ -360,6 +369,10 @@
     
 }
 
+- (void)updateCSSForEditViewPort{
+    [self.delegate IU:_htmlID CSSUpdated:[self cssForWidth:_css.editWidth] forWidth:_css.editWidth];
+}
+
 - (void)increaseWidth:(NSInteger)width height:(NSInteger)height{
     
     NSSize parentSize = [self.delegate frameSize:self.parent.htmlID];
@@ -397,11 +410,11 @@
 }
 
 - (void)insertImage:(NSString *)imageName{
-    NSDictionary *defaultTagDictionary = [_css tagDictionaryForWidth:IUCSSDefaultCollection];
+    NSDictionary *defaultTagDictionary = [_css tagDictionaryForWidth:IUCSSMaxViewPortWidth];
     if (defaultTagDictionary) {
         [_css setValue:imageName forTag:IUCSSTagImage forWidth:_css.editWidth];
     }
-    [_css setValue:imageName forTag:IUCSSTagImage forWidth:IUCSSDefaultCollection];
+    [_css setValue:imageName forTag:IUCSSTagImage forWidth:IUCSSMaxViewPortWidth];
 }
 
 -(BOOL)hasX{
@@ -425,7 +438,7 @@
 -(void)endGrouping{
     delegateEnableLevel ++;
     for (NSNumber *number in changedCSSWidths) {
-        [self.delegate IU:self.htmlID CSSChanged:[self cssForWidth:[number intValue]] forWidth:[number intValue]];
+        [self.delegate IU:self.htmlID CSSUpdated:[self cssForWidth:[number intValue]] forWidth:[number intValue]];
     }
 
 }
@@ -455,10 +468,10 @@
     [self.delegate IU:self.htmlID textHTML:self.html withParentID:self.parent.htmlID nearestID:nID index:index];
     
     NSMutableDictionary *cssDict = [textManager.css mutableCopy];
-    NSDictionary *defaultCSS = cssDict[@(IUCSSDefaultCollection)];
+    NSDictionary *defaultCSS = cssDict[@(IUCSSMaxViewPortWidth)];
     for (NSString *identifier in defaultCSS) {
         NSString *src = [self.document.compiler fontCSSContentFromAttributes:defaultCSS[identifier]];
-        [self.delegate IU:identifier CSSChanged:src forWidth:IUCSSDefaultCollection];
+        [self.delegate IU:identifier CSSUpdated:src forWidth:IUCSSMaxViewPortWidth];
     }
 }
 
@@ -503,7 +516,7 @@
     [self.css eradicateTag:IUCSSTagX];
     [self.css eradicateTag:IUCSSTagY];
     
-    [self.delegate IU:self.htmlID CSSChanged:[self cssForWidth:IUCSSDefaultCollection] forWidth:IUCSSDefaultCollection];
+    [self.delegate IU:self.htmlID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth] forWidth:IUCSSMaxViewPortWidth];
 }
 
 //FIXME: undefineKey,

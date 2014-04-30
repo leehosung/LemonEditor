@@ -138,5 +138,5 @@ typedef enum{
 @interface NSString (IUTag)
 -(NSString*)pixelString;
 -(NSString*)percentString;
-
+-(BOOL)isFrameTag;
 @end

@@ -29,7 +29,7 @@
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];
     _cssFrameDict = [aDecoder decodeObjectForKey:@"cssFrameDict"];
-    self.editWidth = IUCSSDefaultCollection;
+    self.editWidth = IUCSSMaxViewPortWidth;
     
     [self updateAssembledTagDictionary];
     return self;
@@ -54,13 +54,8 @@
 //insert tag
 //use css frame dict, and update affecting tag dictionary
 -(void)setValue:(id)value forTag:(IUCSSTag)tag forWidth:(NSInteger)width{
-    
-    //check maxWidth
-    if(width == self.maxWidth){
-        width = IUCSSDefaultCollection;
-    }
-    
     if ([_delegate CSSShouldChangeValue:value forTag:tag forWidth:width]){
+        //Border계열일경우, AssembledTagDictionary 전체를 바꾸는 신호를 내보내서 Border Collection정보를 받아옴
         if ([tag isSameTag:IUCSSTagBorderTopWidth] || [tag isSameTag:IUCSSTagBorderLeftWidth] || [tag isSameTag:IUCSSTagBorderRightWidth] || [tag isSameTag:IUCSSTagBorderBottomWidth]
         ) {
             [self willChangeValueForKey:@"assembledTagDictionary"];
@@ -86,8 +81,8 @@
             }
         }
         
-        if([self isPercentTag:tag] == NO){
-            [self.delegate CSSChanged:tag forWidth:width];
+        if ([tag isFrameTag] == NO) {
+            [self.delegate CSSUpdated:tag forWidth:width];
         }
         
         if ([tag isSameTag:IUCSSTagBorderTopWidth] || [tag isSameTag:IUCSSTagBorderLeftWidth] || [tag isSameTag:IUCSSTagBorderRightWidth] || [tag isSameTag:IUCSSTagBorderBottomWidth]) {
@@ -96,13 +91,14 @@
     }
 }
 
+
 -(void)eradicateTag:(IUCSSTag)tag{
     for (id key in _cssFrameDict) {
         NSMutableDictionary *cssDict = _cssFrameDict[key];
         [cssDict removeObjectForKey:tag];
     }
     [self updateAssembledTagDictionary];
-    [self.delegate CSSChanged:tag forWidth:9999];
+    [self.delegate CSSUpdated:tag forWidth:9999];
 }
 
 

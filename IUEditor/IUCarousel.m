@@ -19,9 +19,8 @@
     self = [super initWithManager:manager];
     if(self){
         self.count = 3;
-        
-        [self.css setValue:@(500) forTag:IUCSSTagWidth forWidth:IUCSSDefaultCollection];
-        [self.css setValue:@(300) forTag:IUCSSTagHeight forWidth:IUCSSDefaultCollection];
+        [self.css setValue:@(500) forTag:IUCSSTagWidth forWidth:IUCSSMaxViewPortWidth];
+        [self.css setValue:@(300) forTag:IUCSSTagHeight forWidth:IUCSSMaxViewPortWidth];
         _selectColor = [NSColor blackColor];
         _deselectColor = [NSColor grayColor];
     }
@@ -90,13 +89,13 @@
 - (void)cssForItemColor{
     
     NSString *itemID = [NSString stringWithFormat:@"%@pager-item", self.htmlID];
-    [self.delegate IU:itemID CSSChanged:[self.document.compiler cssContentForIUCarousel:self hover:NO] forWidth:IUCSSDefaultCollection];
+    [self.delegate IU:itemID CSSUpdated:[self.document.compiler cssContentForIUCarousel:self hover:NO] forWidth:IUCSSMaxViewPortWidth];
     
     NSString *hoverItemID = [NSString stringWithFormat:@"%@:hover", itemID];
-    [self.delegate IU:hoverItemID CSSChanged:[self.document.compiler cssContentForIUCarousel:self hover:YES] forWidth:IUCSSDefaultCollection];
+    [self.delegate IU:hoverItemID CSSUpdated:[self.document.compiler cssContentForIUCarousel:self hover:YES] forWidth:IUCSSMaxViewPortWidth];
     
     NSString *activeItemID = [NSString stringWithFormat:@"%@.active", itemID];
-    [self.delegate IU:activeItemID CSSChanged:[self.document.compiler cssContentForIUCarousel:self hover:YES] forWidth:IUCSSDefaultCollection];
+    [self.delegate IU:activeItemID CSSUpdated:[self.document.compiler cssContentForIUCarousel:self hover:YES] forWidth:IUCSSMaxViewPortWidth];
     
 }
 

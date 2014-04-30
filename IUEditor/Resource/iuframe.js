@@ -140,5 +140,5 @@ $(document).ready(function(){
             console.log("ready : iuframe.js");
             resizePageContentHeight();
             getIUUpdatedFrameThread();
-			resizeCollection();
+//			resizeCollection();
 });

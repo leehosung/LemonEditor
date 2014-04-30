@@ -18,10 +18,12 @@
 @property _binding_ NSInteger selectedFrameWidth;
 @property _binding_ NSInteger maxFrameWidth;
 
--(void)IU:(NSString *)identifier CSSChanged:(NSString*)css forWidth:(NSInteger)width;
+-(void)IU:(NSString *)identifier CSSUpdated:(NSString*)css forWidth:(NSInteger)width;
+
 -(void)IU:(NSString*)identifier textHTML:(NSString *)html withParentID:(NSString *)parentID nearestID:(NSString *)nID index:(NSUInteger)index;
 -(void)IU:(NSString *)identifier HTML:(NSString *)html withParentID:(NSString *)parentID;
 -(void)IU:(NSString *)identifier setLink:(NSString *)link;
+-(NSRect)IUPercentFrame:(NSString*)identifier;
 
 -(void)IURemoved:(NSString*)identifier;
 
@@ -121,4 +123,5 @@
 
 @property (nonatomic) BOOL flow;
 - (BOOL)flowChangeable;
+- (void)updateCSSForEditViewPort;
 @end

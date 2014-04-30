@@ -103,9 +103,9 @@
     //default-
     [css appendTabAndString:@"<style id=default>"];
     [css appendNewline];
-    [css appendTabAndString:[self cssSourceForIU:document width:IUCSSDefaultCollection]];
+    [css appendTabAndString:[self cssSourceForIU:document width:IUCSSMaxViewPortWidth]];
     for (IUBox *obj in document.allChildren) {
-        [css appendTabAndString:[self cssSourceForIU:obj width:IUCSSDefaultCollection]];
+        [css appendTabAndString:[self cssSourceForIU:obj width:IUCSSMaxViewPortWidth]];
     }
     [css appendString:@"</style>"];
     
@@ -170,7 +170,7 @@
     }
     
     if([iu isKindOfClass:[IUCarousel class]] &&
-       width == IUCSSDefaultCollection){
+       width == IUCSSMaxViewPortWidth){
         [css appendTabAndString:[self cssSourceForIUCarousel:(IUCarousel *)iu]];
     }
     return css;
