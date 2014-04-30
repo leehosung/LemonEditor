@@ -10,4 +10,9 @@
 
 @implementation IUTextView
 
+-(BOOL)shouldEditText{
+    return NO;
+}
+
+
 @end

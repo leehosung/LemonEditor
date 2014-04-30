@@ -10,6 +10,10 @@
 
 @implementation IUResponsiveSection
 
+-(BOOL)shouldEditText{
+    return NO;
+}
+
 
 
 @end

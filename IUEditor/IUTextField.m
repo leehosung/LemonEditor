@@ -9,4 +9,9 @@
 #import "IUTextField.h"
 
 @implementation IUTextField
+
+-(BOOL)shouldEditText{
+    return NO;
+}
+
 @end

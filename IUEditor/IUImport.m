@@ -29,6 +29,10 @@
     }
 }
 
+-(BOOL)shouldEditText{
+    return NO;
+}
+
 
 
 
