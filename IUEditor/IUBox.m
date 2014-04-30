@@ -43,7 +43,7 @@
         for (IUBox *iu in self.children) {
             [iu bind:@"identifierManager" toObject:self withKeyPath:@"identifierManager" options:nil];
         }
-        textManager = [[IUTextManager alloc] init];
+        textManager = [aDecoder decodeObjectForKey:@"textManager"];
         [textManager bind:@"idKey" toObject:self withKeyPath:@"htmlID" options:nil];
     }
     return self;
@@ -56,6 +56,7 @@
     [aCoder encodeFromObject:self withProperties:[[IUBox class] propertiesWithOutProperties:@[@"identifierManager"]]];
     [aCoder encodeObject:self.css forKey:@"css"];
     [aCoder encodeObject:self.event forKey:@"event"];
+    [aCoder encodeObject:textManager forKey:@"textManager"];
     [aCoder encodeObject:_m_children forKey:@"children"];
 }
 
@@ -65,6 +66,8 @@
         _css.delegate = self;
         _identifierManager = manager;
         _event = [[IUEvent alloc] init];
+        textManager = [[IUTextManager alloc] init];
+        [textManager bind:@"idKey" toObject:self withKeyPath:@"htmlID" options:nil];
         
         //NO - Pixel
         [_css setValue:@(0) forTag:IUCSSTagXUnit forWidth:IUCSSDefaultCollection];

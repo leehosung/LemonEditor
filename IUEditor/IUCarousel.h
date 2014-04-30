@@ -8,7 +8,20 @@
 
 #import "IUBox.h"
 
+typedef enum{
+    IUCarouselControlBottom,
+    IUCarouselControlBottomNPlay,
+    IUCarouselControlTypeNone,
+    
+}IUCarouselControlType;
+
 @interface IUCarousel : IUBox
+
+@property BOOL autoplay;
+@property BOOL enableArrowControl;
+@property IUCarouselControlType controlType;
+@property NSColor *selectColor;
+@property NSColor *deselectColor;
 
 - (void)setCount:(NSInteger)count;
 - (NSInteger)count;

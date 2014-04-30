@@ -16,6 +16,22 @@
 @implementation TextIndexInfo{
 }
 
+
+- (void)encodeWithCoder:(NSCoder *)aCoder{
+    
+    [aCoder encodeFromObject:self withProperties:[TextIndexInfo properties]];
+    
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super init];
+    if(self) {
+        [aDecoder decodeToObject:self withProperties:[TextIndexInfo properties]];
+    }
+    return self;
+}
+
+
 - (id)copyWithZone:(NSZone *)zone{
     TextIndexInfo *info = [[TextIndexInfo allocWithZone:zone] init];
     info.index = _index;
@@ -29,26 +45,50 @@
 }
 @end
 
+@interface IUTextManager()
+
+@property NSMutableArray *fontInfos;
+@property NSMutableDictionary *fontSizeInfoCollection;
+@property NSMutableString *text;
+
+@property NSInteger preparedFontSize;
+@property NSString *preparedFontName;
+
+@end
+
 @implementation IUTextManager{
-    NSMutableArray *fontInfos;
-    NSMutableDictionary *fontSizeInfoCollection;
-    NSMutableString *text;
-    
-    NSInteger preparedFontSize;
-    NSString *preparedFontName;
     
     NSInteger _cursorLocationInText;
 }
 
 - (id)init{
     self = [super init];
-    fontInfos = [NSMutableArray array];
-    text = [NSMutableString string];
-    fontSizeInfoCollection = [NSMutableDictionary dictionary];
+    _fontInfos = [NSMutableArray array];
+    _text = [NSMutableString string];
+    _fontSizeInfoCollection = [NSMutableDictionary dictionary];
+    _preparedFontSize = 25;
 
-    [self setValue:@"Helvatica" forRange:NSZeroRange inInfos:fontInfos];
-    [fontSizeInfoCollection setObject:[NSMutableArray array] forKey:@(IUCSSDefaultCollection)];
-    [self setValue:@(25) forRange:NSZeroRange inInfos:fontSizeInfoCollection[@(IUCSSDefaultCollection)]];
+    [self setValue:@"Helvatica" forRange:NSZeroRange inInfos:_fontInfos];
+    [_fontSizeInfoCollection setObject:[NSMutableArray array] forKey:@(IUCSSDefaultCollection)];
+    [self setValue:@(25) forRange:NSZeroRange inInfos:_fontSizeInfoCollection[@(IUCSSDefaultCollection)]];
+    return self;
+}
+
+
+- (void)encodeWithCoder:(NSCoder *)aCoder{
+    
+    [aCoder encodeFromObject:self withProperties:[IUTextManager properties]];
+    
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super init];
+    if(self) {
+        [aDecoder decodeToObject:self withProperties:[IUTextManager propertiesWithOutProperties:@[@"fontInfos", @"text", @"fontSizeInfoCollection"]]];
+        _fontInfos = [[aDecoder decodeObjectForKey:@"fontInfos"] mutableCopy];
+        _text = [[aDecoder decodeObjectForKey:@"text"] mutableCopy];
+        _fontSizeInfoCollection = [[aDecoder decodeObjectForKey:@"fontSizeInfoCollection"] mutableCopy];
+    }
     return self;
 }
 
@@ -118,7 +158,7 @@
 
 - (void)setValue:(id)value forRange:(NSRange)range inInfos:(NSMutableArray*)infos{
     //아무것도 없을시
-    if (text.length == 0) {
+    if (_text.length == 0) {
         assert(range.length == 0);
         assert(range.location == 0);
         TextIndexInfo *info = [[TextIndexInfo alloc] init];
@@ -143,7 +183,7 @@
     else {
         // range 안에 없으면 range 전에 것을 카피하여 바로 뒤에 셋.
         // range가 끝까지 가버리면 더 이상 카피하지 않음
-        if (range.location + range.length < [text length]) {
+        if (range.location + range.length < [_text length]) {
             TextIndexInfo *lastInfo = [self infoObjectAtArray:infos beforeIndex:range.location];
             if (lastInfo) {
                 // media query의 경우 lastInfo가 없을 수도 있음.
@@ -153,7 +193,7 @@
                 [infos addObject:newInfo];
             }
         }
-        else if (range.location + range.length > [text length]){
+        else if (range.location + range.length > [_text length]){
             assert(0);
         }
     }
@@ -166,20 +206,20 @@
 }
 
 - (void)setFont:(NSString*)name atRange:(NSRange)range{
-    [self setValue:name forRange:range inInfos:fontInfos];
+    [self setValue:name forRange:range inInfos:_fontInfos];
 }
 
 - (void)setFontSize:(NSInteger)size atRange:(NSRange)range{
     //만약 text가 있는 상태에서 range.location 이 zero면 잘못 들어온거
-    if (range.length == 0 && [text length] > 0) {
+    if (range.length == 0 && [_text length] > 0) {
         [NSException raise:@"RangeLength" format:@"Range Length is zero"];
     }
-    NSMutableArray *fontSizeInfos = [fontSizeInfoCollection objectForKey:@(_editViewPortWidth)];
+    NSMutableArray *fontSizeInfos = [_fontSizeInfoCollection objectForKey:@(_editViewPortWidth)];
     if (fontSizeInfos == nil) {
         //디폴트를 카피해온다
-        NSArray *defaultFontSizes = [fontSizeInfoCollection objectForKey:@(IUCSSDefaultCollection)];
+        NSArray *defaultFontSizes = [_fontSizeInfoCollection objectForKey:@(IUCSSDefaultCollection)];
         fontSizeInfos = [[NSMutableArray alloc] initWithArray:defaultFontSizes copyItems:YES];
-        [fontSizeInfoCollection setObject:fontSizeInfos forKey:@(_editViewPortWidth)];
+        [_fontSizeInfoCollection setObject:fontSizeInfos forKey:@(_editViewPortWidth)];
     }
     [self setValue:@(size) forRange:range inInfos:fontSizeInfos];
 }
@@ -210,7 +250,7 @@
             obj.index += distance;
         }
     }];
-    [self sortInfoArray:fontInfos];
+    [self sortInfoArray:_fontInfos];
 }
 
 
@@ -218,14 +258,14 @@
     // string의 끝까지 지울 경우 : 그냥 범위안을 다 지운다.
     // string의 끝까지 지우지 않을 경우 + Range 밖 처음의 Info가 바로 따라 붙을 경우 : 범위안을 다 지운다.
     // string의 끝까지 지우지 않을 경우 + Range 밖 처음의 Info가 떨어져 있을경우 : 마지막 Info를 뒤로 밀어둔다.
-    JDTraceLog(@"%@", text);
-    assert(text.length >= range.location + range.length);
+    JDTraceLog(@"%@", _text);
+    assert(_text.length >= range.location + range.length);
 
     NSArray *deleteArray = [self infoObjectsAtArray:array ofRange:range];
     TextIndexInfo *lastInfo = [deleteArray lastObject];
     [array removeObjectsInArray:deleteArray];
     
-    if ([text length] > range.location + range.length ) {
+    if ([_text length] > range.location + range.length ) {
         TextIndexInfo *info = [self infoObjectAtArray:array atIndex:range.location + range.length];
         if (info.index > range.location + range.length) {
             //뒤로 밀어줘야할 경우
@@ -249,7 +289,7 @@
 
 
 - (NSString*)HTML{
-    if (text.length == 0) {
+    if (_text.length == 0) {
         return nil;
     }
     NSMutableString *returnValue = [NSMutableString string];
@@ -258,15 +298,15 @@
     while (1) {
         NSUInteger nextIndex = [rangeSet indexGreaterThanIndex:currentIndex];
         if (nextIndex == NSNotFound) {
-            nextIndex = [text length];
+            nextIndex = [_text length];
         }
         [returnValue appendFormat:@"<span id='%@TNode%lu'>", _idKey, currentIndex];
-        NSString *originalText = [text substringFromIndex:currentIndex toIndex:nextIndex];
+        NSString *originalText = [_text substringFromIndex:currentIndex toIndex:nextIndex];
         NSString *spaceText = [originalText stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
         spaceText = [spaceText stringByReplacingOccurrencesOfString:@" " withString:@"&nbsp;"];
         [returnValue appendString:spaceText];
         [returnValue appendString:@"</span>"];
-        if (nextIndex == [text length]) {
+        if (nextIndex == [_text length]) {
             break;
         }
         currentIndex = nextIndex;
@@ -276,11 +316,11 @@
 
 - (NSIndexSet *)rangeSet{
     NSMutableIndexSet *rangeSet = [[NSMutableIndexSet alloc] init];
-    for (TextIndexInfo *info in fontInfos) {
+    for (TextIndexInfo *info in _fontInfos) {
         [rangeSet addIndex:info.index];
     }
-    for (NSNumber *size in fontSizeInfoCollection) {
-        NSMutableArray *infos = [fontSizeInfoCollection objectForKey:size];
+    for (NSNumber *size in _fontSizeInfoCollection) {
+        NSMutableArray *infos = [_fontSizeInfoCollection objectForKey:size];
         for (TextIndexInfo *info in infos) {
             [rangeSet addIndex:info.index];
         }
@@ -290,7 +330,7 @@
 
 - (NSIndexSet *)viewPortSet{
     NSMutableIndexSet *viewPortSet = [[NSMutableIndexSet alloc] init];
-    for (NSNumber *size in fontSizeInfoCollection) {
+    for (NSNumber *size in _fontSizeInfoCollection) {
         [viewPortSet addIndex:[size integerValue]];
     }
     return viewPortSet;
@@ -306,14 +346,14 @@
     [viewPortSet enumerateIndexesUsingBlock:^(NSUInteger viewPort, BOOL *stop) {
         NSMutableDictionary *cssIDDict = [NSMutableDictionary dictionary];
         [css setObject:cssIDDict forKey:@(viewPort)];
-        NSMutableArray *fontSizeInfos = [fontSizeInfoCollection objectForKey:@(viewPort)];
+        NSMutableArray *fontSizeInfos = [_fontSizeInfoCollection objectForKey:@(viewPort)];
         [rangeSet enumerateIndexesUsingBlock:^(NSUInteger range, BOOL *stop) {
             NSMutableDictionary *cssDict = [NSMutableDictionary dictionary];
             [cssIDDict setObject:cssDict forKey:[NSString stringWithFormat:@"%@TNode%ld", _idKey, range]];
             NSNumber *size = [self infoObjectAtArray:fontSizeInfos beforeOrEqualIndex:range].info;
             [cssDict setObject:size forKey:IUCSSTagFontSize];
             if (viewPort == IUCSSDefaultCollection) {
-                NSString *fontName = [self infoObjectAtArray:fontInfos beforeOrEqualIndex:range].info;
+                NSString *fontName = [self infoObjectAtArray:_fontInfos beforeOrEqualIndex:range].info;
                 [cssDict setObject:fontName forKey:IUCSSTagFontName];
             }
         }];
@@ -325,24 +365,24 @@
 
 - (void)removeMediaQuery:(NSInteger)viewPortWidth{
     assert(viewPortWidth != IUCSSDefaultCollection);
-    [fontSizeInfoCollection removeObjectForKey:@(viewPortWidth)];
+    [_fontSizeInfoCollection removeObjectForKey:@(viewPortWidth)];
 }
 
 
 - (void)prepareTextFont:(NSString*)name{
-    preparedFontName = [name copy];
+    _preparedFontName = [name copy];
 }
 
 - (void)prepareTextFontSize:(NSUInteger)size{
-    preparedFontSize = size;
+    _preparedFontSize = size;
 }
 
 - (void)insertString:(NSString*)insertText atIndex:(NSUInteger)index{
     //index 보다 뒤에 있는 폰트 정보를 text length만큼 뒤로 밈
     //replace 와 다른 점은 prepare 된 정보를 이용한다는 것
     [self replaceText:insertText atRange:NSMakeRange(index, 0)];
-    if (preparedFontName) {
-        [self setFont:preparedFontName atRange:NSMakeRange(index, insertText.length)];
+    if (_preparedFontName) {
+        [self setFont:_preparedFontName atRange:NSMakeRange(index, insertText.length)];
     }
     _cursorLocationInText = index + insertText.length;
 }
@@ -355,18 +395,18 @@
             modifiedRange.location = 1;
             modifiedRange.length --;
         }
-        [self deleteInfoArray:fontInfos atRange:modifiedRange];
-        [self moveInfoArray:fontInfos from:modifiedRange.location distance:string.length - modifiedRange.length];
-        [self removeDuplicatedInfo:fontInfos];
+        [self deleteInfoArray:_fontInfos atRange:modifiedRange];
+        [self moveInfoArray:_fontInfos from:modifiedRange.location distance:string.length - modifiedRange.length];
+        [self removeDuplicatedInfo:_fontInfos];
         
-        for (NSNumber *viewPort in fontSizeInfoCollection) {
-            NSMutableArray *fontSizes = [fontSizeInfoCollection objectForKey:viewPort];
+        for (NSNumber *viewPort in _fontSizeInfoCollection) {
+            NSMutableArray *fontSizes = [_fontSizeInfoCollection objectForKey:viewPort];
             [self deleteInfoArray:fontSizes atRange:modifiedRange];
             [self moveInfoArray:fontSizes from:modifiedRange.location distance:string.length - modifiedRange.length];
             [self removeDuplicatedInfo:fontSizes];
         }
     }
-    [text replaceCharactersInRange:range withString:string];
+    [_text replaceCharactersInRange:range withString:string];
     _cursorLocationInText = range.location + string.length;
 }
 
@@ -380,27 +420,27 @@
         modifiedRange.length --;
         if (modifiedRange.length == 0) {
             _cursorLocationInText = range.location;
-            [text deleteCharactersInRange:range];
+            [_text deleteCharactersInRange:range];
             return;
         }
     }
-    [self deleteInfoArray:fontInfos atRange:modifiedRange];
-    [self removeDuplicatedInfo:fontInfos];
+    [self deleteInfoArray:_fontInfos atRange:modifiedRange];
+    [self removeDuplicatedInfo:_fontInfos];
     
-    for (NSNumber *viewPort in fontSizeInfoCollection) {
-        NSMutableArray *fontSizes = [fontSizeInfoCollection objectForKey:viewPort];
+    for (NSNumber *viewPort in _fontSizeInfoCollection) {
+        NSMutableArray *fontSizes = [_fontSizeInfoCollection objectForKey:viewPort];
         [self deleteInfoArray:fontSizes atRange:modifiedRange];
         [self removeDuplicatedInfo:fontSizes];
     }
     
     //text 삭제
     //css 삭제보다 뒤로 둔다. assert 문 돌리기 위해서.
-    [text deleteCharactersInRange:range];
+    [_text deleteCharactersInRange:range];
     _cursorLocationInText = range.location;
 }
 
 - (NSDictionary*)cursor{
-    if ([text length] == 0) {
+    if ([_text length] == 0) {
         // no text
         return @{IUTextCursorLocationID: _idKey, IUTextCursorLocationIndex:@(0)};
     }
@@ -410,6 +450,10 @@
     NSString *cursorLocation = [NSString stringWithFormat:@"%@TNode%ld", _idKey, indexOfSpan];
 
     return @{IUTextCursorLocationID: cursorLocation, IUTextCursorLocationIndex:@(_cursorLocationInText - indexOfSpan)};
+}
+
+- (NSDictionary*)fontInfoAtPoint:(NSUInteger)point{
+    return [NSDictionary dictionary];
 }
 
 

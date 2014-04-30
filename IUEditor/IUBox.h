@@ -38,7 +38,7 @@
 @interface IUBox : NSObject <NSCoding, IUCSSDelegate>
 
 @property (readonly) IUCSS *css; //used by subclass
-@property IUEvent *event;
+@property (readonly) IUEvent *event;
 
 -(IUDocument *)document;
 
