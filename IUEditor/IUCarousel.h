@@ -20,8 +20,8 @@ typedef enum{
 @property BOOL autoplay;
 @property BOOL enableArrowControl;
 @property IUCarouselControlType controlType;
-@property NSColor *selectColor;
-@property NSColor *deselectColor;
+@property (nonatomic) NSColor *selectColor;
+@property (nonatomic) NSColor *deselectColor;
 
 - (void)setCount:(NSInteger)count;
 - (NSInteger)count;

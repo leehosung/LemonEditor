@@ -54,7 +54,7 @@ var loadedCarouselArray = [];
 		pagerSelector: null,
 		buildPager: null,
 		pagerCustom: null,
-
+  
 		// CONTROLS
 		controls: true,
 		nextText: 'Next',
@@ -625,7 +625,12 @@ var loadedCarouselArray = [];
 				}
 				// var linkContent = slider.settings.buildPager && $.isFunction(slider.settings.buildPager) ? slider.settings.buildPager(i) : i + 1;
 				// add the markup to the string
-				pagerHtml += '<div class="bx-pager-item"><a href="" data-slide-index="' + i + '" class="bx-pager-link">' + linkContent + '</a></div>';
+				if(slider.iu == undefined){
+					pagerHtml += '<div class="bx-pager-item"><a href="" data-slide-index="' + i + '" class="bx-pager-link">' + linkContent + '</a></div>';
+				}
+				else{
+					pagerHtml += '<div class="bx-pager-item"><a href="" data-slide-index="' + i + '" class="bx-pager-link" id="'+slider.iu.attr('id')+'pager-item">' + linkContent + '</a></div>';
+				}
 			};
 			// populate the pager element with pager links
 			slider.pagerEl.html(pagerHtml);
@@ -658,8 +663,14 @@ var loadedCarouselArray = [];
 		 * Appends prev / next controls to the controls element
 		 */
 		var appendControls = function(){
-			slider.controls.next = $('<a class="bx-next" href="">' + slider.settings.nextText + '</a>');
-			slider.controls.prev = $('<a class="bx-prev" href="">' + slider.settings.prevText + '</a>');
+			if(slider.iu==undefined){
+				slider.controls.next = $('<a class="bx-next" href="">' + slider.settings.nextText + '</a>');
+				slider.controls.prev = $('<a class="bx-prev" href="">' + slider.settings.prevText + '</a>');
+			}
+			else{
+				slider.controls.next = $('<a class="bx-next" href="" id="'+ slider.iu.attr('id') +'_bx-next">' + slider.settings.nextText + '</a>');
+				slider.controls.prev = $('<a class="bx-prev" href="" id="'+ slider.iu.attr('id') +'_bx-prev">' + slider.settings.prevText + '</a>');
+			}
 			// bind click actions to the controls
 			slider.controls.next.bind('click', clickNextBind);
 			slider.controls.prev.bind('click', clickPrevBind);

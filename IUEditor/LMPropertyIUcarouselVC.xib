@@ -6,6 +6,11 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyIUcarouselVC">
             <connections>
+                <outlet property="arrowControlMatrix" destination="SsJ-BS-bSh" id="LJ2-Qt-AGB"/>
+                <outlet property="autoplayMatrix" destination="3rt-7L-gMK" id="Hn6-bB-nF0"/>
+                <outlet property="controllerSegmentedControl" destination="fIJ-qE-QT2" id="9J7-pB-6k5"/>
+                <outlet property="deselectColor" destination="1hp-bJ-nvp" id="Uro-9Y-Xd6"/>
+                <outlet property="selectColor" destination="m6o-Hz-kcf" id="mW3-bc-sKn"/>
                 <outlet property="view" destination="Q3L-Eb-iN0" id="Pz5-IZ-d8v"/>
             </connections>
         </customObject>

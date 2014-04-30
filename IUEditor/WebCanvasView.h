@@ -21,6 +21,10 @@
 - (void)selectCarousel:(NSString *)identifier atIndex:(NSInteger)index;
 - (void)resizePageContent;
 
+//call any javascript
+- (id)callWebScriptMethod:(NSString *)function withArguments:(NSArray *)args;
+
+
 #pragma mark -
 
 - (NSString *)IUAtPoint:(NSPoint)point;

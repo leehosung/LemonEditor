@@ -134,6 +134,25 @@
     return css;
 }
 
+-(NSString *)cssContentForIUCarousel:(IUCarousel *)iu hover:(BOOL)hover{
+    NSMutableString *css = [NSMutableString string];
+    if(hover){
+        [css appendFormat:@"background:%@", [iu.selectColor rgbaString]];
+    }else{
+        [css appendFormat:@"background:%@", [iu.deselectColor rgbaString]];
+    }
+    return css;
+}
+
+-(NSString *)cssSourceForIUCarousel:(IUCarousel *)iu{
+    
+    NSMutableString *css = [NSMutableString string];
+    NSString *itemID = [NSString stringWithFormat:@"%@pager-item", iu.htmlID];
+    [css appendFormat:@"#%@{%@}", itemID, [self cssContentForIUCarousel:iu hover:NO]];
+    [css appendFormat:@"#%@:hover,#%@.active{%@}", itemID, itemID, [self cssContentForIUCarousel:iu hover:NO]];
+    return css;
+}
+
 -(NSString*)cssSourceForIU:(IUBox*)iu width:(int)width{
     NSMutableString *css = [NSMutableString string];
     [css appendString:[NSString stringWithFormat:@"#%@ {", iu.htmlID]];
@@ -148,6 +167,11 @@
         [css appendString:@"}"];
         [css appendNewline];
         
+    }
+    
+    if([iu isKindOfClass:[IUCarousel class]] &&
+       width == IUCSSDefaultCollection){
+        [css appendTabAndString:[self cssSourceForIUCarousel:(IUCarousel *)iu]];
     }
     return css;
 }
@@ -773,65 +797,67 @@
             [dict putTag:@"box-shadow" string:[NSString stringWithFormat:@"%ldpx %ldpx %ldpx %ldpx %@", hOff, vOff, blur, spread, colorString]];
         }
         
-        value = cssTagDict[IUCSSTagFontName];
-        if(value){
-            NSString *font=cssTagDict[IUCSSTagFontName];
-            [dict putTag:@"font-family" string:font];
-        }
-        value = cssTagDict[IUCSSTagFontSize];
-        if(value){
-            [dict putTag:@"font-size" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];}
-        value = cssTagDict[IUCSSTagFontColor];
-        if(value){
-            NSColor *color=cssTagDict[IUCSSTagFontColor];
-            [dict putTag:@"color" color:color ignoreClearColor:YES];
-        }
-        
-        value = cssTagDict[IUCSSTagLineHeight];
-        if(value){
-            if([value isEqualToString:@"Auto"]== YES)
-            {
-                value = cssTagDict[IUCSSTagHeight];
-                [dict putTag:@"line-height" floatValue:[value floatValue] ignoreZero:YES unit: IUCSSUnitPixel];
+        if(obj.shouldEditText == YES){
+            value = cssTagDict[IUCSSTagFontName];
+            if(value){
+                NSString *font=cssTagDict[IUCSSTagFontName];
+                [dict putTag:@"font-family" string:font];
             }
-            else {
-                [dict putTag:@"line-height" floatValue:[value floatValue] ignoreZero:YES unit:IUCSSUnitNone];
+            value = cssTagDict[IUCSSTagFontSize];
+            if(value){
+                [dict putTag:@"font-size" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];}
+            value = cssTagDict[IUCSSTagFontColor];
+            if(value){
+                NSColor *color=cssTagDict[IUCSSTagFontColor];
+                [dict putTag:@"color" color:color ignoreClearColor:YES];
             }
-        }
-        
-        BOOL boolValue =[cssTagDict[IUCSSTagFontWeight] boolValue];
-        if(boolValue){
-            [dict putTag:@"font-weight" string:@"bold"];
-        }
-        boolValue = [cssTagDict[IUCSSTagFontStyle] boolValue];
-        if(boolValue){
-            [dict putTag:@"font-style" string:@"italic"];
-        }
-        boolValue = [cssTagDict[IUCSSTagTextDecoration] boolValue];
-        if(boolValue){
-            [dict putTag:@"text-decoration" string:@"underline"];
-        }
-        
-        IUTextAlign align = [cssTagDict[IUCSSTagTextAlign] intValue];
-        NSString *alignText;
-        switch (align) {
-            case IUTextAlignLeft:
-                alignText = @"left";
-                break;
-            case IUTextAlignCenter:
-                alignText = @"center";
-                break;
-            case IUTextAlignRight:
-                alignText = @"right";
-                break;
-            case IUTextAlignJustify:
-                alignText = @"stretch";
-                break;
-            default:
-                JDErrorLog(@"no align type");
-        }
-        if(alignText){
-            [dict putTag:@"text-align" string:alignText];
+            
+            value = cssTagDict[IUCSSTagLineHeight];
+            if(value){
+                if([value isEqualToString:@"Auto"]== YES)
+                {
+                    value = cssTagDict[IUCSSTagHeight];
+                    [dict putTag:@"line-height" floatValue:[value floatValue] ignoreZero:YES unit: IUCSSUnitPixel];
+                }
+                else {
+                    [dict putTag:@"line-height" floatValue:[value floatValue] ignoreZero:YES unit:IUCSSUnitNone];
+                }
+            }
+            
+            BOOL boolValue =[cssTagDict[IUCSSTagFontWeight] boolValue];
+            if(boolValue){
+                [dict putTag:@"font-weight" string:@"bold"];
+            }
+            boolValue = [cssTagDict[IUCSSTagFontStyle] boolValue];
+            if(boolValue){
+                [dict putTag:@"font-style" string:@"italic"];
+            }
+            boolValue = [cssTagDict[IUCSSTagTextDecoration] boolValue];
+            if(boolValue){
+                [dict putTag:@"text-decoration" string:@"underline"];
+            }
+            
+            IUTextAlign align = [cssTagDict[IUCSSTagTextAlign] intValue];
+            NSString *alignText;
+            switch (align) {
+                case IUTextAlignLeft:
+                    alignText = @"left";
+                    break;
+                case IUTextAlignCenter:
+                    alignText = @"center";
+                    break;
+                case IUTextAlignRight:
+                    alignText = @"right";
+                    break;
+                case IUTextAlignJustify:
+                    alignText = @"stretch";
+                    break;
+                default:
+                    JDErrorLog(@"no align type");
+            }
+            if(alignText){
+                [dict putTag:@"text-align" string:alignText];
+            }
         }
 
     }
@@ -936,5 +962,67 @@
 }
 
 
+#pragma mark manage JS source
+
+-(NSString *)outputJSArgs:(IUBox *)iu{
+    NSMutableString *argStr = [NSMutableString string];
+    
+    if([iu isKindOfClass:[IUCarousel class]]){
+        IUCarousel *carouselIU = (IUCarousel *)iu;
+        [argStr appendString:@"{"];
+        if(carouselIU.autoplay){
+            [argStr appendString:@"auto:true,"];
+        }
+        else{
+            [argStr appendString:@"auto:false,"];
+        }
+        if(carouselIU.enableArrowControl){
+            [argStr appendString:@"controls:true,"];
+        }
+        else{
+            [argStr appendString:@"controls:false,"];
+        }
+        switch (carouselIU.controlType) {
+            case IUCarouselControlTypeNone:
+                [argStr appendString:@"autoControls:false,"];
+                break;
+            case IUCarouselControlBottomNPlay:
+                [argStr appendString:@"autoControls:true,"];
+                break;
+            case IUCarouselControlBottom:
+                [argStr appendString:@"pager:false"];
+                break;
+        }
+    }
+    
+    return argStr;
+}
+
+-(NSString*)outputJSInitializeSource:(IUDocument *)document{
+    NSString *jsSource = [[self outputHTML:document] stringByIndent:8 prependIndent:YES];
+    return jsSource;
+}
+
+-(NSString *)outputJSSource:(IUBox *)iu{
+    NSMutableString *code = [NSMutableString string];
+   
+    if([iu isKindOfClass:[IUCarousel class]]){
+        [code appendString:@"/* IUCarousel initialize */"];
+        [code appendFormat:@"$('#%@').bxSlider(%@)", iu.htmlID, [self outputJSArgs:iu]];
+        [code appendNewline];
+    }
+    else if ([iu isKindOfClass:[IUBox class]]) {
+        if (iu.children.count) {
+            [code appendNewline];
+            for (IUBox *child in iu.children) {
+                [code appendString:[self outputJSSource:child]];
+                [code appendNewline];
+            }
+        }
+
+    }
+    
+    return code;
+}
 
 @end

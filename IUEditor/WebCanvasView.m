@@ -311,6 +311,10 @@
 }
 
 #pragma mark call carousel.JS
+
+- (id)callWebScriptMethod:(NSString *)function withArguments:(NSArray *)args{
+    return [[self windowScriptObject] callWebScriptMethod:function withArguments:args];
+}
 - (void)insertNewCarousel:(NSString *)identifier{
 //    NSString *newCarouselFn = [NSString stringWithFormat:@"insertNewCarousel(%@)", identifier];
 //    NSString *result = [self stringByEvaluatingJavaScriptFromString:newCarouselFn];
