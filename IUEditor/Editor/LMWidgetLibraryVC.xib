@@ -44,6 +44,9 @@
                         <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="Y4D-g3-cxE" name="value" keyPath="representedObject.shortDesc" id="IKm-xO-DsP"/>
+                    </connections>
                 </textField>
                 <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="v3c-Wx-kU0">
                     <rect key="frame" x="12" y="0.0" width="240" height="5"/>

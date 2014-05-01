@@ -12,7 +12,7 @@
 		<key>navImage</key>
 		<string>stack_view</string>
 		<key>shortDesc</key>
-		<string></string>
+		<string>Box Object</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
@@ -28,7 +28,7 @@
 		<key>navImage</key>
 		<string>stack_image</string>
 		<key>shortDesc</key>
-		<string></string>
+		<string>Image Object</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
@@ -44,7 +44,7 @@
 		<key>navImage</key>
 		<string>stack_textfield</string>
 		<key>shortDesc</key>
-		<string></string>
+		<string>Input text object from user</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
@@ -60,7 +60,7 @@
 		<key>navImage</key>
 		<string>stack_render</string>
 		<key>shortDesc</key>
-		<string></string>
+		<string>Component Object</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
@@ -76,7 +76,7 @@
 		<key>navImage</key>
 		<string>stack_movie</string>
 		<key>shortDesc</key>
-		<string></string>
+		<string>Video clip from library</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
@@ -92,7 +92,7 @@
 		<key>navImage</key>
 		<string>stack_html</string>
 		<key>shortDesc</key>
-		<string></string>
+		<string>Object for HTML code</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
@@ -108,7 +108,7 @@
 		<key>navImage</key>
 		<string>stack_webmovie</string>
 		<key>shortDesc</key>
-		<string></string>
+		<string>Object for Web Movie code</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
@@ -120,11 +120,11 @@
 		<key>className</key>
 		<string>IUCollection</string>
 		<key>classImage</key>
-		<string>tool_fblike</string>
+		<string>tool_collection</string>
 		<key>navImage</key>
-		<string>stack_fblike</string>
+		<string>stack_collection</string>
 		<key>shortDesc</key>
-		<string></string>
+		<string>IU Collection view</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
@@ -156,7 +156,7 @@
 		<key>navImage</key>
 		<string>stack_mail</string>
 		<key>shortDesc</key>
-		<string></string>
+		<string>IU Mail Link</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
@@ -168,27 +168,27 @@
 		<key>className</key>
 		<string>IUTextField</string>
 		<key>classImage</key>
-		<string>tool_view</string>
+		<string>tool_textfield</string>
 		<key>navImage</key>
-		<string>stack_view</string>
+		<string>stack_textfield</string>
 		<key>shortDesc</key>
-		<string></string>
+		<string>Input text Object</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
 		<integer>0</integer>
 	</dict>
-		<dict>
+	<dict>
 		<key>isWidget</key>
 		<true/>
 		<key>className</key>
 		<string>IUTextView</string>
 		<key>classImage</key>
-		<string>tool_view</string>
+		<string>tool_textview</string>
 		<key>navImage</key>
-		<string>stack_view</string>
+		<string>stack_textview</string>
 		<key>shortDesc</key>
-		<string></string>
+		<string>Textarea Object</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
@@ -204,7 +204,7 @@
 		<key>navImage</key>
 		<string>stack_transition</string>
 		<key>shortDesc</key>
-		<string></string>
+		<string>IU Transition View</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
@@ -220,7 +220,7 @@
 		<key>navImage</key>
 		<string>stack_navi</string>
 		<key>shortDesc</key>
-		<string></string>
+		<string>IU Navi</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
@@ -236,7 +236,7 @@
 		<key>navImage</key>
 		<string>stack_carousel</string>
 		<key>shortDesc</key>
-		<string></string>
+		<string>IU Carousel</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
