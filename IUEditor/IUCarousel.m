@@ -23,6 +23,8 @@
         [self.css setValue:@(300) forTag:IUCSSTagHeight forWidth:IUCSSMaxViewPortWidth];
         _selectColor = [NSColor blackColor];
         _deselectColor = [NSColor grayColor];
+        _rightArrowImage = @"Default";
+        _leftArrowImage = @"Default";
     }
 
     return self;
@@ -103,19 +105,66 @@
     [self cssForItemColor];
 }
 
+- (void)setEnableColor:(BOOL)enableColor{
+    _enableColor = enableColor;
+    [self cssForItemColor];
+}
+
 - (void)cssForItemColor{
-    
     NSString *itemID = [NSString stringWithFormat:@"%@pager-item", self.htmlID];
-    
-    [self.delegate IU:itemID CSSUpdated:[self.document.compiler cssContentForIUCarousel:self hover:NO] forWidth:IUCSSMaxViewPortWidth];
-    
     NSString *hoverItemID = [NSString stringWithFormat:@"%@:hover", itemID];
-    [self.delegate IU:hoverItemID CSSUpdated:[self.document.compiler cssContentForIUCarousel:self hover:YES] forWidth:IUCSSMaxViewPortWidth];
-    
     NSString *activeItemID = [NSString stringWithFormat:@"%@.active", itemID];
-    [self.delegate IU:activeItemID CSSUpdated:[self.document.compiler cssContentForIUCarousel:self hover:YES] forWidth:IUCSSMaxViewPortWidth];
+    
+    if(self.enableColor){
+        [self.delegate IU:itemID CSSUpdated:[self.document.compiler cssContentForIUCarouselPager:self hover:NO] forWidth:IUCSSMaxViewPortWidth];
+        
+        [self.delegate IU:hoverItemID CSSUpdated:[self.document.compiler cssContentForIUCarouselPager:self hover:YES] forWidth:IUCSSMaxViewPortWidth];
+        
+        [self.delegate IU:activeItemID CSSUpdated:[self.document.compiler cssContentForIUCarouselPager:self hover:YES] forWidth:IUCSSMaxViewPortWidth];
+    }
+    else{
+        [self.delegate IU:itemID CSSRemovedforWidth:IUCSSMaxViewPortWidth];
+        [self.delegate IU:hoverItemID CSSRemovedforWidth:IUCSSMaxViewPortWidth];
+        [self.delegate IU:activeItemID CSSRemovedforWidth:IUCSSMaxViewPortWidth];
+    }
     
 }
+
+- (void)setLeftArrowImage:(NSString *)leftArrowImage{
+    _leftArrowImage = leftArrowImage;
+    BOOL change = NO;
+    
+    if([leftArrowImage isEqualToString:@"Default"] == NO){
+        change = YES;
+    }
+    [self cssForArrowImage:IUCarouselArrowLeft change:change];
+}
+
+- (void)setRightArrowImage:(NSString *)rightArrowImage{
+    _rightArrowImage = rightArrowImage;
+    BOOL change = NO;
+    if([rightArrowImage isEqualToString:@"Default"] == NO){
+        change = YES;
+    }
+    [self cssForArrowImage:IUCarouselArrowRight change:change];
+
+}
+
+- (void)cssForArrowImage:(IUCarouselArrow)type change:(BOOL)change{
+    NSString *arrowID;
+    if(type == IUCarouselArrowLeft){
+        arrowID = [NSString stringWithFormat:@"%@_bx-prev", self.htmlID];
+    }
+    else if(type == IUCarouselArrowRight){
+        arrowID = [NSString stringWithFormat:@"%@_bx-next", self.htmlID];
+    }
+    if(change){
+        [self.delegate IU:arrowID CSSUpdated:[self.document.compiler cssContentForIUCarouselArrow:self hover:NO location:type] forWidth:IUCSSMaxViewPortWidth];
+    }else{
+        [self.delegate IU:arrowID CSSRemovedforWidth:IUCSSMaxViewPortWidth];
+    }
+}
+
 
 #pragma mark JS reload
 - (void)setAutoplay:(BOOL)autoplay{

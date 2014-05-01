@@ -134,7 +134,7 @@
     return css;
 }
 
--(NSString *)cssContentForIUCarousel:(IUCarousel *)iu hover:(BOOL)hover{
+-(NSString *)cssContentForIUCarouselPager:(IUCarousel *)iu hover:(BOOL)hover{
     NSMutableString *css = [NSMutableString string];
     if(hover){
         [css appendFormat:@"background:%@", [iu.selectColor rgbaString]];
@@ -144,12 +144,51 @@
     return css;
 }
 
+- (NSString *)cssContentForIUCarouselArrow:(IUCarousel *)iu hover:(BOOL)hover location:(IUCarouselArrow)location{
+    
+    
+    NSMutableString *css = [NSMutableString string];
+    if(location == IUCarouselArrowLeft){
+        NSString *imagePath = [_resourceSource relativePathForResource:iu.leftArrowImage];
+        [css appendFormat:@"background:%@ ;", [imagePath CSSURLString]];
+        NSImage *arrowImage = [NSImage imageNamed:iu.leftArrowImage];
+        [css appendFormat:@"heihgt:%.0fpx ; ",arrowImage.size.height];
+        [css appendFormat:@"width:%.0fpx ;", arrowImage.size.width];
+    }
+    else if(location == IUCarouselArrowRight){
+        NSString *imagePath = [_resourceSource relativePathForResource:iu.rightArrowImage];
+        [css appendFormat:@"background:%@ ;", [imagePath CSSURLString]];
+        NSImage *arrowImage = [NSImage imageNamed:iu.rightArrowImage];
+        [css appendFormat:@"heihgt:%.0fpx ; ",arrowImage.size.height];
+        [css appendFormat:@"width:%.0fpx ;", arrowImage.size.width];
+
+    }
+    
+    return css;
+}
+
+
 -(NSString *)cssSourceForIUCarousel:(IUCarousel *)iu{
     
     NSMutableString *css = [NSMutableString string];
-    NSString *itemID = [NSString stringWithFormat:@"%@pager-item", iu.htmlID];
-    [css appendFormat:@"#%@{%@}", itemID, [self cssContentForIUCarousel:iu hover:NO]];
-    [css appendFormat:@"#%@:hover,#%@.active{%@}", itemID, itemID, [self cssContentForIUCarousel:iu hover:NO]];
+    if(iu.enableColor){
+        NSString *itemID = [NSString stringWithFormat:@"%@pager-item", iu.htmlID];
+        [css appendFormat:@"#%@{%@}", itemID, [self cssContentForIUCarouselPager:iu hover:NO]];
+        [css appendFormat:@"#%@:hover,#%@.active{%@}", itemID, itemID, [self cssContentForIUCarouselPager:iu hover:NO]];
+        [css appendNewline];
+    }
+    
+    if([iu.leftArrowImage isEqualToString:@"Default"] == NO){
+        NSString *leftArrowID = [NSString stringWithFormat:@"%@_bx-prev", iu.htmlID];
+        [css appendFormat:@"#%@{%@}", leftArrowID, [self cssContentForIUCarouselArrow:iu hover:NO location:IUCarouselArrowLeft]];
+        [css appendNewline];
+    }
+    if([iu.rightArrowImage isEqualToString:@"Default"] == NO){
+        NSString *rightArrowID = [NSString stringWithFormat:@"%@_bx-next", iu.htmlID];
+        [css appendFormat:@"#%@{%@}", rightArrowID, [self cssContentForIUCarouselArrow:iu hover:NO location:IUCarouselArrowRight]];
+        [css appendNewline];
+    }
+
     return css;
 }
 
@@ -989,9 +1028,6 @@
         switch (carouselIU.controlType) {
             case IUCarouselControlTypeNone:
                 [argStr appendString:@"pager:false"];
-                break;
-            case IUCarouselControlBottomNPlay:
-                [argStr appendString:@"autoControls:true"];
                 break;
             case IUCarouselControlBottom:
                 [argStr appendString:@"autoControls:false"];
