@@ -673,10 +673,21 @@
     return YES;
 }
 
+- (void)startExtendDragSession{
+    for(IUBox *obj in self.controller.selectedObjects){
+        [obj setDragOriginalSize];
+    }
+}
+
+
 - (void)extendIUToDiffSize:(NSSize)size totalDiffSize:(NSSize)totalSize{
     //drag pointlayer
     for(IUBox *obj in self.controller.selectedObjects){
+        
+        NSSize parentSize = [[self webView] parentBlockElementSize:obj.htmlID];
+        
         if([frameDict isGuideSize:totalSize]){
+
             NSString *IUID = obj.htmlID;
             NSRect currentFrame = [[frameDict.dict objectForKey:IUID] rectValue];
             //NSSize expectedSize = NSMakeSize(currentFrame.size.width+size.width, currentFrame.size.height+size.height);
@@ -686,11 +697,11 @@
             NSSize guideSize = [frameDict guideSizeOfCurrentFrame:moveFrame IU:IUID];
             guideSize = NSMakeSize(guideSize.width- currentFrame.size.width, guideSize.height - currentFrame.size.height);
             
-            [obj increaseWidth:guideSize.width height:guideSize.height];
+            [obj increaseSize:NSMakeSize(guideSize.width, guideSize.height) withParentSize:parentSize];
             [obj updateCSSForEditViewPort];
         }
         else{
-            [obj increaseWidth:size.width height:size.height];
+            [obj increaseSize:NSMakeSize(totalSize.width, totalSize.height) withParentSize:parentSize];
             [obj updateCSSForEditViewPort];
         }
         

@@ -86,6 +86,7 @@
 		3DBC932E18F24FE000F217BD /* NSFlippedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBC932D18F24FE000F217BD /* NSFlippedView.m */; };
 		3DBC932F18F647EC00F217BD /* iu.js in Resources */ = {isa = PBXBuildFile; fileRef = 69B9A39A18E6B1860007D6E2 /* iu.js */; };
 		3DD9E97119122EAB0076BF4E /* iueditor.js in Sources */ = {isa = PBXBuildFile; fileRef = 3DD9E97019122EAB0076BF4E /* iueditor.js */; };
+		3DD9E97219123B3E0076BF4E /* iueditor.js in Resources */ = {isa = PBXBuildFile; fileRef = 3DD9E97019122EAB0076BF4E /* iueditor.js */; };
 		3DED26491900D2DE001A1D67 /* align_center@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26481900D2DE001A1D67 /* align_center@2x.png */; };
 		3DED264B1900D2EE001A1D67 /* align_full@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED264A1900D2EE001A1D67 /* align_full@2x.png */; };
 		3DED265A1900D313001A1D67 /* view_collection@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED264C1900D313001A1D67 /* view_collection@2x.png */; };
@@ -1906,6 +1907,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DD9E97219123B3E0076BF4E /* iueditor.js in Resources */,
 				3DED276F190E3CAC001A1D67 /* jquery.bxslider.min.js in Resources */,
 				3DED2770190E3CAC001A1D67 /* jquery.bxslider.js in Resources */,
 				3DED27311904EDF0001A1D67 /* movie.mp4 in Resources */,

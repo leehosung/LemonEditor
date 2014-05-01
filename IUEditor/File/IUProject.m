@@ -312,6 +312,10 @@
     
     //Java Script Resource copy
     
+    NSString *iuEditorJSPath = [[NSBundle mainBundle] pathForResource:@"iueditor" ofType:@"js"];
+    IUResourceNode *iuEditorJSNode = [[IUResourceNode alloc] initWithName:@"iueditor.js" type:IUResourceTypeJS];
+    [JSGroup addResourceNode:iuEditorJSNode path:iuEditorJSPath];
+    
     NSString *iuFrameJSPath = [[NSBundle mainBundle] pathForResource:@"iuframe" ofType:@"js"];
     IUResourceNode *iuFrameJSNode = [[IUResourceNode alloc] initWithName:@"iuframe.js" type:IUResourceTypeJS];
     [JSGroup addResourceNode:iuFrameJSNode path:iuFrameJSPath];
