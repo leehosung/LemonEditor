@@ -15,6 +15,7 @@
                 <outlet property="pwTF" destination="O4g-8k-nkT" id="deZ-C9-BH5"/>
                 <outlet property="pxTF" destination="nyY-Ki-gIn" id="tFg-91-WNG"/>
                 <outlet property="pyTF" destination="oq1-w9-bwR" id="KhF-cq-ExB"/>
+                <outlet property="rightB" destination="n1h-zm-ovQ" id="F7V-Pp-UFi"/>
                 <outlet property="view" destination="W2Z-Yo-bpM" id="zqF-ET-qCV"/>
                 <outlet property="wTF" destination="guM-cE-jfN" id="Y1A-fp-etq"/>
                 <outlet property="wUnitBtn" destination="wIY-3C-wNX" id="pNI-Gd-sod"/>
@@ -39,7 +40,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="zBr-Jq-Xap">
-                                <rect key="frame" x="6" y="-4" width="264" height="5"/>
+                                <rect key="frame" x="6" y="-4" width="264" height="147"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

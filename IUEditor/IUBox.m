@@ -517,6 +517,23 @@
     return YES;
 }
 
+- (BOOL)floatRightChangeable{
+    return YES;
+}
+
+- (void)setFloatRight:(BOOL)floatRight{
+    _floatRight = floatRight;
+    if (floatRight) {
+        if (self.flow == NO) {
+            self.flow = YES;
+        }
+        [self.css eradicateTag:IUCSSTagX];
+        [self.css eradicateTag:IUCSSTagY];
+    }
+    
+    [self.delegate IU:self.htmlID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+}
+
 - (void)setFlow:(BOOL)flow{
     _flow = flow;
     [self.css eradicateTag:IUCSSTagX];
