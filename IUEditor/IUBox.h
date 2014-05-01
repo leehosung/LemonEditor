@@ -123,5 +123,9 @@
 
 @property (nonatomic) BOOL flow;
 - (BOOL)flowChangeable;
+
+@property (nonatomic) BOOL floatRight;
+- (BOOL)floatRightChangeable;
+
 - (void)updateCSSForEditViewPort;
 @end

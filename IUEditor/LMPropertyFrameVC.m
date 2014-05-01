@@ -16,6 +16,7 @@
 
 @interface LMPropertyFrameVC ()
 @property (weak) IBOutlet NSButton *flowB;
+@property (weak) IBOutlet NSButton *rightB;
 
 //pixel TextField
 @property (weak) IBOutlet NSTextField *xTF;
@@ -95,6 +96,10 @@
 
     [_flowB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"flow"] options:nil];
     [_flowB bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"flowChangeable"] options:nil];
+    
+    [_rightB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"floatRight"] options:nil];
+    [_rightB bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"floatRightChangeable"] options:nil];
+
     
     NSDictionary *bindingOption = [NSDictionary
                                    dictionaryWithObjects:@[[NSNumber numberWithBool:NO]]
