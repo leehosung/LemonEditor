@@ -31,8 +31,8 @@ $.fn.updatePixel = function(){
 $.fn.iuPosition = function(){
 	var top = $(this).position().top + parseFloat($(this).css('margin-top'));
 	var left = $(this).position().left + parseFloat($(this).css('margin-left'));
-	var width = parseFloat($(this).css('width')) + parseFloat($(this).css('border-left-width'))+parseFloat($(this).css('border-right-width'));
-	var height = parseFloat($(this).css('height')) + parseFloat($(this).css('border-top-width'))+parseFloat($(this).css('border-bottom-width'));
+	var width = $(this).outerWidth();
+	var height = $(this).outerHeight();
     var x = $(this).offset().left;
     var y = $(this).offset().top;
     

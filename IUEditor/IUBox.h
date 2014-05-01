@@ -94,7 +94,8 @@
 - (void)setPercentFrame:(NSRect)frame;
 - (void)setPosition:(NSPoint)position;
 - (void)moveX:(NSInteger)x Y:(NSInteger)y;
-- (void)increaseWidth:(NSInteger)width height:(NSInteger)height;
+- (void)setDragOriginalSize;
+- (void)increaseSize:(NSSize)size withParentSize:(NSSize)parentSize;
 - (void)insertImage:(NSString *)imageName;
 
 

@@ -113,6 +113,9 @@
 
     startPoint = convertedPoint;
     middlePoint = convertedPoint;
+    
+    [((LMCanvasVC *)(self.delegate)) startExtendDragSession];
+
 }
 
 - (void)mouseDragged:(NSEvent *)theEvent{

@@ -24,6 +24,7 @@
     int delegateEnableLevel;
     NSMutableSet *changedCSSWidths;
     IUTextManager *textManager;
+    NSSize originalSize;
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
@@ -379,39 +380,45 @@
     [self.delegate IU:[_htmlID hoverIdentifier] CSSUpdated:[self cssForWidth:_css.editWidth isHover:YES] forWidth:_css.editWidth];
 }
 
-- (void)increaseWidth:(NSInteger)width height:(NSInteger)height{
+/* 
+ drag 중간의 diff size로 하면 css에 의한 오차가 생김.
+ drag session이 시작될때부터 위치에서의 diff size로 계산해야 오차가 발생 안함.
+ drag session이 시작할때 그 때의 위치를 저장함.
+ */
+- (void)setDragOriginalSize{
+    NSInteger currentWidth = [_css.assembledTagDictionary[IUCSSTagWidth] integerValue];
+    NSInteger currentHeight = [_css.assembledTagDictionary[IUCSSTagHeight] integerValue];
+
+    originalSize = NSMakeSize(currentWidth, currentHeight);
+}
+
+- (void)increaseSize:(NSSize)size withParentSize:(NSSize)parentSize{
     
-    NSSize parentSize = [self.delegate frameSize:self.parent.htmlID];
     
     if([self hasWidth]){
-        NSInteger currentWidth = [_css.assembledTagDictionary[IUCSSTagWidth] integerValue];
-        currentWidth += width;
+        NSInteger currentWidth = originalSize.width;
+        currentWidth += size.width;
         [_css setValue:@(currentWidth) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagWidth]];
         
-        BOOL enablePercentWidth = [self percentUnitAtCSSTag:IUCSSTagWidthUnit];
-        if(enablePercentWidth){
-            CGFloat percentWidth = 0;
-            if(parentSize.width!=0){
-                percentWidth = (currentWidth / parentSize.width) *100;
-            }
-            [_css setValue:@(percentWidth) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentWidth]];
-            
+        CGFloat percentWidth = [_css.assembledTagDictionary[IUCSSTagPercentWidth] floatValue];
+        if(parentSize.width!=0){
+            percentWidth += (size.width / parentSize.width) *100;
         }
+        [_css setValue:@(percentWidth) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentWidth]];
+        
+     
     }
     if([self hasHeight]){
-        NSInteger currentHeight = [_css.assembledTagDictionary[IUCSSTagHeight] integerValue];
-        currentHeight += height;
+        NSInteger currentHeight = originalSize.height;
+        currentHeight += size.height;
         [_css setValue:@(currentHeight) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagHeight]];
         
-        //set Percent if enable percent
-        BOOL enablePercentHeight = [self percentUnitAtCSSTag:IUCSSTagHeightUnit];
-        if(enablePercentHeight){
-            CGFloat percentHeight = 0;
-            if(parentSize.height!=0){
-                percentHeight = (currentHeight / parentSize.height) *100;
-            }
-            [_css setValue:@(percentHeight) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentHeight]];
+        CGFloat percentHeight = [_css.assembledTagDictionary[IUCSSTagPercentHeight] floatValue];;
+        if(parentSize.height!=0){
+            percentHeight += (size.height / parentSize.height) *100;
         }
+        [_css setValue:@(percentHeight) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagPercentHeight]];
+        
     }
 }
 

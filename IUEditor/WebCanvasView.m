@@ -593,6 +593,36 @@
     }
 }
 
+- (DOMHTMLDivElement *)divParentElementOfElement:(DOMElement *)element{
+    if([element isKindOfClass:[DOMHTMLDivElement class]]){
+        return (DOMHTMLDivElement *)element;
+    }
+    return [self divParentElementOfElement:element.parentElement];
+}
+
+- (NSSize)parentBlockElementSize:(NSString *)identifier{
+    
+    DOMElement *iu = [[[self mainFrame] DOMDocument] getElementById:identifier];
+    DOMHTMLDivElement *parentBox = [self divParentElementOfElement:iu.parentElement];
+    NSString *parentID = [parentBox getAttribute:@"id"];
+    if(parentID == nil || parentID.length == 0){
+        parentID = @"iu_parent_size_temp";
+    }
+    NSString *heightJS = [NSString stringWithFormat:@"$('#%@').innerHeight();", parentID];
+    NSString *widthJS = [NSString stringWithFormat:@"$('#%@').innerWidth();", parentID];
+    
+    if([parentID isEqualToString:@"iu_parent_size_temp"]){
+        [parentBox removeAttribute:@"id"];
+    }
+    
+    CGFloat height = [[self stringByEvaluatingJavaScriptFromString:heightJS] floatValue];
+    CGFloat width =  [[self stringByEvaluatingJavaScriptFromString:widthJS] floatValue];
+    NSSize parentSize = NSMakeSize(width, height);
+    
+    return parentSize;
+    
+}
+
 #pragma mark -
 #pragma mark web policy
 

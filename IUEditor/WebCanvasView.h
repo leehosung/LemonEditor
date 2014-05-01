@@ -27,8 +27,11 @@
 
 #pragma mark -
 
+- (NSSize)parentBlockElementSize:(NSString *)identifier;
 - (NSString *)IUAtPoint:(NSPoint)point;
 - (BOOL)isDOMTextAtPoint:(NSPoint)point;
 - (void)changeDOMRange:(NSPoint)point;
 - (void)selectTextRange:(DOMHTMLElement *)element index:(NSUInteger)index;
+
+
 @end
