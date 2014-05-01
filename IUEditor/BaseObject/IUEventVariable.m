@@ -279,6 +279,7 @@
     
     [eventJSStr appendString:@"$(document).ready(function(){"];
     [eventJSStr appendNewline];
+    [eventJSStr appendString:@"console.log('ready : iuevent.js')"];
     [eventJSStr appendString:[bodyHeader stringByAddingTab]];
     [eventJSStr appendNewline];
     [eventJSStr appendString:[body stringByAddingTab]];

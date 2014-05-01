@@ -43,6 +43,9 @@
     return [self.compiler outputSource:self mqSizeArray:_mqSizeArray];;
 }
 
+- (NSString*)outputInitJSSource{
+    return [self.compiler outputJSInitializeSource:self];
+}
 
 -(NSArray*)widthWithCSS{
     return @[];

@@ -80,6 +80,7 @@
 //    [self.mainScrollView.contentView setHeight:height];
     [self.mainView setHeight:height];
     [self.webView resizePageContent];
+    [self.webView updateFrameDict];
 }
 
 #pragma mark -

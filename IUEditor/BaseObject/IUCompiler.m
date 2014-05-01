@@ -46,18 +46,20 @@
     }
     NSString *templateFilePath = [[NSBundle mainBundle] pathForResource:@"webTemplate" ofType:@"html"];
     NSMutableString *source = [NSMutableString stringWithContentsOfFile:templateFilePath encoding:NSUTF8StringEncoding error:nil];
-/*
- 일단 지우지 말자. 디버그할때 힘들더라.
-    //remove iuframe.js to make outputSource
-    NSRange removeStart = [source rangeOfString:@"<!--IUFrame.JS_REMOVE_START-->"];
-    NSRange removeEnd =[source rangeOfString:@"<!--IUFrame.JS_REMOVE_END-->"];
+    
+    //remove iueditor.js to make outputSource
+    NSRange removeStart = [source rangeOfString:@"<!--IUEditor.JS_REMOVE_START-->"];
+    NSRange removeEnd =[source rangeOfString:@"<!--IUEditor.JS_REMOVE_END-->"];
     NSRange removeRange = NSMakeRange(removeStart.location, removeEnd.location+removeEnd.length-removeStart.location);
     [source deleteCharactersInRange:removeRange];
- */
     
     //insert event.js
     NSString *eventJs = @"<script type=\"text/javascript\" src=\"Resource/JS/iuevent.js\"></script>";
     [source replaceOccurrencesOfString:@"<!--IUEvent.JS_Replacement-->" withString:[eventJs stringByIndent:8 prependIndent:NO] options:0 range:[source fullRange]];
+    
+    NSString *initJS = @"<script type=\"text/javascript\" src=\"Resource/JS/iuinit.js\"></script>";
+    [source replaceOccurrencesOfString:@"<!--IUInit.JS_Replacement-->" withString:[initJS stringByIndent:8 prependIndent:NO] options:0 range:[source fullRange]];
+
     
     //change css
     NSMutableArray *cssSizeArray = [mqSizeArray mutableCopy];
@@ -1048,8 +1050,8 @@
     NSMutableString *code = [NSMutableString string];
    
     if([iu isKindOfClass:[IUCarousel class]]){
-        [code appendString:@"/* IUCarousel initialize */"];
-        [code appendFormat:@"$('#%@').bxSlider(%@)", iu.htmlID, [self outputJSArgs:iu]];
+        [code appendString:@"/* IUCarousel initialize */\n"];
+        [code appendFormat:@"$('#bxslider_%@').bxSlider(%@)", iu.htmlID, [self outputJSArgs:iu]];
         [code appendNewline];
     }
     else if ([iu isKindOfClass:[IUBox class]]) {

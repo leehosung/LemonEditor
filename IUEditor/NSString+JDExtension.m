@@ -98,6 +98,11 @@
 }
 
 - (NSString*)stringByIndent:(NSUInteger)indent prependIndent:(BOOL)prependIndent;{
+    
+    if(self.length == 0){
+        return self;
+    }
+    
     BOOL lastNewLineFlag = NO;
     if ([self characterAtIndex:[self length]-1] == '\n') {
         lastNewLineFlag = YES;
