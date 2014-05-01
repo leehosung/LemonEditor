@@ -243,12 +243,14 @@
 }
 
 - (void)insertString:(NSString *)string identifier:(NSString *)identifier withRange:(NSRange)range{
+    [JDLogUtil log:IULogText string:[NSString stringWithFormat:@"insert - %@ , (%lu, %lu)", string, range.location, range.length]];
     IUBox *iu = [self.controller IUBoxByIdentifier:identifier];
     assert(iu != nil);
     [iu insertText:string withRange:range];
 }
 
 - (void)deleteStringRange:(NSRange)range identifier:(NSString *)identifier{
+    [JDLogUtil log:IULogText string:[NSString stringWithFormat:@"delete (%lu, %lu)", range.location, range.length]];
     IUBox *iu = [self.controller IUBoxByIdentifier:identifier];
     [iu deleteTextInRange:range];
 }

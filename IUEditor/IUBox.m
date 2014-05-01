@@ -492,13 +492,9 @@
 }
 
 - (void)insertText:(NSString*)text withRange:(NSRange)range{
-    NSLog(@"insertText");
-    if(range.length == 0){
-        [textManager insertString:text atIndex:range.location];
-    }
-    else{
-        [textManager replaceText:text atRange:range];
-    }
+    NSLog(@"insertText %@ (%ld, %ld)", text, range.location, range.length);
+
+    [textManager replaceText:text atRange:range];
     NSUInteger index = [[self cursor][IUTextCursorLocationIndex] integerValue];
     NSString   *nID =[self cursor][IUTextCursorLocationID];
     

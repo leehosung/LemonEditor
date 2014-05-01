@@ -35,6 +35,7 @@
 //#define IULogJS 0
 #define IULogJS @"JS"
 #define IULogAction @"Action"
+#define IULogText @"Text"
 
 #define IUBindingDictNotRaisesApplicable @{NSRaisesForNotApplicableKeysBindingOption:@(NO)}
 static NSRange NSZeroRange;
