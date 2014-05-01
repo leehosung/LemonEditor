@@ -10,6 +10,9 @@
                 <outlet property="autoplayMatrix" destination="3rt-7L-gMK" id="Hn6-bB-nF0"/>
                 <outlet property="controllerSegmentedControl" destination="fIJ-qE-QT2" id="9J7-pB-6k5"/>
                 <outlet property="deselectColor" destination="1hp-bJ-nvp" id="Uro-9Y-Xd6"/>
+                <outlet property="enableColor" destination="Fov-Jm-qg1" id="kjC-Ab-aT0"/>
+                <outlet property="leftImageComboBox" destination="wji-m7-A9D" id="bIJ-Lj-NVG"/>
+                <outlet property="rightImageComboBox" destination="5FJ-Jb-dW5" id="Lqh-2f-N0T"/>
                 <outlet property="selectColor" destination="m6o-Hz-kcf" id="mW3-bc-sKn"/>
                 <outlet property="view" destination="Q3L-Eb-iN0" id="Pz5-IZ-d8v"/>
             </connections>
@@ -166,8 +169,8 @@
                                 </constraints>
                                 <color key="color" red="0.50196081399917603" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
                             </colorWell>
-                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fIJ-qE-QT2">
-                                <rect key="frame" x="77" y="29" width="168" height="20"/>
+                            <segmentedControl verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fIJ-qE-QT2">
+                                <rect key="frame" x="77" y="29" width="127" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="bgT-WZ-qhU"/>
@@ -179,10 +182,7 @@
                                         <segment image="controller" width="40" selected="YES">
                                             <nil key="label"/>
                                         </segment>
-                                        <segment image="controller_comb" width="80" tag="1">
-                                            <nil key="label"/>
-                                        </segment>
-                                        <segment label="None" width="40"/>
+                                        <segment label="none" width="80" tag="1"/>
                                     </segments>
                                 </segmentedCell>
                             </segmentedControl>
@@ -195,6 +195,38 @@
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="dotline" id="5cE-zw-WAW"/>
                             </imageView>
+                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5FJ-Jb-dW5" userLabel="rightArrowImage">
+                                <rect key="frame" x="171" y="41" width="99" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <comboBoxCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="YlW-fV-RYH">
+                                    <font key="font" metaFont="miniSystem"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <objectValues>
+                                        <string>Default</string>
+                                    </objectValues>
+                                </comboBoxCell>
+                            </comboBox>
+                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wji-m7-A9D" userLabel="leftArrowImage">
+                                <rect key="frame" x="67" y="41" width="99" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <comboBoxCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="hhp-3c-s5O">
+                                    <font key="font" metaFont="miniSystem"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <objectValues>
+                                        <string>Default</string>
+                                    </objectValues>
+                                </comboBoxCell>
+                            </comboBox>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fov-Jm-qg1">
+                                <rect key="frame" x="19" y="6" width="62" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Color" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="syZ-Ve-UzC">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="smallSystem"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                     </view>
                     <constraints>
@@ -233,7 +265,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="MB1-PZ-wBA">
-                                <rect key="frame" x="6" y="0.0" width="260" height="4"/>
+                                <rect key="frame" x="6" y="0.0" width="260" height="9"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -278,10 +310,10 @@
                 <outlet property="titleV" destination="vRj-GP-3wm" id="iqw-m4-pjD"/>
             </connections>
         </customView>
+        <userDefaultsController representsSharedInstance="YES" id="p6f-Mf-SPS"/>
     </objects>
     <resources>
         <image name="controller" width="27" height="7"/>
-        <image name="controller_comb" width="62" height="10"/>
         <image name="dotline" width="260" height="1"/>
     </resources>
 </document>

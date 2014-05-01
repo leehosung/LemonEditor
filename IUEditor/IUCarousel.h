@@ -10,18 +10,23 @@
 
 typedef enum{
     IUCarouselControlBottom,
-    IUCarouselControlBottomNPlay,
     IUCarouselControlTypeNone,
     
 }IUCarouselControlType;
 
+typedef enum{
+    IUCarouselArrowLeft,
+    IUCarouselArrowRight,
+}IUCarouselArrow;
+
 @interface IUCarousel : IUBox
 
-@property (nonatomic) BOOL autoplay;
+@property (nonatomic) BOOL autoplay, enableColor;
 @property (nonatomic) BOOL disableArrowControl;
 @property (nonatomic) IUCarouselControlType controlType;
 @property (nonatomic) NSColor *selectColor;
 @property (nonatomic) NSColor *deselectColor;
+@property (nonatomic) NSString *leftArrowImage, *rightArrowImage;
 
 - (void)setCount:(NSInteger)count;
 - (NSInteger)count;

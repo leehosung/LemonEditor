@@ -388,6 +388,17 @@
 #pragma mark -
 #pragma mark CSS
 
+-(void)IU:(NSString *)identifier CSSRemovedforWidth:(NSInteger)width{
+    if(width == IUCSSMaxViewPortWidth){
+        //default setting
+        [self removeCSSTextWithID:identifier];
+    }
+    else{
+        [self removeCSSTextWithID:identifier size:width];
+        
+    }
+    [self.webView setNeedsDisplay:YES];
+}
 
 
 -(void)IU:(NSString*)identifier CSSUpdated:(NSString*)css forWidth:(NSInteger)width{
@@ -491,6 +502,50 @@
     
     [innerCSSHTML appendString:cssText];
     [innerCSSHTML appendString:@"\n"];
+    
+    return innerCSSHTML;
+}
+
+- (void)removeCSSTextWithID:(NSString *)iuID{
+    DOMHTMLStyleElement *sheetElement = (DOMHTMLStyleElement *)[[self DOMDoc] getElementById:@"default"];
+    [self removeCSSRuleInStyleSheet:sheetElement withID:iuID];
+    
+}
+- (void)removeCSSTextWithID:(NSString *)iuID size:(NSInteger)size{
+    DOMHTMLStyleElement *sheetElement = (DOMHTMLStyleElement *)[[self DOMDoc] getElementById:[NSString stringWithFormat:@"style%ld", size]];
+    if(sheetElement == nil){
+        sheetElement = [self makeNewStyleSheet:size];
+    }
+    [self removeCSSRuleInStyleSheet:sheetElement withID:iuID];;
+}
+
+- (void)removeCSSRuleInStyleSheet:(DOMHTMLStyleElement *)styleSheet withID:(NSString *)iuID{
+    
+    NSString *newCSSText = [self removeCSSText:styleSheet.innerHTML withID:iuID];
+    [styleSheet setInnerHTML:newCSSText];
+    
+    [[self webView] updateFrameDict];
+    [[self webView] redrawCarousels];
+    
+}
+
+
+- (NSString *)removeCSSText:(NSString *)innerCSSText withID:(NSString *)iuID
+{
+    NSMutableString *innerCSSHTML = [NSMutableString stringWithString:@"\n"];
+    NSString *trimmedInnerCSSHTML = [innerCSSText  stringByTrim];
+    NSArray *cssRuleList = [trimmedInnerCSSHTML componentsSeparatedByCharactersInSet:
+                            [NSCharacterSet characterSetWithCharactersInString:@"#"]];
+    
+    for(NSString *rule in cssRuleList){
+        if(rule.length == 0){
+            continue;
+        }
+        NSString *ruleID = [self cssIDInCSSRule:rule];
+        if([ruleID isEqualToString:iuID] == NO){
+            [innerCSSHTML appendString:[NSString stringWithFormat:@"\t#%@\n", [rule stringByTrim]]];
+        }
+    }
     
     return innerCSSHTML;
 }

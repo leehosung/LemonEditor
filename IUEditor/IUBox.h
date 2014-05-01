@@ -19,6 +19,7 @@
 @property _binding_ NSInteger maxFrameWidth;
 
 -(void)IU:(NSString *)identifier CSSUpdated:(NSString*)css forWidth:(NSInteger)width;
+-(void)IU:(NSString *)identifier CSSRemovedforWidth:(NSInteger)width;
 
 -(void)IU:(NSString*)identifier textHTML:(NSString *)html withParentID:(NSString *)parentID nearestID:(NSString *)nID index:(NSUInteger)index;
 -(void)IU:(NSString *)identifier HTML:(NSString *)html withParentID:(NSString *)parentID;

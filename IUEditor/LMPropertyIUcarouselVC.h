@@ -8,9 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 #import "IUController.h"
+#import "IUResourceManager.h"
+
 
 @interface LMPropertyIUcarouselVC : NSViewController
 
 @property (nonatomic) IUController      *controller;
+@property (nonatomic) IUResourceManager     *resourceManager;
+
+@property (nonatomic) NSArray *imageArray;
 
 @end

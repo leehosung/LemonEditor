@@ -14,8 +14,12 @@
 @property (weak) IBOutlet NSMatrix *arrowControlMatrix;
 @property (weak) IBOutlet NSSegmentedControl *controllerSegmentedControl;
 
+@property (weak) IBOutlet NSButton *enableColor;
 @property (weak) IBOutlet NSColorWell *selectColor;
 @property (weak) IBOutlet NSColorWell *deselectColor;
+@property (weak) IBOutlet NSComboBox *leftImageComboBox;
+@property (weak) IBOutlet NSComboBox *rightImageComboBox;
+
 
 @end
 
@@ -25,8 +29,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
-        
+        _imageArray = [NSArray arrayWithObject:@"Default"];
     }
     return self;
 }
@@ -35,8 +38,25 @@
     [_autoplayMatrix bind:NSSelectedIndexBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"autoplay"] options:IUBindingDictNotRaisesApplicable];
     [_arrowControlMatrix bind:NSSelectedIndexBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"disableArrowControl"] options:IUBindingDictNotRaisesApplicable];
     [_controllerSegmentedControl bind:NSSelectedIndexBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"controlType"] options:IUBindingDictNotRaisesApplicable];
+    
+    
+    [_enableColor bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableColor"] options:IUBindingDictNotRaisesApplicable];
     [_selectColor bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"selectColor"] options:IUBindingDictNotRaisesApplicable];
     [_deselectColor bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"deselectColor"] options:IUBindingDictNotRaisesApplicable];
+    
+    [_leftImageComboBox bind:NSContentBinding toObject:self withKeyPath:@"imageArray" options:IUBindingDictNotRaisesApplicable];
+    [_rightImageComboBox bind:NSContentBinding toObject:self withKeyPath:@"imageArray" options:IUBindingDictNotRaisesApplicable];
+    [_leftImageComboBox bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"leftArrowImage"] options:IUBindingDictNotRaisesApplicable];
+    [_rightImageComboBox bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"rightArrowImage"] options:IUBindingDictNotRaisesApplicable];
+    
+    
+    [self addObserver:self forKeyPath:@"resourceManager.imageNames" options:NSKeyValueObservingOptionInitial context:@"image"];
+}
+
+-(void)imageContextDidChange:(NSDictionary *)change{
+    [self willChangeValueForKey:@"imageArray"];
+    _imageArray = [@[@"Default"] arrayByAddingObjectsFromArray:self.resourceManager.imageNames];
+    [self didChangeValueForKey:@"imageArray"];
 }
 
 @end
