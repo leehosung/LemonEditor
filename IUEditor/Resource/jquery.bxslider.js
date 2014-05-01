@@ -1417,9 +1417,5 @@ function selectCarousel(iuid, index){
 
 $(document).ready(function(){
      console.log("ready : bxslider(carousel)")
-    $('.IUCarousel').each(function(){
-            var iuid = $(this).attr('id');
-            insertNewCarousel(iuid);
-    });
 });
 

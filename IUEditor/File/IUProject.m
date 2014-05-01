@@ -175,6 +175,7 @@
 
 
     IUEventVariable *eventVariable = [[IUEventVariable alloc] init];
+    NSMutableString *initializeJSSource = [NSMutableString string];
 
     for (IUDocumentNode *node in self.allDocumentNodes) {
         NSString *outputString = [node.document outputSource];
@@ -185,10 +186,25 @@
         }
         
         [eventVariable makeEventDictionary:node.document];
+        
+        [initializeJSSource appendFormat:@"/* Initialize %@ */\n", node.name];
+        [initializeJSSource appendString:[node.document outputInitJSSource]];
+        [initializeJSSource appendNewline];
     }
     
-    NSString *eventJSString = [eventVariable outputEventJSSource];
     NSString *resourceJSPath = [[self.path stringByAppendingPathComponent:@"Resource"] stringByAppendingPathComponent:@"JS"];
+    
+    //make initialize javascript file
+    [initializeJSSource insertString:@"$(document).ready(function(){\nconsole.log('ready : iuinit.js');" atIndex:0];
+    [initializeJSSource appendString:@"\n});"];
+    NSString *initializeJSPath = [[resourceJSPath stringByAppendingPathComponent:@"iuinit"] stringByAppendingPathExtension:@"js"];
+    if ([initializeJSSource writeToFile:initializeJSPath atomically:YES encoding:NSUTF8StringEncoding error:error] == NO){
+        assert(0);
+    }
+
+    
+    //make event javascript file
+    NSString *eventJSString = [eventVariable outputEventJSSource];
     NSString *eventJSFilePath = [[resourceJSPath stringByAppendingPathComponent:@"iuevent"] stringByAppendingPathExtension:@"js"];
     if ([eventJSString writeToFile:eventJSFilePath atomically:YES encoding:NSUTF8StringEncoding error:error] == NO){
         assert(0);
