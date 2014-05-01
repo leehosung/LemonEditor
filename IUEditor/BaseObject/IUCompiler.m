@@ -641,7 +641,10 @@
             }
             
             if (value) {
-                if (obj.flow) {
+                if (obj.floatRight) {
+                    [dict putTag:@"margin-right" floatValue:[value floatValue] * (-1) ignoreZero:NO unit:unit];
+                }
+                else if (obj.flow) {
                     [dict putTag:@"margin-left" floatValue:[value floatValue] ignoreZero:NO unit:unit];
                 }
                 else {
