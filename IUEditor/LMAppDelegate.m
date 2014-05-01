@@ -20,10 +20,11 @@
 {
     NSZeroRange = NSMakeRange(0, 0);
     [JDLogUtil showLogLevel:YES andFileName:YES andFunctionName:YES andLineNumber:YES];
-    [JDLogUtil setGlobalLevel:JDLog_Level_Debug];
-    [JDLogUtil enableLogSection:IULogSource];
+    [JDLogUtil setGlobalLevel:JDLog_Level_Error];
+//    [JDLogUtil enableLogSection:IULogSource];
 //    [JDLogUtil enableLogSection:IULogJS];
-    [JDLogUtil enableLogSection:IULogAction];
+//    [JDLogUtil enableLogSection:IULogAction];
+    [JDLogUtil enableLogSection:IULogText];
     
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraints"];
 
