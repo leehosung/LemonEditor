@@ -19,13 +19,19 @@
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
     if (self) {
-        
+        _ghostX = [aDecoder decodeFloatForKey:@"ghostX"];
+        _ghostY = [aDecoder decodeFloatForKey:@"ghostY"];
+        _ghostImageName = [aDecoder decodeObjectForKey:@"ghostImageName"];
+
     }
     return self;
 }
 
 -(void)encodeWithCoder:(NSCoder *)aCoder{
     [super encodeWithCoder:aCoder];
+    [aCoder encodeFloat:_ghostX forKey:@"ghostX"];
+    [aCoder encodeFloat:_ghostY forKey:@"ghostY"];
+    [aCoder encodeObject:_ghostImageName forKey:@"ghostImageName"];
 }
 
 

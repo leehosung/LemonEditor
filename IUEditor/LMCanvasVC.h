@@ -9,12 +9,15 @@
 #import <Cocoa/Cocoa.h>
 #import "IUDocument.h"
 #import "IUController.h"
+#import "IUResourceManager.h"
 
 @class LMCanvasView;
 @interface LMCanvasVC : NSViewController <IUSourceDelegate>
 
 @property (nonatomic) _binding_ IUDocument  *document;
 @property (nonatomic) _binding_ NSString    *documentBasePath;
+@property (nonatomic) IUResourceManager  *resourceManager;
+
 @property (nonatomic) IUController  *controller;
 
 @property _observing_ NSInteger selectedFrameWidth;
