@@ -18,7 +18,7 @@
 @property NSArray *mqSizeArray;
 
 @property CGFloat ghostX, ghostY;
-@property NSString *ghostImagePath;
+@property NSString *ghostImageName;
 
 #pragma mark editor source
 -(NSString*)editorSource;

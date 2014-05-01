@@ -41,7 +41,7 @@
     [[self sizeView] addFrame:700];
     
     [self addObserver:self forKeyPath:@"view.sizeView.sizeArray" options:NSKeyValueObservingOptionInitial context:@"mqCount"];
-    [self addObserver:self forKeyPaths:@[@"document.ghostImagePath",
+    [self addObserver:self forKeyPaths:@[@"document.ghostImageName",
                                          @"document.ghostX",
                                          @"document.ghostY"]
               options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew context:@"ghostImage"];
@@ -133,8 +133,9 @@
 }
 
 - (void)ghostImageContextDidChange:(NSDictionary *)change{
-    NSString *ghostImagePath = _document.ghostImagePath;
-    NSImage *ghostImage = [NSImage imageNamed:ghostImagePath];
+    NSString *ghostImageName = _document.ghostImageName;
+    IUResourceNode *resourceNode = [_resourceManager imageResourceNodeOfName:ghostImageName];
+    NSImage *ghostImage = [[NSImage alloc] initWithContentsOfFile:resourceNode.absolutePath];
     
     [[self gridView] setGhostImage:ghostImage];
     
@@ -506,9 +507,11 @@
 #pragma mark border, ghost view
 
 - (void)setGhostImage:(NSImage *)ghostImage{
+    assert(0); // use it?
     [[self gridView] setGhostImage:ghostImage];
 }
 - (void)setGhostPosition:(NSPoint)position{
+    assert(0); // use it?
     [[self gridView] setGhostPosition:position];
 }
 

@@ -31,5 +31,5 @@
 - (IUResourceGroupNode *)cssNode;
 
 -(IUResourceType)resourceType:(NSString *)anExtension;
-
+-(IUResourceNode*)imageResourceNodeOfName:(NSString*)imageName;
 @end

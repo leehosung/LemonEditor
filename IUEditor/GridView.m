@@ -53,7 +53,7 @@
         [ghostLayer setBackgroundColor:[[NSColor clearColor] CGColor]];
         [ghostLayer setOpacity:0.3];
         [ghostLayer disableAction];
-        [self.layer insertSubLayerFullFrame:ghostLayer below:borderManagerLayer];
+        [self.layer insertSublayer:ghostLayer below:borderManagerLayer];
         
         [[NSUserDefaults standardUserDefaults] addObserver:self forKeyPath:@"showGhost" options:NSKeyValueObservingOptionInitial context:nil];
         
@@ -311,19 +311,11 @@
 }
 - (void)setGhostImage:(NSImage *)image{
     [ghostLayer setContents:image];
+    [ghostLayer setFrame:NSMakeRect(0, 0, image.size.width, image.size.height)];
 }
 - (void)setGhostPosition:(NSPoint)position{
-    NSSize imageSize = NSZeroSize;
     NSImage *ghostImage = [ghostLayer contents];
-    
-    NSPoint percentPosition = NSZeroPoint;
-    if(ghostImage){
-        imageSize = NSMakeSize(ghostImage.size.width, ghostImage.size.height);
-        if(imageSize.width !=0 && imageSize.height !=0){
-            percentPosition = NSMakePoint((-1)*position.x/imageSize.width, (-1)*position.y/imageSize.height);
-        }
-    }
-    [ghostLayer setContentsRect:NSMakeRect(percentPosition.x, percentPosition.y, 1, 1)];
+    [ghostLayer setFrame:NSMakeRect(position.x, position.y, ghostImage.size.width, ghostImage.size.height)];
 }
 
 #pragma mark -

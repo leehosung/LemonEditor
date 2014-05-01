@@ -48,13 +48,36 @@
     [_ghostXTF bind:NSValueBinding toObject:self withKeyPath:@"document.ghostX" options:IUBindingDictNotRaisesApplicable];
     [_ghostYTF bind:NSValueBinding toObject:self withKeyPath:@"document.ghostY" options:IUBindingDictNotRaisesApplicable];
     
-    [_ghostImageComboBox bind:NSValueBinding toObject:self withKeyPath:@"document.ghostImagePath" options:IUBindingDictNotRaisesApplicable];
     
 #pragma mark bottom right tools
     [_borderBtn bind:@"state" toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"showBorder" options:nil];
-    
-    
+    [self addObserver:self forKeyPath:@"document.ghostImageName" options:0 context:nil];
+    _ghostImageComboBox.delegate = self;
 }
+
+- (void)document_ghostImageNameDidChange:(NSDictionary*)change{
+    if ([[_ghostImageComboBox stringValue] isEqualToString:_document.ghostImageName] == NO) {
+        if (_document.ghostImageName == nil) {
+            [_ghostImageComboBox setStringValue:@""];
+        }
+        else {
+            [_ghostImageComboBox setStringValue:_document.ghostImageName];
+        }
+    }
+}
+
+- (void)comboBoxSelectionDidChange:(NSNotification *)notification{
+    NSString *fileName = [_ghostImageComboBox objectValueOfSelectedItem];
+    self.document.ghostImageName = fileName;
+}
+
+- (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor{
+    NSString *fileName = [control stringValue];
+    self.document.ghostImageName = fileName;
+    return YES;
+}
+
+
 
 - (void)setResourceManager:(IUResourceManager *)resourceManager{
     _resourceManager = resourceManager;

@@ -235,4 +235,21 @@
     }
     return IUResourceTypeNone;
 }
+
+-(IUResourceNode*)imageResourceNodeOfName:(NSString*)imageName{
+    NSArray *nodes = _rootNode.allChildren;
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUNode* evaluatedObject, NSDictionary *bindings) {
+        if ([evaluatedObject isKindOfClass:[IUResourceNode class]]) {
+            if (((IUResourceNode*)evaluatedObject).type == IUResourceTypeImage) {
+                if ([((IUResourceNode*)evaluatedObject).name isEqualToString:imageName]) {
+                    return YES;
+                }
+            }
+        }
+        return NO;
+    }];
+    NSArray *imageNodes = [nodes filteredArrayUsingPredicate:predicate];
+    return [imageNodes firstObject];
+}
+
 @end

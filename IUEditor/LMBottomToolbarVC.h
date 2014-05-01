@@ -10,7 +10,7 @@
 #import "IUResourceManager.h"
 #import "IUDocument.h"
 
-@interface LMBottomToolbarVC : NSViewController
+@interface LMBottomToolbarVC : NSViewController <NSComboBoxDelegate>
 
 @property (nonatomic) IUResourceManager     *resourceManager;
 @property (nonatomic) IUDocument    *document;

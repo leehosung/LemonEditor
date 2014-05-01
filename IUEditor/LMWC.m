@@ -123,6 +123,7 @@
     canvasVC = [[LMCanvasVC alloc] initWithNibName:@"LMCanvasVC" bundle:nil];
     [_centerV addSubviewFullFrame:canvasVC.view];
     [canvasVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
+    canvasVC.resourceManager = _resourceManager;
     self.window.canvasView =  (LMCanvasView *)canvasVC.view;
     [self bind:@"selectedTextRange" toObject:self withKeyPath:@"selectedTextRange" options:nil];
     
