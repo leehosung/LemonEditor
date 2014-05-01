@@ -18,7 +18,7 @@
     assert(manager!=nil);
     self = [super initWithManager:manager];
     if(self){
-        self.count = 3;
+        self.count = 5;
         [self.css setValue:@(500) forTag:IUCSSTagWidth forWidth:IUCSSMaxViewPortWidth];
         [self.css setValue:@(300) forTag:IUCSSTagHeight forWidth:IUCSSMaxViewPortWidth];
         _selectColor = [NSColor blackColor];
