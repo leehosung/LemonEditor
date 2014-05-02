@@ -114,7 +114,7 @@
 }
 
 -  (BOOL)pointInMainView:(NSPoint)point{
-    if (NSPointInRect(point, self.bounds)){
+    if (NSPointInRect(point, [self.mainScrollView bounds])){
         return YES;
     }
     return NO;

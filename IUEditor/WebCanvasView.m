@@ -109,6 +109,7 @@
             break;
     }
     
+    [((LMCanvasVC *)(self.delegate)) startDragSession];
     [((LMCanvasVC *)self.delegate) moveIUToDiffPoint:diffPoint totalDiffPoint:diffPoint];
 }
 
