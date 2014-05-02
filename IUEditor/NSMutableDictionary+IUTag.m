@@ -53,6 +53,9 @@
 
 -(void)putTag:(NSString*)tag color:(NSColor*)color ignoreClearColor:(BOOL)ignoreClearColor{
     if (color) {
+        if (color.colorSpace != [NSColorSpace deviceRGBColorSpace]) {
+            color = [color colorUsingColorSpace:[NSColorSpace deviceRGBColorSpace]];
+        }
         if (ignoreClearColor){
             CGFloat alpha;
             [color getRed:nil green:nil blue:nil alpha:&alpha];
