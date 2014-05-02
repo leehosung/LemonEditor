@@ -48,9 +48,10 @@
     pageNode.name = @"Index";
     [pageDir addNode:pageNode];
     
-    IUBackground *background = [[IUBackground alloc] initWithManager:nil option:nil];
+    IUBackground *background = [[IUBackground alloc] initWithManager:nil option:@{kIUBackgroundOptionEmpty:@(YES)}];
     background.htmlID = @"Background1";
     background.name = @"Background1";
+    page.background = background;
     
     IUDocumentNode *backgroundNode = [[IUDocumentNode alloc] init];
     backgroundNode.document = background;

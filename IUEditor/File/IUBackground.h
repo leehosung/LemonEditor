@@ -9,6 +9,7 @@
 #import "IUDocument.h"
 #import "IUHeader.h"
 
+#define kIUBackgroundOptionEmpty @"backgroundOptionEmpty"
 
 @interface IUBackground : IUDocument
 

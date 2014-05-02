@@ -96,29 +96,31 @@ function resizePageContentHeightEditor(){
         //if it is not page file, return
         return;
     }
-    var height=0;
-    $('.IUPageContent').siblings().each(function(){height += $(this).height()});
-    $('.IUPageContent').css('height', height+'px');
-	
-    console.log('pagecontentheight :' + height);
-	//make min height of page content
-	var minHeight=0;
-	$('.IUPageContent').children().each(function(){
-                                        minHeight+=$(this).height()+$(this).position().top}
-                                        );
-	if (minHeight < 500){
-		minHeight = 500;
-	}
-    $('.IUPageContent').css('min-height', minHeight+'px');
-    
-    console.log('pagecontentminheight :' + minHeight);
-    var documentHeight = $(document).height();
-    console.resizePageContentHeightFinished(documentHeight);
+    if ($('.IUPageContent')){
+        //make min height of page content
+        var minHeight=500;
+        $('.IUPageContent').children().each(function(){
+                                            var newValue = $(this).height()+$(this).position().top;
+                                            if (newValue > minHeight){
+                                            minHeight = newValue;
+                                            }});
+        $('.IUPageContent').css('min-height', minHeight+'px');
+        console.log('pagecontentminheight :' + minHeight);
+        
+        var pageHeight=minHeight;
+		pageHeight += $('.IUHeader').height();
+        console.resizePageContentHeightFinished(pageHeight);
+    }
+    else {
+        console.log('failed!!!!!');
+        //background 가 없으면 page content 도 없는데...
+    }
 }
 
 function getIUUpdatedFrameThread(){
     //새로운 인풋이 들어왔을때 변해야 하면 이곳에서 호출
     //editor mode 에서
+    console.log('iu update thread');
     $('.IUBox').updatePixel();
     
     if (Object.keys(document.sharedFrameDict).length > 0
