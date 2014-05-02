@@ -58,7 +58,7 @@
 }
 
 - (void)setBorderTopColor:(NSColor *)borderTopColor{
-    if (borderTopColor == NSNoSelectionMarker) {
+    if (borderTopColor == NSNoSelectionMarker || [self.controller.selectedObjects count] == 0) {
         return;
     }
     if ([borderTopColor.colorSpaceName isEqualToString:NSDeviceRGBColorSpace] == NO) {
@@ -71,7 +71,7 @@
 }
 
 - (void)setBorderLeftColor:(NSColor *)borderLeftColor{
-    if (borderLeftColor == NSNoSelectionMarker) {
+    if (borderLeftColor == NSNoSelectionMarker || [self.controller.selectedObjects count] == 0) {
         return;
     }
     if ([borderLeftColor.colorSpaceName isEqualToString:NSDeviceRGBColorSpace] == NO) {
@@ -82,7 +82,7 @@
 }
 
 - (void)setBorderRightColor:(NSColor *)borderRightColor{
-    if (borderRightColor == NSNoSelectionMarker) {
+    if (borderRightColor == NSNoSelectionMarker || [self.controller.selectedObjects count] == 0) {
         return;
     }
     if ([borderRightColor.colorSpaceName isEqualToString:NSDeviceRGBColorSpace] == NO) {
@@ -93,7 +93,7 @@
 }
 
 - (void)setBorderBottomColor:(NSColor *)borderBottomColor{
-    if (borderBottomColor == NSNoSelectionMarker) {
+    if (borderBottomColor == NSNoSelectionMarker || [self.controller.selectedObjects count] == 0) {
         return;
     }
     if ([borderBottomColor.colorSpaceName isEqualToString:NSDeviceRGBColorSpace] == NO) {
@@ -188,6 +188,10 @@
     //bordercolor
     if ([[keyPath pathExtension] isSameTag:IUCSSTagBorderTopColor]) {
         NSColor *newColor = [self valueForKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderTopColor]];
+        if([newColor isKindOfClass:[NSColor class]] == NO){
+            newColor = [NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:1];
+        }
+
         if (self.borderTopColor != newColor) {
             self.borderTopColor = newColor;
         }
@@ -195,8 +199,13 @@
     NSString *keyPath2 =[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderColor];
     
     NSColor *borderColor = [self valueForKeyPath:keyPath2];
+    
+    if([borderColor isKindOfClass:[NSColor class]] == NO){
+        borderColor = [NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:1];
+    }
+
     if (self.borderColor != borderColor) {
-        [_borderColorWell setColor:borderColor];
+            [_borderColorWell setColor:borderColor];
     }
     //border radius
     if ([[keyPath pathExtension] isSameTag:IUCSSTagBorderRadiusTopLeft]) {
