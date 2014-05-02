@@ -10,7 +10,7 @@
 #import "LMCanvasVC.h"
 
 @implementation LMCanvasView{
-    BOOL isSelected, isDragged, isSelectDragged;
+    BOOL isSelected, isDragged, isSelectDragged, isMouseDown;
     NSPoint startDragPoint, middleDragPoint, endDragPoint;
     NSUInteger keyModifierFlags;
 }
@@ -158,6 +158,7 @@
             
             if ( theEvent.type == NSLeftMouseDown){
                 JDTraceLog( @"mouse down");
+                isMouseDown = YES;
                 NSString *currentIUID = [self.webView IUAtPoint:convertedPoint];
                 
                 if (theEvent.clickCount == 1
@@ -198,7 +199,7 @@
         }
         
         
-        if (theEvent.type == NSLeftMouseDragged ){
+        if (theEvent.type == NSLeftMouseDragged && isMouseDown){
             JDTraceLog( @"mouse dragged");
             endDragPoint = convertedPoint;
             
@@ -213,6 +214,7 @@
         }
         if ( theEvent.type == NSLeftMouseUp ){
             JDTraceLog( @"NSLeftMouseUp");
+            isMouseDown = NO;
             [self clearMouseMovement];
             
         }
