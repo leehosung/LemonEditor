@@ -78,6 +78,9 @@
 
 - (void)setHeightOfMainView:(CGFloat)height{
 //    [self.mainScrollView.contentView setHeight:height];
+    if (height == self.mainView.frame.size.height) {
+        return;
+    }
     [self.mainView setHeight:height];
     [self.webView resizePageContent];
     [self.webView updateFrameDict];
