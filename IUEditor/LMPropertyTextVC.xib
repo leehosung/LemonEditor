@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyTextVC">
@@ -148,14 +148,18 @@
                                 </constraints>
                                 <color key="color" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                             </colorWell>
-                            <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Ims-D3-Uwo">
+                            <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Ims-D3-Uwo">
                                 <rect key="frame" x="6" y="0.0" width="264" height="5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="264" id="Zs5-rC-fEg"/>
+                                    <constraint firstAttribute="height" constant="1" id="jBo-Rc-mGz"/>
+                                </constraints>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <font key="titleFont" metaFont="system"/>
                             </box>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RsX-9v-6Mo">
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RsX-9v-6Mo">
                                 <rect key="frame" x="4" y="10" width="32" height="14"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Type" id="Xaz-Yt-eZw">
@@ -165,11 +169,11 @@
                                 </textFieldCell>
                             </textField>
                             <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Yle-zg-jre">
-                                <rect key="frame" x="74" y="7" width="120" height="22"/>
+                                <rect key="frame" x="54" y="7" width="140" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="17" id="TWv-9b-LJb"/>
-                                    <constraint firstAttribute="width" constant="117" id="rv4-IE-Muw"/>
+                                    <constraint firstAttribute="width" constant="137" id="LIr-4q-OfG"/>
+                                    <constraint firstAttribute="height" constant="17" id="SAt-FB-K5g"/>
                                 </constraints>
                                 <comboBoxCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="Ks2-Pd-wc2">
                                     <font key="font" metaFont="smallSystem"/>
@@ -181,14 +185,18 @@
                     </view>
                     <constraints>
                         <constraint firstItem="nc6-kb-J7I" firstAttribute="top" secondItem="8Lc-u6-K0I" secondAttribute="top" constant="3" id="4R8-jS-Ou5"/>
-                        <constraint firstItem="nc6-kb-J7I" firstAttribute="leading" secondItem="Yle-zg-jre" secondAttribute="trailing" constant="8" id="7zU-24-AcE"/>
                         <constraint firstItem="EF9-cy-hVF" firstAttribute="leading" secondItem="G73-ed-fS4" secondAttribute="trailing" constant="8" id="ClD-D1-Ala"/>
                         <constraint firstItem="EF9-cy-hVF" firstAttribute="top" secondItem="8Lc-u6-K0I" secondAttribute="top" constant="3" id="KCn-Mu-xcr"/>
                         <constraint firstAttribute="trailing" secondItem="EF9-cy-hVF" secondAttribute="trailing" constant="10" id="MfW-an-wnR"/>
-                        <constraint firstItem="Yle-zg-jre" firstAttribute="top" secondItem="8Lc-u6-K0I" secondAttribute="top" constant="2" id="UUD-Q2-Ujw"/>
                         <constraint firstAttribute="height" constant="30" id="Ux7-TH-Ag8"/>
+                        <constraint firstItem="Yle-zg-jre" firstAttribute="top" secondItem="8Lc-u6-K0I" secondAttribute="top" constant="2" id="eGt-gn-38Z"/>
+                        <constraint firstItem="RsX-9v-6Mo" firstAttribute="top" secondItem="8Lc-u6-K0I" secondAttribute="top" constant="6" id="hFE-cC-cjB"/>
                         <constraint firstItem="G73-ed-fS4" firstAttribute="top" secondItem="8Lc-u6-K0I" secondAttribute="top" constant="4" id="hb0-EK-X1O"/>
                         <constraint firstItem="G73-ed-fS4" firstAttribute="leading" secondItem="nc6-kb-J7I" secondAttribute="trailing" constant="2" id="nfF-yV-Alz"/>
+                        <constraint firstItem="Ims-D3-Uwo" firstAttribute="top" secondItem="EF9-cy-hVF" secondAttribute="bottom" constant="6" id="nr8-b1-ggx"/>
+                        <constraint firstItem="RsX-9v-6Mo" firstAttribute="leading" secondItem="8Lc-u6-K0I" secondAttribute="leading" constant="6" id="thN-w3-TZf"/>
+                        <constraint firstItem="Ims-D3-Uwo" firstAttribute="leading" secondItem="8Lc-u6-K0I" secondAttribute="leading" constant="6" id="vdM-g4-zmV"/>
+                        <constraint firstItem="nc6-kb-J7I" firstAttribute="leading" secondItem="Yle-zg-jre" secondAttribute="trailing" constant="8" id="wou-s3-Ve7"/>
                     </constraints>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

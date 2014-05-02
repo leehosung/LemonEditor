@@ -342,7 +342,7 @@
                                 </textFieldCell>
                             </textField>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nxh-V5-eJK">
-                                <rect key="frame" x="219" y="10" width="53" height="20"/>
+                                <rect key="frame" x="223" y="9" width="53" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Auto" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="F6l-k0-ofK">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
