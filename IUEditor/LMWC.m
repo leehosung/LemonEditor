@@ -42,12 +42,16 @@
 @property (weak) IBOutlet NSView *bottomToolbarV;
 
 //Left
+@property (weak) IBOutlet NSLayoutConstraint *leftVConstraint;
 @property (weak) IBOutlet NSSplitView *leftV;
 @property (weak) IBOutlet NSView *leftTopV;
 @property (weak) IBOutlet NSView *leftBottomV;
 
-//Right-top
+//Right-V
 @property (weak) IBOutlet NSSplitView *rightV;
+@property (weak) IBOutlet NSLayoutConstraint *rightVConstraint;
+
+//Right-top
 @property (weak) IBOutlet NSTabView *propertyTabV;
 
 @property (weak) IBOutlet NSView *propertyV;
@@ -166,11 +170,24 @@
 -(void)showLeftInspectorDidChange:(NSDictionary *)change{
     BOOL showLeftInspector = [[NSUserDefaults standardUserDefaults] boolForKey:@"showLeftInspector"];
     [_leftV setHidden:!showLeftInspector];
+    if(showLeftInspector){
+        [_leftVConstraint setConstant:0];
+    }
+    else{
+        [_leftVConstraint setConstant:-220];
+    }
 }
 
 -(void)showRightInspectorDidChange:(NSDictionary *)change{
     BOOL showRightInspector = [[NSUserDefaults standardUserDefaults] boolForKey:@"showRightInspector"];
     [_rightV setHidden:!showRightInspector];
+    
+    if(showRightInspector){
+        [_rightVConstraint setConstant:0];
+    }
+    else{
+        [_rightVConstraint setConstant:-300];
+    }
 }
 
 -(LMWindow*)window{
