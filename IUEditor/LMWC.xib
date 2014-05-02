@@ -12,10 +12,12 @@
                 <outlet property="eventV" destination="cND-E8-FNH" id="L2T-JZ-w7f"/>
                 <outlet property="leftBottomV" destination="4Tl-hR-JBi" id="Hgo-4P-SU6"/>
                 <outlet property="leftTopV" destination="efd-DN-4Bq" id="c6b-do-zjc"/>
+                <outlet property="leftV" destination="6xJ-ed-1uG" id="1ox-b2-z6R"/>
                 <outlet property="propertyMatrix" destination="zhv-IX-K54" id="UL0-4t-TMq"/>
                 <outlet property="propertyTabV" destination="VEQ-BG-SDd" id="pKx-vM-P1p"/>
                 <outlet property="propertyV" destination="Ucu-5b-khM" id="mOL-zc-gXE"/>
                 <outlet property="resourceV" destination="yuK-jm-moa" id="vww-Rv-ZVx"/>
+                <outlet property="rightV" destination="Ci0-yr-ElZ" id="l8s-Lp-bUW"/>
                 <outlet property="topToolbarV" destination="4es-7h-bcl" id="SBG-S6-dhA"/>
                 <outlet property="widgetTabV" destination="Rvr-f8-CYQ" id="rJr-Fz-ouO"/>
                 <outlet property="widgetV" destination="CwY-UY-xV5" id="Jrf-Fl-b8L"/>
