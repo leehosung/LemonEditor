@@ -91,30 +91,32 @@ function getDictionaryKeys(dictionary){
 }
 
 function resizePageContentHeightEditor(){
-	//for page file,
 	//make page content height
     if ($('.IUPage') == null){
         //if it is not page file, return
         return;
     }
     var height=0;
-    console.log("resizePageContentHeight");
     $('.IUPageContent').siblings().each(function(){height += $(this).height()});
-    height=$('.IUPageContent').parent().height()-height;
     $('.IUPageContent').css('height', height+'px');
 	
+    console.log('pagecontentheight :' + height);
 	//make min height of page content
 	var minHeight=0;
 	$('.IUPageContent').children().each(function(){
                                         minHeight+=$(this).height()+$(this).position().top}
                                         );
+	if (minHeight < 500){
+		minHeight = 500;
+	}
     $('.IUPageContent').css('min-height', minHeight+'px');
-    var height = $(document).height();
-    console.resizePageContentHeightFinished(height);
+    
+    console.log('pagecontentminheight :' + minHeight);
+    var documentHeight = $(document).height();
+    console.resizePageContentHeightFinished(documentHeight);
 }
 
 function getIUUpdatedFrameThread(){
-    console.log('getIUU');
     //새로운 인풋이 들어왔을때 변해야 하면 이곳에서 호출
     //editor mode 에서
     $('.IUBox').updatePixel();
@@ -135,29 +137,6 @@ function resizeBackgroundSize(){
     var height=0;
     $('.IUBackground').css('height', '100%');
     $('.IUBackground').css('width', '100%');
-}
-
-function resizePageContentHeightEditor(){
-	//for page file,
-	//make page content height
-    if ($('.IUPage') == null){
-        //if it is not page file, return
-        return;
-    }
-    var height=0;
-    console.log("resizePageContentHeight");
-    $('.IUPageContent').siblings().each(function(){height += $(this).height()});
-    height=$('.IUPageContent').parent().height()-height;
-    $('.IUPageContent').css('height', height+'px');
-	
-	//make min height of page content
-	var minHeight=0;
-	$('.IUPageContent').children().each(function(){
-                                        minHeight+=$(this).height()+$(this).position().top}
-                                        );
-    $('.IUPageContent').css('min-height', minHeight+'px');
-    var height = $(document).height();
-    console.resizePageContentHeightFinished(height);
 }
 
 $(document).ready(function(){
