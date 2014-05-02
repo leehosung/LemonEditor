@@ -17,6 +17,9 @@
 @property (weak) IBOutlet NSCollectionView *primaryCollectionV;
 @property (weak) IBOutlet NSCollectionView *secondaryCollectionV;
 
+@property (weak) IBOutlet NSTabView *primaryTabView;
+@property (weak) IBOutlet NSTabView *secondaryTabView;
+
 @end
 
 @implementation LMWidgetLibraryVC{
@@ -99,4 +102,22 @@
     [_collectionTabV selectTabViewItemAtIndex:selectedIndex];
     
 }
+
+#pragma mark -
+#pragma mark widget list - icon 
+
+- (IBAction)clickPrimaryList:(id)sender {
+    [_primaryTabView selectTabViewItemAtIndex:0];
+}
+- (IBAction)clickPrimaryIcon:(id)sender {
+    [_primaryTabView selectTabViewItemAtIndex:1];
+}
+
+- (IBAction)clickSecondaryList:(id)sender {
+    [_secondaryTabView selectTabViewItemAtIndex:0];
+}
+- (IBAction)clickSecondaryIcon:(id)sender {
+    [_secondaryTabView selectTabViewItemAtIndex:1];
+}
+
 @end

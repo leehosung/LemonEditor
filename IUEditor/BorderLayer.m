@@ -18,7 +18,7 @@
         [self setFrame:frame];
         
         [self setBorderColor:[[NSColor gridColor] CGColor]];
-        [self setBorderWidth:3.0f];
+        [self setBorderWidth:1.0f];
         [self disableAction];
         
     }
