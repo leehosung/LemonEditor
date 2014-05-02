@@ -90,8 +90,31 @@ function getDictionaryKeys(dictionary){
     return keyArray;
 }
 
+function resizePageContentHeightEditor(){
+	//for page file,
+	//make page content height
+    if ($('.IUPage') == null){
+        //if it is not page file, return
+        return;
+    }
+    var height=0;
+    console.log("resizePageContentHeight");
+    $('.IUPageContent').siblings().each(function(){height += $(this).height()});
+    height=$('.IUPageContent').parent().height()-height;
+    $('.IUPageContent').css('height', height+'px');
+	
+	//make min height of page content
+	var minHeight=0;
+	$('.IUPageContent').children().each(function(){
+                                        minHeight+=$(this).height()+$(this).position().top}
+                                        );
+    $('.IUPageContent').css('min-height', minHeight+'px');
+    var height = $(document).height();
+    console.resizePageContentHeightFinished(height);
+}
+
 function getIUUpdatedFrameThread(){
-    
+    console.log('getIUU');
     //새로운 인풋이 들어왔을때 변해야 하면 이곳에서 호출
     //editor mode 에서
     $('.IUBox').updatePixel();
