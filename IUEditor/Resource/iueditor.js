@@ -100,7 +100,7 @@ function getIUUpdatedFrameThread(){
         && console.reportFrameDict ){
         
         console.reportFrameDict(document.sharedFrameDict);
-        console.reportPercentFrame(document.sharedPercentFrameDict);
+        //console.reportPercentFrame(document.sharedPercentFrameDict);
         
         document.sharedPercentFrameDict = {};
         document.sharedFrameDict = {};

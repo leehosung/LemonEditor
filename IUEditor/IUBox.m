@@ -24,6 +24,7 @@
     int delegateEnableLevel;
     NSMutableSet *changedCSSWidths;
     IUTextManager *textManager;
+    NSPoint originalPoint;
     NSSize originalSize;
     NSSize originalPercentSize;
 }
@@ -332,14 +333,11 @@
     return unit;
 }
 
-- (void)moveX:(NSInteger)x Y:(NSInteger)y{
-    
-    NSPoint distancePoint = [self.delegate distanceFromIU:self.htmlID to:self.parent.htmlID];
-    NSSize parentSize = [self.delegate frameSize:self.parent.htmlID];
+- (void)movePosition:(NSPoint)point withParentSize:(NSSize)parentSize{
     
     //Set Pixel
     if([self hasX]){
-        NSInteger currentX = [_css.assembledTagDictionary[IUCSSTagX] integerValue] + x;
+        NSInteger currentX = originalPoint.x + point.x;
         
         [_css setValue:@(currentX) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagX]];
         //set Percent if enablePercent
@@ -356,14 +354,7 @@
     
     if([self hasY]){
         
-        NSInteger currentY = 0;
-        if ([_css.assembledTagDictionary objectForKey:IUCSSTagY]){
-            currentY = [_css.assembledTagDictionary[IUCSSTagY] integerValue];
-        }
-        else if (self.flow == NO){
-            currentY = distancePoint.y;
-        }
-        currentY += y;
+        NSInteger currentY = originalPoint.y + point.y;
         [_css setValue:@(currentY) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagY]];
         
         
@@ -389,7 +380,7 @@
  drag session이 시작될때부터 위치에서의 diff size로 계산해야 오차가 발생 안함.
  drag session이 시작할때 그 때의 위치를 저장함.
  */
-- (void)setDragOriginalSize{
+- (void)startDragSession{
     NSInteger currentWidth = [_css.assembledTagDictionary[IUCSSTagWidth] integerValue];
     NSInteger currentHeight = [_css.assembledTagDictionary[IUCSSTagHeight] integerValue];
 
@@ -399,6 +390,18 @@
     NSInteger currentPHeight = [_css.assembledTagDictionary[IUCSSTagPercentHeight] floatValue];
 
     originalPercentSize = NSMakeSize(currentPWidth, currentPHeight);
+
+    NSInteger currentX = [_css.assembledTagDictionary[IUCSSTagX] integerValue];
+    NSInteger currentY = 0;
+    NSPoint distancePoint = [self.delegate distanceFromIU:self.htmlID to:self.parent.htmlID];
+
+    if([_css.assembledTagDictionary objectForKey:IUCSSTagY]){
+        currentY = [_css.assembledTagDictionary[IUCSSTagY] integerValue];
+    }
+    else if(self.flow == NO){
+        currentY = distancePoint.y;
+    }
+    originalPoint = NSMakePoint(currentX, currentY);
 }
 
 - (void)increaseSize:(NSSize)size withParentSize:(NSSize)parentSize{

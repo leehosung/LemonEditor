@@ -638,7 +638,11 @@
     if (point.x == 0 && point.y == 0) {
         return;
     }
+    
     for(IUBox *obj in self.controller.selectedObjects){
+        NSSize parentSize = [[self webView] parentBlockElementSize:obj.htmlID];
+
+        /*
         if([frameDict isGuidePoint:totalPoint]){
             
             NSString *IUID = obj.htmlID;
@@ -650,14 +654,15 @@
             guidePoint= NSMakePoint(guidePoint.x - currentFrame.origin.x, guidePoint.y - currentFrame.origin.y);
             
             
-            [obj moveX:guidePoint.x Y:guidePoint.y];
+            [obj movePosition:NSMakePoint(guidePoint.x, guidePoint.y) withParentSize:parentSize];
             JDInfoLog(@"Point:(%.1f %.1f)", moveFrame.origin.x, moveFrame.origin.y);
             [obj updateCSSForEditViewPort];
         }
         else{
-            [obj moveX:point.x Y:point.y];
-            [obj updateCSSForEditViewPort];
-        }
+         */
+        [obj movePosition:NSMakePoint(totalPoint.x, totalPoint.y) withParentSize:parentSize];
+        [obj updateCSSForEditViewPort];
+        
     }
 }
 
@@ -675,9 +680,9 @@
     return YES;
 }
 
-- (void)startExtendDragSession{
+- (void)startDragSession{
     for(IUBox *obj in self.controller.selectedObjects){
-        [obj setDragOriginalSize];
+        [obj startDragSession];
     }
 }
 
@@ -688,6 +693,7 @@
         
         NSSize parentSize = [[self webView] parentBlockElementSize:obj.htmlID];
         
+        /*
         if([frameDict isGuideSize:totalSize]){
 
             NSString *IUID = obj.htmlID;
@@ -703,9 +709,10 @@
             [obj updateCSSForEditViewPort];
         }
         else{
-            [obj increaseSize:NSMakeSize(totalSize.width, totalSize.height) withParentSize:parentSize];
-            [obj updateCSSForEditViewPort];
-        }
+         */
+        [obj increaseSize:NSMakeSize(totalSize.width, totalSize.height) withParentSize:parentSize];
+        [obj updateCSSForEditViewPort];
+        
         
         /*
         JDTraceLog( @"[IU:%@]\n origin: (%.1f, %.1f) \n size: (%.1f, %.1f)",
