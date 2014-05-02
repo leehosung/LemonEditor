@@ -72,6 +72,7 @@
     return _path;
 }
 
+// return value : project path
 +(NSString*)createProject:(NSDictionary*)setting error:(NSError**)error{
 
     IUProject *project = [[self alloc] init];

@@ -25,6 +25,12 @@ typedef enum _IUGitType{
 
 @class IUDocument;
 
+//setting
+#define IUProjectKeyGit @"git"
+#define IUProjectKeyAppName @"appName"
+#define IUProjectKeyHeroku @"heroku"
+#define IUProjectKeyDirectory @"dir"
+
 @interface IUProject : IUDocumentGroupNode <IUResourceGroupNode>
 @property (nonatomic, copy) NSString          *path;
 @property IUDocumentGroupNode *pageDocumentGroup;
@@ -39,11 +45,6 @@ typedef enum _IUGitType{
 
 - (NSString*)path;
 
-//setting
-#define IUProjectKeyGit @"git"
-#define IUProjectKeyAppName @"appName"
-#define IUProjectKeyHeroku @"heroku"
-#define IUProjectKeyDirectory @"dir"
 
 + (id)projectWithContentsOfPackage:(NSString*)path;
 + (NSString*)createProject:(NSDictionary*)setting error:(NSError**)error;
