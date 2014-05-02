@@ -98,6 +98,7 @@
     return nil;
 }
 
+
 - (BOOL)hasEnoughSize{
     CGFloat size = _fileTabView.frame.size.width - 400 * openTabDocuments.count;
     if(size  > 400){
@@ -126,8 +127,24 @@
 
 #pragma mark -
 #pragma mark tab item  delegate
+
+
+
 - (void)selectTab:(IUDocumentNode *)documentNode{
     [_documentController setSelectedObject:documentNode];
+    
+    //tabcolor
+    for(LMTabBox *item in _fileTabView.subviews){
+        assert([item isKindOfClass:[LMTabBox class]]);
+        LMFileTabItemVC *itemVC = ((LMFileTabItemVC *)item.delegate);
+        
+        if([itemVC.documentNode isEqualTo:documentNode]){
+            [itemVC setSelectColor];
+        }
+        else{
+            [itemVC setDeselectColor];
+        }
+    }
     
 }
 

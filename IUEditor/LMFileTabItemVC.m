@@ -26,7 +26,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-       
     }
     return self;
 }
@@ -41,6 +40,14 @@
 }
 - (IBAction)clickCloseFile:(id)sender {
     [self.delegate closeTab:self];
+}
+
+- (void)setDeselectColor{
+    [_fileBox setFillColor:[NSColor secondarySelectedControlColor]];
+}
+
+- (void)setSelectColor{
+    [_fileBox setFillColor:[NSColor whiteColor]];
 }
 
 @end
