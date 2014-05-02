@@ -1,9 +1,18 @@
 
 function resizePageContentHeight(){
+	//for page file,
+	//make page content height
     var height=0;
     $('.IUPageContent').siblings().each(function(){height += $(this).height()});
     height=$('.IUPageContent').parent().height()-height;
     $('.IUPageContent').css('height', height+'px');
+	
+	//make min height of page content
+	var minHeight=0;
+	$('.IUPageContent').children().each(function(){
+		minHeight+=$(this).height()+$(this).position().top}
+	);
+    $('.IUPageContent').css('min-height', minHeight+'px');
 }
 
 
@@ -30,5 +39,5 @@ function resizeCollection(){
 $(document).ready(function(){
             console.log("ready : iuframe.js");
             resizePageContentHeight();
-//			resizeCollection();
+			resizeCollection();
 });
