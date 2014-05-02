@@ -116,7 +116,9 @@
     fileNaviVC = [[LMFileNaviVC alloc] initWithNibName:@"LMFileNaviVC" bundle:nil];
     [self bind:@"selectedNode" toObject:fileNaviVC withKeyPath:@"selection" options:nil];
     [self bind:@"documentController" toObject:fileNaviVC withKeyPath:@"documentController" options:nil];
+    [fileNaviVC setIdentifierManager:_identifierManager];
     [_leftBottomV addSubviewFullFrame:fileNaviVC.view];
+    
     
 
 ////////////////center view/////////////////////////
@@ -163,6 +165,11 @@
     return (LMWindow*)[super window];
 }
 
+- (void)setNewFileNode:(IUDocumentNode *)node{
+    [node.document setCompiler:_compiler];
+    [node.document setIdentifierManager:_identifierManager];
+    [_identifierManager addIU:node.document];
+}
 
 -(void)loadProject:(NSString*)path{
     //create project class
