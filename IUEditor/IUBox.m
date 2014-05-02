@@ -405,9 +405,6 @@
 }
 
 - (void)increaseSize:(NSSize)size withParentSize:(NSSize)parentSize{
-    NSLog(@"---------------------");
-    NSLog(@"%f", size.width);
-    
     if([self hasWidth]){
         NSInteger currentWidth = originalSize.width;
         currentWidth += size.width;
