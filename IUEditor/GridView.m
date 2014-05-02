@@ -114,7 +114,7 @@
     startPoint = convertedPoint;
     middlePoint = convertedPoint;
     
-    [((LMCanvasVC *)(self.delegate)) startExtendDragSession];
+    [((LMCanvasVC *)(self.delegate)) startDragSession];
 
 }
 
@@ -125,18 +125,18 @@
         NSPoint convertedPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
         NSPoint diffPoint = NSMakePoint(convertedPoint.x-middlePoint.x, convertedPoint.y-middlePoint.y);
         NSPoint totalPoint = NSMakePoint(convertedPoint.x-startPoint.x, convertedPoint.y-startPoint.y);
-        NSSize totalSize = NSMakeSize(convertedPoint.x-startPoint.x, convertedPoint.y-startPoint.y);
 
         middlePoint = convertedPoint;
         
         for(PointLayer *pLayer in pointManagerLayer.sublayers){
             
             NSRect newframe = [pLayer diffPointAndSizeWithType:selectedPointType withDiffPoint:diffPoint];
+            NSRect totalFrame = [pLayer diffPointAndSizeWithType:selectedPointType withDiffPoint:totalPoint];
             BOOL checkExtend = [((LMCanvasVC *)(self.delegate)) checkExtendSelectedIU:newframe.size];
             
             if(checkExtend){
-                [((LMCanvasVC *)(self.delegate)) extendIUToDiffSize:newframe.size totalDiffSize:totalSize];
-                [((LMCanvasVC *)(self.delegate)) moveIUToDiffPoint:newframe.origin totalDiffPoint:totalPoint];
+                [((LMCanvasVC *)(self.delegate)) extendIUToDiffSize:newframe.size totalDiffSize:totalFrame.size];
+                [((LMCanvasVC *)(self.delegate)) moveIUToDiffPoint:newframe.origin totalDiffPoint:totalFrame.origin];
             }
         }
         

@@ -187,6 +187,8 @@
                         }
                     }
                 }
+                
+                [((LMCanvasVC *)(self.delegate)) startDragSession];
                 startDragPoint = convertedPoint;
                 middleDragPoint = startDragPoint;
             }

@@ -93,8 +93,8 @@
 - (void)setPixelFrame:(NSRect)frame;
 - (void)setPercentFrame:(NSRect)frame;
 - (void)setPosition:(NSPoint)position;
-- (void)moveX:(NSInteger)x Y:(NSInteger)y;
-- (void)setDragOriginalSize;
+- (void)movePosition:(NSPoint)point withParentSize:(NSSize)parentSize;
+- (void)startDragSession;
 - (void)increaseSize:(NSSize)size withParentSize:(NSSize)parentSize;
 - (void)insertImage:(NSString *)imageName;
 

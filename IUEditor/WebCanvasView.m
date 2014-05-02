@@ -190,7 +190,7 @@
 + (BOOL)isSelectorExcludedFromWebScript:(SEL)selector {
     if (selector == @selector(reportFrameDict:)
         || selector == @selector(doOutputToLog:)
-        || selector == @selector(reportPercentFrame:)
+        //|| selector == @selector(reportPercentFrame:)
         ){
         return NO;
     }
@@ -410,7 +410,7 @@
     }
     
     //insert Text
-    NSRange iuRange = [self selectedRange:range InIU:IUNode];
+    NSRange iuRange = [self selectedRange:range InIU:IUNode];   
     [((LMCanvasVC *)self.delegate) deleteStringRange:iuRange identifier:IUNode.idName];
     JDInfoLog(@"DeleteText[IU:%@] : range(%ld, %ld) ", IUNode.idName, iuRange.location, iuRange.length);
     
