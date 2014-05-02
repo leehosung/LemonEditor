@@ -114,7 +114,7 @@
 }
 
 -  (BOOL)pointInMainView:(NSPoint)point{
-    if (NSPointInRect(point, [self.mainScrollView bounds])){
+    if (NSPointInRect(point, [self.mainView bounds])){
         return YES;
     }
     return NO;
@@ -195,23 +195,22 @@
                 startDragPoint = convertedPoint;
                 middleDragPoint = startDragPoint;
             }
-            else if (theEvent.type == NSLeftMouseDragged ){
-                JDTraceLog( @"mouse dragged");
-                endDragPoint = convertedPoint;
-                
-                if([theEvent modifierFlags] & NSCommandKeyMask ){
-                    [self selectWithDrawRect];
-                }
-                if(isSelected){
-                    [self moveIUByDragging];
-                }
-              
-                middleDragPoint = endDragPoint;
-            }
-            
         }
         
         
+        if (theEvent.type == NSLeftMouseDragged ){
+            JDTraceLog( @"mouse dragged");
+            endDragPoint = convertedPoint;
+            
+            if([theEvent modifierFlags] & NSCommandKeyMask ){
+                [self selectWithDrawRect];
+            }
+            if(isSelected){
+                [self moveIUByDragging];
+            }
+            
+            middleDragPoint = endDragPoint;
+        }
         if ( theEvent.type == NSLeftMouseUp ){
             JDTraceLog( @"NSLeftMouseUp");
             [self clearMouseMovement];
