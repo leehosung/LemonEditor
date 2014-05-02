@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMWC">
@@ -76,19 +76,19 @@
                                         </buttonCell>
                                         <cells>
                                             <column>
-                                                <buttonCell type="square" bezelStyle="shadowlessSquare" image="tab_appearance_on" imagePosition="only" alignment="center" state="on" tag="1" inset="2" id="KYs-cJ-7K5">
+                                                <buttonCell type="square" bezelStyle="shadowlessSquare" image="tab_appearance_off" imagePosition="only" alignment="center" alternateImage="tab_appearance_on" state="on" tag="1" inset="2" id="KYs-cJ-7K5">
                                                     <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="titleBar" size="12"/>
                                                 </buttonCell>
                                             </column>
                                             <column>
-                                                <buttonCell type="square" bezelStyle="shadowlessSquare" image="tab_property_off" imagePosition="only" alignment="center" state="on" inset="2" id="Bck-qq-gPw">
+                                                <buttonCell type="square" bezelStyle="shadowlessSquare" image="tab_property_off" imagePosition="only" alignment="center" alternateImage="tab_property_on" inset="2" id="Bck-qq-gPw">
                                                     <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="titleBar" size="12"/>
                                                 </buttonCell>
                                             </column>
                                             <column>
-                                                <buttonCell type="square" bezelStyle="shadowlessSquare" image="tab_event_off" imagePosition="only" alignment="center" state="on" inset="2" id="b4e-Nq-kFe">
+                                                <buttonCell type="square" bezelStyle="shadowlessSquare" image="tab_event_off" imagePosition="only" alignment="center" alternateImage="tab_event_on" inset="2" id="b4e-Nq-kFe">
                                                     <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -152,20 +152,20 @@
                                         </buttonCell>
                                         <cells>
                                             <column>
-                                                <buttonCell type="square" bezelStyle="shadowlessSquare" image="tab_tools_on" imagePosition="only" alignment="center" state="on" tag="1" inset="2" id="srz-8T-lQj">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                                <buttonCell type="square" bezelStyle="shadowlessSquare" image="tab_tools_off" imagePosition="only" alignment="center" alternateImage="tab_tools_on" state="on" tag="1" inset="2" id="srz-8T-lQj">
+                                                    <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="titleBar" size="12"/>
                                                 </buttonCell>
                                             </column>
                                             <column>
-                                                <buttonCell type="square" bezelStyle="shadowlessSquare" image="tab_library_off" imagePosition="overlaps" alignment="center" state="on" inset="2" id="EXV-Pb-E2Z">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                                <buttonCell type="square" bezelStyle="shadowlessSquare" image="tab_library_off" imagePosition="overlaps" alignment="center" alternateImage="tab_library_on" inset="2" id="EXV-Pb-E2Z">
+                                                    <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="titleBar" size="12"/>
                                                 </buttonCell>
                                             </column>
                                             <column>
-                                                <buttonCell type="square" bezelStyle="shadowlessSquare" image="tab_clipart_off" imagePosition="overlaps" alignment="left" inset="2" id="1t2-0v-62p">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                                <buttonCell type="square" bezelStyle="shadowlessSquare" image="tab_clipart_off" imagePosition="overlaps" alignment="left" alternateImage="tab_clipart_on" inset="2" id="1t2-0v-62p">
+                                                    <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                             </column>
@@ -273,11 +273,17 @@
         </window>
     </objects>
     <resources>
+        <image name="tab_appearance_off" width="100" height="30"/>
         <image name="tab_appearance_on" width="100" height="30"/>
         <image name="tab_clipart_off" width="100" height="30"/>
+        <image name="tab_clipart_on" width="100" height="30"/>
         <image name="tab_event_off" width="100" height="30"/>
+        <image name="tab_event_on" width="100" height="30"/>
         <image name="tab_library_off" width="100" height="30"/>
+        <image name="tab_library_on" width="100" height="30"/>
         <image name="tab_property_off" width="100" height="30"/>
+        <image name="tab_property_on" width="100" height="30"/>
+        <image name="tab_tools_off" width="100" height="30"/>
         <image name="tab_tools_on" width="100" height="30"/>
     </resources>
 </document>
