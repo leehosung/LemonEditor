@@ -13,6 +13,15 @@
 
 @interface LMFileNaviVC ()
 
+@property (weak) IBOutlet JDOutlineView *navOutlineView;
+
+//right menu item
+@property (weak) IBOutlet NSMenuItem *finderMenuItem;
+@property (weak) IBOutlet NSMenuItem *barMenuItem;
+@property (weak) IBOutlet NSMenuItem *fileAddItem;
+@property (weak) IBOutlet NSMenuItem *fileCopyItem;
+@property (weak) IBOutlet NSMenuItem *fileRemoveItem;
+
 @end
 
 @implementation LMFileNaviVC{
@@ -62,15 +71,21 @@
     [_documentController setSelectedObject:documentNode];
 }
 
-
-- (NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(NSTreeNode*)item {
-    
+- (BOOL)isFolder:(NSTreeNode *)item{
     id representObject = [item representedObject];
-    
-    //folder
+
     if(item.indexPath.length == 1 ||
        [representObject isKindOfClass:[IUDocumentGroupNode class]] ||
        [representObject isKindOfClass:[IUResourceGroupNode class]] ){
+        return YES;
+    }
+    return NO;
+}
+
+- (NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(NSTreeNode*)item {
+    
+    //folder
+    if([self isFolder:item]){
         
         NSTableCellView *folder = [outlineView makeViewWithIdentifier:@"folder" owner:self];
         return folder;
@@ -117,5 +132,50 @@
     
     return nil;
 }
+
+#pragma mark -
+#pragma mark rightmenu
+- (NSMenu *)defaultMenuForRow:(NSInteger)row{
+    NSMenu *menu = [self defaultMenu];
+    
+    NSTreeNode *node = [_navOutlineView itemAtRow:row];
+
+    if([self isFolder:node]==NO){
+        [menu addItem:_fileCopyItem];
+        [menu addItem:_fileRemoveItem];
+    }
+    
+    return menu;
+}
+
+- (NSMenu *)defaultMenu{
+    NSMenu *menu = [[NSMenu alloc] init];
+    [menu addItem:_finderMenuItem];
+    [menu addItem:_barMenuItem];
+    [menu addItem:_fileAddItem];
+
+    return menu;
+}
+- (IBAction)clickShowInFinder:(id)sender {
+    NSURL *url = [NSURL fileURLWithPath:_project.path];
+    [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[url]];
+    
+}
+- (IBAction)clickMenuAddFile:(id)sender {
+    NSTreeNode *node = [_navOutlineView itemAtRow:_navOutlineView.rightClickedIndex];
+    IUGroupNode *groupNode;
+    if([self isFolder:node]==NO){
+        groupNode = [node representedObject];
+    }
+    else{
+        groupNode = [node.parentNode representedObject];
+    }
+}
+- (IBAction)clickMenuRemoveFile:(id)sender {
+}
+
+- (IBAction)clickMenuCopyFile:(id)sender {
+}
+
 
 @end

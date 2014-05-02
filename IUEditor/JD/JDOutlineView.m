@@ -53,7 +53,6 @@
     }
 }
 
-#if 0
 
 -(NSMenu*)menuForEvent:(NSEvent*)evt
 {
@@ -115,6 +114,5 @@
     }
     [super mouseUp:theEvent];
 }
-#endif
 
 @end

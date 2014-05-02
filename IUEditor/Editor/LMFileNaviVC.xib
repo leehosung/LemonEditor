@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMFileNaviVC">
             <connections>
+                <outlet property="barMenuItem" destination="ym2-YA-uhR" id="Vsg-gS-MRq"/>
                 <outlet property="documentController" destination="gdF-Dg-Xge" id="nP3-xi-aAd"/>
+                <outlet property="fileAddItem" destination="7vO-Nt-Z0R" id="34C-Ba-i2w"/>
+                <outlet property="fileCopyItem" destination="Vb2-3D-XOK" id="8S1-ea-pJm"/>
+                <outlet property="fileRemoveItem" destination="qWi-LV-nWB" id="jKJ-fk-Blz"/>
+                <outlet property="finderMenuItem" destination="fLO-aZ-bbm" id="Crn-Hz-iDD"/>
+                <outlet property="navOutlineView" destination="1aw-gA-pJZ" id="IdP-Rf-eE2"/>
                 <outlet property="view" destination="2vD-fN-bWc" id="SVK-bX-riZ"/>
             </connections>
         </customObject>
@@ -49,7 +55,7 @@
                         <rect key="frame" x="1" y="1" width="219" height="240"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowHeight="26" viewBased="YES" indentationPerLevel="4" outlineTableColumn="IcS-xl-hS5" id="1aw-gA-pJZ">
+                            <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowHeight="26" viewBased="YES" indentationPerLevel="4" outlineTableColumn="IcS-xl-hS5" id="1aw-gA-pJZ" customClass="JDOutlineView">
                                 <rect key="frame" x="0.0" y="0.0" width="219" height="240"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -354,8 +360,11 @@
                                 <connections>
                                     <binding destination="gdF-Dg-Xge" name="content" keyPath="arrangedObjects" id="e8c-Fq-8Hg"/>
                                     <binding destination="gdF-Dg-Xge" name="selectionIndexPaths" keyPath="selectionIndexPaths" previousBinding="e8c-Fq-8Hg" id="QJe-YV-dDQ"/>
+                                    <outlet property="JDDataSource" destination="-2" id="IND-50-kdE"/>
                                     <outlet property="dataSource" destination="-2" id="SjT-KL-fyf"/>
                                     <outlet property="delegate" destination="-2" id="e1R-k2-aOp"/>
+                                    <outlet property="deleteKeyDelegate" destination="-2" id="1YU-NH-aIg"/>
+                                    <outlet property="enterKeyDelegate" destination="-2" id="Ffh-yh-20t"/>
                                 </connections>
                             </outlineView>
                         </subviews>
@@ -383,6 +392,32 @@
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="czK-hJ-lvV"/>
         <treeController mode="entity" editable="NO" childrenKeyPath="children" leafKeyPath="isLeaf" id="gdF-Dg-Xge" customClass="IUDocumentController"/>
+        <menuItem title="Show in Finder" id="fLO-aZ-bbm">
+            <attributedString key="attributedTitle"/>
+            <modifierMask key="keyEquivalentModifierMask"/>
+            <connections>
+                <action selector="clickShowInFinder:" target="-2" id="u6V-LS-ofE"/>
+            </connections>
+        </menuItem>
+        <menuItem isSeparatorItem="YES" enabled="YES" id="ym2-YA-uhR"/>
+        <menuItem title="Add File" id="7vO-Nt-Z0R">
+            <modifierMask key="keyEquivalentModifierMask"/>
+            <connections>
+                <action selector="clickMenuAddFile:" target="-2" id="ipB-L9-5Af"/>
+            </connections>
+        </menuItem>
+        <menuItem title="Copy File" id="Vb2-3D-XOK">
+            <modifierMask key="keyEquivalentModifierMask"/>
+            <connections>
+                <action selector="clickMenuCopyFile:" target="-2" id="IxI-vh-haE"/>
+            </connections>
+        </menuItem>
+        <menuItem title="Remove File" id="qWi-LV-nWB">
+            <modifierMask key="keyEquivalentModifierMask"/>
+            <connections>
+                <action selector="clickMenuRemoveFile:" target="-2" id="cC5-5Q-hUW"/>
+            </connections>
+        </menuItem>
     </objects>
     <resources>
         <image name="ic_background" width="14" height="18"/>
