@@ -105,17 +105,41 @@ function getIUUpdatedFrameThread(){
         document.sharedPercentFrameDict = {};
         document.sharedFrameDict = {};
     }
+    resizePageContentHeightEditor();
 }
 
 function resizeBackgroundSize(){
     var height=0;
     $('.IUBackground').css('height', '100%');
     $('.IUBackground').css('width', '100%');
-    
+}
+
+function resizePageContentHeightEditor(){
+	//for page file,
+	//make page content height
+    if ($('.IUPage') == null){
+        //if it is not page file, return
+        return;
+    }
+    var height=0;
+    console.log("resizePageContentHeight");
+    $('.IUPageContent').siblings().each(function(){height += $(this).height()});
+    height=$('.IUPageContent').parent().height()-height;
+    $('.IUPageContent').css('height', height+'px');
+	
+	//make min height of page content
+	var minHeight=0;
+	$('.IUPageContent').children().each(function(){
+                                        minHeight+=$(this).height()+$(this).position().top}
+                                        );
+    $('.IUPageContent').css('min-height', minHeight+'px');
+    var height = $(document).height();
+    console.resizePageContentHeightFinished(height);
 }
 
 $(document).ready(function(){
             console.log("ready : iueditor.js");
+            resizePageContentHeightEditor();
             getIUUpdatedFrameThread();
             resizeBackgroundSize();
 

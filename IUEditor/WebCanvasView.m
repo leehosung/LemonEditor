@@ -182,6 +182,9 @@
     else if(selector == @selector(reportPercentFrame:)){
         return @"reportPercentFrame";
     }
+    else if(selector == @selector(resizePageContentHeightFinished:)){
+        return @"resizePageContentHeightFinished";
+    }
     else{
         return nil;
     }
@@ -191,12 +194,17 @@
     if (selector == @selector(reportFrameDict:)
         || selector == @selector(doOutputToLog:)
         //|| selector == @selector(reportPercentFrame:)
+        || selector == @selector(resizePageContentHeightFinished:)
         ){
         return NO;
     }
     return YES;
 }
 
+- (void)resizePageContentHeightFinished:(NSNumber *)scriptObj{
+    JDInfoLog(@"document size change to : %f" , [scriptObj floatValue]);
+    [self.delegate changeIUPageHeight:[scriptObj floatValue]];
+}
 
 /* Here is our Objective-C implementation for the JavaScript console.log() method.
  */
