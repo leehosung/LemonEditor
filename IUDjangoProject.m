@@ -13,6 +13,8 @@
 #import "IUDocumentNode.h"
 
 @implementation IUDjangoProject
+
+// return value : project path
 +(NSString*)createProject:(NSDictionary*)setting error:(NSError**)error{
     IUDjangoProject *project = [[IUDjangoProject alloc] init];
     project.name = [setting objectForKey:IUProjectKeyAppName];

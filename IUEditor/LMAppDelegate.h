@@ -12,5 +12,5 @@
 
 -(void)newDocument:(id)sender;
 -(void)newDjangoDocument:(id)sender;
-
+- (void)loadDocument:(NSString*)path;
 @end

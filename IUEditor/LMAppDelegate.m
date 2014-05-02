@@ -68,6 +68,12 @@
     [wc loadProject:value];
 }
 
+- (void)loadDocument:(NSString*)path{
+    LMWC *wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
+    [wc showWindow:self];
+    [wc loadProject:path];
+}
+
 -(void)newDocument:(id)sender{
     NSError *error;
     
@@ -85,6 +91,7 @@
     [wc loadProject:path];
     [[NSUserDefaults standardUserDefaults] setValue:path forKey:@"lastDocument"];
 }
+
 
 -(void)newDjangoDocument:(id)sender{
     NSError *error;
