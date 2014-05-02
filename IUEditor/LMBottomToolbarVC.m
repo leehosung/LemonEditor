@@ -53,6 +53,9 @@
     [_borderBtn bind:@"state" toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"showBorder" options:nil];
     [self addObserver:self forKeyPath:@"document.ghostImageName" options:0 context:nil];
     _ghostImageComboBox.delegate = self;
+    
+    [_leftInspectorBtn bind:@"state" toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"showLeftInspector" options:IUBindingDictNotRaisesApplicable];
+    [_rightInspectorBtn bind:@"state" toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"showRightInspector" options:IUBindingDictNotRaisesApplicable];
 }
 
 - (void)document_ghostImageNameDidChange:(NSDictionary*)change{
@@ -95,5 +98,16 @@
     LMWC *lmWC = [NSApp mainWindow].windowController;
     [lmWC reloadCurrentDocument];
 }
+
+#pragma mark -
+- (IBAction)toggleLeftInspector:(id)sender {
+    BOOL showLeftInspector = [[NSUserDefaults standardUserDefaults] boolForKey:@"showLeftInspector"];
+    [[NSUserDefaults standardUserDefaults] setBool:!showLeftInspector forKey:@"showLeftInspector"];
+}
+- (IBAction)toggleRightInspector:(id)sender {
+    BOOL showRightInspector = [[NSUserDefaults standardUserDefaults] boolForKey:@"showRightInspector"];
+    [[NSUserDefaults standardUserDefaults] setBool:!showRightInspector forKey:@"showRightInspector"];
+}
+
 
 @end

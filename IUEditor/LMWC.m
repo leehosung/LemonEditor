@@ -42,11 +42,12 @@
 @property (weak) IBOutlet NSView *bottomToolbarV;
 
 //Left
+@property (weak) IBOutlet NSSplitView *leftV;
 @property (weak) IBOutlet NSView *leftTopV;
 @property (weak) IBOutlet NSView *leftBottomV;
 
 //Right-top
-
+@property (weak) IBOutlet NSSplitView *rightV;
 @property (weak) IBOutlet NSTabView *propertyTabV;
 
 @property (weak) IBOutlet NSView *propertyV;
@@ -105,8 +106,6 @@
 - (void)windowDidLoad
 {
     
-
-    
 ////////////////left view/////////////////////////    
     stackVC = [[LMStackVC alloc] initWithNibName:@"LMStackVC" bundle:nil];
     [self bind:@"IUController" toObject:stackVC withKeyPath:@"IUController" options:nil];
@@ -158,7 +157,20 @@
     [eventVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
     [_eventV addSubviewFullFrame:eventVC.view];
     
+#pragma mark - inspector view
+    [[NSUserDefaults standardUserDefaults] addObserver:self forKeyPath:@"showLeftInspector" options:NSKeyValueObservingOptionInitial context:nil];
+    [[NSUserDefaults standardUserDefaults] addObserver:self forKeyPath:@"showRightInspector" options:NSKeyValueObservingOptionInitial context:nil];
     
+}
+
+-(void)showLeftInspectorDidChange:(NSDictionary *)change{
+    BOOL showLeftInspector = [[NSUserDefaults standardUserDefaults] boolForKey:@"showLeftInspector"];
+    [_leftV setHidden:!showLeftInspector];
+}
+
+-(void)showRightInspectorDidChange:(NSDictionary *)change{
+    BOOL showRightInspector = [[NSUserDefaults standardUserDefaults] boolForKey:@"showRightInspector"];
+    [_rightV setHidden:!showRightInspector];
 }
 
 -(LMWindow*)window{
