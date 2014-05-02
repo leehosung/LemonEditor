@@ -38,7 +38,7 @@
     LMGeneralObject *object = [[collectionView itemAtIndex:index] representedObject];
     NSString *className = object.title;
     
-    IUBox *obj = [[NSClassFromString(className) alloc] initWithManager:_identifierManager];
+    IUBox *obj = [[NSClassFromString(className) alloc] initWithManager:_identifierManager option:nil];
     if (obj == nil) {
         assert(0);
     }
