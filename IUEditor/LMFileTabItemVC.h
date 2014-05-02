@@ -19,8 +19,10 @@
 @interface LMFileTabItemVC : NSViewController
 
 @property id delegate;
+@property (weak) IBOutlet NSBox *fileBox;
 @property (weak) IBOutlet NSButton *fileNameBtn;
 @property  IUDocumentNode *documentNode;
 
-
+- (void)setDeselectColor;
+- (void)setSelectColor;
 @end
