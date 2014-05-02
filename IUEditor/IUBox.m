@@ -25,6 +25,7 @@
     NSMutableSet *changedCSSWidths;
     IUTextManager *textManager;
     NSSize originalSize;
+    NSSize originalPercentSize;
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
@@ -61,7 +62,7 @@
     [aCoder encodeObject:_m_children forKey:@"children"];
 }
 
--(id)initWithManager:(IUIdentifierManager*)manager{
+-(id)initWithManager:(IUIdentifierManager*)manager option:(NSDictionary *)option{
     self = [super init];{
         _css = [[IUCSS alloc] init];
         _css.delegate = self;
@@ -393,17 +394,23 @@
     NSInteger currentHeight = [_css.assembledTagDictionary[IUCSSTagHeight] integerValue];
 
     originalSize = NSMakeSize(currentWidth, currentHeight);
+    
+    NSInteger currentPWidth = [_css.assembledTagDictionary[IUCSSTagPercentWidth] floatValue];
+    NSInteger currentPHeight = [_css.assembledTagDictionary[IUCSSTagPercentHeight] floatValue];
+
+    originalPercentSize = NSMakeSize(currentPWidth, currentPHeight);
 }
 
 - (void)increaseSize:(NSSize)size withParentSize:(NSSize)parentSize{
-    
+    NSLog(@"---------------------");
+    NSLog(@"%f", size.width);
     
     if([self hasWidth]){
         NSInteger currentWidth = originalSize.width;
         currentWidth += size.width;
         [_css setValue:@(currentWidth) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagWidth]];
         
-        CGFloat percentWidth = [_css.assembledTagDictionary[IUCSSTagPercentWidth] floatValue];
+        CGFloat percentWidth = originalPercentSize.width;
         if(parentSize.width!=0){
             percentWidth += (size.width / parentSize.width) *100;
         }
@@ -416,7 +423,7 @@
         currentHeight += size.height;
         [_css setValue:@(currentHeight) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagHeight]];
         
-        CGFloat percentHeight = [_css.assembledTagDictionary[IUCSSTagPercentHeight] floatValue];;
+        CGFloat percentHeight = originalPercentSize.height;
         if(parentSize.height!=0){
             percentHeight += (size.height / parentSize.height) *100;
         }

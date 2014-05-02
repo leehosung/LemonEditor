@@ -17,8 +17,8 @@
 @implementation IUWebMovie{
 }
 
--(id)initWithManager:(IUIdentifierManager*)manager{
-    self = [super initWithManager:manager];
+-(id)initWithManager:(IUIdentifierManager*)manager option:(NSDictionary *)option{
+    self = [super initWithManager:manager option:option];
     if(self){
         _thumbnail = NO;
         _webMovieSource = @"<iframe width=\"560\" height=\"315\" src=\"//www.youtube.com/embed/9bZkp7q19f0?list=PLEC422D53B7588DC7\" frameborder=\"0\" allowfullscreen></iframe>";

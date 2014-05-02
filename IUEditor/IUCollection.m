@@ -33,8 +33,8 @@
 -(BOOL)shouldEditText{
     return NO;
 }
-- (id)initWithManager:(IUIdentifierManager *)identifierManager{
-    self = [super initWithManager:identifierManager];
+- (id)initWithManager:(IUIdentifierManager *)identifierManager option:(NSDictionary *)option{
+    self = [super initWithManager:identifierManager option:option];
     NSArray *array = @[@{@"width":@"600",@"count":@(2)}];
     self.defaultItemCount = 4;
     self.responsiveSetting = array;

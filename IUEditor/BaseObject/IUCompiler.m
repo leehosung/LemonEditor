@@ -620,10 +620,10 @@
 #pragma mark normal CSS
     else {
         if (obj.flow) {
-            [dict putTag:@"position" string:@"static"];
+            [dict putTag:@"position" string:@"relative"];
         }
         if (obj.floatRight) {
-            [dict putTag:@"position" string:@"static"];
+            [dict putTag:@"position" string:@"relative"];
             [dict putTag:@"float" string:@"right"];
         }
         if ([obj isKindOfClass:[IUPageContent class]] || [obj isKindOfClass:[IUHeader class]]) {

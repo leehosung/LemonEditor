@@ -15,10 +15,10 @@
 
 @implementation IUBackground
 
--(id)initWithManager:(IUIdentifierManager *)manager{
-    self = [super initWithManager:manager];
+-(id)initWithManager:(IUIdentifierManager *)manager option:(NSDictionary*)option{
+    self = [super initWithManager:manager option:option];
     //create header
-    _header = [[IUHeader alloc] initWithManager:manager];
+    _header = [[IUHeader alloc] initWithManager:manager option:option];
     _header.htmlID = @"Header";
     [self addIU:_header error:nil];
     return self;

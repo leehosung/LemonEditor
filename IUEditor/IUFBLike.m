@@ -16,8 +16,8 @@
 @implementation IUFBLike{
 }
 
--(id)initWithManager:(IUIdentifierManager *)identifierManager{
-    self = [super initWithManager:identifierManager];
+-(id)initWithManager:(IUIdentifierManager *)identifierManager option:(NSDictionary *)option{
+    self = [super initWithManager:identifierManager option:option];
     if(self){
         _fbSource = @"<iframe src=\"//www.facebook.com/plugins/like.php?href=__FB_LINK_ADDRESS__+&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=__SHOW_FACE__&amp;share=true&amp;\" scrolling=\"no\" frameborder=\"0\" style=\"border:none; overflow:hidden; height:__HEIGHT__px\" allowTransparency=\"true\"></iframe>";
         _showFriendsFace = YES;

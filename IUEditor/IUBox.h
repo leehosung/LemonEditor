@@ -52,7 +52,7 @@
 -(IUDocument *)document;
 
 //initialize
--(id)initWithManager:(IUIdentifierManager*)identifierManager;
+-(id)initWithManager:(IUIdentifierManager*)identifierManager option:(NSDictionary*)option;
 
 // this is IU setting
 @property (nonatomic, weak) IUIdentifierManager *identifierManager;
