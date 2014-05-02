@@ -10,12 +10,15 @@
 #import "IUProject.h"
 #import "JDOutlineView.h"
 #import "IUDocumentController.h"
+#import "IUIdentifierManager.h"
 
 @interface LMFileNaviVC : NSViewController <IUProjectDelegate>
 
 @property (nonatomic, readonly) id  selection;
 @property (strong, nonatomic) IBOutlet _binding_ IUDocumentController *documentController;
 @property (nonatomic) IUProject *project;
+@property (nonatomic, weak) IUIdentifierManager   *identifierManager;
+
 
 -(void)selectFirstDocument;
 @end

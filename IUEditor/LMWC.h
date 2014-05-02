@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "IUDocumentController.h"
+#import "IUDocumentNode.h"
 #import "WebCanvasView.h"
 #import "IUFrameDictionary.h"
 #import "IUController.h"
@@ -21,7 +22,8 @@
 @property (nonatomic, weak) _binding_ IUDocumentController   *documentController;
 @property _binding_ NSRange selectedTextRange;
 
--(void)loadProject:(NSString*)path;
+- (void)loadProject:(NSString*)path;
+- (void)setNewFileNode:(IUDocumentNode *)node;
 
 - (LMWindow *)window;
 - (void)reloadCurrentDocument;

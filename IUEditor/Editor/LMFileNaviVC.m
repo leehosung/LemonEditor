@@ -10,6 +10,10 @@
 #import "IUDocumentNode.h"
 #import "IUResourceNode.h"
 #import "NSTreeController+JDExtension.h"
+#import "IUPage.h"
+#import "IUBackground.h"
+#import "IUClass.h"
+#import "LMWC.h"
 
 @interface LMFileNaviVC ()
 
@@ -138,12 +142,22 @@
 - (NSMenu *)defaultMenuForRow:(NSInteger)row{
     NSMenu *menu = [self defaultMenu];
     
-    NSTreeNode *node = [_navOutlineView itemAtRow:row];
+    NSTreeNode *item = [_navOutlineView itemAtRow:row];
+    IUNode *node = [item representedObject];
 
-    if([self isFolder:node]==NO){
+    if([self isFolder:item]==NO){
+        //TODO: make copy, remove item
+        /*
         [menu addItem:_fileCopyItem];
         [menu addItem:_fileRemoveItem];
+         */
     }
+    if ([node isKindOfClass:[IUDocumentNode class]]
+        || [node isKindOfClass:[IUDocumentGroupNode class]]){
+        
+        [menu addItem:_fileAddItem];
+    }
+
     
     return menu;
 }
@@ -152,7 +166,6 @@
     NSMenu *menu = [[NSMenu alloc] init];
     [menu addItem:_finderMenuItem];
     [menu addItem:_barMenuItem];
-    [menu addItem:_fileAddItem];
 
     return menu;
 }
@@ -164,17 +177,50 @@
 - (IBAction)clickMenuAddFile:(id)sender {
     NSTreeNode *node = [_navOutlineView itemAtRow:_navOutlineView.rightClickedIndex];
     IUGroupNode *groupNode;
-    if([self isFolder:node]==NO){
+    if([self isFolder:node]){
         groupNode = [node representedObject];
     }
     else{
         groupNode = [node.parentNode representedObject];
     }
+    
+    if([groupNode isKindOfClass:[IUDocumentGroupNode class]]){
+        NSString *className;
+        if([groupNode.name isEqualToString:@"Pages"]){
+            className = @"IUPage";
+        }
+        else if([groupNode.name isEqualToString:@"Backgrounds"]){
+            className = @"IUBackground";
+        }
+        else if ([groupNode.name isEqualToString:@"Classes"]){
+            className = @"IUClass";
+        }
+        
+        IUBox *obj = [[NSClassFromString(className) alloc] initWithManager:_identifierManager option:nil];
+        if (obj == nil) {
+            assert(0);
+        }
+        
+        obj.htmlID = [_identifierManager requestNewIdentifierWithKey:[obj.className stringByReplacingOccurrencesOfString:@"IU" withString:@""]];
+        obj.name = obj.htmlID;
+        
+        IUDocumentNode *fileNode = [[IUDocumentNode alloc] init];
+        fileNode.document = obj;
+        fileNode.name = obj.name;
+        
+        [groupNode addNode:fileNode];
+        LMWC *lmWC = [NSApp mainWindow].windowController;
+        [lmWC setNewFileNode:fileNode];
+
+
+    }
 }
 - (IBAction)clickMenuRemoveFile:(id)sender {
+    //TODO:
 }
 
 - (IBAction)clickMenuCopyFile:(id)sender {
+    //TODO:
 }
 
 

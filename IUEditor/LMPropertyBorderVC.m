@@ -144,22 +144,47 @@
     //borderwidth
     if ([[keyPath pathExtension] isSameTag:IUCSSTagBorderTopWidth]) {
         id value = [_controller valueForKeyPath:[@"selection.css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderTopWidth]];
-        [_borderTopTF setStringValue:value];
+        if(value){
+           [_borderTopTF setStringValue:value];
+        }
+        else{
+           [_borderTopTF setStringValue:@""];
+        }
     }
     else if ([[keyPath pathExtension] isSameTag:IUCSSTagBorderLeftWidth]) {
         id value = [_controller valueForKeyPath:[@"selection.css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderLeftWidth]];
-        [_borderLeftTF setStringValue:value];
+        if(value){
+            [_borderLeftTF setStringValue:value];
+        }
+        else{
+            [_borderLeftTF setStringValue:@""];
+        }
     }
     else if ([[keyPath pathExtension] isSameTag:IUCSSTagBorderRightWidth]) {
         id value = [_controller valueForKeyPath:[@"selection.css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderRightWidth]];
-        [_borderRightTF setStringValue:value];
+        if(value) {
+            [_borderRightTF setStringValue:value];
+        }
+        else{
+            [_borderRightTF setStringValue:@""];
+        }
     }
     else if ([[keyPath pathExtension] isSameTag:IUCSSTagBorderBottomWidth]) {
         id value = [_controller valueForKeyPath:[@"selection.css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderBottomWidth]];
-        [_borderBottomTF setStringValue:value];
+        if(value){
+            [_borderBottomTF setStringValue:value];
+        }
+        else{
+            [_borderBottomTF setStringValue:@""];
+        }
     }
     id value = [_controller valueForKeyPath:[@"selection.css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderWidth]];
-    [_borderTF setStringValue:value];
+    if(value){
+        [_borderTF setStringValue:value];
+    }
+    else{
+        [_borderTF setStringValue:@""];
+    }
     //bordercolor
     if ([[keyPath pathExtension] isSameTag:IUCSSTagBorderTopColor]) {
         NSColor *newColor = [self valueForKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderTopColor]];
