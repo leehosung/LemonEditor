@@ -12,20 +12,18 @@
 #import <Cocoa/Cocoa.h>
 
 @protocol JDOutlineViewDataSource <NSObject>
-//-(NSMenu*)defaultMenuForRow:(NSInteger)row;
+-(NSMenu*)defaultMenuForRow:(NSInteger)row;
 @end
 
 @interface JDOutlineView : NSOutlineView{
 }
 
 - (void)selectItem:(id)item;
-
-/*
 - (id)selectedView;
 
 @property IBOutlet id <JDOutlineViewDataSource> JDDataSource;
 @property NSInteger rightClickedIndex;
 @property IBOutlet id enterKeyDelegate;
 @property IBOutlet id deleteKeyDelegate;
-*/
+
 @end

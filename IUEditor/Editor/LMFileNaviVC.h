@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "IUProject.h"
+#import "JDOutlineView.h"
 #import "IUDocumentController.h"
 
 @interface LMFileNaviVC : NSViewController <IUProjectDelegate>
