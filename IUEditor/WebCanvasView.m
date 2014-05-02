@@ -597,6 +597,9 @@
     if([element isKindOfClass:[DOMHTMLDivElement class]]){
         return (DOMHTMLDivElement *)element;
     }
+    else if([element isKindOfClass:[DOMHTMLBodyElement class]]){
+        return nil;
+    }
     return [self divParentElementOfElement:element.parentElement];
 }
 

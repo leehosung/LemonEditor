@@ -6,13 +6,6 @@ function resizePageContentHeight(){
     $('.IUPageContent').css('height', height+'px');
 }
 
-function resizeBackgroundHeight(){
-    var height=0;
-    $('.IUBackground').children().each(function(){height += $(this).height()});
-    height=$('.IUBackground').parent().height()-height;
-    $('.IUBackground').css('height', height+'px');
-
-}
 
 
 function resizeCollection(){
@@ -37,6 +30,5 @@ function resizeCollection(){
 $(document).ready(function(){
             console.log("ready : iuframe.js");
             resizePageContentHeight();
-                  resizeBackgroundHeight();
 //			resizeCollection();
 });

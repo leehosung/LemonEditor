@@ -107,8 +107,16 @@ function getIUUpdatedFrameThread(){
     }
 }
 
+function resizeBackgroundSize(){
+    var height=0;
+    $('.IUBackground').css('height', '100%');
+    $('.IUBackground').css('width', '100%');
+    
+}
 
 $(document).ready(function(){
             console.log("ready : iueditor.js");
             getIUUpdatedFrameThread();
+            resizeBackgroundSize();
+
 });
