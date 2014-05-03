@@ -9,9 +9,11 @@ function resizePageContentHeight(){
 	
 	//make min height of page content
 	var minHeight=0;
-	$('.IUPageContent').children().each(function(){
-		minHeight+=$(this).height()+$(this).position().top}
-	);
+    $('.IUPageContent').children().each(function(){
+		if (minHeight < $(this).height() + $(this).position().top){
+			minHeight = $(this).height() + $(this).position().top;
+		}
+    });
     $('.IUPageContent').css('min-height', minHeight+'px');
 }
 
