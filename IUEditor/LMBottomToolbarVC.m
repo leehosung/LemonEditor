@@ -54,6 +54,13 @@
     [self addObserver:self forKeyPath:@"document.ghostImageName" options:0 context:nil];
     _ghostImageComboBox.delegate = self;
     
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"showLeftInspector"] == nil) {
+        [[NSUserDefaults standardUserDefaults] setObject:@(YES) forKey:@"showLeftInspector"];
+    }
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"showRightInspector"] == nil) {
+        [[NSUserDefaults standardUserDefaults] setObject:@(YES) forKey:@"showRightInspector"];
+    }
+    
     [_leftInspectorBtn bind:@"state" toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"showLeftInspector" options:IUBindingDictNotRaisesApplicable];
     [_rightInspectorBtn bind:@"state" toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"showRightInspector" options:IUBindingDictNotRaisesApplicable];
 }
