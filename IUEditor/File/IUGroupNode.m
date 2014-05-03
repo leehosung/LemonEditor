@@ -61,6 +61,16 @@
     }
 }
 
+-(void)removeNode:(IUNode*)node{
+    [self willChangeValueForKey:@"children"];
+    [_children removeObject:node];
+    [self didChangeValueForKey:@"children"];
+    IUProject *project = (IUProject*)self.rootNode;
+    if ([project isKindOfClass:[IUProject class]]) {
+        [project.delegate project:(IUProject*)self.rootNode nodeRemoved:node];
+    }
+}
+
 -(BOOL)containName:(NSString *)name{
     for(IUNode *child in _children){
         if([child.name isEqualToString:name]){

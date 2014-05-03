@@ -253,6 +253,9 @@
 
 
 - (void)initializeResource{
+    //remove resource node if exist
+    [self removeNode:_resourceNode];
+    
     IUResourceGroupNode *rootNode = [[IUResourceGroupNode alloc] init];
     rootNode.name = @"Resource";
     [self addResourceGroupNode:rootNode];

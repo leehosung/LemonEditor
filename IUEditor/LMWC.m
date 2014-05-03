@@ -304,6 +304,10 @@
     [iuInspectorVC setClassDocumentNodes:project.classDocumentNodes];
 }
 
+- (void)project:(IUProject *)project nodeRemoved:(IUNode *)node{
+    //nothing
+}
+
 #pragma mark -
 #pragma mark select TavView
 
