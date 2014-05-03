@@ -84,8 +84,6 @@
         if (self.hasHeight) {
             [_css setValue:@(35) forTag:IUCSSTagHeight forWidth:IUCSSMaxViewPortWidth];
         }
-        //text align default
-        [_css setValue:@(IUTextAlignLeft) forTag:IUCSSTagTextAlign forWidth:IUCSSMaxViewPortWidth];
         
         //background
         [_css setValue:[NSColor randomColor] forTag:IUCSSTagBGColor forWidth:IUCSSMaxViewPortWidth];
