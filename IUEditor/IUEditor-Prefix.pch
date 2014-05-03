@@ -11,6 +11,7 @@
     #import "NSDictionary+JDExtension.h"
     #import "CALayer+JDExtension.h"
     #import "NSArray+JDExtension.h"
+#import "NSIndexPath+JDExtension.h"
 #import "NSString+JDExtension.h"
 #import "NSMutableDictionary+IUTag.h"
 #import "JDUIUtil.h"

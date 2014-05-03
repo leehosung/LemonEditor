@@ -10,4 +10,6 @@
 
 @interface NSIndexPath (JDExtension)
 
++ (id)indexPathWithIndexPath:(NSIndexPath*)indexPath length:(NSUInteger)length;
+
 @end

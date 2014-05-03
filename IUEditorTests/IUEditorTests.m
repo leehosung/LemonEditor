@@ -10,6 +10,7 @@
 #import "IUProject.h"
 #import "NSObject+JDExtension.h"
 #import "IUTextManager.h"
+#import "NSIndexPath+JDExtension.h"
 
 @interface IUEditorTests : XCTestCase
 
@@ -29,6 +30,18 @@
 {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
+}
+
+- (void)testIndex{
+    NSIndexPath *path = [NSIndexPath indexPathWithIndex:5];
+    path = [path indexPathByAddingIndex:10];
+    path = [path indexPathByAddingIndex:8];
+    
+    NSIndexPath *retPath = [NSIndexPath indexPathWithIndexPath:path length:2];
+    XCTAssertEqual(retPath.length, 2, @"length");
+    XCTAssertEqual([retPath indexAtPosition:0], 5, @"eq1");
+    XCTAssertEqual([retPath indexAtPosition:1], 10, @"eq2");
+    
 }
 
 - (void)testText8{

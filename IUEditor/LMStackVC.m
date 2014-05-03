@@ -8,6 +8,9 @@
 
 #import "LMStackVC.h"
 #import "IUController.h"
+#import "IUItem.h"
+#import "IUPageContent.h"
+#import "IUDocument.h"
 
 @implementation LMStackOutlineView
 
@@ -32,7 +35,9 @@
 
 @end
 
-@implementation LMStackVC
+@implementation LMStackVC{
+    NSArray *_draggingIndexPaths;
+}
 
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -40,7 +45,8 @@
 }
 
 -(void)awakeFromNib{
-    self.outlineV.delegate = self;
+    _outlineV.delegate = self;
+    [_outlineV registerForDraggedTypes:@[@"stackVC"]];
 }
 
 -(void)keyDown:(NSEvent *)theEvent{
@@ -82,5 +88,45 @@
 
     return nil;
 }
+
+#pragma mark -
+#pragma mark drag and drop
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView writeItems:(NSArray *)items toPasteboard:(NSPasteboard *)pboard{
+    for (NSTreeNode *node in items) {
+        IUBox *iu = node.representedObject;
+        if ([iu isKindOfClass:[IUItem class]] || [iu isKindOfClass:[IUDocument class]] || [iu isKindOfClass:[IUPageContent class]]) {
+            return NO;
+        }
+    }
+    
+    
+	[pboard declareTypes:[NSArray arrayWithObjects:@"stackVC", nil] owner:self];
+    _draggingIndexPaths = [_IUController selectionIndexPaths];
+	return YES;
+}
+
+- (NSDragOperation)outlineView:(NSOutlineView *)ov validateDrop:(id <NSDraggingInfo>)info proposedItem:(NSTreeNode*)item proposedChildIndex:(NSInteger)childIndex {
+    if (childIndex == -1) {
+        return NSDragOperationNone;
+    }
+    //TODO
+    //parent 가 자신의 child로 가면 안됨.
+    return NSDragOperationMove;
+}
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView acceptDrop:(id < NSDraggingInfo >)info item:(NSTreeNode*)item childIndex:(NSInteger)index{
+    NSArray *selections = [_IUController selectedObjects];
+    IUBox *oldParent = [(IUBox*)[selections firstObject] parent];
+    IUBox *newParent = item.representedObject;
+    if (oldParent == newParent) {
+        for (IUBox *iu in [_IUController selectedObjects]) {
+            [newParent changeIUIndex:iu to:index error:nil];
+        }
+    }
+    [_IUController rearrangeObjects];
+    return YES;
+}
+
 
 @end
