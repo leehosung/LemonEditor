@@ -746,10 +746,9 @@
     return htmlSource;
 }
 
-//FIXME: debug
 - (IBAction)showCurrentSource:(id)sender {
     NSString *htmlSource =  [(DOMHTMLElement *)[[[[self webView] mainFrame] DOMDocument] documentElement] outerHTML];
-    JDInfoLog(@"\n%@\n",htmlSource);
+    NSLog(@"\n%@\n",htmlSource);
 }
 
 
