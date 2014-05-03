@@ -885,25 +885,26 @@
                 [dict putTag:@"text-decoration" string:@"underline"];
             }
             
-            IUTextAlign align = [cssTagDict[IUCSSTagTextAlign] intValue];
-            NSString *alignText;
-            switch (align) {
-                case IUTextAlignLeft:
-                    alignText = @"left";
-                    break;
-                case IUTextAlignCenter:
-                    alignText = @"center";
-                    break;
-                case IUTextAlignRight:
-                    alignText = @"right";
-                    break;
-                case IUTextAlignJustify:
-                    alignText = @"stretch";
-                    break;
-                default:
-                    JDErrorLog(@"no align type");
-            }
-            if(alignText){
+            id value = cssTagDict[IUCSSTagTextAlign];
+            if (value) {
+                NSInteger align = [value integerValue];
+                NSString *alignText;
+                switch (align) {
+                    case IUTextAlignLeft:
+                        alignText = @"left";
+                        break;
+                    case IUTextAlignCenter:
+                        alignText = @"center";
+                        break;
+                    case IUTextAlignRight:
+                        alignText = @"right";
+                        break;
+                    case IUTextAlignJustify:
+                        alignText = @"stretch";
+                        break;
+                    default:
+                        JDErrorLog(@"no align type");
+                }
                 [dict putTag:@"text-align" string:alignText];
             }
         }
