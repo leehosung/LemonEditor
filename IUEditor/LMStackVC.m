@@ -124,6 +124,12 @@
             [newParent changeIUIndex:iu to:index error:nil];
         }
     }
+    else {
+        for (IUBox *iu in [_IUController selectedObjects]) {
+            [iu.parent removeIU:iu];
+            [newParent insertIU:iu atIndex:index error:nil];
+        }
+    }
     [_IUController rearrangeObjects];
     return YES;
 }
