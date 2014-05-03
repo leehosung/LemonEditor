@@ -56,40 +56,26 @@
 
 
 -(void)awakeFromNib{
-    
-    
-    NSDictionary *textFieldBindingOption = [NSDictionary
-                                            dictionaryWithObjects:@[[NSNumber numberWithBool:NO], @"JDNilToZeroTransformer"]
-                                            forKeys:@[NSRaisesForNotApplicableKeysBindingOption, NSValueTransformerNameBindingOption]];
-    
-    
+
     NSDictionary *percentHiddeBindingOption = [NSDictionary
                                             dictionaryWithObjects:@[[NSNumber numberWithBool:NO], NSNegateBooleanTransformerName]
                                             forKeys:@[NSRaisesForNotApplicableKeysBindingOption, NSValueTransformerNameBindingOption]];
-    
-    [_xTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagX] options:textFieldBindingOption];
-    [_pxTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagPercentX] options:textFieldBindingOption];
+
+    [self addObserver:self forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagX] options:0 context:nil];
+    [self addObserver:self forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagY] options:0 context:nil];
+    [self addObserver:self forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagWidth] options:0 context:nil];
+    [self addObserver:self forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagHeight] options:0 context:nil];
+    [self addObserver:self forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagPercentX] options:0 context:nil];
+    [self addObserver:self forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagPercentY] options:0 context:nil];
+    [self addObserver:self forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagPercentWidth] options:0 context:nil];
+    [self addObserver:self forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagPercentHeight] options:0 context:nil];
     
     [_xTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagXUnit] options:nil];
     [_pxTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagXUnit] options:percentHiddeBindingOption];
-
-    [_yTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagY] options:textFieldBindingOption];
-    [_pyTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagPercentY] options:textFieldBindingOption];
-    
     [_yTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagYUnit] options:nil];
     [_pyTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagYUnit] options:percentHiddeBindingOption];
-
-
-    [_wTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagWidth] options:textFieldBindingOption];
-    [_pwTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagPercentWidth] options:textFieldBindingOption];
-    
     [_wTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagWidthUnit] options:nil];
     [_pwTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagWidthUnit] options:percentHiddeBindingOption];
-
-
-    [_hTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagHeight] options:textFieldBindingOption];
-    [_phTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagPercentHeight] options:textFieldBindingOption];
-    
     [_hTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagHeightUnit] options:nil];
     [_phTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagHeightUnit] options:percentHiddeBindingOption];
 
@@ -127,11 +113,46 @@
 
 
     [_overflowB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagOverflow] options:bindingOption];
-    
-    [self addObserver:self forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagXUnit]  options:0 context:@"percentX"];
-    [self addObserver:self forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagYUnit]  options:0 context:@"percentY"];
-    [self addObserver:self forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagWidthUnit]  options:0 context:@"percentWidth"];
-    [self addObserver:self forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagHeightUnit]  options:0 context:@"percentHeight"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    if ([[keyPath pathExtension] isSameTag:IUCSSTagX]) {
+        [self setValueForTag:IUCSSTagX toTextfield:_xTF];
+    }
+    else if ([[keyPath pathExtension] isSameTag:IUCSSTagY]) {
+        [self setValueForTag:IUCSSTagY toTextfield:_yTF];
+    }
+    else if ([[keyPath pathExtension] isSameTag:IUCSSTagWidth]) {
+        [self setValueForTag:IUCSSTagWidth toTextfield:_wTF];
+    }
+    else if ([[keyPath pathExtension] isSameTag:IUCSSTagHeight]) {
+        [self setValueForTag:IUCSSTagHeight toTextfield:_hTF];
+    }
+    else if ([[keyPath pathExtension] isSameTag:IUCSSTagPercentX]) {
+        [self setValueForTag:IUCSSTagPercentX toTextfield:_pxTF];
+    }
+    else if ([[keyPath pathExtension] isSameTag:IUCSSTagPercentY]) {
+        [self setValueForTag:IUCSSTagPercentY toTextfield:_pyTF];
+    }
+    else if ([[keyPath pathExtension] isSameTag:IUCSSTagPercentWidth]) {
+        [self setValueForTag:IUCSSTagPercentWidth toTextfield:_pwTF];
+    }
+    else if ([[keyPath pathExtension] isSameTag:IUCSSTagPercentHeight]) {
+        [self setValueForTag:IUCSSTagPercentHeight toTextfield:_phTF];
+    }
+    else {
+        assert(0);
+    }
+}
+
+- (void)setValueForTag:(IUCSSTag)tag toTextfield:(NSTextField*)textfield{
+    id value = [self valueForKeyPath:[_controller keyPathFromControllerToCSSTag:tag]];
+    if (value && [value isEqual:textfield.stringValue] == NO){
+        [textfield setStringValue:value];
+    }
+    else if (value == nil || value == NSNoSelectionMarker){
+        [textfield setStringValue:@"-"];
+    }
 }
 
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor{
@@ -168,5 +189,9 @@
     return YES;
 }
 
+- (void)setValue:(id)value forKeyPath:(NSString *)keyPath{
+    NSLog([NSString stringWithFormat:@"LMPropertyFrame VC : %@, %@", keyPath, [value description]], nil);
+    [super setValue:value forKeyPath:keyPath];
+}
 
 @end
