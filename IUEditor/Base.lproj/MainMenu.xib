@@ -70,6 +70,11 @@
                                     <action selector="newDocument:" target="-1" id="373"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="DjangoNew" tag="1" keyEquivalent="N" id="G3a-a3-Wdi">
+                                <connections>
+                                    <action selector="newDocument:" target="-1" id="F8z-6B-rge"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Open…" keyEquivalent="o" id="72">
                                 <connections>
                                     <action selector="openDocument:" target="-1" id="374"/>
