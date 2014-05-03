@@ -20,6 +20,7 @@ typedef enum _IUGitType{
 @class IUProject;
 @protocol IUProjectDelegate
 -(void)project:(IUProject*)project nodeAdded:(IUNode*)node;
+-(void)project:(IUProject*)project nodeRemoved:(IUNode*)node;
 @end
 
 

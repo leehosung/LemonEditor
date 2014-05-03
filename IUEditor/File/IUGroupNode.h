@@ -14,6 +14,7 @@
 -(NSArray*)children;
 -(NSArray*)allChildren;
 -(void)addNode:(IUNode*)node;
+-(void)removeNode:(IUNode*)node;
 -(BOOL)containName:(NSString *)name;
 
 @end
