@@ -74,7 +74,11 @@
     [wc loadProject:path];
 }
 
--(void)newDocument:(id)sender{
+-(void)newDocument:(NSMenuItem*)sender{
+    if (sender.tag == 1) {
+        [self newDjangoDocument:sender];
+        return;
+    }
     NSError *error;
     
     NSDictionary *dict = @{IUProjectKeyAppName: @"myApp",
