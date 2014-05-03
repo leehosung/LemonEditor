@@ -12,7 +12,7 @@
 #import "IUDocumentController.h"
 #import "IUIdentifierManager.h"
 
-@interface LMFileNaviVC : NSViewController <IUProjectDelegate>
+@interface LMFileNaviVC : NSViewController
 
 @property (nonatomic, readonly) id  selection;
 @property (strong, nonatomic) IBOutlet _binding_ IUDocumentController *documentController;
