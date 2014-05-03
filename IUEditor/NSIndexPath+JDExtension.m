@@ -10,4 +10,14 @@
 
 @implementation NSIndexPath (JDExtension)
 
++ (id)indexPathWithIndexPath:(NSIndexPath*)indexPath length:(NSUInteger)length{
+    NSIndexPath *returnValue = [indexPath copy];
+    NSInteger defaultLen = indexPath.length;
+    while (defaultLen != length) {
+        returnValue = [returnValue indexPathByRemovingLastIndex];
+        defaultLen --;
+    }
+    return returnValue;
+}
+
 @end

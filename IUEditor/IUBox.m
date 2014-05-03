@@ -256,6 +256,17 @@
     return NO;
 }
 
+-(BOOL)changeIUIndex:(IUBox*)iu to:(NSUInteger)index error:(NSError**)error{
+    //자기보다 앞으로 갈 경우
+    NSInteger currentIndex = [_m_children indexOfObject:iu];
+    [_m_children removeObject:iu];
+    if (index > currentIndex) {
+        index --;
+    }
+    [_m_children insertObject:iu atIndex:index];
+    return YES;
+}
+
 -(BOOL)removeIUAtIndex:(NSUInteger)index{
     IUBox *box = [_m_children objectAtIndex:index];
     return [self removeIU:box];
@@ -553,7 +564,6 @@
     [self.delegate IU:self.htmlID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
 }
 
-//FIXME: undefineKey,
 //iucontroller & inspectorVC sync가 안맞는듯.
 - (id)valueForUndefinedKey:(NSString *)key{
     return nil;

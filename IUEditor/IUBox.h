@@ -24,7 +24,7 @@
 -(void)IU:(NSString*)identifier textHTML:(NSString *)html withParentID:(NSString *)parentID nearestID:(NSString *)nID index:(NSUInteger)index;
 -(void)IU:(NSString *)identifier HTML:(NSString *)html withParentID:(NSString *)parentID;
 -(void)IU:(NSString *)identifier setLink:(NSString *)link;
--(NSRect)IUPercentFrame:(NSString*)identifier;
+//-(NSRect)IUPercentFrame:(NSString*)identifier;
 
 -(void)IURemoved:(NSString*)identifier;
 
@@ -86,9 +86,11 @@
 
 -(BOOL)insertIU:(IUBox *)iu atIndex:(NSInteger)index  error:(NSError**)error;
 -(BOOL)addIU:(IUBox *)iu error:(NSError**)error;
--(BOOL)addIUReference:(IUBox *)iu error:(NSError**)error;
 -(BOOL)removeIUAtIndex:(NSUInteger)index;
 -(BOOL)removeIU:(IUBox *)iu;
+-(BOOL)changeIUIndex:(IUBox*)iu to:(NSUInteger)index error:(NSError**)error;
+
+-(BOOL)addIUReference:(IUBox *)iu error:(NSError**)error;
 
 - (void)setPixelFrame:(NSRect)frame;
 - (void)setPercentFrame:(NSRect)frame;
