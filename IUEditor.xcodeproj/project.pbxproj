@@ -85,7 +85,6 @@
 		3DB3ACFE18EC1F700046DFB7 /* LMCanvasVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB3ACFC18EC1F700046DFB7 /* LMCanvasVC.xib */; };
 		3DBC932E18F24FE000F217BD /* NSFlippedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBC932D18F24FE000F217BD /* NSFlippedView.m */; };
 		3DBC932F18F647EC00F217BD /* iu.js in Resources */ = {isa = PBXBuildFile; fileRef = 69B9A39A18E6B1860007D6E2 /* iu.js */; };
-		3DD9E97119122EAB0076BF4E /* iueditor.js in Sources */ = {isa = PBXBuildFile; fileRef = 3DD9E97019122EAB0076BF4E /* iueditor.js */; };
 		3DD9E97219123B3E0076BF4E /* iueditor.js in Resources */ = {isa = PBXBuildFile; fileRef = 3DD9E97019122EAB0076BF4E /* iueditor.js */; };
 		3DED26491900D2DE001A1D67 /* align_center@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26481900D2DE001A1D67 /* align_center@2x.png */; };
 		3DED264B1900D2EE001A1D67 /* align_full@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED264A1900D2EE001A1D67 /* align_full@2x.png */; };
@@ -202,10 +201,6 @@
 		3DED275C190A2630001A1D67 /* IUEventVariable.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED275B190A2630001A1D67 /* IUEventVariable.m */; };
 		3DED2763190E38C5001A1D67 /* bx_loader.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3DED2760190E38C5001A1D67 /* bx_loader.gif */; };
 		3DED2764190E38C5001A1D67 /* controls.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED2761190E38C5001A1D67 /* controls.png */; };
-		3DED2765190E38C5001A1D67 /* jquery.bxslider.js in Sources */ = {isa = PBXBuildFile; fileRef = 3DED2762190E38C5001A1D67 /* jquery.bxslider.js */; };
-		3DED2767190E38E5001A1D67 /* jquery.bxslider.min.js in Sources */ = {isa = PBXBuildFile; fileRef = 3DED2766190E38E5001A1D67 /* jquery.bxslider.min.js */; };
-		3DED276B190E3956001A1D67 /* jquery.easing.1.3.js in Sources */ = {isa = PBXBuildFile; fileRef = 3DED2769190E3956001A1D67 /* jquery.easing.1.3.js */; };
-		3DED276C190E3956001A1D67 /* jquery.fitvids.js in Sources */ = {isa = PBXBuildFile; fileRef = 3DED276A190E3956001A1D67 /* jquery.fitvids.js */; };
 		3DED276E190E3976001A1D67 /* jquery.bxslider.css in Resources */ = {isa = PBXBuildFile; fileRef = 3DED276D190E3976001A1D67 /* jquery.bxslider.css */; };
 		3DED276F190E3CAC001A1D67 /* jquery.bxslider.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 3DED2766190E38E5001A1D67 /* jquery.bxslider.min.js */; };
 		3DED2770190E3CAC001A1D67 /* jquery.bxslider.js in Resources */ = {isa = PBXBuildFile; fileRef = 3DED2762190E38C5001A1D67 /* jquery.bxslider.js */; };
@@ -309,6 +304,7 @@
 		6919204A18DCFED000F8522B /* NSObject+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6919204918DCFED000F8522B /* NSObject+JDExtension.m */; };
 		692334BA18F783FE003E5224 /* LMIUInspectorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 692334B818F783FE003E5224 /* LMIUInspectorVC.m */; };
 		692334BB18F783FE003E5224 /* LMIUInspectorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 692334B918F783FE003E5224 /* LMIUInspectorVC.xib */; };
+		693849E41914D711005C0546 /* NSIndexPath+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 693849E31914D711005C0546 /* NSIndexPath+JDExtension.m */; };
 		694E3CDB18FCF739005077B3 /* IUCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 694E3CDA18FCF739005077B3 /* IUCarousel.m */; };
 		694E3CE118FCFDA6005077B3 /* IUItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 694E3CE018FCFDA6005077B3 /* IUItem.m */; };
 		6953852E18ED6EC800CC42E5 /* IUController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6953852D18ED6EC800CC42E5 /* IUController.m */; };
@@ -777,6 +773,8 @@
 		692334B718F783FE003E5224 /* LMIUInspectorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMIUInspectorVC.h; sourceTree = "<group>"; };
 		692334B818F783FE003E5224 /* LMIUInspectorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMIUInspectorVC.m; sourceTree = "<group>"; };
 		692334B918F783FE003E5224 /* LMIUInspectorVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMIUInspectorVC.xib; sourceTree = "<group>"; };
+		693849E21914D711005C0546 /* NSIndexPath+JDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexPath+JDExtension.h"; sourceTree = "<group>"; };
+		693849E31914D711005C0546 /* NSIndexPath+JDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+JDExtension.m"; sourceTree = "<group>"; };
 		694E3CD918FCF739005077B3 /* IUCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUCarousel.h; sourceTree = "<group>"; };
 		694E3CDA18FCF739005077B3 /* IUCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUCarousel.m; sourceTree = "<group>"; };
 		694E3CDF18FCFDA6005077B3 /* IUItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUItem.h; path = IU/IUItem.h; sourceTree = "<group>"; };
@@ -1677,6 +1675,8 @@
 				6953852D18ED6EC800CC42E5 /* IUController.m */,
 				3DBC932C18F24FE000F217BD /* NSFlippedView.h */,
 				3DBC932D18F24FE000F217BD /* NSFlippedView.m */,
+				693849E21914D711005C0546 /* NSIndexPath+JDExtension.h */,
+				693849E31914D711005C0546 /* NSIndexPath+JDExtension.m */,
 			);
 			name = JD;
 			sourceTree = "<group>";
@@ -2254,7 +2254,6 @@
 				69ABB14A18D733ED0065D584 /* IUCompiler.m in Sources */,
 				3DB3ACDF18EBEF5F0046DFB7 /* PointTextLayer.m in Sources */,
 				6919204718DCFC8200F8522B /* NSCoder+JDExtension.m in Sources */,
-				3DED276B190E3956001A1D67 /* jquery.easing.1.3.js in Sources */,
 				69C5760D18D6FE020016F050 /* IUDocument.m in Sources */,
 				3DB3ACC518EBEF180046DFB7 /* LMWindow.m in Sources */,
 				69757B0918D95BBC0095CBAC /* JDLogUtil.m in Sources */,
@@ -2296,14 +2295,12 @@
 				69C5760B18D6FE020016F050 /* IUClass.m in Sources */,
 				3DED271D1904ADD9001A1D67 /* LMPropertyVTriggerVC.m in Sources */,
 				694E3CE118FCFDA6005077B3 /* IUItem.m in Sources */,
-				3DED276C190E3956001A1D67 /* jquery.fitvids.js in Sources */,
 				690A826B190A25D500DDBA86 /* IUDjangoProject.m in Sources */,
 				690A825D190A047300DDBA86 /* LMPropertyIUTextFieldVC.m in Sources */,
 				6967425318F7D077008B7111 /* IUIdentifierManager.m in Sources */,
 				69761BCA18F168D700C4EDC6 /* IUResourceManager.m in Sources */,
 				69757B1118D95BBC0095CBAC /* JDUIUtil.m in Sources */,
 				3DB3ACE718EBEF9D0046DFB7 /* CursorRect.m in Sources */,
-				3DED2767190E38E5001A1D67 /* jquery.bxslider.min.js in Sources */,
 				69C4AA1D1908E96F00CF75E7 /* IUImport.m in Sources */,
 				69D79B3319138CC60020608D /* LMStartRecentVC.m in Sources */,
 				692334BA18F783FE003E5224 /* LMIUInspectorVC.m in Sources */,
@@ -2324,6 +2321,7 @@
 				3DED270519010C71001A1D67 /* LMPropertyIUFBLikeVC.m in Sources */,
 				3DED270019010C55001A1D67 /* LMPropertyIUTransitionVC.m in Sources */,
 				3DED27131904AC8A001A1D67 /* LMEventVC.m in Sources */,
+				693849E41914D711005C0546 /* NSIndexPath+JDExtension.m in Sources */,
 				3DF8046A18FF790400913505 /* LMPropertyShadowVC.m in Sources */,
 				69C575BE18D6F61E0016F050 /* LMAppDelegate.m in Sources */,
 				690A409918E1665E00095263 /* LMGeneralObject.m in Sources */,
@@ -2349,7 +2347,6 @@
 				3DED272E1904E17E001A1D67 /* IUMovie.m in Sources */,
 				69757B0818D95BBC0095CBAC /* JDKeyDelegatedTableView.m in Sources */,
 				69757B0618D95BBC0095CBAC /* JDGitUtil.m in Sources */,
-				3DD9E97119122EAB0076BF4E /* iueditor.js in Sources */,
 				3DED27181904AD7D001A1D67 /* LMPropertyMouseEventVC.m in Sources */,
 				3DB3ACD218EBEF4F0046DFB7 /* GridView.m in Sources */,
 				3D0D481318FFDC96000A5B53 /* LMFileTabItemVC.m in Sources */,
@@ -2362,7 +2359,6 @@
 				69757B0F18D95BBC0095CBAC /* JDTextFieldCell.m in Sources */,
 				6919204A18DCFED000F8522B /* NSObject+JDExtension.m in Sources */,
 				3DED2773190E4148001A1D67 /* IUCarouselItem.m in Sources */,
-				3DED2765190E38C5001A1D67 /* jquery.bxslider.js in Sources */,
 				6953852E18ED6EC800CC42E5 /* IUController.m in Sources */,
 				690A82591909EB2500DDBA86 /* IUTextView.m in Sources */,
 			);
