@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
@@ -7,7 +7,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="LMStartNewVC">
             <connections>
                 <outlet property="typeDefaultB" destination="djW-nI-k7j" id="bbw-lM-bq0"/>
-                <outlet property="typeDjangoB" destination="AxC-pP-NPR" id="NOu-dj-uQw"/>
+                <outlet property="typeDjangoB" destination="WaC-1p-Quw" id="aWt-e3-Knd"/>
                 <outlet property="typePresentationB" destination="dcY-27-3P1" id="LTM-22-c6n"/>
                 <outlet property="view" destination="nbW-rj-Guk" id="gWp-bB-gMU"/>
             </connections>
@@ -36,7 +36,7 @@
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <action selector="pressProjectTypeB:" target="-2" id="toN-8A-nHm"/>
+                                        <action selector="pressProjectTypeB:" target="-2" id="GhE-f2-BxT"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -64,11 +64,11 @@
                                     <rect key="frame" x="-1" y="-1" width="180" height="120"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="new_pt" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="OPt-aH-6pp">
-                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <action selector="pressProjectTypeB:" target="-2" id="VWK-V8-Klg"/>
+                                        <action selector="pressProjectTypeB:" target="-2" id="k2m-9y-cE4"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -92,15 +92,15 @@
                             <rect key="frame" x="1" y="1" width="178" height="118"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AxC-pP-NPR" userLabel="Django">
-                                    <rect key="frame" x="8" y="12" width="30" height="30"/>
+                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WaC-1p-Quw" userLabel="Django">
+                                    <rect key="frame" x="-1" y="-1" width="180" height="120"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="M1w-Mm-WR4">
-                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="new_django" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="Cii-Rk-WqY">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <action selector="pressProjectTypeB:" target="-2" id="0Jv-Lh-nrJ"/>
+                                        <action selector="pressProjectTypeB:" target="-2" id="CqP-yZ-iZu"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -125,6 +125,7 @@
     </objects>
     <resources>
         <image name="new_default" width="54" height="66"/>
+        <image name="new_django" width="54" height="66"/>
         <image name="new_pt" width="70" height="64"/>
     </resources>
 </document>

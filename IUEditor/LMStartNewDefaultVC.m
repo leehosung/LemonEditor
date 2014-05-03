@@ -10,8 +10,10 @@
 #import "JDFileUtil.h"
 #import "IUProject.h"
 #import "LMAppDelegate.h"
+#import "LMWC.h"
 
 @interface LMStartNewDefaultVC ()
+@property (weak) IBOutlet NSTextField *defaultNewAppName;
 
 @end
 
@@ -33,14 +35,30 @@
 }
 
 - (void)pressNextB{
-
+    
+    NSError *error;
+    
+    NSString *appName;
+    appName = [_defaultNewAppName stringValue];
+    NSString *appDir = [[[JDFileUtil util] openDirectoryByNSOpenPanel:@"select directory for project"] path];
+    //git, heroku는 막아놓음
     NSDictionary *dictionary = @{IUProjectKeyGit: @(NO),
-                                 IUProjectKeyAppName: @"ASDFQWER",
+                                 IUProjectKeyAppName: appName,
                                  IUProjectKeyHeroku: @(NO),
-                                 IUProjectKeyDirectory: @"/Users/jd/asdf"};
-    NSString *path = [IUProject createProject:dictionary error:nil];
-    LMAppDelegate *appDelegate = [NSApp delegate];
-    [appDelegate loadDocument:path];
+                                 IUProjectKeyDirectory: appDir};
+    
+    NSString *path = [IUProject createProject:dictionary error:&error];
+    
+    if (error != nil) {
+        assert(0);
+    }
+    
+    LMWC *wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
+    [wc showWindow:self];
+    [wc loadProject:path];
+    [[NSUserDefaults standardUserDefaults] setValue:path forKey:@"lastDocument"];
+    
     [self.view.window close];
+
 }
 @end
