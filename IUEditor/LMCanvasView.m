@@ -114,7 +114,8 @@
 }
 
 -  (BOOL)pointInMainView:(NSPoint)point{
-    if (NSPointInRect(point, [self.mainView bounds])){
+    NSRect frame = NSMakeRect(0, 0, self.bounds.size.width, self.mainView.bounds.size.height);
+    if (NSPointInRect(point, frame)){
         return YES;
     }
     return NO;
