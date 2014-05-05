@@ -49,6 +49,7 @@
 @property (readonly) IUCSS *css; //used by subclass
 @property (readonly) IUEvent *event;
 
+
 -(IUDocument *)document;
 
 //initialize
@@ -110,6 +111,7 @@
 -(BOOL)hasHeight;
 
 -(BOOL)shouldEditText;
+-(BOOL)shouldAddIU;
 
 
 -(void)startGrouping;

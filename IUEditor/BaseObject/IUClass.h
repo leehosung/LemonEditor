@@ -10,4 +10,6 @@
 
 @interface IUClass : IUDocument
 
+@property NSMutableArray *referenceArray;
+
 @end

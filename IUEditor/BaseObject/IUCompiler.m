@@ -368,7 +368,7 @@
 #pragma mark IUTextView
     
     else if ([iu isKindOfClass:[IUTextView class]]){
-        [code appendFormat:@"<textarea %@ ></textarea>", [self HTMLAttributes:iu]];
+        [code appendFormat:@"<textarea %@ >%@</textarea>", [self HTMLAttributes:iu], ((IUTextView *)iu).inputValue];
     }
     
 #pragma mark IUBox
@@ -546,7 +546,7 @@
 #pragma mark IUTextView
     
     else if ([iu isKindOfClass:[IUTextView class]]){
-        [code appendFormat:@"<textarea %@ ></textarea>", [self HTMLAttributes:iu]];
+        [code appendFormat:@"<textarea %@ >%@</textarea>", [self HTMLAttributes:iu], ((IUTextView *)iu).inputValue];
     }
 
 #pragma mark IUBox
@@ -1040,6 +1040,12 @@
         }
         if(iuTextField.type == IUTextFieldTypePassword){
             [retString appendFormat:@" type=\"password\""];
+        }
+    }
+    else if([iu isKindOfClass:[IUTextView class]]){
+        IUTextView *iuTextView = (IUTextView *)iu;
+        if(iuTextView.placeholder){
+            [retString appendFormat:@" placeholder=\"%@\"",iuTextView.placeholder];
         }
     }
 

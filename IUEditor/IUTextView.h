@@ -10,4 +10,8 @@
 
 @interface IUTextView : IUBox
 
+@property (nonatomic) NSString  *placeholder;
+@property (nonatomic) NSString  *inputValue;
+
+
 @end
