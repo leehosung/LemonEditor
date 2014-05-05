@@ -488,7 +488,7 @@
             thumbnailPath = [[NSBundle mainBundle] pathForResource:@"video_bg" ofType:@"png"];
         }
         
-        [code appendFormat:@"<img src = \"%@\" width='100%%' height='100%%' style='position:absolute'>", thumbnailPath];
+        [code appendFormat:@"<img src = \"%@\" width='100%%' height='100%%' style='position:absolute; left:0; top:0'>", thumbnailPath];
         [code appendNewline];
         
         NSString *videoPlayImagePath = [[NSBundle mainBundle] pathForResource:@"video_play" ofType:@"png"];

@@ -20,7 +20,7 @@
     if(key == NSDeleteCharacter && self.delegate)
     {
         [(LMStackVC *)self.delegate keyDown:theEvent];
-        
+
     }
     
 }
@@ -41,12 +41,14 @@
 
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if(self){
+    }
     return self;
 }
 
 -(void)awakeFromNib{
     _outlineV.delegate = self;
-    [_outlineV registerForDraggedTypes:@[@"stackVC"]];
+    [_outlineV registerForDraggedTypes:@[@"stackVC", (id)kUTTypeIUType]];
 }
 
 -(void)keyDown:(NSEvent *)theEvent{
@@ -106,32 +108,67 @@
 	return YES;
 }
 
-- (NSDragOperation)outlineView:(NSOutlineView *)ov validateDrop:(id <NSDraggingInfo>)info proposedItem:(NSTreeNode*)item proposedChildIndex:(NSInteger)childIndex {
-    if (childIndex == -1) {
-        return NSDragOperationNone;
+- (NSDragOperation)outlineView:(NSOutlineView *)ov validateDrop:(id <NSDraggingInfo>)info proposedItem:(id)item proposedChildIndex:(NSInteger)childIndex {
+    
+    NSPasteboard *pBoard = info.draggingPasteboard;
+    NSData *stackVCData = [pBoard dataForType:@"stackVC"];
+    if(stackVCData){
+        if (childIndex == -1) {
+            return NSDragOperationNone;
+        }
+        //TODO
+        //parent 가 자신의 child로 가면 안됨.
+        return NSDragOperationMove;
     }
-    //TODO
-    //parent 가 자신의 child로 가면 안됨.
-    return NSDragOperationMove;
+    //newIU
+    NSData *iuData = [pBoard dataForType:(id)kUTTypeIUType];
+    if(iuData){
+        return NSDragOperationEvery;
+    }
+    
+    return NSDragOperationNone;
 }
 
-- (BOOL)outlineView:(NSOutlineView *)outlineView acceptDrop:(id < NSDraggingInfo >)info item:(NSTreeNode*)item childIndex:(NSInteger)index{
-    NSArray *selections = [_IUController selectedObjects];
-    IUBox *oldParent = [(IUBox*)[selections firstObject] parent];
-    IUBox *newParent = item.representedObject;
-    if (oldParent == newParent) {
-        for (IUBox *iu in [_IUController selectedObjects]) {
-            [newParent changeIUIndex:iu to:index error:nil];
+- (BOOL)outlineView:(NSOutlineView *)outlineView acceptDrop:(id < NSDraggingInfo >)info item:(id)item childIndex:(NSInteger)index{
+    NSPasteboard *pBoard = info.draggingPasteboard;
+    NSData *stackVCData = [pBoard dataForType:@"stackVC"];
+    if(stackVCData){
+        NSArray *selections = [_IUController selectedObjects];
+        IUBox *oldParent = [(IUBox*)[selections firstObject] parent];
+        IUBox *newParent = [item representedObject];
+        if (oldParent == newParent) {
+            for (IUBox *iu in [_IUController selectedObjects]) {
+                [newParent changeIUIndex:iu to:index error:nil];
+            }
+        }
+        else {
+            for (IUBox *iu in [_IUController selectedObjects]) {
+                [iu.parent removeIU:iu];
+                [newParent insertIU:iu atIndex:index error:nil];
+            }
+        }
+        [_IUController rearrangeObjects];
+        return YES;
+    }
+    
+    //type1) newIU
+    NSData *iuData = [pBoard dataForType:(id)kUTTypeIUType];
+    if(iuData){
+        IUBox *newIU = [NSKeyedUnarchiver unarchiveObjectWithData:iuData];
+        if(newIU){
+            IUBox *newParent = [item representedObject];
+            [newParent addIU:newIU error:nil];
+            [_IUController rearrangeObjects];
+            [_IUController setSelectedObjectsByIdentifiers:@[newIU.htmlID]];
+
+            return YES;
         }
     }
-    else {
-        for (IUBox *iu in [_IUController selectedObjects]) {
-            [iu.parent removeIU:iu];
-            [newParent insertIU:iu atIndex:index error:nil];
-        }
-    }
-    [_IUController rearrangeObjects];
-    return YES;
+    return NO;
+    
+    //    else if([item isKindOfClass:<#(__unsafe_unretained Class)#>])
+    
+    return NO;
 }
 
 
