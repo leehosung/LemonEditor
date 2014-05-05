@@ -60,6 +60,7 @@ typedef enum _IUGitType{
 - (IUResourceGroupNode *)resourceNode;
 - (NSArray*)allDocumentNodes;
 - (NSArray*)pageDocumentNodes;
+- (NSArray*)backgroundDocumentNodes;
 - (NSArray*)classDocumentNodes;
 
 @end

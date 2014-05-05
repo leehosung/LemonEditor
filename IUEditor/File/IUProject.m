@@ -356,6 +356,17 @@
     return [allDocumentNodes filteredArrayUsingPredicate:predicate];
 }
 
+- (NSArray*)backgroundDocumentNodes{
+    NSArray *allDocumentNodes = self.allDocumentNodes;
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUDocumentNode* evaluatedObject, NSDictionary *bindings) {
+        if ([evaluatedObject.document isKindOfClass:[IUBackground class]]) {
+            return YES;
+        }
+        return NO;
+    }];
+    return [allDocumentNodes filteredArrayUsingPredicate:predicate];
+}
+
 - (NSArray*)classDocumentNodes{
     NSArray *allDocumentNodes = self.allDocumentNodes;
     NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUDocumentNode* evaluatedObject, NSDictionary *bindings) {

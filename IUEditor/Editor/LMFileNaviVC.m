@@ -204,6 +204,11 @@
         obj.htmlID = [_identifierManager requestNewIdentifierWithKey:[obj.className stringByReplacingOccurrencesOfString:@"IU" withString:@""]];
         obj.name = obj.htmlID;
         
+        if ([obj isKindOfClass:[IUPage class]]) {
+            IUDocumentNode *bg = [[_documentController.project backgroundDocumentNodes] firstObject];
+            [(IUPage*)obj setBackground:bg.document];
+        }
+        
         IUDocumentNode *fileNode = [[IUDocumentNode alloc] init];
         fileNode.document = obj;
         fileNode.name = obj.name;
