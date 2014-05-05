@@ -259,7 +259,7 @@
     // string의 끝까지 지우지 않을 경우 + Range 밖 처음의 Info가 바로 따라 붙을 경우 : 범위안을 다 지운다.
     // string의 끝까지 지우지 않을 경우 + Range 밖 처음의 Info가 떨어져 있을경우 : 마지막 Info를 뒤로 밀어둔다.
     JDTraceLog(@"%@", _text);
-    if(_text.length >= range.location + range.length){
+    if(_text.length < range.location + range.length){
         [JDLogUtil alert:@"한글 문자를 입력하기 위해서는 Preference에서 '한글입력기'를 체크해주세요"];
         return;
     };
