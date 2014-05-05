@@ -66,6 +66,8 @@
 		3D14886318F6AE5700E8EE4C /* LMCenterClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D14886218F6AE5700E8EE4C /* LMCenterClipView.m */; };
 		3D54D64B18ED5D2E00B5FEC2 /* ResizeNE-SW.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3D54D64918ED5D2E00B5FEC2 /* ResizeNE-SW.tiff */; };
 		3D54D64C18ED5D2E00B5FEC2 /* ResizeNW-SE.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3D54D64A18ED5D2E00B5FEC2 /* ResizeNW-SE.tiff */; };
+		3D8D4B2A19179F910002C871 /* LMPropertyIUTextViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8D4B2819179F910002C871 /* LMPropertyIUTextViewVC.m */; };
+		3D8D4B2B19179F910002C871 /* LMPropertyIUTextViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D8D4B2919179F910002C871 /* LMPropertyIUTextViewVC.xib */; };
 		3DB3ACC518EBEF180046DFB7 /* LMWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACC418EBEF180046DFB7 /* LMWindow.m */; };
 		3DB3ACCB18EBEF3D0046DFB7 /* SizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACC818EBEF3D0046DFB7 /* SizeView.m */; };
 		3DB3ACCC18EBEF3D0046DFB7 /* InnerSizeBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACCA18EBEF3D0046DFB7 /* InnerSizeBox.m */; };
@@ -484,6 +486,9 @@
 		3D14886218F6AE5700E8EE4C /* LMCenterClipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMCenterClipView.m; sourceTree = "<group>"; };
 		3D54D64918ED5D2E00B5FEC2 /* ResizeNE-SW.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "ResizeNE-SW.tiff"; sourceTree = "<group>"; };
 		3D54D64A18ED5D2E00B5FEC2 /* ResizeNW-SE.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "ResizeNW-SE.tiff"; sourceTree = "<group>"; };
+		3D8D4B2719179F910002C871 /* LMPropertyIUTextViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyIUTextViewVC.h; sourceTree = "<group>"; };
+		3D8D4B2819179F910002C871 /* LMPropertyIUTextViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyIUTextViewVC.m; sourceTree = "<group>"; };
+		3D8D4B2919179F910002C871 /* LMPropertyIUTextViewVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyIUTextViewVC.xib; sourceTree = "<group>"; };
 		3DB3ACC318EBEF180046DFB7 /* LMWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMWindow.h; sourceTree = "<group>"; };
 		3DB3ACC418EBEF180046DFB7 /* LMWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMWindow.m; sourceTree = "<group>"; };
 		3DB3ACC718EBEF3D0046DFB7 /* SizeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizeView.h; sourceTree = "<group>"; };
@@ -1336,6 +1341,9 @@
 				6996541D190F9F1D000379DA /* LMPropertyIUCollectionVC.h */,
 				6996541E190F9F1D000379DA /* LMPropertyIUCollectionVC.m */,
 				6996541F190F9F1D000379DA /* LMPropertyIUCollectionVC.xib */,
+				3D8D4B2719179F910002C871 /* LMPropertyIUTextViewVC.h */,
+				3D8D4B2819179F910002C871 /* LMPropertyIUTextViewVC.m */,
+				3D8D4B2919179F910002C871 /* LMPropertyIUTextViewVC.xib */,
 			);
 			name = RightIUInspector;
 			sourceTree = "<group>";
@@ -2082,6 +2090,7 @@
 				3DED26631900D313001A1D67 /* align_left@2x.png in Resources */,
 				3DF8045018FE62FC00913505 /* tool_transition@2x.png in Resources */,
 				3DED26AB1900F43F001A1D67 /* ic_js.png in Resources */,
+				3D8D4B2B19179F910002C871 /* LMPropertyIUTextViewVC.xib in Resources */,
 				3DF8041618FE62F200913505 /* add_mediaquery.png in Resources */,
 				3DED26811900D329001A1D67 /* stack_twitter@2x.png in Resources */,
 				3DF803ED18FE62C900913505 /* next.png in Resources */,
@@ -2294,6 +2303,7 @@
 				3DBC932E18F24FE000F217BD /* NSFlippedView.m in Sources */,
 				69757B3718DAF1AB0095CBAC /* IUResourceGroupNode.m in Sources */,
 				3DB3ACE818EBEF9D0046DFB7 /* IUFrameDictionary.m in Sources */,
+				3D8D4B2A19179F910002C871 /* LMPropertyIUTextViewVC.m in Sources */,
 				3DF8029A18FD0B2500913505 /* IUHTML.m in Sources */,
 				CB9BD63D1914DE23002C9369 /* LMStartNewPresenationVC.m in Sources */,
 				69CFCAC018EA8D1700E3048A /* IUImage.m in Sources */,

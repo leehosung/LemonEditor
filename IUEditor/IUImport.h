@@ -9,6 +9,7 @@
 #import "IUBox.h"
 #import "IUClass.h"
 
+
 @interface IUImport : IUBox
 @property (nonatomic) IUClass  *prototypeClass;
 @end

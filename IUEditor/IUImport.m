@@ -7,6 +7,8 @@
 //
 
 #import "IUImport.h"
+#import "IUBox.h"
+
 
 @implementation IUImport
 
@@ -34,7 +36,14 @@
 }
 
 
-
+-(BOOL)addIU:(IUBox *)iu error:(NSError**)error{
+    BOOL retValue = [super addIU:iu error:error];
+    
+    IUClass *classIU = (IUClass *)iu;
+    [classIU.referenceArray addObject:self];
+    
+    return retValue;
+}
 
 
 @end

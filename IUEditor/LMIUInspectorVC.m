@@ -22,6 +22,7 @@
 #import "LMPropertyIUImportVC.h"
 #import "LMPropertyIUTextFieldVC.h"
 #import "LMPropertyIUCollectionVC.h"
+#import "LMPropertyIUTextViewVC.h"
 
 @interface LMIUInspectorVC (){
     
@@ -40,6 +41,8 @@
     LMPropertyIUMailLinkVC  *propertyIUMailLinkVC;
     LMPropertyIUTextFieldVC *propertyIUTextFieldVC;
     LMPropertyIUCollectionVC  *propertyIUCollectionVC;
+    
+    LMPropertyIUTextViewVC *propertyIUTextViewVC;
     
     NSArray *propertyVCArray;
     NSMutableArray *selectedIUCellVArray;
@@ -73,7 +76,7 @@
         propertyIUTextFieldVC = [[LMPropertyIUTextFieldVC alloc] initWithNibName:[LMPropertyIUTextFieldVC class].className bundle:nil];
         propertyIUCollectionVC = [[LMPropertyIUCollectionVC alloc] initWithNibName:[LMPropertyIUCollectionVC class].className bundle:nil];
 
-        
+        propertyIUTextViewVC = [[LMPropertyIUTextViewVC alloc] initWithNibName:[LMPropertyIUTextViewVC class].className bundle:nil];
         
         propertyVCArray = [NSArray arrayWithObjects:
                            @"propertyIUBoxVC",
@@ -88,6 +91,7 @@
                            @"propertyIUMailLinkVC",
                            @"propertyIUTextFieldVC",
                            @"propertyIUCollectionVC",
+                           @"propertyIUTextViewVC",
                            nil];
         selectedIUCellVArray = [NSMutableArray array];
         
@@ -112,8 +116,10 @@
     
     [propertyIUMailLinkVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     [propertyIUTextFieldVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
-    
     [propertyIUCollectionVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+    
+    [propertyIUTextViewVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+
 
 }
 
