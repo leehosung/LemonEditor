@@ -396,7 +396,7 @@
         return NO;
     }
     
-    //insert Text
+    //insert Textb
     NSRange iuRange = [self selectedRange:range InIU:IUNode];
     [((LMCanvasVC *)self.delegate) insertString:text identifier:IUNode.idName withRange:iuRange];
     

@@ -39,7 +39,11 @@
 }
 
 
--(BOOL)shouldAddIU{
+- (BOOL)shouldAddIU{
+    return NO;
+}
+
+- (BOOL)shouldEditText{
     return NO;
 }
 

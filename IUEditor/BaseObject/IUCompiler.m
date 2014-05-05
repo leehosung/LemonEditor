@@ -245,6 +245,7 @@
 
 -(NSString *)outputHTML:(IUBox *)iu{
     NSMutableString *code = [NSMutableString string];
+#pragma mark IUPage
     if ([iu isKindOfClass:[IUPage class]]) {
         IUPage *page = (IUPage*)iu;
         if (page.background) {
@@ -268,6 +269,7 @@
             [code appendString:[self outputHTMLAsBox:iu]];
         }
     }
+#pragma mark IUCollection
     else if ([iu isKindOfClass:[IUCollection class]]){
         IUCollection *iuCollection = (IUCollection*)iu;
         if (_rule == IUCompileRuleDjango ) {
@@ -357,10 +359,13 @@
         [code appendFormat:@"</div>"];
         
     }
+#pragma mark IUTextFeild
     
     else if ([iu isKindOfClass:[IUTextField class]]){
-        [code appendFormat:@"<input %@ ></input>", [self HTMLAttributes:iu]];
+        [code appendFormat:@"<input %@ >", [self HTMLAttributes:iu]];
     }
+    
+#pragma mark IUTextView
     
     else if ([iu isKindOfClass:[IUTextView class]]){
         [code appendFormat:@"<textarea %@ ></textarea>", [self HTMLAttributes:iu]];
@@ -532,6 +537,18 @@
         [code appendFormat:@"</div>"];
         
     }
+#pragma mark IUTextFeild
+    
+    else if ([iu isKindOfClass:[IUTextField class]]){
+        [code appendFormat:@"<input %@ >", [self HTMLAttributes:iu]];
+    }
+    
+#pragma mark IUTextView
+    
+    else if ([iu isKindOfClass:[IUTextView class]]){
+        [code appendFormat:@"<textarea %@ ></textarea>", [self HTMLAttributes:iu]];
+    }
+
 #pragma mark IUBox
     else if ([iu isKindOfClass:[IUBox class]]) {
         [code appendString:[self editorHTMLAsBOX:iu]];
@@ -908,6 +925,10 @@
                 [dict putTag:@"text-align" string:alignText];
             }
         }
+        else{
+            [dict putTag:@"line-height" string:@"initial"];
+        }
+
 
     }
     //end of else (not hover)
@@ -1005,6 +1026,21 @@
 
         NSData *data = [NSJSONSerialization dataWithJSONObject:iuCollection.responsiveSetting options:0 error:nil];
         [retString appendFormat:@" responsive=%@ defaultItemCount=%ld",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding], iuCollection.defaultItemCount];
+    }
+    else if ([iu isKindOfClass:[IUTextField class]]){
+        IUTextField *iuTextField = (IUTextField *)iu;
+        if(iuTextField.formName){
+            [retString appendFormat:@" form=\"%@\"",iuTextField.formName];
+        }
+        if(iuTextField.placeholder){
+            [retString appendFormat:@" placeholder=\"%@\"",iuTextField.placeholder];
+        }
+        if(iuTextField.inputValue){
+            [retString appendFormat:@" value=\"%@\"",iuTextField.inputValue];
+        }
+        if(iuTextField.type == IUTextFieldTypePassword){
+            [retString appendFormat:@" type=\"password\""];
+        }
     }
 
     return retString;

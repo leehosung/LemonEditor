@@ -10,6 +10,10 @@
 
 @interface LMPropertyIUTextFieldVC ()
 @property (weak) IBOutlet NSTextField *nameTF;
+@property (weak) IBOutlet NSTextField *placeholderTF;
+@property (weak) IBOutlet NSTextField *valueTF;
+@property (weak) IBOutlet NSMatrix *typeMatrix;
+
 
 @end
 
@@ -25,7 +29,10 @@
 }
 
 - (void)awakeFromNib{
-    [_nameTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"formName"] options:nil];
+    [_nameTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"formName"] options:IUBindingDictNotRaisesApplicable];
+    [_placeholderTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"placeholder"] options:IUBindingDictNotRaisesApplicable];
+    [_valueTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"inputValue"] options:IUBindingDictNotRaisesApplicable];
+    [_typeMatrix bind:NSSelectedIndexBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"type"] options:IUBindingDictNotRaisesApplicable];
 }
 
 @end

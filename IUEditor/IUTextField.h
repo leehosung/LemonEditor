@@ -8,6 +8,16 @@
 
 #import "IUBox.h"
 
+typedef enum{
+    IUTextFieldTypeDefault,
+    IUTextFieldTypePassword,
+}IUTextFieldType;
+
 @interface IUTextField : IUBox
-@property NSString  *formName;
+
+@property (nonatomic) NSString  *formName;
+@property (nonatomic) NSString  *placeholder;
+@property (nonatomic) NSString  *inputValue;
+@property (nonatomic) IUTextFieldType type;
+
 @end
