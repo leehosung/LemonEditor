@@ -214,6 +214,19 @@
     [self.controller trySetSelectedObjectsByIdentifiers:array];
 }
 
+- (void)removeSelectedIU:(NSString *)IU{
+    if(IU == nil){
+        return;
+    }
+    if([self.controller.selectedIdentifiers containsObject:IU] == NO){
+        return;
+    }
+    
+    NSMutableArray *selectArray = [self.controller.selectedIdentifiers mutableCopy];
+    [selectArray removeObject:IU];
+    [self.controller trySetSelectedObjectsByIdentifiers:selectArray];
+}
+
 - (void)setSelectedIU:(NSString *)IU{
     if(IU == nil){
         return;

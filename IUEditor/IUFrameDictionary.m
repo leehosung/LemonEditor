@@ -295,6 +295,10 @@
     }
 }
 
+- (NSRect)frameOfIU:(NSString *)IU{
+    return [[_dict objectForKey:IU] rectValue];
+}
+
 #pragma mark find same size
 #if 0
 - (NSArray *)sameSize:(NSString *)key type:(IUFrameLine)type{
