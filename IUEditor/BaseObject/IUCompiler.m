@@ -883,7 +883,7 @@
             [dict putTag:@"box-shadow" string:[NSString stringWithFormat:@"%ldpx %ldpx %ldpx %ldpx %@", hOff, vOff, blur, spread, colorString]];
         }
         
-        if(obj.shouldEditText == YES){
+        if(obj.shouldEditText == YES || [obj isKindOfClass:[IUTextField class]] || [obj isKindOfClass:[IUTextView class]]){
             value = cssTagDict[IUCSSTagFontName];
             if(value){
                 NSString *font=cssTagDict[IUCSSTagFontName];
