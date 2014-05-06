@@ -1,28 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyBorderVC">
             <connections>
                 <outlet property="borderBottomColorWell" destination="gj9-l1-xeC" id="BaQ-ZY-IAb"/>
+                <outlet property="borderBottomStepper" destination="7Ao-Py-il5" id="aX3-PT-tyn"/>
                 <outlet property="borderBottomTF" destination="xHi-NC-1af" id="3gB-Rf-oNx"/>
                 <outlet property="borderColorWell" destination="Bx6-hg-VhV" id="DZh-uv-tTg"/>
-                <outlet property="borderContentV" destination="LJs-io-JRl" id="8L6-nN-rFl"/>
                 <outlet property="borderLeftColorWell" destination="FRe-yY-GmB" id="zDm-i1-POx"/>
+                <outlet property="borderLeftStepper" destination="zuT-O8-DNc" id="n8W-bQ-jUS"/>
                 <outlet property="borderLeftTF" destination="9ho-jI-YY6" id="Ba3-Gi-q2D"/>
                 <outlet property="borderRadiusBottomLeft" destination="2WC-gk-47e" id="cVm-ac-yu0"/>
+                <outlet property="borderRadiusBottomLeftStepper" destination="KtQ-S2-OfM" id="vec-KI-LnU"/>
                 <outlet property="borderRadiusBottomLeftTF" destination="2WC-gk-47e" id="8gr-LV-2oy"/>
+                <outlet property="borderRadiusBottomRightStepper" destination="x9e-kL-Xjv" id="6fW-rh-mSj"/>
                 <outlet property="borderRadiusBottomRightTF" destination="4em-hr-cgq" id="tqa-WQ-FJ1"/>
+                <outlet property="borderRadiusStepper" destination="dn2-GB-dsR" id="2Lk-SO-Pam"/>
                 <outlet property="borderRadiusTF" destination="ZJ9-1e-ySj" id="9qw-CH-bQF"/>
+                <outlet property="borderRadiusTopLeftStepper" destination="Aqx-yn-FIK" id="9KC-Ty-4gA"/>
                 <outlet property="borderRadiusTopLeftTF" destination="uMd-ZN-vr7" id="Uev-2N-UGi"/>
+                <outlet property="borderRadiusTopRightStepper" destination="LUP-A5-LCd" id="521-Cu-dWj"/>
                 <outlet property="borderRadiusTopRightTF" destination="Pcy-BM-GwJ" id="8RE-eb-6LM"/>
                 <outlet property="borderRightColorWell" destination="hd3-du-ZEe" id="lYp-Xk-zf9"/>
+                <outlet property="borderRightStepper" destination="VB3-Lx-jM9" id="Qic-4c-yby"/>
                 <outlet property="borderRightTF" destination="t8x-MP-oQs" id="ZXn-IF-JFx"/>
+                <outlet property="borderStepper" destination="AwO-9V-rNg" id="PXZ-QZ-MEI"/>
                 <outlet property="borderTF" destination="eQk-yr-3Le" id="cMz-Vp-I5d"/>
-                <outlet property="borderTitleV" destination="4Qf-r2-GGk" id="t8c-89-oDR"/>
                 <outlet property="borderTopColorWell" destination="zdN-bv-ZAE" id="YJZ-gr-ac7"/>
+                <outlet property="borderTopStepper" destination="nzs-yg-0bZ" id="6mp-BP-3BT"/>
                 <outlet property="borderTopTF" destination="zPV-Mp-FE9" id="sI5-4t-2Xh"/>
                 <outlet property="view" destination="ixd-XM-bjF" id="bpw-cX-7AL"/>
             </connections>
@@ -65,6 +73,9 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="18" id="yMe-M4-XNQ"/>
                                 </constraints>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="clickBorderColorWell:" target="-2" id="w9c-8Y-rlM"/>
+                                </connections>
                             </colorWell>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eQk-yr-3Le" userLabel="borderTF">
                                 <rect key="frame" x="112" y="9" width="30" height="18"/>
@@ -79,6 +90,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
+                                    <action selector="clickBorderTotalSize:" target="-2" id="NBy-jY-rXK"/>
                                     <outlet property="delegate" destination="-2" id="ect-KD-riS"/>
                                 </connections>
                             </textField>
@@ -90,6 +102,9 @@
                                     <constraint firstAttribute="width" constant="9" id="pRm-qt-Blf"/>
                                 </constraints>
                                 <stepperCell key="cell" controlSize="mini" continuous="YES" alignment="left" maxValue="100" id="nyU-Df-Kfx"/>
+                                <connections>
+                                    <action selector="clickBorderTotalSize:" target="-2" id="BUf-jC-xZ9"/>
+                                </connections>
                             </stepper>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UKb-8E-g0h">
                                 <rect key="frame" x="85" y="11" width="26" height="14"/>
@@ -117,6 +132,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
+                                    <action selector="clickBorderRadiusTotalSize:" target="-2" id="mwE-D4-61M"/>
                                     <outlet property="delegate" destination="-2" id="LXl-6b-W2D"/>
                                 </connections>
                             </textField>
@@ -128,6 +144,9 @@
                                     <constraint firstAttribute="height" constant="15" id="bm0-a2-9cm"/>
                                 </constraints>
                                 <stepperCell key="cell" controlSize="mini" continuous="YES" alignment="left" maxValue="100" id="joi-36-P9L"/>
+                                <connections>
+                                    <action selector="clickBorderRadiusTotalSize:" target="-2" id="UU8-7c-C7E"/>
+                                </connections>
                             </stepper>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rjf-EA-9xh">
                                 <rect key="frame" x="161" y="11" width="39" height="14"/>
@@ -143,7 +162,7 @@
                                 </textFieldCell>
                             </textField>
                             <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="59w-c9-pfX">
-                                <rect key="frame" x="6" y="0.0" width="264" height="5"/>
+                                <rect key="frame" x="6" y="0.0" width="264" height="9"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

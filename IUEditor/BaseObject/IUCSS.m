@@ -55,11 +55,6 @@
 //use css frame dict, and update affecting tag dictionary
 -(void)setValue:(id)value forTag:(IUCSSTag)tag forWidth:(NSInteger)width{
     if ([_delegate CSSShouldChangeValue:value forTag:tag forWidth:width]){
-        //Border계열일경우, AssembledTagDictionary 전체를 바꾸는 신호를 내보내서 Border Collection정보를 받아옴
-        if ([tag isSameTag:IUCSSTagBorderTopWidth] || [tag isSameTag:IUCSSTagBorderLeftWidth] || [tag isSameTag:IUCSSTagBorderRightWidth] || [tag isSameTag:IUCSSTagBorderBottomWidth]
-        ) {
-            [self willChangeValueForKey:@"assembledTagDictionary"];
-        }
         NSMutableDictionary *cssDict = _cssFrameDict[@(width)];
         if (cssDict == nil) {
             cssDict = [NSMutableDictionary dictionary];
@@ -70,15 +65,8 @@
             [_assembledTagDictionaryForEditWidth removeTag:tag];
         }
         else {
-            if ([tag isSameTag:IUCSSTagBorderTopWidth] || [tag isSameTag:IUCSSTagBorderLeftWidth] || [tag isSameTag:IUCSSTagBorderRightWidth] ) {
-                int v = [value intValue];
-                cssDict[tag] = @(v);
-                [_assembledTagDictionaryForEditWidth setObject:@(v) forKey:tag];
-            }
-            else {
-                cssDict[tag] = value;
-                [_assembledTagDictionaryForEditWidth setObject:value forKey:tag];
-            }
+            cssDict[tag] = value;
+            [_assembledTagDictionaryForEditWidth setObject:value forKey:tag];
         }
         
         if ([tag isFrameTag] == NO) {
@@ -90,9 +78,6 @@
             }
         }
         
-        if ([tag isSameTag:IUCSSTagBorderTopWidth] || [tag isSameTag:IUCSSTagBorderLeftWidth] || [tag isSameTag:IUCSSTagBorderRightWidth] || [tag isSameTag:IUCSSTagBorderBottomWidth]) {
-            [self didChangeValueForKey:@"assembledTagDictionary"];
-        }
     }
 }
 
