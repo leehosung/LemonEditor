@@ -603,6 +603,7 @@
 }
 
 - (DOMHTMLDivElement *)divParentElementOfElement:(DOMElement *)element{
+    assert(element != nil);
     if([element isKindOfClass:[DOMHTMLDivElement class]]){
         return (DOMHTMLDivElement *)element;
     }

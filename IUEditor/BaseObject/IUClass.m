@@ -32,5 +32,9 @@
     return NO;
 }
 
+-(IUBox*)parent{
+    return nil;
+}
+
 
 @end

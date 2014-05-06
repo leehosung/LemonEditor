@@ -1008,6 +1008,7 @@
         [className appendString:str];
         [className appendString:@" "];
     }
+    [className appendFormat:@" %@", iu.htmlID];
     [className trim];
     [retString appendFormat:@" class='%@'", className];
 
