@@ -373,7 +373,8 @@
 #pragma mark IUTextView
     
     else if ([iu isKindOfClass:[IUTextView class]]){
-        [code appendFormat:@"<textarea %@ >%@</textarea>", [self HTMLAttributes:iu], ((IUTextView *)iu).inputValue];
+        NSString *inputValue = [[(IUTextView *)iu inputValue] length] ? [(IUTextView *)iu inputValue] : @"";
+        [code appendFormat:@"<textarea %@ >%@</textarea>", [self HTMLAttributes:iu], inputValue];
     }
     
 #pragma mark IUBox
@@ -554,9 +555,10 @@
     }
     
 #pragma mark IUTextView
-    
+
     else if ([iu isKindOfClass:[IUTextView class]]){
-        [code appendFormat:@"<textarea %@ >%@</textarea>", [self HTMLAttributes:iu], ((IUTextView *)iu).inputValue];
+        NSString *inputValue = [[(IUTextView *)iu inputValue] length] ? [(IUTextView *)iu inputValue] : @"";
+        [code appendFormat:@"<textarea %@ >%@</textarea>", [self HTMLAttributes:iu], inputValue];
     }
 
 #pragma mark IUImport
