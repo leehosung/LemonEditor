@@ -529,16 +529,19 @@
 {
     NSMutableString *innerCSSHTML = [NSMutableString stringWithString:@"\n"];
     NSString *trimmedInnerCSSHTML = [innerCSSText  stringByTrim];
-    NSArray *cssRuleList = [trimmedInnerCSSHTML componentsSeparatedByCharactersInSet:
-                            [NSCharacterSet characterSetWithCharactersInString:@"#"]];
+    NSArray *cssRuleList = [trimmedInnerCSSHTML componentsSeparatedByString:@"\n"];
+
+//    NSArray *cssRuleList = [trimmedInnerCSSHTML componentsSeparatedByCharactersInSet:
+  //                          [NSCharacterSet characterSetWithCharactersInString:@"."]];
 
     for(NSString *rule in cssRuleList){
         if(rule.length == 0){
             continue;
         }
          NSString *ruleID = [self cssIDInCSSRule:rule];
-        if([ruleID isEqualToString:iuID] == NO){
-            [innerCSSHTML appendString:[NSString stringWithFormat:@"\t#%@\n", [rule stringByTrim]]];
+        NSString *modifiedIUID = [@"." stringByAppendingString:iuID];
+        if([ruleID isEqualToString:modifiedIUID] == NO){
+            [innerCSSHTML appendString:[NSString stringWithFormat:@"\t%@\n", [rule stringByTrim]]];
         }
     }
     
