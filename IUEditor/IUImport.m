@@ -25,6 +25,7 @@
 
 - (void)setPrototypeClass:(IUClass *)prototypeClass{
     [_m_children removeObject:_prototypeClass];
+    [prototypeClass.referenceImports addObject:self];
 //    [self.delegate IURemoved:_prototypeClass.htmlID];
 
     [_m_children addObject:prototypeClass];

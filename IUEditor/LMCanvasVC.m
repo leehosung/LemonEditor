@@ -98,7 +98,7 @@
 - (void)makeNewIU:(IUBox *)newIU atPoint:(NSPoint)point atIU:(NSString *)parentIUID{
     
     IUBox *parentIU = [self.controller IUBoxByIdentifier:parentIUID];
-    NSPoint position = [self distanceFromIU:parentIU.htmlID toPointFromWebView:point];
+    NSPoint position = [self distanceFromIU:parentIUID toPointFromWebView:point];
         
     //postion을 먼저 정한 후에 add 함
     [newIU setPosition:position];
@@ -358,6 +358,12 @@
     
 }
 
+- (DOMNodeList *)getHTMLElementsByClassName:(NSString *)className{
+    DOMHTMLElement *bodyElement = (DOMHTMLElement *)[(DOMNodeList *)[self.DOMDoc getElementsByTagName:@"body"] item:0];
+    DOMNodeList *list = [bodyElement getElementsByClassName:className];
+    return list;
+}
+
 - (NSString *)tagWithHTML:(NSString *)html{
    NSString *incompleteTag = [html componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]][0];
     NSString *tag = [incompleteTag componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]][1];
@@ -385,6 +391,9 @@
     else{
         //insert html
         DOMHTMLElement *selectHTMLElement = [self getHTMLElementbyID:parentID];
+        if (selectHTMLElement == nil) {
+            return;
+        }
         DOMHTMLElement *newElement = (DOMHTMLElement *)[self.DOMDoc createElement:[self tagWithHTML:html]];
         [selectHTMLElement appendChild:newElement];
         
@@ -394,6 +403,22 @@
         if([iu isKindOfClass:[IUCarousel class]]){
             [[self webView] insertNewCarousel:identifier];
         }
+        /*        //insert html
+         DOMNodeList *list = [self getHTMLElementsByClassName:parentID];
+         unsigned int listCount = [list length];
+         for(unsigned int i=0; i<listCount; i++){
+         DOMHTMLElement *selectHTMLElement = (DOMHTMLElement *)[list item:i];
+         
+         DOMHTMLElement *newElement = (DOMHTMLElement *)[self.DOMDoc createElement:[self tagWithHTML:html]];
+         [selectHTMLElement appendChild:newElement];
+         
+         [newElement setOuterHTML:html];
+         
+         IUBox *iu = [_controller IUBoxByIdentifier:identifier];
+         if([iu isKindOfClass:[IUCarousel class]]){
+         [[self webView] insertNewCarousel:identifier];
+         }
+*/
     }
     
     JDDebugLog(@"%@:%@", identifier, html);
