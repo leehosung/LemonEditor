@@ -106,20 +106,11 @@
     [css appendTabAndString:@"<style id=default>"];
     [css appendNewline];
     [css appendTabAndString:[self cssSourceForIU:document width:IUCSSMaxViewPortWidth]];
-    for (IUBox *obj in document.allChildren) {
-        if ([obj.document isKindOfClass:[IUClass class]]){
-            continue;
-        }
+    
+    NSSet *districtChildren = [NSSet setWithArray:document.allChildren];
+
+    for (IUBox *obj in districtChildren) {
         [css appendTabAndString:[self cssSourceForIU:obj width:IUCSSMaxViewPortWidth]];
-        if ([obj isKindOfClass:[IUImport class]]) {
-            //add allchildren of identifier
-            for (IUBox *importChild in obj.allChildren) {
-                NSString *cssStr = [self cssSourceForIU:importChild width:IUCSSMaxViewPortWidth];
-                NSString *cssStrModified = [cssStr stringByReplacingOccurrencesOfString:@"#" withString:[NSString stringWithFormat:@"#%@__", obj.htmlID]];
-                [css appendTabAndString:cssStrModified];
-            }
-            [css appendTabAndString:[self cssSourceForIU:document width:IUCSSMaxViewPortWidth]];
-        }
     }
     [css appendString:@"</style>"];
     
@@ -136,7 +127,9 @@
         [css appendNewline];
         
         [css appendTabAndString:[self cssSourceForIU:document width:size]];
-        for (IUBox *obj in document.allChildren) {
+        NSSet *districtChildren = [NSSet setWithArray:document.allChildren];
+        
+        for (IUBox *obj in districtChildren) {
             [css appendTabAndString:[self cssSourceForIU:obj width:size]];
         }
         
@@ -208,14 +201,14 @@
 
 -(NSString*)cssSourceForIU:(IUBox*)iu width:(int)width{
     NSMutableString *css = [NSMutableString string];
-    [css appendString:[NSString stringWithFormat:@"#%@ {", iu.htmlID]];
+    [css appendString:[NSString stringWithFormat:@".%@ {", iu.htmlID]];
     [css appendString:[self CSSContentFromAttributes:[iu CSSAttributesForWidth:width] ofClass:iu isHover:NO]];
     [css appendString:@"}"];
     [css appendNewline];
     
     NSString *hoverCSS = [self CSSContentFromAttributes:[iu CSSAttributesForWidth:width] ofClass:iu isHover:YES];
     if ([hoverCSS length]){
-        [css appendTabAndString:[NSString stringWithFormat:@"#%@:hover {", iu.htmlID]];
+        [css appendTabAndString:[NSString stringWithFormat:@".%@:hover {", iu.htmlID]];
         [css appendString:hoverCSS];
         [css appendString:@"}"];
         [css appendNewline];
