@@ -411,6 +411,7 @@
 
 -(NSString *)editorHTML:(IUBox*)iu{
     NSMutableString *code = [NSMutableString string];
+#pragma mark IUPage
     if ([iu isKindOfClass:[IUPage class]]) {
         IUPage *page = (IUPage*)iu;
         if (page.background) {
@@ -505,7 +506,7 @@
          background-size:20%%;\
          background-repeat:no-repeat; \
          background-position:center; \
-         position:absolute;  width:100%%; height:100%%; \">", videoPlayImagePath];
+         position:absolute;  width:100%%; height:100%%; \"></div>", videoPlayImagePath];
         
         [code appendNewline];
         [code appendString:@"</div>"];

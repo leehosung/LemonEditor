@@ -345,7 +345,7 @@
 - (void)movePosition:(NSPoint)point withParentSize:(NSSize)parentSize{
     
     //Set Pixel
-    if([self hasX]){
+    if([self hasX] && [self enableXUserInput]){
         NSInteger currentX = originalPoint.x + point.x;
         
         [_css setValue:@(currentX) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagX]];
@@ -361,7 +361,7 @@
         }
     }
     
-    if([self hasY]){
+    if([self hasY] && [self enableYUserInput]){
         
         NSInteger currentY = originalPoint.y + point.y;
         [_css setValue:@(currentY) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagY]];
@@ -414,7 +414,7 @@
 }
 
 - (void)increaseSize:(NSSize)size withParentSize:(NSSize)parentSize{
-    if([self hasWidth]){
+    if([self hasWidth] && [self enableWidthUserInput]){
         NSInteger currentWidth = originalSize.width;
         currentWidth += size.width;
         [_css setValue:@(currentWidth) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagWidth]];
@@ -427,7 +427,7 @@
         
      
     }
-    if([self hasHeight]){
+    if([self hasHeight] && [self enableHeightUserInput]){
         NSInteger currentHeight = originalSize.height;
         currentHeight += size.height;
         [_css setValue:@(currentHeight) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagHeight]];
@@ -571,5 +571,23 @@
 - (id)valueForUndefinedKey:(NSString *)key{
     return nil;
 }
+
+
+#pragma mark -
+#pragma mark user input
+
+- (BOOL)enableXUserInput{
+    return YES;
+}
+- (BOOL)enableYUserInput{
+    return YES;
+}
+- (BOOL)enableWidthUserInput{
+    return YES;
+}
+- (BOOL)enableHeightUserInput{
+    return YES;
+}
+
 
 @end
