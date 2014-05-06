@@ -379,7 +379,11 @@
     if (iu.link) {
         NSString *linkURL = iu.link;
         if ([iu.link isHTTPURL] == NO) {
-            linkURL = [NSString stringWithFormat:@"./%@.html", iu.link];
+            if(iu.divLink){
+                linkURL = [NSString stringWithFormat:@"./%@.html#%@", iu.link, iu.divLink];
+            }else{
+                linkURL = [NSString stringWithFormat:@"./%@.html", iu.link];
+            }
         }
         code = [NSMutableString stringWithFormat:@"<a href='%@'>%@</a>", linkURL, code];
     }

@@ -479,6 +479,9 @@
     _link = link;
 //    [self.delegate IU:self.htmlID setLink:link];
 }
+-(void)setDivLink:(NSString *)divLink{
+    _divLink = divLink;
+}
 
 -(void)dealloc{
     [_identifierManager removeIdentifier:self.htmlID];

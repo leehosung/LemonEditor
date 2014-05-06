@@ -102,7 +102,7 @@
 - (void)insertImage:(NSString *)imageName;
 
 
-@property (nonatomic, copy) NSString *link;
+@property (nonatomic, copy) NSString *link, *divLink;
 @property (nonatomic, copy) NSString *textVariable;
 
 -(BOOL)hasX;
