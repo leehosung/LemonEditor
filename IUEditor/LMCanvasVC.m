@@ -421,7 +421,7 @@
 -(void)IU:(NSString*)identifier CSSUpdated:(NSString*)css forWidth:(NSInteger)width{
     [JDLogUtil log:IULogSource key:@"css" string:css];
     
-    NSString *cssText = [NSString stringWithFormat:@"#%@{%@}", identifier, css];
+    NSString *cssText = [NSString stringWithFormat:@".%@{%@}", identifier, css];
     if(width == IUCSSMaxViewPortWidth){
         //default setting
         [self setIUStyle:cssText withID:identifier];
@@ -654,8 +654,16 @@
         return;
     }
     
+    
     for(IUBox *obj in self.controller.selectedObjects){
-        NSSize parentSize = [[self webView] parentBlockElementSize:obj.htmlID];
+        NSSize parentSize;
+        if (self.controller.importIUInSelectionChain){
+            NSString *modifiedHTMLID = [NSString stringWithFormat:@"%@__%@",self.controller.importIUInSelectionChain.htmlID, obj.htmlID];
+            parentSize = [[self webView] parentBlockElementSize:modifiedHTMLID];
+        }
+        else {
+            parentSize = [[self webView] parentBlockElementSize:obj.htmlID];
+        }
 
         /*
         if([frameDict isGuidePoint:totalPoint]){
