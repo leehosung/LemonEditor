@@ -28,6 +28,4 @@
 -(NSArray*)widthWithCSS;
 -(IUBox *)selectableIUAtPoint:(CGPoint)point;
 
-
-
 @end

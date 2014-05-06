@@ -24,10 +24,16 @@
 }
 
 - (void)setPrototypeClass:(IUClass *)prototypeClass{
-    [self removeIU:_prototypeClass];
+    [_m_children removeObject:_prototypeClass];
+//    [self.delegate IURemoved:_prototypeClass.htmlID];
+
+    [_m_children addObject:prototypeClass];
     _prototypeClass = prototypeClass;
     if (_prototypeClass) {
-        [self addIU:_prototypeClass error:nil];
+        [self.delegate IU:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
+        for (IUBox *iu in [prototypeClass.allChildren arrayByAddingObject:prototypeClass]) {
+            [self.delegate IU:[self.htmlID stringByAppendingFormat:@"__%@", iu.htmlID] CSSUpdated:[iu cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+        }
     }
 }
 
@@ -35,15 +41,6 @@
     return NO;
 }
 
-
--(BOOL)addIU:(IUBox *)iu error:(NSError**)error{
-    BOOL retValue = [super addIU:iu error:error];
-    
-    IUClass *classIU = (IUClass *)iu;
-    [classIU.referenceArray addObject:self];
-    
-    return retValue;
-}
 
 
 @end

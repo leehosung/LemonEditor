@@ -20,4 +20,12 @@
     return returnValue;
 }
 
+- (BOOL)containsIndexPath:(NSIndexPath*)aIndexPath{
+    NSIndexPath *compareIndexPath = [NSIndexPath indexPathWithIndexPath:self length:aIndexPath.length];
+    if ([aIndexPath isEqualTo:compareIndexPath]) {
+        return YES;
+    }
+    return NO;
+}
+
 @end

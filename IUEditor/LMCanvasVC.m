@@ -228,11 +228,11 @@
     [self.controller trySetSelectedObjectsByIdentifiers:selectArray];
 }
 
-- (void)setSelectedIU:(NSString *)IU{
-    if(IU == nil){
+- (void)setSelectedIU:(NSString *)identifier{
+    if(identifier == nil){
         return;
     }
-    NSArray *addArray = [NSArray arrayWithObject:IU];
+    NSArray *addArray = [NSArray arrayWithObject:identifier];
     [self.controller trySetSelectedObjectsByIdentifiers:addArray];
 
 }

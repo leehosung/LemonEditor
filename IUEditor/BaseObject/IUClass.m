@@ -19,19 +19,18 @@
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self =  [super initWithCoder:aDecoder];
     if(self){
-        [aDecoder decodeToObject:self withProperties:[[IUClass class] propertiesWithOutProperties:@[@"referenceArray"]]];
-        _referenceArray = [[aDecoder decodeObjectForKey:@"referenceArray"] mutableCopy];
+        _referenceImports = [[aDecoder decodeObjectForKey:@"referenceImport"] mutableCopy];
     }
     return self;
 }
 -(void)encodeWithCoder:(NSCoder *)aCoder{
     [super encodeWithCoder:aCoder];
-    [aCoder encodeFromObject:self withProperties:[[IUClass class] properties]];
-    
+    [aCoder encodeObject:_referenceImports forKey:@"referenceImport"];
 }
 
 -(BOOL)shouldEditText{
     return NO;
 }
+
 
 @end

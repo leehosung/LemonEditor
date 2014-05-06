@@ -17,7 +17,6 @@
 #import "IUTextManager.h"
 
 @interface IUBox()
-@property NSMutableArray *m_children;
 @end
 
 @implementation IUBox{
