@@ -70,21 +70,21 @@
     [self addObserver:self forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagPercentWidth] options:0 context:nil];
     [self addObserver:self forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagPercentHeight] options:0 context:nil];
     
-    [_xTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagXUnit] options:nil];
+    [_xTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagXUnit] options:IUBindingDictNotRaisesApplicable];
     [_pxTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagXUnit] options:percentHiddeBindingOption];
-    [_yTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagYUnit] options:nil];
+    [_yTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagYUnit] options:IUBindingDictNotRaisesApplicable];
     [_pyTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagYUnit] options:percentHiddeBindingOption];
-    [_wTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagWidthUnit] options:nil];
+    [_wTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagWidthUnit] options:IUBindingDictNotRaisesApplicable];
     [_pwTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagWidthUnit] options:percentHiddeBindingOption];
-    [_hTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagHeightUnit] options:nil];
+    [_hTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagHeightUnit] options:IUBindingDictNotRaisesApplicable];
     [_phTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagHeightUnit] options:percentHiddeBindingOption];
 
 
-    [_flowB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"flow"] options:nil];
-    [_flowB bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"flowChangeable"] options:nil];
+    [_flowB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"flow"] options:IUBindingDictNotRaisesApplicable];
+    [_flowB bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"flowChangeable"] options:IUBindingDictNotRaisesApplicable];
     
-    [_rightB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"floatRight"] options:nil];
-    [_rightB bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"floatRightChangeable"] options:nil];
+    [_rightB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"floatRight"] options:IUBindingDictNotRaisesApplicable];
+    [_rightB bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"floatRightChangeable"] options:IUBindingDictNotRaisesApplicable];
 
     
     NSDictionary *bindingOption = [NSDictionary
