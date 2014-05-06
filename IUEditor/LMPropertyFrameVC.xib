@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyFrameVC">
             <connections>
+                <outlet property="centerB" destination="yOx-Wd-d8w" id="taV-ht-o8r"/>
                 <outlet property="contentV" destination="lqf-yQ-SWP" id="y7w-mo-EcP"/>
                 <outlet property="flowB" destination="P5X-KI-ojA" id="kKv-1J-3q3"/>
                 <outlet property="hTF" destination="YN6-me-PMV" id="dQF-5j-WjB"/>
@@ -211,7 +212,7 @@
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
                             </button>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="guM-cE-jfN" userLabel="wTF">
+                            <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="guM-cE-jfN" userLabel="wTF">
                                 <rect key="frame" x="143" y="38" width="50" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="dQA-9Q-k1v">
@@ -341,10 +342,22 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nxh-V5-eJK">
+                            <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nxh-V5-eJK">
                                 <rect key="frame" x="223" y="9" width="53" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Auto" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="F6l-k0-ofK">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="smallSystem"/>
+                                </buttonCell>
+                            </button>
+                            <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yOx-Wd-d8w">
+                                <rect key="frame" x="224" y="38" width="30" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="6hC-LR-fQQ"/>
+                                    <constraint firstAttribute="height" constant="14" id="whQ-IE-oeM"/>
+                                </constraints>
+                                <buttonCell key="cell" type="check" title="C" bezelStyle="regularSquare" imagePosition="left" inset="2" id="GLq-co-PdR">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
@@ -354,6 +367,8 @@
                     <constraints>
                         <constraint firstItem="gfA-7T-7xH" firstAttribute="leading" secondItem="JBO-80-z6h" secondAttribute="trailing" constant="15" id="0Mv-5E-DBo"/>
                         <constraint firstAttribute="bottom" secondItem="gfA-7T-7xH" secondAttribute="bottom" constant="11" id="0eR-Vo-ijX"/>
+                        <constraint firstItem="yOx-Wd-d8w" firstAttribute="centerY" secondItem="guM-cE-jfN" secondAttribute="centerY" id="15i-N3-2dd"/>
+                        <constraint firstItem="yOx-Wd-d8w" firstAttribute="leading" secondItem="nxh-V5-eJK" secondAttribute="leading" id="1oC-3T-DxF"/>
                         <constraint firstItem="Ffo-DO-LqG" firstAttribute="leading" secondItem="lqf-yQ-SWP" secondAttribute="leading" constant="-24" id="2b0-O3-db8"/>
                         <constraint firstItem="Qa9-Z5-Qsd" firstAttribute="top" secondItem="lqf-yQ-SWP" secondAttribute="top" constant="10" id="69G-N1-c9g"/>
                         <constraint firstItem="nyY-Ki-gIn" firstAttribute="leading" secondItem="dWw-2K-3fY" secondAttribute="trailing" constant="4" id="6Oe-Y4-5lf"/>
@@ -369,13 +384,16 @@
                         <constraint firstItem="dWw-2K-3fY" firstAttribute="top" secondItem="lqf-yQ-SWP" secondAttribute="top" constant="11" id="NSs-YU-BRF"/>
                         <constraint firstAttribute="bottom" secondItem="gSS-1I-mW5" secondAttribute="bottom" constant="10" id="PRZ-52-HRW"/>
                         <constraint firstItem="Ffo-DO-LqG" firstAttribute="top" secondItem="dWw-2K-3fY" secondAttribute="bottom" constant="13" id="Wnb-Bk-dF5"/>
+                        <constraint firstItem="yOx-Wd-d8w" firstAttribute="baseline" secondItem="cQP-9t-XWV" secondAttribute="baseline" id="aHV-D0-rOd"/>
                         <constraint firstItem="wIY-3C-wNX" firstAttribute="leading" secondItem="O4g-8k-nkT" secondAttribute="trailing" constant="1" id="bKN-fv-RdW"/>
                         <constraint firstItem="OYS-Ch-QAO" firstAttribute="leading" secondItem="nyY-Ki-gIn" secondAttribute="trailing" constant="1" id="cIs-pd-keS"/>
                         <constraint firstAttribute="bottom" secondItem="oq1-w9-bwR" secondAttribute="bottom" constant="11" id="eZs-dg-Htj"/>
                         <constraint firstItem="cQP-9t-XWV" firstAttribute="top" secondItem="lqf-yQ-SWP" secondAttribute="top" constant="11" id="fk2-AS-nsf"/>
+                        <constraint firstItem="yOx-Wd-d8w" firstAttribute="leading" secondItem="wIY-3C-wNX" secondAttribute="trailing" constant="8" symbolic="YES" id="lIP-Nn-A1c"/>
                         <constraint firstItem="OYS-Ch-QAO" firstAttribute="top" secondItem="lqf-yQ-SWP" secondAttribute="top" constant="10" id="mka-Di-AUf"/>
                         <constraint firstItem="dWw-2K-3fY" firstAttribute="leading" secondItem="lqf-yQ-SWP" secondAttribute="leading" constant="-24" id="rsc-WW-TCn"/>
                         <constraint firstItem="JBO-80-z6h" firstAttribute="leading" secondItem="oq1-w9-bwR" secondAttribute="trailing" constant="1" id="ru4-XD-owE"/>
+                        <constraint firstItem="nxh-V5-eJK" firstAttribute="top" secondItem="yOx-Wd-d8w" secondAttribute="bottom" constant="14" id="tjg-lU-uxF"/>
                         <constraint firstItem="cQP-9t-XWV" firstAttribute="leading" secondItem="OYS-Ch-QAO" secondAttribute="trailing" constant="15" id="wMY-zU-sfB"/>
                         <constraint firstItem="oq1-w9-bwR" firstAttribute="leading" secondItem="Ffo-DO-LqG" secondAttribute="trailing" constant="4" id="zD6-b9-AWG"/>
                     </constraints>

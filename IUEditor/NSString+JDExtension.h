@@ -34,7 +34,6 @@
 - (NSString*)stringByChangeExtension:(NSString*)extension;
 - (NSString*)stringByIndent:(NSUInteger)indent prependIndent:(BOOL)prependIndent;
 - (NSString*)stringByAddingTab;
-- (NSString *)stringByPrependingString:(NSString *)aString;
 
 - (BOOL)isValidEmail;
 #define RGXEmailPattern @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"

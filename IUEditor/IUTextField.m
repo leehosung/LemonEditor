@@ -52,21 +52,21 @@
 
 - (void)setFormName:(NSString *)formName{
     _formName = formName;
-    [self.delegate IU:self.htmlID HTML:self.html withParentID:self.htmlID];
+    [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.htmlID];
 }
 
 - (void)setPlaceholder:(NSString *)placeholder{
     _placeholder = placeholder;
-    [self.delegate IU:self.htmlID HTML:self.html withParentID:self.htmlID];
+    [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.htmlID];
 }
 
 - (void)setInputValue:(NSString *)inputValue{
     _inputValue = inputValue;
-    [self.delegate IU:self.htmlID HTML:self.html withParentID:self.htmlID];
+    [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.htmlID];
 }
 - (void)setType:(IUTextFieldType)type{
     _type = type;
-    [self.delegate IU:self.htmlID HTML:self.html withParentID:self.htmlID];
+    [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.htmlID];
 }
 
 @end

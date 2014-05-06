@@ -50,11 +50,11 @@
 
 - (void)setVideoPath:(NSString *)videoPath{
     _videoPath = videoPath;
-    [self.delegate IU:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
+    [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
 }
 
 - (void)attributesContextDidChange:(NSDictionary *)change{
-    [self.delegate IU:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
+    [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
 }
 
 @end

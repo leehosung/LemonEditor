@@ -37,9 +37,24 @@ function resizeCollection(){
 	});
 }
 
+function reframeCenter(){
+	$('.IUAttrCenter').each(function(){
+		//if flow layout, margin auto
+		//if absolute layout, set left
+		$(this).css('margin', 'auto');
+		var pos = $(this).css('position');
+		if (pos == 'absolute'){
+			var parentW = $(this).parent().width();
+			var myW = $(this).width();
+			$(this).css('left', (parentW-myW)/2 + 'px');
+		}
+    });
+}
+
 
 $(document).ready(function(){
             console.log("ready : iuframe.js");
             resizePageContentHeight();
 			resizeCollection();
+            reframeCenter();
 });

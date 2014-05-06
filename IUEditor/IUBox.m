@@ -171,10 +171,10 @@
     if (delegateEnableLevel == 1) {
         NSString *css = [self cssForWidth:width isHover:isHover];
         if (isHover) {
-            [self.delegate IU:[self.htmlID hoverIdentifier] CSSUpdated:css forWidth:width];
+            [self.delegate IUClassIdentifier:[self.htmlID hoverIdentifier] CSSUpdated:css forWidth:width];
         }
         else {
-            [self.delegate IU:self.htmlID CSSUpdated:css forWidth:width];
+            [self.delegate IUClassIdentifier:self.htmlID CSSUpdated:css forWidth:width];
         }
     }
     else {
@@ -230,14 +230,14 @@
                 NSString *iu_htmlid = [import.htmlID stringByAppendingFormat:@"__%@", iu.htmlID];
                 NSString *originalHTML = iu.html;
                 NSString *replacedHTML = [originalHTML stringByReplacingOccurrencesOfString:@" id=" withString:[NSString stringWithFormat:@" id=%@__", import.htmlID]];
-                [self.delegate IU:iu_htmlid HTML:replacedHTML withParentID:self_htmlID];
+                [self.delegate IUHTMLIdentifier:iu_htmlid HTML:replacedHTML withParentID:self_htmlID];
             }
         }
 
-        [self.delegate IU:iu.htmlID HTML:iu.html withParentID:self.htmlID];
-                [self.delegate IU:iu.htmlID CSSUpdated:[iu cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+        [self.delegate IUHTMLIdentifier:iu.htmlID HTML:iu.html withParentID:self.htmlID];
+        [self.delegate IUClassIdentifier:iu.htmlID CSSUpdated:[iu cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
         for (IUBox *child in iu.children) {
-            [self.delegate IU:child.htmlID CSSUpdated:[child cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+            [self.delegate IUClassIdentifier:child.htmlID CSSUpdated:[child cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
         }
         [_identifierManager addIU:iu];
         [iu bind:@"identifierManager" toObject:self withKeyPath:@"identifierManager" options:nil];
@@ -392,8 +392,8 @@
 }
 
 - (void)updateCSSForEditViewPort{
-    [self.delegate IU:_htmlID CSSUpdated:[self cssForWidth:_css.editWidth isHover:NO] forWidth:_css.editWidth];
-    [self.delegate IU:[_htmlID hoverIdentifier] CSSUpdated:[self cssForWidth:_css.editWidth isHover:YES] forWidth:_css.editWidth];
+    [self.delegate IUClassIdentifier:_htmlID CSSUpdated:[self cssForWidth:_css.editWidth isHover:NO] forWidth:_css.editWidth];
+    [self.delegate IUClassIdentifier:[_htmlID hoverIdentifier] CSSUpdated:[self cssForWidth:_css.editWidth isHover:YES] forWidth:_css.editWidth];
 }
 
 /* 
@@ -482,8 +482,8 @@
 -(void)endGrouping{
     delegateEnableLevel ++;
     for (NSNumber *number in changedCSSWidths) {
-        [self.delegate IU:self.htmlID CSSUpdated:[self cssForWidth:[number intValue] isHover:NO] forWidth:[number intValue]];
-        [self.delegate IU:[self.htmlID hoverIdentifier] CSSUpdated:[self cssForWidth:[number intValue] isHover:YES] forWidth:[number intValue]];
+        [self.delegate IUClassIdentifier:self.htmlID CSSUpdated:[self cssForWidth:[number intValue] isHover:NO] forWidth:[number intValue]];
+        [self.delegate IUClassIdentifier:[self.htmlID hoverIdentifier] CSSUpdated:[self cssForWidth:[number intValue] isHover:YES] forWidth:[number intValue]];
     }
 }
 
@@ -512,13 +512,13 @@
     NSUInteger index = [[self cursor][IUTextCursorLocationIndex] integerValue];
     NSString   *nID =[self cursor][IUTextCursorLocationID];
     
-    [self.delegate IU:self.htmlID textHTML:self.html withParentID:self.parent.htmlID nearestID:nID index:index];
+    [self.delegate IUHTMLIdentifier:self.htmlID textHTML:self.html withParentID:self.parent.htmlID nearestID:nID index:index];
     
     NSMutableDictionary *cssDict = [textManager.css mutableCopy];
     NSDictionary *defaultCSS = cssDict[@(IUCSSMaxViewPortWidth)];
     for (NSString *identifier in defaultCSS) {
         NSString *src = [self.document.compiler fontCSSContentFromAttributes:defaultCSS[identifier]];
-        [self.delegate IU:identifier CSSUpdated:src forWidth:IUCSSMaxViewPortWidth];
+        [self.delegate IUClassIdentifier:identifier CSSUpdated:src forWidth:IUCSSMaxViewPortWidth];
     }
 }
 
@@ -529,7 +529,7 @@
     NSUInteger index = [[self cursor][IUTextCursorLocationIndex] integerValue];
     NSString   *nID =[self cursor][IUTextCursorLocationID];
     
-    [self.delegate IU:self.htmlID textHTML:self.html withParentID:self.parent.htmlID nearestID:nID index:index];
+    [self.delegate IUHTMLIdentifier:self.htmlID textHTML:self.html withParentID:self.parent.htmlID nearestID:nID index:index];
 }
 
 
@@ -538,7 +538,7 @@
     NSUInteger index = [[self cursor][IUTextCursorLocationIndex] integerValue];
     NSString   *nID =[self cursor][IUTextCursorLocationID];
     
-    [self.delegate IU:self.htmlID textHTML:self.html withParentID:self.parent.htmlID nearestID:nID index:index];
+    [self.delegate IUHTMLIdentifier:self.htmlID textHTML:self.html withParentID:self.parent.htmlID nearestID:nID index:index];
 }
 
 
@@ -568,15 +568,32 @@
         [self.css eradicateTag:IUCSSTagY];
     }
     
-    [self.delegate IU:self.htmlID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+    [self.delegate IUClassIdentifier:self.htmlID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
 }
+
+- (BOOL)centerChangeable{
+    return YES;
+}
+
+- (void)setCenter:(BOOL)center{
+    _center = center;
+    if (center) {
+        [self.css eradicateTag:IUCSSTagX];
+        [self.delegate IUClassIdentifier:self.htmlID addClass:@"IUAttrCenter"];
+    }
+    else {
+        [self.delegate IUClassIdentifier:self.htmlID removeClass:@"IUAttrCenter"];
+    }
+    [self.delegate callWebScriptMethod:@"reframeCenter" withArguments:nil];
+}
+
 
 - (void)setFlow:(BOOL)flow{
     _flow = flow;
     [self.css eradicateTag:IUCSSTagX];
     [self.css eradicateTag:IUCSSTagY];
     
-    [self.delegate IU:self.htmlID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+    [self.delegate IUClassIdentifier:self.htmlID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
 }
 
 //iucontroller & inspectorVC sync가 안맞는듯.

@@ -116,16 +116,16 @@
     NSString *activeItemID = [NSString stringWithFormat:@"%@.active", itemID];
     
     if(self.enableColor){
-        [self.delegate IU:itemID CSSUpdated:[self.document.compiler cssContentForIUCarouselPager:self hover:NO] forWidth:IUCSSMaxViewPortWidth];
+        [self.delegate IUClassIdentifier:itemID CSSUpdated:[self.document.compiler cssContentForIUCarouselPager:self hover:NO] forWidth:IUCSSMaxViewPortWidth];
         
-        [self.delegate IU:hoverItemID CSSUpdated:[self.document.compiler cssContentForIUCarouselPager:self hover:YES] forWidth:IUCSSMaxViewPortWidth];
+        [self.delegate IUClassIdentifier:hoverItemID CSSUpdated:[self.document.compiler cssContentForIUCarouselPager:self hover:YES] forWidth:IUCSSMaxViewPortWidth];
         
-        [self.delegate IU:activeItemID CSSUpdated:[self.document.compiler cssContentForIUCarouselPager:self hover:YES] forWidth:IUCSSMaxViewPortWidth];
+        [self.delegate IUClassIdentifier:activeItemID CSSUpdated:[self.document.compiler cssContentForIUCarouselPager:self hover:YES] forWidth:IUCSSMaxViewPortWidth];
     }
     else{
-        [self.delegate IU:itemID CSSRemovedforWidth:IUCSSMaxViewPortWidth];
-        [self.delegate IU:hoverItemID CSSRemovedforWidth:IUCSSMaxViewPortWidth];
-        [self.delegate IU:activeItemID CSSRemovedforWidth:IUCSSMaxViewPortWidth];
+        [self.delegate IUClassIdentifier:itemID CSSRemovedforWidth:IUCSSMaxViewPortWidth];
+        [self.delegate IUClassIdentifier:hoverItemID CSSRemovedforWidth:IUCSSMaxViewPortWidth];
+        [self.delegate IUClassIdentifier:activeItemID CSSRemovedforWidth:IUCSSMaxViewPortWidth];
     }
     
 }
@@ -159,9 +159,9 @@
         arrowID = [NSString stringWithFormat:@"%@_bx-next", self.htmlID];
     }
     if(change){
-        [self.delegate IU:arrowID CSSUpdated:[self.document.compiler cssContentForIUCarouselArrow:self hover:NO location:type] forWidth:IUCSSMaxViewPortWidth];
+        [self.delegate IUClassIdentifier:arrowID CSSUpdated:[self.document.compiler cssContentForIUCarouselArrow:self hover:NO location:type] forWidth:IUCSSMaxViewPortWidth];
     }else{
-        [self.delegate IU:arrowID CSSRemovedforWidth:IUCSSMaxViewPortWidth];
+        [self.delegate IUClassIdentifier:arrowID CSSRemovedforWidth:IUCSSMaxViewPortWidth];
     }
 }
 

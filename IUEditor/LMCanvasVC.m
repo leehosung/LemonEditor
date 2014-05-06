@@ -302,8 +302,10 @@
 
 #pragma mark -
 #pragma mark link attributes
--(void)IU:(NSString *)identifier setLink:(NSString *)link{
-    
+
+//FIXME: HTMLIdentifier 가 아니라 ClassIdentifier로 교체해야함
+-(void)IUHTMLIdentifier:(NSString *)identifier setLink:(NSString *)link{
+
     if(link==nil || link.length == 0){
         //remove link
         [self IURemoveLink:identifier];
@@ -348,6 +350,24 @@
     
 }
 
+-(void)IUClassIdentifier:(NSString *)classIdentifier addClass:(NSString *)className{
+    DOMNodeList *list = [self.DOMDoc.documentElement getElementsByClassName:classIdentifier];
+    for (int i=0; i<list.length; i++) {
+        DOMHTMLElement *node = (DOMHTMLElement*)[list item:i];
+        NSString *currentClass = [node getAttribute:@"class"];
+        [node setAttribute:@"class" value:[currentClass stringByAppendingFormat:@" %@", className]];
+    }
+}
+
+-(void)IUClassIdentifier:(NSString *)classIdentifier removeClass:(NSString *)className{
+    DOMNodeList *list = [self.DOMDoc.documentElement getElementsByClassName:classIdentifier];
+    for (int i=0; i<list.length; i++) {
+        DOMHTMLElement *node = (DOMHTMLElement*)[list item:i];
+        NSString *currentClass = [node getAttribute:@"class"];
+        [node setAttribute:@"class" value:[currentClass stringByReplacingOccurrencesOfString:className withString:@""]];
+    }
+}
+
 
 #pragma mark -
 #pragma mark HTML
@@ -356,12 +376,6 @@
     DOMHTMLElement *selectNode = (DOMHTMLElement *)[self.DOMDoc getElementById:HTMLID];
     return selectNode;
     
-}
-
-- (DOMNodeList *)getHTMLElementsByClassName:(NSString *)className{
-    DOMHTMLElement *bodyElement = (DOMHTMLElement *)[(DOMNodeList *)[self.DOMDoc getElementsByTagName:@"body"] item:0];
-    DOMNodeList *list = [bodyElement getElementsByClassName:className];
-    return list;
 }
 
 - (NSString *)tagWithHTML:(NSString *)html{
@@ -373,15 +387,15 @@
     return tag;
 }
 
--(void)IU:(NSString*)identifier textHTML:(NSString *)html withParentID:(NSString *)parentID nearestID:(NSString *)nID index:(NSUInteger)index{
+-(void)IUHTMLIdentifier:(NSString*)identifier textHTML:(NSString *)html withParentID:(NSString *)parentID nearestID:(NSString *)nID index:(NSUInteger)index{
     
-    [self IU:identifier HTML:html withParentID:parentID];
+    [self IUHTMLIdentifier:identifier HTML:html withParentID:parentID];
     [[self webView] selectTextRange:[self getHTMLElementbyID:nID] index:index];
 
 }
 
 
--(void)IU:(NSString*)identifier HTML:(NSString *)html withParentID:(NSString *)parentID{
+-(void)IUHTMLIdentifier:(NSString*)identifier HTML:(NSString *)html withParentID:(NSString *)parentID{
 
     DOMHTMLElement *currentElement = [self getHTMLElementbyID:identifier];
     if(currentElement){
@@ -430,7 +444,7 @@
 #pragma mark -
 #pragma mark CSS
 
--(void)IU:(NSString *)identifier CSSRemovedforWidth:(NSInteger)width{
+-(void)IUClassIdentifier:(NSString *)identifier CSSRemovedforWidth:(NSInteger)width{
     if(width == IUCSSMaxViewPortWidth){
         //default setting
         [self removeCSSTextWithID:identifier];
@@ -443,7 +457,7 @@
 }
 
 
--(void)IU:(NSString*)identifier CSSUpdated:(NSString*)css forWidth:(NSInteger)width{
+-(void)IUClassIdentifier:(NSString*)identifier CSSUpdated:(NSString*)css forWidth:(NSInteger)width{
     [JDLogUtil log:IULogSource key:@"css" string:css];
     
     NSString *cssText = [NSString stringWithFormat:@".%@{%@}", identifier, css];
