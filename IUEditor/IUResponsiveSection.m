@@ -10,10 +10,54 @@
 
 @implementation IUResponsiveSection
 
+-(id)initWithManager:(IUIdentifierManager*)manager option:(NSDictionary *)option{
+    self = [super initWithManager:manager option:option];
+    if(self){
+        [self.css setValue:@(0) forTag:IUCSSTagXUnit forWidth:IUCSSMaxViewPortWidth];
+        [self.css setValue:@(0) forTag:IUCSSTagYUnit forWidth:IUCSSMaxViewPortWidth];
+        [self.css setValue:@(1) forTag:IUCSSTagWidthUnit forWidth:IUCSSMaxViewPortWidth];
+        [self.css setValue:@(0) forTag:IUCSSTagHeightUnit forWidth:IUCSSMaxViewPortWidth];
+        
+        [self.css setValue:@(100) forTag:IUCSSTagPercentWidth forWidth:IUCSSMaxViewPortWidth];
+        [self.css setValue:@(500) forTag:IUCSSTagHeight forWidth:IUCSSMaxViewPortWidth];
+        [self.css setValue:@(0) forTag:IUCSSTagX forWidth:IUCSSMaxViewPortWidth];
+        [self.css setValue:@(0) forTag:IUCSSTagY forWidth:IUCSSMaxViewPortWidth];
+        
+        self.flow = YES;
+
+
+    }
+    return self;
+}
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    self =  [super initWithCoder:aDecoder];
+    if(self){
+        [aDecoder decodeToObject:self withProperties:[[IUResponsiveSection class] properties]];
+    }
+    return self;
+}
+-(void)encodeWithCoder:(NSCoder *)aCoder{
+    [super encodeWithCoder:aCoder];
+    [aCoder encodeFromObject:self withProperties:[[IUResponsiveSection class] properties]];
+    
+}
+
 -(BOOL)shouldEditText{
     return NO;
 }
 
+-(BOOL)hasX{
+    return NO;
+}
+-(BOOL)hasY{
+    return NO;
+}
+-(BOOL)hasWidth{
+    return NO;
+}
 
+- (BOOL)flowChangeable{
+    return NO;
+}
 
 @end

@@ -117,8 +117,63 @@
                                                     <outlet property="textField" destination="SgW-PA-7Lq" id="K7p-fZ-Mvs"/>
                                                 </connections>
                                             </tableCellView>
-                                            <tableCellView identifier="node" autoresizesSubviews="NO" id="8em-YS-mRf">
+                                            <tableCellView identifier="pagecontentCell" autoresizesSubviews="NO" id="VyE-0e-l9J">
                                                 <rect key="frame" x="0.0" y="26" width="220" height="26"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="baG-Z8-8YR">
+                                                        <rect key="frame" x="8" y="4" width="14" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="18" id="ddh-vY-txW"/>
+                                                            <constraint firstAttribute="width" constant="14" id="gYJ-0o-uv9"/>
+                                                        </constraints>
+                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ic_contents" id="46Z-MH-x2M"/>
+                                                    </imageView>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Ohe-XE-7d4">
+                                                        <rect key="frame" x="27" y="6" width="159" height="14"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="pageContent" id="R0d-id-KWm">
+                                                            <font key="font" size="11" name="LucidaGrande"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="VyE-0e-l9J" name="value" keyPath="objectValue.name" id="q2o-zi-VrX"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="ynI-mD-FdK">
+                                                        <rect key="frame" x="192" y="3" width="20" height="20"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="UQm-d9-CLv"/>
+                                                            <constraint firstAttribute="width" constant="20" id="imO-JF-W6R"/>
+                                                        </constraints>
+                                                        <buttonCell key="cell" type="square" title="+" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" imageScaling="proportionallyDown" inset="2" id="d6u-xi-WhB">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="addSectionBtn:" target="-2" id="jks-5E-eqL"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="centerY" secondItem="ynI-mD-FdK" secondAttribute="centerY" id="6OB-BK-DZW"/>
+                                                    <constraint firstAttribute="centerY" secondItem="baG-Z8-8YR" secondAttribute="centerY" id="7aN-Gq-nTe"/>
+                                                    <constraint firstItem="baG-Z8-8YR" firstAttribute="leading" secondItem="VyE-0e-l9J" secondAttribute="leading" constant="8" id="UaB-Yk-E2j"/>
+                                                    <constraint firstAttribute="centerY" secondItem="Ohe-XE-7d4" secondAttribute="centerY" id="WdS-sL-7X5"/>
+                                                    <constraint firstItem="Ohe-XE-7d4" firstAttribute="leading" secondItem="baG-Z8-8YR" secondAttribute="trailing" constant="7" id="X2O-34-FDd"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ynI-mD-FdK" secondAttribute="trailing" constant="8" id="kNz-ha-yOP"/>
+                                                    <constraint firstItem="ynI-mD-FdK" firstAttribute="leading" secondItem="Ohe-XE-7d4" secondAttribute="trailing" constant="8" id="zPG-TC-QHI"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="imageView" destination="baG-Z8-8YR" id="wXZ-xO-oET"/>
+                                                    <outlet property="textField" destination="Ohe-XE-7d4" id="tjj-0E-5JQ"/>
+                                                </connections>
+                                            </tableCellView>
+                                            <tableCellView identifier="node" autoresizesSubviews="NO" id="8em-YS-mRf">
+                                                <rect key="frame" x="0.0" y="52" width="220" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hBB-Wr-0X9">
@@ -188,8 +243,14 @@
                 <constraint firstItem="7hl-8X-7jj" firstAttribute="leading" secondItem="IoX-Be-25j" secondAttribute="leading" constant="-1" id="bnQ-IG-n1j"/>
             </constraints>
         </customView>
+        <slider verticalHuggingPriority="750" id="gSF-NI-ilk">
+            <rect key="frame" x="0.0" y="0.0" width="96" height="21"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="UmT-Te-jVO"/>
+        </slider>
     </objects>
     <resources>
+        <image name="ic_contents" width="14" height="18"/>
         <image name="ic_page" width="14" height="18"/>
         <image name="stack_carousel" width="14" height="10"/>
     </resources>

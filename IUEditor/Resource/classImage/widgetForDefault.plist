@@ -246,6 +246,22 @@
 		<key>isWidget</key>
 		<false/>
 		<key>className</key>
+		<string>IUResponsiveSection</string>
+		<key>classImage</key>
+		<string>tool_collection</string>
+		<key>navImage</key>
+		<string>stack_collection</string>
+		<key>shortDesc</key>
+		<string>IU Responsive Section</string>
+		<key>longDesc</key>
+		<string></string>
+		<key>widgetClass</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>isWidget</key>
+		<false/>
+		<key>className</key>
 		<string>IUPage</string>
 		<key>navImage</key>
 		<string>ic_page</string>

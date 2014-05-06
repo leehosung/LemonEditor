@@ -10,6 +10,7 @@
 #import "IUController.h"
 #import "IUItem.h"
 #import "IUPageContent.h"
+#import "IUResponsiveSection.h"
 #import "IUDocument.h"
 
 @implementation LMStackOutlineView
@@ -66,7 +67,10 @@
     NSImage *classImage = [self currentImage:[representObject className]];
     
     NSTableCellView *cell;
-    if( item.indexPath.length < 3 ){
+    if([representObject isKindOfClass:[IUPageContent class]]){
+        cell= [outlineView makeViewWithIdentifier:@"pagecontentCell" owner:self];
+    }
+    else if( item.indexPath.length < 3 ){
         cell= [outlineView makeViewWithIdentifier:@"cell" owner:self];
     }
     else{
@@ -74,6 +78,7 @@
     }
     [cell.imageView setImage:classImage];
     [cell.imageView setImageScaling:NSImageScaleProportionallyDown];
+
     return cell;
 }
 
@@ -166,10 +171,32 @@
     }
     return NO;
     
-    //    else if([item isKindOfClass:<#(__unsafe_unretained Class)#>])
-    
-    return NO;
 }
 
+- (IBAction)addSectionBtn:(id)sender {
+    IUBox *parent;
+    
+    for(IUBox *obj in _document.children){
+        if([obj isKindOfClass:[IUPageContent class]]){
+            parent = obj;
+        }
+    }
+    if(parent == nil){
+        return;
+    }
+    
+    IUBox *newIU = [[IUResponsiveSection alloc] initWithManager:parent.identifierManager option:nil];
+    if (newIU == nil) {
+        assert(0);
+    }
+    
+    newIU.htmlID = [parent.identifierManager requestNewIdentifierWithKey:@"Section"];
+    newIU.name = newIU.htmlID;
+    
+    [parent addIU:newIU error:nil];
+    [_IUController rearrangeObjects];
+    [_IUController setSelectedObjectsByIdentifiers:@[newIU.htmlID]];
+
+}
 
 @end
