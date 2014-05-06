@@ -32,11 +32,11 @@
     [[NSColorPanel sharedColorPanel] setShowsAlpha:YES];
     [NSColor setIgnoresAlpha:NO];
 
-    [_bgColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBGColor] options:nil];
-    [_bgGradientStartColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBGGradientStartColor] options:nil];
-    [_bgGradientEndColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBGGradientEndColor] options:nil];
+    [_bgColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBGColor] options:IUBindingDictNotRaisesApplicable];
+    [_bgGradientStartColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBGGradientStartColor] options:IUBindingDictNotRaisesApplicable];
+    [_bgGradientEndColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBGGradientEndColor] options:IUBindingDictNotRaisesApplicable];
     
-    [_enableGradientBtn bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBGGradient] options:nil];
+    [_enableGradientBtn bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBGGradient] options:IUBindingDictNotRaisesApplicable];
 
 
 }

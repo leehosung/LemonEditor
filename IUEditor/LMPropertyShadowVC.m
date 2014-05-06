@@ -38,11 +38,11 @@
 }
 
 -(void)awakeFromNib{
-    [_shadowColor bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagShadowColor] options:nil];
-    [_shadowV bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagShadowVertical] options:nil];
-    [_shadowH bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagShadowHorizontal] options:nil];
-    [_shadowSprd bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagShadowSpread] options:nil];
-    [_shadowBlr bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagShadowBlur] options:nil];
+    [_shadowColor bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagShadowColor] options:IUBindingDictNotRaisesApplicable];
+    [_shadowV bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagShadowVertical] options:IUBindingDictNotRaisesApplicable];
+    [_shadowH bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagShadowHorizontal] options:IUBindingDictNotRaisesApplicable];
+    [_shadowSprd bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagShadowSpread] options:IUBindingDictNotRaisesApplicable];
+    [_shadowBlr bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagShadowBlur] options:IUBindingDictNotRaisesApplicable];
 
     [_shadowVText bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagShadowVertical] options:@{NSNullPlaceholderBindingOption: @(0)}];
     [_shadowHText bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagShadowHorizontal] options:@{NSNullPlaceholderBindingOption: @(0)}];

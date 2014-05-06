@@ -7,6 +7,7 @@
 //
 
 #import "LMPropertyBorderVC.h"
+#import "JDTransformer.h"
 
 @interface LMPropertyBorderVC ()
 
@@ -58,14 +59,14 @@
     
     
     NSDictionary *bindingOption = [NSDictionary
-                                   dictionaryWithObjects:@[[NSNumber numberWithBool:NO], [NSNumber numberWithBool:YES]]
-                                   forKeys:@[NSRaisesForNotApplicableKeysBindingOption, NSContinuouslyUpdatesValueBindingOption]];
+                                   dictionaryWithObjects:@[[NSNumber numberWithBool:NO], @"JDNilToZeroTransformer"]
+                                   forKeys:@[NSRaisesForNotApplicableKeysBindingOption,  NSValueTransformerNameBindingOption]];
 
-    [_borderColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderColor] options:bindingOption];
-    [_borderTopColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderTopColor]  options:bindingOption];
-    [_borderLeftColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderLeftColor] options:bindingOption];
-    [_borderRightColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderRightColor] options:bindingOption];
-    [_borderBottomColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderBottomColor] options:bindingOption];
+    [_borderColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderColor] options:IUBindingDictNotRaisesApplicable];
+    [_borderTopColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderTopColor]  options:IUBindingDictNotRaisesApplicable];
+    [_borderLeftColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderLeftColor] options:IUBindingDictNotRaisesApplicable];
+    [_borderRightColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderRightColor] options:IUBindingDictNotRaisesApplicable];
+    [_borderBottomColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderBottomColor] options:IUBindingDictNotRaisesApplicable];
     
     [_borderTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderWidth] options:bindingOption];
     [_borderTopTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderTopWidth] options:bindingOption];
