@@ -17,6 +17,7 @@
 @interface LMPropertyFrameVC ()
 @property (weak) IBOutlet NSButton *flowB;
 @property (weak) IBOutlet NSButton *rightB;
+@property (weak) IBOutlet NSButton *centerB;
 
 //pixel TextField
 @property (weak) IBOutlet NSTextField *xTF;
@@ -85,6 +86,9 @@
     
     [_rightB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"floatRight"] options:IUBindingDictNotRaisesApplicable];
     [_rightB bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"floatRightChangeable"] options:IUBindingDictNotRaisesApplicable];
+
+    [_centerB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"center"] options:IUBindingDictNotRaisesApplicable];
+    [_centerB bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"centerChangeable"] options:IUBindingDictNotRaisesApplicable];
 
     
     NSDictionary *bindingOption = [NSDictionary

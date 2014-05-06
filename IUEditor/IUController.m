@@ -115,9 +115,6 @@
             return NO;
         }];
         NSArray *selectedChildren = [allChildren filteredArrayUsingPredicate:predicate];
-        // if selection is IUItem subclass, it's parent should be selected before
-        //FIXME: need to change
-        
         [self _setSelectedObjects:selectedChildren];
     }
     

@@ -31,9 +31,9 @@
     [_m_children addObject:prototypeClass];
     _prototypeClass = prototypeClass;
     if (_prototypeClass) {
-        [self.delegate IU:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
+        [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
         for (IUBox *iu in [prototypeClass.allChildren arrayByAddingObject:prototypeClass]) {
-            [self.delegate IU:iu.htmlID CSSUpdated:[iu cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+            [self.delegate IUClassIdentifier:iu.htmlID CSSUpdated:[iu cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
         }
     }
 }

@@ -47,7 +47,7 @@
     _innerHTML = aInnerHTML;
     JDInfoLog(@"%@", aInnerHTML);
 
-    [self.delegate IU:self.htmlID HTML:self.html withParentID:self.htmlID];
+    [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.htmlID];
 }
 
 @end

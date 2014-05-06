@@ -902,8 +902,9 @@
             if(value){
                 if([value isEqualToString:@"Auto"]== YES)
                 {
-                    value = cssTagDict[IUCSSTagHeight];
-                    [dict putTag:@"line-height" floatValue:[value floatValue] ignoreZero:YES unit: IUCSSUnitPixel];
+                    NSNumber *height = cssTagDict[IUCSSTagHeight];
+                    NSUInteger num = [[obj.textHTML componentsSeparatedByString:@"<br>"] count];
+                    [dict putTag:@"line-height" floatValue:[height floatValue]/num ignoreZero:YES unit: IUCSSUnitPixel];
                 }
                 else {
                     [dict putTag:@"line-height" floatValue:[value floatValue] ignoreZero:YES unit:IUCSSUnitNone];

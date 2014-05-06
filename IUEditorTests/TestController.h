@@ -24,9 +24,5 @@
 @property NSString *removeID;
 @property NSString *dragName;
 
-- (IBAction)clickCSSBtn:(id)sender;
-- (IBAction)clickHTMLBtn:(id)sender;
-- (IBAction)clickRemoveHTMLBtn:(id)sender;
-
 
 @end
