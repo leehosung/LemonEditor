@@ -40,5 +40,6 @@ typedef enum {
 - (BOOL)isGuideSize:(NSSize)size;
 - (NSPoint)guidePointOfCurrentFrame:(NSRect)frame IU:(NSString *)IU;
 - (NSSize)guideSizeOfCurrentFrame:(NSRect)frame IU:(NSString *)IU;
+- (NSRect)frameOfIU:(NSString *)IU;
 
 @end

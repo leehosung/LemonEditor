@@ -168,7 +168,14 @@
                     if( [theEvent modifierFlags] & NSCommandKeyMask ){
                         //여러개 select 하는 순간 editing mode out
                         [[self webView] setEditable:NO];
-                        [((LMCanvasVC *)self.delegate) addSelectedIU:currentIUID];
+                        
+                        //이미 select되어 있으면 deselect
+                        if( [((LMCanvasVC *)self.delegate) containsIU:currentIUID] ){
+                            [((LMCanvasVC *)self.delegate) removeSelectedIU:currentIUID];
+                        }
+                        else{
+                            [((LMCanvasVC *)self.delegate) addSelectedIU:currentIUID];
+                        }
                     }
                     else{
                         //다른 iu를 선택하는 순간 editing mode out
