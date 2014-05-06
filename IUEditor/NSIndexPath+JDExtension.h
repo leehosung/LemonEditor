@@ -11,5 +11,6 @@
 @interface NSIndexPath (JDExtension)
 
 + (id)indexPathWithIndexPath:(NSIndexPath*)indexPath length:(NSUInteger)length;
+- (BOOL)containsIndexPath:(NSIndexPath*)aIndexPath;
 
 @end

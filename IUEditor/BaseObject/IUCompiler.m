@@ -107,7 +107,19 @@
     [css appendNewline];
     [css appendTabAndString:[self cssSourceForIU:document width:IUCSSMaxViewPortWidth]];
     for (IUBox *obj in document.allChildren) {
+        if ([obj.document isKindOfClass:[IUClass class]]){
+            continue;
+        }
         [css appendTabAndString:[self cssSourceForIU:obj width:IUCSSMaxViewPortWidth]];
+        if ([obj isKindOfClass:[IUImport class]]) {
+            //add allchildren of identifier
+            for (IUBox *importChild in obj.allChildren) {
+                NSString *cssStr = [self cssSourceForIU:importChild width:IUCSSMaxViewPortWidth];
+                NSString *cssStrModified = [cssStr stringByReplacingOccurrencesOfString:@"#" withString:[NSString stringWithFormat:@"#%@__", obj.htmlID]];
+                [css appendTabAndString:cssStrModified];
+            }
+            [css appendTabAndString:[self cssSourceForIU:document width:IUCSSMaxViewPortWidth]];
+        }
     }
     [css appendString:@"</style>"];
     
@@ -554,6 +566,15 @@
         [code appendFormat:@"<textarea %@ >%@</textarea>", [self HTMLAttributes:iu], ((IUTextView *)iu).inputValue];
     }
 
+#pragma mark IUImport
+    else if ([iu isKindOfClass:[IUImport class]]) {
+        [code appendFormat:@"<div %@ >", [self HTMLAttributes:iu]];
+        NSMutableString *importCode = [[self editorHTML:[(IUImport*)iu prototypeClass]] mutableCopy];
+        [importCode replaceOccurrencesOfString:@" id=" withString:[NSString stringWithFormat:@" id=%@__", iu.htmlID] options:0 range:NSMakeRange(0, importCode.length)];
+        [code appendString:importCode];
+        [code appendString:@"</div>"];
+    }
+    
 #pragma mark IUBox
     else if ([iu isKindOfClass:[IUBox class]]) {
         [code appendString:[self editorHTMLAsBOX:iu]];

@@ -29,6 +29,11 @@
     return [self indexPathOfObject:anObject inNodes:[[self arrangedObjects] childNodes]];
 }
 
+- (NSArray*)indexPathsOfObject:(id)anObject
+{
+    return [[self indexPathsOfObject:anObject inNodes:[[self arrangedObjects] childNodes]] copy];
+}
+
 - (NSIndexPath*)indexPathOfObject:(id)anObject inNodes:(NSArray*)nodes
 {
     for(NSTreeNode* node in nodes)
@@ -43,6 +48,24 @@
         }
     }
     return nil;
+}
+
+
+- (NSMutableArray*)indexPathsOfObject:(id)anObject inNodes:(NSArray*)nodes
+{
+    NSMutableArray *retArray = [NSMutableArray array];
+    for(NSTreeNode* node in nodes)
+    {
+        id represented = [node representedObject];
+        if([represented isEqual:anObject]){
+            [retArray addObject:node.indexPath];
+        }
+        if([[node childNodes] count])
+        {
+            [retArray addObjectsFromArray: [self indexPathsOfObject:anObject inNodes:[node childNodes]]];
+        }
+    }
+    return retArray;
 }
 
 @end

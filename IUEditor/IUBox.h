@@ -44,7 +44,9 @@
 @class IUBox;
 @class IUDocument;
 
-@interface IUBox : NSObject <NSCoding, IUCSSDelegate>
+@interface IUBox : NSObject <NSCoding, IUCSSDelegate>{
+    NSMutableArray *_m_children;
+}
 
 @property (readonly) IUCSS *css; //used by subclass
 @property (readonly) IUEvent *event;
@@ -54,6 +56,7 @@
 
 //initialize
 -(id)initWithManager:(IUIdentifierManager*)identifierManager option:(NSDictionary*)option;
+
 
 // this is IU setting
 @property (nonatomic, weak) IUIdentifierManager *identifierManager;
