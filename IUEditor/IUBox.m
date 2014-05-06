@@ -15,6 +15,7 @@
 #import "IUDocument.h"
 #import "IUBox.h"
 #import "IUTextManager.h"
+#import "IUClass.h"
 
 @interface IUBox()
 @end
@@ -222,8 +223,19 @@
             iu.delegate = self.delegate;
         }
         iu.parent = self;
+        
+        if ([self.document isKindOfClass:[IUClass class]]) {
+            for (IUBox *import in [(IUClass*)self.document referenceImports]) {
+                NSString *self_htmlID = [import.htmlID stringByAppendingFormat:@"__%@", self.htmlID];
+                NSString *iu_htmlid = [import.htmlID stringByAppendingFormat:@"__%@", iu.htmlID];
+                NSString *originalHTML = iu.html;
+                NSString *replacedHTML = [originalHTML stringByReplacingOccurrencesOfString:@" id=" withString:[NSString stringWithFormat:@" id=%@__", import.htmlID]];
+                [self.delegate IU:iu_htmlid HTML:replacedHTML withParentID:self_htmlID];
+            }
+        }
+
         [self.delegate IU:iu.htmlID HTML:iu.html withParentID:self.htmlID];
-        [self.delegate IU:iu.htmlID CSSUpdated:[iu cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+                [self.delegate IU:iu.htmlID CSSUpdated:[iu cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
         for (IUBox *child in iu.children) {
             [self.delegate IU:child.htmlID CSSUpdated:[child cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
         }
@@ -233,6 +245,7 @@
     }
     return NO;
 }
+
 
 -(BOOL)addIUReference:(IUBox *)iu error:(NSError**)error{
     [_m_children addObject:iu];

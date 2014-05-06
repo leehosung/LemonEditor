@@ -161,7 +161,10 @@
 -(IUBox *)IUBoxByIdentifier:(NSString *)identifier{
     IUDocument *document = [self.content firstObject];
     NSArray *allChildren = [[document allChildren] arrayByAddingObject:document];
-    
+    NSArray *identifierChain = [identifier componentsSeparatedByString:@"__"];
+    if ([identifierChain count] == 2) {
+        identifier = [identifierChain objectAtIndex:1];
+    }
     NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUBox *iu, NSDictionary *bindings) {
         if ([identifier isEqualToString:iu.htmlID]) {
             return YES;
@@ -169,7 +172,7 @@
         return NO;
     }];
     NSArray *findIUs = [allChildren filteredArrayUsingPredicate:predicate];
-    if(findIUs.count  > 1){
+    if([NSSet setWithArray:findIUs].count  > 1){
         JDErrorLog(@"Error : IUID can be unique");
         return nil;
     }
