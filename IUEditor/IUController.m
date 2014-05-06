@@ -194,7 +194,7 @@
 }
 
 -(IUImport*)importIUInSelectionChain{
-    NSIndexPath *firstPath = [self.selectionIndexPaths firstObject];
+    NSIndexPath *firstPath = [[self.selectionIndexPaths firstObject] indexPathByRemovingLastIndex];
     NSArray *chain = [self IUChainOfIndexPath:firstPath];
     
     for (IUBox *box in chain) {
