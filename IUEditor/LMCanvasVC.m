@@ -18,6 +18,7 @@
 #import "IUCarouselItem.h"
 #import "InnerSizeBox.h"
 #import "IUResponsiveSection.h"
+#import "IUImport.h"
 
 @interface LMCanvasVC ()
 
@@ -191,7 +192,7 @@
         }
     }
     
-    for(NSString *IUID in self.controller.selectedIdentifiers){
+    for(NSString *IUID in self.controller.selectedIdentifiersWithImportIdentifier){
         if([frameDict.dict objectForKey:IUID]){
             NSRect frame = [[frameDict.dict objectForKey:IUID] rectValue];
             [[self gridView] addRedPointLayer:IUID withFrame:frame];
