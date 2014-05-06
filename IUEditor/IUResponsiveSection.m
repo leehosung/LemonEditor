@@ -46,13 +46,13 @@
     return NO;
 }
 
--(BOOL)hasX{
+- (BOOL)enableXUserInput{
     return NO;
 }
--(BOOL)hasY{
+- (BOOL)enableYUserInput{
     return NO;
 }
--(BOOL)hasWidth{
+- (BOOL)enableWidthUserInput{
     return NO;
 }
 

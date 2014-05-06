@@ -71,11 +71,10 @@
 -(NSString*)cssForWidth:(NSInteger)width isHover:(BOOL)isHover;
 
 //user interface status
-@property (readonly) BOOL draggable;
-@property (readonly) BOOL disableXInput;
-@property (readonly) BOOL disableYInput;
-@property (readonly) BOOL disableWidthInput;
-@property (readonly) BOOL disableHeightInput;
+@property (readonly) BOOL enableXUserInput;
+@property (readonly) BOOL enableYUserInput;
+@property (readonly) BOOL enableWidthUserInput;
+@property (readonly) BOOL enableHeightUserInput;
 
 -(void)enableDelegate:(id)sender;
 -(void)disableDelegate:(id)sender;
