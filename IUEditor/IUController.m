@@ -9,7 +9,8 @@
 #import "IUController.h"
 #import "IUDocument.h"
 #import "NSTreeController+JDExtension.h"
-
+#import "NSIndexPath+JDExtension.h"
+#import "IUImport.h"
 
 @implementation IUController
 
@@ -141,6 +142,22 @@
     return [self.selectedObjects valueForKey:@"htmlID"];
 }
 
+-(NSArray*)selectedIdentifiersWithImportIdentifier{
+    //indexpath chain 중에 iuimport 가 있는지 검사
+    IUImport *import = self.importIUInSelectionChain;
+    if (import) {
+        NSMutableArray *retArray = [NSMutableArray array];
+        NSArray *htmlIDs = [self.selectedObjects valueForKeyPath:@"htmlID"];
+        for (NSString *htmlID in htmlIDs) {
+            [retArray addObject:[NSString stringWithFormat:@"%@__%@", import.htmlID, htmlID]];
+        }
+        return retArray;
+    }
+    else {
+        return [self.selectedObjects valueForKey:@"htmlID"];
+    }
+}
+
 -(IUBox *)IUBoxByIdentifier:(NSString *)identifier{
     IUDocument *document = [self.content firstObject];
     NSArray *allChildren = [[document allChildren] arrayByAddingObject:document];
@@ -176,4 +193,28 @@
     return [@"controller.selection" stringByAppendingPathExtension:property];
 }
 
+-(IUImport*)importIUInSelectionChain{
+    NSIndexPath *firstPath = [self.selectionIndexPaths firstObject];
+    NSArray *chain = [self IUChainOfIndexPath:firstPath];
+    
+    for (IUBox *box in chain) {
+        if ([box isKindOfClass:[IUImport class]]) {
+            return (IUImport *)box;
+        }
+    }
+    return nil;
+}
+
+
+-(NSArray*)IUChainOfIndexPath:(NSIndexPath*)path{
+    NSMutableArray *retArray = [NSMutableArray array];
+    IUBox *currentObj = [[self content] firstObject];
+    [retArray addObject:currentObj];
+    for (NSUInteger i=1; i<path.length ; i++) {
+        NSInteger index = [path indexAtPosition:i];
+        currentObj = [currentObj.children objectAtIndex:index];
+        [retArray addObject:currentObj];
+    }
+    return retArray;
+}
 @end

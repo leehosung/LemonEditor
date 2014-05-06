@@ -9,20 +9,26 @@
 #import <Cocoa/Cocoa.h>
 #import "IUBox.h"
 
+
 @class IUDocument;
+@class IUImport;
 @interface IUController : NSTreeController
 
 -(NSArray*)selectedPedigree;
 
 -(void)setSelectedObjectsByIdentifiers:(NSArray*)identifiers;
 -(void)trySetSelectedObjectsByIdentifiers:(NSArray *)identifiers;
+
 -(NSArray*)selectedIdentifiers;
+-(NSArray*)selectedIdentifiersWithImportIdentifier;
 
 -(IUBox *)IUBoxByIdentifier:(NSString *)identifier;
 
 -(NSString*)keyPathFromControllerToCSSTag:(IUCSSTag)tag;
 -(NSString*)keyPathFromControllerToEventTag:(IUEventTag)tag;
 -(NSString*)keyPathFromControllerToProperty:(NSString*)property;
+
+-(IUImport*)importIUInSelectionChain;
 
 @property _binding_ NSRange selectedTextRange;
 

@@ -705,7 +705,14 @@
     //drag pointlayer
     for(IUBox *obj in self.controller.selectedObjects){
         
-        NSSize parentSize = [[self webView] parentBlockElementSize:obj.htmlID];
+        NSSize parentSize;
+        if (self.controller.importIUInSelectionChain){
+            NSString *modifiedHTMLID = [NSString stringWithFormat:@"%@__%@",self.controller.importIUInSelectionChain.htmlID, obj.htmlID];
+            parentSize = [[self webView] parentBlockElementSize:modifiedHTMLID];
+        }
+        else {
+            parentSize = [[self webView] parentBlockElementSize:obj.htmlID];
+        }
         
         /*
         if([frameDict isGuideSize:totalSize]){
