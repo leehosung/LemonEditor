@@ -16,6 +16,12 @@
 @property (weak) IBOutlet NSTextField *borderLeftTF;
 @property (weak) IBOutlet NSTextField *borderBottomTF;
 
+@property (weak) IBOutlet NSStepper *borderStepper;
+@property (weak) IBOutlet NSStepper *borderTopStepper;
+@property (weak) IBOutlet NSStepper *borderBottomStepper;
+@property (weak) IBOutlet NSStepper *borderLeftStepper;
+@property (weak) IBOutlet NSStepper *borderRightStepper;
+
 @property (weak) IBOutlet NSColorWell *borderColorWell;
 @property (weak) IBOutlet NSColorWell *borderTopColorWell;
 @property (weak) IBOutlet NSColorWell *borderLeftColorWell;
@@ -27,6 +33,12 @@
 @property (weak) IBOutlet NSTextField *borderRadiusTopRightTF;
 @property (weak) IBOutlet NSTextField *borderRadiusBottomLeftTF;
 @property (weak) IBOutlet NSTextField *borderRadiusBottomRightTF;
+
+@property (weak) IBOutlet NSStepper *borderRadiusStepper;
+@property (weak) IBOutlet NSStepper *borderRadiusTopLeftStepper;
+@property (weak) IBOutlet NSStepper *borderRadiusTopRightStepper;
+@property (weak) IBOutlet NSStepper *borderRadiusBottomLeftStepper;
+@property (weak) IBOutlet NSStepper *borderRadiusBottomRightStepper;
 
 @end
 
@@ -42,266 +54,90 @@
     return self;
 }
 
-- (NSString*)CSSBindingPath:(IUCSSTag)tag{
-    return [@"controller.selection.css.assembledTagDictionary." stringByAppendingString:tag];
-}
-
-
-- (void)setBorderColor:(NSColor *)borderColor{
-    _borderColor = borderColor;
-    if ([_borderColor isKindOfClass:[NSColor class]]) {
-        self.borderTopColor = borderColor;
-        self.borderLeftColor = borderColor;
-        self.borderRightColor = borderColor;
-        self.borderBottomColor = borderColor;
-    }
-}
-
-- (void)setBorderTopColor:(NSColor *)borderTopColor{
-    if (borderTopColor == NSNoSelectionMarker || [self.controller.selectedObjects count] == 0) {
-        return;
-    }
-    if ([borderTopColor.colorSpaceName isEqualToString:NSDeviceRGBColorSpace] == NO) {
-        borderTopColor = [borderTopColor colorUsingColorSpaceName:NSDeviceRGBColorSpace];
-    }
-    if (_borderTopColor != borderTopColor) {
-        _borderTopColor = borderTopColor;
-        [self setValue:borderTopColor forKeyPath:[self CSSBindingPath:IUCSSTagBorderTopColor]];
-    }
-}
-
-- (void)setBorderLeftColor:(NSColor *)borderLeftColor{
-    if (borderLeftColor == NSNoSelectionMarker || [self.controller.selectedObjects count] == 0) {
-        return;
-    }
-    if ([borderLeftColor.colorSpaceName isEqualToString:NSDeviceRGBColorSpace] == NO) {
-        borderLeftColor = [borderLeftColor colorUsingColorSpaceName:NSDeviceRGBColorSpace];
-    }
-    _borderLeftColor = borderLeftColor;
-    [self setValue:borderLeftColor forKeyPath:[self CSSBindingPath:IUCSSTagBorderLeftColor]];
-}
-
-- (void)setBorderRightColor:(NSColor *)borderRightColor{
-    if (borderRightColor == NSNoSelectionMarker || [self.controller.selectedObjects count] == 0) {
-        return;
-    }
-    if ([borderRightColor.colorSpaceName isEqualToString:NSDeviceRGBColorSpace] == NO) {
-        borderRightColor = [borderRightColor colorUsingColorSpaceName:NSDeviceRGBColorSpace];
-    }
-    _borderRightColor = borderRightColor;
-    [self setValue:borderRightColor forKeyPath:[self CSSBindingPath:IUCSSTagBorderRightColor]];
-}
-
-- (void)setBorderBottomColor:(NSColor *)borderBottomColor{
-    if (borderBottomColor == NSNoSelectionMarker || [self.controller.selectedObjects count] == 0) {
-        return;
-    }
-    if ([borderBottomColor.colorSpaceName isEqualToString:NSDeviceRGBColorSpace] == NO) {
-        borderBottomColor = [borderBottomColor colorUsingColorSpaceName:NSDeviceRGBColorSpace];
-    }
-    _borderBottomColor = borderBottomColor;
-    [self setValue:borderBottomColor forKeyPath:[self CSSBindingPath:IUCSSTagBorderBottomColor]];
-}
-
 -(void)awakeFromNib{
-    [_borderColorWell bind:@"value" toObject:self withKeyPath:@"borderColor" options:nil];
-    [_borderTopColorWell bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagBorderTopColor] options:nil];
-    [_borderLeftColorWell bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagBorderLeftColor] options:nil];
-    [_borderRightColorWell bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagBorderRightColor] options:nil];
-    [_borderBottomColorWell bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagBorderBottomColor] options:nil];
     
-    [_borderTF bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagBorderWidth] options:@{NSNullPlaceholderBindingOption: @(0)}];
-    [_borderTopTF bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagBorderTopWidth] options:@{NSNullPlaceholderBindingOption: @(0)}];
-    [_borderRightTF bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagBorderRightWidth] options:@{NSNullPlaceholderBindingOption: @(0)}];
-    [_borderLeftTF bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagBorderLeftWidth] options:@{NSNullPlaceholderBindingOption: @(0)}];
-    [_borderBottomTF bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagBorderBottomWidth] options:@{NSNullPlaceholderBindingOption: @(0)}];
+    
+    NSDictionary *bindingOption = [NSDictionary
+                                   dictionaryWithObjects:@[[NSNumber numberWithBool:NO], [NSNumber numberWithBool:YES]]
+                                   forKeys:@[NSRaisesForNotApplicableKeysBindingOption, NSContinuouslyUpdatesValueBindingOption]];
 
-    [_borderRadiusTF bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagBorderRadius] options:@{NSNullPlaceholderBindingOption: @(0)}];
-    [_borderRadiusTopLeftTF bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagBorderRadiusTopLeft] options:@{NSNullPlaceholderBindingOption: @(0)}];
-    [_borderRadiusTopRightTF bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagBorderRadiusTopRight] options:@{NSNullPlaceholderBindingOption: @(0)}];
-    [_borderRadiusBottomLeftTF bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagBorderRadiusBottomLeft] options:@{NSNullPlaceholderBindingOption: @(0)}];
-    [_borderRadiusBottomRightTF bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagBorderRadiusBottomRight] options:@{NSNullPlaceholderBindingOption: @(0)}];
+    [_borderColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderColor] options:bindingOption];
+    [_borderTopColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderTopColor]  options:bindingOption];
+    [_borderLeftColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderLeftColor] options:bindingOption];
+    [_borderRightColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderRightColor] options:bindingOption];
+    [_borderBottomColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderBottomColor] options:bindingOption];
+    
+    [_borderTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderWidth] options:bindingOption];
+    [_borderTopTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderTopWidth] options:bindingOption];
+    [_borderBottomTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderBottomWidth] options:bindingOption];
+    [_borderLeftTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderLeftWidth] options:bindingOption];
+    [_borderRightTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderRightWidth] options:bindingOption];
+    
+    
+    [_borderStepper bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderWidth] options:bindingOption];
+    [_borderTopStepper bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderTopWidth] options:bindingOption];
+    [_borderBottomStepper bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderBottomWidth] options:bindingOption];
+    [_borderLeftStepper bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderLeftWidth] options:bindingOption];
+    [_borderRightStepper bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderRightWidth] options:bindingOption];
+    
+    [_borderRadiusTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderRadius] options:bindingOption];
+    [_borderRadiusTopLeftTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderRadiusTopLeft] options:bindingOption];
+    [_borderRadiusTopRightTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderRadiusTopRight] options:bindingOption];
+    [_borderRadiusBottomLeftTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderRadiusBottomLeft] options:bindingOption];
+    [_borderRadiusBottomRightTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderRadiusBottomRight] options:bindingOption];
+
+    [_borderRadiusStepper bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderRadius] options:bindingOption];
+    [_borderRadiusTopLeftStepper bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderRadiusTopLeft] options:bindingOption];
+    [_borderRadiusTopRightStepper bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderRadiusTopRight] options:bindingOption];
+    [_borderRadiusBottomLeftStepper bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderRadiusBottomLeft] options:bindingOption];
+    [_borderRadiusBottomRightStepper bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderRadiusBottomRight] options:bindingOption];
+
 }
+- (IBAction)clickBorderColorWell:(id)sender {
+    id selectedColor = [_borderColorWell color];
+    
+    [self setValue:selectedColor forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderTopColor]];
+    [self setValue:selectedColor forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderBottomColor]];
+    [self setValue:selectedColor forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderLeftColor]];
+    [self setValue:selectedColor forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderRightColor]];
 
--(void)setController:(IUController *)controller{
-    _controller = controller;
-    [controller addObserver:self forKeyPath:[@"selection.css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderBottomWidth] options:0 context:nil];
-    [controller addObserver:self forKeyPath:[@"selection.css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderTopWidth] options:0 context:nil];
-    [controller addObserver:self forKeyPath:[@"selection.css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderLeftWidth] options:0 context:nil];
-    [controller addObserver:self forKeyPath:[@"selection.css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderRightWidth] options:0 context:nil];
-    [self addObserver:self forKeyPath:[controller keyPathFromControllerToCSSTag:IUCSSTagBorderTopColor] options:0 context:nil];
-    [self addObserver:self forKeyPath:[controller keyPathFromControllerToCSSTag:IUCSSTagBorderLeftColor] options:0 context:nil];
-    [self addObserver:self forKeyPath:[controller keyPathFromControllerToCSSTag:IUCSSTagBorderRightColor] options:0 context:nil];
-    [self addObserver:self forKeyPath:[controller keyPathFromControllerToCSSTag:IUCSSTagBorderBottomColor] options:0 context:nil];
-    [controller addObserver:self forKeyPath:[@"selection.css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderRadiusTopLeft] options:0 context:nil];
-    [controller addObserver:self forKeyPath:[@"selection.css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderRadiusTopRight] options:0 context:nil];
-    [controller addObserver:self forKeyPath:[@"selection.css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderRadiusBottomLeft] options:0 context:nil];
-    [controller addObserver:self forKeyPath:[@"selection.css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderRadiusBottomRight] options:0 context:nil];
+    
 
 }
-
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
-    //borderwidth
-    if ([[keyPath pathExtension] isSameTag:IUCSSTagBorderTopWidth]) {
-        id value = [_controller valueForKeyPath:[@"selection.css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderTopWidth]];
-        if(value){
-           [_borderTopTF setStringValue:value];
-        }
-        else{
-           [_borderTopTF setStringValue:@""];
-        }
-    }
-    else if ([[keyPath pathExtension] isSameTag:IUCSSTagBorderLeftWidth]) {
-        id value = [_controller valueForKeyPath:[@"selection.css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderLeftWidth]];
-        if(value){
-            [_borderLeftTF setStringValue:value];
-        }
-        else{
-            [_borderLeftTF setStringValue:@""];
-        }
-    }
-    else if ([[keyPath pathExtension] isSameTag:IUCSSTagBorderRightWidth]) {
-        id value = [_controller valueForKeyPath:[@"selection.css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderRightWidth]];
-        if(value) {
-            [_borderRightTF setStringValue:value];
-        }
-        else{
-            [_borderRightTF setStringValue:@""];
-        }
-    }
-    else if ([[keyPath pathExtension] isSameTag:IUCSSTagBorderBottomWidth]) {
-        id value = [_controller valueForKeyPath:[@"selection.css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderBottomWidth]];
-        if(value){
-            [_borderBottomTF setStringValue:value];
-        }
-        else{
-            [_borderBottomTF setStringValue:@""];
-        }
-    }
-    id value = [_controller valueForKeyPath:[@"selection.css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderWidth]];
-    if(value){
-        [_borderTF setStringValue:value];
+- (IBAction)clickBorderTotalSize:(id)sender {
+    int selectedSize;
+    if([sender isKindOfClass:[NSTextField class]]){
+        selectedSize = [_borderTF intValue];
+        [_borderStepper setIntValue:selectedSize];
     }
     else{
-        [_borderTF setStringValue:@""];
+        selectedSize = [_borderStepper intValue];
+        [_borderTF setIntValue:selectedSize];
     }
-    //bordercolor
-    if ([[keyPath pathExtension] isSameTag:IUCSSTagBorderTopColor]) {
-        NSColor *newColor = [self valueForKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderTopColor]];
-        if([newColor isKindOfClass:[NSColor class]] == NO){
-            newColor = [NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:1];
-        }
-
-        if (self.borderTopColor != newColor) {
-            self.borderTopColor = newColor;
-        }
-    }
-    NSString *keyPath2 =[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderColor];
     
-    NSColor *borderColor = [self valueForKeyPath:keyPath2];
+    [self setValue:[NSNumber numberWithInt:selectedSize] forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderTopWidth]];
+    [self setValue:[NSNumber numberWithInt:selectedSize] forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderBottomWidth]];
+    [self setValue:[NSNumber numberWithInt:selectedSize] forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderLeftWidth]];
+    [self setValue:[NSNumber numberWithInt:selectedSize] forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderRightWidth]];
     
-    if([borderColor isKindOfClass:[NSColor class]] == NO){
-        borderColor = [NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:1];
-    }
-
-    if (self.borderColor != borderColor) {
-            [_borderColorWell setColor:borderColor];
-    }
-    //border radius
-    if ([[keyPath pathExtension] isSameTag:IUCSSTagBorderRadiusTopLeft]) {
-        id value = [self valueForKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderRadiusTopLeft]];
-        if (value) {
-            [_borderRadiusTopLeftTF setStringValue:value];
-        }
-        else {
-            [_borderRadiusTopLeftTF setStringValue:@"0"];
-        }
-    }
-    else if ([[keyPath pathExtension] isSameTag:IUCSSTagBorderRadiusTopRight]) {
-        id value = [self valueForKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderRadiusTopRight]];
-        if (value) {
-            [_borderRadiusTopRightTF setStringValue:value];
-        }
-        else {
-            [_borderRadiusTopRightTF setStringValue:@"0"];
-        }
-    }
-    else if ([[keyPath pathExtension] isSameTag:IUCSSTagBorderRadiusBottomLeft]) {
-        id value = [self valueForKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderRadiusBottomLeft]];
-        if (value) {
-            [_borderRadiusBottomLeftTF setStringValue:value];
-        }
-        else {
-            [_borderRadiusBottomLeftTF setStringValue:@"0"];
-        }
-    }
-    else if ([[keyPath pathExtension] isSameTag:IUCSSTagBorderRadiusBottomRight]) {
-        id value = [self valueForKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderRadiusBottomRight]];
-        if (value) {
-            [_borderRadiusBottomRightTF setStringValue:value];
-        }
-        else {
-            [_borderRadiusBottomRightTF setStringValue:@"0"];
-        }
-    }
-    id value2 = [_controller valueForKeyPath:[@"selection.css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderRadius]];
-    [_borderRadiusTF setStringValue:value2];
 }
 
-- (void)controlTextDidEndEditing:(NSNotification *)obj{
-    NSTextField *changedField = [obj object];
-    
-    if (changedField == _borderTF) {
-        id value = @(_borderTF.integerValue);
-        for (IUBox *box in _controller.selectedObjects) {
-            [box startGrouping];
-        }
-        [_controller.selection setValue:value forKeyPath:[@"css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderTopWidth]];
-        [_controller.selection setValue:value forKeyPath:[@"css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderLeftWidth]];
-        [_controller.selection setValue:value forKeyPath:[@"css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderRightWidth]];
-        [_controller.selection setValue:value forKeyPath:[@"css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderBottomWidth]];
-        for (IUBox *box in _controller.selectedObjects) {
-            [box endGrouping];
-        }
+- (IBAction)clickBorderRadiusTotalSize:(id)sender {
+    int selectedSize;
+    if([sender isKindOfClass:[NSTextField class]]){
+        selectedSize = [_borderRadiusTF intValue];
+        [_borderRadiusStepper setIntValue:selectedSize];
     }
-    else if (changedField == _borderTopTF) {
-        [_controller.selection setValue:@(_borderTopTF.integerValue) forKeyPath:[@"css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderTopWidth]];
-    }
-    else if (changedField == _borderLeftTF) {
-        [_controller.selection setValue:@(_borderLeftTF.integerValue) forKeyPath:[@"css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderLeftWidth]];
-    }
-    else if (changedField == _borderRightTF) {
-        [_controller.selection setValue:@(_borderRightTF.integerValue) forKeyPath:[@"css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderRightWidth]];
-    }
-    else if (changedField == _borderBottomTF) {
-        [_controller.selection setValue:@(_borderBottomTF.integerValue) forKeyPath:[@"css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderBottomWidth]];
+    else{
+        selectedSize = [_borderRadiusStepper intValue];
+        [_borderRadiusTF setIntValue:selectedSize];
     }
     
-    if (changedField == _borderRadiusTF) {
-        id value = @(_borderRadiusTF.integerValue);
-        for (IUBox *box in _controller.selectedObjects){
-            [box startGrouping];
-        }
-        [_controller.selection setValue:value forKeyPath:[@"css.assembledTagDictionary"stringByAppendingPathExtension:IUCSSTagBorderRadiusTopLeft]];
-        [_controller.selection setValue:value forKeyPath:[@"css.assembledTagDictionary"stringByAppendingPathExtension:IUCSSTagBorderRadiusTopRight]];
-        [_controller.selection setValue:value forKeyPath:[@"css.assembledTagDictionary"stringByAppendingPathExtension:IUCSSTagBorderRadiusBottomLeft]];
-        [_controller.selection setValue:value forKeyPath:[@"css.assembledTagDictionary"stringByAppendingPathExtension:IUCSSTagBorderRadiusBottomRight]];
-        for (IUBox *box in _controller.selectedObjects) {
-            [box endGrouping];
-        }
-    }
-    else if (changedField == _borderRadiusTopLeftTF){
-        [_controller.selection setValue:@(_borderRadiusTopLeftTF.integerValue) forKeyPath:[@"css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderRadiusTopLeft]];
-    }
-    else if (changedField == _borderRadiusTopRightTF) {
-        [_controller.selection setValue:@(_borderRadiusTopRightTF.integerValue) forKeyPath:[@"css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderRadiusTopRight]];
-    }
-    else if (changedField == _borderRadiusBottomLeftTF) {
-        [_controller.selection setValue:@(_borderRadiusBottomLeftTF.integerValue) forKeyPath:[@"css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderRadiusBottomLeft]];
-    }
-    else if (changedField == _borderRadiusBottomRightTF) {
-        [_controller.selection setValue:@(_borderRadiusBottomRightTF.integerValue) forKeyPath:[@"css.assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagBorderRadiusBottomRight]];
-    }
+    [self setValue:[NSNumber numberWithInt:selectedSize] forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderRadiusTopLeft]];
+    [self setValue:[NSNumber numberWithInt:selectedSize] forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderRadiusTopRight]];
+    [self setValue:[NSNumber numberWithInt:selectedSize] forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderRadiusBottomLeft]];
+    [self setValue:[NSNumber numberWithInt:selectedSize] forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderRadiusBottomRight]];
+
 }
 
 @end

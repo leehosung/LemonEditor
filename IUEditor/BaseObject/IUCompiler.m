@@ -741,7 +741,7 @@
         }
         
         
-        //background-image and color
+#pragma mark background-image and color
         value = cssTagDict[IUCSSTagBGColor];
         [dict putTag:@"background-color" color:value ignoreClearColor:YES];
         
@@ -810,7 +810,7 @@
         }
      
         
-        //CSS - Border
+#pragma mark CSS - Border
         value = cssTagDict[IUCSSTagBorderLeftWidth];
         if ([value intValue] > 0) {
             [dict putTag:@"border-left-width" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];
