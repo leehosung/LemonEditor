@@ -214,5 +214,27 @@ static NSMutableSet *enableLogSection;
 	addLineNumber = showLineNumber;
 }
 
+static NSMutableDictionary *timeDict;
+
++(void)timeLogStart:(NSString*)name{
+    if (timeDict == nil) {
+        timeDict = [NSMutableDictionary dictionary];
+    }
+    JDTraceLog(@"timeLog Start %@", name);
+    [timeDict setObject:[NSDate date] forKey:name];
+}
+
++(void)timeLogEnd:(NSString*)name{
+    NSDate *startDate = [timeDict objectForKey:name];
+    NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:startDate];
+    if (interval > 0.1) {
+        JDErrorLog(@"Time Log For %@: %.4f", name, interval);
+    }
+    else {
+        JDTraceLog(@"Time Log For %@: %.4f", name, interval);
+    }
+}
+
+
 
 @end

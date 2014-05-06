@@ -120,7 +120,6 @@
 
 - (void)mouseDragged:(NSEvent *)theEvent{
     if(isClicked){
-        
         isDragged = YES;
         NSPoint convertedPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
         NSPoint diffPoint = NSMakePoint(convertedPoint.x-middlePoint.x, convertedPoint.y-middlePoint.y);
@@ -132,12 +131,12 @@
             
             NSRect newframe = [pLayer diffPointAndSizeWithType:selectedPointType withDiffPoint:diffPoint];
             NSRect totalFrame = [pLayer diffPointAndSizeWithType:selectedPointType withDiffPoint:totalPoint];
-            BOOL checkExtend = [((LMCanvasVC *)(self.delegate)) checkExtendSelectedIU:newframe.size];
+//            BOOL checkExtend = [((LMCanvasVC *)(self.delegate)) checkExtendSelectedIU:newframe.size];
             
-            if(checkExtend){
+  //          if(checkExtend){
                 [((LMCanvasVC *)(self.delegate)) extendIUToDiffSize:newframe.size totalDiffSize:totalFrame.size];
                 [((LMCanvasVC *)(self.delegate)) moveIUToDiffPoint:newframe.origin totalDiffPoint:totalFrame.origin];
-            }
+    //        }
         }
         
         

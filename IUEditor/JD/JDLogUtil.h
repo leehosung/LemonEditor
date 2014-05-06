@@ -120,5 +120,7 @@ typedef enum {
 +(void)log:(NSString*)logSection key:(NSString*)key point:(NSPoint)point;
 +(void)log:(NSString*)logSection key:(NSString*)key size:(NSSize)size;
 
++(void)timeLogStart:(NSString*)name;
++(void)timeLogEnd:(NSString*)name;
 
 @end

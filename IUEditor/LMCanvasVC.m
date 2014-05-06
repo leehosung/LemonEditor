@@ -740,6 +740,7 @@
 
 - (void)extendIUToDiffSize:(NSSize)size totalDiffSize:(NSSize)totalSize{
     //drag pointlayer
+    [JDLogUtil timeLogStart:@"extendIU"];
     for(IUBox *obj in self.controller.selectedObjects){
         
         NSSize parentSize;
@@ -778,6 +779,7 @@
          */
         
     }
+        [JDLogUtil timeLogEnd:@"extendIU"];
     
 }
 

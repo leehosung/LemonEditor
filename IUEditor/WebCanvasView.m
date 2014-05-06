@@ -203,14 +203,14 @@
 }
 
 - (void)resizePageContentHeightFinished:(NSNumber *)scriptObj{
-    JDInfoLog(@"document size change to : %f" , [scriptObj floatValue]);
+//    JDInfoLog(@"document size change to : %f" , [scriptObj floatValue]);
     [self.delegate changeIUPageHeight:[scriptObj floatValue]];
 }
 
 /* Here is our Objective-C implementation for the JavaScript console.log() method.
  */
 - (void)doOutputToLog:(NSString*)theMessage {
-    JDInfoLog(@"LOG: %@", theMessage);
+//    JDInfoLog(@"LOG: %@", theMessage);
 }
 
 
