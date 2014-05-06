@@ -17,6 +17,7 @@
 #import "IUCarousel.h"
 #import "IUCarouselItem.h"
 #import "InnerSizeBox.h"
+#import "IUResponsiveSection.h"
 
 @interface LMCanvasVC ()
 
@@ -97,7 +98,7 @@
     
     IUBox *parentIU = [self.controller IUBoxByIdentifier:parentIUID];
     NSPoint position = [self distanceFromIU:parentIU.htmlID toPointFromWebView:point];
-    
+        
     //postion을 먼저 정한 후에 add 함
     [newIU setPosition:position];
     [parentIU addIU:newIU error:nil];
