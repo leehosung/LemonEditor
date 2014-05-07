@@ -232,6 +232,9 @@
     }
     NSMutableString *code = [NSMutableString string];
     [code appendFormat:@"<%@ %@>", tag, [self HTMLAttributes:iu option:nil]];
+    if ([iu isKindOfClass:[IUForm class]]) {
+        [code appendString:@"{% csrf_token %}"];
+    }
     if (_rule == IUCompileRuleDjango && iu.textVariable) {
         if ([iu.document isKindOfClass:[IUClass class]]){
             [code appendFormat:@"<p>{{ object.%@ }}</p>", iu.textVariable];
@@ -1117,7 +1120,7 @@
         [retString appendString:@" type=\"submit\""];
     }
     else if ([iu isKindOfClass:[IUForm class]]){
-        [retString appendString:@" method=\"post\" action=\".\""];
+        [retString appendString:@" method=\"post\" action=\"#\""];
     }
     else if([iu isKindOfClass:[IUTextView class]]){
         IUTextView *iuTextView = (IUTextView *)iu;
