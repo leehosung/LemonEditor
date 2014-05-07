@@ -443,7 +443,7 @@
 */
     }
     
-    JDDebugLog(@"%@:%@", identifier, html);
+//    JDDebugLog(@"%@:%@", identifier, html);
 
     [[self webView] runJSAfterRefreshCSS];
     [self.webView setNeedsDisplay:YES];
