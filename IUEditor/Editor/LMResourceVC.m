@@ -68,6 +68,7 @@
     NSOpenPanel* openDlg = [NSOpenPanel openPanel];
     [openDlg setCanChooseFiles:YES];
     [openDlg setCanChooseDirectories:NO];
+    [openDlg setAllowsMultipleSelection:YES];
     
     if([openDlg runModal]){
         // Get an array containing the full filenames of all
@@ -79,7 +80,9 @@
         {
             NSURL* filePath = [files objectAtIndex:i];
             IUResourceType type = [_manager resourceType:[filePath pathExtension]];
-            [self addResource:filePath type:type];
+            if(type != IUResourceTypeNone){
+                [self addResource:filePath type:type];
+            }
             
         }
     }
