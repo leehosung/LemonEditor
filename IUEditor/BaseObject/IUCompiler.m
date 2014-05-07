@@ -1054,6 +1054,15 @@
             else {
                 [retString appendFormat:@" src={{ %@ }}>", iuImage.variable];
             }
+        }else{
+            //image tag attributes
+            if(iuImage.imageName){
+                NSString *imagePath = [_resourceSource relativePathForResource:iuImage.imageName];
+                [retString appendFormat:@" src='%@'", imagePath];
+            }
+            if(iuImage.altText){
+                [retString appendFormat:@" alt='%@'", iuImage.altText];
+            }
         }
     }
 
