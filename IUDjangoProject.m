@@ -42,18 +42,50 @@
     project.classDocumentGroup = backgroundGroup;
     
     //create document
-    IUPage *page = [[IUPage alloc] initWithManager:nil option:nil];
-    page.htmlID = @"Page1Index";
+    IUPage *index = [[IUPage alloc] initWithManager:nil option:nil];
+    index.htmlID = @"Index";
     
-    IUDocumentNode *pageNode = [[IUDocumentNode alloc] init];
-    pageNode.document = page;
-    pageNode.name = @"Index";
-    [pageDir addNode:pageNode];
+    IUDocumentNode *indexNode = [[IUDocumentNode alloc] init];
+    indexNode.document = index;
+    indexNode.name = @"Index";
+    [pageDir addNode:indexNode];
+
+    //create document
+    IUPage *gallery = [[IUPage alloc] initWithManager:nil option:nil];
+    gallery.htmlID = @"Gallery";
     
+    IUDocumentNode *galleryNode = [[IUDocumentNode alloc] init];
+    galleryNode.document = gallery;
+    galleryNode.name = @"Gallery";
+    [pageDir addNode:galleryNode];
+    
+    //create document
+    IUPage *registerPage = [[IUPage alloc] initWithManager:nil option:nil];
+    registerPage.htmlID = @"Register";
+    
+    IUDocumentNode *registerNode = [[IUDocumentNode alloc] init];
+    registerNode.document = registerPage;
+    registerNode.name = @"Register";
+    [pageDir addNode:registerNode];
+    
+    //create document
+    IUPage *contactPage = [[IUPage alloc] initWithManager:nil option:nil];
+    contactPage.htmlID = @"Contact";
+    
+    IUDocumentNode *contactNode = [[IUDocumentNode alloc] init];
+    contactNode.document = contactPage;
+    contactNode.name = @"Contact";
+    [pageDir addNode:contactNode];
+    
+
+
     IUBackground *background = [[IUBackground alloc] initWithManager:nil option:@{kIUBackgroundOptionEmpty:@(YES)}];
     background.htmlID = @"Background1";
     background.name = @"Background1";
-    page.background = background;
+    index.background = background;
+    gallery.background = background;
+    contactPage.background = background;
+    registerPage.background = background;
     
     IUDocumentNode *backgroundNode = [[IUDocumentNode alloc] init];
     backgroundNode.document = background;
