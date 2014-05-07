@@ -15,7 +15,9 @@
 @property id delegate;
 
 //call javascript
+- (void)runJSAfterRefreshCSS;
 - (void)updateFrameDict;
+- (void)reframeCenter;
 - (void)insertNewCarousel:(NSString *)identifier;
 - (void)redrawCarousels;
 - (void)selectCarousel:(NSString *)identifier atIndex:(NSInteger)index;

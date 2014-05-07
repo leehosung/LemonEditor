@@ -319,6 +319,16 @@
     [self stringByEvaluatingJavaScriptFromString:@"getIUUpdatedFrameThread()"];
 }
 
+- (void)reframeCenter{
+    [self stringByEvaluatingJavaScriptFromString:@"reframeCenter()"];
+}
+
+- (void)runJSAfterRefreshCSS{
+    [self reframeCenter];
+    [self redrawCarousels];
+    [self updateFrameDict];
+}
+
 #pragma mark call carousel.JS
 
 - (id)callWebScriptMethod:(NSString *)function withArguments:(NSArray *)args{

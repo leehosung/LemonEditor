@@ -335,6 +335,40 @@
 
 }
 
+-(void)copyJS:(NSString *)path toPath:(NSString *)toPath{
+
+    if ([[NSFileManager defaultManager] fileExistsAtPath:toPath]) {
+        [[NSFileManager defaultManager] removeItemAtPath:toPath error:nil];
+    }
+    [[NSFileManager defaultManager] copyItemAtPath:path toPath:toPath error:nil];
+}
+
+
+
+-(void)copyJavascriptForDebug{
+    IUResourceGroupNode *JSGroup;
+    for(IUResourceGroupNode *groupNode in self.resourceNode.children){
+        if([groupNode.name isEqualToString:@"JS"]){
+            JSGroup = groupNode;
+        }
+    }
+
+    //Java Script Resource copy
+    NSString *iuEditorJSPath = [[NSBundle mainBundle] pathForResource:@"iueditor" ofType:@"js"];
+    [self copyJS:iuEditorJSPath toPath:[JSGroup.absolutePath stringByAppendingString:@"iueditor.js"]];
+
+    NSString *iuFrameJSPath = [[NSBundle mainBundle] pathForResource:@"iuframe" ofType:@"js"];
+    [self copyJS:iuFrameJSPath toPath:[JSGroup.absolutePath stringByAppendingString:@"iuframe.js"]];
+    
+    NSString *iuJSPath = [[NSBundle mainBundle] pathForResource:@"iu" ofType:@"js"];
+    [self copyJS:iuJSPath toPath:[JSGroup.absolutePath stringByAppendingString:@"iu.js"]];
+    
+    NSString *carouselJSPath = [[NSBundle mainBundle] pathForResource:@"jquery.bxslider" ofType:@"js"];
+    [self copyJS:carouselJSPath toPath:[JSGroup.absolutePath stringByAppendingString:@"jquery.bxslider.js"]];
+
+
+}
+
 - (NSArray*)allDocumentNodes{
     NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUDocumentNode* evaluatedObject, NSDictionary *bindings) {
         if ([evaluatedObject isKindOfClass:[IUDocumentNode class]]) {

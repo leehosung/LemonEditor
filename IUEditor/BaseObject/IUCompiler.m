@@ -1007,7 +1007,10 @@
     [className appendFormat:@" %@", iu.htmlID];
     [className trim];
     [retString appendFormat:@" class='%@'", className];
-
+    
+    if(iu.center){
+        [retString appendString:@" horizontalCenter='1'"];
+    }
     
     if ([iu isKindOfClass:[IUImage class]]) {
         IUImage *iuImage = (IUImage*)iu;

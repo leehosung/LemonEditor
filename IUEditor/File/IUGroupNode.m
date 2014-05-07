@@ -55,20 +55,20 @@
     [_children addObject:node];
     node.parent = self;
     [self didChangeValueForKey:@"children"];
-    IUProject *project = (IUProject*)self.rootNode;
-    if ([project isKindOfClass:[IUProject class]]) {
-        [project.delegate project:(IUProject*)self.rootNode nodeAdded:node];
-    }
 }
 
 -(void)removeNode:(IUNode*)node{
     [self willChangeValueForKey:@"children"];
     [_children removeObject:node];
     [self didChangeValueForKey:@"children"];
-    IUProject *project = (IUProject*)self.rootNode;
-    if ([project isKindOfClass:[IUProject class]]) {
-        [project.delegate project:(IUProject*)self.rootNode nodeRemoved:node];
-    }
+
+}
+
+-(void)removeAllNode{
+    [self willChangeValueForKey:@"children"];
+    [_children removeAllObjects];
+    [self didChangeValueForKey:@"children"];
+
 }
 
 -(BOOL)containName:(NSString *)name{

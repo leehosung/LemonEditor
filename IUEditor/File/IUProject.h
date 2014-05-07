@@ -63,4 +63,6 @@ typedef enum _IUGitType{
 - (NSArray*)backgroundDocumentNodes;
 - (NSArray*)classDocumentNodes;
 
+- (void)copyJavascriptForDebug;
+
 @end

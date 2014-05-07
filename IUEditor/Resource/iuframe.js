@@ -38,7 +38,9 @@ function resizeCollection(){
 }
 
 function reframeCenter(){
-	$('.IUAttrCenter').each(function(){
+    
+    var respc = $('[horizontalCenter="1"]').toArray();
+    $.each(respc, function( i, iu ){
 		//if flow layout, margin auto
 		//if absolute layout, set left
 		$(this).css('margin', 'auto');
