@@ -21,6 +21,7 @@
     if (self) {
         _ghostX = [aDecoder decodeFloatForKey:@"ghostX"];
         _ghostY = [aDecoder decodeFloatForKey:@"ghostY"];
+        _ghostOpacity = [aDecoder decodeFloatForKey:@"ghostOpacity"];
         _ghostImageName = [aDecoder decodeObjectForKey:@"ghostImageName"];
 
     }
@@ -31,6 +32,7 @@
     [super encodeWithCoder:aCoder];
     [aCoder encodeFloat:_ghostX forKey:@"ghostX"];
     [aCoder encodeFloat:_ghostY forKey:@"ghostY"];
+    [aCoder encodeFloat:_ghostOpacity forKey:@"ghostOpacity"];
     [aCoder encodeObject:_ghostImageName forKey:@"ghostImageName"];
 }
 

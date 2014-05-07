@@ -45,7 +45,8 @@
     [self addObserver:self forKeyPath:@"view.sizeView.sizeArray" options:NSKeyValueObservingOptionInitial context:@"mqCount"];
     [self addObserver:self forKeyPaths:@[@"document.ghostImageName",
                                          @"document.ghostX",
-                                         @"document.ghostY"]
+                                         @"document.ghostY",
+                                         @"document.ghostOpacity"]
               options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew context:@"ghostImage"];
 }
 
@@ -147,6 +148,8 @@
     
     NSPoint ghostPosition = NSMakePoint(_document.ghostX, _document.ghostY);
     [[self gridView] setGhostPosition:ghostPosition];
+    
+    [[self gridView] setGhostOpacity:_document.ghostOpacity];
 }
 
 
@@ -627,18 +630,6 @@
     return ((LMCanvasView *)self.view).gridView;
 }
 
-
-#pragma mark -
-#pragma mark border, ghost view
-
-- (void)setGhostImage:(NSImage *)ghostImage{
-    assert(0); // use it?
-    [[self gridView] setGhostImage:ghostImage];
-}
-- (void)setGhostPosition:(NSPoint)position{
-    assert(0); // use it?
-    [[self gridView] setGhostPosition:position];
-}
 
 /*
  ******************************************************************************************

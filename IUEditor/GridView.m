@@ -320,6 +320,10 @@
     [ghostLayer setFrame:NSMakeRect(position.x, position.y, ghostImage.size.width, ghostImage.size.height)];
 }
 
+- (void)setGhostOpacity:(CGFloat)opacity{
+    [ghostLayer setOpacity:opacity];
+}
+
 #pragma mark -
 #pragma mark guideLine layer
 

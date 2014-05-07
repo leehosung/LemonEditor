@@ -26,11 +26,6 @@
 - (LMCanvasView*)view;
 
 #pragma mark -
-//border, ghost view
-- (void)setGhostImage:(NSImage *)ghostImage;
-- (void)setGhostPosition:(NSPoint)position;
-
-#pragma mark -
 #pragma mark call by sizeView
 
 - (void)refreshGridFrameDictionary;
