@@ -42,6 +42,7 @@
 - (void)setGhost:(BOOL)ghost;
 - (void)setGhostImage:(NSImage *)image;
 - (void)setGhostPosition:(NSPoint)position;
+- (void)setGhostOpacity:(CGFloat)opacity;
 
 - (void)drawGuideLine:(NSArray *)array;
 - (void)clearGuideLine;

@@ -15,6 +15,7 @@
 @property (weak) IBOutlet NSButton *ghostBtn;
 @property (weak) IBOutlet NSTextField *ghostXTF;
 @property (weak) IBOutlet NSTextField *ghostYTF;
+@property (weak) IBOutlet NSSlider *opacitySlider;
 
 
 @property (weak) IBOutlet NSButton *refreshBtn;
@@ -22,6 +23,7 @@
 @property (weak) IBOutlet NSButton *rightInspectorBtn;
 @property (weak) IBOutlet NSButton *borderBtn;
 @property (weak) IBOutlet NSButton *mailBtn;
+
 
 @end
 
@@ -47,6 +49,7 @@
     [_ghostImageComboBox bind:NSContentBinding toObject:self withKeyPath:@"resourceManager.imageNames" options:IUBindingDictNotRaisesApplicable];
     [_ghostXTF bind:NSValueBinding toObject:self withKeyPath:@"document.ghostX" options:IUBindingDictNotRaisesApplicable];
     [_ghostYTF bind:NSValueBinding toObject:self withKeyPath:@"document.ghostY" options:IUBindingDictNotRaisesApplicable];
+    [_opacitySlider bind:NSValueBinding toObject:self withKeyPath:@"document.ghostOpacity" options:IUBindingDictNotRaisesApplicable];
     
     
 #pragma mark bottom right tools

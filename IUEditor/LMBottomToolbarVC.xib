@@ -13,6 +13,7 @@
                 <outlet property="ghostYTF" destination="Ybl-bH-hL5" id="zIe-yh-6xI"/>
                 <outlet property="leftInspectorBtn" destination="TnF-d8-4GY" id="2Sa-Lw-TfB"/>
                 <outlet property="mailBtn" destination="Ic4-uz-kiy" id="R75-eS-KtM"/>
+                <outlet property="opacitySlider" destination="Q3k-Jt-7QC" id="Av8-gB-klE"/>
                 <outlet property="refreshBtn" destination="ZgI-8w-DCs" id="HUE-ET-IhF"/>
                 <outlet property="rightInspectorBtn" destination="ekM-CH-Zbt" id="UW4-5H-kYH"/>
                 <outlet property="view" destination="tnw-Pb-ALu" id="Zz2-Pd-Ons"/>
@@ -224,6 +225,14 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </comboBoxCell>
                             </comboBox>
+                            <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Q3k-Jt-7QC">
+                                <rect key="frame" x="360" y="4" width="108" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="108" id="weh-Y6-vDb"/>
+                                </constraints>
+                                <sliderCell key="cell" controlSize="small" state="on" alignment="left" maxValue="1" doubleValue="0.25" tickMarkPosition="above" numberOfTickMarks="3" sliderType="linear" id="9Ca-8J-vnI"/>
+                            </slider>
                         </subviews>
                     </view>
                     <constraints>
@@ -236,6 +245,7 @@
                         <constraint firstAttribute="trailing" secondItem="fph-Bf-9zu" secondAttribute="trailing" id="9Bd-Ha-vSN"/>
                         <constraint firstItem="jCa-EW-A3v" firstAttribute="leading" secondItem="Ybl-bH-hL5" secondAttribute="trailing" constant="3" id="9Tg-Vf-gG2"/>
                         <constraint firstItem="bMV-OU-7aW" firstAttribute="top" secondItem="GO3-gA-Qc1" secondAttribute="top" constant="8" id="Ag7-hA-iAb"/>
+                        <constraint firstItem="Q3k-Jt-7QC" firstAttribute="leading" secondItem="dbv-8G-uEg" secondAttribute="trailing" constant="8" id="IC6-1U-Kk8"/>
                         <constraint firstItem="Ybl-bH-hL5" firstAttribute="top" secondItem="GO3-gA-Qc1" secondAttribute="top" constant="6" id="KfU-s1-Yhu"/>
                         <constraint firstItem="dbv-8G-uEg" firstAttribute="leading" secondItem="jCa-EW-A3v" secondAttribute="trailing" constant="13" id="M65-wl-BjK"/>
                         <constraint firstItem="7kz-xZ-eTb" firstAttribute="top" secondItem="GO3-gA-Qc1" secondAttribute="top" id="Swz-F3-uWj"/>
@@ -243,6 +253,7 @@
                         <constraint firstItem="PGY-62-aoj" firstAttribute="top" secondItem="GO3-gA-Qc1" secondAttribute="top" constant="8" id="UiW-Wb-vQd"/>
                         <constraint firstItem="7kz-xZ-eTb" firstAttribute="leading" secondItem="GO3-gA-Qc1" secondAttribute="leading" id="bDS-mH-cR2"/>
                         <constraint firstItem="jCa-EW-A3v" firstAttribute="top" secondItem="GO3-gA-Qc1" secondAttribute="top" constant="8" id="ktS-uy-sIc"/>
+                        <constraint firstAttribute="centerY" secondItem="Q3k-Jt-7QC" secondAttribute="centerY" id="ov9-Kh-uja"/>
                         <constraint firstItem="dnU-9a-a9F" firstAttribute="top" secondItem="GO3-gA-Qc1" secondAttribute="top" constant="8" id="p5S-ZA-R1D"/>
                         <constraint firstItem="dRi-Rm-hE7" firstAttribute="leading" secondItem="PGY-62-aoj" secondAttribute="trailing" constant="4" id="qMC-Mc-ASh"/>
                         <constraint firstItem="fph-Bf-9zu" firstAttribute="top" secondItem="GO3-gA-Qc1" secondAttribute="top" id="vv7-Ct-YSR"/>
