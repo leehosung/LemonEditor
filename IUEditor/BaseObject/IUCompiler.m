@@ -486,21 +486,34 @@
     }
 #pragma mark IUMovie
     else if([iu isKindOfClass:[IUMovie class]]){
-        [code appendFormat:@"<video %@ >", [self HTMLAttributes:iu option:nil]];
+
+        NSDictionary *dict = [NSDictionary dictionaryWithObject:@[@(1)] forKey:@[@"editor"]];
+        [code appendFormat:@"<div %@ >", [self HTMLAttributes:iu option:dict]];
         
-        if(((IUMovie *)iu).videoPath){
-            NSMutableString *compatibilitySrc = [NSMutableString stringWithString:@"\
-                                                 \n\t<source src=\"$moviename$\" type=\"video/$type$\">\
-                                                 \n\t<object data=\"$moviename$\" width=\"100%\" height=\"100%\">\
-                                                 \n\t\t<embed width=\"100%\" height=\"100%\" src=\"$moviename$\">\
-                                                 \n\t</object>\
-                                                 \n"];
-            
-            [compatibilitySrc replaceOccurrencesOfString:@"$moviename$" withString:((IUMovie *)iu).videoPath options:0 range:NSMakeRange(0, compatibilitySrc.length)];
-            [compatibilitySrc replaceOccurrencesOfString:@"$type$" withString:((IUMovie *)iu).videoPath.pathExtension options:0 range:NSMakeRange(0, compatibilitySrc.length)];
-            
-            [code appendString:compatibilitySrc];
+        IUMovie *iuMovie = (IUMovie *)iu;
+        
+        NSString *thumbnailPath;
+        if(iuMovie.posterPath){
+            thumbnailPath = [NSString stringWithString:iuMovie.posterPath];
         }
+        else{
+            thumbnailPath = [[NSBundle mainBundle] pathForResource:@"video_bg" ofType:@"png"];
+        }
+        [code appendFormat:@"<img src = \"%@\" width='100%%' height='100%%' style='position:absolute; left:0; top:0'>", thumbnailPath];
+        [code appendNewline];
+        
+        NSString *videoPlayImagePath = [[NSBundle mainBundle] pathForResource:@"video_play" ofType:@"png"];
+        [code appendFormat:@"<div style=\"background-image:url('%@'); \
+         background-size:20%%;\
+         background-repeat:no-repeat; \
+         background-position:center; \
+         position:absolute;  width:100%%; height:100%%; \"></div>", videoPlayImagePath];
+        
+        [code appendNewline];
+        [code appendString:@"</div>"];
+
+        
+        
         
         if( ((IUMovie *)iu).altText){
             [code appendString:((IUMovie *)iu).altText];
@@ -1070,21 +1083,26 @@
     }
 
     else if ([iu isKindOfClass:[IUMovie class]]) {
-        IUMovie *iuMovie = (IUMovie*)iu;
-        if (iuMovie.enableControl) {
-            [retString appendString:@" controls"];
-        }
-        if (iuMovie.enableLoop) {
-            [retString appendString:@" loop"];
-        }
-        if (iuMovie.enableMute) {
-            [retString appendString:@" muted"];
-        }
-        if (iuMovie.enableAutoPlay) {
-            [retString appendString:@" autoplay"];
-        }
-        if (iuMovie.posterPath) {
-            [retString appendFormat:@" poster=%@", iuMovie.posterPath];
+        if(option){
+            BOOL editor = [[option objectForKey:@"editor"] boolValue];
+            if(editor == NO){
+                IUMovie *iuMovie = (IUMovie*)iu;
+                if (iuMovie.enableControl) {
+                    [retString appendString:@" controls"];
+                }
+                if (iuMovie.enableLoop) {
+                    [retString appendString:@" loop"];
+                }
+                if (iuMovie.enableMute) {
+                    [retString appendString:@" muted"];
+                }
+                if (iuMovie.enableAutoPlay) {
+                    [retString appendString:@" autoplay"];
+                }
+                if (iuMovie.posterPath) {
+                    [retString appendFormat:@" poster=%@", iuMovie.posterPath];
+                }
+            }
         }
     }
     
