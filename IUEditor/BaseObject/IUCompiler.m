@@ -388,7 +388,7 @@
         [code appendString:[self outputHTMLAsBox:iu option:@{IUCompilerTagOption: @"form"}]];
     }
     else if ([iu isKindOfClass:[IUSubmitButton class]]){
-        [code appendString:[self outputHTMLAsBox:iu option:@{IUCompilerTagOption: @"form"}]];
+        [code appendFormat:@"<input %@ >", [self HTMLAttributes:iu option:nil]];
     }
 #pragma mark IUBox
     else if ([iu isKindOfClass:[IUBox class]]) {
@@ -582,6 +582,11 @@
         [importCode replaceOccurrencesOfString:@" id=" withString:[NSString stringWithFormat:@" id=%@__", iu.htmlID] options:0 range:NSMakeRange(0, importCode.length)];
         [code appendString:importCode];
         [code appendString:@"</div>"];
+    }
+    
+#pragma mark IUSubmitButton
+    else if ([iu isKindOfClass:[IUSubmitButton class]]){
+        [code appendFormat:@"<input %@ >", [self HTMLAttributes:iu option:nil]];
     }
     
 #pragma mark IUBox
