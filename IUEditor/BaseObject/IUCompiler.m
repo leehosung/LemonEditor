@@ -226,12 +226,12 @@
 
 #define IUCompilerTagOption @"tag"
 -(NSString*)outputHTMLAsBox:(IUBox*)iu option:(NSDictionary*)option{
-    NSString *tagOption = option[IUCompilerTagOption];
-    if (tagOption == nil) {
-        tagOption = @"div";
+    NSString *tag = @"div";
+    if ([iu isKindOfClass:[IUForm class]]) {
+        tag = @"form";
     }
     NSMutableString *code = [NSMutableString string];
-    [code appendFormat:@"<%@ %@>", tagOption, [self HTMLAttributes:iu option:nil]];
+    [code appendFormat:@"<%@ %@>", tag, [self HTMLAttributes:iu option:nil]];
     if (_rule == IUCompileRuleDjango && iu.textVariable) {
         if ([iu.document isKindOfClass:[IUClass class]]){
             [code appendFormat:@"<p>{{ object.%@ }}</p>", iu.textVariable];
@@ -251,7 +251,7 @@
             [code appendNewline];
         }
     }
-    [code appendFormat:@"</%@>", tagOption];
+    [code appendFormat:@"</%@>", tag];
     return code;
 }
 
@@ -1075,7 +1075,7 @@
     else if ([iu isKindOfClass:[IUTextField class]]){
         IUTextField *iuTextField = (IUTextField *)iu;
         if(iuTextField.formName){
-            [retString appendFormat:@" form=\"%@\"",iuTextField.formName];
+            [retString appendFormat:@" name=\"%@\"",iuTextField.formName];
         }
         if(iuTextField.placeholder){
             [retString appendFormat:@" placeholder=\"%@\"",iuTextField.placeholder];
@@ -1086,14 +1086,23 @@
         if(iuTextField.type == IUTextFieldTypePassword){
             [retString appendFormat:@" type=\"password\""];
         }
+        else {
+            [retString appendString:@" type=\"text\""];
+        }
     }
     else if ([iu isKindOfClass:[IUSubmitButton class]]){
         [retString appendString:@" type=\"submit\""];
+    }
+    else if ([iu isKindOfClass:[IUForm class]]){
+        [retString appendString:@" method=\"post\" action=\".\""];
     }
     else if([iu isKindOfClass:[IUTextView class]]){
         IUTextView *iuTextView = (IUTextView *)iu;
         if(iuTextView.placeholder){
             [retString appendFormat:@" placeholder=\"%@\"",iuTextView.placeholder];
+        }
+        if(iuTextView.formName){
+            [retString appendFormat:@" name=\"%@\"",iuTextView.formName];
         }
     }
 
