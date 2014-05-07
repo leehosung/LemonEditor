@@ -51,8 +51,9 @@
 #pragma mark -
 #pragma mark sizeView
 
+/*
 - (void)frameDidChange:(NSDictionary *)change{
-    /*
+//    [[self webView] runJSAfterRefreshCSS];
     JDDebugLog(@"mainView: point(%.1f, %.1f) size(%.1f, %.1f)",
                self.mainView.frame.origin.x,
                self.mainView.frame.origin.y,
@@ -70,9 +71,8 @@
                self.webView.frame.origin.y,
                self.webView.frame.size.width,
                self.webView.frame.size.height);
-     */
 }
-
+*/
 
 - (void)setWidthOfMainView:(CGFloat)width{
     [self.mainView setWidth:width];

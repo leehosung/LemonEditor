@@ -923,6 +923,11 @@
                 {
                     NSNumber *height = cssTagDict[IUCSSTagHeight];
                     NSUInteger num = [[obj.textHTML componentsSeparatedByString:@"<br>"] count];
+                    
+                    if([self isLastCharacterBRElement:obj.textHTML]){
+                        num--;
+                    }
+                    
                     [dict putTag:@"line-height" floatValue:[height floatValue]/num ignoreZero:YES unit: IUCSSUnitPixel];
                 }
                 else {
@@ -975,6 +980,15 @@
     //end of else (not hover)
     return dict;
 
+}
+
+- (BOOL)isLastCharacterBRElement:(NSString *)text{
+    NSArray *textArray = [text componentsSeparatedByString:@"<br>"];
+    NSString *lastString =  [[textArray lastObject] stringByTrim];
+    if([lastString isEqualToString:@"</span>"]){
+        return YES;
+    }
+    return NO;
 }
 
 

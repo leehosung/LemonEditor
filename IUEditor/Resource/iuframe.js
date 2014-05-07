@@ -43,7 +43,8 @@ function reframeCenter(){
     $.each(respc, function( i, iu ){
 		//if flow layout, margin auto
 		//if absolute layout, set left
-		$(this).css('margin', 'auto');
+		$(this).css('margin-left', 'auto');
+        $(this).css('margin-right', 'auto');
 		var pos = $(this).css('position');
 		if (pos == 'absolute'){
 			var parentW = $(this).parent().width();
@@ -60,9 +61,3 @@ $(window).resize(function(){
                  reframeCenter();
                  });
 
-$(document).ready(function(){
-            console.log("ready : iuframe.js");
-            resizePageContentHeight();
-			resizeCollection();
-            reframeCenter();
-});
