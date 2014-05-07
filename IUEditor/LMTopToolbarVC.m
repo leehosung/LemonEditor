@@ -100,8 +100,8 @@
 
 
 - (BOOL)hasEnoughSize{
-    CGFloat size = _fileTabView.frame.size.width - 400 * openTabDocuments.count;
-    if(size  > 400){
+    CGFloat size = _fileTabView.frame.size.width - 140 * openTabDocuments.count;
+    if(size  > 50){
         return YES;
     }
     else{
