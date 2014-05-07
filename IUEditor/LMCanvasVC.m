@@ -800,11 +800,31 @@
 }
 
 
-- (void)IURemoved:(NSString*)identifier{
+-(void)IURemoved:(NSString*)identifier withParentID:(NSString *)parentID{
+    
     //remove HTML
     DOMHTMLElement *selectHTMLElement = [self getHTMLElementbyID:identifier];
-    DOMElement *parentElement = [selectHTMLElement parentElement];
-    [parentElement removeChild:selectHTMLElement];
+    DOMHTMLElement *middleElement = selectHTMLElement;
+    DOMHTMLElement *parentElement;
+    while(1){
+        parentElement = (DOMHTMLElement *)[middleElement parentElement];
+        
+        if([parentElement.idName isEqualToString:parentID]){
+            break;
+        }
+        else if([parentElement isKindOfClass:[DOMHTMLBodyElement class]]){
+            break;
+        }
+        else if(parentElement == nil){
+            break;
+        }
+        
+        middleElement = parentElement;
+    }
+    
+    assert(parentElement != nil);
+    
+    [parentElement removeChild:middleElement];
     
     [self deselectedAllIUs];
     [frameDict.dict removeObjectForKey:identifier];
