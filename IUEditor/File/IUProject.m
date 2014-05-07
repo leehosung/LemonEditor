@@ -177,7 +177,7 @@
 
     [[NSFileManager defaultManager] createDirectoryAtPath:buildPath withIntermediateDirectories:YES attributes:nil error:error];
     
-    [self initializeResource];
+//    [self initializeResource];
     [[NSFileManager defaultManager] createSymbolicLinkAtPath:[buildPath stringByAppendingPathComponent:@"Resource"] withDestinationPath:[self.path stringByAppendingPathComponent:@"Resource"] error:error];
 
 
@@ -260,6 +260,7 @@
 
 - (void)initializeResource{
     //remove resource node if exist
+    JDInfoLog(@"initilizeResource");
     [self removeNode:_resourceNode];
     
     IUResourceGroupNode *rootNode = [[IUResourceGroupNode alloc] init];
