@@ -206,6 +206,10 @@
     if (_project == nil) {
         return;
     }
+    
+    //FIXME:
+    [_project copyJavascriptForDebug];
+
     _project.delegate = self;
     
     //IU Setting
@@ -299,14 +303,6 @@
 }
 
 
-- (void)project:(IUProject *)project nodeAdded:(IUNode *)node{
-    [iuInspectorVC setPageDocumentNodes:project.pageDocumentNodes];
-    [iuInspectorVC setClassDocumentNodes:project.classDocumentNodes];
-}
-
-- (void)project:(IUProject *)project nodeRemoved:(IUNode *)node{
-    //nothing
-}
 
 #pragma mark -
 #pragma mark select TavView

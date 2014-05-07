@@ -436,6 +436,8 @@
     }
     
     JDDebugLog(@"%@:%@", identifier, html);
+
+    [[self webView] runJSAfterRefreshCSS];
     [self.webView setNeedsDisplay:YES];
 }
 
@@ -524,10 +526,7 @@
 
     NSString *newCSSText = [self innerCSSText:styleSheet.innerHTML byAddingCSSText:cssText withID:iuID];
     [styleSheet setInnerHTML:newCSSText];
-    
-    [[self webView] updateFrameDict];
-    [[self webView] redrawCarousels];
-    
+    [[self webView] runJSAfterRefreshCSS];
 }
 
 
@@ -583,8 +582,7 @@
     NSString *newCSSText = [self removeCSSText:styleSheet.innerHTML withID:iuID];
     [styleSheet setInnerHTML:newCSSText];
     
-    [[self webView] updateFrameDict];
-    [[self webView] redrawCarousels];
+    [[self webView] runJSAfterRefreshCSS];
     
 }
 

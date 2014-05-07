@@ -81,9 +81,9 @@
     if (height == self.mainView.frame.size.height) {
         return;
     }
-    [self.mainView setHeight:height];
+    [self.mainView setHeight:height];    
     [self.webView resizePageContent];
-    [self.webView updateFrameDict];
+    [[self webView] updateFrameDict];
 }
 
 #pragma mark -

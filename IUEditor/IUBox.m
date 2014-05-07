@@ -579,12 +579,8 @@
     _center = center;
     if (center) {
         [self.css eradicateTag:IUCSSTagX];
-        [self.delegate IUClassIdentifier:self.htmlID addClass:@"IUAttrCenter"];
     }
-    else {
-        [self.delegate IUClassIdentifier:self.htmlID removeClass:@"IUAttrCenter"];
-    }
-    [self.delegate callWebScriptMethod:@"reframeCenter" withArguments:nil];
+    [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
 }
 
 
