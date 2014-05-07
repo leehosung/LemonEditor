@@ -54,7 +54,23 @@
 		<key>isWidget</key>
 		<true/>
 		<key>className</key>
-		<string>IUImport</string>
+		<string>IUSubmitButton</string>
+		<key>classImage</key>
+		<string>tool_textfield</string>
+		<key>navImage</key>
+		<string>stack_textfield</string>
+		<key>shortDesc</key>
+		<string>Input text object from user</string>
+		<key>longDesc</key>
+		<string></string>
+		<key>widgetClass</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>isWidget</key>
+		<true/>
+		<key>className</key>
+		<string>IUForm</string>
 		<key>classImage</key>
 		<string>tool_render</string>
 		<key>navImage</key>
@@ -64,7 +80,7 @@
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
-		<integer>1</integer>
+		<integer>0</integer>
 	</dict>
 	<dict>
 		<key>isWidget</key>

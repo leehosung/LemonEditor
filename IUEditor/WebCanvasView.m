@@ -142,7 +142,7 @@
         if(newIU){
             NSString *parentIUID = [self IUAtPoint:convertedPoint];
             if(parentIUID){
-                [((LMCanvasVC *)(self.delegate)) makeNewIU:newIU atPoint:convertedPoint atIU:parentIUID];
+                [((LMCanvasVC *)(self.delegate)) makeNewIUByDragAndDrop:newIU atPoint:convertedPoint atIU:parentIUID];
                 JDTraceLog( @"[IU:%@], dragPoint(%.1f, %.1f)", newIU.htmlID, dragPoint.x, dragPoint.y);
                 return YES;
             }

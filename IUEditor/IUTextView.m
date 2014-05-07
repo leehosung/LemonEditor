@@ -42,6 +42,10 @@
     return NO;
 }
 
+- (BOOL)shouldAddIUByUserInput{
+    return NO;
+}
+
 - (void)setPlaceholder:(NSString *)placeholder{
     _placeholder = placeholder;
     [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.htmlID];

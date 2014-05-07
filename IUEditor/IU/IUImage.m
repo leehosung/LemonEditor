@@ -26,7 +26,7 @@
 #pragma mark - 
 #pragma mark IUImage
 
-- (BOOL)shouldAddIU{
+- (BOOL)shouldAddIUByUserInput{
     return NO;
 }
 

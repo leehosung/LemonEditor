@@ -117,7 +117,7 @@
 -(BOOL)hasHeight;
 
 -(BOOL)shouldEditText;
--(BOOL)shouldAddIU;
+-(BOOL)shouldAddIUByUserInput;
 
 
 -(void)startGrouping;

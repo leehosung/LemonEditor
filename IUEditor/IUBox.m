@@ -209,7 +209,7 @@
     }
 }
 
--(BOOL)shouldAddIU{
+-(BOOL)shouldAddIUByUserInput{
     return YES;
 }
 
@@ -217,7 +217,6 @@
     
     assert(iu != self);
     
-    if([self shouldAddIU]){
         [_m_children addObject:iu];
         if (iu.delegate == nil) {
             iu.delegate = self.delegate;
@@ -242,8 +241,6 @@
         [_identifierManager addIU:iu];
         [iu bind:@"identifierManager" toObject:self withKeyPath:@"identifierManager" options:nil];
         return YES;
-    }
-    return NO;
 }
 
 
@@ -286,7 +283,7 @@
 
 
 -(BOOL)insertIU:(IUBox *)iu atIndex:(NSInteger)index  error:(NSError**)error{
-    if([self shouldAddIU]){
+    if([self shouldAddIUByUserInput]){
         [_m_children insertObject:iu atIndex:index];
         return YES;
     }

@@ -10,7 +10,7 @@
 
 @implementation IUCarouselItem
 
-- (BOOL)shouldAddIU{
+- (BOOL)shouldAddIUByUserInput{
     return NO;
 }
 
