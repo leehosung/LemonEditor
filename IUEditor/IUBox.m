@@ -170,6 +170,7 @@
 -(void)CSSUpdated:(NSDictionary*)tagDictionary forWidth:(NSInteger)width isHover:(BOOL)isHover{
     if (delegateEnableLevel == 1) {
         NSString *css = [self cssForWidth:width isHover:isHover];
+
         if (isHover) {
             [self.delegate IUClassIdentifier:[self.htmlID hoverIdentifier] CSSUpdated:css forWidth:width];
         }
