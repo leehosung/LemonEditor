@@ -30,7 +30,7 @@
 
 //-(NSRect)IUPercentFrame:(NSString*)identifier;
 
--(void)IURemoved:(NSString*)identifier;
+-(void)IURemoved:(NSString*)identifier withParentID:(NSString *)parentID;
 
 - (NSPoint)distanceFromIU:(NSString *)iuName to:(NSString *)parentName;
 - (NSSize)frameSize:(NSString *)identifier;

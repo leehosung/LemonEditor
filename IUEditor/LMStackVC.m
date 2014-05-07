@@ -116,9 +116,9 @@
 - (NSDragOperation)outlineView:(NSOutlineView *)ov validateDrop:(id <NSDraggingInfo>)info proposedItem:(id)item proposedChildIndex:(NSInteger)childIndex {
     
     NSPasteboard *pBoard = info.draggingPasteboard;
-    NSData *stackVCData = [pBoard dataForType:@"stackVC"];
-    if(stackVCData){
-        if (childIndex == -1) {
+    if([[pBoard types] containsObject:@"stackVC"]){
+        IUBox *newParent = [item representedObject];    
+        if ([newParent shouldAddIUByUserInput] == NO) {
             return NSDragOperationNone;
         }
         //TODO
@@ -136,8 +136,7 @@
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView acceptDrop:(id < NSDraggingInfo >)info item:(id)item childIndex:(NSInteger)index{
     NSPasteboard *pBoard = info.draggingPasteboard;
-    NSData *stackVCData = [pBoard dataForType:@"stackVC"];
-    if(stackVCData){
+    if([[pBoard types] containsObject:@"stackVC"]){
         NSArray *selections = [_IUController selectedObjects];
         IUBox *oldParent = [(IUBox*)[selections firstObject] parent];
         IUBox *newParent = [item representedObject];
@@ -148,8 +147,12 @@
         }
         else {
             for (IUBox *iu in [_IUController selectedObjects]) {
+                NSInteger newIndex= index;
+                if(newIndex < 0){
+                    newIndex = 0 ;
+                }
                 [iu.parent removeIU:iu];
-                [newParent insertIU:iu atIndex:index error:nil];
+                [newParent insertIU:iu atIndex:newIndex error:nil];
             }
         }
         [_IUController rearrangeObjects];

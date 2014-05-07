@@ -214,35 +214,44 @@
 }
 
 -(BOOL)addIU:(IUBox *)iu error:(NSError**)error{
+    assert(iu != self);
+    
+    NSInteger index = [_m_children count];
+    return [self insertIU:iu atIndex:index error:error];
+}
+
+
+-(BOOL)insertIU:(IUBox *)iu atIndex:(NSInteger)index  error:(NSError**)error{
     
     assert(iu != self);
     
-        [_m_children addObject:iu];
-        if (iu.delegate == nil) {
-            iu.delegate = self.delegate;
+    [_m_children insertObject:iu atIndex:index];
+    
+    if (iu.delegate == nil) {
+        iu.delegate = self.delegate;
+    }
+    iu.parent = self;
+    
+    if ([self.document isKindOfClass:[IUClass class]]) {
+        for (IUBox *import in [(IUClass*)self.document referenceImports]) {
+            NSString *self_htmlID = [import.htmlID stringByAppendingFormat:@"__%@", self.htmlID];
+            NSString *iu_htmlid = [import.htmlID stringByAppendingFormat:@"__%@", iu.htmlID];
+            NSString *originalHTML = iu.html;
+            NSString *replacedHTML = [originalHTML stringByReplacingOccurrencesOfString:@" id=" withString:[NSString stringWithFormat:@" id=%@__", import.htmlID]];
+            [self.delegate IUHTMLIdentifier:iu_htmlid HTML:replacedHTML withParentID:self_htmlID];
         }
-        iu.parent = self;
-        
-        if ([self.document isKindOfClass:[IUClass class]]) {
-            for (IUBox *import in [(IUClass*)self.document referenceImports]) {
-                NSString *self_htmlID = [import.htmlID stringByAppendingFormat:@"__%@", self.htmlID];
-                NSString *iu_htmlid = [import.htmlID stringByAppendingFormat:@"__%@", iu.htmlID];
-                NSString *originalHTML = iu.html;
-                NSString *replacedHTML = [originalHTML stringByReplacingOccurrencesOfString:@" id=" withString:[NSString stringWithFormat:@" id=%@__", import.htmlID]];
-                [self.delegate IUHTMLIdentifier:iu_htmlid HTML:replacedHTML withParentID:self_htmlID];
-            }
-        }
-
-        [self.delegate IUHTMLIdentifier:iu.htmlID HTML:iu.html withParentID:self.htmlID];
-        [self.delegate IUClassIdentifier:iu.htmlID CSSUpdated:[iu cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
-        for (IUBox *child in iu.children) {
-            [self.delegate IUClassIdentifier:child.htmlID CSSUpdated:[child cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
-        }
-        [_identifierManager addIU:iu];
-        [iu bind:@"identifierManager" toObject:self withKeyPath:@"identifierManager" options:nil];
-        return YES;
+    }
+    
+    [self.delegate IUHTMLIdentifier:iu.htmlID HTML:iu.html withParentID:self.htmlID];
+    [self.delegate IUClassIdentifier:iu.htmlID CSSUpdated:[iu cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+    for (IUBox *child in iu.children) {
+        [self.delegate IUClassIdentifier:child.htmlID CSSUpdated:[child cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+    }
+    [_identifierManager addIU:iu];
+    [iu bind:@"identifierManager" toObject:self withKeyPath:@"identifierManager" options:nil];
+    
+    return YES;
 }
-
 
 -(BOOL)addIUReference:(IUBox *)iu error:(NSError**)error{
     [_m_children addObject:iu];
@@ -259,7 +268,7 @@
 -(BOOL)removeIU:(IUBox *)iu{
     if([iu shouldRemoveIU]){
         [_m_children removeObject:iu];
-        [self.delegate IURemoved:iu.htmlID];
+        [self.delegate IURemoved:iu.htmlID withParentID:iu.parent.htmlID];
         return YES;
     }
     return NO;
@@ -281,14 +290,6 @@
     return [self removeIU:box];
 }
 
-
--(BOOL)insertIU:(IUBox *)iu atIndex:(NSInteger)index  error:(NSError**)error{
-    if([self shouldAddIUByUserInput]){
-        [_m_children insertObject:iu atIndex:index];
-        return YES;
-    }
-    return NO;
-}
 
 -(NSArray*)children{
     return [_m_children copy];

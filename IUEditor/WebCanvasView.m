@@ -658,6 +658,7 @@
 
 /*
 
+
 - (BOOL)webView:(WebView *)webView shouldPerformAction:(SEL)action fromSender:(id)sender{
     JDWarnLog(@"");
 
@@ -673,16 +674,50 @@
     JDWarnLog(@"");
     return [super webView:sender createWebViewWithRequest:request];
 }
+ 
+ */
 - (void)webView:(WebView *)webView decidePolicyForNavigationAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request frame:(WebFrame *)frame decisionListener:(id < WebPolicyDecisionListener >)listener
 {
-    [listener use];
+    /*
+     web에서 링크를 클릭했을 때 들어오는 actionInformation Dict
+     WebActionButtonKey = 0;
+     WebActionElementKey =     {
+     WebElementDOMNode = "<DOMHTMLParagraphElement [P]: 0x10917c5a0 ''>";
+     WebElementFrame = "<WebFrame: 0x60800001b520>";
+     WebElementIsContentEditableKey = 0;
+     WebElementIsInScrollBar = 0;
+     WebElementIsSelected = 0;
+     WebElementLinkIsLive = 1;
+     WebElementLinkLabel = Recruit;
+     WebElementLinkURL = "file:///Users/choiseungmi/IUProjTemp/myApp.iuproject/Index.html";
+     WebElementTargetFrame = "<WebFrame: 0x60800001b520>";
+     };
+     WebActionModifierFlagsKey = 0;
+     WebActionNavigationTypeKey = 0;
+     WebActionOriginalURLKey = "file:///Users/choiseungmi/IUProjTemp/myApp.iuproject/Index.html"
+     ;
+     
+     */
+    NSDictionary *actionDict = [actionInformation objectForKey:WebActionElementKey];
+    if(actionDict){
+        [listener ignore];
+    }
+    else{
+        [listener use];
+    }
 }
 
 - (void)webView:(WebView *)webView decidePolicyForNewWindowAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request newFrameName:(NSString *)frameName decisionListener:(id < WebPolicyDecisionListener >)listener
 {
-    [listener use];
+    NSDictionary *actionDict = [actionInformation objectForKey:WebActionElementKey];
+    if(actionDict){
+        [listener ignore];
+    }
+    else{
+        [listener use];
+    }
 }
-*/
+
 
 
 @end
