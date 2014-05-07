@@ -82,6 +82,22 @@
 		<key>widgetClass</key>
 		<integer>0</integer>
 	</dict>
+    <dict>
+		<key>isWidget</key>
+		<true/>
+		<key>className</key>
+		<string>IUImport</string>
+		<key>classImage</key>
+		<string>tool_render</string>
+		<key>navImage</key>
+		<string>stack_render</string>
+		<key>shortDesc</key>
+		<string>Component Object</string>
+		<key>longDesc</key>
+		<string></string>
+		<key>widgetClass</key>
+		<integer>1</integer>
+	</dict>
 	<dict>
 		<key>isWidget</key>
 		<true/>
