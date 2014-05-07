@@ -60,6 +60,8 @@
 
 - (void)setDivLink{
     NSString *link = [[_linkCB selectedCell] stringValue];
+    [_divAC setContent:nil];
+
     if([self isPage:link]){
         IUDocumentNode *node = [[_pageDocumentAC selectedObjects] objectAtIndex:0];
         IUDocument *document = node.document;
@@ -67,7 +69,6 @@
         [_divPopupBtn setEnabled:YES];
     }
     else{
-        [_divAC setContent:nil];
         [_divPopupBtn setEnabled:NO];
     }
 }
