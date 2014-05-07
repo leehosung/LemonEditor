@@ -213,8 +213,7 @@
         [canvasVC addFrame:frameSize];
     }
     
-    //FIXME:
-    [_project copyJavascriptForDebug];
+    [_project copyResourceForDebug];
 
     _project.delegate = self;
     

@@ -342,7 +342,7 @@
 
 }
 
--(void)copyJS:(NSString *)path toPath:(NSString *)toPath{
+-(void)copyFile:(NSString *)path toPath:(NSString *)toPath{
 
     if ([[NSFileManager defaultManager] fileExistsAtPath:toPath]) {
         [[NSFileManager defaultManager] removeItemAtPath:toPath error:nil];
@@ -352,27 +352,34 @@
 
 
 
--(void)copyJavascriptForDebug{
+-(void)copyResourceForDebug{
     IUResourceGroupNode *JSGroup;
+    IUResourceGroupNode *CSSGroup;
+
     for(IUResourceGroupNode *groupNode in self.resourceNode.children){
         if([groupNode.name isEqualToString:@"JS"]){
             JSGroup = groupNode;
+        }
+        if([groupNode.name isEqualToString:@"CSS"]){
+            CSSGroup = groupNode;
         }
     }
 
     //Java Script Resource copy
     NSString *iuEditorJSPath = [[NSBundle mainBundle] pathForResource:@"iueditor" ofType:@"js"];
-    [self copyJS:iuEditorJSPath toPath:[JSGroup.absolutePath stringByAppendingString:@"iueditor.js"]];
+    [self copyFile:iuEditorJSPath toPath:[JSGroup.absolutePath stringByAppendingPathComponent:@"iueditor.js"]];
 
     NSString *iuFrameJSPath = [[NSBundle mainBundle] pathForResource:@"iuframe" ofType:@"js"];
-    [self copyJS:iuFrameJSPath toPath:[JSGroup.absolutePath stringByAppendingString:@"iuframe.js"]];
+    [self copyFile:iuFrameJSPath toPath:[JSGroup.absolutePath stringByAppendingPathComponent:@"iuframe.js"]];
     
     NSString *iuJSPath = [[NSBundle mainBundle] pathForResource:@"iu" ofType:@"js"];
-    [self copyJS:iuJSPath toPath:[JSGroup.absolutePath stringByAppendingString:@"iu.js"]];
+    [self copyFile:iuJSPath toPath:[JSGroup.absolutePath stringByAppendingPathComponent:@"iu.js"]];
     
     NSString *carouselJSPath = [[NSBundle mainBundle] pathForResource:@"jquery.bxslider" ofType:@"js"];
-    [self copyJS:carouselJSPath toPath:[JSGroup.absolutePath stringByAppendingString:@"jquery.bxslider.js"]];
+    [self copyFile:carouselJSPath toPath:[JSGroup.absolutePath stringByAppendingPathComponent:@"jquery.bxslider.js"]];
 
+    NSString *IUCSSPath = [[NSBundle mainBundle] pathForResource:@"iu" ofType:@"css"];
+    [self copyFile:IUCSSPath toPath:[CSSGroup.absolutePath stringByAppendingPathComponent:@"iu.css"]];
 
 }
 
