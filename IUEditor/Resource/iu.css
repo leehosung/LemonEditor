@@ -31,3 +31,7 @@
     float:left !important;
     position:relative !important;
 }
+
+.IUTextField {
+    padding-left: 5px;
+}
