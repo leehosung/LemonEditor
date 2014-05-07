@@ -207,6 +207,12 @@
         return;
     }
     
+    //load sizeView
+    for(NSNumber *number in _project.mqSizes){
+        NSInteger frameSize = [number integerValue];
+        [canvasVC addFrame:frameSize];
+    }
+    
     //FIXME:
     [_project copyJavascriptForDebug];
 
@@ -256,6 +262,8 @@
     [bottomToolbarVC setResourceManager:_resourceManager];
     iuInspectorVC.pageDocumentNodes = _project.pageDocumentNodes;
     iuInspectorVC.classDocumentNodes = _project.classDocumentNodes;
+    
+    
 }
 
 -(void)setSelectedNode:(IUNode*)selectedNode{
@@ -302,6 +310,12 @@
     [_project save];
 }
 
+- (void)addMQSize:(NSInteger)size{
+    [_project.mqSizes addObject:@(size)];
+}
+- (void)removeMQSize:(NSInteger)size{
+    [_project.mqSizes removeObject:@(size)];
+}
 
 
 #pragma mark -

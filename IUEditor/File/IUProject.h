@@ -43,6 +43,7 @@ typedef enum _IUGitType{
 @property   IUGitType       gitType;
 @property   id<IUProjectDelegate>  delegate;
 @property   NSString        *buildDirectoryName;
+@property   NSMutableArray  *mqSizes;
 
 - (NSString*)path;
 

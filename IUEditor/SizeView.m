@@ -11,6 +11,7 @@
 #import "LMCanvasView.h"
 #import "LMCanvasVC.h"
 #import "LMRulerView.h"
+#import "LMWC.h"
 
 @implementation SizeTextField : NSTextField
 - (id)init{
@@ -221,6 +222,10 @@
     
     //set maxWidth in case of removing maxWidth 
     [self setMaxWidth];
+    
+    //save to project
+    LMWC *lmWC = [NSApp mainWindow].windowController;
+    [lmWC removeMQSize:width];
 
 }
 
@@ -234,6 +239,11 @@
     NSInteger newWidth = [self.addFrameSizeField integerValue];
     [self addFrame:newWidth];
     [self.addFramePopover close];
+    
+    //save to project
+    LMWC *lmWC = [NSApp mainWindow].windowController;
+    [lmWC addMQSize:newWidth];
+
 }
 
 

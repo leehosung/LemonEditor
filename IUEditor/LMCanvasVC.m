@@ -38,9 +38,6 @@
 }
 
 -(void)awakeFromNib{
-    [[self sizeView] addFrame:defaultFrameWidth];
-    [[self sizeView] addFrame:400];
-    [[self sizeView] addFrame:700];
     
     [self addObserver:self forKeyPath:@"view.sizeView.sizeArray" options:NSKeyValueObservingOptionInitial context:@"mqCount"];
     [self addObserver:self forKeyPaths:@[@"document.ghostImageName",
@@ -63,6 +60,10 @@
 
 -(void)changeIUPageHeight:(CGFloat)pageHeight{
     [self.view setHeightOfMainView:pageHeight];
+}
+
+- (void)addFrame:(NSInteger)frameSize{
+    [[self sizeView] addFrame:frameSize];
 }
 
 
