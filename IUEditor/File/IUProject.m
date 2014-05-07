@@ -38,6 +38,7 @@
     [encoder encodeObject:_backgroundDocumentGroup forKey:@"_backgroundDocumentGroup"];
     [encoder encodeObject:_classDocumentGroup forKey:@"_classDocumentGroup"];
     [encoder encodeObject:_buildDirectoryName forKey:@"buildPath"];
+    [encoder encodeObject:_mqSizes forKey:@"mqSizes"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder{
@@ -52,6 +53,7 @@
         _backgroundDocumentGroup = [aDecoder decodeObjectForKey:@"_backgroundDocumentGroup"];
         _classDocumentGroup = [aDecoder decodeObjectForKey:@"_classDocumentGroup"];
         _buildDirectoryName = [aDecoder decodeObjectForKey:@"buildPath"];
+        _mqSizes = [[aDecoder decodeObjectForKey:@"mqSizes"] mutableCopy];
     }
     return self;
 }
@@ -61,6 +63,10 @@
     if(self){
         _buildDirectoryName = @"build";
         IDDict = [NSMutableDictionary dictionary];
+        _mqSizes = [NSMutableArray array];
+        [_mqSizes addObject:@(defaultFrameWidth)];
+        [_mqSizes addObject:@(700)];
+        [_mqSizes addObject:@(400)];
     }
     return self;
 }

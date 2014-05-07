@@ -27,4 +27,8 @@
 
 - (LMWindow *)window;
 - (void)reloadCurrentDocument;
+
+- (void)addMQSize:(NSInteger)size;
+- (void)removeMQSize:(NSInteger)size;
+
 @end
