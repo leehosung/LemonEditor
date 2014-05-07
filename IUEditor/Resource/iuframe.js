@@ -55,9 +55,17 @@ function reframeCenter(){
 }
 
 $(window).resize(function(){
+                 console.log("resize window : iuframe.js");
+                 resizePageContentHeight();
+                 resizeCollection();
+                 reframeCenter();
+                 });
+
+$(document).ready(function(){
                  console.log("ready : iuframe.js");
                  resizePageContentHeight();
                  resizeCollection();
                  reframeCenter();
                  });
+
 
