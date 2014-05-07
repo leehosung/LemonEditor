@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMResourceVC">
@@ -250,7 +250,6 @@
                 <constraint firstAttribute="trailing" secondItem="x7y-Oy-DDd" secondAttribute="trailing" id="Otl-Mg-bjD"/>
                 <constraint firstItem="x7y-Oy-DDd" firstAttribute="top" secondItem="g6L-7m-n83" secondAttribute="bottom" id="b1U-Zg-PNE"/>
                 <constraint firstItem="g6L-7m-n83" firstAttribute="top" secondItem="iGv-yg-ab5" secondAttribute="top" id="gHO-5X-dvV"/>
-                <constraint firstItem="x7y-Oy-DDd" firstAttribute="top" secondItem="iGv-yg-ab5" secondAttribute="top" constant="349" id="gOS-6s-LAv"/>
                 <constraint firstAttribute="trailing" secondItem="x7y-Oy-DDd" secondAttribute="trailing" id="vvx-kL-0ig"/>
                 <constraint firstItem="x7y-Oy-DDd" firstAttribute="leading" secondItem="iGv-yg-ab5" secondAttribute="leading" id="zHn-yE-AgM"/>
             </constraints>
