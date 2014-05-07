@@ -56,9 +56,9 @@
 		<key>className</key>
 		<string>IUSubmitButton</string>
 		<key>classImage</key>
-		<string>tool_textfield</string>
+		<string>tool_submit</string>
 		<key>navImage</key>
-		<string>stack_textfield</string>
+		<string>stack_submit</string>
 		<key>shortDesc</key>
 		<string>Input text object from user</string>
 		<key>longDesc</key>
@@ -72,9 +72,9 @@
 		<key>className</key>
 		<string>IUForm</string>
 		<key>classImage</key>
-		<string>tool_render</string>
+		<string>tool_form</string>
 		<key>navImage</key>
-		<string>stack_render</string>
+		<string>stack_form</string>
 		<key>shortDesc</key>
 		<string>Component Object</string>
 		<key>longDesc</key>
@@ -282,7 +282,7 @@
 		<key>classImage</key>
 		<string>tool_collection</string>
 		<key>navImage</key>
-		<string>stack_collection</string>
+		<string>stack_section</string>
 		<key>shortDesc</key>
 		<string>IU Responsive Section</string>
 		<key>longDesc</key>
