@@ -80,7 +80,7 @@
         {
             NSURL* filePath = [files objectAtIndex:i];
             IUResourceType type = [_manager resourceType:[filePath pathExtension]];
-            if(type != IUResourceTypeNone){
+            if(type == IUResourceTypeImage || type ==IUResourceTypeVideo){
                 [self addResource:filePath type:type];
             }
             
