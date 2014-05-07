@@ -495,11 +495,11 @@
             </constraints>
         </customView>
         <customView id="A1b-d4-ykK" userLabel="ItemView-icon">
-            <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+            <rect key="frame" x="0.0" y="0.0" width="64" height="46"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a2t-9n-AMx">
-                    <rect key="frame" x="10" y="10" width="50" height="50"/>
+                    <rect key="frame" x="17" y="12" width="30" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSInfo" id="72k-Q4-aS0"/>
                     <connections>
