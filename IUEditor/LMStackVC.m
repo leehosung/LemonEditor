@@ -165,7 +165,11 @@
         IUBox *newIU = [NSKeyedUnarchiver unarchiveObjectWithData:iuData];
         if(newIU){
             IUBox *newParent = [item representedObject];
-            [newParent addIU:newIU error:nil];
+            NSInteger newIndex= index;
+            if(newIndex < 0){
+                newIndex = 0 ;
+            }
+            [newParent insertIU:newIU atIndex:newIndex error:nil];
             [_IUController rearrangeObjects];
             [_IUController setSelectedObjectsByIdentifiers:@[newIU.htmlID]];
 
