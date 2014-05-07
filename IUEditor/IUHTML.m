@@ -30,7 +30,7 @@
 
 }
 
--(BOOL)shouldAddIU{
+-(BOOL)shouldAddIUByUserInput{
     return NO;
 }
 

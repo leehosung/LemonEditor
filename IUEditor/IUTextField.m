@@ -46,6 +46,10 @@
     return NO;
 }
 
+- (BOOL)shouldAddIUByUserInput{
+    return NO;
+}
+
 #pragma mark -
 #pragma mark setting
 

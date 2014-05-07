@@ -95,9 +95,12 @@
 
 
 
-- (void)makeNewIU:(IUBox *)newIU atPoint:(NSPoint)point atIU:(NSString *)parentIUID{
+- (BOOL)makeNewIUByDragAndDrop:(IUBox *)newIU atPoint:(NSPoint)point atIU:(NSString *)parentIUID{
     
     IUBox *parentIU = [self.controller IUBoxByIdentifier:parentIUID];
+    if ([parentIU shouldAddIUByUserInput] == NO) {
+        return NO;
+    }
     NSPoint position = [self distanceFromIU:parentIUID toPointFromWebView:point];
         
     //postion을 먼저 정한 후에 add 함
@@ -107,6 +110,7 @@
     [self.controller setSelectedObjectsByIdentifiers:@[newIU.htmlID]];
     
     JDTraceLog( @"[IU:%@] : point(%.1f, %.1f) atIU:%@", newIU.htmlID, point.x, point.y, parentIUID);
+    return YES;
 }
 
 - (void)removeSelectedIUs{

@@ -75,7 +75,7 @@
 - (BOOL)checkExtendSelectedIU:(NSSize)size;
 
 
-- (void)makeNewIU:(IUBox *)newIU atPoint:(NSPoint)point atIU:(NSString *)parentIUID;
+- (BOOL)makeNewIUByDragAndDrop:(IUBox *)newIU atPoint:(NSPoint)point atIU:(NSString *)parentIUID;
 - (NSString *)currentHTML;
 
 
