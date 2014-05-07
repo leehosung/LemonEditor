@@ -174,8 +174,8 @@
 - (IBAction)showBPressed:(id)sender {
     IUProject *project = _documentController.project;
     [project build:nil];
-    IUDocumentNode *firstNode = [[project pageDocumentNodes] firstObject];
-    NSString *firstPath = [project.path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@.html",project.buildDirectoryName, firstNode.name] ];
+    IUDocumentNode *node = [[_documentController selectedObjects] firstObject];
+    NSString *firstPath = [project.path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@.html",project.buildDirectoryName, node.name] ];
     
     [[NSWorkspace sharedWorkspace] openFile:firstPath];
 }
