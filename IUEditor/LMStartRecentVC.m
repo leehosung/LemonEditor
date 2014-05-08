@@ -21,16 +21,21 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        [[NSDocumentController sharedDocumentController] noteNewRecentDocumentURL:[NSURL fileURLWithPath:@"/Users/jd/IUProjTemp/myApp.iuproject"]];
-        recentDocURLs = [[NSDocumentController sharedDocumentController] recentDocumentURLs];
         _recentDocs = [NSMutableArray array];
-        for (NSURL *url in recentDocURLs) {
-            [_recentDocs addObject:@{@"image": [NSImage imageNamed:@"start_reference"],
-                                     @"name" : [url path]
-                                     }];
+        recentDocURLs = [[NSDocumentController sharedDocumentController] recentDocumentURLs];
+        
+        for (NSURL *url in recentDocURLs){
+            [_recentDocs addObject:[@{@"image": [NSImage imageNamed:@"new_default"],
+                                     @"name" : [url lastPathComponent],
+//                                     @"selection": @(NO),
+                                     } mutableCopy]];
         }
     }
     return self;
+}
+
+- (void)awakeFromNib{
+    [_recentAC setContent:_recentDocs];
 }
 
 - (void)show{
@@ -48,5 +53,28 @@
     [self.view.window close];
 }
 
+-(NSMutableDictionary *)projectDictWithPath: (NSString*)path{
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    NSError *err;
+    NSMutableDictionary *contentDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&err] ;
+    if (err) {
+        [JDLogUtil log:@"load project" err:err];
+        assert(0);
+    }
+    return contentDict;
 
+}
+/*
+- (void)setSelectedIndexes:(NSIndexSet *)selectedIndexes{
+    _selectedIndexes = selectedIndexes;
+    for (NSMutableDictionary *dict in _recentDocs) {
+        dict[@"selection"] = @(NO);
+    }
+    NSMutableDictionary *selected = [_recentDocs objectAtIndex:[selectedIndexes firstIndex]];
+    selected[@"selection"] = @(YES);
+    
+    NSLog([selectedIndexes description]);
+    
+}
+ */
 @end

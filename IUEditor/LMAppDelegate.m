@@ -75,9 +75,11 @@
 }
 
 -(void)newDocument:(NSMenuItem*)sender{
-    if (sender.tag == 1) {
-        [self newDjangoDocument:sender];
-        return;
+    if ([sender isKindOfClass:[NSMenuItem class]]) {
+        if (sender.tag == 1) {
+            [self newDjangoDocument:sender];
+            return;
+        }
     }
     NSError *error;
     

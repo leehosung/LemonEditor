@@ -12,7 +12,9 @@
 @property NSButton  *prevB;
 @property NSButton  *nextB;
 @property   NSMutableArray *recentDocs;
-@property NSIndexSet   *selectedIndexes;
+@property (strong) IBOutlet NSArrayController *recentAC;
+@property (weak) IBOutlet NSCollectionView *recentCollectV;
+@property (nonatomic) NSIndexSet   *selectedIndexes;
 -(void)show;
 
 @end
