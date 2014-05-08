@@ -261,8 +261,7 @@
     [bottomToolbarVC setResourceManager:_resourceManager];
     iuInspectorVC.pageDocumentNodes = _project.pageDocumentNodes;
     iuInspectorVC.classDocumentNodes = _project.classDocumentNodes;
-    
-    
+    [[NSDocumentController sharedDocumentController] noteNewRecentDocumentURL:[NSURL fileURLWithPath:path]];
 }
 
 -(void)setSelectedNode:(IUNode*)selectedNode{

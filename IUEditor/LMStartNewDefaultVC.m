@@ -41,6 +41,9 @@
     NSString *appName;
     appName = [_defaultNewAppName stringValue];
     NSString *appDir = [[[JDFileUtil util] openDirectoryByNSOpenPanel:@"select directory for project"] path];
+    if(appDir == nil){ //cancel
+        return;
+    }
     //git, heroku는 막아놓음
     NSDictionary *dictionary = @{IUProjectKeyGit: @(NO),
                                  IUProjectKeyAppName: appName,
@@ -59,6 +62,6 @@
     [[NSUserDefaults standardUserDefaults] setValue:path forKey:@"lastDocument"];
     
     [self.view.window close];
-
+    
 }
 @end
