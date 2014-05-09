@@ -25,7 +25,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="efE-Z6-hfV">
-                                <rect key="frame" x="2" y="14" width="70" height="17"/>
+                                <rect key="frame" x="6" y="14" width="70" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="66" id="BSg-ON-pE2"/>
@@ -38,7 +38,7 @@
                                 </textFieldCell>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jQA-Nu-yUj">
-                                <rect key="frame" x="74" y="11" width="190" height="22"/>
+                                <rect key="frame" x="78" y="11" width="190" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="184" id="ala-V8-qGB"/>
@@ -64,10 +64,10 @@
                     </view>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="d4e-xc-13f"/>
+                        <constraint firstItem="efE-Z6-hfV" firstAttribute="leading" secondItem="Ptq-ri-svx" secondAttribute="leading" constant="8" id="qhr-tt-eXV"/>
                         <constraint firstItem="jQA-Nu-yUj" firstAttribute="leading" secondItem="efE-Z6-hfV" secondAttribute="trailing" constant="7" id="tfi-NB-apW"/>
                         <constraint firstItem="efE-Z6-hfV" firstAttribute="top" secondItem="Ptq-ri-svx" secondAttribute="top" constant="9" id="vAJ-8v-8MB"/>
                         <constraint firstItem="jQA-Nu-yUj" firstAttribute="top" secondItem="Ptq-ri-svx" secondAttribute="top" constant="8" id="vj9-vx-XLp"/>
-                        <constraint firstItem="efE-Z6-hfV" firstAttribute="leading" secondItem="Ptq-ri-svx" secondAttribute="leading" constant="4" id="yVt-Xv-bXV"/>
                     </constraints>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
