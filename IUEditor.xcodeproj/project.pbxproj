@@ -79,6 +79,8 @@
 		267CB1BE190F95750079E565 /* bg_cover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 267CB1B6190F95750079E565 /* bg_cover@2x.png */; };
 		267CB1BF190F95750079E565 /* bg_stretch.png in Resources */ = {isa = PBXBuildFile; fileRef = 267CB1B7190F95750079E565 /* bg_stretch.png */; };
 		267CB1C0190F95750079E565 /* bg_stretch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 267CB1B8190F95750079E565 /* bg_stretch@2x.png */; };
+		26FE6F91191C6D8E0003E187 /* shoveling.png in Resources */ = {isa = PBXBuildFile; fileRef = 26FE6F8F191C6D8E0003E187 /* shoveling.png */; };
+		26FE6F92191C6D8E0003E187 /* shoveling@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26FE6F90191C6D8E0003E187 /* shoveling@2x.png */; };
 		3D0D480918FFAF24000A5B53 /* LMTopToolbarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D480718FFAF24000A5B53 /* LMTopToolbarVC.m */; };
 		3D0D480A18FFAF24000A5B53 /* LMTopToolbarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D0D480818FFAF24000A5B53 /* LMTopToolbarVC.xib */; };
 		3D0D481318FFDC96000A5B53 /* LMFileTabItemVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D481118FFDC96000A5B53 /* LMFileTabItemVC.m */; };
@@ -518,6 +520,8 @@
 		267CB1B6190F95750079E565 /* bg_cover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_cover@2x.png"; sourceTree = "<group>"; };
 		267CB1B7190F95750079E565 /* bg_stretch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_stretch.png; sourceTree = "<group>"; };
 		267CB1B8190F95750079E565 /* bg_stretch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_stretch@2x.png"; sourceTree = "<group>"; };
+		26FE6F8F191C6D8E0003E187 /* shoveling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shoveling.png; sourceTree = "<group>"; };
+		26FE6F90191C6D8E0003E187 /* shoveling@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shoveling@2x.png"; sourceTree = "<group>"; };
 		3D0D480618FFAF24000A5B53 /* LMTopToolbarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMTopToolbarVC.h; sourceTree = "<group>"; };
 		3D0D480718FFAF24000A5B53 /* LMTopToolbarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMTopToolbarVC.m; sourceTree = "<group>"; };
 		3D0D480818FFAF24000A5B53 /* LMTopToolbarVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMTopToolbarVC.xib; sourceTree = "<group>"; };
@@ -1060,6 +1064,8 @@
 				690A826F190A2CC200DDBA86 /* new_django.png */,
 				690A8270190A2CC200DDBA86 /* new_pt@2x.png */,
 				690A8271190A2CC200DDBA86 /* new_default.png */,
+				26FE6F8F191C6D8E0003E187 /* shoveling.png */,
+				26FE6F90191C6D8E0003E187 /* shoveling@2x.png */,
 				690A40A018E170B700095263 /* classImage */,
 				3DF8033018FE624000913505 /* uiImage */,
 				3D54D64818ED5D2300B5FEC2 /* mouseIcon */,
@@ -2151,6 +2157,7 @@
 				3DED277F190F85E0001A1D67 /* bg_contain.png in Resources */,
 				3DED26D21900FD75001A1D67 /* add_ghost_on.png in Resources */,
 				3D54D64C18ED5D2E00B5FEC2 /* ResizeNW-SE.tiff in Resources */,
+				26FE6F92191C6D8E0003E187 /* shoveling@2x.png in Resources */,
 				690A40A518E17C5700095263 /* widgetForDefault.plist in Resources */,
 				2628C92B191A313C00D9D8CD /* tool_form@2x.png in Resources */,
 				CB9BD6391914DC62002C9369 /* LMStartNewDjangoVC.xib in Resources */,
@@ -2264,6 +2271,7 @@
 				267CB19F190F93370079E565 /* tab_event_on.png in Resources */,
 				690A408E18E14A4E00095263 /* LMStackVC.xib in Resources */,
 				3DED270619010C71001A1D67 /* LMPropertyIUFBLikeVC.xib in Resources */,
+				26FE6F91191C6D8E0003E187 /* shoveling.png in Resources */,
 				3DED26ED19010B94001A1D67 /* LMPropertyIUWebMovieVC.xib in Resources */,
 				3DED277D190F85E0001A1D67 /* bg_center.png in Resources */,
 				3DF8044E18FE62FC00913505 /* tool_render@2x.png in Resources */,
