@@ -106,11 +106,11 @@ typedef enum{
 
 #define IUCSSTagTextAlign @"textAlign"
 typedef enum{
-    IUTextAlignLeft,
-    IUTextAlignCenter,
-    IUTextAlignRight,
-    IUTextAlignJustify,
-}IUTextAlign;
+    IUAlignLeft,
+    IUAlignCenter,
+    IUAlignRight,
+    IUAlignJustify,
+}IUAlign;
 
 #define IUCSSTagLineHeight @"lineHeight"
 

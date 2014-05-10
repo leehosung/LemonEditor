@@ -1042,16 +1042,16 @@
                 NSInteger align = [value integerValue];
                 NSString *alignText;
                 switch (align) {
-                    case IUTextAlignLeft:
+                    case IUAlignLeft:
                         alignText = @"left";
                         break;
-                    case IUTextAlignCenter:
+                    case IUAlignCenter:
                         alignText = @"center";
                         break;
-                    case IUTextAlignRight:
+                    case IUAlignRight:
                         alignText = @"right";
                         break;
-                    case IUTextAlignJustify:
+                    case IUAlignJustify:
                         alignText = @"stretch";
                         break;
                     default:
