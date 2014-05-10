@@ -49,7 +49,7 @@ typedef enum _IUGitType{
 
 
 + (id)projectWithContentsOfPackage:(NSString*)path;
-+ (NSString*)createProject:(NSDictionary*)setting error:(NSError**)error;
++ (IUProject*)createProject:(NSDictionary*)setting error:(NSError**)error;
 
 - (BOOL)save;
 - (BOOL)build:(NSError**)error;
@@ -58,7 +58,8 @@ typedef enum _IUGitType{
 - (NSArray*)backgroundDocuments;
 - (NSArray*)classDocuments;
 
-- (IUResourceGroupNode *)resourceNode;
+@property IUResourceGroupNode *resourceNode;
+
 - (NSArray*)allDocumentNodes;
 - (NSArray*)pageDocumentNodes;
 - (NSArray*)backgroundDocumentNodes;

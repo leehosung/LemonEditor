@@ -22,8 +22,6 @@
 @end
 
 @implementation IUProject{
-    NSMutableDictionary *IDDict;
-    IUResourceGroupNode *_resourceNode;
 }
 
 
@@ -32,7 +30,6 @@
     [encoder encodeBool:_herokuOn forKey:@"herokuOn"];
     [encoder encodeInt32:_gitType forKey:@"gitType"];
     [encoder encodeObject:_path forKey:@"path"];
-    [encoder encodeObject:IDDict forKey:@"IDDict"];
     [encoder encodeObject:_resourceNode forKey:@"_resourceNode"];
     [encoder encodeObject:_pageDocumentGroup forKey:@"_pageDocumentGroup"];
     [encoder encodeObject:_backgroundDocumentGroup forKey:@"_backgroundDocumentGroup"];
@@ -47,7 +44,6 @@
         _herokuOn = [aDecoder decodeBoolForKey:@"herokuOn"];
         _gitType = [aDecoder decodeInt32ForKey:@"gitType"];
         _path = [aDecoder decodeObjectForKey:@"path"];
-        IDDict = [aDecoder decodeObjectForKey:@"IDDict"];
         _resourceNode = [aDecoder decodeObjectForKey:@"_resourceNode"];
         _pageDocumentGroup = [aDecoder decodeObjectForKey:@"_pageDocumentGroup"];
         _backgroundDocumentGroup = [aDecoder decodeObjectForKey:@"_backgroundDocumentGroup"];
@@ -62,7 +58,6 @@
     self = [super init];
     if(self){
         _buildDirectoryName = @"build";
-        IDDict = [NSMutableDictionary dictionary];
         _mqSizes = [NSMutableArray array];
         [_mqSizes addObject:@(defaultFrameWidth)];
         [_mqSizes addObject:@(700)];
@@ -79,7 +74,7 @@
 }
 
 // return value : project path
-+(NSString*)createProject:(NSDictionary*)setting error:(NSError**)error{
++(IUProject*)createProject:(NSDictionary*)setting error:(NSError**)error{
 
     IUProject *project = [[self alloc] init];
     project.name = [setting objectForKey:IUProjectKeyAppName];
@@ -380,6 +375,9 @@
 
     NSString *IUCSSPath = [[NSBundle mainBundle] pathForResource:@"iu" ofType:@"css"];
     [self copyFile:IUCSSPath toPath:[CSSGroup.absolutePath stringByAppendingPathComponent:@"iu.css"]];
+
+    NSString *resetCSSPath = [[NSBundle mainBundle] pathForResource:@"reset" ofType:@"css"];
+    [self copyFile:resetCSSPath toPath:[CSSGroup.absolutePath stringByAppendingPathComponent:@"reset.css"]];
 
 }
 
