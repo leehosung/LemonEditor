@@ -823,7 +823,7 @@
         middleElement = parentElement;
     }
     
-    assert(parentElement != nil);
+//    assert(parentElement != nil);
     
     [parentElement removeChild:middleElement];
     
