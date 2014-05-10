@@ -21,10 +21,10 @@
     NSZeroRange = NSMakeRange(0, 0);
     [JDLogUtil showLogLevel:YES andFileName:YES andFunctionName:YES andLineNumber:YES];
     [JDLogUtil setGlobalLevel:JDLog_Level_Debug];
-//    [JDLogUtil enableLogSection:IULogSource];
+    [JDLogUtil enableLogSection:IULogSource];
     [JDLogUtil enableLogSection:IULogJS];
-//    [JDLogUtil enableLogSection:IULogAction];
-    [JDLogUtil enableLogSection:IULogText];
+    [JDLogUtil enableLogSection:IULogAction];
+//    [JDLogUtil enableLogSection:IULogText];
     
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraints"];
 
@@ -88,14 +88,14 @@
                            IUProjectKeyHeroku: @(NO),
                            IUProjectKeyDirectory: [@"~/IUProjTemp" stringByExpandingTildeInPath]};
     
-    NSString *path = [IUProject createProject:dict error:&error];
+    IUProject *newProject = [IUProject createProject:dict error:&error];
     if (error != nil) {
         assert(0);
     }
     LMWC *wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
     [wc showWindow:self];
-    [wc loadProject:path];
-    [[NSUserDefaults standardUserDefaults] setValue:path forKey:@"lastDocument"];
+    [wc loadProject:newProject.path];
+    [[NSUserDefaults standardUserDefaults] setValue:newProject.path forKey:@"lastDocument"];
 }
 
 
@@ -107,14 +107,14 @@
                            IUProjectKeyHeroku: @(NO),
                            IUProjectKeyDirectory: [@"~/IUProjTemp" stringByExpandingTildeInPath]};
     
-    NSString *path = [IUDjangoProject createProject:dict error:&error];
+    IUDjangoProject *project = [IUDjangoProject createProject:dict error:&error];
     if (error != nil) {
         assert(0);
     }
     LMWC *wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
     [wc showWindow:self];
-    [wc loadProject:path];
-    [[NSUserDefaults standardUserDefaults] setValue:path forKey:@"lastDocument"];
+    [wc loadProject:project.path];
+    [[NSUserDefaults standardUserDefaults] setValue:project.path forKey:@"lastDocument"];
 }
 
 
