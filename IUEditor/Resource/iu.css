@@ -39,3 +39,8 @@
     padding-left: 8px;
     padding-top : 4px;
 }
+
+.IUPageLinkSet > div > ul > a > li{
+    display:block;
+    float:left;
+}
