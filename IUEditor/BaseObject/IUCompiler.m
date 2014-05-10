@@ -78,6 +78,8 @@
     
     JDSectionInfoLog( IULogSource, @"source : %@", [@"\n" stringByAppendingString:source]);
     
+    [source replaceOccurrencesOfString:@"('Resource/CSS/" withString:@"('/Resource/CSS/" options:0 range:NSMakeRange(0, source.length)];
+    [source replaceOccurrencesOfString:@"src=\"Resource/JS" withString:@"src=\"/Resource/JS" options:0 range:NSMakeRange(0, source.length)];
     return source;
 }
 
@@ -257,6 +259,9 @@
         tag = @"form";
     }
     NSMutableString *code = [NSMutableString string];
+    if ([iu.pgVisibleCondition length] && _rule == IUCompileRuleDjango) {
+        [code appendFormat:@"{%%if %@%%}", iu.pgVisibleCondition];
+    }
     [code appendFormat:@"<%@ %@>", tag, [self HTMLAttributes:iu option:nil]];
     if ([iu isKindOfClass:[IUForm class]]) {
         [code appendString:@"{% csrf_token %}"];
@@ -281,6 +286,9 @@
         }
     }
     [code appendFormat:@"</%@>", tag];
+    if ([iu.pgVisibleCondition length] && _rule == IUCompileRuleDjango) {
+        [code appendString:@"{% endif %}"];
+    }
     return code;
 }
 
@@ -683,7 +691,7 @@
         [code appendString:[self editorHTMLAsBOX:iu]];
     }
     
-    if (iu.link) {
+    if (iu.link && [iu isKindOfClass:[IUPageLinkSet class]] == NO) {
         NSString *linkURL = iu.link;
         if ([iu.link isHTTPURL] == NO) {
             linkURL = [NSString stringWithFormat:@"./%@.html", iu.link];
@@ -991,7 +999,7 @@
             [dict putTag:@"box-shadow" string:[NSString stringWithFormat:@"%ldpx %ldpx %ldpx %ldpx %@", hOff, vOff, blur, spread, colorString]];
         }
         
-        if(obj.shouldEditText == YES || [obj isKindOfClass:[IUTextField class]] || [obj isKindOfClass:[IUTextView class]]){
+        if(obj.shouldEditText == YES || [obj isKindOfClass:[IUTextField class]] || [obj isKindOfClass:[IUTextView class]] || [obj isKindOfClass:[IUPageLinkSet class]]){
             value = cssTagDict[IUCSSTagFontName];
             if(value){
                 NSString *font=cssTagDict[IUCSSTagFontName];

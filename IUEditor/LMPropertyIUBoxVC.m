@@ -18,6 +18,7 @@
 @property (weak) IBOutlet NSComboBox *linkCB;
 @property (weak) IBOutlet NSPopUpButton *divPopupBtn;
 @property (weak) IBOutlet NSTextField *textVariableTF;
+@property (weak) IBOutlet NSTextField *pgVisibleTF;
 
 @end
 
@@ -33,10 +34,11 @@
 }
 
 - (void)awakeFromNib{
-    [_pageDocumentAC bind:NSContentArrayBinding toObject:self withKeyPath:@"pageDocumentNodes" options:IUBindingDictNotRaisesApplicable];
+    [_pageDocumentAC bind:NSContentArrayBinding toObject:self withKeyPath:@"pageDocumentNodes" options:nil];
     [_linkCB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"link"] options:nil];
     [_textVariableTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"textVariable"] options:nil];
-    [_divPopupBtn bind:NSSelectedValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"divLink"] options:IUBindingDictNotRaisesApplicable];
+    [_divPopupBtn bind:NSSelectedValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"divLink"] options:nil];
+    [_pgVisibleTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"pgVisibleCondition"] options:nil];
     
     [self.controller addObserver:self forKeyPath:@"selection" options:NSKeyValueObservingOptionInitial context:nil];
 

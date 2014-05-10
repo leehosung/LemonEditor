@@ -142,6 +142,8 @@
 @property (nonatomic) BOOL center;
 - (BOOL)centerChangeable;
 
+@property NSString *pgVisibleCondition;
+
 
 - (void)updateCSSForEditViewPort;
 @end
