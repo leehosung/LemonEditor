@@ -217,7 +217,14 @@
         tag = IUCSSTagPercentHeight;
     }
     
-    [self setValue:[control stringValue] forKeyPath:[_controller keyPathFromControllerToCSSTag:tag]];
+    if ([[control stringValue] isEqualToString:@"-"]) {
+        for (IUBox *box in _controller.selectedObjects) {
+            [box.css eradicateTag:tag];
+        }
+    }
+    else {
+        [self setValue:[control stringValue] forKeyPath:[_controller keyPathFromControllerToCSSTag:tag]];
+    }
     for (IUBox *iu in _controller.selectedObjects) {
         [iu updateCSSForEditViewPort];
     }
