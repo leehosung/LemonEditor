@@ -109,7 +109,9 @@ function resizePageContentHeightEditor(){
         
         var pageHeight=minHeight;
 		pageHeight += $('.IUHeader').height();
-        console.resizePageContentHeightFinished(pageHeight);
+        if (typeof console.resizePageContentHeightFinished != 'undefined'){
+            console.resizePageContentHeightFinished(pageHeight);
+        }
     }
     else {
         console.log('failed!!!!!');
