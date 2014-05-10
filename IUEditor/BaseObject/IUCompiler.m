@@ -30,6 +30,7 @@
 #import "IUCollection.h"
 #import "IUSubmitButton.h"
 #import "IUForm.h"
+#import "IUPageLinkSet.h"
 
 @implementation IUCompiler{
 }
@@ -56,10 +57,10 @@
     [source deleteCharactersInRange:removeRange];
     
     //insert event.js
-    NSString *eventJs = @"<script type=\"text/javascript\" src=\"Resource/JS/iuevent.js\"></script>";
+    NSString *eventJs = @"<script type=\"text/javascript\" src=\"/Resource/JS/iuevent.js\"></script>";
     [source replaceOccurrencesOfString:@"<!--IUEvent.JS_Replacement-->" withString:[eventJs stringByIndent:8 prependIndent:NO] options:0 range:[source fullRange]];
     
-    NSString *initJS = @"<script type=\"text/javascript\" src=\"Resource/JS/iuinit.js\"></script>";
+    NSString *initJS = @"<script type=\"text/javascript\" src=\"/Resource/JS/iuinit.js\"></script>";
     [source replaceOccurrencesOfString:@"<!--IUInit.JS_Replacement-->" withString:[initJS stringByIndent:8 prependIndent:NO] options:0 range:[source fullRange]];
 
     
@@ -176,6 +177,27 @@
     return css;
 }
 
+-(NSString *)cssSourceForIUPageLinkSet:(IUPageLinkSet *)iu{
+    NSMutableString *css = [NSMutableString string];
+        switch (iu.pageLinkAlign) {
+            case IUAlignLeft: break;
+            case IUAlignRight:
+                [css appendFormat:@".%@ > div { float:right }", iu.htmlID];
+                break;
+            case IUAlignCenter:
+                [css appendFormat:@".%@ > div { margin:auto }", iu.htmlID];
+            default: break;
+        }
+    
+    [css appendFormat:@".%@ > div > ul > a > li {", iu.htmlID];
+    CGFloat height = [iu.css.assembledTagDictionary[IUCSSTagHeight] floatValue];
+    [css appendFormat:@"    display:block; width:%.1fpx; height:%.1fpx; margin-left:%.1fpx; margin-right: %.1fpx; line-height:%.1fpx;", height, height, iu.buttonMargin, iu.buttonMargin, height];
+    [css appendFormat:@"    background-color:%@;", [iu.defaultButtonBGColor rgbaString]];
+    [css appendString:@"}\n"];
+    [css appendFormat:@".%@ selected > div > ul > a > li {%@}", iu.htmlID, [iu.defaultButtonBGColor rgbaString]];
+    return css;
+}
+
 
 -(NSString *)cssSourceForIUCarousel:(IUCarousel *)iu{
     
@@ -220,6 +242,10 @@
     if([iu isKindOfClass:[IUCarousel class]] &&
        width == IUCSSMaxViewPortWidth){
         [css appendTabAndString:[self cssSourceForIUCarousel:(IUCarousel *)iu]];
+    }
+    
+    if ([iu isKindOfClass:[IUPageLinkSet class]] && width == IUCSSMaxViewPortWidth) {
+        [css appendTabAndString:[self cssSourceForIUPageLinkSet:(IUPageLinkSet *)iu]];
     }
     return css;
 }
@@ -361,6 +387,28 @@
         [code appendFormat:@"</div>"];
         
     }
+    /*
+    else if ([iu isKindOfClass:[IUPageLinkSet class]]){
+        [code appendFormat:@"<div %@>\n", [self HTMLAttributes:iu option:nil]];
+        [code appendString:@"    <div>\n"];
+        [code appendString:@"       <div>1</div><div>2</div><div>3</div>"];
+        [code appendString:@"    </div>"];
+        [code appendString:@"</div"];
+    }
+    */
+    else if ([iu isKindOfClass:[IUPageLinkSet class]]){
+        [code appendFormat:@"<div %@>\n", [self HTMLAttributes:iu option:nil]];
+        [code appendString:@"    <div>"];
+        [code appendString:@"    <ul>\n"];
+        [code appendFormat:@"        {%% for i in %@ %%}\n", [(IUPageLinkSet *)iu pageCountVariable]];
+        [code appendFormat:@"        <a href=/%@/{{i}}>", iu.link];
+        [code appendString:@"            <li> {{i}} </li>"];
+        [code appendString:@"        </a>"];
+        [code appendString:@"        {% endfor %}"];
+        [code appendString:@"    </ul>"];
+        [code appendString:@"    </div>"];
+        [code appendString:@"</div"];
+    }
 #pragma mark IUImport
     else if([iu isKindOfClass:[IUImport class]]){
         [code appendFormat:@"<div %@ >", [self HTMLAttributes:iu option:nil]];
@@ -393,19 +441,33 @@
     else if ([iu isKindOfClass:[IUSubmitButton class]]){
         [code appendFormat:@"<input %@ >", [self HTMLAttributes:iu option:nil]];
     }
+    
+
 #pragma mark IUBox
     else if ([iu isKindOfClass:[IUBox class]]) {
         NSString *str = [self outputHTMLAsBox:iu option:nil];
         [code appendString:str];
     }
     
-    if (iu.link) {
+    
+    if (iu.link && [iu isKindOfClass:[IUPageLinkSet class]] == NO) {
         NSString *linkURL = iu.link;
         if ([iu.link isHTTPURL] == NO) {
-            if(iu.divLink){
-                linkURL = [NSString stringWithFormat:@"./%@.html#%@", iu.link, iu.divLink];
-            }else{
-                linkURL = [NSString stringWithFormat:@"./%@.html", iu.link];
+            if (_rule == IUCompileRuleDjango) {
+                if(iu.divLink){
+                    linkURL = [NSString stringWithFormat:@"./%@#%@", iu.link, iu.divLink];
+                }
+                else{
+                    linkURL = [NSString stringWithFormat:@"./%@", iu.link];
+                }
+            }
+            else {
+                if(iu.divLink){
+                    linkURL = [NSString stringWithFormat:@"./%@.html#%@", iu.link, iu.divLink];
+                }
+                else{
+                    linkURL = [NSString stringWithFormat:@"./%@.html", iu.link];
+                }
             }
         }
         code = [NSMutableString stringWithFormat:@"<a href='%@'>%@</a>", linkURL, code];
@@ -578,6 +640,17 @@
         [code appendFormat:@"</div>"];
         
     }
+    
+    else if ([iu isKindOfClass:[IUPageLinkSet class]]){
+        [code appendFormat:@"<div %@>\n", [self HTMLAttributes:iu option:nil]];
+        [code appendString:@"    <div class='IUPageLinkSetClip'>\n"];
+        [code appendString:@"       <ul>\n"];
+        [code appendString:@"           <a><li>1</li></a><a><li>2</li></a><a><li>3</li></a>"];
+        [code appendString:@"       </div>"];
+        [code appendString:@"    </div>"];
+        [code appendString:@"</div"];
+    }
+
 #pragma mark IUTextFeild
     
     else if ([iu isKindOfClass:[IUTextField class]]){
