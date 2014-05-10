@@ -14,13 +14,52 @@
 
 @implementation IUDjangoProject
 
++(IUDjangoProject*)convertProject:(IUProject*)project setting:(NSDictionary*)setting error:(NSError**)error{
+    IUDjangoProject *newProject = [[IUDjangoProject alloc] init];
+    NSArray *properties = [IUProject properties];
+    for (JDProperty *property in properties) {
+        id v = [project valueForKey:property.name];
+        [newProject setValue:v forKey:property.name];
+    }
+    
+    if ([setting objectForKey:IUProjectKeyAppName]) {
+        newProject.name = [setting objectForKey:IUProjectKeyAppName];
+    }
+    assert(project.name);
+    project.buildDirectoryName = @"../templates";
+        
+    NSString *dir = [setting objectForKey:IUProjectKeyDirectory];
+    assert(dir);
+    project.path = [dir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/iuSource", project.name]];
+    [JDFileUtil rmDirPath:[project.path stringByAppendingPathExtension:@"*"]];
+    ReturnNilIfFalse([JDFileUtil mkdirPath:project.path]);
+
+    //copy resource file
+    NSString *src = project.resourceNode.absolutePath;
+    
+    for (IUNode *node in project.children) {
+        [newProject addNode:node];
+    }
+    
+    NSString *desc = newProject.resourceNode.absolutePath;
+    
+    NSError *err;
+    [[NSFileManager defaultManager] copyItemAtPath:src toPath:desc error:&err];
+    
+    //resource file copy
+    [newProject save];
+    
+    return newProject;
+}
+
 // return value : project path
-+(NSString*)createProject:(NSDictionary*)setting error:(NSError**)error{
-    IUDjangoProject *project = [[IUDjangoProject alloc] init];
++(IUDjangoProject*)createProject:(NSDictionary*)setting error:(NSError**)error{    IUDjangoProject *project = [[IUDjangoProject alloc] init];
     project.name = [setting objectForKey:IUProjectKeyAppName];
+    assert(project.name);
     project.buildDirectoryName = @"../templates";
     
     NSString *dir = [setting objectForKey:IUProjectKeyDirectory];
+    assert(dir);
     project.path = [dir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/iuSource", project.name]];
     [JDFileUtil rmDirPath:[project.path stringByAppendingPathExtension:@"*"]];
     ReturnNilIfFalse([JDFileUtil mkdirPath:project.path]);
@@ -113,6 +152,6 @@
     
     [project initializeResource];
     ReturnNilIfFalse([project save]);
-    return project.path;
+    return project;
 }
 @end
