@@ -54,11 +54,22 @@ function reframeCenter(){
     });
 }
 
+function resizePageLinkSet(){
+	$('.IUPageLinkSet div').each(function(){
+		len = $(this).children().children().length;
+		m = parseFloat($(this).children().children().children().css('margin-left'));
+		w = $(this).children().children().children().width();
+		width = (2*m+w)*len;
+		$(this).width(width+'px');
+	});
+}
+
 $(window).resize(function(){
                  console.log("resize window : iuframe.js");
                  resizePageContentHeight();
                  resizeCollection();
                  reframeCenter();
+				 resizePageLinkSet();
                  });
 
 $(document).ready(function(){
@@ -66,6 +77,7 @@ $(document).ready(function(){
                  resizePageContentHeight();
                  resizeCollection();
                  reframeCenter();
+				 resizePageLinkSet();
                  });
 
 
