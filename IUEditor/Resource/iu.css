@@ -5,6 +5,10 @@
     overflow:hidden;
 }
 
+a{
+    text-decoration:none;
+}
+
 .IUPage{
     width:100%;
     min-height:100%;
