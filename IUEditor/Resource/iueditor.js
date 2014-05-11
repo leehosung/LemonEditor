@@ -142,11 +142,18 @@ function resizeBackgroundSize(){
     $('.IUBackground').css('height', '100%');
     $('.IUBackground').css('width', '100%');
 }
+function reInsertCarousel(){
+    $('.IUCarousel').each(function(){
+        var iuid = $(this).attr('id');
+        insertNewCarousel(iuid);
+    });
+}
 
 $(document).ready(function(){
             console.log("ready : iueditor.js");
             resizePageContentHeightEditor();
             getIUUpdatedFrameThread();
             resizeBackgroundSize();
+            reInsertCarousel();
 
 });
