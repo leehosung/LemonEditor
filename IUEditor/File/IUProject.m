@@ -47,10 +47,10 @@
         _backgroundDocumentGroup = [aDecoder decodeObjectForKey:@"_backgroundDocumentGroup"];
         _classDocumentGroup = [aDecoder decodeObjectForKey:@"_classDocumentGroup"];
         _buildDirectoryName = [aDecoder decodeObjectForKey:@"_buildDirectoryName"];
-        if (_buildDirectoryName == nil) {
-            _buildDirectoryName = @"build";
-        }
         _mqSizes = [[aDecoder decodeObjectForKey:@"mqSizes"] mutableCopy];
+        if ([_buildDirectoryName isEqualToString:@"../template/"]) {
+            _buildDirectoryName = @"../templates/";\
+        }
     }
     return self;
 }
