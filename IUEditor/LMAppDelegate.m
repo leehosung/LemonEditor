@@ -56,11 +56,17 @@
 }
 
 - (void)openDocument:(id)sender{
-    NSString *value = [[NSUserDefaults standardUserDefaults] valueForKey:@"lastDocument"];
-    if(value==nil){
-        //open new document
-        [self newDocument:self];
-        //return;
+    NSString *value;
+    if ([sender isKindOfClass:[NSMenuItem class]]) {
+        value = [[[JDFileUtil util] openDirectoryByNSOpenPanel] path];
+    }
+    else {
+        value = [[NSUserDefaults standardUserDefaults] valueForKey:@"lastDocument"];
+        if(value==nil){
+            //open new document
+            [self newDocument:self];
+            //return;
+        }
     }
     
     LMWC *wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
@@ -97,7 +103,6 @@
     [wc loadProject:newProject.path];
     [[NSUserDefaults standardUserDefaults] setValue:newProject.path forKey:@"lastDocument"];
 }
-
 
 -(void)newDjangoDocument:(id)sender{
     NSError *error;
