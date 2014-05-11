@@ -149,6 +149,7 @@
 
 + (id)projectWithContentsOfPackage:(NSString*)path{
     IUProject *project = [NSKeyedUnarchiver unarchiveObjectWithFile:[path stringByAppendingPathComponent:@"IUML"]];
+    project.path = path;
     return project;
 }
 

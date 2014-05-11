@@ -25,14 +25,14 @@
     if ([setting objectForKey:IUProjectKeyAppName]) {
         newProject.name = [setting objectForKey:IUProjectKeyAppName];
     }
-    assert(project.name);
-    project.buildDirectoryName = @"../templates";
+    assert(newProject.name);
+    newProject.buildDirectoryName = @"../templates";
         
     NSString *dir = [setting objectForKey:IUProjectKeyDirectory];
     assert(dir);
-    project.path = [dir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/iuSource", project.name]];
-    [JDFileUtil rmDirPath:[project.path stringByAppendingPathExtension:@"*"]];
-    ReturnNilIfFalse([JDFileUtil mkdirPath:project.path]);
+    newProject.path = [dir stringByAppendingPathComponent:@"iuSource"];
+    [JDFileUtil rmDirPath:[newProject.path stringByAppendingPathExtension:@"*"]];
+    ReturnNilIfFalse([JDFileUtil mkdirPath:newProject.path]);
 
     //copy resource file
     NSString *src = project.resourceNode.absolutePath;
@@ -45,6 +45,7 @@
     
     NSError *err;
     [[NSFileManager defaultManager] copyItemAtPath:src toPath:desc error:&err];
+    assert(err != nil);
     
     //resource file copy
     [newProject save];
@@ -60,7 +61,7 @@
     
     NSString *dir = [setting objectForKey:IUProjectKeyDirectory];
     assert(dir);
-    project.path = [dir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/iuSource", project.name]];
+    project.path = [dir stringByAppendingPathComponent:@"iuSource"];
     [JDFileUtil rmDirPath:[project.path stringByAppendingPathExtension:@"*"]];
     ReturnNilIfFalse([JDFileUtil mkdirPath:project.path]);
     
