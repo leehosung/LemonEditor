@@ -29,12 +29,10 @@
     [super encodeWithCoder:encoder];
     [encoder encodeBool:_herokuOn forKey:@"herokuOn"];
     [encoder encodeInt32:_gitType forKey:@"gitType"];
-    [encoder encodeObject:_path forKey:@"path"];
     [encoder encodeObject:_resourceNode forKey:@"_resourceNode"];
     [encoder encodeObject:_pageDocumentGroup forKey:@"_pageDocumentGroup"];
     [encoder encodeObject:_backgroundDocumentGroup forKey:@"_backgroundDocumentGroup"];
     [encoder encodeObject:_classDocumentGroup forKey:@"_classDocumentGroup"];
-    [encoder encodeObject:_buildDirectoryName forKey:@"buildPath"];
     [encoder encodeObject:_mqSizes forKey:@"mqSizes"];
 }
 
@@ -43,12 +41,10 @@
     if (self) {
         _herokuOn = [aDecoder decodeBoolForKey:@"herokuOn"];
         _gitType = [aDecoder decodeInt32ForKey:@"gitType"];
-        _path = [aDecoder decodeObjectForKey:@"path"];
         _resourceNode = [aDecoder decodeObjectForKey:@"_resourceNode"];
         _pageDocumentGroup = [aDecoder decodeObjectForKey:@"_pageDocumentGroup"];
         _backgroundDocumentGroup = [aDecoder decodeObjectForKey:@"_backgroundDocumentGroup"];
         _classDocumentGroup = [aDecoder decodeObjectForKey:@"_classDocumentGroup"];
-        _buildDirectoryName = [aDecoder decodeObjectForKey:@"buildPath"];
         _mqSizes = [[aDecoder decodeObjectForKey:@"mqSizes"] mutableCopy];
     }
     return self;
@@ -142,7 +138,7 @@
     
     [project initializeResource];
     ReturnNilIfFalse([project save]);
-    return project.path;
+    return project;
 }
 
 

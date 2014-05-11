@@ -203,6 +203,7 @@
 -(void)loadProject:(NSString*)path{
     //create project class
     _project = [IUProject projectWithContentsOfPackage:path];
+    _project.path = path;
     if (_project == nil) {
         return;
     }
