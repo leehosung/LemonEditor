@@ -251,8 +251,6 @@
     [_identifierManager addIU:iu];
     [iu bind:@"identifierManager" toObject:self withKeyPath:@"identifierManager" options:nil];
     
-    //order of IUs
-    [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
     return YES;
 }
 
