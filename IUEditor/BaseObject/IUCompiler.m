@@ -31,6 +31,7 @@
 #import "IUSubmitButton.h"
 #import "IUForm.h"
 #import "IUPageLinkSet.h"
+#import "IUTransition.h"
 
 @implementation IUCompiler{
 }
@@ -1230,6 +1231,31 @@
         }
         if(iuTextView.formName){
             [retString appendFormat:@" name=\"%@\"",iuTextView.formName];
+        }
+    }
+    else if ([iu isKindOfClass:[IUTransition class]]){
+        IUTransition *transitionIU = (IUTransition*)iu;
+        if ([transitionIU.eventType length]) {
+            if ([transitionIU.eventType isEqualToString:kIUTransitionEventClick]) {
+                [retString appendFormat:@" transitionEvent=\"click\""];
+            }
+            else if ([transitionIU.eventType isEqualToString:kIUTransitionEventMouseOn]){
+                [retString appendFormat:@" transitionEvent=\"mouseOn\""];
+            }
+            else {
+                assert(0);
+            }
+        }
+        if ([transitionIU.animation length]) {
+            if ([transitionIU.animation isEqualToString:kIUTransitionAnimationFlyFromRight]) {
+                [retString appendFormat:@" transitionAnimation=\"flyFromRight\""];
+            }
+            else if ([transitionIU.animation isEqualToString:kIUTransitionAnimationOverlap]){
+                [retString appendFormat:@" transitionAnimation=\"overlap\""];
+            }
+            else {
+                assert(0);
+            }
         }
     }
 

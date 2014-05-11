@@ -8,6 +8,12 @@
 
 #import "IUBox.h"
 
+#define kIUTransitionAnimationOverlap @"Overlap"
+#define kIUTransitionAnimationFlyFromRight @"Fly From Right Side"
+
+#define kIUTransitionEventMouseOn @"Mouse On"
+#define kIUTransitionEventClick @"Click"
+
 @interface IUTransition : IUBox
 
 @property (nonatomic) NSInteger currentEdit;
