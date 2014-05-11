@@ -434,7 +434,6 @@
 		69D79B3D19138FC60020608D /* LMStartNewDefaultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D79B3B19138FC60020608D /* LMStartNewDefaultVC.m */; };
 		69D79B3E19138FC60020608D /* LMStartNewDefaultVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69D79B3C19138FC60020608D /* LMStartNewDefaultVC.xib */; };
 		69F1A37518E0624E004C5B30 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69F1A37418E0624E004C5B30 /* WebKit.framework */; };
-		69F2B5FA191D9E03008A40A8 /* IUProjectConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F2B5F9191D9E03008A40A8 /* IUProjectConverter.m */; };
 		CB9BD6381914DC62002C9369 /* LMStartNewDjangoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9BD6361914DC62002C9369 /* LMStartNewDjangoVC.m */; };
 		CB9BD6391914DC62002C9369 /* LMStartNewDjangoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9BD6371914DC62002C9369 /* LMStartNewDjangoVC.xib */; };
 		CB9BD63D1914DE23002C9369 /* LMStartNewPresenationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9BD63B1914DE23002C9369 /* LMStartNewPresenationVC.m */; };
@@ -1018,8 +1017,6 @@
 		69F1A37418E0624E004C5B30 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		69F1A37618E06262004C5B30 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		69F1A37818E0627A004C5B30 /* AppleScriptKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptKit.framework; path = System/Library/Frameworks/AppleScriptKit.framework; sourceTree = SDKROOT; };
-		69F2B5F8191D9E03008A40A8 /* IUProjectConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUProjectConverter.h; sourceTree = "<group>"; };
-		69F2B5F9191D9E03008A40A8 /* IUProjectConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUProjectConverter.m; sourceTree = "<group>"; };
 		CB9BD6351914DC62002C9369 /* LMStartNewDjangoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMStartNewDjangoVC.h; sourceTree = "<group>"; };
 		CB9BD6361914DC62002C9369 /* LMStartNewDjangoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMStartNewDjangoVC.m; sourceTree = "<group>"; };
 		CB9BD6371914DC62002C9369 /* LMStartNewDjangoVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMStartNewDjangoVC.xib; sourceTree = "<group>"; };
@@ -1952,8 +1949,6 @@
 				69761BC918F168D700C4EDC6 /* IUResourceManager.m */,
 				69761BCB18F17A3800C4EDC6 /* IUGroupNode.h */,
 				69761BCC18F17A3800C4EDC6 /* IUGroupNode.m */,
-				69F2B5F8191D9E03008A40A8 /* IUProjectConverter.h */,
-				69F2B5F9191D9E03008A40A8 /* IUProjectConverter.m */,
 			);
 			path = File;
 			sourceTree = "<group>";
@@ -2381,7 +2376,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				69C4AA231909905500CF75E7 /* IUCollection.m in Sources */,
-				69F2B5FA191D9E03008A40A8 /* IUProjectConverter.m in Sources */,
 				69C5763918D728CF0016F050 /* LMStackVC.m in Sources */,
 				69965420190F9F1D000379DA /* LMPropertyIUCollectionVC.m in Sources */,
 				3DB3ACCC18EBEF3D0046DFB7 /* InnerSizeBox.m in Sources */,

@@ -34,6 +34,7 @@
     [encoder encodeObject:_backgroundDocumentGroup forKey:@"_backgroundDocumentGroup"];
     [encoder encodeObject:_classDocumentGroup forKey:@"_classDocumentGroup"];
     [encoder encodeObject:_mqSizes forKey:@"mqSizes"];
+    [encoder encodeObject:_buildDirectoryName forKey:@"_buildDirectoryName"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder{
@@ -45,6 +46,10 @@
         _pageDocumentGroup = [aDecoder decodeObjectForKey:@"_pageDocumentGroup"];
         _backgroundDocumentGroup = [aDecoder decodeObjectForKey:@"_backgroundDocumentGroup"];
         _classDocumentGroup = [aDecoder decodeObjectForKey:@"_classDocumentGroup"];
+        _buildDirectoryName = [aDecoder decodeObjectForKey:@"_buildDirectoryName"];
+        if (_buildDirectoryName == nil) {
+            _buildDirectoryName = @"build";
+        }
         _mqSizes = [[aDecoder decodeObjectForKey:@"mqSizes"] mutableCopy];
     }
     return self;
