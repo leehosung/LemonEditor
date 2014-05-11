@@ -77,9 +77,11 @@
     [source replaceOccurrencesOfString:@"<!--HTML_Replacement-->" withString:html options:0 range:[source fullRange]];
     
     JDSectionInfoLog( IULogSource, @"source : %@", [@"\n" stringByAppendingString:source]);
-    
-    [source replaceOccurrencesOfString:@"('Resource/CSS/" withString:@"('/Resource/CSS/" options:0 range:NSMakeRange(0, source.length)];
-    [source replaceOccurrencesOfString:@"src=\"Resource/JS" withString:@"src=\"/Resource/JS" options:0 range:NSMakeRange(0, source.length)];
+
+    if (_rule == IUCompileRuleDjango) {
+        [source replaceOccurrencesOfString:@"('Resource/CSS/" withString:@"('/Resource/CSS/" options:0 range:NSMakeRange(0, source.length)];
+        [source replaceOccurrencesOfString:@"src=\"Resource/JS" withString:@"src=\"/Resource/JS" options:0 range:NSMakeRange(0, source.length)];
+    }
     return source;
 }
 
