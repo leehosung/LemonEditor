@@ -57,10 +57,10 @@
     [source deleteCharactersInRange:removeRange];
     
     //insert event.js
-    NSString *eventJs = @"<script type=\"text/javascript\" src=\"/Resource/JS/iuevent.js\"></script>";
+    NSString *eventJs = @"<script type=\"text/javascript\" src=\"Resource/JS/iuevent.js\"></script>";
     [source replaceOccurrencesOfString:@"<!--IUEvent.JS_Replacement-->" withString:[eventJs stringByIndent:8 prependIndent:NO] options:0 range:[source fullRange]];
     
-    NSString *initJS = @"<script type=\"text/javascript\" src=\"/Resource/JS/iuinit.js\"></script>";
+    NSString *initJS = @"<script type=\"text/javascript\" src=\"Resource/JS/iuinit.js\"></script>";
     [source replaceOccurrencesOfString:@"<!--IUInit.JS_Replacement-->" withString:[initJS stringByIndent:8 prependIndent:NO] options:0 range:[source fullRange]];
 
     
@@ -623,7 +623,7 @@
 #pragma mark IUFBLike
     else if([iu isKindOfClass:[IUFBLike class]]){
         
-        [code appendFormat:@"<div %@ ", [self HTMLAttributes:iu option:nil]];
+        [code appendFormat:@"<div %@ >", [self HTMLAttributes:iu option:nil]];
         [code appendNewline];
         
         NSString *fbPath = [[NSBundle mainBundle] pathForResource:@"FBSampleImage" ofType:@"png"];
