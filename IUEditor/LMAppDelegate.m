@@ -101,7 +101,6 @@
     LMWC *wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
     [wc showWindow:self];
     [wc loadProject:newProject.path];
-    [[NSUserDefaults standardUserDefaults] setValue:newProject.path forKey:@"lastDocument"];
 }
 
 -(void)newDjangoDocument:(id)sender{
@@ -119,7 +118,6 @@
     LMWC *wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
     [wc showWindow:self];
     [wc loadProject:project.path];
-    [[NSUserDefaults standardUserDefaults] setValue:project.path forKey:@"lastDocument"];
 }
 
 
