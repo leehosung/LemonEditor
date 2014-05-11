@@ -109,7 +109,7 @@
     NSDictionary *dict = @{IUProjectKeyAppName: @"gallery",
                            IUProjectKeyGit: @(NO),
                            IUProjectKeyHeroku: @(NO),
-                           IUProjectKeyDirectory: [@"~/IUProjTemp" stringByExpandingTildeInPath]};
+                           IUProjectKeyDirectory: [@"~/IUProjTemp/gallery" stringByExpandingTildeInPath]};
     
     IUDjangoProject *project = [IUDjangoProject createProject:dict error:&error];
     if (error != nil) {

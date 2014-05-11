@@ -203,6 +203,13 @@
 -(void)loadProject:(NSString*)path{
     //create project class
     _project = [IUProject projectWithContentsOfPackage:path];
+    NSError *error;
+//    _project = [IUDjangoProject convertProject:_project setting:@{IUProjectKeyAppName:@"IUEditorHome", IUProjectKeyDirectory:@"/Users/jd/IUProjTemp/IUEditorHome"} error:&error];
+    
+    if (error) {
+        assert(0);
+        return;
+    }
     _project.path = path;
     if (_project == nil) {
         return;
