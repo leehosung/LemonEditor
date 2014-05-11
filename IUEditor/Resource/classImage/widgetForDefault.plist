@@ -98,7 +98,7 @@
 		<key>widgetClass</key>
 		<integer>0</integer>
 	</dict>
-    <dict>
+	<dict>
 		<key>isWidget</key>
 		<true/>
 		<key>className</key>
@@ -157,6 +157,22 @@
 		<string>stack_webmovie</string>
 		<key>shortDesc</key>
 		<string>Object for Web Movie code</string>
+		<key>longDesc</key>
+		<string></string>
+		<key>widgetClass</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>isWidget</key>
+		<true/>
+		<key>className</key>
+		<string>IUFBLike</string>
+		<key>classImage</key>
+		<string>tool_fblike</string>
+		<key>navImage</key>
+		<string>stack_fblike</string>
+		<key>shortDesc</key>
+		<string></string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>

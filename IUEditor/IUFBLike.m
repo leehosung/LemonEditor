@@ -21,7 +21,7 @@
     if(self){
         _fbSource = @"<iframe src=\"//www.facebook.com/plugins/like.php?href=__FB_LINK_ADDRESS__+&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=__SHOW_FACE__&amp;share=true&amp;\" scrolling=\"no\" frameborder=\"0\" style=\"border:none; overflow:hidden; height:__HEIGHT__px\" allowTransparency=\"true\"></iframe>";
         _showFriendsFace = YES;
-        [self addObserver:self forKeyPaths:@[@"showFriendsFace", @"likePage"] options:0 context:@"IUFBSource"];
+        [self addObserver:self forKeyPaths:@[@"showFriendsFace", @"likePage"] options:NSKeyValueObservingOptionInitial context:@"IUFBSource"];
         [self.css setValue:@(80) forTag:IUCSSTagHeight forWidth:IUCSSMaxViewPortWidth];
         [self.css setValue:@(350) forTag:IUCSSTagWidth forWidth:IUCSSMaxViewPortWidth];
         [self.css setValue:nil forTag:IUCSSTagBGColor forWidth:IUCSSMaxViewPortWidth];
@@ -49,27 +49,37 @@
 - (void)IUFBSourceContextDidChange:(NSDictionary *)change{
     NSString *showFaces;
     if(self.showFriendsFace){
-        [self.css setValue:@(80) forTag:IUCSSTagHeight];
+        [self.css setValue:@(80) forTag:IUCSSTagHeight forWidth:self.css.editWidth];
         showFaces = @"true";
     }else{
-        [self.css setValue:@(35) forTag:IUCSSTagHeight];
+        [self.css setValue:@(35) forTag:IUCSSTagHeight forWidth:self.css.editWidth];
         showFaces = @"false";
     }
+    
+    [self.delegate IUClassIdentifier:self.htmlID CSSUpdated:[self cssForWidth:self.css.editWidth isHover:NO]  forWidth:self.css.editWidth];
+    
     NSString *currentPixel = [[NSString alloc] initWithFormat:@"%.0f", [self.css.assembledTagDictionary[IUCSSTagHeight] floatValue]];
     
     NSString *source;
+
     source = [self.fbSource stringByReplacingOccurrencesOfString:@"__HEIGHT__" withString:currentPixel];
     source = [source stringByReplacingOccurrencesOfString:@"__SHOW_FACE__" withString:showFaces];
     
-    source = [source stringByReplacingOccurrencesOfString:@"__FB_LINK_ADDRESS__" withString:self.likePage];
+    NSString *pageStr = self.likePage;
+    if(self.likePage.length == 0){
+        pageStr = @"";
+    }
+    
+    source = [source stringByReplacingOccurrencesOfString:@"__FB_LINK_ADDRESS__" withString:pageStr];
     
     self.innerHTML = source;
 }
 
--(BOOL)hasWidth{
+
+- (BOOL)enableWidthUserInput{
     return NO;
 }
--(BOOL)hasHeight{
+- (BOOL)enableHeightUserInput{
     return NO;
 }
 
