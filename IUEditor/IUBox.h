@@ -146,4 +146,8 @@
 
 
 - (void)updateCSSForEditViewPort;
+
+@property float opacityMove;
+@property float xPosMove;
+
 @end
