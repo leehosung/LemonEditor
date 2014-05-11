@@ -83,6 +83,12 @@
         [source replaceOccurrencesOfString:@"('Resource/CSS/" withString:@"('/Resource/CSS/" options:0 range:NSMakeRange(0, source.length)];
         [source replaceOccurrencesOfString:@"src=\"Resource/JS" withString:@"src=\"/Resource/JS" options:0 range:NSMakeRange(0, source.length)];
     }
+    else {
+        [source replaceOccurrencesOfString:@"UA-50852779-1" withString:@"" options:0 range:NSMakeRange(0, source.length)];
+    }
+    [source replaceOccurrencesOfString:@"93544310" withString:@"94631360" options:0 range:NSMakeRange(0, source.length)];
+    [source replaceOccurrencesOfString:@"isEditor = true"
+                            withString:@"isEditor = false" options:0 range:NSMakeRange(0, source.length)];
     return source;
 }
 
@@ -1149,6 +1155,12 @@
     if(iu.center){
         [retString appendString:@" horizontalCenter='1'"];
     }
+    if (iu.opacityMove) {
+        [retString appendFormat:@" opacityMove='%.1f'", iu.opacityMove];
+    }
+    if (iu.xPosMove) {
+        [retString appendFormat:@" xPosMove='%.1f'", iu.xPosMove];
+    }
     
     if ([iu isKindOfClass:[IUImage class]]) {
         IUImage *iuImage = (IUImage*)iu;
@@ -1224,7 +1236,7 @@
         }
     }
     else if ([iu isKindOfClass:[IUSubmitButton class]]){
-        [retString appendString:@" type=\"submit\""];
+        [retString appendString:@" type=\"submit\" value=\"JOIN\""];
     }
     else if ([iu isKindOfClass:[IUForm class]]){
         [retString appendString:@" method=\"post\" action=\"#\""];

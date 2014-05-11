@@ -20,6 +20,9 @@
 @property (weak) IBOutlet NSTextField *textVariableTF;
 @property (weak) IBOutlet NSTextField *pgVisibleTF;
 
+@property (weak) IBOutlet NSTextField *opacityMoveTF;
+@property (weak) IBOutlet NSTextField *xPosMoveTF;
+
 @end
 
 @implementation LMPropertyIUBoxVC
@@ -39,7 +42,10 @@
     [_textVariableTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"textVariable"] options:nil];
     [_divPopupBtn bind:NSSelectedValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"divLink"] options:nil];
     [_pgVisibleTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"pgVisibleCondition"] options:nil];
-    
+
+    [_opacityMoveTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"opacityMove"] options:nil];
+    [_xPosMoveTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"xPosMove"] options:nil];
+
     [self.controller addObserver:self forKeyPath:@"selection" options:NSKeyValueObservingOptionInitial context:nil];
 
 }
