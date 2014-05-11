@@ -59,7 +59,6 @@
     LMWC *wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
     [wc showWindow:self];
     [wc loadProject:path];
-    [[NSUserDefaults standardUserDefaults] setValue:path forKey:@"lastDocument"];
     
     [self.view.window close];
     

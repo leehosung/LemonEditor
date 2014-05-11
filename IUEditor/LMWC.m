@@ -263,6 +263,8 @@
     iuInspectorVC.pageDocumentNodes = _project.pageDocumentNodes;
     iuInspectorVC.classDocumentNodes = _project.classDocumentNodes;
     [[NSDocumentController sharedDocumentController] noteNewRecentDocumentURL:[NSURL fileURLWithPath:path]];
+    
+    [[NSUserDefaults standardUserDefaults] setValue:path forKey:@"lastDocument"];
 }
 
 -(void)setSelectedNode:(IUNode*)selectedNode{
