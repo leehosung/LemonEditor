@@ -93,6 +93,10 @@
 }
 
 - (void)resetCursorRects{
+    //FIXME: serious error
+    if (boxManageView.subviews.count == 0) {
+        return;
+    }
     InnerSizeBox *maxBox = (InnerSizeBox *)boxManageView.subviews[0];
     [self addCursorRect:[maxBox frame] cursor:[NSCursor pointingHandCursor]];
 }
