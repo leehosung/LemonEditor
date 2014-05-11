@@ -23,7 +23,7 @@
         _showFriendsFace = YES;
         [self addObserver:self forKeyPaths:@[@"showFriendsFace", @"likePage"] options:NSKeyValueObservingOptionInitial context:@"IUFBSource"];
         [self.css setValue:@(80) forTag:IUCSSTagHeight forWidth:IUCSSMaxViewPortWidth];
-        [self.css setValue:@(350) forTag:IUCSSTagWidth forWidth:IUCSSMaxViewPortWidth];
+        [self.css setValue:@(320) forTag:IUCSSTagWidth forWidth:IUCSSMaxViewPortWidth];
         [self.css setValue:nil forTag:IUCSSTagBGColor forWidth:IUCSSMaxViewPortWidth];
 
 
