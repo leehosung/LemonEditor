@@ -882,8 +882,13 @@
         
         value = cssTagDict[IUCSSTagImage];
         if(value){
-            NSString *resourcePath = [_resourceSource relativePathForResource:value];
-            [dict putTag:@"background-image" string:[resourcePath CSSURLString]];
+            if ([value isHTTPURL]) {
+                [dict putTag:@"background-image" string:value];
+            }
+            else {
+                NSString *resourcePath = [_resourceSource relativePathForResource:value];
+                [dict putTag:@"background-image" string:[resourcePath CSSURLString]];
+            }
             
             IUBGSizeType bgSizeType = [cssTagDict[IUCSSTagBGSize] intValue];
             switch (bgSizeType) {
