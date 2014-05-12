@@ -733,13 +733,6 @@
         [code appendString:[self editorHTMLAsBOX:iu]];
     }
     
-    if (iu.link && [iu isKindOfClass:[IUPageLinkSet class]] == NO) {
-        NSString *linkURL = iu.link;
-        if ([iu.link isHTTPURL] == NO) {
-            linkURL = [NSString stringWithFormat:@"./%@.html", iu.link];
-        }
-        code = [NSMutableString stringWithFormat:@"<a href='%@'>%@</a>", linkURL, code];
-    }
     return code;
 }
 
