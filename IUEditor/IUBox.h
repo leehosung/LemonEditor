@@ -149,5 +149,7 @@
 
 @property float opacityMove;
 @property float xPosMove;
+//0 for default, 1 for H1, 2 for H2
+@property NSUInteger textType;
 
 @end

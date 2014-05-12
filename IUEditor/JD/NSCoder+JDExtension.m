@@ -67,7 +67,10 @@
             [obj setValue:@([self decodeInt32ForKey:property.name]) forKey:property.name];
         }
         else if ([property isID]){
-            [obj setValue:[self decodeObjectForKey:property.name] forKey:property.name];
+            id v = [self decodeObjectForKey:property.name];
+            if (v) {
+                [obj setValue:v forKey:property.name];
+            }
         }
         else if ([property isSize]){
             [obj setValue:[NSValue valueWithSize:[self decodeSizeForKey:property.name]] forKey:property.name];
