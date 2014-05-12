@@ -75,6 +75,9 @@
         if ([[self substringToIndex:7] isEqualToString:@"http://"]) {
             return YES;
         }
+        if([self containsString:@"mailto:"]){
+            return YES;
+        }
     }
     return NO;
 }
