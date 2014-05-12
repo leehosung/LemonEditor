@@ -13,6 +13,12 @@
 
 @interface IUPage : IUDocument
 
+@property NSString *title;
+@property NSString *keywords;
+@property NSString *author;
+@property NSString *description;
+
+
 -(void)setBackground:(IUBackground*)background;
 -(IUBackground*)background;
 

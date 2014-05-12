@@ -42,6 +42,21 @@
     }
     return self;
 }
+-(NSString *)metadataSource:(IUPage *)page{
+    NSMutableString *meta = [NSMutableString string];
+    
+    //for google
+    [meta appendFormat:@"<title>%@</title>\n", page.title];
+    [meta appendFormat:@"<meta name='description' content='%@'>\n", page.description];
+    [meta appendFormat:@"<meta name='keywords' content='%@'>\n", page.keywords];
+    [meta appendFormat:@"<meta name='author' content='%@'>\n", page.author];
+    //for facebook
+    [meta appendString:@"<!--Facebook matadata-->\n"];
+    [meta appendFormat:@"<meta name='og:title' content='%@'>\n", page.title];
+    [meta appendFormat:@"<meta name='og:description' content='%@'>\n", page.description];
+
+    return meta;
+}
 
 
 -(NSString*)outputSource:(IUDocument*)document mqSizeArray:(NSArray *)mqSizeArray{
@@ -50,6 +65,12 @@
     }
     NSString *templateFilePath = [[NSBundle mainBundle] pathForResource:@"webTemplate" ofType:@"html"];
     NSMutableString *source = [NSMutableString stringWithContentsOfFile:templateFilePath encoding:NSUTF8StringEncoding error:nil];
+    
+    //replace metadata;
+    if([document isKindOfClass:[IUPage class]]){
+        NSString *metaStr = [self metadataSource:(IUPage *)document];
+        [source replaceOccurrencesOfString:@"<!--METADATA_Insert-->" withString:[metaStr stringByIndent:8 prependIndent:NO] options:0 range:[source fullRange]];
+    }
     
     //remove iueditor.js to make outputSource
     NSRange removeStart = [source rangeOfString:@"<!--IUEditor.JS_REMOVE_START-->"];

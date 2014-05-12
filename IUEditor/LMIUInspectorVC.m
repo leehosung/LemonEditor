@@ -24,6 +24,7 @@
 #import "LMPropertyIUCollectionVC.h"
 #import "LMPropertyIUTextViewVC.h"
 #import "LMPropertyIUPageLinkSetVC.h"
+#import "LMPropertyIUPageVC.h"
 
 @interface LMIUInspectorVC (){
     
@@ -45,6 +46,8 @@
     
     LMPropertyIUTextViewVC *propertyIUTextViewVC;
     LMPropertyIUPageLinkSetVC *propertyIUPageLinkSetVC;
+    LMPropertyIUPageVC * propertyIUPageVC;
+    
     NSArray *propertyVCArray;
     NSMutableArray *selectedIUCellVArray;
 }
@@ -76,10 +79,10 @@
 
         propertyIUTextFieldVC = [[LMPropertyIUTextFieldVC alloc] initWithNibName:[LMPropertyIUTextFieldVC class].className bundle:nil];
         propertyIUCollectionVC = [[LMPropertyIUCollectionVC alloc] initWithNibName:[LMPropertyIUCollectionVC class].className bundle:nil];
-
         propertyIUTextViewVC = [[LMPropertyIUTextViewVC alloc] initWithNibName:[LMPropertyIUTextViewVC class].className bundle:nil];
         
         propertyIUPageLinkSetVC = [[LMPropertyIUPageLinkSetVC alloc] initWithNibName:[LMPropertyIUPageLinkSetVC class].className bundle:nil];
+        propertyIUPageVC = [[LMPropertyIUPageVC alloc] initWithNibName:[LMPropertyIUPageVC class].className bundle:nil];
         
         propertyVCArray = [NSArray arrayWithObjects:
                            @"propertyIUBoxVC",
@@ -96,6 +99,7 @@
                            @"propertyIUCollectionVC",
                            @"propertyIUTextViewVC",
                            @"propertyIUPageLinkSetVC",
+                           @"propertyIUPageVC",
                            nil];
         selectedIUCellVArray = [NSMutableArray array];
         
@@ -124,6 +128,8 @@
     
     [propertyIUTextViewVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     [propertyIUPageLinkSetVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+    [propertyIUPageVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+
 
 }
 
