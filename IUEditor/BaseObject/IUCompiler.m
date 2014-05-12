@@ -267,6 +267,12 @@
     if ([iu isKindOfClass:[IUForm class]]) {
         tag = @"form";
     }
+    else if (iu.textType == 1){
+        tag = @"h1";
+    }
+    else if (iu.textType == 2){
+        tag = @"h2";
+    }
     NSMutableString *code = [NSMutableString string];
     if ([iu.pgVisibleCondition length] && _rule == IUCompileRuleDjango) {
         [code appendFormat:@"{%%if %@%%}", iu.pgVisibleCondition];

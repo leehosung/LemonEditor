@@ -22,6 +22,7 @@
 
 @property (weak) IBOutlet NSTextField *opacityMoveTF;
 @property (weak) IBOutlet NSTextField *xPosMoveTF;
+@property (weak) IBOutlet NSMatrix *textTypeMatrix;
 
 @end
 
@@ -45,6 +46,7 @@
 
     [_opacityMoveTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"opacityMove"] options:nil];
     [_xPosMoveTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"xPosMove"] options:nil];
+    [_textTypeMatrix bind:NSSelectedIndexBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"textType"] options:nil];
 
     [self.controller addObserver:self forKeyPath:@"selection" options:NSKeyValueObservingOptionInitial context:nil];
 
