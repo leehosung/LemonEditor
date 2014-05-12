@@ -147,4 +147,32 @@
     
 }
 
+/*
+ *
+ add for scroll event
+ ㅇ
+ $(document).scroll(function(){
+ var vimeo = $('#vimeo_94631360');
+ var height = $(this).scrollTop();
+ var vimeo_location =  vimeo.offset().top;
+ var vimeo_height = vimeo.outerHeight();
+ if(height>=vimeo_location-200){
+ froogaloop.api('play');
+ }
+ else{
+ froogaloop.api('pause');
+ }
+ if(height>=vimeo_location+100){
+ froogaloop.api('pause');
+ }
+ });
+ 
+ $(document).ready(function(){
+ console.log('ready : iuevent.js')
+ 
+ var vimeo = $('#vimeo_94631360');
+ froogaloop = $f(vimeo[0].id);
+ 
+ */
+
 @end
