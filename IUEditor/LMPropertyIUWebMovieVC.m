@@ -31,7 +31,7 @@
                                    dictionaryWithObjects:@[[NSNumber numberWithBool:NO], [NSNumber numberWithBool:YES]]
                                    forKeys:@[NSRaisesForNotApplicableKeysBindingOption, NSContinuouslyUpdatesValueBindingOption]];
     
-     [_webMovieSourceTextV bind:@"string" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"webMovieSource"]  options:bindingOption];
+     [_webMovieSourceTextV bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"webMovieSource"]  options:bindingOption];
 
 }
 
