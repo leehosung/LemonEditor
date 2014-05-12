@@ -136,6 +136,8 @@
     _thumbnailPath = [vimeoDict objectForKey:@"thumbnail_large"]; //2
     _thumbnail = YES;
     
+    [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
+    
     
 }
 
