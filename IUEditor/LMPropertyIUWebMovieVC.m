@@ -11,6 +11,7 @@
 @interface LMPropertyIUWebMovieVC ()
 
 @property (unsafe_unretained) IBOutlet NSTextView *webMovieSourceTextV;
+@property (weak) IBOutlet NSButton *autoplayBtn;
 
 
 @end
@@ -32,6 +33,7 @@
                                    forKeys:@[NSRaisesForNotApplicableKeysBindingOption, NSContinuouslyUpdatesValueBindingOption]];
     
      [_webMovieSourceTextV bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"webMovieSource"]  options:bindingOption];
+     [_autoplayBtn bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"eventautoplay"]  options:bindingOption];
 
 }
 

@@ -10,7 +10,6 @@
 
 @interface IUWebMovie()
 
-@property NSString *thumbnailID;
 
 @end
 
@@ -21,6 +20,7 @@
     self = [super initWithManager:manager option:option];
     if(self){
         _thumbnail = NO;
+        _type = @"webMovie";
         _webMovieSource = @"<iframe width=\"560\" height=\"315\" src=\"//www.youtube.com/embed/9bZkp7q19f0?list=PLEC422D53B7588DC7\" frameborder=\"0\" allowfullscreen></iframe>";
     }
     return self;
@@ -53,6 +53,11 @@
     _webMovieSource = aWebMovieSource;
     _thumbnail = NO;
     
+    if(aWebMovieSource == nil || aWebMovieSource.length ==0 ){
+        self.innerHTML = @"";
+        return;
+    }
+    
     //width, height => 100%, innerHTML에 적용
     NSString *changeSource = aWebMovieSource;
     
@@ -80,8 +85,47 @@
                                                      withTemplate:[NSString stringWithFormat:@"width=100%%"]];
     }
     
+    NSMutableString *appendSource= [NSMutableString stringWithString:changeSource];
+    NSString *videoID;
+    NSRange optionRange = [changeSource rangeOfString:@"?"];
+
+    //use api
+    if([changeSource containsString:@"youtube"]){
+        _type = @"youtube";
+        videoID = [NSString stringWithFormat:@"%@_%@", self.htmlID, _type];
+        NSString *option = [NSString stringWithFormat:@"version=3&enablejsapi=1&"];
+        if(optionRange.length == 0){
+            NSRange range = [appendSource rangeOfString:@"/embed/"];
+            NSInteger start = range.length+range.location +11;
+            [appendSource insertString:[NSString stringWithFormat:@"?%@", option] atIndex:start];
+        }
+        else{
+            [appendSource insertString:option atIndex:optionRange.location + optionRange.length];
+        }
+    }
+    else if([changeSource containsString:@"vimeo"]){
+        _type = @"vimeo";
+        videoID = [NSString stringWithFormat:@"%@_%@", self.htmlID, _type];
+        NSString *option = [NSString stringWithFormat:@"api=1&player_id=%@&", videoID];
+        if(optionRange.length == 0){
+            NSRange range = [appendSource rangeOfString:@"/video/"];
+            NSInteger start = range.length+range.location +8;
+            [appendSource insertString:[NSString stringWithFormat:@"?%@", option] atIndex:start];
+        }
+        else{
+            [appendSource insertString:option atIndex:optionRange.location + optionRange.length];
+        }
+        
+    }
+    
+    NSRange iframeRange = [appendSource rangeOfString:@"<iframe"];
+    if(iframeRange.length >0 && videoID){
+        [appendSource insertString:[NSString stringWithFormat:@" id='%@'", videoID] atIndex:iframeRange.location+iframeRange.length];
+    }
+
+    
     [self thumbnailOfWebMovieSource:_webMovieSource];
-    self.innerHTML = changeSource;
+    self.innerHTML = appendSource;
 }
 
 -(void)thumbnailOfWebMovieSource:(NSString *)webMovieSource{

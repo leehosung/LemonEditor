@@ -46,14 +46,20 @@
     NSMutableString *meta = [NSMutableString string];
     
     //for google
-    [meta appendFormat:@"<title>%@</title>\n", page.title];
-    [meta appendFormat:@"<meta name='description' content='%@'>\n", page.description];
-    [meta appendFormat:@"<meta name='keywords' content='%@'>\n", page.keywords];
-    [meta appendFormat:@"<meta name='author' content='%@'>\n", page.author];
-    //for facebook
-    [meta appendString:@"<!--Facebook matadata-->\n"];
-    [meta appendFormat:@"<meta name='og:title' content='%@'>\n", page.title];
-    [meta appendFormat:@"<meta name='og:description' content='%@'>\n", page.description];
+    if(page.title && page.title.length != 0){
+        [meta appendFormat:@"<title>%@</title>\n", page.title];
+        [meta appendFormat:@"<meta name='og:title' content='%@'>\n", page.title];
+    }
+    if(page.description && page.description.length != 0){
+        [meta appendFormat:@"<meta name='description' content='%@'>\n", page.description];
+        [meta appendFormat:@"<meta name='og:description' content='%@'>\n", page.description];
+    }
+    if(page.keywords && page.keywords.length != 0){
+        [meta appendFormat:@"<meta name='keywords' content='%@'>\n", page.keywords];
+    }
+    if(page.author && page.author.length != 0){
+        [meta appendFormat:@"<meta name='author' content='%@'>\n", page.author];
+    }
 
     return meta;
 }
@@ -1188,7 +1194,7 @@
     if (iu.xPosMove) {
         [retString appendFormat:@" xPosMove='%.1f'", iu.xPosMove];
     }
-    
+#pragma mark IUImage
     if ([iu isKindOfClass:[IUImage class]]) {
         IUImage *iuImage = (IUImage*)iu;
         if (iuImage.variable && _rule == IUCompileRuleDjango) {
@@ -1209,7 +1215,16 @@
             }
         }
     }
-
+#pragma mark IUWebMovie
+    else if([iu isKindOfClass:[IUWebMovie class]]){
+        IUWebMovie *iuWebMovie = (IUWebMovie *)iu;
+        if(iuWebMovie.eventautoplay){
+            [retString appendString:@" eventAutoplay='1'"];
+            [retString appendFormat:@" videoid='%@'", iuWebMovie.thumbnailID];
+            [retString appendFormat:@" videotype='%@'", iuWebMovie.type];
+        }
+    }
+#pragma mark IUMovie
     else if ([iu isKindOfClass:[IUMovie class]]) {
         if(option){
             BOOL editor = [[option objectForKey:@"editor"] boolValue];
@@ -1233,17 +1248,18 @@
             }
         }
     }
-    
+#pragma mark IUCarouselItem
     else if([iu isKindOfClass:[IUCarouselItem class]]){
         [retString appendFormat:@" carouselID=%@", iu.parent.htmlID];
     }
-    
+#pragma mark IUCollection
     else if ([iu isKindOfClass:[IUCollection class]]){
         IUCollection *iuCollection = (IUCollection*)iu;
 
         NSData *data = [NSJSONSerialization dataWithJSONObject:iuCollection.responsiveSetting options:0 error:nil];
         [retString appendFormat:@" responsive=%@ defaultItemCount=%ld",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding], iuCollection.defaultItemCount];
     }
+#pragma mark IUTextField
     else if ([iu isKindOfClass:[IUTextField class]]){
         IUTextField *iuTextField = (IUTextField *)iu;
         if(iuTextField.formName){
@@ -1262,12 +1278,15 @@
             [retString appendString:@" type=\"text\""];
         }
     }
+#pragma mark IUSubmitButton
     else if ([iu isKindOfClass:[IUSubmitButton class]]){
         [retString appendString:@" type=\"submit\" value=\"JOIN\""];
     }
+#pragma mark IUForm
     else if ([iu isKindOfClass:[IUForm class]]){
         [retString appendString:@" method=\"post\" action=\"#\""];
     }
+#pragma mark IUTextView
     else if([iu isKindOfClass:[IUTextView class]]){
         IUTextView *iuTextView = (IUTextView *)iu;
         if(iuTextView.placeholder){
@@ -1277,6 +1296,7 @@
             [retString appendFormat:@" name=\"%@\"",iuTextView.formName];
         }
     }
+#pragma mark IUTransition
     else if ([iu isKindOfClass:[IUTransition class]]){
         IUTransition *transitionIU = (IUTransition*)iu;
         if ([transitionIU.eventType length]) {

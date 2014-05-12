@@ -71,15 +71,54 @@ $(document).ready(function(){
 	}
 });
 
+function onYouTubePlayerReady(playerId){
+	console.log("playerId : "+playerId);
+}
+
 $(window).scroll(function(){
 	if (isEditor == true){
 		return;
 	}
+	//autoplay when appear
+	var scrollY = $(document).scrollTop();
+    var screenH = $(window).height();
+	var maxY = scrollY + screenH;
+	$('[eventAutoplay]').each(function(){
+		var yPos = $(this).offset().top;
+		var type = $(this).attr('videotype');
+		if(yPos > scrollY && yPos < maxY){
+			//play
+			if(type=='vimeo'){
+				var vimeo = $f($(this).children()[0]);
+				vimeo.api('play');
+				
+			}
+			/*
+			else if(type=='video'){
+				$(this).load();
+				$(this).play();
+			}
+			*/
+		}
+		else{
+			//stop
+			if(type=='vimeo'){
+				var vimeo = $f($(this).children()[0]);
+				vimeo.api('pause');
+			}
+			
+			
+		}
+	});
+	
+	
+	
+    //move horizontally
     var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
     if (width > 360){
 	    $('[opacitymove]').each(function(){
 			var opacityMove = $(this).attr('opacitymove'); 
-			var opacity = (1-opacityMove) +  opacityMove/($(window).height()/1.7)*($(document).scrollTop() - $(this).offset().top+$(window).height());
+			var opacity = (1-opacityMove) +  opacityMove/(screenH/1.7)*(scrollY - $(this).offset().top+screenH);
 			if (opacity > 1){
 				opacity = 1;
 			}
@@ -92,7 +131,7 @@ $(window).scroll(function(){
 			startLeft = parseFloat($(this).attr('startLeft')); 
 			xMove = parseFloat($(this).attr('xPosMove')); 
 			y = $(window).height()/1.7;
-			x = ($(document).scrollTop() - $(this).offset().top+$(window).height());
+			x = (scrollY- $(this).offset().top+screenH);
 		
 			var left = (startLeft) +  xMove/y* x;
 		
