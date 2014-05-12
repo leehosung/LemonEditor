@@ -94,6 +94,8 @@
 		3D54D64C18ED5D2E00B5FEC2 /* ResizeNW-SE.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3D54D64A18ED5D2E00B5FEC2 /* ResizeNW-SE.tiff */; };
 		3D748C7B19207B7A005665A3 /* iueditor.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3D748C7919207B7A005665A3 /* iueditor.icns */; };
 		3D748C7C19207B7A005665A3 /* iueditor.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 3D748C7A19207B7A005665A3 /* iueditor.iconset */; };
+		3D748C81192095A1005665A3 /* LMPropertyIUPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D748C7F192095A1005665A3 /* LMPropertyIUPageVC.m */; };
+		3D748C82192095A1005665A3 /* LMPropertyIUPageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D748C80192095A1005665A3 /* LMPropertyIUPageVC.xib */; };
 		3D8D4B2A19179F910002C871 /* LMPropertyIUTextViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8D4B2819179F910002C871 /* LMPropertyIUTextViewVC.m */; };
 		3D8D4B2B19179F910002C871 /* LMPropertyIUTextViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D8D4B2919179F910002C871 /* LMPropertyIUTextViewVC.xib */; };
 		3DB3ACC518EBEF180046DFB7 /* LMWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACC418EBEF180046DFB7 /* LMWindow.m */; };
@@ -547,6 +549,9 @@
 		3D54D64A18ED5D2E00B5FEC2 /* ResizeNW-SE.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "ResizeNW-SE.tiff"; sourceTree = "<group>"; };
 		3D748C7919207B7A005665A3 /* iueditor.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = iueditor.icns; sourceTree = "<group>"; };
 		3D748C7A19207B7A005665A3 /* iueditor.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = iueditor.iconset; sourceTree = "<group>"; };
+		3D748C7E192095A1005665A3 /* LMPropertyIUPageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMPropertyIUPageVC.h; path = IU/LMPropertyIUPageVC.h; sourceTree = "<group>"; };
+		3D748C7F192095A1005665A3 /* LMPropertyIUPageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMPropertyIUPageVC.m; path = IU/LMPropertyIUPageVC.m; sourceTree = "<group>"; };
+		3D748C80192095A1005665A3 /* LMPropertyIUPageVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMPropertyIUPageVC.xib; path = IU/LMPropertyIUPageVC.xib; sourceTree = "<group>"; };
 		3D8D4B2719179F910002C871 /* LMPropertyIUTextViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyIUTextViewVC.h; sourceTree = "<group>"; };
 		3D8D4B2819179F910002C871 /* LMPropertyIUTextViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyIUTextViewVC.m; sourceTree = "<group>"; };
 		3D8D4B2919179F910002C871 /* LMPropertyIUTextViewVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyIUTextViewVC.xib; sourceTree = "<group>"; };
@@ -1401,12 +1406,12 @@
 		3DED26D4190108B6001A1D67 /* RightIUInspector */ = {
 			isa = PBXGroup;
 			children = (
-				69CB92B5191B6A2600BEFBED /* LMPropertyIUPageLinkSetVC.h */,
-				69CB92B6191B6A2600BEFBED /* LMPropertyIUPageLinkSetVC.m */,
-				69CB92B7191B6A2600BEFBED /* LMPropertyIUPageLinkSetVC.xib */,
 				692334B718F783FE003E5224 /* LMIUInspectorVC.h */,
 				692334B818F783FE003E5224 /* LMIUInspectorVC.m */,
 				692334B918F783FE003E5224 /* LMIUInspectorVC.xib */,
+				69CB92B5191B6A2600BEFBED /* LMPropertyIUPageLinkSetVC.h */,
+				69CB92B6191B6A2600BEFBED /* LMPropertyIUPageLinkSetVC.m */,
+				69CB92B7191B6A2600BEFBED /* LMPropertyIUPageLinkSetVC.xib */,
 				3DED26D519010A6D001A1D67 /* LMPropertyIUBoxVC.h */,
 				3DED26D619010A6D001A1D67 /* LMPropertyIUBoxVC.m */,
 				3DED26D719010A6D001A1D67 /* LMPropertyIUBoxVC.xib */,
@@ -1446,6 +1451,9 @@
 				3D8D4B2719179F910002C871 /* LMPropertyIUTextViewVC.h */,
 				3D8D4B2819179F910002C871 /* LMPropertyIUTextViewVC.m */,
 				3D8D4B2919179F910002C871 /* LMPropertyIUTextViewVC.xib */,
+				3D748C7E192095A1005665A3 /* LMPropertyIUPageVC.h */,
+				3D748C7F192095A1005665A3 /* LMPropertyIUPageVC.m */,
+				3D748C80192095A1005665A3 /* LMPropertyIUPageVC.xib */,
 			);
 			name = RightIUInspector;
 			sourceTree = "<group>";
@@ -2213,6 +2221,7 @@
 				3DED26641900D313001A1D67 /* ic_contents@2x.png in Resources */,
 				267CB1A3190F93370079E565 /* tab_library_on.png in Resources */,
 				3DED26AC1900F43F001A1D67 /* ic_js@2x.png in Resources */,
+				3D748C82192095A1005665A3 /* LMPropertyIUPageVC.xib in Resources */,
 				267CB1A5190F93370079E565 /* tab_primary.png in Resources */,
 				3DED26631900D313001A1D67 /* align_left@2x.png in Resources */,
 				3DF8045018FE62FC00913505 /* tool_transition@2x.png in Resources */,
@@ -2466,6 +2475,7 @@
 				3DED26D819010A6D001A1D67 /* LMPropertyIUBoxVC.m in Sources */,
 				3DED273A1904F271001A1D67 /* IUImageUtil.m in Sources */,
 				69C5760B18D6FE020016F050 /* IUClass.m in Sources */,
+				3D748C81192095A1005665A3 /* LMPropertyIUPageVC.m in Sources */,
 				3DED271D1904ADD9001A1D67 /* LMPropertyVTriggerVC.m in Sources */,
 				694E3CE118FCFDA6005077B3 /* IUItem.m in Sources */,
 				690A826B190A25D500DDBA86 /* IUDjangoProject.m in Sources */,
