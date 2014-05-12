@@ -56,9 +56,9 @@
 		<key>className</key>
 		<string>IUPageLinkSet</string>
 		<key>classImage</key>
-		<string>tool_view</string>
+		<string>tool_page_nav</string>
 		<key>navImage</key>
-		<string>stack_view</string>
+		<string>stack_page_nav</string>
 		<key>shortDesc</key>
 		<string>Box Object</string>
 		<key>longDesc</key>
