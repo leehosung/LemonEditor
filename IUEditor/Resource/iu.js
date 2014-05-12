@@ -54,59 +54,65 @@ $(document).ready(function(){
 	if (isEditor == true){
 		return;
 	}
-    $('[opacitymove]').each(function(){
-		var opacity = $(this).attr('opacitymove');
-	    $(this).css('opacity', 1-opacity);
-	});
-    $('[xPosMove]').each(function(){
-		var xPosMove = $(this).attr('xPosMove');
-		if ($(this).css('position') == 'absolute'){
-			var startLeft = parseFloat($(this).css('left')) - xPosMove;
-		    $(this).css('left', startLeft + 'px');
-			$(this).attr('startLeft', startLeft);
-		};
-	});
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    if (width > 360){
+	    $('[opacitymove]').each(function(){
+			var opacity = $(this).attr('opacitymove');
+		    $(this).css('opacity', 1-opacity);
+		});
+	    $('[xPosMove]').each(function(){
+			var xPosMove = $(this).attr('xPosMove');
+			if ($(this).css('position') == 'absolute'){
+				var startLeft = parseFloat($(this).css('left')) - xPosMove;
+			    $(this).css('left', startLeft + 'px');
+				$(this).attr('startLeft', startLeft);
+			};
+		});
+	}
 });
 
 $(window).scroll(function(){
 	if (isEditor == true){
 		return;
 	}
-    $('[opacitymove]').each(function(){
-		var opacityMove = $(this).attr('opacitymove'); 
-		var opacity = (1-opacityMove) +  opacityMove/($(window).height()/1.7)*($(document).scrollTop() - $(this).offset().top+$(window).height());
-		if (opacity > 1){
-			opacity = 1;
-		}
-		if (opacity < 1 - opacityMove){
-			opacity = 1 - opacityMove;
-		}
-		$(this).css('opacity', opacity);
-	});
-    $('[xPosMove]').each(function(){
-		startLeft = parseFloat($(this).attr('startLeft')); 
-		xMove = parseFloat($(this).attr('xPosMove')); 
-		y = $(window).height()/1.7;
-		x = ($(document).scrollTop() - $(this).offset().top+$(window).height());
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    if (width > 360){
+	    $('[opacitymove]').each(function(){
+			var opacityMove = $(this).attr('opacitymove'); 
+			var opacity = (1-opacityMove) +  opacityMove/($(window).height()/1.7)*($(document).scrollTop() - $(this).offset().top+$(window).height());
+			if (opacity > 1){
+				opacity = 1;
+			}
+			if (opacity < 1 - opacityMove){
+				opacity = 1 - opacityMove;
+			}
+			$(this).css('opacity', opacity);
+		});
+	    $('[xPosMove]').each(function(){
+			startLeft = parseFloat($(this).attr('startLeft')); 
+			xMove = parseFloat($(this).attr('xPosMove')); 
+			y = $(window).height()/1.7;
+			x = ($(document).scrollTop() - $(this).offset().top+$(window).height());
 		
-		var left = (startLeft) +  xMove/y* x;
+			var left = (startLeft) +  xMove/y* x;
 		
-		if (xMove > 0){
-			if (left < startLeft){
-				left = startLeft;
+			if (xMove > 0){
+				if (left < startLeft){
+					left = startLeft;
+				}
+				else if ( left > startLeft + xMove ){
+					left = startLeft + xMove;
+				}
 			}
-			else if ( left > startLeft + xMove ){
-				left = startLeft + xMove;
+			else {
+				if (left > startLeft){
+					left = startLeft;
+				}
+				else if ( left < startLeft + xMove ){
+					left = startLeft + xMove;
+				}
 			}
-		}
-		else {
-			if (left > startLeft){
-				left = startLeft;
-			}
-			else if ( left < startLeft + xMove ){
-				left = startLeft + xMove;
-			}
-		}
-		$(this).css('left', left+'px');
-	});
+			$(this).css('left', left+'px');
+		});
+	}
 });
