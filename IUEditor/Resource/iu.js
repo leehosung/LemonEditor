@@ -1,3 +1,14 @@
+function isMobile(){
+	var filter = "win16|win32|win64|mac|macintel";
+	if( navigator.platform  ){
+		if( filter.indexOf(navigator.platform.toLowerCase())<0 ){
+			return true;
+		}else{
+			return false;
+		}
+	}
+}
+
 function overlap(e){
 	console.log('com');
 	if ($(this).hasClass('selected')){
@@ -79,44 +90,42 @@ $(window).scroll(function(){
 	if (isEditor == true){
 		return;
 	}
-	//autoplay when appear
-	var scrollY = $(document).scrollTop();
-    var screenH = $(window).height();
-	var maxY = scrollY + screenH;
-	$('[eventAutoplay]').each(function(){
-		var yPos = $(this).offset().top;
-		var type = $(this).attr('videotype');
-		if(yPos > scrollY && yPos < maxY){
-			//play
-			if(type=='vimeo'){
-				var vimeo = $f($(this).children()[0]);
-				vimeo.api('play');
+	
+	if(isMobile()==false){
+		//autoplay when appear
+		var scrollY = $(document).scrollTop();
+		var screenH = $(window).height();
+		var maxY = scrollY + screenH;
+		$('[eventAutoplay]').each(function(){
+			var yPos = $(this).offset().top;
+			var type = $(this).attr('videotype');
+			if(yPos > scrollY && yPos < maxY){
+				//play
+				if(type=='vimeo'){
+					var vimeo = $f($(this).children()[0]);
+					vimeo.api('play');
 				
-			}
-			/*
-			else if(type=='video'){
+				}
+				/*
+				else if(type=='video'){
 				$(this).load();
 				$(this).play();
+				}
+				*/
 			}
-			*/
-		}
-		else{
-			//stop
-			if(type=='vimeo'){
-				var vimeo = $f($(this).children()[0]);
-				vimeo.api('pause');
-			}
+			else{
+				//stop
+				if(type=='vimeo'){
+					var vimeo = $f($(this).children()[0]);
+					vimeo.api('pause');
+				}
 			
 			
-		}
-	});
+			}
+		});
 	
-	
-	
-    //move horizontally
-    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-    if (width > 360){
-	    $('[opacitymove]').each(function(){
+		//move horizontally
+		$('[opacitymove]').each(function(){
 			var opacityMove = $(this).attr('opacitymove'); 
 			var opacity = (1-opacityMove) +  opacityMove/(screenH/1.7)*(scrollY - $(this).offset().top+screenH);
 			if (opacity > 1){
@@ -127,7 +136,7 @@ $(window).scroll(function(){
 			}
 			$(this).css('opacity', opacity);
 		});
-	    $('[xPosMove]').each(function(){
+		$('[xPosMove]').each(function(){
 			startLeft = parseFloat($(this).attr('startLeft')); 
 			xMove = parseFloat($(this).attr('xPosMove')); 
 			y = $(window).height()/1.7;
@@ -153,5 +162,6 @@ $(window).scroll(function(){
 			}
 			$(this).css('left', left+'px');
 		});
+	
 	}
 });
