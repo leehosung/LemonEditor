@@ -29,6 +29,8 @@
     self =  [super initWithCoder:aDecoder];
     if(self){
         [aDecoder decodeToObject:self withProperties:[[IUWebMovie class] properties]];
+        //call thumbnail data
+        self.webMovieSource = _webMovieSource;
     }
     return self;
 }
@@ -124,8 +126,12 @@
 }
 
 - (void)fetchedVimeoData:(NSData *)responseData {
-    //parse out the json data
+
+    //data 연결 등의 문제로 empty일때
+    if(responseData == nil) return;
     NSError* error;
+    
+    //parse out the json data
     NSArray* json = [NSJSONSerialization
                      JSONObjectWithData:responseData //1
                      
