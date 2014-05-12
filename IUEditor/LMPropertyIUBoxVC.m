@@ -39,14 +39,14 @@
 
 - (void)awakeFromNib{
     [_pageDocumentAC bind:NSContentArrayBinding toObject:self withKeyPath:@"pageDocumentNodes" options:nil];
-    [_linkCB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"link"] options:nil];
-    [_textVariableTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"textVariable"] options:nil];
-    [_divPopupBtn bind:NSSelectedValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"divLink"] options:nil];
-    [_pgVisibleTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"pgVisibleCondition"] options:nil];
+    [_linkCB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"link"] options:IUBindingDictNotRaisesApplicable];
+    [_textVariableTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"textVariable"] options:IUBindingDictNotRaisesApplicable];
+    [_divPopupBtn bind:NSSelectedValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"divLink"] options:IUBindingDictNotRaisesApplicable];
+    [_pgVisibleTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"pgVisibleCondition"] options:IUBindingDictNotRaisesApplicable];
 
-    [_opacityMoveTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"opacityMove"] options:nil];
-    [_xPosMoveTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"xPosMove"] options:nil];
-    [_textTypeMatrix bind:NSSelectedIndexBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"textType"] options:nil];
+    [_opacityMoveTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"opacityMove"] options:IUBindingDictNotRaisesApplicable];
+    [_xPosMoveTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"xPosMove"] options:IUBindingDictNotRaisesApplicable];
+    [_textTypeMatrix bind:NSSelectedIndexBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"textType"] options:IUBindingDictNotRaisesApplicable];
 
     [self.controller addObserver:self forKeyPath:@"selection" options:NSKeyValueObservingOptionInitial context:nil];
 

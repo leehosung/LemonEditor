@@ -64,10 +64,6 @@ $(document).ready(function(){
 		return;
 	}
 	if(isMobile()==false){
-	    $('[opacitymove]').each(function(){
-			var opacity = $(this).attr('opacitymove');
-		    $(this).css('opacity', 1-opacity);
-		});
 	    $('[xPosMove]').each(function(){
 			var xPosMove = $(this).attr('xPosMove');
 			if ($(this).css('position') == 'absolute'){
@@ -124,19 +120,26 @@ $(window).scroll(function(){
 		//move horizontally
 		$('[opacitymove]').each(function(){
 			var opacityMove = $(this).attr('opacitymove'); 
-			var opacity = (1-opacityMove) +  opacityMove/(screenH/1.7)*(scrollY - $(this).offset().top+screenH);
-			if (opacity > 1){
-				opacity = 1;
+			var yPos = $(this).offset().top+$(this).outerHeight()/2;
+			var percent = (yPos - scrollY)/(screenH/2);
+			if(percent > 0){
+				if(percent<=0.35){
+					percent = percent*2.0;	
+				}
+				else if(percent>0.35 && percent <1.0){
+					percent = 1.0;
+				}
+				else if(percent > 1.0){
+					percent = percent - 1.0;
+					percent = 1.0 - percent;
+				}
+				$(this).css('opacity', percent);
 			}
-			if (opacity < 1 - opacityMove){
-				opacity = 1 - opacityMove;
-			}
-			$(this).css('opacity', opacity);
 		});
 		$('[xPosMove]').each(function(){
 			startLeft = parseFloat($(this).attr('startLeft')); 
 			xMove = parseFloat($(this).attr('xPosMove')); 
-			y = $(window).height()/1.7;
+			y = $(window).height()/1.5;
 			x = (scrollY- $(this).offset().top+screenH);
 		
 			var left = (startLeft) +  xMove/y* x;
