@@ -1,11 +1,9 @@
 function isMobile(){
-	var filter = "win16|win32|win64|mac|macintel";
-	if( navigator.platform  ){
-		if( filter.indexOf(navigator.platform.toLowerCase())<0 ){
-			return true;
-		}else{
-			return false;
-		}
+	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	 	return true;
+	}
+	else{
+		return false;
 	}
 }
 
@@ -65,8 +63,7 @@ $(document).ready(function(){
 	if (isEditor == true){
 		return;
 	}
-    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-    if (width > 360){
+	if(isMobile()==false){
 	    $('[opacitymove]').each(function(){
 			var opacity = $(this).attr('opacitymove');
 		    $(this).css('opacity', 1-opacity);
