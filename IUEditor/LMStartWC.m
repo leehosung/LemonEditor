@@ -23,6 +23,7 @@
 @implementation LMStartWC{
     LMStartNewVC    *_newVC;
     LMStartRecentVC *_recentVC;
+    LMStartTemplateVC *_templateVC;
 }
 
 - (id)initWithWindow:(NSWindow *)window
@@ -31,6 +32,7 @@
     if (self) {
         _newVC = [[LMStartNewVC alloc] initWithNibName:@"LMStartNewVC" bundle:nil];
         _recentVC = [[LMStartRecentVC alloc] initWithNibName:@"LMStartRecentVC" bundle:nil];
+        _templateVC = [[LMStartTemplateVC alloc] initWithNibName:[LMStartTemplateVC class].className bundle:nil];
     }
     return self;
 }
@@ -52,19 +54,27 @@
     _recentVC.nextB = _nextB;
 }
 
+- (void)removeCurrentView{
+    for(NSView *view in _mainV.subviews){
+        [view removeFromSuperview];
+    }
+}
+
 - (IBAction)pressMenuSelectB:(id)sender {
     NSUInteger selectedIndex = [_menuSelectB selectedColumn];
     switch (selectedIndex) {
         case 0:
+            [self removeCurrentView];
+            [_mainV addSubviewFullFrame:_templateVC.view];
             break;
         case 1:{
-            [_recentVC.view removeFromSuperview];
+            [self removeCurrentView];
             [_mainV addSubview:_newVC.view];
             [_newVC show];
         }
             break;
         case 2:{
-            [_newVC.view removeFromSuperview];
+            [self removeCurrentView];
             [_mainV addSubview:_recentVC.view];
             [_recentVC show];
         }
