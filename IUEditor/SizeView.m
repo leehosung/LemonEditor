@@ -93,7 +93,7 @@
 }
 
 - (void)resetCursorRects{
-    //FIXME: serious error
+    [super resetCursorRects];
     if (boxManageView.subviews.count == 0) {
         return;
     }

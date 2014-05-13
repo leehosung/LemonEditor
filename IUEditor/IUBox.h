@@ -23,7 +23,6 @@
 
 -(void)IUHTMLIdentifier:(NSString*)identifier textHTML:(NSString *)html withParentID:(NSString *)parentID nearestID:(NSString *)nID index:(NSUInteger)index;
 -(void)IUHTMLIdentifier:(NSString *)identifier HTML:(NSString *)html withParentID:(NSString *)parentID;
--(void)IUHTMLIdentifier:(NSString *)identifier setLink:(NSString *)link;
 
 -(void)IUClassIdentifier:(NSString *)classIdentifier addClass:(NSString *)className;
 -(void)IUClassIdentifier:(NSString *)classIdentifier removeClass:(NSString *)className;
