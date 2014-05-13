@@ -35,7 +35,7 @@ typedef enum _IUCompileRule{
 -(NSString*)CSSContentFromAttributes:(NSDictionary*)attributeDict ofClass:(IUBox*)obj isHover:(BOOL)isHover;
 -(NSString *)fontCSSContentFromAttributes:(NSDictionary*)attributeDict;
 -(NSString *)cssContentForIUCarouselPager:(IUCarousel *)iu hover:(BOOL)hover;
--(NSString *)cssContentForIUCarouselArrow:(IUCarousel *)iu hover:(BOOL)hover location:(IUCarouselArrow)location;
+- (NSString *)cssContentForIUCarouselArrow:(IUCarousel *)iu hover:(BOOL)hover location:(IUCarouselArrow)location carouselHeight:(NSInteger)height;
 
 #pragma mark manage JS source
 -(NSString *)outputJSArgs:(IUBox *)iu;

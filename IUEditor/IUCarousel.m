@@ -25,6 +25,10 @@
         _deselectColor = [NSColor grayColor];
         _rightArrowImage = @"Default";
         _leftArrowImage = @"Default";
+        
+        [self addObserver:self forKeyPath:@"css.assembledTagDictionary.height" options:0 context:
+         @"height"];
+
     }
 
     return self;
@@ -34,6 +38,8 @@
     self =  [super initWithCoder:aDecoder];
     if(self){
         [aDecoder decodeToObject:self withProperties:[[IUCarousel class] properties]];
+        [self addObserver:self forKeyPath:@"css.assembledTagDictionary.height" options:0 context:
+         @"height"];
     }
     return self;
 }
@@ -130,6 +136,12 @@
     
 }
 
+- (void)heightContextDidChange:(NSDictionary *)change{
+    //redraw arrowimage because of position
+    [self setLeftArrowImage:_leftArrowImage];
+    [self setRightArrowImage:_rightArrowImage];
+}
+
 - (void)setLeftArrowImage:(NSString *)leftArrowImage{
     _leftArrowImage = leftArrowImage;
     BOOL change = NO;
@@ -159,9 +171,10 @@
         arrowID = [NSString stringWithFormat:@"%@_bx-next", self.htmlID];
     }
     if(change){
-        [self.delegate IUClassIdentifier:arrowID CSSUpdated:[self.document.compiler cssContentForIUCarouselArrow:self hover:NO location:type] forWidth:IUCSSMaxViewPortWidth];
+        NSInteger currentHeight = [self.css.assembledTagDictionary[IUCSSTagHeight] integerValue];
+        [self.delegate IUClassIdentifier:arrowID CSSUpdated:[self.document.compiler cssContentForIUCarouselArrow:self hover:NO location:type carouselHeight:currentHeight] forWidth:self.css.editWidth];
     }else{
-        [self.delegate IUClassIdentifier:arrowID CSSRemovedforWidth:IUCSSMaxViewPortWidth];
+        [self.delegate IUClassIdentifier:arrowID CSSRemovedforWidth:self.css.editWidth];
     }
 }
 

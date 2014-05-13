@@ -185,32 +185,41 @@
 -(NSString *)cssContentForIUCarouselPager:(IUCarousel *)iu hover:(BOOL)hover{
     NSMutableString *css = [NSMutableString string];
     if(hover){
-        [css appendFormat:@"background:%@", [iu.selectColor rgbaString]];
+        [css appendFormat:@"background:%@ !important", [iu.selectColor rgbaString]];
     }else{
-        [css appendFormat:@"background:%@", [iu.deselectColor rgbaString]];
+        [css appendFormat:@"background:%@ !important", [iu.deselectColor rgbaString]];
     }
     return css;
 }
 
-- (NSString *)cssContentForIUCarouselArrow:(IUCarousel *)iu hover:(BOOL)hover location:(IUCarouselArrow)location{
+- (NSString *)cssContentForIUCarouselArrow:(IUCarousel *)iu hover:(BOOL)hover location:(IUCarouselArrow)location carouselHeight:(NSInteger)height{
     
     
     NSMutableString *css = [NSMutableString string];
+    NSString *imageName;
     if(location == IUCarouselArrowLeft){
-        NSString *imagePath = [_resourceSource relativePathForResource:iu.leftArrowImage];
-        [css appendFormat:@"background:%@ ;", [imagePath CSSURLString]];
-        NSImage *arrowImage = [NSImage imageNamed:iu.leftArrowImage];
-        [css appendFormat:@"heihgt:%.0fpx ; ",arrowImage.size.height];
-        [css appendFormat:@"width:%.0fpx ;", arrowImage.size.width];
+        imageName = iu.leftArrowImage;
     }
     else if(location == IUCarouselArrowRight){
-        NSString *imagePath = [_resourceSource relativePathForResource:iu.rightArrowImage];
-        [css appendFormat:@"background:%@ ;", [imagePath CSSURLString]];
-        NSImage *arrowImage = [NSImage imageNamed:iu.rightArrowImage];
-        [css appendFormat:@"heihgt:%.0fpx ; ",arrowImage.size.height];
-        [css appendFormat:@"width:%.0fpx ;", arrowImage.size.width];
-
+        imageName = iu.rightArrowImage;
     }
+    
+    NSImage *arrowImage;
+    if ([imageName isHTTPURL]) {
+        [css appendFormat:@"background:(%@) !important;", imageName];
+        arrowImage = [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:imageName]];
+    }
+    else{
+        NSString *imageRelativePath = [_resourceSource relativePathForResource:imageName];
+        [css appendFormat:@"background:%@ !important;", [imageRelativePath CSSURLString]];
+        NSString *imageAbsolutePath = [_resourceSource absolutePathForResource:imageName];
+        arrowImage = [[NSImage alloc] initWithContentsOfFile:imageAbsolutePath];
+    }
+    
+    [css appendFormat:@"height:%.0fpx !important; ",arrowImage.size.height];
+    [css appendFormat:@"width:%.0fpx !important;", arrowImage.size.width];
+    [css appendFormat:@"top:%.0fpx !important;", (height/2-arrowImage.size.height/2)];
+
     
     return css;
 }
@@ -242,19 +251,21 @@
     NSMutableString *css = [NSMutableString string];
     if(iu.enableColor){
         NSString *itemID = [NSString stringWithFormat:@"%@pager-item", iu.htmlID];
-        [css appendFormat:@"#%@{%@}", itemID, [self cssContentForIUCarouselPager:iu hover:NO]];
-        [css appendFormat:@"#%@:hover,#%@.active{%@}", itemID, itemID, [self cssContentForIUCarouselPager:iu hover:NO]];
+        [css appendFormat:@".%@{%@}", itemID, [self cssContentForIUCarouselPager:iu hover:NO]];
+        [css appendFormat:@".%@:hover,.%@.active{%@}", itemID, itemID, [self cssContentForIUCarouselPager:iu hover:NO]];
         [css appendNewline];
     }
     
     if([iu.leftArrowImage isEqualToString:@"Default"] == NO){
+        NSInteger currentHeight = [iu.css.assembledTagDictionary[IUCSSTagHeight] integerValue];
         NSString *leftArrowID = [NSString stringWithFormat:@"%@_bx-prev", iu.htmlID];
-        [css appendFormat:@"#%@{%@}", leftArrowID, [self cssContentForIUCarouselArrow:iu hover:NO location:IUCarouselArrowLeft]];
+        [css appendFormat:@".%@{%@}", leftArrowID, [self cssContentForIUCarouselArrow:iu hover:NO location:IUCarouselArrowLeft carouselHeight:currentHeight]];
         [css appendNewline];
     }
     if([iu.rightArrowImage isEqualToString:@"Default"] == NO){
+        NSInteger currentHeight = [iu.css.assembledTagDictionary[IUCSSTagHeight] integerValue];
         NSString *rightArrowID = [NSString stringWithFormat:@"%@_bx-next", iu.htmlID];
-        [css appendFormat:@"#%@{%@}", rightArrowID, [self cssContentForIUCarouselArrow:iu hover:NO location:IUCarouselArrowRight]];
+        [css appendFormat:@".%@{%@}", rightArrowID, [self cssContentForIUCarouselArrow:iu hover:NO location:IUCarouselArrowRight carouselHeight:currentHeight]];
         [css appendNewline];
     }
 

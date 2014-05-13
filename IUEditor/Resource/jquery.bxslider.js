@@ -629,7 +629,8 @@ var loadedCarouselArray = [];
 					pagerHtml += '<div class="bx-pager-item"><a href="" data-slide-index="' + i + '" class="bx-pager-link">' + linkContent + '</a></div>';
 				}
 				else{
-					pagerHtml += '<div class="bx-pager-item"><a href="" data-slide-index="' + i + '" class="bx-pager-link" id="'+slider.iu.attr('id')+'pager-item">' + linkContent + '</a></div>';
+                    var iupagerid = slider.iu.attr('id')+'pager-item';
+					pagerHtml += '<div class="bx-pager-item"><a href="" data-slide-index="' + i + '" class="bx-pager-link '+iupagerid +'" id="'+iupagerid+'">' + linkContent + '</a></div>';
 				}
 			};
 			// populate the pager element with pager links
@@ -668,8 +669,10 @@ var loadedCarouselArray = [];
 				slider.controls.prev = $('<a class="bx-prev" href="">' + slider.settings.prevText + '</a>');
 			}
 			else{
-				slider.controls.next = $('<a class="bx-next" href="" id="'+ slider.iu.attr('id') +'_bx-next">' + slider.settings.nextText + '</a>');
-				slider.controls.prev = $('<a class="bx-prev" href="" id="'+ slider.iu.attr('id') +'_bx-prev">' + slider.settings.prevText + '</a>');
+                var iuidnext = slider.iu.attr('id')+'_bx-next';
+                var iuidprev = slider.iu.attr('id')+'_bx-prev';
+				slider.controls.next = $('<a class="bx-next '+iuidnext+'" href="" id="'+iuidnext+'">' + slider.settings.nextText + '</a>');
+				slider.controls.prev = $('<a class="bx-prev '+iuidprev+'" href="" id="'+iuidprev+'">' + slider.settings.prevText + '</a>');
 			}
 			// bind click actions to the controls
 			slider.controls.next.bind('click', clickNextBind);
