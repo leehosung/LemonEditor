@@ -915,7 +915,7 @@
         value = cssTagDict[IUCSSTagImage];
         if(value){
             if ([value isHTTPURL]) {
-                [dict putTag:@"background-image" string:value];
+                [dict putTag:@"background-image" string:[NSString stringWithFormat:@"url(%@)",value]];
             }
             else {
                 NSString *resourcePath = [_resourceSource relativePathForResource:value];

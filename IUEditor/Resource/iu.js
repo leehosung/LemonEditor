@@ -8,6 +8,9 @@ function isMobile(){
 }
 
 function overlap(e){
+	if (isEditor == true){
+		return;
+	}
 	console.log('com');
 	if ($(this).hasClass('selected')){
 		var secondObj = $(this).children()[1];
@@ -23,8 +26,12 @@ function overlap(e){
 
 
 function flyFromRight(eventObject){
-	if ($(this).hasClass('selected')){
+	if (isEditor == true){
+		return;
+	}
+    if ($(this).hasClass('selected')){
 		var secondObj = $(this).children()[1];
+        $(secondObj).css('visibility', 'hidden');
 		$(secondObj).animate({
 			'left': '1000%',			
 		}, 200);
@@ -42,7 +49,11 @@ function flyFromRight(eventObject){
 }
 
 $(document).ready(function(){
-	console.log('start : transition code');
+    if (isEditor == true){
+        return;
+    }
+    console.log('start : transition code');
+                 
 	$('.IUTransition').each(function(){
 		var eventType = $(this).attr('transitionevent');
 		var transitionanimation = $(this).attr('transitionanimation');

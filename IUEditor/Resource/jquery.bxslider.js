@@ -23,7 +23,7 @@ var loadedCarouselArray = [];
 		slideSelector: '',
 		infiniteLoop: true,
 		hideControlOnEnd: false,
-		speed: 500,
+		speed: 300,
 		easing: null,
 		slideMargin: 0,
 		startSlide: 0,
