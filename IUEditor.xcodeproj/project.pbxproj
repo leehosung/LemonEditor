@@ -446,8 +446,8 @@
 		69F1A37518E0624E004C5B30 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69F1A37418E0624E004C5B30 /* WebKit.framework */; };
 		CB9BD6381914DC62002C9369 /* LMStartNewDjangoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9BD6361914DC62002C9369 /* LMStartNewDjangoVC.m */; };
 		CB9BD6391914DC62002C9369 /* LMStartNewDjangoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9BD6371914DC62002C9369 /* LMStartNewDjangoVC.xib */; };
-		CB9BD63D1914DE23002C9369 /* LMStartNewPresenationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9BD63B1914DE23002C9369 /* LMStartNewPresenationVC.m */; };
-		CB9BD63E1914DE23002C9369 /* LMStartNewPresenationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9BD63C1914DE23002C9369 /* LMStartNewPresenationVC.xib */; };
+		CB9BD63D1914DE23002C9369 /* LMStartNewPresentationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9BD63B1914DE23002C9369 /* LMStartNewPresentationVC.m */; };
+		CB9BD63E1914DE23002C9369 /* LMStartNewPresentationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9BD63C1914DE23002C9369 /* LMStartNewPresentationVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1041,9 +1041,9 @@
 		CB9BD6351914DC62002C9369 /* LMStartNewDjangoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMStartNewDjangoVC.h; sourceTree = "<group>"; };
 		CB9BD6361914DC62002C9369 /* LMStartNewDjangoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMStartNewDjangoVC.m; sourceTree = "<group>"; };
 		CB9BD6371914DC62002C9369 /* LMStartNewDjangoVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMStartNewDjangoVC.xib; sourceTree = "<group>"; };
-		CB9BD63A1914DE23002C9369 /* LMStartNewPresenationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMStartNewPresenationVC.h; sourceTree = "<group>"; };
-		CB9BD63B1914DE23002C9369 /* LMStartNewPresenationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMStartNewPresenationVC.m; sourceTree = "<group>"; };
-		CB9BD63C1914DE23002C9369 /* LMStartNewPresenationVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMStartNewPresenationVC.xib; sourceTree = "<group>"; };
+		CB9BD63A1914DE23002C9369 /* LMStartNewPresentationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMStartNewPresentationVC.h; sourceTree = "<group>"; };
+		CB9BD63B1914DE23002C9369 /* LMStartNewPresentationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMStartNewPresentationVC.m; sourceTree = "<group>"; };
+		CB9BD63C1914DE23002C9369 /* LMStartNewPresentationVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMStartNewPresentationVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1901,9 +1901,9 @@
 				CB9BD6351914DC62002C9369 /* LMStartNewDjangoVC.h */,
 				CB9BD6361914DC62002C9369 /* LMStartNewDjangoVC.m */,
 				CB9BD6371914DC62002C9369 /* LMStartNewDjangoVC.xib */,
-				CB9BD63A1914DE23002C9369 /* LMStartNewPresenationVC.h */,
-				CB9BD63B1914DE23002C9369 /* LMStartNewPresenationVC.m */,
-				CB9BD63C1914DE23002C9369 /* LMStartNewPresenationVC.xib */,
+				CB9BD63A1914DE23002C9369 /* LMStartNewPresentationVC.h */,
+				CB9BD63B1914DE23002C9369 /* LMStartNewPresentationVC.m */,
+				CB9BD63C1914DE23002C9369 /* LMStartNewPresentationVC.xib */,
 				69D79B3019138CC60020608D /* LMStartRecentVC.h */,
 				69D79B3119138CC60020608D /* LMStartRecentVC.m */,
 				69D79B3219138CC60020608D /* LMStartRecentVC.xib */,
@@ -2100,7 +2100,7 @@
 				267CB19D190F93370079E565 /* tab_event_off.png in Resources */,
 				3DED26BA1900F450001A1D67 /* panel_left_off@2x.png in Resources */,
 				3DED26651900D313001A1D67 /* ic_background@2x.png in Resources */,
-				CB9BD63E1914DE23002C9369 /* LMStartNewPresenationVC.xib in Resources */,
+				CB9BD63E1914DE23002C9369 /* LMStartNewPresentationVC.xib in Resources */,
 				3DED268A1900D329001A1D67 /* stack_navi.png in Resources */,
 				3DF8044A18FE62FC00913505 /* tool_textfield@2x.png in Resources */,
 				3DED2764190E38C5001A1D67 /* controls.png in Resources */,
@@ -2466,7 +2466,7 @@
 				3DB3ACE818EBEF9D0046DFB7 /* IUFrameDictionary.m in Sources */,
 				3D8D4B2A19179F910002C871 /* LMPropertyIUTextViewVC.m in Sources */,
 				3DF8029A18FD0B2500913505 /* IUHTML.m in Sources */,
-				CB9BD63D1914DE23002C9369 /* LMStartNewPresenationVC.m in Sources */,
+				CB9BD63D1914DE23002C9369 /* LMStartNewPresentationVC.m in Sources */,
 				69CFCAC018EA8D1700E3048A /* IUImage.m in Sources */,
 				69D79B3819138CDC0020608D /* LMStartTemplateVC.m in Sources */,
 				3DF8046018FF75CF00913505 /* LMPropertyBGColorVC.m in Sources */,

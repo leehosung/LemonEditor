@@ -9,5 +9,5 @@
 #import <Cocoa/Cocoa.h>
 
 @interface LMStartTemplateVC : NSViewController
-
+@property NSButton  *nextB;
 @end

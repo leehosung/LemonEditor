@@ -11,7 +11,7 @@
 
 #import "LMStartNewDefaultVC.h"
 #import "LMStartNewDjangoVC.h"
-#import "LMStartNewPresenationVC.h"
+#import "LMStartNewPresentationVC.h"
 
 @interface LMStartNewVC ()
 @property (weak) IBOutlet NSButton *typeDefaultB;
@@ -23,7 +23,7 @@
 @implementation LMStartNewVC{
     LMStartNewDefaultVC *defaultVC;
     LMStartNewDjangoVC    *djangoVC;
-    LMStartNewPresenationVC *presentationVC;
+    LMStartNewPresentationVC *presentationVC;
 
 }
 
@@ -33,7 +33,7 @@
     if (self) {
         defaultVC = [[LMStartNewDefaultVC alloc] initWithNibName:@"LMStartNewDefaultVC" bundle:nil];
         djangoVC = [[LMStartNewDjangoVC alloc] initWithNibName:@"LMStartNewDjangoVC" bundle:nil];
-  //      presentationVC = [[LMStartNewPresenationVC alloc] initWithNibName:@"LMStartNewPresentationVC" bundle:nil];
+        presentationVC = [[LMStartNewPresentationVC alloc] initWithNibName:@"LMStartNewPresentationVC" bundle:nil];
     }
     return self;
 }
