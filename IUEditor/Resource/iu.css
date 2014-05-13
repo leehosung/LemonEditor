@@ -47,4 +47,5 @@ a{
 .IUPageLinkSet > div > ul > a > li{
     display:block;
     float:left;
+    color: white;
 }

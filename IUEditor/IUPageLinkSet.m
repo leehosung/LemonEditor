@@ -14,8 +14,8 @@
 - (id)initWithManager:(IUIdentifierManager *)identifierManager option:(NSDictionary *)option{
     self = [super initWithManager:identifierManager option:option];
     _pageLinkAlign = IUAlignCenter;
-    _selectedButtonBGColor = [NSColor blueColor];
-    _defaultButtonBGColor = [NSColor yellowColor];
+    _selectedButtonBGColor = [NSColor colorWithCalibratedRed:50 green:50 blue:50 alpha:0.5];
+    _defaultButtonBGColor = [NSColor colorWithCalibratedRed:50 green:50 blue:50 alpha:0.5];
     _buttonMargin = 5.0f;
     
     return self;
