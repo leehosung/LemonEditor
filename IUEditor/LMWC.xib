@@ -207,8 +207,23 @@
                                             </tabViewItem>
                                             <tabViewItem label="Event" identifier="" id="hur-61-tBS" userLabel="Tab View Item - Clipart">
                                                 <view key="view" id="OBJ-vE-U5d">
-                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="423"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="380"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Obh-gd-WoD">
+                                                            <rect key="frame" x="88" y="107" width="125" height="166"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="166" id="rVE-3D-g5C"/>
+                                                                <constraint firstAttribute="width" constant="125" id="ws1-Vd-hqm"/>
+                                                            </constraints>
+                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="shoveling" id="dK8-DN-o6m"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="centerY" secondItem="Obh-gd-WoD" secondAttribute="centerY" id="U06-lC-rv8"/>
+                                                        <constraint firstAttribute="centerX" secondItem="Obh-gd-WoD" secondAttribute="centerX" id="wrx-n3-E3t"/>
+                                                    </constraints>
                                                 </view>
                                             </tabViewItem>
                                         </tabViewItems>
@@ -277,6 +292,7 @@
         </window>
     </objects>
     <resources>
+        <image name="shoveling" width="380" height="340"/>
         <image name="tab_appearance_off" width="100" height="30"/>
         <image name="tab_appearance_on" width="100" height="30"/>
         <image name="tab_clipart_off" width="100" height="30"/>

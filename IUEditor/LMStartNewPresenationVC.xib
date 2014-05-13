@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
@@ -18,17 +18,21 @@
                         <rect key="frame" x="1" y="1" width="799" height="358"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AUc-8X-8BM">
-                                <rect key="frame" x="232" y="161" width="334" height="36"/>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OYO-2o-2r6">
+                                <rect key="frame" x="266" y="104" width="267" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Presentation is under construction" id="y7q-OX-zOR">
-                                    <font key="font" size="19" name="LucidaGrande"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="267" id="CfL-Qo-Ssf"/>
+                                    <constraint firstAttribute="height" constant="150" id="XKB-dv-d9h"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="shoveling" id="qmf-pu-o76"/>
+                            </imageView>
                         </subviews>
                     </view>
+                    <constraints>
+                        <constraint firstAttribute="centerX" secondItem="OYO-2o-2r6" secondAttribute="centerX" id="Xvj-l3-0H4"/>
+                        <constraint firstAttribute="centerY" secondItem="OYO-2o-2r6" secondAttribute="centerY" id="u6H-uE-Nif"/>
+                    </constraints>
                     <color key="borderColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </box>
@@ -41,4 +45,7 @@
             </constraints>
         </customView>
     </objects>
+    <resources>
+        <image name="shoveling" width="380" height="340"/>
+    </resources>
 </document>
