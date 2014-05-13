@@ -96,6 +96,8 @@
 		3D748C7C19207B7A005665A3 /* iueditor.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 3D748C7A19207B7A005665A3 /* iueditor.iconset */; };
 		3D748C81192095A1005665A3 /* LMPropertyIUPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D748C7F192095A1005665A3 /* LMPropertyIUPageVC.m */; };
 		3D748C82192095A1005665A3 /* LMPropertyIUPageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D748C80192095A1005665A3 /* LMPropertyIUPageVC.xib */; };
+		3D748C851921D1BD005665A3 /* stack_carousel_item.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D748C831921D1BD005665A3 /* stack_carousel_item.png */; };
+		3D748C861921D1BD005665A3 /* stack_carousel_item@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D748C841921D1BD005665A3 /* stack_carousel_item@2x.png */; };
 		3D8D4B2A19179F910002C871 /* LMPropertyIUTextViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8D4B2819179F910002C871 /* LMPropertyIUTextViewVC.m */; };
 		3D8D4B2B19179F910002C871 /* LMPropertyIUTextViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D8D4B2919179F910002C871 /* LMPropertyIUTextViewVC.xib */; };
 		3DB3ACC518EBEF180046DFB7 /* LMWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACC418EBEF180046DFB7 /* LMWindow.m */; };
@@ -552,6 +554,8 @@
 		3D748C7E192095A1005665A3 /* LMPropertyIUPageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMPropertyIUPageVC.h; path = IU/LMPropertyIUPageVC.h; sourceTree = "<group>"; };
 		3D748C7F192095A1005665A3 /* LMPropertyIUPageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMPropertyIUPageVC.m; path = IU/LMPropertyIUPageVC.m; sourceTree = "<group>"; };
 		3D748C80192095A1005665A3 /* LMPropertyIUPageVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMPropertyIUPageVC.xib; path = IU/LMPropertyIUPageVC.xib; sourceTree = "<group>"; };
+		3D748C831921D1BD005665A3 /* stack_carousel_item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack_carousel_item.png; sourceTree = "<group>"; };
+		3D748C841921D1BD005665A3 /* stack_carousel_item@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stack_carousel_item@2x.png"; sourceTree = "<group>"; };
 		3D8D4B2719179F910002C871 /* LMPropertyIUTextViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyIUTextViewVC.h; sourceTree = "<group>"; };
 		3D8D4B2819179F910002C871 /* LMPropertyIUTextViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyIUTextViewVC.m; sourceTree = "<group>"; };
 		3D8D4B2919179F910002C871 /* LMPropertyIUTextViewVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyIUTextViewVC.xib; sourceTree = "<group>"; };
@@ -1213,6 +1217,8 @@
 		3DED26A21900D393001A1D67 /* stackImage */ = {
 			isa = PBXGroup;
 			children = (
+				3D748C831921D1BD005665A3 /* stack_carousel_item.png */,
+				3D748C841921D1BD005665A3 /* stack_carousel_item@2x.png */,
 				26C8565D192060DC00118CA5 /* stack_page_nav.png */,
 				26C8565E192060DC00118CA5 /* stack_page_nav@2x.png */,
 				2628C930191A360200D9D8CD /* stack_submit.png */,
@@ -2226,6 +2232,7 @@
 				3DED26631900D313001A1D67 /* align_left@2x.png in Resources */,
 				3DF8045018FE62FC00913505 /* tool_transition@2x.png in Resources */,
 				2628C927191A30A300D9D8CD /* stack_section@2x.png in Resources */,
+				3D748C861921D1BD005665A3 /* stack_carousel_item@2x.png in Resources */,
 				3DED26AB1900F43F001A1D67 /* ic_js.png in Resources */,
 				26C85660192060DC00118CA5 /* stack_page_nav@2x.png in Resources */,
 				3D8D4B2B19179F910002C871 /* LMPropertyIUTextViewVC.xib in Resources */,
@@ -2291,6 +2298,7 @@
 				3DED26C81900F65C001A1D67 /* ic_image.png in Resources */,
 				3DF8044F18FE62FC00913505 /* tool_transition.png in Resources */,
 				3DF8041418FE62F200913505 /* add_ghost.png in Resources */,
+				3D748C851921D1BD005665A3 /* stack_carousel_item.png in Resources */,
 				3DED26611900D313001A1D67 /* ic_folder@2x.png in Resources */,
 				3DF803E818FE62C900913505 /* ic_template.png in Resources */,
 				69D79B3E19138FC60020608D /* LMStartNewDefaultVC.xib in Resources */,
