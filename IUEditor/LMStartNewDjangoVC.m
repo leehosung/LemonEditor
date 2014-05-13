@@ -43,9 +43,9 @@
                                  IUProjectKeyAppName: @"gallery",
                                  IUProjectKeyHeroku: @(NO),
                                  IUProjectKeyDirectory: [@"~/IUProjTemp" stringByExpandingTildeInPath]};
-    NSString *path = [IUDjangoProject createProject:dictionary error:nil];
+    IUProject *project = [IUDjangoProject createProject:dictionary error:nil];
     LMAppDelegate *appDelegate = [NSApp delegate];
-    [appDelegate loadDocument:path];
+    [appDelegate loadDocument:project.path];
     [self.view.window close];
 }
 

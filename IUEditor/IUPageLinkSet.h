@@ -9,9 +9,9 @@
 #import "IUBox.h"
 
 @interface IUPageLinkSet : IUBox
-@property NSString  *pageCountVariable;
-@property IUAlign   pageLinkAlign;
-@property NSColor   *selectedButtonBGColor;
-@property NSColor   *defaultButtonBGColor;
-@property float     buttonMargin;
+@property (nonatomic) NSString  *pageCountVariable;
+@property (nonatomic) IUAlign   pageLinkAlign;
+@property (nonatomic) NSColor   *selectedButtonBGColor;
+@property (nonatomic) NSColor   *defaultButtonBGColor;
+@property (nonatomic) float     buttonMargin;
 @end
