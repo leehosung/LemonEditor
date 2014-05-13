@@ -1,18 +1,18 @@
 //
-//  LMStartNewPresenationVC.m
+//  LMStartNewPresentationVC.m
 //  IUEditor
 //
 //  Created by jw on 5/3/14.
 //  Copyright (c) 2014 JDLab. All rights reserved.
 //
 
-#import "LMStartNewPresenationVC.h"
+#import "LMStartNewPresentationVC.h"
 
-@interface LMStartNewPresenationVC ()
+@interface LMStartNewPresentationVC ()
 
 @end
 
-@implementation LMStartNewPresenationVC
+@implementation LMStartNewPresentationVC
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -23,4 +23,9 @@
     return self;
 }
 
+-(void)show{
+    assert(_nextB);
+    [_nextB setTarget:self];
+    [_nextB setEnabled:NO];
+}
 @end

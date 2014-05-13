@@ -1,5 +1,5 @@
 //
-//  LMStartNewPresenationVC.h
+//  LMStartNewPresentationVC.h
 //  IUEditor
 //
 //  Created by jw on 5/3/14.
@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface LMStartNewPresenationVC : NSViewController
+@interface LMStartNewPresentationVC : NSViewController
 @property NSButton *nextB;
 
 - (void)show;

@@ -23,4 +23,10 @@
     return self;
 }
 
+-(void)show{
+    assert(_nextB);
+    [_nextB setTarget:self];
+    [_nextB setEnabled:NO];
+}
+
 @end
