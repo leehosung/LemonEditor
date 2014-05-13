@@ -50,7 +50,7 @@
                                  IUProjectKeyHeroku: @(NO),
                                  IUProjectKeyDirectory: appDir};
     
-    NSString *path = [IUProject createProject:dictionary error:&error];
+    IUProject *project = [IUProject createProject:dictionary error:&error];
     
     if (error != nil) {
         assert(0);
@@ -58,7 +58,7 @@
     
     LMWC *wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
     [wc showWindow:self];
-    [wc loadProject:path];
+    [wc loadProject:project.path];
     
     [self.view.window close];
     

@@ -58,7 +58,7 @@ typedef enum _IUGitType{
 - (NSArray*)backgroundDocuments;
 - (NSArray*)classDocuments;
 
-@property IUResourceGroupNode *resourceNode;
+@property (nonatomic) IUResourceGroupNode *resourceNode;
 
 - (NSArray*)allDocumentNodes;
 - (NSArray*)pageDocumentNodes;

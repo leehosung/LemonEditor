@@ -344,4 +344,15 @@
 
 }
 
+
+#pragma mark -
+#pragma mark IUProjectDelegate
+-(void)project:(IUProject*)project nodeAdded:(IUNode*)node{
+    
+}
+-(void)project:(IUProject*)project nodeRemoved:(IUNode*)node{
+    
+}
+
+
 @end
