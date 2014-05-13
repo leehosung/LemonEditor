@@ -146,12 +146,17 @@
     //default-
     [css appendTabAndString:@"<style id=default>"];
     [css appendNewline];
-    [css appendTabAndString:[self cssSourceForIU:document width:IUCSSMaxViewPortWidth]];
-    
+    NSDictionary *cssDict = [self cssSourceForIU:document width:IUCSSMaxViewPortWidth];
+    for (NSString *identifier in cssDict) {
+        [css appendFormat:@"%@ {%@}", identifier, cssDict[identifier]];
+    }
     NSSet *districtChildren = [NSSet setWithArray:document.allChildren];
 
     for (IUBox *obj in districtChildren) {
-        [css appendTabAndString:[self cssSourceForIU:obj width:IUCSSMaxViewPortWidth]];
+        NSDictionary *cssDict = [self cssSourceForIU:obj width:IUCSSMaxViewPortWidth];
+        for (NSString *identifier in cssDict) {
+            [css appendFormat:@"%@ {%@}", identifier, cssDict[identifier]];
+        }
     }
     [css appendString:@"</style>"];
     
@@ -167,14 +172,19 @@
         [css appendFormat:@"media ='screen and (max-width:%dpx)' id='style%d'>" , size, size];
         [css appendNewline];
         
-        [css appendTabAndString:[self cssSourceForIU:document width:size]];
+        NSDictionary *cssDict = [self cssSourceForIU:document width:size];
+        for (NSString *identifier in cssDict) {
+            [css appendFormat:@"%@ {%@}", identifier, cssDict[identifier]];
+        }
+        
         NSSet *districtChildren = [NSSet setWithArray:document.allChildren];
         
         for (IUBox *obj in districtChildren) {
-            [css appendTabAndString:[self cssSourceForIU:obj width:size]];
+            NSDictionary *cssDict = [self cssSourceForIU:obj width:size];
+            for (NSString *identifier in cssDict) {
+                [css appendFormat:@"%@ {%@}", identifier, cssDict[identifier]];
+            }
         }
-        
-        
         [css appendString:@"</style>"];
         [css appendNewline];
     }
@@ -224,79 +234,86 @@
     return css;
 }
 
--(NSString *)cssSourceForIUPageLinkSet:(IUPageLinkSet *)iu{
-    NSMutableString *css = [NSMutableString string];
-        switch (iu.pageLinkAlign) {
-            case IUAlignLeft: break;
-            case IUAlignRight:
-                [css appendFormat:@".%@ > div { float:right }", iu.htmlID];
-                break;
-            case IUAlignCenter:
-                [css appendFormat:@".%@ > div { margin:auto }", iu.htmlID];
-            default: break;
-        }
+-(NSDictionary *)cssSourceForIUPageLinkSet:(IUPageLinkSet *)iu{
+    NSMutableDictionary *returnDict = [NSMutableDictionary dictionary];
     
-    [css appendFormat:@".%@ > div > ul > a > li {", iu.htmlID];
+    switch (iu.pageLinkAlign) {
+        case IUAlignLeft: break;
+        case IUAlignRight:{
+            NSString *identifier = [[iu.htmlID cssClass] stringByAppendingString:@" > div"];
+            [returnDict setObject:identifier forKey:@"float:right;"];
+        }
+        case IUAlignCenter:{
+            NSString *identifier = [[iu.htmlID cssClass] stringByAppendingString:@" > div"];
+            [returnDict setObject:identifier forKey:@"margin:auto;"];
+        }
+        default:  break;
+    }
+    
+    NSMutableString *pgLinkButton = [NSMutableString string];
     CGFloat height = [iu.css.assembledTagDictionary[IUCSSTagHeight] floatValue];
-    [css appendFormat:@"    display:block; width:%.1fpx; height:%.1fpx; margin-left:%.1fpx; margin-right: %.1fpx; line-height:%.1fpx;", height, height, iu.buttonMargin, iu.buttonMargin, height];
-    [css appendFormat:@"    background-color:%@;", [iu.defaultButtonBGColor rgbaString]];
-    [css appendString:@"}\n"];
-    [css appendFormat:@".%@ selected > div > ul > a > li {%@}", iu.htmlID, [iu.defaultButtonBGColor rgbaString]];
-    return css;
+    [pgLinkButton appendFormat:@"    display:block; width:%.1fpx; height:%.1fpx; margin-left:%.1fpx; margin-right: %.1fpx; line-height:%.1fpx;", height, height, iu.buttonMargin, iu.buttonMargin, height];
+    [pgLinkButton appendFormat:@"    background-color:%@;", [iu.defaultButtonBGColor rgbaString]];
+
+    [returnDict setObject:pgLinkButton forKey:[iu.htmlID.cssClass stringByAppendingString:@" > div > ul > a > li"]];
+    
+    [returnDict setObject:[iu.selectedButtonBGColor rgbaString] forKey:[[iu.htmlID cssClass] stringByAppendingString:@" selected > div > ul > a > li"]];
+    return returnDict;
 }
 
 
--(NSString *)cssSourceForIUCarousel:(IUCarousel *)iu{
+-(NSDictionary *)cssSourceForIUCarousel:(IUCarousel *)iu{
     
-    NSMutableString *css = [NSMutableString string];
+    NSMutableDictionary *css = [NSMutableDictionary dictionary];
     if(iu.enableColor){
-        NSString *itemID = [NSString stringWithFormat:@"%@pager-item", iu.htmlID];
-        [css appendFormat:@".%@{%@}", itemID, [self cssContentForIUCarouselPager:iu hover:NO]];
-        [css appendFormat:@".%@:hover,.%@.active{%@}", itemID, itemID, [self cssContentForIUCarouselPager:iu hover:NO]];
-        [css appendNewline];
+        NSString *itemID = [NSString stringWithFormat:@"#%@pager-item", iu.htmlID];
+        [css setObject:[self cssContentForIUCarouselPager:iu hover:NO] forKey:itemID];
+        [css setObject:[self cssContentForIUCarouselPager:iu hover:YES] forKey:[itemID cssHoverClass]];
+        [css setObject:[self cssContentForIUCarouselPager:iu hover:YES] forKey:[itemID cssActiveClass]];
     }
     
     if([iu.leftArrowImage isEqualToString:@"Default"] == NO){
         NSInteger currentHeight = [iu.css.assembledTagDictionary[IUCSSTagHeight] integerValue];
-        NSString *leftArrowID = [NSString stringWithFormat:@"%@_bx-prev", iu.htmlID];
-        [css appendFormat:@".%@{%@}", leftArrowID, [self cssContentForIUCarouselArrow:iu hover:NO location:IUCarouselArrowLeft carouselHeight:currentHeight]];
-        [css appendNewline];
+        
+        NSString *leftArrowID = [NSString stringWithFormat:@"%@_bx-next", iu.htmlID];
+        NSString *string = [self cssContentForIUCarouselArrow:iu hover:NO location:IUCarouselArrowLeft carouselHeight:currentHeight];
+        [css setObject:string forKey:leftArrowID];
     }
     if([iu.rightArrowImage isEqualToString:@"Default"] == NO){
         NSInteger currentHeight = [iu.css.assembledTagDictionary[IUCSSTagHeight] integerValue];
         NSString *rightArrowID = [NSString stringWithFormat:@"%@_bx-next", iu.htmlID];
-        [css appendFormat:@".%@{%@}", rightArrowID, [self cssContentForIUCarouselArrow:iu hover:NO location:IUCarouselArrowRight carouselHeight:currentHeight]];
-        [css appendNewline];
+        NSString *string = [self cssContentForIUCarouselArrow:iu hover:NO location:IUCarouselArrowRight carouselHeight:currentHeight];
+        [css setObject:string forKey:rightArrowID];
     }
 
     return css;
 }
 
--(NSString*)cssSourceForIU:(IUBox*)iu width:(int)width{
-    NSMutableString *css = [NSMutableString string];
-    [css appendString:[NSString stringWithFormat:@".%@ {", iu.htmlID]];
-    [css appendString:[self CSSContentFromAttributes:[iu CSSAttributesForWidth:width] ofClass:iu isHover:NO]];
-    [css appendString:@"}"];
-    [css appendNewline];
+-(NSDictionary*)cssSourceForIU:(IUBox*)iu width:(int)width{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    
+    NSString *defaultCSSString = [self CSSContentFromAttributes:[iu CSSAttributesForWidth:width] ofClass:iu isHover:NO];
+    [dict setObject:defaultCSSString forKey:[NSString stringWithFormat:@".%@", iu.htmlID]];
     
     NSString *hoverCSS = [self CSSContentFromAttributes:[iu CSSAttributesForWidth:width] ofClass:iu isHover:YES];
-    if ([hoverCSS length]){
-        [css appendTabAndString:[NSString stringWithFormat:@".%@:hover {", iu.htmlID]];
-        [css appendString:hoverCSS];
-        [css appendString:@"}"];
-        [css appendNewline];
-        
+    if ([[hoverCSS stringByTrim] length]) {
+        [dict setObject:defaultCSSString forKey:[NSString stringWithFormat:@".%@:hover", iu.htmlID]];
     }
     
-    if([iu isKindOfClass:[IUCarousel class]] &&
-       width == IUCSSMaxViewPortWidth){
-        [css appendTabAndString:[self cssSourceForIUCarousel:(IUCarousel *)iu]];
+    if([iu isKindOfClass:[IUCarousel class]] && width == IUCSSMaxViewPortWidth){
+        NSDictionary * carouselDict =[self cssSourceForIUCarousel:(IUCarousel *)iu];
+        for (id key in carouselDict) {
+            [dict setObject:carouselDict[key] forKey:key];
+        }
     }
     
     if ([iu isKindOfClass:[IUPageLinkSet class]] && width == IUCSSMaxViewPortWidth) {
-        [css appendTabAndString:[self cssSourceForIUPageLinkSet:(IUPageLinkSet *)iu]];
+        NSDictionary *pagelinkSetDict = [self cssSourceForIUPageLinkSet:(IUPageLinkSet *)iu];
+        for (id key in pagelinkSetDict) {
+            [dict setObject:pagelinkSetDict[key] forKey:key];
+        }
     }
-    return css;
+    return dict;
 }
 
 #define IUCompilerTagOption @"tag"
