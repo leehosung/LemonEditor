@@ -149,6 +149,7 @@
     NSDictionary *cssDict = [self cssSourceForIU:document width:IUCSSMaxViewPortWidth];
     for (NSString *identifier in cssDict) {
         [css appendFormat:@"%@ {%@}", identifier, cssDict[identifier]];
+        [css appendNewline];
     }
     NSSet *districtChildren = [NSSet setWithArray:document.allChildren];
 
@@ -156,6 +157,7 @@
         NSDictionary *cssDict = [self cssSourceForIU:obj width:IUCSSMaxViewPortWidth];
         for (NSString *identifier in cssDict) {
             [css appendFormat:@"%@ {%@}", identifier, cssDict[identifier]];
+            [css appendNewline];
         }
     }
     [css appendString:@"</style>"];
@@ -174,7 +176,10 @@
         
         NSDictionary *cssDict = [self cssSourceForIU:document width:size];
         for (NSString *identifier in cssDict) {
-            [css appendFormat:@"%@ {%@}", identifier, cssDict[identifier]];
+            if ([[cssDict[identifier] stringByTrim]length]) {
+                [css appendFormat:@"%@ {%@}", identifier, cssDict[identifier]];
+                [css appendNewline];
+            }
         }
         
         NSSet *districtChildren = [NSSet setWithArray:document.allChildren];
@@ -182,7 +187,10 @@
         for (IUBox *obj in districtChildren) {
             NSDictionary *cssDict = [self cssSourceForIU:obj width:size];
             for (NSString *identifier in cssDict) {
-                [css appendFormat:@"%@ {%@}", identifier, cssDict[identifier]];
+                if ([[cssDict[identifier] stringByTrim]length]) {
+                    [css appendFormat:@"%@ {%@}", identifier, cssDict[identifier]];
+                    [css appendNewline];
+                }
             }
         }
         [css appendString:@"</style>"];
