@@ -311,32 +311,6 @@
 #pragma mark -
 #pragma mark link attributes
 
-//FIXME: HTMLIdentifier 가 아니라 ClassIdentifier로 교체해야함
--(void)IUHTMLIdentifier:(NSString *)identifier setLink:(NSString *)link{
-
-    if(link==nil || link.length == 0){
-        //remove link
-        [self IURemoveLink:identifier];
-        return;
-    }
-    
-    
-    NSString *linkID =[NSString stringWithFormat:@"A_LINK_%@", identifier];
-    DOMHTMLElement *linkElement = [self getHTMLElementbyID:linkID];
-    //change link
-    if(linkElement){
-        [linkElement setAttribute:@"link" value:link];
-    }
-    //make new link
-    else{
-        DOMHTMLElement *selectHTMLElement = [self getHTMLElementbyID:identifier];
-        NSString *linkHTML = [NSString stringWithFormat:@"<a href=\"%@\" id=\"%@\">%@</a>",
-                              link, linkID, selectHTMLElement.outerHTML];
-    
-        [selectHTMLElement setOuterHTML:linkHTML];
-    }
-    
-}
 -(void)IURemoveLink:(NSString *)identifier{
     /*
      
