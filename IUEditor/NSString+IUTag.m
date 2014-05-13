@@ -36,4 +36,21 @@
     }
     return NO;
 }
+
+- (NSString*)cssID{
+    return [NSString stringWithFormat:@"#%@", self];
+}
+
+- (NSString*)cssClass{
+    return [NSString stringWithFormat:@".%@", self];
+}
+
+- (NSString*)cssHoverClass{
+    return [NSString stringWithFormat:@".%@:hover", self];
+}
+
+- (NSString*)cssActiveClass{
+    return [NSString stringWithFormat:@".%@:active", self];
+}
+
 @end

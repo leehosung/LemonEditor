@@ -141,4 +141,9 @@ typedef enum{
 - (BOOL)isFrameTag;
 - (NSString*)hoverIdentifier;
 - (BOOL)isHoverTag;
+
+- (NSString*)cssID;
+- (NSString*)cssClass;
+- (NSString*)cssHoverClass;
+- (NSString*)cssActiveClass;
 @end
