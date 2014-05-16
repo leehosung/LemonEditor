@@ -45,12 +45,21 @@ function reframeCenter(){
 		//if absolute layout, set left
 		$(this).css('margin-left', 'auto');
         $(this).css('margin-right', 'auto');
+        $(this).css('left','');
 		var pos = $(this).css('position');
-		if (pos == 'absolute'){
-			var parentW = $(this).parent().width();
-			var myW = $(this).width();
-			$(this).css('left', (parentW-myW)/2 + 'px');
-		}
+           if (pos == 'absolute'){
+           var parentW;
+           var parent = $(this).parent();
+           if(parent.prop('tagName') == 'A'){
+            parentW = parent.parent().width();
+           }
+           else{
+            parentW = $(this).parent().width();
+           }
+           
+           var myW = $(this).width();
+           $(this).css('left', (parentW-myW)/2 + 'px');
+           }
     });
 }
 
