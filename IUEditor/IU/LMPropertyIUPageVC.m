@@ -13,6 +13,7 @@
 @property (weak) IBOutlet NSTextField *keywordsTF;
 @property (weak) IBOutlet NSTextField *authorTF;
 @property (unsafe_unretained) IBOutlet NSTextView *descriptionTV;
+@property (unsafe_unretained) IBOutlet NSTextView *extraCodeTF;
 
 @end
 
@@ -32,6 +33,8 @@
     [_keywordsTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"keywords"]  options:IUBindingDictNotRaisesApplicable];
     [_authorTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"author"]  options:IUBindingDictNotRaisesApplicable];
     
+    [_extraCodeTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"extraCode"]  options:IUBindingDictNotRaisesApplicable];
+
     NSDictionary *bindingOption = [NSDictionary
                                    dictionaryWithObjects:@[[NSNumber numberWithBool:NO], [NSNumber numberWithBool:YES]]
                                    forKeys:@[NSRaisesForNotApplicableKeysBindingOption, NSContinuouslyUpdatesValueBindingOption]];
