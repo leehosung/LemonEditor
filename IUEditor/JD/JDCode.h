@@ -28,4 +28,6 @@
 - (void)removeBlock:(NSString*)blockIdentifier;
 
 - (void)replaceCodeString:(NSString *)code toCodeString:(NSString*)replacementString;
+
+- (void)wrapTextWithStartString:(NSString*)startString endString:(NSString*)endString;
 @end

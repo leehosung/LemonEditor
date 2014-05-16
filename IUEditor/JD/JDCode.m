@@ -128,4 +128,10 @@
 - (void)replaceCodeString:(NSString *)code toCodeString:(NSString*)replacementString{
     [string replaceOccurrencesOfString:code withString:replacementString options:0 range:NSMakeRange(0, string.length)];
 }
+
+- (void)wrapTextWithStartString:(NSString*)startString endString:(NSString*)endString{
+    [string insertString:startString atIndex:0];
+    [string appendString:endString];
+}
+
 @end
