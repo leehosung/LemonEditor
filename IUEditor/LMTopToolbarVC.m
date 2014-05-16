@@ -125,6 +125,27 @@
     return YES;
 }
 
+- (IBAction)selectHiddenDocument:(id)sender{
+    IUDocumentNode *document = [sender representedObject];
+    [self setDocumentNode:document];
+}
+
+- (IBAction)clickHiddenTabs:(id)sender {
+    NSMenu *theMenu = [[NSMenu alloc] initWithTitle:@"Contextual Menu"];
+    
+    int index=0;
+    for(IUDocumentNode *documentNode in hiddenTabDocuments){
+        NSMenuItem *item = [theMenu insertItemWithTitle:documentNode.name action:@selector(selectHiddenDocument:) keyEquivalent:@"" atIndex:index];
+        [item setTarget:self];
+        [item setRepresentedObject:documentNode];
+        index++;
+    }
+    
+    [NSMenu popUpContextMenu:theMenu withEvent:[NSApp currentEvent] forView:self.view];
+}
+
+
+
 #pragma mark -
 #pragma mark tab item  delegate
 

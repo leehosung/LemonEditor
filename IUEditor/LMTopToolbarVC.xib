@@ -30,6 +30,9 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="clickHiddenTabs:" target="-2" id="w3H-AP-mta"/>
+                        </connections>
                     </button>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="ss0-x8-YLr">
                         <rect key="frame" x="-1" y="-3" width="30" height="31"/>
