@@ -313,6 +313,7 @@
 		3DF8046618FF784500913505 /* LMPropertyTextVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF8046418FF784500913505 /* LMPropertyTextVC.xib */; };
 		3DF8046A18FF790400913505 /* LMPropertyShadowVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8046818FF790400913505 /* LMPropertyShadowVC.m */; };
 		3DF8046B18FF790400913505 /* LMPropertyShadowVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF8046918FF790400913505 /* LMPropertyShadowVC.xib */; };
+		6905FB521925F17300E4DBC3 /* JDCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6905FB511925F17300E4DBC3 /* JDCode.m */; };
 		690A408E18E14A4E00095263 /* LMStackVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 690A408D18E14A4E00095263 /* LMStackVC.xib */; };
 		690A409518E1645B00095263 /* LMWidgetLibraryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 690A409318E1645B00095263 /* LMWidgetLibraryVC.m */; };
 		690A409618E1645B00095263 /* LMWidgetLibraryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 690A409418E1645B00095263 /* LMWidgetLibraryVC.xib */; };
@@ -818,6 +819,8 @@
 		3DF8046718FF790400913505 /* LMPropertyShadowVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyShadowVC.h; sourceTree = "<group>"; };
 		3DF8046818FF790400913505 /* LMPropertyShadowVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyShadowVC.m; sourceTree = "<group>"; };
 		3DF8046918FF790400913505 /* LMPropertyShadowVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyShadowVC.xib; sourceTree = "<group>"; };
+		6905FB501925F17300E4DBC3 /* JDCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JDCode.h; path = JD/JDCode.h; sourceTree = "<group>"; };
+		6905FB511925F17300E4DBC3 /* JDCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JDCode.m; path = JD/JDCode.m; sourceTree = "<group>"; };
 		690A408D18E14A4E00095263 /* LMStackVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMStackVC.xib; sourceTree = "<group>"; };
 		690A409218E1645B00095263 /* LMWidgetLibraryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMWidgetLibraryVC.h; path = Editor/LMWidgetLibraryVC.h; sourceTree = "<group>"; };
 		690A409318E1645B00095263 /* LMWidgetLibraryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMWidgetLibraryVC.m; path = Editor/LMWidgetLibraryVC.m; sourceTree = "<group>"; };
@@ -1847,6 +1850,8 @@
 				3DBC932D18F24FE000F217BD /* NSFlippedView.m */,
 				693849E21914D711005C0546 /* NSIndexPath+JDExtension.h */,
 				693849E31914D711005C0546 /* NSIndexPath+JDExtension.m */,
+				6905FB501925F17300E4DBC3 /* JDCode.h */,
+				6905FB511925F17300E4DBC3 /* JDCode.m */,
 			);
 			name = JD;
 			sourceTree = "<group>";
@@ -2554,6 +2559,7 @@
 				3DF8046518FF784500913505 /* LMPropertyTextVC.m in Sources */,
 				69C5761E18D7051C0016F050 /* IUProject.m in Sources */,
 				69B9A39618E5A2A30007D6E2 /* IUResourceNode.m in Sources */,
+				6905FB521925F17300E4DBC3 /* JDCode.m in Sources */,
 				3DED27221904AE1A001A1D67 /* LMPropertyVisibleVC.m in Sources */,
 				69B37F0D18DFDEE800DE620F /* LMFileNaviVC.m in Sources */,
 				690A82561909EB1B00DDBA86 /* IUTextField.m in Sources */,

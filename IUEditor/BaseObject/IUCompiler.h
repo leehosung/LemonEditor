@@ -10,6 +10,7 @@
 #import "IUBox.h"
 #import "IUCarousel.h"
 #import "IUCompilerResourceSource.h"
+#import "JDCode.h"
 
 @class IUDocument;
 @class IUResourceManager;
@@ -26,11 +27,11 @@ typedef enum _IUCompileRule{
 
 //build source
 -(NSString*)outputSource:(IUDocument*)document mqSizeArray:(NSArray *)mqSizeArray;
--(NSString *)outputHTML:(IUBox *)iu;
+-(JDCode *)outputHTML:(IUBox *)iu;
 
 //editor source
 -(NSString*)editorSource:(IUDocument*)document mqSizeArray:(NSArray *)mqSizeArray;
--(NSString*)editorHTML:(IUBox*)iu;
+-(JDCode* )editorHTML:(IUBox*)iu;
 
 -(NSString*)CSSContentFromAttributes:(NSDictionary*)attributeDict ofClass:(IUBox*)obj isHover:(BOOL)isHover;
 -(NSString *)fontCSSContentFromAttributes:(NSDictionary*)attributeDict;
