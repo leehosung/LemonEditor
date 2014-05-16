@@ -35,4 +35,12 @@
     return NO;
 }
 
+-(NSDictionary*)CSSAttributesForWidth:(NSInteger)width{
+    NSMutableDictionary *dict = [[super CSSAttributesForWidth:width ] mutableCopy];
+    [dict setObject:@(width) forKey:@"min-width"];
+    return dict;
+}
+
+
+
 @end
