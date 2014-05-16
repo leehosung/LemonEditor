@@ -530,8 +530,8 @@
                 }
             }
         }
-        //FIXME:
-//        code = [NSMutableString stringWithFormat:@"<a href='%@'>%@</a>", linkURL, code];
+        NSString *str = [NSString stringWithFormat:@"<a href='%@'>", linkURL];
+        [code wrapTextWithStartString:str endString:@"</a>"];
     }
     return code;
 
@@ -714,8 +714,8 @@
     else if ([iu isKindOfClass:[IUImport class]]) {
         [code addCodeLineWithFormat:@"<div %@ >", [self HTMLAttributes:iu option:nil]];
         JDCode *importCode = [self editorHTML:[(IUImport*)iu prototypeClass]];
-        //FIXME:error
-//        [importCode replaceOccurrencesOfString:@" id=" withString:[NSString stringWithFormat:@" id=%@__", iu.htmlID] options:0 range:NSMakeRange(0, importCode.length)];
+        NSString *codeString = [@" id=%@__" stringByAppendingString:iu.htmlID];
+        [importCode replaceCodeString:@" id=" toCodeString:codeString];
         [code addCode:importCode];
         [code addCodeLine:@"</div>"];
     }
@@ -1132,12 +1132,11 @@
     NSMutableString *retStr = [NSMutableString string];
     NSString *fontName = attributeDict[IUCSSTagFontName];
     if (fontName) {
-        //FIXME:error
-//        [retStr addCodeLineWithFormat:@"font-name : %@;\n", fontName];
+        [retStr appendFormat:@"font-name : %@;\n", fontName];
     }
     NSNumber *fontSize = attributeDict[IUCSSTagFontSize];
     if (fontSize) {
-//        [retStr addCodeLineWithFormat:@"font-size : %dpx;\n", [fontSize intValue]];
+        [retStr appendFormat:@"font-size : %dpx;\n", [fontSize intValue]];
     }
     return retStr;
 }
