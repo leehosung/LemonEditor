@@ -17,7 +17,7 @@
 @property NSString *keywords;
 @property NSString *author;
 @property NSString *description;
-
+@property NSString *extraCode;
 
 -(void)setBackground:(IUBackground*)background;
 -(IUBackground*)background;
