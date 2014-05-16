@@ -32,6 +32,7 @@
 #import "IUForm.h"
 #import "IUPageLinkSet.h"
 #import "IUTransition.h"
+#import "JDCode.h"
 
 @implementation IUCompiler{
 }
@@ -42,143 +43,135 @@
     }
     return self;
 }
--(NSString *)metadataSource:(IUPage *)page{
-    NSMutableString *meta = [NSMutableString string];
-    
+
+-(JDCode *)metadataSource:(IUPage *)page{
+
+    JDCode *code = [[JDCode alloc] init];
     //for google
     if(page.title && page.title.length != 0){
-        [meta appendFormat:@"<title>%@</title>\n", page.title];
-        [meta appendFormat:@"<meta name='og:title' content='%@'>\n", page.title];
+        [code addCodeLineWithFormat:@"<title>%@</title>", page.title];
+        [code addCodeLineWithFormat:@"<meta name='og:title' content='%@'>", page.title];
     }
     if(page.description && page.description.length != 0){
-        [meta appendFormat:@"<meta name='description' content='%@'>\n", page.description];
-        [meta appendFormat:@"<meta name='og:description' content='%@'>\n", page.description];
+        [code addCodeLineWithFormat:@"<meta name='description' content='%@'>", page.description];
+        [code addCodeLineWithFormat:@"<meta name='og:description' content='%@'>", page.description];
     }
     if(page.keywords && page.keywords.length != 0){
-        [meta appendFormat:@"<meta name='keywords' content='%@'>\n", page.keywords];
+        [code addCodeLineWithFormat:@"<meta name='keywords' content='%@'>", page.keywords];
     }
     if(page.author && page.author.length != 0){
-        [meta appendFormat:@"<meta name='author' content='%@'>\n", page.author];
+        [code addCodeLineWithFormat:@"<meta name='author' content='%@'>", page.author];
     }
 
-    return meta;
+    return code;
 }
 
 
 -(NSString*)outputSource:(IUDocument*)document mqSizeArray:(NSArray *)mqSizeArray{
     if ([document isKindOfClass:[IUClass class]]) {
-        return [self outputHTML:document];
+        return [self outputHTML:document].string;
     }
     NSString *templateFilePath = [[NSBundle mainBundle] pathForResource:@"webTemplate" ofType:@"html"];
-    NSMutableString *source = [NSMutableString stringWithContentsOfFile:templateFilePath encoding:NSUTF8StringEncoding error:nil];
     
+    JDCode *sourceCode = [[JDCode alloc] initWithCodeString: [NSString stringWithContentsOfFile:templateFilePath encoding:NSUTF8StringEncoding error:nil]];
+
     //replace metadata;
     if([document isKindOfClass:[IUPage class]]){
-        NSString *metaStr = [self metadataSource:(IUPage *)document];
-        [source replaceOccurrencesOfString:@"<!--METADATA_Insert-->" withString:[metaStr stringByIndent:8 prependIndent:NO] options:0 range:[source fullRange]];
+        JDCode *metaCode = [self metadataSource:(IUPage *)document];
+        [sourceCode replaceCodeString:@"<!--METADATA_Insert-->" toCode:metaCode];
     }
     
     //remove iueditor.js to make outputSource
-    NSRange removeStart = [source rangeOfString:@"<!--IUEditor.JS_REMOVE_START-->"];
-    NSRange removeEnd =[source rangeOfString:@"<!--IUEditor.JS_REMOVE_END-->"];
-    NSRange removeRange = NSMakeRange(removeStart.location, removeEnd.location+removeEnd.length-removeStart.location);
-    [source deleteCharactersInRange:removeRange];
+    [sourceCode removeBlock:@"IUEditor.JS"];
     
     //insert event.js
     NSString *eventJs = @"<script type=\"text/javascript\" src=\"Resource/JS/iuevent.js\"></script>";
-    [source replaceOccurrencesOfString:@"<!--IUEvent.JS_Replacement-->" withString:[eventJs stringByIndent:8 prependIndent:NO] options:0 range:[source fullRange]];
+    [sourceCode replaceCodeString:@"<!-- IUEvent.JS -->" toCodeString:eventJs];
     
     NSString *initJS = @"<script type=\"text/javascript\" src=\"Resource/JS/iuinit.js\"></script>";
-    [source replaceOccurrencesOfString:@"<!--IUInit.JS_Replacement-->" withString:[initJS stringByIndent:8 prependIndent:NO] options:0 range:[source fullRange]];
+    [sourceCode replaceCodeString:@"<!-- IUInit.JS -->" toCodeString:initJS];
 
     
     //change css
     NSMutableArray *cssSizeArray = [mqSizeArray mutableCopy];
     //remove default size
     [cssSizeArray removeObjectAtIndex:0];
-    NSMutableString *css = [[self cssSource:document cssSizeArray:cssSizeArray] mutableCopy];
-    
-    [source replaceOccurrencesOfString:@"<!--CSS_Replacement-->" withString:[css stringByIndent:8 prependIndent:NO] options:0 range:[source fullRange]];
+    JDCode *cssCode = [self cssSource:document cssSizeArray:cssSizeArray];
+    [sourceCode replaceCodeString:@"<!--CSS_Replacement-->" toCode:cssCode];
     
     //change html
-    NSString *html = [[self outputHTML:document] stringByIndent:8 prependIndent:YES];
-    [source replaceOccurrencesOfString:@"<!--HTML_Replacement-->" withString:html options:0 range:[source fullRange]];
+    JDCode *htmlCode = [self outputHTML:document];
+    [sourceCode replaceCodeString:@"<!--HTML_Replacement-->" toCode:htmlCode];
     
-    JDSectionInfoLog( IULogSource, @"source : %@", [@"\n" stringByAppendingString:source]);
+    JDSectionInfoLog( IULogSource, @"source : %@", [@"\n" stringByAppendingString:sourceCode.string]);
 
     if (_rule == IUCompileRuleDjango) {
-        [source replaceOccurrencesOfString:@"('Resource/CSS/" withString:@"('/Resource/CSS/" options:0 range:NSMakeRange(0, source.length)];
-        [source replaceOccurrencesOfString:@"src=\"Resource/JS" withString:@"src=\"/Resource/JS" options:0 range:NSMakeRange(0, source.length)];
+        [sourceCode replaceCodeString:@"('Resource/" toCodeString:@"('/Resource/"];
     }
-    else {
-        [source replaceOccurrencesOfString:@"UA-50852779-1" withString:@"" options:0 range:NSMakeRange(0, source.length)];
-    }
-    [source replaceOccurrencesOfString:@"93544310" withString:@"94631360" options:0 range:NSMakeRange(0, source.length)];
-    [source replaceOccurrencesOfString:@"isEditor = true"
-                            withString:@"isEditor = false" options:0 range:NSMakeRange(0, source.length)];
-    return source;
+    return sourceCode.string;
 }
 
 -(NSString*)editorSource:(IUDocument*)document mqSizeArray:(NSArray *)mqSizeArray{
     NSString *templateFilePath = [[NSBundle mainBundle] pathForResource:@"webTemplate" ofType:@"html"];
-    NSMutableString *source = [NSMutableString stringWithContentsOfFile:templateFilePath encoding:NSUTF8StringEncoding error:nil];
+    
+    
+    NSMutableString *sourceString = [NSMutableString stringWithContentsOfFile:templateFilePath encoding:NSUTF8StringEncoding error:nil];
+    
+    JDCode *sourceCode = [[JDCode alloc] initWithCodeString:sourceString];
     
     //change css
     NSMutableArray *cssSizeArray = [mqSizeArray mutableCopy];
     //remove default size
     [cssSizeArray removeObjectAtIndex:0];
-    NSString *css = [self cssSource:document cssSizeArray:cssSizeArray];
-    
-    [source replaceOccurrencesOfString:@"<!--CSS_Replacement-->" withString:[css stringByIndent:8 prependIndent:NO] options:0 range:[source fullRange]];
+    JDCode *cssCode = [self cssSource:document cssSizeArray:cssSizeArray];
+    [sourceCode replaceCodeString:@"<!--CSS_Replacement-->" toCode:cssCode];
 
     //change html
-    NSString *htmlBeforeIndent = [self editorHTML:document];
-    NSString *html = [htmlBeforeIndent stringByIndent:8 prependIndent:YES];
-    [source replaceOccurrencesOfString:@"<!--HTML_Replacement-->" withString:html options:0 range:[source fullRange]];
+    JDCode *htmlCode = [self editorHTML:document];
+    [sourceCode replaceCodeString:@"<!--HTML_Replacement-->" toCode:htmlCode];
     
-    JDSectionInfoLog( IULogSource, @"source : %@", [@"\n" stringByAppendingString:source]);
+    JDSectionInfoLog( IULogSource, @"source : %@", [@"\n" stringByAppendingString:sourceCode.string]);
 
-    return source;
+    return sourceCode.string;
 }
 
--(NSString *)cssSource:(IUDocument *)document cssSizeArray:(NSArray *)cssSizeArray{
-    NSMutableString *css = [NSMutableString string];
+-(JDCode *)cssSource:(IUDocument *)document cssSizeArray:(NSArray *)cssSizeArray{
+    JDCode *code = [[JDCode alloc] init];
+//    NSMutableString *css = [NSMutableString string];
     //default-
-    [css appendTabAndString:@"<style id=default>"];
-    [css appendNewline];
+    [code addCodeLine:@"<style id=default>"];
+    [code increaseIndentLevelForEdit];
+
     NSDictionary *cssDict = [self cssSourceForIU:document width:IUCSSMaxViewPortWidth];
     for (NSString *identifier in cssDict) {
-        [css appendFormat:@"%@ {%@}", identifier, cssDict[identifier]];
-        [css appendNewline];
+        [code addCodeLineWithFormat:@"%@ {%@}", identifier, cssDict[identifier]];
     }
     NSSet *districtChildren = [NSSet setWithArray:document.allChildren];
 
     for (IUBox *obj in districtChildren) {
         NSDictionary *cssDict = [self cssSourceForIU:obj width:IUCSSMaxViewPortWidth];
         for (NSString *identifier in cssDict) {
-            [css appendFormat:@"%@ {%@}", identifier, cssDict[identifier]];
-            [css appendNewline];
+            [code addCodeLineWithFormat:@"%@ {%@}", identifier, cssDict[identifier]];
         }
     }
-    [css appendString:@"</style>"];
+    [code decreaseIndentLevelForEdit];
+    [code addCodeLine:@"</style>"];
     
 #pragma mark extract MQ css
     //mediaQuery css
     //remove default size
     for(NSNumber *sizeNumber in cssSizeArray){
-        [css appendNewline];
         int size = [sizeNumber intValue];
         
         //        <style type="text/css" media="screen and (max-width:400px)" id="style400">
-        [css appendString:@"<style type=\"text/css\" "];
-        [css appendFormat:@"media ='screen and (max-width:%dpx)' id='style%d'>" , size, size];
-        [css appendNewline];
+        [code addCodeLine:@"<style type=\"text/css\" "];
+        [code addCodeWithFormat:@"media ='screen and (max-width:%dpx)' id='style%d'>" , size, size];
+        [code increaseIndentLevelForEdit];
         
         NSDictionary *cssDict = [self cssSourceForIU:document width:size];
         for (NSString *identifier in cssDict) {
             if ([[cssDict[identifier] stringByTrim]length]) {
-                [css appendFormat:@"%@ {%@}", identifier, cssDict[identifier]];
-                [css appendNewline];
+                [code addCodeLineWithFormat:@"%@ {%@}", identifier, cssDict[identifier]];
             }
         }
         
@@ -188,26 +181,25 @@
             NSDictionary *cssDict = [self cssSourceForIU:obj width:size];
             for (NSString *identifier in cssDict) {
                 if ([[cssDict[identifier] stringByTrim]length]) {
-                    [css appendFormat:@"%@ {%@}", identifier, cssDict[identifier]];
-                    [css appendNewline];
+                    [code addCodeLineWithFormat:@"%@ {%@}", identifier, cssDict[identifier]];
                 }
             }
         }
-        [css appendString:@"</style>"];
-        [css appendNewline];
+        [code decreaseIndentLevelForEdit];
+        [code addCodeLine:@"</style>"];
     }
     
-    return css;
+    return code;
 }
 
--(NSString *)cssContentForIUCarouselPager:(IUCarousel *)iu hover:(BOOL)hover{
-    NSMutableString *css = [NSMutableString string];
+-(JDCode *)cssContentForIUCarouselPager:(IUCarousel *)iu hover:(BOOL)hover{
+    JDCode *code = [[JDCode alloc] init];
     if(hover){
-        [css appendFormat:@"background:%@ !important", [iu.selectColor rgbaString]];
+        [code addCodeLineWithFormat:@"background:%@ !important", [iu.selectColor rgbaString]];
     }else{
-        [css appendFormat:@"background:%@ !important", [iu.deselectColor rgbaString]];
+        [code addCodeLineWithFormat:@"background:%@ !important", [iu.deselectColor rgbaString]];
     }
-    return css;
+    return code;
 }
 
 - (NSString *)cssContentForIUCarouselArrow:(IUCarousel *)iu hover:(BOOL)hover location:(IUCarouselArrow)location carouselHeight:(NSInteger)height{
@@ -325,7 +317,7 @@
 }
 
 #define IUCompilerTagOption @"tag"
--(NSString*)outputHTMLAsBox:(IUBox*)iu option:(NSDictionary*)option{
+-(JDCode*)outputHTMLAsBox:(IUBox*)iu option:(NSDictionary*)option{
     NSString *tag = @"div";
     if ([iu isKindOfClass:[IUForm class]]) {
         tag = @"form";
@@ -336,75 +328,73 @@
     else if (iu.textType == 2){
         tag = @"h2";
     }
-    NSMutableString *code = [NSMutableString string];
+    JDCode *code = [[JDCode alloc] init];
     if ([iu.pgVisibleCondition length] && _rule == IUCompileRuleDjango) {
-        [code appendFormat:@"{%%if %@%%}", iu.pgVisibleCondition];
+        [code addCodeLineWithFormat:@"{%%if %@%%}", iu.pgVisibleCondition];
     }
-    [code appendFormat:@"<%@ %@>", tag, [self HTMLAttributes:iu option:nil]];
+    [code addCodeLineWithFormat:@"<%@ %@>", tag, [self HTMLAttributes:iu option:nil]];
     if ([iu isKindOfClass:[IUForm class]]) {
-        [code appendString:@"{% csrf_token %}"];
+        [code addCodeLine:@"{% csrf_token %}"];
     }
     if (_rule == IUCompileRuleDjango && iu.textVariable) {
         if ([iu.document isKindOfClass:[IUClass class]]){
-            [code appendFormat:@"<p>{{ object.%@ }}</p>", iu.textVariable];
+            [code addCodeLineWithFormat:@"<p>{{ object.%@ }}</p>", iu.textVariable];
         }
         else {
-            [code appendFormat:@"<p>{{ %@ }}</p>", iu.textVariable];
+            [code addCodeLineWithFormat:@"<p>{{ %@ }}</p>", iu.textVariable];
         }
     }
     else if (iu.textHTML) {
-        [code appendFormat:@"<p>%@</p>", iu.textHTML];
+        [code addCodeLineWithFormat:@"<p>%@</p>", iu.textHTML];
 
     }
     if (iu.children.count) {
-        [code appendNewline];
         for (IUBox *child in iu.children) {
-            [code appendString:[[self outputHTML:child] stringByIndent:4 prependIndent:YES]];
-            [code appendNewline];
+            [code addCode:[self outputHTML:child]];
         }
     }
-    [code appendFormat:@"</%@>", tag];
+    [code addCodeLineWithFormat:@"</%@>", tag];
     if ([iu.pgVisibleCondition length] && _rule == IUCompileRuleDjango) {
-        [code appendString:@"{% endif %}"];
+        [code addCodeLine:@"{% endif %}"];
     }
     return code;
 }
 
--(NSString *)outputHTML:(IUBox *)iu{
-    NSMutableString *code = [NSMutableString string];
+-(JDCode *)outputHTML:(IUBox *)iu{
+    JDCode *code = [[JDCode alloc] init];
 #pragma mark IUPage
     if ([iu isKindOfClass:[IUPage class]]) {
         IUPage *page = (IUPage*)iu;
         if (page.background) {
-            [code appendFormat:@"<div %@ >\n", [self HTMLAttributes:iu option:nil]];
+            [code addCodeLineWithFormat:@"<div %@ >", [self HTMLAttributes:iu option:nil]];
             for (IUBox *obj in page.background.children) {
-                [code appendString:[[self outputHTML:obj] stringByIndent:4 prependIndent:YES]];
-                [code appendNewline];
+                [code addCode:[self outputHTML:obj]];
             }
             if (iu.children.count) {
+                [code increaseIndentLevelForEdit];
                 for (IUBox *child in iu.children) {
                     if (child == page.background) {
                         continue;
                     }
-                    [code appendString:[[self outputHTML:child] stringByIndent:4 prependIndent:YES]];
-                    [code appendNewline];
+                    [code addCode:[self outputHTML:child]];
                 }
+                [code decreaseIndentLevelForEdit];
             }
-            [code appendString:@"</div>"];
+            [code addCodeLine:@"</div>"];
         }
         else {
-            [code appendString:[self outputHTMLAsBox:iu option:nil]];
+            [code addCode:[self outputHTMLAsBox:iu option:nil]];
         }
     }
 #pragma mark IUCollection
     else if ([iu isKindOfClass:[IUCollection class]]){
         IUCollection *iuCollection = (IUCollection*)iu;
         if (_rule == IUCompileRuleDjango ) {
-            [code appendFormat:@"<div %@>", [self HTMLAttributes:iuCollection option:nil]];
-            [code appendFormat:@"    {%% for object in %@ %%}", iuCollection.collectionVariable];
-            [code appendFormat:@"        {%% include '%@.html' %%}", iuCollection.prototypeClass.name];
-            [code appendString:@"    {% endfor %}"];
-            [code appendFormat:@"</div>"];
+            [code addCodeLineWithFormat:@"<div %@>", [self HTMLAttributes:iuCollection option:nil]];
+            [code addCodeLineWithFormat:@"    {%% for object in %@ %%}", iuCollection.collectionVariable];
+            [code addCodeLineWithFormat:@"        {%% include '%@.html' %%}", iuCollection.prototypeClass.name];
+            [code addCodeLine:@"    {% endfor %}"];
+            [code addCodeLineWithFormat:@"</div>"];
         }
         else {
             assert(0);
@@ -412,129 +402,113 @@
     }
 #pragma mark IUCarouselItem
     else if([iu isKindOfClass:[IUCarouselItem class]]){
-        [code appendString:@"<li>"];
-        [code appendFormat:@"<img src='http://31.media.tumblr.com/d83b99e22981d5e58e2bd74ed2494087/tumblr_n4ef3ynCZP1st5lhmo1_1280.jpg' />"];
+        [code addCodeLine:@"<li>"];
+        [code addCodeLineWithFormat:@"<img src='http://31.media.tumblr.com/d83b99e22981d5e58e2bd74ed2494087/tumblr_n4ef3ynCZP1st5lhmo1_1280.jpg' />"];
         
-        [code appendString:@"</li>"];
+        [code addCodeLine:@"</li>"];
     }
 #pragma mark IUCarousel
     else if([iu isKindOfClass:[IUCarousel class]]){
-        [code appendFormat:@"<div %@>", [self HTMLAttributes:iu option:nil]];
-        [code appendFormat:@"<ul class='bxslider' id='bxslider_%@'>\n", iu.htmlID];
+        [code addCodeLineWithFormat:@"<div %@>", [self HTMLAttributes:iu option:nil]];
+        [code addCodeLineWithFormat:@"<ul class='bxslider' id='bxslider_%@'>\n", iu.htmlID];
         
         for(IUItem *item in iu.children){
-            [code appendString:[[self editorHTML:item] stringByIndent:4 prependIndent:YES]];
-            [code appendNewline];
+            [code addCode:[self editorHTML:item]];
         }
         
-        [code appendString:@"</ul></div>"];
+        [code addCodeLine:@"</ul></div>"];
     }
 #pragma mark IUMovie
     else if([iu isKindOfClass:[IUMovie class]]){
-        [code appendFormat:@"<video %@>", [self HTMLAttributes:iu option:nil]];
+        [code addCodeLineWithFormat:@"<video %@>", [self HTMLAttributes:iu option:nil]];
         
         if(((IUMovie *)iu).videoPath){
             NSMutableString *compatibilitySrc = [NSMutableString stringWithString:@"\
-                                                 \n\t<source src=\"$moviename$\" type=\"video/$type$\">\
-                                                 \n\t<object data=\"$moviename$\" width=\"100%\" height=\"100%\">\
-                                                 \n\t\t<embed width=\"100%\" height=\"100%\" src=\"$moviename$\">\
-                                                 \n\t</object>\
-                                                 \n"];
+                <source src=\"$moviename$\" type=\"video/$type$\">\n\
+                    <object data=\"$moviename$\" width=\"100%\" height=\"100%\">\n\
+                    <embed width=\"100%\" height=\"100%\" src=\"$moviename$\">\n\
+                </object>"];
             
             [compatibilitySrc replaceOccurrencesOfString:@"$moviename$" withString:((IUMovie *)iu).videoPath options:0 range:NSMakeRange(0, compatibilitySrc.length)];
             [compatibilitySrc replaceOccurrencesOfString:@"$type$" withString:((IUMovie *)iu).videoPath.pathExtension options:0 range:NSMakeRange(0, compatibilitySrc.length)];
             
-            [code appendString:compatibilitySrc];
+            [code addCodeLine:compatibilitySrc];
         }
         if( ((IUMovie *)iu).altText){
-            [code appendString:((IUMovie *)iu).altText];
+            [code addCodeLine:((IUMovie *)iu).altText];
         }
 
-        [code appendString:@"</video>"];
+        [code addCodeLine:@"</video>"];
     }
 #pragma mark IUImage
     else if([iu isKindOfClass:[IUImage class]]){
-        [code appendFormat:@"<img %@ >", [self HTMLAttributes:iu option:nil]];
+        [code addCodeLineWithFormat:@"<img %@ >", [self HTMLAttributes:iu option:nil]];
         
     }
 #pragma mark IUHTML
     else if([iu isKindOfClass:[IUHTML class]]){
-        [code appendFormat:@"<div %@>", [self HTMLAttributes:iu option:nil]];
+        [code addCodeLineWithFormat:@"<div %@>", [self HTMLAttributes:iu option:nil]];
         if(((IUHTML *)iu).hasInnerHTML){
-            [code appendString:((IUHTML *)iu).innerHTML];
+            [code addCodeLine:((IUHTML *)iu).innerHTML];
         }
         if (iu.children.count) {
-            [code appendNewline];
             for (IUBox *child in iu.children) {
-                [code appendString:[[self outputHTML:child] stringByIndent:4 prependIndent:YES]];
-                [code appendNewline];
+                [code addCode:[self outputHTML:child]];
             }
         }
-        [code appendFormat:@"</div>"];
+        [code addCodeLineWithFormat:@"</div>"];
         
     }
-    /*
     else if ([iu isKindOfClass:[IUPageLinkSet class]]){
-        [code appendFormat:@"<div %@>\n", [self HTMLAttributes:iu option:nil]];
-        [code appendString:@"    <div>\n"];
-        [code appendString:@"       <div>1</div><div>2</div><div>3</div>"];
-        [code appendString:@"    </div>"];
-        [code appendString:@"</div"];
-    }
-    */
-    else if ([iu isKindOfClass:[IUPageLinkSet class]]){
-        [code appendFormat:@"<div %@>\n", [self HTMLAttributes:iu option:nil]];
-        [code appendString:@"    <div>"];
-        [code appendString:@"    <ul>\n"];
-        [code appendFormat:@"        {%% for i in %@ %%}\n", [(IUPageLinkSet *)iu pageCountVariable]];
-        [code appendFormat:@"        <a href=/%@/{{i}}>", iu.link];
-        [code appendString:@"            <li> {{i}} </li>"];
-        [code appendString:@"        </a>"];
-        [code appendString:@"        {% endfor %}"];
-        [code appendString:@"    </ul>"];
-        [code appendString:@"    </div>"];
-        [code appendString:@"</div"];
+        [code addCodeLineWithFormat:@"<div %@>\n", [self HTMLAttributes:iu option:nil]];
+        [code addCodeLine:@"    <div>"];
+        [code addCodeLine:@"    <ul>"];
+        [code addCodeLineWithFormat:@"        {%% for i in %@ %%}", [(IUPageLinkSet *)iu pageCountVariable]];
+        [code addCodeLineWithFormat:@"        <a href=/%@/{{i}}>", iu.link];
+        [code addCodeLine:@"            <li> {{i}} </li>"];
+        [code addCodeLine:@"        </a>"];
+        [code addCodeLine:@"        {% endfor %}"];
+        [code addCodeLine:@"    </ul>"];
+        [code addCodeLine:@"    </div>"];
+        [code addCodeLine:@"</div"];
     }
 #pragma mark IUImport
     else if([iu isKindOfClass:[IUImport class]]){
-        [code appendFormat:@"<div %@ >", [self HTMLAttributes:iu option:nil]];
+        [code addCodeLineWithFormat:@"<div %@ >", [self HTMLAttributes:iu option:nil]];
         if (iu.children.count) {
-            [code appendNewline];
             for (IUBox *child in iu.children) {
-                [code appendString:[[self outputHTML:child] stringByIndent:4 prependIndent:YES]];
-                [code appendNewline];
+                [code addCode:[self outputHTML:child]];
             }
         }
-        [code appendFormat:@"</div>"];
+        [code addCodeLineWithFormat:@"</div>"];
         
     }
 #pragma mark IUTextFeild
     
     else if ([iu isKindOfClass:[IUTextField class]]){
-        [code appendFormat:@"<input %@ >", [self HTMLAttributes:iu option:nil]];
+        [code addCodeLineWithFormat:@"<input %@ >", [self HTMLAttributes:iu option:nil]];
     }
     
 #pragma mark IUTextView
     
     else if ([iu isKindOfClass:[IUTextView class]]){
         NSString *inputValue = [[(IUTextView *)iu inputValue] length] ? [(IUTextView *)iu inputValue] : @"";
-        [code appendFormat:@"<textarea %@ >%@</textarea>", [self HTMLAttributes:iu option:nil], inputValue];
+        [code addCodeLineWithFormat:@"<textarea %@ >%@</textarea>", [self HTMLAttributes:iu option:nil], inputValue];
     }
     
     else if ([iu isKindOfClass:[IUForm class]]){
-        [code appendString:[self outputHTMLAsBox:iu option:@{IUCompilerTagOption: @"form"}]];
+        [code addCode:[self outputHTMLAsBox:iu option:nil]];
     }
     else if ([iu isKindOfClass:[IUSubmitButton class]]){
-        [code appendFormat:@"<input %@ >", [self HTMLAttributes:iu option:nil]];
+        [code addCodeLineWithFormat:@"<input %@ >", [self HTMLAttributes:iu option:nil]];
     }
     
 
 #pragma mark IUBox
     else if ([iu isKindOfClass:[IUBox class]]) {
-        NSString *str = [self outputHTMLAsBox:iu option:nil];
-        [code appendString:str];
+        JDCode *outputCode = [self outputHTMLAsBox:iu option:nil];
+        [code addCode:outputCode];
     }
-    
     
     if (iu.link && [iu isKindOfClass:[IUPageLinkSet class]] == NO) {
         NSString *linkURL = iu.link;
@@ -556,87 +530,85 @@
                 }
             }
         }
-        code = [NSMutableString stringWithFormat:@"<a href='%@'>%@</a>", linkURL, code];
+        //FIXME:
+//        code = [NSMutableString stringWithFormat:@"<a href='%@'>%@</a>", linkURL, code];
     }
     return code;
 
 }
 
-- (NSString*)editorHTMLAsBOX:(IUBox *)iu{
-    NSMutableString *code = [NSMutableString string];
-    [code appendFormat:@"<div %@ >", [self HTMLAttributes:iu option:nil]];
+- (JDCode*)editorHTMLAsBOX:(IUBox *)iu{
+    JDCode *code = [[JDCode alloc] init];
+    [code addCodeLineWithFormat:@"<div %@ >", [self HTMLAttributes:iu option:nil]];
     if (iu.textHTML) {
-        [code appendFormat:@"<p>%@</p>", iu.textHTML];
+        [code addCodeLineWithFormat:@"<p>%@</p>", iu.textHTML];
 
     }
     if (iu.children.count) {
-        [code appendNewline];
         for (IUBox *child in iu.children) {
-            [code appendString:[[self editorHTML:child] stringByIndent:4 prependIndent:YES]];
-            [code appendNewline];
+            [code addCode:[self editorHTML:child]];
         }
     }
-    [code appendFormat:@"</div>"];
+    [code addCodeLineWithFormat:@"</div>"];
     return code;
 }
 
--(NSString *)editorHTML:(IUBox*)iu{
-    NSMutableString *code = [NSMutableString string];
+-(JDCode *)editorHTML:(IUBox*)iu{
+    JDCode *code = [[JDCode alloc] init];
 #pragma mark IUPage
     if ([iu isKindOfClass:[IUPage class]]) {
         IUPage *page = (IUPage*)iu;
         if (page.background) {
-            [code appendFormat:@"<div %@ >\n", [self HTMLAttributes:iu option:nil]];
+            [code addCodeLineWithFormat:@"<div %@ >", [self HTMLAttributes:iu option:nil]];
             for (IUBox *obj in page.background.children) {
-                [code appendString:[[self editorHTML:obj] stringByIndent:4 prependIndent:YES]];
-                [code appendNewline];
+                [code increaseIndentLevelForEdit];
+                [code addCode:[self editorHTML:obj]];
+                [code decreaseIndentLevelForEdit];
             }
             if (iu.children.count) {
                 for (IUBox *child in iu.children) {
                     if (child == page.background) {
                         continue;
                     }
-                    [code appendString:[[self editorHTML:child] stringByIndent:4 prependIndent:YES]];
-                    [code appendNewline];
+                    [code increaseIndentLevelForEdit];
+                    [code addCode:[self editorHTML:child]];
+                    [code decreaseIndentLevelForEdit];
                 }
             }
-            [code appendString:@"</div>"];
+            [code addCodeLine:@"</div>"];
         }
         else {
-            [code appendString:[self editorHTMLAsBOX:iu]];
+            [code addCode:[self editorHTMLAsBOX:iu]];
         }
     }
 #pragma mark IUCarouselItem
     else if([iu isKindOfClass:[IUCarouselItem class]]){
-        [code appendString:@"<li>"];
-        [code appendString:[self editorHTMLAsBOX:iu]];
-        //[code appendFormat:@"<img src='http://31.media.tumblr.com/d83b99e22981d5e58e2bd74ed2494087/tumblr_n4ef3ynCZP1st5lhmo1_1280.jpg' />"];
-        
-        [code appendString:@"</li>"];
+        [code addCodeLine:@"<li>"];
+        [code increaseIndentLevelForEdit];
+        [code addCode:[self editorHTMLAsBOX:iu]];
+        [code decreaseIndentLevelForEdit];
+        [code addCodeLine:@"</li>"];
     }
 #pragma mark IUCarousel
     else if([iu isKindOfClass:[IUCarousel class]]){
-        [code appendFormat:@"<div %@>", [self HTMLAttributes:iu option:nil]];
-        [code appendFormat:@"<ul class='bxslider' id='bxslider_%@'>\n", iu.htmlID];
+        [code addCodeLineWithFormat:@"<div %@>", [self HTMLAttributes:iu option:nil]];
+        [code addCodeLineWithFormat:@"<ul class='bxslider' id='bxslider_%@'>", iu.htmlID];
 
         for(IUItem *item in iu.children){
-            [code appendString:[[self editorHTML:item] stringByIndent:4 prependIndent:YES]];
-            [code appendNewline];
+            [code addCode:[self editorHTML:item]];
         }
         
-        [code appendString:@"</ul></div>"];
+        [code addCodeLine:@"</ul></div>"];
     }
 #pragma mark IUImage
     else if([iu isKindOfClass:[IUImage class]]){
-        [code appendFormat:@"<img %@ ", [self HTMLAttributes:iu option:nil]];
-        [code appendString:@">"];
-        
+        [code addCodeLineWithFormat:@"<img %@ >", [self HTMLAttributes:iu option:nil]];
     }
 #pragma mark IUMovie
     else if([iu isKindOfClass:[IUMovie class]]){
 
         NSDictionary *dict = [NSDictionary dictionaryWithObject:@[@(1)] forKey:@[@"editor"]];
-        [code appendFormat:@"<div %@ >", [self HTMLAttributes:iu option:dict]];
+        [code addCodeLineWithFormat:@"<div %@ >", [self HTMLAttributes:iu option:dict]];
         
         IUMovie *iuMovie = (IUMovie *)iu;
         
@@ -647,33 +619,27 @@
         else{
             thumbnailPath = [[NSBundle mainBundle] pathForResource:@"video_bg" ofType:@"png"];
         }
-        [code appendFormat:@"<img src = \"%@\" width='100%%' height='100%%' style='position:absolute; left:0; top:0'>", thumbnailPath];
-        [code appendNewline];
+        [code addCodeLineWithFormat:@"<img src = \"%@\" width='100%%' height='100%%' style='position:absolute; left:0; top:0'>", thumbnailPath];
         
         NSString *videoPlayImagePath = [[NSBundle mainBundle] pathForResource:@"video_play" ofType:@"png"];
-        [code appendFormat:@"<div style=\"background-image:url('%@'); \
+        [code addCodeLineWithFormat:@"<div style=\"background-image:url('%@'); \
          background-size:20%%;\
          background-repeat:no-repeat; \
          background-position:center; \
          position:absolute;  width:100%%; height:100%%; \"></div>", videoPlayImagePath];
         
-        [code appendNewline];
-        [code appendString:@"</div>"];
+        [code addCodeLine:@"</div>"];
 
-        
-        
-        
         if( ((IUMovie *)iu).altText){
-            [code appendString:((IUMovie *)iu).altText];
+            [code addCodeLine:((IUMovie *)iu).altText];
         }
-        [code appendString:@"</video>"];
+        [code addCodeLine:@"</video>"];
     }
 #pragma mark IUWebMovie
     else if([iu isKindOfClass:[IUWebMovie class]]){
         IUWebMovie *iuWebMovie = (IUWebMovie *)iu;
         
-        [code appendFormat:@"<div %@ >", [self HTMLAttributes:iu option:nil]];
-        [code appendNewline];
+        [code addCodeLineWithFormat:@"<div %@ >", [self HTMLAttributes:iu option:nil]];
         NSString *thumbnailPath;
         if(iuWebMovie.thumbnail){
             thumbnailPath = [NSString stringWithString:iuWebMovie.thumbnailPath];
@@ -682,91 +648,86 @@
             thumbnailPath = [[NSBundle mainBundle] pathForResource:@"video_bg" ofType:@"png"];
         }
         
-        [code appendFormat:@"<img src = \"%@\" width='100%%' height='100%%' style='position:absolute; left:0; top:0'>", thumbnailPath];
-        [code appendNewline];
+        [code addCodeLineWithFormat:@"<img src = \"%@\" width='100%%' height='100%%' style='position:absolute; left:0; top:0'>", thumbnailPath];
         
         NSString *videoPlayImagePath = [[NSBundle mainBundle] pathForResource:@"video_play" ofType:@"png"];
-        [code appendFormat:@"<div style=\"background-image:url('%@'); \
+        [code addCodeLineWithFormat:@"<div style=\"background-image:url('%@'); \
          background-size:20%%;\
          background-repeat:no-repeat; \
          background-position:center; \
          position:absolute;  width:100%%; height:100%%; \"></div>", videoPlayImagePath];
         
-        [code appendNewline];
-        [code appendString:@"</div>"];
+        [code addCodeLine:@"</div>"];
 
     }
 #pragma mark IUFBLike
     else if([iu isKindOfClass:[IUFBLike class]]){
         
-        [code appendFormat:@"<div %@ >", [self HTMLAttributes:iu option:nil]];
-        [code appendNewline];
+        [code addCodeLineWithFormat:@"<div %@ >", [self HTMLAttributes:iu option:nil]];
         
         NSString *fbPath = [[NSBundle mainBundle] pathForResource:@"FBSampleImage" ofType:@"png"];
         NSString *editorHTML = [NSString stringWithFormat:@"<img src=\"%@\" align=\"middle\" style=\"float:left;margin:0 5px 0 0; \" ><p style=\"font-size:11px ; font-family:'Helvetica Neue', Helvetica, Arial, 'lucida grande',tahoma,verdana,arial,sans-serif\">263,929 people like this. Be the first of your friends.</p>", fbPath];
-        [code appendString:editorHTML];
+        [code addCodeLine:editorHTML];
         
-        [code appendNewline];
-        [code appendString:@"</div>"];
+        [code addCodeLine:@"</div>"];
     }
 #pragma mark IUHTML
     else if([iu isKindOfClass:[IUHTML class]]){
-        [code appendFormat:@"<div %@ >", [self HTMLAttributes:iu option:nil]];
+        [code addCodeLineWithFormat:@"<div %@ >", [self HTMLAttributes:iu option:nil]];
         if(((IUHTML *)iu).hasInnerHTML){
-            [code appendString:((IUHTML *)iu).innerHTML];
+            [code addCodeLine:((IUHTML *)iu).innerHTML];
         }
         if (iu.children.count) {
-            [code appendNewline];
             
             for (IUBox *child in iu.children) {
-                [code appendString:[[self editorHTML:child] stringByIndent:4 prependIndent:YES]];
-                [code appendNewline];
+                [code addCode:[self editorHTML:child]];
             }
         }
-        [code appendFormat:@"</div>"];
+        [code addCodeLineWithFormat:@"</div>"];
         
     }
     
     else if ([iu isKindOfClass:[IUPageLinkSet class]]){
-        [code appendFormat:@"<div %@>\n", [self HTMLAttributes:iu option:nil]];
-        [code appendString:@"    <div class='IUPageLinkSetClip'>\n"];
-        [code appendString:@"       <ul>\n"];
-        [code appendString:@"           <a><li>1</li></a><a><li>2</li></a><a><li>3</li></a>"];
-        [code appendString:@"       </div>"];
-        [code appendString:@"    </div>"];
-        [code appendString:@"</div"];
+        [code addCodeLineWithFormat:@"<div %@>\n", [self HTMLAttributes:iu option:nil]];
+        [code addCodeLineWithFormat:@"    <div class='IUPageLinkSetClip'>\n"];
+        [code addCodeLineWithFormat:@"       <ul>\n"];
+        [code addCodeLineWithFormat:@"           <a><li>1</li></a><a><li>2</li></a><a><li>3</li></a>"];
+        [code addCodeLineWithFormat:@"       </div>"];
+        [code addCodeLineWithFormat:@"    </div>"];
+        [code addCodeLineWithFormat:@"</div"];
     }
 
 #pragma mark IUTextFeild
     
     else if ([iu isKindOfClass:[IUTextField class]]){
-        [code appendFormat:@"<input %@ >", [self HTMLAttributes:iu option:nil]];
+        [code addCodeLineWithFormat:@"<input %@ >", [self HTMLAttributes:iu option:nil]];
     }
     
 #pragma mark IUTextView
 
     else if ([iu isKindOfClass:[IUTextView class]]){
         NSString *inputValue = [[(IUTextView *)iu inputValue] length] ? [(IUTextView *)iu inputValue] : @"";
-        [code appendFormat:@"<textarea %@ >%@</textarea>", [self HTMLAttributes:iu option:nil], inputValue];
+        [code addCodeLineWithFormat:@"<textarea %@ >%@</textarea>", [self HTMLAttributes:iu option:nil], inputValue];
     }
 
 #pragma mark IUImport
     else if ([iu isKindOfClass:[IUImport class]]) {
-        [code appendFormat:@"<div %@ >", [self HTMLAttributes:iu option:nil]];
-        NSMutableString *importCode = [[self editorHTML:[(IUImport*)iu prototypeClass]] mutableCopy];
-        [importCode replaceOccurrencesOfString:@" id=" withString:[NSString stringWithFormat:@" id=%@__", iu.htmlID] options:0 range:NSMakeRange(0, importCode.length)];
-        [code appendString:importCode];
-        [code appendString:@"</div>"];
+        [code addCodeLineWithFormat:@"<div %@ >", [self HTMLAttributes:iu option:nil]];
+        JDCode *importCode = [self editorHTML:[(IUImport*)iu prototypeClass]];
+        //FIXME:error
+//        [importCode replaceOccurrencesOfString:@" id=" withString:[NSString stringWithFormat:@" id=%@__", iu.htmlID] options:0 range:NSMakeRange(0, importCode.length)];
+        [code addCode:importCode];
+        [code addCodeLine:@"</div>"];
     }
     
 #pragma mark IUSubmitButton
     else if ([iu isKindOfClass:[IUSubmitButton class]]){
-        [code appendFormat:@"<input %@ >", [self HTMLAttributes:iu option:nil]];
+        [code addCodeLineWithFormat:@"<input %@ >", [self HTMLAttributes:iu option:nil]];
     }
     
 #pragma mark IUBox
     else if ([iu isKindOfClass:[IUBox class]]) {
-        [code appendString:[self editorHTMLAsBOX:iu]];
+        [code addCode:[self editorHTMLAsBOX:iu]];
     }
     
     return code;
@@ -1171,11 +1132,12 @@
     NSMutableString *retStr = [NSMutableString string];
     NSString *fontName = attributeDict[IUCSSTagFontName];
     if (fontName) {
-        [retStr appendFormat:@"font-name : %@;\n", fontName];
+        //FIXME:error
+//        [retStr addCodeLineWithFormat:@"font-name : %@;\n", fontName];
     }
     NSNumber *fontSize = attributeDict[IUCSSTagFontSize];
     if (fontSize) {
-        [retStr appendFormat:@"font-size : %dpx;\n", [fontSize intValue]];
+//        [retStr addCodeLineWithFormat:@"font-size : %dpx;\n", [fontSize intValue]];
     }
     return retStr;
 }
