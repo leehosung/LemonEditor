@@ -197,7 +197,7 @@
 - (void)setNewFileNode:(IUDocumentNode *)node{
     [node.document setCompiler:_compiler];
     [node.document setIdentifierManager:_identifierManager];
-    [_identifierManager addIU:node.document];
+    [_identifierManager registerIU:node.document];
 }
 
 -(void)loadProject:(NSString*)path{
@@ -241,7 +241,7 @@
     for (IUDocumentNode *node in documensNode) {
         [node.document setCompiler:_compiler];
         [node.document setIdentifierManager:_identifierManager];
-        [_identifierManager addIU:node.document];
+        [_identifierManager registerIU:node.document];
     }
 
     // vc setting

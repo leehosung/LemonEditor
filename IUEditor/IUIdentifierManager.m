@@ -23,7 +23,7 @@
     return self;
 }
 
--(void)addIUs:(NSArray*)IUs{
+-(void)registerIUs:(NSArray*)IUs{
     for (IUBox *iu in IUs) {
         [set setObject:iu forKey:iu.htmlID];
         for (IUBox *child in iu.allChildren) {
@@ -32,7 +32,7 @@
     }
 }
 
--(void)addIU:(IUBox*)iu{
+-(void)registerIU:(IUBox*)iu{
     [set setObject:iu forKey:iu.htmlID];
     for (IUBox *child in iu.allChildren) {
         [set setObject:child forKey:child.htmlID];
@@ -64,6 +64,9 @@
     int i=0;
     while (1) {
         i++;
+        if ([[key substringToIndex:2] isEqualTo:@"IU"]) {
+            key = [key substringFromIndex:2];
+        }
         NSString *newIdentifier = [NSString stringWithFormat:@"%@%d",key, i];
         IUBox *iu = [set objectForKey:newIdentifier];
         if (iu == nil) {
