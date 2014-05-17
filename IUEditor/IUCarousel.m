@@ -64,9 +64,7 @@
         [self removeIUAtIndex:[self.children count]-1];
         count++;
     }
-    BOOL loopFlag = 0;
     while (_count < count) {
-        loopFlag = 1;
         IUCarouselItem *item = [[IUCarouselItem alloc] initWithManager:nil option:nil];
         item.htmlID = [self.identifierManager requestNewIdentifierWithKey:@"IUCarouselItem"];
         [self.identifierManager registerIU:item];
