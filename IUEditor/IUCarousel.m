@@ -69,7 +69,7 @@
         loopFlag = 1;
         IUCarouselItem *item = [[IUCarouselItem alloc] initWithManager:nil option:nil];
         item.htmlID = [self.identifierManager requestNewIdentifierWithKey:@"IUCarouselItem"];
-        [self.identifierManager addIU:item];
+        [self.identifierManager registerIU:item];
         item.name = @"Item";
         item.carousel = self;
         [self addIU:item error:nil];

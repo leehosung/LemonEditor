@@ -10,8 +10,8 @@
 
 @class IUBox;
 @interface IUIdentifierManager : NSObject
--(void)addIUs:(NSArray*)IUs;
--(void)addIU:(IUBox*)IU;
+-(void)registerIUs:(NSArray*)IUs;
+-(void)registerIU:(IUBox*)IU;
 -(NSString*)requestNewIdentifierWithKey:(NSString*)identifier;
 -(void)removeIdentifier:(NSString*)identifier;
 @end

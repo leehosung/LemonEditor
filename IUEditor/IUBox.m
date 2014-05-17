@@ -248,7 +248,7 @@
     for (IUBox *child in iu.children) {
         [self.delegate IUClassIdentifier:child.htmlID CSSUpdated:[child cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
     }
-    [_identifierManager addIU:iu];
+    [_identifierManager registerIU:iu];
     [iu bind:@"identifierManager" toObject:self withKeyPath:@"identifierManager" options:nil];
     
     return YES;
