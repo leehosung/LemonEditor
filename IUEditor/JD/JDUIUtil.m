@@ -109,13 +109,13 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
         [color1 getComponents:comp1];
         [color2 getComponents:comp2];
         if (comp1 != comp2) {
-//            free(comp1);
-//            free(comp2);
+            free(comp1);
+            free(comp2);
             return NO;
         }
     }
-//    free(comp1);
-//    free(comp2);
+    free(comp1);
+    free(comp2);
     return YES;
 }
 
