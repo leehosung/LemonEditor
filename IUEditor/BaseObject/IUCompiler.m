@@ -297,7 +297,7 @@
     
     NSString *hoverCSS = [self CSSContentFromAttributes:[iu CSSAttributesForWidth:width] ofClass:iu isHover:YES];
     if ([[hoverCSS stringByTrim] length]) {
-        [dict setObject:defaultCSSString forKey:[NSString stringWithFormat:@".%@:hover", iu.htmlID]];
+        [dict setObject:hoverCSS forKey:[NSString stringWithFormat:@".%@:hover", iu.htmlID]];
     }
     
     if([iu isKindOfClass:[IUCarousel class]] && width == IUCSSMaxViewPortWidth){
