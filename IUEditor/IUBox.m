@@ -160,7 +160,7 @@
 
 //source
 -(NSString*)html{
-    return [self.document.compiler editorHTML:self];
+    return [self.document.compiler editorHTML:self].string;
 }
 
 -(NSString*)cssForWidth:(NSInteger)width isHover:(BOOL)isHover{
