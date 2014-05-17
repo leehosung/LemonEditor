@@ -354,9 +354,11 @@
             NSMutableDictionary *cssDict = [NSMutableDictionary dictionary];
             [cssIDDict setObject:cssDict forKey:[NSString stringWithFormat:@"%@TNode%ld", _idKey, range]];
             NSNumber *size = [self infoObjectAtArray:fontSizeInfos beforeOrEqualIndex:range].info;
+            assert(size);
             [cssDict setObject:size forKey:IUCSSTagFontSize];
             if (viewPort == IUCSSMaxViewPortWidth) {
                 NSString *fontName = [self infoObjectAtArray:_fontInfos beforeOrEqualIndex:range].info;
+                assert(fontName);
                 [cssDict setObject:fontName forKey:IUCSSTagFontName];
             }
         }];
