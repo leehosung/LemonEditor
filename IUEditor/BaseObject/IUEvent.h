@@ -20,7 +20,7 @@ typedef enum{
     
 }IUEventVisibleType;
 
-@interface IUEvent : NSObject
+@interface IUEvent : NSObject <NSCopying>
 
 //trigger
 @property NSString *variable;

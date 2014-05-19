@@ -104,7 +104,7 @@
     project.classDocumentGroup = backgroundGroup;
 
     //create document
-    IUPage *page = [[IUPage alloc] initWithManager:nil option:nil];
+    IUPage *page = [[IUPage alloc] initWithIdentifierManager:nil option:nil];
     page.htmlID = @"Page1Index";
     
     IUDocumentNode *pageNode = [[IUDocumentNode alloc] init];
@@ -112,7 +112,7 @@
     pageNode.name = @"Index";
     [pageDir addNode:pageNode];
     
-    IUBackground *background = [[IUBackground alloc] initWithManager:nil option:nil];
+    IUBackground *background = [[IUBackground alloc] initWithIdentifierManager:nil option:nil];
     background.htmlID = @"Background1";
     background.name = @"Background1";
     page.background = background;
@@ -122,7 +122,7 @@
     backgroundNode.name = @"Background1";
     [backgroundGroup addNode:backgroundNode];
     
-    IUClass *class = [[IUClass alloc] initWithManager:nil option:nil];
+    IUClass *class = [[IUClass alloc] initWithIdentifierManager:nil option:nil];
     class.htmlID = @"Class1";
     class.name = @"Class1";
     
@@ -131,7 +131,7 @@
     classNode.name = @"Class1";
     [classGroup addNode:classNode];
 
-    IUClass *class2 = [[IUClass alloc] initWithManager:nil option:nil];
+    IUClass *class2 = [[IUClass alloc] initWithIdentifierManager:nil option:nil];
     class2.htmlID = @"Class2";
     class2.name = @"Class2";
     

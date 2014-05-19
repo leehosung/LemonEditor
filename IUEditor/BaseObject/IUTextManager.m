@@ -66,7 +66,6 @@
     _fontInfos = [NSMutableArray array];
     _text = [NSMutableString string];
     _fontSizeInfoCollection = [NSMutableDictionary dictionary];
-    _preparedFontSize = 25;
 
     [self setValue:@"Helvatica" forRange:NSZeroRange inInfos:_fontInfos];
     [_fontSizeInfoCollection setObject:[NSMutableArray array] forKey:@(IUCSSMaxViewPortWidth)];
@@ -90,6 +89,14 @@
         _fontSizeInfoCollection = [[aDecoder decodeObjectForKey:@"fontSizeInfoCollection"] mutableCopy];
     }
     return self;
+}
+
+- (id)copyWithZone:(NSZone *)zone{
+    IUTextManager *textManager = [[IUTextManager allocWithZone:zone] init];
+    textManager.text = [self.text mutableCopy];
+    textManager.fontInfos =  [[NSMutableArray alloc] initWithArray:self.fontInfos copyItems:YES];
+    textManager.fontSizeInfoCollection = [[NSMutableDictionary alloc]initWithDictionary:self.fontSizeInfoCollection copyItems:YES];
+    return textManager;
 }
 
 - (TextIndexInfo *)infoObjectAtArray:(NSArray*)infoArray beforeIndex:(NSInteger)index{
@@ -371,15 +378,6 @@
 - (void)removeMediaQuery:(NSInteger)viewPortWidth{
     assert(viewPortWidth != IUCSSMaxViewPortWidth);
     [_fontSizeInfoCollection removeObjectForKey:@(viewPortWidth)];
-}
-
-
-- (void)prepareTextFont:(NSString*)name{
-    _preparedFontName = [name copy];
-}
-
-- (void)prepareTextFontSize:(NSUInteger)size{
-    _preparedFontSize = size;
 }
 
 - (void)insertString:(NSString*)insertText atIndex:(NSUInteger)index{

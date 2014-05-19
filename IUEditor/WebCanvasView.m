@@ -13,7 +13,9 @@
 #import "IUBox.h"
 #import "LMWC.h"
 
-@implementation WebCanvasView
+@implementation WebCanvasView{
+    const void *eventRef;
+}
 
 - (id)init{
     
@@ -49,7 +51,7 @@
  * deletekey는 performKeyequvalent로 들어오지않음
  * window sendevent를 받아서 lmcanvasview에서 처리
  */
-
+    
     NSResponder *currentResponder = [[self window] firstResponder];
     NSView *mainView = self.VC.view.mainView;
     
@@ -67,11 +69,13 @@
                 }
                 if (key == 'c') {
                     //copy
-                    
+                    [self.VC copy:self];
+                    return YES;
                 }
-                if (key == 'p') {
+                if (key == 'v') {
                     //paste
-                    
+                    [self.VC paste:self];
+                    return YES;
                 }
             }
             else{

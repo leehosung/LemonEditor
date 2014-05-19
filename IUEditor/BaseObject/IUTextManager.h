@@ -15,7 +15,7 @@
 - (NSString*)identifierForTextManager;
 @end
 
-@interface IUTextManager : NSObject 
+@interface IUTextManager : NSObject <NSCopying>
 
 @property NSInteger editViewPortWidth;
 
@@ -35,6 +35,7 @@
 
 - (NSDictionary*)fontInfoAtPoint:(NSUInteger)point;
 
+// text edit 을 통하여 텍스트를 부분적으로 변화시킬때를 대비한 함수
 - (void)prepareTextFont:(NSString*)name;
 - (void)prepareTextFontSize:(NSUInteger)size;
 - (void)insertString:(NSString*)at atIndex:(NSUInteger)index;

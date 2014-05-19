@@ -82,7 +82,7 @@
     project.classDocumentGroup = backgroundGroup;
     
     //create document
-    IUPage *index = [[IUPage alloc] initWithManager:nil option:nil];
+    IUPage *index = [[IUPage alloc] initWithIdentifierManager:nil option:nil];
     index.htmlID = @"Index";
     
     IUDocumentNode *indexNode = [[IUDocumentNode alloc] init];
@@ -91,7 +91,7 @@
     [pageDir addNode:indexNode];
 
     //create document
-    IUPage *gallery = [[IUPage alloc] initWithManager:nil option:nil];
+    IUPage *gallery = [[IUPage alloc] initWithIdentifierManager:nil option:nil];
     gallery.htmlID = @"Gallery";
     
     IUDocumentNode *galleryNode = [[IUDocumentNode alloc] init];
@@ -100,7 +100,7 @@
     [pageDir addNode:galleryNode];
     
     //create document
-    IUPage *registerPage = [[IUPage alloc] initWithManager:nil option:nil];
+    IUPage *registerPage = [[IUPage alloc] initWithIdentifierManager:nil option:nil];
     registerPage.htmlID = @"Register";
     
     IUDocumentNode *registerNode = [[IUDocumentNode alloc] init];
@@ -109,7 +109,7 @@
     [pageDir addNode:registerNode];
     
     //create document
-    IUPage *contactPage = [[IUPage alloc] initWithManager:nil option:nil];
+    IUPage *contactPage = [[IUPage alloc] initWithIdentifierManager:nil option:nil];
     contactPage.htmlID = @"Contact";
     
     IUDocumentNode *contactNode = [[IUDocumentNode alloc] init];
@@ -119,7 +119,7 @@
     
 
 
-    IUBackground *background = [[IUBackground alloc] initWithManager:nil option:@{kIUBackgroundOptionEmpty:@(YES)}];
+    IUBackground *background = [[IUBackground alloc] initWithIdentifierManager:nil option:@{kIUBackgroundOptionEmpty:@(YES)}];
     background.htmlID = @"Background1";
     background.name = @"Background1";
     index.background = background;
@@ -132,7 +132,7 @@
     backgroundNode.name = @"Background1";
     [backgroundGroup addNode:backgroundNode];
     
-    IUClass *class = [[IUClass alloc] initWithManager:nil option:nil];
+    IUClass *class = [[IUClass alloc] initWithIdentifierManager:nil option:nil];
     class.htmlID = @"Picture";
     class.name = @"Picture";
     
@@ -141,7 +141,7 @@
     classNode.name = @"Picture";
     [classGroup addNode:classNode];
     
-    IUClass *class2 = [[IUClass alloc] initWithManager:nil option:nil];
+    IUClass *class2 = [[IUClass alloc] initWithIdentifierManager:nil option:nil];
     class2.htmlID = @"Class2";
     class2.name = @"Class2";
     

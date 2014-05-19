@@ -196,7 +196,7 @@
             className = @"IUClass";
         }
         
-        IUBox *obj = [[NSClassFromString(className) alloc] initWithManager:_identifierManager option:nil];
+        IUBox *obj = [[NSClassFromString(className) alloc] initWithIdentifierManager:_identifierManager option:nil];
         if (obj == nil) {
             assert(0);
         }

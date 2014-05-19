@@ -12,7 +12,9 @@
 #import "NSIndexPath+JDExtension.h"
 #import "IUImport.h"
 
-@implementation IUController
+@implementation IUController{
+    NSArray *pasteboard;
+}
 
 
 - (id)selection{
@@ -20,6 +22,32 @@
         return [[self selectedObjects] objectAtIndex:0];
     }
     return [super selection];
+}
+
+-(void)copySelectedIUToPasteboard:(id)sender{
+    pasteboard = [NSArray arrayWithArray:self.selectedObjects];
+}
+
+-(void)pasteToSelectedIU:(id)sender{
+    IUBox *pasteTarget;
+    if ([self.selectedObjects isEqualToArray:pasteboard]) {
+        //paste to parent
+        IUBox *first = [self.selectedObjects firstObject];
+        pasteTarget = first.parent;
+    }
+    else {
+        //paste to selection
+        pasteTarget = [self.selectedObjects firstObject];
+    }
+    for (IUBox *box in pasteboard) {
+        NSError *err;
+        IUBox *newBox = [box copy];
+        newBox.name = @"copy";
+        newBox.htmlID = @"copy";
+        BOOL result = [pasteTarget addIU:newBox error:&err];
+        [self rearrangeObjects];
+        assert(result);
+    }
 }
 
 

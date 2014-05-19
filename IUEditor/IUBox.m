@@ -18,6 +18,7 @@
 #import "IUClass.h"
 
 @interface IUBox()
+- (void)setTextManager:(IUTextManager*)tManager;
 @end
 
 @implementation IUBox{
@@ -27,6 +28,20 @@
     NSPoint originalPoint;
     NSSize originalSize;
     NSSize originalPercentSize;
+}
+
+- (void)setTextManager:(IUTextManager *)tManager{
+    textManager = tManager;
+}
+
+- (id)copyWithZone:(NSZone *)zone{
+    IUTextManager *tManager = [textManager copy];
+    IUCSS *newCSS = [_css copy];
+    IUEvent *newEvent = [_event copy];
+
+    IUBox *box = [[[self class] allocWithZone: zone] initWithIdentifierManager:self.identifierManager textManager:tManager event:newEvent css:newCSS children:self.children];
+
+    return box;
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
@@ -63,7 +78,30 @@
     [aCoder encodeObject:_m_children forKey:@"children"];
 }
 
--(id)initWithManager:(IUIdentifierManager*)manager option:(NSDictionary *)option{
+-(id)initWithIdentifierManager:(IUIdentifierManager*)manager textManager:(IUTextManager *)aTextManager event:(IUEvent*)event css:(IUCSS*)css children:(NSArray*)children{
+    self = [super init];
+    _css = css;
+    _css.delegate = self;
+    _identifierManager = manager;
+    _event = event;
+    textManager = aTextManager;
+    textManager.dataSource = self;
+    
+    delegateEnableLevel = 1;
+    
+    NSMutableArray *newArray = [[NSMutableArray alloc] initWithArray:children copyItems:YES];
+    _m_children = newArray;
+    
+    [self addObserver:self forKeyPath:@"delegate.maxFrameWidth" options:0 context:nil];
+    [self addObserver:self forKeyPath:@"delegate.selectedFrameWidth" options:0 context:nil];
+    
+    changedCSSWidths = [NSMutableSet set];
+
+    return self;
+}
+
+
+-(id)initWithIdentifierManager:(IUIdentifierManager*)manager option:(NSDictionary *)option{
     self = [super init];{
         _css = [[IUCSS alloc] init];
         _css.delegate = self;

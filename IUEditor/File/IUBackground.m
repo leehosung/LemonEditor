@@ -15,12 +15,12 @@
 
 @implementation IUBackground
 
--(id)initWithManager:(IUIdentifierManager *)manager option:(NSDictionary*)option{
-    self = [super initWithManager:manager option:option];
+-(id)initWithIdentifierManager:(IUIdentifierManager *)manager option:(NSDictionary*)option{
+    self = [super initWithIdentifierManager:manager option:option];
     //create header
     NSNumber *num = [option objectForKey:kIUBackgroundOptionEmpty];
     if ([num intValue] == NO) {
-        _header = [[IUHeader alloc] initWithManager:manager option:option];
+        _header = [[IUHeader alloc] initWithIdentifierManager:manager option:option];
         _header.htmlID = @"Header";
         [self addIU:_header error:nil];
     }

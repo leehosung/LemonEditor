@@ -32,11 +32,11 @@
     [aCoder encodeFromObject:self withProperties:[IUTransition properties]];
 }
 
-- (id)initWithManager:(IUIdentifierManager *)identifierManager option:(NSDictionary *)option{
-    self = [super initWithManager:identifierManager option:option];
-    _firstItem = [[IUItem alloc] initWithManager:identifierManager option:option];
+- (id)initWithIdentifierManager:(IUIdentifierManager *)identifierManager option:(NSDictionary *)option{
+    self = [super initWithIdentifierManager:identifierManager option:option];
+    _firstItem = [[IUItem alloc] initWithIdentifierManager:identifierManager option:option];
     _firstItem.htmlID = @"_temp_item1";
-    _secondItem = [[IUItem alloc] initWithManager:identifierManager option:option];
+    _secondItem = [[IUItem alloc] initWithIdentifierManager:identifierManager option:option];
     _secondItem.htmlID = @"_temp_item2";
     [_secondItem.css setValue:@(YES) forTag:IUCSSTagHidden];
     

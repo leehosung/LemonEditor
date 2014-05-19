@@ -48,7 +48,6 @@
 }
 
 
-
 -(void) decodeToObject:(id)obj withProperties:(NSArray*)properties{
     for (JDProperty *property in properties) {
         if ([property isReadonly]) {

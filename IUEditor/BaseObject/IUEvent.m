@@ -22,6 +22,21 @@
     return self;
 }
 
+- (id)copyWithZone:(NSZone *)zone{
+    IUEvent *event = [[self class] allocWithZone:zone];
+    NSArray *properties = [[self class] properties];
+    for (JDProperty *property in properties) {
+        id value = [self valueForKey:property.name];
+        if (property.isID) {
+            [self setValue:[value copy] forKey:property.name];
+        }
+        else {
+            [self setValue:value forKey:property.name];
+        }
+    }
+    return event;
+}
+
 - (void)encodeWithCoder:(NSCoder *)aCoder{
     
     [aCoder encodeFromObject:self withProperties:[IUEvent properties]];
