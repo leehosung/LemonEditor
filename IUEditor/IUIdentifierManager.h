@@ -12,6 +12,7 @@
 @interface IUIdentifierManager : NSObject
 -(void)registerIUs:(NSArray*)IUs;
 -(void)registerIU:(IUBox*)IU;
--(void)setNewIdentifierAndRegister:(IUBox*)obj;
+
+-(void)setNewIdentifierAndRegister:(IUBox*)obj withKey:(NSString*)keyString;
 -(void)removeIdentifier:(NSString*)identifier;
 @end

@@ -59,25 +59,34 @@
     [set removeObjectsForKeys:deleteArray];
 }
 
--(void)setNewIdentifierAndRegister:(IUBox*)obj{
-    
+-(void)setNewIdentifierAndRegister:(IUBox*)obj withKey:(NSString*)keyString;
+{
     [self checkRejectedIUs];
     
     int i=0;
     NSString *key = obj.className;
-    while (1) {
-        i++;
-        if ([[key substringToIndex:2] isEqualTo:@"IU"]) {
-            key = [key substringFromIndex:2];
-        }
-        NSString *newIdentifier = [NSString stringWithFormat:@"%@%d",key, i];
-        IUBox *iu = [set objectForKey:newIdentifier];
-        if (iu == nil) {
-            obj.htmlID = newIdentifier;
-            [self registerIU:obj];
-            return;
+    if (keyString) {
+        key = [key stringByAppendingString:keyString];
+    }
+    
+    NSMutableArray *ius = [NSMutableArray arrayWithObject:obj];
+    [ius addObjectsFromArray:[obj allChildren]];
+
+    for (IUBox *iu in ius) {
+        while (1) {
+            i++;
+            if ([[key substringToIndex:2] isEqualTo:@"IU"]) {
+                key = [key substringFromIndex:2];
+            }
+            NSString *newIdentifier = [NSString stringWithFormat:@"%@%d",key, i];
+            IUBox *existedIU = [set objectForKey:newIdentifier];
+            if (existedIU == nil) {
+                iu.htmlID = newIdentifier;
+                break;
+            }
         }
     }
+    [self registerIU:obj];
 }
 
 -(void)removeIdentifier:(NSString*)identifier{

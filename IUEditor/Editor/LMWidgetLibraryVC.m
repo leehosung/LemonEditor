@@ -47,7 +47,7 @@
         assert(0);
     }
     
-    [_identifierManager setNewIdentifierAndRegister:obj];
+    [_identifierManager setNewIdentifierAndRegister:obj withKey:nil];
     obj.name = obj.htmlID;
     
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:obj];
