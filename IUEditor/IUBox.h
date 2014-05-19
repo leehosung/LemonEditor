@@ -10,6 +10,7 @@
 #import "IUCSS.h"
 #import "IUEvent.h"
 #import "IUIdentifierManager.h"
+#import "IUTextManager.h"
 
 @class IUIdentifierManager;
 
@@ -47,7 +48,7 @@
 @class IUBox;
 @class IUDocument;
 
-@interface IUBox : NSObject <NSCoding, IUCSSDelegate>{
+@interface IUBox : NSObject <NSCoding, IUCSSDelegate, IUTextManagerDataSource>{
     NSMutableArray *_m_children;
 }
 

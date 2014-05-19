@@ -303,7 +303,7 @@
         if (nextIndex == NSNotFound) {
             nextIndex = [_text length];
         }
-        [returnValue appendFormat:@"<span id='%@TNode%lu'>", _idKey, currentIndex];
+        [returnValue appendFormat:@"<span id='%@TNode%lu'>", _dataSource.identifierForTextManager, currentIndex];
         NSString *originalText = [_text substringFromIndex:currentIndex toIndex:nextIndex];
         NSString *spaceText = [originalText stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
         spaceText = [spaceText stringByReplacingOccurrencesOfString:@" " withString:@"&nbsp;"];
@@ -352,7 +352,7 @@
         NSMutableArray *fontSizeInfos = [_fontSizeInfoCollection objectForKey:@(viewPort)];
         [rangeSet enumerateIndexesUsingBlock:^(NSUInteger range, BOOL *stop) {
             NSMutableDictionary *cssDict = [NSMutableDictionary dictionary];
-            [cssIDDict setObject:cssDict forKey:[NSString stringWithFormat:@"%@TNode%ld", _idKey, range]];
+            [cssIDDict setObject:cssDict forKey:[NSString stringWithFormat:@"%@TNode%ld", _dataSource.identifierForTextManager, range]];
             NSNumber *size = [self infoObjectAtArray:fontSizeInfos beforeOrEqualIndex:range].info;
             assert(size);
             [cssDict setObject:size forKey:IUCSSTagFontSize];
@@ -447,12 +447,12 @@
 - (NSDictionary*)cursor{
     if ([_text length] == 0) {
         // no text
-        return @{IUTextCursorLocationID: _idKey, IUTextCursorLocationIndex:@(0)};
+        return @{IUTextCursorLocationID: _dataSource.identifierForTextManager, IUTextCursorLocationIndex:@(0)};
     }
     NSIndexSet *indexSet = [self rangeSet];
     NSInteger indexOfSpan = [indexSet indexLessThanOrEqualToIndex:_cursorLocationInText];
 //    NSInteger spanCount = [indexSet countOfIndexesInRange:NSMakeRange(0, indexOfSpan)];
-    NSString *cursorLocation = [NSString stringWithFormat:@"%@TNode%ld", _idKey, indexOfSpan];
+    NSString *cursorLocation = [NSString stringWithFormat:@"%@TNode%ld", _dataSource.identifierForTextManager, indexOfSpan];
 
     return @{IUTextCursorLocationID: cursorLocation, IUTextCursorLocationIndex:@(_cursorLocationInText - indexOfSpan)};
 }

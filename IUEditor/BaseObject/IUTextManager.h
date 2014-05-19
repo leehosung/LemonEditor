@@ -11,6 +11,10 @@
 #define IUTextInfoFont @"font"
 #define IUTextInfoFontSize @"font-size"
 
+@protocol IUTextManagerDataSource <NSObject>
+- (NSString*)identifierForTextManager;
+@end
+
 @interface IUTextManager : NSObject 
 
 @property NSInteger editViewPortWidth;
@@ -44,5 +48,5 @@
 #define IUTextCursorLocationIndex @"index"
 - (NSDictionary*)cursor;
 
-@property NSString *idKey;
+@property (weak) id <IUTextManagerDataSource> dataSource;
 @end

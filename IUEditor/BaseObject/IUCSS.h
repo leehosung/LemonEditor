@@ -22,7 +22,7 @@
 
 @property (nonatomic) _binding_ NSInteger editWidth;
 @property (nonatomic) _binding_ NSInteger maxWidth;
-@property (strong) id  <IUCSSDelegate> delegate;
+@property (weak) id  <IUCSSDelegate> delegate;
 
 //set tag, or delete tag
 -(void)setValue:(id)value forTag:(IUCSSTag)tag;

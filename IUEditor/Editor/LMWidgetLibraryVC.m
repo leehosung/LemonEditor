@@ -46,12 +46,15 @@
         assert(0);
     }
     
-    obj.htmlID = [_identifierManager requestNewIdentifierWithKey:obj.className];
+    [_identifierManager setNewIdentifierAndRegister:obj];
     obj.name = obj.htmlID;
     
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:obj];
     [pasteboard setData:data forType:kUTTypeIUType];
-    
+
+    /* note  ----------------------------------------------------
+    /  please check obj.retainCount is <1> at current point     /
+    / ----------------------------------------------------------*/
 
     return YES;
 }

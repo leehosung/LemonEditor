@@ -47,7 +47,7 @@
             [iu bind:@"identifierManager" toObject:self withKeyPath:@"identifierManager" options:nil];
         }
         textManager = [aDecoder decodeObjectForKey:@"textManager"];
-        [textManager bind:@"idKey" toObject:self withKeyPath:@"htmlID" options:nil];
+        textManager.dataSource = self;
     }
     return self;
 }
@@ -70,7 +70,7 @@
         _identifierManager = manager;
         _event = [[IUEvent alloc] init];
         textManager = [[IUTextManager alloc] init];
-        [textManager bind:@"idKey" toObject:self withKeyPath:@"htmlID" options:nil];
+        textManager.dataSource = self;
         
         //NO - Pixel
         [_css setValue:@(0) forTag:IUCSSTagXUnit forWidth:IUCSSMaxViewPortWidth];
@@ -614,6 +614,9 @@
 }
 - (BOOL)enableHeightUserInput{
     return YES;
+}
+- (NSString*)identifierForTextManager{
+    return self.htmlID;
 }
 
 
