@@ -201,7 +201,7 @@
             assert(0);
         }
         
-        obj.htmlID = [_identifierManager requestNewIdentifierWithKey:[obj.className stringByReplacingOccurrencesOfString:@"IU" withString:@""]];
+        [_identifierManager setNewIdentifierAndRegister:obj];
         obj.name = obj.htmlID;
         
         if ([obj isKindOfClass:[IUPage class]]) {

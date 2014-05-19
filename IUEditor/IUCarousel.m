@@ -66,8 +66,7 @@
     }
     while (_count < count) {
         IUCarouselItem *item = [[IUCarouselItem alloc] initWithManager:nil option:nil];
-        item.htmlID = [self.identifierManager requestNewIdentifierWithKey:@"IUCarouselItem"];
-        [self.identifierManager registerIU:item];
+        [self.identifierManager setNewIdentifierAndRegister:item];
         item.name = @"Item";
         item.carousel = self;
         [self addIU:item error:nil];

@@ -57,11 +57,9 @@
     }
 }
 
--(NSString*)requestNewIdentifierWithKey:(NSString*)key{
-    //check for failed iu(reject from drop)
-    [self checkRejectedIUs];
-    
+-(void)setNewIdentifierAndRegister:(IUBox*)obj{
     int i=0;
+    NSString *key = obj.className;
     while (1) {
         i++;
         if ([[key substringToIndex:2] isEqualTo:@"IU"]) {
@@ -70,7 +68,8 @@
         NSString *newIdentifier = [NSString stringWithFormat:@"%@%d",key, i];
         IUBox *iu = [set objectForKey:newIdentifier];
         if (iu == nil) {
-            return newIdentifier;
+            obj.htmlID = newIdentifier;
+            return;
         }
     }
 }
