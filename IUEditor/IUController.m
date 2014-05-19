@@ -42,8 +42,23 @@
     for (IUBox *box in pasteboard) {
         NSError *err;
         IUBox *newBox = [box copy];
-        newBox.name = @"copy";
-        newBox.htmlID = @"copy";
+        [box.identifierManager setNewIdentifierAndRegister:newBox withKey:@"copy"];
+        newBox.name = [newBox.htmlID stringByReplacingOccurrencesOfString:@"copy" withString:@" copy"];
+        for (NSNumber *width in newBox.css.allEditWidth) {
+            NSDictionary *tagDictionary = [newBox.css tagDictionaryForWidth:[width integerValue]];
+            NSNumber *x = [tagDictionary valueForKey:IUCSSTagX];
+            
+            if (x) {
+                NSNumber *newX = [NSNumber numberWithInteger:[x integerValue] + 10];
+                [newBox.css setValue:newX forTag:IUCSSTagX forWidth:[width integerValue]];
+            }
+            
+            NSNumber *y = [tagDictionary valueForKey:IUCSSTagY];
+            if (y) {
+                NSNumber *newY = [NSNumber numberWithInteger:[y integerValue] + 10];
+                [newBox.css setValue:newY forTag:IUCSSTagY forWidth:[width integerValue]];
+            }
+        }
         BOOL result = [pasteTarget addIU:newBox error:&err];
         [self rearrangeObjects];
         assert(result);

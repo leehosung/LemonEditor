@@ -18,7 +18,6 @@
 #import "IUClass.h"
 
 @interface IUBox()
-- (void)setTextManager:(IUTextManager*)tManager;
 @end
 
 @implementation IUBox{
@@ -30,17 +29,14 @@
     NSSize originalPercentSize;
 }
 
-- (void)setTextManager:(IUTextManager *)tManager{
-    textManager = tManager;
-}
-
 - (id)copyWithZone:(NSZone *)zone{
     IUTextManager *tManager = [textManager copy];
     IUCSS *newCSS = [_css copy];
     IUEvent *newEvent = [_event copy];
-
-    IUBox *box = [[[self class] allocWithZone: zone] initWithIdentifierManager:self.identifierManager textManager:tManager event:newEvent css:newCSS children:self.children];
-
+    NSArray *children = [self.children deepCopy];
+    
+    IUBox *box = [[[self class] allocWithZone: zone] initWithIdentifierManager:self.identifierManager textManager:tManager event:newEvent css:newCSS children:children];
+    
     return box;
 }
 
@@ -96,7 +92,7 @@
     [self addObserver:self forKeyPath:@"delegate.selectedFrameWidth" options:0 context:nil];
     
     changedCSSWidths = [NSMutableSet set];
-
+    
     return self;
 }
 
@@ -536,7 +532,6 @@
 }
 
 -(void)dealloc{
-    [_identifierManager removeIdentifier:self.htmlID];
     [self removeObserver:self forKeyPath:@"delegate.maxFrameWidth"];
     [self removeObserver:self forKeyPath:@"delegate.selectedFrameWidth"];
 
