@@ -33,6 +33,7 @@
 
 //get css tag dictionary for specific width
 -(NSDictionary*)tagDictionaryForWidth:(NSInteger)width;
+-(NSArray*)allEditWidth;
 
 //observable.
 @property (readonly) NSMutableDictionary *assembledTagDictionary;

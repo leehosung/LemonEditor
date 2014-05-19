@@ -18,6 +18,10 @@
 }
 
 
+-(NSArray*)allEditWidth{
+    return [self.cssFrameDict allKeys];
+}
+
 -(id)init{
     self = [super init];
     _cssFrameDict = [[NSMutableDictionary alloc] init];
