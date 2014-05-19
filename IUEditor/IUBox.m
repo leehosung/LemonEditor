@@ -34,7 +34,6 @@
     IUCSS *newCSS = [_css copy];
     IUEvent *newEvent = [_event copy];
     NSArray *children = [self.children deepCopy];
-    
     IUBox *box = [[[self class] allocWithZone: zone] initWithIdentifierManager:self.identifierManager textManager:tManager event:newEvent css:newCSS children:children];
     
     return box;
@@ -84,15 +83,18 @@
     textManager.dataSource = self;
     
     delegateEnableLevel = 1;
-    
-    NSMutableArray *newArray = [[NSMutableArray alloc] initWithArray:children copyItems:YES];
-    _m_children = newArray;
+    _m_children = [NSMutableArray array];
+    for (IUBox *child in children) {
+        [self addIU:child error:nil];
+    }
     
     [self addObserver:self forKeyPath:@"delegate.maxFrameWidth" options:0 context:nil];
     [self addObserver:self forKeyPath:@"delegate.selectedFrameWidth" options:0 context:nil];
     
     changedCSSWidths = [NSMutableSet set];
+    delegateEnableLevel = 1;
     
+
     return self;
 }
 
@@ -113,7 +115,7 @@
         [_css setValue:@(0) forTag:IUCSSTagHeightUnit forWidth:IUCSSMaxViewPortWidth];
         
         if (self.hasWidth) {
-            [_css setValue:@(50+rand()%300) forTag:IUCSSTagWidth forWidth:IUCSSMaxViewPortWidth];
+            [_css setValue:@(50+rand()%50) forTag:IUCSSTagWidth forWidth:IUCSSMaxViewPortWidth];
         }
         if (self.hasHeight) {
             [_css setValue:@(35) forTag:IUCSSTagHeight forWidth:IUCSSMaxViewPortWidth];
@@ -282,7 +284,6 @@
     for (IUBox *child in iu.children) {
         [self.delegate IUClassIdentifier:child.htmlID CSSUpdated:[child cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
     }
-    [_identifierManager registerIU:iu];
     [iu bind:@"identifierManager" toObject:self withKeyPath:@"identifierManager" options:nil];
     
     return YES;
