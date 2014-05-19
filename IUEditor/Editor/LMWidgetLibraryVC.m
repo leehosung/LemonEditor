@@ -9,6 +9,7 @@
 #import "LMWidgetLibraryVC.h"
 #import "LMGeneralObject.h"
 #import "IUBox.h"
+#import "LMWC.h"
 
 @interface LMWidgetLibraryVC ()
 
@@ -51,11 +52,15 @@
     
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:obj];
     [pasteboard setData:data forType:kUTTypeIUType];
-
+    
     /* note  ----------------------------------------------------
     /  please check obj.retainCount is <1> at current point     /
     / ----------------------------------------------------------*/
 
+    
+    LMWC *lmWC = [NSApp mainWindow].windowController;
+    lmWC.pastedNewIU = obj;
+    
     return YES;
 }
 

@@ -11,6 +11,7 @@
 #import "JDLogUtil.h"
 #import "LMCanvasView.h"
 #import "IUBox.h"
+#import "LMWC.h"
 
 @implementation WebCanvasView
 
@@ -144,9 +145,11 @@
     NSPoint convertedPoint = [self convertPoint:dragPoint fromView:nil];
     
     //type1) newIU
+
     NSData *iuData = [pBoard dataForType:(id)kUTTypeIUType];
     if(iuData){
-        IUBox *newIU = [NSKeyedUnarchiver unarchiveObjectWithData:iuData];
+        LMWC *lmWC = [NSApp mainWindow].windowController;
+        IUBox *newIU = lmWC.pastedNewIU;
         if(newIU){
             NSString *parentIUID = [self IUAtPoint:convertedPoint];
             if(parentIUID){
