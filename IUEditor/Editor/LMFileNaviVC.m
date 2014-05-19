@@ -201,7 +201,7 @@
             assert(0);
         }
         
-        [_identifierManager setNewIdentifierAndRegister:obj];
+        [_identifierManager setNewIdentifierAndRegister:obj withKey:nil];
         obj.name = obj.htmlID;
         
         if ([obj isKindOfClass:[IUPage class]]) {

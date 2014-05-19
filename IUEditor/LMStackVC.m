@@ -201,7 +201,7 @@
         assert(0);
     }
     
-    [parent.identifierManager setNewIdentifierAndRegister:newIU];
+    [parent.identifierManager setNewIdentifierAndRegister:newIU withKey:nil];
     newIU.name = newIU.htmlID;
     
     [parent addIU:newIU error:nil];
