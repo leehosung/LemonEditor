@@ -9,10 +9,12 @@
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
 
+@class LMCanvasVC;
+
 @interface WebCanvasView : WebView {
 }
 
-@property id delegate;
+@property LMCanvasVC* VC;
 
 //call javascript
 - (void)runJSAfterRefreshCSS;

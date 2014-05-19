@@ -22,7 +22,7 @@
     self.webView = [[WebCanvasView alloc] init];
     self.gridView = [[GridView alloc] init];
     
-    self.webView.delegate = self.delegate;
+    self.webView.VC = self.delegate;
     self.gridView.delegate= self.delegate;
     self.sizeView.delegate = self.delegate;
     
