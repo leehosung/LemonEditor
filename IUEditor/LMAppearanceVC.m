@@ -82,7 +82,10 @@
         return outlineVOrderArray.count;
     }
     else{
-        if([[item identifier] isEqualToString:@"title"]){
+        if([((JDOutlineCellView *)propertyFrameVC.view).titleV isEqualTo:item]){
+            return 0;
+        }
+        else if([[item identifier] isEqualToString:@"title"]){
             return 1;
         }
         return 0;
@@ -100,8 +103,11 @@
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item{
+    if([((JDOutlineCellView *)propertyFrameVC.view).titleV isEqualTo:item]){
+            return NO;
+    }
     //root or title V
-    if(item == nil || [[item identifier] isEqualToString:@"title"]){
+    else if(item == nil || [[item identifier] isEqualToString:@"title"]){
         return YES;
     }
 
@@ -122,6 +128,14 @@
     return height;
     
 }
+
+- (IBAction)outlineViewClicked:(NSOutlineView *)sender{
+    id clickItem = [sender itemAtRow:[sender clickedRow]];
+    
+    [sender isItemExpanded:clickItem] ?
+    [sender.animator collapseItem:clickItem] : [sender.animator expandItem:clickItem];
+}
+
 
 
 @end

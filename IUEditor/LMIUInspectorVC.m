@@ -26,6 +26,8 @@
 #import "LMPropertyIUPageLinkSetVC.h"
 #import "LMPropertyIUPageVC.h"
 
+
+
 @interface LMIUInspectorVC (){
     
     LMPropertyIUBoxVC   *propertyIUBoxVC;
@@ -130,7 +132,6 @@
     [propertyIUPageLinkSetVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     [propertyIUPageVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
 
-
 }
 
 - (void)setPageDocumentNodes:(NSArray *)pageDocumentNodes{
@@ -172,7 +173,9 @@
 -(void)selectedObjectsDidChange:(NSDictionary *)change{
     [self reloadSelectedIUArray];
     [_outlineV reloadData];
+//    [_outlineV expandItem:nil expandChildren:YES];
 }
+
 
 #pragma mark -
 #pragma mark outlineView
@@ -215,7 +218,7 @@
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item{
     //root or title V
-    if(item == nil || [[item identifier] isEqualToString:@"title"]){
+    if([[item identifier] isEqualToString:@"title"]){
         return YES;
     }
     
@@ -237,6 +240,11 @@
     
 }
 
-
+- (IBAction)outlineViewClicked:(NSOutlineView *)sender{
+    id clickItem = [sender itemAtRow:[_outlineV clickedRow]];
+    
+    [sender isItemExpanded:clickItem] ?
+    [sender.animator collapseItem:clickItem] : [sender.animator expandItem:clickItem];
+}
 
 @end

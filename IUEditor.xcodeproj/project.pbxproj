@@ -1083,6 +1083,102 @@
 			name = RightWidget;
 			sourceTree = "<group>";
 		};
+		3D4675F61929AA0F0036C64C /* IUPropertyVC */ = {
+			isa = PBXGroup;
+			children = (
+				69CB92B5191B6A2600BEFBED /* LMPropertyIUPageLinkSetVC.h */,
+				69CB92B6191B6A2600BEFBED /* LMPropertyIUPageLinkSetVC.m */,
+				69CB92B7191B6A2600BEFBED /* LMPropertyIUPageLinkSetVC.xib */,
+				3DED26D519010A6D001A1D67 /* LMPropertyIUBoxVC.h */,
+				3DED26D619010A6D001A1D67 /* LMPropertyIUBoxVC.m */,
+				3DED26D719010A6D001A1D67 /* LMPropertyIUBoxVC.xib */,
+				3DED26DA19010B56001A1D67 /* LMPropertyIUHTMLVC.h */,
+				3DED26DB19010B56001A1D67 /* LMPropertyIUHTMLVC.m */,
+				3DED26DC19010B56001A1D67 /* LMPropertyIUHTMLVC.xib */,
+				3DED26DF19010B6B001A1D67 /* LMPropertyIUcarouselVC.h */,
+				3DED26E019010B6B001A1D67 /* LMPropertyIUcarouselVC.m */,
+				3DED26E119010B6B001A1D67 /* LMPropertyIUcarouselVC.xib */,
+				3DED26E419010B82001A1D67 /* LMPropertyIUMovieVC.h */,
+				3DED26E519010B82001A1D67 /* LMPropertyIUMovieVC.m */,
+				3DED26E619010B82001A1D67 /* LMPropertyIUMovieVC.xib */,
+				3DED26E919010B94001A1D67 /* LMPropertyIUWebMovieVC.h */,
+				3DED26EA19010B94001A1D67 /* LMPropertyIUWebMovieVC.m */,
+				3DED26EB19010B94001A1D67 /* LMPropertyIUWebMovieVC.xib */,
+				3DED26EE19010BB0001A1D67 /* LMPropertyIUImportVC.h */,
+				3DED26EF19010BB0001A1D67 /* LMPropertyIUImportVC.m */,
+				3DED26F019010BB0001A1D67 /* LMPropertyIUImportVC.xib */,
+				3DED26F319010BC0001A1D67 /* LMPropertyIUImageVC.h */,
+				3DED26F419010BC0001A1D67 /* LMPropertyIUImageVC.m */,
+				3DED26F519010BC0001A1D67 /* LMPropertyIUImageVC.xib */,
+				3DED26F819010BD6001A1D67 /* LMPropertyIUMailLinkVC.h */,
+				3DED26F919010BD6001A1D67 /* LMPropertyIUMailLinkVC.m */,
+				3DED26FA19010BD6001A1D67 /* LMPropertyIUMailLinkVC.xib */,
+				3DED26FD19010C55001A1D67 /* LMPropertyIUTransitionVC.h */,
+				3DED26FE19010C55001A1D67 /* LMPropertyIUTransitionVC.m */,
+				3DED26FF19010C55001A1D67 /* LMPropertyIUTransitionVC.xib */,
+				3DED270219010C71001A1D67 /* LMPropertyIUFBLikeVC.h */,
+				3DED270319010C71001A1D67 /* LMPropertyIUFBLikeVC.m */,
+				3DED270419010C71001A1D67 /* LMPropertyIUFBLikeVC.xib */,
+				690A825A190A047300DDBA86 /* LMPropertyIUTextFieldVC.h */,
+				690A825B190A047300DDBA86 /* LMPropertyIUTextFieldVC.m */,
+				690A825C190A047300DDBA86 /* LMPropertyIUTextFieldVC.xib */,
+				6996541D190F9F1D000379DA /* LMPropertyIUCollectionVC.h */,
+				6996541E190F9F1D000379DA /* LMPropertyIUCollectionVC.m */,
+				6996541F190F9F1D000379DA /* LMPropertyIUCollectionVC.xib */,
+				3D8D4B2719179F910002C871 /* LMPropertyIUTextViewVC.h */,
+				3D8D4B2819179F910002C871 /* LMPropertyIUTextViewVC.m */,
+				3D8D4B2919179F910002C871 /* LMPropertyIUTextViewVC.xib */,
+				3D748C7E192095A1005665A3 /* LMPropertyIUPageVC.h */,
+				3D748C7F192095A1005665A3 /* LMPropertyIUPageVC.m */,
+				3D748C80192095A1005665A3 /* LMPropertyIUPageVC.xib */,
+			);
+			name = IUPropertyVC;
+			sourceTree = "<group>";
+		};
+		3D4675F71929B9C10036C64C /* apperanceVC */ = {
+			isa = PBXGroup;
+			children = (
+				3DF8045D18FF75CF00913505 /* LMPropertyBGColorVC.h */,
+				3DF8045E18FF75CF00913505 /* LMPropertyBGColorVC.m */,
+				3DF8045F18FF75CF00913505 /* LMPropertyBGColorVC.xib */,
+				6979FC0418ED34E20060C3B4 /* LMPropertyFrameVC.h */,
+				6979FC0518ED34E20060C3B4 /* LMPropertyFrameVC.m */,
+				6979FC0618ED34E20060C3B4 /* LMPropertyFrameVC.xib */,
+				69761BC018F04ECD00C4EDC6 /* LMPropertyBGImageVC.h */,
+				69761BC118F04ECD00C4EDC6 /* LMPropertyBGImageVC.m */,
+				69761BC218F04ECD00C4EDC6 /* LMPropertyBGImageVC.xib */,
+				69A45DDD18F6702C00C551D9 /* LMPropertyBorderVC.h */,
+				69A45DDE18F6702C00C551D9 /* LMPropertyBorderVC.m */,
+				69A45DDF18F6702C00C551D9 /* LMPropertyBorderVC.xib */,
+				3DF8046218FF784500913505 /* LMPropertyTextVC.h */,
+				3DF8046318FF784500913505 /* LMPropertyTextVC.m */,
+				3DF8046418FF784500913505 /* LMPropertyTextVC.xib */,
+				3DF8046718FF790400913505 /* LMPropertyShadowVC.h */,
+				3DF8046818FF790400913505 /* LMPropertyShadowVC.m */,
+				3DF8046918FF790400913505 /* LMPropertyShadowVC.xib */,
+			);
+			name = apperanceVC;
+			sourceTree = "<group>";
+		};
+		3D4675F81929B9D40036C64C /* eventVC */ = {
+			isa = PBXGroup;
+			children = (
+				3DED27151904AD7D001A1D67 /* LMPropertyMouseEventVC.h */,
+				3DED27161904AD7D001A1D67 /* LMPropertyMouseEventVC.m */,
+				3DED27171904AD7D001A1D67 /* LMPropertyMouseEventVC.xib */,
+				3DED271A1904ADD9001A1D67 /* LMPropertyVTriggerVC.h */,
+				3DED271B1904ADD9001A1D67 /* LMPropertyVTriggerVC.m */,
+				3DED271C1904ADD9001A1D67 /* LMPropertyVTriggerVC.xib */,
+				3DED271F1904AE1A001A1D67 /* LMPropertyVisibleVC.h */,
+				3DED27201904AE1A001A1D67 /* LMPropertyVisibleVC.m */,
+				3DED27211904AE1A001A1D67 /* LMPropertyVisibleVC.xib */,
+				3DED27241904AE53001A1D67 /* LMPropertyVRFrameVC.h */,
+				3DED27251904AE53001A1D67 /* LMPropertyVRFrameVC.m */,
+				3DED27261904AE53001A1D67 /* LMPropertyVRFrameVC.xib */,
+			);
+			name = eventVC;
+			sourceTree = "<group>";
+		};
 		3D54D64718ED5D1B00B5FEC2 /* Image */ = {
 			isa = PBXGroup;
 			children = (
@@ -1411,54 +1507,10 @@
 		3DED26D4190108B6001A1D67 /* RightIUInspector */ = {
 			isa = PBXGroup;
 			children = (
+				3D4675F61929AA0F0036C64C /* IUPropertyVC */,
 				692334B718F783FE003E5224 /* LMIUInspectorVC.h */,
 				692334B818F783FE003E5224 /* LMIUInspectorVC.m */,
 				692334B918F783FE003E5224 /* LMIUInspectorVC.xib */,
-				69CB92B5191B6A2600BEFBED /* LMPropertyIUPageLinkSetVC.h */,
-				69CB92B6191B6A2600BEFBED /* LMPropertyIUPageLinkSetVC.m */,
-				69CB92B7191B6A2600BEFBED /* LMPropertyIUPageLinkSetVC.xib */,
-				3DED26D519010A6D001A1D67 /* LMPropertyIUBoxVC.h */,
-				3DED26D619010A6D001A1D67 /* LMPropertyIUBoxVC.m */,
-				3DED26D719010A6D001A1D67 /* LMPropertyIUBoxVC.xib */,
-				3DED26DA19010B56001A1D67 /* LMPropertyIUHTMLVC.h */,
-				3DED26DB19010B56001A1D67 /* LMPropertyIUHTMLVC.m */,
-				3DED26DC19010B56001A1D67 /* LMPropertyIUHTMLVC.xib */,
-				3DED26DF19010B6B001A1D67 /* LMPropertyIUcarouselVC.h */,
-				3DED26E019010B6B001A1D67 /* LMPropertyIUcarouselVC.m */,
-				3DED26E119010B6B001A1D67 /* LMPropertyIUcarouselVC.xib */,
-				3DED26E419010B82001A1D67 /* LMPropertyIUMovieVC.h */,
-				3DED26E519010B82001A1D67 /* LMPropertyIUMovieVC.m */,
-				3DED26E619010B82001A1D67 /* LMPropertyIUMovieVC.xib */,
-				3DED26E919010B94001A1D67 /* LMPropertyIUWebMovieVC.h */,
-				3DED26EA19010B94001A1D67 /* LMPropertyIUWebMovieVC.m */,
-				3DED26EB19010B94001A1D67 /* LMPropertyIUWebMovieVC.xib */,
-				3DED26EE19010BB0001A1D67 /* LMPropertyIUImportVC.h */,
-				3DED26EF19010BB0001A1D67 /* LMPropertyIUImportVC.m */,
-				3DED26F019010BB0001A1D67 /* LMPropertyIUImportVC.xib */,
-				3DED26F319010BC0001A1D67 /* LMPropertyIUImageVC.h */,
-				3DED26F419010BC0001A1D67 /* LMPropertyIUImageVC.m */,
-				3DED26F519010BC0001A1D67 /* LMPropertyIUImageVC.xib */,
-				3DED26F819010BD6001A1D67 /* LMPropertyIUMailLinkVC.h */,
-				3DED26F919010BD6001A1D67 /* LMPropertyIUMailLinkVC.m */,
-				3DED26FA19010BD6001A1D67 /* LMPropertyIUMailLinkVC.xib */,
-				3DED26FD19010C55001A1D67 /* LMPropertyIUTransitionVC.h */,
-				3DED26FE19010C55001A1D67 /* LMPropertyIUTransitionVC.m */,
-				3DED26FF19010C55001A1D67 /* LMPropertyIUTransitionVC.xib */,
-				3DED270219010C71001A1D67 /* LMPropertyIUFBLikeVC.h */,
-				3DED270319010C71001A1D67 /* LMPropertyIUFBLikeVC.m */,
-				3DED270419010C71001A1D67 /* LMPropertyIUFBLikeVC.xib */,
-				690A825A190A047300DDBA86 /* LMPropertyIUTextFieldVC.h */,
-				690A825B190A047300DDBA86 /* LMPropertyIUTextFieldVC.m */,
-				690A825C190A047300DDBA86 /* LMPropertyIUTextFieldVC.xib */,
-				6996541D190F9F1D000379DA /* LMPropertyIUCollectionVC.h */,
-				6996541E190F9F1D000379DA /* LMPropertyIUCollectionVC.m */,
-				6996541F190F9F1D000379DA /* LMPropertyIUCollectionVC.xib */,
-				3D8D4B2719179F910002C871 /* LMPropertyIUTextViewVC.h */,
-				3D8D4B2819179F910002C871 /* LMPropertyIUTextViewVC.m */,
-				3D8D4B2919179F910002C871 /* LMPropertyIUTextViewVC.xib */,
-				3D748C7E192095A1005665A3 /* LMPropertyIUPageVC.h */,
-				3D748C7F192095A1005665A3 /* LMPropertyIUPageVC.m */,
-				3D748C80192095A1005665A3 /* LMPropertyIUPageVC.xib */,
 			);
 			name = RightIUInspector;
 			sourceTree = "<group>";
@@ -1466,21 +1518,10 @@
 		3DED270E1904AC42001A1D67 /* RightEvent */ = {
 			isa = PBXGroup;
 			children = (
+				3D4675F81929B9D40036C64C /* eventVC */,
 				3DED27101904AC8A001A1D67 /* LMEventVC.h */,
 				3DED27111904AC8A001A1D67 /* LMEventVC.m */,
 				3DED27121904AC8A001A1D67 /* LMEventVC.xib */,
-				3DED27151904AD7D001A1D67 /* LMPropertyMouseEventVC.h */,
-				3DED27161904AD7D001A1D67 /* LMPropertyMouseEventVC.m */,
-				3DED27171904AD7D001A1D67 /* LMPropertyMouseEventVC.xib */,
-				3DED271A1904ADD9001A1D67 /* LMPropertyVTriggerVC.h */,
-				3DED271B1904ADD9001A1D67 /* LMPropertyVTriggerVC.m */,
-				3DED271C1904ADD9001A1D67 /* LMPropertyVTriggerVC.xib */,
-				3DED271F1904AE1A001A1D67 /* LMPropertyVisibleVC.h */,
-				3DED27201904AE1A001A1D67 /* LMPropertyVisibleVC.m */,
-				3DED27211904AE1A001A1D67 /* LMPropertyVisibleVC.xib */,
-				3DED27241904AE53001A1D67 /* LMPropertyVRFrameVC.h */,
-				3DED27251904AE53001A1D67 /* LMPropertyVRFrameVC.m */,
-				3DED27261904AE53001A1D67 /* LMPropertyVRFrameVC.xib */,
 			);
 			name = RightEvent;
 			sourceTree = "<group>";
@@ -1595,27 +1636,10 @@
 		3DF8045118FE7F6E00913505 /* RightAppearance */ = {
 			isa = PBXGroup;
 			children = (
+				3D4675F71929B9C10036C64C /* apperanceVC */,
 				3DF8045518FE874400913505 /* LMAppearanceVC.h */,
 				3DF8045618FE874400913505 /* LMAppearanceVC.m */,
 				3DF8045718FE874400913505 /* LMAppearanceVC.xib */,
-				3DF8045D18FF75CF00913505 /* LMPropertyBGColorVC.h */,
-				3DF8045E18FF75CF00913505 /* LMPropertyBGColorVC.m */,
-				3DF8045F18FF75CF00913505 /* LMPropertyBGColorVC.xib */,
-				6979FC0418ED34E20060C3B4 /* LMPropertyFrameVC.h */,
-				6979FC0518ED34E20060C3B4 /* LMPropertyFrameVC.m */,
-				6979FC0618ED34E20060C3B4 /* LMPropertyFrameVC.xib */,
-				69761BC018F04ECD00C4EDC6 /* LMPropertyBGImageVC.h */,
-				69761BC118F04ECD00C4EDC6 /* LMPropertyBGImageVC.m */,
-				69761BC218F04ECD00C4EDC6 /* LMPropertyBGImageVC.xib */,
-				69A45DDD18F6702C00C551D9 /* LMPropertyBorderVC.h */,
-				69A45DDE18F6702C00C551D9 /* LMPropertyBorderVC.m */,
-				69A45DDF18F6702C00C551D9 /* LMPropertyBorderVC.xib */,
-				3DF8046218FF784500913505 /* LMPropertyTextVC.h */,
-				3DF8046318FF784500913505 /* LMPropertyTextVC.m */,
-				3DF8046418FF784500913505 /* LMPropertyTextVC.xib */,
-				3DF8046718FF790400913505 /* LMPropertyShadowVC.h */,
-				3DF8046818FF790400913505 /* LMPropertyShadowVC.m */,
-				3DF8046918FF790400913505 /* LMPropertyShadowVC.xib */,
 			);
 			name = RightAppearance;
 			sourceTree = "<group>";

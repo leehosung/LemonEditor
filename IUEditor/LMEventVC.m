@@ -113,4 +113,12 @@
     
 }
 
+- (IBAction)outlineViewClicked:(NSOutlineView *)sender{
+    id clickItem = [sender itemAtRow:[sender clickedRow]];
+    
+    [sender isItemExpanded:clickItem] ?
+    [sender.animator collapseItem:clickItem] : [sender.animator expandItem:clickItem];
+}
+
+
 @end
