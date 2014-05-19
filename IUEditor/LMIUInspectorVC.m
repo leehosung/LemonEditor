@@ -172,8 +172,11 @@
 
 -(void)selectedObjectsDidChange:(NSDictionary *)change{
     [self reloadSelectedIUArray];
+    [_outlineV expandItem:nil expandChildren:YES];
     [_outlineV reloadData];
-//    [_outlineV expandItem:nil expandChildren:YES];
+    [_outlineV expandItem:nil expandChildren:YES];
+
+
 }
 
 
