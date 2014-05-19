@@ -8,6 +8,10 @@
 
 #import "IUIdentifierManager.h"
 #import "IUBox.h"
+#import "IUDocument.h"
+#import "IUBackground.h"
+#import "IUClass.h"
+
 
 @implementation IUIdentifierManager{
     NSMutableDictionary *set;
@@ -35,7 +39,28 @@
     }
 }
 
+- (BOOL)isDocumentclass:(IUBox *)iu{
+    if([iu isKindOfClass:[IUDocument class]]
+       || [iu isKindOfClass:[IUBackground class]]
+       || [iu isKindOfClass:[IUClass class]]){
+        return YES;
+    }
+    return NO;
+}
+
+- (void)checkRejectedIUs{
+    for(IUBox *iu in set.allValues){
+        if(iu.parent == nil
+           && [self isDocumentclass:iu] == NO){
+            [self removeIdentifier:iu.htmlID];
+        }
+    }
+}
+
 -(NSString*)requestNewIdentifierWithKey:(NSString*)key{
+    //check for failed iu(reject from drop)
+    [self checkRejectedIUs];
+    
     int i=0;
     while (1) {
         i++;
