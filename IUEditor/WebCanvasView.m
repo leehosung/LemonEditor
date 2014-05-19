@@ -50,7 +50,7 @@
  */
 
     NSResponder *currentResponder = [[self window] firstResponder];
-    NSView *mainView = ((LMCanvasVC *)self.delegate).view.mainView;
+    NSView *mainView = self.VC.view.mainView;
     
     if([currentResponder isKindOfClass:[NSView class]]
        && [mainView hasSubview:(NSView *)currentResponder]){
@@ -63,6 +63,14 @@
                 if(key == 'A' || key == 'a'){
                     [self selectWholeRangeOfCurrentCursor];
                     return YES;
+                }
+                if (key == 'c') {
+                    //copy
+                    
+                }
+                if (key == 'p') {
+                    //paste
+                    
                 }
             }
             else{
@@ -109,8 +117,8 @@
             break;
     }
     
-    [((LMCanvasVC *)(self.delegate)) startDragSession];
-    [((LMCanvasVC *)self.delegate) moveIUToDiffPoint:diffPoint totalDiffPoint:diffPoint];
+    [self.VC startDragSession];
+    [self.VC moveIUToDiffPoint:diffPoint totalDiffPoint:diffPoint];
 }
 
 
@@ -142,7 +150,7 @@
         if(newIU){
             NSString *parentIUID = [self IUAtPoint:convertedPoint];
             if(parentIUID){
-                [((LMCanvasVC *)(self.delegate)) makeNewIUByDragAndDrop:newIU atPoint:convertedPoint atIU:parentIUID];
+                [self.VC makeNewIUByDragAndDrop:newIU atPoint:convertedPoint atIU:parentIUID];
                 JDTraceLog( @"[IU:%@], dragPoint(%.1f, %.1f)", newIU.htmlID, dragPoint.x, dragPoint.y);
                 return YES;
             }
@@ -154,7 +162,7 @@
     if(imageName){
         NSString *currentIUID = [self IUAtPoint:convertedPoint];
         if(currentIUID){
-            [((LMCanvasVC *)(self.delegate))insertImage:imageName atIU:currentIUID];
+            [self.VC insertImage:imageName atIU:currentIUID];
             return YES;
         }
     }
@@ -204,7 +212,7 @@
 
 - (void)resizePageContentHeightFinished:(NSNumber *)scriptObj{
 //    JDInfoLog(@"document size change to : %f" , [scriptObj floatValue]);
-    [self.delegate changeIUPageHeight:[scriptObj floatValue]];
+    [self.VC changeIUPageHeight:[scriptObj floatValue]];
 }
 
 /* Here is our Objective-C implementation for the JavaScript console.log() method.
@@ -288,8 +296,7 @@
     }
     
     
-//    [((LMCanvasVC *)(self.delegate)) updateIUFrameDictionary:iuFrameDict];
-    [((LMCanvasVC *)(self.delegate)) updateGridFrameDictionary:gridFrameDict];
+    [self.VC updateGridFrameDictionary:gridFrameDict];
     JDTraceLog( @"reportSharedFrameDict");
 }
 
@@ -310,8 +317,7 @@
         [iuFrameDict setObject:[NSValue valueWithRect:iuFrame] forKey:key];
     }
     
-    
-    [((LMCanvasVC *)(self.delegate)) updateIUPercentFrameDictionary:iuFrameDict];
+    [self.VC updateIUPercentFrameDictionary:iuFrameDict];
 }
 
 - (void)updateFrameDict{
@@ -398,7 +404,7 @@
     
     DOMHTMLElement *IUNode = [self IUNodeAtCurrentNode:range.startContainer];
     if(IUNode == nil
-        || [IUNode.idName isNotEqualTo:[((LMCanvasVC *)self.delegate) selectedIUIdentifier]]){
+        || [IUNode.idName isNotEqualTo:[self.VC selectedIUIdentifier]]){
         return NO;
     }
     
@@ -408,7 +414,7 @@
     
     //insert Textb
     NSRange iuRange = [self selectedRange:range InIU:IUNode];
-    [((LMCanvasVC *)self.delegate) insertString:text identifier:IUNode.idName withRange:iuRange];
+    [self.VC insertString:text identifier:IUNode.idName withRange:iuRange];
     
     JDInfoLog(@"insertText [IU:%@] : range(%ld, %ld) : %@ ", IUNode.idName, iuRange.location, iuRange.length, text);
     
@@ -420,7 +426,7 @@
     
     DOMHTMLElement *IUNode = [self IUNodeAtCurrentNode:range.startContainer];
     if(IUNode == nil
-       || [IUNode.idName isNotEqualTo:[((LMCanvasVC *)self.delegate) selectedIUIdentifier]]){
+       || [IUNode.idName isNotEqualTo:[self.VC selectedIUIdentifier]]){
         
         return NO;
     }
@@ -430,7 +436,7 @@
     
     //insert Text
     NSRange iuRange = [self selectedRange:range InIU:IUNode];   
-    [((LMCanvasVC *)self.delegate) deleteStringRange:iuRange identifier:IUNode.idName];
+    [self.VC deleteStringRange:iuRange identifier:IUNode.idName];
     JDInfoLog(@"DeleteText[IU:%@] : range(%ld, %ld) ", IUNode.idName, iuRange.location, iuRange.length);
     
     return NO;
@@ -444,14 +450,14 @@
     }
 
     if([self isOneIUSTextelection:proposedRange]){
-        NSArray * selectednames = ((LMCanvasVC *)(self.delegate)).controller.selectedIdentifiers;
+        NSArray * selectednames = self.VC.controller.selectedIdentifiers;
         DOMHTMLElement *proposedNode = [self IUNodeAtCurrentNode:proposedRange.startContainer];
         NSString *proposeIUID = proposedNode.idName;
         
         if(selectednames.count == 1 && [selectednames[0] isEqualToString:proposeIUID]){
          
             NSRange selectRangeInIU = [self selectedRange:proposedRange InIU:proposedNode];
-            [((LMCanvasVC *)self.delegate) selectTextRange:selectRangeInIU identifier:proposeIUID];
+            [self.VC selectTextRange:selectRangeInIU identifier:proposeIUID];
             JDInfoLog(@"SelectedRange : (%ld, %ld)", selectRangeInIU.location, selectRangeInIU.length);
             
             return YES;
