@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMIUInspectorVC">
@@ -60,6 +60,7 @@
                             </tableColumn>
                         </tableColumns>
                         <connections>
+                            <action selector="outlineViewClicked:" target="-2" id="59F-yf-23c"/>
                             <outlet property="dataSource" destination="-2" id="JQK-Sj-0Zl"/>
                             <outlet property="delegate" destination="-2" id="u5j-zH-K3J"/>
                         </connections>
