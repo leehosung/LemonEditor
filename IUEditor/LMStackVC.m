@@ -23,7 +23,9 @@
         [(LMStackVC *)self.delegate keyDown:theEvent];
 
     }
-    
+    else {
+        [super keyDown:theEvent];
+    }
 }
 
 @end
@@ -197,7 +199,7 @@
         assert(0);
     }
     
-    newIU.htmlID = [parent.identifierManager requestNewIdentifierWithKey:@"Section"];
+    [parent.identifierManager setNewIdentifierAndRegister:newIU];
     newIU.name = newIU.htmlID;
     
     [parent addIU:newIU error:nil];
