@@ -108,6 +108,7 @@
     //postion을 먼저 정한 후에 add 함
     [newIU setPosition:position];
     [parentIU addIU:newIU error:nil];
+    [parentIU.identifierManager registerIU:parentIU];
     [self.controller rearrangeObjects];
     [self.controller setSelectedObjectsByIdentifiers:@[newIU.htmlID]];
     

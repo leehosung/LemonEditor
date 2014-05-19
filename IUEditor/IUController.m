@@ -30,14 +30,17 @@
 
 -(void)pasteToSelectedIU:(id)sender{
     IUBox *pasteTarget;
+    BOOL pasteTargetIsParent;
     if ([self.selectedObjects isEqualToArray:pasteboard]) {
         //paste to parent
         IUBox *first = [self.selectedObjects firstObject];
         pasteTarget = first.parent;
+        pasteTargetIsParent = YES;
     }
     else {
         //paste to selection
         pasteTarget = [self.selectedObjects firstObject];
+        pasteTargetIsParent = NO;
     }
     for (IUBox *box in pasteboard) {
         NSError *err;
@@ -49,18 +52,29 @@
             NSNumber *x = [tagDictionary valueForKey:IUCSSTagX];
             
             if (x) {
-                NSNumber *newX = [NSNumber numberWithInteger:[x integerValue] + 10];
-                [newBox.css setValue:newX forTag:IUCSSTagX forWidth:[width integerValue]];
+                if (pasteTargetIsParent) {
+                    NSNumber *newX = [NSNumber numberWithInteger:[x integerValue] + 10];
+                    [newBox.css setValue:newX forTag:IUCSSTagX forWidth:[width integerValue]];
+                }
+                else {
+                    [newBox.css setValue:@(10) forTag:IUCSSTagX forWidth:[width integerValue]];
+                }
             }
             
             NSNumber *y = [tagDictionary valueForKey:IUCSSTagY];
             if (y) {
-                NSNumber *newY = [NSNumber numberWithInteger:[y integerValue] + 10];
-                [newBox.css setValue:newY forTag:IUCSSTagY forWidth:[width integerValue]];
+                if (pasteTargetIsParent) {
+                    NSNumber *newY = [NSNumber numberWithInteger:[y integerValue] + 10];
+                    [newBox.css setValue:newY forTag:IUCSSTagY forWidth:[width integerValue]];
+                }
+                else {
+                    [newBox.css setValue:@(10) forTag:IUCSSTagY forWidth:[width integerValue]];
+                }
             }
         }
         BOOL result = [pasteTarget addIU:newBox error:&err];
         [self rearrangeObjects];
+        [self setSelectedObject:newBox];
         assert(result);
     }
 }
