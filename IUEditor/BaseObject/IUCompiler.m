@@ -1092,7 +1092,9 @@
                     if([self isLastCharacterBRElement:obj.textHTML]){
                         num--;
                     }
-                    
+                    if(num == 0){
+                        num = 1;
+                    }
                     [dict putTag:@"line-height" floatValue:[height floatValue]/num ignoreZero:YES unit: IUCSSUnitPixel];
                 }
                 else {
