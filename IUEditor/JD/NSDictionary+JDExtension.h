@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSDictionary (JDExtension)
-
+-(NSDictionary*)deepCopy;
 -(BOOL)writeAsJSONFile:(NSString *)path atomically:(BOOL)atomically;
 +(NSDictionary*)dictionaryWithJSONContentsOfFile:(NSString *)path;
 
@@ -19,4 +19,5 @@
 
 - (void)setOrRemoveObject:(id)object forKey:(id)key;
 - (void)overwrite:(NSDictionary*)dict;
+-(NSMutableDictionary*)deepCopy;
 @end

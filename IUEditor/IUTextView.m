@@ -10,9 +10,9 @@
 
 @implementation IUTextView
 
--(id)initWithManager:(IUIdentifierManager *)manager option:(NSDictionary *)option{
+-(id)initWithIdentifierManager:(IUIdentifierManager *)manager option:(NSDictionary *)option{
     assert(manager!=nil);
-    self = [super initWithManager:manager option:option];
+    self = [super initWithIdentifierManager:manager option:option];
     if(self){
         _placeholder = @"placeholder";
         _inputValue = @"value example";

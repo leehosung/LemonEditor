@@ -88,6 +88,21 @@
     return [self filteredArrayUsingPredicate:predicate];
 }
 
+-(NSArray*)deepCopy{
+    NSMutableArray *returnObject = [NSMutableArray array];
+    for (id obj in self) {
+        if ([obj respondsToSelector:@selector(deepCopy)]) {
+            [returnObject addObject:[obj deepCopy]];
+        }
+        else if ([obj isKindOfClass:[NSMutableString class]]) {
+            [returnObject addObject:[obj mutableCopy]];
+        }
+        else {
+            [returnObject addObject:[obj copy]];
+        }
+    }
+    return [returnObject copy];
+}
 
 
 @end
@@ -108,5 +123,24 @@
         j--;
     }
 }
+
+
+-(NSArray*)deepCopy{
+    NSMutableArray *returnObject = [NSMutableArray array];
+    for (id obj in self) {
+        if ([obj respondsToSelector:@selector(deepCopy)]) {
+            [returnObject addObject:[obj deepCopy]];
+        }
+        else if ([obj isKindOfClass:[NSMutableString class]]) {
+            [returnObject addObject:[obj mutableCopy]];
+        }
+        else {
+            [returnObject addObject:[obj copy]];
+        }
+    }
+    return returnObject;
+}
+
+
 
 @end

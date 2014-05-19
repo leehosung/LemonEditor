@@ -14,9 +14,9 @@
     NSInteger   _count;
 }
 
--(id)initWithManager:(IUIdentifierManager *)manager option:(NSDictionary *)option{
+-(id)initWithIdentifierManager:(IUIdentifierManager *)manager option:(NSDictionary *)option{
     assert(manager!=nil);
-    self = [super initWithManager:manager option:option];
+    self = [super initWithIdentifierManager:manager option:option];
     if(self){
         self.count = 5;
         [self.css setValue:@(500) forTag:IUCSSTagWidth forWidth:IUCSSMaxViewPortWidth];
@@ -65,7 +65,7 @@
         count++;
     }
     while (_count < count) {
-        IUCarouselItem *item = [[IUCarouselItem alloc] initWithManager:nil option:nil];
+        IUCarouselItem *item = [[IUCarouselItem alloc] initWithIdentifierManager:nil option:nil];
         [self.identifierManager setNewIdentifierAndRegister:item];
         item.name = @"Item";
         item.carousel = self;

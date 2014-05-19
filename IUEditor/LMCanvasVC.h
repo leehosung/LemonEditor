@@ -74,5 +74,6 @@
 - (BOOL)makeNewIUByDragAndDrop:(IUBox *)newIU atPoint:(NSPoint)point atIU:(NSString *)parentIUID;
 - (NSString *)currentHTML;
 
-
+- (void)copy:(id)sender;
+- (void)paste:(id)sender;
 @end

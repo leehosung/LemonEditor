@@ -18,7 +18,7 @@
 
 
 
-@interface IUCSS : NSObject <NSCoding>
+@interface IUCSS : NSObject <NSCoding, NSCopying>
 
 @property (nonatomic) _binding_ NSInteger editWidth;
 @property (nonatomic) _binding_ NSInteger maxWidth;

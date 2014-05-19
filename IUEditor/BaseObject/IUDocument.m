@@ -11,8 +11,8 @@
 @implementation IUDocument
 
 
--(id)initWithManager:(IUIdentifierManager *)manager option:(NSDictionary *)option{
-    self = [super initWithManager:manager option:option];
+-(id)initWithIdentifierManager:(IUIdentifierManager *)manager option:(NSDictionary *)option{
+    self = [super initWithIdentifierManager:manager option:option];
     return self;
 }
 

@@ -31,6 +31,25 @@
     }
     return dict;
 }
+
+-(NSMutableDictionary*)deepCopy{
+    NSMutableDictionary *returnObject = [NSMutableDictionary dictionary];
+    for (id key in self) {
+        id value = self[key];
+        if ([value respondsToSelector:@selector(deepCopy)]) {
+            returnObject[key] = [value deepCopy];
+        }
+        else if ([value isKindOfClass:[NSMutableString class]]) {
+            returnObject[key] = [value mutableCopy];
+        }
+        else {
+            returnObject[key] = [value copy];
+        }
+    }
+    return [returnObject copy];
+}
+
+
 @end
 
 @implementation NSMutableDictionary (JDExtension)
@@ -63,6 +82,23 @@
     return;
 }
 
+-(NSMutableDictionary*)deepCopy{
+    NSMutableDictionary *returnObject = [NSMutableDictionary dictionary];
+    for (id key in self) {
+        id value = self[key];
+        if ([value respondsToSelector:@selector(deepCopy)]) {
+            returnObject[key] = [value deepCopy];
+        }
+        else if ([value isKindOfClass:[NSMutableString class]]) {
+            returnObject[key] = [value mutableCopy];
+        }
+        else {
+            returnObject[key] = [value copy];
+        }
+    }
+    return returnObject;
+
+}
 
 
 @end

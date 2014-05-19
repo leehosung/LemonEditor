@@ -10,8 +10,8 @@
 
 @implementation IUResponsiveSection
 
--(id)initWithManager:(IUIdentifierManager*)manager option:(NSDictionary *)option{
-    self = [super initWithManager:manager option:option];
+-(id)initWithIdentifierManager:(IUIdentifierManager*)manager option:(NSDictionary *)option{
+    self = [super initWithIdentifierManager:manager option:option];
     if(self){
         [self.css setValue:@(0) forTag:IUCSSTagXUnit forWidth:IUCSSMaxViewPortWidth];
         [self.css setValue:@(0) forTag:IUCSSTagYUnit forWidth:IUCSSMaxViewPortWidth];

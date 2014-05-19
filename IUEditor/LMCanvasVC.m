@@ -822,6 +822,12 @@
     NSLog(@"\n%@\n",htmlSource);
 }
 
+- (void)copy:(id)sender{
+    [self.controller copySelectedIUToPasteboard:self];
+}
 
+- (void)paste:(id)sender{
+    [self.controller pasteToSelectedIU:self];
+}
 
 @end

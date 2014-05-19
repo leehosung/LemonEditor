@@ -30,6 +30,9 @@
 
 -(IUImport*)importIUInSelectionChain;
 
+-(void)copySelectedIUToPasteboard:(id)sender;
+-(void)pasteToSelectedIU:(id)sender;
+
 @property _binding_ NSRange selectedTextRange;
 
 @end

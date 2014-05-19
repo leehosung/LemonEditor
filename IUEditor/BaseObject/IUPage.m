@@ -28,11 +28,11 @@
     return self;
 }
 
-- (id)initWithManager:(IUIdentifierManager *)manager option:(NSDictionary *)option{
-    self = [super initWithManager:manager option:option];
+- (id)initWithIdentifierManager:(IUIdentifierManager *)manager option:(NSDictionary *)option{
+    self = [super initWithIdentifierManager:manager option:option];
     
     //add some iu
-    IUBox *obj = [[IUBox alloc] initWithManager:manager option:option];
+    IUBox *obj = [[IUBox alloc] initWithIdentifierManager:manager option:option];
     obj.htmlID = @"qwerq";
     obj.name = @"sample object";
     [self addIU:obj error:nil];
@@ -65,7 +65,7 @@
     }
     if (myBackground == nil && background ) {
         NSArray *children = [self.children copy];
-        pageContent = [[IUPageContent alloc] initWithManager:nil option:nil];
+        pageContent = [[IUPageContent alloc] initWithIdentifierManager:nil option:nil];
         pageContent.htmlID = @"pageContent";
         pageContent.name = @"pageContent";
         

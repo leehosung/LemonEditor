@@ -22,6 +22,7 @@
 
 - (NSArray *)reversedArray;
 - (NSArray *)filteredArrayWithClass:(Class)class;
+- (NSArray *)deepCopy;
 @end
 
 
@@ -29,5 +30,5 @@
 @interface NSMutableArray (JDExtension)
 
 - (void)reverse;
-
+-(NSMutableArray *)deepCopy;
 @end

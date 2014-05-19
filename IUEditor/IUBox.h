@@ -48,7 +48,7 @@
 @class IUBox;
 @class IUDocument;
 
-@interface IUBox : NSObject <NSCoding, IUCSSDelegate, IUTextManagerDataSource>{
+@interface IUBox : NSObject <NSCoding, IUCSSDelegate, IUTextManagerDataSource, NSCopying>{
     NSMutableArray *_m_children;
 }
 
@@ -59,7 +59,7 @@
 -(IUDocument *)document;
 
 //initialize
--(id)initWithManager:(IUIdentifierManager*)identifierManager option:(NSDictionary*)option;
+-(id)initWithIdentifierManager:(IUIdentifierManager*)identifierManager option:(NSDictionary*)option;
 
 
 // this is IU setting

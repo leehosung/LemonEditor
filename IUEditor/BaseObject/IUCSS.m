@@ -9,10 +9,12 @@
 #import "IUCSS.h"
 #import "JDUIUtil.h"
 
-@implementation IUCSS{
-    NSMutableDictionary  *_cssFrameDict;
+@interface IUCSS ()
+@property NSMutableDictionary *cssFrameDict;
+@property (readwrite) NSMutableDictionary *assembledTagDictionaryForEditWidth;
+@end
 
-    NSMutableDictionary  *_assembledTagDictionaryForEditWidth;
+@implementation IUCSS{
 }
 
 
@@ -37,6 +39,15 @@
     [self updateAssembledTagDictionary];
     return self;
 }
+
+- (id)copyWithZone:(NSZone *)zone{
+    IUCSS *css = [[[self class] allocWithZone:zone] init];
+    css.cssFrameDict = [self.cssFrameDict deepCopy];
+    css.assembledTagDictionaryForEditWidth = [self.assembledTagDictionaryForEditWidth deepCopy];
+    return css;
+}
+
+
 
 - (BOOL)isPercentTag:(IUCSSTag)tag{
     if([tag isEqualToString:IUCSSTagPercentX]){
