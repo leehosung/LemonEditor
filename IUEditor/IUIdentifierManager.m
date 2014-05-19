@@ -49,15 +49,20 @@
 }
 
 - (void)checkRejectedIUs{
+    NSMutableArray *deleteArray = [NSMutableArray array];
     for(IUBox *iu in set.allValues){
         if(iu.parent == nil
            && [self isDocumentclass:iu] == NO){
-            [self removeIdentifier:iu.htmlID];
+            [deleteArray addObject:iu.htmlID];
         }
     }
+    [set removeObjectsForKeys:deleteArray];
 }
 
 -(void)setNewIdentifierAndRegister:(IUBox*)obj{
+    
+    [self checkRejectedIUs];
+    
     int i=0;
     NSString *key = obj.className;
     while (1) {
@@ -69,6 +74,7 @@
         IUBox *iu = [set objectForKey:newIdentifier];
         if (iu == nil) {
             obj.htmlID = newIdentifier;
+            [self registerIU:obj];
             return;
         }
     }

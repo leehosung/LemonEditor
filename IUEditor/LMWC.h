@@ -22,6 +22,8 @@
 @property (nonatomic, weak) _binding_ IUDocumentController   *documentController;
 @property _binding_ NSRange selectedTextRange;
 
+@property (nonatomic) IUBox *pastedNewIU;
+
 - (void)loadProject:(NSString*)path;
 - (void)setNewFileNode:(IUDocumentNode *)node;
 

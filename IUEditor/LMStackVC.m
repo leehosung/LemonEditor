@@ -12,6 +12,7 @@
 #import "IUPageContent.h"
 #import "IUResponsiveSection.h"
 #import "IUDocument.h"
+#import "LMWC.h"
 
 @implementation LMStackOutlineView
 
@@ -164,7 +165,8 @@
     //type1) newIU
     NSData *iuData = [pBoard dataForType:(id)kUTTypeIUType];
     if(iuData){
-        IUBox *newIU = [NSKeyedUnarchiver unarchiveObjectWithData:iuData];
+        LMWC *lmWC = [NSApp mainWindow].windowController;
+        IUBox *newIU = lmWC.pastedNewIU;
         if(newIU){
             IUBox *newParent = [item representedObject];
             NSInteger newIndex= index;

@@ -19,6 +19,9 @@
 -(id)init{
     self = [super init];
     _cssFrameDict = [[NSMutableDictionary alloc] init];
+    self.editWidth = IUCSSMaxViewPortWidth;
+    
+    [self updateAssembledTagDictionary];
     return self;
 }
 
