@@ -162,6 +162,7 @@
             if(parentIUID){
                 [self.VC makeNewIUByDragAndDrop:newIU atPoint:convertedPoint atIU:parentIUID];
                 JDTraceLog( @"[IU:%@], dragPoint(%.1f, %.1f)", newIU.htmlID, dragPoint.x, dragPoint.y);
+                [self.window makeFirstResponder:self];
                 return YES;
             }
         }
@@ -173,6 +174,7 @@
         NSString *currentIUID = [self IUAtPoint:convertedPoint];
         if(currentIUID){
             [self.VC insertImage:imageName atIU:currentIUID];
+            [self.window makeFirstResponder:self];
             return YES;
         }
     }
