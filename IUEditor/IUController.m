@@ -13,7 +13,9 @@
 #import "IUImport.h"
 
 @implementation IUController{
-    NSArray *pasteboard;
+    NSArray     *pasteboard;
+    NSInteger   _pasteRepeatCount;
+    IUBox       *_lastPastedIU;
 }
 
 
@@ -28,13 +30,17 @@
     pasteboard = [NSArray arrayWithArray:self.selectedObjects];
 }
 
--(void)pasteToSelectedIU:(id)sender repeatCount:(NSInteger)repeatCount{
+-(void)pasteToSelectedIU:(id)sender{
     IUBox *pasteTarget;
     BOOL pasteTargetIsParent;
-    if ([self.selectedObjects isEqualToArray:pasteboard] || repeatCount) {
+    if ([self.selectedObjects isEqualToArray:pasteboard] || _pasteRepeatCount) {
         //paste to parent
-        IUBox *first = [self.selectedObjects firstObject];
-        pasteTarget = first.parent;
+        if (_pasteRepeatCount == 0) {
+            pasteTarget = [(IUBox*)[self.selectedObjects firstObject] parent];
+        }
+        else {
+            pasteTarget = _lastPastedIU.parent;
+        }
         pasteTargetIsParent = YES;
     }
     else {
@@ -48,12 +54,18 @@
         [box.identifierManager setNewIdentifierAndRegister:newBox withKey:@"copy"];
         newBox.name = [newBox.htmlID stringByReplacingOccurrencesOfString:@"copy" withString:@" copy"];
         for (NSNumber *width in newBox.css.allEditWidth) {
-            NSDictionary *tagDictionary = [newBox.css tagDictionaryForWidth:[width integerValue]];
+            NSDictionary *tagDictionary;
+            if (_pasteRepeatCount){
+                tagDictionary = [_lastPastedIU.css tagDictionaryForWidth:[width integerValue]];
+            }
+            else {
+                tagDictionary = [newBox.css tagDictionaryForWidth:[width integerValue]];
+            }
             NSNumber *x = [tagDictionary valueForKey:IUCSSTagX];
             
             if (x) {
                 if (pasteTargetIsParent) {
-                    NSNumber *newX = [NSNumber numberWithInteger:([x integerValue] + 10*repeatCount)];
+                    NSNumber *newX = [NSNumber numberWithInteger:([x integerValue] + 10)];
                     [newBox.css setValue:newX forTag:IUCSSTagX forWidth:[width integerValue]];
                 }
                 else {
@@ -64,7 +76,7 @@
             NSNumber *y = [tagDictionary valueForKey:IUCSSTagY];
             if (y) {
                 if (pasteTargetIsParent) {
-                    NSNumber *newY = [NSNumber numberWithInteger:([y integerValue] + 10*repeatCount)];
+                    NSNumber *newY = [NSNumber numberWithInteger:([y integerValue] + 10)];
                     [newBox.css setValue:newY forTag:IUCSSTagY forWidth:[width integerValue]];
                 }
                 else {
@@ -73,10 +85,12 @@
             }
         }
         BOOL result = [pasteTarget addIU:newBox error:&err];
+        _lastPastedIU = newBox;
         [self rearrangeObjects];
         [self setSelectedObject:newBox];
         assert(result);
     }
+    _pasteRepeatCount ++;
 }
 
 
@@ -174,7 +188,8 @@
         NSArray *selectedChildren = [allChildren filteredArrayUsingPredicate:predicate];
         [self _setSelectedObjects:selectedChildren];
     }
-    
+    //paste repeat count zero
+    _pasteRepeatCount = 0;
 }
 
 
