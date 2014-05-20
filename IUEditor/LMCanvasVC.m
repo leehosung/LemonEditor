@@ -133,6 +133,7 @@
 - (void)setDocument:(IUDocument *)document{
     NSAssert(self.documentBasePath != nil, @"resourcePath is nil");
     JDSectionInfoLog( IULogSource, @"resourcePath  : %@", self.documentBasePath);
+    [[self gridView] clearAllLayer];
     [_document setDelegate:nil];
     _document = document;
     _document.mqSizeArray = [self sizeView].sortedArray;
@@ -806,7 +807,7 @@
     [frameDict.dict removeObjectForKey:identifier];
     [self.controller rearrangeObjects];
     
-
+    [[self gridView] removeLayerWithIUIdentifier:identifier];
 }
 
 

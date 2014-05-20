@@ -37,6 +37,8 @@
 - (void)resetSelectionLayer;
 
 - (void)updateLayerRect:(NSMutableDictionary *)frameDict;
+- (void)removeLayerWithIUIdentifier:(NSString *)identifier;
+- (void)clearAllLayer;
 
 - (void)setBorder:(BOOL)border;
 - (void)setGhost:(BOOL)ghost;

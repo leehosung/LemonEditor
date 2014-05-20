@@ -220,6 +220,71 @@
     
 }
 
+- (void)clearAllLayer{
+    //pointLayer
+    NSMutableArray *layers = [pointManagerLayer.sublayers mutableCopy];
+    for(PointLayer *pLayer in layers){
+        [pLayer removeFromSuperlayer];
+    }
+    
+    //textLayer
+    layers = [textManageLayer.sublayers mutableCopy];
+    for(PointTextLayer *tLayer in layers){
+        [tLayer removeFromSuperlayer];
+    }
+    
+    //-----------------bound layer---------------------------
+    layers = [borderManagerLayer.sublayers mutableCopy];
+    for(BorderLayer *bLayer in layers){
+        [bLayer removeFromSuperlayer];
+    }
+}
+
+- (void)removeLayerWithIUIdentifier:(NSString *)identifier{
+    
+    CALayer *removeLayer;
+    BOOL found = false;;
+    //pointLayer
+    for(PointLayer *pLayer in pointManagerLayer.sublayers){
+        if([pLayer.iuID isEqualToString:identifier]){
+            removeLayer = pLayer;
+            found = true;
+            break;
+        }
+    }
+    if(found){
+        [removeLayer removeFromSuperlayer];
+        found = false;
+    }
+    
+    //textLayer
+    for(PointTextLayer *tLayer in textManageLayer.sublayers){
+        if([tLayer.iuID isEqualToString:identifier]){
+            removeLayer = tLayer;
+            found = true;
+            break;
+        }
+    }
+    if(found){
+        [removeLayer removeFromSuperlayer];
+        found = false;
+    }
+
+    
+    //-----------------bound layer---------------------------
+    for(BorderLayer *bLayer in borderManagerLayer.sublayers){
+        if([bLayer.iuID isEqualToString:identifier]){
+            removeLayer = bLayer;
+            found = true;
+            break;
+        }
+    }
+    if(found){
+        [removeLayer removeFromSuperlayer];
+    }
+    
+}
+
 #pragma mark red Point layer
 
 - (void)addRedPointLayer:(NSString *)iuID withFrame:(NSRect)frame{
