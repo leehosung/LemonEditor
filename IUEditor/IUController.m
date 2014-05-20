@@ -28,10 +28,10 @@
     pasteboard = [NSArray arrayWithArray:self.selectedObjects];
 }
 
--(void)pasteToSelectedIU:(id)sender{
+-(void)pasteToSelectedIU:(id)sender repeatCount:(NSInteger)repeatCount{
     IUBox *pasteTarget;
     BOOL pasteTargetIsParent;
-    if ([self.selectedObjects isEqualToArray:pasteboard]) {
+    if ([self.selectedObjects isEqualToArray:pasteboard] || repeatCount) {
         //paste to parent
         IUBox *first = [self.selectedObjects firstObject];
         pasteTarget = first.parent;
@@ -53,7 +53,7 @@
             
             if (x) {
                 if (pasteTargetIsParent) {
-                    NSNumber *newX = [NSNumber numberWithInteger:[x integerValue] + 10];
+                    NSNumber *newX = [NSNumber numberWithInteger:([x integerValue] + 10*repeatCount)];
                     [newBox.css setValue:newX forTag:IUCSSTagX forWidth:[width integerValue]];
                 }
                 else {
@@ -64,7 +64,7 @@
             NSNumber *y = [tagDictionary valueForKey:IUCSSTagY];
             if (y) {
                 if (pasteTargetIsParent) {
-                    NSNumber *newY = [NSNumber numberWithInteger:[y integerValue] + 10];
+                    NSNumber *newY = [NSNumber numberWithInteger:([y integerValue] + 10*repeatCount)];
                     [newBox.css setValue:newY forTag:IUCSSTagY forWidth:[width integerValue]];
                 }
                 else {

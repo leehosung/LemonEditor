@@ -75,5 +75,5 @@
 - (NSString *)currentHTML;
 
 - (void)copy:(id)sender;
-- (void)paste:(id)sender;
+- (void)paste:(id)sender repeatCount:(NSInteger)repeatCount;
 @end

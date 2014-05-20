@@ -31,7 +31,7 @@
 -(IUImport*)importIUInSelectionChain;
 
 -(void)copySelectedIUToPasteboard:(id)sender;
--(void)pasteToSelectedIU:(id)sender;
+-(void)pasteToSelectedIU:(id)sender repeatCount:(NSInteger)repeatCount;
 
 @property _binding_ NSRange selectedTextRange;
 
