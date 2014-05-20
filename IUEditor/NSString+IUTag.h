@@ -11,56 +11,56 @@
 ////////EventTag
 #define IUEventTag NSString*
 
-#define IUEventTagIUID      @"iuID"
-#define IUEventTagVariable  @"variable"
-#define IUEventTagMaxValue  @"maxValue"
-#define IUEventTagInitialValue  @"initialValue"
-#define IUEventTagActionType    @"actionType"
+static NSString * IUEventTagIUID      = @"iuID";
+static NSString * IUEventTagVariable  = @"variable";
+static NSString * IUEventTagMaxValue  = @"maxValue";
+static NSString * IUEventTagInitialValue = @"initialValue";
+static NSString * IUEventTagActionType   = @"actionType";
 
 //equation Dict
-#define IUEventTagReceiverArray @"eventReceiverArray"
-#define IUEventTagReceiverType @"receiverType"
+static NSString * IUEventTagReceiverArray = @"eventReceiverArray";
+static NSString * IUEventTagReceiverType = @"receiverType";
 
-#define IUEventTagEnableVisible @"enableVisible"
-#define IUEventTagVisibleID     @"visibleID"
-#define IUEventTagVisibleEqVariable @"eqVisibleVariable"
-#define IUEventTagVisibleEquation @"eqVisible"
-#define IUEventTagVisibleDuration @"eqVisibleDuration"
-#define IUEventTagVisibleDirection @"directionType"
+static NSString * IUEventTagEnableVisible = @"enableVisible";
+static NSString * IUEventTagVisibleID     = @"visibleID";
+static NSString * IUEventTagVisibleEqVariable = @"eqVisibleVariable";
+static NSString * IUEventTagVisibleEquation = @"eqVisible";
+static NSString * IUEventTagVisibleDuration = @"eqVisibleDuration";
+static NSString * IUEventTagVisibleDirection = @"directionType";
 
-#define IUEventTagEnableFrame   @"enableFrame"
-#define IUEventTagFrameID       @"frameID"
-#define IUEventTagFrameEqVariable @"eqFrameVariable"
-#define IUEventTagFrameEquation    @"eqFrame"
-#define IUEventTagFrameDuration @"eqFrameDuration"
-#define IUEventTagFrameWidth    @"eqFrameWidth"
-#define IUEventTagFrameHeight   @"eqFrameHeight"
+static NSString * IUEventTagEnableFrame   = @"enableFrame";
+static NSString * IUEventTagFrameID       = @"frameID";
+static NSString * IUEventTagFrameEqVariable = @"eqFrameVariable";
+static NSString * IUEventTagFrameEquation    = @"eqFrame";
+static NSString * IUEventTagFrameDuration = @"eqFrameDuration";
+static NSString * IUEventTagFrameWidth    = @"eqFrameWidth";
+static NSString * IUEventTagFrameHeight   = @"eqFrameHeight";
 
 ///////CSSTag
 #define IUCSSTag NSString*
-#define IUCSSTagPosition @"position"
-#define IUCSSTagFlow @"flow"
+static NSString * IUCSSTagPosition = @"position";
+static NSString * IUCSSTagFlow = @"flow";
 
-#define IUCSSTagX @"left"
-#define IUCSSTagY @"top"
+static NSString * IUCSSTagX = @"left";
+static NSString * IUCSSTagY = @"top";
 
-#define IUCSSTagWidth @"width"
-#define IUCSSTagHeight @"height"
+static NSString * IUCSSTagWidth = @"width";
+static NSString * IUCSSTagHeight = @"height";
 
-#define IUCSSTagXUnit   @"xUnit"
-#define IUCSSTagYUnit   @"yUnit"
-#define IUCSSTagWidthUnit   @"wUnit"
-#define IUCSSTagHeightUnit   @"hUnit"
+static NSString * IUCSSTagXUnit   = @"xUnit";
+static NSString * IUCSSTagYUnit   = @"yUnit";
+static NSString * IUCSSTagWidthUnit   = @"wUnit";
+static NSString * IUCSSTagHeightUnit   = @"hUnit";
 
-#define IUCSSTagPercentX        @"percentLeft"
-#define IUCSSTagPercentY        @"percentTop"
-#define IUCSSTagPercentWidth    @"percentWidth"
-#define IUCSSTagPercentHeight   @"percentHeight"
+static NSString * IUCSSTagPercentX        = @"percentLeft";
+static NSString * IUCSSTagPercentY        = @"percentTop";
+static NSString * IUCSSTagPercentWidth    = @"percentWidth";
+static NSString * IUCSSTagPercentHeight   = @"percentHeight";
 
 
 //background-image css
-#define IUCSSTagImage @"background-image"
-#define IUCSSTagBGSize @"background-size"
+static NSString * IUCSSTagImage = @"background-image";
+static NSString * IUCSSTagBGSize = @"background-size";
 typedef enum{
     IUBGSizeTypeAuto,
     IUBGSizeTypeCover,
@@ -69,42 +69,42 @@ typedef enum{
     IUBGSizeTypeCenter,
 }IUBGSizeType;
 
-#define IUCSSTagBGXPosition @"bgX"
-#define IUCSSTagBGYPosition @"bgY"
-#define IUCSSTagBGColor @"background-color"
-#define IUCSSTagBGGradient @"bg-gradient"
-#define IUCSSTagBGGradientStartColor @"bg-gradient-start"
-#define IUCSSTagBGGradientEndColor @"bg-gradient-end"
-#define IUCSSTagBGRepeat    @"bacground-repeat"
+static NSString * IUCSSTagBGXPosition = @"bgX";
+static NSString * IUCSSTagBGYPosition = @"bgY";
+static NSString * IUCSSTagBGColor = @"background-color";
+static NSString * IUCSSTagBGGradient = @"bg-gradient";
+static NSString * IUCSSTagBGGradientStartColor = @"bg-gradient-start";
+static NSString * IUCSSTagBGGradientEndColor = @"bg-gradient-end";
+static NSString * IUCSSTagBGRepeat    = @"bacground-repeat";
 
 
-#define IUCSSTagBorderWidth @"borderWeight"
-#define IUCSSTagBorderColor @"borderColor"
+static NSString * IUCSSTagBorderWidth = @"borderWeight";
+static NSString * IUCSSTagBorderColor = @"borderColor";
 
-#define IUCSSTagBorderTopWidth @"borderTWeight"
-#define IUCSSTagBorderTopColor @"borderTColor"
-#define IUCSSTagBorderRightWidth @"borderRWeight"
-#define IUCSSTagBorderRightColor @"borderRColor"
-#define IUCSSTagBorderLeftWidth @"borderLWeight"
-#define IUCSSTagBorderLeftColor @"borderLColor"
-#define IUCSSTagBorderBottomWidth @"borderBWeight"
-#define IUCSSTagBorderBottomColor @"borderBColor"
+static NSString * IUCSSTagBorderTopWidth = @"borderTWeight";
+static NSString * IUCSSTagBorderTopColor = @"borderTColor";
+static NSString * IUCSSTagBorderRightWidth = @"borderRWeight";
+static NSString * IUCSSTagBorderRightColor = @"borderRColor";
+static NSString * IUCSSTagBorderLeftWidth = @"borderLWeight";
+static NSString * IUCSSTagBorderLeftColor = @"borderLColor";
+static NSString * IUCSSTagBorderBottomWidth = @"borderBWeight";
+static NSString * IUCSSTagBorderBottomColor = @"borderBColor";
 
-#define IUCSSTagBorderRadius @"borderRadius"
-#define IUCSSTagBorderRadiusTopLeft @"borderTLRadius"
-#define IUCSSTagBorderRadiusTopRight @"borderTRRadius"
-#define IUCSSTagBorderRadiusBottomLeft @"borderBLRadius"
-#define IUCSSTagBorderRadiusBottomRight @"borderBRRadius"
+static NSString * IUCSSTagBorderRadius = @"borderRadius";
+static NSString * IUCSSTagBorderRadiusTopLeft = @"borderTLRadius";
+static NSString * IUCSSTagBorderRadiusTopRight = @"borderTRRadius";
+static NSString * IUCSSTagBorderRadiusBottomLeft = @"borderBLRadius";
+static NSString * IUCSSTagBorderRadiusBottomRight = @"borderBRRadius";
 
-#define IUCSSTagFontName @"fontName"
-#define IUCSSTagFontSize @"fontSize"
-#define IUCSSTagFontColor @"fontColor"
+static NSString * IUCSSTagFontName = @"fontName";
+static NSString * IUCSSTagFontSize = @"fontSize";
+static NSString * IUCSSTagFontColor = @"fontColor";
 
-#define IUCSSTagFontWeight @"fontWeight"
-#define IUCSSTagFontStyle @"fontStyle"
-#define IUCSSTagTextDecoration @"textDecoration"
+static NSString * IUCSSTagFontWeight = @"fontWeight";
+static NSString * IUCSSTagFontStyle = @"fontStyle";
+static NSString * IUCSSTagTextDecoration = @"textDecoration";
 
-#define IUCSSTagTextAlign @"textAlign"
+static NSString * IUCSSTagTextAlign = @"textAlign";
 typedef enum{
     IUAlignLeft,
     IUAlignCenter,
@@ -112,26 +112,26 @@ typedef enum{
     IUAlignJustify,
 }IUAlign;
 
-#define IUCSSTagLineHeight @"lineHeight"
+static NSString * IUCSSTagLineHeight = @"lineHeight";
 
-#define IUCSSTagOverflow @"overflow"
+static NSString * IUCSSTagOverflow = @"overflow";
 
-#define IUCSSTagShadowColor @"shadowColor"
-#define IUCSSTagShadowVertical @"shadowVertical"
-#define IUCSSTagShadowHorizontal @"shadowHorizontal"
-#define IUCSSTagShadowSpread @"shadowSpread"
-#define IUCSSTagShadowBlur @"shadowBlur"
+static NSString * IUCSSTagShadowColor = @"shadowColor";
+static NSString * IUCSSTagShadowVertical = @"shadowVertical";
+static NSString * IUCSSTagShadowHorizontal = @"shadowHorizontal";
+static NSString * IUCSSTagShadowSpread = @"shadowSpread";
+static NSString * IUCSSTagShadowBlur = @"shadowBlur";
 
-#define IUCSSTagHidden @"hidden"
+static NSString * IUCSSTagHidden = @"hidden";
 
 //hover CSS
-#define IUCSSTagHoverBGImagePositionEnable @"HoverBGImagePositionEnable"
-#define IUCSSTagHoverBGImageX @"hoverBGImageX"
-#define IUCSSTagHoverBGImageY @"hoverBGImageY"
-#define IUCSSTagHoverBGColorEnable  @"hoverBGColorEnable"
-#define IUCSSTagHoverBGColor  @"hoverBGColor"
-#define IUCSSTagHoverTextColorEnable  @"hoverTextColorEnable"
-#define IUCSSTagHoverTextColor  @"hoverTextColor"
+static NSString * IUCSSTagHoverBGImagePositionEnable = @"HoverBGImagePositionEnable";
+static NSString * IUCSSTagHoverBGImageX = @"hoverBGImageX";
+static NSString * IUCSSTagHoverBGImageY = @"hoverBGImageY";
+static NSString * IUCSSTagHoverBGColorEnable  = @"hoverBGColorEnable";
+static NSString * IUCSSTagHoverBGColor  = @"hoverBGColor";
+static NSString * IUCSSTagHoverTextColorEnable  = @"hoverTextColorEnable";
+static NSString * IUCSSTagHoverTextColor  = @"hoverTextColor";
 
 #define isSameTag isEqualToString
 

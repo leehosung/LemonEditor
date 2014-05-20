@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "objc/runtime.h"
 
-#define kJDKeyPath @"JDKeyPath"
-#define kJDContext @"JDContext"
+static NSString * kJDKeyPath = @"JDKeyPath";
+static NSString * kJDContext = @"JDContext";
 
 
 @interface JDProperty : NSObject

@@ -9,14 +9,15 @@
 #ifndef IUCanvas_IUDefinition_h
 #define IUCanvas_IUDefinition_h
 
-//for dragging (pasteboard)
-#define kUTTypeIUType       @"kUTTypeIUType"
-#define kUTTypeIUImageResource      @"kUTTypeIUImageResource"
-
 //for makeing default size view size (initialize)
 #define defaultFrameWidth 960
 //for media-query default size(== maximum size는 default collection으로 분료)
 #define IUCSSMaxViewPortWidth 9999
+
+
+//for dragging (pasteboard)
+static NSString * kUTTypeIUType  =  @"kUTTypeIUType";
+static NSString * kUTTypeIUImageResource = @"kUTTypeIUImageResource";
 
 
 #endif

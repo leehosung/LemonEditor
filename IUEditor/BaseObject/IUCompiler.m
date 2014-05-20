@@ -316,7 +316,7 @@
     return dict;
 }
 
-#define IUCompilerTagOption @"tag"
+static NSString * IUCompilerTagOption = @"tag";
 -(JDCode*)outputHTMLAsBox:(IUBox*)iu option:(NSDictionary*)option{
     NSString *tag = @"div";
     if ([iu isKindOfClass:[IUForm class]]) {

@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-#define IUTextInfoFont @"font"
-#define IUTextInfoFontSize @"font-size"
+static NSString * IUTextInfoFont = @"font";
+static NSString * IUTextInfoFontSize = @"font-size";
+static NSString * IUTextCursorLocationID    = @"id";
+static NSString * IUTextCursorLocationIndex = @"index";
 
 @protocol IUTextManagerDataSource <NSObject>
 - (NSString*)identifierForTextManager;
@@ -45,8 +47,7 @@
 //        value  : NSDictionary with key-value
 - (NSDictionary*)css;
 
-#define IUTextCursorLocationID    @"id"
-#define IUTextCursorLocationIndex @"index"
+
 - (NSDictionary*)cursor;
 
 @property (weak) id <IUTextManagerDataSource> dataSource;
