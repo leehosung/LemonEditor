@@ -626,6 +626,13 @@
     [self.css eradicateTag:IUCSSTagY];
     
     [self.delegate IUClassIdentifier:self.htmlID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+    
+    
+    //중간에 set된 flow가 있으면 제대로 맞추기 위해서 html reload
+    if(_flow){
+        [self.delegate IUHTMLIdentifier:self.parent.htmlID HTML:self.parent.html withParentID:self.parent.parent.htmlID];
+    }
+
 }
 
 //iucontroller & inspectorVC sync가 안맞는듯.
