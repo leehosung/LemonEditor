@@ -14,8 +14,6 @@
 #import "LMWC.h"
 
 @implementation WebCanvasView{
-    NSEvent *lastEvent;
-    NSInteger repeatCount;
 }
 
 - (id)init{
@@ -47,11 +45,10 @@
 #pragma mark Event
 
 - (BOOL)performKeyEquivalent:(NSEvent *)theEvent{
-    BOOL result = [self webCanvasPerformKeyEquivalent:theEvent lastEvent:lastEvent];
+    BOOL result = [self webCanvasPerformKeyEquivalent:theEvent];
     if (result == NO) {
         result = [super performKeyEquivalent:theEvent];
     }
-    lastEvent = theEvent;
     return result;
 }
 /*
@@ -59,7 +56,7 @@
  * deletekey는 performKeyequvalent로 들어오지않음
  * window sendevent를 받아서 lmcanvasview에서 처리
  */
-- (BOOL)webCanvasPerformKeyEquivalent:(NSEvent *)theEvent lastEvent:(NSEvent*)aLastEvent{
+- (BOOL)webCanvasPerformKeyEquivalent:(NSEvent *)theEvent{
     NSResponder *currentResponder = [[self window] firstResponder];
     NSView *mainView = self.VC.view.mainView;
     
@@ -72,26 +69,16 @@
             if([theEvent modifierFlags] & NSCommandKeyMask){
                 //select all
                 if(key == 'A' || key == 'a'){
-                    repeatCount = 0;
                     [self selectWholeRangeOfCurrentCursor];
                     return YES;
                 }
                 if (key == 'c') {
                     //copy
-                    repeatCount = 0;
                     [self.VC copy:self];
                     return YES;
                 }
                 if (key == 'v') {
-                    //paste
-                    if (aLastEvent.type == NSKeyDown && ( [aLastEvent modifierFlags] & NSCommandKeyMask) && [[theEvent charactersIgnoringModifiers] characterAtIndex:0] == 'v') {
-                        repeatCount ++;
-                        [self.VC paste:self repeatCount:repeatCount];
-                    }
-                    else {
-                        repeatCount = 0;
-                        [self.VC paste:self repeatCount:0];
-                    }
+                    [self.VC paste:self];
                     return YES;
                 }
             }

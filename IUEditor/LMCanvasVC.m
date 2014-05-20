@@ -244,6 +244,10 @@
         return;
     }
     NSArray *addArray = [NSArray arrayWithObject:identifier];
+    NSArray *currentSelectinos = [[self.controller selectedObjects] valueForKeyPath:@"htmlID"];
+    if ([addArray isEqualToArray:currentSelectinos]) {
+        return;
+    }
     [self.controller trySetSelectedObjectsByIdentifiers:addArray];
 
 }
@@ -828,8 +832,8 @@
     [self.controller copySelectedIUToPasteboard:self];
 }
 
-- (void)paste:(id)sender repeatCount:(NSInteger)repeatCount{
-    [self.controller pasteToSelectedIU:self repeatCount:repeatCount];
+- (void)paste:(id)sender{
+    [self.controller pasteToSelectedIU:self];
 }
 
 @end
