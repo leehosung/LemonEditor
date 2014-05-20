@@ -2,7 +2,7 @@
 //  LMStartWC.m
 //  IUEditor
 //
-//  Created by jd on 4/25/14.
+//  Created by jd on 4/25/14.s
 //  Copyright (c) 2014 JDLab. All rights reserved.
 //
 
@@ -52,6 +52,12 @@
     
     _recentVC.prevB = _prevB;
     _recentVC.nextB = _nextB;
+    [_recentVC show];
+    
+    _templateVC.prevB = _prevB;
+    _templateVC.nextB = _nextB;
+    [_templateVC show];
+    
 }
 
 - (void)removeCurrentView{
@@ -66,6 +72,7 @@
         case 0:
             [self removeCurrentView];
             [_mainV addSubviewFullFrame:_templateVC.view];
+            [_templateVC show];
             break;
         case 1:{
             [self removeCurrentView];

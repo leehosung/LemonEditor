@@ -448,6 +448,11 @@
 		CB9BD6391914DC62002C9369 /* LMStartNewDjangoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9BD6371914DC62002C9369 /* LMStartNewDjangoVC.xib */; };
 		CB9BD63D1914DE23002C9369 /* LMStartNewPresentationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9BD63B1914DE23002C9369 /* LMStartNewPresentationVC.m */; };
 		CB9BD63E1914DE23002C9369 /* LMStartNewPresentationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9BD63C1914DE23002C9369 /* LMStartNewPresentationVC.xib */; };
+		CBFBE681192A12C100F03F76 /* iueditorHome.zip in Resources */ = {isa = PBXBuildFile; fileRef = CBFBE680192A12C100F03F76 /* iueditorHome.zip */; };
+		CBFBE683192AF2F400F03F76 /* lemon.png in Resources */ = {isa = PBXBuildFile; fileRef = CBFBE682192AF2F400F03F76 /* lemon.png */; };
+		CBFBE685192AF32E00F03F76 /* sampleTemplate.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBFBE684192AF32E00F03F76 /* sampleTemplate.plist */; };
+		CBFBE688192B581400F03F76 /* gallary.zip in Resources */ = {isa = PBXBuildFile; fileRef = CBFBE687192B581400F03F76 /* gallary.zip */; };
+		CBFBE68A192B583E00F03F76 /* django.png in Resources */ = {isa = PBXBuildFile; fileRef = CBFBE689192B583E00F03F76 /* django.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1046,6 +1051,11 @@
 		CB9BD63A1914DE23002C9369 /* LMStartNewPresentationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMStartNewPresentationVC.h; sourceTree = "<group>"; };
 		CB9BD63B1914DE23002C9369 /* LMStartNewPresentationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMStartNewPresentationVC.m; sourceTree = "<group>"; };
 		CB9BD63C1914DE23002C9369 /* LMStartNewPresentationVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMStartNewPresentationVC.xib; sourceTree = "<group>"; };
+		CBFBE680192A12C100F03F76 /* iueditorHome.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = iueditorHome.zip; path = ../../Desktop/iueditorHome.zip; sourceTree = "<group>"; };
+		CBFBE682192AF2F400F03F76 /* lemon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lemon.png; path = "../../Desktop/iueditor homepage/lemon.png"; sourceTree = "<group>"; };
+		CBFBE684192AF32E00F03F76 /* sampleTemplate.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sampleTemplate.plist; sourceTree = "<group>"; };
+		CBFBE687192B581400F03F76 /* gallary.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = gallary.zip; path = ../../Desktop/gallary.zip; sourceTree = "<group>"; };
+		CBFBE689192B583E00F03F76 /* django.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = django.png; path = "../../Desktop/iueditor homepage/django.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1859,6 +1869,7 @@
 		69C5759E18D6F61E0016F050 = {
 			isa = PBXGroup;
 			children = (
+				CBFBE67C192A07A300F03F76 /* SampleTemplate */,
 				690A409E18E170AC00095263 /* Resource */,
 				69C575B018D6F61E0016F050 /* IUEditor */,
 				69C575CE18D6F61E0016F050 /* IUEditorTests */,
@@ -2042,6 +2053,34 @@
 			name = Editor;
 			sourceTree = "<group>";
 		};
+		CBFBE67C192A07A300F03F76 /* SampleTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				CBFBE684192AF32E00F03F76 /* sampleTemplate.plist */,
+				CBFBE686192B577500F03F76 /* SampleGallary */,
+				CBFBE67D192A07BD00F03F76 /* IUEditorHome */,
+			);
+			name = SampleTemplate;
+			sourceTree = "<group>";
+		};
+		CBFBE67D192A07BD00F03F76 /* IUEditorHome */ = {
+			isa = PBXGroup;
+			children = (
+				CBFBE682192AF2F400F03F76 /* lemon.png */,
+				CBFBE680192A12C100F03F76 /* iueditorHome.zip */,
+			);
+			name = IUEditorHome;
+			sourceTree = "<group>";
+		};
+		CBFBE686192B577500F03F76 /* SampleGallary */ = {
+			isa = PBXGroup;
+			children = (
+				CBFBE689192B583E00F03F76 /* django.png */,
+				CBFBE687192B581400F03F76 /* gallary.zip */,
+			);
+			name = SampleGallary;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2123,6 +2162,7 @@
 				69D79B2F19138CB90020608D /* LMStartNewVC.xib in Resources */,
 				3DD9E97219123B3E0076BF4E /* iueditor.js in Resources */,
 				3DED276F190E3CAC001A1D67 /* jquery.bxslider.min.js in Resources */,
+				CBFBE681192A12C100F03F76 /* iueditorHome.zip in Resources */,
 				3DED2770190E3CAC001A1D67 /* jquery.bxslider.js in Resources */,
 				3DED27311904EDF0001A1D67 /* movie.mp4 in Resources */,
 				267CB19D190F93370079E565 /* tab_event_off.png in Resources */,
@@ -2137,6 +2177,7 @@
 				267CB199190F93370079E565 /* tab_clipart_on.png in Resources */,
 				2628C91E1919C8C800D9D8CD /* tab_primary_on.png in Resources */,
 				3DBC932F18F647EC00F217BD /* iu.js in Resources */,
+				CBFBE688192B581400F03F76 /* gallary.zip in Resources */,
 				3DF8041A18FE62F200913505 /* view_border@2x.png in Resources */,
 				2628C933191A360200D9D8CD /* stack_submit@2x.png in Resources */,
 				3DED267F1900D329001A1D67 /* stack_fblike@2x.png in Resources */,
@@ -2155,6 +2196,7 @@
 				690A8260190A238600DDBA86 /* StartPage.xib in Resources */,
 				2628C92A191A313C00D9D8CD /* tool_form.png in Resources */,
 				3DB3ACF318EBFDE20046DFB7 /* iuframe.js in Resources */,
+				CBFBE68A192B583E00F03F76 /* django.png in Resources */,
 				3DED26901900D329001A1D67 /* stack_header@2x.png in Resources */,
 				3DED276E190E3976001A1D67 /* jquery.bxslider.css in Resources */,
 				3DED2780190F85E0001A1D67 /* bg_contain@2x.png in Resources */,
@@ -2163,6 +2205,7 @@
 				696D1C9A18E5366400B4AB16 /* webTemplate.html in Resources */,
 				2628C93A191A396400D9D8CD /* add_section.png in Resources */,
 				3DF803DB18FE62C900913505 /* panel_right.png in Resources */,
+				CBFBE685192AF32E00F03F76 /* sampleTemplate.plist in Resources */,
 				265BC57A190FA9B600A1758F /* controller@2x.png in Resources */,
 				3DF803EE18FE62C900913505 /* grid.png in Resources */,
 				2628C9231919C8C800D9D8CD /* tab_secondary_on@2x.png in Resources */,
@@ -2269,6 +2312,7 @@
 				3DF803ED18FE62C900913505 /* next.png in Resources */,
 				690A8274190A2CC200DDBA86 /* new_pt.png in Resources */,
 				69D79B3919138CDC0020608D /* LMStartTemplateVC.xib in Resources */,
+				CBFBE683192AF2F400F03F76 /* lemon.png in Resources */,
 				267CB194190F93370079E565 /* tab_appearance_off@2x.png in Resources */,
 				69CB92B9191B6A2600BEFBED /* LMPropertyIUPageLinkSetVC.xib in Resources */,
 				265BC57D190FAF2400A1758F /* dotline.png in Resources */,

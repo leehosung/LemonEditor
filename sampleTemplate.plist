@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>sampleGallary</string>
+		<key>type</key>
+		<string>IUDjango</string>
+		<key>projectFile</key>
+		<string></string>
+		<key>desc</key>
+		<string>Sample Gallary for Django</string>
+		<key>pageSize</key>
+		<string>960</string>
+		<key>feature</key>
+		<string>Django</string>
+		<key>images</key>
+		<array>
+			<string>django.png</string>
+		</array>
+		<key>projectPackageFile</key>
+		<string>gallary.zip</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>IUHome</string>
+		<key>type</key>
+		<string>IUProject</string>
+		<key>projectFile</key>
+		<string></string>
+		<key>desc</key>
+		<string>One Page Basic Homepage for IU beginers</string>
+		<key>pageSize</key>
+		<string>960 / 360</string>
+		<key>feature</key>
+		<string>Reponsive</string>
+		<key>images</key>
+		<array>
+			<string>lemon.png</string>
+		</array>
+		<key>projectPackageFile</key>
+		<string>iueditorHome.zip</string>
+	</dict>
+</array>
+</plist>

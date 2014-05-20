@@ -8,6 +8,7 @@
 
 #import "IUResourceNode.h"
 #import "IUResourceGroupNode.h"
+#import "IUProject.h"
 
 @implementation IUResourceNode{
     IUResourceType _type;
@@ -46,6 +47,9 @@
 }
 
 -(NSString*)absolutePath{
+    if ([self.parent isKindOfClass:[IUProject class]]) {
+        return [((IUProject*)self.parent).absoluteDirectory stringByAppendingPathComponent:self.name];
+    }
     return [self.parent.absolutePath stringByAppendingPathComponent:self.name];
 }
 
