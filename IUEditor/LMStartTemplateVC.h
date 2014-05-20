@@ -7,7 +7,17 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "IUProject.h"
+
+
 
 @interface LMStartTemplateVC : NSViewController
+
+@property NSButton  *prevB;
 @property NSButton  *nextB;
+@property (strong) IBOutlet NSArrayController *templateAC;
+@property (weak) IBOutlet NSCollectionView *templateCollectionV;
+
+-(void)show;
+
 @end

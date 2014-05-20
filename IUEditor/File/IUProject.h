@@ -46,7 +46,7 @@ static NSString * IUProjectKeyDirectory = @"dir";
 @property   NSMutableArray  *mqSizes;
 
 - (NSString*)path;
-
+- (NSString*)absoluteDirectory;
 
 + (id)projectWithContentsOfPackage:(NSString*)path;
 + (IUProject*)createProject:(NSDictionary*)setting error:(NSError**)error;

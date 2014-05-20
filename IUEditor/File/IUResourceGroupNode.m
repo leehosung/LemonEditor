@@ -9,6 +9,7 @@
 #import "IUResourceGroupNode.h"
 #import "IUResourceNode.h"
 #import "JDFileUtil.h"
+#import "IUProject.h"
 
 @implementation IUResourceGroupNode{
 }
@@ -18,6 +19,9 @@
 }
 
 -(NSString*)absolutePath{
+    if ([self.parent isKindOfClass:[IUProject class]]) {
+        return [((IUProject*)self.parent).absoluteDirectory stringByAppendingPathComponent:self.name];
+    }
     return [[(IUResourceGroupNode*)self.parent absolutePath] stringByAppendingPathComponent:self.name];
 }
 

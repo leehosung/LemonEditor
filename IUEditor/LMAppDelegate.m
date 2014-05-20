@@ -44,6 +44,8 @@
     [self.testController showWindow:nil];
     [wc addSelectedIU:@"test"];
 #endif
+    
+    //요 부분을 고쳐서 처음 런칭했을 때 화면을 바꾸자.
     [self openDocument:nil];
 }
 
@@ -58,7 +60,7 @@
 - (void)openDocument:(id)sender{
     NSString *value;
     if ([sender isKindOfClass:[NSMenuItem class]]) {
-        value = [[[JDFileUtil util] openDirectoryByNSOpenPanel] path];
+        value = [[[JDFileUtil util] openFileByNSOpenPanel] path];
     }
     else {
         value = [[NSUserDefaults standardUserDefaults] valueForKey:@"lastDocument"];

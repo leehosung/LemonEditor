@@ -74,6 +74,10 @@
     return _path;
 }
 
+- (NSString*)absoluteDirectory{
+    return [_path stringByDeletingLastPathComponent];
+}
+
 // return value : project path
 +(IUProject*)createProject:(NSDictionary*)setting error:(NSError**)error{
 
@@ -82,9 +86,11 @@
     project.buildDirectoryName = @"build";
     
     NSString *dir = [setting objectForKey:IUProjectKeyDirectory];
-    project.path = [dir stringByAppendingPathComponent:[project.name stringByAppendingPathExtension:@"iuproject"]];
-    [JDFileUtil rmDirPath:[project.path stringByAppendingPathExtension:@"*"]];
-    ReturnNilIfFalse([JDFileUtil mkdirPath:project.path]);
+    project.path = [dir stringByAppendingPathComponent:[project.name stringByAppendingPathComponent:@"IUML.iuproject"]];
+    [JDFileUtil rmDirPath:dir];
+    ReturnNilIfFalse([JDFileUtil mkdirPath:dir]);
+
+//    ReturnNilIfFalse([JDFileUtil mkdirPath:project.path]);
     
     //create document dir
     
@@ -148,7 +154,7 @@
 
 
 + (id)projectWithContentsOfPackage:(NSString*)path{
-    IUProject *project = [NSKeyedUnarchiver unarchiveObjectWithFile:[path stringByAppendingPathComponent:@"IUML"]];
+    IUProject *project = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
     project.path = path;
     return project;
 }
@@ -221,7 +227,7 @@
 
 
 -(BOOL)save{
-    return [NSKeyedArchiver archiveRootObject:self toFile:[self IUMLPath]];
+    return [NSKeyedArchiver archiveRootObject:self toFile:_path];
 }
 
 
