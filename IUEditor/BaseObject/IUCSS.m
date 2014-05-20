@@ -12,6 +12,7 @@
 @interface IUCSS ()
 @property NSMutableDictionary *cssFrameDict;
 @property (readwrite) NSMutableDictionary *assembledTagDictionaryForEditWidth;
+@property (readwrite) NSMutableDictionary *tagDictionaryForEditWidth;
 @end
 
 @implementation IUCSS{
@@ -137,7 +138,11 @@
     [self updateAssembledTagDictionary];
 }
 
--(NSDictionary*)assembledTagDictionary{
+-(NSMutableDictionary*)tagDictionaryForEditWidth{
+    return _cssFrameDict[@(_editWidth)];
+}
+
+-(NSMutableDictionary*)assembledTagDictionary{
     return _assembledTagDictionaryForEditWidth;
 }
 

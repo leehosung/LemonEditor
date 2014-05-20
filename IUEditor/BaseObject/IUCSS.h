@@ -37,5 +37,5 @@
 
 //observable.
 @property (readonly) NSMutableDictionary *assembledTagDictionary;
-
+@property (readonly) NSMutableDictionary *tagDictionaryForEditWidth;
 @end
