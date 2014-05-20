@@ -9,7 +9,7 @@
 #import "IUDocument.h"
 #import "IUHeader.h"
 
-#define kIUBackgroundOptionEmpty @"backgroundOptionEmpty"
+static NSString* kIUBackgroundOptionEmpty = @"backgroundOptionEmpty";
 
 @interface IUBackground : IUDocument
 

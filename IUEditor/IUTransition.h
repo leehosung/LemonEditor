@@ -8,11 +8,11 @@
 
 #import "IUBox.h"
 
-#define kIUTransitionAnimationOverlap @"Overlap"
-#define kIUTransitionAnimationFlyFromRight @"Fly From Right Side"
+static NSString * kIUTransitionAnimationOverlap = @"Overlap";
+static NSString * kIUTransitionAnimationFlyFromRight = @"Fly From Right Side";
 
-#define kIUTransitionEventMouseOn @"Mouse On"
-#define kIUTransitionEventClick @"Click"
+static NSString * kIUTransitionEventMouseOn = @"Mouse On";
+static NSString * kIUTransitionEventClick = @"Click";
 
 @interface IUTransition : IUBox
 

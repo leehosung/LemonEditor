@@ -20,7 +20,7 @@
 @end
 
 
-#define kNotiHerokuLogin @"kNotiHerokuLogin"
+static NSString * kNotiHerokuLogin = @"kNotiHerokuLogin";
 
 @interface JDHerokuUtil : NSObject{
 }

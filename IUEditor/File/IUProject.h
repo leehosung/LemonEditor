@@ -27,10 +27,10 @@ typedef enum _IUGitType{
 @class IUDocument;
 
 //setting
-#define IUProjectKeyGit @"git"
-#define IUProjectKeyAppName @"appName"
-#define IUProjectKeyHeroku @"heroku"
-#define IUProjectKeyDirectory @"dir"
+static NSString * IUProjectKeyGit = @"git";
+static NSString * IUProjectKeyAppName = @"appName";
+static NSString * IUProjectKeyHeroku = @"heroku";
+static NSString * IUProjectKeyDirectory = @"dir";
 
 @interface IUProject : IUDocumentGroupNode <IUResourceGroupNode>
 @property (nonatomic, copy) NSString          *path;
