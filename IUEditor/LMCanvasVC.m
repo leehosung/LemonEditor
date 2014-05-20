@@ -827,8 +827,8 @@
     [self.controller copySelectedIUToPasteboard:self];
 }
 
-- (void)paste:(id)sender{
-    [self.controller pasteToSelectedIU:self];
+- (void)paste:(id)sender repeatCount:(NSInteger)repeatCount{
+    [self.controller pasteToSelectedIU:self repeatCount:repeatCount];
 }
 
 @end
