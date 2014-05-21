@@ -25,6 +25,7 @@
 -(IUBox *)IUBoxByIdentifier:(NSString *)identifier;
 
 -(NSString*)keyPathFromControllerToCSSTag:(IUCSSTag)tag;
+-(NSString*)keyPathFromControllerToTextCSSProperty:(NSString *)property;
 -(NSString*)keyPathFromControllerToEventTag:(IUEventTag)tag;
 -(NSString*)keyPathFromControllerToProperty:(NSString*)property;
 

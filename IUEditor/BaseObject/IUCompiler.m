@@ -540,9 +540,13 @@ static NSString * IUCompilerTagOption = @"tag";
 - (JDCode*)editorHTMLAsBOX:(IUBox *)iu{
     JDCode *code = [[JDCode alloc] init];
     [code addCodeLineWithFormat:@"<div %@ >", [self HTMLAttributes:iu option:nil]];
+    /*
     if (iu.textHTML) {
         [code addCodeLineWithFormat:@"<p>%@</p>", iu.textHTML];
 
+    }*/
+    if(iu.textController.textHTML){
+        [code addCodeLine:iu.textController.textHTML];
     }
     if (iu.children.count) {
         for (IUBox *child in iu.children) {

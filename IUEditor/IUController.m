@@ -253,6 +253,10 @@
     return findIUs[0];
 }
 
+-(NSString*)keyPathFromControllerToTextCSSProperty:(NSString *)property{
+    return [@"controller.selection.textController" stringByAppendingPathExtension:property];
+}
+
 -(NSString*)keyPathFromControllerToCSSTag:(IUCSSTag)tag{
     return [@"controller.selection.css.assembledTagDictionary" stringByAppendingPathExtension:tag];
 }

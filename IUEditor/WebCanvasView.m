@@ -426,12 +426,12 @@
     
     //insert Textb
     NSRange iuRange = [self selectedRange:range InIU:IUNode];
-    [self.VC insertString:text identifier:IUNode.idName withRange:iuRange];
+    //[self.VC insertString:text identifier:IUNode.idName withRange:iuRange];
     
     JDInfoLog(@"insertText [IU:%@] : range(%ld, %ld) : %@ ", IUNode.idName, iuRange.location, iuRange.length, text);
     
     
-    return NO;
+    return YES;
 }
 
 - (BOOL)webView:(WebView *)webView shouldDeleteDOMRange:(DOMRange *)range{
@@ -448,10 +448,10 @@
     
     //insert Text
     NSRange iuRange = [self selectedRange:range InIU:IUNode];   
-    [self.VC deleteStringRange:iuRange identifier:IUNode.idName];
+//    [self.VC deleteStringRange:iuRange identifier:IUNode.idName];
     JDInfoLog(@"DeleteText[IU:%@] : range(%ld, %ld) ", IUNode.idName, iuRange.location, iuRange.length);
     
-    return NO;
+    return YES;
     
 }
 
@@ -469,7 +469,12 @@
         if(selectednames.count == 1 && [selectednames[0] isEqualToString:proposeIUID]){
          
             NSRange selectRangeInIU = [self selectedRange:proposedRange InIU:proposedNode];
-            [self.VC selectTextRange:selectRangeInIU identifier:proposeIUID];
+//            [self.VC selectTextRange:selectRangeInIU identifier:proposeIUID];
+            
+            DOMHTMLElement *startTextNode = [self textElementOfNode:proposedRange.startContainer];
+            DOMHTMLElement *endTextNode = [self textElementOfNode:proposedRange.endContainer];
+            
+            [self.VC selectTextRange:selectRangeInIU identifier:proposeIUID startContainer:startTextNode.idName endContainer:endTextNode.idName htmlNode:proposedNode];
             JDInfoLog(@"SelectedRange : (%ld, %ld)", selectRangeInIU.location, selectRangeInIU.length);
             
             return YES;
@@ -478,6 +483,7 @@
     
     return NO;
 }
+
 
 - (void)changeDOMRange:(NSPoint)point{
     DOMRange *range = [self editableDOMRangeForPoint:point];
@@ -493,6 +499,27 @@
     }
     else{
         return [self pElementOfNode:node.parentNode];
+    }
+}
+
+- (DOMHTMLElement *)textElementOfNode:(DOMNode *)node{
+    if([node isKindOfClass:[DOMHTMLParagraphElement class]]){
+        return (DOMHTMLElement *)node;
+    }
+    else if([node isKindOfClass:[DOMHTMLBodyElement class]]){
+        return nil;
+    }
+    else if([node isKindOfClass:[DOMHTMLElement class]]){
+        DOMHTMLElement *element = (DOMHTMLElement *)node;
+        NSString *tagName = element.tagName;
+        if([tagName isEqualToString:@"SPAN"]){
+            return element;
+        }else{
+            return [self textElementOfNode:node.parentNode];
+        }
+    }
+    else{
+        return [self textElementOfNode:node.parentNode];
     }
 }
 
