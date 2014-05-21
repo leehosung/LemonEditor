@@ -31,9 +31,11 @@
 
 - (id)copyWithZone:(NSZone *)zone{
     IUTextManager *tManager = [textManager copy];
+    IUTextController *textController = [_textController copy];
     IUCSS *newCSS = [_css copy];
     IUEvent *newEvent = [_event copy];
     NSArray *children = [self.children deepCopy];
+    //TODO: connect textmanager
     IUBox *box = [[[self class] allocWithZone: zone] initWithIdentifierManager:self.identifierManager textManager:tManager event:newEvent css:newCSS children:children];
     
     return box;
@@ -58,6 +60,9 @@
         }
         textManager = [aDecoder decodeObjectForKey:@"textManager"];
         textManager.dataSource = self;
+        
+        _textController = [aDecoder decodeObjectForKey:@"textController"];
+        _textController.textDelegate = self;
     }
     return self;
 }
@@ -66,10 +71,11 @@
     if ([self.htmlID length] == 0) {
         assert(0);
     }
-    [aCoder encodeFromObject:self withProperties:[[IUBox class] propertiesWithOutProperties:@[@"identifierManager"]]];
+    [aCoder encodeFromObject:self withProperties:[[IUBox class] propertiesWithOutProperties:@[@"identifierManager", @"textController"]]];
     [aCoder encodeObject:self.css forKey:@"css"];
     [aCoder encodeObject:self.event forKey:@"event"];
     [aCoder encodeObject:textManager forKey:@"textManager"];
+    [aCoder encodeObject:self.textController forKey:@"textController"];
     [aCoder encodeObject:_m_children forKey:@"children"];
 }
 
@@ -107,6 +113,9 @@
         _event = [[IUEvent alloc] init];
         textManager = [[IUTextManager alloc] init];
         textManager.dataSource = self;
+        
+        _textController = [[IUTextController alloc] init];
+        _textController.textDelegate = self;
         
         //NO - Pixel
         [_css setValue:@(0) forTag:IUCSSTagXUnit forWidth:IUCSSMaxViewPortWidth];
@@ -538,9 +547,22 @@
 
 }
 
+#pragma mark -
+#pragma mark manage text
+
 -(BOOL)shouldEditText{
     return YES;
 }
+
+- (void)selectTextRange:(NSRange)range startContainer:(NSString *)startContainer endContainer:(NSString *)endContainer htmlNode:(DOMHTMLElement *)node{
+
+    [_textController selectTextRange:range startContainer:startContainer endContainer:endContainer htmlNode:node];
+    
+}
+- (void)rewriteTextHTML{
+    [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
+}
+
 
 - (void)replaceText:(NSString*)text withRange:(NSRange)range{
     [textManager replaceText:text atRange:range];
@@ -578,6 +600,8 @@
 }
 
 
+
+
 - (NSString*)textHTML{
     return textManager.HTML;
 }
@@ -585,6 +609,8 @@
 - (NSDictionary*)cursor{
     return [textManager cursor];
 }
+
+#pragma mark -
 
 - (BOOL)flowChangeable{
     return YES;
@@ -657,6 +683,9 @@
     return YES;
 }
 - (NSString*)identifierForTextManager{
+    return self.htmlID;
+}
+- (NSString*)identifierForTextController{
     return self.htmlID;
 }
 

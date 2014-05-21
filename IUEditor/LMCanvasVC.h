@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <WebKit/WebKit.h>
 #import "IUDocument.h"
 #import "IUController.h"
 #import "IUResourceManager.h"
@@ -49,10 +50,12 @@
 - (void)selectIUInRect:(NSRect)frame;
 
 //text
+- (void)selectTextRange:(NSRange)range identifier:(NSString *)identifier startContainer:(NSString *)startContainer endContainer:(NSString *)endContainer htmlNode:(DOMHTMLElement *)node;
+/*
 - (void)selectTextRange:(NSRange)range identifier:(NSString *)identifier;
 - (void)insertString:(NSString *)string identifier:(NSString *)identifier withRange:(NSRange)range;
 - (void)deleteStringRange:(NSRange)range identifier:(NSString *)identifier;
-
+*/
 #pragma mark -
 #pragma mark be set by IU
 //load page

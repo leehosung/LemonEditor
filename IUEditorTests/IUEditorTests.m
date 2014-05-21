@@ -47,7 +47,7 @@
 - (void)testText8{
     NSRange zeroRange = NSMakeRange(0, 0);
     IUTextManager *tm = [[IUTextManager alloc] init];
-    tm.idKey = @"Obj";
+//    tm.idKey = @"Obj";
     tm.editViewPortWidth = IUCSSMaxViewPortWidth;
     [tm setFont:@"Helvetica" atRange:zeroRange];
     [tm setFontSize:20 atRange:zeroRange];
@@ -56,7 +56,7 @@
     [tm setFont:@"Gulim" atRange:NSMakeRange(2, 2)];
     [tm setFontSize:10 atRange:NSMakeRange(3, 2)];
     
-    tm.editViewPortWidth = 360;
+//    tm.editViewPortWidth = 360;
     [tm replaceText:@"qwer" atRange:NSMakeRange(5, 0)];
     [tm setFontSize:30 atRange:NSMakeRange(3, 2)];
 
@@ -91,7 +91,7 @@
 - (void)testText7{
     NSRange zeroRange = NSMakeRange(0, 0);
     IUTextManager *tm = [[IUTextManager alloc] init];
-    tm.idKey = @"Obj";
+//    tm.idKey = @"Obj";
     tm.editViewPortWidth = IUCSSMaxViewPortWidth;
     [tm setFont:@"Helvetica" atRange:zeroRange];
     [tm setFontSize:20 atRange:zeroRange];
@@ -155,7 +155,7 @@
 - (void)testText6{
     NSRange zeroRange = NSMakeRange(0, 0);
     IUTextManager *tm = [[IUTextManager alloc] init];
-    tm.idKey = @"Obj";
+//    tm.idKey = @"Obj";
     tm.editViewPortWidth = IUCSSMaxViewPortWidth;
     [tm setFont:@"Helvetica" atRange:zeroRange];
     [tm setFontSize:20 atRange:zeroRange];
@@ -178,7 +178,7 @@
 - (void)testText1{
     NSRange zeroRange = NSMakeRange(0, 0);
     IUTextManager *tm = [[IUTextManager alloc] init];
-    tm.idKey = @"Obj";
+//    tm.idKey = @"Obj";
     tm.editViewPortWidth = IUCSSMaxViewPortWidth;
     [tm setFont:@"Helvetica" atRange:zeroRange];
     [tm setFontSize:20 atRange:zeroRange];
@@ -193,7 +193,7 @@
 - (void)testText2{
     NSRange zeroRange = NSMakeRange(0, 0);
     IUTextManager *tm = [[IUTextManager alloc] init];
-    tm.idKey = @"Obj";
+//    tm.idKey = @"Obj";
     tm.editViewPortWidth = IUCSSMaxViewPortWidth;
     [tm setFont:@"Helvetica" atRange:zeroRange];
     [tm setFontSize:20 atRange:zeroRange];
@@ -213,7 +213,7 @@
 - (void)testText3{
     NSRange zeroRange = NSMakeRange(0, 0);
     IUTextManager *tm = [[IUTextManager alloc] init];
-    tm.idKey = @"Obj";
+//    tm.idKey = @"Obj";
     tm.editViewPortWidth = IUCSSMaxViewPortWidth;
     [tm setFont:@"Helvetica" atRange:zeroRange];
     [tm setFontSize:20 atRange:zeroRange];
@@ -235,7 +235,7 @@
 - (void)testText4{
     NSRange zeroRange = NSMakeRange(0, 0);
     IUTextManager *tm = [[IUTextManager alloc] init];
-    tm.idKey = @"Obj";
+//    tm.idKey = @"Obj";
     tm.editViewPortWidth = IUCSSMaxViewPortWidth;
     [tm setFont:@"Helvetica" atRange:zeroRange];
     [tm setFontSize:20 atRange:zeroRange];
@@ -262,7 +262,7 @@
 - (void)testText5{
     NSRange zeroRange = NSMakeRange(0, 0);
     IUTextManager *tm = [[IUTextManager alloc] init];
-    tm.idKey = @"Obj";
+//    tm.idKey = @"Obj";
     tm.editViewPortWidth = IUCSSMaxViewPortWidth;
     [tm setFont:@"Helvetica" atRange:zeroRange];
     [tm setFontSize:20 atRange:zeroRange];

@@ -11,6 +11,8 @@
 #import "IUEvent.h"
 #import "IUIdentifierManager.h"
 #import "IUTextManager.h"
+#import "IUTextController.h"
+
 
 @class IUIdentifierManager;
 
@@ -48,12 +50,13 @@
 @class IUBox;
 @class IUDocument;
 
-@interface IUBox : NSObject <NSCoding, IUCSSDelegate, IUTextManagerDataSource, NSCopying>{
+@interface IUBox : NSObject <NSCoding, IUCSSDelegate, IUTextManagerDataSource, NSCopying, IUTextControllerDelegate>{
     NSMutableArray *_m_children;
 }
 
 @property (readonly) IUCSS *css; //used by subclass
 @property (readonly) IUEvent *event;
+@property IUTextController *textController;
 
 
 -(IUDocument *)document;
@@ -125,8 +128,11 @@
 
 /// text managing
 
+- (void)selectTextRange:(NSRange)range startContainer:(NSString *)startContainer endContainer:(NSString *)endContainer htmlNode:(DOMHTMLElement *)node;
+/*
 - (void)insertText:(NSString*)text withRange:(NSRange)range;
 - (void)deleteTextInRange:(NSRange)range;
+ */
 - (NSString*)textHTML;
 
 //#define IUTextCursorLocationID    @"id"

@@ -266,6 +266,16 @@
 }
 
 #pragma mark setText
+
+- (void)selectTextRange:(NSRange)range identifier:(NSString *)identifier startContainer:(NSString *)startContainer endContainer:(NSString *)endContainer htmlNode:(DOMHTMLElement *)node{
+
+    IUBox *iu = [self.controller IUBoxByIdentifier:identifier];
+    assert(iu != nil);
+    
+    [iu selectTextRange:range startContainer:startContainer endContainer:endContainer htmlNode:node];
+
+}
+/*
 //text
 - (void)selectTextRange:(NSRange)range identifier:(NSString *)identifier{
     self.controller.selectedTextRange = range;
@@ -283,6 +293,7 @@
     IUBox *iu = [self.controller IUBoxByIdentifier:identifier];
     [iu deleteTextInRange:range];
 }
+ */
 
 #pragma mark -
 #pragma mark IUDelegate
