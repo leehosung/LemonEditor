@@ -44,12 +44,17 @@
 
 -(void)sendEvent:(NSEvent *)theEvent{
     
-    [super sendEvent:theEvent];
+    BOOL callSuper = YES;
+    
     if([self isMouseEvent:theEvent]){
         [self.canvasView receiveMouseEvent:theEvent];
     }
     if([self isKeyEvent:theEvent]){
-        [self.canvasView receiveKeyEvent:theEvent];
+        callSuper = [self.canvasView receiveKeyEvent:theEvent];
+    }
+    
+    if(callSuper){
+        [super sendEvent:theEvent];
     }
 
 }

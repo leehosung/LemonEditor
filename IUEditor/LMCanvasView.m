@@ -125,7 +125,8 @@
 
 #pragma mark event
 
--(void)receiveKeyEvent:(NSEvent *)theEvent{
+//no를 리턴하면 sendevent 슈퍼를 호출하지 않음.
+-(BOOL)receiveKeyEvent:(NSEvent *)theEvent{
     NSResponder *currentResponder = [[self window] firstResponder];
     NSView *mainView = self.mainView;
     
@@ -143,8 +144,19 @@
                 }
                 
             }
+            else{
+                //editor mode 이고 delete key가 들어오면
+                //한글의composition state 중이면서 캐릭터가 내부에 저장되지 않았으면 delete key 무효화
+                if(key == NSDeleteCharacter){
+                    if([[self webView] removeLastCharacter] == YES){
+                        return NO;
+                    }
+                }
+                
+            }
         }
     }
+    return YES;
 }
 
 

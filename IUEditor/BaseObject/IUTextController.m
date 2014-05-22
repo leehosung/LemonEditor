@@ -11,9 +11,7 @@
 @interface IUTextController()
 
 @property NSRange selectedRange;
-@property NSMutableDictionary *cssDict;
 @property NSMutableDictionary *rangeDict;
-@property NSString *startContainer, *endContainer;
 @property NSString *innerText, *innerHTML;
 @property DOMHTMLElement *currentNode;
 @end
@@ -34,7 +32,6 @@
     
     [aCoder encodeObject:self.innerText forKey:@"innerText"];
     [aCoder encodeObject:self.innerHTML forKey:@"innerHTML"];
-    [aCoder encodeObject:self.currentNode forKey:@"currentNode"];
     [aCoder encodeObject:self.cssDict forKey:@"cssDict"];
     [aCoder encodeObject:self.rangeDict forKey:@"rangeDict"];
     
@@ -46,7 +43,6 @@
         _innerText = [aDecoder decodeObjectForKey:@"innerText"];
         _innerHTML = [aDecoder decodeObjectForKey:@"innerHTML"];
 
-        _currentNode = [aDecoder decodeObjectForKey:@"currentNode"];
         _cssDict = [[aDecoder decodeObjectForKey:@"cssDict"] mutableCopy];
         _rangeDict = [[aDecoder decodeObjectForKey:@"rangeDict"] mutableCopy];
     }
@@ -74,12 +70,26 @@
     [self checkRange];
 }
 
+- (BOOL)isManagedElement{
+    DOMHTMLElement *element = (DOMHTMLElement *)[_currentNode.childNodes item:0];
+    if([element isKindOfClass:[DOMHTMLParagraphElement class]]){
+        return YES;
+    }
+    return NO;
+}
+
 - (void)checkRange{
+    
+    //한번도 부분 수정이 일어나지 않은 경우에는 return
+    if([self isManagedElement] == NO){
+        return;
+    }
     
     NSString *innerText = [_currentNode innerText];
     unsigned int totalLength = 0;
-    for(int i =0; i<[_currentNode.childNodes length]; i++){
-        DOMHTMLElement * element = (DOMHTMLElement *)[_currentNode.childNodes item:i];
+    DOMHTMLElement *pElement = (DOMHTMLElement *)[_currentNode.childNodes item:0];
+    for(int i =0; i<[pElement.childNodes length]; i++){
+        DOMHTMLElement * element = (DOMHTMLElement *)[pElement.childNodes item:i];
         
         //ignore br element
         if([element isKindOfClass:[DOMHTMLBRElement class]]){
@@ -106,47 +116,31 @@
 }
 
 #pragma mark - manage css dict
-- (DOMHTMLElement *)elementOfCurrentRange{
-    for(int i =0; i<[_currentNode.childNodes length]; i++){
-        DOMHTMLElement * element = (DOMHTMLElement *)[_currentNode.childNodes item:i];
-        if([element.idName isEqualToString:_startContainer]){
-            return element;
+
+
+- (NSString *)identifierOfCurrentRange{
+
+    for(NSString *identifier in _rangeDict.allKeys){
+        NSRange range = [[_rangeDict objectForKey:identifier] rangeValue];
+        
+        //no selection - move cursur
+        if(NSLocationInRange(_selectedRange.location, range)){
+            return identifier;
+        }
+        //select - can possible change
+        else if(NSEqualRanges(_selectedRange, range)){
+            return identifier;
         }
     }
-    return nil;
-}
-- (BOOL)isSameRange{
-    if([_startContainer isEqualToString:_endContainer]){
-        
-        DOMHTMLElement *element = [self elementOfCurrentRange];
-        //컨테이너는 같고, 글자수가 같음.
-        if( [element.innerText length] == _selectedRange.length ){
-            return YES;
+    //make new identifier;
+    for(int i=0; ; i++){
+        NSString *identifier = [NSString stringWithFormat:@"%@TNode%d", _textDelegate.identifierForTextController , i];
+        if( [_cssDict.allKeys containsObject:identifier] == NO){
+            return identifier;
         }
     }
     
-    return NO;
-}
-
-- (NSString *)identifierOfCurrentRange{
-    //no selection - move cursur
-    if(_selectedRange.length == 0){
-        return _startContainer;
-    }
-    //select - can possible change 
-    else if([self isSameRange]){
-        return _startContainer;
-    }
-    else{
-        //make new identifier;
-        for(int i=0; ; i++){
-            NSString *identifier = [NSString stringWithFormat:@"%@TNode%d", _textDelegate.identifierForTextController , i];
-            if( [_cssDict.allKeys containsObject:identifier] == NO){
-                return identifier;
-            }
-        }
-        
-    }
+    
     return nil;
 }
 
@@ -166,10 +160,33 @@
     else{
         //새로운 range임
         IUCSS *css = [[IUCSS alloc] init];
+        css.delegate = self;
         [_cssDict setObject:css forKey:identifier];
         [_rangeDict setObject:[NSValue valueWithRange:_selectedRange] forKey:identifier];
         
         return css;
+    }
+}
+
+#pragma mark - iu css delegate
+-(BOOL)CSSShouldChangeValue:(id)value forTag:(NSString *)tag forWidth:(NSInteger)width{
+    return YES;
+}
+
+-(void)startGrouping{
+    
+}
+-(void)CSSUpdated:(IUCSSTag)tag forWidth:(NSInteger)width isHover:(BOOL)isHover{
+    
+}
+-(void)endGrouping{
+    
+}
+
+-(void)setEditWidth:(NSInteger)width{
+    for(NSString *identifier in _cssDict.allKeys){
+        IUCSS *css = [_cssDict objectForKey:identifier];
+        [css setEditWidth:width];
     }
 }
 
@@ -182,7 +199,8 @@
 
 - (void)setFontColor:(NSColor *)fontColor{
     [self.css setValue:fontColor forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagFontColor]];
-    
+    [self.textDelegate updateTextHTML];
+    [self.textDelegate updateTextCSS:self.css identifier:[self identifierOfCurrentRange]];
 }
 
 - (NSColor *)fontColor{
@@ -221,7 +239,7 @@
     NSMutableIndexSet *endSet = [NSMutableIndexSet indexSet];
     for( NSValue *value in _rangeDict.allValues){
         NSRange range = [value rangeValue];
-        [startSet addIndex:range.length];
+        [startSet addIndex:range.location];
         [endSet addIndex:(range.length + range.location)];
     }
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
@@ -262,7 +280,7 @@
     NSIndexSet *startSet = [setDict objectForKey:@"start"];
     NSIndexSet *endSet = [setDict objectForKey:@"end"];
     NSUInteger startIndex = [startSet firstIndex];
-    NSUInteger endIndex = [startSet firstIndex];
+    NSUInteger endIndex = [endSet firstIndex];
     NSUInteger currentIndex =0;
     BOOL endflag = false;
     [code appendString:@"<p>"];
@@ -275,37 +293,40 @@
             copyIndex = startIndex;
             NSArray *array = [self identifierOfIndex:startIndex];
             for(NSString *identifier in array){
-                [appendTag appendFormat:@"<span id='%@'>",identifier];
+                [appendTag appendFormat:@"<span id='%@' class='%@'>",identifier, identifier];
             }
             startIndex = [startSet indexGreaterThanIndex:startIndex];
         }
-        else if(startIndex == endIndex){
-            copyIndex = startIndex;
-            //append end tag
-            for(int i=0; i<[self countOfEndTagAtLocation:endIndex]; i++){
-                [appendTag appendString:@"</span>"];
-            }
-            endIndex = [endSet indexGreaterThanOrEqualToIndex:endIndex];
-            
-            //append start tag
-            NSArray *array = [self identifierOfIndex:startIndex];
-            for(NSString *identifier in array){
-                [appendTag appendFormat:@"<span id='%@'>",identifier];
-            }
-            startIndex = [startSet indexGreaterThanIndex:startIndex];
-        }
-        else{
+        else if(startIndex > endIndex
+                || startIndex == NSNotFound){
             copyIndex = endIndex;
             
             //append end tag
             for(int i=0; i<[self countOfEndTagAtLocation:endIndex]; i++){
                 [appendTag appendString:@"</span>"];
             }
-            endIndex = [endSet indexGreaterThanOrEqualToIndex:endIndex];
+            endIndex = [endSet indexGreaterThanIndex:endIndex];
             if(endIndex == NSNotFound){
                 endflag = true;
             }
         }
+        else{
+            //startIndex == endIndex
+            copyIndex = startIndex;
+            //append end tag
+            for(int i=0; i<[self countOfEndTagAtLocation:endIndex]; i++){
+                [appendTag appendString:@"</span>"];
+            }
+            endIndex = [endSet indexGreaterThanIndex:endIndex];
+            
+            //append start tag
+            NSArray *array = [self identifierOfIndex:startIndex];
+            for(NSString *identifier in array){
+                [appendTag appendFormat:@"<span id='%@' class='%@'>",identifier, identifier];
+            }
+            startIndex = [startSet indexGreaterThanIndex:startIndex];
+        }
+    
         [code appendString:[_innerText substringFromIndex:currentIndex toIndex:copyIndex]];
         currentIndex = copyIndex;
         [code appendString:appendTag];

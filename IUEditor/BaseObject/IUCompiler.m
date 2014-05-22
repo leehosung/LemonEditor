@@ -1142,6 +1142,10 @@ static NSString * IUCompilerTagOption = @"tag";
     if (fontSize) {
         [retStr appendFormat:@"font-size : %dpx;\n", [fontSize intValue]];
     }
+    NSColor *fontColor = attributeDict[IUCSSTagFontColor];
+    if (fontColor){
+        [retStr appendFormat:@"color:%@", [fontColor rgbaString]];
+    }
     return retStr;
 }
 
