@@ -33,6 +33,9 @@
 
 - (NSSize)parentBlockElementSize:(NSString *)identifier;
 - (NSString *)IUAtPoint:(NSPoint)point;
+
+#pragma mark - iu text
+- (BOOL)removeLastCharacter;
 - (BOOL)isDOMTextAtPoint:(NSPoint)point;
 - (void)changeDOMRange:(NSPoint)point;
 - (void)selectTextRange:(DOMHTMLElement *)element index:(NSUInteger)index;

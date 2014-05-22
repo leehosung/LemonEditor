@@ -386,6 +386,20 @@
 #pragma mark -
 #pragma mark text
 
+- (BOOL)removeLastCharacter{
+    DOMRange *range = [self selectedDOMRange];
+    DOMHTMLElement *IUNode = [self IUNodeAtCurrentNode:range.startContainer];
+    NSUInteger length = [IUNode.innerHTML.stringByTrim length];
+    if(length ==0 || length ==1){
+
+        if(length == 1){
+            IUNode.innerHTML = [IUNode.innerHTML substringFromIndex:1];
+        }
+        
+        return YES;
+    }
+    return NO;
+}
 
 - (BOOL)isOneIUSTextelection:(DOMRange *)range{
     DOMNode *startContainer = range.startContainer;
@@ -447,7 +461,9 @@
     }
     
     //insert Text
-    NSRange iuRange = [self selectedRange:range InIU:IUNode];   
+    NSRange iuRange = [self selectedRange:range InIU:IUNode];
+    
+    
 //    [self.VC deleteStringRange:iuRange identifier:IUNode.idName];
     JDInfoLog(@"DeleteText[IU:%@] : range(%ld, %ld) ", IUNode.idName, iuRange.location, iuRange.length);
     
@@ -483,6 +499,7 @@
     
     return NO;
 }
+
 
 
 - (void)changeDOMRange:(NSPoint)point{
@@ -701,7 +718,7 @@
     return nil;
 }
 
-/*
+
 
 
 - (BOOL)webView:(WebView *)webView shouldPerformAction:(SEL)action fromSender:(id)sender{
@@ -720,7 +737,16 @@
     return [super webView:sender createWebViewWithRequest:request];
 }
  
- */
+
+
+- (void)webView:(WebView *)webView decidePolicyForMIMEType:(NSString *)type
+        request:(NSURLRequest *)request
+          frame:(WebFrame *)frame
+decisionListener:(id<WebPolicyDecisionListener>)listener{
+    
+}
+
+
 - (void)webView:(WebView *)webView decidePolicyForNavigationAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request frame:(WebFrame *)frame decisionListener:(id < WebPolicyDecisionListener >)listener
 {
     /*

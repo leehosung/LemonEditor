@@ -178,9 +178,11 @@
     if (self.delegate) {
         if (self.delegate.maxFrameWidth == self.delegate.selectedFrameWidth) {
             [_css setEditWidth:IUCSSMaxViewPortWidth];
+            [_textController setEditWidth:IUCSSMaxViewPortWidth];
         }
         else {
             [_css setEditWidth:self.delegate.selectedFrameWidth];
+            [_textController setEditWidth:self.delegate.selectedFrameWidth];
         }
     }
 }
@@ -559,10 +561,18 @@
     [_textController selectTextRange:range startContainer:startContainer endContainer:endContainer htmlNode:node];
     
 }
-- (void)rewriteTextHTML{
+- (void)updateTextHTML{
     [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
 }
 
+- (void)updateTextCSS:(IUCSS *)textCSS identifier:(NSString *)identifier{
+    NSString *cssStr = [self.document.compiler fontCSSContentFromAttributes:textCSS.assembledTagDictionary];
+    [self.delegate IUClassIdentifier:identifier CSSUpdated:cssStr forWidth:textCSS.editWidth];
+}
+
+
+
+//old text(textManager)
 
 - (void)replaceText:(NSString*)text withRange:(NSRange)range{
     [textManager replaceText:text atRange:range];

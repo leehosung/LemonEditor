@@ -15,13 +15,17 @@
 @property (readonly) IUCSS *css;
 
 - (NSString*)identifierForTextController;
-- (void)rewriteTextHTML;
+- (void)updateTextHTML;
+- (void)updateTextCSS:(IUCSS *)textCSS identifier:(NSString *)identifier;
+
 @end
 
 
-@interface IUTextController : NSObject <NSCopying>
+@interface IUTextController : NSObject <NSCopying, IUCSSDelegate>
 
 @property (weak) id <IUTextControllerDelegate> textDelegate;
+
+@property NSMutableDictionary *cssDict;
 
 @property (nonatomic) NSColor *fontColor;
 @property (nonatomic) BOOL bold, italic, underline;
@@ -32,5 +36,6 @@
 
 - (void)selectTextRange:(NSRange)range startContainer:(NSString *)startContainer endContainer:(NSString *)endContainer htmlNode:(DOMHTMLElement *)node;
 - (NSString *)textHTML;
+-(void)setEditWidth:(NSInteger)width;
 
 @end
