@@ -9,7 +9,7 @@
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
-				<string>iuproject</string>
+				<string>iu</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>iueditor</string>
@@ -21,7 +21,7 @@
 			<string>Owner</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>com.jdlab.iuproject</string>
+				<string>com.jdlab.iu</string>
 			</array>
 		</dict>
 	</array>
@@ -63,14 +63,14 @@
 			<key>UTTypeIconFile</key>
 			<string>iueditor</string>
 			<key>UTTypeIdentifier</key>
-			<string>com.jdlab.iuproject</string>
+			<string>com.jdlab.iu</string>
 			<key>UTTypeReferenceURL</key>
 			<string>http://www.jdlab.org</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
 				<array>
-					<string>iuproject</string>
+					<string>iu</string>
 				</array>
 			</dict>
 		</dict>
