@@ -26,6 +26,7 @@
     IUCompiler *_compiler;
 }
 
+@synthesize runnable = _runnable;
 
 - (void)encodeWithCoder:(NSCoder *)encoder{
     [super encodeWithCoder:encoder];
@@ -38,6 +39,7 @@
     [encoder encodeObject:_mqSizes forKey:@"mqSizes"];
     [encoder encodeObject:_buildDirectoryName forKey:@"_buildDirectoryName"];
     [encoder encodeInt32:_compileRule forKey:@"_compileRule"];
+    [encoder encodeBool:_runnable forKey:@"_runnable"];
 }
 
 - (void)setResourceManager:(IUResourceManager *)resourceManager{
@@ -64,6 +66,7 @@
         for (IUDocumentNode *docNode in self.allDocumentNodes) {
             [docNode.document setCompiler:_compiler];
         }
+        _runnable = [aDecoder decodeBoolForKey:@"_runnable"];
     }
     return self;
 }
@@ -83,6 +86,7 @@
         [_mqSizes addObject:@(defaultFrameWidth)];
         [_mqSizes addObject:@(700)];
         [_mqSizes addObject:@(400)];
+        _runnable = NO;
     }
     return self;
 }
@@ -466,5 +470,6 @@
 -(void)dealloc{
     JDInfoLog(@"Project Dealloc");
 }
+
 
 @end
