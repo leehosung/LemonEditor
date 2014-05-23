@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "IUDocumentGroupNode.h"
 #import "IUResourceGroupNode.h"
+#import "IUCompiler.h"
 
-@class IUCompiler;
 typedef enum _IUGitType{
     IUGitTypeNone = 0,
     IUGitTypeSource = 1,
@@ -45,6 +45,9 @@ static NSString * IUProjectKeyDirectory = @"dir";
 @property   NSString        *buildDirectoryName;
 @property   NSMutableArray  *mqSizes;
 
+@property (nonatomic) IUCompileRule compileRule;
+@property (nonatomic) IUResourceManager *resourceManager;
+
 - (NSString*)path;
 - (NSString*)absoluteDirectory;
 
@@ -53,6 +56,7 @@ static NSString * IUProjectKeyDirectory = @"dir";
 
 - (BOOL)save;
 - (BOOL)build:(NSError**)error;
+- (IUCompiler*)compiler;
 
 - (NSArray*)pageDocuments;
 - (NSArray*)backgroundDocuments;

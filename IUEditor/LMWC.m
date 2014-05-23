@@ -15,7 +15,6 @@
 #import "IUResourceGroupNode.h"
 #import "IUResourceNode.h"
 
-#import "IUCompiler.h"
 
 #import "IUResourceManager.h"
 #import "IUIdentifierManager.h"
@@ -28,6 +27,7 @@
 #import "LMWidgetLibraryVC.h"
 #import "LMCanvasVC.h"
 #import "LMEventVC.h"
+#import "LMCommandVC.h"
 
 #import "LMTopToolbarVC.h"
 #import "LMBottomToolbarVC.h"
@@ -46,6 +46,7 @@
 @property (weak) IBOutlet NSSplitView *leftV;
 @property (weak) IBOutlet NSView *leftTopV;
 @property (weak) IBOutlet NSView *leftBottomV;
+@property (weak) IBOutlet NSView *commandV;
 
 //Right-V
 @property (weak) IBOutlet NSSplitView *rightV;
@@ -71,7 +72,6 @@
 
 @implementation LMWC{
     IUProject   *_project;
-    IUCompiler  *_compiler;
     IUResourceManager   *_resourceManager;
     IUIdentifierManager *_identifierManager;
 
@@ -79,6 +79,7 @@
     //left
     LMFileNaviVC    *fileNaviVC;
     LMStackVC       *stackVC;
+    LMCommandVC     *commandVC;
     
     //center
     LMCanvasVC *canvasVC;
@@ -122,7 +123,9 @@
     [fileNaviVC setIdentifierManager:_identifierManager];
     [_leftBottomV addSubviewFullFrame:fileNaviVC.view];
     
-    
+    commandVC = [[LMCommandVC alloc] initWithNibName:@"LMCommandVC" bundle:nil];
+    [_commandV addSubviewFullFrame:commandVC.view];
+    [commandVC bind:@"docController" toObject:self withKeyPath:@"documentController" options:nil];
 
 ////////////////center view/////////////////////////
     canvasVC = [[LMCanvasVC alloc] initWithNibName:@"LMCanvasVC" bundle:nil];
@@ -138,6 +141,7 @@
     bottomToolbarVC = [[LMBottomToolbarVC alloc] initWithNibName:@"LMBottomToolbarVC" bundle:nil];
     [_bottomToolbarV addSubviewFullFrame:bottomToolbarVC.view];
 
+    
 ////////////////right view/////////////////////////
     widgetLibraryVC = [[LMWidgetLibraryVC alloc] initWithNibName:@"LMWidgetLibraryVC" bundle:nil];
     [_widgetV addSubviewFullFrame:widgetLibraryVC.view];
@@ -194,11 +198,6 @@
     return (LMWindow*)[super window];
 }
 
-- (void)setNewFileNode:(IUDocumentNode *)node{
-    [node.document setCompiler:_compiler];
-    [node.document setIdentifierManager:_identifierManager];
-    [_identifierManager registerIU:node.document];
-}
 
 -(void)loadProject:(NSString*)path{
     //create project class
@@ -226,23 +225,8 @@
     _project.delegate = self;
     
     //IU Setting
-    _compiler = [[IUCompiler alloc] init];
     _resourceManager.rootNode = _project.resourceNode;
-    _compiler.resourceSource = _resourceManager;
-    if ([_project isKindOfClass:[IUDjangoProject class]]) {
-        _compiler.rule = IUCompileRuleDjango;
-    }
-    else {
-        _compiler.rule = IUCompileRuleDefault;
-    }
-    
-    NSArray *documensNode = [_project.allChildren filteredArrayWithClass:[IUDocumentNode class]];
-    
-    for (IUDocumentNode *node in documensNode) {
-        [node.document setCompiler:_compiler];
-        [node.document setIdentifierManager:_identifierManager];
-        [_identifierManager registerIU:node.document];
-    }
+    _project.resourceManager = _resourceManager;
 
     // vc setting
     //construct toolbar
