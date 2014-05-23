@@ -12,6 +12,7 @@
 #import "IUResourceGroupNode.h"
 #import "IUDocumentNode.h"
 #import "IUResourceNode.h"
+#import "IUResourceManager.h"
 #import "JDUIUtil.h"
 #import "IUBackground.h"
 #import "IUClass.h"
@@ -22,6 +23,7 @@
 @end
 
 @implementation IUProject{
+    IUCompiler *_compiler;
 }
 
 
@@ -35,6 +37,12 @@
     [encoder encodeObject:_classDocumentGroup forKey:@"_classDocumentGroup"];
     [encoder encodeObject:_mqSizes forKey:@"mqSizes"];
     [encoder encodeObject:_buildDirectoryName forKey:@"_buildDirectoryName"];
+    [encoder encodeInt32:_compileRule forKey:@"_compileRule"];
+}
+
+- (void)setResourceManager:(IUResourceManager *)resourceManager{
+    _resourceManager = resourceManager;
+    _compiler.resourceSource = resourceManager;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder{
@@ -51,8 +59,19 @@
         if ([_buildDirectoryName isEqualToString:@"../template/"]) {
             _buildDirectoryName = @"../templates/";\
         }
+        _compiler = [[IUCompiler alloc] init];
+        self.compileRule = [aDecoder decodeInt32ForKey:@"_compileRule"];
+        for (IUDocumentNode *docNode in self.allDocumentNodes) {
+            [docNode.document setCompiler:_compiler];
+        }
     }
     return self;
+}
+
+- (void)setCompileRule:(IUCompileRule)compileRule{
+    _compileRule = compileRule;
+    _compiler.rule = _compileRule;
+    assert(_compiler != nil);
 }
 
 - (id)init{
@@ -60,6 +79,7 @@
     if(self){
         _buildDirectoryName = @"build";
         _mqSizes = [NSMutableArray array];
+        _compiler = [[IUCompiler alloc] init];
         [_mqSizes addObject:@(defaultFrameWidth)];
         [_mqSizes addObject:@(700)];
         [_mqSizes addObject:@(400)];
@@ -193,7 +213,7 @@
     for (IUDocumentNode *node in self.allDocumentNodes) {
         NSString *outputString = [node.document outputSource];
         
-        NSString *filePath = [[buildPath stringByAppendingPathComponent:node.name] stringByAppendingPathExtension:@"html"];
+        NSString *filePath = [[buildPath stringByAppendingPathComponent:[node.name lowercaseString]] stringByAppendingPathExtension:@"html"];
         if ([outputString writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:error] == NO){
             assert(0);
         }
@@ -263,6 +283,9 @@
     return _resourceNode;
 }
 
+- (IUCompiler*)compiler{
+    return _compiler;
+}
 
 - (void)initializeResource{
     //remove resource node if exist

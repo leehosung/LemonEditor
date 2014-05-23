@@ -214,10 +214,10 @@
         fileNode.name = obj.name;
         
         [groupNode addNode:fileNode];
-        LMWC *lmWC = [NSApp mainWindow].windowController;
-        [lmWC setNewFileNode:fileNode];
 
-
+        [fileNode.document setCompiler:_project.compiler];
+        [fileNode.document setIdentifierManager:_identifierManager];
+        [_identifierManager registerIU:obj];
     }
 }
 - (IBAction)clickMenuRemoveFile:(id)sender {

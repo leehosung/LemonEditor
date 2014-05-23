@@ -9,6 +9,7 @@
                 <outlet property="appearanceV" destination="209-eo-kDy" id="Vjs-mp-RBg"/>
                 <outlet property="bottomToolbarV" destination="YTs-oo-nxs" id="Had-lh-RkA"/>
                 <outlet property="centerV" destination="LCo-BM-DQN" id="a81-Fm-UQ1"/>
+                <outlet property="commandV" destination="Nwr-vk-YZ2" id="0Yv-OA-2p6"/>
                 <outlet property="eventV" destination="cND-E8-FNH" id="L2T-JZ-w7f"/>
                 <outlet property="leftBottomV" destination="4Tl-hR-JBi" id="Hgo-4P-SU6"/>
                 <outlet property="leftTopV" destination="efd-DN-4Bq" id="c6b-do-zjc"/>
@@ -32,7 +33,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="1420" height="887"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <view key="contentView" id="2">
                 <rect key="frame" x="0.0" y="0.0" width="1420" height="887"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -41,12 +42,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="220" height="887"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
+                            <customView id="Nwr-vk-YZ2">
+                                <rect key="frame" x="0.0" y="0.0" width="220" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="dsm-zO-twc"/>
+                                </constraints>
+                            </customView>
                             <customView fixedFrame="YES" id="efd-DN-4Bq" userLabel="leftTopV">
-                                <rect key="frame" x="0.0" y="0.0" width="220" height="399"/>
+                                <rect key="frame" x="0.0" y="32" width="220" height="416"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </customView>
                             <customView fixedFrame="YES" id="4Tl-hR-JBi" userLabel="leftBottomV">
-                                <rect key="frame" x="0.0" y="400" width="220" height="487"/>
+                                <rect key="frame" x="0.0" y="449" width="220" height="438"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </customView>
                         </subviews>
@@ -54,6 +62,7 @@
                             <constraint firstAttribute="width" constant="220" id="Eot-6R-esO"/>
                         </constraints>
                         <holdingPriorities>
+                            <real value="250"/>
                             <real value="250"/>
                             <real value="250"/>
                         </holdingPriorities>
