@@ -86,7 +86,8 @@
     project.buildDirectoryName = @"build";
     
     NSString *dir = [setting objectForKey:IUProjectKeyDirectory];
-    project.path = [dir stringByAppendingPathComponent:[project.name stringByAppendingPathComponent:@"IUML.iuproject"]];
+    NSString *fileName = project.name;
+    project.path = [[dir stringByAppendingPathComponent:[project.name stringByAppendingPathComponent:fileName]]stringByAppendingPathExtension:@"iuproject"];
     [JDFileUtil rmDirPath:dir];
     ReturnNilIfFalse([JDFileUtil mkdirPath:dir]);
 
@@ -164,6 +165,7 @@
 }
 
 -(NSString*)IUMLPath{
+    assert(0);
     return [_path stringByAppendingPathComponent:@"IUML"];
 }
 
@@ -181,6 +183,7 @@
     [[NSFileManager defaultManager] createDirectoryAtPath:buildPath withIntermediateDirectories:YES attributes:nil error:error];
     
 //    [self initializeResource];
+    //FIXME: symbolic link가 절대경로로 되어 있음. resource path를 상대경로로 링크 걸어야함.
     [[NSFileManager defaultManager] createSymbolicLinkAtPath:[buildPath stringByAppendingPathComponent:@"Resource"] withDestinationPath:[self.path stringByAppendingPathComponent:@"Resource"] error:error];
 
 

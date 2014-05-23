@@ -44,7 +44,7 @@ static JDFileUtil *sharedJDFileUtill;
     }
     CFRelease(fileUTI);
     return NO;
-}
+} 
 
 
 +(BOOL)mkdirPath:(NSString*)path{
