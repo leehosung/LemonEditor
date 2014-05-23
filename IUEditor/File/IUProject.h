@@ -32,7 +32,9 @@ static NSString * IUProjectKeyAppName = @"appName";
 static NSString * IUProjectKeyHeroku = @"heroku";
 static NSString * IUProjectKeyDirectory = @"dir";
 
-@interface IUProject : IUDocumentGroupNode <IUResourceGroupNode>
+@interface IUProject : IUDocumentGroupNode <IUResourceGroupNode>{
+    BOOL _runnable;
+}
 @property (nonatomic, copy) NSString          *path;
 @property IUDocumentGroupNode *pageDocumentGroup;
 @property IUDocumentGroupNode *backgroundDocumentGroup;
@@ -70,5 +72,5 @@ static NSString * IUProjectKeyDirectory = @"dir";
 - (NSArray*)classDocumentNodes;
 
 - (void)copyResourceForDebug;
-
+@property (readonly) BOOL runnable;
 @end

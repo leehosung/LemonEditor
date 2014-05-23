@@ -14,6 +14,13 @@
 
 @implementation IUDjangoProject
 
+- (id)init{
+    self = [super init];
+    _runnable = YES;
+    return self;
+}
+
+
 +(IUDjangoProject*)convertProject:(IUProject*)project setting:(NSDictionary*)setting error:(NSError**)error{
     IUDjangoProject *newProject = [[IUDjangoProject alloc] init];
     NSArray *properties = [IUProject properties];
