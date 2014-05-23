@@ -36,6 +36,8 @@ static NSString * IUProjectKeyDirectory = @"dir";
     BOOL _runnable;
 }
 @property (nonatomic, copy) NSString          *path;
+- (NSString*)directory;
+
 @property IUDocumentGroupNode *pageDocumentGroup;
 @property IUDocumentGroupNode *backgroundDocumentGroup;
 @property IUDocumentGroupNode *classDocumentGroup;
@@ -50,7 +52,6 @@ static NSString * IUProjectKeyDirectory = @"dir";
 @property (nonatomic) IUCompileRule compileRule;
 @property (nonatomic) IUResourceManager *resourceManager;
 
-- (NSString*)path;
 - (NSString*)absoluteDirectory;
 
 + (id)projectWithContentsOfPackage:(NSString*)path;

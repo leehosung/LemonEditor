@@ -33,4 +33,12 @@
     return @"documentController.project.eventVariable.eventVariableArray";
 }
 
+-(void)setContent:(id)content{
+    [self willChangeValueForKey:@"document"];
+    [self willChangeValueForKey:@"project"];
+    [super setContent:content];
+    [self didChangeValueForKey:@"project"];
+    [self didChangeValueForKey:@"document"];
+}
+
 @end
