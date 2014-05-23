@@ -33,6 +33,11 @@
 
 - (void)awakeFromNib{
     [_compilerB bind:NSSelectedIndexBinding toObject:self withKeyPath:@"docController.project.compiler.rule" options:nil];
+    if (_docController.project.runnable == NO) {
+        [_serverB setEnabled:NO];
+        [[_compilerB itemAtIndex:1] setEnabled:NO];
+        [_compilerB setAutoenablesItems:NO];
+    }
 }
 
 - (IBAction)build:(id)sender {
