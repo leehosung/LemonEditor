@@ -1136,15 +1136,27 @@ static NSString * IUCompilerTagOption = @"tag";
     NSMutableString *retStr = [NSMutableString string];
     NSString *fontName = attributeDict[IUCSSTagFontName];
     if (fontName) {
-        [retStr appendFormat:@"font-name : %@;\n", fontName];
+        [retStr appendFormat:@"font-name : %@;", fontName];
     }
     NSNumber *fontSize = attributeDict[IUCSSTagFontSize];
     if (fontSize) {
-        [retStr appendFormat:@"font-size : %dpx;\n", [fontSize intValue]];
+        [retStr appendFormat:@"font-size : %dpx;", [fontSize intValue]];
     }
     NSColor *fontColor = attributeDict[IUCSSTagFontColor];
     if (fontColor){
-        [retStr appendFormat:@"color:%@", [fontColor rgbaString]];
+        [retStr appendFormat:@"color:%@;", [fontColor rgbaString]];
+    }
+    BOOL boolValue =[attributeDict[IUCSSTagFontWeight] boolValue];
+    if(boolValue){
+        [retStr appendString:@"font-weight:bold;"];
+    }
+    boolValue = [attributeDict[IUCSSTagFontStyle] boolValue];
+    if(boolValue){
+        [retStr appendString:@"font-style:italic;"];
+    }
+    boolValue = [attributeDict[IUCSSTagTextDecoration] boolValue];
+    if(boolValue){
+        [retStr appendString:@"text-decoration:underline;"];
     }
     return retStr;
 }

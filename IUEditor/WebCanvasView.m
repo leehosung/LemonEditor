@@ -386,6 +386,13 @@
 #pragma mark -
 #pragma mark text
 
+- (void)setEditable:(BOOL)flag{
+    [super setEditable:flag];
+    if(flag == NO){
+        [self.VC deselectTextAtCurrentNode];
+    }
+}
+
 - (BOOL)removeLastCharacter{
     DOMRange *range = [self selectedDOMRange];
     DOMHTMLElement *IUNode = [self IUNodeAtCurrentNode:range.startContainer];
@@ -398,6 +405,14 @@
         
         return YES;
     }
+    
+    //delete after all select
+    NSRange iuRange = [self selectedRange:range InIU:IUNode];
+    if(iuRange.length == IUNode.innerText.length){
+        IUNode.innerHTML = @"";
+        return YES;
+    }
+
     return NO;
 }
 
@@ -486,11 +501,8 @@
          
             NSRange selectRangeInIU = [self selectedRange:proposedRange InIU:proposedNode];
 //            [self.VC selectTextRange:selectRangeInIU identifier:proposeIUID];
-            
-            DOMHTMLElement *startTextNode = [self textElementOfNode:proposedRange.startContainer];
-            DOMHTMLElement *endTextNode = [self textElementOfNode:proposedRange.endContainer];
-            
-            [self.VC selectTextRange:selectRangeInIU identifier:proposeIUID startContainer:startTextNode.idName endContainer:endTextNode.idName htmlNode:proposedNode];
+                        
+            [self.VC selectTextRange:selectRangeInIU identifier:proposeIUID htmlNode:proposedNode];
             JDInfoLog(@"SelectedRange : (%ld, %ld)", selectRangeInIU.location, selectRangeInIU.length);
             
             return YES;
@@ -501,6 +513,9 @@
 }
 
 
+- (BOOL)webView:(WebView *)webView shouldApplyStyle:(DOMCSSStyleDeclaration *)style toElementsInDOMRange:(DOMRange *)range{
+    return NO;
+}
 
 - (void)changeDOMRange:(NSPoint)point{
     DOMRange *range = [self editableDOMRangeForPoint:point];
@@ -559,12 +574,21 @@
 
     DOMRange *range = [self selectedDOMRange];
     
+    DOMHTMLElement *iuNode = [self IUNodeAtCurrentNode:range.startContainer];
+    if(iuNode){
+        [range selectNodeContents:iuNode];
+        [self setSelectedDOMRange:range affinity:NSSelectionAffinityDownstream];
+    }
+    
+    /*
+    
     if([self isTextElement:(DOMHTMLElement *)range.startContainer]){
         DOMHTMLParagraphElement *pElement = [self pElementOfNode:range.startContainer];
         [range selectNode:pElement];
         
         [self setSelectedDOMRange:range affinity:NSSelectionAffinityDownstream];
     }
+     */
 
 }
 
@@ -619,7 +643,22 @@
 
 }
 
-
+- (void)selectTextFromID:(NSString *)fromID toID:(NSString *)toID{
+    
+    DOMRange *domRange = [self selectedDOMRange];
+    DOMHTMLElement *startElement = (DOMHTMLElement *)[[[self mainFrame] DOMDocument] getElementById:fromID];
+    if([fromID isEqualToString:toID]){
+        [domRange selectNodeContents:startElement];
+    }
+    else{
+        DOMHTMLElement *endElement = (DOMHTMLElement *)[[[self mainFrame] DOMDocument] getElementById:toID];
+        [domRange setStart:startElement offset:0];
+        [domRange setEnd:endElement offset:(int)[endElement.innerText length]];
+    }
+    
+    [self setSelectedDOMRange:domRange affinity:NSSelectionAffinityDownstream];
+    
+}
 
 #pragma mark -
 #pragma mark manage IU
@@ -719,7 +758,7 @@
 }
 
 
-
+/*
 
 - (BOOL)webView:(WebView *)webView shouldPerformAction:(SEL)action fromSender:(id)sender{
     JDWarnLog(@"");
@@ -736,8 +775,6 @@
     JDWarnLog(@"");
     return [super webView:sender createWebViewWithRequest:request];
 }
- 
-
 
 - (void)webView:(WebView *)webView decidePolicyForMIMEType:(NSString *)type
         request:(NSURLRequest *)request
@@ -746,6 +783,7 @@ decisionListener:(id<WebPolicyDecisionListener>)listener{
     
 }
 
+*/
 
 - (void)webView:(WebView *)webView decidePolicyForNavigationAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request frame:(WebFrame *)frame decisionListener:(id < WebPolicyDecisionListener >)listener
 {

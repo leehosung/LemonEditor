@@ -29,6 +29,7 @@
 
 -(void)IUClassIdentifier:(NSString *)classIdentifier addClass:(NSString *)className;
 -(void)IUClassIdentifier:(NSString *)classIdentifier removeClass:(NSString *)className;
+-(void)updateTextRangeFromID:(NSString *)fromID toID:(NSString *)toID;
 
 //-(NSRect)IUPercentFrame:(NSString*)identifier;
 
@@ -128,7 +129,8 @@
 
 /// text managing
 
-- (void)selectTextRange:(NSRange)range startContainer:(NSString *)startContainer endContainer:(NSString *)endContainer htmlNode:(DOMHTMLElement *)node;
+- (void)selectTextRange:(NSRange)range htmlNode:(DOMHTMLElement *)node;
+- (void)deselectText;
 /*
 - (void)insertText:(NSString*)text withRange:(NSRange)range;
 - (void)deleteTextInRange:(NSRange)range;

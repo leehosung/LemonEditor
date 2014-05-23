@@ -103,6 +103,7 @@ static NSString * IUCSSTagFontColor = @"fontColor";
 static NSString * IUCSSTagFontWeight = @"fontWeight";
 static NSString * IUCSSTagFontStyle = @"fontStyle";
 static NSString * IUCSSTagTextDecoration = @"textDecoration";
+static NSString * IUCSSTagTextLink = @"textLink";
 
 static NSString * IUCSSTagTextAlign = @"textAlign";
 typedef enum{

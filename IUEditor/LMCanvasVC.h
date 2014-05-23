@@ -50,7 +50,8 @@
 - (void)selectIUInRect:(NSRect)frame;
 
 //text
-- (void)selectTextRange:(NSRange)range identifier:(NSString *)identifier startContainer:(NSString *)startContainer endContainer:(NSString *)endContainer htmlNode:(DOMHTMLElement *)node;
+- (void)selectTextRange:(NSRange)range identifier:(NSString *)identifier htmlNode:(DOMHTMLElement *)node;
+- (void)deselectTextAtCurrentNode;
 /*
 - (void)selectTextRange:(NSRange)range identifier:(NSString *)identifier;
 - (void)insertString:(NSString *)string identifier:(NSString *)identifier withRange:(NSRange)range;

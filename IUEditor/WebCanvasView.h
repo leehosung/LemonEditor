@@ -39,6 +39,6 @@
 - (BOOL)isDOMTextAtPoint:(NSPoint)point;
 - (void)changeDOMRange:(NSPoint)point;
 - (void)selectTextRange:(DOMHTMLElement *)element index:(NSUInteger)index;
-
+- (void)selectTextFromID:(NSString *)fromID toID:(NSString *)toID;
 
 @end
