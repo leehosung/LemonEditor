@@ -45,7 +45,8 @@
     [wc addSelectedIU:@"test"];
 #endif
     
-    //요 부분을 고쳐서 처음 런칭했을 때 화면을 바꾸자.
+    //FIXME: 요 부분을 고쳐서 처음 런칭했을 때 화면을 바꾸자.나중에;
+    
     [self openDocument:nil];
 }
 
@@ -81,6 +82,11 @@
     [wc showWindow:self];
     [wc loadProject:path];
 }
+
+- (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename{
+    return YES;
+}
+
 
 -(void)newDocument:(NSMenuItem*)sender{
     if ([sender isKindOfClass:[NSMenuItem class]]) {
