@@ -556,10 +556,13 @@
     return YES;
 }
 
-- (void)selectTextRange:(NSRange)range startContainer:(NSString *)startContainer endContainer:(NSString *)endContainer htmlNode:(DOMHTMLElement *)node{
+- (void)selectTextRange:(NSRange)range htmlNode:(DOMHTMLElement *)node{
 
-    [_textController selectTextRange:range startContainer:startContainer endContainer:endContainer htmlNode:node];
+    [_textController selectTextRange:range htmlNode:node];
     
+}
+- (void)deselectText{
+    [_textController deselectText];
 }
 - (void)updateTextHTML{
     [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
@@ -570,6 +573,9 @@
     [self.delegate IUClassIdentifier:identifier CSSUpdated:cssStr forWidth:textCSS.editWidth];
 }
 
+-(void)updateTextRangeFromID:(NSString *)fromID toID:(NSString *)toID{
+    [self.delegate updateTextRangeFromID:fromID toID:toID];
+}
 
 
 //old text(textManager)

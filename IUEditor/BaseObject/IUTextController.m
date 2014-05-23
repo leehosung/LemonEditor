@@ -17,6 +17,7 @@
 @end
 
 @implementation IUTextController{
+    BOOL textMode;
 }
 
 - (id)init{
@@ -60,14 +61,52 @@
 
 #pragma mark call by IU
 
-- (void)selectTextRange:(NSRange)range startContainer:(NSString *)startContainer endContainer:(NSString *)endContainer htmlNode:(DOMHTMLElement *)node{
-    
+- (void)selectTextRange:(NSRange)range htmlNode:(DOMHTMLElement *)node{
+
+    [self willChangeValueForKey:@"fontColor"];
+    [self willChangeValueForKey:@"fontName"];
+    [self willChangeValueForKey:@"bold"];
+    [self willChangeValueForKey:@"italic"];
+    [self willChangeValueForKey:@"underline"];
+    [self willChangeValueForKey:@"link"];
+    [self willChangeValueForKey:@"fontSize"];
+
+    textMode = true;
     _selectedRange = range;
     _currentNode = node;
     _innerText = node.innerText;
     _innerHTML = node.innerHTML;
 
     [self checkRange];
+    
+    [self didChangeValueForKey:@"fontColor"];
+    [self didChangeValueForKey:@"fontName"];
+    [self didChangeValueForKey:@"bold"];
+    [self didChangeValueForKey:@"italic"];
+    [self didChangeValueForKey:@"underline"];
+    [self didChangeValueForKey:@"link"];
+    [self didChangeValueForKey:@"fontSize"];
+
+}
+
+- (void)deselectText{
+    [self willChangeValueForKey:@"fontColor"];
+    [self willChangeValueForKey:@"fontName"];
+    [self willChangeValueForKey:@"bold"];
+    [self willChangeValueForKey:@"italic"];
+    [self willChangeValueForKey:@"underline"];
+    [self willChangeValueForKey:@"link"];
+    [self willChangeValueForKey:@"fontSize"];
+
+    textMode = false;
+    
+    [self didChangeValueForKey:@"fontColor"];
+    [self didChangeValueForKey:@"fontName"];
+    [self didChangeValueForKey:@"bold"];
+    [self didChangeValueForKey:@"italic"];
+    [self didChangeValueForKey:@"underline"];
+    [self didChangeValueForKey:@"link"];
+    [self didChangeValueForKey:@"fontSize"];
 }
 
 - (BOOL)isManagedElement{
@@ -84,6 +123,8 @@
     if([self isManagedElement] == NO){
         return;
     }
+    
+    NSMutableArray *existIDArray = [NSMutableArray array];
     
     NSString *innerText = [_currentNode innerText];
     unsigned int totalLength = 0;
@@ -111,12 +152,31 @@
         }
         
         totalLength += textLength;
+        
+        [existIDArray addObject:element.idName];
+    }
+    
+    for(NSString *identifier in _cssDict.allKeys){
+        if([existIDArray containsString:identifier] == NO){
+            [_cssDict removeObjectForKey:identifier];
+            [_rangeDict removeObjectForKey:identifier];
+        }
     }
    
 }
 
 #pragma mark - manage css dict
 
+- (NSString *)newIdentifier{
+    //make new identifier;
+    for(int i=0; ; i++){
+        NSString *identifier = [NSString stringWithFormat:@"%@TNode%d", _textDelegate.identifierForTextController , i];
+        if( [_cssDict.allKeys containsObject:identifier] == NO){
+            return identifier;
+        }
+    }
+    return nil;
+}
 
 - (NSString *)identifierOfCurrentRange{
 
@@ -132,14 +192,7 @@
             return identifier;
         }
     }
-    //make new identifier;
-    for(int i=0; ; i++){
-        NSString *identifier = [NSString stringWithFormat:@"%@TNode%d", _textDelegate.identifierForTextController , i];
-        if( [_cssDict.allKeys containsObject:identifier] == NO){
-            return identifier;
-        }
-    }
-    
+   
     
     return nil;
 }
@@ -148,26 +201,141 @@
     
     NSString *identifier = [self identifierOfCurrentRange];
     
-    //부분 변화 없이 전체 change
-    if(_cssDict.allKeys.count == 0 && _selectedRange.length ==0){
-        return self.textDelegate.css;
-    }
-    
     //현재 선택된 range랑 같은 range로 이미 만들어져 있음.
-    if( [_cssDict.allKeys containsObject:identifier]){
+    if(identifier != nil && [_cssDict.allKeys containsObject:identifier]){
         return [_cssDict objectForKey:identifier];
     }
     else{
-        //새로운 range임
-        IUCSS *css = [[IUCSS alloc] init];
-        css.delegate = self;
-        [_cssDict setObject:css forKey:identifier];
-        [_rangeDict setObject:[NSValue valueWithRange:_selectedRange] forKey:identifier];
-        
-        return css;
+        //부분 변화 없이 전체 change
+        return self.textDelegate.css;
     }
 }
 
+- (NSArray *)cssArraysOfCurrentRange{
+    NSMutableArray *cssArray = [NSMutableArray array];
+    
+    BOOL intersectionFlag = false;
+    //기존에 있던 range와 동일한 range가 선택되었을 경우
+    for(NSString *identifier in _rangeDict){
+        NSRange range = [[_rangeDict objectForKey:identifier] rangeValue];
+        if(NSEqualRanges(range, _selectedRange)){
+            [cssArray addObject:identifier];
+            return cssArray;
+        }
+        if(NSIntersectionRange(range, _selectedRange).length > 0){
+            intersectionFlag = YES;
+        }
+    }
+    
+    //rangeDict가 empty일 때 or 기존에 rangedict와 겹치는 부분이 하나도 없음! hooray!
+    if(intersectionFlag == NO){
+        NSString *nIdentifier = [self makeNewCSS:_selectedRange copyWithIdentifier:nil];
+        [cssArray addObject:nIdentifier];
+        return cssArray;
+
+    }
+
+    
+    //기존에 있는 rangedict와 일부분 겹침, 새롭게 구역을 나누어 주어야 함.
+    BOOL newRangeFlag = false, foundRangeFlag;
+    NSUInteger startIndex;
+    NSMutableDictionary *copiedDict = [_rangeDict mutableCopy];
+
+    
+    for(NSUInteger index = _selectedRange.location ; index < NSMaxRange(_selectedRange); index++){
+        NSRange range;
+        foundRangeFlag = NO;
+        NSString *currentIdentifier;
+        
+        for(NSString *identifier in copiedDict){
+            range = [[copiedDict objectForKey:identifier] rangeValue];
+            if(NSLocationInRange(index, range) == YES){
+                foundRangeFlag = YES;
+                currentIdentifier = identifier;
+                break;
+            }
+        }
+        
+        //새로운 range 가 완성
+        if(newRangeFlag == YES  && foundRangeFlag){
+            newRangeFlag = false;
+            //새로운 css할당
+            NSString *nIdentifer = [self makeNewCSS:NSMakeRange(startIndex, index - startIndex) copyWithIdentifier:nil];
+            [cssArray addObject:nIdentifer];
+        }
+        
+        //intersection 발견
+        if(foundRangeFlag){
+            NSRange intersectionRange = NSIntersectionRange(range, _selectedRange);
+            
+            //현재 위치보다 전부터 겹침. 앞에껀 range를 바껴줌. 선택되지는 않음.
+            if(range.location < index){
+                NSRange modifiedRange = NSMakeRange(range.location, index - range.location);
+                [_rangeDict setObject:[NSValue valueWithRange:modifiedRange] forKey:currentIdentifier];
+                [copiedDict removeObjectForKey:currentIdentifier];
+                
+                NSString *nIdentifer = [self makeNewCSS:NSMakeRange(index, intersectionRange.length) copyWithIdentifier:currentIdentifier];
+                [cssArray addObject:nIdentifer];
+                index = index + intersectionRange.length -1;
+            }
+            else{
+                NSRange modifiedRange = NSMakeRange(range.location, intersectionRange.length);
+                [_rangeDict setObject:[NSValue valueWithRange:modifiedRange] forKey:currentIdentifier];
+                [cssArray addObject:currentIdentifier];
+                index = index + intersectionRange.length -1;
+            }
+            
+            //range바깥에도 dict가 있었음. 새로 만들어줘야함.
+            if(NSMaxRange(_selectedRange) < NSMaxRange(range)){
+                //바깥에 있는 range는 새로운 블락으로 할당되지만, 현재 선택되지는 않음.
+                //end of range
+                [self makeNewCSS:NSMakeRange(NSMaxRange(_selectedRange), NSMaxRange(range) - NSMaxRange(_selectedRange)) copyWithIdentifier:currentIdentifier];
+                break;
+            }
+
+        }
+        //현재 index에 range dict 가 없을 때
+        //새로운 range를 만들어야함!!
+        else{
+            if(newRangeFlag == false){
+                newRangeFlag = true;
+                startIndex = index;
+            }
+        }
+    }
+    
+    return cssArray;
+}
+
+- (NSString *)makeNewCSS:(NSRange)range copyWithIdentifier:(NSString *)copyIdentifier{
+    NSString *identifier = [self newIdentifier];
+
+    //새로운 range임
+    IUCSS *css;
+    
+    if(copyIdentifier){
+        IUCSS *copiedCSS = [_cssDict objectForKey:copyIdentifier];
+        css = [copiedCSS copy];
+    }
+    else{
+         css = [[IUCSS alloc] init];
+        [self setDefaultTextAttribute:css];
+    }
+    css.delegate = self;
+    [_cssDict setObject:css forKey:identifier];
+    [_rangeDict setObject:[NSValue valueWithRange:range] forKey:identifier];
+    return identifier;
+}
+
+- (BOOL)hasCSSForCurrentRange{
+    for(NSString *identifier in _rangeDict.allKeys){
+        NSRange range = [[_rangeDict objectForKey:identifier] rangeValue];
+        if(NSEqualRanges(range, _selectedRange)){
+            return YES;
+        }
+    }
+    return NO;
+}
 #pragma mark - iu css delegate
 -(BOOL)CSSShouldChangeValue:(id)value forTag:(NSString *)tag forWidth:(NSInteger)width{
     return YES;
@@ -193,14 +361,66 @@
 #pragma mark - set font attributes
 
 - (IUCSS *)css{
-    IUCSS *css = [self cssOfCurrentRange];
+    IUCSS *css;
+    if(textMode){
+        css = [self cssOfCurrentRange];
+    }
+    else{
+        css = [self.textDelegate css];
+    }
     return css;
 }
 
-- (void)setFontColor:(NSColor *)fontColor{
-    [self.css setValue:fontColor forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagFontColor]];
+- (void)updateTextCollectionWithIdentifier:(NSString *)identifier{
     [self.textDelegate updateTextHTML];
-    [self.textDelegate updateTextCSS:self.css identifier:[self identifierOfCurrentRange]];
+    [self.textDelegate updateTextCSS:_cssDict[identifier] identifier:identifier];
+   // [self.textDelegate updateTextRangeByID:[self identifierOfCurrentRange]];
+
+}
+
+- (void)setTextTag:(IUCSSTag)tagName value:(id)value{
+    NSString *startId, *endId;
+    NSRange minRange = NSMakeRange(_innerText.length, _innerText.length);
+    NSRange maxRange = NSZeroRange;
+    NSArray *selectedArray = [self cssArraysOfCurrentRange];
+    for(NSString *identifier in selectedArray){
+        IUCSS *css = [_cssDict objectForKey:identifier];
+        [css setValue:value forTag:tagName];
+        [self updateTextCollectionWithIdentifier:identifier];
+        
+        NSRange range = [[_rangeDict objectForKey:identifier] rangeValue];
+        if(range.location < minRange.location){
+            minRange = range;
+            startId = identifier;
+        }
+        if(range.location + range.length > maxRange.location + maxRange.length){
+            maxRange = range;
+            endId = identifier;
+        }
+        
+    }
+    
+    [self.textDelegate updateTextRangeFromID:startId toID:endId];
+}
+
+- (void)setDefaultTextAttribute:(IUCSS *)css{
+    [css setValue:@"Arial" forTag:IUCSSTagFontName forWidth:IUCSSMaxViewPortWidth];
+    [css setValue:@(12) forTag:IUCSSTagFontSize forWidth:IUCSSMaxViewPortWidth];
+}
+
+
+#pragma mark - connect to textVC
+
+- (void)setFontName:(NSColor *)fontName{
+    [self setTextTag:IUCSSTagFontName value:fontName];
+}
+- (NSString *)fontName{
+    return self.css.assembledTagDictionary[IUCSSTagFontName];
+
+}
+
+- (void)setFontColor:(NSColor *)fontColor{
+    [self setTextTag:IUCSSTagFontColor value:fontColor];
 }
 
 - (NSColor *)fontColor{
@@ -208,27 +428,48 @@
 }
 
 - (void)setBold:(BOOL)bold{
-    
+    [self setTextTag:IUCSSTagFontWeight value:@(bold)];
+}
+- (BOOL)bold{
+    return [self.css.assembledTagDictionary[IUCSSTagFontWeight] boolValue];
+
 }
 
 - (void)setItalic:(BOOL)italic{
+    [self setTextTag:IUCSSTagFontStyle value:@(italic)];
+
     
+}
+- (BOOL)italic{
+    return [self.css.assembledTagDictionary[IUCSSTagFontStyle] boolValue];
+
 }
 
 - (void)setUnderline:(BOOL)underline{
     
+    [self setTextTag:IUCSSTagTextDecoration value:@(underline)];
 }
-- (void)setLink:(NSString *)link{
-    
+- (BOOL)underline{
+    return [self.css.assembledTagDictionary[IUCSSTagTextDecoration] boolValue];
+
 }
 
 - (void)setFontSize:(int)fontSize{
-    
+    [self setTextTag:IUCSSTagFontSize value:@(fontSize)];
 }
 
-- (void)setTextAlign:(IUAlign)textAlign{
-    
+- (int)fontSize{
+    return [self.css.assembledTagDictionary[IUCSSTagFontSize] intValue];
 }
+
+- (void)setLink:(NSString *)link{
+    [self setTextTag:IUCSSTagTextLink value:link];
+}
+
+- (NSString *)link{
+    return self.css.assembledTagDictionary[IUCSSTagTextLink];
+}
+
 
 #pragma mark - css
 

@@ -17,7 +17,7 @@
 - (NSString*)identifierForTextController;
 - (void)updateTextHTML;
 - (void)updateTextCSS:(IUCSS *)textCSS identifier:(NSString *)identifier;
-
+- (void)updateTextRangeFromID:(NSString *)fromID toID:(NSString *)toID;
 @end
 
 
@@ -27,14 +27,15 @@
 
 @property NSMutableDictionary *cssDict;
 
+@property (nonatomic) NSColor *fontName;
 @property (nonatomic) NSColor *fontColor;
 @property (nonatomic) BOOL bold, italic, underline;
 @property (nonatomic) NSString *link;
 @property (nonatomic) int fontSize;
-@property (nonatomic) IUAlign textAlign;
 @property (nonatomic) IUCSS *css;
 
-- (void)selectTextRange:(NSRange)range startContainer:(NSString *)startContainer endContainer:(NSString *)endContainer htmlNode:(DOMHTMLElement *)node;
+- (void)selectTextRange:(NSRange)range htmlNode:(DOMHTMLElement *)node;
+- (void)deselectText;
 - (NSString *)textHTML;
 -(void)setEditWidth:(NSInteger)width;
 

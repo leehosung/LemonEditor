@@ -267,13 +267,19 @@
 
 #pragma mark setText
 
-- (void)selectTextRange:(NSRange)range identifier:(NSString *)identifier startContainer:(NSString *)startContainer endContainer:(NSString *)endContainer htmlNode:(DOMHTMLElement *)node{
+- (void)selectTextRange:(NSRange)range identifier:(NSString *)identifier htmlNode:(DOMHTMLElement *)node{
 
     IUBox *iu = [self.controller IUBoxByIdentifier:identifier];
     assert(iu != nil);
     
-    [iu selectTextRange:range startContainer:startContainer endContainer:endContainer htmlNode:node];
+    [iu selectTextRange:range htmlNode:node];
 
+}
+- (void)deselectTextAtCurrentNode{
+    if([self.controller.selectedObjects count] ==1){
+        IUBox *iu = [self.controller selectedObjects][0];
+        [iu deselectText];
+    }
 }
 /*
 //text
@@ -365,6 +371,10 @@
         NSString *currentClass = [node getAttribute:@"class"];
         [node setAttribute:@"class" value:[currentClass stringByReplacingOccurrencesOfString:className withString:@""]];
     }
+}
+
+-(void)updateTextRangeFromID:(NSString *)fromID toID:(NSString *)toID{    
+    [self.webView selectTextFromID:fromID toID:toID];
 }
 
 
