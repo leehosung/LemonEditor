@@ -196,7 +196,7 @@
     IUProject *project = _documentController.project;
     [project build:nil];
     IUDocumentNode *node = [[_documentController selectedObjects] firstObject];
-    NSString *firstPath = [project.path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@.html",project.buildDirectoryName, node.name] ];
+    NSString *firstPath = [project.directory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@.html",project.buildDirectoryName, [node.name lowercaseString]] ];
     
     [[NSWorkspace sharedWorkspace] openFile:firstPath];
 }

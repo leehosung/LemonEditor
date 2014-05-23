@@ -68,9 +68,11 @@
     
     NSString *dir = [setting objectForKey:IUProjectKeyDirectory];
     assert(dir);
-    project.path = [dir stringByAppendingPathComponent:@"iuSource"];
-    [JDFileUtil rmDirPath:[project.path stringByAppendingPathExtension:@"*"]];
-    ReturnNilIfFalse([JDFileUtil mkdirPath:project.path]);
+    NSString *projectDir = [dir stringByAppendingPathComponent:@"iuProject"];
+    NSString *pathAppend = [NSString stringWithFormat:@"iuProject/%@.iu", project.name];
+    project.path = [dir stringByAppendingPathComponent:pathAppend];
+    [JDFileUtil rmDirPath:projectDir];
+    ReturnNilIfFalse([JDFileUtil mkdirPath:project.directory]);
     
     //create document dir
     IUDocumentGroupNode *pageDir = [[IUDocumentGroupNode alloc] init];

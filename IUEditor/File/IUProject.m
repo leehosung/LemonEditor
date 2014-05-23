@@ -198,9 +198,13 @@
     [[NSFileManager defaultManager] createDirectoryAtPath:node.absolutePath withIntermediateDirectories:YES attributes:nil error:nil];
 }
 
+- (NSString*)directory{
+    return [self.path stringByDeletingLastPathComponent];
+}
+
 - (BOOL)build:(NSError**)error{
     assert(_buildDirectoryName != nil);
-    NSString *buildPath = [self.path stringByAppendingPathComponent:self.buildDirectoryName];
+    NSString *buildPath = [self.directory stringByAppendingPathComponent:self.buildDirectoryName];
 
     [[NSFileManager defaultManager] removeItemAtPath:buildPath error:error];
 
@@ -208,7 +212,7 @@
     
 //    [self initializeResource];
     //FIXME: symbolic link가 절대경로로 되어 있음. resource path를 상대경로로 링크 걸어야함.
-    [[NSFileManager defaultManager] createSymbolicLinkAtPath:[buildPath stringByAppendingPathComponent:@"Resource"] withDestinationPath:[self.path stringByAppendingPathComponent:@"Resource"] error:error];
+    [[NSFileManager defaultManager] createSymbolicLinkAtPath:[buildPath stringByAppendingPathComponent:@"Resource"] withDestinationPath:[self.directory stringByAppendingPathComponent:@"Resource"] error:error];
 
 
     IUEventVariable *eventVariable = [[IUEventVariable alloc] init];
@@ -229,7 +233,7 @@
         [initializeJSSource appendNewline];
     }
     
-    NSString *resourceJSPath = [[self.path stringByAppendingPathComponent:@"Resource"] stringByAppendingPathComponent:@"JS"];
+    NSString *resourceJSPath = [self.directory stringByAppendingPathComponent:@"Resource/JS"];
     
     //make initialize javascript file
     [initializeJSSource insertString:@"$(document).ready(function(){\nconsole.log('ready : iuinit.js');" atIndex:0];

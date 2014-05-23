@@ -21,6 +21,14 @@
     __weak NSButton *_buildB;
     __weak NSButton *_serverB;
     __weak NSPopUpButton *_compilerB;
+    
+    
+    NSPipe *stdOutput;
+    NSPipe *stdError;
+    
+    NSFileHandle *stdOutputHandle;
+    NSFileHandle *stdErrorHandle;
+
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -33,10 +41,19 @@
 
 - (void)awakeFromNib{
     [_compilerB bind:NSSelectedIndexBinding toObject:self withKeyPath:@"docController.project.compiler.rule" options:nil];
+    [self addObserver:self forKeyPath:@"docController.project.runnable" options:NSKeyValueObservingOptionInitial context:nil];
+}
+
+-(void)docController_project_runnableDidChange:(NSDictionary*)change{
     if (_docController.project.runnable == NO) {
         [_serverB setEnabled:NO];
         [[_compilerB itemAtIndex:1] setEnabled:NO];
         [_compilerB setAutoenablesItems:NO];
+    }
+    else {
+        [_serverB setEnabled:YES];
+        [[_compilerB itemAtIndex:1] setEnabled:YES];
+        [_compilerB setAutoenablesItems:YES];
     }
 }
 
@@ -49,17 +66,20 @@
             assert(0);
         }
         IUDocumentNode *node = [[_docController selectedObjects] firstObject];
-        NSString *firstPath = [project.path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@.html",project.buildDirectoryName, [node.name lowercaseString]] ];
+        NSString *firstPath = [project.directory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@.html",project.buildDirectoryName, [node.name lowercaseString]] ];
         [[NSWorkspace sharedWorkspace] openFile:firstPath];
     }
     else if (compiler.rule == IUCompileRuleDjango){
+        if (runningState == 0) {
+            [self runOrStopServer:self];
+        }
         IUProject *project = _docController.project;
         BOOL result = [project build:nil];
         if (result == NO) {
             assert(0);
         }
         IUDocumentNode *node = [[_docController selectedObjects] firstObject];
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat: @"http://127.0.0.1/%@", [node.name lowercaseString]]];
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat: @"http://127.0.0.1:8000/%@", [node.name lowercaseString]]];
         [[NSWorkspace sharedWorkspace] openURL:url];
     }
 }
@@ -68,21 +88,29 @@
     if (runningState == 0) {
         // stop server
         serverTask = [[NSTask alloc] init];
-        NSPipe *stdOutput = [NSPipe pipe];
-        NSPipe *stdError = [NSPipe pipe];
+        stdOutput = [NSPipe pipe];
+        stdError = [NSPipe pipe];
         
-        NSFileHandle *stdOutputHandle = [stdOutput fileHandleForReading];
-        NSFileHandle *stdErrorHandle = [stdError fileHandleForReading];
+        stdOutputHandle = [stdOutput fileHandleForReading];
+        stdErrorHandle = [stdError fileHandleForReading];
 
         [serverTask setStandardOutput:stdOutputHandle];
         [serverTask setStandardError:stdErrorHandle];
         runningState = 1;
+        
+        
+        [serverTask setLaunchPath:@"/usr/bin/python"];
+        [serverTask setCurrentDirectoryPath:[_docController.project.directory stringByDeletingLastPathComponent]];
+        [serverTask setArguments:@[@"manage.py", @"runserver", @"8000"]];
+        
+        [serverTask launch];
         [_serverB setTitle:@">"];
     }
     else {
         // run server
         if ([serverTask isRunning]) {
-            [serverTask interrupt];
+            [serverTask terminate];
+            [serverTask waitUntilExit];
         }
         runningState = 0;
         [_serverB setTitle:@"||"];
@@ -90,7 +118,7 @@
 }
 
 - (IBAction)changeCompilerRule:(id)sender {
-    
+    _docController.project.compileRule = [_compilerB indexOfSelectedItem];
 }
 
 - (IBAction)sync:(id)sender {
