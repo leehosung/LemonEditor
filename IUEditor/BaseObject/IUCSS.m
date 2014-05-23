@@ -81,7 +81,7 @@
         }
         if (value == nil) {
             [cssDict removeObjectForKey:tag];
-            [_assembledTagDictionaryForEditWidth removeTag:tag];
+            [_assembledTagDictionaryForEditWidth removeObjectForKey:tag];
         }
         else {
             cssDict[tag] = value;
