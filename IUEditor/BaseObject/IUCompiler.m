@@ -842,16 +842,14 @@ static NSString * IUCompilerTagOption = @"tag";
                 value = cssTagDict[IUCSSTagX];
             }
             
-            if (value) {
-                if (obj.floatRight) {
-                    [dict putTag:@"margin-right" floatValue:[value floatValue] * (-1) ignoreZero:NO unit:unit];
-                }
-                else if (obj.flow) {
-                    [dict putTag:@"margin-left" floatValue:[value floatValue] ignoreZero:NO unit:unit];
-                }
-                else {
-                    [dict putTag:@"left" floatValue:[value floatValue] ignoreZero:NO unit:unit];
-                }
+            if (obj.floatRight) {
+                [dict putTag:@"margin-right" floatValue:[value floatValue] * (-1) ignoreZero:NO unit:unit];
+            }
+            else if (obj.flow) {
+                [dict putTag:@"margin-left" floatValue:[value floatValue] ignoreZero:NO unit:unit];
+            }
+            else {
+                [dict putTag:@"left" floatValue:[value floatValue] ignoreZero:NO unit:unit];
             }
         }
         if (obj.hasY) {
@@ -865,14 +863,12 @@ static NSString * IUCompilerTagOption = @"tag";
                 value = cssTagDict[IUCSSTagY];
             }
             
-            if (value) {
-                if (obj.flow) {
-                    [dict putTag:@"margin-top" floatValue:[value floatValue] ignoreZero:NO unit:unit];
-                }
-                else {
-                    [dict putTag:@"top" floatValue:[value floatValue] ignoreZero:NO unit:unit];
-                }
-                
+
+            if (obj.flow) {
+                [dict putTag:@"margin-top" floatValue:[value floatValue] ignoreZero:NO unit:unit];
+            }
+            else {
+                [dict putTag:@"top" floatValue:[value floatValue] ignoreZero:NO unit:unit];
                 
             }
         }
