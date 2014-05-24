@@ -20,7 +20,7 @@
         }
         return NO;
     }];
-    NSArray *documentsNodes = [self.children filteredArrayUsingPredicate:predicate];
+    NSArray *documentsNodes = [self.allChildren filteredArrayUsingPredicate:predicate];
     return [documentsNodes valueForKey:@"document"];
 }
 
