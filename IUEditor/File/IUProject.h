@@ -73,5 +73,6 @@ static NSString * IUProjectKeyDirectory = @"dir";
 - (NSArray*)classDocumentNodes;
 
 - (void)copyResourceForDebug;
+- (void)setIdentifierManager:(IUIdentifierManager*)identifierManager;
 @property (readonly) BOOL runnable;
 @end
