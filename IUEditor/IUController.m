@@ -52,6 +52,7 @@
         NSError *err;
         IUBox *newBox = [box copy];
         [box.identifierManager setNewIdentifierAndRegister:newBox withKey:@"copy"];
+        assert(newBox.htmlID);
         newBox.name = [newBox.htmlID stringByReplacingOccurrencesOfString:@"copy" withString:@" copy"];
         for (NSNumber *width in newBox.css.allEditWidth) {
             NSDictionary *tagDictionary;

@@ -86,6 +86,7 @@
             }
         }
     }
+    assert(obj.htmlID);
     [self registerIU:obj];
 }
 
