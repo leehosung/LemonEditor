@@ -256,7 +256,9 @@
     [[NSDocumentController sharedDocumentController] noteNewRecentDocumentURL:[NSURL fileURLWithPath:path]];
     
     [[NSUserDefaults standardUserDefaults] setValue:path forKey:@"lastDocument"];
-    self.window.title = path;
+    [self.window setTitleWithRepresentedFilename:path];
+    
+    [_project setIdentifierManager:_identifierManager];
 }
 
 -(void)setSelectedNode:(IUNode*)selectedNode{

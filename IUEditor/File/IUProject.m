@@ -475,5 +475,10 @@
     JDInfoLog(@"Project Dealloc");
 }
 
+- (void)setIdentifierManager:(IUIdentifierManager*)identifierManager{
+    for (IUDocument *doc in self.allDocuments) {
+        doc.identifierManager = identifierManager;
+    }
+}
 
 @end
