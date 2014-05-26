@@ -211,8 +211,8 @@
     [[NSFileManager defaultManager] createDirectoryAtPath:buildPath withIntermediateDirectories:YES attributes:nil error:error];
     
 //    [self initializeResource];
-    //FIXME: symbolic link가 절대경로로 되어 있음. resource path를 상대경로로 링크 걸어야함.
-    [[NSFileManager defaultManager] createSymbolicLinkAtPath:[buildPath stringByAppendingPathComponent:@"Resource"] withDestinationPath:[self.directory stringByAppendingPathComponent:@"Resource"] error:error];
+    
+    [[NSFileManager defaultManager] createSymbolicLinkAtPath:[buildPath stringByAppendingPathComponent:@"Resource"] withDestinationPath:[@".." stringByAppendingPathComponent:@"Resource"] error:error];
 
 
     IUEventVariable *eventVariable = [[IUEventVariable alloc] init];
