@@ -195,8 +195,11 @@
 -(JDCode *)cssContentForIUCarouselPager:(IUCarousel *)iu hover:(BOOL)hover{
     JDCode *code = [[JDCode alloc] init];
     if(hover){
+        //fall back
+        [code addCodeLineWithFormat:@"background:%@ !important", [iu.selectColor rgbString]];
         [code addCodeLineWithFormat:@"background:%@ !important", [iu.selectColor rgbaString]];
     }else{
+        [code addCodeLineWithFormat:@"background:%@ !important", [iu.deselectColor rgbString]];
         [code addCodeLineWithFormat:@"background:%@ !important", [iu.deselectColor rgbaString]];
     }
     return code;
@@ -253,11 +256,15 @@
     NSMutableString *pgLinkButton = [NSMutableString string];
     CGFloat height = [iu.css.assembledTagDictionary[IUCSSTagHeight] floatValue];
     [pgLinkButton appendFormat:@"    display:block; width:%.1fpx; height:%.1fpx; margin-left:%.1fpx; margin-right: %.1fpx; line-height:%.1fpx;", height, height, iu.buttonMargin, iu.buttonMargin, height];
+    [pgLinkButton appendFormat:@"    background-color:%@;", [iu.defaultButtonBGColor rgbString]];
     [pgLinkButton appendFormat:@"    background-color:%@;", [iu.defaultButtonBGColor rgbaString]];
 
     [returnDict setObject:pgLinkButton forKey:[iu.htmlID.cssClass stringByAppendingString:@" > div > ul > a > li"]];
-    
+
+    //fallback
+    [returnDict setObject:[iu.selectedButtonBGColor rgbString] forKey:[[iu.htmlID cssClass] stringByAppendingString:@" selected > div > ul > a > li"]];
     [returnDict setObject:[iu.selectedButtonBGColor rgbaString] forKey:[[iu.htmlID cssClass] stringByAppendingString:@" selected > div > ul > a > li"]];
+
     return returnDict;
 }
 
@@ -795,7 +802,12 @@ static NSString * IUCompilerTagOption = @"tag";
         if ([cssTagDict[IUCSSTagHoverBGColorEnable] boolValue]){
             value = cssTagDict[IUCSSTagHoverBGColor];
             if(value){
-                [dict putTag:@"background-color" color:value ignoreClearColor:YES];
+                NSColor *color = value;
+                [dict putTag:@"background-color" color:color ignoreClearColor:YES];
+                NSString    *ieStr = [NSString stringWithFormat:@"progid:DXImageTransform.Microsoft.gradient(startColorstr='%@', endColorstr='%@')",
+                                      [color rgbStringWithTransparent],[color rgbStringWithTransparent]];
+                [dict putTag:@"filter" string:ieStr];
+
             }
         }
         
@@ -911,7 +923,14 @@ static NSString * IUCompilerTagOption = @"tag";
         
 #pragma mark background-image and color
         value = cssTagDict[IUCSSTagBGColor];
-        [dict putTag:@"background-color" color:value ignoreClearColor:YES];
+        if(value){
+            NSColor *color = value;
+            [dict putTag:@"background-color" color:value ignoreClearColor:YES];
+            NSString    *ieStr = [NSString stringWithFormat:@"progid:DXImageTransform.Microsoft.gradient(startColorstr='%@', endColorstr='%@')",
+                                  [color rgbStringWithTransparent],[color rgbStringWithTransparent]];
+            [dict putTag:@"filter" string:ieStr];
+
+        }
         
         value = cssTagDict[IUCSSTagImage];
         if(value){
@@ -1037,6 +1056,8 @@ static NSString * IUCompilerTagOption = @"tag";
             colorString = @"black";
         }
         if (hOff || vOff || blur || spread){
+            //color fallback
+            [dict putTag:@"box-shadow" string:[NSString stringWithFormat:@"%ldpx %ldpx %ldpx %ldpx %@", hOff, vOff, blur, spread, [color rgbString]]];
             [dict putTag:@"box-shadow" string:[NSString stringWithFormat:@"%ldpx %ldpx %ldpx %ldpx %@", hOff, vOff, blur, spread, colorString]];
         }
         
@@ -1144,6 +1165,7 @@ static NSString * IUCompilerTagOption = @"tag";
     }
     NSColor *fontColor = attributeDict[IUCSSTagFontColor];
     if (fontColor){
+        [retStr appendFormat:@"color:%@;", [fontColor rgbString]];
         [retStr appendFormat:@"color:%@;", [fontColor rgbaString]];
     }
     BOOL boolValue =[attributeDict[IUCSSTagFontWeight] boolValue];
