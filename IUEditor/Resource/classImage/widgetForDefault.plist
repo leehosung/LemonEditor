@@ -22,6 +22,22 @@
 		<key>isWidget</key>
 		<true/>
 		<key>className</key>
+		<string>IUText</string>
+		<key>classImage</key>
+		<string>tool_view</string>
+		<key>navImage</key>
+		<string>stack_view</string>
+		<key>shortDesc</key>
+		<string>Box Object</string>
+		<key>longDesc</key>
+		<string></string>
+		<key>widgetClass</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>isWidget</key>
+		<true/>
+		<key>className</key>
 		<string>IUImage</string>
 		<key>classImage</key>
 		<string>tool_image</string>

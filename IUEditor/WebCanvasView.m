@@ -457,6 +457,14 @@
     NSRange iuRange = [self selectedRange:range InIU:IUNode];
     //[self.VC insertString:text identifier:IUNode.idName withRange:iuRange];
     
+    if([text isEqualToString:@"\n"]){
+        NSMutableString *text = [IUNode.innerText mutableCopy];
+        [text deleteCharactersInRange:iuRange];
+        [text insertString:@"\n" atIndex:iuRange.location] ;
+        IUNode.innerText = text;
+        return NO;
+    }
+    
     JDInfoLog(@"insertText [IU:%@] : range(%ld, %ld) : %@ ", IUNode.idName, iuRange.location, iuRange.length, text);
     
     

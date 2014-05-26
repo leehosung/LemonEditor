@@ -44,9 +44,6 @@
     
     return self;
 }
--(BOOL)shouldEditText{
-    return NO;
-}
 
 -(IUBackground*)background{
     for (IUBox *obj in self.children) {

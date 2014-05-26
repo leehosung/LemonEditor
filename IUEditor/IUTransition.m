@@ -48,10 +48,6 @@
     return self;
 }
 
--(BOOL)shouldEditText{
-    return NO;
-}
-
 
 - (void)setHtmlID:(NSString *)htmlID{
     [super setHtmlID:htmlID];

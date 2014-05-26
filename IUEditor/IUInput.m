@@ -10,9 +10,5 @@
 
 @implementation IUInput
 
--(BOOL)shouldEditText{
-    return NO;
-}
-
 
 @end

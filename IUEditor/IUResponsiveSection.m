@@ -42,9 +42,6 @@
     
 }
 
--(BOOL)shouldEditText{
-    return NO;
-}
 
 - (BOOL)enableXUserInput{
     return NO;

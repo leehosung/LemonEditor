@@ -40,9 +40,7 @@
     }
     return NO;
 }
--(BOOL)shouldEditText{
-    return NO;
-}
+
 -(void)setInnerHTML:(NSString *)aInnerHTML{
     _innerHTML = aInnerHTML;
     JDInfoLog(@"%@", aInnerHTML);

@@ -30,9 +30,6 @@
     [aCoder encodeInteger:_defaultItemCount forKey:@"defaultItemCount"];
 }
 
--(BOOL)shouldEditText{
-    return NO;
-}
 - (id)initWithIdentifierManager:(IUIdentifierManager *)identifierManager option:(NSDictionary *)option{
     self = [super initWithIdentifierManager:identifierManager option:option];
     NSArray *array = @[@{@"width":@"600",@"count":@(2)}];

@@ -45,9 +45,6 @@
     return NO;
 }
 
-- (BOOL)shouldEditText{
-    return NO;
-}
 
 -(void)setWebMovieSource:(NSString *)aWebMovieSource{
     _webMovieSource = aWebMovieSource;

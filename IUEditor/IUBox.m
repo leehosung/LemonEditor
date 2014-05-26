@@ -14,7 +14,6 @@
 #import "IUCompiler.h"
 #import "IUDocument.h"
 #import "IUBox.h"
-#import "IUTextManager.h"
 #import "IUClass.h"
 
 @interface IUBox()
@@ -23,20 +22,17 @@
 @implementation IUBox{
     int delegateEnableLevel;
     NSMutableSet *changedCSSWidths;
-    IUTextManager *textManager;
     NSPoint originalPoint;
     NSSize originalSize;
     NSSize originalPercentSize;
 }
 
 - (id)copyWithZone:(NSZone *)zone{
-    IUTextManager *tManager = [textManager copy];
-    IUTextController *textController = [_textController copy];
     IUCSS *newCSS = [_css copy];
     IUEvent *newEvent = [_event copy];
     NSArray *children = [self.children deepCopy];
     //TODO: connect textmanager
-    IUBox *box = [[[self class] allocWithZone: zone] initWithIdentifierManager:self.identifierManager textManager:tManager event:newEvent css:newCSS children:children];
+    IUBox *box = [[[self class] allocWithZone: zone] initWithIdentifierManager:self.identifierManager event:newEvent css:newCSS children:children];
     
     return box;
 }
@@ -58,11 +54,6 @@
         for (IUBox *iu in self.children) {
             [iu bind:@"identifierManager" toObject:self withKeyPath:@"identifierManager" options:nil];
         }
-        textManager = [aDecoder decodeObjectForKey:@"textManager"];
-        textManager.dataSource = self;
-        
-        _textController = [aDecoder decodeObjectForKey:@"textController"];
-        _textController.textDelegate = self;
     }
     return self;
 }
@@ -74,19 +65,15 @@
     [aCoder encodeFromObject:self withProperties:[[IUBox class] propertiesWithOutProperties:@[@"identifierManager", @"textController"]]];
     [aCoder encodeObject:self.css forKey:@"css"];
     [aCoder encodeObject:self.event forKey:@"event"];
-    [aCoder encodeObject:textManager forKey:@"textManager"];
-    [aCoder encodeObject:self.textController forKey:@"textController"];
     [aCoder encodeObject:_m_children forKey:@"children"];
 }
 
--(id)initWithIdentifierManager:(IUIdentifierManager*)manager textManager:(IUTextManager *)aTextManager event:(IUEvent*)event css:(IUCSS*)css children:(NSArray*)children{
+-(id)initWithIdentifierManager:(IUIdentifierManager*)manager event:(IUEvent*)event css:(IUCSS*)css children:(NSArray*)children{
     self = [super init];
     _css = css;
     _css.delegate = self;
     _identifierManager = manager;
     _event = event;
-    textManager = aTextManager;
-    textManager.dataSource = self;
     
     delegateEnableLevel = 1;
     _m_children = [NSMutableArray array];
@@ -111,11 +98,7 @@
         _css.delegate = self;
         _identifierManager = manager;
         _event = [[IUEvent alloc] init];
-        textManager = [[IUTextManager alloc] init];
-        textManager.dataSource = self;
         
-        _textController = [[IUTextController alloc] init];
-        _textController.textDelegate = self;
         
         //NO - Pixel
         [_css setValue:@(0) forTag:IUCSSTagXUnit forWidth:IUCSSMaxViewPortWidth];
@@ -178,11 +161,9 @@
     if (self.delegate) {
         if (self.delegate.maxFrameWidth == self.delegate.selectedFrameWidth) {
             [_css setEditWidth:IUCSSMaxViewPortWidth];
-            [_textController setEditWidth:IUCSSMaxViewPortWidth];
         }
         else {
             [_css setEditWidth:self.delegate.selectedFrameWidth];
-            [_textController setEditWidth:self.delegate.selectedFrameWidth];
         }
     }
 }
@@ -550,83 +531,6 @@
 }
 
 #pragma mark -
-#pragma mark manage text
-
--(BOOL)shouldEditText{
-    return YES;
-}
-
-- (void)selectTextRange:(NSRange)range htmlNode:(DOMHTMLElement *)node{
-
-    [_textController selectTextRange:range htmlNode:node];
-    
-}
-- (void)deselectText{
-    [_textController deselectText];
-}
-- (void)updateTextHTML{
-    [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
-}
-
-- (void)updateTextCSS:(IUCSS *)textCSS identifier:(NSString *)identifier{
-    NSString *cssStr = [self.document.compiler fontCSSContentFromAttributes:textCSS.assembledTagDictionary];
-    [self.delegate IUClassIdentifier:identifier CSSUpdated:cssStr forWidth:textCSS.editWidth];
-}
-
--(void)updateTextRangeFromID:(NSString *)fromID toID:(NSString *)toID{
-    [self.delegate updateTextRangeFromID:fromID toID:toID];
-}
-
-
-//old text(textManager)
-
-- (void)replaceText:(NSString*)text withRange:(NSRange)range{
-    [textManager replaceText:text atRange:range];
-    
-    NSUInteger index = [[self cursor][IUTextCursorLocationIndex] integerValue];
-    NSString   *nID =[self cursor][IUTextCursorLocationID];
-    
-    [self.delegate IUHTMLIdentifier:self.htmlID textHTML:self.html withParentID:self.parent.htmlID nearestID:nID index:index];
-    
-    NSMutableDictionary *cssDict = [textManager.css mutableCopy];
-    NSDictionary *defaultCSS = cssDict[@(IUCSSMaxViewPortWidth)];
-    for (NSString *identifier in defaultCSS) {
-        NSString *src = [self.document.compiler fontCSSContentFromAttributes:defaultCSS[identifier]];
-        [self.delegate IUClassIdentifier:identifier CSSUpdated:src forWidth:IUCSSMaxViewPortWidth];
-    }
-}
-
-- (void)insertText:(NSString*)text withRange:(NSRange)range{
-    NSLog(@"insertText %@ (%ld, %ld)", text, range.location, range.length);
-
-    [textManager replaceText:text atRange:range];
-    NSUInteger index = [[self cursor][IUTextCursorLocationIndex] integerValue];
-    NSString   *nID =[self cursor][IUTextCursorLocationID];
-    
-    [self.delegate IUHTMLIdentifier:self.htmlID textHTML:self.html withParentID:self.parent.htmlID nearestID:nID index:index];
-}
-
-
-- (void)deleteTextInRange:(NSRange)range{
-    [textManager deleteTextInRange:range];
-    NSUInteger index = [[self cursor][IUTextCursorLocationIndex] integerValue];
-    NSString   *nID =[self cursor][IUTextCursorLocationID];
-    
-    [self.delegate IUHTMLIdentifier:self.htmlID textHTML:self.html withParentID:self.parent.htmlID nearestID:nID index:index];
-}
-
-
-
-
-- (NSString*)textHTML{
-    return textManager.HTML;
-}
-
-- (NSDictionary*)cursor{
-    return [textManager cursor];
-}
-
-#pragma mark -
 
 - (BOOL)flowChangeable{
     return YES;
@@ -697,12 +601,6 @@
 }
 - (BOOL)enableHeightUserInput{
     return YES;
-}
-- (NSString*)identifierForTextManager{
-    return self.htmlID;
-}
-- (NSString*)identifierForTextController{
-    return self.htmlID;
 }
 
 

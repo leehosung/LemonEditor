@@ -43,10 +43,6 @@
     return NO;
 }
 
--(BOOL)shouldEditText{
-    return NO;
-}
-
 
 - (void)setVideoPath:(NSString *)videoPath{
     _videoPath = videoPath;

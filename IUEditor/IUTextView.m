@@ -38,10 +38,6 @@
     
 }
 
--(BOOL)shouldEditText{
-    return NO;
-}
-
 - (BOOL)shouldAddIUByUserInput{
     return NO;
 }
