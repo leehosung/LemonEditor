@@ -24,11 +24,11 @@
 		<key>className</key>
 		<string>IUText</string>
 		<key>classImage</key>
-		<string>tool_view</string>
+		<string>tool_text</string>
 		<key>navImage</key>
-		<string>stack_view</string>
+		<string>stack_text</string>
 		<key>shortDesc</key>
-		<string>Box Object</string>
+		<string>Text Object</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
@@ -188,7 +188,7 @@
 		<key>navImage</key>
 		<string>stack_fblike</string>
 		<key>shortDesc</key>
-		<string></string>
+		<string>Object for Facebook Like widget</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
@@ -364,7 +364,6 @@
 		<key>navImage</key>
 		<string>stack_carousel_item</string>
 	</dict>
-	
 	<dict>
 		<key>isWidget</key>
 		<false/>
