@@ -27,10 +27,35 @@
     return self;
 }
 
+
+-(void)awakeFromNib{
+    [super awakeFromNib];
+    NSString *templatePath = [[NSBundle mainBundle] pathForResource:@"sampleTemplate" ofType:@"plist"];
+    NSArray *templateList = [NSArray arrayWithContentsOfFile:templatePath];
+    
+    [self.templateAC setSelectionIndex:0];
+   
+    
+}
+
 -(void)show{
     assert(_nextB);
+    [_prevB setEnabled:NO];
     [_nextB setTarget:self];
-    [_nextB setEnabled:NO];
+    [_nextB setEnabled:YES];
+    [_nextB setAction:@selector(pressNextB)];
+}
+
+-(void)pressNextB{
+    if(self.templateAC.selectedObjects.count <=0){
+     return;
+    }
+    
+    NSArray *selectedProject = self.templateAC.selectedObjects;
+    
+    
+    
+    
 }
 
 @end
