@@ -21,7 +21,7 @@
 @end
 
 
-@interface IUTextController : NSObject <NSCopying, IUCSSDelegate>
+@interface IUTextController : NSObject <NSCoding, NSCopying, IUCSSDelegate>
 
 @property (weak) id <IUTextControllerDelegate> textDelegate;
 

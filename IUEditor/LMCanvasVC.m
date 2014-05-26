@@ -19,6 +19,7 @@
 #import "InnerSizeBox.h"
 #import "IUResponsiveSection.h"
 #import "IUImport.h"
+#import "IUText.h"
 
 @interface LMCanvasVC ()
 
@@ -172,7 +173,7 @@
 - (BOOL)isEditable{
     if([self countOfSelectedIUs] == 1){
         IUBox *currentIU = self.controller.selectedObjects[0];
-        if(currentIU.shouldEditText){
+        if([currentIU isKindOfClass:[IUText class]]){
             return YES;
         }
     }
@@ -271,14 +272,20 @@
 
     IUBox *iu = [self.controller IUBoxByIdentifier:identifier];
     assert(iu != nil);
-    
-    [iu selectTextRange:range htmlNode:node];
+    if([iu isKindOfClass:[IUText class]]){
+        IUText *textIU = (IUText *)iu;
+        [textIU selectTextRange:range htmlNode:node];
+    }
 
 }
 - (void)deselectTextAtCurrentNode{
     if([self.controller.selectedObjects count] ==1){
         IUBox *iu = [self.controller selectedObjects][0];
-        [iu deselectText];
+        if([iu isKindOfClass:[IUText class]]){
+            IUText *textIU = (IUText *)iu;
+            [textIU deselectText];
+        }
+
     }
 }
 /*

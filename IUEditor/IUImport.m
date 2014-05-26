@@ -38,10 +38,6 @@
     }
 }
 
--(BOOL)shouldEditText{
-    return NO;
-}
-
 
 
 @end

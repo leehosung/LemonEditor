@@ -90,6 +90,7 @@
 		3D0D481318FFDC96000A5B53 /* LMFileTabItemVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D481118FFDC96000A5B53 /* LMFileTabItemVC.m */; };
 		3D0D481418FFDC96000A5B53 /* LMFileTabItemVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D0D481218FFDC96000A5B53 /* LMFileTabItemVC.xib */; };
 		3D14886318F6AE5700E8EE4C /* LMCenterClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D14886218F6AE5700E8EE4C /* LMCenterClipView.m */; };
+		3D1BACC919330240004C554F /* IUText.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1BACC819330240004C554F /* IUText.m */; };
 		3D54D64B18ED5D2E00B5FEC2 /* ResizeNE-SW.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3D54D64918ED5D2E00B5FEC2 /* ResizeNE-SW.tiff */; };
 		3D54D64C18ED5D2E00B5FEC2 /* ResizeNW-SE.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3D54D64A18ED5D2E00B5FEC2 /* ResizeNW-SE.tiff */; };
 		3D748C7C19207B7A005665A3 /* iueditor.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 3D748C7A19207B7A005665A3 /* iueditor.iconset */; };
@@ -389,7 +390,6 @@
 		69965421190F9F1D000379DA /* LMPropertyIUCollectionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6996541F190F9F1D000379DA /* LMPropertyIUCollectionVC.xib */; };
 		6999161D1919F05E000ECF57 /* IUSubmitButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6999161C1919F05E000ECF57 /* IUSubmitButton.m */; };
 		699916201919F090000ECF57 /* IUForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 6999161F1919F090000ECF57 /* IUForm.m */; };
-		699E0D3418FD9CE2001CE633 /* IUTextManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E0D3318FD9CE2001CE633 /* IUTextManager.m */; };
 		69A45DE018F6702C00C551D9 /* LMPropertyBorderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A45DDE18F6702C00C551D9 /* LMPropertyBorderVC.m */; };
 		69A45DE118F6702C00C551D9 /* LMPropertyBorderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69A45DDF18F6702C00C551D9 /* LMPropertyBorderVC.xib */; };
 		69AB7EAC19062598009E5195 /* IUTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB7EAB19062598009E5195 /* IUTransition.m */; };
@@ -555,6 +555,8 @@
 		3D0D481218FFDC96000A5B53 /* LMFileTabItemVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMFileTabItemVC.xib; sourceTree = "<group>"; };
 		3D14886118F6AE5700E8EE4C /* LMCenterClipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMCenterClipView.h; sourceTree = "<group>"; };
 		3D14886218F6AE5700E8EE4C /* LMCenterClipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMCenterClipView.m; sourceTree = "<group>"; };
+		3D1BACC719330240004C554F /* IUText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUText.h; path = IU/IUText.h; sourceTree = "<group>"; };
+		3D1BACC819330240004C554F /* IUText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IUText.m; path = IU/IUText.m; sourceTree = "<group>"; };
 		3D54D64918ED5D2E00B5FEC2 /* ResizeNE-SW.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "ResizeNE-SW.tiff"; sourceTree = "<group>"; };
 		3D54D64A18ED5D2E00B5FEC2 /* ResizeNW-SE.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "ResizeNW-SE.tiff"; sourceTree = "<group>"; };
 		3D748C7919207B7A005665A3 /* iueditor.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = iueditor.icns; sourceTree = "<group>"; };
@@ -954,8 +956,6 @@
 		6999161C1919F05E000ECF57 /* IUSubmitButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUSubmitButton.m; sourceTree = "<group>"; };
 		6999161E1919F090000ECF57 /* IUForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUForm.h; sourceTree = "<group>"; };
 		6999161F1919F090000ECF57 /* IUForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUForm.m; sourceTree = "<group>"; };
-		699E0D3218FD9CE2001CE633 /* IUTextManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUTextManager.h; sourceTree = "<group>"; };
-		699E0D3318FD9CE2001CE633 /* IUTextManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUTextManager.m; sourceTree = "<group>"; };
 		69A45DDD18F6702C00C551D9 /* LMPropertyBorderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyBorderVC.h; sourceTree = "<group>"; };
 		69A45DDE18F6702C00C551D9 /* LMPropertyBorderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyBorderVC.m; sourceTree = "<group>"; };
 		69A45DDF18F6702C00C551D9 /* LMPropertyBorderVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyBorderVC.xib; sourceTree = "<group>"; };
@@ -1792,6 +1792,8 @@
 				6999161F1919F090000ECF57 /* IUForm.m */,
 				69CB92B2191B5F6800BEFBED /* IUPageLinkSet.h */,
 				69CB92B3191B5F6800BEFBED /* IUPageLinkSet.m */,
+				3D1BACC719330240004C554F /* IUText.h */,
+				3D1BACC819330240004C554F /* IUText.m */,
 			);
 			name = IU;
 			sourceTree = "<group>";
@@ -2003,8 +2005,6 @@
 				69ABB14818D733ED0065D584 /* IUCompiler.h */,
 				69ABB14918D733ED0065D584 /* IUCompiler.m */,
 				69D5B68F18F247C100E9FB11 /* LMCompilerResourceSource.h */,
-				699E0D3218FD9CE2001CE633 /* IUTextManager.h */,
-				699E0D3318FD9CE2001CE633 /* IUTextManager.m */,
 				3DED2757190A1DA6001A1D67 /* IUEvent.h */,
 				3DED2758190A1DA6001A1D67 /* IUEvent.m */,
 				3DED275A190A2630001A1D67 /* IUEventVariable.h */,
@@ -2515,7 +2515,7 @@
 				3DB3ACCC18EBEF3D0046DFB7 /* InnerSizeBox.m in Sources */,
 				69761BCD18F17A3800C4EDC6 /* IUGroupNode.m in Sources */,
 				69D15F7318E898B10046FBB0 /* IUBackground.m in Sources */,
-				699E0D3418FD9CE2001CE633 /* IUTextManager.m in Sources */,
+				3D1BACC919330240004C554F /* IUText.m in Sources */,
 				3DED26E719010B82001A1D67 /* LMPropertyIUMovieVC.m in Sources */,
 				69761BC318F04ECD00C4EDC6 /* LMPropertyBGImageVC.m in Sources */,
 				3DA72903192B5ABC00203764 /* IUTextController.m in Sources */,

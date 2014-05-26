@@ -33,6 +33,7 @@
 #import "IUPageLinkSet.h"
 #import "IUTransition.h"
 #import "JDCode.h"
+#import "IUText.h"
 
 @implementation IUCompiler{
 }
@@ -307,6 +308,16 @@
         [dict setObject:hoverCSS forKey:[NSString stringWithFormat:@".%@:hover", iu.htmlID]];
     }
     
+    if([iu isKindOfClass:[IUText class]]){
+        IUText *textIU = (IUText *)iu;
+        NSDictionary *textCSSDict = textIU.textController.cssDict;
+        for(NSString *textIdentifier in textCSSDict.allKeys){
+            NSString *textCSSStr = [self fontCSSContentFromAttributes:[textIU textCSSAttributesForWidth:width textIdentifier:textIdentifier]];
+            [dict setObject:textCSSStr forKey:[NSString stringWithFormat:@"#%@",textIdentifier]];
+        }
+    }
+    
+    
     if([iu isKindOfClass:[IUCarousel class]] && width == IUCSSMaxViewPortWidth){
         NSDictionary * carouselDict =[self cssSourceForIUCarousel:(IUCarousel *)iu];
         for (id key in carouselDict) {
@@ -350,10 +361,6 @@ static NSString * IUCompilerTagOption = @"tag";
         else {
             [code addCodeLineWithFormat:@"<p>{{ %@ }}</p>", iu.textVariable];
         }
-    }
-    else if (iu.textHTML) {
-        [code addCodeLineWithFormat:@"<p>%@</p>", iu.textHTML];
-
     }
     if (iu.children.count) {
         for (IUBox *child in iu.children) {
@@ -490,6 +497,17 @@ static NSString * IUCompilerTagOption = @"tag";
         [code addCodeLineWithFormat:@"</div>"];
         
     }
+#pragma mark IUText
+    else if([iu isKindOfClass:[IUText class]]){
+        IUText *textIU = (IUText *)iu;
+
+        [code addCodeLineWithFormat:@"<div %@ >", [self HTMLAttributes:iu option:nil]];
+        if (textIU.textHTML) {
+            [code addCodeLineWithFormat:textIU.textHTML];
+        }
+        [code addCodeLineWithFormat:@"</div>"];
+
+    }
 #pragma mark IUTextFeild
     
     else if ([iu isKindOfClass:[IUTextField class]]){
@@ -547,14 +565,6 @@ static NSString * IUCompilerTagOption = @"tag";
 - (JDCode*)editorHTMLAsBOX:(IUBox *)iu{
     JDCode *code = [[JDCode alloc] init];
     [code addCodeLineWithFormat:@"<div %@ >", [self HTMLAttributes:iu option:nil]];
-    /*
-    if (iu.textHTML) {
-        [code addCodeLineWithFormat:@"<p>%@</p>", iu.textHTML];
-
-    }*/
-    if(iu.textController.textHTML){
-        [code addCodeLine:iu.textController.textHTML];
-    }
     if (iu.children.count) {
         for (IUBox *child in iu.children) {
             [code addCode:[self editorHTML:child]];
@@ -697,7 +707,7 @@ static NSString * IUCompilerTagOption = @"tag";
         [code addCodeLineWithFormat:@"</div>"];
         
     }
-    
+#pragma mark IUPageLinkSet
     else if ([iu isKindOfClass:[IUPageLinkSet class]]){
         [code addCodeLineWithFormat:@"<div %@>\n", [self HTMLAttributes:iu option:nil]];
         [code addCodeLineWithFormat:@"    <div class='IUPageLinkSetClip'>\n"];
@@ -707,7 +717,17 @@ static NSString * IUCompilerTagOption = @"tag";
         [code addCodeLineWithFormat:@"    </div>"];
         [code addCodeLineWithFormat:@"</div"];
     }
-
+#pragma mark IUText
+    else if([iu isKindOfClass:[IUText class]]){
+        IUText *textIU = (IUText *)iu;
+        [code addCodeLineWithFormat:@"<div %@ >", [self HTMLAttributes:iu option:nil]];
+        if (textIU.textHTML) {
+            [code addCodeLineWithFormat:textIU.textHTML];
+            
+        }
+        [code addCodeLineWithFormat:@"</div>"];
+        
+    }
 #pragma mark IUTextFeild
     
     else if ([iu isKindOfClass:[IUTextField class]]){
@@ -1057,7 +1077,7 @@ static NSString * IUCompilerTagOption = @"tag";
             [dict putTag:@"box-shadow" string:[NSString stringWithFormat:@"%ldpx %ldpx %ldpx %ldpx %@", hOff, vOff, blur, spread, colorString]];
         }
         
-        if(obj.shouldEditText == YES || [obj isKindOfClass:[IUTextField class]] || [obj isKindOfClass:[IUTextView class]] || [obj isKindOfClass:[IUPageLinkSet class]]){
+        if([obj isKindOfClass:[IUText class]]|| [obj isKindOfClass:[IUTextField class]] || [obj isKindOfClass:[IUTextView class]] || [obj isKindOfClass:[IUPageLinkSet class]]){
             value = cssTagDict[IUCSSTagFontName];
             if(value){
                 NSString *font=cssTagDict[IUCSSTagFontName];
@@ -1076,16 +1096,22 @@ static NSString * IUCompilerTagOption = @"tag";
             if(value){
                 if([value isEqualToString:@"Auto"]== YES)
                 {
-                    NSNumber *height = cssTagDict[IUCSSTagHeight];
-                    NSUInteger num = [[obj.textHTML componentsSeparatedByString:@"<br>"] count];
-                    
-                    if([self isLastCharacterBRElement:obj.textHTML]){
-                        num--;
+                    if([obj isKindOfClass:[IUText class]]){
+                        NSNumber *height = cssTagDict[IUCSSTagHeight];
+                        NSUInteger num = [[((IUText *)obj).textHTML componentsSeparatedByString:@"<br>"] count];
+                        
+                        if([self isLastCharacterBRElement:((IUText *)obj).textHTML]){
+                            num--;
+                        }
+                        if(num == 0){
+                            num = 1;
+                        }
+                        [dict putTag:@"line-height" floatValue:[height floatValue]/num ignoreZero:YES unit: IUCSSUnitPixel];
                     }
-                    if(num == 0){
-                        num = 1;
+                    else if ([obj isKindOfClass:[IUTextView class]]){
+                        [dict putTag:@"line-height" floatValue:1.3 ignoreZero:YES unit:IUCSSUnitNone];
+
                     }
-                    [dict putTag:@"line-height" floatValue:[height floatValue]/num ignoreZero:YES unit: IUCSSUnitPixel];
                 }
                 else {
                     [dict putTag:@"line-height" floatValue:[value floatValue] ignoreZero:YES unit:IUCSSUnitNone];

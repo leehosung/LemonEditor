@@ -10,8 +10,6 @@
 #import "IUCSS.h"
 #import "IUEvent.h"
 #import "IUIdentifierManager.h"
-#import "IUTextManager.h"
-#import "IUTextController.h"
 
 
 @class IUIdentifierManager;
@@ -51,13 +49,12 @@
 @class IUBox;
 @class IUDocument;
 
-@interface IUBox : NSObject <NSCoding, IUCSSDelegate, IUTextManagerDataSource, NSCopying, IUTextControllerDelegate>{
+@interface IUBox : NSObject <NSCoding, IUCSSDelegate, NSCopying>{
     NSMutableArray *_m_children;
 }
 
 @property (readonly) IUCSS *css; //used by subclass
 @property (readonly) IUEvent *event;
-@property IUTextController *textController;
 
 
 -(IUDocument *)document;
@@ -120,26 +117,12 @@
 -(BOOL)hasWidth;
 -(BOOL)hasHeight;
 
--(BOOL)shouldEditText;
 -(BOOL)shouldAddIUByUserInput;
 
 
 -(void)startGrouping;
 -(void)endGrouping;
 
-/// text managing
-
-- (void)selectTextRange:(NSRange)range htmlNode:(DOMHTMLElement *)node;
-- (void)deselectText;
-/*
-- (void)insertText:(NSString*)text withRange:(NSRange)range;
-- (void)deleteTextInRange:(NSRange)range;
- */
-- (NSString*)textHTML;
-
-//#define IUTextCursorLocationID    @"id"
-//#define IUTextCursorLocationIndex @"index"
-- (NSDictionary*)cursor;
 
 @property (nonatomic) BOOL flow;
 - (BOOL)flowChangeable;

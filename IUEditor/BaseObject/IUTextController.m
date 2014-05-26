@@ -379,6 +379,12 @@
 }
 
 - (void)setTextTag:(IUCSSTag)tagName value:(id)value{
+    
+    if(_innerText == nil || _innerText.length == 0 || _selectedRange.length == 0){
+        IUCSS *css = [self.textDelegate css];
+        [css setValue:value forTag:tagName];
+        return;
+    }
     NSString *startId, *endId;
     NSRange minRange = NSMakeRange(_innerText.length, _innerText.length);
     NSRange maxRange = NSZeroRange;
@@ -579,6 +585,7 @@
         
     }
     [code appendString:@"</p>"];
+    [code replaceOccurrencesOfString:@"\n" withString:@"<br>" options:0 range:NSMakeRange(0, code.length)];
     return code;
 }
 @end

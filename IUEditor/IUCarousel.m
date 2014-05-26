@@ -51,9 +51,6 @@
 
 
 
--(BOOL)shouldEditText{
-    return NO;
-}
 
 -(void)setCount:(NSInteger)count{
     assert(self.identifierManager != nil);

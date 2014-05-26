@@ -31,9 +31,6 @@
     return NO;
 }
 
--(BOOL)shouldEditText{
-    return NO;
-}
 
 -(NSDictionary*)CSSAttributesForWidth:(NSInteger)width{
     NSMutableDictionary *dict = [[super CSSAttributesForWidth:width ] mutableCopy];

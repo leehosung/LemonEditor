@@ -29,9 +29,6 @@
     [aCoder encodeObject:_referenceImports forKey:@"referenceImport"];
 }
 
--(BOOL)shouldEditText{
-    return NO;
-}
 
 -(IUBox*)parent{
     return nil;

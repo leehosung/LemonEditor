@@ -8,7 +8,7 @@
 
 #import "LMPropertyTextVC.h"
 #import "IUCSS.h"
-#import "IUBox.h"
+#import "IUText.h"
 
 @interface LMPropertyTextVC ()
 
@@ -57,14 +57,14 @@
 }
 
 - (void)fontDecoContextDidChange:(NSDictionary *)change{
-    if([_controller.selection isKindOfClass:[IUBox class]]){
-        BOOL weight = ((IUBox *)_controller.selection).textController.bold;
+    if([_controller.selection isKindOfClass:[IUText class]]){
+        BOOL weight = ((IUText *)_controller.selection).textController.bold;
         [_fontStyleB setSelected:weight forSegment:0];
         
-        BOOL italic = ((IUBox *)_controller.selection).textController.italic;
+        BOOL italic = ((IUText *)_controller.selection).textController.italic;
         [_fontStyleB setSelected:italic forSegment:1];
         
-        BOOL underline = ((IUBox *)_controller.selection).textController.underline;
+        BOOL underline = ((IUText *)_controller.selection).textController.underline;
         [_fontStyleB setSelected:underline forSegment:2];
     }
 }
