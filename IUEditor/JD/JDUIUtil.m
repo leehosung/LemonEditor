@@ -651,6 +651,31 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
     return nil;
 }
 
+-(NSString *)rgbStringWithTransparent{
+    CGFloat redFloatValue, greenFloatValue, blueFloatValue, alphaFloatValue;
+    int redIntValue, greenIntValue, blueIntValue, alphaIntValue;
+    
+    //Convert the NSColor to the RGB color space before we can access its components
+    NSColor *convertedColor=[self colorUsingColorSpaceName:NSDeviceRGBColorSpace];
+    
+    if(convertedColor)
+    {
+        // Get the red, green, and blue components of the color
+        [convertedColor getRed:&redFloatValue green:&greenFloatValue blue:&blueFloatValue alpha:&alphaFloatValue];
+        
+        // Convert the components to numbers (unsigned decimal integer) between 0 and 255
+        redIntValue=redFloatValue*0xff;
+        greenIntValue=greenFloatValue*0xff;
+        blueIntValue=blueFloatValue*0xff;
+        alphaIntValue = alphaFloatValue*0xff;
+        
+        // Concatenate the red, green, and blue, alpha components' hex strings
+        return [NSString stringWithFormat:@"#%02X%02X%02X%02X", alphaIntValue, redIntValue, greenIntValue, blueIntValue];
+    }
+    
+    return nil;
+}
+
 -(NSString*) rgbaString{
     CGFloat redFloatValue, greenFloatValue, blueFloatValue, alphaFloatValue;
     int redIntValue, greenIntValue, blueIntValue;

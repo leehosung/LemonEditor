@@ -1,3 +1,17 @@
+//for ie
+var alertFallback = false;
+if (typeof console === "undefined" || typeof console.log === "undefined") {
+    console = {};
+    if (alertFallback) {
+        console.log = function(msg) {
+            alert(msg);
+        };
+    } else {
+        console.log = function() {};
+    }
+}
+
+
 function isMobile(){
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 	 	return true;
