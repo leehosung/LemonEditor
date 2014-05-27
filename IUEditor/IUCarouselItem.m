@@ -11,7 +11,7 @@
 @implementation IUCarouselItem
 
 - (BOOL)shouldAddIUByUserInput{
-    return NO;
+    return YES;
 }
 
 @end
