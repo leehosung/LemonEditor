@@ -50,6 +50,7 @@
 - (void)selectIUInRect:(NSRect)frame;
 
 //text
+//- (void)insertNewline:(NSRange)range identifier:(NSString *)identifier htmlNode:(DOMHTMLElement *)node;
 - (void)selectTextRange:(NSRange)range identifier:(NSString *)identifier htmlNode:(DOMHTMLElement *)node;
 - (void)deselectTextAtCurrentNode;
 /*

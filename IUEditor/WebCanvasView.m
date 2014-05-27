@@ -455,15 +455,29 @@
     
     //insert Textb
     NSRange iuRange = [self selectedRange:range InIU:IUNode];
-    //[self.VC insertString:text identifier:IUNode.idName withRange:iuRange];
-    
-    if([text isEqualToString:@"\n"]){
-        NSMutableString *text = [IUNode.innerText mutableCopy];
-        [text deleteCharactersInRange:iuRange];
-        [text insertString:@"\n" atIndex:iuRange.location] ;
-        IUNode.innerText = text;
+    if([text containsString:@"\n"]){
+        if(text.length == 1){
+            DOMHTMLBRElement *brElement = (DOMHTMLBRElement *)[[[self mainFrame] DOMDocument] createElement:@"br"];
+            [range deleteContents];
+            [range insertNode:brElement];
+  
+            //TODO: select br range after br
+//            DOMRange *selectRange = [range copy];
+//            [selectRange selectNode:brElement];
+//            [self setSelectedDOMRange:selectRange affinity:NSSelectionAffinityDownstream];
+            
+        }
         return NO;
     }
+    //[self.VC insertString:text identifier:IUNode.idName withRange:iuRange];
+    
+//b    [self.VC selectTextRange:iuRange identifier:IUNode.idName htmlNode:IUNode];
+    /*
+    if([text isEqualToString:@"\n"]){
+        [self.VC insertNewline:iuRange identifier:IUNode.idName htmlNode:IUNode];
+        return NO;
+    }
+     */
     
     JDInfoLog(@"insertText [IU:%@] : range(%ld, %ld) : %@ ", IUNode.idName, iuRange.location, iuRange.length, text);
     
@@ -485,7 +499,8 @@
     
     //insert Text
     NSRange iuRange = [self selectedRange:range InIU:IUNode];
-    
+//    [self.VC selectTextRange:iuRange identifier:IUNode.idName htmlNode:IUNode];
+
     
 //    [self.VC deleteStringRange:iuRange identifier:IUNode.idName];
     JDInfoLog(@"DeleteText[IU:%@] : range(%ld, %ld) ", IUNode.idName, iuRange.location, iuRange.length);
@@ -578,6 +593,25 @@
     return NO;
 }
 
+- (void)setSelectedDOMRange:(DOMRange *)range affinity:(NSSelectionAffinity)selectionAffinity{
+    DOMRange *selectRange = [range copy];
+    if([self isEditable]){
+        DOMHTMLElement *element = [self IUNodeAtCurrentNode:range.startContainer];
+        if([element.className containsString:@"IUText"]){
+            DOMHTMLParagraphElement *pElement = (DOMHTMLParagraphElement *)[[element childNodes] item:0];
+            if([range.startContainer isKindOfClass:[DOMHTMLDivElement class]]){
+                [selectRange setStart:pElement offset:0];
+            }
+            if([range.endContainer isKindOfClass:[DOMHTMLDivElement class]]){
+                [selectRange setEnd:pElement offset:(int)pElement.innerText.length];
+            }
+            
+        }
+           
+    }
+    [super setSelectedDOMRange:selectRange affinity:selectionAffinity];
+}
+
 - (void)selectWholeRangeOfCurrentCursor{
 
     DOMRange *range = [self selectedDOMRange];
@@ -667,6 +701,7 @@
     [self setSelectedDOMRange:domRange affinity:NSSelectionAffinityDownstream];
     
 }
+
 
 #pragma mark -
 #pragma mark manage IU

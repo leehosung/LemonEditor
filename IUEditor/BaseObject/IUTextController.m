@@ -12,8 +12,9 @@
 
 @property NSRange selectedRange;
 @property NSMutableDictionary *rangeDict;
-@property NSString *innerText, *innerHTML;
+@property NSString *innerText;
 @property DOMHTMLElement *currentNode;
+@property NSMutableIndexSet *newlineIndexSet;
 @end
 
 @implementation IUTextController{
@@ -25,6 +26,7 @@
     if(self){
         _cssDict = [NSMutableDictionary dictionary];
         _rangeDict = [NSMutableDictionary dictionary];
+//        _newlineIndexSet = [NSMutableIndexSet indexSet];
     }
     return self;
 }
@@ -32,20 +34,18 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder{
     
     [aCoder encodeObject:self.innerText forKey:@"innerText"];
-    [aCoder encodeObject:self.innerHTML forKey:@"innerHTML"];
     [aCoder encodeObject:self.cssDict forKey:@"cssDict"];
     [aCoder encodeObject:self.rangeDict forKey:@"rangeDict"];
-    
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];
     if(self) {
         _innerText = [aDecoder decodeObjectForKey:@"innerText"];
-        _innerHTML = [aDecoder decodeObjectForKey:@"innerHTML"];
-
         _cssDict = [[aDecoder decodeObjectForKey:@"cssDict"] mutableCopy];
         _rangeDict = [[aDecoder decodeObjectForKey:@"rangeDict"] mutableCopy];
+//        _newlineIndexSet = [NSMutableIndexSet indexSet];
+
     }
     return self;
 }
@@ -55,6 +55,7 @@
     textController.innerText = [self.innerText copy];
     textController.cssDict = [[NSMutableDictionary alloc] initWithDictionary:_cssDict copyItems:YES];
     textController.rangeDict = [[NSMutableDictionary alloc] initWithDictionary:_rangeDict copyItems:YES];
+//    textController.newlineIndexSet = [[NSMutableIndexSet alloc] initWithIndexSet:_newlineIndexSet];
     
     return textController;
 }
@@ -75,7 +76,6 @@
     _selectedRange = range;
     _currentNode = node;
     _innerText = node.innerText;
-    _innerHTML = node.innerHTML;
 
     [self checkRange];
     
@@ -109,6 +109,17 @@
     [self didChangeValueForKey:@"fontSize"];
 }
 
+/*
+
+- (void)insertNewLine:(NSRange)range htmlNode:(DOMHTMLElement *)node{
+    [_newlineIndexSet removeAllIndexes];
+
+    [_newlineIndexSet addIndex:range.location];
+    [self.textDelegate updateTextHTML];
+}
+ 
+ */
+
 - (BOOL)isManagedElement{
     DOMHTMLElement *element = (DOMHTMLElement *)[_currentNode.childNodes item:0];
     if([element isKindOfClass:[DOMHTMLParagraphElement class]]){
@@ -123,6 +134,7 @@
     if([self isManagedElement] == NO){
         return;
     }
+    
     
     NSMutableArray *existIDArray = [NSMutableArray array];
     
@@ -379,7 +391,7 @@
 }
 
 - (void)setTextTag:(IUCSSTag)tagName value:(id)value{
-    
+
     if(_innerText == nil || _innerText.length == 0 || _selectedRange.length == 0){
         IUCSS *css = [self.textDelegate css];
         [css setValue:value forTag:tagName];
@@ -517,8 +529,8 @@
 }
 
 - (NSString *)textHTML{
-    if(_cssDict.allKeys.count == 0){
-        return _innerHTML;
+    if(_innerText == nil || _innerText.length ==0){
+        return nil;
     }
     NSMutableString *code = [NSMutableString string];
     
@@ -528,36 +540,21 @@
     NSIndexSet *endSet = [setDict objectForKey:@"end"];
     NSUInteger startIndex = [startSet firstIndex];
     NSUInteger endIndex = [endSet firstIndex];
+//    NSUInteger newlineIndex = [_newlineIndexSet firstIndex];
     NSUInteger currentIndex =0;
-    BOOL endflag = false;
     [code appendString:@"<p>"];
     while(1){
         NSUInteger copyIndex;
         NSMutableString *appendTag = [NSMutableString string];
         
-        if(startIndex < endIndex){
-            //append start tag
-            copyIndex = startIndex;
-            NSArray *array = [self identifierOfIndex:startIndex];
-            for(NSString *identifier in array){
-                [appendTag appendFormat:@"<span id='%@' class='%@'>",identifier, identifier];
-            }
-            startIndex = [startSet indexGreaterThanIndex:startIndex];
+        /*
+        if(newlineIndex == currentIndex){
+            [code appendString:@"<br>"];
+            newlineIndex = [_newlineIndexSet indexGreaterThanIndex:newlineIndex];
         }
-        else if(startIndex > endIndex
-                || startIndex == NSNotFound){
-            copyIndex = endIndex;
-            
-            //append end tag
-            for(int i=0; i<[self countOfEndTagAtLocation:endIndex]; i++){
-                [appendTag appendString:@"</span>"];
-            }
-            endIndex = [endSet indexGreaterThanIndex:endIndex];
-            if(endIndex == NSNotFound){
-                endflag = true;
-            }
-        }
-        else{
+         */
+        
+        if(endIndex == currentIndex){
             //startIndex == endIndex
             copyIndex = startIndex;
             //append end tag
@@ -565,27 +562,31 @@
                 [appendTag appendString:@"</span>"];
             }
             endIndex = [endSet indexGreaterThanIndex:endIndex];
-            
+        }
+        
+        if(startIndex == currentIndex){
             //append start tag
+            copyIndex = startIndex;
             NSArray *array = [self identifierOfIndex:startIndex];
             for(NSString *identifier in array){
                 [appendTag appendFormat:@"<span id='%@' class='%@'>",identifier, identifier];
             }
             startIndex = [startSet indexGreaterThanIndex:startIndex];
         }
-    
-        [code appendString:[_innerText substringFromIndex:currentIndex toIndex:copyIndex]];
-        currentIndex = copyIndex;
-        [code appendString:appendTag];
         
-        if(endflag){
-            [code appendString:[_innerText substringFromIndex:copyIndex]];
+        if(_innerText.length > currentIndex){
+            [code appendString:[_innerText substringFromIndex:currentIndex toIndex:currentIndex+1]];
+        }
+        currentIndex++;
+        
+        if(currentIndex > _innerText.length +1 ){
             break;
         }
         
+        
     }
-    [code appendString:@"</p>"];
     [code replaceOccurrencesOfString:@"\n" withString:@"<br>" options:0 range:NSMakeRange(0, code.length)];
+    [code appendString:@"</p>"];
     return code;
 }
 @end
