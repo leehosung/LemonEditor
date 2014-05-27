@@ -78,8 +78,7 @@
         }
     }
 }
-
-- (void)comboBoxSelectionDidChange:(NSNotification *)notification{
+- (IBAction)clickGhostImageComboBox:(id)sender {
     NSString *fileName = [_ghostImageComboBox objectValueOfSelectedItem];
     self.document.ghostImageName = fileName;
 }
