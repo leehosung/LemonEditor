@@ -56,7 +56,7 @@
         showFaces = @"false";
     }
     
-    [self.delegate IUClassIdentifier:self.htmlID CSSUpdated:[self cssForWidth:self.css.editWidth isHover:NO]  forWidth:self.css.editWidth];
+    [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:self.css.editWidth isHover:NO]  forWidth:self.css.editWidth];
     
     NSString *currentPixel = [[NSString alloc] initWithFormat:@"%.0f", [self.css.assembledTagDictionary[IUCSSTagHeight] floatValue]];
     

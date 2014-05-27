@@ -71,6 +71,8 @@
 @property (weak) IUBox    *parent;
 @property NSArray   *mutables;
 
+
+-(NSString *)cssID;
 // followings are IU build setting;
 -(NSDictionary*)CSSAttributesForWidth:(NSInteger)width;
 

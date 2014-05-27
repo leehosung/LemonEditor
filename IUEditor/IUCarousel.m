@@ -111,9 +111,9 @@
 }
 
 - (void)cssForItemColor{
-    NSString *itemID = [NSString stringWithFormat:@"%@pager-item", self.htmlID];
-    NSString *hoverItemID = [NSString stringWithFormat:@"%@:hover", itemID];
-    NSString *activeItemID = [NSString stringWithFormat:@"%@.active", itemID];
+    NSString *itemID = [NSString stringWithFormat:@".%@pager-item", self.htmlID];
+    NSString *hoverItemID = [NSString stringWithFormat:@".%@:hover", itemID];
+    NSString *activeItemID = [NSString stringWithFormat:@".%@.active", itemID];
     
     if(self.enableColor){
         [self.delegate IUClassIdentifier:itemID CSSUpdated:[self.document.compiler cssContentForIUCarouselPager:self hover:NO] forWidth:IUCSSMaxViewPortWidth];
@@ -159,20 +159,25 @@
 - (void)cssForArrowImage:(IUCarouselArrow)type change:(BOOL)change{
     NSString *arrowID;
     if(type == IUCarouselArrowLeft){
-        arrowID = [NSString stringWithFormat:@"%@_bx-prev", self.htmlID];
+        arrowID = @"bx-prev";
     }
     else if(type == IUCarouselArrowRight){
-        arrowID = [NSString stringWithFormat:@"%@_bx-next", self.htmlID];
+        arrowID = @"bx-next";
     }
-    if(change){
-        NSInteger currentHeight = [self.css.assembledTagDictionary[IUCSSTagHeight] integerValue];
-        [self.delegate IUClassIdentifier:arrowID CSSUpdated:[self.document.compiler cssContentForIUCarouselArrow:self hover:NO location:type carouselHeight:currentHeight] forWidth:self.css.editWidth];
-    }else{
-        [self.delegate IUClassIdentifier:arrowID CSSRemovedforWidth:self.css.editWidth];
+    NSDictionary *dict = [self.document.compiler cssDictionaryForIUCarousel:self];
+    for(NSString *identifier in dict.allKeys){
+        if([identifier containsString:arrowID]){
+            if(change){
+                [self.delegate IUClassIdentifier:identifier CSSUpdated:[dict objectForKey:identifier] forWidth:self.css.editWidth];
+            }
+            else{
+                [self.delegate IUClassIdentifier:identifier CSSRemovedforWidth:self.css.editWidth];
+                
+            }
+            break;
+        }
     }
 }
-
-
 #pragma mark JS reload
 - (void)setAutoplay:(BOOL)autoplay{
     _autoplay = autoplay;

@@ -33,7 +33,7 @@
     if (_prototypeClass) {
         [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
         for (IUBox *iu in [prototypeClass.allChildren arrayByAddingObject:prototypeClass]) {
-            [self.delegate IUClassIdentifier:iu.htmlID CSSUpdated:[iu cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+            [self.delegate IUClassIdentifier:iu.cssID CSSUpdated:[iu cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
         }
     }
 }
