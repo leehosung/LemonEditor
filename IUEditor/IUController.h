@@ -10,8 +10,13 @@
 #import "IUBox.h"
 
 
+
 @class IUDocument;
 @class IUImport;
+
+// NOTIFICATION : IUSelectionChangeNotification is called
+//      when selection is changed
+
 @interface IUController : NSTreeController
 
 -(NSArray*)selectedPedigree;

@@ -45,9 +45,9 @@ function flyFromRight(eventObject){
 	}
     if ($(this).hasClass('selected')){
 		var secondObj = $(this).children()[1];
-        $(secondObj).css('visibility', 'hidden');
+        $(secondObj).css('visibility', 'visible');
 		$(secondObj).animate({
-			'left': '1000%',			
+			'left': '100%',
 		}, 200);
 		$(this).removeClass('selected');
 	}
@@ -74,11 +74,11 @@ $(document).ready(function(){
 		var transitionanimation = $(this).attr('transitionanimation');
 		
 		if (eventType=='mouseOn'){
-			$(this).bind('mouseenter',flyFromRight);
-			$(this).bind('mouseleave',flyFromRight);
+			$(this).bind('mouseenter',window[transitionanimation]);
+			$(this).bind('mouseleave',window[transitionanimation]);
 		}
 		else {
-			$(this).bind(eventType, transitionanimation);
+            $(this).bind(eventType, window[transitionanimation]);
 		}
     });
 
