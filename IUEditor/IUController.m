@@ -48,6 +48,9 @@
         pasteTarget = [self.selectedObjects firstObject];
         pasteTargetIsParent = NO;
     }
+    
+    NSMutableArray *copiedArray = [NSMutableArray array];
+    
     for (IUBox *box in pasteboard) {
         NSError *err;
         IUBox *newBox = [box copy];
@@ -87,10 +90,12 @@
         }
         BOOL result = [pasteTarget addIU:newBox error:&err];
         _lastPastedIU = newBox;
+        [copiedArray addObject:newBox];
         [self rearrangeObjects];
-        [self setSelectedObject:newBox];
+
         assert(result);
     }
+    [self _setSelectedObjects:copiedArray];
     _pasteRepeatCount ++;
 }
 
