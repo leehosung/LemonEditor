@@ -192,7 +192,8 @@
 }
 
 -(NSString*)cssForWidth:(NSInteger)width isHover:(BOOL)isHover{
-    return [self.document.compiler CSSContentFromAttributes:[self CSSAttributesForWidth:width] ofClass:self isHover:isHover];
+    BOOL isDefaultWidth = (width == IUCSSMaxViewPortWidth) ? YES : NO;
+    return [self.document.compiler CSSContentFromAttributes:[self CSSAttributesForWidth:width] ofClass:self isHover:isHover isDefaultWidth:isDefaultWidth];
 }
 
 -(void)CSSUpdated:(NSDictionary*)tagDictionary forWidth:(NSInteger)width isHover:(BOOL)isHover{
