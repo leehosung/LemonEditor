@@ -294,10 +294,11 @@
 -(NSDictionary*)cssSourceForIU:(IUBox*)iu width:(int)width{
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
-    NSString *defaultCSSString = [self CSSContentFromAttributes:[iu CSSAttributesForWidth:width] ofClass:iu isHover:NO];
+    BOOL isDefaultWidth = (width == IUCSSMaxViewPortWidth) ? YES : NO;
+    NSString *defaultCSSString = [self CSSContentFromAttributes:[iu CSSAttributesForWidth:width] ofClass:iu isHover:NO isDefaultWidth:isDefaultWidth];
     [dict setObject:defaultCSSString forKey:[NSString stringWithFormat:@".%@", iu.htmlID]];
     
-    NSString *hoverCSS = [self CSSContentFromAttributes:[iu CSSAttributesForWidth:width] ofClass:iu isHover:YES];
+    NSString *hoverCSS = [self CSSContentFromAttributes:[iu CSSAttributesForWidth:width] ofClass:iu isHover:YES isDefaultWidth:isDefaultWidth];
     if ([[hoverCSS stringByTrim] length]) {
         [dict setObject:hoverCSS forKey:[NSString stringWithFormat:@".%@:hover", iu.htmlID]];
     }
@@ -771,9 +772,13 @@ static NSString * IUCompilerTagOption = @"tag";
 }
 
 
--(NSString*)CSSContentFromAttributes:(NSDictionary*)cssTagDictionary ofClass:(IUBox*)obj isHover:(BOOL)isHover{
+-(NSString*)CSSContentFromAttributes:(NSDictionary*)cssTagDictionary ofClass:(IUBox*)obj isHover:(BOOL)isHover isDefaultWidth:(BOOL)isDefaultWidth{
     //convert css tag dictionry to css string dictionary
-    NSDictionary *cssStringDict = [self cssStringDictionaryWithCSSTagDictionary:cssTagDictionary ofClass:obj isHover:isHover];
+    NSMutableDictionary *cssStringDict = [[self cssStringDictionaryWithCSSTagDictionary:cssTagDictionary ofClass:obj isHover:isHover] mutableCopy];
+    
+    if(isDefaultWidth == NO){
+        [cssStringDict removeObjectForKey:@"position"];
+    }
     
     //convert css string dictionary to css line
     NSMutableString *code = [NSMutableString string];
@@ -852,15 +857,16 @@ static NSString * IUCompilerTagOption = @"tag";
             else{
                 value = cssTagDict[IUCSSTagX];
             }
-            
-            if (obj.floatRight) {
-                [dict putTag:@"margin-right" floatValue:[value floatValue] * (-1) ignoreZero:NO unit:unit];
-            }
-            else if (obj.flow) {
-                [dict putTag:@"margin-left" floatValue:[value floatValue] ignoreZero:NO unit:unit];
-            }
-            else {
-                [dict putTag:@"left" floatValue:[value floatValue] ignoreZero:NO unit:unit];
+            if(value){
+                if (obj.floatRight) {
+                    [dict putTag:@"margin-right" floatValue:[value floatValue] * (-1) ignoreZero:NO unit:unit];
+                }
+                else if (obj.flow) {
+                    [dict putTag:@"margin-left" floatValue:[value floatValue] ignoreZero:NO unit:unit];
+                }
+                else {
+                    [dict putTag:@"left" floatValue:[value floatValue] ignoreZero:NO unit:unit];
+                }
             }
         }
         if (obj.hasY) {
@@ -874,13 +880,14 @@ static NSString * IUCompilerTagOption = @"tag";
                 value = cssTagDict[IUCSSTagY];
             }
             
-
-            if (obj.flow) {
-                [dict putTag:@"margin-top" floatValue:[value floatValue] ignoreZero:NO unit:unit];
-            }
-            else {
-                [dict putTag:@"top" floatValue:[value floatValue] ignoreZero:NO unit:unit];
-                
+            if(value){
+                if (obj.flow) {
+                    [dict putTag:@"margin-top" floatValue:[value floatValue] ignoreZero:NO unit:unit];
+                }
+                else {
+                    [dict putTag:@"top" floatValue:[value floatValue] ignoreZero:NO unit:unit];
+                    
+                }
             }
         }
         if (obj.hasWidth) {
@@ -1140,9 +1147,11 @@ static NSString * IUCompilerTagOption = @"tag";
                 [dict putTag:@"text-align" string:alignText];
             }
         }
+        /*
         else{
             [dict putTag:@"line-height" string:@"initial"];
         }
+         */
 
 
     }
