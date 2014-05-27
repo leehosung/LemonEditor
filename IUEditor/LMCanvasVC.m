@@ -269,13 +269,13 @@
 #pragma mark setText
 
 
-- (void)insertNewline:(NSRange)range identifier:(NSString *)identifier htmlNode:(DOMHTMLElement *)node{
+- (void)updateNewline:(NSRange)range identifier:(NSString *)identifier htmlNode:(DOMHTMLElement *)node{
     
     IUBox *iu = [self.controller IUBoxByIdentifier:identifier];
     assert(iu != nil);
     if([iu isKindOfClass:[IUText class]]){
         IUText *textIU = (IUText *)iu;
-        [textIU insertNewLine:range htmlNode:node];
+        [textIU updateNewLine:range htmlNode:node];
     }
 }
  

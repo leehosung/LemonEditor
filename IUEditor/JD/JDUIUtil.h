@@ -57,6 +57,7 @@ BOOL   isNSRectContainsRect(NSRect rect, NSRect subrect);
 -(NSString*) rgbString;
 -(NSString*) rgbaString;
 -(NSString *)rgbStringWithTransparent;
+- (NSString *)cssBGString;
 -(NSColor*) complementaryColor;
 @end
 
