@@ -90,7 +90,7 @@
 - (void)updateTextCSS:(IUCSS *)textCSS identifier:(NSString *)identifier{
     NSString *cssStr = [self.document.compiler fontCSSContentFromAttributes:textCSS.assembledTagDictionary];
     NSString *textIdentifier = [NSString stringWithFormat:@".%@", identifier];
-    [self.delegate IUClassIdentifier:identifier CSSUpdated:identifier forWidth:textCSS.editWidth];
+    [self.delegate IUClassIdentifier:textIdentifier CSSUpdated:cssStr forWidth:textCSS.editWidth];
 }
 
 -(void)updateTextRangeFromID:(NSString *)fromID toID:(NSString *)toID{
