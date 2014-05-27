@@ -411,8 +411,9 @@ static NSString * IUCompilerTagOption = @"tag";
 #pragma mark IUCarouselItem
     else if([iu isKindOfClass:[IUCarouselItem class]]){
         [code addCodeLine:@"<li>"];
-        [code addCodeLineWithFormat:@"<img src='http://31.media.tumblr.com/d83b99e22981d5e58e2bd74ed2494087/tumblr_n4ef3ynCZP1st5lhmo1_1280.jpg' />"];
-        
+        [code increaseIndentLevelForEdit];
+        [code addCode:[self outputHTMLAsBox:iu option:nil]];
+        [code decreaseIndentLevelForEdit];
         [code addCodeLine:@"</li>"];
     }
 #pragma mark IUCarousel
@@ -421,7 +422,7 @@ static NSString * IUCompilerTagOption = @"tag";
         [code addCodeLineWithFormat:@"<ul class='bxslider' id='bxslider_%@'>\n", iu.htmlID];
         
         for(IUItem *item in iu.children){
-            [code addCode:[self editorHTML:item]];
+            [code addCode:[self outputHTML:item]];
         }
         
         [code addCodeLine:@"</ul></div>"];
