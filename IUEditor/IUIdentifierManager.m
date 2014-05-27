@@ -59,33 +59,44 @@
     [set removeObjectsForKeys:deleteArray];
 }
 
--(void)setNewIdentifierAndRegister:(IUBox*)obj withKey:(NSString*)keyString;
+- (NSString *)newIdentifierWithKey:(NSString *)key{
+    int i=0;
+    while (1) {
+        i++;
+        if ([[key substringToIndex:2] isEqualTo:@"IU"]) {
+            key = [key substringFromIndex:2];
+        }
+        NSString *newIdentifier = [NSString stringWithFormat:@"%@%d",key, i];
+        IUBox *existedIU = [set objectForKey:newIdentifier];
+        if (existedIU == nil) {
+            return newIdentifier;
+        }
+        
+        if (i > 10000){
+            //while loop break;
+            //the maximum number of iu : 10000
+            break;
+        }
+    }
+    return nil;
+}
+
+- (void)setNewIdentifierAndRegister:(IUBox*)obj withKey:(NSString*)keyString;
 {
     [self checkRejectedIUs];
     
-    int i=0;
+    //children이 있는 iu가 만들어질때 children도 naming할당
+    for (IUBox *iu in [obj allChildren]) {
+        iu.htmlID = [self newIdentifierWithKey:iu.className];
+    }
+    
     NSString *key = obj.className;
     if (keyString) {
         key = [key stringByAppendingString:keyString];
     }
     
-    NSMutableArray *ius = [NSMutableArray arrayWithObject:obj];
-    [ius addObjectsFromArray:[obj allChildren]];
-
-    for (IUBox *iu in ius) {
-        while (1) {
-            i++;
-            if ([[key substringToIndex:2] isEqualTo:@"IU"]) {
-                key = [key substringFromIndex:2];
-            }
-            NSString *newIdentifier = [NSString stringWithFormat:@"%@%d",key, i];
-            IUBox *existedIU = [set objectForKey:newIdentifier];
-            if (existedIU == nil) {
-                iu.htmlID = newIdentifier;
-                break;
-            }
-        }
-    }
+    obj.htmlID = [self newIdentifierWithKey:key];
+    
     assert(obj.htmlID);
     [self registerIU:obj];
 }
