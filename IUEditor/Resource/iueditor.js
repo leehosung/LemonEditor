@@ -1,4 +1,5 @@
 //this file only used in editor
+isEditor=true;
 document.sharedFrameDict = {};
 document.sharedPercentFrameDict = {}
 

@@ -22,7 +22,7 @@ function isMobile(){
 }
 
 function overlap(e){
-	if (isEditor == true){
+	if (typeof isEditor != 'undefined' && isEditor == true){
 		return;
 	}
 	console.log('com');
@@ -40,7 +40,7 @@ function overlap(e){
 
 
 function flyFromRight(eventObject){
-	if (isEditor == true){
+	if (typeof isEditor != 'undefined' && isEditor == true){
 		return;
 	}
     if ($(this).hasClass('selected')){
@@ -63,11 +63,12 @@ function flyFromRight(eventObject){
 }
 
 $(document).ready(function(){
-    if (isEditor == true){
+    if (typeof isEditor != 'undefined' && isEditor == true){
         return;
     }
     console.log('start : transition code');
-                 
+     
+    //Initialize transition
 	$('.IUTransition').each(function(){
 		var eventType = $(this).attr('transitionevent');
 		var transitionanimation = $(this).attr('transitionanimation');
@@ -79,15 +80,9 @@ $(document).ready(function(){
 		else {
 			$(this).bind(eventType, transitionanimation);
 		}
-	});
-});
+    });
 
-
-// move
-$(document).ready(function(){
-	if (isEditor == true){
-		return;
-	}
+    //move : current viewport pc type
 	if(isMobile()==false){
 	    $('[xPosMove]').each(function(){
 			var xPosMove = $(this).attr('xPosMove');
@@ -105,7 +100,8 @@ function onYouTubePlayerReady(playerId){
 }
 
 $(window).scroll(function(){
-	if (isEditor == true){
+    if (typeof isEditor != 'undefined' && isEditor == true){
+
 		return;
 	}
 	
