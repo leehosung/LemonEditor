@@ -200,10 +200,10 @@
         NSString *css = [self cssForWidth:width isHover:isHover];
 
         if (isHover) {
-            [self.delegate IUClassIdentifier:[self.htmlID hoverIdentifier] CSSUpdated:css forWidth:width];
+            [self.delegate IUClassIdentifier:[self.cssID hoverIdentifier] CSSUpdated:css forWidth:width];
         }
         else {
-            [self.delegate IUClassIdentifier:self.htmlID CSSUpdated:css forWidth:width];
+            [self.delegate IUClassIdentifier:self.cssID CSSUpdated:css forWidth:width];
         }
     }
     else {
@@ -211,6 +211,9 @@
     }
 }
 
+- (NSString *)cssID{
+    return [NSString stringWithFormat:@".%@", self.htmlID];
+}
 
 
 -(void)enableDelegate:(id)sender{
@@ -272,9 +275,9 @@
     }
     
     [self.delegate IUHTMLIdentifier:iu.htmlID HTML:iu.html withParentID:self.htmlID];
-    [self.delegate IUClassIdentifier:iu.htmlID CSSUpdated:[iu cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+    [self.delegate IUClassIdentifier:iu.cssID CSSUpdated:[iu cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
     for (IUBox *child in iu.children) {
-        [self.delegate IUClassIdentifier:child.htmlID CSSUpdated:[child cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+        [self.delegate IUClassIdentifier:child.cssID CSSUpdated:[child cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
     }
     [iu bind:@"identifierManager" toObject:self withKeyPath:@"identifierManager" options:nil];
     
@@ -421,8 +424,8 @@
 }
 
 - (void)updateCSSForEditViewPort{
-    [self.delegate IUClassIdentifier:_htmlID CSSUpdated:[self cssForWidth:_css.editWidth isHover:NO] forWidth:_css.editWidth];
-    [self.delegate IUClassIdentifier:[_htmlID hoverIdentifier] CSSUpdated:[self cssForWidth:_css.editWidth isHover:YES] forWidth:_css.editWidth];
+    [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:_css.editWidth isHover:NO] forWidth:_css.editWidth];
+    [self.delegate IUClassIdentifier:[self.cssID hoverIdentifier] CSSUpdated:[self cssForWidth:_css.editWidth isHover:YES] forWidth:_css.editWidth];
 }
 
 /* 
@@ -511,8 +514,8 @@
 -(void)endGrouping{
     delegateEnableLevel ++;
     for (NSNumber *number in changedCSSWidths) {
-        [self.delegate IUClassIdentifier:self.htmlID CSSUpdated:[self cssForWidth:[number intValue] isHover:NO] forWidth:[number intValue]];
-        [self.delegate IUClassIdentifier:[self.htmlID hoverIdentifier] CSSUpdated:[self cssForWidth:[number intValue] isHover:YES] forWidth:[number intValue]];
+        [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:[number intValue] isHover:NO] forWidth:[number intValue]];
+        [self.delegate IUClassIdentifier:[self.cssID hoverIdentifier] CSSUpdated:[self cssForWidth:[number intValue] isHover:YES] forWidth:[number intValue]];
     }
 }
 
@@ -550,7 +553,7 @@
         [self.css eradicateTag:IUCSSTagY];
     }
     
-    [self.delegate IUClassIdentifier:self.htmlID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+    [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
 }
 
 - (BOOL)centerChangeable{
@@ -571,7 +574,7 @@
     [self.css eradicateTag:IUCSSTagX];
     [self.css eradicateTag:IUCSSTagY];
     
-    [self.delegate IUClassIdentifier:self.htmlID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+    [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
     
     
     //중간에 set된 flow가 있으면 제대로 맞추기 위해서 html reload

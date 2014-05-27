@@ -197,11 +197,11 @@
     JDCode *code = [[JDCode alloc] init];
     if(hover){
         //fall back
-        [code addCodeLineWithFormat:@"background:%@ !important", [iu.selectColor rgbString]];
-        [code addCodeLineWithFormat:@"background:%@ !important", [iu.selectColor rgbaString]];
+        [code addCodeLineWithFormat:@"background:%@ !important;", [iu.selectColor rgbString]];
+        [code addCodeLineWithFormat:@"background:%@ !important;", [iu.selectColor rgbaString]];
     }else{
         [code addCodeLineWithFormat:@"background:%@ !important", [iu.deselectColor rgbString]];
-        [code addCodeLineWithFormat:@"background:%@ !important", [iu.deselectColor rgbaString]];
+        [code addCodeLineWithFormat:@"background:%@ !important;", [iu.deselectColor rgbaString]];
     }
     return code;
 }
@@ -220,19 +220,19 @@
     
     NSImage *arrowImage;
     if ([imageName isHTTPURL]) {
-        [css appendFormat:@"background:(%@) !important;", imageName];
+        [css appendFormat:@"background:(%@) ;", imageName];
         arrowImage = [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:imageName]];
     }
     else{
         NSString *imageRelativePath = [_resourceSource relativePathForResource:imageName];
-        [css appendFormat:@"background:%@ !important;", [imageRelativePath CSSURLString]];
+        [css appendFormat:@"background:%@ ;", [imageRelativePath CSSURLString]];
         NSString *imageAbsolutePath = [_resourceSource absolutePathForResource:imageName];
         arrowImage = [[NSImage alloc] initWithContentsOfFile:imageAbsolutePath];
     }
     
-    [css appendFormat:@"height:%.0fpx !important; ",arrowImage.size.height];
-    [css appendFormat:@"width:%.0fpx !important;", arrowImage.size.width];
-    [css appendFormat:@"top:%.0fpx !important;", (height/2-arrowImage.size.height/2)];
+    [css appendFormat:@"height:%.0fpx ; ",arrowImage.size.height];
+    [css appendFormat:@"width:%.0fpx ;", arrowImage.size.width];
+    [css appendFormat:@"top:%.0fpx ;", (height/2-arrowImage.size.height/2)];
 
     
     return css;
@@ -270,7 +270,7 @@
 }
 
 
--(NSDictionary *)cssSourceForIUCarousel:(IUCarousel *)iu{
+-(NSDictionary *)cssDictionaryForIUCarousel:(IUCarousel *)iu{
     
     NSMutableDictionary *css = [NSMutableDictionary dictionary];
     if(iu.enableColor){
@@ -283,13 +283,13 @@
     if([iu.leftArrowImage isEqualToString:@"Default"] == NO){
         NSInteger currentHeight = [iu.css.assembledTagDictionary[IUCSSTagHeight] integerValue];
         
-        NSString *leftArrowID = [NSString stringWithFormat:@"%@_bx-next", iu.htmlID];
+        NSString *leftArrowID = [NSString stringWithFormat:@".%@ .bx-wrapper .bx-controls-direction .bx-prev", iu.htmlID];
         NSString *string = [self cssContentForIUCarouselArrow:iu hover:NO location:IUCarouselArrowLeft carouselHeight:currentHeight];
         [css setObject:string forKey:leftArrowID];
     }
     if([iu.rightArrowImage isEqualToString:@"Default"] == NO){
         NSInteger currentHeight = [iu.css.assembledTagDictionary[IUCSSTagHeight] integerValue];
-        NSString *rightArrowID = [NSString stringWithFormat:@"%@_bx-next", iu.htmlID];
+        NSString *rightArrowID = [NSString stringWithFormat:@".%@ .bx-wrapper .bx-controls-direction .bx-next", iu.htmlID];
         NSString *string = [self cssContentForIUCarouselArrow:iu hover:NO location:IUCarouselArrowRight carouselHeight:currentHeight];
         [css setObject:string forKey:rightArrowID];
     }
@@ -319,7 +319,7 @@
     
     
     if([iu isKindOfClass:[IUCarousel class]] && width == IUCSSMaxViewPortWidth){
-        NSDictionary * carouselDict =[self cssSourceForIUCarousel:(IUCarousel *)iu];
+        NSDictionary * carouselDict =[self cssDictionaryForIUCarousel:(IUCarousel *)iu];
         for (id key in carouselDict) {
             [dict setObject:carouselDict[key] forKey:key];
         }

@@ -495,7 +495,7 @@
         [self IUClassIdentifier:identifier CSSRemovedforWidth:width];
     }else{
         
-        NSString *cssText = [NSString stringWithFormat:@".%@{%@}", identifier, css];
+        NSString *cssText = [NSString stringWithFormat:@"%@{%@}", identifier, css];
         if(width == IUCSSMaxViewPortWidth){
             //default setting
             [self setIUStyle:cssText withID:identifier];
@@ -572,7 +572,7 @@
     return [cssItems[0] stringByTrim];
 }
 
-- (NSString *)innerCSSText:(NSString *)innerCSSText byAddingCSSText:(NSString *)cssText withID:(NSString *)iuID
+- (NSString *)innerCSSText:(NSString *)innerCSSText byAddingCSSText:(NSString *)cssText withID:(NSString *)identifier
 {
     NSMutableString *innerCSSHTML = [NSMutableString stringWithString:@"\n"];
     NSString *trimmedInnerCSSHTML = [innerCSSText  stringByTrim];
@@ -586,8 +586,8 @@
             continue;
         }
          NSString *ruleID = [self cssIDInCSSRule:rule];
-        NSString *modifiedIUID = [@"." stringByAppendingString:iuID];
-        if([ruleID isEqualToString:modifiedIUID] == NO){
+        NSString *modifyidentifier = [identifier stringByTrim];
+        if([ruleID isEqualToString:modifyidentifier] == NO){
             [innerCSSHTML appendString:[NSString stringWithFormat:@"\t%@\n", [rule stringByTrim]]];
         }
     }
