@@ -156,6 +156,7 @@
         || [node isKindOfClass:[IUDocumentGroupNode class]]){
         
         [menu addItem:_fileAddItem];
+        [menu addItem:_fileRemoveItem];
     }
 
     
@@ -174,6 +175,8 @@
     [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[url]];
     
 }
+
+
 - (IBAction)clickMenuAddFile:(id)sender {
     NSTreeNode *node = [_navOutlineView itemAtRow:_navOutlineView.rightClickedIndex];
     IUGroupNode *groupNode;
@@ -221,7 +224,10 @@
     }
 }
 - (IBAction)clickMenuRemoveFile:(id)sender {
-    //TODO:
+    NSTreeNode *node = [_navOutlineView itemAtRow:_navOutlineView.rightClickedIndex];
+    IUDocumentNode *docNode = [node representedObject];
+    [docNode.parent removeNode:docNode];
+    [_documentController rearrangeObjects];
 }
 
 - (IBAction)clickMenuCopyFile:(id)sender {
