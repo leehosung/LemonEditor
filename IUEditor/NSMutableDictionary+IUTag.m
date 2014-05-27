@@ -60,6 +60,11 @@
             CGFloat alpha;
             [color getRed:nil green:nil blue:nil alpha:&alpha];
             if (alpha == 0 && ignoreClearColor) {
+                [self removeTag:tag];
+                return;
+            }
+            else if(alpha == 0){
+                self[tag] = @"transparent";
                 return;
             }
         }
