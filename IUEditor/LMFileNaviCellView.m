@@ -24,8 +24,7 @@
     }
     IUNode *node = [_project nodeWithName:textValue];
     if (node) {
-        [JDLogUtil alert:@"Duplicated Name
-         "];
+        [JDLogUtil alert:@"Duplicated Name"];
         return NO;
     }
     return YES;
