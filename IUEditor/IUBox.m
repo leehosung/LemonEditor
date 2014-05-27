@@ -17,6 +17,8 @@
 #import "IUClass.h"
 
 @interface IUBox()
+@property (readwrite) IUCSS *css; //used by subclass
+@property (readwrite) IUEvent *event;
 @end
 
 @implementation IUBox{
@@ -32,9 +34,24 @@
     IUEvent *newEvent = [_event copy];
     NSArray *children = [self.children deepCopy];
     //TODO: connect textmanager
-    IUBox *box = [[[self class] allocWithZone: zone] initWithIdentifierManager:self.identifierManager event:newEvent css:newCSS children:children];
+    IUBox *box = [[[self class] allocWithZone: zone] init];
+    box.css = newCSS;
+    box.event = newEvent;
+    for (IUBox *iu in children) {
+        assert([box addIU:iu error:nil]);
+    }
+    [box fetch];
     
     return box;
+}
+
+- (void)fetch{
+    assert(_css);
+    assert(_event);
+    delegateEnableLevel = 1;
+    [self addObserver:self forKeyPath:@"delegate.selectedFrameWidth" options:0 context:nil];
+    [self addObserver:self forKeyPath:@"delegate.maxFrameWidth" options:0 context:nil];
+    changedCSSWidths = [NSMutableSet set];
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
@@ -47,13 +64,7 @@
         _event = [aDecoder decodeObjectForKey:@"event"];
         
         _m_children=[aDecoder decodeObjectForKey:@"children"];
-        delegateEnableLevel = 1;
-        [self addObserver:self forKeyPath:@"delegate.selectedFrameWidth" options:0 context:nil];
-        [self addObserver:self forKeyPath:@"delegate.maxFrameWidth" options:0 context:nil];
-        changedCSSWidths = [NSMutableSet set];
-        for (IUBox *iu in self.children) {
-            [iu bind:@"identifierManager" toObject:self withKeyPath:@"identifierManager" options:nil];
-        }
+        [self fetch];
     }
     return self;
 }
@@ -63,11 +74,10 @@
         assert(0);
     }
     [aCoder encodeFromObject:self withProperties:[[IUBox class] propertiesWithOutProperties:@[@"identifierManager", @"textController"]]];
-    [aCoder encodeObject:self.css forKey:@"css"];
-    [aCoder encodeObject:self.event forKey:@"event"];
     [aCoder encodeObject:_m_children forKey:@"children"];
 }
 
+/*
 -(id)initWithIdentifierManager:(IUIdentifierManager*)manager event:(IUEvent*)event css:(IUCSS*)css children:(NSArray*)children{
     self = [super init];
     _css = css;
@@ -90,6 +100,7 @@
 
     return self;
 }
+ */
 
 
 -(id)initWithIdentifierManager:(IUIdentifierManager*)manager option:(NSDictionary *)option{
@@ -260,6 +271,7 @@
     
     [_m_children insertObject:iu atIndex:index];
     
+    //iu 의 delegate와 children
     if (iu.delegate == nil) {
         iu.delegate = self.delegate;
     }
