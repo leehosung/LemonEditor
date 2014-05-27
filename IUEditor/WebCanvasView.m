@@ -462,9 +462,10 @@
             [range insertNode:brElement];
   
             //TODO: select br range after br
-//            DOMRange *selectRange = [range copy];
-//            [selectRange selectNode:brElement];
-//            [self setSelectedDOMRange:selectRange affinity:NSSelectionAffinityDownstream];
+            DOMRange *selectRange = [range copy];
+            [selectRange setStartAfter:brElement];
+            [selectRange setEndAfter:brElement];
+            //[self setSelectedDOMRange:selectRange affinity:NSSelectionAffinityDownstream];
             
             [self.VC insertNewline:iuRange identifier:IUNode.idName htmlNode:IUNode];
             
