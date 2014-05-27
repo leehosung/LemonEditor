@@ -14,6 +14,7 @@
 #import "IUBackground.h"
 #import "IUClass.h"
 #import "LMWC.h"
+#import "LMFileNaviCellView.h"
 
 @interface LMFileNaviVC ()
 
@@ -129,8 +130,9 @@
         }
         assert(cellIdentifier != nil);
         
-        NSTableCellView *file = [outlineView makeViewWithIdentifier:cellIdentifier owner:self];
-        return file;
+        LMFileNaviCellView *cell = [outlineView makeViewWithIdentifier:cellIdentifier owner:self];
+        cell.project = _documentController.project;
+        return cell;
     }
     
     
@@ -232,6 +234,17 @@
 
 - (IBAction)clickMenuCopyFile:(id)sender {
     //TODO:
+}
+
+- (BOOL)keyDown:(NSEvent *)event{
+    if (event.keyCode == 36) { // enter key
+
+        LMFileNaviCellView *cell = [self.navOutlineView selectedView];
+        [cell.textField setEditable:YES];
+        [self.navOutlineView.window makeFirstResponder:cell.textField];
+        
+    }
+    return YES;
 }
 
 

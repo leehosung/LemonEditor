@@ -72,21 +72,12 @@
 
 - (void)keyDown:(NSEvent *)event
 {
-    unichar key = [[event charactersIgnoringModifiers] characterAtIndex:0];
-    if (key == NSCarriageReturnCharacter && self.enterKeyDelegate) {
-        [self.enterKeyDelegate keyDown:event];
-        return;
+    if (self.keyDelegate) {
+        if ([self.keyDelegate keyDown:event]) {
+            return;
+        }
     }
-    
 
-    if(key == NSDeleteCharacter && self.deleteKeyDelegate)
-    {
-        [self.deleteKeyDelegate keyDown:event];
-        return;
-    }
-    
-    
-    // still here?
     [super keyDown:event];
     
 }

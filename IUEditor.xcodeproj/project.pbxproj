@@ -453,6 +453,7 @@
 		69D79B3919138CDC0020608D /* LMStartTemplateVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69D79B3719138CDC0020608D /* LMStartTemplateVC.xib */; };
 		69D79B3D19138FC60020608D /* LMStartNewDefaultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D79B3B19138FC60020608D /* LMStartNewDefaultVC.m */; };
 		69D79B3E19138FC60020608D /* LMStartNewDefaultVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69D79B3C19138FC60020608D /* LMStartNewDefaultVC.xib */; };
+		69E725B81934D478006EA827 /* LMFileNaviCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E725B71934D478006EA827 /* LMFileNaviCellView.m */; };
 		69F1A37518E0624E004C5B30 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69F1A37418E0624E004C5B30 /* WebKit.framework */; };
 		CB370E31192D93580074F3F8 /* gallary.zip in Resources */ = {isa = PBXBuildFile; fileRef = CB370E2F192D93580074F3F8 /* gallary.zip */; };
 		CB370E32192D93580074F3F8 /* iueditorHome.zip in Resources */ = {isa = PBXBuildFile; fileRef = CB370E30192D93580074F3F8 /* iueditorHome.zip */; };
@@ -1064,6 +1065,8 @@
 		69D79B3A19138FC60020608D /* LMStartNewDefaultVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMStartNewDefaultVC.h; sourceTree = "<group>"; };
 		69D79B3B19138FC60020608D /* LMStartNewDefaultVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMStartNewDefaultVC.m; sourceTree = "<group>"; };
 		69D79B3C19138FC60020608D /* LMStartNewDefaultVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMStartNewDefaultVC.xib; sourceTree = "<group>"; };
+		69E725B61934D478006EA827 /* LMFileNaviCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMFileNaviCellView.h; sourceTree = "<group>"; };
+		69E725B71934D478006EA827 /* LMFileNaviCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMFileNaviCellView.m; sourceTree = "<group>"; };
 		69F1A37418E0624E004C5B30 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		69F1A37618E06262004C5B30 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		69F1A37818E0627A004C5B30 /* AppleScriptKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptKit.framework; path = System/Library/Frameworks/AppleScriptKit.framework; sourceTree = SDKROOT; };
@@ -1693,6 +1696,8 @@
 				69B37F0A18DFDEE800DE620F /* LMFileNaviVC.h */,
 				69B37F0B18DFDEE800DE620F /* LMFileNaviVC.m */,
 				69B37F0C18DFDEE800DE620F /* LMFileNaviVC.xib */,
+				69E725B61934D478006EA827 /* LMFileNaviCellView.h */,
+				69E725B71934D478006EA827 /* LMFileNaviCellView.m */,
 			);
 			name = LeftFileNavigation;
 			sourceTree = "<group>";
@@ -2640,6 +2645,7 @@
 				3DED27271904AE53001A1D67 /* LMPropertyVRFrameVC.m in Sources */,
 				69B9A39F18E6B7E50007D6E2 /* NSTreeController+JDExtension.m in Sources */,
 				69D79B2E19138CB90020608D /* LMStartNewVC.m in Sources */,
+				69E725B81934D478006EA827 /* LMFileNaviCellView.m in Sources */,
 				69757B1318D95BBC0095CBAC /* JDWebUtil.m in Sources */,
 				69C5760C18D6FE020016F050 /* IUCSS.m in Sources */,
 				69757B2818D98BEA0095CBAC /* NSView+JDExtension.m in Sources */,

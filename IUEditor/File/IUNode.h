@@ -16,4 +16,5 @@
 
 - (BOOL)isLeaf;
 - (IUGroupNode*)rootNode;
+- (IUNode*)nodeWithName:(NSString*)name;
 @end

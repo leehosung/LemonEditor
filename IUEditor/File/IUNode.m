@@ -45,4 +45,11 @@
     }
     return (IUGroupNode*)(self.parent).rootNode;
 }
+
+- (IUNode*)nodeWithName:(NSString*)name{
+    if ([_name isEqualToString:name]) {
+        return self;
+    }
+    return nil;
+}
 @end

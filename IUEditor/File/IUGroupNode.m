@@ -88,4 +88,17 @@
 -(BOOL)isLeaf{
     return NO;
 }
+
+- (IUNode*)nodeWithName:(NSString*)name{
+    if ([self.name isEqualToString:name]) {
+        return self;
+    }
+    for (IUNode *node in _children) {
+        IUNode *retNode = [node nodeWithName:name];
+        if (retNode) {
+            return retNode;
+        }
+    }
+    return nil;
+}
 @end
