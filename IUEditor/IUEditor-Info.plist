@@ -12,7 +12,7 @@
 				<string>iu</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>iueditor</string>
+			<string>documentIcon</string>
 			<key>CFBundleTypeName</key>
 			<string>IU Editor File</string>
 			<key>CFBundleTypeRole</key>
@@ -61,7 +61,7 @@
 			<key>UTTypeDescription</key>
 			<string>IU Editor document</string>
 			<key>UTTypeIconFile</key>
-			<string>iueditor</string>
+			<string>documentIcon</string>
 			<key>UTTypeIdentifier</key>
 			<string>com.jdlab.iu</string>
 			<key>UTTypeReferenceURL</key>
