@@ -124,8 +124,20 @@
         if ([newParent shouldAddIUByUserInput] == NO) {
             return NSDragOperationNone;
         }
-        //TODO
+        
+
+        NSArray *selections = [_IUController selectedObjects];
+        //자기자신으로 갈 수 없음.
+        if([selections containsObject:newParent]){
+            return NSDragOperationNone;
+        }
         //parent 가 자신의 child로 가면 안됨.
+        for(IUBox *box in selections){
+            if([box.allChildren containsObject:newParent]){
+                return NSDragOperationNone;
+            }
+        }
+
         return NSDragOperationMove;
     }
     //newIU
@@ -144,12 +156,12 @@
         IUBox *oldParent = [(IUBox*)[selections firstObject] parent];
         IUBox *newParent = [item representedObject];
         if (oldParent == newParent) {
-            for (IUBox *iu in [_IUController selectedObjects]) {
+            for (IUBox *iu in selections) {
                 [newParent changeIUIndex:iu to:index error:nil];
             }
         }
         else {
-            for (IUBox *iu in [_IUController selectedObjects]) {
+            for (IUBox *iu in selections) {
                 NSInteger newIndex= index;
                 if(newIndex < 0){
                     newIndex = 0 ;
