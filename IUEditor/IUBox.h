@@ -61,7 +61,7 @@
 
 //initialize
 -(id)initWithIdentifierManager:(IUIdentifierManager*)identifierManager option:(NSDictionary*)option;
-
+- (void)fetch;
 
 // this is IU setting
 @property (nonatomic, weak) IUIdentifierManager *identifierManager;

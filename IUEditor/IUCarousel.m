@@ -26,24 +26,27 @@
         _deselectColor = [NSColor grayColor];
         _rightArrowImage = @"Default";
         _leftArrowImage = @"Default";
-        
-        [self addObserver:self forKeyPath:@"css.assembledTagDictionary.height" options:0 context:
-         @"height"];
-
     }
-
     return self;
 }
+
+- (void)fetch{
+    [super fetch];
+    [self addObserver:self forKeyPath:@"css.assembledTagDictionary.height" options:0 context:
+     @"height"];
+}
+
+
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self =  [super initWithCoder:aDecoder];
     if(self){
         [aDecoder decodeToObject:self withProperties:[[IUCarousel class] properties]];
-        [self addObserver:self forKeyPath:@"css.assembledTagDictionary.height" options:0 context:
-         @"height"];
     }
     return self;
 }
+
+
 -(void)encodeWithCoder:(NSCoder *)aCoder{
     [super encodeWithCoder:aCoder];
     [aCoder encodeFromObject:self withProperties:[[IUCarousel class] properties]];
