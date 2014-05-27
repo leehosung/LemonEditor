@@ -19,6 +19,17 @@
 }
 
 
+- (void)awakeFromNib{
+    [self addObserver:self forKeyPath:@"selectedObjects" options:0 context:nil];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    if ([keyPath isEqualToString:@"selectedObjects"]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationSelectionChanged object:self userInfo:@{@"selectedObjects": self.selectedObjects}];
+    }
+    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+}
+
 - (id)selection{
     if ([self.selectedObjects count] == 1) {
         return [[self selectedObjects] objectAtIndex:0];

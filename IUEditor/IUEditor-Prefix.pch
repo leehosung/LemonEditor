@@ -39,5 +39,8 @@
 #define IULogText @"Text"
 
 #define IUBindingDictNotRaisesApplicable @{NSRaisesForNotApplicableKeysBindingOption:@(NO)}
+
+#define IUNotificationSelectionChanged @"IUNotificationSelectionChanged"
+
 static NSRange NSZeroRange;
 #endif
