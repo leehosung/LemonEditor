@@ -12,7 +12,7 @@
 #import "IUDocumentController.h"
 #import "IUIdentifierManager.h"
 
-@interface LMFileNaviVC : NSViewController
+@interface LMFileNaviVC : NSViewController <JDOutlineViewKeyDelegate>
 
 @property (nonatomic, readonly) id  selection;
 @property (strong, nonatomic) IBOutlet _binding_ IUDocumentController *documentController;
