@@ -45,7 +45,6 @@ function flyFromRight(eventObject){
 	}
     if ($(this).hasClass('selected')){
 		var secondObj = $(this).children()[1];
-        $(secondObj).css('visibility', 'visible');
 		$(secondObj).animate({
 			'left': '100%',
 		}, 200);
@@ -53,7 +52,6 @@ function flyFromRight(eventObject){
 	}
 	else {
 		var secondObj = $(this).children()[1];
-		$(secondObj).css('visibility','visible');
 		$(secondObj).css('left','100%');
 		$(secondObj).animate({
 			'left': '0%',			
@@ -80,6 +78,9 @@ $(document).ready(function(){
 		else {
             $(this).bind(eventType, window[transitionanimation]);
 		}
+                            if (transitionanimation == 'flyFromRight'){
+                            $($(this).children()[1]).css('left', '100%');
+                            }
     });
 
     //move : current viewport pc type
