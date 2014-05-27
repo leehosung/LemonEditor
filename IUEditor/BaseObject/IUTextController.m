@@ -572,6 +572,7 @@
             startIndex = [startSet indexGreaterThanIndex:startIndex];
         }
         
+        [code appendString:appendTag];
         if(_innerText.length > currentIndex){
             [code appendString:[_innerText substringFromIndex:currentIndex toIndex:currentIndex+1]];
         }
