@@ -268,7 +268,7 @@
 
 #pragma mark setText
 
-/*
+
 - (void)insertNewline:(NSRange)range identifier:(NSString *)identifier htmlNode:(DOMHTMLElement *)node{
     
     IUBox *iu = [self.controller IUBoxByIdentifier:identifier];
@@ -278,7 +278,7 @@
         [textIU insertNewLine:range htmlNode:node];
     }
 }
- */
+ 
 
 - (void)selectTextRange:(NSRange)range identifier:(NSString *)identifier htmlNode:(DOMHTMLElement *)node{
 

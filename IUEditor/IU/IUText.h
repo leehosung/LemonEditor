@@ -14,7 +14,7 @@
 @property IUTextController *textController;
 
 /// text managing
-//- (void)insertNewLine:(NSRange)range htmlNode:(DOMHTMLElement *)node;
+- (void)insertNewLine:(NSRange)range htmlNode:(DOMHTMLElement *)node;
 - (void)selectTextRange:(NSRange)range htmlNode:(DOMHTMLElement *)node;
 - (void)deselectText;
 

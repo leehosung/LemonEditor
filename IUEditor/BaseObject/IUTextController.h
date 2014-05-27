@@ -34,7 +34,7 @@
 @property (nonatomic) int fontSize;
 @property (nonatomic) IUCSS *css;
 
-//- (void)insertNewLine:(NSRange)range htmlNode:(DOMHTMLElement *)node;
+- (void)insertNewLine:(NSRange)range htmlNode:(DOMHTMLElement *)node;
 - (void)selectTextRange:(NSRange)range htmlNode:(DOMHTMLElement *)node;
 - (void)deselectText;
 - (NSString *)textHTML;
