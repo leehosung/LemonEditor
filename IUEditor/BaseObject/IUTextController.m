@@ -109,16 +109,14 @@
     [self didChangeValueForKey:@"fontSize"];
 }
 
-/*
+
 
 - (void)insertNewLine:(NSRange)range htmlNode:(DOMHTMLElement *)node{
-    [_newlineIndexSet removeAllIndexes];
+    [self selectTextRange:range htmlNode:node];
 
-    [_newlineIndexSet addIndex:range.location];
-    [self.textDelegate updateTextHTML];
 }
- 
- */
+
+
 
 - (BOOL)isManagedElement{
     DOMHTMLElement *element = (DOMHTMLElement *)[_currentNode.childNodes item:0];

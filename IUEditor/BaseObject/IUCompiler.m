@@ -1099,14 +1099,16 @@ static NSString * IUCompilerTagOption = @"tag";
                     if([obj isKindOfClass:[IUText class]]){
                         NSNumber *height = cssTagDict[IUCSSTagHeight];
                         NSUInteger num = [[((IUText *)obj).textHTML componentsSeparatedByString:@"<br>"] count];
-                        
-                        if([self isLastCharacterBRElement:((IUText *)obj).textHTML]){
+              
+                        if(num > 0){
                             num--;
                         }
                         if(num == 0){
-                            num = 1;
+                            [dict putTag:@"line-height" floatValue:[height floatValue] ignoreZero:YES unit: IUCSSUnitPixel];
                         }
-                        [dict putTag:@"line-height" floatValue:[height floatValue]/num ignoreZero:YES unit: IUCSSUnitPixel];
+                        else{
+                            [dict putTag:@"line-height" floatValue:[height floatValue]/num ignoreZero:YES unit: IUCSSUnitPixel];
+                        }
                     }
                     else if ([obj isKindOfClass:[IUTextView class]]){
                         [dict putTag:@"line-height" floatValue:1.3 ignoreZero:YES unit:IUCSSUnitNone];

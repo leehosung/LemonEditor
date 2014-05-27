@@ -66,11 +66,14 @@
 #pragma mark -
 #pragma mark manage text
 
-/*
+
 - (void)insertNewLine:(NSRange)range htmlNode:(DOMHTMLElement *)node{
     [_textController insertNewLine:range htmlNode:node];
+
+    [self updateCSSForEditViewPort];
+ //   [_textController insertNewLine:range htmlNode:node];
 }
- */
+
 
 - (void)selectTextRange:(NSRange)range htmlNode:(DOMHTMLElement *)node{
     

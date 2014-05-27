@@ -466,6 +466,8 @@
 //            [selectRange selectNode:brElement];
 //            [self setSelectedDOMRange:selectRange affinity:NSSelectionAffinityDownstream];
             
+            [self.VC insertNewline:iuRange identifier:IUNode.idName htmlNode:IUNode];
+            
         }
         return NO;
     }
