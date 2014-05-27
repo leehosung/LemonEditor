@@ -86,7 +86,7 @@ DQ
                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IGf-fA-uop">
                             <rect key="frame" x="25" y="-2" width="82" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="push" title="debug" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="b6w-Mc-HIg">
+                            <buttonCell key="cell" type="push" title="debug" bezelStyle="rounded" alignment="center" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="b6w-Mc-HIg">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -131,7 +131,7 @@ DQ
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="2yM-8c-esj">
-                        <rect key="frame" x="819" y="0.0" width="16" height="779"/>
+                        <rect key="frame" x="820" y="0.0" width="15" height="779"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>

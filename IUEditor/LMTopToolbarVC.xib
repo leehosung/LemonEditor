@@ -34,34 +34,17 @@
                             <action selector="clickHiddenTabs:" target="-2" id="w3H-AP-mta"/>
                         </connections>
                     </button>
-                    <button translatesAutoresizingMaskIntoConstraints="NO" id="ss0-x8-YLr">
-                        <rect key="frame" x="-1" y="-3" width="30" height="31"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="31" id="aTO-PW-wNr"/>
-                            <constraint firstAttribute="width" constant="30" id="ctg-Wx-zgf"/>
-                        </constraints>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="export" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="YoF-zK-Epi">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="showBPressed:" target="-2" id="JKO-3P-c4a"/>
-                        </connections>
-                    </button>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="IIW-4c-pEg" userLabel="tabView">
-                        <rect key="frame" x="29" y="-1" width="840" height="29"/>
+                        <rect key="frame" x="-2" y="-1" width="871" height="29"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="Mnq-Yt-P1D" secondAttribute="bottom" constant="-1" id="0VD-f8-82A"/>
-                <constraint firstItem="ss0-x8-YLr" firstAttribute="leading" secondItem="Lyx-P5-2VK" secondAttribute="leading" id="7Yj-wR-3rA"/>
-                <constraint firstItem="ss0-x8-YLr" firstAttribute="top" secondItem="IIW-4c-pEg" secondAttribute="top" id="NgH-dr-K0w"/>
-                <constraint firstItem="IIW-4c-pEg" firstAttribute="centerX" secondItem="Lyx-P5-2VK" secondAttribute="centerX" id="TLP-PI-VC6"/>
                 <constraint firstAttribute="trailing" secondItem="Mnq-Yt-P1D" secondAttribute="trailing" id="V9T-3B-K66"/>
                 <constraint firstItem="IIW-4c-pEg" firstAttribute="top" secondItem="Lyx-P5-2VK" secondAttribute="top" id="dDQ-jf-1Qk"/>
+                <constraint firstItem="IIW-4c-pEg" firstAttribute="leading" secondItem="Lyx-P5-2VK" secondAttribute="leading" constant="-1" id="ukk-ok-ZXF"/>
                 <constraint firstItem="Mnq-Yt-P1D" firstAttribute="leading" secondItem="IIW-4c-pEg" secondAttribute="trailing" id="w6r-AS-nqv"/>
                 <constraint firstAttribute="bottom" secondItem="IIW-4c-pEg" secondAttribute="bottom" id="wYW-uv-33f"/>
             </constraints>
@@ -82,7 +65,6 @@
         </button>
     </objects>
     <resources>
-        <image name="export" width="14" height="14"/>
         <image name="next" width="13" height="9"/>
         <image name="tab_close" width="10" height="10"/>
     </resources>
