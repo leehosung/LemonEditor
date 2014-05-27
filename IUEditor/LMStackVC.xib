@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMStackVC">
@@ -27,44 +27,18 @@
             <rect key="frame" x="0.0" y="0.0" width="221" height="494"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="7hl-8X-7jj">
-                    <rect key="frame" x="-1" y="464" width="223" height="31"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <view key="contentView">
-                        <rect key="frame" x="1" y="1" width="221" height="29"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="B5k-h0-2Mj">
-                                <rect key="frame" x="6" y="8" width="35" height="14"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Stack" id="i3U-fk-oFS">
-                                    <font key="font" metaFont="smallSystemBold"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
-                    </view>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="31" id="Ldc-92-6ps"/>
-                        <constraint firstAttribute="centerY" secondItem="B5k-h0-2Mj" secondAttribute="centerY" id="jR9-gB-O9K"/>
-                        <constraint firstItem="B5k-h0-2Mj" firstAttribute="leading" secondItem="7hl-8X-7jj" secondAttribute="leading" constant="9" id="wfE-TR-9nx"/>
-                    </constraints>
-                    <color key="borderColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
-                    <color key="fillColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                </box>
                 <scrollView autohidesScrollers="YES" horizontalLineScroll="26" horizontalPageScroll="10" verticalLineScroll="26" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Osv-wT-Jh4" userLabel="Stack">
-                    <rect key="frame" x="-1" y="-1" width="222" height="466"/>
+                    <rect key="frame" x="-1" y="-2" width="222" height="468"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" id="l93-mx-g7q">
-                        <rect key="frame" x="1" y="1" width="220" height="464"/>
+                        <rect key="frame" x="1" y="1" width="220" height="466"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" emptySelection="NO" autosaveColumns="NO" rowHeight="26" viewBased="YES" indentationPerLevel="4" autosaveExpandedItems="YES" outlineTableColumn="PHW-2j-9jH" id="Oxr-EL-PIx" customClass="LMStackOutlineView">
-                                <rect key="frame" x="0.0" y="0.0" width="220" height="464"/>
+                                <rect key="frame" x="0.0" y="0.0" width="220" height="466"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" red="0.93725496529999996" green="0.93725496529999996" blue="0.93725496529999996" alpha="1" colorSpace="deviceRGB"/>
-                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                <color key="gridColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <tableColumns>
                                     <tableColumn width="220" minWidth="16" maxWidth="1000" id="PHW-2j-9jH">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
@@ -232,15 +206,39 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
+                <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="7hl-8X-7jj">
+                    <rect key="frame" x="-2" y="465" width="223" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <view key="contentView">
+                        <rect key="frame" x="1" y="1" width="221" height="28"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B5k-h0-2Mj">
+                                <rect key="frame" x="6" y="7" width="35" height="14"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Stack" id="i3U-fk-oFS">
+                                    <font key="font" metaFont="smallSystemBold"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="223" id="Wud-Wv-FQ7"/>
+                        <constraint firstAttribute="height" constant="30" id="YEI-ue-K38"/>
+                    </constraints>
+                    <color key="borderColor" red="0.60000002384185791" green="0.60000002384185791" blue="0.60000002384185791" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="fillColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                </box>
             </subviews>
             <constraints>
-                <constraint firstItem="7hl-8X-7jj" firstAttribute="top" secondItem="IoX-Be-25j" secondAttribute="top" constant="-1" id="2Zv-Va-uVL"/>
-                <constraint firstAttribute="trailing" secondItem="Osv-wT-Jh4" secondAttribute="trailing" id="3Pi-ik-XaV"/>
-                <constraint firstItem="Osv-wT-Jh4" firstAttribute="top" secondItem="IoX-Be-25j" secondAttribute="top" constant="29" id="8Hh-o0-UX2"/>
-                <constraint firstAttribute="bottom" secondItem="Osv-wT-Jh4" secondAttribute="bottom" constant="-1" id="IkS-bx-VbX"/>
-                <constraint firstItem="Osv-wT-Jh4" firstAttribute="leading" secondItem="IoX-Be-25j" secondAttribute="leading" constant="-1" id="P6G-By-xni"/>
-                <constraint firstAttribute="trailing" secondItem="7hl-8X-7jj" secondAttribute="trailing" constant="-1" id="Vjn-wy-Usz"/>
-                <constraint firstItem="7hl-8X-7jj" firstAttribute="leading" secondItem="IoX-Be-25j" secondAttribute="leading" constant="-1" id="bnQ-IG-n1j"/>
+                <constraint firstItem="7hl-8X-7jj" firstAttribute="top" secondItem="IoX-Be-25j" secondAttribute="top" constant="-1" id="QFt-Z6-ijR"/>
+                <constraint firstAttribute="trailing" secondItem="Osv-wT-Jh4" secondAttribute="trailing" id="gdN-Xa-HCy"/>
+                <constraint firstItem="Osv-wT-Jh4" firstAttribute="leading" secondItem="IoX-Be-25j" secondAttribute="leading" constant="-1" id="qyP-xH-rfK"/>
+                <constraint firstAttribute="trailing" secondItem="7hl-8X-7jj" secondAttribute="trailing" id="rh2-Y2-Xxe"/>
+                <constraint firstAttribute="bottom" secondItem="Osv-wT-Jh4" secondAttribute="bottom" constant="-2" id="yf3-Fc-G1T"/>
+                <constraint firstItem="Osv-wT-Jh4" firstAttribute="top" secondItem="IoX-Be-25j" secondAttribute="top" constant="28" id="zMO-oZ-2I6"/>
             </constraints>
         </customView>
         <slider verticalHuggingPriority="750" id="gSF-NI-ilk">
