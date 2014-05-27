@@ -467,7 +467,7 @@
             [selectRange setEndAfter:brElement];
             //[self setSelectedDOMRange:selectRange affinity:NSSelectionAffinityDownstream];
             
-            [self.VC insertNewline:iuRange identifier:IUNode.idName htmlNode:IUNode];
+            [self.VC updateNewline:iuRange identifier:IUNode.idName htmlNode:IUNode];
             
         }
         return NO;
@@ -500,14 +500,14 @@
         return NO;
     }
     
-    //insert Text
     NSRange iuRange = [self selectedRange:range InIU:IUNode];
-//    [self.VC selectTextRange:iuRange identifier:IUNode.idName htmlNode:IUNode];
+    NSString *text = [IUNode.innerText substringWithRange:iuRange];
+    if([text containsString:@"\n"]){
+        //because of (auto height);
+        [self.VC updateNewline:iuRange identifier:IUNode.idName htmlNode:IUNode];
+    }
 
-    
-//    [self.VC deleteStringRange:iuRange identifier:IUNode.idName];
-    JDInfoLog(@"DeleteText[IU:%@] : range(%ld, %ld) ", IUNode.idName, iuRange.location, iuRange.length);
-    
+    JDInfoLog(@"DeleteText[IU:%@] : range(%ld, %ld) ", IUNode.idName, iuRange.location, iuRange.length);    
     return YES;
     
 }

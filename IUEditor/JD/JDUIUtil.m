@@ -628,6 +628,35 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
 @end
 
 @implementation NSColor(JDExtension)
+
+- (BOOL)isTransparency{
+    CGFloat alphaFloatValue;
+    NSColor *convertedColor=[self colorUsingColorSpaceName:NSDeviceRGBColorSpace];
+    if(convertedColor)
+    {
+        // Get the red, green, and blue components of the color
+        [convertedColor getRed:nil green:nil blue:nil alpha:&alphaFloatValue];
+        if(alphaFloatValue == 0 ){
+            return YES;
+        }
+    }
+    return NO;
+}
+
+-(BOOL)isAlpha{
+    CGFloat alphaFloatValue;
+    NSColor *convertedColor=[self colorUsingColorSpaceName:NSDeviceRGBColorSpace];
+    if(convertedColor)
+    {
+        // Get the red, green, and blue components of the color
+        [convertedColor getRed:nil green:nil blue:nil alpha:&alphaFloatValue];
+        if(alphaFloatValue < 1 ){
+            return YES;
+        }
+    }
+    return NO;
+}
+
 -(NSString*) rgbString{
     CGFloat redFloatValue, greenFloatValue, blueFloatValue;
     int redIntValue, greenIntValue, blueIntValue;
@@ -699,6 +728,35 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
     return nil;
 }
 
+- (NSString *)cssBGString{
+    if([self isTransparency]){
+        return @"transparent";
+    }
+    else if([self isAlpha]){
+        return [NSString stringWithFormat:@"%@;background-color:%@;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='%@', endColorstr='%@')",
+                [self rgbString], //fallback
+                [self rgbaString], //rgba
+                [self rgbStringWithTransparent], [self rgbStringWithTransparent]];
+    }
+    else{
+        return [self rgbString];
+    }
+}
+
+- (NSString *)cssShadowString{
+    if([self isTransparency]){
+        return @"transparent";
+    }
+    else if([self isAlpha]){
+        return [NSString stringWithFormat:@"%@;box-shadow:%@;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='%@', endColorstr='%@')",
+                [self rgbString], //fallback
+                [self rgbaString],//rgba
+                [self rgbStringWithTransparent], [self rgbStringWithTransparent]];
+    }
+    else{
+        return [self rgbString];
+    }
+}
 + (NSColor *)randomColor {
     static int seeded;
     if (seeded == 0) {

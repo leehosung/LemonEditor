@@ -68,7 +68,7 @@
                 return;
             }
         }
-        self[tag] = [color rgbaString];
+        self[tag] = [color rgbString];
     }
 }
 
