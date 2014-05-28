@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Roboto</key>
+	<dict>
+		<key>name</key>
+		<string>Roboto</string>
+		<key>link</key>
+		<string>&lt;link href=&apos;http://fonts.googleapis.com/css?family=Roboto&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos;&gt;</string>
+		<key>css</key>
+		<string>&apos;Roboto&apos;, sans-serif</string>
+		<key>editable</key>
+		<false/>
+		<key>isLoadable</key>
+		<true/>
+	</dict>
+</dict>
+</plist>
