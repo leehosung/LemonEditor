@@ -675,7 +675,16 @@ static NSString * IUCompilerTagOption = @"tag";
     }
 #pragma mark IUImage
     else if([iu isKindOfClass:[IUImage class]]){
-        [code addCodeLineWithFormat:@"<img %@ >", [self HTMLAttributes:iu option:nil]];
+        IUImage *iuImage = (IUImage *)iu;
+        if(iuImage.imageName){
+            [code addCodeLineWithFormat:@"<img %@ >", [self HTMLAttributes:iu option:nil]];
+        }
+        //editor mode에서는 default image 를 만들어줌
+        else{
+            NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"tool_image" ofType:@"tiff"];
+            [code addCodeLineWithFormat:@"<img %@ src='%@' >",  [self HTMLAttributes:iu option:nil], imagePath];
+
+        }
     }
 #pragma mark IUMovie
     else if([iu isKindOfClass:[IUMovie class]]){
