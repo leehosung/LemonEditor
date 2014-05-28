@@ -37,6 +37,7 @@
 - (void)insertNewLine:(NSRange)range htmlNode:(DOMHTMLElement *)node;
 - (void)selectTextRange:(NSRange)range htmlNode:(DOMHTMLElement *)node;
 - (NSString *)textHTML;
--(void)setEditWidth:(NSInteger)width;
+- (void)setEditWidth:(NSInteger)width;
+- (NSArray *)fontNameArray;
 
 @end

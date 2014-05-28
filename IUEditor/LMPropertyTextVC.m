@@ -23,6 +23,9 @@
 @property (weak) IBOutlet NSSegmentedControl *textAlignB;
 @property (weak) IBOutlet NSComboBox *lineHeightB;
 
+@property LMFontController *fontController;
+@property (strong) IBOutlet NSDictionaryController *fontListDC;
+
 @end
 
 @implementation LMPropertyTextVC
@@ -44,7 +47,9 @@
     [self addObserver:self forKeyPath:@"controller.selection"
               options:NSKeyValueObservingOptionInitial context:@"fontDeco"];
     
-    [_fontB bind:NSContentBinding toObject:[NSFontManager sharedFontManager] withKeyPath:@"availableFontFamilies" options:IUBindingDictNotRaisesApplicable];
+    _fontController = [LMFontController sharedFontController];
+    [_fontListDC bind:NSContentDictionaryBinding toObject:_fontController withKeyPath:@"fontDict" options:nil];
+    [_fontB bind:NSContentBinding toObject:_fontListDC withKeyPath:@"arrangedObjects.key" options:IUBindingDictNotRaisesApplicable];
     [_fontB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToTextCSSProperty:@"fontName"] options:IUBindingDictNotRaisesApplicable];
     [_fontSizeB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToTextCSSProperty:@"fontSize"] options:IUBindingDictNotRaisesApplicable];
     [_fontSizeStepper bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToTextCSSProperty:@"fontSize"] options:IUBindingDictNotRaisesApplicable];

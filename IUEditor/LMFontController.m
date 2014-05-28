@@ -30,9 +30,8 @@ static LMFontController *gFontController = nil;
 }
 
 - (void)loadFontList{
-
+    //TODO: 나중에 정리
     [self initializeFontList];
-    
     NSDictionary *userFontDict = [[NSUserDefaults standardUserDefaults] objectForKey:@"fontList"];
     if(userFontDict == nil || userFontDict.count == 0){
         [self initializeFontList];
@@ -48,4 +47,21 @@ static LMFontController *gFontController = nil;
     [userData setObject:_fontDict forKey:@"fontList"];
     
 }
+
+- (NSString *)cssForFontName:(NSString *)fontName{
+    return [_fontDict objectForKey:fontName][LMFontFamilyName];
+}
+
+- (NSString *)headerForFontName:(NSString *)fontName{
+    return [_fontDict objectForKey:fontName][LMFontHeaderLink];
+}
+- (BOOL)isNeedHeader:(NSString *)fontName{
+    
+    if([_fontDict objectForKey:fontName]){
+        return [[_fontDict objectForKey:fontName][LMFontNeedLoad] boolValue];
+    }
+    return NO;
+
+}
+
 @end

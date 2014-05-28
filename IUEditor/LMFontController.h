@@ -8,7 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-
+static NSString *LMFontName = @"name";
+static NSString *LMFontHeaderLink = @"link";
+static NSString *LMFontFamilyName = @"css";
+static NSString *LMFontNeedLoad = @"isLoadable";
+static NSString *LMFontEditable = @"editalbe";
 
 @interface LMFontController : NSObject
 
@@ -17,5 +21,9 @@
 + (LMFontController *)sharedFontController;
 - (void)loadFontList;
 - (void)saveFontList;
+
+- (NSString *)cssForFontName:(NSString *)fontName;
+- (NSString *)headerForFontName:(NSString *)fontName;
+- (BOOL)isNeedHeader:(NSString *)fontName;
 
 @end

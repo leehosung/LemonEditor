@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="fontB" destination="Yle-zg-jre" id="3NT-fU-1xD"/>
                 <outlet property="fontColorWell" destination="EF9-cy-hVF" id="LtQ-n0-TiY"/>
+                <outlet property="fontListDC" destination="HyI-eC-WGG" id="aDA-tm-S9h"/>
                 <outlet property="fontSizeB" destination="nc6-kb-J7I" id="P78-EQ-Hrb"/>
                 <outlet property="fontSizeStepper" destination="G73-ed-fS4" id="MRx-n2-bZB"/>
                 <outlet property="fontStyleB" destination="uve-V4-Xm0" id="fuP-ac-K4F"/>
@@ -216,6 +217,7 @@
                 <outlet property="titleV" destination="8Lc-u6-K0I" id="lsh-Ia-Z3D"/>
             </connections>
         </customView>
+        <dictionaryController objectClassName="_NSControllerKeyValuePair" id="HyI-eC-WGG"/>
     </objects>
     <resources>
         <image name="align_center" width="10" height="7"/>

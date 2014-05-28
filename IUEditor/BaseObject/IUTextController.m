@@ -7,6 +7,7 @@
 //
 
 #import "IUTextController.h"
+#import "IUCSS.h"
 
 @interface IUTextController()
 
@@ -62,6 +63,18 @@
 //    textController.newlineIndexSet = [[NSMutableIndexSet alloc] initWithIndexSet:_newlineIndexSet];
     
     return textController;
+}
+
+- (NSArray *)fontNameArray{
+    NSMutableArray *fontArray = [NSMutableArray array];
+    for(IUCSS *css in _cssDict.allValues){
+        NSString *fontName = [css valueForKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagFontName]];
+        if([fontArray containsString:fontName] == NO){
+            [fontArray addObject:fontName];
+        }
+                              
+    }
+    return fontArray;
 }
 
 #pragma mark call by IU
