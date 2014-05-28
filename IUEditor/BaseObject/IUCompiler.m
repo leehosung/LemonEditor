@@ -34,6 +34,7 @@
 #import "IUTransition.h"
 #import "JDCode.h"
 #import "IUText.h"
+#import "LMFontController.h"
 
 @implementation IUCompiler{
 }
@@ -67,6 +68,49 @@
     return code;
 }
 
+-(JDCode *)webfontImportSourceForEdit{
+    
+    JDCode *code = [[JDCode alloc] init];
+    LMFontController *fontController = [LMFontController sharedFontController];
+    for(NSDictionary *dict  in fontController.fontDict.allValues){
+        if([[dict objectForKey:LMFontNeedLoad] boolValue]){
+            NSString *fontHeader = [dict objectForKey:LMFontHeaderLink];
+            [code addCodeLine:fontHeader];
+        }
+    }
+    
+    return code;
+}
+
+-(JDCode *)webfontImportSourceForOutput:(IUPage *)page{
+    NSMutableArray *fontNameArray = [NSMutableArray array];
+    for (IUBox *box in page.allChildren){
+        if([box isKindOfClass:[IUText class]]){
+            for(NSString *fontName in [(IUText *)box fontNameArray]){
+                if([fontNameArray containsString:fontName] == NO){
+                    [fontNameArray addObject:fontName];
+                }
+            }
+        }
+        else{
+            NSString *fontName = [box.css valueForKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagFontName]];
+            if([fontNameArray containsString:fontName] == NO){
+                [fontNameArray addObject:fontName];
+            }
+        }
+    }
+    JDCode *code = [[JDCode alloc] init];
+    LMFontController *fontController = [LMFontController sharedFontController];
+    
+    for(NSString *fontName in fontNameArray){
+        if([fontController isNeedHeader:fontName]){
+            [code addCodeLine:[fontController headerForFontName:fontName]];
+        }
+    }
+    
+    return code;
+}
+
 
 -(NSString*)outputSource:(IUDocument*)document mqSizeArray:(NSArray *)mqSizeArray{
     if ([document isKindOfClass:[IUClass class]]) {
@@ -80,35 +124,41 @@
     if([document isKindOfClass:[IUPage class]]){
         JDCode *metaCode = [self metadataSource:(IUPage *)document];
         [sourceCode replaceCodeString:@"<!--METADATA_Insert-->" toCode:metaCode];
+        
+        JDCode *webFontCode = [self webfontImportSourceForOutput:(IUPage *)document];
+        [sourceCode replaceCodeString:@"<!--WEBFONT_Insert-->" toCode:webFontCode];
+
+        
+        //remove iueditor.js to make outputSource
+        [sourceCode removeBlock:@"IUEditor.JS"];
+        
+        //insert event.js
+        NSString *eventJs = @"<script type=\"text/javascript\" src=\"Resource/JS/iuevent.js\"></script>";
+        [sourceCode replaceCodeString:@"<!-- IUEvent.JS -->" toCodeString:eventJs];
+        
+        NSString *initJS = @"<script type=\"text/javascript\" src=\"Resource/JS/iuinit.js\"></script>";
+        [sourceCode replaceCodeString:@"<!-- IUInit.JS -->" toCodeString:initJS];
+        
+        
+        //change css
+        NSMutableArray *cssSizeArray = [mqSizeArray mutableCopy];
+        //remove default size
+        [cssSizeArray removeObjectAtIndex:0];
+        JDCode *cssCode = [self cssSource:document cssSizeArray:cssSizeArray];
+        [sourceCode replaceCodeString:@"<!--CSS_Replacement-->" toCode:cssCode];
+        
+        //change html
+        JDCode *htmlCode = [self outputHTML:document];
+        [sourceCode replaceCodeString:@"<!--HTML_Replacement-->" toCode:htmlCode];
+        
+        JDSectionInfoLog( IULogSource, @"source : %@", [@"\n" stringByAppendingString:sourceCode.string]);
+        
+        if (_rule == IUCompileRuleDjango) {
+            [sourceCode replaceCodeString:@"('Resource/" toCodeString:@"('/Resource/"];
+        }
     }
     
-    //remove iueditor.js to make outputSource
-    [sourceCode removeBlock:@"IUEditor.JS"];
     
-    //insert event.js
-    NSString *eventJs = @"<script type=\"text/javascript\" src=\"Resource/JS/iuevent.js\"></script>";
-    [sourceCode replaceCodeString:@"<!-- IUEvent.JS -->" toCodeString:eventJs];
-    
-    NSString *initJS = @"<script type=\"text/javascript\" src=\"Resource/JS/iuinit.js\"></script>";
-    [sourceCode replaceCodeString:@"<!-- IUInit.JS -->" toCodeString:initJS];
-
-    
-    //change css
-    NSMutableArray *cssSizeArray = [mqSizeArray mutableCopy];
-    //remove default size
-    [cssSizeArray removeObjectAtIndex:0];
-    JDCode *cssCode = [self cssSource:document cssSizeArray:cssSizeArray];
-    [sourceCode replaceCodeString:@"<!--CSS_Replacement-->" toCode:cssCode];
-    
-    //change html
-    JDCode *htmlCode = [self outputHTML:document];
-    [sourceCode replaceCodeString:@"<!--HTML_Replacement-->" toCode:htmlCode];
-    
-    JDSectionInfoLog( IULogSource, @"source : %@", [@"\n" stringByAppendingString:sourceCode.string]);
-
-    if (_rule == IUCompileRuleDjango) {
-        [sourceCode replaceCodeString:@"('Resource/" toCodeString:@"('/Resource/"];
-    }
     return sourceCode.string;
 }
 
@@ -120,16 +170,23 @@
     
     JDCode *sourceCode = [[JDCode alloc] initWithCodeString:sourceString];
     
-    //change css
-    NSMutableArray *cssSizeArray = [mqSizeArray mutableCopy];
-    //remove default size
-    [cssSizeArray removeObjectAtIndex:0];
-    JDCode *cssCode = [self cssSource:document cssSizeArray:cssSizeArray];
-    [sourceCode replaceCodeString:@"<!--CSS_Replacement-->" toCode:cssCode];
+    //replace metadata;
+    if([document isKindOfClass:[IUPage class]]){
+        JDCode *webFontCode = [self webfontImportSourceForEdit];
+        [sourceCode replaceCodeString:@"<!--WEBFONT_Insert-->" toCode:webFontCode];
 
-    //change html
-    JDCode *htmlCode = [self editorHTML:document];
-    [sourceCode replaceCodeString:@"<!--HTML_Replacement-->" toCode:htmlCode];
+        //change css
+        NSMutableArray *cssSizeArray = [mqSizeArray mutableCopy];
+        //remove default size
+        [cssSizeArray removeObjectAtIndex:0];
+        JDCode *cssCode = [self cssSource:document cssSizeArray:cssSizeArray];
+        [sourceCode replaceCodeString:@"<!--CSS_Replacement-->" toCode:cssCode];
+        
+        //change html
+        JDCode *htmlCode = [self editorHTML:document];
+        [sourceCode replaceCodeString:@"<!--HTML_Replacement-->" toCode:htmlCode];
+    }
+
     
     JDSectionInfoLog( IULogSource, @"source : %@", [@"\n" stringByAppendingString:sourceCode.string]);
 
@@ -1072,7 +1129,7 @@ static NSString * IUCompilerTagOption = @"tag";
             value = cssTagDict[IUCSSTagFontName];
             if(value){
                 NSString *font=cssTagDict[IUCSSTagFontName];
-                [dict putTag:@"font-family" string:font];
+                [dict putTag:@"font-family" string:[[LMFontController sharedFontController] cssForFontName:font]];
             }
             value = cssTagDict[IUCSSTagFontSize];
             if(value){
@@ -1174,7 +1231,7 @@ static NSString * IUCompilerTagOption = @"tag";
     NSMutableString *retStr = [NSMutableString string];
     NSString *fontName = attributeDict[IUCSSTagFontName];
     if (fontName) {
-        [retStr appendFormat:@"font-name : %@;", fontName];
+        [retStr appendFormat:@"font-family : %@;", [[LMFontController sharedFontController] cssForFontName:fontName]];
     }
     NSNumber *fontSize = attributeDict[IUCSSTagFontSize];
     if (fontSize) {

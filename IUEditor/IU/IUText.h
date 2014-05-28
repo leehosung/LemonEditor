@@ -20,4 +20,6 @@
 - (NSDictionary*)textCSSAttributesForWidth:(NSInteger)width textIdentifier:(NSString *)identifier;
 - (NSString*)textHTML;
 
+- (NSArray *)fontNameArray;
+
 @end

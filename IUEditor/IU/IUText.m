@@ -63,6 +63,20 @@
     }
 }
 
+- (NSArray *)fontNameArray{
+    NSMutableArray *fontArray = [NSMutableArray array];
+    
+    
+    NSString *fontName = [self.css valueForKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagFontName]];
+    if([fontArray containsString:fontName] == NO){
+        [fontArray addObject:fontName];
+    }
+
+    [fontArray addObjectsFromArray:[_textController fontNameArray]];
+    
+    return fontArray;
+}
+
 #pragma mark -
 #pragma mark manage text
 
