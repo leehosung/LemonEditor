@@ -14,4 +14,8 @@
     return YES;
 }
 
+- (BOOL)shouldRemoveIU{
+    return NO;
+}
+
 @end
