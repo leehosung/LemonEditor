@@ -17,8 +17,6 @@
 #import "IUClass.h"
 
 @interface IUBox()
-@property (readwrite) IUCSS *css; //used by subclass
-@property (readwrite) IUEvent *event;
 @end
 
 @implementation IUBox{
@@ -44,6 +42,15 @@
     
     return box;
 }
+
+- (void)setCss:(IUCSS *)css{
+    _css = css;
+}
+
+- (void)setEvent:(IUEvent *)event{
+    _event = event;
+}
+
 
 - (void)fetch{
     assert(_css);
