@@ -18,7 +18,7 @@
     assert(manager!=nil);
     self = [super initWithIdentifierManager:manager option:option];
     if(self){
-        self.count = 5;
+        self.count = 4;
         [self.css setValue:@(500) forTag:IUCSSTagWidth forWidth:IUCSSMaxViewPortWidth];
         [self.css setValue:@(300) forTag:IUCSSTagHeight forWidth:IUCSSMaxViewPortWidth];
         [self.css setValue:[NSColor clearColor] forTag:IUCSSTagBGColor forWidth:IUCSSMaxViewPortWidth];
