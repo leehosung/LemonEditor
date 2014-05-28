@@ -611,7 +611,7 @@
 }
 
 
-- (NSString *)removeCSSText:(NSString *)innerCSSText withID:(NSString *)iuID
+- (NSString *)removeCSSText:(NSString *)innerCSSText withID:(NSString *)identifier
 {
     NSMutableString *innerCSSHTML = [NSMutableString stringWithString:@"\n"];
     NSString *trimmedInnerCSSHTML = [innerCSSText  stringByTrim];
@@ -625,8 +625,8 @@
             continue;
         }
         NSString *ruleID = [self cssIDInCSSRule:rule];
-        NSString *modifiedIUID = [@"." stringByAppendingString:iuID];
-        if([ruleID isEqualToString:modifiedIUID] == NO){
+        NSString *modifiedIdentifier = [identifier stringByTrim];
+        if([ruleID isEqualToString:modifiedIdentifier] == NO){
             [innerCSSHTML appendString:[NSString stringWithFormat:@"\t%@\n", [rule stringByTrim]]];
         }
     }
