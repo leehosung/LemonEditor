@@ -41,7 +41,7 @@ var loadedCarouselArray = [];
 		wrapperClass: 'bx-wrapper',
 
 		// TOUCH
-		touchEnabled: true,
+		touchEnabled: false,
 		swipeThreshold: 50,
 		oneToOneTouch: true,
 		preventDefaultSwipeX: true,

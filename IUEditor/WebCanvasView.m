@@ -388,9 +388,9 @@
 
 - (void)setEditable:(BOOL)flag{
     [super setEditable:flag];
-    if(flag == NO){
-        [self.VC deselectTextAtCurrentNode];
-    }
+    
+    [[NSUserDefaults standardUserDefaults] setBool:flag forKey:@"textEditMode"];
+
 }
 
 - (BOOL)removeLastCharacter{

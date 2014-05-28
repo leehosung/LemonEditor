@@ -16,7 +16,6 @@
 /// text managing
 - (void)updateNewLine:(NSRange)range htmlNode:(DOMHTMLElement *)node;
 - (void)selectTextRange:(NSRange)range htmlNode:(DOMHTMLElement *)node;
-- (void)deselectText;
 
 - (NSDictionary*)textCSSAttributesForWidth:(NSInteger)width textIdentifier:(NSString *)identifier;
 - (NSString*)textHTML;

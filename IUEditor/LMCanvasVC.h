@@ -52,7 +52,6 @@
 //text
 - (void)updateNewline:(NSRange)range identifier:(NSString *)identifier htmlNode:(DOMHTMLElement *)node;
 - (void)selectTextRange:(NSRange)range identifier:(NSString *)identifier htmlNode:(DOMHTMLElement *)node;
-- (void)deselectTextAtCurrentNode;
 /*
 - (void)selectTextRange:(NSRange)range identifier:(NSString *)identifier;
 - (void)insertString:(NSString *)string identifier:(NSString *)identifier withRange:(NSRange)range;
