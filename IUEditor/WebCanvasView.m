@@ -621,13 +621,26 @@
     
     DOMHTMLElement *iuNode = [self IUNodeAtCurrentNode:range.startContainer];
     if(iuNode){
-        [range selectNodeContents:iuNode];
-        [self setSelectedDOMRange:range affinity:NSSelectionAffinityDownstream];
+            if(iuNode.childNodes.length > 0){
+                DOMElement *startNode = (DOMElement *)[[iuNode childNodes] item:0];
+                DOMElement *endNode = (DOMElement *)[[iuNode childNodes] item:iuNode.childNodes.length-1];
+                [range setStart:startNode offset:0];
+                
+                
+                if([endNode isKindOfClass:[DOMText class]]){
+                    [range setEnd:endNode offset:(int)[((DOMText *)endNode) textContent].length];
+                }
+                else if([endNode isKindOfClass:[DOMHTMLElement class]]){
+                    [range setEnd:endNode offset:(int)endNode.innerText.length];
+                }
+                
+                [self setSelectedDOMRange:range affinity:NSSelectionAffinityDownstream];
+            }
+
     }
-    
     /*
-    
-    if([self isTextElement:(DOMHTMLElement *)range.startContainer]){
+     
+     if([self isTextElement:(DOMHTMLElement *)range.startContainer]){
         DOMHTMLParagraphElement *pElement = [self pElementOfNode:range.startContainer];
         [range selectNode:pElement];
         
