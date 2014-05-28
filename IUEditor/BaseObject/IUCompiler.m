@@ -170,22 +170,21 @@
     
     JDCode *sourceCode = [[JDCode alloc] initWithCodeString:sourceString];
     
-    //replace metadata;
-    if([document isKindOfClass:[IUPage class]]){
-        JDCode *webFontCode = [self webfontImportSourceForEdit];
-        [sourceCode replaceCodeString:@"<!--WEBFONT_Insert-->" toCode:webFontCode];
-
-        //change css
-        NSMutableArray *cssSizeArray = [mqSizeArray mutableCopy];
-        //remove default size
-        [cssSizeArray removeObjectAtIndex:0];
-        JDCode *cssCode = [self cssSource:document cssSizeArray:cssSizeArray];
-        [sourceCode replaceCodeString:@"<!--CSS_Replacement-->" toCode:cssCode];
-        
-        //change html
-        JDCode *htmlCode = [self editorHTML:document];
-        [sourceCode replaceCodeString:@"<!--HTML_Replacement-->" toCode:htmlCode];
-    }
+    
+    JDCode *webFontCode = [self webfontImportSourceForEdit];
+    [sourceCode replaceCodeString:@"<!--WEBFONT_Insert-->" toCode:webFontCode];
+    
+    //change css
+    NSMutableArray *cssSizeArray = [mqSizeArray mutableCopy];
+    //remove default size
+    [cssSizeArray removeObjectAtIndex:0];
+    JDCode *cssCode = [self cssSource:document cssSizeArray:cssSizeArray];
+    [sourceCode replaceCodeString:@"<!--CSS_Replacement-->" toCode:cssCode];
+    
+    //change html
+    JDCode *htmlCode = [self editorHTML:document];
+    [sourceCode replaceCodeString:@"<!--HTML_Replacement-->" toCode:htmlCode];
+    
 
     
     JDSectionInfoLog( IULogSource, @"source : %@", [@"\n" stringByAppendingString:sourceCode.string]);
