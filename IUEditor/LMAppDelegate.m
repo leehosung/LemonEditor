@@ -11,9 +11,11 @@
 #import "JDLogUtil.h"
 #import "LMStartWC.h"
 #import "IUDjangoProject.h"
+#import "LMPreferenceWC.h"
 
 @implementation LMAppDelegate{
     LMStartWC *startWC;
+    LMPreferenceWC *preferenceWC;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -87,6 +89,10 @@
     return YES;
 }
 
+- (IBAction)openPreference:(id)sender {
+     preferenceWC = [[LMPreferenceWC alloc] initWithWindowNibName:@"LMPreferenceWC"];
+    [preferenceWC showWindow:self];
+}
 
 -(void)newDocument:(NSMenuItem*)sender{
     if ([sender isKindOfClass:[NSMenuItem class]]) {
