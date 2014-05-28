@@ -45,7 +45,7 @@
     [wc addSelectedIU:@"test"];
 #endif
     
-    //FIXME: 요 부분을 고쳐서 처음 런칭했을 때 화면을 바꾸자.나중에;
+    // 추가: 요 부분을 고쳐서 처음 런칭했을 때 화면을 바꾸자.나중에;
     
     [self openDocument:nil];
 }
@@ -96,6 +96,7 @@
         }
     }
     NSError *error;
+
     
     NSDictionary *dict = @{IUProjectKeyAppName: @"myApp",
                            IUProjectKeyGit: @(NO),

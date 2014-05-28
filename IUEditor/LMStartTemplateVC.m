@@ -33,6 +33,8 @@
     NSString *templatePath = [[NSBundle mainBundle] pathForResource:@"sampleTemplate" ofType:@"plist"];
     NSArray *templateList = [NSArray arrayWithContentsOfFile:templatePath];
     
+    
+    
     [self.templateAC setSelectionIndex:0];
    
     
