@@ -398,6 +398,8 @@
 		6983E71D18FFF54600D424B8 /* JDOutlineCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6983E71C18FFF54600D424B8 /* JDOutlineCellView.m */; };
 		6985CBA018E31558008DBF50 /* IUDocumentNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6985CB9F18E31558008DBF50 /* IUDocumentNode.m */; };
 		6985CBA618E31D9B008DBF50 /* IUNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6985CBA518E31D9B008DBF50 /* IUNode.m */; };
+		698E840019358C14002CE47B /* LMProjectConvertWC.m in Sources */ = {isa = PBXBuildFile; fileRef = 698E83FE19358C14002CE47B /* LMProjectConvertWC.m */; };
+		698E840119358C14002CE47B /* LMProjectConvertWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 698E83FF19358C14002CE47B /* LMProjectConvertWC.xib */; };
 		69965420190F9F1D000379DA /* LMPropertyIUCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6996541E190F9F1D000379DA /* LMPropertyIUCollectionVC.m */; };
 		69965421190F9F1D000379DA /* LMPropertyIUCollectionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6996541F190F9F1D000379DA /* LMPropertyIUCollectionVC.xib */; };
 		6999161D1919F05E000ECF57 /* IUSubmitButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6999161C1919F05E000ECF57 /* IUSubmitButton.m */; };
@@ -977,6 +979,9 @@
 		6985CB9F18E31558008DBF50 /* IUDocumentNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUDocumentNode.m; sourceTree = "<group>"; };
 		6985CBA418E31D9B008DBF50 /* IUNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUNode.h; sourceTree = "<group>"; };
 		6985CBA518E31D9B008DBF50 /* IUNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUNode.m; sourceTree = "<group>"; };
+		698E83FD19358C14002CE47B /* LMProjectConvertWC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMProjectConvertWC.h; sourceTree = "<group>"; };
+		698E83FE19358C14002CE47B /* LMProjectConvertWC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMProjectConvertWC.m; sourceTree = "<group>"; };
+		698E83FF19358C14002CE47B /* LMProjectConvertWC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMProjectConvertWC.xib; sourceTree = "<group>"; };
 		6996541D190F9F1D000379DA /* LMPropertyIUCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyIUCollectionVC.h; sourceTree = "<group>"; };
 		6996541E190F9F1D000379DA /* LMPropertyIUCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyIUCollectionVC.m; sourceTree = "<group>"; };
 		6996541F190F9F1D000379DA /* LMPropertyIUCollectionVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyIUCollectionVC.xib; sourceTree = "<group>"; };
@@ -1949,6 +1954,9 @@
 		69C5759E18D6F61E0016F050 = {
 			isa = PBXGroup;
 			children = (
+				698E83FD19358C14002CE47B /* LMProjectConvertWC.h */,
+				698E83FE19358C14002CE47B /* LMProjectConvertWC.m */,
+				698E83FF19358C14002CE47B /* LMProjectConvertWC.xib */,
 				CBFBE67C192A07A300F03F76 /* SampleTemplate */,
 				690A409E18E170AC00095263 /* Resource */,
 				69C575B018D6F61E0016F050 /* IUEditor */,
@@ -2455,6 +2463,7 @@
 				3DED26C11900F450001A1D67 /* view_border_off.png in Resources */,
 				2628C9211919C8C800D9D8CD /* tab_secondary_off@2x.png in Resources */,
 				3DED27531908C393001A1D67 /* clear_color_border@2x.png in Resources */,
+				698E840119358C14002CE47B /* LMProjectConvertWC.xib in Resources */,
 				3DF8044118FE62FC00913505 /* tool_navi.png in Resources */,
 				3DED26621900D313001A1D67 /* align_right@2x.png in Resources */,
 				3DED26C81900F65C001A1D67 /* ic_image.png in Resources */,
@@ -2698,6 +2707,7 @@
 				69E725B81934D478006EA827 /* LMFileNaviCellView.m in Sources */,
 				69757B1318D95BBC0095CBAC /* JDWebUtil.m in Sources */,
 				69C5760C18D6FE020016F050 /* IUCSS.m in Sources */,
+				698E840019358C14002CE47B /* LMProjectConvertWC.m in Sources */,
 				69757B2818D98BEA0095CBAC /* NSView+JDExtension.m in Sources */,
 				3DED26E219010B6B001A1D67 /* LMPropertyIUcarouselVC.m in Sources */,
 				3DF8046518FF784500913505 /* LMPropertyTextVC.m in Sources */,

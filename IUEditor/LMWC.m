@@ -35,6 +35,8 @@
 
 #import "IUDjangoProject.h"
 
+#import "LMProjectConvertWC.h"
+
 @interface LMWC ()
 
 //toolbar
@@ -95,6 +97,8 @@
     LMWidgetLibraryVC   *widgetLibraryVC;
     LMResourceVC    *resourceVC;
 
+    
+    LMProjectConvertWC *pcWC;
 }
 
 - (id)initWithWindow:(NSWindow *)window
@@ -257,6 +261,7 @@
     
     [[NSUserDefaults standardUserDefaults] setValue:path forKey:@"lastDocument"];
     [self.window setTitleWithRepresentedFilename:path];
+    [self.window setTitle:[NSString stringWithFormat:@"[%@] %@", [_project.className substringFromIndex:2], _project.path]];
     
     [_project setIdentifierManager:_identifierManager];
 }
@@ -328,6 +333,17 @@
     
     [_widgetTabV selectTabViewItemAtIndex:index];
 
+}
+
+
+- (IBAction)convertProject:(id)sender{
+    //call from menu item
+    pcWC = [[LMProjectConvertWC alloc] initWithWindowNibName:@"LMProjectConvertWC"];
+    pcWC.currentProject = _project;
+    
+    [self.window beginSheet:pcWC.window completionHandler:^(NSModalResponse returnCode) {
+        
+    }];
 }
 
 

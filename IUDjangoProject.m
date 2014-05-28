@@ -23,7 +23,7 @@
 
 +(IUDjangoProject*)convertProject:(IUProject*)project setting:(NSDictionary*)setting error:(NSError**)error{
     IUDjangoProject *newProject = [[IUDjangoProject alloc] init];
-    NSArray *properties = [IUProject properties];
+    NSArray *properties = [IUProject propertiesWithOutProperties:@[@"delegate", @"buildDirectoryName", @"runnable"]];
     for (JDProperty *property in properties) {
         id v = [project valueForKey:property.name];
         [newProject setValue:v forKey:property.name];
@@ -32,14 +32,17 @@
     if ([setting objectForKey:IUProjectKeyAppName]) {
         newProject.name = [setting objectForKey:IUProjectKeyAppName];
     }
+    else {
+        newProject.name = project.name;
+    }
     assert(newProject.name);
     newProject.buildDirectoryName = @"../templates";
         
     NSString *dir = [setting objectForKey:IUProjectKeyDirectory];
     assert(dir);
-    newProject.path = [dir stringByAppendingPathComponent:@"iuSource"];
-    [JDFileUtil rmDirPath:[newProject.path stringByAppendingPathExtension:@"*"]];
-    ReturnNilIfFalse([JDFileUtil mkdirPath:newProject.path]);
+    newProject.path = [dir stringByAppendingPathComponent:[NSString stringWithFormat:@"iuSource/%@.iu", newProject.name]];
+    [JDFileUtil rmDirPath:[newProject.directory stringByAppendingPathExtension:@"*"]];
+    ReturnNilIfFalse([JDFileUtil mkdirPath:newProject.directory]);
 
     //copy resource file
     NSString *src = project.resourceNode.absolutePath;
@@ -51,12 +54,13 @@
     NSString *desc = newProject.resourceNode.absolutePath;
     
     NSError *err;
+    [[NSFileManager defaultManager] removeItemAtPath:desc error:nil];
     [[NSFileManager defaultManager] copyItemAtPath:src toPath:desc error:&err];
-    assert(err != nil);
+    assert(err == nil);
     
     //resource file copy
-    [newProject save];
-    
+    BOOL result = [newProject save];
+    assert(result == YES);
     return newProject;
 }
 
