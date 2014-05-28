@@ -81,8 +81,11 @@
         assert(0);
     }
     [aCoder encodeFromObject:self withProperties:[[IUBox class] propertiesWithOutProperties:@[@"identifierManager", @"textController"]]];
+    [aCoder encodeObject:self.css forKey:@"css"];
+    [aCoder encodeObject:self.event forKey:@"event"];
     [aCoder encodeObject:_m_children forKey:@"children"];
 }
+
 
 /*
 -(id)initWithIdentifierManager:(IUIdentifierManager*)manager event:(IUEvent*)event css:(IUCSS*)css children:(NSArray*)children{
