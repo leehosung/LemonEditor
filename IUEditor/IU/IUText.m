@@ -79,9 +79,6 @@
     [_textController selectTextRange:range htmlNode:node];
     
 }
-- (void)deselectText{
-    [_textController deselectText];
-}
 
 - (void)updateTextHTML{
     [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];

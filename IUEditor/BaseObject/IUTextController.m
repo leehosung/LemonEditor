@@ -27,6 +27,8 @@
         _cssDict = [NSMutableDictionary dictionary];
         _rangeDict = [NSMutableDictionary dictionary];
 //        _newlineIndexSet = [NSMutableIndexSet indexSet];
+        [[NSUserDefaults standardUserDefaults] addObserver:self forKeyPath:@"textEditMode" options:NSKeyValueObservingOptionInitial context:nil];
+
     }
     return self;
 }
@@ -45,6 +47,8 @@
         _cssDict = [[aDecoder decodeObjectForKey:@"cssDict"] mutableCopy];
         _rangeDict = [[aDecoder decodeObjectForKey:@"rangeDict"] mutableCopy];
 //        _newlineIndexSet = [NSMutableIndexSet indexSet];
+        [[NSUserDefaults standardUserDefaults] addObserver:self forKeyPath:@"textEditMode" options:NSKeyValueObservingOptionInitial context:nil];
+
 
     }
     return self;
@@ -72,7 +76,6 @@
     [self willChangeValueForKey:@"link"];
     [self willChangeValueForKey:@"fontSize"];
 
-    textMode = true;
     _selectedRange = range;
     _currentNode = node;
     _innerText = node.innerText;
@@ -88,7 +91,12 @@
     [self didChangeValueForKey:@"fontSize"];
 
 }
-
+- (void)textEditModeDidChange:(NSDictionary *)change{
+    textMode = [[NSUserDefaults  standardUserDefaults] boolForKey:@"textEditMode"];
+    if(textMode == NO){
+        [self deselectText];
+    }
+}
 - (void)deselectText{
     [self willChangeValueForKey:@"fontColor"];
     [self willChangeValueForKey:@"fontName"];
@@ -98,7 +106,7 @@
     [self willChangeValueForKey:@"link"];
     [self willChangeValueForKey:@"fontSize"];
 
-    textMode = false;
+    [self css];
     
     [self didChangeValueForKey:@"fontColor"];
     [self didChangeValueForKey:@"fontName"];
@@ -372,6 +380,7 @@
 
 - (IUCSS *)css{
     IUCSS *css;
+    
     if(textMode){
         css = [self cssOfCurrentRange];
     }
@@ -390,11 +399,17 @@
 
 - (void)setTextTag:(IUCSSTag)tagName value:(id)value{
 
-    if(_innerText == nil || _innerText.length == 0 || _selectedRange.length == 0){
+    //css전체에 적용하는 경우
+    if(textMode == NO || _innerText == nil ||
+       _innerText.length == 0 || _selectedRange.length == 0 ||
+       _selectedRange.length == _innerText.length
+       ){
         IUCSS *css = [self.textDelegate css];
         [css setValue:value forTag:tagName];
         return;
     }
+    
+    //부분적용
     NSString *startId, *endId;
     NSRange minRange = NSMakeRange(_innerText.length, _innerText.length);
     NSRange maxRange = NSZeroRange;

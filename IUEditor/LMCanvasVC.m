@@ -289,16 +289,7 @@
     }
 
 }
-- (void)deselectTextAtCurrentNode{
-    if([self.controller.selectedObjects count] ==1){
-        IUBox *iu = [self.controller selectedObjects][0];
-        if([iu isKindOfClass:[IUText class]]){
-            IUText *textIU = (IUText *)iu;
-            [textIU deselectText];
-        }
 
-    }
-}
 /*
 //text
 - (void)selectTextRange:(NSRange)range identifier:(NSString *)identifier{
