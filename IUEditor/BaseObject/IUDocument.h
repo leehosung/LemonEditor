@@ -11,10 +11,10 @@
 #import "IUBox.h"
 #import "IUIdentifierManager.h"
 
+@class IUDocumentGroup;
 
 @interface IUDocument : IUBox
 
-@property IUCompiler *compiler;
 @property NSArray *mqSizeArray;
 
 @property CGFloat ghostX, ghostY, ghostOpacity;
@@ -27,5 +27,9 @@
 
 -(NSArray*)widthWithCSS;
 -(IUBox *)selectableIUAtPoint:(CGPoint)point;
+
+- (IUProject*)project;
+
+@property IUDocumentGroup *group;
 
 @end

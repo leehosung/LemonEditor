@@ -7,8 +7,8 @@
 //
 
 #import "LMFileNaviVC.h"
-#import "IUDocumentNode.h"
-#import "IUResourceNode.h"
+#import "IUDocumentGroup.h"
+#import "IUResourceFile.h"
 #import "NSTreeController+JDExtension.h"
 #import "IUPage.h"
 #import "IUBackground.h"
@@ -65,30 +65,20 @@
 
 -(void)selectFirstDocument{
     //find first document
-    IUDocumentNode *documentNode;
-    NSArray *arr = [_project allChildren];
-    for (int i=0; i<[arr count]; i++) {
-        if ([[arr objectAtIndex:i] isKindOfClass:[IUDocumentNode class]]) {
-            documentNode = [arr objectAtIndex:i];
-            break;
-        }
-    }
-    [_documentController setSelectedObject:documentNode];
+    [_documentController setSelectedObject:_project.pageDocuments.firstObject];
 }
 
 - (BOOL)isFolder:(NSTreeNode *)item{
     id representObject = [item representedObject];
-
-    if(item.indexPath.length == 1 ||
-       [representObject isKindOfClass:[IUDocumentGroupNode class]] ||
-       [representObject isKindOfClass:[IUResourceGroupNode class]] ){
+    if ([representObject isKindOfClass:[IUProject class]] ||
+        [representObject isKindOfClass:[IUDocumentGroup class]] ||
+        [representObject isKindOfClass:[IUResourceGroup class]]) {
         return YES;
     }
     return NO;
 }
 
 - (NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(NSTreeNode*)item {
-    
     //folder
     if([self isFolder:item]){
         
@@ -99,32 +89,32 @@
     //file
     else{
         NSString *cellIdentifier;
-
-        if ([[item representedObject] isKindOfClass:[IUDocumentNode class]]){
-            IUDocumentNode *node = [item representedObject];
-            if([node.parent.name isEqualToString:@"Pages"]){
+        if ([[item representedObject] isKindOfClass:[IUDocument class]]){
+            IUDocument *node = [item representedObject];
+            if([node.group.name isEqualToString:@"Pages"]){
                 cellIdentifier = @"pageFile";
             }
-            else if([node.parent.name isEqualToString:@"Backgrounds"]){
+            else if([node.group.name isEqualToString:@"Backgrounds"]){
                 cellIdentifier = @"backgroundFile";
             }
-            else if ([node.parent.name isEqualToString:@"Classes"]){
+            else if ([node.group.name isEqualToString:@"Classes"]){
                 cellIdentifier = @"classFile";
             }
+            assert(cellIdentifier);
         }
-        else if( [[item representedObject] isKindOfClass:[IUResourceNode class]] ){
-            IUResourceGroupNode *node = [item representedObject];
+        else if( [[item representedObject] isKindOfClass:[IUResourceFile class]] ){
+            IUResourceFile *node = [item representedObject];
             
-            if([node.parent.name isEqualToString:@"Image"]){
+            if( node.type == IUResourceTypeImage ){
                 cellIdentifier = @"imageFile";
             }
-            else if([node.parent.name isEqualToString:@"Video"]){
+            else if(node.type == IUResourceTypeVideo){
                 cellIdentifier = @"videoFile";
             }
-            else if([node.parent.name isEqualToString:@"CSS"]){
+            else if(node.type == IUResourceTypeCSS){
                 cellIdentifier = @"cssFile";
             }
-            else if([node.parent.name isEqualToString:@"JS"]){
+            else if(node.type == IUResourceTypeJS){
                 cellIdentifier = @"JSFile";
             }
         }
@@ -134,14 +124,13 @@
         cell.project = _documentController.project;
         return cell;
     }
-    
-    
     return nil;
 }
 
 #pragma mark -
 #pragma mark rightmenu
 - (NSMenu *)defaultMenuForRow:(NSInteger)row{
+#if 0
     NSMenu *menu = [self defaultMenu];
     
     NSTreeNode *item = [_navOutlineView itemAtRow:row];
@@ -154,15 +143,16 @@
         [menu addItem:_fileRemoveItem];
          */
     }
-    if ([node isKindOfClass:[IUDocumentNode class]]
+    if ([node isKindOfClass:[IUDocumentGroup class]]
         || [node isKindOfClass:[IUDocumentGroupNode class]]){
         
         [menu addItem:_fileAddItem];
         [menu addItem:_fileRemoveItem];
     }
 
-    
     return menu;
+#endif
+    return nil;
 }
 
 - (NSMenu *)defaultMenu{
@@ -180,6 +170,8 @@
 
 
 - (IBAction)clickMenuAddFile:(id)sender {
+    assert(0);
+    /*
     NSTreeNode *node = [_navOutlineView itemAtRow:_navOutlineView.rightClickedIndex];
     IUGroupNode *groupNode;
     if([self isFolder:node]){
@@ -209,27 +201,31 @@
         [_identifierManager setNewIdentifierAndRegister:obj withKey:nil];
         obj.name = obj.htmlID;
         
+        
         if ([obj isKindOfClass:[IUPage class]]) {
-            IUDocumentNode *bg = [[_documentController.project backgroundDocumentNodes] firstObject];
-            [(IUPage*)obj setBackground:bg.document];
+            IUBackground *bg = [[_documentController.project backgroundDocuments] firstObject];
+            [(IUPage*)obj setBackground:bg];
         }
         
-        IUDocumentNode *fileNode = [[IUDocumentNode alloc] init];
+        IUDocumentGroup *fileNode = [[IUDocumentGroup alloc] init];
         fileNode.document = obj;
         fileNode.name = obj.name;
         
         [groupNode addNode:fileNode];
 
-        [fileNode.document setCompiler:_project.compiler];
         [fileNode.document setIdentifierManager:_identifierManager];
         [_identifierManager registerIU:obj];
     }
+     */
 }
 - (IBAction)clickMenuRemoveFile:(id)sender {
+    assert(0);
+    /*
     NSTreeNode *node = [_navOutlineView itemAtRow:_navOutlineView.rightClickedIndex];
-    IUDocumentNode *docNode = [node representedObject];
+    IUDocumentGroup *docNode = [node representedObject];
     [docNode.parent removeNode:docNode];
     [_documentController rearrangeObjects];
+     */
 }
 
 - (IBAction)clickMenuCopyFile:(id)sender {
@@ -246,6 +242,4 @@
     }
     return YES;
 }
-
-
 @end

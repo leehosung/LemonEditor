@@ -27,7 +27,6 @@
 
 
 +(BOOL)touch:(NSString*)filePath;
-+(BOOL)mkdirPath:(NSString*)path;
 +(void)rmDirPath:(NSString*)path;
 
 

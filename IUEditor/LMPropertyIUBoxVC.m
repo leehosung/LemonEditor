@@ -7,7 +7,7 @@
 //
 
 #import "LMPropertyIUBoxVC.h"
-#import "IUDocumentNode.h"
+#import "IUDocumentGroup.h"
 #import "IUDocument.h"
 
 @interface LMPropertyIUBoxVC ()
@@ -53,11 +53,14 @@
 }
 
 - (BOOL)isPage:(NSString *)link{
-    for(IUDocumentNode *node in _pageDocumentNodes){
+    assert(0);
+    /*
+    for(IUDocumentGroup *node in _pageDocumentNodes){
         if([node.name isEqualToString:link]){
             return YES;
         }
     }
+     */
     return NO;
 }
 - (IBAction)clickLinkComboBox:(id)sender {
@@ -69,11 +72,14 @@
 }
 
 - (void)setDivLink{
+    return;
+    assert(0);
+    /*
     NSString *link = [[_linkCB selectedCell] stringValue];
     [_divAC setContent:nil];
 
     if([self isPage:link]){
-        IUDocumentNode *node = [[_pageDocumentAC selectedObjects] objectAtIndex:0];
+        IUDocumentGroup *node = [[_pageDocumentAC selectedObjects] objectAtIndex:0];
         IUDocument *document = node.document;
         [_divAC addObjects:document.allChildren];
         [_divPopupBtn setEnabled:YES];
@@ -81,6 +87,7 @@
     else{
         [_divPopupBtn setEnabled:NO];
     }
+     */
 }
 
 

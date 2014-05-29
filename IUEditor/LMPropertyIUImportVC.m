@@ -7,7 +7,7 @@
 //
 
 #import "LMPropertyIUImportVC.h"
-#import "IUDocumentNode.h"
+#import "IUDocumentGroup.h"
 #import "IUClass.h"
 
 @interface LMPropertyIUImportVC ()
@@ -31,9 +31,12 @@
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    assert(0);
+    return;
+    /*
     NSString *prototypePath = [_controller keyPathFromControllerToProperty:@"prototypeClass"];
     IUClass* prototype = [self valueForKeyPath:prototypePath];
-    IUDocumentNode *documentNode = [[_classDocumentsArrayController selectedObjects] firstObject];
+    IUDocumentGroup *documentNode = [[_classDocumentsArrayController selectedObjects] firstObject];
     if (documentNode.document == prototype) {
         return;
     }
@@ -44,7 +47,7 @@
     }
     else {
         if (prototype) {
-            for (IUDocumentNode *node in _classDocumentNodes) {
+            for (IUDocumentGroup *node in _classDocumentNodes) {
                 if (node.document == prototype) {
                     [_classDocumentsArrayController setSelectedObjects:@[node]];
                     return;
@@ -55,6 +58,7 @@
             [_classDocumentsArrayController setSelectedObjects:nil];
         }
     }
+     */
 }
 
 

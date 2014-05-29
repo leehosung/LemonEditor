@@ -10,17 +10,16 @@
 #import "IUPage.h"
 #import "IUBackground.h"
 #import "IUClass.h"
-#import "IUDocumentNode.h"
+#import "IUDocumentGroup.h"
 
 @implementation IUDjangoProject
 
 - (id)init{
     self = [super init];
-    _runnable = YES;
     return self;
 }
 
-
+#if 0
 +(IUDjangoProject*)convertProject:(IUProject*)project setting:(NSDictionary*)setting error:(NSError**)error{
     IUDjangoProject *newProject = [[IUDjangoProject alloc] init];
     NSArray *properties = [IUProject propertiesWithOutProperties:@[@"delegate", @"buildDirectoryName", @"runnable"]];
@@ -36,14 +35,18 @@
         newProject.name = project.name;
     }
     assert(newProject.name);
-    newProject.buildDirectoryName = @"../templates";
+    newProject.buildPath = @"../templates";
         
     NSString *dir = [setting objectForKey:IUProjectKeyDirectory];
     assert(dir);
-    newProject.path = [dir stringByAppendingPathComponent:[NSString stringWithFormat:@"iuSource/%@.iu", newProject.name]];
+    NSString *newPath = [dir stringByAppendingPathComponent:[NSString stringWithFormat:@"iuSource/%@.iu", newProject.name]];
+    [newProject setPath:newPath];
+    
     [JDFileUtil rmDirPath:[newProject.directory stringByAppendingPathExtension:@"*"]];
     ReturnNilIfFalse([JDFileUtil mkdirPath:newProject.directory]);
 
+    //FIXME:
+    /*
     //copy resource file
     NSString *src = project.resourceNode.absolutePath;
     
@@ -52,7 +55,9 @@
     }
     
     NSString *desc = newProject.resourceNode.absolutePath;
-    
+    */
+    NSString *src;
+    NSString *desc;
     NSError *err;
     [[NSFileManager defaultManager] removeItemAtPath:desc error:nil];
     [[NSFileManager defaultManager] copyItemAtPath:src toPath:desc error:&err];
@@ -65,16 +70,17 @@
 }
 
 // return value : project path
-+(IUDjangoProject*)createProject:(NSDictionary*)setting error:(NSError**)error{    IUDjangoProject *project = [[IUDjangoProject alloc] init];
++(IUDjangoProject*)createProject:(NSDictionary*)setting error:(NSError**)error{
+    IUDjangoProject *project = [[IUDjangoProject alloc] init];
     project.name = [setting objectForKey:IUProjectKeyAppName];
     assert(project.name);
-    project.buildDirectoryName = @"../templates";
+    project.buildPath = @"../templates";
     
     NSString *dir = [setting objectForKey:IUProjectKeyDirectory];
     assert(dir);
     NSString *projectDir = [dir stringByAppendingPathComponent:@"iuProject"];
     NSString *pathAppend = [NSString stringWithFormat:@"iuProject/%@.iu", project.name];
-    project.path = [dir stringByAppendingPathComponent:pathAppend];
+    [project setPath: [dir stringByAppendingPathComponent:pathAppend]];
     [JDFileUtil rmDirPath:projectDir];
     ReturnNilIfFalse([JDFileUtil mkdirPath:project.directory]);
     
@@ -82,23 +88,20 @@
     IUDocumentGroupNode *pageDir = [[IUDocumentGroupNode alloc] init];
     pageDir.name = @"Pages";
     [project addNode:pageDir];
-    project.pageDocumentGroup = pageDir;
     
     IUDocumentGroupNode *backgroundGroup = [[IUDocumentGroupNode alloc] init];
     backgroundGroup.name = @"Backgrounds";
     [project addNode:backgroundGroup];
-    project.backgroundDocumentGroup = backgroundGroup;
     
     IUDocumentGroupNode *classGroup = [[IUDocumentGroupNode alloc] init];
     classGroup.name = @"Classes";
     [project addNode:classGroup];
-    project.classDocumentGroup = backgroundGroup;
     
     //create document
     IUPage *index = [[IUPage alloc] initWithIdentifierManager:nil option:nil];
     index.htmlID = @"Index";
     
-    IUDocumentNode *indexNode = [[IUDocumentNode alloc] init];
+    IUDocumentGroup *indexNode = [[IUDocumentGroup alloc] init];
     indexNode.document = index;
     indexNode.name = @"Index";
     [pageDir addNode:indexNode];
@@ -107,7 +110,7 @@
     IUPage *gallery = [[IUPage alloc] initWithIdentifierManager:nil option:nil];
     gallery.htmlID = @"Gallery";
     
-    IUDocumentNode *galleryNode = [[IUDocumentNode alloc] init];
+    IUDocumentGroup *galleryNode = [[IUDocumentGroup alloc] init];
     galleryNode.document = gallery;
     galleryNode.name = @"Gallery";
     [pageDir addNode:galleryNode];
@@ -116,7 +119,7 @@
     IUPage *registerPage = [[IUPage alloc] initWithIdentifierManager:nil option:nil];
     registerPage.htmlID = @"Register";
     
-    IUDocumentNode *registerNode = [[IUDocumentNode alloc] init];
+    IUDocumentGroup *registerNode = [[IUDocumentGroup alloc] init];
     registerNode.document = registerPage;
     registerNode.name = @"Register";
     [pageDir addNode:registerNode];
@@ -125,7 +128,7 @@
     IUPage *contactPage = [[IUPage alloc] initWithIdentifierManager:nil option:nil];
     contactPage.htmlID = @"Contact";
     
-    IUDocumentNode *contactNode = [[IUDocumentNode alloc] init];
+    IUDocumentGroup *contactNode = [[IUDocumentGroup alloc] init];
     contactNode.document = contactPage;
     contactNode.name = @"Contact";
     [pageDir addNode:contactNode];
@@ -140,7 +143,7 @@
     contactPage.background = background;
     registerPage.background = background;
     
-    IUDocumentNode *backgroundNode = [[IUDocumentNode alloc] init];
+    IUDocumentGroup *backgroundNode = [[IUDocumentGroup alloc] init];
     backgroundNode.document = background;
     backgroundNode.name = @"Background1";
     [backgroundGroup addNode:backgroundNode];
@@ -149,7 +152,7 @@
     class.htmlID = @"Picture";
     class.name = @"Picture";
     
-    IUDocumentNode *classNode = [[IUDocumentNode alloc] init];
+    IUDocumentGroup *classNode = [[IUDocumentGroup alloc] init];
     classNode.document = class;
     classNode.name = @"Picture";
     [classGroup addNode:classNode];
@@ -158,7 +161,7 @@
     class2.htmlID = @"Class2";
     class2.name = @"Class2";
     
-    IUDocumentNode *classNode2 = [[IUDocumentNode alloc] init];
+    IUDocumentGroup *classNode2 = [[IUDocumentGroup alloc] init];
     classNode2.document = class2;
     classNode2.name = @"Class2";
     [classGroup addNode:classNode2];
@@ -168,4 +171,5 @@
     ReturnNilIfFalse([project save]);
     return project;
 }
+#endif
 @end

@@ -37,7 +37,7 @@
 }
 
 //set from lmwc
--(void)setDocumentNode:(IUDocumentNode *)documentNode{
+-(void)setDocumentNode:(IUDocumentGroup *)documentNode{
     _documentNode = documentNode;
     //find tab or make new box
     LMTabDocumentType currentState = [self stateOfDocumnet:documentNode];
@@ -49,7 +49,7 @@
         case LMTabDocumentTypeNone:
             //1. check enough size -> ignore or move one to hidden tab
             if([self hasEnoughSize] == NO){
-                IUDocumentNode *lastOpenedDocument = [openTabDocuments objectAtIndex:[openTabDocuments count] -1];
+                IUDocumentGroup *lastOpenedDocument = [openTabDocuments objectAtIndex:[openTabDocuments count] -1];
                 [self removeOpenTabDocument:lastOpenedDocument];
             }
             
@@ -66,7 +66,7 @@
 #pragma mark -
 #pragma mark tabview
 
-- (void)removeOpenTabDocument:(IUDocumentNode *)document{
+- (void)removeOpenTabDocument:(IUDocumentGroup *)document{
     [openTabDocuments removeObject:document];
     
     LMFileTabItemVC *item = [self tabItemOfDocumentNode:document];
@@ -75,7 +75,7 @@
     [hiddenTabDocuments addObject:document];
 }
 
-- (void)addOpenTabDocuments:(IUDocumentNode *)documentNode{
+- (void)addOpenTabDocuments:(IUDocumentGroup *)documentNode{
     [openTabDocuments addObject:documentNode];
     
     LMFileTabItemVC *itemVC = [[LMFileTabItemVC alloc] initWithNibName:@"LMFileTabItemVC" bundle:nil];
@@ -87,7 +87,7 @@
 
 
 
-- (LMFileTabItemVC *)tabItemOfDocumentNode:(IUDocumentNode *)documentNode{
+- (LMFileTabItemVC *)tabItemOfDocumentNode:(IUDocumentGroup *)documentNode{
     for(LMTabBox *item in _fileTabView.subviews){
         assert([item isKindOfClass:[LMTabBox class]]);
         LMFileTabItemVC *itemVC = ((LMFileTabItemVC *)item.delegate);
@@ -109,7 +109,7 @@
     }
 }
 
-- (LMTabDocumentType)stateOfDocumnet:(IUDocumentNode *)document{
+- (LMTabDocumentType)stateOfDocumnet:(IUDocumentGroup *)document{
     if([openTabDocuments containsObject:document]){
         return LMTabDocumentTypeOpen;
     }
@@ -126,7 +126,7 @@
 }
 
 - (IBAction)selectHiddenDocument:(id)sender{
-    IUDocumentNode *document = [sender representedObject];
+    IUDocumentGroup *document = [sender representedObject];
     [self setDocumentNode:document];
 }
 
@@ -134,7 +134,7 @@
     NSMenu *theMenu = [[NSMenu alloc] initWithTitle:@"Contextual Menu"];
     
     int index=0;
-    for(IUDocumentNode *documentNode in hiddenTabDocuments){
+    for(IUDocumentGroup *documentNode in hiddenTabDocuments){
         NSMenuItem *item = [theMenu insertItemWithTitle:documentNode.name action:@selector(selectHiddenDocument:) keyEquivalent:@"" atIndex:index];
         [item setTarget:self];
         [item setRepresentedObject:documentNode];
@@ -151,7 +151,7 @@
 
 
 
-- (void)selectTab:(IUDocumentNode *)documentNode{
+- (void)selectTab:(IUDocumentGroup *)documentNode{
     [_documentController setSelectedObject:documentNode];
     
     //tabcolor
@@ -180,7 +180,7 @@
     
     assert(index < openTabDocuments.count);
     
-    IUDocumentNode *leftTabNode = [openTabDocuments objectAtIndex:index];
+    IUDocumentGroup *leftTabNode = [openTabDocuments objectAtIndex:index];
     [_documentController setSelectedObject:leftTabNode];
     
     [openTabDocuments removeObject:tabItem.documentNode];
@@ -195,8 +195,8 @@
 - (IBAction)showBPressed:(id)sender {
     IUProject *project = _documentController.project;
     [project build:nil];
-    IUDocumentNode *node = [[_documentController selectedObjects] firstObject];
-    NSString *firstPath = [project.directory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@.html",project.buildDirectoryName, [node.name lowercaseString]] ];
+    IUDocumentGroup *node = [[_documentController selectedObjects] firstObject];
+    NSString *firstPath = [project.directory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@.html",project.buildPath, [node.name lowercaseString]] ];
     
     [[NSWorkspace sharedWorkspace] openFile:firstPath];
 }

@@ -89,7 +89,7 @@
             NSString *videoname = [[videoFileName lastPathComponent] stringByDeletingPathExtension];
             NSString *thumbFileName = [[NSString alloc] initWithFormat:@"%@_thumbnail.png", videoname];
             
-            IUResourceGroupNode *imageGroupNode = [self.resourceManager imageNode];
+            IUResourceGroup *imageGroupNode = [self.resourceManager imageNode];
             NSString *imageAbsolutePath = [NSString stringWithFormat:@"%@/", imageGroupNode.absolutePath];
             thumbFileName = [IUImageUtil writeToFile:thumbnail filePath:imageAbsolutePath fileName:thumbFileName checkFileName:NO];
             

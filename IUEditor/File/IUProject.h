@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "IUDocumentGroupNode.h"
-#import "IUResourceGroupNode.h"
+#import "IUResourceGroup.h"
 #import "IUCompiler.h"
+#import "IUDocumentGroup.h"
+#import "IUFileProtocol.h"
 
 typedef enum _IUGitType{
     IUGitTypeNone = 0,
@@ -17,14 +18,7 @@ typedef enum _IUGitType{
     IUGitTypeOutput = 2
 } IUGitType;
 
-@class IUProject;
-@protocol IUProjectDelegate
--(void)project:(IUProject*)project nodeAdded:(IUNode*)node;
--(void)project:(IUProject*)project nodeRemoved:(IUNode*)node;
-@end
 
-
-@class IUDocument;
 
 //setting
 static NSString * IUProjectKeyGit = @"git";
@@ -32,47 +26,52 @@ static NSString * IUProjectKeyAppName = @"appName";
 static NSString * IUProjectKeyHeroku = @"heroku";
 static NSString * IUProjectKeyDirectory = @"dir";
 
-@interface IUProject : IUDocumentGroupNode <IUResourceGroupNode>{
-    BOOL _runnable;
+@interface IUProject : NSObject <IUFile, IUResourcePathProtocol>{
+    IUDocumentGroup *_pageGroup;
+    IUDocumentGroup *_backgroundGroup;
+    IUDocumentGroup *_classGroup;
+    IUResourceGroup *_resourceGroup;
+    NSString *_buildPath;
 }
-@property (nonatomic, copy) NSString          *path;
-- (NSString*)directory;
 
-@property IUDocumentGroupNode *pageDocumentGroup;
-@property IUDocumentGroupNode *backgroundDocumentGroup;
-@property IUDocumentGroupNode *classDocumentGroup;
+//create project
++ (id)projectWithContentsOfPath:(NSString*)path;
+
+/**
+ @breif create project
+ @param setting a dictionary which has IUProjectKeyAppName and IUProjectKeyDirectory
+ */
+-(id)initWithCreation:(NSDictionary*)options error:(NSError**)error;
 - (void)initializeResource;
 
-@property   BOOL            herokuOn;
-@property   IUGitType       gitType;
-@property   id<IUProjectDelegate>  delegate;
-@property   NSString        *buildDirectoryName;
-@property   NSMutableArray  *mqSizes;
-
-@property (nonatomic) IUCompileRule compileRule;
-@property (nonatomic) IUResourceManager *resourceManager;
-
-- (NSString*)absoluteDirectory;
-
-+ (id)projectWithContentsOfPackage:(NSString*)path;
-+ (IUProject*)createProject:(NSDictionary*)setting error:(NSError**)error;
-
+//save project
 - (BOOL)save;
-- (BOOL)build:(NSError**)error;
-- (IUCompiler*)compiler;
 
+//project properties
+@property   NSMutableArray  *mqSizes;
+@property   NSString        *name;
+
+//set path
+- (void)setPath:(NSString*)path;
+- (NSString*)path;
+- (NSString*)directory;
+- (NSString*)buildPath;
+
+//build
+- (IUCompiler *)compiler;
+- (BOOL)build:(NSError**)error;
+
+
+//manager
+- (IUIdentifierManager*)identifierManager;
+- (IUResourceManager *)resourceManager;
+
+- (NSArray*)allDocuments;
 - (NSArray*)pageDocuments;
 - (NSArray*)backgroundDocuments;
 - (NSArray*)classDocuments;
 
-@property (nonatomic) IUResourceGroupNode *resourceNode;
-
-- (NSArray*)allDocumentNodes;
-- (NSArray*)pageDocumentNodes;
-- (NSArray*)backgroundDocumentNodes;
-- (NSArray*)classDocumentNodes;
-
 - (void)copyResourceForDebug;
-- (void)setIdentifierManager:(IUIdentifierManager*)identifierManager;
-@property (readonly) BOOL runnable;
+
+- (BOOL)runnable;
 @end

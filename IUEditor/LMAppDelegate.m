@@ -48,8 +48,8 @@
 #endif
     
     // 추가: 요 부분을 고쳐서 처음 런칭했을 때 화면을 바꾸자.나중에;
+    [self newDocument:nil];
     
-    [self openDocument:nil];
 }
 
 - (IBAction)showStartWC:(id)sender{
@@ -109,7 +109,7 @@
                            IUProjectKeyHeroku: @(NO),
                            IUProjectKeyDirectory: [@"~/IUProjTemp" stringByExpandingTildeInPath]};
     
-    IUProject *newProject = [IUProject createProject:dict error:&error];
+    IUProject *newProject = [[IUProject alloc] initWithCreation:dict error:&error];
     if (error != nil) {
         assert(0);
     }

@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "IUDocumentController.h"
-#import "IUDocumentNode.h"
+#import "IUDocumentGroup.h"
 
 @interface LMTabBox : NSBox
 
@@ -21,7 +21,7 @@
 @property id delegate;
 @property (weak) IBOutlet NSBox *fileBox;
 @property (weak) IBOutlet NSButton *fileNameBtn;
-@property  IUDocumentNode *documentNode;
+@property  IUDocumentGroup *documentNode;
 
 - (void)setDeselectColor;
 - (void)setSelectColor;

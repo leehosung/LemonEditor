@@ -7,6 +7,7 @@
 //
 
 #import "IUDocument.h"
+#import "IUProject.h"
 
 @implementation IUDocument
 
@@ -23,6 +24,7 @@
         _ghostY = [aDecoder decodeFloatForKey:@"ghostY"];
         _ghostOpacity = [aDecoder decodeFloatForKey:@"ghostOpacity"];
         _ghostImageName = [aDecoder decodeObjectForKey:@"ghostImageName"];
+        _group = [aDecoder decodeObjectForKey:@"group"];
 
     }
     return self;
@@ -34,19 +36,24 @@
     [aCoder encodeFloat:_ghostY forKey:@"ghostY"];
     [aCoder encodeFloat:_ghostOpacity forKey:@"ghostOpacity"];
     [aCoder encodeObject:_ghostImageName forKey:@"ghostImageName"];
+    [aCoder encodeObject:_group forKey:@"group"];
 }
+
+
 
 
 -(NSString*)editorSource{
-    return [self.compiler editorSource:self mqSizeArray:_mqSizeArray];
+    assert(self.project.compiler);
+    return [self.project.compiler editorSource:self mqSizeArray:_mqSizeArray];
 }
 
 - (NSString*)outputSource{
-    return [self.compiler outputSource:self mqSizeArray:_mqSizeArray];;
+    assert(self.project.compiler);
+    return [self.project.compiler outputSource:self mqSizeArray:_mqSizeArray];;
 }
 
 - (NSString*)outputInitJSSource{
-    return [self.compiler outputJSInitializeSource:self];
+    return [self.project.compiler outputJSInitializeSource:self];
 }
 
 -(NSArray*)widthWithCSS{

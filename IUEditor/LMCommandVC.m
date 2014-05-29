@@ -7,7 +7,7 @@
 //
 
 #import "LMCommandVC.h"
-#import "IUDocumentNode.h"
+#import "IUDocumentGroup.h"
 
 @interface LMCommandVC ()
 @property (weak) IBOutlet NSButton *buildB;
@@ -58,18 +58,18 @@
 }
 
 - (IBAction)build:(id)sender {
-    IUCompiler *compiler = _docController.project.compiler;
-    if (compiler.rule == IUCompileRuleDefault) {
+    IUCompileRule rule = _docController.project.compiler.rule;
+    if (rule == IUCompileRuleDefault) {
         IUProject *project = _docController.project;
         BOOL result = [project build:nil];
         if (result == NO) {
             assert(0);
         }
-        IUDocumentNode *node = [[_docController selectedObjects] firstObject];
-        NSString *firstPath = [project.directory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@.html",project.buildDirectoryName, [node.name lowercaseString]] ];
+        IUDocument *doc = [[_docController selectedObjects] firstObject];
+        NSString *firstPath = [project.directory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@.html",project.buildPath, [doc.name lowercaseString]] ];
         [[NSWorkspace sharedWorkspace] openFile:firstPath];
     }
-    else if (compiler.rule == IUCompileRuleDjango){
+    else if (rule == IUCompileRuleDjango){
         if (runningState == 0) {
             [self runOrStopServer:self];
         }
@@ -78,7 +78,7 @@
         if (result == NO) {
             assert(0);
         }
-        IUDocumentNode *node = [[_docController selectedObjects] firstObject];
+        IUDocument *node = [[_docController selectedObjects] firstObject];
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat: @"http://127.0.0.1:8000/%@", [node.name lowercaseString]]];
         [[NSWorkspace sharedWorkspace] openURL:url];
     }
@@ -121,7 +121,8 @@
 }
 
 - (IBAction)changeCompilerRule:(id)sender {
-    _docController.project.compileRule = [_compilerB indexOfSelectedItem];
+    assert(0);
+//    _docController.project.compileRule = [_compilerB indexOfSelectedItem];
 }
 
 - (IBAction)sync:(id)sender {

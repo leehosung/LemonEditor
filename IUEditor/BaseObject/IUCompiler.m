@@ -165,6 +165,7 @@
 }
 
 -(NSString*)editorSource:(IUDocument*)document mqSizeArray:(NSArray *)mqSizeArray{
+    assert(mqSizeArray.count > 0);
     NSString *templateFilePath = [[NSBundle mainBundle] pathForResource:@"webTemplate" ofType:@"html"];
     
     

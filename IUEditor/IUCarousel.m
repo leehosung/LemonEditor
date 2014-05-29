@@ -9,12 +9,13 @@
 #import "IUCarousel.h"
 #import "IUCarouselItem.h"
 #import "IUDocument.h"
+#import "IUProject.h"
 
 @implementation IUCarousel{
     NSInteger   _count;
 }
 
--(id)initWithIdentifierManager:(IUIdentifierManager *)manager option:(NSDictionary *)option{
+-(id)initWithIdentifierManager:(IUIdentifierManager *)manager option:(id)option{
     assert(manager!=nil);
     self = [super initWithIdentifierManager:manager option:option];
     if(self){
@@ -120,11 +121,11 @@
     NSString *activeItemID = [NSString stringWithFormat:@".%@.active", itemID];
     
     if(self.enableColor){
-        [self.delegate IUClassIdentifier:itemID CSSUpdated:[self.document.compiler cssContentForIUCarouselPager:self hover:NO] forWidth:IUCSSMaxViewPortWidth];
+        [self.delegate IUClassIdentifier:itemID CSSUpdated:[self.project.compiler cssContentForIUCarouselPager:self hover:NO] forWidth:IUCSSMaxViewPortWidth];
         
-        [self.delegate IUClassIdentifier:hoverItemID CSSUpdated:[self.document.compiler cssContentForIUCarouselPager:self hover:YES] forWidth:IUCSSMaxViewPortWidth];
+        [self.delegate IUClassIdentifier:hoverItemID CSSUpdated:[self.project.compiler cssContentForIUCarouselPager:self hover:YES] forWidth:IUCSSMaxViewPortWidth];
         
-        [self.delegate IUClassIdentifier:activeItemID CSSUpdated:[self.document.compiler cssContentForIUCarouselPager:self hover:YES] forWidth:IUCSSMaxViewPortWidth];
+        [self.delegate IUClassIdentifier:activeItemID CSSUpdated:[self.project.compiler cssContentForIUCarouselPager:self hover:YES] forWidth:IUCSSMaxViewPortWidth];
     }
     else{
         [self.delegate IUClassIdentifier:itemID CSSRemovedforWidth:IUCSSMaxViewPortWidth];
@@ -168,7 +169,7 @@
     else if(type == IUCarouselArrowRight){
         arrowID = @"bx-next";
     }
-    NSDictionary *dict = [self.document.compiler cssDictionaryForIUCarousel:self];
+    NSDictionary *dict = [self.project.compiler cssDictionaryForIUCarousel:self];
     for(NSString *identifier in dict.allKeys){
         if([identifier containsString:arrowID]){
             if(change){
@@ -197,7 +198,7 @@
 }
 
 - (void)jsReloadForController{
-    NSString *jsArgs = [self.document.compiler outputJSArgs:self];
+    NSString *jsArgs = [self.project.compiler outputJSArgs:self];
     if(jsArgs){
         [self.delegate callWebScriptMethod:@"reloadCarousels" withArguments:@[self.htmlID, jsArgs]];
     }
