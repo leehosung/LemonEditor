@@ -78,6 +78,9 @@
         if ([[self substringToIndex:8] isEqualToString:@"https://"]) {
             return YES;
         }
+        if([self containsString:@"{{"]){
+            return YES;
+        }
         if([self containsString:@"mailto:"]){
             return YES;
         }

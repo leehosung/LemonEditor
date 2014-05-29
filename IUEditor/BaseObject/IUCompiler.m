@@ -527,6 +527,8 @@ static NSString * IUCompilerTagOption = @"tag";
         [code addCodeLineWithFormat:@"</div>"];
         
     }
+#pragma mark IUPageLinkSet
+
     else if ([iu isKindOfClass:[IUPageLinkSet class]]){
         [code addCodeLineWithFormat:@"<div %@>\n", [self HTMLAttributes:iu option:nil]];
         [code addCodeLine:@"    <div>"];
@@ -538,7 +540,7 @@ static NSString * IUCompilerTagOption = @"tag";
         [code addCodeLine:@"        {% endfor %}"];
         [code addCodeLine:@"    </ul>"];
         [code addCodeLine:@"    </div>"];
-        [code addCodeLine:@"</div"];
+        [code addCodeLine:@"</div>"];
     }
 #pragma mark IUImport
     else if([iu isKindOfClass:[IUImport class]]){
@@ -554,12 +556,17 @@ static NSString * IUCompilerTagOption = @"tag";
 #pragma mark IUText
     else if([iu isKindOfClass:[IUText class]]){
         IUText *textIU = (IUText *)iu;
-
-        [code addCodeLineWithFormat:@"<div %@ >", [self HTMLAttributes:iu option:nil]];
-        if (textIU.textHTML) {
-            [code addCodeLineWithFormat:textIU.textHTML];
+        if (_rule == IUCompileRuleDjango && iu.textVariable) {
+            JDCode *outputCode = [self outputHTMLAsBox:iu option:nil];
+            [code addCode:outputCode];
         }
-        [code addCodeLineWithFormat:@"</div>"];
+        else{
+            [code addCodeLineWithFormat:@"<div %@ >", [self HTMLAttributes:iu option:nil]];
+            if (textIU.textHTML) {
+                [code addCodeLineWithFormat:textIU.textHTML];
+            }
+            [code addCodeLineWithFormat:@"</div>"];
+        }
 
     }
 #pragma mark IUTextFeild
