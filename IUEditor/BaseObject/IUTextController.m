@@ -69,7 +69,7 @@
     NSMutableArray *fontArray = [NSMutableArray array];
     for(IUCSS *css in _cssDict.allValues){
         NSString *fontName = [css valueForKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagFontName]];
-        if([fontArray containsString:fontName] == NO){
+        if(fontName != nil && [fontArray containsString:fontName] == NO){
             [fontArray addObject:fontName];
         }
                               
