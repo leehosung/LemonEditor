@@ -49,3 +49,8 @@ a{
     float:left;
     color: white;
 }
+
+.IUPageLinkSet > div {
+    margin-left:auto;
+    margin-right:auto;
+}
