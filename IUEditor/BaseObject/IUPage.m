@@ -62,7 +62,7 @@
     }
     if (myBackground == nil && background ) {
         NSArray *children = [self.children copy];
-        pageContent = [[IUPageContent alloc] initWithIdentifierManager:nil option:nil];
+        pageContent = [[IUPageContent alloc] initWithIdentifierManager:self.identifierManager option:nil];
         pageContent.htmlID = @"pageContent";
         pageContent.name = @"pageContent";
         

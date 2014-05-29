@@ -33,9 +33,16 @@
 }
 
 -(void)registerIU:(IUBox*)iu{
+    //FIXME : temp identifiermanager connect
+    if(iu.identifierManager == nil){
+        iu.identifierManager = self;
+    }
     [set setObject:iu forKey:iu.htmlID];
     for (IUBox *child in iu.allChildren) {
         [set setObject:child forKey:child.htmlID];
+        if (child.identifierManager == nil) {
+            child.identifierManager = self;
+        }
     }
 }
 
