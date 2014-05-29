@@ -154,6 +154,8 @@
         JDSectionInfoLog( IULogSource, @"source : %@", [@"\n" stringByAppendingString:sourceCode.string]);
         
         if (_rule == IUCompileRuleDjango) {
+            [sourceCode replaceCodeString:@"\"Resource/" toCodeString:@"\"/Resource/"];
+            [sourceCode replaceCodeString:@"./Resource/" toCodeString:@"/Resource/"];
             [sourceCode replaceCodeString:@"('Resource/" toCodeString:@"('/Resource/"];
         }
     }
@@ -592,10 +594,10 @@ static NSString * IUCompilerTagOption = @"tag";
         if ([iu.link isHTTPURL] == NO) {
             if (_rule == IUCompileRuleDjango) {
                 if(iu.divLink){
-                    linkURL = [NSString stringWithFormat:@"./%@#%@", iu.link, iu.divLink];
+                    linkURL = [NSString stringWithFormat:@"/%@#%@", [iu.link lowercaseString], iu.divLink];
                 }
                 else{
-                    linkURL = [NSString stringWithFormat:@"./%@", iu.link];
+                    linkURL = [NSString stringWithFormat:@"/%@", [iu.link lowercaseString]];
                 }
             }
             else {
