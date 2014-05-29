@@ -658,7 +658,7 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
 }
 
 -(NSString*) rgbString{
-    CGFloat redFloatValue, greenFloatValue, blueFloatValue;
+    CGFloat redFloatValue, greenFloatValue, blueFloatValue, alphaFloatValue;
     int redIntValue, greenIntValue, blueIntValue;
         
     //Convert the NSColor to the RGB color space before we can access its components
@@ -667,7 +667,11 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
     if(convertedColor)
     {
         // Get the red, green, and blue components of the color
-        [convertedColor getRed:&redFloatValue green:&greenFloatValue blue:&blueFloatValue alpha:NULL];
+        [convertedColor getRed:&redFloatValue green:&greenFloatValue blue:&blueFloatValue alpha:&alphaFloatValue];
+        
+        if(alphaFloatValue==0){
+            return @"transparent";
+        }
         
         // Convert the components to numbers (unsigned decimal integer) between 0 and 255
         redIntValue=redFloatValue*0xff;
