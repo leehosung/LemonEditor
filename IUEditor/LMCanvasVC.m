@@ -144,7 +144,7 @@
 
 - (void)ghostImageContextDidChange:(NSDictionary *)change{
     NSString *ghostImageName = _document.ghostImageName;
-    IUResourceNode *resourceNode = [_resourceManager imageResourceNodeOfName:ghostImageName];
+    IUResourceFile *resourceNode = [_resourceManager imageResourceNodeOfName:ghostImageName];
     NSImage *ghostImage = [[NSImage alloc] initWithContentsOfFile:resourceNode.absolutePath];
     
     [[self gridView] setGhostImage:ghostImage];

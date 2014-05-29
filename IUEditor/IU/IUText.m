@@ -8,7 +8,7 @@
 
 #import "IUText.h"
 #import "IUDocument.h"
-
+#import "IUProject.h"
 
 @implementation IUText{
 
@@ -99,7 +99,7 @@
 }
 
 - (void)updateTextCSS:(IUCSS *)textCSS identifier:(NSString *)identifier{
-    NSString *cssStr = [self.document.compiler fontCSSContentFromAttributes:textCSS.assembledTagDictionary];
+    NSString *cssStr = [self.project.compiler fontCSSContentFromAttributes:textCSS.assembledTagDictionary];
     NSString *textIdentifier = [NSString stringWithFormat:@".%@", identifier];
     [self.delegate IUClassIdentifier:textIdentifier CSSUpdated:cssStr forWidth:textCSS.editWidth];
 }

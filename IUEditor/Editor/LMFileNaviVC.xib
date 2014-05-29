@@ -391,7 +391,7 @@
             </constraints>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="czK-hJ-lvV"/>
-        <treeController mode="entity" editable="NO" childrenKeyPath="children" leafKeyPath="isLeaf" id="gdF-Dg-Xge" customClass="IUDocumentController"/>
+        <treeController mode="entity" editable="NO" childrenKeyPath="children" id="gdF-Dg-Xge" customClass="IUDocumentController"/>
         <menuItem title="Show in Finder" id="fLO-aZ-bbm">
             <attributedString key="attributedTitle"/>
             <modifierMask key="keyEquivalentModifierMask"/>

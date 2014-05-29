@@ -42,12 +42,12 @@
         return;
     }
     //git, heroku는 막아놓음
-    NSDictionary *dictionary = @{IUProjectKeyGit: @(NO),
+    NSDictionary *options = @{   IUProjectKeyGit: @(NO),
                                  IUProjectKeyAppName: appName,
                                  IUProjectKeyHeroku: @(NO),
                                  IUProjectKeyDirectory: appDir};
     
-    IUProject *project = [IUProject createProject:dictionary error:&error];
+    IUProject *project = [[IUProject alloc] initWithCreation:options error:&error];
     
     if (error != nil) {
         assert(0);

@@ -18,6 +18,8 @@
 }
 
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor{
+    assert(0);
+    /*
     NSString *textValue = fieldEditor.string;
     if (textValue.length == 0) {
         return NO;
@@ -28,6 +30,7 @@
         return NO;
     }
     return YES;
+     */
 }
 
 @end

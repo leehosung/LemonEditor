@@ -15,6 +15,7 @@
 #import "IUDocument.h"
 #import "IUBox.h"
 #import "IUClass.h"
+#import "IUProject.h"
 
 @interface IUBox()
 @end
@@ -112,8 +113,18 @@
 }
  */
 
+-(id)initWithProject:(IUProject*)project options:(NSDictionary*)options{
+    self = [super init];
+    _project = project;
+    _css = [[IUCSS alloc] init];
+    _css.delegate = self;
+    _event = [[IUEvent alloc] init];
+    
+    return self;
+}
 
 -(id)initWithIdentifierManager:(IUIdentifierManager*)manager option:(NSDictionary *)option{
+    assert(0);
     self = [super init];{
         _css = [[IUCSS alloc] init];
         _css.delegate = self;
@@ -174,8 +185,14 @@
 
 
 -(id)init{
-    assert(0);
-    return nil;
+    self = [super init];
+    if (self) {
+        _css = [[IUCSS alloc] init];
+        _css.delegate = self;
+        _event = [[IUEvent alloc] init];
+        [self fetch];
+    }
+    return self;
 }
 
 - (void)delegate_selectedFrameWidthDidChange:(NSDictionary*)change{
@@ -209,12 +226,12 @@
 
 //source
 -(NSString*)html{
-    return [self.document.compiler editorHTML:self].string;
+    return [self.project.compiler editorHTML:self].string;
 }
 
 -(NSString*)cssForWidth:(NSInteger)width isHover:(BOOL)isHover{
     BOOL isDefaultWidth = (width == IUCSSMaxViewPortWidth) ? YES : NO;
-    return [self.document.compiler CSSContentFromAttributes:[self CSSAttributesForWidth:width] ofClass:self isHover:isHover isDefaultWidth:isDefaultWidth];
+    return [self.project.compiler CSSContentFromAttributes:[self CSSAttributesForWidth:width] ofClass:self isHover:isHover isDefaultWidth:isDefaultWidth];
 }
 
 -(void)CSSUpdated:(NSDictionary*)tagDictionary forWidth:(NSInteger)width isHover:(BOOL)isHover{
@@ -370,6 +387,10 @@
         return self.parent.document;
     }
     return nil;
+}
+
+- (IUProject *)project{
+    return self.document.group.project;
 }
 
 -(NSString*)description{

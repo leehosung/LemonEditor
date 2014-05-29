@@ -8,10 +8,9 @@
 
 #import "IUProject.h"
 #import "IUPage.h"
-#import "IUDocumentGroupNode.h"
-#import "IUResourceGroupNode.h"
-#import "IUDocumentNode.h"
-#import "IUResourceNode.h"
+#import "IUResourceGroup.h"
+#import "IUDocumentGroup.h"
+#import "IUResourceFile.h"
 #import "IUResourceManager.h"
 #import "JDUIUtil.h"
 #import "IUBackground.h"
@@ -24,161 +23,113 @@
 
 @implementation IUProject{
     IUCompiler *_compiler;
+    NSString  *_path;
 }
 
-@synthesize runnable = _runnable;
 
 - (void)encodeWithCoder:(NSCoder *)encoder{
-    [super encodeWithCoder:encoder];
-    [encoder encodeBool:_herokuOn forKey:@"herokuOn"];
-    [encoder encodeInt32:_gitType forKey:@"gitType"];
-    [encoder encodeObject:_resourceNode forKey:@"_resourceNode"];
-    [encoder encodeObject:_pageDocumentGroup forKey:@"_pageDocumentGroup"];
-    [encoder encodeObject:_backgroundDocumentGroup forKey:@"_backgroundDocumentGroup"];
-    [encoder encodeObject:_classDocumentGroup forKey:@"_classDocumentGroup"];
+    assert(_resourceGroup);
     [encoder encodeObject:_mqSizes forKey:@"mqSizes"];
-    [encoder encodeObject:_buildDirectoryName forKey:@"_buildDirectoryName"];
-    [encoder encodeInt32:_compileRule forKey:@"_compileRule"];
-    [encoder encodeBool:_runnable forKey:@"_runnable"];
-}
-
-- (void)setResourceManager:(IUResourceManager *)resourceManager{
-    _resourceManager = resourceManager;
-    _compiler.resourceSource = resourceManager;
+    [encoder encodeObject:_buildPath forKey:@"_buildPath"];
+    [encoder encodeInt32:_compiler.rule forKey:@"_compileRule"];
+    [encoder encodeObject:_pageGroup forKey:@"_pageGroup"];
+    [encoder encodeObject:_backgroundGroup forKey:@"_backgroundGroup"];
+    [encoder encodeObject:_classGroup forKey:@"_classGroup"];
+    [encoder encodeObject:_resourceGroup forKey:@"_resourceGroup"];
+    [encoder encodeObject:_name forKey:@"_name"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder{
-    self = [super initWithCoder:aDecoder];
+    self = [super init];
     if (self) {
-        _herokuOn = [aDecoder decodeBoolForKey:@"herokuOn"];
-        _gitType = [aDecoder decodeInt32ForKey:@"gitType"];
-        _resourceNode = [aDecoder decodeObjectForKey:@"_resourceNode"];
-        _pageDocumentGroup = [aDecoder decodeObjectForKey:@"_pageDocumentGroup"];
-        _backgroundDocumentGroup = [aDecoder decodeObjectForKey:@"_backgroundDocumentGroup"];
-        _classDocumentGroup = [aDecoder decodeObjectForKey:@"_classDocumentGroup"];
-        _buildDirectoryName = [aDecoder decodeObjectForKey:@"_buildDirectoryName"];
-        _mqSizes = [[aDecoder decodeObjectForKey:@"mqSizes"] mutableCopy];
-        if ([_buildDirectoryName isEqualToString:@"../template/"]) {
-            _buildDirectoryName = @"../templates/";\
-        }
         _compiler = [[IUCompiler alloc] init];
-        self.compileRule = [aDecoder decodeInt32ForKey:@"_compileRule"];
-        for (IUDocumentNode *docNode in self.allDocumentNodes) {
-            [docNode.document setCompiler:_compiler];
-        }
-        _runnable = [aDecoder decodeBoolForKey:@"_runnable"];
+        _mqSizes = [[aDecoder decodeObjectForKey:@"mqSizes"] mutableCopy];
+        _buildPath = [aDecoder decodeObjectForKey:@"_buildPath"];
+        _compiler.rule = [aDecoder decodeInt32ForKey:@"_compileRule"];
+        _pageGroup = [aDecoder decodeObjectForKey:@"_pageGroup"];
+        _backgroundGroup = [aDecoder decodeObjectForKey:@"_backgroundGroup"];
+        _classGroup = [aDecoder decodeObjectForKey:@"_classGroup"];
+        _resourceGroup = [aDecoder decodeObjectForKey:@"_resourceGroup"];
+        _name = [aDecoder decodeObjectForKey:@"_name"];
     }
     return self;
 }
 
+- (IUCompileRule )compileRule{
+    return _compiler.rule;
+}
+
 - (void)setCompileRule:(IUCompileRule)compileRule{
-    _compileRule = compileRule;
-    _compiler.rule = _compileRule;
+    _compiler.rule = compileRule;
     assert(_compiler != nil);
 }
 
 - (id)init{
     self = [super init];
     if(self){
-        _buildDirectoryName = @"build";
+        _buildPath = @"build";
         _mqSizes = [NSMutableArray array];
         _compiler = [[IUCompiler alloc] init];
         [_mqSizes addObject:@(defaultFrameWidth)];
         [_mqSizes addObject:@(700)];
         [_mqSizes addObject:@(400)];
-        _runnable = NO;
     }
     return self;
 }
 
-- (NSString*)relativePath{
-    return @".";
-}
-- (NSString*)absolutePath{
-    return _path;
-}
-
-- (NSString*)absoluteDirectory{
-    return [_path stringByDeletingLastPathComponent];
-}
 
 // return value : project path
-+(IUProject*)createProject:(NSDictionary*)setting error:(NSError**)error{
+-(id)initWithCreation:(NSDictionary*)options error:(NSError**)error{
+    self = [super init];
+    assert(options[IUProjectKeyAppName]);
+    assert(options[IUProjectKeyDirectory]);
+    
+    self.name = [options objectForKey:IUProjectKeyAppName];
+    NSString *fileName = [options[IUProjectKeyAppName] stringByAppendingPathExtension:@"iu"];
+    NSString *projectDir = [options[IUProjectKeyDirectory] stringByAppendingPathComponent:options[IUProjectKeyAppName]];
+    self.path = [projectDir stringByAppendingPathComponent:fileName];
+    
+    _buildPath = @"build";
+    NSError *err;
+    [[NSFileManager defaultManager] createDirectoryAtPath:projectDir withIntermediateDirectories:YES attributes:nil error:&err];
+    if (err) {
+        [JDLogUtil log:@"mkdir" err:err];
+    }
+    _pageGroup = [[IUDocumentGroup alloc] init];
+    _pageGroup.name = @"Pages";
+    _pageGroup.project = self;
+    
+    _backgroundGroup = [[IUDocumentGroup alloc] init];
+    _backgroundGroup.name = @"Backgrounds";
+    _backgroundGroup.project = self;
+    
+    _classGroup = [[IUDocumentGroup alloc] init];
+    _classGroup.name = @"Classes";
+    _classGroup.project = self;
 
-    IUProject *project = [[self alloc] init];
-    project.name = [setting objectForKey:IUProjectKeyAppName];
-    project.buildDirectoryName = @"build";
-    
-    NSString *dir = [setting objectForKey:IUProjectKeyDirectory];
-    NSString *fileName = project.name;
-    project.path = [[dir stringByAppendingPathComponent:[project.name stringByAppendingPathComponent:fileName]]stringByAppendingPathExtension:@"iu"];
-//    [JDFileUtil rmDirPath:dir];
-     [JDFileUtil mkdirPath:dir];
+    IUBackground *bg = [[IUBackground alloc] init];
+    bg.name = @"background";
+    bg.htmlID = @"background";
+    [_backgroundGroup addDocument:bg];
 
-//    ReturnNilIfFalse([JDFileUtil mkdirPath:project.path]);
+    IUPage *pg = [[IUPage alloc] init];
+    [pg setBackground:bg];
+    pg.name = @"index";
+    pg.htmlID = @"index";
+    [_pageGroup addDocument:pg];
     
-    //create document dir
+    IUClass *class = [[IUClass alloc] init];
+    class.name = @"class";
+    class.htmlID = @"class";
+    [_classGroup addDocument:class];
     
-    IUDocumentGroupNode *pageDir = [[IUDocumentGroupNode alloc] init];
-    pageDir.name = @"Pages";
-    [project addNode:pageDir];
-    project.pageDocumentGroup = pageDir;
-    
-    IUDocumentGroupNode *backgroundGroup = [[IUDocumentGroupNode alloc] init];
-    backgroundGroup.name = @"Backgrounds";
-    [project addNode:backgroundGroup];
-    project.backgroundDocumentGroup = backgroundGroup;
-    
-    IUDocumentGroupNode *classGroup = [[IUDocumentGroupNode alloc] init];
-    classGroup.name = @"Classes";
-    [project addNode:classGroup];
-    project.classDocumentGroup = backgroundGroup;
-
-    //create document
-    IUPage *page = [[IUPage alloc] initWithIdentifierManager:nil option:nil];
-    page.htmlID = @"Page1Index";
-    
-    IUDocumentNode *pageNode = [[IUDocumentNode alloc] init];
-    pageNode.document = page;
-    pageNode.name = @"Index";
-    [pageDir addNode:pageNode];
-    
-    IUBackground *background = [[IUBackground alloc] initWithIdentifierManager:nil option:nil];
-    background.htmlID = @"Background1";
-    background.name = @"Background1";
-    page.background = background;
-    
-    IUDocumentNode *backgroundNode = [[IUDocumentNode alloc] init];
-    backgroundNode.document = background;
-    backgroundNode.name = @"Background1";
-    [backgroundGroup addNode:backgroundNode];
-    
-    IUClass *class = [[IUClass alloc] initWithIdentifierManager:nil option:nil];
-    class.htmlID = @"Class1";
-    class.name = @"Class1";
-    
-    IUDocumentNode *classNode = [[IUDocumentNode alloc] init];
-    classNode.document = class;
-    classNode.name = @"Class1";
-    [classGroup addNode:classNode];
-
-    IUClass *class2 = [[IUClass alloc] initWithIdentifierManager:nil option:nil];
-    class2.htmlID = @"Class2";
-    class2.name = @"Class2";
-    
-    IUDocumentNode *classNode2 = [[IUDocumentNode alloc] init];
-    classNode2.document = class2;
-    classNode2.name = @"Class2";
-    [classGroup addNode:classNode2];
-
-    
-    [project initializeResource];
-    ReturnNilIfFalse([project save]);
-    return project;
+    [self initializeResource];
+    ReturnNilIfFalse([self save]);
+    return self;
 }
 
 
-+ (id)projectWithContentsOfPackage:(NSString*)path{
++ (id)projectWithContentsOfPath:(NSString*)path{
     IUProject *project = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
     project.path = path;
     return project;
@@ -188,14 +139,8 @@
     return _path;
 }
 
--(NSString*)IUMLPath{
-    assert(0);
-    return [_path stringByAppendingPathComponent:@"IUML"];
-}
-
--(void)addResourceGroupNode:(IUResourceNode*)node{
-    [super addNode:node];
-    [[NSFileManager defaultManager] createDirectoryAtPath:node.absolutePath withIntermediateDirectories:YES attributes:nil error:nil];
+- (void)setPath:(NSString *)path{
+    _path = [path copy];
 }
 
 - (NSString*)directory{
@@ -203,8 +148,8 @@
 }
 
 - (BOOL)build:(NSError**)error{
-    assert(_buildDirectoryName != nil);
-    NSString *buildPath = [self.directory stringByAppendingPathComponent:self.buildDirectoryName];
+    assert(_buildPath != nil);
+    NSString *buildPath = [self.directory stringByAppendingPathComponent:self.buildPath];
 
     [[NSFileManager defaultManager] removeItemAtPath:buildPath error:error];
 
@@ -218,18 +163,18 @@
     IUEventVariable *eventVariable = [[IUEventVariable alloc] init];
     NSMutableString *initializeJSSource = [NSMutableString string];
 
-    for (IUDocumentNode *node in self.allDocumentNodes) {
-        NSString *outputString = [node.document outputSource];
+    for (IUDocument *doc in self.allDocuments) {
+        NSString *outputString = [doc outputSource];
         
-        NSString *filePath = [[buildPath stringByAppendingPathComponent:[node.name lowercaseString]] stringByAppendingPathExtension:@"html"];
+        NSString *filePath = [[buildPath stringByAppendingPathComponent:[doc.name lowercaseString]] stringByAppendingPathExtension:@"html"];
         if ([outputString writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:error] == NO){
             assert(0);
         }
         
-        [eventVariable makeEventDictionary:node.document];
+        [eventVariable makeEventDictionary:doc];
         
-        [initializeJSSource appendFormat:@"/* Initialize %@ */\n", node.name];
-        [initializeJSSource appendString:[node.document outputInitJSSource]];
+        [initializeJSSource appendFormat:@"/* Initialize %@ */\n", doc.name];
+        [initializeJSSource appendString:[doc outputInitJSSource]];
         [initializeJSSource appendNewline];
     }
     
@@ -275,20 +220,12 @@
     return array;
 }
 
-- (NSArray*)pageDocuments{
-    return [_pageDocumentGroup allDocuments];
+- (NSArray *)children{
+    return @[_pageGroup, _backgroundGroup, _classGroup, _resourceGroup];
 }
 
-- (NSArray*)backgroundDocuments{
-    return [_backgroundDocumentGroup allDocuments];
-}
-
-- (NSArray*)classDocuments{
-    return [_classDocumentGroup allDocuments];
-}
-
-- (IUResourceGroupNode*)resourceNode{
-    return _resourceNode;
+- (IUResourceGroup*)resourceNode{
+    return [self.children objectAtIndex:3];
 }
 
 - (IUCompiler*)compiler{
@@ -298,102 +235,60 @@
 - (void)initializeResource{
     //remove resource node if exist
     JDInfoLog(@"initilizeResource");
-    [self removeNode:_resourceNode];
     
-    IUResourceGroupNode *rootNode = [[IUResourceGroupNode alloc] init];
-    rootNode.name = @"Resource";
-    [self addResourceGroupNode:rootNode];
-    _resourceNode = rootNode;
+    _resourceGroup = [[IUResourceGroup alloc] init];
+    _resourceGroup.name = @"Resource";
+    _resourceGroup.parent = self;
     
-    IUResourceGroupNode *imageGroup = [[IUResourceGroupNode alloc] init];
-    imageGroup.name = @"Image";
-    [rootNode addResourceGroupNode:imageGroup];
-    
-    IUResourceGroupNode *videoGroup = [[IUResourceGroupNode alloc] init];
-    videoGroup.name = @"Video";
-    [rootNode addResourceGroupNode:videoGroup];
-    
-    
-    IUResourceGroupNode *CSSGroup = [[IUResourceGroupNode alloc] init];
-    CSSGroup.name = @"CSS";
-    [rootNode addResourceGroupNode:CSSGroup];
-    
-    IUResourceGroupNode *JSGroup = [[IUResourceGroupNode alloc] init];
-    JSGroup.name = @"JS";
-    [rootNode addResourceGroupNode:JSGroup];
-    
+    IUResourceGroup *imageGroup = [_resourceGroup addResourceGroupWithName:@"Image"];
+    IUResourceGroup *videoGroup = [_resourceGroup addResourceGroupWithName:@"Video"];
+    IUResourceGroup *JSGroup = [_resourceGroup addResourceGroupWithName:@"JS"];
+    IUResourceGroup *CSSGroup = [_resourceGroup addResourceGroupWithName:@"CSS"];
     
     //Image Resource copy
-    
     NSString *sampleImgPath = [[NSBundle mainBundle] pathForResource:@"sample" ofType:@"jpg"];
-    IUResourceNode *imageNode = [[IUResourceNode alloc] initWithName:@"sample.jpg" type:IUResourceTypeImage];
-    [imageGroup addResourceNode:imageNode path:sampleImgPath];
+    [imageGroup addResourceFileWithContentOfPath:sampleImgPath];
     
     NSString *carouselImagePath = [[NSBundle mainBundle] pathForResource:@"bx_loader" ofType:@"gif"];
-    IUResourceNode *carouselImageNode = [[IUResourceNode alloc] initWithName:@"bx_loader.gif" type:IUResourceTypeImage];
-    [imageGroup addResourceNode:carouselImageNode path:carouselImagePath];
+    [imageGroup addResourceFileWithContentOfPath:carouselImagePath];
     
     NSString *carouselImagePath2 = [[NSBundle mainBundle] pathForResource:@"controls" ofType:@"png"];
-    IUResourceNode *carouselImageNode2 = [[IUResourceNode alloc] initWithName:@"controls.png" type:IUResourceTypeImage];
-    [imageGroup addResourceNode:carouselImageNode2 path:carouselImagePath2];
+    [imageGroup addResourceFileWithContentOfPath:carouselImagePath2];
     
-    //Video Resource copy
     NSString *sampleVideoPath = [[NSBundle mainBundle] pathForResource:@"movie" ofType:@"mp4"];
-    IUResourceNode *videoNode = [[IUResourceNode alloc] initWithName:@"movie.mp4" type:IUResourceTypeVideo];
-    [videoGroup addResourceNode:videoNode path:sampleVideoPath];
-    
+    [videoGroup addResourceFileWithContentOfPath:sampleVideoPath];
     
     //CSS Resource Copy
-    
     NSString *resetCSSPath = [[NSBundle mainBundle] pathForResource:@"reset" ofType:@"css"];
-    IUResourceNode *resetCSSNode = [[IUResourceNode alloc] initWithName:@"reset.css" type:IUResourceTypeCSS];
-    [CSSGroup addResourceNode:resetCSSNode path:resetCSSPath];
+    [CSSGroup addResourceFileWithContentOfPath:resetCSSPath];
     
     NSString *iuCSSPath = [[NSBundle mainBundle] pathForResource:@"iu" ofType:@"css"];
-    IUResourceNode *iuCSSNode = [[IUResourceNode alloc] initWithName:@"iu.css" type:IUResourceTypeCSS];
-    [CSSGroup addResourceNode:iuCSSNode path:iuCSSPath];
+    [CSSGroup addResourceFileWithContentOfPath:iuCSSPath];
     
     NSString *carouselCSSPath = [[NSBundle mainBundle] pathForResource:@"jquery.bxslider" ofType:@"css"];
-    IUResourceNode *carouselCSSNode = [[IUResourceNode alloc] initWithName:@"jquery.bxslider.css" type:IUResourceTypeCSS];
-    [CSSGroup addResourceNode:carouselCSSNode path:carouselCSSPath];
-    
+    [CSSGroup addResourceFileWithContentOfPath:carouselCSSPath];
     
     //Java Script Resource copy
-    
     NSString *iuEditorJSPath = [[NSBundle mainBundle] pathForResource:@"iueditor" ofType:@"js"];
-    IUResourceNode *iuEditorJSNode = [[IUResourceNode alloc] initWithName:@"iueditor.js" type:IUResourceTypeJS];
-    [JSGroup addResourceNode:iuEditorJSNode path:iuEditorJSPath];
-    
+    [JSGroup addResourceFileWithContentOfPath:iuEditorJSPath];
+
     NSString *iuFrameJSPath = [[NSBundle mainBundle] pathForResource:@"iuframe" ofType:@"js"];
-    IUResourceNode *iuFrameJSNode = [[IUResourceNode alloc] initWithName:@"iuframe.js" type:IUResourceTypeJS];
-    [JSGroup addResourceNode:iuFrameJSNode path:iuFrameJSPath];
+    [JSGroup addResourceFileWithContentOfPath:iuFrameJSPath];
     
     NSString *iuJSPath = [[NSBundle mainBundle] pathForResource:@"iu" ofType:@"js"];
-    IUResourceNode *iuJSNode = [[IUResourceNode alloc] initWithName:@"iu.js" type:IUResourceTypeJS];
-    [JSGroup addResourceNode:iuJSNode path:iuJSPath];
+    [JSGroup addResourceFileWithContentOfPath:iuJSPath];
     
-    NSString *carouselJSPath = [[NSBundle mainBundle] pathForResource:@"jquery.bxslider" ofType:@"js"];
-    IUResourceNode *carouselJSNode = [[IUResourceNode alloc] initWithName:@"jquery.bxslider.js" type:IUResourceTypeJS];
-    [JSGroup addResourceNode:carouselJSNode path:carouselJSPath];
-
-
+    NSString *bxsliderJSPath = [[NSBundle mainBundle] pathForResource:@"jquery.bxslider" ofType:@"js"];
+    [JSGroup addResourceFileWithContentOfPath:bxsliderJSPath];
 }
-
--(void)copyFile:(NSString *)path toPath:(NSString *)toPath{
-
-    if ([[NSFileManager defaultManager] fileExistsAtPath:toPath]) {
-        [[NSFileManager defaultManager] removeItemAtPath:toPath error:nil];
-    }
-    [[NSFileManager defaultManager] copyItemAtPath:path toPath:toPath error:nil];
-}
-
 
 
 -(void)copyResourceForDebug{
-    IUResourceGroupNode *JSGroup;
-    IUResourceGroupNode *CSSGroup;
+    /*
+    IUResourceGroup *JSGroup;
+    IUResourceGroup *CSSGroup;
 
-    for(IUResourceGroupNode *groupNode in self.resourceNode.children){
+    for(IUResourceGroup *groupNode in self.resourceNode.children){
         if([groupNode.name isEqualToString:@"JS"]){
             JSGroup = groupNode;
         }
@@ -425,50 +320,7 @@
     NSString *carouselCSSPath = [[NSBundle mainBundle] pathForResource:@"jquery.bxslider" ofType:@"css"];
     [self copyFile:carouselCSSPath toPath:[CSSGroup.absolutePath stringByAppendingPathComponent:@"jquery.bxslider.css"]];
 
-
-}
-
-- (NSArray*)allDocumentNodes{
-    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUDocumentNode* evaluatedObject, NSDictionary *bindings) {
-        if ([evaluatedObject isKindOfClass:[IUDocumentNode class]]) {
-            return YES;
-        }
-        return NO;
-    }];
-    return [self.allChildren filteredArrayUsingPredicate:predicate];
-}
-
-- (NSArray*)pageDocumentNodes{
-    NSArray *allDocumentNodes = self.allDocumentNodes;
-    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUDocumentNode* evaluatedObject, NSDictionary *bindings) {
-        if ([evaluatedObject.document isKindOfClass:[IUPage class]]) {
-            return YES;
-        }
-        return NO;
-    }];
-    return [allDocumentNodes filteredArrayUsingPredicate:predicate];
-}
-
-- (NSArray*)backgroundDocumentNodes{
-    NSArray *allDocumentNodes = self.allDocumentNodes;
-    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUDocumentNode* evaluatedObject, NSDictionary *bindings) {
-        if ([evaluatedObject.document isKindOfClass:[IUBackground class]]) {
-            return YES;
-        }
-        return NO;
-    }];
-    return [allDocumentNodes filteredArrayUsingPredicate:predicate];
-}
-
-- (NSArray*)classDocumentNodes{
-    NSArray *allDocumentNodes = self.allDocumentNodes;
-    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUDocumentNode* evaluatedObject, NSDictionary *bindings) {
-        if ([evaluatedObject.document isKindOfClass:[IUClass class]]) {
-            return YES;
-        }
-        return NO;
-    }];
-    return [allDocumentNodes filteredArrayUsingPredicate:predicate];
+     */
 }
 
 -(void)dealloc{
@@ -482,5 +334,28 @@
         [identifierManager registerIUs:doc.allChildren];
     }
 }
+
+- (NSArray*)allDocuments{
+    NSMutableArray *array = [NSMutableArray array];
+    [array addObjectsFromArray:self.pageDocuments];
+    [array addObjectsFromArray:self.backgroundDocuments];
+    [array addObjectsFromArray:self.classDocuments];
+    return array;
+}
+- (NSArray*)pageDocuments{
+    assert(_pageGroup);
+    return _pageGroup.children;
+}
+- (NSArray*)backgroundDocuments{
+    return _backgroundGroup.children;
+}
+- (NSArray*)classDocuments{
+    return _classGroup.children;
+}
+
+- (BOOL)runnable{
+    return NO;
+}
+
 
 @end

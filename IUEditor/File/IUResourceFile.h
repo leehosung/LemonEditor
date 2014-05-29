@@ -6,8 +6,7 @@
 //  Copyright (c) 2014 JDLab. All rights reserved.
 //
 
-#import "IUNode.h"
-#import "IUResourceGroupNode.h"
+#import "IUResourceGroup.h"
 
 typedef enum _IUResourceType{
     IUResourceTypeNone,
@@ -18,16 +17,17 @@ typedef enum _IUResourceType{
 }IUResourceType;
 
 
-@interface IUResourceNode : IUNode
+@interface IUResourceFile : NSObject
 
-@property IUResourceGroupNode *parent;
-
--(id)initWithName:(NSString*)name type:(IUResourceType)type;
+@property IUResourceGroup *parent;
+-(id)initWithName:(NSString*)name;
 
 -(NSString*)absolutePath;
 -(NSString*)relativePath;
 
 -(NSImage*)image;
 -(IUResourceType)type;
+-(NSString*)name;
 
+- (NSArray*)children;
 @end

@@ -48,19 +48,25 @@
 
 @class IUBox;
 @class IUDocument;
+@class IUProject;
 
 @interface IUBox : NSObject <NSCoding, IUCSSDelegate, NSCopying>{
     NSMutableArray *_m_children;
+    IUProject *_project;
 }
 
 @property (readonly) IUCSS *css; //used by subclass
 @property (readonly) IUEvent *event;
 
 
+-(id)initWithProject:(IUProject*)project options:(NSDictionary*)options;
 -(IUDocument *)document;
+-(IUProject *)project;
 
-//initialize
--(id)initWithIdentifierManager:(IUIdentifierManager*)identifierManager option:(NSDictionary*)option;
+/**
+ @brief Example usage:
+ */
+-(id)initWithIdentifierManager:(IUIdentifierManager*)identifierManager option:(NSDictionary*)option __deprecated;
 - (void)fetch;
 
 // this is IU setting

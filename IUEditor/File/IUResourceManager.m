@@ -14,28 +14,29 @@
 @implementation IUResourceManager{
 }
 
+#if 0
 -(NSString*)relativePathForResource:(NSString*)name{
-    IUResourceNode *node = (IUResourceNode*)[self nodeWithName:name];
+    /*
+    IUResourceFile *node = (IUResourceFile*)[self nodeWithName:name];
     return node.relativePath;
+     */
 }
 
 -(NSString*)absolutePathForResource:(NSString*)name{
-    IUResourceNode *node = (IUResourceNode*)[self nodeWithName:name];
+    //FIXME:a
+    /*
+    IUResourceFile *node = (IUResourceFile*)[self nodeWithName:name];
     return node.absolutePath;
+     */
 }
 
-
--(IUResourceNode*)insertResourceWithData:(NSData*)data type:(IUResourceType)type{
+-(IUResourceFile*)insertResourceWithData:(NSData*)data type:(IUResourceType)type{
     assert(0);
     return nil;
 }
 
--(IUNode*)nodeWithName:(NSString*)name{
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @"name", name];
-    return [[[_rootNode.allChildren arrayByAddingObject:_rootNode] filteredArrayUsingPredicate:predicate] firstObject];
-}
 
--(IUResourceNode*)insertResourceWithContentOfPath:(NSString*)path type:(IUResourceType)type{
+-(IUResourceFile*)insertResourceWithContentOfPath:(NSString*)path type:(IUResourceType)type{
     
     if(type == IUResourceTypeNone){
         return nil;
@@ -61,7 +62,7 @@
         default: assert(0);  break;
     }
     
-    IUResourceGroupNode *parent = (IUResourceGroupNode*)[self nodeWithName:groupName];
+    IUResourceGroup *parent = (IUResourceGroup*)[self nodeWithName:groupName];
     NSString *fileName = [path lastPathComponent];
     if([parent containName:fileName]){
         return nil;
@@ -87,7 +88,7 @@
         default: assert(0);  break;
     }
     
-    IUResourceNode *resourceNode = [[IUResourceNode alloc] initWithName:[path lastPathComponent] type:type];
+    IUResourceFile *resourceNode = [[IUResourceFile alloc] initWithName:[path lastPathComponent] type:type];
 
     [parent addResourceNode:resourceNode path:path];
     
@@ -112,8 +113,8 @@
 -(NSArray*)imagePaths{
     NSArray *nodes = _rootNode.allChildren;
     NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUNode* evaluatedObject, NSDictionary *bindings) {
-        if ([evaluatedObject isKindOfClass:[IUResourceNode class]]) {
-            if (((IUResourceNode*)evaluatedObject).type == IUResourceTypeImage) {
+        if ([evaluatedObject isKindOfClass:[IUResourceFile class]]) {
+            if (((IUResourceFile*)evaluatedObject).type == IUResourceTypeImage) {
                 return YES;
             }
         }
@@ -127,8 +128,8 @@
 -(NSArray*)videoPaths{
     NSArray *nodes = _rootNode.allChildren;
     NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUNode* evaluatedObject, NSDictionary *bindings) {
-        if ([evaluatedObject isKindOfClass:[IUResourceNode class]]) {
-            if (((IUResourceNode*)evaluatedObject).type == IUResourceTypeVideo) {
+        if ([evaluatedObject isKindOfClass:[IUResourceFile class]]) {
+            if (((IUResourceFile*)evaluatedObject).type == IUResourceTypeVideo) {
                 return YES;
             }
         }
@@ -139,7 +140,7 @@
     return ret;
 }
 
--(void)setRootNode:(IUResourceGroupNode *)rootNode{
+-(void)setRootNode:(IUResourceGroup *)rootNode{
     [self willChangeValueForKey:@"resourceNodes"];
     [self willChangeValueForKey:@"imageNames"];
     [self willChangeValueForKey:@"imagePaths"];
@@ -166,8 +167,8 @@
 }
 
 -(NSArray*)resourceNodes{
-    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUResourceNode* evaluatedObject, NSDictionary *bindings) {
-        if ([evaluatedObject isKindOfClass:[IUResourceNode class]]) {
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUResourceFile* evaluatedObject, NSDictionary *bindings) {
+        if ([evaluatedObject isKindOfClass:[IUResourceFile class]]) {
             if (evaluatedObject.type == IUResourceTypeImage ||
                 evaluatedObject.type == IUResourceTypeVideo) {
                 return YES;
@@ -179,8 +180,8 @@
 }
 
 
-- (IUResourceGroupNode *)imageNode{
-    for(IUResourceGroupNode *child in _rootNode.children){
+- (IUResourceGroup *)imageNode{
+    for(IUResourceGroup *child in _rootNode.children){
         if([child.name isEqualToString:@"Image"]){
             return child;
         }
@@ -188,8 +189,8 @@
     return nil;
 }
 
-- (IUResourceGroupNode *)videoNode{
-    for(IUResourceGroupNode *child in _rootNode.children){
+- (IUResourceGroup *)videoNode{
+    for(IUResourceGroup *child in _rootNode.children){
         if([child.name isEqualToString:@"Video"]){
             return child;
         }
@@ -197,8 +198,8 @@
     return nil;
 }
 
-- (IUResourceGroupNode *)jsNode{
-    for(IUResourceGroupNode *child in _rootNode.children){
+- (IUResourceGroup *)jsNode{
+    for(IUResourceGroup *child in _rootNode.children){
         if([child.name isEqualToString:@"JS"]){
             return child;
         }
@@ -206,8 +207,8 @@
     return nil;
 }
 
-- (IUResourceGroupNode *)cssNode{
-    for(IUResourceGroupNode *child in _rootNode.children){
+- (IUResourceGroup *)cssNode{
+    for(IUResourceGroup *child in _rootNode.children){
         if([child.name isEqualToString:@"CSS"]){
             return child;
         }
@@ -236,12 +237,12 @@
     return IUResourceTypeNone;
 }
 
--(IUResourceNode*)imageResourceNodeOfName:(NSString*)imageName{
+-(IUResourceFile*)imageResourceNodeOfName:(NSString*)imageName{
     NSArray *nodes = _rootNode.allChildren;
     NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUNode* evaluatedObject, NSDictionary *bindings) {
-        if ([evaluatedObject isKindOfClass:[IUResourceNode class]]) {
-            if (((IUResourceNode*)evaluatedObject).type == IUResourceTypeImage) {
-                if ([((IUResourceNode*)evaluatedObject).name isEqualToString:imageName]) {
+        if ([evaluatedObject isKindOfClass:[IUResourceFile class]]) {
+            if (((IUResourceFile*)evaluatedObject).type == IUResourceTypeImage) {
+                if ([((IUResourceFile*)evaluatedObject).name isEqualToString:imageName]) {
                     return YES;
                 }
             }
@@ -251,5 +252,6 @@
     NSArray *imageNodes = [nodes filteredArrayUsingPredicate:predicate];
     return [imageNodes firstObject];
 }
+#endif
 
 @end

@@ -7,16 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "IUResourceGroupNode.h"
-#import "IUResourceNode.h"
+#import "IUResourceGroup.h"
+#import "IUResourceFile.h"
 #import "IUCompilerResourceSource.h"
 
 @interface IUResourceManager : NSObject <IUCompilerResourceSource>
 
-@property (nonatomic) IUResourceGroupNode *rootNode;
+@property (nonatomic) IUResourceGroup *rootNode;
 
--(IUResourceNode*)insertResourceWithData:(NSData*)data type:(IUResourceType)type;
--(IUResourceNode*)insertResourceWithContentOfPath:(NSString*)path type:(IUResourceType)type;
+-(IUResourceFile*)insertResourceWithData:(NSData*)data type:(IUResourceType)type;
+-(IUResourceFile*)insertResourceWithContentOfPath:(NSString*)path type:(IUResourceType)type;
 
 //KVO compliance
 -(NSArray*)imagePaths;
@@ -25,11 +25,11 @@
 -(NSArray *)videoNames;
 -(NSArray*)resourceNodes;
 
-- (IUResourceGroupNode *)imageNode;
-- (IUResourceGroupNode *)videoNode;
-- (IUResourceGroupNode *)jsNode;
-- (IUResourceGroupNode *)cssNode;
+- (IUResourceGroup *)imageNode;
+- (IUResourceGroup *)videoNode;
+- (IUResourceGroup *)jsNode;
+- (IUResourceGroup *)cssNode;
 
 -(IUResourceType)resourceType:(NSString *)anExtension;
--(IUResourceNode*)imageResourceNodeOfName:(NSString*)imageName;
+-(IUResourceFile*)imageResourceNodeOfName:(NSString*)imageName;
 @end

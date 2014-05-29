@@ -11,9 +11,9 @@
 
 #import "IUDocumentController.h"
 #import "IUProject.h"
-#import "IUDocumentNode.h"
-#import "IUResourceGroupNode.h"
-#import "IUResourceNode.h"
+#import "IUDocumentGroup.h"
+#import "IUResourceGroup.h"
+#import "IUResourceFile.h"
 
 
 #import "IUResourceManager.h"
@@ -74,8 +74,6 @@
 
 @implementation LMWC{
     IUProject   *_project;
-    IUResourceManager   *_resourceManager;
-    IUIdentifierManager *_identifierManager;
 
     //VC for view
     //left
@@ -105,8 +103,6 @@
 {
     self = [super initWithWindow:window];
     if (self) {
-        _identifierManager = [[IUIdentifierManager alloc] init];
-        _resourceManager = [[IUResourceManager alloc] init];
     }
     return self;
 }
@@ -124,7 +120,8 @@
     fileNaviVC = [[LMFileNaviVC alloc] initWithNibName:@"LMFileNaviVC" bundle:nil];
     [self bind:@"selectedNode" toObject:fileNaviVC withKeyPath:@"selection" options:nil];
     [self bind:@"documentController" toObject:fileNaviVC withKeyPath:@"documentController" options:nil];
-    [fileNaviVC setIdentifierManager:_identifierManager];
+    //FIXME:
+//    [fileNaviVC setIdentifierManager:_identifierManager];
     [_leftBottomV addSubviewFullFrame:fileNaviVC.view];
     
     commandVC = [[LMCommandVC alloc] initWithNibName:@"LMCommandVC" bundle:nil];
@@ -135,7 +132,9 @@
     canvasVC = [[LMCanvasVC alloc] initWithNibName:@"LMCanvasVC" bundle:nil];
     [_centerV addSubviewFullFrame:canvasVC.view];
     [canvasVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
-    canvasVC.resourceManager = _resourceManager;
+    
+    //FIXME:
+//    canvasVC.resourceManager = _resourceManager;
     self.window.canvasView =  (LMCanvasView *)canvasVC.view;
     [self bind:@"selectedTextRange" toObject:self withKeyPath:@"selectedTextRange" options:nil];
     
@@ -150,7 +149,9 @@
     widgetLibraryVC = [[LMWidgetLibraryVC alloc] initWithNibName:@"LMWidgetLibraryVC" bundle:nil];
     [_widgetV addSubviewFullFrame:widgetLibraryVC.view];
     [widgetLibraryVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
-    [widgetLibraryVC setIdentifierManager:_identifierManager];
+    
+    //FIXME:
+//    [widgetLibraryVC setIdentifierManager:_identifierManager];
     
     
     resourceVC = [[LMResourceVC alloc] initWithNibName:@"LMResourceVC" bundle:nil];
@@ -205,15 +206,16 @@
 
 -(void)loadProject:(NSString*)path{
     //create project class
-    _project = [IUProject projectWithContentsOfPackage:path];
+    _project = [IUProject projectWithContentsOfPath:path];
     NSError *error;
+    assert(_project.path);
+    assert(_project.pageDocuments);
 //    _project = [IUDjangoProject convertProject:_project setting:@{IUProjectKeyAppName:@"IUEditorHome", IUProjectKeyDirectory:@"/Users/jd/IUProjTemp/IUEditorHome"} error:&error];
     
     if (error) {
         assert(0);
         return;
     }
-    _project.path = path;
     if (_project == nil) {
         return;
     }
@@ -225,19 +227,13 @@
     }
     
     [_project copyResourceForDebug];
-
-    _project.delegate = self;
     
-    //IU Setting
-    _resourceManager.rootNode = _project.resourceNode;
-    _project.resourceManager = _resourceManager;
-
     // vc setting
     //construct toolbar
     topToolbarVC.documentController = fileNaviVC.documentController;
     
     //construct to file navi
-    canvasVC.documentBasePath = _project.absolutePath;
+    canvasVC.documentBasePath = _project.path;
     fileNaviVC.project = _project;
     [fileNaviVC selectFirstDocument];
     
@@ -248,36 +244,27 @@
     [widgetLibraryVC setWidgetProperties:availableWidgetProperties];
     
 
-    //construct resource vc
-    [resourceVC setManager:_resourceManager];
-    
-    //construct property vc
-    [appearanceVC.propertyBGImageVC setResourceManager:_resourceManager];
-    [iuInspectorVC setResourceManager:_resourceManager];
-    [bottomToolbarVC setResourceManager:_resourceManager];
-    iuInspectorVC.pageDocumentNodes = _project.pageDocumentNodes;
-    iuInspectorVC.classDocumentNodes = _project.classDocumentNodes;
+    //FIXME: remove page documents
+    //iuInspectorVC.pageDocumentNodes = _project.pageDocumentNodes;
+    //iuInspectorVC.classDocumentNodes = _project.classDocumentNodes;
     [[NSDocumentController sharedDocumentController] noteNewRecentDocumentURL:[NSURL fileURLWithPath:path]];
     
     [[NSUserDefaults standardUserDefaults] setValue:path forKey:@"lastDocument"];
     [self.window setTitleWithRepresentedFilename:path];
     [self.window setTitle:[NSString stringWithFormat:@"[%@] %@", [_project.className substringFromIndex:2], _project.path]];
-    
-    [_project setIdentifierManager:_identifierManager];
 }
 
--(void)setSelectedNode:(IUNode*)selectedNode{
-    _selectedNode = selectedNode;
-    if ([selectedNode isKindOfClass:[IUDocumentNode class]]) {
-        IUDocument *document = ((IUDocumentNode*)selectedNode).document;
-        [stackVC setDocument:document];
-        [canvasVC setDocument:document];
-        [bottomToolbarVC setDocument:document];
-        [topToolbarVC setDocumentNode:(IUDocumentNode *)selectedNode];
+-(void)setSelectedNode:(NSObject*)selectedNode{
+    _selectedNode = (IUDocument*) selectedNode;
+    if ([selectedNode isKindOfClass:[IUDocument class]]) {
+        [stackVC setDocument:_selectedNode];
+        [canvasVC setDocument:_selectedNode];
+        [bottomToolbarVC setDocument:_selectedNode];
+//        [topToolbarVC setDocumentNode:document];
         
         //save for debug
-        NSString *documentSavePath = [canvasVC.documentBasePath stringByAppendingPathComponent:[selectedNode.name stringByAppendingPathExtension:@"html"]];
-        [document.editorSource writeToFile:documentSavePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+        NSString *documentSavePath = [canvasVC.documentBasePath stringByAppendingPathComponent:[_selectedNode.name stringByAppendingPathExtension:@"html"]];
+        [_selectedNode.editorSource writeToFile:documentSavePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
 
 
         return;
@@ -285,22 +272,25 @@
     else if ([selectedNode isKindOfClass:[IUProject class]]){
         return;
     }
-    else if ([selectedNode isKindOfClass:[IUDocumentGroupNode class]]){
+    else if ([selectedNode isKindOfClass:[IUDocumentGroup class]]){
         return;
     }
-    else if ([selectedNode isKindOfClass:[IUResourceGroupNode class]]) {
-            return;
+    else if ([selectedNode isKindOfClass:[IUResourceGroup class]]) {
+        return;
     }
-    else if ([selectedNode isKindOfClass:[IUResourceNode class]]) {
+    else if ([selectedNode isKindOfClass:[IUResourceFile class]]) {
         return;
     }
 }
 
 - (void)reloadCurrentDocument{
-    if ([_selectedNode isKindOfClass:[IUDocumentNode class]]) {
-        IUDocument *document = ((IUDocumentNode*)_selectedNode).document;
+    assert(0);
+    /*
+    if ([_selectedNode isKindOfClass:[IUDocumentGroup class]]) {
+        IUDocument *document = ((IUDocumentGroup*)_selectedNode).document;
         [canvasVC setDocument:document];
     }
+     */
 }
 
 
@@ -344,16 +334,6 @@
     [self.window beginSheet:pcWC.window completionHandler:^(NSModalResponse returnCode) {
         
     }];
-}
-
-
-#pragma mark -
-#pragma mark IUProjectDelegate
--(void)project:(IUProject*)project nodeAdded:(IUNode*)node{
-    
-}
--(void)project:(IUProject*)project nodeRemoved:(IUNode*)node{
-    
 }
 
 
