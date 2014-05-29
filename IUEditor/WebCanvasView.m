@@ -506,6 +506,12 @@
         //because of (auto height);
         [self.VC updateNewline:iuRange identifier:IUNode.idName htmlNode:IUNode];
     }
+    //selection이 없을 대 지우고 난뒤에 포지션이 변하지 않아서 shouldChangeSelectedDomRange가 호출되지 않음.
+    //selection을 일부러 한번 바꿔줌.....;;
+    if(iuRange.length == 1){
+        [range selectNode:IUNode];
+        [self setSelectedDOMRange:range affinity:NSSelectionAffinityDownstream];
+    }
 
     JDInfoLog(@"DeleteText[IU:%@] : range(%ld, %ld) ", IUNode.idName, iuRange.location, iuRange.length);    
     return YES;
