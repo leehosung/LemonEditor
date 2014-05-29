@@ -112,8 +112,8 @@
     NSString *dir = [setting objectForKey:IUProjectKeyDirectory];
     NSString *fileName = project.name;
     project.path = [[dir stringByAppendingPathComponent:[project.name stringByAppendingPathComponent:fileName]]stringByAppendingPathExtension:@"iu"];
-    [JDFileUtil rmDirPath:dir];
-    ReturnNilIfFalse([JDFileUtil mkdirPath:dir]);
+//    [JDFileUtil rmDirPath:dir];
+     [JDFileUtil mkdirPath:dir];
 
 //    ReturnNilIfFalse([JDFileUtil mkdirPath:project.path]);
     
