@@ -70,4 +70,24 @@
     _eqFrameVariable = [self findVariable:eqFrame];
 }
 
++ (NSArray *)visibleTypeArray{
+    NSArray *array = [NSArray arrayWithObjects:
+                             @"Blind",
+                             @"Slide"
+                             @"Fold",
+                             @"Bounce",
+                             @"Clip",
+                             @"Drop",
+                             @"Explode",
+                             @"Hide",
+                             @"Puff",
+                             @"Pulsate",
+                             @"Shake",
+                             @"Size",
+                             @"HighLight",
+                             nil];
+
+    return array;
+}
+
 @end

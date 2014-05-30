@@ -15,9 +15,20 @@ typedef enum{
 }IUEventActionType;
 
 typedef enum{
-    IUEventVisibleTypeVertical,
-    IUEventVisibleTypeHorizontal,
-    
+    IUEventVisibleTypeBlind,
+    IUEventVisibleTypeSlide,
+    IUEventVisibleTypeFold,
+    IUEventVisibleTypeBounce,
+    IUEventVisibleTypeClip,
+    IUEventVisibleTypeDrop,
+    IUEventVisibleTypeExplode,
+    IUEventVisibleTypeHide,
+    IUEventVisibleTypePuff,
+    IUEventVisibleTypePulsate,
+    IUEventVisibleTypeScale,
+    IUEventVisibleTypeShake,
+    IUEventVisibleTypeSize,
+    IUEventVisibleTypeHighlight,
 }IUEventVisibleType;
 
 @interface IUEvent : NSObject <NSCopying>
@@ -39,5 +50,7 @@ typedef enum{
 @property (nonatomic) NSString *eqFrame;
 @property NSInteger eqFrameDuration;
 @property CGFloat   eqFrameWidth, eqFrameHeight;
+
++ (NSArray *)visibleTypeArray;
 
 @end

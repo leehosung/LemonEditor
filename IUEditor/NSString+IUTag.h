@@ -26,7 +26,7 @@ static NSString * IUEventTagVisibleID     = @"visibleID";
 static NSString * IUEventTagVisibleEqVariable = @"eqVisibleVariable";
 static NSString * IUEventTagVisibleEquation = @"eqVisible";
 static NSString * IUEventTagVisibleDuration = @"eqVisibleDuration";
-static NSString * IUEventTagVisibleDirection = @"directionType";
+static NSString * IUEventTagVisibleType = @"directionType";
 
 static NSString * IUEventTagEnableFrame   = @"enableFrame";
 static NSString * IUEventTagFrameID       = @"frameID";
