@@ -76,7 +76,9 @@ BOOL   isNSRectContainsRect(NSRect rect, NSRect subrect);
 - (void)addSubviewLeftInFrameWithFrame:(NSView *)aView positioned:(NSWindowOrderingMode)place relativeTo:(NSView *)otherView;
 - (void)addSubviewMiddleInFrameWithFrame:(NSView *)aView positioned:(NSWindowOrderingMode)place relativeTo:(NSView *)otherView;
 - (void)addSubviewVeriticalCenterInFrameWithFrame:(NSView *)aView height:(CGFloat)height;
-
+- (void)addSubviewFullFrameAtBottom:(NSView *)aView height:(CGFloat)height;
+- (void)addSubviewFullFrame:(NSView *)aView height:(CGFloat)height toBottomView:(NSView *)bottomView;
+- (void)addSubviewFullFrameAtTop:(NSView *)aView height:(CGFloat)height toBottomView:(NSView *)bottomView;
 
 -(id)addSubviewDirectionLeftToRight:(NSView *)subview width:(CGFloat)width;
 -(void)removeFromSuperviewWithDirectionLeftToRight;

@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMIUInspectorVC">
             <connections>
+                <outlet property="advancedContentV" destination="bKJ-3y-y5O" id="dqZ-n1-O6T"/>
+                <outlet property="advancedTF" destination="4hZ-s8-0wQ" id="O4m-c9-kPn"/>
+                <outlet property="advancedTitleV" destination="7LO-KV-RDq" id="vnt-VK-jer"/>
+                <outlet property="defaultTitleV" destination="0ah-mQ-HCh" id="ZWf-Hb-Pun"/>
                 <outlet property="outlineV" destination="Goa-IH-l1v" id="q2u-aQ-Ioa"/>
                 <outlet property="view" destination="cTA-Qo-GAW" id="TiY-23-Tls"/>
             </connections>
@@ -79,5 +83,83 @@
         </scrollView>
         <customObject id="-3" userLabel="Application"/>
         <userDefaultsController representsSharedInstance="YES" id="lF8-LT-KhM"/>
+        <box identifier="advancedTitleV" autoresizesSubviews="NO" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="7LO-KV-RDq" userLabel="advanced Title">
+            <rect key="frame" x="0.0" y="0.0" width="278" height="30"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <view key="contentView">
+                <rect key="frame" x="0.0" y="0.0" width="278" height="30"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="JBP-Vy-VD7">
+                        <rect key="frame" x="6" y="0.0" width="260" height="5"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <font key="titleFont" metaFont="system"/>
+                    </box>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4hZ-s8-0wQ">
+                        <rect key="frame" x="4" y="-6" width="246" height="28"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="103" id="QtO-9S-HGB"/>
+                            <constraint firstAttribute="height" constant="14" id="WQF-XA-YmI"/>
+                        </constraints>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Advanced Property" id="SOE-Mt-eew">
+                            <font key="font" metaFont="smallSystemBold"/>
+                            <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="4hZ-s8-0wQ" firstAttribute="top" secondItem="7LO-KV-RDq" secondAttribute="top" constant="8" id="Adt-tc-UHY"/>
+                <constraint firstItem="4hZ-s8-0wQ" firstAttribute="leading" secondItem="7LO-KV-RDq" secondAttribute="leading" constant="6" id="ZCb-Q1-XxA"/>
+                <constraint firstAttribute="height" constant="30" id="px1-Au-ZTK"/>
+            </constraints>
+            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+        </box>
+        <box identifier="defaultTitleV" autoresizesSubviews="NO" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="0ah-mQ-HCh" userLabel="default Title">
+            <rect key="frame" x="0.0" y="0.0" width="278" height="30"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <view key="contentView">
+                <rect key="frame" x="0.0" y="0.0" width="278" height="30"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="A3M-oH-eVl">
+                        <rect key="frame" x="6" y="0.0" width="260" height="5"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <font key="titleFont" metaFont="system"/>
+                    </box>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aR1-7r-JTT">
+                        <rect key="frame" x="4" y="8" width="107" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="103" id="7J7-uC-aIh"/>
+                            <constraint firstAttribute="height" constant="14" id="iLn-sO-lSF"/>
+                        </constraints>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Default Property" id="fBI-fv-hpo">
+                            <font key="font" metaFont="smallSystemBold"/>
+                            <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="height" constant="30" id="4sj-7v-dMB"/>
+                <constraint firstItem="aR1-7r-JTT" firstAttribute="top" secondItem="0ah-mQ-HCh" secondAttribute="top" constant="8" id="XuC-Xy-ozy"/>
+                <constraint firstItem="aR1-7r-JTT" firstAttribute="leading" secondItem="0ah-mQ-HCh" secondAttribute="leading" constant="6" id="efb-vd-BqR"/>
+            </constraints>
+            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+        </box>
+        <customView id="bKJ-3y-y5O" userLabel="advancedContent">
+            <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+        </customView>
     </objects>
 </document>

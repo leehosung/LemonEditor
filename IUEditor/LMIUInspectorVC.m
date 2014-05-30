@@ -51,10 +51,15 @@
     LMPropertyIUPageVC * propertyIUPageVC;
     
     NSArray *propertyVCArray;
-    NSMutableArray *selectedIUCellVArray;
+    NSInteger countOfAdvanced;
 }
 
+@property (strong) IBOutlet NSBox *defaultTitleV;
+@property (strong) IBOutlet NSBox *advancedTitleV;
+@property (strong) IBOutlet NSView *advancedContentV;
+
 @property (weak) IBOutlet NSOutlineView *outlineV;
+@property (weak) IBOutlet NSTextField *advancedTF;
 
 @end
 
@@ -87,7 +92,6 @@
         propertyIUPageVC = [[LMPropertyIUPageVC alloc] initWithNibName:[LMPropertyIUPageVC class].className bundle:nil];
         
         propertyVCArray = [NSArray arrayWithObjects:
-                           @"propertyIUBoxVC",
                            @"propertyIUImageVC",
                            @"propertyIUHTMLVC",
                            @"propertyIUMovieVC",
@@ -103,7 +107,6 @@
                            @"propertyIUPageLinkSetVC",
                            @"propertyIUPageVC",
                            nil];
-        selectedIUCellVArray = [NSMutableArray array];
         
     }
     return self;
@@ -131,6 +134,7 @@
     [propertyIUTextViewVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     [propertyIUPageLinkSetVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     [propertyIUPageVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+    
 
 }
 
@@ -155,53 +159,73 @@
 }
 
 - (void)reloadSelectedIUArray{
-    [selectedIUCellVArray removeAllObjects];
+    for(NSView *childView in _advancedContentV.subviews){
+        [childView removeFromSuperview];
+    }
+    
     if(self.controller.selection == nil){
         return;
     }
+    
+    //find current view
     NSArray *classPedigree = [self.controller selectedPedigree];
+    NSMutableArray *viewArray = [NSMutableArray array];
     for(NSString *className in classPedigree){
         NSString *vcName = [NSString stringWithFormat:@"property%@VC", className];
         if([propertyVCArray containsObject:vcName]){
             NSViewController *iuVC = [self valueForKeyPath:vcName];
-            [selectedIUCellVArray addObject:iuVC.view];
+            NSView *view = ((JDOutlineCellView *)iuVC.view).contentV;
+            [viewArray addObject:view];
         }
     }
+    
+    //make advanced view
+    CGFloat height=0;
+    for(int i=0; i<viewArray.count; i++){
+        NSView *view = [viewArray objectAtIndex:i];
+        NSView *bottomView;
+        height += view.frame.size.height;
+        if(i == 0){
+            [_advancedContentV addSubviewFullFrameAtBottom:view height:view.frame.size.height];
+        }
+        else if(i==viewArray.count -1){
+            [_advancedContentV addSubviewFullFrameAtTop:view height:view.frame.size.height toBottomView:bottomView];
+        }
+        else{
+            [_advancedContentV addSubviewFullFrame:view height:view.frame.size.height toBottomView:bottomView];
+        }
+        bottomView = view;
+        
+    }
+    [_advancedContentV setHeight:height];
+    countOfAdvanced = viewArray.count;
 }
 
 
 -(void)selectedObjectsDidChange:(NSDictionary *)change{
     [self reloadSelectedIUArray];
-    [_outlineV expandItem:nil expandChildren:YES];
     [_outlineV reloadData];
-    [_outlineV expandItem:nil expandChildren:YES];
-
-
 }
 
 
 #pragma mark -
 #pragma mark outlineView
 
-- (NSView *)contentViewOfTitleView:(NSView *)titleV{
-    for(JDOutlineCellView *cellV in selectedIUCellVArray){
-        if( [cellV.titleV isEqualTo:titleV] ){
-            return cellV.contentV;
-        }
-    }
-    return nil;
-}
-
 //return number of child
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(NSView *)item{
     
     if(item == nil){
-        return selectedIUCellVArray.count;
+        return 2;
     }
-    else{
-        if([[item identifier] containsString:@"title"]){
+    else
+    {
+        if([[item identifier] isEqualToString:@"defaultTitleV"]){
             return 1;
         }
+        else if([[item identifier] isEqualToString:@"advancedTitleV"] && countOfAdvanced > 0){
+            return 1;
+        }
+
         else{
             return 0;
         }
@@ -211,17 +235,34 @@
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item{
     if(item == nil){
-        JDOutlineCellView *view = selectedIUCellVArray[index];
-        return view.titleV;
+        if(index==0){
+            return _defaultTitleV;
+        }
+        else if(index == 1){
+            return _advancedTitleV;
+        }
+        else{
+            assert(0);
+            return nil;
+        }
     }
     else{
-        return [self contentViewOfTitleView:item];
+        if([item isEqualTo:_defaultTitleV]){
+            return  ((JDOutlineCellView *)propertyIUBoxVC.view).contentV;
+            
+        }else if([item isEqualTo:_advancedTitleV]){
+            return _advancedContentV;
+        }
+        else{
+            assert(0);
+            return nil;
+        }
     }
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item{
     //root or title V
-    if([[item identifier] isEqualToString:@"title"]){
+    if([[item identifier] containsString:@"TitleV"]){
         return YES;
     }
     
