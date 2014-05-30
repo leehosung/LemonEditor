@@ -85,6 +85,8 @@
 }
 
 - (IBAction) runOrStopServer:(id)sender{
+    //TODO: 제대로 동작안함
+#if 0
     if (runningState == 0) {
         // stop server
         serverTask = [[NSTask alloc] init];
@@ -115,6 +117,7 @@
         runningState = 0;
         [_serverB setTitle:@"||"];
     }
+#endif
 }
 
 - (IBAction)changeCompilerRule:(id)sender {
