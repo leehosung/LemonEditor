@@ -12,11 +12,13 @@
 @property (weak) IBOutlet NSTextField *equationTF;
 @property (weak) IBOutlet NSTextField *durationTF;
 @property (weak) IBOutlet NSStepper *durationStepper;
-@property (weak) IBOutlet NSMatrix *directionMatrix;
+@property (weak) IBOutlet NSPopUpButton *visibleTypePopupBtn;
+@property NSArray *typeArray;
 
 @end
 
-@implementation LMPropertyVisibleVC
+@implementation LMPropertyVisibleVC{
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,10 +34,10 @@
     [_equationTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagVisibleEquation] options:IUBindingDictNotRaisesApplicable];
     [_durationTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagVisibleDuration] options:IUBindingDictNotRaisesApplicable];
     [_durationStepper bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagVisibleDuration] options:IUBindingDictNotRaisesApplicable];
+    _typeArray = [IUEvent visibleTypeArray];
+    [_visibleTypePopupBtn bind:NSContentBinding toObject:self withKeyPath:@"typeArray" options:IUBindingDictNotRaisesApplicable];
     
-    [_directionMatrix bind:NSSelectedIndexBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagVisibleDirection] options:IUBindingDictNotRaisesApplicable];
-    
- 
+    [_visibleTypePopupBtn bind:NSSelectedIndexBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagVisibleType] options:IUBindingDictNotRaisesApplicable];
 }
 
 

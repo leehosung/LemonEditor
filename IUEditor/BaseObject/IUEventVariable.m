@@ -69,7 +69,7 @@
             [visibleDict setObject:obj.htmlID forKey:IUEventTagVisibleID];
             [visibleDict setObject:obj.event.eqVisible forKey:IUEventTagVisibleEquation];
             [visibleDict setObject:@(obj.event.eqVisibleDuration) forKey:IUEventTagVisibleDuration];
-            [visibleDict setObject:@(obj.event.directionType) forKey:IUEventTagVisibleDirection];
+            [visibleDict setObject:@(obj.event.directionType) forKey:IUEventTagVisibleType];
             
             NSMutableArray *receiverArray = [self receiverArrayOfVariable:visibleVariable];
             [receiverArray addObject:visibleDict];
@@ -116,6 +116,7 @@
                 [header appendFormat:@"var INIT_IU_%@=%ld;", variable, initial];
                 [header appendNewline];
                 [bodyHeader appendFormat:@"%@ = INIT_IU_%@;", variable, variable];
+                [bodyHeader appendNewline];
             }
             
             value = [oneDict objectForKey:IUEventTagMaxValue];
@@ -172,27 +173,30 @@
 
                         NSMutableString *fnStr = [NSMutableString string];
                         NSInteger duration = [[receiverDict objectForKey:IUEventTagVisibleDuration] integerValue];
-                        IUEventVisibleType type = [[receiverDict objectForKey:IUEventTagVisibleDirection] intValue];
-                        NSString *typeStr;
-                        if(type == IUEventVisibleTypeVertical){
-                            typeStr = @"up";
-                        }
-                        else if(type == IUEventVisibleTypeHorizontal){
-                            typeStr = @"left";
-                        }
+                        IUEventVisibleType type = [[receiverDict objectForKey:IUEventTagVisibleType] intValue];
+                        NSString *typeStr = [self visibleType:type];
                         
                         [fnStr appendFormat:@"if( %@ ){\n", value];
                         
                         NSMutableString *innerJS = [NSMutableString string];
                         [innerJS appendFormat:@"$(\"#%@\").show(", visibleID];
-                        [innerJS appendFormat:@"\"slide\", {direction:\"%@\"}, %ld);",typeStr, duration];
+                        [innerJS appendFormat:@"\"%@\", %ld);\n",typeStr, duration*100];
+                        [innerJS appendFormat:@"$(\"#%@\").data(\"run%@\", 1);\n", visibleID, fnName];
                         
                         [fnStr appendString:[innerJS stringByAddingTab]];
                         [fnStr appendString:@"}"];
                         [fnStr appendNewline];
                         
                         [fnStr appendString:@"else{\n"];
-                        [fnStr appendFormat:@"\t$(\"#%@\").hide()\n", visibleID];
+                        innerJS = [NSMutableString string];
+                        [innerJS appendFormat:@"var clicked =$(\"#%@\").data(\"run%@\");\n", visibleID,fnName];
+                        [innerJS appendString:@"if(clicked == undefined){\n"];
+                        [innerJS appendFormat:@"\t$(\"#%@\").hide();\n", visibleID];
+                        [innerJS appendString:@"}\n"];
+                        [innerJS appendString:@"else{\n"];
+                        [innerJS appendFormat:@"\t$(\"#%@\").hide(%ld);\n", visibleID, duration*100];
+                        [innerJS appendString:@"}"];
+                        [fnStr appendString:[innerJS stringByAddingTab]];
                         [fnStr appendString:@"}"];
                         [fnStr appendNewline];
                         
@@ -224,6 +228,10 @@
                         [fnStr appendNewline];
                         
                         NSMutableString *innerJS = [NSMutableString string];
+                        
+                        [innerJS appendFormat:@"$(\"#%@\").data(\"run%@\", 1);\n", frameID, fnName];
+                        [innerJS appendFormat:@"$(\"#%@\").data(\"width\", $(\"#%@\").css('width'));\n", frameID, frameID];
+                        [innerJS appendFormat:@"$(\"#%@\").data(\"height\", $(\"#%@\").css('height'));\n", frameID, frameID];
                         [innerJS appendFormat:@"$(\"#%@\").animate({", frameID];
                         
                         CGFloat width = [[receiverDict objectForKey:IUEventTagFrameWidth] floatValue];
@@ -231,13 +239,25 @@
                         [innerJS appendFormat:@"width:\"%.2fpx\", height:\"%.2fpx\"}", width, height];
                         
                         NSInteger duration = [[receiverDict objectForKey:IUEventTagFrameDuration] integerValue];
-                        [innerJS appendFormat:@", %ld);", duration];
+                        [innerJS appendFormat:@", %ld);", duration*100];
                         
                         [fnStr appendString:[innerJS stringByAddingTab]];
                         [fnStr appendString:@"}"];
                         [fnStr appendNewline];
                         [fnStr appendString:@"else{\n"];
-                        [fnStr appendFormat:@"\t$(\"#%@\").removeAttr('style')\n", frameID];
+                        
+                        innerJS = [NSMutableString string];
+                        [innerJS appendFormat:@"var clicked =$(\"#%@\").data(\"run%@\");\n", frameID, fnName];
+                        [innerJS appendFormat:@"var d_width =$(\"#%@\").data(\"width\");\n", frameID];
+                        [innerJS appendFormat:@"var d_height =$(\"#%@\").data(\"height\");\n", frameID];
+                        [innerJS appendString:@"if(clicked == undefined){\n"];
+                        [innerJS appendFormat:@"\t$(\"#%@\").animate({width:d_width, height:d_height}, %ld);\n", frameID, duration*100];
+                        [innerJS appendString:@"}\n"];
+                        [innerJS appendString:@"else{\n"];
+                        [innerJS appendFormat:@"\t$(\"#%@\").animate({width:d_width, height:d_height}, %ld);\n", frameID, duration*100];
+                        [innerJS appendString:@"}"];
+                        
+                        [fnStr appendString:[innerJS stringByAddingTab]];
                         [fnStr appendString:@"}"];
                         
                         [fnStr appendNewline];
@@ -279,7 +299,8 @@
     
     [eventJSStr appendString:@"$(document).ready(function(){"];
     [eventJSStr appendNewline];
-    [eventJSStr appendString:@"console.log('ready : iuevent.js');"];
+    [eventJSStr appendString:@"console.log('ready : iuevent.js');\n"];
+    [eventJSStr appendNewline];
     [eventJSStr appendString:[bodyHeader stringByAddingTab]];
     [eventJSStr appendNewline];
     [eventJSStr appendString:[body stringByAddingTab]];
@@ -293,6 +314,60 @@
     JDTraceLog(@"total======\n%@", eventJSStr);
     
     return eventJSStr;
+}
+
+#pragma mark visible event 
+- (NSString *)visibleType:(IUEventVisibleType)type{
+    NSString *typeStr;
+    switch (type) {
+        case IUEventVisibleTypeBlind:
+            typeStr = @"blind";
+            break;
+        case IUEventVisibleTypeBounce:
+            typeStr = @"bounce";
+            break;
+        case IUEventVisibleTypeClip:
+            typeStr = @"clip";
+            break;
+        case IUEventVisibleTypeDrop:
+            typeStr = @"drop";
+            break;
+        case IUEventVisibleTypeExplode:
+            typeStr = @"explode";
+            break;
+        case IUEventVisibleTypeFold:
+            typeStr = @"fold";
+            break;
+        case IUEventVisibleTypeHide:
+            typeStr = @"hide";
+            break;
+        case IUEventVisibleTypeHighlight:
+            typeStr = @"highlight";
+            break;
+        case IUEventVisibleTypePuff:
+            typeStr = @"puff";
+            break;
+        case IUEventVisibleTypePulsate:
+            typeStr = @"pulsate";
+            break;
+        case IUEventVisibleTypeScale:
+            typeStr = @"scale";
+            break;
+        case IUEventVisibleTypeShake:
+            typeStr = @"shake";
+            break;
+        case IUEventVisibleTypeSize:
+            typeStr = @"size";
+            break;
+        case IUEventVisibleTypeSlide:
+            typeStr = @"slide";
+            break;
+        default:
+            typeStr = nil;
+            break;
+    }
+    
+    return typeStr;
 }
 
 @end
