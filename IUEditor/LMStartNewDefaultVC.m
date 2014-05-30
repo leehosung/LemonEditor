@@ -24,15 +24,12 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Initialization code here.
+     //   [_prevB setAction:@selector(pressPrevB)];
+        [_nextB setAction:@selector(pressNextB)];
     }
     return self;
 }
 
-- (void)show{
-    assert(_nextB);
-    [_nextB setTarget:self];
-    [_nextB setAction:@selector(pressNextB)];
-}
 
 - (void)pressNextB{
     
@@ -63,5 +60,7 @@
     [self.view.window close];
     
 }
+
+
 
 @end

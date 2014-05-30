@@ -27,6 +27,7 @@
         for (NSURL *url in recentDocURLs){
             [_recentDocs addObject:[@{@"image": [NSImage imageNamed:@"new_default"],
                                      @"name" : [url lastPathComponent],
+                                      @"path": [url path],
 //                                     @"selection": @(NO),
                                      } mutableCopy]];
         }
@@ -36,6 +37,7 @@
 
 - (void)awakeFromNib{
     [_recentAC setContent:_recentDocs];
+    
 }
 
 - (void)show{
@@ -49,7 +51,7 @@
     LMAppDelegate *appDelegate = [NSApp delegate];
     NSUInteger index = [self.selectedIndexes firstIndex];
     NSDictionary *selectedDictionary = [_recentDocs objectAtIndex:index];
-    [appDelegate loadDocument:selectedDictionary[@"name"]];
+    [appDelegate loadDocument:selectedDictionary[@"path"]];
     [self.view.window close];
 }
 
@@ -64,7 +66,7 @@
     return contentDict;
 
 }
-/*
+
 - (void)setSelectedIndexes:(NSIndexSet *)selectedIndexes{
     _selectedIndexes = selectedIndexes;
     for (NSMutableDictionary *dict in _recentDocs) {
@@ -76,5 +78,5 @@
     NSLog([selectedIndexes description]);
     
 }
- */
+ 
 @end
