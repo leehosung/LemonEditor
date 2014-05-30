@@ -321,8 +321,11 @@
 
 -(BOOL)removeIU:(IUBox *)iu{
     if([iu shouldRemoveIU]){
-        [_m_children removeObject:iu];
+        //IURemoved 호출한 다음에 m_children을 호출해야함.
+        //border를 지울려면 controller 에 iu 정보 필요. 
+        
         [self.delegate IURemoved:iu.htmlID withParentID:iu.parent.htmlID];
+        [_m_children removeObject:iu];
         return YES;
     }
     return NO;
