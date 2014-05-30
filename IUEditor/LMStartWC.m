@@ -66,6 +66,7 @@
             [self removeCurrentView];
             [_mainV addSubviewFullFrame:_templateVC.view];
             [_prevB setTarget:_templateVC];
+            [_prevB setEnabled:NO];
             [_nextB setTarget:_templateVC];
             break;
         case 1:{
@@ -79,6 +80,7 @@
             [self removeCurrentView];
             [_mainV addSubview:_recentVC.view];
             [_prevB setTarget:_recentVC];
+            [_prevB setEnabled:NO];
             [_nextB setTarget:_recentVC];
 
         }
