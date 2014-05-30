@@ -813,6 +813,13 @@
 
 -(void)IURemoved:(NSString*)identifier withParentID:(NSString *)parentID{
     
+    
+    [[self gridView] removeLayerWithIUIdentifier:identifier];
+    IUBox *iu = [_controller IUBoxByIdentifier:identifier];
+    for(IUBox *child in iu.allChildren){
+        [[self gridView] removeLayerWithIUIdentifier:child.htmlID];
+    }
+    
     //remove HTML
     DOMHTMLElement *selectHTMLElement = [self getHTMLElementbyID:identifier];
     DOMHTMLElement *middleElement = selectHTMLElement;
@@ -840,8 +847,6 @@
     [self deselectedAllIUs];
     [frameDict.dict removeObjectForKey:identifier];
     [self.controller rearrangeObjects];
-    
-    [[self gridView] removeLayerWithIUIdentifier:identifier];
 }
 
 
