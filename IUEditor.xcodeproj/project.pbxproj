@@ -114,6 +114,7 @@
 		3DA416BD1935ABB400559028 /* LMFontController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA416BC1935ABB400559028 /* LMFontController.m */; };
 		3DA416C31935B29200559028 /* defaultFont.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DA416C21935B29200559028 /* defaultFont.plist */; };
 		3DA72903192B5ABC00203764 /* IUTextController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA72902192B5ABC00203764 /* IUTextController.m */; };
+		3DAEEDFD1938537700196A81 /* image_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DAEEDFC1938537700196A81 /* image_default.png */; };
 		3DB3ACC518EBEF180046DFB7 /* LMWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACC418EBEF180046DFB7 /* LMWindow.m */; };
 		3DB3ACCB18EBEF3D0046DFB7 /* SizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACC818EBEF3D0046DFB7 /* SizeView.m */; };
 		3DB3ACCC18EBEF3D0046DFB7 /* InnerSizeBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACCA18EBEF3D0046DFB7 /* InnerSizeBox.m */; };
@@ -602,6 +603,7 @@
 		3DA416C21935B29200559028 /* defaultFont.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaultFont.plist; sourceTree = "<group>"; };
 		3DA72901192B5ABC00203764 /* IUTextController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUTextController.h; sourceTree = "<group>"; };
 		3DA72902192B5ABC00203764 /* IUTextController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUTextController.m; sourceTree = "<group>"; };
+		3DAEEDFC1938537700196A81 /* image_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_default.png; sourceTree = "<group>"; };
 		3DB3ACC318EBEF180046DFB7 /* LMWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMWindow.h; sourceTree = "<group>"; };
 		3DB3ACC418EBEF180046DFB7 /* LMWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMWindow.m; sourceTree = "<group>"; };
 		3DB3ACC718EBEF3D0046DFB7 /* SizeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizeView.h; sourceTree = "<group>"; };
@@ -1250,6 +1252,7 @@
 			isa = PBXGroup;
 			children = (
 				690A826C190A2CC200DDBA86 /* new_default@2x.png */,
+				3DAEEDFC1938537700196A81 /* image_default.png */,
 				690A826D190A2CC200DDBA86 /* new_django@2x.png */,
 				690A826E190A2CC200DDBA86 /* new_pt.png */,
 				690A826F190A2CC200DDBA86 /* new_django.png */,
@@ -2270,6 +2273,7 @@
 				2628C91E1919C8C800D9D8CD /* tab_primary_on.png in Resources */,
 				3DBC932F18F647EC00F217BD /* iu.js in Resources */,
 				3DF8041A18FE62F200913505 /* view_border@2x.png in Resources */,
+				3DAEEDFD1938537700196A81 /* image_default.png in Resources */,
 				2628C933191A360200D9D8CD /* stack_submit@2x.png in Resources */,
 				3DED267F1900D329001A1D67 /* stack_fblike@2x.png in Resources */,
 				267CB1AC190F93370079E565 /* tab_secondary@2x.png in Resources */,

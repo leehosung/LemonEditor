@@ -690,7 +690,7 @@ static NSString * IUCompilerTagOption = @"tag";
         }
         //editor mode에서는 default image 를 만들어줌
         else{
-            NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"tool_image" ofType:@"tiff"];
+            NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"image_default" ofType:@"png"];
             [code addCodeLineWithFormat:@"<img %@ src='%@' >",  [self HTMLAttributes:iu option:nil], imagePath];
 
         }
