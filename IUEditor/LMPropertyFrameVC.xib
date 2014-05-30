@@ -324,7 +324,7 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="zHx-Ob-5lO">
+                                        <button toolTip="Horizontal Center" translatesAutoresizingMaskIntoConstraints="NO" id="zHx-Ob-5lO">
                                             <rect key="frame" x="223" y="37" width="31" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <constraints>

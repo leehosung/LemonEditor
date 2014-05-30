@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMWidgetLibraryVC">
@@ -97,11 +97,11 @@
                                 </buttonCell>
                                 <cells>
                                     <column>
-                                        <buttonCell type="square" bezelStyle="shadowlessSquare" image="tab_primary_off" imagePosition="overlaps" alignment="center" alternateImage="tab_primary_on" state="on" tag="1" inset="2" id="X4B-cv-6Kr">
+                                        <buttonCell type="square" bezelStyle="shadowlessSquare" image="tab_primary_off" imagePosition="overlaps" alignment="center" alternateImage="tab_primary_on" state="on" toolTip="Primary Widget" tag="1" inset="2" id="X4B-cv-6Kr">
                                             <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
-                                        <buttonCell type="square" bezelStyle="shadowlessSquare" image="tab_secondary_off" imagePosition="overlaps" alignment="left" alternateImage="tab_secondary_on" inset="2" id="0mg-fX-6bv">
+                                        <buttonCell type="square" bezelStyle="shadowlessSquare" image="tab_secondary_off" imagePosition="overlaps" alignment="left" alternateImage="tab_secondary_on" toolTip="Secondary Widget" inset="2" id="0mg-fX-6bv">
                                             <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -243,7 +243,7 @@
                                             <rect key="frame" x="1" y="1" width="257" height="29"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <button translatesAutoresizingMaskIntoConstraints="NO" id="BR5-iS-MYW" userLabel="iconBtn">
+                                                <button toolTip="Collection View" translatesAutoresizingMaskIntoConstraints="NO" id="BR5-iS-MYW" userLabel="iconBtn">
                                                     <rect key="frame" x="30" y="0.0" width="29" height="28"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <constraints>
@@ -258,7 +258,7 @@
                                                         <action selector="clickPrimaryIcon:" target="-2" id="nE4-WR-pwU"/>
                                                     </connections>
                                                 </button>
-                                                <button translatesAutoresizingMaskIntoConstraints="NO" id="tsn-mg-JCz" userLabel="listBtn">
+                                                <button toolTip="List View" translatesAutoresizingMaskIntoConstraints="NO" id="tsn-mg-JCz" userLabel="listBtn">
                                                     <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <constraints>
