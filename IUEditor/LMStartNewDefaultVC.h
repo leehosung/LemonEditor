@@ -10,6 +10,5 @@
 
 @interface LMStartNewDefaultVC : NSViewController
 @property NSButton *nextB;
-
-- (void)show;
+@property NSButton *prevB;
 @end

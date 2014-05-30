@@ -38,6 +38,7 @@
     return self;
 }
 
+
 - (void)setNextB:(NSButton *)nextB{
     _nextB = nextB;
     defaultVC.nextB = nextB;
@@ -53,41 +54,34 @@
     
     sender.state = 1;
     
-    [_prevB setTarget:self];
     [_prevB setAction:@selector(pressPrevB)];
 }
 
+/*
 - (void)show{
     [_prevB setEnabled:NO];
     [_nextB setEnabled:YES];
     
-    [_nextB setTarget:self];
+//    [_nextB setTarget:self];
     [_nextB setAction:@selector(pressNextB)];
-}
+}*/
 
 - (void)pressNextB{
-    
-    
     if (_typeDefaultB.state) {
         [self.view addSubview:defaultVC.view];
-        [defaultVC show];
+        [_nextB setTarget:defaultVC];
+        defaultVC.nextB = _nextB;
+        [_prevB setTarget:defaultVC];
         [_prevB setEnabled:YES];
-  //      [_prevB setTarget:self];
-  //      [_prevB setAction:@selector(pressPrevB)];
+        defaultVC.prevB = _prevB;
     }
     else if (_typePresentationB.state){
         [self.view addSubview:presentationVC.view];
-        [presentationVC show];
         [_prevB setEnabled:YES];
-   //     [_prevB setTarget:self];
-   //     [_prevB setAction:@selector(pressPrevB)];
     }
     else if (_typeDjangoB.state){
         [self.view addSubview:djangoVC.view];
-        [djangoVC show];
         [_prevB setEnabled:YES];
-    //    [_prevB setTarget:self];
-    //    [_prevB setAction:@selector(pressPrevB)];
     }
 
 }
@@ -98,9 +92,6 @@
     [presentationVC.view removeFromSuperview];
     [_nextB setEnabled:YES];
     [_prevB setEnabled:NO];
-    
-  //  [_nextB setTarget:self];
-  //  [_nextB setAction:@selector(pressNextB)];
 }
 
 @end

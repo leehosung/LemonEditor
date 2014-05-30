@@ -46,9 +46,11 @@
 
 - (void)awakeFromNib{
     [_mainV addSubview:_newVC.view];
+    [_prevB setTarget:_newVC];
+    [_nextB setTarget:_newVC];
     _newVC.prevB = _prevB;
     _newVC.nextB = _nextB;
-    [_newVC show];
+    [_nextB setAction:@selector(pressNextB)];
 }
 
 - (void)removeCurrentView{
@@ -63,21 +65,30 @@
         case 0:
             [self removeCurrentView];
             [_mainV addSubviewFullFrame:_templateVC.view];
-            [_templateVC show];
+            [_prevB setTarget:_templateVC];
+            [_nextB setTarget:_templateVC];
             break;
         case 1:{
             [self removeCurrentView];
             [_mainV addSubview:_newVC.view];
-            [_newVC show];
-        }
+            [_prevB setTarget:_newVC];
+            [_nextB setTarget:_newVC];
+            }
             break;
         case 2:{
             [self removeCurrentView];
             [_mainV addSubview:_recentVC.view];
-            [_recentVC show];
+            [_prevB setTarget:_recentVC];
+            [_nextB setTarget:_recentVC];
+
         }
             break;
     }
 }
-
+- (void)pressNextB{
+    assert(0);
+}
+- (void)pressPrevB{
+    assert(0);
+}
 @end
