@@ -116,7 +116,7 @@
                                                             <binding destination="VyE-0e-l9J" name="value" keyPath="objectValue.name" id="q2o-zi-VrX"/>
                                                         </connections>
                                                     </textField>
-                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="ynI-mD-FdK">
+                                                    <button toolTip="Add Responsive Section" translatesAutoresizingMaskIntoConstraints="NO" id="ynI-mD-FdK">
                                                         <rect key="frame" x="192" y="3" width="20" height="20"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <constraints>
