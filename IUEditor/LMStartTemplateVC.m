@@ -48,16 +48,18 @@
     [_nextB setAction:@selector(pressNextB)];
 }
 
+
 -(void)pressNextB{
     if(self.templateAC.selectedObjects.count <=0){
      return;
     }
     
     NSArray *selectedProject = self.templateAC.selectedObjects;
+ }
+ 
     
     
     
-    
-}
+
 
 @end

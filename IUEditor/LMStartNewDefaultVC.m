@@ -41,7 +41,7 @@
     NSString *appName;
     appName = [_defaultNewAppName stringValue];
     NSString *appDir = [[[JDFileUtil util] openDirectoryByNSOpenPanel:@"select directory for project"] path];
-    if(appDir == nil){ //cancel
+    if(appDir == nil || [appName stringByTrim].length == 0){ //cancel
         return;
     }
     //git, heroku는 막아놓음
@@ -63,4 +63,5 @@
     [self.view.window close];
     
 }
+
 @end

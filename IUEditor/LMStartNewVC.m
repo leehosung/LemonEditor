@@ -1,4 +1,4 @@
-//
+		//
 //  LMStartNewVC.m
 //  IUEditor
 //
@@ -46,24 +46,16 @@
 }
 
 - (IBAction)pressProjectTypeB:(NSButton*)sender {
+    
     self.typeDefaultB.state = 0;
     self.typePresentationB.state = 0;
     self.typeDjangoB.state = 0;
     
     sender.state = 1;
+    
+    [_prevB setTarget:self];
+    [_prevB setAction:@selector(pressPrevB)];
 }
-
-/*
-- (IBAction)pressDefaultNew:(id)sender {
-    LMAppDelegate *delegate = [NSApplication sharedApplication].delegate;
-    [delegate newDocument:nil];
-}
-
-- (IBAction)pressDjangoNew:(id)sender {
-    LMAppDelegate *delegate = [NSApplication sharedApplication].delegate;
-    [delegate newDjangoDocument:nil];
-}
-*/
 
 - (void)show{
     [_prevB setEnabled:NO];
@@ -71,27 +63,31 @@
     
     [_nextB setTarget:self];
     [_nextB setAction:@selector(pressNextB)];
-    
-    [_prevB setTarget:self];
-    [_prevB setAction:@selector(pressPrevB)];
 }
 
 - (void)pressNextB{
-
+    
+    
     if (_typeDefaultB.state) {
         [self.view addSubview:defaultVC.view];
         [defaultVC show];
         [_prevB setEnabled:YES];
+  //      [_prevB setTarget:self];
+  //      [_prevB setAction:@selector(pressPrevB)];
     }
     else if (_typePresentationB.state){
         [self.view addSubview:presentationVC.view];
         [presentationVC show];
         [_prevB setEnabled:YES];
+   //     [_prevB setTarget:self];
+   //     [_prevB setAction:@selector(pressPrevB)];
     }
     else if (_typeDjangoB.state){
         [self.view addSubview:djangoVC.view];
         [djangoVC show];
         [_prevB setEnabled:YES];
+    //    [_prevB setTarget:self];
+    //    [_prevB setAction:@selector(pressPrevB)];
     }
 
 }
@@ -103,8 +99,8 @@
     [_nextB setEnabled:YES];
     [_prevB setEnabled:NO];
     
-    [_nextB setTarget:self];
-    [_nextB setAction:@selector(pressNextB)];
+  //  [_nextB setTarget:self];
+  //  [_nextB setAction:@selector(pressNextB)];
 }
 
 @end

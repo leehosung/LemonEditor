@@ -49,15 +49,6 @@
     _newVC.prevB = _prevB;
     _newVC.nextB = _nextB;
     [_newVC show];
-    
-    _recentVC.prevB = _prevB;
-    _recentVC.nextB = _nextB;
-    [_recentVC show];
-    
-    _templateVC.prevB = _prevB;
-    _templateVC.nextB = _nextB;
-    [_templateVC show];
-    
 }
 
 - (void)removeCurrentView{
