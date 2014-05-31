@@ -32,11 +32,15 @@
 }
 
 -(NSArray*)videoFiles{
-    return [_rootGroup.children[3] children];
+    return [_rootGroup.children[1] children];
 }
 
 -(NSArray*)imageFiles{
     return [_rootGroup.children[0] children];
+}
+
+-(NSArray*)imageAndVideoFiles{
+    return [[self imageFiles] arrayByAddingObjectsFromArray:self.videoFiles];
 }
 
 

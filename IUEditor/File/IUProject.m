@@ -378,4 +378,8 @@
     return _resourceManager;
 }
 
+- (id)parent{
+    return nil;
+}
+
 @end

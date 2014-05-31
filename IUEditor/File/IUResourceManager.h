@@ -13,6 +13,7 @@
 
 @interface IUResourceManager : NSObject <IUCompilerResourceSource>
 
+- (IUResourceGroup *)resourceGroup;
 - (void)setResourceGroup:(IUResourceGroup*)resourceRootGroup;
 - (IUResourceFile*)insertResourceWithContentOfPath:(NSString*)path;
 
@@ -30,6 +31,12 @@
  */
 -(NSArray*)videoFiles;
 
+/**
+ @breif Getting contents in image and video resource group
+ @return Array of IUResourceFile
+ @note KVO-compliance
+ */
+-(NSArray*)imageAndVideoFiles;
 
 -(IUResourceType)resourceType:(NSString *)anExtension;
 -(IUResourceFile*)resourceFileWithName:(NSString*)imageName;

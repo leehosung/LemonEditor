@@ -44,5 +44,9 @@
     [_children addObject:document];
 }
 
+- (void)removeDocument:(IUDocument *)document{
+    assert([_children containsObject:document]);
+    [_children removeObject:document];
+}
 
 @end

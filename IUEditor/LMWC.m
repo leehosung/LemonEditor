@@ -244,6 +244,7 @@
     fileNaviVC.project = _project;
     assert(widgetLibraryVC.project == nil);
     widgetLibraryVC.project = _project;
+    resourceVC.manager = _project.resourceManager;
     
     
     //construct widget library vc

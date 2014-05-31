@@ -67,7 +67,7 @@
         count++;
     }
     while (_count < count) {
-        IUCarouselItem *item = [[IUCarouselItem alloc] initWithIdentifierManager:nil option:nil];
+        IUCarouselItem *item = [[IUCarouselItem alloc] initWithProject:_project options:nil];
         [self.identifierManager setNewIdentifierAndRegister:item withKey:nil];
         item.name = @"Item";
         item.carousel = self;
