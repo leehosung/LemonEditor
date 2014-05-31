@@ -17,7 +17,6 @@
 @property (nonatomic, readonly) id  selection;
 @property (strong, nonatomic) IBOutlet _binding_ IUDocumentController *documentController;
 @property (nonatomic) IUProject *project;
-@property (nonatomic, weak) IUIdentifierManager   *identifierManager;
 
 
 -(void)selectFirstDocument;

@@ -16,8 +16,6 @@
 @property (nonatomic, weak) _binding_ IUController *controller;
 @property (nonatomic, weak) _binding_ IUProject   *project;
 
-@property (nonatomic, weak) IUIdentifierManager   *identifierManager;
-
 -(void)setWidgetProperties:(NSArray*)array;
 @property (nonatomic, readonly) NSArray *primaryWidgets;
 @property (nonatomic, readonly) NSArray *secondaryWidgets;

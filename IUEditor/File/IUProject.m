@@ -16,6 +16,8 @@
 #import "IUBackground.h"
 #import "IUClass.h"
 #import "IUEventVariable.h"
+#import "IUResourceManager.h"
+#import "IUIdentifierManager.h"
 
 @interface IUProject()
 
@@ -23,6 +25,8 @@
 
 @implementation IUProject{
     IUCompiler *_compiler;
+    IUResourceManager *_resourceManager;
+    IUIdentifierManager *_identifierManager;
     NSString  *_path;
 }
 
@@ -42,7 +46,11 @@
 - (id)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];
     if (self) {
+        _identifierManager = [[IUIdentifierManager alloc] init];
         _compiler = [[IUCompiler alloc] init];
+        _resourceManager = [[IUResourceManager alloc] init];
+        _compiler.resourceSource = _resourceManager;
+        
         _mqSizes = [[aDecoder decodeObjectForKey:@"mqSizes"] mutableCopy];
         _buildPath = [aDecoder decodeObjectForKey:@"_buildPath"];
         _compiler.rule = [aDecoder decodeInt32ForKey:@"_compileRule"];
@@ -51,6 +59,8 @@
         _classGroup = [aDecoder decodeObjectForKey:@"_classGroup"];
         _resourceGroup = [aDecoder decodeObjectForKey:@"_resourceGroup"];
         _name = [aDecoder decodeObjectForKey:@"_name"];
+        
+        [_resourceManager setResourceGroup:_resourceGroup];
     }
     return self;
 }
@@ -84,6 +94,13 @@
     assert(options[IUProjectKeyAppName]);
     assert(options[IUProjectKeyDirectory]);
     
+    _mqSizes = [NSMutableArray arrayWithArray:@[@(defaultFrameWidth), @700, @400]];
+    _buildPath = @"build";
+    _compiler = [[IUCompiler alloc] init];
+    _resourceManager = [[IUResourceManager alloc] init];
+    _compiler.resourceSource = _resourceManager;
+    _identifierManager = [[IUIdentifierManager alloc] init];
+    
     self.name = [options objectForKey:IUProjectKeyAppName];
     NSString *fileName = [options[IUProjectKeyAppName] stringByAppendingPathExtension:@"iu"];
     NSString *projectDir = [options[IUProjectKeyDirectory] stringByAppendingPathComponent:options[IUProjectKeyAppName]];
@@ -107,18 +124,18 @@
     _classGroup.name = @"Classes";
     _classGroup.project = self;
 
-    IUBackground *bg = [[IUBackground alloc] init];
+    IUBackground *bg = [[IUBackground alloc] initWithProject:self options:nil];
     bg.name = @"background";
     bg.htmlID = @"background";
     [_backgroundGroup addDocument:bg];
 
-    IUPage *pg = [[IUPage alloc] init];
+    IUPage *pg = [[IUPage alloc] initWithProject:self options:nil];
     [pg setBackground:bg];
     pg.name = @"index";
     pg.htmlID = @"index";
     [_pageGroup addDocument:pg];
     
-    IUClass *class = [[IUClass alloc] init];
+    IUClass *class = [[IUClass alloc] initWithProject:self options:nil];
     class.name = @"class";
     class.htmlID = @"class";
     [_classGroup addDocument:class];
@@ -145,6 +162,10 @@
 
 - (NSString*)directory{
     return [self.path stringByDeletingLastPathComponent];
+}
+
+- (NSString*)buildPath{
+    return _buildPath;
 }
 
 - (BOOL)build:(NSError**)error{
@@ -327,14 +348,6 @@
     JDInfoLog(@"Project Dealloc");
 }
 
-- (void)setIdentifierManager:(IUIdentifierManager*)identifierManager{
-    for (IUDocument *doc in self.allDocuments) {
-        doc.identifierManager = identifierManager;
-        [identifierManager registerIU:doc];
-        [identifierManager registerIUs:doc.allChildren];
-    }
-}
-
 - (NSArray*)allDocuments{
     NSMutableArray *array = [NSMutableArray array];
     [array addObjectsFromArray:self.pageDocuments];
@@ -357,5 +370,12 @@
     return NO;
 }
 
+- (IUIdentifierManager*)identifierManager{
+    return _identifierManager;
+}
+
+- (IUResourceManager *)resourceManager{
+    return _resourceManager;
+}
 
 @end

@@ -97,7 +97,7 @@
 #pragma mark addResource
 
 - (void)addResource:(NSURL *)url type:(IUResourceType)type{
-    [_manager insertResourceWithContentOfPath:[url relativePath] type:type];
+    [_manager insertResourceWithContentOfPath:[url relativePath]];
 }
 
 

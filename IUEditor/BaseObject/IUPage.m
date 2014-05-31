@@ -28,6 +28,16 @@
     return self;
 }
 
+
+- (id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
+    self = [super initWithProject:project options:options];
+    [self.css eradicateTag:IUCSSTagX];
+    [self.css eradicateTag:IUCSSTagY];
+    [self.css eradicateTag:IUCSSTagWidth];
+    [self.css eradicateTag:IUCSSTagHeight];
+    return self;
+}
+
 - (id)initWithIdentifierManager:(IUIdentifierManager *)manager option:(NSDictionary *)option{
     self = [super initWithIdentifierManager:manager option:option];
     
@@ -55,6 +65,7 @@
 }
 
 -(void)setBackground:(IUBackground *)background{
+    assert(background.children);
     IUBackground *myBackground = self.background;
     
     if (myBackground == background) {

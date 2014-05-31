@@ -56,9 +56,12 @@
 }
 
 -(void)imageContextDidChange:(NSDictionary *)change{
+    assert(0);
+    /*
     [self willChangeValueForKey:@"imageArray"];
     _imageArray = [@[@"Default"] arrayByAddingObjectsFromArray:self.resourceManager.imageNames];
     [self didChangeValueForKey:@"imageArray"];
+     */
 }
 
 @end

@@ -38,17 +38,15 @@
 }
 
 - (BOOL)collectionView:(NSCollectionView *)collectionView writeItemsAtIndexes:(NSIndexSet *)indexes toPasteboard:(NSPasteboard *)pasteboard{
+    assert(_project);
     NSUInteger index = [indexes firstIndex];
     LMGeneralObject *object = [[collectionView itemAtIndex:index] representedObject];
     NSString *className = object.title;
     
-    IUBox *obj = [[NSClassFromString(className) alloc] initWithIdentifierManager:_identifierManager option:nil];
+    IUBox *obj = [[NSClassFromString(className) alloc] initWithProject:_project options:nil];
     if (obj == nil) {
         assert(0);
     }
-    
-    [_identifierManager setNewIdentifierAndRegister:obj withKey:nil];
-    obj.name = obj.htmlID;
     
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:obj];
     [pasteboard setData:data forType:kUTTypeIUType];

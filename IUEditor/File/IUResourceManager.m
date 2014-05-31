@@ -12,29 +12,40 @@
 @end
 
 @implementation IUResourceManager{
+    IUResourceGroup *_rootGroup;
 }
 
-#if 0
--(NSString*)relativePathForResource:(NSString*)name{
-    /*
-    IUResourceFile *node = (IUResourceFile*)[self nodeWithName:name];
-    return node.relativePath;
-     */
+- (void)setResourceGroup:(IUResourceGroup*)resourceRootGroup{
+    _rootGroup = resourceRootGroup;
 }
 
--(NSString*)absolutePathForResource:(NSString*)name{
-    //FIXME:a
-    /*
-    IUResourceFile *node = (IUResourceFile*)[self nodeWithName:name];
-    return node.absolutePath;
-     */
+
+-(IUResourceFile*)resourceFileWithName:(NSString*)imageName{
+    for ( IUResourceGroup *group in _rootGroup.children) {
+        for ( IUResourceFile *file in group.children) {
+            if ([file.name isEqualToString:imageName]) {
+                return file;
+            }
+        }
+    }
+    return nil;
 }
+
+-(NSArray*)videoFiles{
+    return [_rootGroup.children[3] children];
+}
+
+-(NSArray*)imageFiles{
+    return [_rootGroup.children[0] children];
+}
+
 
 -(IUResourceFile*)insertResourceWithData:(NSData*)data type:(IUResourceType)type{
     assert(0);
     return nil;
 }
 
+#if 0
 
 -(IUResourceFile*)insertResourceWithContentOfPath:(NSString*)path type:(IUResourceType)type{
     
