@@ -29,7 +29,7 @@
 }
 
 - (void)awakeFromNib{
-    [[NSColorPanel sharedColorPanel] setShowsAlpha:YES];
+//    [[NSColorPanel sharedColorPanel] setShowsAlpha:YES];
     [NSColor setIgnoresAlpha:NO];
 
     [_bgColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBGColor] options:IUBindingDictNotRaisesApplicable];

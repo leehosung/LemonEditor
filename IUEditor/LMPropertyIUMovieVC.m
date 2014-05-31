@@ -85,6 +85,8 @@
         NSImage *thumbnail = [self thumbnailOfVideo:moviefileURL];
         
         if(thumbnail){
+            assert(0);
+            /*
             //save thumbnail
             NSString *videoname = [[videoFileName lastPathComponent] stringByDeletingPathExtension];
             NSString *thumbFileName = [[NSString alloc] initWithFormat:@"%@_thumbnail.png", videoname];
@@ -107,7 +109,7 @@
             [self setValue:@(thumbnail.size.width) forKeyPath:[self CSSBindingPath:IUCSSTagWidth]];
             [self setValue:@(thumbnail.size.height) forKeyPath:[self CSSBindingPath:IUCSSTagHeight]];
             
-            
+            */
         }
         
     }

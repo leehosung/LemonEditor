@@ -208,7 +208,7 @@
         return;
     }
     
-    IUBox *newIU = [[IUResponsiveSection alloc] initWithIdentifierManager:parent.identifierManager option:nil];
+    IUResponsiveSection *newIU = [[IUResponsiveSection alloc]  initWithProject:_document.project options:nil];
     if (newIU == nil) {
         assert(0);
     }

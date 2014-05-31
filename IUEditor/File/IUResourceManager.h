@@ -13,23 +13,24 @@
 
 @interface IUResourceManager : NSObject <IUCompilerResourceSource>
 
-@property (nonatomic) IUResourceGroup *rootNode;
+- (void)setResourceGroup:(IUResourceGroup*)resourceRootGroup;
+- (IUResourceFile*)insertResourceWithContentOfPath:(NSString*)path;
 
--(IUResourceFile*)insertResourceWithData:(NSData*)data type:(IUResourceType)type;
--(IUResourceFile*)insertResourceWithContentOfPath:(NSString*)path type:(IUResourceType)type;
+/**
+ @breif Getting contents in image resource group
+ @return Array of IUResourceFile
+ @note KVO-compliance
+ */
+-(NSArray*)imageFiles;
 
-//KVO compliance
--(NSArray*)imagePaths;
--(NSArray*)videoPaths;
--(NSArray*)imageNames;
--(NSArray *)videoNames;
--(NSArray*)resourceNodes;
+/**
+ @breif Getting contents in image resource group
+ @return Array of IUResourceFile
+ @note KVO-compliance
+ */
+-(NSArray*)videoFiles;
 
-- (IUResourceGroup *)imageNode;
-- (IUResourceGroup *)videoNode;
-- (IUResourceGroup *)jsNode;
-- (IUResourceGroup *)cssNode;
 
 -(IUResourceType)resourceType:(NSString *)anExtension;
--(IUResourceFile*)imageResourceNodeOfName:(NSString*)imageName;
+-(IUResourceFile*)resourceFileWithName:(NSString*)imageName;
 @end

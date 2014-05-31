@@ -120,8 +120,7 @@
     fileNaviVC = [[LMFileNaviVC alloc] initWithNibName:@"LMFileNaviVC" bundle:nil];
     [self bind:@"selectedNode" toObject:fileNaviVC withKeyPath:@"selection" options:nil];
     [self bind:@"documentController" toObject:fileNaviVC withKeyPath:@"documentController" options:nil];
-    //FIXME:
-//    [fileNaviVC setIdentifierManager:_identifierManager];
+
     [_leftBottomV addSubviewFullFrame:fileNaviVC.view];
     
     commandVC = [[LMCommandVC alloc] initWithNibName:@"LMCommandVC" bundle:nil];
@@ -170,6 +169,10 @@
     [eventVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
     [_eventV addSubviewFullFrame:eventVC.view];
     
+    
+    //top
+    topToolbarVC.documentController = fileNaviVC.documentController;
+    
 #pragma mark - inspector view
     [[NSUserDefaults standardUserDefaults] addObserver:self forKeyPath:@"showLeftInspector" options:NSKeyValueObservingOptionInitial context:nil];
     [[NSUserDefaults standardUserDefaults] addObserver:self forKeyPath:@"showRightInspector" options:NSKeyValueObservingOptionInitial context:nil];
@@ -205,12 +208,16 @@
 
 
 -(void)loadProject:(NSString*)path{
+    if (path == nil) {
+        return;
+    }
     //create project class
     _project = [IUProject projectWithContentsOfPath:path];
     NSError *error;
     assert(_project.path);
     assert(_project.pageDocuments);
-//    _project = [IUDjangoProject convertProject:_project setting:@{IUProjectKeyAppName:@"IUEditorHome", IUProjectKeyDirectory:@"/Users/jd/IUProjTemp/IUEditorHome"} error:&error];
+    assert(_project.identifierManager);
+    assert(_project.resourceManager);
     
     if (error) {
         assert(0);
@@ -228,14 +235,16 @@
     
     [_project copyResourceForDebug];
     
-    // vc setting
-    //construct toolbar
-    topToolbarVC.documentController = fileNaviVC.documentController;
     
+    
+    // vc setting
     //construct to file navi
     canvasVC.documentBasePath = _project.path;
+    canvasVC.resourceManager = _project.resourceManager;
     fileNaviVC.project = _project;
-    [fileNaviVC selectFirstDocument];
+    assert(widgetLibraryVC.project == nil);
+    widgetLibraryVC.project = _project;
+    
     
     //construct widget library vc
     [widgetLibraryVC setProject:_project];
@@ -252,6 +261,9 @@
     [[NSUserDefaults standardUserDefaults] setValue:path forKey:@"lastDocument"];
     [self.window setTitleWithRepresentedFilename:path];
     [self.window setTitle:[NSString stringWithFormat:@"[%@] %@", [_project.className substringFromIndex:2], _project.path]];
+    
+    //finished. load file
+    [fileNaviVC selectFirstDocument];
 }
 
 -(void)setSelectedNode:(NSObject*)selectedNode{
