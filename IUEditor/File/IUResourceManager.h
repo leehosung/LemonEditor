@@ -11,9 +11,8 @@
 #import "IUResourceFile.h"
 #import "IUCompilerResourceSource.h"
 
-@interface IUResourceManager : NSObject <IUCompilerResourceSource>
+@interface IUResourceManager : NSObject
 
-- (IUResourceGroup *)resourceGroup;
 - (void)setResourceGroup:(IUResourceGroup*)resourceRootGroup;
 - (IUResourceFile*)insertResourceWithContentOfPath:(NSString*)path;
 
@@ -38,6 +37,5 @@
  */
 -(NSArray*)imageAndVideoFiles;
 
--(IUResourceType)resourceType:(NSString *)anExtension;
 -(IUResourceFile*)resourceFileWithName:(NSString*)imageName;
 @end

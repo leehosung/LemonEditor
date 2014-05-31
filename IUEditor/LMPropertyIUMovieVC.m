@@ -79,12 +79,13 @@
             //FIXME: 모듈 이동하여야 함
             // thumbnail 관리, video thumbnail 요청 등은
             // IUMovie 쪽이 아니라 ResourceManager 에서 전담해야함
-            
+            /*
             NSString * moviefilePath = [self.resourceManager absolutePathForResource:videoFileName];
             moviefileURL = [NSURL fileURLWithPath:moviefilePath];
             
             NSString *relativePath = [self.resourceManager relativePathForResource:videoFileName];
             [self setValue:relativePath forKeyPath:[_controller keyPathFromControllerToProperty:@"videoPath"] ];
+             */
 
         }
         NSImage *thumbnail = [self thumbnailOfVideo:moviefileURL];

@@ -79,11 +79,7 @@
         for(int i = 0; i < [files count]; i++ )
         {
             NSURL* filePath = [files objectAtIndex:i];
-            IUResourceType type = [_manager resourceType:[filePath pathExtension]];
-            if(type == IUResourceTypeImage || type ==IUResourceTypeVideo){
-                [self addResource:filePath type:type];
-            }
-            
+            [_manager insertResourceWithContentOfPath:[filePath path]];
         }
     }
     
