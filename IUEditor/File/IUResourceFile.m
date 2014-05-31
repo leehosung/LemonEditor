@@ -31,11 +31,13 @@
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];
     _name = [aDecoder decodeObjectForKey:@"_name"];
+    _parent = [aDecoder decodeObjectForKey:@"_parent"];
     return self;
 }
 
 -(void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeObject:_name forKey:@"_name"];
+    [aCoder encodeObject:_parent forKey:@"_parent"];
 }
 
 -(NSString*)absolutePath{

@@ -13,6 +13,5 @@
 @property NSString *name;
 - (NSArray*)children;
 - (id <IUFile>) parent;
-- (NSArray*)allChildren;
 
 @end

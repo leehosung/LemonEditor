@@ -28,8 +28,6 @@
 -(NSArray*)widthWithCSS;
 -(IUBox *)selectableIUAtPoint:(CGPoint)point;
 
-- (IUProject*)project;
-
 @property IUDocumentGroup *group;
 
 @end

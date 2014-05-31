@@ -29,7 +29,7 @@
 
 -(void)setManager:(IUResourceManager *)manager{
     _manager = manager;
-    [_resourceArrayController bind:@"contentArray" toObject:manager withKeyPath:@"resourceNodes" options:nil];
+    [_resourceArrayController bind:@"contentArray" toObject:manager withKeyPath:@"imageAndVideoFiles" options:nil];
     [_collectionListV bind:@"content" toObject:_resourceArrayController withKeyPath:@"arrangedObjects" options:nil];
     [_collectionIconV bind:@"content" toObject:_resourceArrayController withKeyPath:@"arrangedObjects" options:nil];
 }
