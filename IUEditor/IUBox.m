@@ -377,6 +377,9 @@
 - (BOOL)shouldRemoveIU{
     return YES;
 }
+- (BOOL)shouldRemoveIUByUserInput{
+    return YES;
+}
 
 -(BOOL)removeIU:(IUBox *)iu{
     if([iu shouldRemoveIU]){

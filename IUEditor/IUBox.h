@@ -104,6 +104,7 @@
 -(BOOL)addIU:(IUBox *)iu error:(NSError**)error;
 -(BOOL)removeIUAtIndex:(NSUInteger)index;
 -(BOOL)removeIU:(IUBox *)iu;
+-(BOOL)shouldRemoveIUByUserInput;
 -(BOOL)changeIUIndex:(IUBox*)iu to:(NSUInteger)index error:(NSError**)error;
 
 -(BOOL)addIUReference:(IUBox *)iu error:(NSError**)error;

@@ -59,8 +59,11 @@
     unichar key = [[theEvent charactersIgnoringModifiers] characterAtIndex:0];
     if (key == NSDeleteCharacter) {
         for(IUBox *box in [self.IUController selectedObjects]){
-            [box.parent removeIU:box];
+            if([box shouldRemoveIUByUserInput]){
+                [box.parent removeIU:box];
+            }
         }
+        [self.IUController rearrangeObjects];
     }
 }
 

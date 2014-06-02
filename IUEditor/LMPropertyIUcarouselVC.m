@@ -19,6 +19,8 @@
 @property (weak) IBOutlet NSColorWell *deselectColor;
 @property (weak) IBOutlet NSComboBox *leftImageComboBox;
 @property (weak) IBOutlet NSComboBox *rightImageComboBox;
+@property (weak) IBOutlet NSTextField *countTF;
+@property (weak) IBOutlet NSStepper *countStepper;
 
 
 @end
@@ -50,6 +52,9 @@
     [_rightImageComboBox bind:NSContentBinding toObject:self withKeyPath:@"imageArray" options:IUBindingDictNotRaisesApplicable];
     [_leftImageComboBox bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"leftArrowImage"] options:IUBindingDictNotRaisesApplicable];
     [_rightImageComboBox bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"rightArrowImage"] options:IUBindingDictNotRaisesApplicable];
+    
+    [_countStepper bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"count"] options:IUBindingDictNotRaisesApplicable];
+    [_countTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"count"] options:IUBindingDictNotRaisesApplicable];
     
     
     [self addObserver:self forKeyPath:@"resourceManager.imageNames" options:NSKeyValueObservingOptionInitial context:@"image"];

@@ -43,6 +43,7 @@
     self =  [super initWithCoder:aDecoder];
     if(self){
         [aDecoder decodeToObject:self withProperties:[[IUCarousel class] properties]];
+        [self jsReloadForController];
     }
     return self;
 }
@@ -58,23 +59,31 @@
 
 
 -(void)setCount:(NSInteger)count{
+    
     assert(self.identifierManager != nil);
     if (count == 0 || count > 30) {
         return;
     }
-    while (_count > count) {
-        [self removeIUAtIndex:[self.children count]-1];
-        count++;
+    if(count <_count){
+        for(NSInteger i=count; _count > i; i++) {
+            [self removeIUAtIndex:[self.children count]-1];
+        }
     }
-    while (_count < count) {
+    else if(count > _count){
         IUCarouselItem *item = [[IUCarouselItem alloc] initWithProject:_project options:nil];
         [self.identifierManager setNewIdentifierAndRegister:item withKey:nil];
         item.name = @"Item";
         item.carousel = self;
         [self addIU:item error:nil];
-        count--;
     }
+    else{
+        return;
+    }
+    _count = count;
+    
     [self remakeChildrenHtmlID];
+    [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
+    [self jsReloadForController];
 }
 
 -(void)setName:(NSString *)name{
@@ -93,10 +102,6 @@
             [item setHtmlID:[NSString stringWithFormat:@"%@-%ld", self.name, [self.children indexOfObject:item]]];
         }
     }
-}
-
--(NSInteger)count{
-    return _count;
 }
 
 #pragma mark Inner CSS (Carousel)

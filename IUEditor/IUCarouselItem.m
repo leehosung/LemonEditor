@@ -13,8 +13,7 @@
 - (BOOL)shouldAddIUByUserInput{
     return YES;
 }
-
-- (BOOL)shouldRemoveIU{
+-(BOOL)shouldRemoveIUByUserInput{
     return NO;
 }
 
