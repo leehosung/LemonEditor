@@ -118,8 +118,11 @@
 
 - (void)removeSelectedIUs{
     for(IUBox *obj in self.controller.selectedObjects){
-        [obj.parent removeIU:obj];
+        if([obj shouldRemoveIUByUserInput]){
+            [obj.parent removeIU:obj];
+        }
     }
+    [self.controller rearrangeObjects];
 }
 
 -(void)insertImage:(NSString *)name atIU:(NSString *)identifier{
@@ -431,10 +434,7 @@
         
         [newElement setOuterHTML:html];
         
-        IUBox *iu = [_controller IUBoxByIdentifier:identifier];
-        if([iu isKindOfClass:[IUCarousel class]]){
-            [[self webView] insertNewCarousel:identifier];
-        }
+
         /*        //insert html
          DOMNodeList *list = [self getHTMLElementsByClassName:parentID];
          unsigned int listCount = [list length];
@@ -451,6 +451,12 @@
          [[self webView] insertNewCarousel:identifier];
          }
 */
+    }
+    IUBox *iu = [_controller IUBoxByIdentifier:identifier];
+    if([iu isKindOfClass:[IUCarousel class]]){
+        [[self webView] insertNewCarousel:identifier];
+        [self.controller rearrangeObjects];
+        [self.controller setSelectedObjectsByIdentifiers:@[identifier]];
     }
     
 //    JDDebugLog(@"%@:%@", identifier, html);

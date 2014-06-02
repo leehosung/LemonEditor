@@ -27,8 +27,5 @@ typedef enum{
 @property (nonatomic) NSColor *selectColor;
 @property (nonatomic) NSColor *deselectColor;
 @property (nonatomic) NSString *leftArrowImage, *rightArrowImage;
-
-- (void)setCount:(NSInteger)count;
-- (NSInteger)count;
-
+@property (nonatomic) NSInteger count;
 @end

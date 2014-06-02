@@ -10,7 +10,7 @@
 
 
 var carouselDict = {};
-var loadedCarouselArray = [];
+
 
 ;(function($){
 
@@ -1380,11 +1380,16 @@ var loadedCarouselArray = [];
 
 
 function insertNewCarousel(iuid){
+    var parentName = $('#bxslider_'+iuid).parent().attr('class');
     
-    if(loadedCarouselArray.indexOf(iuid) < 0 ){
+    
+    if(parentName != 'bx-viewport'){
         var newCarousel = $('#bxslider_'+iuid).bxSlider();
         carouselDict[iuid] = newCarousel;
-        loadedCarouselArray.push(iuid);
+    }
+    else{
+        var carousel = carouselDict[iuid];
+        carousel.redrawSlider();
     }
 }
 
