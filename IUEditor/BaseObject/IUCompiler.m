@@ -1019,14 +1019,17 @@ static NSString * IUCompilerTagOption = @"tag";
         
         value = cssTagDict[IUCSSTagImage];
         if(value){
+            NSString *imgSrc;
             if ([value isHTTPURL]) {
-                [dict putTag:@"background-image" string:[NSString stringWithFormat:@"url(%@)",value]];
+                imgSrc = [NSString stringWithFormat:@"url(%@)",value];
             }
             else {
                 NSString *resourcePath = [_resourceSource relativePathForResource:value];
-                [dict putTag:@"background-image" string:[resourcePath CSSURLString]];
+                imgSrc = [resourcePath CSSURLString];
             }
             
+            [dict putTag:@"background-image" string:imgSrc];
+
             IUBGSizeType bgSizeType = [cssTagDict[IUCSSTagBGSize] intValue];
             switch (bgSizeType) {
                 case IUBGSizeTypeCenter:
@@ -1140,7 +1143,18 @@ static NSString * IUCompilerTagOption = @"tag";
             color = [NSColor blackColor];
         }
         if (hOff || vOff || blur || spread){
-            [dict putTag:@"box-shadow" string:[NSString stringWithFormat:@"%ldpx %ldpx %ldpx %ldpx %@", hOff, vOff, blur, spread, [color rgbString]]];
+             [dict putTag:@"-moz-box-shadow" string:[NSString stringWithFormat:@"%ldpx %ldpx %ldpx %ldpx %@", hOff, vOff, blur, spread, [color rgbString]]];
+             [dict putTag:@"-webkit-box-shadow" string:[NSString stringWithFormat:@"%ldpx %ldpx %ldpx %ldpx %@", hOff, vOff, blur, spread, [color rgbString]]];
+             [dict putTag:@"box-shadow" string:[NSString stringWithFormat:@"%ldpx %ldpx %ldpx %ldpx %@", hOff, vOff, blur, spread, [color rgbString]]];
+            //for IE5.5-7
+            [dict putTag:@"filter" string:[NSString stringWithFormat:@"progid:DXImageTransform.Microsoft.Shadow(Strength=%ld, Direction=135, Color='%@')",spread, [color rgbString]]];
+//            [dict putTag:@"filter" string:[NSString stringWithFormat:@"progid:DXImageTransform.Microsoft.Blur(pixelradius=%ld)",blur]];
+
+            //for IE 8
+            [dict putTag:@"-ms-filter" string:[NSString stringWithFormat:@"\"progid:DXImageTransform.Microsoft.Shadow(Strength=%ld, Direction=135, Color='%@')",spread, [color rgbString]]];
+  //          [dict putTag:@"-ms-filter" string:[NSString stringWithFormat:@"\"progid:DXImageTransform.Microsoft.Blur(pixelradius=%ld)\"",blur]];
+
+
         }
         
         if([obj isKindOfClass:[IUText class]]|| [obj isKindOfClass:[IUTextField class]] || [obj isKindOfClass:[IUTextView class]] || [obj isKindOfClass:[IUPageLinkSet class]]){

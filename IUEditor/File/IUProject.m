@@ -306,6 +306,9 @@
     
     NSString *bxsliderJSPath = [[NSBundle mainBundle] pathForResource:@"jquery.bxslider" ofType:@"js"];
     [JSGroup addResourceFileWithContentOfPath:bxsliderJSPath];
+    
+    NSString *ieJSPath = [[NSBundle mainBundle] pathForResource:@"jquery.backgroundSize" ofType:@"js"];
+    [JSGroup addResourceFileWithContentOfPath:ieJSPath];
 }
 
 
