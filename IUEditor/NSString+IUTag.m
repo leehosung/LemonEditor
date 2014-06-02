@@ -50,7 +50,7 @@
 }
 
 - (NSString*)cssActiveClass{
-    return [NSString stringWithFormat:@".%@:active", self];
+    return [NSString stringWithFormat:@".%@.active", self];
 }
 
 @end

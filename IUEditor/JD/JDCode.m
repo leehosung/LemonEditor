@@ -74,6 +74,10 @@
     return [string copy];
 }
 
+-(NSUInteger)length{
+    return string.length;
+}
+
 - (void)pushIndent:(NSUInteger)aIndentLevel prependIndent:(BOOL)prepend{
     NSMutableString *aWhiteSpace = [NSMutableString string];
     [aWhiteSpace appendString:@" " multipleTimes:aIndentLevel*4];

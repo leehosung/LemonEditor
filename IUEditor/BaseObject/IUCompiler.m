@@ -327,10 +327,10 @@
     
     NSMutableDictionary *css = [NSMutableDictionary dictionary];
     if(iu.enableColor){
-        NSString *itemID = [NSString stringWithFormat:@"#%@pager-item", iu.htmlID];
-        [css setObject:[self cssContentForIUCarouselPager:iu hover:NO] forKey:itemID];
-        [css setObject:[self cssContentForIUCarouselPager:iu hover:YES] forKey:[itemID cssHoverClass]];
-        [css setObject:[self cssContentForIUCarouselPager:iu hover:YES] forKey:[itemID cssActiveClass]];
+        NSString *itemID = [NSString stringWithFormat:@"%@pager-item", iu.htmlID];
+        [css setObject:[[self cssContentForIUCarouselPager:iu hover:NO] string] forKey:[itemID cssClass]];
+        [css setObject:[[self cssContentForIUCarouselPager:iu hover:YES] string] forKey:[itemID cssHoverClass]];
+        [css setObject:[[self cssContentForIUCarouselPager:iu hover:YES] string] forKey:[itemID cssActiveClass]];
     }
     
     if([iu.leftArrowImage isEqualToString:@"Default"] == NO){
@@ -478,7 +478,8 @@ static NSString * IUCompilerTagOption = @"tag";
     }
 #pragma mark IUCarousel
     else if([iu isKindOfClass:[IUCarousel class]]){
-        [code addCodeLineWithFormat:@"<div %@>", [self HTMLAttributes:iu option:nil]];
+        IUCarousel *carousel = (IUCarousel *)iu;
+        [code addCodeLineWithFormat:@"<div %@ initCarousel='%@'>", [self HTMLAttributes:iu option:nil], [carousel carouselAttributes]];
         [code addCodeLineWithFormat:@"<ul class='bxslider' id='bxslider_%@'>\n", iu.htmlID];
         
         for(IUItem *item in iu.children){
@@ -674,7 +675,8 @@ static NSString * IUCompilerTagOption = @"tag";
     }
 #pragma mark IUCarousel
     else if([iu isKindOfClass:[IUCarousel class]]){
-        [code addCodeLineWithFormat:@"<div %@>", [self HTMLAttributes:iu option:nil]];
+        IUCarousel *carousel = (IUCarousel *)iu;
+        [code addCodeLineWithFormat:@"<div %@ initCarousel='%@'>", [self HTMLAttributes:iu option:nil], [carousel carouselAttributes]];
         [code addCodeLineWithFormat:@"<ul class='bxslider' id='bxslider_%@'>", iu.htmlID];
 
         for(IUItem *item in iu.children){

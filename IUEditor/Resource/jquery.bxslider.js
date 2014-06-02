@@ -1381,15 +1381,18 @@ var carouselDict = {};
 
 function insertNewCarousel(iuid){
     var parentName = $('#bxslider_'+iuid).parent().attr('class');
-    
-    
+    var propertyStr = $('#'+iuid).attr('initCarousel');
+    var property = eval("("+propertyStr+")")
     if(parentName != 'bx-viewport'){
-        var newCarousel = $('#bxslider_'+iuid).bxSlider();
+        var newCarousel = $('#bxslider_'+iuid).bxSlider(property);
         carouselDict[iuid] = newCarousel;
     }
     else{
         var carousel = carouselDict[iuid];
-        carousel.redrawSlider();
+        if(carousel == undefined){
+            carouselDict[iuid] = newCarousel;
+        }
+        carousel.reloadSlider(property);
     }
 }
 

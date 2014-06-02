@@ -353,8 +353,6 @@
     return [[self windowScriptObject] callWebScriptMethod:function withArguments:args];
 }
 - (void)insertNewCarousel:(NSString *)identifier{
-//    NSString *newCarouselFn = [NSString stringWithFormat:@"insertNewCarousel(%@)", identifier];
-//    NSString *result = [self stringByEvaluatingJavaScriptFromString:newCarouselFn];
     NSArray* args = [NSArray arrayWithObjects:
                      identifier,
                      nil];
