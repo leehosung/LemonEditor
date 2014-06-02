@@ -435,22 +435,6 @@
         [newElement setOuterHTML:html];
         
 
-        /*        //insert html
-         DOMNodeList *list = [self getHTMLElementsByClassName:parentID];
-         unsigned int listCount = [list length];
-         for(unsigned int i=0; i<listCount; i++){
-         DOMHTMLElement *selectHTMLElement = (DOMHTMLElement *)[list item:i];
-         
-         DOMHTMLElement *newElement = (DOMHTMLElement *)[self.DOMDoc createElement:[self tagWithHTML:html]];
-         [selectHTMLElement appendChild:newElement];
-         
-         [newElement setOuterHTML:html];
-         
-         IUBox *iu = [_controller IUBoxByIdentifier:identifier];
-         if([iu isKindOfClass:[IUCarousel class]]){
-         [[self webView] insertNewCarousel:identifier];
-         }
-*/
     }
     IUBox *iu = [_controller IUBoxByIdentifier:identifier];
     if([iu isKindOfClass:[IUCarousel class]]){

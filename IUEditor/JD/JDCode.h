@@ -19,6 +19,7 @@
 - (void)addCodeWithFormat:(NSString *)format, ...;
 - (void)addNewLine;
 - (NSString*)string;
+- (NSUInteger)length;
 
 - (void)pushIndent:(NSUInteger)indentLevel prependIndent:(BOOL)prepend;
 

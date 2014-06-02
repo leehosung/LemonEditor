@@ -42,7 +42,7 @@
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self =  [super initWithCoder:aDecoder];
     if(self){
-        [aDecoder decodeToObject:self withProperties:[[IUCarousel class] properties]];
+        [aDecoder decodeToObject:self withProperties:[[IUCarousel class] propertiesWithOutProperties:@[@"count"]]];
         [self jsReloadForController];
     }
     return self;
@@ -51,7 +51,7 @@
 
 -(void)encodeWithCoder:(NSCoder *)aCoder{
     [super encodeWithCoder:aCoder];
-    [aCoder encodeFromObject:self withProperties:[[IUCarousel class] properties]];
+    [aCoder encodeFromObject:self withProperties:[[IUCarousel class] propertiesWithOutProperties:@[@"count"]]];
     
 }
 
@@ -122,15 +122,15 @@
 
 - (void)cssForItemColor{
     NSString *itemID = [NSString stringWithFormat:@".%@pager-item", self.htmlID];
-    NSString *hoverItemID = [NSString stringWithFormat:@".%@:hover", itemID];
-    NSString *activeItemID = [NSString stringWithFormat:@".%@.active", itemID];
+    NSString *hoverItemID = [NSString stringWithFormat:@"%@:hover", itemID];
+    NSString *activeItemID = [NSString stringWithFormat:@"%@.active", itemID];
     
     if(self.enableColor){
-        [self.delegate IUClassIdentifier:itemID CSSUpdated:[self.project.compiler cssContentForIUCarouselPager:self hover:NO] forWidth:IUCSSMaxViewPortWidth];
+        [self.delegate IUClassIdentifier:itemID CSSUpdated:[[self.project.compiler cssContentForIUCarouselPager:self hover:NO] string] forWidth:IUCSSMaxViewPortWidth];
         
-        [self.delegate IUClassIdentifier:hoverItemID CSSUpdated:[self.project.compiler cssContentForIUCarouselPager:self hover:YES] forWidth:IUCSSMaxViewPortWidth];
+        [self.delegate IUClassIdentifier:hoverItemID CSSUpdated:[[self.project.compiler cssContentForIUCarouselPager:self hover:YES] string] forWidth:IUCSSMaxViewPortWidth];
         
-        [self.delegate IUClassIdentifier:activeItemID CSSUpdated:[self.project.compiler cssContentForIUCarouselPager:self hover:YES] forWidth:IUCSSMaxViewPortWidth];
+        [self.delegate IUClassIdentifier:activeItemID CSSUpdated:[[self.project.compiler cssContentForIUCarouselPager:self hover:YES] string] forWidth:IUCSSMaxViewPortWidth];
     }
     else{
         [self.delegate IUClassIdentifier:itemID CSSRemovedforWidth:IUCSSMaxViewPortWidth];
@@ -202,8 +202,14 @@
     [self jsReloadForController];
 }
 
-- (void)jsReloadForController{
+- (NSString *)carouselAttributes{
     NSString *jsArgs = [self.project.compiler outputJSArgs:self];
+    return jsArgs;
+}
+
+
+- (void)jsReloadForController{
+    NSString *jsArgs = [self carouselAttributes];
     if(jsArgs){
         [self.delegate callWebScriptMethod:@"reloadCarousels" withArguments:@[self.htmlID, jsArgs]];
     }
