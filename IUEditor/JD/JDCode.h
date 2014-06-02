@@ -17,6 +17,7 @@
 
 - (void)addCode:(JDCode*)code;
 - (void)addCodeWithFormat:(NSString *)format, ...;
+- (void)addNewLine;
 - (NSString*)string;
 
 - (void)pushIndent:(NSUInteger)indentLevel prependIndent:(BOOL)prepend;

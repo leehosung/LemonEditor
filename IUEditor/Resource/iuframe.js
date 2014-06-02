@@ -83,10 +83,6 @@ $(window).resize(function(){
 
 $(document).ready(function(){
                  console.log("ready : iuframe.js");
-                 resizePageContentHeight();
-                 resizeCollection();
-                 reframeCenter();
-				 resizePageLinkSet();
                  });
 
 

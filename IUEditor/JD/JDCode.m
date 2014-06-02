@@ -38,6 +38,10 @@
     [string appendString:newCode];
 }
 
+- (void)addNewLine{
+    [string appendString:@"\n"];
+}
+
 - (void)addCode:(JDCode*)code{
     [code pushIndent:indentLevel*4 prependIndent:YES];
     [string appendString:code.string];

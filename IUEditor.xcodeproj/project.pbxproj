@@ -111,6 +111,8 @@
 		3DA416C31935B29200559028 /* defaultFont.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DA416C21935B29200559028 /* defaultFont.plist */; };
 		3DA72903192B5ABC00203764 /* IUTextController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA72902192B5ABC00203764 /* IUTextController.m */; };
 		3DAEEDFD1938537700196A81 /* image_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DAEEDFC1938537700196A81 /* image_default.png */; };
+		3DAEEDFF193C36E600196A81 /* iuinit.js in Sources */ = {isa = PBXBuildFile; fileRef = 3DAEEDFE193C36E600196A81 /* iuinit.js */; };
+		3DAEEE00193C3D2500196A81 /* iuinit.js in Resources */ = {isa = PBXBuildFile; fileRef = 3DAEEDFE193C36E600196A81 /* iuinit.js */; };
 		3DB3ACC518EBEF180046DFB7 /* LMWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACC418EBEF180046DFB7 /* LMWindow.m */; };
 		3DB3ACCB18EBEF3D0046DFB7 /* SizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACC818EBEF3D0046DFB7 /* SizeView.m */; };
 		3DB3ACCC18EBEF3D0046DFB7 /* InnerSizeBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACCA18EBEF3D0046DFB7 /* InnerSizeBox.m */; };
@@ -611,6 +613,7 @@
 		3DA72901192B5ABC00203764 /* IUTextController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUTextController.h; sourceTree = "<group>"; };
 		3DA72902192B5ABC00203764 /* IUTextController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUTextController.m; sourceTree = "<group>"; };
 		3DAEEDFC1938537700196A81 /* image_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_default.png; sourceTree = "<group>"; };
+		3DAEEDFE193C36E600196A81 /* iuinit.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = iuinit.js; sourceTree = "<group>"; };
 		3DB3ACC318EBEF180046DFB7 /* LMWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMWindow.h; sourceTree = "<group>"; };
 		3DB3ACC418EBEF180046DFB7 /* LMWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMWindow.m; sourceTree = "<group>"; };
 		3DB3ACC718EBEF3D0046DFB7 /* SizeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizeView.h; sourceTree = "<group>"; };
@@ -1693,6 +1696,7 @@
 				3DB3ACEC18EBF7200046DFB7 /* iuframe.js */,
 				3DD9E97019122EAB0076BF4E /* iueditor.js */,
 				69B9A39A18E6B1860007D6E2 /* iu.js */,
+				3DAEEDFE193C36E600196A81 /* iuinit.js */,
 			);
 			name = JS;
 			sourceTree = "<group>";
@@ -2387,6 +2391,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DAEEE00193C3D2500196A81 /* iuinit.js in Resources */,
 				69D79B2F19138CB90020608D /* LMStartNewVC.xib in Resources */,
 				3DD9E97219123B3E0076BF4E /* iueditor.js in Resources */,
 				3DA416C31935B29200559028 /* defaultFont.plist in Resources */,
@@ -2798,6 +2803,7 @@
 				69757B0418D95BBC0095CBAC /* JDEnvUtil.m in Sources */,
 				3DB3ACE018EBEF5F0046DFB7 /* GuideLineLayer.m in Sources */,
 				69757B0B18D95BBC0095CBAC /* JDOutlineView.m in Sources */,
+				3DAEEDFF193C36E600196A81 /* iuinit.js in Sources */,
 				69CFCAB218E95A0C00E3048A /* LMResourceVC.m in Sources */,
 				69757B1518D95BBC0095CBAC /* NSTextField+DragAndDrop.m in Sources */,
 				3DED26D819010A6D001A1D67 /* LMPropertyIUBoxVC.m in Sources */,

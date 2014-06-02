@@ -182,7 +182,7 @@
 
 
     IUEventVariable *eventVariable = [[IUEventVariable alloc] init];
-    NSMutableString *initializeJSSource = [NSMutableString string];
+    JDCode *initializeJSSource = [[JDCode alloc] init];
 
     for (IUDocument *doc in self.allDocuments) {
         NSString *outputString = [doc outputSource];
@@ -194,18 +194,23 @@
         
         [eventVariable makeEventDictionary:doc];
         
-        [initializeJSSource appendFormat:@"/* Initialize %@ */\n", doc.name];
-        [initializeJSSource appendString:[doc outputInitJSSource]];
-        [initializeJSSource appendNewline];
+        [initializeJSSource addCodeLineWithFormat:@"/* Initialize %@ */\n", doc.name];
+        [initializeJSSource addCodeLine:[doc outputInitJSSource]];
+        [initializeJSSource addNewLine];
     }
     
     NSString *resourceJSPath = [self.directory stringByAppendingPathComponent:@"Resource/JS"];
     
     //make initialize javascript file
-    [initializeJSSource insertString:@"$(document).ready(function(){\nconsole.log('ready : iuinit.js');" atIndex:0];
-    [initializeJSSource appendString:@"\n});"];
+    
+    NSString *iuinitFilePath = [[NSBundle mainBundle] pathForResource:@"iuinit" ofType:@"js"];
+    
+    JDCode *sourceCode = [[JDCode alloc] initWithCodeString: [NSString stringWithContentsOfFile:iuinitFilePath encoding:NSUTF8StringEncoding error:nil]];
+    [sourceCode replaceCodeString:@"/*INIT_JS_REPLACEMENT*/" toCode:initializeJSSource];
+
+
     NSString *initializeJSPath = [[resourceJSPath stringByAppendingPathComponent:@"iuinit"] stringByAppendingPathExtension:@"js"];
-    if ([initializeJSSource writeToFile:initializeJSPath atomically:YES encoding:NSUTF8StringEncoding error:error] == NO){
+    if ([sourceCode.string writeToFile:initializeJSPath atomically:YES encoding:NSUTF8StringEncoding error:error] == NO){
         assert(0);
     }
 
