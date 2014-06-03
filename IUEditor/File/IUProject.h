@@ -26,7 +26,7 @@ static NSString * IUProjectKeyAppName = @"appName";
 static NSString * IUProjectKeyHeroku = @"heroku";
 static NSString * IUProjectKeyDirectory = @"dir";
 
-@interface IUProject : NSObject <IUFile>{
+@interface IUProject : NSObject <IUFile, IUResourcePathProtocol>{
     IUDocumentGroup *_pageGroup;
     IUDocumentGroup *_backgroundGroup;
     IUDocumentGroup *_classGroup;

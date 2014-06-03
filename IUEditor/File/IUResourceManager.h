@@ -23,6 +23,8 @@
  */
 -(NSArray*)imageFiles;
 
+-(NSString*)imageDirectory;
+
 /**
  @breif Getting contents in image resource group
  @return Array of IUResourceFile

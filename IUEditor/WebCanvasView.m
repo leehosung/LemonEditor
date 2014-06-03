@@ -12,6 +12,7 @@
 #import "LMCanvasView.h"
 #import "IUBox.h"
 #import "LMWC.h"
+#import "LMCanvasVC.h"
 
 @implementation WebCanvasView{
 }
@@ -58,7 +59,8 @@
  */
 - (BOOL)webCanvasPerformKeyEquivalent:(NSEvent *)theEvent{
     NSResponder *currentResponder = [[self window] firstResponder];
-    NSView *mainView = self.VC.view.mainView;
+    LMCanvasView *view = (LMCanvasView*) self.VC.view;
+    NSView *mainView = view.mainView;
     
     if([currentResponder isKindOfClass:[NSView class]]
        && [mainView hasSubview:(NSView *)currentResponder]){

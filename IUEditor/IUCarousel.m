@@ -214,6 +214,9 @@
     return jsArgs;
 }
 
+- (NSInteger)count{
+    return [self.children count];
+}
 
 - (void)jsReloadForController{
     NSString *jsArgs = [self carouselAttributes];

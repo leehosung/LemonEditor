@@ -132,9 +132,7 @@
     [_centerV addSubviewFullFrame:canvasVC.view];
     [canvasVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
     
-    //FIXME:
-//    canvasVC.resourceManager = _resourceManager;
-    self.window.canvasView =  (LMCanvasView *)canvasVC.view;
+    ((LMWindow*)(self.window)).canvasView =  (LMCanvasView *)canvasVC.view;
     [self bind:@"selectedTextRange" toObject:self withKeyPath:@"selectedTextRange" options:nil];
     
     topToolbarVC = [[LMTopToolbarVC alloc] initWithNibName:@"LMTopToolbarVC" bundle:nil];
@@ -148,10 +146,6 @@
     widgetLibraryVC = [[LMWidgetLibraryVC alloc] initWithNibName:@"LMWidgetLibraryVC" bundle:nil];
     [_widgetV addSubviewFullFrame:widgetLibraryVC.view];
     [widgetLibraryVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
-    
-    //FIXME:
-//    [widgetLibraryVC setIdentifierManager:_identifierManager];
-    
     
     resourceVC = [[LMResourceVC alloc] initWithNibName:@"LMResourceVC" bundle:nil];
     [_resourceV addSubviewFullFrame:resourceVC.view];
@@ -253,6 +247,7 @@
     NSArray *availableWidgetProperties = [NSArray arrayWithContentsOfFile:widgetFilePath];
     [widgetLibraryVC setWidgetProperties:availableWidgetProperties];
     iuInspectorVC.resourceManager = _project.resourceManager;
+    
 
     //FIXME: remove page documents
     //iuInspectorVC.pageDocumentNodes = _project.pageDocumentNodes;

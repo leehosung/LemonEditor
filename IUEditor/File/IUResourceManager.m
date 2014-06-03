@@ -46,6 +46,9 @@
     return [[self imageFiles] arrayByAddingObjectsFromArray:self.videoFiles];
 }
 
+-(NSString*)imageDirectory{
+    return [_rootGroup.children[0] absolutePath];
+}
 
 - (IUResourceFile*)insertResourceWithContentOfPath:(NSString*)path{
     NSString *fileName = [path lastPathComponent];

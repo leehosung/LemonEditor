@@ -55,6 +55,10 @@
     return _name;
 }
 
+-(NSString*)description{
+    return _name;
+}
+
 -(NSImage*)image{
     NSImage *image;
     NSString *pathExtension = [[_name pathExtension] lowercaseString];

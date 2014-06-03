@@ -12,7 +12,6 @@
 
 @property (weak) IBOutlet NSTextField *variableTF;
 @property (weak) IBOutlet NSTextField *altTextTF;
-@property (weak) IBOutlet NSComboBox *imageResourceComboBox;
 
 @end
 
@@ -31,9 +30,6 @@
     [_variableTF bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"variable"] options:IUBindingDictNotRaisesApplicable];
     [_altTextTF bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"altText"] options:IUBindingDictNotRaisesApplicable];
     
-    [_imageResourceComboBox bind:@"content" toObject:self withKeyPath:@"resourceManager.imageNames" options:IUBindingDictNotRaisesApplicable];
-    [_imageResourceComboBox bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"imageName"] options:IUBindingDictNotRaisesApplicable];
-
 }
 
 @end

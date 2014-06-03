@@ -10,6 +10,7 @@
 #import "IUFileProtocol.h"
 
 @protocol IUResourcePathProtocol <NSObject>
+@optional
 - (NSString*)relativePath;
 - (NSString*)absolutePath;
 @end

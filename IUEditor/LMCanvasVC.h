@@ -24,7 +24,6 @@
 @property _observing_ NSInteger selectedFrameWidth;
 @property _observing_ NSInteger maxFrameWidth;
 
-- (LMCanvasView*)view;
 - (void)addFrame:(NSInteger)frameSize;
 
 #pragma mark -

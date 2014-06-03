@@ -81,7 +81,7 @@
 }
 
 -(void)changeIUPageHeight:(CGFloat)pageHeight{
-    [self.view setHeightOfMainView:pageHeight];
+    [(LMCanvasView*)self.view setHeightOfMainView:pageHeight];
 }
 
 - (void)addFrame:(NSInteger)frameSize{
@@ -94,7 +94,7 @@
 
 
 - (SizeView *)sizeView{
-    return ((LMCanvasView *)self.view).sizeView;
+    return ((LMCanvasView *)(self.view)).sizeView;
     
 }
 

@@ -75,47 +75,35 @@
             [self setValue:moviefileURL.absoluteString forKeyPath:[_controller keyPathFromControllerToProperty:@"videoPath"] ];
         }
         else{
-            assert(0);
-            //FIXME: 모듈 이동하여야 함
-            // thumbnail 관리, video thumbnail 요청 등은
-            // IUMovie 쪽이 아니라 ResourceManager 에서 전담해야함
-            /*
-            NSString * moviefilePath = [self.resourceManager absolutePathForResource:videoFileName];
-            moviefileURL = [NSURL fileURLWithPath:moviefilePath];
+            IUResourceFile *videoFile = [self.resourceManager resourceFileWithName:videoFileName];
+            moviefileURL = [NSURL fileURLWithPath:videoFile.absolutePath];
             
-            NSString *relativePath = [self.resourceManager relativePathForResource:videoFileName];
+            NSString *relativePath = videoFile.relativePath;
             [self setValue:relativePath forKeyPath:[_controller keyPathFromControllerToProperty:@"videoPath"] ];
-             */
 
         }
         NSImage *thumbnail = [self thumbnailOfVideo:moviefileURL];
         
         if(thumbnail){
-            assert(0);
-            /*
             //save thumbnail
             NSString *videoname = [[videoFileName lastPathComponent] stringByDeletingPathExtension];
             NSString *thumbFileName = [[NSString alloc] initWithFormat:@"%@_thumbnail.png", videoname];
             
-            IUResourceGroup *imageGroupNode = [self.resourceManager imageNode];
-            NSString *imageAbsolutePath = [NSString stringWithFormat:@"%@/", imageGroupNode.absolutePath];
+            NSString *imageAbsolutePath = [NSString stringWithFormat:@"%@/", [self.resourceManager imageDirectory]];
             thumbFileName = [IUImageUtil writeToFile:thumbnail filePath:imageAbsolutePath fileName:thumbFileName checkFileName:NO];
             
             
             //save image resourceNode
             NSString *thumbImgPath = [NSString stringWithFormat:@"%@%@", imageAbsolutePath, thumbFileName];
-            [_resourceManager insertResourceWithContentOfPath:thumbImgPath type:IUResourceTypeImage];
+            [_resourceManager insertResourceWithContentOfPath:imageAbsolutePath];
             
             
-            
-            NSString *posterPath = [NSString stringWithFormat:@"%@/%@", imageGroupNode.relativePath, thumbFileName];
+            NSString *posterPath = [NSString stringWithFormat:@"Images/%@", thumbFileName];
             [self setValue:posterPath forKeyPath:[_controller keyPathFromControllerToProperty:@"posterPath"] ];
             
             
             [self setValue:@(thumbnail.size.width) forKeyPath:[self CSSBindingPath:IUCSSTagWidth]];
             [self setValue:@(thumbnail.size.height) forKeyPath:[self CSSBindingPath:IUCSSTagHeight]];
-            
-            */
         }
         
     }

@@ -26,7 +26,6 @@
 
 - (void)loadProject:(NSString*)path;
 
-- (LMWindow *)window;
 - (void)reloadCurrentDocument;
 
 - (void)addMQSize:(NSInteger)size;
