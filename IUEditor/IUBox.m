@@ -87,6 +87,7 @@
     [aCoder encodeObject:_m_children forKey:@"children"];
 }
 
+
 -(id)initWithProject:(IUProject*)project options:(NSDictionary*)options{
     self = [super init];
     _project = project;

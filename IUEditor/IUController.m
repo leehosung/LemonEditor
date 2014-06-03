@@ -11,6 +11,7 @@
 #import "NSTreeController+JDExtension.h"
 #import "NSIndexPath+JDExtension.h"
 #import "IUImport.h"
+#import "IUProject.h"
 
 @implementation IUController{
     NSArray     *pasteboard;
@@ -65,7 +66,7 @@
     for (IUBox *box in pasteboard) {
         NSError *err;
         IUBox *newBox = [box copy];
-        [box.identifierManager setNewIdentifierAndRegister:newBox withKey:@"copy"];
+        [box.project.identifierManager setNewIdentifierAndRegister:newBox withKey:@"copy"];
         assert(newBox.htmlID);
         newBox.name = [newBox.htmlID stringByReplacingOccurrencesOfString:@"copy" withString:@" copy"];
         for (NSNumber *width in newBox.css.allEditWidth) {

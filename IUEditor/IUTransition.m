@@ -52,12 +52,10 @@
     self = [super initWithProject:project options:options];
     if(self){
         _firstItem = [[IUItem alloc] initWithProject:project options:options];
-        _firstItem.htmlID = @"_temp_item1";
+        [self addIU:_firstItem error:nil];
         _secondItem = [[IUItem alloc] initWithProject:project options:options];
-        _secondItem.htmlID = @"_temp_item2";
         [_secondItem.css setValue:@(YES) forTag:IUCSSTagHidden];
         
-        [self addIU:_firstItem error:nil];
         [self addIU:_secondItem error:nil];
         self.currentEdit = 0;
         self.eventType = @"Click";

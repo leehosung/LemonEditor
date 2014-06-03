@@ -58,6 +58,7 @@
     
     LMWC *lmWC = [NSApp mainWindow].windowController;
     lmWC.pastedNewIU = obj;
+    JDInfoLog([obj description]);
     
     return YES;
 }

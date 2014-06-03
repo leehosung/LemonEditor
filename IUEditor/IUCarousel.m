@@ -59,7 +59,6 @@
 
 -(void)setCount:(NSInteger)count{
     
-    assert(self.identifierManager != nil);
     if (count == 0 || count > 30) {
         return;
     }
@@ -70,7 +69,7 @@
     }
     else if(count > _count){
         IUCarouselItem *item = [[IUCarouselItem alloc] initWithProject:_project options:nil];
-        [self.identifierManager setNewIdentifierAndRegister:item withKey:nil];
+        [_project.identifierManager setNewIdentifierAndRegister:item withKey:nil];
         item.name = @"Item";
         item.carousel = self;
         [self addIU:item error:nil];

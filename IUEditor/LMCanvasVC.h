@@ -80,4 +80,10 @@
 
 - (void)copy:(id)sender;
 - (void)paste:(id)sender;
+
+#if DEBUG
+- (void)applyHtmlString:(NSString *)html;
+- (void)reloadOriginalDocument;
+
+#endif
 @end

@@ -21,7 +21,20 @@
 #import "IUImport.h"
 #import "IUText.h"
 
+#pragma mark - debug
+#if DEBUG
+#import "LMDebugSourceWC.h"
+
+#endif
+
 @interface LMCanvasVC ()
+
+#pragma mark - debug window
+@property (weak) IBOutlet NSButton *debugBtn;
+#if DEBUG
+@property LMDebugSourceWC *debugWC;
+
+#endif
 
 @end
 
@@ -46,6 +59,14 @@
                                          @"document.ghostY",
                                          @"document.ghostOpacity"]
               options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew context:@"ghostImage"];
+#if DEBUG
+    
+    _debugWC = [[LMDebugSourceWC alloc] initWithWindowNibName:@"LMDebugSourceWC"];
+    _debugWC.canvasVC = self;
+    [_debugBtn setHidden:NO];
+#else
+    [_debugBtn setHidden:YES];
+#endif
 }
 
 
@@ -848,10 +869,24 @@
     return htmlSource;
 }
 
+#if DEBUG
+
+- (void)applyHtmlString:(NSString *)html{
+    [[[self webView] mainFrame] loadHTMLString:html baseURL:[NSURL fileURLWithPath:self.documentBasePath]];
+}
+
+- (void)reloadOriginalDocument{
+    [self setDocument:_document];
+}
+
 - (IBAction)showCurrentSource:(id)sender {
     NSString *htmlSource =  [(DOMHTMLElement *)[[[[self webView] mainFrame] DOMDocument] documentElement] outerHTML];
+    [_debugWC showWindow:self];
+    [_debugWC.codeTextView setString:htmlSource];
     NSLog(@"\n%@\n",htmlSource);
 }
+
+#endif
 
 - (void)copy:(id)sender{
     [self.controller copySelectedIUToPasteboard:self];

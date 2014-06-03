@@ -12,8 +12,6 @@
 #import "IUIdentifierManager.h"
 
 
-@class IUIdentifierManager;
-
 @protocol IUSourceDelegate <NSObject>
 @required
 @property _binding_ NSInteger selectedFrameWidth;
@@ -69,7 +67,6 @@
 - (void)fetch;
 
 // this is IU setting
-@property (nonatomic, weak) IUIdentifierManager *identifierManager;
 @property (nonatomic, copy) NSString *htmlID;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, weak) id<IUSourceDelegate> delegate;
