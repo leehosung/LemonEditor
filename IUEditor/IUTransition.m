@@ -23,25 +23,11 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         [aDecoder decodeToObject:self withProperties:[IUTransition properties]];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectionChanged:) name:IUNotificationSelectionChanged object:nil];
     }
     return self;
 }
 
--(void)selectionChanged:(NSNotification*)noti{
-    NSMutableSet *set = [NSMutableSet setWithArray:self.children];
-    [set intersectSet:[NSSet setWithArray:[noti userInfo][@"selectedObjects"]]];
-    if ([set count] != 1) {
-        return;
-    }
-    IUBox *box = [set anyObject];
-    if (box == _firstItem) {
-        [self setCurrentEdit:0];
-    }
-    else {
-        [self setCurrentEdit:1];
-    }
-}
+
 
 - (void)encodeWithCoder:(NSCoder *)aCoder{
     [super encodeWithCoder:aCoder];
@@ -60,6 +46,28 @@
     self.eventType = @"Click";
     self.animation = @"Overlap";
     return self;
+}
+
+- (void)fetch{
+    [super fetch];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectionChanged:) name:IUNotificationSelectionChanged object:nil];
+
+}
+
+
+-(void)selectionChanged:(NSNotification*)noti{
+    NSMutableSet *set = [NSMutableSet setWithArray:self.children];
+    [set intersectSet:[NSSet setWithArray:[noti userInfo][@"selectedObjects"]]];
+    if ([set count] != 1) {
+        return;
+    }
+    IUBox *box = [set anyObject];
+    if (box == _firstItem) {
+        [self setCurrentEdit:0];
+    }
+    else {
+        [self setCurrentEdit:1];
+    }
 }
 
 
