@@ -111,7 +111,6 @@
 		3DA416C31935B29200559028 /* defaultFont.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DA416C21935B29200559028 /* defaultFont.plist */; };
 		3DA72903192B5ABC00203764 /* IUTextController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA72902192B5ABC00203764 /* IUTextController.m */; };
 		3DAEEDFD1938537700196A81 /* image_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DAEEDFC1938537700196A81 /* image_default.png */; };
-		3DAEEDFF193C36E600196A81 /* iuinit.js in Sources */ = {isa = PBXBuildFile; fileRef = 3DAEEDFE193C36E600196A81 /* iuinit.js */; };
 		3DAEEE00193C3D2500196A81 /* iuinit.js in Resources */ = {isa = PBXBuildFile; fileRef = 3DAEEDFE193C36E600196A81 /* iuinit.js */; };
 		3DB3ACC518EBEF180046DFB7 /* LMWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACC418EBEF180046DFB7 /* LMWindow.m */; };
 		3DB3ACCB18EBEF3D0046DFB7 /* SizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ACC818EBEF3D0046DFB7 /* SizeView.m */; };
@@ -133,7 +132,7 @@
 		3DBC932E18F24FE000F217BD /* NSFlippedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBC932D18F24FE000F217BD /* NSFlippedView.m */; };
 		3DBC932F18F647EC00F217BD /* iu.js in Resources */ = {isa = PBXBuildFile; fileRef = 69B9A39A18E6B1860007D6E2 /* iu.js */; };
 		3DD9E97219123B3E0076BF4E /* iueditor.js in Resources */ = {isa = PBXBuildFile; fileRef = 3DD9E97019122EAB0076BF4E /* iueditor.js */; };
-		3DE9C448193C7D0C00CCE374 /* jquery.backgroundSize.js in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9C447193C7D0C00CCE374 /* jquery.backgroundSize.js */; };
+		3DE9C448193C7D0C00CCE374 /* jquery.backgroundSize.js in Resources */ = {isa = PBXBuildFile; fileRef = 3DE9C447193C7D0C00CCE374 /* jquery.backgroundSize.js */; };
 		3DED26491900D2DE001A1D67 /* align_center@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26481900D2DE001A1D67 /* align_center@2x.png */; };
 		3DED264B1900D2EE001A1D67 /* align_full@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED264A1900D2EE001A1D67 /* align_full@2x.png */; };
 		3DED265A1900D313001A1D67 /* view_collection@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED264C1900D313001A1D67 /* view_collection@2x.png */; };
@@ -2397,6 +2396,7 @@
 				3DAEEE00193C3D2500196A81 /* iuinit.js in Resources */,
 				69D79B2F19138CB90020608D /* LMStartNewVC.xib in Resources */,
 				3DD9E97219123B3E0076BF4E /* iueditor.js in Resources */,
+				3DE9C448193C7D0C00CCE374 /* jquery.backgroundSize.js in Resources */,
 				3DA416C31935B29200559028 /* defaultFont.plist in Resources */,
 				3DED276F190E3CAC001A1D67 /* jquery.bxslider.min.js in Resources */,
 				3DED2770190E3CAC001A1D67 /* jquery.bxslider.js in Resources */,
@@ -2775,7 +2775,6 @@
 				3DB3ACC518EBEF180046DFB7 /* LMWindow.m in Sources */,
 				69757B0918D95BBC0095CBAC /* JDLogUtil.m in Sources */,
 				69757B0318D95BBC0095CBAC /* JDDateTimeUtil.m in Sources */,
-				3DE9C448193C7D0C00CCE374 /* jquery.backgroundSize.js in Sources */,
 				3DED26DD19010B56001A1D67 /* LMPropertyIUHTMLVC.m in Sources */,
 				69757B0018D95BBC0095CBAC /* CALayer+JDExtension.m in Sources */,
 				69757B0718D95BBC0095CBAC /* JDHerokuUtil.m in Sources */,
@@ -2807,7 +2806,6 @@
 				69757B0418D95BBC0095CBAC /* JDEnvUtil.m in Sources */,
 				3DB3ACE018EBEF5F0046DFB7 /* GuideLineLayer.m in Sources */,
 				69757B0B18D95BBC0095CBAC /* JDOutlineView.m in Sources */,
-				3DAEEDFF193C36E600196A81 /* iuinit.js in Sources */,
 				69CFCAB218E95A0C00E3048A /* LMResourceVC.m in Sources */,
 				69757B1518D95BBC0095CBAC /* NSTextField+DragAndDrop.m in Sources */,
 				3DED26D819010A6D001A1D67 /* LMPropertyIUBoxVC.m in Sources */,
