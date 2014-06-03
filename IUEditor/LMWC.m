@@ -63,12 +63,14 @@
 
 //Right-bottom
 @property (weak) IBOutlet NSTabView *widgetTabV;
-
+@property (weak) IBOutlet NSMatrix *clickWidgetTabMatrix;
 @property (weak) IBOutlet NSView *widgetV;
 @property (weak) IBOutlet NSView *resourceV;
 
 //canvas
 @property (weak) IBOutlet NSView *centerV;
+@property (weak) IBOutlet NSMatrix *propertyMatrix;
+@property (weak) IBOutlet NSMatrix *widgetMatrix;
 
 @end
 
@@ -171,6 +173,37 @@
     [[NSUserDefaults standardUserDefaults] addObserver:self forKeyPath:@"showLeftInspector" options:NSKeyValueObservingOptionInitial context:nil];
     [[NSUserDefaults standardUserDefaults] addObserver:self forKeyPath:@"showRightInspector" options:NSKeyValueObservingOptionInitial context:nil];
     
+}
+
+
+- (void)awakeFromNib{
+    NSCell *cell = [self.propertyMatrix cellAtRow:0 column:0];
+    [self.propertyMatrix setToolTip:@"Appearance" forCell:cell];
+    
+    NSCell *cell2 = [self.propertyMatrix cellAtRow:0 column:1];
+    [self.propertyMatrix setToolTip:@"Property" forCell:cell2];
+
+    NSCell *cell3 = [self.propertyMatrix cellAtRow:0 column:2];
+    [self.propertyMatrix setToolTip:@"Event" forCell:cell3];
+
+    
+    NSCell *cell4 = [self.widgetMatrix cellAtRow:0 column:0];
+    [self.widgetMatrix setToolTip:@"Widget" forCell:cell4];
+    
+    NSCell *cell5 = [self.widgetMatrix cellAtRow:0 column:1];
+    [self.widgetMatrix setToolTip:@"Library" forCell:cell5];
+    
+    NSCell *cell6 = [self.widgetMatrix cellAtRow:0 column:2];
+    [self.widgetMatrix setToolTip:@"Clipart" forCell:cell6];
+    
+    
+    NSCell *cell7 = [self.clickWidgetTabMatrix cellAtRow:0 column:0];
+    [self.clickWidgetTabMatrix setToolTip:@"Primary Widget" forCell:cell7];
+    
+    NSCell *cell8 = [self.clickWidgetTabMatrix cellAtRow:0 column:1];
+    [self.clickWidgetTabMatrix setToolTip:@"Secondary Widget" forCell:cell8];
+    
+
 }
 
 -(void)showLeftInspectorDidChange:(NSDictionary *)change{
