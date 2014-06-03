@@ -33,10 +33,12 @@
 }
 
 -(NSArray*)videoFiles{
+    assert(_rootGroup.children[1]);
     return [_rootGroup.children[1] children];
 }
 
 -(NSArray*)imageFiles{
+    assert(_rootGroup.children[0]);
     return [_rootGroup.children[0] children];
 }
 
