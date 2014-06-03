@@ -93,10 +93,10 @@
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <font key="titleFont" metaFont="system"/>
                     </box>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4hZ-s8-0wQ">
-                        <rect key="frame" x="4" y="-6" width="246" height="28"/>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4hZ-s8-0wQ">
+                        <rect key="frame" x="4" y="8" width="204" height="14"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="103" id="QtO-9S-HGB"/>
+                            <constraint firstAttribute="width" constant="200" id="QtO-9S-HGB"/>
                             <constraint firstAttribute="height" constant="14" id="WQF-XA-YmI"/>
                         </constraints>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Advanced Property" id="SOE-Mt-eew">

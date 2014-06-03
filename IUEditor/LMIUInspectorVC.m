@@ -179,6 +179,13 @@
     if(self.controller.selection == nil){
         return;
     }
+    //change name
+    if(self.controller.selectedObjects.count ==1){
+        [_advancedTF setStringValue:[self.controller.selection className]];
+    }
+    else{
+        [_advancedTF setStringValue:@"Advanced Property"];
+    }
     
     //find current view
     NSArray *classPedigree = [self.controller selectedPedigree];
@@ -199,8 +206,8 @@
     }
     
     //add textVC if has text
-    if([((IUBox *)self.controller.selection) hasText]){
-        [viewArray addObject:textVC.view];
+    if(self.controller.selectedObjects.count == 0 && [((IUBox *)self.controller.selection) hasText]){
+        [viewArray insertObject:textVC.view atIndex:0];
     }
     
     //make advanced view
