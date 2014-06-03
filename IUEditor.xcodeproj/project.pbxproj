@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2608C1DF193DE6BC00DD1B42 /* warning.png in Resources */ = {isa = PBXBuildFile; fileRef = 2608C1DD193DE6BC00DD1B42 /* warning.png */; };
+		2608C1E0193DE6BC00DD1B42 /* warning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2608C1DE193DE6BC00DD1B42 /* warning@2x.png */; };
 		2628C91C1919C8C800D9D8CD /* tab_primary_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 2628C9141919C8C800D9D8CD /* tab_primary_off.png */; };
 		2628C91D1919C8C800D9D8CD /* tab_primary_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2628C9151919C8C800D9D8CD /* tab_primary_off@2x.png */; };
 		2628C91E1919C8C800D9D8CD /* tab_primary_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 2628C9161919C8C800D9D8CD /* tab_primary_on.png */; };
@@ -502,6 +504,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2608C1DD193DE6BC00DD1B42 /* warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = warning.png; sourceTree = "<group>"; };
+		2608C1DE193DE6BC00DD1B42 /* warning@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "warning@2x.png"; sourceTree = "<group>"; };
 		2628C9141919C8C800D9D8CD /* tab_primary_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_primary_off.png; sourceTree = "<group>"; };
 		2628C9151919C8C800D9D8CD /* tab_primary_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_primary_off@2x.png"; sourceTree = "<group>"; };
 		2628C9161919C8C800D9D8CD /* tab_primary_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_primary_on.png; sourceTree = "<group>"; };
@@ -1317,6 +1321,8 @@
 		3D54D64718ED5D1B00B5FEC2 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				2608C1DD193DE6BC00DD1B42 /* warning.png */,
+				2608C1DE193DE6BC00DD1B42 /* warning@2x.png */,
 				690A826C190A2CC200DDBA86 /* new_default@2x.png */,
 				3DAEEDFC1938537700196A81 /* image_default.png */,
 				690A826D190A2CC200DDBA86 /* new_django@2x.png */,
@@ -2484,6 +2490,7 @@
 				3DF803DB18FE62C900913505 /* panel_right.png in Resources */,
 				CBFBE685192AF32E00F03F76 /* sampleTemplate.plist in Resources */,
 				265BC57A190FA9B600A1758F /* controller@2x.png in Resources */,
+				2608C1E0193DE6BC00DD1B42 /* warning@2x.png in Resources */,
 				3DF803EE18FE62C900913505 /* grid.png in Resources */,
 				2628C9231919C8C800D9D8CD /* tab_secondary_on@2x.png in Resources */,
 				3DF8043718FE62FC00913505 /* tool_image.png in Resources */,
@@ -2625,6 +2632,7 @@
 				2628C936191A361800D9D8CD /* tool_submit.png in Resources */,
 				267CB195190F93370079E565 /* tab_appearance_on.png in Resources */,
 				3DED26911900D329001A1D67 /* stack_carousel@2x.png in Resources */,
+				2608C1DF193DE6BC00DD1B42 /* warning.png in Resources */,
 				2672A0A719120A650050043E /* stack_collection.png in Resources */,
 				3DED265C1900D313001A1D67 /* view_list@2x.png in Resources */,
 				2628C932191A360200D9D8CD /* stack_submit.png in Resources */,

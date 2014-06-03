@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
     </dependencies>
@@ -42,7 +42,7 @@
                                 <color key="color" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                             </colorWell>
                             <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="z2G-4F-eKG">
-                                <rect key="frame" x="6" y="0.0" width="264" height="5"/>
+                                <rect key="frame" x="6" y="0.0" width="264" height="4"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -61,12 +61,23 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <imageView toolTip="IE8 not supported" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ebf-DC-0uk">
+                                <rect key="frame" x="54" y="10" width="13" height="12"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="0gY-ly-qBd"/>
+                                    <constraint firstAttribute="width" constant="13" id="vzn-cr-1Kc"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="warning" id="lQ1-0E-l4j"/>
+                            </imageView>
                         </subviews>
                     </view>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="EWp-qK-gmi" secondAttribute="trailing" constant="10" id="2Pd-6p-Ihp"/>
                         <constraint firstItem="PuE-Qi-0lO" firstAttribute="top" secondItem="EHG-kf-12d" secondAttribute="top" constant="7" id="A1R-aG-KVQ"/>
                         <constraint firstItem="PuE-Qi-0lO" firstAttribute="leading" secondItem="EHG-kf-12d" secondAttribute="leading" constant="6" id="BuN-O0-Z2c"/>
+                        <constraint firstItem="ebf-DC-0uk" firstAttribute="top" secondItem="EHG-kf-12d" secondAttribute="top" constant="8" id="V2o-ym-s5v"/>
+                        <constraint firstItem="ebf-DC-0uk" firstAttribute="leading" secondItem="PuE-Qi-0lO" secondAttribute="trailing" id="aHO-f5-3uv"/>
                         <constraint firstAttribute="height" constant="30" id="b08-Cv-8Li"/>
                         <constraint firstItem="EWp-qK-gmi" firstAttribute="top" secondItem="EHG-kf-12d" secondAttribute="top" constant="2" id="chR-jN-heX"/>
                     </constraints>
@@ -275,4 +286,7 @@
         </colorWell>
         <userDefaultsController representsSharedInstance="YES" id="vuW-ma-3L4"/>
     </objects>
+    <resources>
+        <image name="warning" width="13" height="12"/>
+    </resources>
 </document>
