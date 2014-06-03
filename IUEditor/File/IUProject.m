@@ -61,6 +61,7 @@
         _name = [aDecoder decodeObjectForKey:@"_name"];
         
         [_resourceManager setResourceGroup:_resourceGroup];
+        [_identifierManager registerIUs:self.allDocuments];
     }
     return self;
 }

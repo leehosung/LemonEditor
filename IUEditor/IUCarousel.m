@@ -41,7 +41,9 @@
     self =  [super initWithCoder:aDecoder];
     if(self){
         [aDecoder decodeToObject:self withProperties:[[IUCarousel class] propertiesWithOutProperties:@[@"count"]]];
-        [self jsReloadForController];
+        if (self.delegate) {
+            [self jsReloadForController];
+        }
     }
     return self;
 }
@@ -171,32 +173,40 @@
     else if(type == IUCarouselArrowRight){
         arrowID = @"bx-next";
     }
-    NSDictionary *dict = [self.project.compiler cssDictionaryForIUCarousel:self];
-    for(NSString *identifier in dict.allKeys){
-        if([identifier containsString:arrowID]){
-            if(change){
-                [self.delegate IUClassIdentifier:identifier CSSUpdated:[dict objectForKey:identifier] forWidth:self.css.editWidth];
+    if (self.delegate) {
+        NSDictionary *dict = [self.project.compiler cssDictionaryForIUCarousel:self];
+        for(NSString *identifier in dict.allKeys){
+            if([identifier containsString:arrowID]){
+                if(change){
+                    [self.delegate IUClassIdentifier:identifier CSSUpdated:[dict objectForKey:identifier] forWidth:self.css.editWidth];
+                }
+                else{
+                    [self.delegate IUClassIdentifier:identifier CSSRemovedforWidth:self.css.editWidth];
+                    
+                }
+                break;
             }
-            else{
-                [self.delegate IUClassIdentifier:identifier CSSRemovedforWidth:self.css.editWidth];
-                
-            }
-            break;
         }
     }
 }
 #pragma mark JS reload
 - (void)setAutoplay:(BOOL)autoplay{
     _autoplay = autoplay;
-    [self jsReloadForController];
+    if (self.delegate) {
+        [self jsReloadForController];
+    }
 }
 - (void)setDisableArrowControl:(BOOL)disableArrowControl{
     _disableArrowControl = disableArrowControl;
-    [self jsReloadForController];
+    if (self.delegate) {
+        [self jsReloadForController];
+    }
 }
 - (void)setControlType:(IUCarouselControlType)controlType{
     _controlType = controlType;
-    [self jsReloadForController];
+    if (self.delegate) {
+        [self jsReloadForController];
+    }
 }
 
 - (NSString *)carouselAttributes{

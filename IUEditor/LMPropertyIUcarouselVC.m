@@ -31,7 +31,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        _imageArray = [NSArray arrayWithObject:@"Default"];
     }
     return self;
 }
@@ -58,15 +57,12 @@
     
     
     [self addObserver:self forKeyPath:@"resourceManager.imageNames" options:NSKeyValueObservingOptionInitial context:@"image"];
+    self.imageArray = [_resourceManager.imageFiles valueForKey:@"name"];
+
 }
 
 -(void)imageContextDidChange:(NSDictionary *)change{
-    assert(0);
-    /*
-    [self willChangeValueForKey:@"imageArray"];
-    _imageArray = [@[@"Default"] arrayByAddingObjectsFromArray:self.resourceManager.imageNames];
-    [self didChangeValueForKey:@"imageArray"];
-     */
+    self.imageArray = _resourceManager.imageFiles;
 }
 
 @end
