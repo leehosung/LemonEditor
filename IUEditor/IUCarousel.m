@@ -12,7 +12,6 @@
 #import "IUProject.h"
 
 @implementation IUCarousel{
-    NSInteger   _count;
 }
 
 - (id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
@@ -62,12 +61,13 @@
     if (count == 0 || count > 30) {
         return;
     }
-    if(count <_count){
-        for(NSInteger i=count; _count > i; i++) {
+    if( count < self.children.count ){
+        NSInteger diff = self.children.count - count;
+        for( NSInteger i=0 ; i < diff ; i++ ) {
             [self removeIUAtIndex:[self.children count]-1];
         }
     }
-    else if(count > _count){
+    else if(count > self.children.count) {
         IUCarouselItem *item = [[IUCarouselItem alloc] initWithProject:self.project options:nil];
         [self.project.identifierManager setNewIdentifierAndRegisterToTemp:item withKey:nil];
         item.name = @"Item";
@@ -77,7 +77,6 @@
     else{
         return;
     }
-    _count = count;
     
     [self remakeChildrenHtmlID];
     [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];

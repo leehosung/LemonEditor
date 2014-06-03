@@ -10,6 +10,4 @@
 
 @protocol IUCompilerResourceSource
 @required
--(NSString*)relativePathForResource:(NSString*)name;
--(NSString*)absolutePathForResource:(NSString*)name;
 @end

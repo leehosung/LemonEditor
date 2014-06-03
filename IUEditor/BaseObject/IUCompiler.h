@@ -11,6 +11,7 @@
 #import "IUCarousel.h"
 #import "IUCompilerResourceSource.h"
 #import "JDCode.h"
+#import "IUResourceManager.h"
 
 @class IUDocument;
 @class IUResourceManager;
@@ -22,7 +23,7 @@ typedef enum _IUCompileRule{
 
 @interface IUCompiler : NSObject
 
-@property id <IUCompilerResourceSource> resourceSource;
+@property IUResourceManager *resourceManager;
 @property IUCompileRule    rule;
 
 //build source

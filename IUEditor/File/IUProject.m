@@ -49,7 +49,7 @@
         _identifierManager = [[IUIdentifierManager alloc] init];
         _compiler = [[IUCompiler alloc] init];
         _resourceManager = [[IUResourceManager alloc] init];
-        _compiler.resourceSource = _resourceManager;
+        _compiler.resourceManager = _resourceManager;
         
         _mqSizes = [[aDecoder decodeObjectForKey:@"mqSizes"] mutableCopy];
         _buildPath = [aDecoder decodeObjectForKey:@"_buildPath"];
@@ -98,7 +98,7 @@
     _buildPath = @"build";
     _compiler = [[IUCompiler alloc] init];
     _resourceManager = [[IUResourceManager alloc] init];
-    _compiler.resourceSource = _resourceManager;
+    _compiler.resourceManager = _resourceManager;
     _identifierManager = [[IUIdentifierManager alloc] init];
     
     self.name = [options objectForKey:IUProjectKeyAppName];

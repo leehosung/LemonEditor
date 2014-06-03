@@ -281,9 +281,10 @@
         arrowImage = [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:imageName]];
     }
     else{
-        NSString *imageRelativePath = [_resourceSource relativePathForResource:imageName];
+        IUResourceFile *file = [_resourceManager resourceFileWithName:imageName];
+        NSString *imageRelativePath = [file relativePath];
         [css appendFormat:@"background:%@ ;", [imageRelativePath CSSURLString]];
-        NSString *imageAbsolutePath = [_resourceSource absolutePathForResource:imageName];
+        NSString *imageAbsolutePath = [file absolutePath];
         arrowImage = [[NSImage alloc] initWithContentsOfFile:imageAbsolutePath];
     }
     
@@ -876,7 +877,7 @@ static NSString * IUCompilerTagOption = @"tag";
 
 
 -(IUCSSStringDictionary*)cssStringDictionaryWithCSSTagDictionary:(NSDictionary*)cssTagDict ofClass:(IUBox*)obj isHover:(BOOL)isHover{
-    if (_resourceSource == nil) {
+    if (_resourceManager == nil) {
         assert(0);
     }
     IUCSSStringDictionary *dict = [IUCSSStringDictionary dictionary];
@@ -1026,8 +1027,8 @@ static NSString * IUCompilerTagOption = @"tag";
                 imgSrc = [NSString stringWithFormat:@"url(%@)",value];
             }
             else {
-                NSString *resourcePath = [_resourceSource relativePathForResource:value];
-                imgSrc = [resourcePath CSSURLString];
+                IUResourceFile *file = [self.resourceManager resourceFileWithName:value];
+                imgSrc = [[file relativePath] CSSURLString];
             }
             
             [dict putTag:@"background-image" string:imgSrc];
@@ -1348,8 +1349,8 @@ static NSString * IUCompilerTagOption = @"tag";
         }else{
             //image tag attributes
             if(iuImage.imageName){
-                NSString *imagePath = [_resourceSource relativePathForResource:iuImage.imageName];
-                [retString appendFormat:@" src='%@'", imagePath];
+                IUResourceFile *file = [self.resourceManager resourceFileWithName:iuImage.imageName];
+                [retString appendFormat:@" src='%@'", file.relativePath];
             }
             if(iuImage.altText){
                 [retString appendFormat:@" alt='%@'", iuImage.altText];

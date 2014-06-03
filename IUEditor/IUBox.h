@@ -57,7 +57,15 @@
 
 
 -(id)initWithProject:(IUProject*)project options:(NSDictionary*)options;
+
+
 -(IUDocument *)document;
+
+
+/**
+ @brief return project of box
+ @note if iu is not confirmed, return project argument at initialize process
+ */
 -(IUProject *)project;
 
 - (void)fetch;

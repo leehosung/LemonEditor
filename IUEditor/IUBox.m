@@ -26,6 +26,7 @@
     NSPoint originalPoint;
     NSSize originalSize;
     NSSize originalPercentSize;
+    IUProject *_tempProject;
 }
 
 - (id)copyWithZone:(NSZone *)zone{
@@ -90,6 +91,7 @@
 
 -(id)initWithProject:(IUProject*)project options:(NSDictionary*)options{
     self = [super init];
+    _tempProject = project;
     _css = [[IUCSS alloc] init];
     _css.delegate = self;
     _event = [[IUEvent alloc] init];
@@ -351,7 +353,15 @@
 }
 
 - (IUProject *)project{
-    return self.document.group.project;
+    if (self.document.group.project) {
+        return self.document.group.project;
+    }
+    else if (_tempProject) {
+        //not assigned to document
+        return _tempProject;
+    }
+    assert(0);
+    return nil;
 }
 
 -(NSString*)description{
@@ -562,8 +572,9 @@
         [self.css eradicateTag:IUCSSTagX];
         [self.css eradicateTag:IUCSSTagY];
     }
-    
-    [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+    if (self.delegate) {
+        [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+    }
 }
 
 - (BOOL)centerChangeable{
@@ -575,7 +586,9 @@
     if (center) {
         [self.css eradicateTag:IUCSSTagX];
     }
-    [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
+    if (self.delegate) {
+        [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
+    }
 }
 
 
@@ -583,15 +596,13 @@
     _flow = flow;
     [self.css eradicateTag:IUCSSTagX];
     [self.css eradicateTag:IUCSSTagY];
-    
-    [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
-    
-    
-    //중간에 set된 flow가 있으면 제대로 맞추기 위해서 html reload
-    if(_flow){
-        [self.delegate IUHTMLIdentifier:self.parent.htmlID HTML:self.parent.html withParentID:self.parent.parent.htmlID];
+    if (self.delegate) {
+        [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+        //중간에 set된 flow가 있으면 제대로 맞추기 위해서 html reload
+        if(_flow){
+            [self.delegate IUHTMLIdentifier:self.parent.htmlID HTML:self.parent.html withParentID:self.parent.parent.htmlID];
+        }
     }
-
 }
 
 //iucontroller & inspectorVC sync가 안맞는듯.
