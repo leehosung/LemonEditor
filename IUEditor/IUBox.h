@@ -125,6 +125,7 @@
 -(BOOL)hasY;
 -(BOOL)hasWidth;
 -(BOOL)hasHeight;
+- (BOOL)hasText;
 
 -(BOOL)shouldAddIUByUserInput;
 

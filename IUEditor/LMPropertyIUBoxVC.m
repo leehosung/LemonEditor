@@ -17,12 +17,10 @@
 
 @property (weak) IBOutlet NSComboBox *linkCB;
 @property (weak) IBOutlet NSPopUpButton *divPopupBtn;
-@property (weak) IBOutlet NSTextField *textVariableTF;
 @property (weak) IBOutlet NSTextField *pgVisibleTF;
 
 @property (weak) IBOutlet NSTextField *opacityMoveTF;
 @property (weak) IBOutlet NSTextField *xPosMoveTF;
-@property (weak) IBOutlet NSMatrix *textTypeMatrix;
 
 @end
 
@@ -40,13 +38,11 @@
 - (void)awakeFromNib{
     [_pageDocumentAC bind:NSContentArrayBinding toObject:self withKeyPath:@"pageDocumentNodes" options:nil];
     [_linkCB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"link"] options:IUBindingDictNotRaisesApplicable];
-    [_textVariableTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"textVariable"] options:IUBindingDictNotRaisesApplicable];
     [_divPopupBtn bind:NSSelectedValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"divLink"] options:IUBindingDictNotRaisesApplicable];
     [_pgVisibleTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"pgVisibleCondition"] options:IUBindingDictNotRaisesApplicable];
 
     [_opacityMoveTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"opacityMove"] options:IUBindingDictNotRaisesApplicable];
     [_xPosMoveTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"xPosMove"] options:IUBindingDictNotRaisesApplicable];
-    [_textTypeMatrix bind:NSSelectedIndexBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"textType"] options:IUBindingDictNotRaisesApplicable];
 
     [self.controller addObserver:self forKeyPath:@"selection" options:NSKeyValueObservingOptionInitial context:nil];
 

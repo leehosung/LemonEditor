@@ -25,7 +25,8 @@
 #import "LMPropertyIUTextViewVC.h"
 #import "LMPropertyIUPageLinkSetVC.h"
 #import "LMPropertyIUPageVC.h"
-
+#import "LMPropertyIUFormVC.h"
+#import "LMPropertyIUTextVC.h"
 
 
 @interface LMIUInspectorVC (){
@@ -49,6 +50,9 @@
     LMPropertyIUTextViewVC *propertyIUTextViewVC;
     LMPropertyIUPageLinkSetVC *propertyIUPageLinkSetVC;
     LMPropertyIUPageVC * propertyIUPageVC;
+    
+    LMPropertyIUFormVC *propertyIUFormVC;
+    LMPropertyIUTextVC *textVC;
     
     NSArray *propertyVCArray;
     NSInteger countOfAdvanced;
@@ -90,6 +94,9 @@
         
         propertyIUPageLinkSetVC = [[LMPropertyIUPageLinkSetVC alloc] initWithNibName:[LMPropertyIUPageLinkSetVC class].className bundle:nil];
         propertyIUPageVC = [[LMPropertyIUPageVC alloc] initWithNibName:[LMPropertyIUPageVC class].className bundle:nil];
+        propertyIUFormVC = [[LMPropertyIUFormVC alloc] initWithNibName:[LMPropertyIUFormVC class].className bundle:nil];
+        
+        textVC = [[LMPropertyIUTextVC alloc] initWithNibName:[LMPropertyIUTextVC class].className bundle:nil];
         
         propertyVCArray = [NSArray arrayWithObjects:
                            @"propertyIUImageVC",
@@ -106,6 +113,7 @@
                            @"propertyIUTextViewVC",
                            @"propertyIUPageLinkSetVC",
                            @"propertyIUPageVC",
+                           @"propertyIUFormVC",
                            nil];
         
     }
@@ -134,6 +142,10 @@
     [propertyIUTextViewVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     [propertyIUPageLinkSetVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     [propertyIUPageVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+    
+    [propertyIUFormVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+    [textVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+
     
 
 }
@@ -172,16 +184,28 @@
         NSString *vcName = [NSString stringWithFormat:@"property%@VC", className];
         if([propertyVCArray containsObject:vcName]){
             NSViewController *iuVC = [self valueForKeyPath:vcName];
-            NSView *view = ((JDOutlineCellView *)iuVC.view).contentV;
+            NSView *view;
+            if([iuVC.view isKindOfClass:[JDOutlineCellView class]]){
+                view = ((JDOutlineCellView *)iuVC.view).contentV;
+            }
+            else{
+                view = iuVC.view;
+            }
             [viewArray addObject:view];
         }
     }
     
+    //add textVC if has text
+    if([((IUBox *)self.controller.selection) hasText]){
+        [viewArray addObject:textVC.view];
+    }
+    
     //make advanced view
     CGFloat height=0;
+    NSView *bottomView;
+
     for(int i=0; i<viewArray.count; i++){
         NSView *view = [viewArray objectAtIndex:i];
-        NSView *bottomView;
         height += view.frame.size.height;
         if(i == 0){
             [_advancedContentV addSubviewFullFrameAtBottom:view height:view.frame.size.height];

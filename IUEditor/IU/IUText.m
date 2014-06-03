@@ -80,6 +80,10 @@
 #pragma mark -
 #pragma mark manage text
 
+- (BOOL)hasText{
+    return YES;
+}
+
 
 - (void)updateNewLine:(NSRange)range htmlNode:(DOMHTMLElement *)node{
     [_textController selectTextRange:range htmlNode:node];

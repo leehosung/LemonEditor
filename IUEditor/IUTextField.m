@@ -47,7 +47,9 @@
 
 #pragma mark -
 #pragma mark setting
-
+- (BOOL)hasText{
+    return YES;
+}
 
 - (void)setFormName:(NSString *)formName{
     _formName = formName;

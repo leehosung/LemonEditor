@@ -513,6 +513,10 @@
     [_css setValue:imageName forTag:IUCSSTagImage forWidth:IUCSSMaxViewPortWidth];
 }
 
+- (BOOL)hasText{
+    return NO;
+}
+
 -(BOOL)hasX{
     return YES;
 }

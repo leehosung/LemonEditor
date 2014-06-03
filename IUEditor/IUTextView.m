@@ -51,4 +51,8 @@
     [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.htmlID];
 }
 
+- (BOOL)hasText{
+    return YES;
+}
+
 @end
