@@ -133,6 +133,8 @@
     [self.controller rearrangeObjects];
     [self.controller setSelectedObjectsByIdentifiers:@[newIU.htmlID]];
     
+    [newIU confirm];
+    
     JDTraceLog( @"[IU:%@] : point(%.1f, %.1f) atIU:%@", newIU.htmlID, point.x, point.y, parentIUID);
     return YES;
 }

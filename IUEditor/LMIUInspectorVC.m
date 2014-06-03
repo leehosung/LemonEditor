@@ -125,7 +125,7 @@
     [propertyIUWebMovieVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
 
     [propertyIUImportVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
-    [propertyIUImportVC bind:@"classDocumentNodes" toObject:self withKeyPath:@"classDocumentNodes" options:nil];
+    [propertyIUImportVC bind:@"classDocuments" toObject:self withKeyPath:@"classDocuments" options:nil];
     
     [propertyIUMailLinkVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     [propertyIUTextFieldVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
@@ -151,11 +151,9 @@
 
 - (void)setResourceManager:(IUResourceManager *)resourceManager{
     _resourceManager = resourceManager;
-    
-    //resource manager 가 필요한 것들은 여기서 bind
-    [propertyIUImageVC bind:@"resourceManager" toObject:self withKeyPath:@"resourceManager" options:nil];
-    [propertyIUMovieVC bind:@"resourceManager" toObject:self withKeyPath:@"resourceManager" options:nil];
-    [propertyIUCarouselVC bind:@"resourceManager" toObject:self withKeyPath:@"resourceManager" options:nil];
+    propertyIUImageVC.resourceManager = resourceManager;
+    propertyIUCarouselVC.resourceManager = resourceManager;
+    propertyIUMovieVC.resourceManager = resourceManager;
 }
 
 - (void)reloadSelectedIUArray{

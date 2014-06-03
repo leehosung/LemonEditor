@@ -198,7 +198,7 @@
             assert(0);
         }
         
-        [_identifierManager setNewIdentifierAndRegister:obj withKey:nil];
+        [_identifierManager setNewIdentifierAndRegisterToTemp:obj withKey:nil];
         obj.name = obj.htmlID;
         
         

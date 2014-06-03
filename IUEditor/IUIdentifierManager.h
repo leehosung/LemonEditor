@@ -10,9 +10,16 @@
 
 @class IUBox;
 @interface IUIdentifierManager : NSObject
--(void)registerIUs:(NSArray*)IUs;
--(void)registerIU:(IUBox*)IU;
 
--(void)setNewIdentifierAndRegister:(IUBox*)obj withKey:(NSString*)keyString;
--(void)removeIdentifier:(NSString*)identifier;
+-(void)resetUnconfirmedIUs;
+-(void)confirm;
+
+-(void)registerIUs:(NSArray*)IUs;
+
+/**
+ @brief Assign object html id
+ @note This function does not assign html id of children. Call this function for each child.
+ */
+-(void)setNewIdentifierAndRegisterToTemp:(IUBox*)obj withKey:(NSString*)keyString;
+
 @end

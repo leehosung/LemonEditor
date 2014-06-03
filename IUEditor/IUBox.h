@@ -50,7 +50,6 @@
 
 @interface IUBox : NSObject <NSCoding, IUCSSDelegate, NSCopying>{
     NSMutableArray *_m_children;
-    IUProject *_project;
 }
 
 @property (readonly) IUCSS *css; //used by subclass
@@ -61,9 +60,6 @@
 -(IUDocument *)document;
 -(IUProject *)project;
 
-/**
- @brief Example usage:
- */
 - (void)fetch;
 
 // this is IU setting
@@ -147,5 +143,7 @@
 @property float xPosMove;
 //0 for default, 1 for H1, 2 for H2
 @property NSUInteger textType;
+
+- (void)confirm;
 
 @end

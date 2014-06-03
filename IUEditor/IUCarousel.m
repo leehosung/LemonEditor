@@ -15,7 +15,7 @@
     NSInteger   _count;
 }
 
--(id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
+- (id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
     self = [super initWithProject:project options:options];
     if(self){
         self.count = 4;
@@ -68,8 +68,8 @@
         }
     }
     else if(count > _count){
-        IUCarouselItem *item = [[IUCarouselItem alloc] initWithProject:_project options:nil];
-        [_project.identifierManager setNewIdentifierAndRegister:item withKey:nil];
+        IUCarouselItem *item = [[IUCarouselItem alloc] initWithProject:self.project options:nil];
+        [self.project.identifierManager setNewIdentifierAndRegisterToTemp:item withKey:nil];
         item.name = @"Item";
         item.carousel = self;
         [self addIU:item error:nil];

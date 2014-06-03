@@ -12,6 +12,7 @@
 @interface LMPropertyIUImportVC : NSViewController
 
 @property (nonatomic) IUController      *controller;
-@property NSArray   *classDocumentNodes;
+@property NSArray   *classDocuments;
 @property NSArray   *selectedObjs;
+@property IUDocument *selectedClass;
 @end

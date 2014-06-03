@@ -30,13 +30,11 @@
     [aCoder encodeInteger:_defaultItemCount forKey:@"defaultItemCount"];
 }
 
--(id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
+- (id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
     self = [super initWithProject:project options:options];
-    if(self){
-        NSArray *array = @[@{@"width":@"600",@"count":@(2)}];
-        self.defaultItemCount = 4;
-        self.responsiveSetting = array;
-    }
+    NSArray *array = @[@{@"width":@"600",@"count":@(2)}];
+    self.defaultItemCount = 4;
+    self.responsiveSetting = array;
     return self;
 }
 

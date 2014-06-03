@@ -215,4 +215,22 @@ static JDFileUtil *sharedJDFileUtill;
 }
 
 
++(BOOL)isImageFileExtension:(NSString*)extension{
+    NSString *lowerExtension = [extension lowercaseString];
+    if ([lowerExtension isEqualToString:@"gif"] || [lowerExtension isEqualToString:@"jpg"] || [lowerExtension isEqualToString:@"jpeg"] || [lowerExtension isEqualToString:@"png"]) {
+        return YES;
+    }
+    return NO;
+}
+
++(BOOL)isMovieFileExtension:(NSString*)extension{
+    NSString *lowerExtension = [extension lowercaseString];
+    if ([lowerExtension isEqualToString:@"mp4"] || [lowerExtension isEqualToString:@"mov"]) {
+        return YES;
+    }
+    return NO;
+}
+
+
+
 @end

@@ -42,5 +42,9 @@
 
 #define IUNotificationSelectionChanged @"IUNotificationSelectionChanged"
 
+#define IUVideoResourceDidChange @"VideoResourceDidChange"
+#define IUImageResourceDidChange @"ImageResourceDidChange"
+
+
 static NSRange NSZeroRange;
 #endif

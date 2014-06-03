@@ -29,6 +29,8 @@
 +(BOOL)touch:(NSString*)filePath;
 +(void)rmDirPath:(NSString*)path;
 
++(BOOL)isImageFileExtension:(NSString*)extension;
++(BOOL)isMovieFileExtension:(NSString*)extension;
 
 -(BOOL) appendToFile:(NSString*)path content:(NSString*)content;
 

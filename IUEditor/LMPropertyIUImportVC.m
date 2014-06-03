@@ -31,34 +31,13 @@
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
-    assert(0);
-    return;
-    /*
     NSString *prototypePath = [_controller keyPathFromControllerToProperty:@"prototypeClass"];
     IUClass* prototype = [self valueForKeyPath:prototypePath];
-    IUDocumentGroup *documentNode = [[_classDocumentsArrayController selectedObjects] firstObject];
-    if (documentNode.document == prototype) {
-        return;
-    }
+
     if ([keyPath isEqualToString:@"selection"]) {
-        [self setValue:documentNode.document forKeyPath:prototypePath];
-        [_controller rearrangeObjects];
-        [_controller setSelectedObjectsByIdentifiers:@[((IUClass*)documentNode.document).htmlID]];
+        //selection changed
+        [self setValue:prototype forKeyPath:prototypePath];
     }
-    else {
-        if (prototype) {
-            for (IUDocumentGroup *node in _classDocumentNodes) {
-                if (node.document == prototype) {
-                    [_classDocumentsArrayController setSelectedObjects:@[node]];
-                    return;
-                }
-            }
-        }
-        else {
-            [_classDocumentsArrayController setSelectedObjects:nil];
-        }
-    }
-     */
 }
 
 

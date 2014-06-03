@@ -252,7 +252,7 @@
     NSString *widgetFilePath = [[NSBundle mainBundle] pathForResource:@"widgetForDefault" ofType:@"plist"];
     NSArray *availableWidgetProperties = [NSArray arrayWithContentsOfFile:widgetFilePath];
     [widgetLibraryVC setWidgetProperties:availableWidgetProperties];
-    
+    iuInspectorVC.resourceManager = _project.resourceManager;
 
     //FIXME: remove page documents
     //iuInspectorVC.pageDocumentNodes = _project.pageDocumentNodes;

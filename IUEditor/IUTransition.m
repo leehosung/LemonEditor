@@ -48,19 +48,17 @@
     [aCoder encodeFromObject:self withProperties:[IUTransition properties]];
 }
 
--(id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
+- (id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
     self = [super initWithProject:project options:options];
-    if(self){
-        _firstItem = [[IUItem alloc] initWithProject:project options:options];
-        [self addIU:_firstItem error:nil];
-        _secondItem = [[IUItem alloc] initWithProject:project options:options];
-        [_secondItem.css setValue:@(YES) forTag:IUCSSTagHidden];
-        
-        [self addIU:_secondItem error:nil];
-        self.currentEdit = 0;
-        self.eventType = @"Click";
-        self.animation = @"Overlap";
-    }
+    _firstItem = [[IUItem alloc] initWithProject:project options:options];
+    _secondItem = [[IUItem alloc] initWithProject:project options:options];
+    [_secondItem.css setValue:@(YES) forTag:IUCSSTagHidden];
+    
+    [self addIU:_firstItem error:nil];
+    [self addIU:_secondItem error:nil];
+    self.currentEdit = 0;
+    self.eventType = @"Click";
+    self.animation = @"Overlap";
     return self;
 }
 

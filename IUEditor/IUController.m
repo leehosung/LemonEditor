@@ -66,7 +66,7 @@
     for (IUBox *box in pasteboard) {
         NSError *err;
         IUBox *newBox = [box copy];
-        [box.project.identifierManager setNewIdentifierAndRegister:newBox withKey:@"copy"];
+        [box.project.identifierManager setNewIdentifierAndRegisterToTemp:newBox withKey:@"copy"];
         assert(newBox.htmlID);
         newBox.name = [newBox.htmlID stringByReplacingOccurrencesOfString:@"copy" withString:@" copy"];
         for (NSNumber *width in newBox.css.allEditWidth) {

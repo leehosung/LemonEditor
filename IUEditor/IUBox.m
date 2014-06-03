@@ -90,7 +90,6 @@
 
 -(id)initWithProject:(IUProject*)project options:(NSDictionary*)options{
     self = [super init];
-    _project = project;
     _css = [[IUCSS alloc] init];
     _css.delegate = self;
     _event = [[IUEvent alloc] init];
@@ -137,7 +136,7 @@
     [self fetch];
     assert(project);
     assert(project.identifierManager);
-    [project.identifierManager setNewIdentifierAndRegister:self withKey:nil];
+    [project.identifierManager setNewIdentifierAndRegisterToTemp:self withKey:nil];
     return self;
 }
 
@@ -615,5 +614,9 @@
     return YES;
 }
 
+
+- (void)confirm{
+    [self.project.identifierManager confirm];
+}
 
 @end

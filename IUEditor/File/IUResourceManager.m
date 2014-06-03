@@ -48,18 +48,39 @@
 
 
 - (IUResourceFile*)insertResourceWithContentOfPath:(NSString*)path{
-    assert(0);
+    NSString *fileName = [path lastPathComponent];
+
     //check duplicated name
     //if name is duplicated, alert and return
-    
+
+    IUResourceFile *existedFile = [self resourceFileWithName:fileName];
+    if (existedFile) {
+        [JDLogUtil alert:@"Existed file"];
+        return nil;
+    }
+
     //get uti at path
     //if it is image,
     //add to resource image group
-    //send kvo message : imagefiles and imageandvideofiles
+    //send kvo message : imagefiles
+    
+
+    if ([JDFileUtil isImageFileExtension:[path pathExtension]]) {
+        IUResourceGroup *imageGroup = _rootGroup.children[0];
+        return [imageGroup addResourceFileWithContentOfPath:path];
+        [[NSNotificationCenter defaultCenter] postNotificationName:IUImageResourceDidChange object:self];
+    }
     
     //if is is video,
     //add to video greoup
-    //send kvo message : videofiles and imageandvideofiles
+    //send kvo message : videofiles
+
+    else if ([JDFileUtil isMovieFileExtension:[path pathExtension]]) {
+        IUResourceGroup *movieGroup = _rootGroup.children[1];
+        return [movieGroup addResourceFileWithContentOfPath:path];
+        [[NSNotificationCenter defaultCenter] postNotificationName:IUVideoResourceDidChange object:self];
+    }
+    return nil;
 }
 
 @end

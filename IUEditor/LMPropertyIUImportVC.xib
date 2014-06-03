@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyIUImportVC">
@@ -19,14 +19,12 @@
             <subviews>
                 <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Ptq-ri-svx" userLabel="content">
                     <rect key="frame" x="0.0" y="0.0" width="276" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView">
                         <rect key="frame" x="0.0" y="0.0" width="276" height="40"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="efE-Z6-hfV">
                                 <rect key="frame" x="6" y="14" width="70" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="66" id="BSg-ON-pE2"/>
                                     <constraint firstAttribute="height" constant="17" id="MBA-PT-eWS"/>
@@ -39,7 +37,6 @@
                             </textField>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jQA-Nu-yUj">
                                 <rect key="frame" x="78" y="11" width="190" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="184" id="ala-V8-qGB"/>
                                     <constraint firstAttribute="height" constant="18" id="axo-eR-zkm"/>
@@ -74,14 +71,12 @@
                 </box>
                 <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="reG-Mc-eQn" userLabel="title">
                     <rect key="frame" x="0.0" y="40" width="276" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView">
                         <rect key="frame" x="0.0" y="0.0" width="276" height="30"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bYw-lS-h12">
                                 <rect key="frame" x="4" y="7" width="97" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="IUImport" id="UB4-am-Hkh">
                                     <font key="font" metaFont="smallSystemBold"/>
                                     <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -90,7 +85,6 @@
                             </textField>
                             <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ToB-GB-ms2">
                                 <rect key="frame" x="6" y="0.0" width="260" height="5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="7k6-32-loF"/>
                                     <constraint firstAttribute="height" constant="1" id="zHX-5e-gmg"/>
@@ -127,8 +121,8 @@
         <userDefaultsController representsSharedInstance="YES" id="xsT-ec-CTa"/>
         <arrayController id="hfv-f8-xWI">
             <connections>
-                <binding destination="-2" name="contentArray" keyPath="classDocumentNodes" id="trs-jb-aWH"/>
-                <binding destination="-2" name="contentArrayForMultipleSelection" keyPath="selectedObjs" previousBinding="trs-jb-aWH" id="8rX-mR-R6O"/>
+                <binding destination="-2" name="contentArray" keyPath="classDocuments" id="3lx-FG-c3Q"/>
+                <binding destination="-2" name="contentArrayForMultipleSelection" keyPath="selectedObjs" previousBinding="3lx-FG-c3Q" id="OOR-c9-CtM"/>
                 <binding destination="-2" name="selectionIndexes" keyPath="selectedObjs" id="Jwp-NI-gri"/>
             </connections>
         </arrayController>

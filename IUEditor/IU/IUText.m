@@ -24,7 +24,7 @@
     return textIU;
 }
 
--(id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
+- (id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
     self = [super initWithProject:project options:options];
     if(self){
         _textController = [[IUTextController alloc] init];

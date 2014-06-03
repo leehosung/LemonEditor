@@ -216,7 +216,7 @@
         assert(0);
     }
     
-    [parent.project.identifierManager setNewIdentifierAndRegister:newIU withKey:nil];
+    [parent.project.identifierManager setNewIdentifierAndRegisterToTemp:newIU withKey:nil];
     newIU.name = newIU.htmlID;
     
     [parent addIU:newIU error:nil];
