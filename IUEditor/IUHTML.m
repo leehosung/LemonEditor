@@ -10,8 +10,8 @@
 
 @implementation IUHTML
 
--(id)initWithIdentifierManager:(IUIdentifierManager*)manager option:(NSDictionary *)option{
-    self = [super initWithIdentifierManager:manager option:option];
+-(id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
+    self = [super initWithProject:project options:options];
     if(self){
         _innerHTML = @"<div>test IUHTML</div>";
     }

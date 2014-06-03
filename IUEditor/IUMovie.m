@@ -16,14 +16,6 @@
 
 @implementation IUMovie
 
-
--(id)initWithIdentifierManager:(IUIdentifierManager *)identifierManager option:(NSDictionary *)option{
-    self = [super initWithIdentifierManager:identifierManager option:option];
-    if(self){
-    }
-    return self;
-}
-
 - (void)fetch{
     [super fetch];
     [self addObserver:self forKeyPaths:@[@"enableControl", @"enableLoop", @"enableMute", @"enableAutoPlay",@"cover", @"altText", @"posterPath"] options:0 context:@"attributes"];

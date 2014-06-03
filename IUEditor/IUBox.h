@@ -66,7 +66,6 @@
 /**
  @brief Example usage:
  */
--(id)initWithIdentifierManager:(IUIdentifierManager*)identifierManager option:(NSDictionary*)option __deprecated;
 - (void)fetch;
 
 // this is IU setting

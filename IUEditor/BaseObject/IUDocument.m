@@ -11,12 +11,6 @@
 
 @implementation IUDocument
 
-
--(id)initWithIdentifierManager:(IUIdentifierManager *)manager option:(NSDictionary *)option{
-    self = [super initWithIdentifierManager:manager option:option];
-    return self;
-}
-
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
     if (self) {

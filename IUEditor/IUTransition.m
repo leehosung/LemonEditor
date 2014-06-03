@@ -48,19 +48,21 @@
     [aCoder encodeFromObject:self withProperties:[IUTransition properties]];
 }
 
-- (id)initWithIdentifierManager:(IUIdentifierManager *)identifierManager option:(NSDictionary *)option{
-    self = [super initWithIdentifierManager:identifierManager option:option];
-    _firstItem = [[IUItem alloc] initWithIdentifierManager:identifierManager option:option];
-    _firstItem.htmlID = @"_temp_item1";
-    _secondItem = [[IUItem alloc] initWithIdentifierManager:identifierManager option:option];
-    _secondItem.htmlID = @"_temp_item2";
-    [_secondItem.css setValue:@(YES) forTag:IUCSSTagHidden];
-    
-    [self addIU:_firstItem error:nil];
-    [self addIU:_secondItem error:nil];
-    self.currentEdit = 0;
-    self.eventType = @"Click";
-    self.animation = @"Overlap";
+-(id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
+    self = [super initWithProject:project options:options];
+    if(self){
+        _firstItem = [[IUItem alloc] initWithProject:project options:options];
+        _firstItem.htmlID = @"_temp_item1";
+        _secondItem = [[IUItem alloc] initWithProject:project options:options];
+        _secondItem.htmlID = @"_temp_item2";
+        [_secondItem.css setValue:@(YES) forTag:IUCSSTagHidden];
+        
+        [self addIU:_firstItem error:nil];
+        [self addIU:_secondItem error:nil];
+        self.currentEdit = 0;
+        self.eventType = @"Click";
+        self.animation = @"Overlap";
+    }
     return self;
 }
 

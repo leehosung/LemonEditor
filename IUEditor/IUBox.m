@@ -87,32 +87,6 @@
     [aCoder encodeObject:_m_children forKey:@"children"];
 }
 
-
-/*
--(id)initWithIdentifierManager:(IUIdentifierManager*)manager event:(IUEvent*)event css:(IUCSS*)css children:(NSArray*)children{
-    self = [super init];
-    _css = css;
-    _css.delegate = self;
-    _identifierManager = manager;
-    _event = event;
-    
-    delegateEnableLevel = 1;
-    _m_children = [NSMutableArray array];
-    for (IUBox *child in children) {
-        [self addIU:child error:nil];
-    }
-    
-    [self addObserver:self forKeyPath:@"delegate.maxFrameWidth" options:0 context:nil];
-    [self addObserver:self forKeyPath:@"delegate.selectedFrameWidth" options:0 context:nil];
-    
-    changedCSSWidths = [NSMutableSet set];
-    delegateEnableLevel = 1;
-    
-
-    return self;
-}
- */
-
 -(id)initWithProject:(IUProject*)project options:(NSDictionary*)options{
     self = [super init];
     _project = project;
@@ -163,64 +137,6 @@
     assert(project);
     assert(project.identifierManager);
     [project.identifierManager setNewIdentifierAndRegister:self withKey:nil];
-    return self;
-}
-
--(id)initWithIdentifierManager:(IUIdentifierManager*)manager option:(NSDictionary *)option{
-    assert(0);
-    self = [super init];{
-        _css = [[IUCSS alloc] init];
-        _css.delegate = self;
-        _identifierManager = manager;
-        _event = [[IUEvent alloc] init];
-        
-        
-        //NO - Pixel
-        [_css setValue:@(0) forTag:IUCSSTagXUnit forWidth:IUCSSMaxViewPortWidth];
-        [_css setValue:@(0) forTag:IUCSSTagYUnit forWidth:IUCSSMaxViewPortWidth];
-        [_css setValue:@(0) forTag:IUCSSTagWidthUnit forWidth:IUCSSMaxViewPortWidth];
-        [_css setValue:@(0) forTag:IUCSSTagHeightUnit forWidth:IUCSSMaxViewPortWidth];
-        
-        if (self.hasWidth) {
-            [_css setValue:@(50+rand()%50) forTag:IUCSSTagWidth forWidth:IUCSSMaxViewPortWidth];
-        }
-        if (self.hasHeight) {
-            [_css setValue:@(35) forTag:IUCSSTagHeight forWidth:IUCSSMaxViewPortWidth];
-        }
-        
-        //background
-        [_css setValue:[NSColor randomColor] forTag:IUCSSTagBGColor forWidth:IUCSSMaxViewPortWidth];
-        [_css setValue:@(IUBGSizeTypeAuto) forTag:IUCSSTagBGSize forWidth:IUCSSMaxViewPortWidth];
-        [_css setValue:@(0) forTag:IUCSSTagBGXPosition forWidth:IUCSSMaxViewPortWidth];
-        [_css setValue:@(0) forTag:IUCSSTagBGYPosition forWidth:IUCSSMaxViewPortWidth];
-        
-        //border
-        [_css setValue:@(0) forTag:IUCSSTagBorderTopWidth forWidth:IUCSSMaxViewPortWidth];
-        [_css setValue:@(0) forTag:IUCSSTagBorderLeftWidth forWidth:IUCSSMaxViewPortWidth];
-        [_css setValue:@(0) forTag:IUCSSTagBorderRightWidth forWidth:IUCSSMaxViewPortWidth];
-        [_css setValue:@(0) forTag:IUCSSTagBorderBottomWidth forWidth:IUCSSMaxViewPortWidth];
-        
-        [_css setValue:[NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:1] forTag:IUCSSTagBorderTopColor forWidth:IUCSSMaxViewPortWidth];
-        [_css setValue:[NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:1] forTag:IUCSSTagBorderLeftColor forWidth:IUCSSMaxViewPortWidth];
-        [_css setValue:[NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:1] forTag:IUCSSTagBorderRightColor forWidth:IUCSSMaxViewPortWidth];
-        [_css setValue:[NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:1] forTag:IUCSSTagBorderBottomColor forWidth:IUCSSMaxViewPortWidth];
-
-        //type
-        [_css setValue:@"Arial" forTag:IUCSSTagFontName forWidth:IUCSSMaxViewPortWidth];
-        [_css setValue:@(12) forTag:IUCSSTagFontSize forWidth:IUCSSMaxViewPortWidth];
-        [_css setValue:@"Auto" forTag:IUCSSTagLineHeight forWidth:IUCSSMaxViewPortWidth];
-        [_css setValue:@(IUAlignCenter) forTag:IUCSSTagTextAlign forWidth:IUCSSMaxViewPortWidth];
-
-
-        delegateEnableLevel = 1;
-        
-        _m_children = [NSMutableArray array];
-        
-        [self addObserver:self forKeyPath:@"delegate.maxFrameWidth" options:0 context:nil];
-        [self addObserver:self forKeyPath:@"delegate.selectedFrameWidth" options:0 context:nil];
-
-        changedCSSWidths = [NSMutableSet set];
-    }
     return self;
 }
 

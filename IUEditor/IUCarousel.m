@@ -15,9 +15,8 @@
     NSInteger   _count;
 }
 
--(id)initWithIdentifierManager:(IUIdentifierManager *)manager option:(id)option{
-    assert(manager!=nil);
-    self = [super initWithIdentifierManager:manager option:option];
+-(id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
+    self = [super initWithProject:project options:options];
     if(self){
         self.count = 4;
         [self.css setValue:@(500) forTag:IUCSSTagWidth forWidth:IUCSSMaxViewPortWidth];

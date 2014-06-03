@@ -11,9 +11,8 @@
 @implementation IUTextField
 
 
--(id)initWithIdentifierManager:(IUIdentifierManager *)manager option:(NSDictionary *)option{
-    assert(manager!=nil);
-    self = [super initWithIdentifierManager:manager option:option];
+-(id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
+    self = [super initWithProject:project options:options];
     if(self){
         _placeholder = @"placeholder";
         _inputValue = @"value example";

@@ -10,26 +10,6 @@
 
 @implementation IUResponsiveSection
 
--(id)initWithIdentifierManager:(IUIdentifierManager*)manager option:(NSDictionary *)option{
-    self = [super initWithIdentifierManager:manager option:option];
-    if(self){
-        [self.css setValue:@(0) forTag:IUCSSTagXUnit forWidth:IUCSSMaxViewPortWidth];
-        [self.css setValue:@(0) forTag:IUCSSTagYUnit forWidth:IUCSSMaxViewPortWidth];
-        [self.css setValue:@(1) forTag:IUCSSTagWidthUnit forWidth:IUCSSMaxViewPortWidth];
-        [self.css setValue:@(0) forTag:IUCSSTagHeightUnit forWidth:IUCSSMaxViewPortWidth];
-        
-        [self.css setValue:@(100) forTag:IUCSSTagPercentWidth forWidth:IUCSSMaxViewPortWidth];
-        [self.css setValue:@(500) forTag:IUCSSTagHeight forWidth:IUCSSMaxViewPortWidth];
-        [self.css setValue:@(0) forTag:IUCSSTagX forWidth:IUCSSMaxViewPortWidth];
-        [self.css setValue:@(0) forTag:IUCSSTagY forWidth:IUCSSMaxViewPortWidth];
-        
-        self.flow = YES;
-
-
-    }
-    return self;
-}
-
 - (id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
     self = [super initWithProject:project options:options];
     if(self){

@@ -11,12 +11,14 @@
 @implementation IUPageLinkSet
 
 
-- (id)initWithIdentifierManager:(IUIdentifierManager *)identifierManager option:(NSDictionary *)option{
-    self = [super initWithIdentifierManager:identifierManager option:option];
-    _pageLinkAlign = IUAlignCenter;
-    _selectedButtonBGColor = [NSColor colorWithCalibratedRed:50 green:50 blue:50 alpha:0.5];
-    _defaultButtonBGColor = [NSColor colorWithCalibratedRed:50 green:50 blue:50 alpha:0.5];
-    _buttonMargin = 5.0f;
+-(id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
+    self = [super initWithProject:project options:options];
+    if(self){
+        _pageLinkAlign = IUAlignCenter;
+        _selectedButtonBGColor = [NSColor colorWithCalibratedRed:50 green:50 blue:50 alpha:0.5];
+        _defaultButtonBGColor = [NSColor colorWithCalibratedRed:50 green:50 blue:50 alpha:0.5];
+        _buttonMargin = 5.0f;
+    }
     
     return self;
 }
