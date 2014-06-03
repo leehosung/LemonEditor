@@ -7,6 +7,8 @@
 //
 
 #import "IUItem.h"
+#import "IUCarousel.h"
+#import "IUTransition.h"
 
 @implementation IUItem
 - (BOOL)hasX{
@@ -21,6 +23,11 @@
 }
 - (BOOL)hasHeight{
     return NO;
+}
+
+//자기 자신대신 parent를 옮기는 경우
+- (BOOL)shouldMoveParent{
+    return YES;
 }
 
 @end

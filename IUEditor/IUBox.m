@@ -394,6 +394,8 @@
     return unit;
 }
 
+#pragma mark move by drag & drop
+
 - (void)movePosition:(NSPoint)point withParentSize:(NSSize)parentSize{
     
     //Set Pixel

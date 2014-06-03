@@ -724,13 +724,21 @@
     
     
     for(IUBox *obj in self.controller.selectedObjects){
+        
+        IUBox *moveObj= obj;
+        
+        if([self isParentMove:obj]){
+            moveObj = obj.parent;
+        }
+        
+        
         NSSize parentSize;
         if (self.controller.importIUInSelectionChain){
-            NSString *modifiedHTMLID = [NSString stringWithFormat:@"%@__%@",self.controller.importIUInSelectionChain.htmlID, obj.htmlID];
+            NSString *modifiedHTMLID = [NSString stringWithFormat:@"%@__%@",self.controller.importIUInSelectionChain.htmlID, moveObj.htmlID];
             parentSize = [[self webView] parentBlockElementSize:modifiedHTMLID];
         }
         else {
-            parentSize = [[self webView] parentBlockElementSize:obj.htmlID];
+            parentSize = [[self webView] parentBlockElementSize:moveObj.htmlID];
         }
 
         /*
@@ -751,8 +759,8 @@
         }
         else{
          */
-        [obj movePosition:NSMakePoint(totalPoint.x, totalPoint.y) withParentSize:parentSize];
-        [obj updateCSSForEditViewPort];
+        [moveObj movePosition:NSMakePoint(totalPoint.x, totalPoint.y) withParentSize:parentSize];
+        [moveObj updateCSSForEditViewPort];
         
     }
 }
@@ -771,9 +779,22 @@
     return YES;
 }
 
+- (BOOL)isParentMove:(IUBox *)obj{
+    if([obj respondsToSelector:@selector(shouldMoveParent)]){
+        return [[obj performSelector:@selector(shouldMoveParent)] boolValue];
+    }
+
+    return  NO;
+}
+
 - (void)startDragSession{
     for(IUBox *obj in self.controller.selectedObjects){
-        [obj startDragSession];
+        if([self isParentMove:obj]){
+            [obj.parent startDragSession];
+        }
+        else{
+            [obj startDragSession];
+        }
     }
 }
 
@@ -782,14 +803,19 @@
     //drag pointlayer
     [JDLogUtil timeLogStart:@"extendIU"];
     for(IUBox *obj in self.controller.selectedObjects){
+        IUBox *moveObj= obj;
+        
+        if([self isParentMove:obj]){
+            moveObj = obj.parent;
+        }
         
         NSSize parentSize;
         if (self.controller.importIUInSelectionChain){
-            NSString *modifiedHTMLID = [NSString stringWithFormat:@"%@__%@",self.controller.importIUInSelectionChain.htmlID, obj.htmlID];
+            NSString *modifiedHTMLID = [NSString stringWithFormat:@"%@__%@",self.controller.importIUInSelectionChain.htmlID, moveObj.htmlID];
             parentSize = [[self webView] parentBlockElementSize:modifiedHTMLID];
         }
         else {
-            parentSize = [[self webView] parentBlockElementSize:obj.htmlID];
+            parentSize = [[self webView] parentBlockElementSize:moveObj.htmlID];
         }
         
         /*
@@ -809,8 +835,8 @@
         }
         else{
          */
-        [obj increaseSize:NSMakeSize(totalSize.width, totalSize.height) withParentSize:parentSize];
-        [obj updateCSSForEditViewPort];
+        [moveObj increaseSize:NSMakeSize(totalSize.width, totalSize.height) withParentSize:parentSize];
+        [moveObj updateCSSForEditViewPort];
         
         
         /*

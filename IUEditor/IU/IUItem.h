@@ -10,4 +10,6 @@
 
 @interface IUItem : IUBox
 
+- (BOOL)shouldMoveParent;
+
 @end
