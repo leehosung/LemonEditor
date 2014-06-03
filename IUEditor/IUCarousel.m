@@ -70,24 +70,21 @@
         }
     }
     else if(count > self.children.count) {
+        [self.project.identifierManager resetUnconfirmedIUs];
+
         IUCarouselItem *item = [[IUCarouselItem alloc] initWithProject:self.project options:nil];
         [self.project.identifierManager setNewIdentifierAndRegisterToTemp:item withKey:nil];
-        item.name = @"Item";
+        item.name = item.htmlID;
         item.carousel = self;
         [self addIU:item error:nil];
+        
+        [self.project.identifierManager confirm];
     }
     else{
         return;
     }
-    
-    [self remakeChildrenHtmlID];
     [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
     [self jsReloadForController];
-}
-
--(void)setName:(NSString *)name{
-    [super setName:name];
-    [self remakeChildrenHtmlID];
 }
 
 -(void)remakeChildrenHtmlID{

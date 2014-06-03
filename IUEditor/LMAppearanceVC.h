@@ -14,9 +14,9 @@
 @interface LMAppearanceVC : NSViewController <NSOutlineViewDataSource, NSOutlineViewDelegate>
 
 @property (nonatomic) IUController      *controller;
+@property (nonatomic) IUResourceManager *resourceManager;
 
 //setResourceManager
 @property LMPropertyBGImageVC    *propertyBGImageVC;
-
 
 @end

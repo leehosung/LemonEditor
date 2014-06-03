@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyFrameVC">
@@ -35,21 +35,18 @@
             <subviews>
                 <box identifier="framebox" autoresizesSubviews="NO" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="JYh-TI-pEg" userLabel="titleV">
                     <rect key="frame" x="0.0" y="0.0" width="283" height="100"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView">
                         <rect key="frame" x="0.0" y="0.0" width="283" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="zBr-Jq-Xap">
                                 <rect key="frame" x="6" y="68" width="271" height="5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <font key="titleFont" metaFont="system"/>
                             </box>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sfe-ik-KYS">
                                 <rect key="frame" x="0.0" y="79" width="50" height="14"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="tUM-nU-A8w"/>
                                 </constraints>
@@ -61,7 +58,6 @@
                             </textField>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="lMU-ZX-1h6">
                                 <rect key="frame" x="228" y="77" width="47" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="43" id="PUv-nO-FXQ"/>
                                 </constraints>
@@ -72,7 +68,6 @@
                             </button>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="xa2-Jd-iG8">
                                 <rect key="frame" x="179" y="77" width="56" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="Fia-xD-4nb"/>
                                     <constraint firstAttribute="width" constant="52" id="qqR-15-Zxp"/>
@@ -84,7 +79,6 @@
                             </button>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="P5X-KI-ojA">
                                 <rect key="frame" x="69" y="77" width="56" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="52" id="IQy-YB-lzs"/>
                                 </constraints>
@@ -95,7 +89,6 @@
                             </button>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="n1h-zm-ovQ">
                                 <rect key="frame" x="126" y="77" width="50" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="J74-5p-3rV"/>
                                     <constraint firstAttribute="width" constant="46" id="KbC-KP-K6l"/>
@@ -107,14 +100,12 @@
                             </button>
                             <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="qi4-uk-WUI" userLabel="frameV">
                                 <rect key="frame" x="0.0" y="-4" width="283" height="66"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView">
                                     <rect key="frame" x="0.0" y="0.0" width="283" height="66"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7ez-uH-X3R" userLabel="xTF">
                                             <rect key="frame" x="14" y="38" width="50" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="1dJ-jG-wQZ"/>
                                             </constraints>
@@ -129,7 +120,6 @@
                                         </textField>
                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ze4-DS-FcM" userLabel="pxTF">
                                             <rect key="frame" x="14" y="38" width="50" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="c0t-mI-Mot"/>
                                             </constraints>
@@ -144,7 +134,6 @@
                                         </textField>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="2Ur-uO-dSJ">
                                             <rect key="frame" x="65" y="38" width="24" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="18" id="Lf2-un-FxE"/>
                                                 <constraint firstAttribute="width" constant="24" id="SFM-Pc-BPZ"/>
@@ -156,7 +145,6 @@
                                         </button>
                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yqm-TH-YmF" userLabel="yTF">
                                             <rect key="frame" x="14" y="11" width="50" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="PuO-gB-p3n">
                                                 <font key="font" metaFont="system" size="10"/>
                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -168,7 +156,6 @@
                                         </textField>
                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AJN-a2-BIm" userLabel="pyTF">
                                             <rect key="frame" x="14" y="11" width="50" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="AnI-ch-H79"/>
                                                 <constraint firstAttribute="height" constant="18" id="Kpg-Ra-9EH"/>
@@ -184,7 +171,6 @@
                                         </textField>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="NbJ-WM-MfU">
                                             <rect key="frame" x="65" y="11" width="24" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="18" id="P1K-bY-1CW"/>
                                                 <constraint firstAttribute="width" constant="24" id="VJK-3l-p2c"/>
@@ -196,7 +182,6 @@
                                         </button>
                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dde-if-4FG" userLabel="wTF">
                                             <rect key="frame" x="143" y="38" width="50" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="zGi-aO-0kU">
                                                 <font key="font" metaFont="system" size="10"/>
                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -208,7 +193,6 @@
                                         </textField>
                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bUx-4a-5bn" userLabel="pwTF">
                                             <rect key="frame" x="143" y="38" width="50" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="18" id="Bxm-Mg-izn"/>
                                                 <constraint firstAttribute="width" constant="50" id="vjJ-bI-2Ui"/>
@@ -224,7 +208,6 @@
                                         </textField>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="bza-57-yAn">
                                             <rect key="frame" x="194" y="38" width="24" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="18" id="5Vm-rJ-dSs"/>
                                                 <constraint firstAttribute="width" constant="24" id="w31-vj-3vr"/>
@@ -236,7 +219,6 @@
                                         </button>
                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KEg-GU-M43" userLabel="hTF">
                                             <rect key="frame" x="143" y="10" width="50" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="ubS-VC-jvp">
                                                 <font key="font" metaFont="system" size="10"/>
                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -248,7 +230,6 @@
                                         </textField>
                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="z9a-iK-QZ6" userLabel="phTF">
                                             <rect key="frame" x="143" y="10" width="50" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="CP5-iS-oNc"/>
                                                 <constraint firstAttribute="height" constant="18" id="spM-PX-YKl"/>
@@ -264,7 +245,6 @@
                                         </textField>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="2id-bU-xHh">
                                             <rect key="frame" x="194" y="11" width="24" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="18" id="Aw3-Z6-LHs"/>
                                                 <constraint firstAttribute="width" constant="24" id="dms-9d-qJY"/>
@@ -276,7 +256,6 @@
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Z07-rg-vmx">
                                             <rect key="frame" x="-26" y="41" width="38" height="14"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="34" id="h4x-yz-ZDe"/>
                                             </constraints>
@@ -288,45 +267,41 @@
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gRV-9E-wax">
                                             <rect key="frame" x="-26" y="11" width="38" height="17"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="17" id="EHw-Z4-aBF"/>
                                                 <constraint firstAttribute="width" constant="34" id="Wcu-LZ-ZJA"/>
                                             </constraints>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Y" id="pOx-Nn-Nw9">
-                                                <font key="font" size="11" name="LucidaGrande"/>
+                                                <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hol-Zn-Id9">
                                             <rect key="frame" x="102" y="39" width="38" height="16"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="34" id="jIW-g0-Jye"/>
                                             </constraints>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Width" id="XGA-gI-6Qg">
-                                                <font key="font" size="11" name="LucidaGrande"/>
+                                                <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wit-4t-70U">
                                             <rect key="frame" x="102" y="11" width="38" height="17"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="34" id="Bh2-2V-oJ7"/>
                                                 <constraint firstAttribute="height" constant="17" id="cPt-uo-htS"/>
                                             </constraints>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Height" id="7pw-hA-Pap">
-                                                <font key="font" size="11" name="LucidaGrande"/>
+                                                <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                         <button toolTip="Horizontal Center" translatesAutoresizingMaskIntoConstraints="NO" id="zHx-Ob-5lO">
                                             <rect key="frame" x="223" y="37" width="31" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="26" id="tof-jW-nya"/>
                                                 <constraint firstAttribute="height" constant="14" id="yeZ-IA-qtc"/>
@@ -411,10 +386,7 @@
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </box>
                 <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="lqf-yQ-SWP" userLabel="contentV">
-                    <rect key="frame" x="0.0" y="0.0" width="283" height="0.0"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView">
-                        <rect key="frame" x="0.0" y="0.0" width="283" height="0.0"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
