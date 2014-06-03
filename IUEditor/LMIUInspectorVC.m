@@ -176,7 +176,7 @@
         [childView removeFromSuperview];
     }
     
-    if(self.controller.selection == nil){
+    if(self.controller.selection == nil && self.controller.selectedObjects.count == 0){
         return;
     }
     //change name
@@ -206,7 +206,7 @@
     }
     
     //add textVC if has text
-    if(self.controller.selectedObjects.count == 0 && [((IUBox *)self.controller.selection) hasText]){
+    if(self.controller.selectedObjects.count == 1 && [((IUBox *)self.controller.selection) hasText]){
         [viewArray insertObject:textVC.view atIndex:0];
     }
     

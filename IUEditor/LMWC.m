@@ -292,13 +292,9 @@
 }
 
 - (void)reloadCurrentDocument{
-    assert(0);
-    /*
-    if ([_selectedNode isKindOfClass:[IUDocumentGroup class]]) {
-        IUDocument *document = ((IUDocumentGroup*)_selectedNode).document;
-        [canvasVC setDocument:document];
+    if ([_selectedNode isKindOfClass:[IUDocument class]]) {
+        [canvasVC setDocument:_selectedNode];
     }
-     */
 }
 
 
