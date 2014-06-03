@@ -114,6 +114,7 @@
                            @"propertyIUPageLinkSetVC",
                            @"propertyIUPageVC",
                            @"propertyIUFormVC",
+                           @"propertyIUBoxVC",
                            nil];
         
     }
@@ -169,7 +170,9 @@
 }
 
 - (void)reloadSelectedIUArray{
-    for(NSView *childView in _advancedContentV.subviews){
+
+    NSArray *removeViewArray = [_advancedContentV.subviews copy];
+    for(NSView *childView in removeViewArray){
         [childView removeFromSuperview];
     }
     
@@ -270,7 +273,7 @@
     }
     else{
         if([item isEqualTo:_defaultTitleV]){
-            return  ((JDOutlineCellView *)propertyIUBoxVC.view).contentV;
+            return  propertyIUBoxVC.defaultView;
             
         }else if([item isEqualTo:_advancedTitleV]){
             return _advancedContentV;

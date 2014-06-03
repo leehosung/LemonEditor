@@ -19,8 +19,6 @@
 @property (weak) IBOutlet NSPopUpButton *divPopupBtn;
 @property (weak) IBOutlet NSTextField *pgVisibleTF;
 
-@property (weak) IBOutlet NSTextField *opacityMoveTF;
-@property (weak) IBOutlet NSTextField *xPosMoveTF;
 
 @end
 
@@ -40,9 +38,6 @@
     [_linkCB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"link"] options:IUBindingDictNotRaisesApplicable];
     [_divPopupBtn bind:NSSelectedValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"divLink"] options:IUBindingDictNotRaisesApplicable];
     [_pgVisibleTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"pgVisibleCondition"] options:IUBindingDictNotRaisesApplicable];
-
-    [_opacityMoveTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"opacityMove"] options:IUBindingDictNotRaisesApplicable];
-    [_xPosMoveTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"xPosMove"] options:IUBindingDictNotRaisesApplicable];
 
     [self.controller addObserver:self forKeyPath:@"selection" options:NSKeyValueObservingOptionInitial context:nil];
 

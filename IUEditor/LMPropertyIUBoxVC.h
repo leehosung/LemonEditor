@@ -13,6 +13,7 @@
 
 @property (nonatomic) IUController      *controller;
 
+@property (strong) IBOutlet NSBox *defaultView;
 @property NSArray *pageDocumentNodes;
 
 @end

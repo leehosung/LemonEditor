@@ -94,6 +94,7 @@
             </view>
             <constraints>
                 <constraint firstItem="vo4-Uq-Tjm" firstAttribute="leading" secondItem="OC9-Sm-5lo" secondAttribute="leading" constant="3" id="FHO-WC-kZn"/>
+                <constraint firstItem="1NY-Su-wha" firstAttribute="top" secondItem="yst-kB-8Ym" secondAttribute="bottom" constant="8" id="fxH-aA-RvG"/>
                 <constraint firstItem="yst-kB-8Ym" firstAttribute="leading" secondItem="vo4-Uq-Tjm" secondAttribute="trailing" constant="5" id="niW-EG-tEa"/>
                 <constraint firstItem="dmJ-Oz-omw" firstAttribute="leading" secondItem="OC9-Sm-5lo" secondAttribute="leading" constant="2" id="vI7-an-Ga2"/>
                 <constraint firstItem="1NY-Su-wha" firstAttribute="leading" secondItem="dmJ-Oz-omw" secondAttribute="trailing" constant="5" id="xBh-YC-BCR"/>

@@ -14,6 +14,7 @@
 #import "LMPropertyVTriggerVC.h"
 #import "LMPropertyVisibleVC.h"
 #import "LMPropertyVRFrameVC.h"
+#import "LMPropertyScrollVC.h"
 
 @interface LMEventVC ()
 
@@ -24,6 +25,7 @@
     LMPropertyVTriggerVC    *propertyTriggerVC;
     LMPropertyVisibleVC     *propertyVisibleVC;
     LMPropertyVRFrameVC     *propertyFrameVC;
+    LMPropertyScrollVC  *propertyScrollVC;
     
     NSArray *eventOutlineVOrderArray;
 }
@@ -38,11 +40,13 @@
         propertyTriggerVC = [[LMPropertyVTriggerVC alloc] initWithNibName:@"LMPropertyVTriggerVC" bundle:nil];
         propertyVisibleVC = [[LMPropertyVisibleVC alloc] initWithNibName:@"LMPropertyVisibleVC" bundle:nil];
         propertyFrameVC = [[LMPropertyVRFrameVC alloc] initWithNibName:@"LMPropertyVRFrameVC" bundle:nil];
+        propertyScrollVC = [[LMPropertyScrollVC alloc] initWithNibName:[LMPropertyScrollVC class].className bundle:nil];
         
         [propertyMouseEventVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
         [propertyTriggerVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
         [propertyVisibleVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
         [propertyFrameVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+        [propertyScrollVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
 
         
     }
@@ -51,6 +55,7 @@
 
 -(void)awakeFromNib{
     eventOutlineVOrderArray = [NSArray arrayWithObjects:propertyMouseEventVC.view,
+                               propertyScrollVC.view,
                                propertyTriggerVC.view,
                                propertyVisibleVC.view,
                                propertyFrameVC.view,

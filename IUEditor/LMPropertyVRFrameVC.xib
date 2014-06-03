@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyVRFrameVC">
@@ -22,14 +22,12 @@
             <subviews>
                 <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="DIF-ta-B88" userLabel="content">
                     <rect key="frame" x="0.0" y="0.0" width="276" height="115"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView">
                         <rect key="frame" x="0.0" y="0.0" width="276" height="115"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7ko-7z-960">
                                 <rect key="frame" x="25" y="88" width="51" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="JvC-x6-qOC"/>
                                     <constraint firstAttribute="width" constant="47" id="h6f-fN-7xG"/>
@@ -42,7 +40,6 @@
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y6b-Vd-mrE">
                                 <rect key="frame" x="16" y="62" width="60" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="MZc-Bm-26I"/>
                                     <constraint firstAttribute="width" constant="56" id="ggO-a9-XbV"/>
@@ -55,7 +52,6 @@
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NlU-Hj-ZMi">
                                 <rect key="frame" x="80" y="88" width="186" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="186" id="Pbb-MW-JYv"/>
                                     <constraint firstAttribute="height" constant="18" id="txl-Mz-Myq"/>
@@ -68,7 +64,6 @@
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="u5n-5N-Ohg">
                                 <rect key="frame" x="16" y="38" width="60" height="14"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="afC-Jg-zoz"/>
                                     <constraint firstAttribute="width" constant="56" id="rKA-db-kim"/>
@@ -81,7 +76,6 @@
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="z7r-Y8-nFB">
                                 <rect key="frame" x="80" y="62" width="50" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="0U7-d3-ZTf"/>
                                     <constraint firstAttribute="width" constant="50" id="HVh-7y-P9w"/>
@@ -94,7 +88,6 @@
                             </textField>
                             <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w6O-Q9-D3h">
                                 <rect key="frame" x="131" y="64" width="13" height="15"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="XeA-Lc-l6Q"/>
                                     <constraint firstAttribute="width" constant="9" id="xKm-CO-Ebj"/>
@@ -103,7 +96,6 @@
                             </stepper>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nBx-rD-4i7">
                                 <rect key="frame" x="80" y="36" width="50" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="BoH-4y-eq0"/>
                                     <constraint firstAttribute="width" constant="50" id="Ts0-MP-CNU"/>
@@ -116,7 +108,6 @@
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="J0X-7L-SVL">
                                 <rect key="frame" x="32" y="13" width="44" height="14"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="TYB-zM-GQV"/>
                                     <constraint firstAttribute="width" constant="40" id="bBW-yl-sRW"/>
@@ -129,7 +120,6 @@
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="c2z-sj-PyY">
                                 <rect key="frame" x="80" y="10" width="50" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="HMT-93-iIu"/>
                                     <constraint firstAttribute="height" constant="18" id="XDx-6k-CEA"/>
@@ -168,14 +158,12 @@
                 </box>
                 <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="25N-fk-Kyl" userLabel="title">
                     <rect key="frame" x="0.0" y="115" width="276" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView">
                         <rect key="frame" x="0.0" y="0.0" width="276" height="30"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Li2-iE-avX">
                                 <rect key="frame" x="6" y="0.0" width="260" height="5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="ek7-an-j5a"/>
                                     <constraint firstAttribute="width" constant="260" id="pJK-mg-e3a"/>
@@ -186,7 +174,6 @@
                             </box>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3sT-tD-QVd">
                                 <rect key="frame" x="4" y="6" width="152" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="NMw-fN-baX"/>
                                     <constraint firstAttribute="width" constant="148" id="zax-2S-OC6"/>

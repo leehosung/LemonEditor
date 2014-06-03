@@ -43,12 +43,16 @@
 
 - (void)setPlaceholder:(NSString *)placeholder{
     _placeholder = placeholder;
-    [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.htmlID];
+    if(self.delegate){
+        [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.htmlID];
+    }
 }
 
 - (void)setInputValue:(NSString *)inputValue{
     _inputValue = inputValue;
-    [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.htmlID];
+    if(self.delegate){
+        [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.htmlID];
+    }
 }
 
 - (BOOL)hasText{

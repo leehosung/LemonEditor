@@ -137,6 +137,8 @@
 		3DD47874193DCCF900639AB5 /* LMPropertyIUFormVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD47872193DCCF900639AB5 /* LMPropertyIUFormVC.xib */; };
 		3DD47878193DCEB600639AB5 /* LMPropertyIUTextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD47876193DCEB600639AB5 /* LMPropertyIUTextVC.m */; };
 		3DD47879193DCEB600639AB5 /* LMPropertyIUTextVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD47877193DCEB600639AB5 /* LMPropertyIUTextVC.xib */; };
+		3DD4787D193DDCE100639AB5 /* LMPropertyScrollVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD4787B193DDCE100639AB5 /* LMPropertyScrollVC.m */; };
+		3DD4787E193DDCE100639AB5 /* LMPropertyScrollVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD4787C193DDCE100639AB5 /* LMPropertyScrollVC.xib */; };
 		3DD9E97219123B3E0076BF4E /* iueditor.js in Resources */ = {isa = PBXBuildFile; fileRef = 3DD9E97019122EAB0076BF4E /* iueditor.js */; };
 		3DE9C448193C7D0C00CCE374 /* jquery.backgroundSize.js in Resources */ = {isa = PBXBuildFile; fileRef = 3DE9C447193C7D0C00CCE374 /* jquery.backgroundSize.js */; };
 		3DED26491900D2DE001A1D67 /* align_center@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26481900D2DE001A1D67 /* align_center@2x.png */; };
@@ -663,6 +665,9 @@
 		3DD47875193DCEB600639AB5 /* LMPropertyIUTextVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMPropertyIUTextVC.h; path = Editor/LMPropertyIUTextVC.h; sourceTree = "<group>"; };
 		3DD47876193DCEB600639AB5 /* LMPropertyIUTextVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMPropertyIUTextVC.m; path = Editor/LMPropertyIUTextVC.m; sourceTree = "<group>"; };
 		3DD47877193DCEB600639AB5 /* LMPropertyIUTextVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMPropertyIUTextVC.xib; path = Editor/LMPropertyIUTextVC.xib; sourceTree = "<group>"; };
+		3DD4787A193DDCE100639AB5 /* LMPropertyScrollVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMPropertyScrollVC.h; path = Editor/LMPropertyScrollVC.h; sourceTree = "<group>"; };
+		3DD4787B193DDCE100639AB5 /* LMPropertyScrollVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMPropertyScrollVC.m; path = Editor/LMPropertyScrollVC.m; sourceTree = "<group>"; };
+		3DD4787C193DDCE100639AB5 /* LMPropertyScrollVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMPropertyScrollVC.xib; path = Editor/LMPropertyScrollVC.xib; sourceTree = "<group>"; };
 		3DD9E97019122EAB0076BF4E /* iueditor.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = iueditor.js; sourceTree = "<group>"; };
 		3DE9C447193C7D0C00CCE374 /* jquery.backgroundSize.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.backgroundSize.js; sourceTree = "<group>"; };
 		3DED26481900D2DE001A1D67 /* align_center@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "align_center@2x.png"; sourceTree = "<group>"; };
@@ -1302,6 +1307,9 @@
 				3DED27241904AE53001A1D67 /* LMPropertyVRFrameVC.h */,
 				3DED27251904AE53001A1D67 /* LMPropertyVRFrameVC.m */,
 				3DED27261904AE53001A1D67 /* LMPropertyVRFrameVC.xib */,
+				3DD4787A193DDCE100639AB5 /* LMPropertyScrollVC.h */,
+				3DD4787B193DDCE100639AB5 /* LMPropertyScrollVC.m */,
+				3DD4787C193DDCE100639AB5 /* LMPropertyScrollVC.xib */,
 			);
 			name = eventVC;
 			sourceTree = "<group>";
@@ -2436,6 +2444,7 @@
 				3DED27311904EDF0001A1D67 /* movie.mp4 in Resources */,
 				267CB19D190F93370079E565 /* tab_event_off.png in Resources */,
 				3DED26BA1900F450001A1D67 /* panel_left_off@2x.png in Resources */,
+				3DD4787E193DDCE100639AB5 /* LMPropertyScrollVC.xib in Resources */,
 				3DED26651900D313001A1D67 /* ic_background@2x.png in Resources */,
 				CB9BD63E1914DE23002C9369 /* LMStartNewPresentationVC.xib in Resources */,
 				3DED268A1900D329001A1D67 /* stack_navi.png in Resources */,
@@ -2881,6 +2890,7 @@
 				6983E71D18FFF54600D424B8 /* JDOutlineCellView.m in Sources */,
 				3DED270519010C71001A1D67 /* LMPropertyIUFBLikeVC.m in Sources */,
 				3DED270019010C55001A1D67 /* LMPropertyIUTransitionVC.m in Sources */,
+				3DD4787D193DDCE100639AB5 /* LMPropertyScrollVC.m in Sources */,
 				3DED27131904AC8A001A1D67 /* LMEventVC.m in Sources */,
 				693849E41914D711005C0546 /* NSIndexPath+JDExtension.m in Sources */,
 				3DF8046A18FF790400913505 /* LMPropertyShadowVC.m in Sources */,
