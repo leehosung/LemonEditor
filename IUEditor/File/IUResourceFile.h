@@ -29,5 +29,4 @@ typedef enum _IUResourceType{
 -(IUResourceType)type;
 -(NSString*)name;
 
-- (NSArray*)children;
 @end

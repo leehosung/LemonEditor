@@ -17,7 +17,7 @@
 @property IUProject *project;
 @property NSString *name;
 
-- (NSArray*)children;
+- (NSArray*)childrenFiles;
 - (void)removeDocument:(IUDocument*)document;
 - (void)addDocument:(IUDocument*)document;
 

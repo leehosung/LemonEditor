@@ -24,6 +24,5 @@
 - (IUResourceFile*)addResourceFileWithData:(NSData*)data;
 - (IUResourceFile*)addResourceFileWithContentOfPath:(NSString*)filePath;
 - (IUResourceGroup *)addResourceGroupWithName:(NSString*)groupName;
-- (NSArray*)children;
 
 @end

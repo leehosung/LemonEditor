@@ -11,7 +11,7 @@
 @protocol IUFile <NSObject>
 @required
 @property NSString *name;
-- (NSArray*)children;
+- (NSArray*)childrenFiles;
 - (id <IUFile>) parent;
 
 @end

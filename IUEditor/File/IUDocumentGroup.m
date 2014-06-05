@@ -31,7 +31,7 @@
     [aCoder encodeObject:_children forKey:@"_children"];
 }
 
-- (NSArray*)children{
+- (NSArray*)childrenFiles{
     return _children;
 }
 

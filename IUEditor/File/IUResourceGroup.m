@@ -51,7 +51,7 @@
     return [[self.parent absolutePath] stringByAppendingPathComponent:self.name];
 }
 
-- (NSArray*)children{
+- (NSArray*)childrenFiles{
     return array;
 }
 

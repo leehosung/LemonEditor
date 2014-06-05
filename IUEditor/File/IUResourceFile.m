@@ -55,6 +55,9 @@
     return _name;
 }
 
+-(NSArray*)childrenFiles{
+    return nil;
+}
 -(NSString*)description{
     return _name;
 }

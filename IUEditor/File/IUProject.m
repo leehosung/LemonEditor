@@ -247,12 +247,12 @@
     return array;
 }
 
-- (NSArray *)children{
+- (NSArray *)childrenFiles{
     return @[_pageGroup, _backgroundGroup, _classGroup, _resourceGroup];
 }
 
 - (IUResourceGroup*)resourceNode{
-    return [self.children objectAtIndex:3];
+    return [self.childrenFiles objectAtIndex:3];
 }
 
 - (IUCompiler*)compiler{
@@ -366,13 +366,13 @@
 }
 - (NSArray*)pageDocuments{
     assert(_pageGroup);
-    return _pageGroup.children;
+    return _pageGroup.childrenFiles;
 }
 - (NSArray*)backgroundDocuments{
-    return _backgroundGroup.children;
+    return _backgroundGroup.childrenFiles;
 }
 - (NSArray*)classDocuments{
-    return _classGroup.children;
+    return _classGroup.childrenFiles;
 }
 
 - (BOOL)runnable{

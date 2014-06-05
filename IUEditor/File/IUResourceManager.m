@@ -22,8 +22,8 @@
 
 
 -(IUResourceFile*)resourceFileWithName:(NSString*)imageName{
-    for ( IUResourceGroup *group in _rootGroup.children) {
-        for ( IUResourceFile *file in group.children) {
+    for ( IUResourceGroup *group in _rootGroup.childrenFiles) {
+        for ( IUResourceFile *file in group.childrenFiles) {
             if ([file.name isEqualToString:imageName]) {
                 return file;
             }
@@ -33,13 +33,13 @@
 }
 
 -(NSArray*)videoFiles{
-    assert(_rootGroup.children[1]);
-    return [_rootGroup.children[1] children];
+    assert(_rootGroup.childrenFiles[1]);
+    return [_rootGroup.childrenFiles[1] childrenFiles];
 }
 
 -(NSArray*)imageFiles{
-    assert(_rootGroup.children[0]);
-    return [_rootGroup.children[0] children];
+    assert(_rootGroup.childrenFiles[0]);
+    return [_rootGroup.childrenFiles[0] childrenFiles];
 }
 
 -(NSArray*)imageAndVideoFiles{
@@ -47,7 +47,7 @@
 }
 
 -(NSString*)imageDirectory{
-    return [_rootGroup.children[0] absolutePath];
+    return [_rootGroup.childrenFiles[0] absolutePath];
 }
 
 - (IUResourceFile*)insertResourceWithContentOfPath:(NSString*)path{
@@ -69,7 +69,7 @@
     
 
     if ([JDFileUtil isImageFileExtension:[path pathExtension]]) {
-        IUResourceGroup *imageGroup = _rootGroup.children[0];
+        IUResourceGroup *imageGroup = _rootGroup.childrenFiles[0];
         return [imageGroup addResourceFileWithContentOfPath:path];
         [[NSNotificationCenter defaultCenter] postNotificationName:IUImageResourceDidChange object:self];
     }
@@ -79,7 +79,7 @@
     //send kvo message : videofiles
 
     else if ([JDFileUtil isMovieFileExtension:[path pathExtension]]) {
-        IUResourceGroup *movieGroup = _rootGroup.children[1];
+        IUResourceGroup *movieGroup = _rootGroup.childrenFiles[1];
         return [movieGroup addResourceFileWithContentOfPath:path];
         [[NSNotificationCenter defaultCenter] postNotificationName:IUVideoResourceDidChange object:self];
     }
