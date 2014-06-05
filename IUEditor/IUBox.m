@@ -30,12 +30,13 @@
 }
 
 - (id)copyWithZone:(NSZone *)zone{
+    IUBox *box = [[[self class] allocWithZone: zone] init];
     IUCSS *newCSS = [_css copy];
     IUEvent *newEvent = [_event copy];
     NSArray *children = [self.children deepCopy];
-    //TODO: connect textmanager
-    IUBox *box = [[[self class] allocWithZone: zone] init];
+    //FIXME: connect textmanager
     box.css = newCSS;
+    newCSS.delegate  = self;
     box.event = newEvent;
     for (IUBox *iu in children) {
         assert([box addIU:iu error:nil]);
@@ -144,7 +145,7 @@
 
 
 -(id)init{
-    assert(0);
+    //only called from copyWithZone
     self = [super init];
     if (self) {
         _css = [[IUCSS alloc] init];
