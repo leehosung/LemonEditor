@@ -73,7 +73,6 @@
         [self.project.identifierManager resetUnconfirmedIUs];
 
         IUCarouselItem *item = [[IUCarouselItem alloc] initWithProject:self.project options:nil];
-        [self.project.identifierManager setNewIdentifierAndRegisterToTemp:item withKey:nil];
         item.name = item.htmlID;
         item.carousel = self;
         [self addIU:item error:nil];
