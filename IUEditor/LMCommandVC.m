@@ -121,8 +121,7 @@
 }
 
 - (IBAction)changeCompilerRule:(id)sender {
-    assert(0);
-//    _docController.project.compileRule = [_compilerB indexOfSelectedItem];
+    _docController.project.compiler.rule = (int)[_compilerB indexOfSelectedItem];
 }
 
 - (IBAction)sync:(id)sender {
