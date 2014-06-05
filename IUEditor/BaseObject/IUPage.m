@@ -28,6 +28,14 @@
     return self;
 }
 
+- (BOOL)floatRightChangeable{
+    return NO;
+}
+
+
+- (BOOL)overflowChangeable{
+    return NO;
+}
 
 - (id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
     self = [super initWithProject:project options:options];

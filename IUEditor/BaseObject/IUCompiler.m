@@ -922,9 +922,14 @@ static NSString * IUCompilerTagOption = @"tag";
             [dict putTag:@"position" string:@"relative"];
             [dict putTag:@"float" string:@"right"];
         }
+        if (obj.overflow) {
+            [dict putTag:@"overflow" string:@"visible"];
+        }
+        
         if ([obj isKindOfClass:[IUPageContent class]] || [obj isKindOfClass:[IUHeader class]]) {
             [dict putTag:@"position" string:@"relative"];
         }
+        
         if (obj.hasX) {
             BOOL enablePercent =[cssTagDict[IUCSSTagXUnit] boolValue];
             IUCSSUnit unit =  [self unitWithBool:enablePercent];
@@ -1131,11 +1136,6 @@ static NSString * IUCompilerTagOption = @"tag";
         value = cssTagDict[IUCSSTagBorderRadiusBottomRight];
         if(value){
             [dict putTag:@"border-bottom-right-radius" intValue:[value intValue] ignoreZero:YES unit:IUCSSUnitPixel];}
-        
-        value = cssTagDict[IUCSSTagOverflow];
-        if ([value integerValue]) {
-            [dict putTag:@"overflow" string:@"visible"];
-        }
         
         NSInteger hOff = [cssTagDict[IUCSSTagShadowHorizontal] integerValue];
         NSInteger vOff = [cssTagDict[IUCSSTagShadowVertical] integerValue];

@@ -115,7 +115,6 @@ typedef enum{
 
 static NSString * IUCSSTagLineHeight = @"lineHeight";
 
-static NSString * IUCSSTagOverflow = @"overflow";
 
 static NSString * IUCSSTagShadowColor = @"shadowColor";
 static NSString * IUCSSTagShadowVertical = @"shadowVertical";

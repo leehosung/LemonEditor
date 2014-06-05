@@ -567,6 +567,10 @@
     return YES;
 }
 
+- (BOOL)overflowChangeable{
+    return YES;
+}
+
 - (void)setFloatRight:(BOOL)floatRight{
     _floatRight = floatRight;
     if (floatRight) {
@@ -576,6 +580,13 @@
         [self.css eradicateTag:IUCSSTagX];
         [self.css eradicateTag:IUCSSTagY];
     }
+    if (self.delegate) {
+        [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+    }
+}
+
+- (void)setOverflow:(BOOL)overflow{
+    _overflow = overflow;
     if (self.delegate) {
         [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
     }

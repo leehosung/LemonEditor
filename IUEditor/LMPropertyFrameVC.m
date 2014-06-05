@@ -90,6 +90,8 @@
     [_centerB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"center"] options:IUBindingDictNotRaisesApplicable];
     [_centerB bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"centerChangeable"] options:IUBindingDictNotRaisesApplicable];
 
+    [_overflowB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"overflow"] options:IUBindingDictNotRaisesApplicable];
+    [_overflowB bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"overflowChangeable"] options:IUBindingDictNotRaisesApplicable];
     
     NSDictionary *bindingOption = [NSDictionary
                                    dictionaryWithObjects:@[[NSNumber numberWithBool:NO]]
@@ -136,7 +138,6 @@
     [_wUnitBtn bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableWidthUserInput"] options:bindingOption];
     [_hUnitBtn bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableHeightUserInput"] options:bindingOption];
     
-    [_overflowB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagOverflow] options:bindingOption];
     
     bindingOption = [NSDictionary
                      dictionaryWithObjects:@[[NSNumber numberWithBool:NO], NSNegateBooleanTransformerName]

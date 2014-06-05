@@ -143,6 +143,9 @@
 @property (nonatomic) BOOL center;
 - (BOOL)centerChangeable;
 
+@property (nonatomic) BOOL overflow;
+- (BOOL)overflowChangeable;
+
 @property NSString *pgVisibleCondition;
 
 
