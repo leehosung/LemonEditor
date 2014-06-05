@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMResourceVC">
@@ -33,7 +33,6 @@
             <subviews>
                 <tabView type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="g6L-7m-n83">
                     <rect key="frame" x="0.0" y="31" width="300" height="349"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <font key="font" metaFont="system"/>
                     <tabViewItems>
                         <tabViewItem label="Tab" identifier="1" id="EYd-5I-8MP" userLabel="Tab View Item - list">
@@ -43,7 +42,6 @@
                                 <subviews>
                                     <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1p5-j3-luq">
                                         <rect key="frame" x="0.0" y="-1" width="300" height="351"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <clipView key="contentView" id="D5O-K6-fSb">
                                             <rect key="frame" x="1" y="1" width="298" height="349"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -84,7 +82,6 @@
                                 <subviews>
                                     <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cit-5B-Q7I">
                                         <rect key="frame" x="0.0" y="-1" width="300" height="351"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <clipView key="contentView" id="kJF-1i-Cif">
                                             <rect key="frame" x="1" y="1" width="298" height="349"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -122,18 +119,15 @@
                 </tabView>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="x7y-Oy-DDd" userLabel="Library bottom bar">
                     <rect key="frame" x="0.0" y="0.0" width="300" height="31"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
                         <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="jYn-7S-9Ff">
                             <rect key="frame" x="0.0" y="0.0" width="300" height="31"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <view key="contentView">
                                 <rect key="frame" x="1" y="1" width="298" height="29"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <searchField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YjH-N9-QL8">
                                         <rect key="frame" x="64" y="6" width="170" height="19"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="19" id="dWs-Yf-xcv"/>
                                             <constraint firstAttribute="width" constant="170" id="fZG-wE-swR"/>
@@ -155,7 +149,6 @@
                                     </searchField>
                                     <button toolTip="Import" translatesAutoresizingMaskIntoConstraints="NO" id="2K0-2Z-gF9" userLabel="addBtn">
                                         <rect key="frame" x="269" y="0.0" width="30" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="gtS-aw-dJJ"/>
                                             <constraint firstAttribute="height" constant="31" id="zYL-1M-f8b"/>
@@ -170,7 +163,6 @@
                                     </button>
                                     <button toolTip="Refresh" translatesAutoresizingMaskIntoConstraints="NO" id="TwY-rm-TIF" userLabel="refreshBtn">
                                         <rect key="frame" x="239" y="0.0" width="30" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="Rew-Ls-6yO"/>
                                             <constraint firstAttribute="width" constant="30" id="k6n-YS-QYP"/>
@@ -200,7 +192,6 @@
                         </box>
                         <button toolTip="Collection View" translatesAutoresizingMaskIntoConstraints="NO" id="i50-VL-0Xr" userLabel="iconBtn">
                             <rect key="frame" x="29" y="2" width="29" height="28"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="28" id="Aok-F9-XWX"/>
                                 <constraint firstAttribute="width" constant="29" id="BwY-9R-vlt"/>
@@ -215,7 +206,6 @@
                         </button>
                         <button toolTip="List View" translatesAutoresizingMaskIntoConstraints="NO" id="12v-kS-W80" userLabel="listBtn">
                             <rect key="frame" x="1" y="2" width="28" height="28"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="28" id="LEc-Zb-Rct"/>
                                 <constraint firstAttribute="height" constant="28" id="p8n-Gk-3W7"/>
@@ -260,7 +250,6 @@
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="18s-g7-Xti">
                     <rect key="frame" x="11" y="15" width="24" height="24"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSInfo" id="YLl-sQ-uSl"/>
                     <connections>
                         <binding destination="HCs-dR-xfB" name="value" keyPath="representedObject.image" id="Ksi-6s-ZSN"/>
@@ -268,19 +257,17 @@
                 </imageView>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="24X-V2-Q8w">
                     <rect key="frame" x="40" y="18" width="254" height="17"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="filename.png" id="Pzd-fO-NGz">
                         <font key="font" metaFont="cellTitle"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="HCs-dR-xfB" name="value" keyPath="representedObject.relativePath" id="cQs-Wj-mvU"/>
+                        <binding destination="HCs-dR-xfB" name="value" keyPath="representedObject.name" id="Gfd-9Q-cgN"/>
                     </connections>
                 </textField>
                 <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="0Sd-Ov-Pwd">
                     <rect key="frame" x="10" y="0.0" width="280" height="5"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="system"/>
@@ -293,7 +280,6 @@
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0DR-3v-69e">
                     <rect key="frame" x="10" y="10" width="50" height="50"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSInfo" id="Nw5-Z8-Txt"/>
                     <connections>
                         <binding destination="UYF-Vz-ZJt" name="value" keyPath="representedObject.image" id="B3A-EV-Vlk"/>
