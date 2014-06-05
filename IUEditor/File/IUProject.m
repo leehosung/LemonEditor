@@ -223,7 +223,7 @@
         assert(0);
     }
     
-    
+    [JDUIUtil hudAlert:@"Build Success" second:2];
     return YES;
 }
 
