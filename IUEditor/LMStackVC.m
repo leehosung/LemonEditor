@@ -210,13 +210,14 @@
     if(parent == nil){
         return;
     }
-    
+
+    [_document.project.identifierManager resetUnconfirmedIUs];
     IUResponsiveSection *newIU = [[IUResponsiveSection alloc]  initWithProject:_document.project options:nil];
+    [_document.project.identifierManager confirm];
     if (newIU == nil) {
         assert(0);
     }
     
-    [parent.project.identifierManager setNewIdentifierAndRegisterToTemp:newIU withKey:nil];
     newIU.name = newIU.htmlID;
     
     [parent addIU:newIU error:nil];
