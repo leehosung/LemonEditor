@@ -41,6 +41,7 @@
         
         self.propertyBGImageVC = [[LMPropertyBGImageVC alloc] initWithNibName:@"LMPropertyBGImageVC" bundle:nil];
         [self.propertyBGImageVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+        [self.propertyBGImageVC bind:@"resourceManager" toObject:self withKeyPath:@"resourceManager" options:nil];
         
         propertyBorderVC = [[LMPropertyBorderVC alloc] initWithNibName:@"LMPropertyBorderVC" bundle:nil];
         [propertyBorderVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];

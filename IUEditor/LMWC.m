@@ -272,6 +272,7 @@
     assert(widgetLibraryVC.project == nil);
     widgetLibraryVC.project = _project;
     resourceVC.manager = _project.resourceManager;
+    appearanceVC.resourceManager = _project.resourceManager;
     
     
     //construct widget library vc
@@ -282,9 +283,6 @@
     iuInspectorVC.resourceManager = _project.resourceManager;
     
 
-    //FIXME: remove page documents
-    //iuInspectorVC.pageDocumentNodes = _project.pageDocumentNodes;
-    //iuInspectorVC.classDocumentNodes = _project.classDocumentNodes;
     [[NSDocumentController sharedDocumentController] noteNewRecentDocumentURL:[NSURL fileURLWithPath:path]];
     
     [[NSUserDefaults standardUserDefaults] setValue:path forKey:@"lastDocument"];
