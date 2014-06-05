@@ -162,7 +162,8 @@
         if(newIU){
             NSString *parentIUID = [self IUAtPoint:convertedPoint];
             if(parentIUID){
-                [self.VC makeNewIUByDragAndDrop:newIU atPoint:convertedPoint atIU:parentIUID];
+                NSPoint rountPoint = NSPointMake(round(convertedPoint.x), round(convertedPoint.y));
+                [self.VC makeNewIUByDragAndDrop:newIU atPoint:rountPoint atIU:parentIUID];
                 JDTraceLog( @"[IU:%@], dragPoint(%.1f, %.1f)", newIU.htmlID, dragPoint.x, dragPoint.y);
                 [self.window makeFirstResponder:self];
                 return YES;
