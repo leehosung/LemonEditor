@@ -173,6 +173,11 @@
                     newIndex = 0 ;
                 }
                 [iu.parent removeIU:iu];
+                
+                //we remove position tag. if not, iu will be invisible to new position
+                [iu.css eradicateTag:IUCSSTagX];
+                [iu.css eradicateTag:IUCSSTagY];
+                
                 [newParent insertIU:iu atIndex:newIndex error:nil];
             }
         }
