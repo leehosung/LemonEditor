@@ -160,6 +160,9 @@
         IUBox *newParent = [item representedObject];
         if (oldParent == newParent) {
             for (IUBox *iu in selections) {
+                if (index == -1) {
+                    index = 0;
+                }
                 [newParent changeIUIndex:iu to:index error:nil];
             }
         }
