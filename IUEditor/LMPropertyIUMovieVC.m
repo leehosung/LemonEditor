@@ -38,7 +38,7 @@
 
 - (void)awakeFromNib{
     [_altTextTF bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"altText"] options:@{NSContinuouslyUpdatesValueBindingOption: @(YES)}];
-    [_fileNameComboBox bind:@"content" toObject:self withKeyPath:@"resourceManager.videoNames" options:IUBindingDictNotRaisesApplicable];
+    [_fileNameComboBox bind:@"content" toObject:self withKeyPath:@"resourceManager.videoFiles" options:IUBindingDictNotRaisesApplicable];
     [_controlBtn bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableControl"] options:IUBindingDictNotRaisesApplicable];
     [_loopBtn bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableLoop"] options:IUBindingDictNotRaisesApplicable];
     [_autoplayBtn bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableAutoPlay"] options:IUBindingDictNotRaisesApplicable];
