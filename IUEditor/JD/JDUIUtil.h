@@ -11,6 +11,16 @@
 
 #import <Foundation/Foundation.h>
 
+@interface JDHudWindow : NSWindow
+@property (nonatomic) NSString *message;
+@end
+
+@interface JDHudView : NSView
+
+@end
+
+
+
 NSPoint NSPointWithInt(NSPoint p);
 NSPoint NSPointMake(CGFloat x, CGFloat y);
 NSRect  NSRectMake(CGFloat x, CGFloat y, CGFloat width, CGFloat height);
@@ -37,6 +47,8 @@ BOOL   isNSRectContainsRect(NSRect rect, NSRect subrect);
 +(NSString *)NSColorToHexString:(NSColor*)color;
 +(NSColor*)hexColorToNSColor:(NSString*)inColorString;
 
+
++(void)hudAlert:(NSString*)message second:(NSInteger)second;
 @end
 
 

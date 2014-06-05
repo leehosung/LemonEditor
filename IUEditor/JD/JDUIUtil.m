@@ -12,6 +12,54 @@
 #import "JDUIUtil.h"
 #import "NSString+JDExtension.h"
 
+@implementation JDHudWindow
+
+- (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)windowStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)deferCreation {
+	
+	if (self = [super initWithContentRect:contentRect
+								styleMask:NSBorderlessWindowMask
+								  backing:NSBackingStoreBuffered defer:deferCreation]) {
+		[self setAlphaValue:0.75];
+		[self setOpaque:NO];
+		[self setExcludedFromWindowsMenu:NO];
+		[self setBackgroundColor:[NSColor clearColor]];
+        JDHudView *hudView = [[JDHudView alloc] init];
+        [self setContentView:hudView];
+	}
+	return self;
+}
+
+- (void)setMessage:(NSString *)message{
+    _message = message;
+    [self.contentView setNeedsDisplay:YES];
+}
+
+@end
+
+@implementation JDHudView
+
+- (void)drawRect:(NSRect)frame {
+	NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:frame xRadius:6.0 yRadius:6.0];
+	[[NSColor blackColor] set];
+	[path fill];
+
+    NSFont *font = [NSFont fontWithName:@"Helvetica" size:50];
+    
+    NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    [style setAlignment:NSCenterTextAlignment];
+    [style setMaximumLineHeight:125];
+    [style setMinimumLineHeight:125];
+    
+    NSDictionary *attr = @{NSParagraphStyleAttributeName: style, NSFontAttributeName:font , NSForegroundColorAttributeName:[NSColor whiteColor]};
+
+    NSString *message = ((JDHudWindow*)(self.window)).message;
+    [message drawInRect:NSRectMake(0, 0, frame.size.width, frame.size.height) withAttributes:attr];
+
+}
+
+@end
+
+
 BOOL isValidRect(NSRect aRect){
     if ( isnan(aRect.size.width) || isnan(aRect.size.height) || isnan(aRect.origin.x) || isnan(aRect.origin.y) ) {
         return NO;
@@ -118,6 +166,7 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
     free(comp2);
     return YES;
 }
+
 
 @implementation NSImageView(JDExtension)
 
@@ -671,6 +720,29 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
     return result;
 }
 
+static NSWindowController *hudWC;
+
++(void)hudAlert:(NSString*)message second:(NSInteger)second{
+    if (hudWC == nil) {
+        JDHudWindow *hWindow = [[JDHudWindow alloc] init];
+        hudWC = [[NSWindowController alloc] initWithWindow:hWindow];
+    }
+    JDHudWindow *hWindow = (JDHudWindow*)hudWC.window;
+    hWindow.message = message;
+    NSRect screenFrame = [[NSScreen mainScreen] frame];
+    //get screen frame
+    CGFloat width = 800;
+    CGFloat height = 200;
+    NSRect hudFrame = NSRectMake((screenFrame.size.width - width)/2, (screenFrame.size.height - height)/2, width, height);
+    [hudWC.window setFrame:hudFrame display:NO];
+    [hudWC showWindow:nil];
+    [hudWC.window makeKeyAndOrderFront:nil];
+    [hudWC.window setOrderedIndex:0];
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(second* NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [hudWC.window close];
+    });
+}
 
 @end
 
