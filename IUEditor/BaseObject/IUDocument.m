@@ -24,6 +24,17 @@
     return self;
 }
 
+
+- (BOOL)enableXUserInput{
+    return NO;
+}
+- (BOOL)enableYUserInput{
+    return NO;
+}
+- (BOOL)enableWidthUserInput{
+    return NO;
+}
+
 -(void)encodeWithCoder:(NSCoder *)aCoder{
     [super encodeWithCoder:aCoder];
     [aCoder encodeFloat:_ghostX forKey:@"ghostX"];

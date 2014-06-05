@@ -31,6 +31,32 @@
     return NO;
 }
 
+- (BOOL)flowChangeable{
+    return NO;
+}
+
+- (BOOL)overflowChangeable{
+    return NO;
+}
+
+- (BOOL)floatRightChangeable{
+    return NO;
+}
+
+- (BOOL)enableXUserInput{
+    return NO;
+}
+- (BOOL)enableYUserInput{
+    return NO;
+}
+- (BOOL)enableWidthUserInput{
+    return NO;
+}
+
+- (BOOL)enableHeightUserInput{
+    return NO;
+}
+
 
 -(NSDictionary*)CSSAttributesForWidth:(NSInteger)width{
     NSMutableDictionary *dict = [[super CSSAttributesForWidth:width ] mutableCopy];
