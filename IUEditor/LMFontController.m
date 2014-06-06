@@ -26,7 +26,7 @@ static LMFontController *gFontController = nil;
     NSString *fontListPath = [[NSBundle mainBundle] pathForResource:@"defaultFont" ofType:@"plist"];
     NSDictionary *defaultFontList = [NSDictionary dictionaryWithContentsOfFile:fontListPath];
     _fontDict = [defaultFontList mutableCopy];
-    [self saveFontList];
+//    [self saveFontList];
 }
 
 - (void)loadFontList{
