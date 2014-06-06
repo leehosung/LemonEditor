@@ -48,7 +48,7 @@ static JDFileUtil *sharedJDFileUtill;
 
 
 +(void)rmDirPath:(NSString*)path{
-    [JDFileUtil execute:@"/bin/rm" atDirectory:@"/" arguments:@[@"-rf", path] stdOut:nil stdErr:nil];
+    [JDFileUtil execute:@"/bin/mv" atDirectory:@"/" arguments:@[path, [@"~/.Trash" stringByExpandingTildeInPath]] stdOut:nil stdErr:nil];
 }
 
 +(BOOL)touch:(NSString*)filePath{
