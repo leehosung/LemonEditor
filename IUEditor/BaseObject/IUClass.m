@@ -34,5 +34,14 @@
     return nil;
 }
 
+-(BOOL)enableWidthUserInput{
+    return YES;
+}
+
+-(BOOL)enableHeightUserInput{
+    return YES;
+}
+
+
 
 @end
