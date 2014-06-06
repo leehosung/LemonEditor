@@ -336,10 +336,11 @@
 }
 
 - (void)addMQSize:(NSInteger)size{
-    [_project.mqSizes addObject:@(size)];
+    [_project addMQSize:size];
 }
+
 - (void)removeMQSize:(NSInteger)size{
-    [_project.mqSizes removeObject:@(size)];
+    [_project removeMQSize:size];
 }
 
 

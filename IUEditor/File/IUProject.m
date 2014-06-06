@@ -24,10 +24,6 @@
 @end
 
 @implementation IUProject{
-    IUCompiler *_compiler;
-    IUResourceManager *_resourceManager;
-    IUIdentifierManager *_identifierManager;
-    NSString  *_path;
 }
 
 
@@ -70,6 +66,17 @@
     return _compiler.rule;
 }
 
+- (void)addMQSize:(NSInteger)size{
+    assert(_mqSizes);
+    [_mqSizes addObject:@(size)];
+}
+
+- (void)removeMQSize:(NSInteger)size{
+    assert(_mqSizes);
+    [_mqSizes removeObject:@(size)];
+}
+
+
 - (void)setCompileRule:(IUCompileRule)compileRule{
     _compiler.rule = compileRule;
     assert(_compiler != nil);
@@ -81,11 +88,15 @@
         _buildPath = @"build";
         _mqSizes = [NSMutableArray array];
         _compiler = [[IUCompiler alloc] init];
-        [_mqSizes addObject:@(defaultFrameWidth)];
-        [_mqSizes addObject:@(700)];
-        [_mqSizes addObject:@(400)];
+        [self addMQSize:defaultFrameWidth];
+        [self addMQSize:700];
+        [self addMQSize:400];
     }
     return self;
+}
+
+- (NSArray*)mqSizes{
+    return _mqSizes;
 }
 
 
@@ -161,7 +172,7 @@
     _path = [path copy];
 }
 
-- (NSString*)directory{
+- (NSString*)directoryPath{
     return [self.path stringByDeletingLastPathComponent];
 }
 
@@ -171,7 +182,7 @@
 
 - (BOOL)build:(NSError**)error{
     assert(_buildPath != nil);
-    NSString *buildPath = [self.directory stringByAppendingPathComponent:self.buildPath];
+    NSString *buildPath = [self.directoryPath stringByAppendingPathComponent:self.buildPath];
 
     [[NSFileManager defaultManager] removeItemAtPath:buildPath error:error];
 
@@ -200,7 +211,7 @@
         [initializeJSSource addNewLine];
     }
     
-    NSString *resourceJSPath = [self.directory stringByAppendingPathComponent:@"Resource/JS"];
+    NSString *resourceJSPath = [self.directoryPath stringByAppendingPathComponent:@"Resource/JS"];
     
     //make initialize javascript file
     
@@ -262,6 +273,7 @@
 - (void)initializeResource{
     //remove resource node if exist
     JDInfoLog(@"initilizeResource");
+    assert(self.directoryPath);
     
     _resourceGroup = [[IUResourceGroup alloc] init];
     _resourceGroup.name = @"Resource";

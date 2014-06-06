@@ -31,7 +31,14 @@ static NSString * IUProjectKeyDirectory = @"dir";
     IUDocumentGroup *_backgroundGroup;
     IUDocumentGroup *_classGroup;
     IUResourceGroup *_resourceGroup;
+    
+    IUCompiler *_compiler;
+    IUResourceManager *_resourceManager;
+    IUIdentifierManager *_identifierManager;
+    
     NSString *_buildPath;
+    NSString  *_path;
+    NSMutableArray *_mqSizes;
 }
 
 //create project
@@ -48,13 +55,16 @@ static NSString * IUProjectKeyDirectory = @"dir";
 - (BOOL)save;
 
 //project properties
-@property   NSMutableArray  *mqSizes;
+- (NSArray*)mqSizes;
+- (void)addMQSize:(NSInteger)size;
+- (void)removeMQSize:(NSInteger)size;
+
 @property   NSString        *name;
 
 //set path
 - (void)setPath:(NSString*)path;
 - (NSString*)path;
-- (NSString*)directory;
+- (NSString*)directoryPath;
 - (NSString*)buildPath;
 
 //build

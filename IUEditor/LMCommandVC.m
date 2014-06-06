@@ -66,7 +66,7 @@
             assert(0);
         }
         IUDocument *doc = [[_docController selectedObjects] firstObject];
-        NSString *firstPath = [project.directory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@.html",project.buildPath, [doc.name lowercaseString]] ];
+        NSString *firstPath = [project.directoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@.html",project.buildPath, [doc.name lowercaseString]] ];
         [[NSWorkspace sharedWorkspace] openFile:firstPath];
     }
     else if (rule == IUCompileRuleDjango){
