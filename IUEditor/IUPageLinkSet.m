@@ -54,4 +54,11 @@
     [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
 }
 
+- (void)updateCSSForEditViewPort{
+    //FIXME: error ( not works well )
+    [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:self.css.editWidth isHover:NO] forWidth:self.css.editWidth];
+    [self.delegate IUClassIdentifier:[self.cssID hoverIdentifier] CSSUpdated:[self cssForWidth:self.css.editWidth isHover:YES] forWidth:self.css.editWidth];
+}
+
+
 @end
