@@ -93,4 +93,8 @@
     unconfirmed[obj.htmlID] = obj;
 }
 
+-(IUBox*)IUWithIdentifier:(NSString*)identifier{
+    return [confirmed objectForKey:identifier];
+}
+
 @end

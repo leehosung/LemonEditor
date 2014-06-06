@@ -22,4 +22,12 @@
  */
 -(void)setNewIdentifierAndRegisterToTemp:(IUBox*)obj withKey:(NSString*)keyString;
 
+
+/**
+ @breif Get IU with identifier
+ @note This function is used in FileNaviVC
+ @return IU which has identifier
+ */
+-(IUBox*)IUWithIdentifier:(NSString*)identifier;
+
 @end

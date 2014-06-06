@@ -7,6 +7,7 @@
 //
 
 #import "LMFileNaviCellView.h"
+#import "IUDocument.h"
 
 @implementation LMFileNaviCellView
 
@@ -18,19 +19,19 @@
 }
 
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor{
-    assert(0);
-    /*
     NSString *textValue = fieldEditor.string;
+    assert(_project.identifierManager);
+    IUBox *box = [_project.identifierManager IUWithIdentifier:textValue];
+    if (box != nil) {
+        [JDUIUtil hudAlert:@"IU with same name exists" second:1];
+        return NO;
+    }
     if (textValue.length == 0) {
         return NO;
     }
-    IUNode *node = [_project nodeWithName:textValue];
-    if (node) {
-        [JDLogUtil alert:@"Duplicated Name"];
-        return NO;
-    }
+    IUDocument *doc = self.objectValue;
+    [doc setName:textValue];
     return YES;
-     */
 }
 
 @end

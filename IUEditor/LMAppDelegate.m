@@ -47,7 +47,6 @@
     [wc addSelectedIU:@"test"];
 #endif
     
-    // 추가: 요 부분을 고쳐서 처음 런칭했을 때 화면을 바꾸자.나중에;
     NSArray *recents = [[NSDocumentController sharedDocumentController] recentDocumentURLs];
     if ([recents count]){
         [self loadDocument:[[recents objectAtIndex:0] path]];
