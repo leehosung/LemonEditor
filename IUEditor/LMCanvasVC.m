@@ -491,7 +491,7 @@
 
 
 -(void)IUClassIdentifier:(NSString*)identifier CSSUpdated:(NSString*)css forWidth:(NSInteger)width{
-    [JDLogUtil log:IULogSource key:@"css" string:css];
+    [JDLogUtil log:IULogSource key:@"css source" string:css];
     
     if(css.length == 0){
         //nothing to do
@@ -507,7 +507,7 @@
             [self setIUStyle:cssText withID:identifier size:width];
             
         }
-        [self.webView setNeedsDisplay:YES];
+//        [self.webView setNeedsDisplay:YES];
     }
     
 }
