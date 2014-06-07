@@ -177,13 +177,13 @@
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <font key="titleFont" metaFont="system"/>
                             </box>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wVm-sq-4DZ">
-                                <rect key="frame" x="4" y="9" width="110" height="14"/>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wVm-sq-4DZ">
+                                <rect key="frame" x="4" y="9" width="39" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="Lat-0n-e2T"/>
                                     <constraint firstAttribute="width" constant="106" id="nKC-an-vLw"/>
                                 </constraints>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Background Image" id="U76-Od-fW0">
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Image" id="U76-Od-fW0">
                                     <font key="font" metaFont="smallSystemBold"/>
                                     <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
