@@ -43,12 +43,12 @@
 	[[NSColor blackColor] set];
 	[path fill];
 
-    NSFont *font = [NSFont fontWithName:@"Helvetica" size:50];
+    NSFont *font = [NSFont fontWithName:@"Helvetica" size:30];
     
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setAlignment:NSCenterTextAlignment];
-    [style setMaximumLineHeight:125];
-    [style setMinimumLineHeight:125];
+    [style setMaximumLineHeight:115];
+    [style setMinimumLineHeight:115];
     
     NSDictionary *attr = @{NSParagraphStyleAttributeName: style, NSFontAttributeName:font , NSForegroundColorAttributeName:[NSColor whiteColor]};
 

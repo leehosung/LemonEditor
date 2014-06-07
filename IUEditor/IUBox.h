@@ -71,8 +71,8 @@
 - (void)fetch;
 
 // this is IU setting
-@property (nonatomic, copy) NSString *htmlID;
-@property (nonatomic, copy) NSString *name;
+@property (copy) NSString *htmlID;
+@property (copy) NSString *name;
 @property (nonatomic, weak) id<IUSourceDelegate> delegate;
 @property (weak) IUBox    *parent;
 @property NSArray   *mutables;

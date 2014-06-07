@@ -66,8 +66,16 @@
     for (IUBox *box in pasteboard) {
         NSError *err;
         IUBox *newBox = [box copy];
+        [box.project.identifierManager resetUnconfirmedIUs];
         [box.project.identifierManager setNewIdentifierAndRegisterToTemp:newBox withKey:@"copy"];
+        for (IUBox *child in newBox.children) {
+            [box.project.identifierManager setNewIdentifierAndRegisterToTemp:child withKey:@"copy"];
+        }
+        [box.project.identifierManager confirm];
+        assert(newBox.children);
         assert(newBox.htmlID);
+        newBox.name = newBox.htmlID;
+        
         for (NSNumber *width in newBox.css.allEditWidth) {
             NSDictionary *tagDictionary;
             if (_pasteRepeatCount){

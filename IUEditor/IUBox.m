@@ -36,14 +36,20 @@
     NSArray *children = [self.children deepCopy];
     //FIXME: connect textmanager
     box.css = newCSS;
-    newCSS.delegate  = self;
+    newCSS.delegate  = box;
     box.event = newEvent;
     for (IUBox *iu in children) {
         assert([box addIU:iu error:nil]);
     }
+    box.delegate = self.delegate;
+    [box setTempProject:self.project];
     [box fetch];
     
     return box;
+}
+
+- (void)setTempProject:(IUProject*)project{
+    _tempProject = project;
 }
 
 - (void)setCss:(IUCSS *)css{
@@ -151,6 +157,8 @@
         _css = [[IUCSS alloc] init];
         _css.delegate = self;
         _event = [[IUEvent alloc] init];
+        _m_children = [NSMutableArray array];
+
         [self fetch];
     }
     return self;
@@ -227,18 +235,6 @@
 //delegation
 -(BOOL)CSSShouldChangeValue:(id)value forTag:(IUCSSTag)tag forWidth:(NSInteger)width{
     return YES;
-}
-
--(void)setHtmlID:(NSString *)htmlID{
-    if (self.name == nil || [self.name isEqualToString:_htmlID]) {
-        _htmlID = [htmlID copy];
-        [self willChangeValueForKey:@"name"];
-        _name = [htmlID copy];
-        [self didChangeValueForKey:@"name"];
-    }
-    else{
-        _htmlID = [htmlID copy];
-    }
 }
 
 -(BOOL)shouldAddIUByUserInput{
