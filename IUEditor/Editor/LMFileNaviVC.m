@@ -61,15 +61,65 @@
     [_documentController setSelectedObject:_project.pageDocuments.firstObject];
 }
 
+- (void)pressAddBtn:(NSButton*)sender{
+    IUDocument *newDoc;
+    switch (sender.tag) {
+        case 1:{
+            newDoc = [[IUPage alloc] initWithProject:self.project options:nil];
+            [self.project.pageGroup addDocument:newDoc];
+            IUBackground *defaultBG = self.project.backgroundDocuments[0];
+            [(IUPage*)newDoc setBackground:defaultBG];
+        }
+            break;
+        case 2:{
+            newDoc = [[IUBackground alloc] initWithProject:self.project options:nil];
+            [self.project.backgroundGroup addDocument:newDoc];
+        }
+            break;
+        case 3:{
+            IUClass *newDoc = [[IUClass alloc] initWithProject:self.project options:nil];
+            [self.project.classGroup addDocument:newDoc];
+        }
+            break;
+            
+        default:
+            assert(0);
+            break;
+    }
+    [self.documentController rearrangeObjects];
+    [self.documentController setSelectedObject:newDoc];
+}
+
 
 - (NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(NSTreeNode*)item {
     //folder
     if ( [item.representedObject isKindOfClass:[IUProject class]] ||
         [item.representedObject isKindOfClass:[IUDocumentGroup class]] ||
         [item.representedObject isKindOfClass:[IUResourceGroup class]]){
-        NSTableCellView *folder = [outlineView makeViewWithIdentifier:@"folder" owner:self];
+        LMFileNaviCellView *folder = [outlineView makeViewWithIdentifier:@"folder" owner:self];
+        
+        IUDocumentGroup *doc = (IUDocumentGroup*) item.representedObject;
+        if ([doc isKindOfClass:[IUDocumentGroup class]]) {
+            [folder.addButton setHidden:NO];
+            if ([doc.name isEqualToString:@"Pages"]) {
+                folder.addButton.tag = 1;
+            }
+            else if ([doc.name isEqualToString:@"Backgrounds"]) {
+                folder.addButton.tag = 2;
+            }
+            else if ([doc.name isEqualToString:@"Classes"]) {
+                folder.addButton.tag = 3;
+            }
+            else {
+                assert(0);
+            }
+            [folder.addButton setTarget:self];
+            [folder.addButton setAction:@selector(pressAddBtn:)];
+        }
+        else {
+            [folder.addButton setHidden:YES];
+        }
         return folder;
-
     }
     //file
     else{

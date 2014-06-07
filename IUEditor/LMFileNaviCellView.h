@@ -15,5 +15,6 @@
 - (void)startEditing;
 
 @property (weak) IUProject *project;
+@property IBOutlet NSButton *addButton;
 
 @end

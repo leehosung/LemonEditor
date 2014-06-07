@@ -85,6 +85,7 @@
                                                     <constraint firstAttribute="centerY" secondItem="s1Y-fM-b9U" secondAttribute="centerY" id="xZL-24-wgZ"/>
                                                 </constraints>
                                                 <connections>
+                                                    <outlet property="addButton" destination="ssp-pU-djD" id="ikP-7b-RdU"/>
                                                     <outlet property="imageView" destination="s1Y-fM-b9U" id="Dnv-oH-z3v"/>
                                                     <outlet property="textField" destination="hgM-4r-R1e" id="R7n-Om-BEW"/>
                                                 </connections>

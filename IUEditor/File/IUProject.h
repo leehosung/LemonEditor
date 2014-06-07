@@ -26,7 +26,7 @@ static NSString * IUProjectKeyAppName = @"appName";
 static NSString * IUProjectKeyHeroku = @"heroku";
 static NSString * IUProjectKeyDirectory = @"dir";
 
-@interface IUProject : NSObject <IUFile, IUResourcePathProtocol>{
+@interface IUProject : NSDocument <IUFile, IUResourcePathProtocol>{
     IUDocumentGroup *_pageGroup;
     IUDocumentGroup *_backgroundGroup;
     IUDocumentGroup *_classGroup;
@@ -84,4 +84,10 @@ static NSString * IUProjectKeyDirectory = @"dir";
 - (void)copyResourceForDebug;
 
 - (BOOL)runnable;
+
+// return groups
+- (IUDocumentGroup*)pageGroup;
+- (IUDocumentGroup*)backgroundGroup;
+- (IUDocumentGroup*)classGroup;
+
 @end

@@ -403,4 +403,15 @@
     return nil;
 }
 
+- (IUDocumentGroup*)pageGroup{
+    return _pageGroup;
+}
+- (IUDocumentGroup*)backgroundGroup{
+    return _backgroundGroup;
+}
+- (IUDocumentGroup*)classGroup{
+    return _classGroup;
+}
+
+
 @end
