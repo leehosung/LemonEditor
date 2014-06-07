@@ -72,12 +72,11 @@
         }
             break;
         case 2:{
-            newDoc = [[IUBackground alloc] initWithProject:self.project options:nil];
-            [self.project.backgroundGroup addDocument:newDoc];
+            assert(0);
         }
             break;
         case 3:{
-            IUClass *newDoc = [[IUClass alloc] initWithProject:self.project options:nil];
+            newDoc = [[IUClass alloc] initWithProject:self.project options:nil];
             [self.project.classGroup addDocument:newDoc];
         }
             break;
@@ -105,7 +104,7 @@
                 folder.addButton.tag = 1;
             }
             else if ([doc.name isEqualToString:@"Backgrounds"]) {
-                folder.addButton.tag = 2;
+                [folder.addButton setHidden:YES];
             }
             else if ([doc.name isEqualToString:@"Classes"]) {
                 folder.addButton.tag = 3;

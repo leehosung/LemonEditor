@@ -10,6 +10,12 @@
 
 @implementation IUHeader
 
+-(id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
+    self = [super initWithProject:project options:options];
+    [self.css eradicateTag:IUCSSTagWidth];
+    return self;
+}
+
 -(BOOL)shouldRemoveIU{
     return NO;
 }
@@ -22,4 +28,31 @@
     return NO;
 }
 
+- (BOOL)hasX{
+    return NO;
+}
+
+- (BOOL)hasY{
+    return NO;
+}
+
+- (BOOL)hasWidth{
+    return NO;
+}
+
+- (BOOL)floatRightChangeable{
+    return NO;
+}
+
+- (BOOL)enableXUserInput{
+    return NO;
+}
+
+- (BOOL)enableYUserInput{
+    return NO;
+}
+
+- (BOOL)enableWidthUserInput{
+    return NO;
+}
 @end

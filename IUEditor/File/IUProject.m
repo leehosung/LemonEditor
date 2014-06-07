@@ -137,19 +137,19 @@
     _classGroup.project = self;
 
     IUBackground *bg = [[IUBackground alloc] initWithProject:self options:nil];
-    bg.name = @"background";
-    bg.htmlID = @"background";
+    bg.name = @"Background";
+    bg.htmlID = @"Background";
     [_backgroundGroup addDocument:bg];
 
     IUPage *pg = [[IUPage alloc] initWithProject:self options:nil];
     [pg setBackground:bg];
-    pg.name = @"index";
-    pg.htmlID = @"index";
+    pg.name = @"Index";
+    pg.htmlID = @"Index";
     [_pageGroup addDocument:pg];
     
     IUClass *class = [[IUClass alloc] initWithProject:self options:nil];
-    class.name = @"class";
-    class.htmlID = @"class";
+    class.name = @"Class";
+    class.htmlID = @"Class";
     [_classGroup addDocument:class];
     
     [self initializeResource];
