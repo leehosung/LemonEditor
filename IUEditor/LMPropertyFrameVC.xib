@@ -56,19 +56,8 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button translatesAutoresizingMaskIntoConstraints="NO" id="xa2-Jd-iG8">
-                                <rect key="frame" x="179" y="77" width="56" height="18"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="14" id="Fia-xD-4nb"/>
-                                    <constraint firstAttribute="width" constant="52" id="qqR-15-Zxp"/>
-                                </constraints>
-                                <buttonCell key="cell" type="check" title="Over" bezelStyle="regularSquare" imagePosition="left" inset="2" id="BX2-Iq-gya">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="smallSystem"/>
-                                </buttonCell>
-                            </button>
-                            <button translatesAutoresizingMaskIntoConstraints="NO" id="P5X-KI-ojA">
-                                <rect key="frame" x="69" y="77" width="56" height="18"/>
+                            <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P5X-KI-ojA">
+                                <rect key="frame" x="51" y="77" width="56" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="52" id="IQy-YB-lzs"/>
                                 </constraints>
@@ -77,8 +66,8 @@
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
                             </button>
-                            <button translatesAutoresizingMaskIntoConstraints="NO" id="n1h-zm-ovQ">
-                                <rect key="frame" x="126" y="77" width="50" height="18"/>
+                            <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n1h-zm-ovQ">
+                                <rect key="frame" x="95" y="77" width="50" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="J74-5p-3rV"/>
                                     <constraint firstAttribute="width" constant="46" id="KbC-KP-K6l"/>
@@ -267,7 +256,7 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hol-Zn-Id9">
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hol-Zn-Id9">
                                             <rect key="frame" x="102" y="39" width="38" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="34" id="jIW-g0-Jye"/>
@@ -290,17 +279,6 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <button toolTip="Horizontal Center" translatesAutoresizingMaskIntoConstraints="NO" id="zHx-Ob-5lO">
-                                            <rect key="frame" x="223" y="37" width="31" height="20"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="26" id="tof-jW-nya"/>
-                                                <constraint firstAttribute="height" constant="14" id="yeZ-IA-qtc"/>
-                                            </constraints>
-                                            <buttonCell key="cell" type="check" title="C" bezelStyle="regularSquare" imagePosition="left" controlSize="small" inset="2" id="Qmw-E3-iK4">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="smallSystem"/>
-                                            </buttonCell>
-                                        </button>
                                     </subviews>
                                 </view>
                                 <constraints>
@@ -309,7 +287,6 @@
                                     <constraint firstItem="NbJ-WM-MfU" firstAttribute="leading" secondItem="AJN-a2-BIm" secondAttribute="trailing" constant="1" id="5Wf-6q-sf4"/>
                                     <constraint firstAttribute="bottom" secondItem="NbJ-WM-MfU" secondAttribute="bottom" constant="11" id="8KJ-8l-Eyb"/>
                                     <constraint firstItem="ze4-DS-FcM" firstAttribute="bottom" secondItem="7ez-uH-X3R" secondAttribute="bottom" id="BpU-6u-qiG"/>
-                                    <constraint firstItem="zHx-Ob-5lO" firstAttribute="top" secondItem="qi4-uk-WUI" secondAttribute="top" constant="12" id="Cc8-Yi-2y9"/>
                                     <constraint firstAttribute="bottom" secondItem="AJN-a2-BIm" secondAttribute="bottom" constant="11" id="DFo-h2-WG7"/>
                                     <constraint firstItem="dde-if-4FG" firstAttribute="trailing" secondItem="bUx-4a-5bn" secondAttribute="trailing" id="L89-Sk-NLJ"/>
                                     <constraint firstAttribute="height" constant="66" id="Qdp-Du-F63"/>
@@ -327,7 +304,6 @@
                                     <constraint firstItem="z9a-iK-QZ6" firstAttribute="top" secondItem="KEg-GU-M43" secondAttribute="top" id="egK-kZ-tke"/>
                                     <constraint firstAttribute="bottom" secondItem="2id-bU-xHh" secondAttribute="bottom" constant="11" id="fSf-36-OMv"/>
                                     <constraint firstItem="yqm-TH-YmF" firstAttribute="bottom" secondItem="AJN-a2-BIm" secondAttribute="bottom" id="hQL-1G-u8i"/>
-                                    <constraint firstItem="zHx-Ob-5lO" firstAttribute="baseline" secondItem="Hol-Zn-Id9" secondAttribute="baseline" id="hbM-bi-k9A"/>
                                     <constraint firstItem="bza-57-yAn" firstAttribute="top" secondItem="qi4-uk-WUI" secondAttribute="top" constant="10" id="iSt-Aa-a8z"/>
                                     <constraint firstItem="wit-4t-70U" firstAttribute="leading" secondItem="NbJ-WM-MfU" secondAttribute="trailing" constant="15" id="ixs-hh-YhH"/>
                                     <constraint firstItem="bza-57-yAn" firstAttribute="leading" secondItem="bUx-4a-5bn" secondAttribute="trailing" constant="1" id="jXD-01-iIe"/>
@@ -344,13 +320,34 @@
                                     <constraint firstAttribute="bottom" secondItem="z9a-iK-QZ6" secondAttribute="bottom" constant="10" id="uJt-8u-uYD"/>
                                     <constraint firstItem="gRV-9E-wax" firstAttribute="top" secondItem="Z07-rg-vmx" secondAttribute="bottom" constant="13" id="upa-Vf-KXj"/>
                                     <constraint firstItem="yqm-TH-YmF" firstAttribute="leading" secondItem="AJN-a2-BIm" secondAttribute="leading" id="vX0-Qw-7qD"/>
-                                    <constraint firstItem="zHx-Ob-5lO" firstAttribute="leading" secondItem="bza-57-yAn" secondAttribute="trailing" constant="8" symbolic="YES" id="vXS-dL-nGj"/>
                                     <constraint firstItem="dde-if-4FG" firstAttribute="leading" secondItem="bUx-4a-5bn" secondAttribute="leading" id="veX-nf-mcs"/>
                                     <constraint firstItem="2Ur-uO-dSJ" firstAttribute="leading" secondItem="ze4-DS-FcM" secondAttribute="trailing" constant="1" id="zRS-EF-u3n"/>
                                 </constraints>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </box>
+                            <button toolTip="Horizontal Center" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zHx-Ob-5lO">
+                                <rect key="frame" x="208" y="76" width="59" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="26" id="tof-jW-nya"/>
+                                    <constraint firstAttribute="height" constant="14" id="yeZ-IA-qtc"/>
+                                </constraints>
+                                <buttonCell key="cell" type="check" title="Center" bezelStyle="regularSquare" imagePosition="left" controlSize="small" inset="2" id="Qmw-E3-iK4">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="smallSystem"/>
+                                </buttonCell>
+                            </button>
+                            <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xa2-Jd-iG8">
+                                <rect key="frame" x="143" y="77" width="56" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="14" id="Fia-xD-4nb"/>
+                                    <constraint firstAttribute="width" constant="52" id="qqR-15-Zxp"/>
+                                </constraints>
+                                <buttonCell key="cell" type="check" title="Over" bezelStyle="regularSquare" imagePosition="left" inset="2" id="BX2-Iq-gya">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="smallSystem"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                     </view>
                     <constraints>
