@@ -1,4 +1,6 @@
 LemonEditor
 ===========
 
-IUCompiler v0.1
+IUEditor v0.1
+
+Press 'new project'
