@@ -35,6 +35,11 @@
     return NO;
 }
 
+- (BOOL)enableHeightUserInput{
+    return NO;
+}
+
+
 -(void)encodeWithCoder:(NSCoder *)aCoder{
     [super encodeWithCoder:aCoder];
     [aCoder encodeFloat:_ghostX forKey:@"ghostX"];
