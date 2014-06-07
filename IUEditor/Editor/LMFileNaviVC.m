@@ -155,7 +155,8 @@
     NSTreeNode *item = [_navOutlineView itemAtRow:sender.tag];
     IUDocument * node = [item representedObject];
     IUDocument * newNode = [node copy];
-    
+    [node.group addDocument:newNode];
+    [self.documentController rearrangeObjects];
 }
 
 
