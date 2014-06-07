@@ -20,13 +20,6 @@
 
 @property (weak) IBOutlet JDOutlineView *navOutlineView;
 
-//right menu item
-@property (weak) IBOutlet NSMenuItem *finderMenuItem;
-@property (weak) IBOutlet NSMenuItem *barMenuItem;
-@property (weak) IBOutlet NSMenuItem *fileAddItem;
-@property (weak) IBOutlet NSMenuItem *fileCopyItem;
-@property (weak) IBOutlet NSMenuItem *fileRemoveItem;
-
 @end
 
 @implementation LMFileNaviVC{
@@ -68,20 +61,12 @@
     [_documentController setSelectedObject:_project.pageDocuments.firstObject];
 }
 
-- (BOOL)isFolder:(NSTreeNode *)item{
-    id representObject = [item representedObject];
-    if ([representObject isKindOfClass:[IUProject class]] ||
-        [representObject isKindOfClass:[IUDocumentGroup class]] ||
-        [representObject isKindOfClass:[IUResourceGroup class]]) {
-        return YES;
-    }
-    return NO;
-}
 
 - (NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(NSTreeNode*)item {
     //folder
-    if([self isFolder:item]){
-        
+    if ( [item.representedObject isKindOfClass:[IUProject class]] ||
+        [item.representedObject isKindOfClass:[IUDocumentGroup class]] ||
+        [item.representedObject isKindOfClass:[IUResourceGroup class]]){
         NSTableCellView *folder = [outlineView makeViewWithIdentifier:@"folder" owner:self];
         return folder;
 
@@ -130,44 +115,61 @@
 #pragma mark -
 #pragma mark rightmenu
 - (NSMenu *)defaultMenuForRow:(NSInteger)row{
-#if 0
-    NSMenu *menu = [self defaultMenu];
-    
     NSTreeNode *item = [_navOutlineView itemAtRow:row];
-    IUNode *node = [item representedObject];
+    id node = [item representedObject];
 
-    if([self isFolder:item]==NO){
-        //TODO: make copy, remove item
-        /*
-        [menu addItem:_fileCopyItem];
-        [menu addItem:_fileRemoveItem];
-         */
-    }
-    if ([node isKindOfClass:[IUDocumentGroup class]]
-        || [node isKindOfClass:[IUDocumentGroupNode class]]){
+    if( [node isKindOfClass:[IUDocument class]]){
+        NSMenu *menu = [[NSMenu alloc] initWithTitle:@"Document"];
+        NSMenuItem *openItem = [[NSMenuItem alloc] initWithTitle:@"Open Project Folder" action:@selector(openProject:) keyEquivalent:@""];
+        openItem.tag = row;
+        openItem.target = self;
+
+        NSMenuItem *removeItem = [[NSMenuItem alloc] initWithTitle:@"Remove Document" action:@selector(removeDocument:) keyEquivalent:@""];
+        removeItem.tag = row;
+        removeItem.target = self;
         
-        [menu addItem:_fileAddItem];
-        [menu addItem:_fileRemoveItem];
+        NSMenuItem *copyItem = [[NSMenuItem alloc] initWithTitle:@"Copy Document" action:@selector(copyDocument:) keyEquivalent:@""];
+        copyItem.tag = row;
+        copyItem.target = self;
+        
+        [menu addItem:openItem];
+        [menu addItem:removeItem];
+
+        [menu addItem:copyItem];
+        return menu;
     }
 
-    return menu;
-#endif
+    else {
+    }
     return nil;
+    
 }
 
-- (NSMenu *)defaultMenu{
-    NSMenu *menu = [[NSMenu alloc] init];
-    [menu addItem:_finderMenuItem];
-    [menu addItem:_barMenuItem];
-
-    return menu;
-}
 - (IBAction)clickShowInFinder:(id)sender {
     NSURL *url = [NSURL fileURLWithPath:_project.path];
     [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[url]];
     
 }
 
+- (void)copyDocument:(NSMenuItem*)sender{
+    NSTreeNode *item = [_navOutlineView itemAtRow:sender.tag];
+    IUDocument * node = [item representedObject];
+    IUDocument * newNode = [node copy];
+    
+}
+
+
+- (void)removeDocument:(NSMenuItem*)sender{
+    NSTreeNode *item = [_navOutlineView itemAtRow:sender.tag];
+    IUDocument * node = [item representedObject];
+    if (node.group.childrenFiles.count == 1) {
+        NSBeep();
+        [JDUIUtil hudAlert:@"Each document folder should have at least one document" second:2];
+        return;
+    }
+    [node.group removeDocument:node];
+    [_documentController rearrangeObjects];
+}
 
 - (IBAction)clickMenuAddFile:(id)sender {
     assert(0);
@@ -218,18 +220,9 @@
     }
      */
 }
-- (IBAction)clickMenuRemoveFile:(id)sender {
-    assert(0);
-    /*
-    NSTreeNode *node = [_navOutlineView itemAtRow:_navOutlineView.rightClickedIndex];
-    IUDocumentGroup *docNode = [node representedObject];
-    [docNode.parent removeNode:docNode];
-    [_documentController rearrangeObjects];
-     */
-}
 
-- (IBAction)clickMenuCopyFile:(id)sender {
-    //TODO:
+- (void)openProject:(id)sender {
+    [[NSWorkspace sharedWorkspace] openFile:_project.directoryPath];
 }
 
 - (BOOL)keyDown:(NSEvent *)event{

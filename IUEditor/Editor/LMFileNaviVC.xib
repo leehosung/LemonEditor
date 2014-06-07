@@ -6,12 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMFileNaviVC">
             <connections>
-                <outlet property="barMenuItem" destination="ym2-YA-uhR" id="Vsg-gS-MRq"/>
                 <outlet property="documentController" destination="gdF-Dg-Xge" id="nP3-xi-aAd"/>
-                <outlet property="fileAddItem" destination="7vO-Nt-Z0R" id="34C-Ba-i2w"/>
-                <outlet property="fileCopyItem" destination="Vb2-3D-XOK" id="8S1-ea-pJm"/>
-                <outlet property="fileRemoveItem" destination="qWi-LV-nWB" id="jKJ-fk-Blz"/>
-                <outlet property="finderMenuItem" destination="fLO-aZ-bbm" id="Crn-Hz-iDD"/>
                 <outlet property="navOutlineView" destination="1aw-gA-pJZ" id="IdP-Rf-eE2"/>
                 <outlet property="view" destination="2vD-fN-bWc" id="SVK-bX-riZ"/>
             </connections>
@@ -400,32 +395,6 @@
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="czK-hJ-lvV"/>
         <treeController mode="entity" editable="NO" childrenKeyPath="childrenFiles" id="gdF-Dg-Xge" customClass="IUDocumentController"/>
-        <menuItem title="Show in Finder" id="fLO-aZ-bbm">
-            <attributedString key="attributedTitle"/>
-            <modifierMask key="keyEquivalentModifierMask"/>
-            <connections>
-                <action selector="clickShowInFinder:" target="-2" id="u6V-LS-ofE"/>
-            </connections>
-        </menuItem>
-        <menuItem isSeparatorItem="YES" enabled="YES" id="ym2-YA-uhR"/>
-        <menuItem title="Add File" id="7vO-Nt-Z0R">
-            <modifierMask key="keyEquivalentModifierMask"/>
-            <connections>
-                <action selector="clickMenuAddFile:" target="-2" id="ipB-L9-5Af"/>
-            </connections>
-        </menuItem>
-        <menuItem title="Copy File" id="Vb2-3D-XOK">
-            <modifierMask key="keyEquivalentModifierMask"/>
-            <connections>
-                <action selector="clickMenuCopyFile:" target="-2" id="IxI-vh-haE"/>
-            </connections>
-        </menuItem>
-        <menuItem title="Remove File" id="qWi-LV-nWB">
-            <modifierMask key="keyEquivalentModifierMask"/>
-            <connections>
-                <action selector="clickMenuRemoveFile:" target="-2" id="cC5-5Q-hUW"/>
-            </connections>
-        </menuItem>
     </objects>
     <resources>
         <image name="ic_background" width="14" height="18"/>
