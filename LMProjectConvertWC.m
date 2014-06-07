@@ -11,7 +11,10 @@
 
 
 @interface LMProjectConvertWC ()
-
+@property (weak) IBOutlet NSView *htmlConvertV;
+@property (weak) IBOutlet NSView *htmlRemainV;
+@property (weak) IBOutlet NSView *djangoConvertV;
+@property (weak) IBOutlet NSView *djangoRemainV;
 @end
 
 @implementation LMProjectConvertWC{
@@ -34,6 +37,22 @@
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 
+- (void)awakeFromNib{
+    [self setCurrentProject:_currentProject];
+}
+
+- (void)setCurrentProject:(IUProject *)currentProject{
+    _currentProject = currentProject;
+    if ([[currentProject className] isEqualToString:@"IUProject"]) {
+        [_htmlConvertV setHidden:YES];
+        [_djangoRemainV setHidden:YES];
+    }
+    else {
+        [_htmlRemainV setHidden:YES];
+        [_djangoConvertV setHidden:YES];
+    }
+}
+
 - (IBAction)convertDjango:(id)sender{
     NSDictionary *setting = @{IUProjectKeyDirectory: _targetProjectDirectory};
     NSError *err;
@@ -50,6 +69,13 @@
 - (IBAction)pressSelectProjectDirectory:(id)sender {
     NSURL *url = [[JDFileUtil util] openDirectoryByNSOpenPanel];
     self.targetProjectDirectory = [url path];
+}
+
+- (void)setTargetProjectDirectory:(NSString *)targetProjectDirectory{
+    _targetProjectDirectory = targetProjectDirectory;
+    self.iuProjectDirectory = [_targetProjectDirectory stringByAppendingPathComponent:@"IUProject"];
+    self.buildProjectDirectory = [_targetProjectDirectory stringByAppendingPathComponent:@"templates"];
+    self.resourceProjectDirectory = [_targetProjectDirectory stringByAppendingPathComponent:@"IUProject/Resource"];
 }
 
 - (IBAction)pressCancelB:(id)sender {
