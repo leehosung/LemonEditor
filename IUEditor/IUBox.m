@@ -43,8 +43,21 @@
     }
     box.delegate = self.delegate;
     [box setTempProject:self.project];
-    [box fetch];
     
+    assert(self.project);
+    [self.project.identifierManager resetUnconfirmedIUs];
+    [self.project.identifierManager setNewIdentifierAndRegisterToTemp:box withKey:@"copy"];
+    box.name = box.htmlID;
+    /*
+     //FIXME: is deep copy check children?
+    for (IUBox *child in box.children) {
+        [box.project.identifierManager setNewIdentifierAndRegisterToTemp:child withKey:@"copy"];
+        [child fetch];
+        child.name = child.htmlID;
+    }
+     */
+    [box.project.identifierManager confirm];
+
     return box;
 }
 
@@ -146,6 +159,7 @@
     assert(project);
     assert(project.identifierManager);
     [project.identifierManager setNewIdentifierAndRegisterToTemp:self withKey:nil];
+    self.name = self.htmlID;
     return self;
 }
 
