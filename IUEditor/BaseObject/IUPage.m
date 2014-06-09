@@ -74,6 +74,7 @@
         _pageContent = [[IUPageContent alloc] initWithProject:self.project options:nil];
         _pageContent.htmlID = @"pageContent";
         _pageContent.name = @"pageContent";
+        _pageContent.parent = self;
         
         for (IUBox *iu in children) {
             if (iu == (IUBox*)myBackground) {
@@ -94,6 +95,7 @@
 //        [self insertIU:background atIndex:0 error:nil];
     }
     _background = background;
+    _background.parent = self;
     [_pageContent bind:@"delegate" toObject:self withKeyPath:@"delegate" options:nil];
     [_background bind:@"delegate" toObject:self withKeyPath:@"delegate" options:nil];
 }
