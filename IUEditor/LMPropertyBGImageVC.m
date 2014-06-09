@@ -1,3 +1,4 @@
+
 //
 //  LMPropertyBGImageVC.m
 //  IUEditor
@@ -7,6 +8,7 @@
 //
 
 #import "LMPropertyBGImageVC.h"
+#import "IUImage.h"
 
 @interface LMPropertyBGImageVC ()
 
@@ -36,6 +38,7 @@
 
     [_imageNameComboBox bind:NSContentBinding toObject:self withKeyPath:@"resourceManager.imageFiles" options:IUBindingDictNotRaisesApplicable];
     [_imageNameComboBox bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagImage] options:IUBindingDictNotRaisesApplicable];
+    _imageNameComboBox.delegate = self;
     
     [_xPositionTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBGXPosition] options:IUBindingDictNotRaisesApplicable];
     [_yPositionTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBGYPosition] options:IUBindingDictNotRaisesApplicable];
@@ -57,6 +60,25 @@
     
     
 }
+
+- (void)controlTextDidChange:(NSNotification *)obj{
+    for (IUImage *image in self.controller.selectedObjects) {
+        if ([image isKindOfClass:[IUImage class]]) {
+            id value = [_imageNameComboBox stringValue];
+            [image setImageName:value];
+        }
+    }
+}
+
+- (void)comboBoxSelectionDidChange:(NSNotification *)notification{
+    for (IUImage *image in self.controller.selectedObjects) {
+        if ([image isKindOfClass:[IUImage class]]) {
+            id value = [_imageNameComboBox objectValueOfSelectedItem];
+            [image setImageName:value];
+        }
+    }
+}
+
 
 
 @end

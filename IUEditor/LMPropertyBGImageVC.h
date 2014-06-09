@@ -11,7 +11,7 @@
 #import "IUController.h"
 #import "JDOutlineCellView.h"
 
-@interface LMPropertyBGImageVC : NSViewController
+@interface LMPropertyBGImageVC : NSViewController <NSComboBoxDelegate>
 
 @property (nonatomic) IUController      *controller;
 @property (nonatomic) IUResourceManager     *resourceManager;
