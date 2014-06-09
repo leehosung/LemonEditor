@@ -1,5 +1,5 @@
 //
-//  IUPageLinkSet.h
+//  PGPageLinkSet.h
 //  IUEditor
 //
 //  Created by jd on 5/8/14.
@@ -8,7 +8,7 @@
 
 #import "IUBox.h"
 
-@interface IUPageLinkSet : IUBox
+@interface PGPageLinkSet : IUBox
 @property (nonatomic) NSString  *pageCountVariable;
 @property (nonatomic) IUAlign   pageLinkAlign;
 @property (nonatomic) NSColor   *selectedButtonBGColor;

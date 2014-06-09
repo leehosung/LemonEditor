@@ -1,14 +1,14 @@
 //
-//  IUTextView.m
+//  PGTextView.m
 //  IUEditor
 //
 //  Created by jd on 4/25/14.
 //  Copyright (c) 2014 JDLab. All rights reserved.
 //
 
-#import "IUTextView.h"
+#import "PGTextView.h"
 
-@implementation IUTextView
+@implementation PGTextView
 
 -(id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
     self = [super initWithProject:project options:options];
@@ -27,13 +27,13 @@
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self =  [super initWithCoder:aDecoder];
     if(self){
-        [aDecoder decodeToObject:self withProperties:[[IUTextView class] properties]];
+        [aDecoder decodeToObject:self withProperties:[[PGTextView class] properties]];
     }
     return self;
 }
 -(void)encodeWithCoder:(NSCoder *)aCoder{
     [super encodeWithCoder:aCoder];
-    [aCoder encodeFromObject:self withProperties:[[IUTextView class] properties]];
+    [aCoder encodeFromObject:self withProperties:[[PGTextView class] properties]];
     
 }
 

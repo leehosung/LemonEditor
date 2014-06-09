@@ -35,22 +35,22 @@ a{
     position:relative !important;
 }
 
-.IUTextField {
+.PGTextField {
     padding-left: 8px;
 }
 
-.IUTextView {
+.PGTextView {
     padding-left: 8px;
     padding-top : 4px;
 }
 
-.IUPageLinkSet > div > ul > a > li{
+.PGPageLinkSet > div > ul > a > li{
     display:block;
     float:left;
     color: white;
 }
 
-.IUPageLinkSet > div {
+.PGPageLinkSet > div {
     margin-left:auto;
     margin-right:auto;
 }

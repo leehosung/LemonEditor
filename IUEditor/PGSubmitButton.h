@@ -1,5 +1,5 @@
 //
-//  IUForm.h
+//  IUButton.h
 //  IUEditor
 //
 //  Created by jd on 5/7/14.
@@ -8,6 +8,6 @@
 
 #import "IUBox.h"
 
-@interface IUForm : IUBox
+@interface PGSubmitButton : IUBox
 
 @end

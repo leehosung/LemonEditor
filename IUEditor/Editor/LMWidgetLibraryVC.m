@@ -17,9 +17,11 @@
 
 @property (weak) IBOutlet NSCollectionView *primaryCollectionV;
 @property (weak) IBOutlet NSCollectionView *secondaryCollectionV;
+@property (weak) IBOutlet NSCollectionView *PGCollectionV;
 
 @property (weak) IBOutlet NSTabView *primaryTabView;
 @property (weak) IBOutlet NSTabView *secondaryTabView;
+@property (weak) IBOutlet NSTabView *PGTabView;
 
 @end
 
@@ -46,7 +48,8 @@
     
     IUBox *obj = [[NSClassFromString(className) alloc] initWithProject:_project options:nil];
     if (obj == nil) {
-        assert(0);
+    //    assert(0);
+        NSLog(@"objISNil");
     }
     
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:obj];
@@ -77,6 +80,7 @@
 -(void)setWidgetProperties:(NSArray*)array{
     NSMutableArray *primaryArray = [NSMutableArray array];
     NSMutableArray *secondaryArray = [NSMutableArray array];
+    NSMutableArray *PGArray = [NSMutableArray array];
     for (NSDictionary *dict in array) {
         
         BOOL isWidget = [dict[@"isWidget"] boolValue];
@@ -94,6 +98,9 @@
             else if(widgetClass == WidgetClassTypeSecondary){
                 [secondaryArray addObject:obj];
             }
+            else if(widgetClass == WidgetClassTypePG){
+                [PGArray addObject:obj];
+            }
         }
     }
     [self willChangeValueForKey:@"primaryWidgets"];
@@ -103,6 +110,10 @@
     [self willChangeValueForKey:@"secondaryWidgets"];
     _secondaryWidgets = secondaryArray;
     [self didChangeValueForKey:@"secondaryWidgets"];
+    
+    [self willChangeValueForKey:@"PGWidgets"];
+    _PGWidgets = PGArray;
+    [self didChangeValueForKey:@"PGWidgets"];
 }
 
 - (IBAction)clickWidgetTabMatrix:(id)sender {
@@ -128,4 +139,10 @@
     [_secondaryTabView selectTabViewItemAtIndex:1];
 }
 
+- (IBAction)clickPGList:(id)sender {
+    [_PGTabView selectTabViewItemAtIndex:0];
+}
+- (IBAction)clickPGIcon:(id)sender {
+    [_PGTabView selectTabViewItemAtIndex:1];
+}
 @end

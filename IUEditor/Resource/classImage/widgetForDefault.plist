@@ -70,7 +70,7 @@
 		<key>isWidget</key>
 		<true/>
 		<key>className</key>
-		<string>IUPageLinkSet</string>
+		<string>PGPageLinkSet</string>
 		<key>classImage</key>
 		<string>tool_page_nav</string>
 		<key>navImage</key>
@@ -80,13 +80,13 @@
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
-		<integer>1</integer>
+		<integer>2</integer>
 	</dict>
 	<dict>
 		<key>isWidget</key>
 		<true/>
 		<key>className</key>
-		<string>IUSubmitButton</string>
+		<string>PGSubmitButton</string>
 		<key>classImage</key>
 		<string>tool_submit</string>
 		<key>navImage</key>
@@ -96,13 +96,13 @@
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
-		<integer>0</integer>
+		<integer>2</integer>
 	</dict>
 	<dict>
 		<key>isWidget</key>
 		<true/>
 		<key>className</key>
-		<string>IUForm</string>
+		<string>PGForm</string>
 		<key>classImage</key>
 		<string>tool_form</string>
 		<key>navImage</key>
@@ -112,7 +112,7 @@
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
-		<integer>0</integer>
+		<integer>2</integer>
 	</dict>
 	<dict>
 		<key>isWidget</key>
@@ -246,7 +246,7 @@
 		<key>isWidget</key>
 		<true/>
 		<key>className</key>
-		<string>IUTextField</string>
+		<string>PGTextField</string>
 		<key>classImage</key>
 		<string>tool_textfield</string>
 		<key>navImage</key>
@@ -256,13 +256,13 @@
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
-		<integer>0</integer>
+		<integer>2</integer>
 	</dict>
 	<dict>
 		<key>isWidget</key>
 		<true/>
 		<key>className</key>
-		<string>IUTextView</string>
+		<string>PGTextView</string>
 		<key>classImage</key>
 		<string>tool_textview</string>
 		<key>navImage</key>
@@ -272,7 +272,7 @@
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
-		<integer>0</integer>
+		<integer>2</integer>
 	</dict>
 	<dict>
 		<key>isWidget</key>

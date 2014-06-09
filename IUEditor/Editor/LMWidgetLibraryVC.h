@@ -19,5 +19,6 @@
 -(void)setWidgetProperties:(NSArray*)array;
 @property (nonatomic, readonly) NSArray *primaryWidgets;
 @property (nonatomic, readonly) NSArray *secondaryWidgets;
+@property (nonatomic, readonly) NSArray *PGWidgets;
 
 @end

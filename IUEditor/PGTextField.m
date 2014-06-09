@@ -1,14 +1,14 @@
 //
-//  IUTextField.m
+//  PGTextField.m
 //  IUEditor
 //
 //  Created by jd on 4/25/14.
 //  Copyright (c) 2014 JDLab. All rights reserved.
 //
 
-#import "IUTextField.h"
+#import "PGTextField.h"
 
-@implementation IUTextField
+@implementation PGTextField
 
 
 -(id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
@@ -28,13 +28,13 @@
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self =  [super initWithCoder:aDecoder];
     if(self){
-        [aDecoder decodeToObject:self withProperties:[[IUTextField class] properties]];
+        [aDecoder decodeToObject:self withProperties:[[PGTextField class] properties]];
     }
     return self;
 }
 -(void)encodeWithCoder:(NSCoder *)aCoder{
     [super encodeWithCoder:aCoder];
-    [aCoder encodeFromObject:self withProperties:[[IUTextField class] properties]];
+    [aCoder encodeFromObject:self withProperties:[[PGTextField class] properties]];
     
 }
 

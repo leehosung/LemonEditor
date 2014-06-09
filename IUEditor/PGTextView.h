@@ -1,5 +1,5 @@
 //
-//  IUTextView.h
+//  PGTextView.h
 //  IUEditor
 //
 //  Created by jd on 4/25/14.
@@ -8,7 +8,7 @@
 
 #import "IUBox.h"
 
-@interface IUTextView : IUBox
+@interface PGTextView : IUBox
 
 @property (nonatomic) NSString  *placeholder;
 @property (nonatomic) NSString  *inputValue;

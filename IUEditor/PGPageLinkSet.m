@@ -1,14 +1,14 @@
 //
-//  IUPageLinkSet.m
+//  PGPageLinkSet.m
 //  IUEditor
 //
 //  Created by jd on 5/8/14.
 //  Copyright (c) 2014 JDLab. All rights reserved.
 //
 
-#import "IUPageLinkSet.h"
+#import "PGPageLinkSet.h"
 
-@implementation IUPageLinkSet
+@implementation PGPageLinkSet
 
 
 - (id)initWithProject:(IUProject *)project options:(NSDictionary *)options{

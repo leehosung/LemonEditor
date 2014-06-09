@@ -16,8 +16,8 @@
 #import "IUPageContent.h"
 #import "IUClass.h"
 #import "IUBackground.h"
-#import "IUTextField.h"
-#import "IUTextView.h"
+#import "PGTextField.h"
+#import "PGTextView.h"
 
 #import "IUHTML.h"
 #import "IUImage.h"
@@ -28,9 +28,9 @@
 #import "IUItem.h"
 #import "IUCarouselItem.h"
 #import "IUCollection.h"
-#import "IUSubmitButton.h"
-#import "IUForm.h"
-#import "IUPageLinkSet.h"
+#import "PGSubmitButton.h"
+#import "PGForm.h"
+#import "PGPageLinkSet.h"
 #import "IUTransition.h"
 #import "JDCode.h"
 #import "IUText.h"
@@ -296,7 +296,7 @@
     return css;
 }
 
--(NSDictionary *)cssSourceForIUPageLinkSet:(IUPageLinkSet *)iu{
+-(NSDictionary *)cssSourceForIUPageLinkSet:(PGPageLinkSet *)iu{
     NSMutableDictionary *returnDict = [NSMutableDictionary dictionary];
     
     switch (iu.pageLinkAlign) {
@@ -380,8 +380,8 @@
         }
     }
     
-    if ([iu isKindOfClass:[IUPageLinkSet class]] && width == IUCSSMaxViewPortWidth) {
-        NSDictionary *pagelinkSetDict = [self cssSourceForIUPageLinkSet:(IUPageLinkSet *)iu];
+    if ([iu isKindOfClass:[PGPageLinkSet class]] && width == IUCSSMaxViewPortWidth) {
+        NSDictionary *pagelinkSetDict = [self cssSourceForIUPageLinkSet:(PGPageLinkSet *)iu];
         for (id key in pagelinkSetDict) {
             [dict setObject:pagelinkSetDict[key] forKey:key];
         }
@@ -392,7 +392,7 @@
 static NSString * IUCompilerTagOption = @"tag";
 -(JDCode*)outputHTMLAsBox:(IUBox*)iu option:(NSDictionary*)option{
     NSString *tag = @"div";
-    if ([iu isKindOfClass:[IUForm class]]) {
+    if ([iu isKindOfClass:[PGForm class]]) {
         tag = @"form";
     }
     else if (iu.textType == 1){
@@ -406,7 +406,7 @@ static NSString * IUCompilerTagOption = @"tag";
         [code addCodeLineWithFormat:@"{%%if %@%%}", iu.pgVisibleCondition];
     }
     [code addCodeLineWithFormat:@"<%@ %@>", tag, [self HTMLAttributes:iu option:nil]];
-    if ([iu isKindOfClass:[IUForm class]]) {
+    if ([iu isKindOfClass:[PGForm class]]) {
         [code addCodeLine:@"{% csrf_token %}"];
     }
     if (_rule == IUCompileRuleDjango && iu.textVariable) {
@@ -530,13 +530,13 @@ static NSString * IUCompilerTagOption = @"tag";
         [code addCodeLineWithFormat:@"</div>"];
         
     }
-#pragma mark IUPageLinkSet
+#pragma mark PGPageLinkSet
 
-    else if ([iu isKindOfClass:[IUPageLinkSet class]]){
+    else if ([iu isKindOfClass:[PGPageLinkSet class]]){
         [code addCodeLineWithFormat:@"<div %@>\n", [self HTMLAttributes:iu option:nil]];
         [code addCodeLine:@"    <div>"];
         [code addCodeLine:@"    <ul>"];
-        [code addCodeLineWithFormat:@"        {%% for i in %@ %%}", [(IUPageLinkSet *)iu pageCountVariable]];
+        [code addCodeLineWithFormat:@"        {%% for i in %@ %%}", [(PGPageLinkSet *)iu pageCountVariable]];
         [code addCodeLineWithFormat:@"        <a href=/%@/{{i}}>", iu.link];
         [code addCodeLine:@"            <li> {{i}} </li>"];
         [code addCodeLine:@"        </a>"];
@@ -574,21 +574,21 @@ static NSString * IUCompilerTagOption = @"tag";
     }
 #pragma mark IUTextFeild
     
-    else if ([iu isKindOfClass:[IUTextField class]]){
+    else if ([iu isKindOfClass:[PGTextField class]]){
         [code addCodeLineWithFormat:@"<input %@ >", [self HTMLAttributes:iu option:nil]];
     }
     
-#pragma mark IUTextView
+#pragma mark PGTextView
     
-    else if ([iu isKindOfClass:[IUTextView class]]){
-        NSString *inputValue = [[(IUTextView *)iu inputValue] length] ? [(IUTextView *)iu inputValue] : @"";
+    else if ([iu isKindOfClass:[PGTextView class]]){
+        NSString *inputValue = [[(PGTextView *)iu inputValue] length] ? [(PGTextView *)iu inputValue] : @"";
         [code addCodeLineWithFormat:@"<textarea %@ >%@</textarea>", [self HTMLAttributes:iu option:nil], inputValue];
     }
     
-    else if ([iu isKindOfClass:[IUForm class]]){
+    else if ([iu isKindOfClass:[PGForm class]]){
         [code addCode:[self outputHTMLAsBox:iu option:nil]];
     }
-    else if ([iu isKindOfClass:[IUSubmitButton class]]){
+    else if ([iu isKindOfClass:[PGSubmitButton class]]){
         [code addCodeLineWithFormat:@"<input %@ >", [self HTMLAttributes:iu option:nil]];
     }
     
@@ -599,7 +599,7 @@ static NSString * IUCompilerTagOption = @"tag";
         [code addCode:outputCode];
     }
     
-    if (iu.link && [iu isKindOfClass:[IUPageLinkSet class]] == NO) {
+    if (iu.link && [iu isKindOfClass:[PGPageLinkSet class]] == NO) {
         NSString *linkURL = iu.link;
         if ([iu.link isHTTPURL] == NO) {
             if (_rule == IUCompileRuleDjango) {
@@ -781,8 +781,8 @@ static NSString * IUCompilerTagOption = @"tag";
         [code addCodeLineWithFormat:@"</div>"];
         
     }
-#pragma mark IUPageLinkSet
-    else if ([iu isKindOfClass:[IUPageLinkSet class]]){
+#pragma mark PGPageLinkSet
+    else if ([iu isKindOfClass:[PGPageLinkSet class]]){
         [code addCodeLineWithFormat:@"<div %@>\n", [self HTMLAttributes:iu option:nil]];
         [code addCodeLineWithFormat:@"    <div class='IUPageLinkSetClip'>\n"];
         [code addCodeLineWithFormat:@"       <ul>\n"];
@@ -804,14 +804,14 @@ static NSString * IUCompilerTagOption = @"tag";
     }
 #pragma mark IUTextFeild
     
-    else if ([iu isKindOfClass:[IUTextField class]]){
+    else if ([iu isKindOfClass:[PGTextField class]]){
         [code addCodeLineWithFormat:@"<input %@ >", [self HTMLAttributes:iu option:nil]];
     }
     
-#pragma mark IUTextView
+#pragma mark PGTextView
 
-    else if ([iu isKindOfClass:[IUTextView class]]){
-        NSString *inputValue = [[(IUTextView *)iu inputValue] length] ? [(IUTextView *)iu inputValue] : @"";
+    else if ([iu isKindOfClass:[PGTextView class]]){
+        NSString *inputValue = [[(PGTextView *)iu inputValue] length] ? [(PGTextView *)iu inputValue] : @"";
         [code addCodeLineWithFormat:@"<textarea %@ >%@</textarea>", [self HTMLAttributes:iu option:nil], inputValue];
     }
 
@@ -825,8 +825,8 @@ static NSString * IUCompilerTagOption = @"tag";
         [code addCodeLine:@"</div>"];
     }
     
-#pragma mark IUSubmitButton
-    else if ([iu isKindOfClass:[IUSubmitButton class]]){
+#pragma mark PGSubmitButton
+    else if ([iu isKindOfClass:[PGSubmitButton class]]){
         [code addCodeLineWithFormat:@"<input %@ >", [self HTMLAttributes:iu option:nil]];
     }
     
@@ -1160,7 +1160,7 @@ static NSString * IUCompilerTagOption = @"tag";
 
         }
         
-        if([obj isKindOfClass:[IUText class]]|| [obj isKindOfClass:[IUTextField class]] || [obj isKindOfClass:[IUTextView class]] || [obj isKindOfClass:[IUPageLinkSet class]]){
+        if([obj isKindOfClass:[IUText class]]|| [obj isKindOfClass:[PGTextField class]] || [obj isKindOfClass:[PGTextView class]] || [obj isKindOfClass:[PGPageLinkSet class]]){
             value = cssTagDict[IUCSSTagFontName];
             if(value){
                 NSString *font=cssTagDict[IUCSSTagFontName];
@@ -1193,7 +1193,7 @@ static NSString * IUCompilerTagOption = @"tag";
                             [dict putTag:@"line-height" floatValue:[height floatValue]/num ignoreZero:YES unit: IUCSSUnitPixel];
                         }
                     }
-                    else if ([obj isKindOfClass:[IUTextView class]]){
+                    else if ([obj isKindOfClass:[PGTextView class]]){
                         [dict putTag:@"line-height" floatValue:1.3 ignoreZero:YES unit:IUCSSUnitNone];
 
                     }
@@ -1401,41 +1401,41 @@ static NSString * IUCompilerTagOption = @"tag";
         NSData *data = [NSJSONSerialization dataWithJSONObject:iuCollection.responsiveSetting options:0 error:nil];
         [retString appendFormat:@" responsive=%@ defaultItemCount=%ld",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding], iuCollection.defaultItemCount];
     }
-#pragma mark IUTextField
-    else if ([iu isKindOfClass:[IUTextField class]]){
-        IUTextField *iuTextField = (IUTextField *)iu;
-        if(iuTextField.formName){
-            [retString appendFormat:@" name=\"%@\"",iuTextField.formName];
+#pragma mark PGTextField
+    else if ([iu isKindOfClass:[PGTextField class]]){
+        PGTextField *pgTextField = (PGTextField *)iu;
+        if(pgTextField.formName){
+            [retString appendFormat:@" name=\"%@\"",pgTextField.formName];
         }
-        if(iuTextField.placeholder){
-            [retString appendFormat:@" placeholder=\"%@\"",iuTextField.placeholder];
+        if(pgTextField.placeholder){
+            [retString appendFormat:@" placeholder=\"%@\"",pgTextField.placeholder];
         }
-        if(iuTextField.inputValue){
-            [retString appendFormat:@" value=\"%@\"",iuTextField.inputValue];
+        if(pgTextField.inputValue){
+            [retString appendFormat:@" value=\"%@\"",pgTextField.inputValue];
         }
-        if(iuTextField.type == IUTextFieldTypePassword){
+        if(pgTextField.type == IUTextFieldTypePassword){
             [retString appendFormat:@" type=\"password\""];
         }
         else {
             [retString appendString:@" type=\"text\""];
         }
     }
-#pragma mark IUSubmitButton
-    else if ([iu isKindOfClass:[IUSubmitButton class]]){
+#pragma mark PGSubmitButton
+    else if ([iu isKindOfClass:[PGSubmitButton class]]){
         [retString appendString:@" type=\"submit\" value=\"JOIN\""];
     }
-#pragma mark IUForm
-    else if ([iu isKindOfClass:[IUForm class]]){
+#pragma mark PGForm
+    else if ([iu isKindOfClass:[PGForm class]]){
         [retString appendString:@" method=\"post\" action=\"#\""];
     }
-#pragma mark IUTextView
-    else if([iu isKindOfClass:[IUTextView class]]){
-        IUTextView *iuTextView = (IUTextView *)iu;
-        if(iuTextView.placeholder){
-            [retString appendFormat:@" placeholder=\"%@\"",iuTextView.placeholder];
+#pragma mark PGTextView
+    else if([iu isKindOfClass:[PGTextView class]]){
+        PGTextView *pgTextView = (PGTextView *)iu;
+        if(pgTextView.placeholder){
+            [retString appendFormat:@" placeholder=\"%@\"",pgTextView.placeholder];
         }
-        if(iuTextView.formName){
-            [retString appendFormat:@" name=\"%@\"",iuTextView.formName];
+        if(pgTextView.formName){
+            [retString appendFormat:@" name=\"%@\"",pgTextView.formName];
         }
     }
 #pragma mark IUTransition

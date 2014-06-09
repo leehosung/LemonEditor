@@ -1,5 +1,5 @@
 //
-//  IUTextField.h
+//  PGTextField.h
 //  IUEditor
 //
 //  Created by jd on 4/25/14.
@@ -13,7 +13,7 @@ typedef enum{
     IUTextFieldTypePassword,
 }IUTextFieldType;
 
-@interface IUTextField : IUBox
+@interface PGTextField : IUBox
 
 @property (nonatomic) NSString  *formName;
 @property (nonatomic) NSString  *placeholder;

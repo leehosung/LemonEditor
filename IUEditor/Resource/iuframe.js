@@ -64,7 +64,7 @@ function reframeCenter(){
 }
 
 function resizePageLinkSet(){
-	$('.IUPageLinkSet div').each(function(){
+	$('.PGPageLinkSet div').each(function(){
 		len = $(this).children().children().length;
 		m = parseFloat($(this).children().children().children().css('margin-left'));
 		w = $(this).children().children().children().width();
