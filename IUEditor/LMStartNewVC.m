@@ -57,14 +57,6 @@
     [_prevB setAction:@selector(pressPrevB)];
 }
 
-/*
-- (void)show{
-    [_prevB setEnabled:NO];
-    [_nextB setEnabled:YES];
-    
-//    [_nextB setTarget:self];
-    [_nextB setAction:@selector(pressNextB)];
-}*/
 
 - (void)pressNextB{
     if (_typeDefaultB.state) {

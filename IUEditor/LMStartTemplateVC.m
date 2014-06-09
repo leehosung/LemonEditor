@@ -30,8 +30,8 @@
 
 -(void)awakeFromNib{
     [super awakeFromNib];
-    NSString *templatePath = [[NSBundle mainBundle] pathForResource:@"sampleTemplate" ofType:@"plist"];
-    NSArray *templateList = [NSArray arrayWithContentsOfFile:templatePath];
+ //   NSString *templatePath = [[NSBundle mainBundle] pathForResource:@"sampleTemplate" ofType:@"plist"];
+ //   NSArray *templateList = [NSArray arrayWithContentsOfFile:templatePath];
     
     
     
@@ -54,7 +54,7 @@
      return;
     }
     
-    NSArray *selectedProject = self.templateAC.selectedObjects;
+//    NSArray *selectedProject = self.templateAC.selectedObjects;
  }
  
     

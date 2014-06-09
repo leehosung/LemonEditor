@@ -75,7 +75,7 @@
     NSMutableDictionary *selected = [_recentDocs objectAtIndex:[selectedIndexes firstIndex]];
     selected[@"selection"] = @(YES);
     
-    NSLog([selectedIndexes description]);
+//    NSLog([selectedIndexes description]);
     
 }
  
