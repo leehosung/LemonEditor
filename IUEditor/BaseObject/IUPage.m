@@ -11,20 +11,24 @@
 #import "IUPageContent.h"
 
 @implementation IUPage{
-    IUPageContent *pageContent;
+    IUPageContent *_pageContent;
+    IUBackground *_background;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder{
     [super encodeWithCoder:aCoder];
+    [aCoder encodeObject:_pageContent forKey:@"pageContent"];
+    [aCoder encodeObject:_background forKey:@"background"];
     [aCoder encodeFromObject:self withProperties:[IUPage properties]];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
     [aDecoder decodeToObject:self withProperties:[IUPage properties]];
-    
-    [self addObserver:self.css.assembledTagDictionary forKeyPath:@"css" options:0 context:nil];
-
+    _pageContent = [aDecoder decodeObjectForKey:@"pageContent"];
+    _background = [aDecoder decodeObjectForKey:@"background"];
+    [_pageContent bind:@"delegate" toObject:self withKeyPath:@"delegate" options:nil];
+    [_background bind:@"delegate" toObject:self withKeyPath:@"delegate" options:nil];
     return self;
 }
 
@@ -65,10 +69,11 @@
         return;
     }
     if (myBackground == nil && background ) {
+        _background = background;
         NSArray *children = [self.children copy];
-        pageContent = [[IUPageContent alloc] initWithProject:self.project options:nil];
-        pageContent.htmlID = @"pageContent";
-        pageContent.name = @"pageContent";
+        _pageContent = [[IUPageContent alloc] initWithProject:self.project options:nil];
+        _pageContent.htmlID = @"pageContent";
+        _pageContent.name = @"pageContent";
         
         for (IUBox *iu in children) {
             if (iu == (IUBox*)myBackground) {
@@ -76,25 +81,35 @@
             }
             IUBox *temp = iu;
             [self removeIU:temp];
-            [pageContent addIU:temp error:nil];
+            [_pageContent addIU:temp error:nil];
         }
-        
-        [self addIU:background error:nil];
-        [self addIU:pageContent error:nil];
     }
     else if (myBackground && background == nil){
-        NSArray *children = pageContent.children;
-        [self removeIU:background];
-        [self removeIU:pageContent];
+        NSArray *children = _pageContent.children;
         for (IUBox *iu in children) {
-            [pageContent removeIU:iu];
-            [self addIU:iu error:nil];
+            [_pageContent removeIU:iu];
         }
     }
     else {
-        [self removeIU:self.background];
-        [self insertIU:background atIndex:0 error:nil];
+//        [self insertIU:background atIndex:0 error:nil];
     }
+    _background = background;
+    [_pageContent bind:@"delegate" toObject:self withKeyPath:@"delegate" options:nil];
+    [_background bind:@"delegate" toObject:self withKeyPath:@"delegate" options:nil];
+}
+
+- (NSArray*)children{
+    if (_pageContent && _background) {
+        return @[_pageContent, _background];
+    }
+    else {
+        return nil;
+    }
+}
+
+- (BOOL)addIU:(IUBox *)iu error:(NSError *__autoreleasing *)error{
+    assert(0);
+    return YES;
 }
 
 -(void)CSSUpdated:(IUCSSTag)tag forWidth:(NSInteger)width isHover:(BOOL)isHover{
