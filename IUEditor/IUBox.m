@@ -29,6 +29,11 @@
     IUProject *_tempProject;
 }
 
+
+/* Note
+ IUText is not programmed.
+ */
+
 - (id)copyWithZone:(NSZone *)zone{
     IUBox *box = [[[self class] allocWithZone: zone] init];
     IUCSS *newCSS = [_css copy];
@@ -48,14 +53,6 @@
     [self.project.identifierManager resetUnconfirmedIUs];
     [self.project.identifierManager setNewIdentifierAndRegisterToTemp:box withKey:@"copy"];
     box.name = box.htmlID;
-    /*
-     //FIXME: is deep copy check children?
-    for (IUBox *child in box.children) {
-        [box.project.identifierManager setNewIdentifierAndRegisterToTemp:child withKey:@"copy"];
-        [child fetch];
-        child.name = child.htmlID;
-    }
-     */
     [box.project.identifierManager confirm];
 
     return box;
