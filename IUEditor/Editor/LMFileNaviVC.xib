@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMFileNaviVC">
@@ -68,10 +68,14 @@
                                                             <binding destination="g4r-sk-ZPU" name="value" keyPath="objectValue.name" id="gug-tP-Yes"/>
                                                         </connections>
                                                     </textField>
-                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ssp-pU-djD">
-                                                        <rect key="frame" x="125" y="-5" width="51" height="32"/>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ssp-pU-djD">
+                                                        <rect key="frame" x="192" y="3" width="20" height="20"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="push" title="+" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="YIT-YH-7Dt">
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="Mmg-1C-GDK"/>
+                                                            <constraint firstAttribute="height" constant="20" id="rA1-v5-my0"/>
+                                                        </constraints>
+                                                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="add_section" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="YIT-YH-7Dt">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
@@ -81,6 +85,8 @@
                                                     <constraint firstAttribute="trailing" secondItem="hgM-4r-R1e" secondAttribute="trailing" constant="3" id="3XW-zR-tkt"/>
                                                     <constraint firstAttribute="centerY" secondItem="hgM-4r-R1e" secondAttribute="centerY" id="Gfq-2Z-rcA"/>
                                                     <constraint firstItem="hgM-4r-R1e" firstAttribute="leading" secondItem="s1Y-fM-b9U" secondAttribute="trailing" constant="3" id="KqQ-nV-znN"/>
+                                                    <constraint firstItem="ssp-pU-djD" firstAttribute="top" secondItem="g4r-sk-ZPU" secondAttribute="top" constant="3" id="c9R-UB-mFd"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ssp-pU-djD" secondAttribute="trailing" constant="7" id="eYN-p1-D0c"/>
                                                     <constraint firstItem="s1Y-fM-b9U" firstAttribute="leading" secondItem="g4r-sk-ZPU" secondAttribute="leading" constant="8" id="uuc-6h-HVq"/>
                                                     <constraint firstAttribute="centerY" secondItem="s1Y-fM-b9U" secondAttribute="centerY" id="xZL-24-wgZ"/>
                                                 </constraints>
@@ -398,6 +404,7 @@
         <treeController mode="entity" editable="NO" childrenKeyPath="childrenFiles" id="gdF-Dg-Xge" customClass="IUDocumentController"/>
     </objects>
     <resources>
+        <image name="add_section" width="14" height="14"/>
         <image name="ic_background" width="14" height="18"/>
         <image name="ic_comp" width="14" height="18"/>
         <image name="ic_css" width="14" height="18"/>

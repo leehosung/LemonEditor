@@ -19,7 +19,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="646" height="454"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="646" height="454"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -29,25 +29,38 @@
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Convert to HTML" identifier="1" id="g0T-PV-kny">
-                                <view key="view" id="1na-Wt-isA">
+                                <view key="view" ambiguous="YES" id="1na-Wt-isA">
                                     <rect key="frame" x="10" y="33" width="616" height="387"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
+                                        <customView hidden="YES" fixedFrame="YES" alphaValue="0.99999999999999989" translatesAutoresizingMaskIntoConstraints="NO" id="4b3-Li-q9j">
+                                            <rect key="frame" x="8" y="0.0" width="600" height="391"/>
+                                            <subviews>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mRd-Wl-U87">
+                                                    <rect key="frame" x="150" y="189" width="298" height="22"/>
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" placeholderString="Current project is HTML Project" id="oyh-rA-fV0">
+                                                        <font key="font" metaFont="system" size="18"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                            </subviews>
+                                        </customView>
                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="whA-kL-GHk">
-                                            <rect key="frame" x="7" y="58" width="583" height="319"/>
+                                            <rect key="frame" x="8" y="0.0" width="600" height="400"/>
                                             <subviews>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Som-kK-nYW">
-                                                    <rect key="frame" x="26" y="251" width="202" height="17"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Web Service Project Directory" id="bqv-De-5k6">
-                                                        <font key="font" metaFont="system"/>
+                                                    <rect key="frame" x="46" y="229" width="168" height="14"/>
+                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Web Service Project Directory" id="bqv-De-5k6">
+                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UZ7-Bv-Eu1">
-                                                    <rect key="frame" x="257" y="130" width="269" height="22"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="dji-kC-yxH">
-                                                        <font key="font" metaFont="system"/>
+                                                    <rect key="frame" x="230" y="108" width="269" height="19"/>
+                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="dji-kC-yxH">
+                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
@@ -56,8 +69,8 @@
                                                     </connections>
                                                 </textField>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cno-v8-NZS">
-                                                    <rect key="frame" x="181" y="274" width="281" height="32"/>
-                                                    <buttonCell key="cell" type="push" title="Select Project Directory" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ag3-98-Fu5">
+                                                    <rect key="frame" x="150" y="286" width="300" height="60"/>
+                                                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="select_directory" imagePosition="above" alignment="center" imageScaling="proportionallyDown" inset="2" id="Ag3-98-Fu5">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                         <connections>
@@ -66,17 +79,17 @@
                                                     </buttonCell>
                                                 </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sxz-G2-yPd">
-                                                    <rect key="frame" x="26" y="182" width="202" height="17"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Build Directory" id="QOO-dT-DJx">
-                                                        <font key="font" metaFont="system"/>
+                                                    <rect key="frame" x="82" y="151" width="131" height="14"/>
+                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Build Directory" id="QOO-dT-DJx">
+                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ogq-fN-q6K">
-                                                    <rect key="frame" x="234" y="179" width="269" height="22"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="IO8-8D-PM6">
-                                                        <font key="font" metaFont="system"/>
+                                                    <rect key="frame" x="230" y="148" width="269" height="19"/>
+                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="IO8-8D-PM6">
+                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
@@ -85,17 +98,17 @@
                                                     </connections>
                                                 </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CiP-Mb-C01">
-                                                    <rect key="frame" x="26" y="133" width="202" height="17"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Resource Directory" id="QZA-Pp-AP4">
-                                                        <font key="font" metaFont="system"/>
+                                                    <rect key="frame" x="92" y="112" width="122" height="14"/>
+                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Resource Directory" id="QZA-Pp-AP4">
+                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RVx-Vx-TqZ">
-                                                    <rect key="frame" x="226" y="251" width="269" height="22"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="8Mj-J5-0ml">
-                                                        <font key="font" metaFont="system"/>
+                                                    <rect key="frame" x="230" y="225" width="269" height="19"/>
+                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="8Mj-J5-0ml">
+                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
@@ -103,28 +116,18 @@
                                                         <binding destination="-2" name="value" keyPath="self.targetProjectDirectory" id="KYc-gQ-P9h"/>
                                                     </connections>
                                                 </textField>
-                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="USZ-nv-jTA">
-                                                    <rect key="frame" x="72" y="49" width="157" height="32"/>
-                                                    <buttonCell key="cell" type="push" title="Convert" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="53w-hD-B8a">
-                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="system"/>
-                                                    </buttonCell>
-                                                    <connections>
-                                                        <action selector="convertDjango:" target="-2" id="exm-fJ-5pZ"/>
-                                                    </connections>
-                                                </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wdM-kG-IGL">
-                                                    <rect key="frame" x="23" y="218" width="202" height="17"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="IU Project Directory" id="pyz-BS-6Qd">
-                                                        <font key="font" metaFont="system"/>
+                                                    <rect key="frame" x="85" y="188" width="128" height="14"/>
+                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="IU Project Directory" id="pyz-BS-6Qd">
+                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xhF-qV-NMN">
-                                                    <rect key="frame" x="234" y="213" width="269" height="22"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="aBY-Ew-hPs">
-                                                        <font key="font" metaFont="system"/>
+                                                    <rect key="frame" x="230" y="186" width="269" height="19"/>
+                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="aBY-Ew-hPs">
+                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
@@ -133,10 +136,10 @@
                                                     </connections>
                                                 </textField>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vof-Bk-dlr">
-                                                    <rect key="frame" x="282" y="56" width="157" height="32"/>
+                                                    <rect key="frame" x="224" y="37" width="110" height="32"/>
                                                     <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Yv2-QV-HFv">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="system"/>
+                                                        <font key="font" metaFont="smallSystem"/>
                                                         <string key="keyEquivalent" base64-UTF8="YES">
 Gw
 </string>
@@ -145,36 +148,33 @@ Gw
                                                         <action selector="pressCancelB:" target="-2" id="gyF-rI-icC"/>
                                                     </connections>
                                                 </button>
-                                            </subviews>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4b3-Li-q9j">
-                                            <rect key="frame" x="17" y="68" width="549" height="301"/>
-                                            <subviews>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mRd-Wl-U87">
-                                                    <rect key="frame" x="189" y="169" width="234" height="17"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Current project is HTML Project" id="oyh-rA-fV0">
-                                                        <font key="font" metaFont="system"/>
-                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="USZ-nv-jTA">
+                                                    <rect key="frame" x="335" y="37" width="170" height="32"/>
+                                                    <buttonCell key="cell" type="push" title="Convert" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="53w-hD-B8a">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="convertDjango:" target="-2" id="exm-fJ-5pZ"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </customView>
                                     </subviews>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Convert to Django" identifier="2" id="Uag-se-jHO">
-                                <view key="view" ambiguous="YES" id="sQB-qK-UPy">
+                                <view key="view" id="sQB-qK-UPy">
                                     <rect key="frame" x="10" y="33" width="616" height="387"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Par-l3-6Sz">
-                                            <rect key="frame" x="97" y="10" width="511" height="315"/>
+                                            <rect key="frame" x="8" y="0.0" width="600" height="390"/>
                                             <subviews>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oyg-g3-FqA">
-                                                    <rect key="frame" x="69" y="180" width="352" height="52"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="CurrentProject is Django Project" id="qZW-3f-A9O">
-                                                        <font key="font" metaFont="system"/>
+                                                    <rect key="frame" x="123" y="189" width="352" height="22"/>
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" placeholderString="CurrentProject is Django Project" id="qZW-3f-A9O">
+                                                        <font key="font" metaFont="system" size="18"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
@@ -182,20 +182,20 @@ Gw
                                             </subviews>
                                         </customView>
                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oBe-UW-0bq">
-                                            <rect key="frame" x="35" y="38" width="546" height="324"/>
+                                            <rect key="frame" x="8" y="0.0" width="600" height="400"/>
                                             <subviews>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FWB-Ix-lpX">
-                                                    <rect key="frame" x="18" y="287" width="159" height="17"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Django Project Directory" id="l6X-JT-Byp">
-                                                        <font key="font" metaFont="system"/>
+                                                    <rect key="frame" x="55" y="229" width="159" height="14"/>
+                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Django Project Directory" id="l6X-JT-Byp">
+                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n3d-ru-RX9">
-                                                    <rect key="frame" x="257" y="253" width="269" height="22"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="HBH-7Z-jQ7">
-                                                        <font key="font" metaFont="system"/>
+                                                    <rect key="frame" x="230" y="225" width="269" height="19"/>
+                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="HBH-7Z-jQ7">
+                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
@@ -207,31 +207,21 @@ Gw
                                                         </binding>
                                                     </connections>
                                                 </textField>
-                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yf8-8D-4Bh">
-                                                    <rect key="frame" x="251" y="276" width="281" height="32"/>
-                                                    <buttonCell key="cell" type="push" title="Select Project Directory" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KsV-wr-5Yw">
-                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="system"/>
-                                                        <connections>
-                                                            <action selector="pressSelectProjectDirectory:" target="-2" id="hfn-Ih-bhU"/>
-                                                        </connections>
-                                                    </buttonCell>
-                                                </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xBO-kr-umG">
-                                                    <rect key="frame" x="358" y="13" width="157" height="32"/>
+                                                    <rect key="frame" x="335" y="37" width="170" height="32"/>
                                                     <buttonCell key="cell" type="push" title="Convert" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="193-Fm-vu2">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="system"/>
+                                                        <font key="font" metaFont="smallSystem"/>
                                                     </buttonCell>
                                                     <connections>
                                                         <action selector="convertDjango:" target="-2" id="w92-HI-LbV"/>
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K85-3d-66p">
-                                                    <rect key="frame" x="104" y="13" width="157" height="32"/>
+                                                    <rect key="frame" x="224" y="37" width="110" height="32"/>
                                                     <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VKm-EF-op3">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="system"/>
+                                                        <font key="font" metaFont="smallSystem"/>
                                                         <string key="keyEquivalent" base64-UTF8="YES">
 Gw
 </string>
@@ -241,25 +231,25 @@ Gw
                                                     </connections>
                                                 </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1sz-cZ-9GR">
-                                                    <rect key="frame" x="23" y="113" width="254" height="17"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Build Directory" id="XDI-wL-eaL">
-                                                        <font key="font" metaFont="system"/>
+                                                    <rect key="frame" x="99" y="151" width="114" height="14"/>
+                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Build Directory" id="XDI-wL-eaL">
+                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TZV-Oo-vvA">
-                                                    <rect key="frame" x="23" y="73" width="212" height="17"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Resource Directory" id="qEd-HC-McX">
-                                                        <font key="font" metaFont="system"/>
+                                                    <rect key="frame" x="52" y="112" width="162" height="14"/>
+                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Resource Directory" id="qEd-HC-McX">
+                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dzI-Jr-jYZ">
-                                                    <rect key="frame" x="250" y="125" width="269" height="22"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="6rI-LL-xSv">
-                                                        <font key="font" metaFont="system"/>
+                                                    <rect key="frame" x="230" y="148" width="269" height="19"/>
+                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="6rI-LL-xSv">
+                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
@@ -268,9 +258,9 @@ Gw
                                                     </connections>
                                                 </textField>
                                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kry-Lx-uTp">
-                                                    <rect key="frame" x="250" y="73" width="269" height="22"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="jYY-36-wSE">
-                                                        <font key="font" metaFont="system"/>
+                                                    <rect key="frame" x="230" y="108" width="269" height="19"/>
+                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="jYY-36-wSE">
+                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
@@ -279,9 +269,9 @@ Gw
                                                     </connections>
                                                 </textField>
                                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="slb-oI-aUT">
-                                                    <rect key="frame" x="257" y="205" width="269" height="22"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="ViR-ee-WqU">
-                                                        <font key="font" metaFont="system"/>
+                                                    <rect key="frame" x="230" y="186" width="269" height="19"/>
+                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="ViR-ee-WqU">
+                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
@@ -290,13 +280,23 @@ Gw
                                                     </connections>
                                                 </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OAZ-rB-fO8">
-                                                    <rect key="frame" x="41" y="210" width="176" height="17"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="IU Project Directory" id="fnX-Fi-lO5">
-                                                        <font key="font" metaFont="system"/>
+                                                    <rect key="frame" x="75" y="188" width="138" height="14"/>
+                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="IU Project Directory" id="fnX-Fi-lO5">
+                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yf8-8D-4Bh">
+                                                    <rect key="frame" x="150" y="286" width="300" height="60"/>
+                                                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="select_directory" imagePosition="above" alignment="center" controlSize="small" imageScaling="proportionallyDown" inset="2" id="KsV-wr-5Yw">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <connections>
+                                                            <action selector="pressSelectProjectDirectory:" target="-2" id="hfn-Ih-bhU"/>
+                                                        </connections>
+                                                    </buttonCell>
+                                                </button>
                                             </subviews>
                                         </customView>
                                     </subviews>
@@ -309,28 +309,27 @@ Gw
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="160" y="-328"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="k6i-ne-cSI"/>
         <view id="Csc-92-OkJ">
-            <rect key="frame" x="10" y="33" width="616" height="387"/>
+            <rect key="frame" x="0.0" y="0.0" width="616" height="387"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PGT-fq-cqr">
-                    <rect key="frame" x="7" y="58" width="583" height="319"/>
+                    <rect key="frame" x="0.0" y="0.0" width="616" height="387"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Ar-o8-y2c">
-                            <rect key="frame" x="26" y="251" width="202" height="17"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Web Service Project Directory" id="lD0-V4-KOw">
-                                <font key="font" metaFont="system"/>
+                            <rect key="frame" x="60" y="222" width="179" height="17"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Web Service Project Directory" id="lD0-V4-KOw">
+                                <font key="font" metaFont="cellTitle"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CXR-Rb-u1a">
-                            <rect key="frame" x="257" y="130" width="269" height="22"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="8kG-ZB-7qB">
-                                <font key="font" metaFont="system"/>
+                            <rect key="frame" x="245" y="112" width="269" height="19"/>
+                            <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="8kG-ZB-7qB">
+                                <font key="font" metaFont="smallSystem"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -339,8 +338,8 @@ Gw
                             </connections>
                         </textField>
                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4VR-OV-hRc">
-                            <rect key="frame" x="181" y="274" width="281" height="32"/>
-                            <buttonCell key="cell" type="push" title="Select Project Directory" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="snn-oX-A1K">
+                            <rect key="frame" x="158" y="269" width="301" height="62"/>
+                            <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="select_directory" imagePosition="only" alignment="center" inset="2" id="snn-oX-A1K">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                                 <connections>
@@ -349,17 +348,17 @@ Gw
                             </buttonCell>
                         </button>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sMn-MF-Vsp">
-                            <rect key="frame" x="26" y="182" width="202" height="17"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Build Directory" id="IXl-h0-oon">
-                                <font key="font" metaFont="system"/>
+                            <rect key="frame" x="139" y="149" width="100" height="17"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Build Directory" id="IXl-h0-oon">
+                                <font key="font" metaFont="cellTitle"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="85Q-4t-qfn">
-                            <rect key="frame" x="234" y="179" width="269" height="22"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="bWX-vs-wzi">
-                                <font key="font" metaFont="system"/>
+                            <rect key="frame" x="245" y="149" width="269" height="19"/>
+                            <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="bWX-vs-wzi">
+                                <font key="font" metaFont="smallSystem"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -368,17 +367,17 @@ Gw
                             </connections>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y3A-AW-f89">
-                            <rect key="frame" x="26" y="133" width="202" height="17"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Resource Directory" id="fHw-eI-7w0">
-                                <font key="font" metaFont="system"/>
+                            <rect key="frame" x="113" y="112" width="126" height="17"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Resource Directory" id="fHw-eI-7w0">
+                                <font key="font" metaFont="cellTitle"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R5D-7d-ifE">
-                            <rect key="frame" x="226" y="251" width="269" height="22"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="3El-f5-NbG">
-                                <font key="font" metaFont="system"/>
+                            <rect key="frame" x="245" y="220" width="269" height="19"/>
+                            <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="3El-f5-NbG">
+                                <font key="font" metaFont="smallSystem"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -386,28 +385,18 @@ Gw
                                 <binding destination="-2" name="value" keyPath="self.targetProjectDirectory" id="fgm-Ds-zWy"/>
                             </connections>
                         </textField>
-                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q0O-Fh-8Df">
-                            <rect key="frame" x="72" y="49" width="157" height="32"/>
-                            <buttonCell key="cell" type="push" title="Convert" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cSu-JJ-37y">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                            <connections>
-                                <action selector="convertDjango:" target="-2" id="qQF-jL-euD"/>
-                            </connections>
-                        </button>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gMl-sB-KMk">
-                            <rect key="frame" x="23" y="218" width="202" height="17"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="IU Project Directory" id="CqX-Xj-WvI">
-                                <font key="font" metaFont="system"/>
+                            <rect key="frame" x="113" y="186" width="125" height="17"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="IU Project Directory" id="CqX-Xj-WvI">
+                                <font key="font" metaFont="cellTitle"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BxJ-1k-OyY">
-                            <rect key="frame" x="234" y="213" width="269" height="22"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="EA9-Ei-KZ7">
-                                <font key="font" metaFont="system"/>
+                            <rect key="frame" x="245" y="185" width="269" height="19"/>
+                            <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="EA9-Ei-KZ7">
+                                <font key="font" metaFont="smallSystem"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -416,10 +405,10 @@ Gw
                             </connections>
                         </textField>
                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wW5-PM-Bpu">
-                            <rect key="frame" x="282" y="56" width="157" height="32"/>
-                            <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4Za-Ad-1GC">
+                            <rect key="frame" x="154" y="28" width="120" height="19"/>
+                            <buttonCell key="cell" type="roundRect" title="Cancel" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4Za-Ad-1GC">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
+                                <font key="font" metaFont="cellTitle"/>
                                 <string key="keyEquivalent" base64-UTF8="YES">
 Gw
 </string>
@@ -428,9 +417,23 @@ Gw
                                 <action selector="pressCancelB:" target="-2" id="eDE-Ky-pLH"/>
                             </connections>
                         </button>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q0O-Fh-8Df">
+                            <rect key="frame" x="338" y="48" width="128" height="19"/>
+                            <buttonCell key="cell" type="roundRect" title="Convert" bezelStyle="roundedRect" imagePosition="left" alignment="center" borderStyle="border" inset="2" id="cSu-JJ-37y">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="cellTitle"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="convertDjango:" target="-2" id="qQF-jL-euD"/>
+                            </connections>
+                        </button>
                     </subviews>
                 </customView>
             </subviews>
+            <point key="canvasLocation" x="282" y="720.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="select_directory" width="300" height="60"/>
+    </resources>
 </document>
