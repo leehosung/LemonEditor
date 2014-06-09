@@ -67,6 +67,7 @@
         case 1:{
             newDoc = [[IUPage alloc] initWithProject:self.project options:nil];
             [self.project.pageGroup addDocument:newDoc];
+            [self.project.identifierManager registerIUs:@[newDoc]];
             IUBackground *defaultBG = self.project.backgroundDocuments[0];
             [(IUPage*)newDoc setBackground:defaultBG];
         }

@@ -30,7 +30,8 @@
         return NO;
     }
     IUDocument *doc = self.objectValue;
-    [doc setName:textValue];
+    doc.name = textValue;
+    doc.htmlID = textValue;
     return YES;
 }
 
