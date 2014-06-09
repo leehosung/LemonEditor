@@ -21,7 +21,7 @@
 @property id delegate;
 @property (weak) IBOutlet NSBox *fileBox;
 @property (weak) IBOutlet NSButton *fileNameBtn;
-@property  IUDocumentGroup *documentNode;
+@property  IUDocument *document;
 
 - (void)setDeselectColor;
 - (void)setSelectColor;

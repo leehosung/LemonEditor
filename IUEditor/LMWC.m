@@ -273,6 +273,7 @@
     widgetLibraryVC.project = _project;
     resourceVC.manager = _project.resourceManager;
     appearanceVC.resourceManager = _project.resourceManager;
+    topToolbarVC.documentController = _documentController;
     
     
     //construct widget library vc
@@ -299,7 +300,7 @@
         [stackVC setDocument:_selectedNode];
         [canvasVC setDocument:_selectedNode];
         [bottomToolbarVC setDocument:_selectedNode];
-//        [topToolbarVC setDocumentNode:document];
+        [topToolbarVC setDocument:selectedNode];
         
         //save for debug
         NSString *documentSavePath = [canvasVC.documentBasePath stringByAppendingPathComponent:[_selectedNode.name stringByAppendingPathExtension:@"html"]];

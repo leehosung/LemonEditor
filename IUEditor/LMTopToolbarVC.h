@@ -22,11 +22,11 @@ typedef enum{
 @interface LMTopToolbarVC : NSViewController
 
 @property (nonatomic)  IUDocumentController *documentController;
-@property (nonatomic)  IUDocumentGroup    *documentNode;
+@property (nonatomic)  IUDocument    *document;
 
 
 //tabItem delegate
-- (void)selectTab:(IUDocumentGroup *)documentNode;
+- (void)selectTab:(IUDocument *)documentNode;
 - (void)closeTab:(LMFileTabItemVC *)documentNode;
 
 @end
