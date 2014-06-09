@@ -29,6 +29,15 @@
     [unconfirmed removeAllObjects];
 }
 
+-(void)unregisterIUs:(NSArray*)IUs{
+    for (IUBox *box in IUs) {
+        [confirmed removeObjectForKey:box.htmlID];
+        for (IUBox *child in box.allChildren) {
+            [confirmed removeObjectForKey:child.htmlID];
+        }
+    }
+}
+
 -(void)confirm{
     for (id key in unconfirmed) {
         confirmed[key] = unconfirmed[key];
