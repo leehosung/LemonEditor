@@ -19,7 +19,7 @@
 	if (self = [super initWithContentRect:contentRect
 								styleMask:NSBorderlessWindowMask
 								  backing:NSBackingStoreBuffered defer:deferCreation]) {
-		[self setAlphaValue:0.75];
+		[self setAlphaValue:0.6];
 		[self setOpaque:NO];
 		[self setExcludedFromWindowsMenu:NO];
 		[self setBackgroundColor:[NSColor clearColor]];
@@ -47,13 +47,16 @@
     
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setAlignment:NSCenterTextAlignment];
-    [style setMaximumLineHeight:115];
-    [style setMinimumLineHeight:115];
     
     NSDictionary *attr = @{NSParagraphStyleAttributeName: style, NSFontAttributeName:font , NSForegroundColorAttributeName:[NSColor whiteColor]};
 
     NSString *message = ((JDHudWindow*)(self.window)).message;
-    [message drawInRect:NSRectMake(0, 0, frame.size.width, frame.size.height) withAttributes:attr];
+    if ([message containsString:@"\n"]) {
+        [message drawInRect:NSRectMake(0, -55, frame.size.width, frame.size.height) withAttributes:attr];
+    }
+    else {
+        [message drawInRect:NSRectMake(0, -80, frame.size.width, frame.size.height) withAttributes:attr];
+    }
 
 }
 

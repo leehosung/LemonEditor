@@ -141,8 +141,8 @@
                 //delete key
                 if(key == NSDeleteCharacter){
                     [((LMCanvasVC *)self.delegate) removeSelectedIUs];
+                    return YES;
                 }
-                
             }
             else{
                 //editor mode 이고 delete key가 들어오면
@@ -152,7 +152,6 @@
                         return NO;
                     }
                 }
-                
             }
         }
     }
@@ -161,7 +160,6 @@
 
 
 -(void)receiveMouseEvent:(NSEvent *)theEvent{
-    
     
     NSPoint originalPoint = [theEvent locationInWindow];
     NSPoint convertedPoint = [self.mainView convertPoint:originalPoint fromView:nil];
@@ -176,9 +174,7 @@
                 isMouseDown = YES;
                 NSString *currentIUID = [self.webView IUAtPoint:convertedPoint];
                 
-                if (theEvent.clickCount == 1
-                    || theEvent.clickCount == 2){
-                    
+                if (theEvent.clickCount == 1){
                     if( [theEvent modifierFlags] & NSCommandKeyMask ){
                         //여러개 select 하는 순간 editing mode out
                         [[self webView] setEditable:NO];
@@ -195,28 +191,30 @@
                         //다른 iu를 선택하는 순간 editing mode out
                         if([self isDifferentIU:currentIUID]){
                             [[self webView] setEditable:NO];
-
+                            
                         }
                         [((LMCanvasVC *)self.delegate) setSelectedIU:currentIUID];
-                    }                    
+                    }
                     
                     if([self.webView isDOMTextAtPoint:convertedPoint] == NO
                        && currentIUID){
                         isSelected = YES;
                     }
-
-                    //change editable mode
-                    if(theEvent.clickCount ==2){
-                        if([((LMCanvasVC *)self.delegate) isEditable]){
-                            [[self webView] setEditable:YES];
-                            [[self webView] changeDOMRange:convertedPoint];
-                        }
+                    [((LMCanvasVC *)(self.delegate)) startDragSession];
+                    startDragPoint = convertedPoint;
+                    middleDragPoint = startDragPoint;
+                }
+                //change editable mode
+                if(theEvent.clickCount ==2){
+                    if([((LMCanvasVC *)self.delegate) isEditable]){
+                        [[self webView] setEditable:YES];
+                        [[self webView] changeDOMRange:convertedPoint];
+                    }
+                    else {
+                        NSString *alertText= [currentIUID stringByAppendingString:@" is not text-editable\nPlease use IUText box"];
+                        [JDUIUtil hudAlert:alertText second:5];
                     }
                 }
-                
-                [((LMCanvasVC *)(self.delegate)) startDragSession];
-                startDragPoint = convertedPoint;
-                middleDragPoint = startDragPoint;
             }
         }
         

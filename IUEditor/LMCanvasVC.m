@@ -270,10 +270,16 @@
         return;
     }
     NSArray *addArray = [NSArray arrayWithObject:identifier];
+    
+    /*
+     Even it is selected object, still select it again.
+     (IUClass is not shown selected until it is selected again)
+
     NSArray *currentSelectinos = [[self.controller selectedObjects] valueForKeyPath:@"htmlID"];
     if ([addArray isEqualToArray:currentSelectinos]) {
         return;
     }
+     */
     [self.controller trySetSelectedObjectsByIdentifiers:addArray];
 
 }
