@@ -163,10 +163,18 @@
             NSString *parentIUID = [self IUAtPoint:convertedPoint];
             if(parentIUID){
                 NSPoint rountPoint = NSPointMake(round(convertedPoint.x), round(convertedPoint.y));
-                [self.VC makeNewIUByDragAndDrop:newIU atPoint:rountPoint atIU:parentIUID];
-                JDTraceLog( @"[IU:%@], dragPoint(%.1f, %.1f)", newIU.htmlID, dragPoint.x, dragPoint.y);
-                [self.window makeFirstResponder:self];
-                return YES;
+                if ([self.VC makeNewIUByDragAndDrop:newIU atPoint:rountPoint atIU:parentIUID]){
+                    JDTraceLog( @"[IU:%@], dragPoint(%.1f, %.1f)", newIU.htmlID, dragPoint.x, dragPoint.y);
+                    [self.window makeFirstResponder:self];
+                    return YES;
+                }
+                else {
+                    NSString *alertString = [NSString stringWithFormat: @"Please insert a child to IUBox type"];
+                    [JDUIUtil hudAlert:alertString second:2];
+                }
+            }
+            else {
+                [JDUIUtil hudAlert:@"No parent" second:2];
             }
         }
         return NO;

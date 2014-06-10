@@ -98,6 +98,10 @@
     
 }
 
+- (BOOL)shouldAddIUByUserInput{
+    return NO;
+}
+
 - (void)updateTextHTML{
     [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
 }
