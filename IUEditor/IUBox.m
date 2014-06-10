@@ -12,7 +12,7 @@
 #import "NSObject+JDExtension.h"
 #import "NSCoder+JDExtension.h"
 #import "IUCompiler.h"
-#import "IUDocument.h"
+#import "IUSheet.h"
 #import "IUBox.h"
 #import "IUClass.h"
 #import "IUProject.h"
@@ -272,8 +272,8 @@
     }
     iu.parent = self;
     
-    if ([self.document isKindOfClass:[IUClass class]]) {
-        for (IUBox *import in [(IUClass*)self.document referenceImports]) {
+    if ([self.sheet isKindOfClass:[IUClass class]]) {
+        for (IUBox *import in [(IUClass*)self.sheet referenceImports]) {
             NSString *self_htmlID = [import.htmlID stringByAppendingFormat:@"__%@", self.htmlID];
             NSString *iu_htmlid = [import.htmlID stringByAppendingFormat:@"__%@", iu.htmlID];
             NSString *originalHTML = iu.html;
@@ -350,19 +350,19 @@
     }
 }
 
--(IUDocument*)document{
-    if ([self isKindOfClass:[IUDocument class]]) {
-        return (IUDocument*)self;
+-(IUSheet*)sheet{
+    if ([self isKindOfClass:[IUSheet class]]) {
+        return (IUSheet*)self;
     }
     if (self.parent) {
-        return self.parent.document;
+        return self.parent.sheet;
     }
     return nil;
 }
 
 - (IUProject *)project{
-    if (self.document.group.project) {
-        return self.document.group.project;
+    if (self.sheet.group.project) {
+        return self.sheet.group.project;
     }
     else if (_tempProject) {
         //not assigned to document

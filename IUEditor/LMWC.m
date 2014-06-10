@@ -9,9 +9,9 @@
 #import "LMWC.h"
 #import "LMWindow.h"
 
-#import "IUDocumentController.h"
+#import "IUSheetController.h"
 #import "IUProject.h"
-#import "IUDocumentGroup.h"
+#import "IUSheetGroup.h"
 #import "IUResourceGroup.h"
 #import "IUResourceFile.h"
 
@@ -36,6 +36,7 @@
 #import "IUDjangoProject.h"
 
 #import "LMProjectConvertWC.h"
+#import "IUProjectDocument.h"
 
 @interface LMWC ()
 
@@ -105,6 +106,34 @@
 {
     self = [super initWithWindow:window];
     if (self) {
+        //allocation
+        stackVC = [[LMStackVC alloc] initWithNibName:@"LMStackVC" bundle:nil];
+        fileNaviVC = [[LMFileNaviVC alloc] initWithNibName:@"LMFileNaviVC" bundle:nil];
+        commandVC = [[LMCommandVC alloc] initWithNibName:@"LMCommandVC" bundle:nil];
+        canvasVC = [[LMCanvasVC alloc] initWithNibName:@"LMCanvasVC" bundle:nil];
+        topToolbarVC = [[LMTopToolbarVC alloc] initWithNibName:@"LMTopToolbarVC" bundle:nil];
+        bottomToolbarVC = [[LMBottomToolbarVC alloc] initWithNibName:@"LMBottomToolbarVC" bundle:nil];
+        widgetLibraryVC = [[LMWidgetLibraryVC alloc] initWithNibName:@"LMWidgetLibraryVC" bundle:nil];
+        resourceVC = [[LMResourceVC alloc] initWithNibName:@"LMResourceVC" bundle:nil];
+        appearanceVC = [[LMAppearanceVC alloc] initWithNibName:@"LMAppearanceVC" bundle:nil];
+        iuInspectorVC = [[LMIUInspectorVC alloc] initWithNibName:[LMIUInspectorVC class].className bundle:nil];
+        eventVC = [[LMEventVC alloc] initWithNibName:@"LMEventVC" bundle:nil];
+
+        
+        //bind
+        [self bind:@"IUController" toObject:stackVC withKeyPath:@"IUController" options:nil];
+        [self bind:@"selectedNode" toObject:fileNaviVC withKeyPath:@"selection" options:nil];
+        [self bind:@"documentController" toObject:fileNaviVC withKeyPath:@"documentController" options:nil];
+        [commandVC bind:@"docController" toObject:self withKeyPath:@"documentController" options:nil];
+        [canvasVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
+        [self bind:@"selectedTextRange" toObject:self withKeyPath:@"selectedTextRange" options:nil];
+        [widgetLibraryVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
+        [appearanceVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
+        [iuInspectorVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
+        [eventVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
+        [topToolbarVC bind:@"documentController" toObject:fileNaviVC withKeyPath:@"documentController" options:nil];
+        
+        
     }
     return self;
 }
@@ -112,67 +141,39 @@
 
 - (void)windowDidLoad
 {
-    
-////////////////left view/////////////////////////    
-    stackVC = [[LMStackVC alloc] initWithNibName:@"LMStackVC" bundle:nil];
-    [self bind:@"IUController" toObject:stackVC withKeyPath:@"IUController" options:nil];
     [_leftTopV addSubviewFullFrame:stackVC.view];
-
-    
-    fileNaviVC = [[LMFileNaviVC alloc] initWithNibName:@"LMFileNaviVC" bundle:nil];
-    [self bind:@"selectedNode" toObject:fileNaviVC withKeyPath:@"selection" options:nil];
-    [self bind:@"documentController" toObject:fileNaviVC withKeyPath:@"documentController" options:nil];
-
     [_leftBottomV addSubviewFullFrame:fileNaviVC.view];
-    
-    commandVC = [[LMCommandVC alloc] initWithNibName:@"LMCommandVC" bundle:nil];
     [_commandV addSubviewFullFrame:commandVC.view];
-    [commandVC bind:@"docController" toObject:self withKeyPath:@"documentController" options:nil];
 
-////////////////center view/////////////////////////
-    canvasVC = [[LMCanvasVC alloc] initWithNibName:@"LMCanvasVC" bundle:nil];
+    
+    ////////////////center view/////////////////////////
     [_centerV addSubviewFullFrame:canvasVC.view];
-    [canvasVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
     
     ((LMWindow*)(self.window)).canvasView =  (LMCanvasView *)canvasVC.view;
-    [self bind:@"selectedTextRange" toObject:self withKeyPath:@"selectedTextRange" options:nil];
     
-    topToolbarVC = [[LMTopToolbarVC alloc] initWithNibName:@"LMTopToolbarVC" bundle:nil];
     [_topToolbarV addSubviewFullFrame:topToolbarVC.view];
-    
-    bottomToolbarVC = [[LMBottomToolbarVC alloc] initWithNibName:@"LMBottomToolbarVC" bundle:nil];
     [_bottomToolbarV addSubviewFullFrame:bottomToolbarVC.view];
-
     
-////////////////right view/////////////////////////
-    widgetLibraryVC = [[LMWidgetLibraryVC alloc] initWithNibName:@"LMWidgetLibraryVC" bundle:nil];
+    
+    ////////////////right view/////////////////////////
     [_widgetV addSubviewFullFrame:widgetLibraryVC.view];
-    [widgetLibraryVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
     
-    resourceVC = [[LMResourceVC alloc] initWithNibName:@"LMResourceVC" bundle:nil];
     [_resourceV addSubviewFullFrame:resourceVC.view];
     
-    appearanceVC = [[LMAppearanceVC alloc] initWithNibName:@"LMAppearanceVC" bundle:nil];
-    [appearanceVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
     [_appearanceV addSubviewFullFrame:appearanceVC.view];
     
-       
-    iuInspectorVC = [[LMIUInspectorVC alloc] initWithNibName:[LMIUInspectorVC class].className bundle:nil];
-    [iuInspectorVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
+    
     [_propertyV addSubviewFullFrame:iuInspectorVC.view];
     
-    eventVC = [[LMEventVC alloc] initWithNibName:@"LMEventVC" bundle:nil];
-    [eventVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
     [_eventV addSubviewFullFrame:eventVC.view];
     
     
-    //top
-    topToolbarVC.documentController = fileNaviVC.documentController;
+
     
 #pragma mark - inspector view
     [[NSUserDefaults standardUserDefaults] addObserver:self forKeyPath:@"showLeftInspector" options:NSKeyValueObservingOptionInitial context:nil];
     [[NSUserDefaults standardUserDefaults] addObserver:self forKeyPath:@"showRightInspector" options:NSKeyValueObservingOptionInitial context:nil];
-    
+        
 }
 
 
@@ -233,7 +234,64 @@
     return (LMWindow*)[super window];
 }
 
+- (void)setDocument:(IUProjectDocument *)document{
+    //create project class
+    [super setDocument:document];
+    
+    //document == nil means window will be closed
+    if(document){
+        _project = document.project;
+        [canvasVC bind:@"documentBasePath" toObject:_project withKeyPath:@"path" options:nil];
+        NSError *error;
+        assert(_project.path);
+        assert(_project.pageDocuments);
+        assert(_project.identifierManager);
+        assert(_project.resourceManager);
+        
+        if (error) {
+            assert(0);
+            return;
+        }
+        if (_project == nil) {
+            return;
+        }
+        
+        //load sizeView
+        for(NSNumber *number in _project.mqSizes){
+            NSInteger frameSize = [number integerValue];
+            [canvasVC addFrame:frameSize];
+        }
+        
+        [_project copyResourceForDebug];
+        
+        
+        
+        // vc setting
+        //construct to file navi
+//        canvasVC.documentBasePath = _project.path;
+        canvasVC.resourceManager = _project.resourceManager;
+        fileNaviVC.project = _project;
+        assert(widgetLibraryVC.project == nil);
+        widgetLibraryVC.project = _project;
+        resourceVC.manager = _project.resourceManager;
+        appearanceVC.resourceManager = _project.resourceManager;
+        
+        
+        //construct widget library vc
+        [widgetLibraryVC setProject:_project];
+        NSString *widgetFilePath = [[NSBundle mainBundle] pathForResource:@"widgetForDefault" ofType:@"plist"];
+        NSArray *availableWidgetProperties = [NSArray arrayWithContentsOfFile:widgetFilePath];
+        [widgetLibraryVC setWidgetProperties:availableWidgetProperties];
+        iuInspectorVC.resourceManager = _project.resourceManager;
+        
+    }
+}
 
+- (void)selectFirstDocument{
+    [fileNaviVC selectFirstDocument];
+}
+
+#if 0
 -(void)loadProject:(NSString*)path{
     if (path == nil) {
         return;
@@ -293,14 +351,24 @@
     //finished. load file
     [fileNaviVC selectFirstDocument];
 }
+#endif
 
 -(void)setSelectedNode:(NSObject*)selectedNode{
+<<<<<<< HEAD
     _selectedNode = (IUDocument*) selectedNode;
     if ([selectedNode isKindOfClass:[IUDocument class]]) {
         [stackVC setDocument:_selectedNode];
         [canvasVC setDocument:_selectedNode];
         [bottomToolbarVC setDocument:_selectedNode];
         [topToolbarVC setDocument:selectedNode];
+=======
+    _selectedNode = (IUSheet*) selectedNode;
+    if ([selectedNode isKindOfClass:[IUSheet class]]) {
+        [stackVC setSheet:_selectedNode];
+        [canvasVC setSheet:_selectedNode];
+        [bottomToolbarVC setSheet:_selectedNode];
+//        [topToolbarVC setDocumentNode:document];
+>>>>>>> temp commit : refactoring IUDocument: IUsheet , add NSDocument subclassing
         
         //save for debug
         NSString *documentSavePath = [canvasVC.documentBasePath stringByAppendingPathComponent:[_selectedNode.name stringByAppendingPathExtension:@"html"]];
@@ -312,7 +380,7 @@
     else if ([selectedNode isKindOfClass:[IUProject class]]){
         return;
     }
-    else if ([selectedNode isKindOfClass:[IUDocumentGroup class]]){
+    else if ([selectedNode isKindOfClass:[IUSheetGroup class]]){
         return;
     }
     else if ([selectedNode isKindOfClass:[IUResourceGroup class]]) {
@@ -324,17 +392,20 @@
 }
 
 - (void)reloadCurrentDocument{
-    if ([_selectedNode isKindOfClass:[IUDocument class]]) {
-        [canvasVC setDocument:_selectedNode];
+    if ([_selectedNode isKindOfClass:[IUSheet class]]) {
+        [canvasVC setSheet:_selectedNode];
     }
 }
 
 
+
 #pragma mark -
+#if 0
 - (void)saveDocument:(id)sender{
     JDInfoLog(@"saving document");
     [_project save];
 }
+#endif
 
 - (void)addMQSize:(NSInteger)size{
     [_project addMQSize:size];

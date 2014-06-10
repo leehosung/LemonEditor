@@ -8,8 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import "IUDocumentController.h"
-#import "IUDocumentGroup.h"
+#import "IUSheetController.h"
+#import "IUSheetGroup.h"
 #import "LMFileTabItemVC.h"
 
 typedef enum{
@@ -21,12 +21,12 @@ typedef enum{
 
 @interface LMTopToolbarVC : NSViewController
 
-@property (nonatomic)  IUDocumentController *documentController;
-@property (nonatomic)  IUDocument    *document;
+@property (nonatomic)  IUSheetController *sheetController;
+@property (nonatomic)  IUSheet    *sheet;
 
 
 //tabItem delegate
-- (void)selectTab:(IUDocument *)documentNode;
+- (void)selectTab:(IUSheet *)documentNode;
 - (void)closeTab:(LMFileTabItemVC *)documentNode;
 
 @end

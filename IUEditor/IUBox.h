@@ -45,7 +45,7 @@
 
 
 @class IUBox;
-@class IUDocument;
+@class IUSheet;
 @class IUProject;
 
 @interface IUBox : NSObject <NSCoding, IUCSSDelegate, NSCopying>{
@@ -59,7 +59,7 @@
 -(id)initWithProject:(IUProject*)project options:(NSDictionary*)options;
 
 
--(IUDocument *)document;
+-(IUSheet *)sheet;
 
 
 /**

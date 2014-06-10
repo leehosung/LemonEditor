@@ -7,8 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "IUDocumentController.h"
-#import "IUDocumentGroup.h"
+#import "IUSheetController.h"
+#import "IUSheetGroup.h"
 
 @interface LMTabBox : NSBox
 
@@ -21,7 +21,7 @@
 @property id delegate;
 @property (weak) IBOutlet NSBox *fileBox;
 @property (weak) IBOutlet NSButton *fileNameBtn;
-@property  IUDocument *document;
+@property  IUSheet *sheet;
 
 - (void)setDeselectColor;
 - (void)setSelectColor;

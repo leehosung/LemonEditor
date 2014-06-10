@@ -11,7 +11,7 @@
 
 
 
-@class IUDocument;
+@class IUSheet;
 @class IUImport;
 
 // NOTIFICATION : IUSelectionChangeNotification is called

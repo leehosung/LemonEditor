@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "IUResourceGroup.h"
 #import "IUCompiler.h"
-#import "IUDocumentGroup.h"
+#import "IUSheetGroup.h"
 #import "IUFileProtocol.h"
 
 typedef enum _IUGitType{
@@ -26,10 +26,10 @@ static NSString * IUProjectKeyAppName = @"appName";
 static NSString * IUProjectKeyHeroku = @"heroku";
 static NSString * IUProjectKeyDirectory = @"dir";
 
-@interface IUProject : NSDocument <IUFile, IUResourcePathProtocol>{
-    IUDocumentGroup *_pageGroup;
-    IUDocumentGroup *_backgroundGroup;
-    IUDocumentGroup *_classGroup;
+@interface IUProject : NSObject <IUFile, IUResourcePathProtocol>{
+    IUSheetGroup *_pageGroup;
+    IUSheetGroup *_backgroundGroup;
+    IUSheetGroup *_classGroup;
     IUResourceGroup *_resourceGroup;
     
     IUCompiler *_compiler;
@@ -59,11 +59,11 @@ static NSString * IUProjectKeyDirectory = @"dir";
 - (void)addMQSize:(NSInteger)size;
 - (void)removeMQSize:(NSInteger)size;
 
-@property   NSString        *name;
+@property   NSString  *name;
 
 //set path
-- (void)setPath:(NSString*)path;
-- (NSString*)path;
+@property   NSString *path;
+
 - (NSString*)directoryPath;
 - (NSString*)buildPath;
 
@@ -86,8 +86,8 @@ static NSString * IUProjectKeyDirectory = @"dir";
 - (BOOL)runnable;
 
 // return groups
-- (IUDocumentGroup*)pageGroup;
-- (IUDocumentGroup*)backgroundGroup;
-- (IUDocumentGroup*)classGroup;
+- (IUSheetGroup*)pageGroup;
+- (IUSheetGroup*)backgroundGroup;
+- (IUSheetGroup*)classGroup;
 
 @end

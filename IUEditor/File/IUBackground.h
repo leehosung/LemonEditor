@@ -6,12 +6,12 @@
 //  Copyright (c) 2014 JDLab. All rights reserved.
 //
 
-#import "IUDocument.h"
+#import "IUSheet.h"
 #import "IUHeader.h"
 
 static NSString* kIUBackgroundOptionEmpty = @"backgroundOptionEmpty";
 
-@interface IUBackground : IUDocument
+@interface IUBackground : IUSheet
 
 @property  IUHeader    *header;
 @property  (readonly)  NSArray     *bodyParts;

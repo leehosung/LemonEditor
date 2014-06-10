@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 JDLab. All rights reserved.
 //
 
-#import "IUDocument.h"
+#import "IUSheet.h"
 
-@interface IUClass : IUDocument
+@interface IUClass : IUSheet
 
 @property NSMutableArray *referenceImports;
 

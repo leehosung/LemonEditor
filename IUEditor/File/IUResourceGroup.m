@@ -60,18 +60,21 @@
     [array addObject:group];
     group.name = groupName;
     group.parent = self;
-    [[NSFileManager defaultManager] createDirectoryAtPath:group.absolutePath withIntermediateDirectories:YES attributes:nil error:nil];
     return group;
 }
 
 -(IUResourceFile*)addResourceFileWithContentOfPath:(NSString*)filePath{
     IUResourceFile *file = [[IUResourceFile alloc] initWithName:filePath.lastPathComponent];
-    [array addObject:file];
+    file.originalFilePath = filePath;
     file.parent = self;
-    [[NSFileManager defaultManager] copyItemAtPath:filePath toPath:file.absolutePath error:nil];
+    [array addObject:file];
+    
+    [[[NSApp mainWindow] windowController] saveDocument:self];
+
     return file;
 }
 
+/*
 -(IUResourceFile*)addResourceFileWithData:(NSData*)data{
     IUResourceFile *file = [[IUResourceFile alloc] init];
     [array addObject:file];
@@ -79,5 +82,6 @@
     assert([[NSFileManager defaultManager] createFileAtPath:file.absolutePath contents:data attributes:nil]);
     return file;
 }
+ */
 
 @end

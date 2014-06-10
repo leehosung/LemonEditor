@@ -7,7 +7,7 @@
 //
 
 #import "IUText.h"
-#import "IUDocument.h"
+#import "IUSheet.h"
 #import "IUProject.h"
 
 @implementation IUText{

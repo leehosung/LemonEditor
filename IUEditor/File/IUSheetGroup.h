@@ -1,5 +1,5 @@
 //
-//  IUDocumentNode.h
+//  IUSheetGroup.h
 //  IUEditor
 //
 //  Created by JD on 3/26/14.
@@ -10,15 +10,15 @@
 #import "IUFileProtocol.h"
 
 @class IUProject;
-@class IUDocument;
+@class IUSheet;
 
-@interface IUDocumentGroup : NSObject < NSCoding>
+@interface IUSheetGroup : NSObject < NSCoding>
 
 @property IUProject *project;
 @property NSString *name;
 
 - (NSArray*)childrenFiles;
-- (void)removeDocument:(IUDocument*)document;
-- (void)addDocument:(IUDocument*)document;
+- (void)removeSheet:(IUSheet*)document;
+- (void)addSheet:(IUSheet*)document;
 
 @end

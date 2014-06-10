@@ -9,13 +9,13 @@
 #import <Cocoa/Cocoa.h>
 #import "IUProject.h"
 #import "JDOutlineView.h"
-#import "IUDocumentController.h"
+#import "IUSheetController.h"
 #import "IUIdentifierManager.h"
 
 @interface LMFileNaviVC : NSViewController <JDOutlineViewKeyDelegate>
 
 @property (nonatomic, readonly) id  selection;
-@property (strong, nonatomic) IBOutlet _binding_ IUDocumentController *documentController;
+@property (strong, nonatomic) IBOutlet _binding_ IUSheetController *documentController;
 @property (nonatomic) IUProject *project;
 
 

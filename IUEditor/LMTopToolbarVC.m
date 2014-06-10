@@ -37,27 +37,27 @@
 }
 
 //set from lmwc
--(void)setDocument:(IUDocument *)document{
-    _document = document;
+-(void)setSheet:(IUSheet *)sheet{
+    _sheet = sheet;
     //find tab or make new box
-    LMTabDocumentType currentState = [self stateOfDocumnet:document];
+    LMTabDocumentType currentState = [self stateOfDocumnet:sheet];
     switch (currentState) {
         case LMTabDocumentTypeHidden:
             //remove hidden state
-            [hiddenTabDocuments removeObject:document];
+            [hiddenTabDocuments removeObject:sheet];
             
         case LMTabDocumentTypeNone:
             //1. check enough size -> ignore or move one to hidden tab
             if([self hasEnoughSize] == NO){
-                IUDocument *lastOpenedDocument = [openTabDocuments objectAtIndex:[openTabDocuments count] -1];
+                IUSheet *lastOpenedDocument = [openTabDocuments objectAtIndex:[openTabDocuments count] -1];
                 [self removeOpenTabDocument:lastOpenedDocument];
             }
             
             //2. add opentabdocuments
-            [self addOpenTabDocuments:document];
+            [self addOpenTabDocuments:sheet];
         case LMTabDocumentTypeOpen:
             //select
-            [self selectTab:document];
+            [self selectTab:sheet];
         default:
             break;
     }
@@ -66,20 +66,21 @@
 #pragma mark -
 #pragma mark tabview
 
-- (void)removeOpenTabDocument:(IUDocument *)document{
-    [openTabDocuments removeObject:document];
+- (void)removeOpenTabDocument:(IUSheet *)sheet{
+    [openTabDocuments removeObject:sheet];
     
-    LMFileTabItemVC *item = [self tabItemOfDocumentNode:document];
+    LMFileTabItemVC *item = [self tabItemOfDocumentNode:sheet];
     [item.view removeFromSuperviewWithDirectionLeftToRight];
 
-    [hiddenTabDocuments addObject:document];
+    [hiddenTabDocuments addObject:sheet];
 }
 
-- (void)addOpenTabDocuments:(IUDocument *)document{
-    [openTabDocuments addObject:document];
+
+- (void)addOpenTabDocuments:(IUSheet *)sheet{
+    [openTabDocuments addObject:sheet];
     
     LMFileTabItemVC *itemVC = [[LMFileTabItemVC alloc] initWithNibName:@"LMFileTabItemVC" bundle:nil];
-    [itemVC setDocument:document];
+    [itemVC setSheet:sheet];
     itemVC.delegate = self;
     
     [_fileTabView addSubviewDirectionLeftToRight:itemVC.view width:140];
@@ -87,11 +88,11 @@
 
 
 
-- (LMFileTabItemVC *)tabItemOfDocumentNode:(IUDocument *)documentNode{
+- (LMFileTabItemVC *)tabItemOfDocumentNode:(IUSheet *)sheet{
     for(LMTabBox *item in _fileTabView.subviews){
         assert([item isKindOfClass:[LMTabBox class]]);
         LMFileTabItemVC *itemVC = ((LMFileTabItemVC *)item.delegate);
-        if([itemVC.document isEqualTo:documentNode]){
+        if([itemVC.document isEqualTo:sheet]){
             return itemVC;
         }
     }
@@ -109,11 +110,12 @@
     }
 }
 
-- (LMTabDocumentType)stateOfDocumnet:(IUDocument *)document{
-    if([openTabDocuments containsObject:document]){
+
+- (LMTabDocumentType)stateOfDocumnet:(IUSheet *)sheet{
+    if([openTabDocuments containsObject:sheet]){
         return LMTabDocumentTypeOpen;
     }
-    else if([hiddenTabDocuments containsObject:document]){
+    else if([hiddenTabDocuments containsObject:sheet]){
         return LMTabDocumentTypeHidden;
     }
     else{
@@ -126,18 +128,18 @@
 }
 
 - (IBAction)selectHiddenDocument:(id)sender{
-    IUDocument *document = [sender representedObject];
-    [self setDocument:document];
+    IUSheet *sheet = [sender representedObject];
+    [self setSheet:sheet];
 }
 
 - (IBAction)clickHiddenTabs:(id)sender {
     NSMenu *theMenu = [[NSMenu alloc] initWithTitle:@"Contextual Menu"];
     
     int index=0;
-    for(IUDocument *documentNode in hiddenTabDocuments){
-        NSMenuItem *item = [theMenu insertItemWithTitle:documentNode.name action:@selector(selectHiddenDocument:) keyEquivalent:@"" atIndex:index];
+    for(IUSheet *sheet in hiddenTabDocuments){
+        NSMenuItem *item = [theMenu insertItemWithTitle:sheet.name action:@selector(selectHiddenDocument:) keyEquivalent:@"" atIndex:index];
         [item setTarget:self];
-        [item setRepresentedObject:documentNode];
+        [item setRepresentedObject:sheet];
         index++;
     }
     
@@ -151,15 +153,15 @@
 
 
 
-- (void)selectTab:(IUDocument *)documentNode{
-    [_documentController setSelectedObject:documentNode];
+- (void)selectTab:(IUSheet *)sheet{
+    [_sheetController setSelectedObject:sheet];
     
     //tabcolor
     for(LMTabBox *item in _fileTabView.subviews){
         assert([item isKindOfClass:[LMTabBox class]]);
         LMFileTabItemVC *itemVC = ((LMFileTabItemVC *)item.delegate);
         
-        if([itemVC.document isEqualTo:documentNode]){
+        if([itemVC.sheet isEqualTo:sheet]){
             [itemVC setSelectColor];
         }
         else{
@@ -176,14 +178,14 @@
     [tabItem.view removeFromSuperviewWithDirectionLeftToRight];
     
     
-    NSInteger index = [openTabDocuments indexOfObject:tabItem.document]-1;
+    NSInteger index = [openTabDocuments indexOfObject:tabItem.sheet]-1;
     
     assert(index < openTabDocuments.count);
     
-    IUDocument *leftTabNode = [openTabDocuments objectAtIndex:index];
-    [_documentController setSelectedObject:leftTabNode];
+    IUSheet *leftTabNode = [openTabDocuments objectAtIndex:index];
+    [_sheetController setSelectedObject:leftTabNode];
     
-    [openTabDocuments removeObject:tabItem.document];
+    [openTabDocuments removeObject:tabItem.sheet];
     
     
 }
@@ -193,9 +195,10 @@
 #pragma mark build
 
 - (IBAction)showBPressed:(id)sender {
-    IUProject *project = _documentController.project;
+    IUProject *project = _sheetController.project;
     [project build:nil];
-    IUDocument *node = [[_documentController selectedObjects] firstObject];
+
+    IUSheet *node = [[_sheetController selectedObjects] firstObject];
     NSString *firstPath = [project.directoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@.html",project.buildPath, [node.name lowercaseString]] ];
     
     [[NSWorkspace sharedWorkspace] openFile:firstPath];

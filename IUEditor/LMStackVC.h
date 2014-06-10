@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "IUDocumentController.h"
+#import "IUSheetController.h"
 #import "IUController.h"
 
 @interface LMStackOutlineView : NSOutlineView
@@ -16,6 +16,6 @@
 
 @interface LMStackVC : NSViewController <NSOutlineViewDataSource, NSOutlineViewDelegate>
 
-@property  IUDocument    *document;
+@property  IUSheet    *sheet;
 @property (strong) IBOutlet IUController *IUController;
 @end

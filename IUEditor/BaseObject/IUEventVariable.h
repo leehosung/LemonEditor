@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "IUDocument.h"
+#import "IUSheet.h"
 
 @interface IUEventVariable : NSObject
 
-- (void)makeEventDictionary:(IUDocument *)document;
+- (void)makeEventDictionary:(IUSheet *)document;
 - (NSString *)outputEventJSSource;
 
 @end

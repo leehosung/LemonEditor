@@ -14,5 +14,5 @@
 @property (nonatomic) IUController      *controller;
 @property NSArray   *classDocuments;
 @property NSArray   *selectedObjs;
-@property IUDocument *selectedClass;
+@property IUSheet *selectedClass;
 @end

@@ -13,7 +13,7 @@
 #import "JDCode.h"
 #import "IUResourceManager.h"
 
-@class IUDocument;
+@class IUSheet;
 @class IUResourceManager;
 
 typedef enum _IUCompileRule{
@@ -27,11 +27,11 @@ typedef enum _IUCompileRule{
 @property IUCompileRule    rule;
 
 //build source
--(NSString*)outputSource:(IUDocument*)document mqSizeArray:(NSArray *)mqSizeArray;
+-(NSString*)outputSource:(IUSheet*)document mqSizeArray:(NSArray *)mqSizeArray;
 -(JDCode *)outputHTML:(IUBox *)iu;
 
 //editor source
--(NSString*)editorSource:(IUDocument*)document mqSizeArray:(NSArray *)mqSizeArray;
+-(NSString*)editorSource:(IUSheet*)document mqSizeArray:(NSArray *)mqSizeArray;
 -(JDCode* )editorHTML:(IUBox*)iu;
 
 -(NSString*)CSSContentFromAttributes:(NSDictionary*)attributeDict ofClass:(IUBox*)obj isHover:(BOOL)isHover isDefaultWidth:(BOOL)isDefaultWidth;
@@ -42,5 +42,5 @@ typedef enum _IUCompileRule{
 
 #pragma mark manage JS source
 -(NSString *)outputJSArgs:(IUBox *)iu;
--(NSString *)outputJSInitializeSource:(IUDocument *)document;
+-(NSString *)outputJSInitializeSource:(IUSheet *)document;
 @end

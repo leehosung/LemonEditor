@@ -9,7 +9,7 @@
 #import "IUProject.h"
 #import "IUPage.h"
 #import "IUResourceGroup.h"
-#import "IUDocumentGroup.h"
+#import "IUSheetGroup.h"
 #import "IUResourceFile.h"
 #import "IUResourceManager.h"
 #import "JDUIUtil.h"
@@ -124,36 +124,39 @@
     if (err) {
         [JDLogUtil log:@"mkdir" err:err];
     }
-    _pageGroup = [[IUDocumentGroup alloc] init];
+    _pageGroup = [[IUSheetGroup alloc] init];
     _pageGroup.name = @"Pages";
     _pageGroup.project = self;
     
-    _backgroundGroup = [[IUDocumentGroup alloc] init];
+    _backgroundGroup = [[IUSheetGroup alloc] init];
     _backgroundGroup.name = @"Backgrounds";
     _backgroundGroup.project = self;
     
-    _classGroup = [[IUDocumentGroup alloc] init];
+    _classGroup = [[IUSheetGroup alloc] init];
     _classGroup.name = @"Classes";
     _classGroup.project = self;
 
     IUBackground *bg = [[IUBackground alloc] initWithProject:self options:nil];
     bg.name = @"Background";
     bg.htmlID = @"Background";
-    [_backgroundGroup addDocument:bg];
+    [_backgroundGroup addSheet:bg];
 
     IUPage *pg = [[IUPage alloc] initWithProject:self options:nil];
     [pg setBackground:bg];
     pg.name = @"Index";
     pg.htmlID = @"Index";
-    [_pageGroup addDocument:pg];
+    [_pageGroup addSheet:pg];
     
     IUClass *class = [[IUClass alloc] initWithProject:self options:nil];
     class.name = @"Class";
     class.htmlID = @"Class";
-    [_classGroup addDocument:class];
+    [_classGroup addSheet:class];
     
     [self initializeResource];
-    ReturnNilIfFalse([self save]);
+    [_resourceManager setResourceGroup:_resourceGroup];
+    [_identifierManager registerIUs:self.allDocuments];
+
+//    ReturnNilIfFalse([self save]);
     return self;
 }
 
@@ -162,14 +165,6 @@
     IUProject *project = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
     project.path = path;
     return project;
-}
-
--(NSString*)path{
-    return _path;
-}
-
-- (void)setPath:(NSString *)path{
-    _path = [path copy];
 }
 
 - (NSString*)directoryPath{
@@ -196,7 +191,7 @@
     IUEventVariable *eventVariable = [[IUEventVariable alloc] init];
     JDCode *initializeJSSource = [[JDCode alloc] init];
 
-    for (IUDocument *doc in self.allDocuments) {
+    for (IUSheet *doc in self.allDocuments) {
         NSString *outputString = [doc outputSource];
         
         NSString *filePath = [[buildPath stringByAppendingPathComponent:[doc.name lowercaseString]] stringByAppendingPathExtension:@"html"];
@@ -251,9 +246,9 @@
 
 -(NSArray*)allIUs{
     NSMutableArray  *array = [NSMutableArray array];
-    for (IUDocument *document in self.allDocuments) {
-        [array addObject:document];
-        [array addObjectsFromArray:document.allChildren];
+    for (IUSheet *sheet in self.allDocuments) {
+        [array addObject:sheet];
+        [array addObjectsFromArray:sheet.allChildren];
     }
     return array;
 }
@@ -403,13 +398,13 @@
     return nil;
 }
 
-- (IUDocumentGroup*)pageGroup{
+- (IUSheetGroup*)pageGroup{
     return _pageGroup;
 }
-- (IUDocumentGroup*)backgroundGroup{
+- (IUSheetGroup*)backgroundGroup{
     return _backgroundGroup;
 }
-- (IUDocumentGroup*)classGroup{
+- (IUSheetGroup*)classGroup{
     return _classGroup;
 }
 

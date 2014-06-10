@@ -7,8 +7,8 @@
 //
 
 #import "LMPropertyIUBoxVC.h"
-#import "IUDocumentGroup.h"
-#import "IUDocument.h"
+#import "IUSheetGroup.h"
+#import "IUSheet.h"
 
 @interface LMPropertyIUBoxVC ()
 

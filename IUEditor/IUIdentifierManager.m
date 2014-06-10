@@ -8,7 +8,7 @@
 
 #import "IUIdentifierManager.h"
 #import "IUBox.h"
-#import "IUDocument.h"
+#import "IUSheet.h"
 #import "IUBackground.h"
 #import "IUClass.h"
 
@@ -54,7 +54,7 @@
 }
 
 - (BOOL)isDocumentclass:(IUBox *)iu{
-    if([iu isKindOfClass:[IUDocument class]]
+    if([iu isKindOfClass:[IUSheet class]]
        || [iu isKindOfClass:[IUBackground class]]
        || [iu isKindOfClass:[IUClass class]]){
         return YES;

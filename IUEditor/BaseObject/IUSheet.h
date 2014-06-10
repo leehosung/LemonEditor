@@ -1,5 +1,5 @@
 //
-//  IUDocument.h
+//  IUSheet.h
 //  IUEditor
 //
 //  Created by JD on 3/17/14.
@@ -11,9 +11,9 @@
 #import "IUBox.h"
 #import "IUIdentifierManager.h"
 
-@class IUDocumentGroup;
+@class IUSheetGroup;
 
-@interface IUDocument : IUBox
+@interface IUSheet : IUBox
 
 @property NSArray *mqSizeArray;
 
@@ -28,6 +28,6 @@
 -(NSArray*)widthWithCSS;
 -(IUBox *)selectableIUAtPoint:(CGPoint)point;
 
-@property IUDocumentGroup *group;
+@property IUSheetGroup *group;
 
 @end

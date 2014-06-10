@@ -7,7 +7,7 @@
 //
 
 #import "LMCommandVC.h"
-#import "IUDocumentGroup.h"
+#import "IUSheetGroup.h"
 
 @interface LMCommandVC ()
 @property (weak) IBOutlet NSButton *buildB;
@@ -65,7 +65,7 @@
         if (result == NO) {
             assert(0);
         }
-        IUDocument *doc = [[_docController selectedObjects] firstObject];
+        IUSheet *doc = [[_docController selectedObjects] firstObject];
         NSString *firstPath = [project.directoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@.html",project.buildPath, [doc.name lowercaseString]] ];
         [[NSWorkspace sharedWorkspace] openFile:firstPath];
     }
@@ -78,7 +78,7 @@
         if (result == NO) {
             assert(0);
         }
-        IUDocument *node = [[_docController selectedObjects] firstObject];
+        IUSheet *node = [[_docController selectedObjects] firstObject];
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat: @"http://127.0.0.1:8000/%@", [node.name lowercaseString]]];
         [[NSWorkspace sharedWorkspace] openURL:url];
     }

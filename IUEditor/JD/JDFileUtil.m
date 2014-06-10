@@ -122,6 +122,20 @@ static JDFileUtil *sharedJDFileUtill;
     return [self openDirectoryByNSOpenPanel:nil];
 }
 
+- (NSURL *)openSavePanelWithAllowFileTypes:(NSArray *)fileTypes withTitle:(NSString *)title{
+    NSSavePanel* savePanel = [NSSavePanel savePanel];
+    [savePanel setAllowedFileTypes:fileTypes];
+    [savePanel setCanCreateDirectories:YES];
+    
+    if(title){
+        [savePanel setTitle:title];
+    }
+    
+    if([savePanel runModal] == NSOKButton){
+        return [savePanel URL];
+    }
+    return nil;
+}
 
 
 

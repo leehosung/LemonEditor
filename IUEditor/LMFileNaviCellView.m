@@ -7,7 +7,7 @@
 //
 
 #import "LMFileNaviCellView.h"
-#import "IUDocument.h"
+#import "IUSheet.h"
 
 @implementation LMFileNaviCellView
 
@@ -29,9 +29,11 @@
     if (textValue.length == 0) {
         return NO;
     }
-    IUDocument *doc = self.objectValue;
+
+    IUSheet *doc = self.objectValue;
     doc.name = textValue;
     doc.htmlID = textValue;
+
     return YES;
 }
 

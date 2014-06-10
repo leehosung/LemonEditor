@@ -8,11 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 #import "IUResourceManager.h"
-#import "IUDocument.h"
+#import "IUSheet.h"
 
 @interface LMBottomToolbarVC : NSViewController <NSComboBoxDelegate>
 
 @property (nonatomic) IUResourceManager     *resourceManager;
-@property (nonatomic) IUDocument    *document;
+@property (nonatomic) IUSheet    *sheet;
 
 @end

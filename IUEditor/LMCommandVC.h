@@ -8,10 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 #import "IUCompiler.h"
-#import "IUDocumentController.h"
+#import "IUSheetController.h"
 
 @interface LMCommandVC : NSViewController
 
-@property IUDocumentController      *docController;
+@property IUSheetController      *docController;
 
 @end

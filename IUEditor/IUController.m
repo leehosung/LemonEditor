@@ -7,7 +7,7 @@
 //
 
 #import "IUController.h"
-#import "IUDocument.h"
+#import "IUSheet.h"
 #import "NSTreeController+JDExtension.h"
 #import "NSIndexPath+JDExtension.h"
 #import "IUImport.h"
@@ -155,14 +155,14 @@
 
 -(void)trySetSelectedObjectsByIdentifiers:(NSArray *)identifiers{
     [JDLogUtil log:IULogAction key:@"canvas selected objects" string:[identifiers description]];
-    IUDocument *document = [self.content firstObject];
+    IUSheet *document = [self.content firstObject];
     
     NSString *firstIdentifier = [identifiers firstObject];
     if ([firstIdentifier containsString:@"__"]) { // it's in import!
         NSArray *IUChain = [firstIdentifier componentsSeparatedByString:@"__"];
         NSString *documentIUIdentifier = [IUChain firstObject];
 
-        IUDocument *parentDoc = (IUDocument*)[self IUBoxByIdentifier:documentIUIdentifier];
+        IUSheet *parentDoc = (IUSheet*)[self IUBoxByIdentifier:documentIUIdentifier];
         NSIndexPath *documentPath = [self indexPathOfObject:parentDoc];
 
         NSArray *allChildren = [[parentDoc allChildren] arrayByAddingObject:document];
@@ -214,7 +214,7 @@
 
 -(void)setSelectedObjectsByIdentifiers:(NSArray *)identifiers{
     [JDLogUtil log:IULogAction key:@"canvas selected objects" string:[identifiers description]];
-    IUDocument *document = [self.content firstObject];
+    IUSheet *document = [self.content firstObject];
     NSArray *allChildren = [[document allChildren] arrayByAddingObject:document];
     NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUBox *iu, NSDictionary *bindings) {
         if ([identifiers containsObject:iu.htmlID]) {
@@ -247,7 +247,7 @@
 }
 
 -(IUBox *)IUBoxByIdentifier:(NSString *)identifier{
-    IUDocument *document = [self.content firstObject];
+    IUSheet *document = [self.content firstObject];
     NSArray *allChildren = [[document allChildren] arrayByAddingObject:document];
     NSArray *identifierChain = [identifier componentsSeparatedByString:@"__"];
     if ([identifierChain count] == 2) {
@@ -290,11 +290,13 @@
 
 -(IUImport*)importIUInSelectionChain{
     NSIndexPath *firstPath = [[self.selectionIndexPaths firstObject] indexPathByRemovingLastIndex];
-    NSArray *chain = [self IUChainOfIndexPath:firstPath];
-    
-    for (IUBox *box in chain) {
-        if ([box isKindOfClass:[IUImport class]]) {
-            return (IUImport *)box;
+    if(firstPath){
+        NSArray *chain = [self IUChainOfIndexPath:firstPath];
+        
+        for (IUBox *box in chain) {
+            if ([box isKindOfClass:[IUImport class]]) {
+                return (IUImport *)box;
+            }
         }
     }
     return nil;

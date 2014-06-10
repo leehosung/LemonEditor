@@ -45,7 +45,6 @@
     self.testController.mainWC = self.canvasWC;
     [self.testController showWindow:nil];
     [wc addSelectedIU:@"test"];
-#endif
     
     NSArray *recents = [[NSDocumentController sharedDocumentController] recentDocumentURLs];
     if ([recents count]){
@@ -54,6 +53,7 @@
     else {
         [self newDocument:self];
     }
+#endif
 }
 
 - (IBAction)showStartWC:(id)sender{
@@ -64,6 +64,7 @@
     [startWC showWindow:self];
 }
 
+#if 0
 - (void)openDocument:(id)sender{
     NSString *value;
     if ([sender isKindOfClass:[NSMenuItem class]]) {
@@ -89,6 +90,8 @@
     [wc loadProject:path];
 }
 
+#endif
+
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename{
     return YES;
 }
@@ -98,7 +101,9 @@
     [preferenceWC showWindow:self];
 }
 
--(void)newDocument:(NSMenuItem*)sender{
+#if 0
+
+-(IBAction)newDocument:(id)sender{
     if ([sender isKindOfClass:[NSMenuItem class]]) {
         if (sender.tag == 1) {
             [self newDjangoDocument:sender];
@@ -122,6 +127,7 @@
     [wc loadProject:newProject.path];
 }
 
+
 -(void)newDjangoDocument:(id)sender{
     NSError *error;
     
@@ -139,5 +145,5 @@
     [wc loadProject:project.path];
 }
 
-
+#endif
 @end

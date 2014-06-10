@@ -14,15 +14,17 @@
 			<key>CFBundleTypeIconFile</key>
 			<string>documentIcon</string>
 			<key>CFBundleTypeName</key>
-			<string>IU Editor File</string>
+			<string>IU Editor Document</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
-			<key>LSHandlerRank</key>
-			<string>Owner</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>com.jdlab.iu</string>
 			</array>
+			<key>LSTypeIsPackage</key>
+			<true/>
+			<key>NSDocumentClass</key>
+			<string>IUProjectDocument</string>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
@@ -56,12 +58,10 @@
 		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
-				<string>public.data</string>
+				<string>com.apple.package</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>IU Editor document</string>
-			<key>UTTypeIconFile</key>
-			<string>documentIcon</string>
+			<string>IU Editor document package</string>
 			<key>UTTypeIdentifier</key>
 			<string>com.jdlab.iu</string>
 			<key>UTTypeReferenceURL</key>

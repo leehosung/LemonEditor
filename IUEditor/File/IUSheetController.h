@@ -1,5 +1,5 @@
 //
-//  IUDocumentController.h
+//  IUSheetController.h
 //  IUEditor
 //
 //  Created by JD on 3/17/14.
@@ -8,14 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "IUProject.h"
-#import "IUDocument.h"
+#import "IUSheet.h"
 
-@interface IUDocumentController : NSTreeController
+@interface IUSheetController : NSTreeController
 
--(id)initWithDocument:(IUDocument*)document;
+-(id)initWithDocument:(IUSheet*)document;
 -(NSString*)keyPathFromDocumentControllerToEventVariables;
 
-@property (nonatomic, readonly) IUDocument *document;
+@property (nonatomic, readonly) IUSheet *sheet;
 @property (nonatomic) IUProject *project;
 
 

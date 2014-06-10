@@ -8,7 +8,7 @@
 
 
 #import "IUBox.h"
-#import "IUDocument.h"
+#import "IUSheet.h"
 
 @class IUBackground;
 
@@ -18,7 +18,7 @@
  @note IUPage has no children. Do not use 'addIU' function. Program assert failure would be occured immediatly.
        If background is not set, IUPage would never return children.
  */
-@interface IUPage : IUDocument
+@interface IUPage : IUSheet
 
 @property NSString *title;
 @property NSString *keywords;

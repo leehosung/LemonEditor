@@ -8,7 +8,7 @@
 
 #import "IUCompiler.h"
 #import "NSString+JDExtension.h"
-#import "IUDocument.h"
+#import "IUSheet.h"
 #import "NSDictionary+JDExtension.h"
 #import "JDUIUtil.h"
 #import "IUPage.h"
@@ -112,7 +112,7 @@
 }
 
 
--(NSString*)outputSource:(IUDocument*)document mqSizeArray:(NSArray *)mqSizeArray{
+-(NSString*)outputSource:(IUSheet*)document mqSizeArray:(NSArray *)mqSizeArray{
     if ([document isKindOfClass:[IUClass class]]) {
         return [self outputHTML:document].string;
     }
@@ -164,7 +164,7 @@
     return sourceCode.string;
 }
 
--(NSString*)editorSource:(IUDocument*)document mqSizeArray:(NSArray *)mqSizeArray{
+-(NSString*)editorSource:(IUSheet*)document mqSizeArray:(NSArray *)mqSizeArray{
     assert(mqSizeArray.count > 0);
     NSString *templateFilePath = [[NSBundle mainBundle] pathForResource:@"webTemplate" ofType:@"html"];
     
@@ -195,18 +195,18 @@
     return sourceCode.string;
 }
 
--(JDCode *)cssSource:(IUDocument *)document cssSizeArray:(NSArray *)cssSizeArray{
+-(JDCode *)cssSource:(IUSheet *)sheet cssSizeArray:(NSArray *)cssSizeArray{
     JDCode *code = [[JDCode alloc] init];
 //    NSMutableString *css = [NSMutableString string];
     //default-
     [code addCodeLine:@"<style id=default>"];
     [code increaseIndentLevelForEdit];
 
-    NSDictionary *cssDict = [self cssSourceForIU:document width:IUCSSMaxViewPortWidth];
+    NSDictionary *cssDict = [self cssSourceForIU:sheet width:IUCSSMaxViewPortWidth];
     for (NSString *identifier in cssDict) {
         [code addCodeLineWithFormat:@"%@ {%@}", identifier, cssDict[identifier]];
     }
-    NSSet *districtChildren = [NSSet setWithArray:document.allChildren];
+    NSSet *districtChildren = [NSSet setWithArray:sheet.allChildren];
 
     for (IUBox *obj in districtChildren) {
         NSDictionary *cssDict = [self cssSourceForIU:obj width:IUCSSMaxViewPortWidth];
@@ -228,14 +228,14 @@
         [code addCodeWithFormat:@"media ='screen and (max-width:%dpx)' id='style%d'>" , size, size];
         [code increaseIndentLevelForEdit];
         
-        NSDictionary *cssDict = [self cssSourceForIU:document width:size];
+        NSDictionary *cssDict = [self cssSourceForIU:sheet width:size];
         for (NSString *identifier in cssDict) {
             if ([[cssDict[identifier] stringByTrim]length]) {
                 [code addCodeLineWithFormat:@"%@ {%@}", identifier, cssDict[identifier]];
             }
         }
         
-        NSSet *districtChildren = [NSSet setWithArray:document.allChildren];
+        NSSet *districtChildren = [NSSet setWithArray:sheet.allChildren];
         
         for (IUBox *obj in districtChildren) {
             NSDictionary *cssDict = [self cssSourceForIU:obj width:size];
@@ -410,7 +410,7 @@ static NSString * IUCompilerTagOption = @"tag";
         [code addCodeLine:@"{% csrf_token %}"];
     }
     if (_rule == IUCompileRuleDjango && iu.textVariable) {
-        if ([iu.document isKindOfClass:[IUClass class]]){
+        if ([iu.sheet isKindOfClass:[IUClass class]]){
             [code addCodeLineWithFormat:@"<p>{{ object.%@ }}</p>", iu.textVariable];
         }
         else {
@@ -1341,7 +1341,7 @@ static NSString * IUCompilerTagOption = @"tag";
     if ([iu isKindOfClass:[IUImage class]]) {
         IUImage *iuImage = (IUImage*)iu;
         if (iuImage.variable && _rule == IUCompileRuleDjango) {
-            if ([iu.document isKindOfClass:[IUClass class]]) {
+            if ([iu.sheet isKindOfClass:[IUClass class]]) {
                 [retString appendFormat:@" src={{ object.%@ }}", iuImage.variable];
             }
             else {
@@ -1504,7 +1504,7 @@ static NSString * IUCompilerTagOption = @"tag";
     return argStr;
 }
 
--(NSString*)outputJSInitializeSource:(IUDocument *)document{
+-(NSString*)outputJSInitializeSource:(IUSheet *)document{
     NSString *jsSource = [[self outputJSSource:document] stringByIndent:8 prependIndent:YES];
     return jsSource;
 }

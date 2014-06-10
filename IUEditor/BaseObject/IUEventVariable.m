@@ -7,7 +7,7 @@
 //
 
 #import "IUEventVariable.h"
-#import "IUDocument.h"
+#import "IUSheet.h"
 
 @interface IUEventVariable()
 
@@ -52,8 +52,8 @@
     return [dict objectForKey:IUEventTagReceiverArray];
 }
 
-- (void)makeEventDictionary:(IUDocument *)document{
-    for (IUBox *obj in document.allChildren) {
+- (void)makeEventDictionary:(IUSheet *)sheet{
+    for (IUBox *obj in sheet.allChildren) {
         NSString *variable =  obj.event.variable;
         if(variable){
             NSMutableDictionary *oneDict = [self eventCollectionDictOfVariable:variable];

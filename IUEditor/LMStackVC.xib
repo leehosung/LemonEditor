@@ -16,7 +16,7 @@
         <userDefaultsController representsSharedInstance="YES" id="r0p-NC-HRh"/>
         <treeController objectClassName="IUBox" editable="NO" childrenKeyPath="children" id="S9Z-Oj-DDl" customClass="IUController">
             <connections>
-                <binding destination="-2" name="contentObject" keyPath="document" id="eXG-Ny-93E">
+                <binding destination="-2" name="contentObject" keyPath="sheet" id="cQ6-5s-fwC">
                     <dictionary key="options">
                         <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
                     </dictionary>

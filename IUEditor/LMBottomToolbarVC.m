@@ -47,14 +47,14 @@
     [_ghostYTF bind:NSEnabledBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"showGhost" options:IUBindingDictNotRaisesApplicable];
     
     [_ghostImageComboBox bind:NSContentBinding toObject:self withKeyPath:@"resourceManager.imageNames" options:IUBindingDictNotRaisesApplicable];
-    [_ghostXTF bind:NSValueBinding toObject:self withKeyPath:@"document.ghostX" options:IUBindingDictNotRaisesApplicable];
-    [_ghostYTF bind:NSValueBinding toObject:self withKeyPath:@"document.ghostY" options:IUBindingDictNotRaisesApplicable];
-    [_opacitySlider bind:NSValueBinding toObject:self withKeyPath:@"document.ghostOpacity" options:IUBindingDictNotRaisesApplicable];
+    [_ghostXTF bind:NSValueBinding toObject:self withKeyPath:@"sheet.ghostX" options:IUBindingDictNotRaisesApplicable];
+    [_ghostYTF bind:NSValueBinding toObject:self withKeyPath:@"sheet.ghostY" options:IUBindingDictNotRaisesApplicable];
+    [_opacitySlider bind:NSValueBinding toObject:self withKeyPath:@"sheet.ghostOpacity" options:IUBindingDictNotRaisesApplicable];
     
     
 #pragma mark bottom right tools
     [_borderBtn bind:@"state" toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"showBorder" options:nil];
-    [self addObserver:self forKeyPath:@"document.ghostImageName" options:0 context:nil];
+    [self addObserver:self forKeyPath:@"sheet.ghostImageName" options:0 context:nil];
     _ghostImageComboBox.delegate = self;
     
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"showLeftInspector"] == nil) {
@@ -69,23 +69,23 @@
 }
 
 - (void)document_ghostImageNameDidChange:(NSDictionary*)change{
-    if ([[_ghostImageComboBox stringValue] isEqualToString:_document.ghostImageName] == NO) {
-        if (_document.ghostImageName == nil) {
+    if ([[_ghostImageComboBox stringValue] isEqualToString:_sheet.ghostImageName] == NO) {
+        if (_sheet.ghostImageName == nil) {
             [_ghostImageComboBox setStringValue:@""];
         }
         else {
-            [_ghostImageComboBox setStringValue:_document.ghostImageName];
+            [_ghostImageComboBox setStringValue:_sheet.ghostImageName];
         }
     }
 }
 - (IBAction)clickGhostImageComboBox:(id)sender {
     NSString *fileName = [_ghostImageComboBox objectValueOfSelectedItem];
-    self.document.ghostImageName = fileName;
+    self.sheet.ghostImageName = fileName;
 }
 
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor{
     NSString *fileName = [control stringValue];
-    self.document.ghostImageName = fileName;
+    self.sheet.ghostImageName = fileName;
     return YES;
 }
 

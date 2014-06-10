@@ -42,6 +42,15 @@
     return [_rootGroup.childrenFiles[0] childrenFiles];
 }
 
+-(NSArray *)jsFiles{
+    assert(_rootGroup.childrenFiles[2]);
+    return [_rootGroup.childrenFiles[2] childrenFiles];
+}
+-(NSArray *)cssFiles{
+    assert(_rootGroup.childrenFiles[3]);
+    return [_rootGroup.childrenFiles[3] childrenFiles];
+}
+
 -(NSArray*)imageAndVideoFiles{
     return [[self imageFiles] arrayByAddingObjectsFromArray:self.videoFiles];
 }

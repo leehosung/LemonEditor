@@ -11,7 +11,7 @@
 #import "IUItem.h"
 #import "IUPageContent.h"
 #import "IUResponsiveSection.h"
-#import "IUDocument.h"
+#import "IUSheet.h"
 #import "LMWC.h"
 
 @implementation LMStackOutlineView
@@ -108,7 +108,7 @@
 - (BOOL)outlineView:(NSOutlineView *)outlineView writeItems:(NSArray *)items toPasteboard:(NSPasteboard *)pboard{
     for (NSTreeNode *node in items) {
         IUBox *iu = node.representedObject;
-        if ([iu isKindOfClass:[IUItem class]] || [iu isKindOfClass:[IUDocument class]] || [iu isKindOfClass:[IUPageContent class]]) {
+        if ([iu isKindOfClass:[IUItem class]] || [iu isKindOfClass:[IUSheet class]] || [iu isKindOfClass:[IUPageContent class]]) {
             return NO;
         }
     }
@@ -210,7 +210,7 @@
 - (IBAction)addSectionBtn:(id)sender {
     IUBox *parent;
     
-    for(IUBox *obj in _document.children){
+    for(IUBox *obj in _sheet.children){
         if([obj isKindOfClass:[IUPageContent class]]){
             parent = obj;
         }
@@ -219,9 +219,9 @@
         return;
     }
 
-    [_document.project.identifierManager resetUnconfirmedIUs];
-    IUResponsiveSection *newIU = [[IUResponsiveSection alloc]  initWithProject:_document.project options:nil];
-    [_document.project.identifierManager confirm];
+    [_sheet.project.identifierManager resetUnconfirmedIUs];
+    IUResponsiveSection *newIU = [[IUResponsiveSection alloc]  initWithProject:_sheet.project options:nil];
+    [_sheet.project.identifierManager confirm];
     if (newIU == nil) {
         assert(0);
     }

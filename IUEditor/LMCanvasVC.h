@@ -8,14 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
-#import "IUDocument.h"
+#import "IUSheet.h"
 #import "IUController.h"
 #import "IUResourceManager.h"
 
 @class LMCanvasView;
 @interface LMCanvasVC : NSViewController <IUSourceDelegate>
 
-@property (nonatomic) _binding_ IUDocument  *document;
+@property (nonatomic) _binding_ IUSheet  *sheet;
 @property (nonatomic) _binding_ NSString    *documentBasePath;
 @property (nonatomic) IUResourceManager  *resourceManager;
 
@@ -59,7 +59,7 @@
 #pragma mark -
 #pragma mark be set by IU
 //load page
-- (void)setDocument:(IUDocument *)document;
+- (void)setSheet:(IUSheet *)document;
 
 #pragma mark -
 #pragma mark set IU

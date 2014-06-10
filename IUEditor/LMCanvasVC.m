@@ -54,10 +54,10 @@
 -(void)awakeFromNib{
     
     [self addObserver:self forKeyPath:@"view.sizeView.sizeArray" options:NSKeyValueObservingOptionInitial context:@"mqCount"];
-    [self addObserver:self forKeyPaths:@[@"document.ghostImageName",
-                                         @"document.ghostX",
-                                         @"document.ghostY",
-                                         @"document.ghostOpacity"]
+    [self addObserver:self forKeyPaths:@[@"sheet.ghostImageName",
+                                         @"sheet.ghostX",
+                                         @"sheet.ghostY",
+                                         @"sheet.ghostOpacity"]
               options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew context:@"ghostImage"];
 #if DEBUG
     
@@ -103,7 +103,7 @@
 }
 
 - (void)mqCountContextDidChange:(NSDictionary *)change{
-    _document.mqSizeArray = [self sizeView].sortedArray;
+    _sheet.mqSizeArray = [self sizeView].sortedArray;
 }
 
 #pragma mark -
@@ -156,29 +156,29 @@
 #pragma mark -
 #pragma mark call by Document
 
-- (void)setDocument:(IUDocument *)document{
+- (void)setSheet:(IUSheet *)sheet{
     NSAssert(self.documentBasePath != nil, @"resourcePath is nil");
     JDSectionInfoLog( IULogSource, @"resourcePath  : %@", self.documentBasePath);
     [[self gridView] clearAllLayer];
-    [_document setDelegate:nil];
-    _document = document;
-    _document.mqSizeArray = [self sizeView].sortedArray;
-    [_document setDelegate:self];
+    [_sheet setDelegate:nil];
+    _sheet = sheet;
+    _sheet.mqSizeArray = [self sizeView].sortedArray;
+    [_sheet setDelegate:self];
     
-    [[[self webView] mainFrame] loadHTMLString:document.editorSource baseURL:[NSURL fileURLWithPath:self.documentBasePath]];
+    [[[self webView] mainFrame] loadHTMLString:sheet.editorSource baseURL:[NSURL fileURLWithPath:self.documentBasePath]];
 }
 
 - (void)ghostImageContextDidChange:(NSDictionary *)change{
-    NSString *ghostImageName = _document.ghostImageName;
+    NSString *ghostImageName = _sheet.ghostImageName;
     IUResourceFile *resourceNode = [_resourceManager resourceFileWithName:ghostImageName];
     NSImage *ghostImage = [[NSImage alloc] initWithContentsOfFile:resourceNode.absolutePath];
     
     [[self gridView] setGhostImage:ghostImage];
     
-    NSPoint ghostPosition = NSMakePoint(_document.ghostX, _document.ghostY);
+    NSPoint ghostPosition = NSMakePoint(_sheet.ghostX, _sheet.ghostY);
     [[self gridView] setGhostPosition:ghostPosition];
     
-    [[self gridView] setGhostOpacity:_document.ghostOpacity];
+    [[self gridView] setGhostOpacity:_sheet.ghostOpacity];
 }
 
 
@@ -904,7 +904,7 @@
 }
 
 - (void)reloadOriginalDocument{
-    [self setDocument:_document];
+    [self setSheet:_sheet];
 }
 
 - (IBAction)showCurrentSource:(id)sender {

@@ -20,6 +20,7 @@ typedef enum _IUResourceType{
 @interface IUResourceFile : NSObject
 
 @property IUResourceGroup *parent;
+@property NSString *originalFilePath;
 -(id)initWithName:(NSString*)name;
 
 -(NSString*)absolutePath;

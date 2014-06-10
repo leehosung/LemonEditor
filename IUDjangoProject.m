@@ -10,7 +10,7 @@
 #import "IUPage.h"
 #import "IUBackground.h"
 #import "IUClass.h"
-#import "IUDocumentGroup.h"
+#import "IUSheetGroup.h"
 
 @implementation IUDjangoProject
 

@@ -7,7 +7,7 @@
 //
 
 #import "LMFileNaviVC.h"
-#import "IUDocumentGroup.h"
+#import "IUSheetGroup.h"
 #import "IUResourceFile.h"
 #import "NSTreeController+JDExtension.h"
 #import "IUPage.h"
@@ -31,8 +31,13 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        
     }
     return self;
+}
+-(void)awakeFromNib{
+    [_documentController addObserver:self forKeyPath:@"selection" options:0 context:nil];
+    [_documentController bind:NSContentBinding toObject:self withKeyPath:@"project" options:nil];  
 }
 
 -(void)selectionIndexPathsDidChange{
@@ -48,25 +53,17 @@
     [self didChangeValueForKey:@"selection"];
 }
 
--(void)setProject:(IUProject *)project{
-    _project = project;
-//    _project.delegate = self;
-    [_documentController setContent:_project];
-    [_documentController addObserver:self forKeyPath:@"selection" options:0 context:nil];
-    
-}
-
 -(void)selectFirstDocument{
     //find first document
     [_documentController setSelectedObject:_project.pageDocuments.firstObject];
 }
 
 - (void)pressAddBtn:(NSButton*)sender{
-    IUDocument *newDoc;
+    IUSheet *newDoc;
     switch (sender.tag) {
         case 1:{
             newDoc = [[IUPage alloc] initWithProject:self.project options:nil];
-            [self.project.pageGroup addDocument:newDoc];
+            [self.project.pageGroup addSheet:newDoc];
             [self.project.identifierManager registerIUs:@[newDoc]];
             IUBackground *defaultBG = self.project.backgroundDocuments[0];
             [(IUPage*)newDoc setBackground:defaultBG];
@@ -78,7 +75,7 @@
             break;
         case 3:{
             newDoc = [[IUClass alloc] initWithProject:self.project options:nil];
-            [self.project.classGroup addDocument:newDoc];
+            [self.project.classGroup addSheet:newDoc];
         }
             break;
             
@@ -94,12 +91,12 @@
 - (NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(NSTreeNode*)item {
     //folder
     if ( [item.representedObject isKindOfClass:[IUProject class]] ||
-        [item.representedObject isKindOfClass:[IUDocumentGroup class]] ||
+        [item.representedObject isKindOfClass:[IUSheetGroup class]] ||
         [item.representedObject isKindOfClass:[IUResourceGroup class]]){
         LMFileNaviCellView *folder = [outlineView makeViewWithIdentifier:@"folder" owner:self];
         
-        IUDocumentGroup *doc = (IUDocumentGroup*) item.representedObject;
-        if ([doc isKindOfClass:[IUDocumentGroup class]]) {
+        IUSheetGroup *doc = (IUSheetGroup*) item.representedObject;
+        if ([doc isKindOfClass:[IUSheetGroup class]]) {
             [folder.addButton setHidden:NO];
             if ([doc.name isEqualToString:@"Pages"]) {
                 folder.addButton.tag = 1;
@@ -124,8 +121,8 @@
     //file
     else{
         NSString *cellIdentifier;
-        if ([[item representedObject] isKindOfClass:[IUDocument class]]){
-            IUDocument *node = [item representedObject];
+        if ([[item representedObject] isKindOfClass:[IUSheet class]]){
+            IUSheet *node = [item representedObject];
             if([node.group.name isEqualToString:@"Pages"]){
                 cellIdentifier = @"pageFile";
             }
@@ -168,7 +165,7 @@
     NSTreeNode *item = [_navOutlineView itemAtRow:row];
     id node = [item representedObject];
 
-    if( [node isKindOfClass:[IUDocument class]]){
+    if( [node isKindOfClass:[IUSheet class]]){
         NSMenu *menu = [[NSMenu alloc] initWithTitle:@"Document"];
         NSMenuItem *openItem = [[NSMenuItem alloc] initWithTitle:@"Open Project Folder" action:@selector(openProject:) keyEquivalent:@""];
         openItem.tag = row;
@@ -203,22 +200,22 @@
 
 - (void)copyDocument:(NSMenuItem*)sender{
     NSTreeNode *item = [_navOutlineView itemAtRow:sender.tag];
-    IUDocument * node = [item representedObject];
-    IUDocument * newNode = [node copy];
-    [node.group addDocument:newNode];
+    IUSheet * node = [item representedObject];
+    IUSheet * newNode = [node copy];
+    [node.group addSheet:newNode];
     [self.documentController rearrangeObjects];
 }
 
 
 - (void)removeDocument:(NSMenuItem*)sender{
     NSTreeNode *item = [_navOutlineView itemAtRow:sender.tag];
-    IUDocument * node = [item representedObject];
+    IUSheet * node = [item representedObject];
     if (node.group.childrenFiles.count == 1) {
         NSBeep();
         [JDUIUtil hudAlert:@"Each document folder should have at least one document" second:2];
         return;
     }
-    [node.group removeDocument:node];
+    [node.group removeSheet:node];
     [_documentController rearrangeObjects];
 }
 
