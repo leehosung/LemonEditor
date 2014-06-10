@@ -120,10 +120,40 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E1V-BP-x9X">
-                                <rect key="frame" x="4" y="39" width="73" height="13"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Size / Height" id="epT-JP-YgM">
-                                    <font key="font" metaFont="miniSystem"/>
+                            <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="G73-ed-fS4">
+                                <rect key="frame" x="229" y="11" width="13" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="AEz-sg-Lei"/>
+                                    <constraint firstAttribute="width" constant="9" id="RSw-Tj-ovj"/>
+                                </constraints>
+                                <stepperCell key="cell" controlSize="mini" continuous="YES" alignment="left" maxValue="600" id="c9T-D0-KSn"/>
+                            </stepper>
+                            <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="EF9-cy-hVF">
+                                <rect key="frame" x="248" y="9" width="18" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="18" id="Bmj-DZ-pgS"/>
+                                    <constraint firstAttribute="height" constant="18" id="czR-iu-Cfx"/>
+                                </constraints>
+                                <color key="color" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </colorWell>
+                            <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Ims-D3-Uwo">
+                                <rect key="frame" x="6" y="0.0" width="264" height="5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="264" id="Zs5-rC-fEg"/>
+                                    <constraint firstAttribute="height" constant="1" id="jBo-Rc-mGz"/>
+                                </constraints>
+                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <font key="titleFont" metaFont="system"/>
+                            </box>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RsX-9v-6Mo">
+                                <rect key="frame" x="4" y="10" width="30" height="14"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Font" id="Xaz-Yt-eZw">
+                                    <font key="font" metaFont="smallSystemBold"/>
                                     <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
