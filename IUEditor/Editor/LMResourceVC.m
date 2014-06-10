@@ -41,6 +41,13 @@
         [pasteboard setString:node.name forType:kUTTypeIUImageResource];
         return YES;
     }
+    
+    else if (node.type == IUResourceTypeVideo){
+        [JDUIUtil hudAlert:@"Only image is draggable" second:2];
+    }
+    else {
+        assert(0);
+    }
 
     return NO;
 }

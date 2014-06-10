@@ -86,9 +86,8 @@
     if ([pathExtension isEqualToString:@"mp4"]) {
         return IUResourceTypeVideo;
     }
-    if ([pathExtension isEqualToString:@"gif"] || [pathExtension isEqualToString:@"jpg"] ||
-        [pathExtension isEqualToString:@"png"] || [pathExtension isEqualToString:@"jpeg"]) {
-        return IUResourceTypeVideo;
+    if ([JDFileUtil isImageFileExtension:pathExtension]){
+        return IUResourceTypeImage;
     }
     return IUResourceTypeNone;
 }
