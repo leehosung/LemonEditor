@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMWidgetLibraryVC">
@@ -30,22 +30,33 @@
         </collectionViewItem>
         <userDefaultsController representsSharedInstance="YES" id="hgn-Pb-v35"/>
         <customView id="D8H-iL-h9h" userLabel="ItemView-list">
-            <rect key="frame" x="0.0" y="0.0" width="264" height="60"/>
+            <rect key="frame" x="0.0" y="0.0" width="264" height="63"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sVQ-VF-dvq">
-                    <rect key="frame" x="54" y="31" width="239" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Transition" id="T0n-Ba-ejf">
-                        <font key="font" metaFont="systemBold" size="12"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
+                <box autoresizesSubviews="NO" fixedFrame="YES" borderWidth="0.0" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="2Qh-tr-cLh">
+                    <rect key="frame" x="-2" y="0.0" width="267" height="64"/>
+                    <view key="contentView">
+                        <rect key="frame" x="0.0" y="0.0" width="267" height="64"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <color key="borderColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.75" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <connections>
-                        <binding destination="Y4D-g3-cxE" name="value" keyPath="representedObject.title" id="h62-CD-IpC"/>
+                        <binding destination="Y4D-g3-cxE" name="hidden" keyPath="self.selected" id="f3n-Y0-OBg">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
                     </connections>
-                </textField>
+                </box>
+                <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="v3c-Wx-kU0">
+                    <rect key="frame" x="15" y="5" width="240" height="5"/>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <font key="titleFont" metaFont="system"/>
+                </box>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x7L-OK-xtJ">
-                    <rect key="frame" x="54" y="13" width="194" height="17"/>
+                    <rect key="frame" x="60" y="15" width="194" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="IU Transition View" id="6ah-Bl-vSl">
                         <font key="font" metaFont="system" size="10"/>
                         <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -55,20 +66,26 @@
                         <binding destination="Y4D-g3-cxE" name="value" keyPath="representedObject.shortDesc" id="IKm-xO-DsP"/>
                     </connections>
                 </textField>
-                <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="v3c-Wx-kU0">
-                    <rect key="frame" x="12" y="0.0" width="240" height="5"/>
-                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <font key="titleFont" metaFont="system"/>
-                </box>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sVQ-VF-dvq">
+                    <rect key="frame" x="60" y="30" width="239" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Transition" id="T0n-Ba-ejf">
+                        <font key="font" metaFont="systemBold" size="12"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="Y4D-g3-cxE" name="value" keyPath="representedObject.title" id="h62-CD-IpC"/>
+                    </connections>
+                </textField>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Na-AZ-8wz">
-                    <rect key="frame" x="15" y="21" width="30" height="22"/>
+                    <rect key="frame" x="20" y="20" width="30" height="22"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="tool_transition" id="j7x-lS-JWu"/>
                     <connections>
                         <binding destination="Y4D-g3-cxE" name="value" keyPath="representedObject.image" id="ooO-72-ri6"/>
                     </connections>
                 </imageView>
             </subviews>
+            <point key="canvasLocation" x="53" y="-131.5"/>
         </customView>
         <customView id="vMJ-qe-EFg" userLabel="Tools">
             <rect key="frame" x="0.0" y="0.0" width="299" height="379"/>
