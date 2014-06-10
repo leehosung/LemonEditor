@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyFrameVC">
             <connections>
                 <outlet property="centerB" destination="zHx-Ob-5lO" id="cJ1-WO-yEj"/>
-                <outlet property="contentV" destination="lqf-yQ-SWP" id="y7w-mo-EcP"/>
                 <outlet property="flowB" destination="P5X-KI-ojA" id="kKv-1J-3q3"/>
                 <outlet property="hTF" destination="KEg-GU-M43" id="og4-MR-soJ"/>
                 <outlet property="hUnitBtn" destination="2id-bU-xHh" id="mhn-5R-Dh6"/>
@@ -78,7 +77,7 @@
                                 </buttonCell>
                             </button>
                             <box autoresizesSubviews="NO" misplaced="YES" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="qi4-uk-WUI" userLabel="frameV">
-                                <rect key="frame" x="0.0" y="0.0" width="283" height="66"/>
+                                <rect key="frame" x="0.0" y="34" width="283" height="66"/>
                                 <view key="contentView">
                                     <rect key="frame" x="0.0" y="0.0" width="283" height="66"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,6 +108,7 @@
                                             </textFieldCell>
                                             <connections>
                                                 <outlet property="delegate" destination="-2" id="vQ7-pF-mxI"/>
+                                                <outlet property="nextKeyView" destination="AJN-a2-BIm" id="tol-RZ-Hms"/>
                                             </connections>
                                         </textField>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="2Ur-uO-dSJ">
@@ -146,6 +146,7 @@
                                             </textFieldCell>
                                             <connections>
                                                 <outlet property="delegate" destination="-2" id="mLp-ne-jGY"/>
+                                                <outlet property="nextKeyView" destination="bUx-4a-5bn" id="Tjz-Uw-HlO"/>
                                             </connections>
                                         </textField>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="NbJ-WM-MfU">
@@ -183,6 +184,7 @@
                                             </textFieldCell>
                                             <connections>
                                                 <outlet property="delegate" destination="-2" id="yUC-hw-uer"/>
+                                                <outlet property="nextKeyView" destination="z9a-iK-QZ6" id="1eL-yE-fuu"/>
                                             </connections>
                                         </textField>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="bza-57-yAn">
@@ -220,6 +222,7 @@
                                             </textFieldCell>
                                             <connections>
                                                 <outlet property="delegate" destination="-2" id="MXj-Pq-8nc"/>
+                                                <outlet property="nextKeyView" destination="ze4-DS-FcM" id="UGg-2q-bw4"/>
                                             </connections>
                                         </textField>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="2id-bU-xHh">
@@ -256,11 +259,8 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hol-Zn-Id9">
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hol-Zn-Id9">
                                             <rect key="frame" x="102" y="39" width="38" height="16"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="34" id="jIW-g0-Jye"/>
-                                            </constraints>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Width" id="XGA-gI-6Qg">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -283,12 +283,16 @@
                                 </view>
                                 <constraints>
                                     <constraint firstItem="7ez-uH-X3R" firstAttribute="leading" secondItem="Z07-rg-vmx" secondAttribute="trailing" constant="4" id="0GG-p0-eVo"/>
+                                    <constraint firstItem="Hol-Zn-Id9" firstAttribute="leading" secondItem="wit-4t-70U" secondAttribute="leading" id="195-7h-JsH"/>
+                                    <constraint firstItem="Hol-Zn-Id9" firstAttribute="top" secondItem="Z07-rg-vmx" secondAttribute="top" id="1Bt-p1-Se8"/>
                                     <constraint firstItem="AJN-a2-BIm" firstAttribute="leading" secondItem="gRV-9E-wax" secondAttribute="trailing" constant="4" id="2DX-x3-fB9"/>
                                     <constraint firstItem="NbJ-WM-MfU" firstAttribute="leading" secondItem="AJN-a2-BIm" secondAttribute="trailing" constant="1" id="5Wf-6q-sf4"/>
                                     <constraint firstAttribute="bottom" secondItem="NbJ-WM-MfU" secondAttribute="bottom" constant="11" id="8KJ-8l-Eyb"/>
                                     <constraint firstItem="ze4-DS-FcM" firstAttribute="bottom" secondItem="7ez-uH-X3R" secondAttribute="bottom" id="BpU-6u-qiG"/>
                                     <constraint firstAttribute="bottom" secondItem="AJN-a2-BIm" secondAttribute="bottom" constant="11" id="DFo-h2-WG7"/>
+                                    <constraint firstItem="Hol-Zn-Id9" firstAttribute="centerY" secondItem="2Ur-uO-dSJ" secondAttribute="centerY" id="DgT-aC-u5X"/>
                                     <constraint firstItem="dde-if-4FG" firstAttribute="trailing" secondItem="bUx-4a-5bn" secondAttribute="trailing" id="L89-Sk-NLJ"/>
+                                    <constraint firstItem="Hol-Zn-Id9" firstAttribute="trailing" secondItem="wit-4t-70U" secondAttribute="trailing" id="OTy-mi-UMl"/>
                                     <constraint firstAttribute="height" constant="66" id="Qdp-Du-F63"/>
                                     <constraint firstItem="Z07-rg-vmx" firstAttribute="top" secondItem="qi4-uk-WUI" secondAttribute="top" constant="11" id="TLh-kr-aSO"/>
                                     <constraint firstItem="z9a-iK-QZ6" firstAttribute="bottom" secondItem="KEg-GU-M43" secondAttribute="bottom" id="VFQ-1C-HIU"/>
@@ -297,8 +301,6 @@
                                     <constraint firstItem="7ez-uH-X3R" firstAttribute="top" secondItem="qi4-uk-WUI" secondAttribute="top" constant="10" id="XSN-aI-bn4"/>
                                     <constraint firstItem="z9a-iK-QZ6" firstAttribute="leading" secondItem="KEg-GU-M43" secondAttribute="leading" id="Zb8-Pk-GK5"/>
                                     <constraint firstItem="2id-bU-xHh" firstAttribute="leading" secondItem="z9a-iK-QZ6" secondAttribute="trailing" constant="1" id="Zfm-yH-lhy"/>
-                                    <constraint firstItem="bUx-4a-5bn" firstAttribute="leading" secondItem="Hol-Zn-Id9" secondAttribute="trailing" constant="5" id="awd-gS-JTU"/>
-                                    <constraint firstItem="Hol-Zn-Id9" firstAttribute="top" secondItem="qi4-uk-WUI" secondAttribute="top" constant="11" id="b4y-Pn-zPM"/>
                                     <constraint firstItem="yqm-TH-YmF" firstAttribute="trailing" secondItem="AJN-a2-BIm" secondAttribute="trailing" id="dBW-3M-0pO"/>
                                     <constraint firstItem="z9a-iK-QZ6" firstAttribute="trailing" secondItem="KEg-GU-M43" secondAttribute="trailing" id="e7V-Ed-xjp"/>
                                     <constraint firstItem="z9a-iK-QZ6" firstAttribute="top" secondItem="KEg-GU-M43" secondAttribute="top" id="egK-kZ-tke"/>
@@ -311,9 +313,9 @@
                                     <constraint firstItem="gRV-9E-wax" firstAttribute="leading" secondItem="qi4-uk-WUI" secondAttribute="leading" constant="-24" id="kTA-BL-Idd"/>
                                     <constraint firstItem="ze4-DS-FcM" firstAttribute="leading" secondItem="Z07-rg-vmx" secondAttribute="trailing" constant="4" id="mRo-rG-eJo"/>
                                     <constraint firstItem="Z07-rg-vmx" firstAttribute="leading" secondItem="qi4-uk-WUI" secondAttribute="leading" constant="-24" id="oMX-nV-fVI"/>
+                                    <constraint firstItem="bUx-4a-5bn" firstAttribute="leading" secondItem="Hol-Zn-Id9" secondAttribute="trailing" constant="5" id="oTl-yV-ytZ"/>
                                     <constraint firstItem="yqm-TH-YmF" firstAttribute="top" secondItem="AJN-a2-BIm" secondAttribute="top" id="odA-X9-iqh"/>
                                     <constraint firstItem="dde-if-4FG" firstAttribute="top" secondItem="bUx-4a-5bn" secondAttribute="top" id="pfg-FS-cY5"/>
-                                    <constraint firstItem="Hol-Zn-Id9" firstAttribute="leading" secondItem="2Ur-uO-dSJ" secondAttribute="trailing" constant="15" id="rBb-jc-3i2"/>
                                     <constraint firstAttribute="bottom" secondItem="wit-4t-70U" secondAttribute="bottom" constant="11" id="sWs-te-8oE"/>
                                     <constraint firstItem="ze4-DS-FcM" firstAttribute="top" secondItem="7ez-uH-X3R" secondAttribute="top" id="teg-9o-RI5"/>
                                     <constraint firstItem="2Ur-uO-dSJ" firstAttribute="top" secondItem="qi4-uk-WUI" secondAttribute="top" constant="10" id="tsR-A2-7N5"/>
