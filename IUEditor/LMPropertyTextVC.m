@@ -73,7 +73,7 @@
     
     [self unbindTextSpecificProperty];
     
-    if([_controller.selection isKindOfClass:[IUText class]]){
+    if( [_controller.selection isKindOfClass:[IUText class]]){
         [_fontStyleB setEnabled:YES];
 
         [_fontB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToTextCSSProperty:@"fontName"] options:IUBindingDictNotRaisesApplicable];

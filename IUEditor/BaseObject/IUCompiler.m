@@ -1160,7 +1160,8 @@ static NSString * IUCompilerTagOption = @"tag";
 
         }
         
-        if([obj isKindOfClass:[IUText class]]|| [obj isKindOfClass:[PGTextField class]] || [obj isKindOfClass:[PGTextView class]] || [obj isKindOfClass:[PGPageLinkSet class]]){
+        if([obj isKindOfClass:[IUText class]]|| [obj isKindOfClass:[PGTextField class]] || [obj isKindOfClass:[PGTextView class]] || [obj isKindOfClass:[PGPageLinkSet class]] || [obj isKindOfClass:[PGSubmitButton class]]){
+            
             value = cssTagDict[IUCSSTagFontName];
             if(value){
                 NSString *font=cssTagDict[IUCSSTagFontName];

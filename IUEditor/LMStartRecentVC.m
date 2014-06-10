@@ -24,7 +24,7 @@
         _recentDocs = [NSMutableArray array];
         recentDocURLs = [[NSDocumentController sharedDocumentController] recentDocumentURLs];
         
-        for (NSURL *url in recentDocURLs){
+        for (NSURL *url in recentDocURLs){            
             [_recentDocs addObject:[@{@"image": [NSImage imageNamed:@"new_default"],
                                      @"name" : [url lastPathComponent],
                                       @"path": [url path],

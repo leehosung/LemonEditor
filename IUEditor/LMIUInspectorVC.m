@@ -44,14 +44,14 @@
     LMPropertyIUImportVC    *propertyIUImportVC;
     
     LMPropertyIUMailLinkVC  *propertyIUMailLinkVC;
-    LMPropertyIUTextFieldVC *propertyIUTextFieldVC;
+    LMPropertyIUTextFieldVC *propertyPGTextFieldVC;
     LMPropertyIUCollectionVC  *propertyIUCollectionVC;
     
-    LMPropertyIUTextViewVC *propertyIUTextViewVC;
-    LMPropertyIUPageLinkSetVC *propertyIUPageLinkSetVC;
+    LMPropertyIUTextViewVC *propertyPGTextViewVC;
+    LMPropertyIUPageLinkSetVC *propertyPGPageLinkSetVC;
     LMPropertyIUPageVC * propertyIUPageVC;
     
-    LMPropertyIUFormVC *propertyIUFormVC;
+    LMPropertyIUFormVC *propertyPGFormVC;
     LMPropertyIUTextVC *textVC;
     
     NSArray *propertyVCArray;
@@ -88,13 +88,13 @@
         
         propertyIUMailLinkVC = [[LMPropertyIUMailLinkVC alloc] initWithNibName:[LMPropertyIUMailLinkVC class].className bundle:nil];
 
-        propertyIUTextFieldVC = [[LMPropertyIUTextFieldVC alloc] initWithNibName:[LMPropertyIUTextFieldVC class].className bundle:nil];
+        propertyPGTextFieldVC = [[LMPropertyIUTextFieldVC alloc] initWithNibName:[LMPropertyIUTextFieldVC class].className bundle:nil];
         propertyIUCollectionVC = [[LMPropertyIUCollectionVC alloc] initWithNibName:[LMPropertyIUCollectionVC class].className bundle:nil];
-        propertyIUTextViewVC = [[LMPropertyIUTextViewVC alloc] initWithNibName:[LMPropertyIUTextViewVC class].className bundle:nil];
+        propertyPGTextViewVC = [[LMPropertyIUTextViewVC alloc] initWithNibName:[LMPropertyIUTextViewVC class].className bundle:nil];
         
-        propertyIUPageLinkSetVC = [[LMPropertyIUPageLinkSetVC alloc] initWithNibName:[LMPropertyIUPageLinkSetVC class].className bundle:nil];
+        propertyPGPageLinkSetVC = [[LMPropertyIUPageLinkSetVC alloc] initWithNibName:[LMPropertyIUPageLinkSetVC class].className bundle:nil];
         propertyIUPageVC = [[LMPropertyIUPageVC alloc] initWithNibName:[LMPropertyIUPageVC class].className bundle:nil];
-        propertyIUFormVC = [[LMPropertyIUFormVC alloc] initWithNibName:[LMPropertyIUFormVC class].className bundle:nil];
+        propertyPGFormVC = [[LMPropertyIUFormVC alloc] initWithNibName:[LMPropertyIUFormVC class].className bundle:nil];
         
         textVC = [[LMPropertyIUTextVC alloc] initWithNibName:[LMPropertyIUTextVC class].className bundle:nil];
         
@@ -108,12 +108,12 @@
                            @"propertyIUWebMovieVC",
                            @"propertyIUImportVC",
                            @"propertyIUMailLinkVC",
-                           @"propertyIUTextFieldVC",
+                           @"propertyPGTextFieldVC",
                            @"propertyIUCollectionVC",
-                           @"propertyIUTextViewVC",
-                           @"propertyIUPageLinkSetVC",
+                           @"propertyPGTextViewVC",
+                           @"propertyPGPageLinkSetVC",
                            @"propertyIUPageVC",
-                           @"propertyIUFormVC",
+                           @"propertyPGFormVC",
                            @"propertyIUBoxVC",
                            nil];
         
@@ -137,14 +137,14 @@
     [propertyIUImportVC bind:@"classDocuments" toObject:self withKeyPath:@"classDocuments" options:nil];
     
     [propertyIUMailLinkVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
-    [propertyIUTextFieldVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+    [propertyPGTextFieldVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     [propertyIUCollectionVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     
-    [propertyIUTextViewVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
-    [propertyIUPageLinkSetVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+    [propertyPGTextViewVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+    [propertyPGPageLinkSetVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     [propertyIUPageVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     
-    [propertyIUFormVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+    [propertyPGFormVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     [textVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
 
     
