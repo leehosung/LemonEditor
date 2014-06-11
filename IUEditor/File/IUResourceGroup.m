@@ -46,7 +46,7 @@
 
 -(NSString*)absolutePath{
     if ([self.parent isKindOfClass:[IUProject class]]) {
-        return [((IUProject*)self.parent).directoryPath stringByAppendingPathComponent:self.name];
+        return [((IUProject*)self.parent).path stringByAppendingPathComponent:self.name];
     }
     return [[self.parent absolutePath] stringByAppendingPathComponent:self.name];
 }
