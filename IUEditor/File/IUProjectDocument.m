@@ -17,10 +17,15 @@ static NSString *imageResourceName = @"Image";
 static NSString *videoResourceName = @"Video";
 static NSString *cssResourceName = @"CSS";
 
+//set metadata
+static NSString *metaDataFileName = @"metaData.plist";
+static NSString *MetaDataKey = @"value2";            // special string value in MetaData.plist
+
 
 @interface IUProjectDocument ()
 
 @property (strong) NSFileWrapper *documentFileWrapper;
+@property NSMutableDictionary *metaDataDict;
 
 @end
 
@@ -28,23 +33,37 @@ static NSString *cssResourceName = @"CSS";
     BOOL isLoaded;
 }
 
+- (id)init{
+    self = [super init];
+    if(self){
+    
+        self.metaDataDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                             @"IUEditor", MetaDataKey,
+                             nil];
+    
+
+    }
+    return self;
+}
+
+
 - (id)initWithType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
     self = [super initWithType:typeName error:outError];
     if(self){
-            NSString *path = [@"~/Library/Autosave Information/IUProjTemp" stringByExpandingTildeInPath];
-            NSDictionary *dict = @{IUProjectKeyAppName: @"IUEditor1",
-                                   IUProjectKeyGit: @(NO),
-                                   IUProjectKeyHeroku: @(NO),
-                                   IUProjectKeyDirectory: path};
-            
-            NSError *error;
-            IUProject *newProject = [[IUProject alloc] initWithCreation:dict error:&error];
-            if (error != nil) {
-                assert(0);
-            }
-            _project = newProject;
-            //        [super saveDocument:sender];
+        NSString *path = [@"~/Library/Autosave Information/IUProjTemp" stringByExpandingTildeInPath];
+        NSDictionary *dict = @{IUProjectKeyAppName: @"IUEditor1",
+                               IUProjectKeyGit: @(NO),
+                               IUProjectKeyHeroku: @(NO),
+                               IUProjectKeyDirectory: path};
+        
+        NSError *error;
+        IUProject *newProject = [[IUProject alloc] initWithCreation:dict error:&error];
+        if (error != nil) {
+            assert(0);
         }
+        _project = newProject;
+        //        [super saveDocument:sender];
+    }
     return self;
 }
 
@@ -56,6 +75,7 @@ static NSString *cssResourceName = @"CSS";
     }
     return self;
 }
+
 
 - (LMWC *)lemonWindowController{
     return [[self windowControllers] objectAtIndex:0];
@@ -75,9 +95,7 @@ static NSString *cssResourceName = @"CSS";
    
 }
 
-
 - (void)setFileURL:(NSURL *)fileURL{
-    [super setFileURL:fileURL];
     NSString *filePath = [fileURL relativePath];
     NSString *appName = [[fileURL lastPathComponent] stringByDeletingPathExtension];
     
@@ -91,6 +109,7 @@ static NSString *cssResourceName = @"CSS";
 //        [[self lemonWindowController].window setTitle:[NSString stringWithFormat:@"[%@] %@", [_project.className substringFromIndex:2], _project.path]];
     }
     
+    [super setFileURL:fileURL];
 }
 
 
@@ -160,29 +179,44 @@ static NSString *cssResourceName = @"CSS";
     }
     
     //add css resource
-    [self fileWrapper:cssWrapper removeFileNotInArray:_project.resourceManager.cssFiles];
+    [self fileWrapper:cssWrapper removeFileNotInArray:[_project.resourceManager namesWithFiles:_project.resourceManager.cssFiles]];
     for(IUResourceFile *resourceFile in _project.resourceManager.cssFiles){
         [self fileWrapper:cssWrapper addResourceNode:resourceFile];
     }
     
-    [self fileWrapper:jsWrapper removeFileNotInArray:_project.resourceManager.jsFiles];
+    [self fileWrapper:jsWrapper removeFileNotInArray:[_project.resourceManager namesWithFiles:_project.resourceManager.jsFiles]];
     for(IUResourceFile *resourceFile in _project.resourceManager.jsFiles){
         [self fileWrapper:jsWrapper addResourceNode:resourceFile];
     }
 
-    [self fileWrapper:imageWrapper removeFileNotInArray:_project.resourceManager.imageFiles];
+    [self fileWrapper:imageWrapper removeFileNotInArray:[_project.resourceManager namesWithFiles:_project.resourceManager.imageFiles]];
     for(IUResourceFile *resourceFile in _project.resourceManager.imageFiles){
         [self fileWrapper:imageWrapper addResourceNode:resourceFile];
     }
 
-    [self fileWrapper:videoWrapper removeFileNotInArray:_project.resourceManager.videoFiles];
+    [self fileWrapper:videoWrapper removeFileNotInArray:[_project.resourceManager namesWithFiles:_project.resourceManager.videoFiles]];
     for(IUResourceFile *resourceFile in _project.resourceManager.videoFiles){
         [self fileWrapper:videoWrapper addResourceNode:resourceFile];
     }
 
+    //save metadata
+    // write the new file wrapper for our meta data
+    NSFileWrapper *metaDataFileWrapper = [[[self documentFileWrapper] fileWrappers] objectForKey:MetaDataKey];
+    if (metaDataFileWrapper != nil)
+        [[self documentFileWrapper] removeFileWrapper:metaDataFileWrapper];
+
+    NSError *plistError = nil;
+    NSData *propertyListData = [NSPropertyListSerialization dataWithPropertyList:self.metaDataDict format:NSPropertyListXMLFormat_v1_0 options:0 error:&plistError];
+    if (propertyListData == nil || plistError != nil)
+    {
+        NSLog(@"Could not create metadata plist data: %@", [plistError localizedDescription]);
+        return nil;
+    }
     
+    NSFileWrapper *newMetaDataFileWrapper = [[NSFileWrapper alloc] initRegularFileWithContents:propertyListData];
+    [newMetaDataFileWrapper setPreferredFilename:metaDataFileName];
     
-    
+    [[self documentFileWrapper] addFileWrapper:newMetaDataFileWrapper];
     //save
     
     return [self documentFileWrapper];
@@ -191,13 +225,14 @@ static NSString *cssResourceName = @"CSS";
 
 - (int)fileWrapper:(NSFileWrapper *)fileWrapper removeFileNotInArray:(NSArray *)array{
     NSMutableArray *removeArray = [NSMutableArray array];
-    for(NSFileWrapper *resourceWrapper in [fileWrapper fileWrappers]){
-        if([array containsObject:[resourceWrapper preferredFilename]] == NO){
-            [removeArray addObject:resourceWrapper];
+    for(NSString *resourceName in [fileWrapper fileWrappers]){
+        if([array containsString:resourceName] == NO){
+            [removeArray addObject:resourceName];
         }
     }
     int i=0;
-    for(NSFileWrapper *resourceWrapper in removeArray){
+    for(NSString *resourceName in removeArray){
+        NSFileWrapper *resourceWrapper = [[fileWrapper fileWrappers] objectForKey:resourceName];
         [fileWrapper removeFileWrapper:resourceWrapper];
         i++;
     }
@@ -233,6 +268,19 @@ static NSString *cssResourceName = @"CSS";
         }
 
     }
+    
+    
+    // load the metaData file from it's wrapper
+    NSFileWrapper *metaDataFileWrapper = [fileWrappers objectForKey:metaDataFileName];
+    if (metaDataFileWrapper != nil)
+    {
+        // we have meta data in this document
+        //
+        NSData *metaData = [metaDataFileWrapper regularFileContents];
+        NSMutableDictionary *finalMetadata = [NSPropertyListSerialization propertyListWithData:metaData options:NSPropertyListImmutable format:NULL error:outError];
+        self.metaDataDict = finalMetadata;
+    }
+    
     
     [self setDocumentFileWrapper:fileWrapper];
 

@@ -31,6 +31,7 @@
 - (void)addDocument:(NSDocument *)document{
     if(isNewProject){
         [document saveDocument:self];
+        isNewProject = NO;
     }
     [super addDocument:document];
 }

@@ -42,5 +42,6 @@
 //For saving
 -(NSArray *)jsFiles;
 -(NSArray *)cssFiles;
+- (NSArray *)namesWithFiles:(NSArray *)files;
 -(IUResourceFile*)resourceFileWithName:(NSString*)imageName;
 @end

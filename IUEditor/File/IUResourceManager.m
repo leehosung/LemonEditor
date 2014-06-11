@@ -51,6 +51,15 @@
     return [_rootGroup.childrenFiles[3] childrenFiles];
 }
 
+- (NSArray *)namesWithFiles:(NSArray *)files{
+    NSMutableArray *names = [NSMutableArray array];
+    for(IUResourceFile *file in files){
+        NSString *name = file.name;
+        [names addObject:name];
+    }
+    return names;
+}
+
 -(NSArray*)imageAndVideoFiles{
     return [[self imageFiles] arrayByAddingObjectsFromArray:self.videoFiles];
 }
