@@ -31,12 +31,12 @@
 }
 
 - (void)awakeFromNib{
-    [_fileNameBtn bind:@"title" toObject:self withKeyPath:@"document.name" options:IUBindingDictNotRaisesApplicable];
+    [_fileNameBtn bind:@"title" toObject:self withKeyPath:@"sheet.name" options:IUBindingDictNotRaisesApplicable];
 }
 
 
 - (IBAction)clickSelectFile:(id)sender {
-    [self.delegate selectTab:_document];
+    [self.delegate selectTab:_sheet];
 }
 - (IBAction)clickCloseFile:(id)sender {
     [self.delegate closeTab:self];

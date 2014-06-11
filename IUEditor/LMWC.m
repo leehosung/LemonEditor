@@ -131,7 +131,7 @@
         [appearanceVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
         [iuInspectorVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
         [eventVC bind:@"controller" toObject:self withKeyPath:@"IUController" options:nil];
-        [topToolbarVC bind:@"documentController" toObject:fileNaviVC withKeyPath:@"documentController" options:nil];
+        [topToolbarVC bind:@"sheetController" toObject:fileNaviVC withKeyPath:@"documentController" options:nil];
         
         
     }
@@ -354,21 +354,12 @@
 #endif
 
 -(void)setSelectedNode:(NSObject*)selectedNode{
-<<<<<<< HEAD
-    _selectedNode = (IUDocument*) selectedNode;
-    if ([selectedNode isKindOfClass:[IUDocument class]]) {
-        [stackVC setDocument:_selectedNode];
-        [canvasVC setDocument:_selectedNode];
-        [bottomToolbarVC setDocument:_selectedNode];
-        [topToolbarVC setDocument:selectedNode];
-=======
     _selectedNode = (IUSheet*) selectedNode;
     if ([selectedNode isKindOfClass:[IUSheet class]]) {
         [stackVC setSheet:_selectedNode];
         [canvasVC setSheet:_selectedNode];
         [bottomToolbarVC setSheet:_selectedNode];
 //        [topToolbarVC setDocumentNode:document];
->>>>>>> temp commit : refactoring IUDocument: IUsheet , add NSDocument subclassing
         
         //save for debug
         NSString *documentSavePath = [canvasVC.documentBasePath stringByAppendingPathComponent:[_selectedNode.name stringByAppendingPathExtension:@"html"]];

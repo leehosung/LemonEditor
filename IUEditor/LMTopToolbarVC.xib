@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMTopToolbarVC">
@@ -21,7 +21,6 @@
                 <subviews>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="Mnq-Yt-P1D">
                         <rect key="frame" x="869" y="-2" width="30" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="VQJ-iL-859"/>
                             <constraint firstAttribute="width" constant="30" id="eUO-mr-de9"/>
@@ -36,7 +35,6 @@
                     </button>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="IIW-4c-pEg" userLabel="tabView">
                         <rect key="frame" x="-2" y="-1" width="871" height="29"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                 </subviews>
             </view>
@@ -53,7 +51,6 @@
         </box>
         <button translatesAutoresizingMaskIntoConstraints="NO" id="25h-oS-rOZ">
             <rect key="frame" x="0.0" y="0.0" width="140" height="30"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <constraints>
                 <constraint firstAttribute="height" constant="30" id="06X-a2-1LZ"/>
                 <constraint firstAttribute="width" constant="140" id="nGW-vv-40P"/>

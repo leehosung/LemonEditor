@@ -92,7 +92,7 @@
     for(LMTabBox *item in _fileTabView.subviews){
         assert([item isKindOfClass:[LMTabBox class]]);
         LMFileTabItemVC *itemVC = ((LMFileTabItemVC *)item.delegate);
-        if([itemVC.document isEqualTo:sheet]){
+        if([itemVC.sheet isEqualTo:sheet]){
             return itemVC;
         }
     }
