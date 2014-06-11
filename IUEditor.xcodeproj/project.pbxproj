@@ -361,6 +361,8 @@
 		3DF8046618FF784500913505 /* LMPropertyTextVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF8046418FF784500913505 /* LMPropertyTextVC.xib */; };
 		3DF8046A18FF790400913505 /* LMPropertyShadowVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8046818FF790400913505 /* LMPropertyShadowVC.m */; };
 		3DF8046B18FF790400913505 /* LMPropertyShadowVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF8046918FF790400913505 /* LMPropertyShadowVC.xib */; };
+		58FF6B8E1946EA2B009A86F9 /* PGSubmitButtonVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FF6B8C1946EA2B009A86F9 /* PGSubmitButtonVC.m */; };
+		58FF6B8F1946EA2B009A86F9 /* PGSubmitButtonVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58FF6B8D1946EA2B009A86F9 /* PGSubmitButtonVC.xib */; };
 		6905FB521925F17300E4DBC3 /* JDCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6905FB511925F17300E4DBC3 /* JDCode.m */; };
 		690A408E18E14A4E00095263 /* LMStackVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 690A408D18E14A4E00095263 /* LMStackVC.xib */; };
 		690A409518E1645B00095263 /* LMWidgetLibraryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 690A409318E1645B00095263 /* LMWidgetLibraryVC.m */; };
@@ -957,6 +959,9 @@
 		3DF8046718FF790400913505 /* LMPropertyShadowVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyShadowVC.h; sourceTree = "<group>"; };
 		3DF8046818FF790400913505 /* LMPropertyShadowVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyShadowVC.m; sourceTree = "<group>"; };
 		3DF8046918FF790400913505 /* LMPropertyShadowVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyShadowVC.xib; sourceTree = "<group>"; };
+		58FF6B8B1946EA2B009A86F9 /* PGSubmitButtonVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSubmitButtonVC.h; sourceTree = "<group>"; };
+		58FF6B8C1946EA2B009A86F9 /* PGSubmitButtonVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSubmitButtonVC.m; sourceTree = "<group>"; };
+		58FF6B8D1946EA2B009A86F9 /* PGSubmitButtonVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGSubmitButtonVC.xib; sourceTree = "<group>"; };
 		6905FB501925F17300E4DBC3 /* JDCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JDCode.h; path = JD/JDCode.h; sourceTree = "<group>"; };
 		6905FB511925F17300E4DBC3 /* JDCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JDCode.m; path = JD/JDCode.m; sourceTree = "<group>"; };
 		690A408D18E14A4E00095263 /* LMStackVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMStackVC.xib; sourceTree = "<group>"; };
@@ -1325,6 +1330,9 @@
 				3DD47875193DCEB600639AB5 /* LMPropertyIUTextVC.h */,
 				3DD47876193DCEB600639AB5 /* LMPropertyIUTextVC.m */,
 				3DD47877193DCEB600639AB5 /* LMPropertyIUTextVC.xib */,
+				58FF6B8B1946EA2B009A86F9 /* PGSubmitButtonVC.h */,
+				58FF6B8C1946EA2B009A86F9 /* PGSubmitButtonVC.m */,
+				58FF6B8D1946EA2B009A86F9 /* PGSubmitButtonVC.xib */,
 			);
 			name = IUPropertyVC;
 			sourceTree = "<group>";
@@ -2649,6 +2657,7 @@
 				69CFCAB418E95A0C00E3048A /* LMResourceVC.xib in Resources */,
 				69D15F7018E893170046FBB0 /* LMBottomToolbarVC.xib in Resources */,
 				3DED26891900D329001A1D67 /* stack_navi@2x.png in Resources */,
+				58FF6B8F1946EA2B009A86F9 /* PGSubmitButtonVC.xib in Resources */,
 				3D0D480A18FFAF24000A5B53 /* LMTopToolbarVC.xib in Resources */,
 				3DF803EA18FE62C900913505 /* ic_page.png in Resources */,
 				3DA416B91935A6BE00559028 /* LMFontPreferenceVC.xib in Resources */,
@@ -3008,6 +3017,7 @@
 				6954812818D7640A00CA02F1 /* IUPage.m in Sources */,
 				69C5764018D729830016F050 /* IUSheetController.m in Sources */,
 				69AB7EAC19062598009E5195 /* IUTransition.m in Sources */,
+				58FF6B8E1946EA2B009A86F9 /* PGSubmitButtonVC.m in Sources */,
 				3DA416B81935A6BE00559028 /* LMFontPreferenceVC.m in Sources */,
 				6983E71D18FFF54600D424B8 /* JDOutlineCellView.m in Sources */,
 				3DED270519010C71001A1D67 /* LMPropertyIUFBLikeVC.m in Sources */,

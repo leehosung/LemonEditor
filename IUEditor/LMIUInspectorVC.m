@@ -27,6 +27,7 @@
 #import "LMPropertyIUPageVC.h"
 #import "LMPropertyIUFormVC.h"
 #import "LMPropertyIUTextVC.h"
+#import "PGSubmitButtonVC.h"
 
 
 @interface LMIUInspectorVC (){
@@ -53,6 +54,8 @@
     
     LMPropertyIUFormVC *propertyPGFormVC;
     LMPropertyIUTextVC *textVC;
+    
+    PGSubmitButtonVC *propertyPGSubmitButtonVC;
     
     NSArray *propertyVCArray;
     NSInteger countOfAdvanced;
@@ -98,6 +101,8 @@
         
         textVC = [[LMPropertyIUTextVC alloc] initWithNibName:[LMPropertyIUTextVC class].className bundle:nil];
         
+        propertyPGSubmitButtonVC = [[PGSubmitButtonVC alloc] initWithNibName:[PGSubmitButtonVC class].className bundle:nil];
+        
         propertyVCArray = [NSArray arrayWithObjects:
                            @"propertyIUImageVC",
                            @"propertyIUHTMLVC",
@@ -115,6 +120,7 @@
                            @"propertyIUPageVC",
                            @"propertyPGFormVC",
                            @"propertyIUBoxVC",
+                           @"propertyPGSubmitButtonVC",
                            nil];
         
     }
@@ -146,6 +152,8 @@
     
     [propertyPGFormVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     [textVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+    
+    [propertyPGSubmitButtonVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
 
     
 

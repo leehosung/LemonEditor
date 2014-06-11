@@ -9,5 +9,5 @@
 #import "IUBox.h"
 
 @interface PGSubmitButton : IUBox
-
+@property (nonatomic) NSString *label;
 @end

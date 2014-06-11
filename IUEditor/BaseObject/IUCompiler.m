@@ -1423,7 +1423,7 @@ static NSString * IUCompilerTagOption = @"tag";
     }
 #pragma mark PGSubmitButton
     else if ([iu isKindOfClass:[PGSubmitButton class]]){
-        [retString appendString:@" type=\"submit\" value=\"JOIN\""];
+        [retString appendFormat:@" type=\"submit\" value=\"%@\"",((PGSubmitButton *)iu).label];
     }
 #pragma mark PGForm
     else if ([iu isKindOfClass:[PGForm class]]){
