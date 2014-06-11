@@ -8,7 +8,6 @@
 
 #import "IUProjectDocument.h"
 #import "IUProjectController.h"
-#import "LMWC.h"
 
 static NSString *iuDataName = @"iuData";
 static NSString *resourcesName = @"Resource";
@@ -50,11 +49,9 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
 - (id)initWithType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
     self = [super initWithType:typeName error:outError];
     if(self){
-        NSString *path = [@"~/Library/Autosave Information/IUProjTemp" stringByExpandingTildeInPath];
-        NSDictionary *dict = @{IUProjectKeyAppName: @"IUEditor1",
-                               IUProjectKeyGit: @(NO),
+        NSDictionary *dict = @{IUProjectKeyGit: @(NO),
                                IUProjectKeyHeroku: @(NO),
-                               IUProjectKeyDirectory: path};
+                               };
         
         NSError *error;
         IUProject *newProject = [[IUProject alloc] initWithCreation:dict error:&error];
@@ -104,7 +101,14 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
         
         _project.name = appName;
         _project.path = filePath;
-
+        
+        if(isLoaded){
+            [[self lemonWindowController] reloadCurrentDocument];
+        }
+        else{
+            [[self lemonWindowController] selectFirstDocument];
+        }
+        
 
 //        [[self lemonWindowController].window setTitle:[NSString stringWithFormat:@"[%@] %@", [_project.className substringFromIndex:2], _project.path]];
     }
@@ -288,15 +292,6 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
 
 }
 
-
-- (void)saveDocument:(id)sender{
-    [super saveDocument:sender];
-
-    if([sender isKindOfClass:[IUProjectController class]]){
-        isLoaded = YES;
-
-    }
-}
 
 - (void)saveDocumentWithDelegate:(id)delegate didSaveSelector:(SEL)didSaveSelector contextInfo:(void *)contextInfo{
     [super saveDocumentWithDelegate:delegate didSaveSelector:didSaveSelector contextInfo:contextInfo];

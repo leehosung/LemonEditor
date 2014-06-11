@@ -243,7 +243,6 @@
         _project = document.project;
         [canvasVC bind:@"documentBasePath" toObject:_project withKeyPath:@"path" options:nil];
         NSError *error;
-        assert(_project.path);
         assert(_project.pageDocuments);
         assert(_project.identifierManager);
         assert(_project.resourceManager);

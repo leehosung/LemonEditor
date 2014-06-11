@@ -59,9 +59,11 @@ static NSString * IUProjectKeyDirectory = @"dir";
 - (void)addMQSize:(NSInteger)size;
 - (void)removeMQSize:(NSInteger)size;
 
+/*
+ @ important
+ name , path are set by IUProjectDocument
+ */
 @property   NSString  *name;
-
-//set path
 @property   NSString *path;
 
 - (NSString*)directoryPath;

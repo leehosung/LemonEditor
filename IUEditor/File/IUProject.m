@@ -103,8 +103,6 @@
 // return value : project path
 -(id)initWithCreation:(NSDictionary*)options error:(NSError**)error{
     self = [super init];
-    assert(options[IUProjectKeyAppName]);
-    assert(options[IUProjectKeyDirectory]);
     
     _mqSizes = [NSMutableArray arrayWithArray:@[@(defaultFrameWidth), @700, @400]];
     _buildPath = @"build";
@@ -112,11 +110,6 @@
     _resourceManager = [[IUResourceManager alloc] init];
     _compiler.resourceManager = _resourceManager;
     _identifierManager = [[IUIdentifierManager alloc] init];
-    
-    self.name = [options objectForKey:IUProjectKeyAppName];
-    NSString *fileName = [options[IUProjectKeyAppName] stringByAppendingPathExtension:@"iu"];
-    NSString *projectDir = [options[IUProjectKeyDirectory] stringByAppendingPathComponent:options[IUProjectKeyAppName]];
-    self.path = [projectDir stringByAppendingPathComponent:fileName];
     
     _buildPath = @"build";
     _pageGroup = [[IUSheetGroup alloc] init];
@@ -263,7 +256,6 @@
 - (void)initializeResource{
     //remove resource node if exist
     JDInfoLog(@"initilizeResource");
-    assert(self.directoryPath);
     
     _resourceGroup = [[IUResourceGroup alloc] init];
     _resourceGroup.name = @"Resource";

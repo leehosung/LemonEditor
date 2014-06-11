@@ -7,6 +7,7 @@
 //
 
 #import "IUProjectController.h"
+#import "IUProjectDocument.h"
 
 @implementation IUProjectController{
     BOOL isNewProject;

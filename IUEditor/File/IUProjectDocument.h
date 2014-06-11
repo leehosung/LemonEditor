@@ -8,9 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 #import "IUProject.h"
+#import "LMWC.h"
 
 @interface IUProjectDocument : NSDocument
 
 @property IUProject *project;
+
+- (LMWC *)lemonWindowController;
 
 @end
