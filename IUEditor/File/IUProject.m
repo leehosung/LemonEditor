@@ -119,11 +119,6 @@
     self.path = [projectDir stringByAppendingPathComponent:fileName];
     
     _buildPath = @"build";
-    NSError *err;
-    [[NSFileManager defaultManager] createDirectoryAtPath:projectDir withIntermediateDirectories:YES attributes:nil error:&err];
-    if (err) {
-        [JDLogUtil log:@"mkdir" err:err];
-    }
     _pageGroup = [[IUSheetGroup alloc] init];
     _pageGroup.name = @"Pages";
     _pageGroup.project = self;
@@ -184,8 +179,8 @@
     [[NSFileManager defaultManager] createDirectoryAtPath:buildPath withIntermediateDirectories:YES attributes:nil error:error];
     
 //    [self initializeResource];
-    
-    [[NSFileManager defaultManager] createSymbolicLinkAtPath:[buildPath stringByAppendingPathComponent:@"Resource"] withDestinationPath:[@".." stringByAppendingPathComponent:@"Resource"] error:error];
+  
+    [[NSFileManager defaultManager] copyItemAtPath:[_path stringByAppendingPathComponent:@"Resource"] toPath:[buildPath stringByAppendingPathComponent:@"Resource"] error:error];
 
 
     IUEventVariable *eventVariable = [[IUEventVariable alloc] init];
@@ -206,7 +201,7 @@
         [initializeJSSource addNewLine];
     }
     
-    NSString *resourceJSPath = [self.directoryPath stringByAppendingPathComponent:@"Resource/JS"];
+    NSString *resourceJSPath = [buildPath stringByAppendingPathComponent:@"Resource/JS"];
     
     //make initialize javascript file
     

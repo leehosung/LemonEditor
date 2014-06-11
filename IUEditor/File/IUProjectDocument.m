@@ -201,7 +201,7 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
 
     //save metadata
     // write the new file wrapper for our meta data
-    NSFileWrapper *metaDataFileWrapper = [[[self documentFileWrapper] fileWrappers] objectForKey:MetaDataKey];
+    NSFileWrapper *metaDataFileWrapper = [[[self documentFileWrapper] fileWrappers] objectForKey:metaDataFileName];
     if (metaDataFileWrapper != nil)
         [[self documentFileWrapper] removeFileWrapper:metaDataFileWrapper];
 
@@ -296,6 +296,30 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
         isLoaded = YES;
 
     }
+}
+
+- (void)saveDocumentWithDelegate:(id)delegate didSaveSelector:(SEL)didSaveSelector contextInfo:(void *)contextInfo{
+    [super saveDocumentWithDelegate:delegate didSaveSelector:didSaveSelector contextInfo:contextInfo];
+}
+
+- (void)runModalSavePanelForSaveOperation:(NSSaveOperationType)saveOperation delegate:(id)delegate didSaveSelector:(SEL)didSaveSelector contextInfo:(void *)contextInfo{
+    [super runModalSavePanelForSaveOperation:saveOperation delegate:delegate didSaveSelector:didSaveSelector contextInfo:contextInfo];
+}
+
+- (NSArray *)writableTypesForSaveOperation:(NSSaveOperationType)saveOperation{
+    return [super writableTypesForSaveOperation:saveOperation];
+}
+
+- (BOOL)prepareSavePanel:(NSSavePanel *)savePanel{
+    return [super prepareSavePanel:savePanel];
+}
+
+- (BOOL)writeToURL:(NSURL *)url ofType:(NSString *)typeName forSaveOperation:(NSSaveOperationType)saveOperation originalContentsURL:(NSURL *)absoluteOriginalContentsURL error:(NSError *__autoreleasing *)outError{
+    return [super writeToURL:url ofType:typeName forSaveOperation:saveOperation originalContentsURL:absoluteOriginalContentsURL error:outError];
+}
+
+- (void)setFileModificationDate:(NSDate *)fileModificationDate{
+    [super setFileModificationDate:fileModificationDate];
 }
 
 + (BOOL)autosavesInPlace

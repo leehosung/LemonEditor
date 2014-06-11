@@ -362,8 +362,11 @@
 //        [topToolbarVC setDocumentNode:document];
         
         //save for debug
+        /*
+        //remove this line : saving can't not in the package
         NSString *documentSavePath = [canvasVC.documentBasePath stringByAppendingPathComponent:[_selectedNode.name stringByAppendingPathExtension:@"html"]];
         [_selectedNode.editorSource writeToFile:documentSavePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+         */
 
 
         return;
