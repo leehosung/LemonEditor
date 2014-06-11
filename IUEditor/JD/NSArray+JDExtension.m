@@ -33,9 +33,9 @@
     return [self objectAtIndex:index];
 }
 
--(id)objectForStringKey:(NSString*)itemKey key:(NSString*)key{
+-(id)objectWithKey:(NSString*)key value:(id)value{
     for (id obj in self) {
-        if ([[obj valueForKey:key] isEqualToString:itemKey]) {
+        if ([[obj valueForKey:key] isEqualTo:value]) {
             return obj;
         }
     }

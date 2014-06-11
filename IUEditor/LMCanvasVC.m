@@ -21,6 +21,9 @@
 #import "IUImport.h"
 #import "IUText.h"
 
+#import "LMHelpMenuItem.h"
+#import "LMHelpWC.h"
+
 #pragma mark - debug
 #if DEBUG
 #import "LMDebugSourceWC.h"
@@ -40,6 +43,7 @@
 
 @implementation LMCanvasVC{
     IUFrameDictionary *frameDict;
+    LMHelpWC *helpWC;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -930,4 +934,42 @@
     [self.controller pasteToSelectedIU:self];
 }
 
+- (void)performRightClick:(NSString*)IUID withEvent:(NSEvent*)event{
+    //make help menu
+    NSMenu *menu = [[NSMenu alloc] init];
+    NSMenuItem *helpItem = [[NSMenuItem alloc] init];
+    helpItem.title = @"Help";
+    NSMenu *helpMenu = [[NSMenu alloc] initWithTitle:@"Help"];
+    [menu addItem:helpItem];
+    [menu setSubmenu:helpMenu forItem:helpItem];
+    
+    
+
+    //get className
+    IUBox *selectedIU = [self.controller IUBoxByIdentifier:IUID];
+    NSString *className = [selectedIU className];
+    
+    NSString *widgetFilePath = [[NSBundle mainBundle] pathForResource:@"widgetForDefault" ofType:@"plist"];
+    NSArray *availableWidgetProperties = [NSArray arrayWithContentsOfFile:widgetFilePath];
+    NSDictionary *widget = [availableWidgetProperties objectWithKey:@"className" value:className];
+    NSArray *helpArray = [widget objectForKey:@"manual"];
+    for (NSDictionary *helpContent in helpArray) {
+        LMHelpMenuItem *item = [[LMHelpMenuItem alloc] init];
+        item.title = helpContent[@"title"];
+        item.fileName = helpContent[@"file"];
+        [helpMenu addItem:item];
+        item.target = self;
+        [item setAction:@selector(performHelp:)];
+    }
+    
+    //get
+    [NSMenu popUpContextMenu:menu withEvent:event forView:self.view];
+}
+
+- (void)performHelp:(LMHelpMenuItem*)sender{
+    helpWC = [[LMHelpWC alloc] initWithWindowNibName:@"LMHelpWC"];
+    [helpWC setHelpDocument:sender.fileName];
+    [helpWC showWindow:nil];
+    [helpWC.window makeKeyAndOrderFront:self];
+}
 @end

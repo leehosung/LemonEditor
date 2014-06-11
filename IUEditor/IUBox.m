@@ -652,7 +652,12 @@
 
 
 - (void)confirm{
+    assert(self.project.identifierManager);
     [self.project.identifierManager confirm];
+}
+
+- (NSArray *)helpDictionary{
+    return nil;
 }
 
 @end

@@ -166,9 +166,7 @@
     NSView *hitView = [self.gridView hitTest:convertedPoint];
     
     if([hitView isKindOfClass:[GridView class]] == NO){
-        
         if( [self pointInMainView:convertedPoint]){
-            
             if ( theEvent.type == NSLeftMouseDown){
                 JDTraceLog( @"mouse down");
                 isMouseDown = YES;
@@ -216,9 +214,11 @@
                     }
                 }
             }
+            else if (theEvent.type == NSRightMouseDown){
+                NSString *currentIUID = [self.webView IUAtPoint:convertedPoint];
+                [((LMCanvasVC *)self.delegate) performRightClick:currentIUID withEvent:theEvent];
+            }
         }
-        
-        
         if (theEvent.type == NSLeftMouseDragged && isMouseDown){
             JDTraceLog( @"mouse dragged");
             endDragPoint = convertedPoint;
@@ -232,7 +232,7 @@
             
             middleDragPoint = endDragPoint;
         }
-        if ( theEvent.type == NSLeftMouseUp ){
+        else if ( theEvent.type == NSLeftMouseUp ){
             JDTraceLog( @"NSLeftMouseUp");
             isMouseDown = NO;
             [self clearMouseMovement];

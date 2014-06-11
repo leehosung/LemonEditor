@@ -18,7 +18,7 @@
 
 - (id)objectBeforeObject:(id)obj;
 - (id)objectAfterObject:(id)obj;
-- (id)objectForStringKey:(NSString*)itemKey key:(NSString*)key;
+- (id)objectWithKey:(NSString*)key value:(id)value;
 
 - (NSArray *)reversedArray;
 - (NSArray *)filteredArrayWithClass:(Class)class;

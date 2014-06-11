@@ -85,4 +85,6 @@
 - (void)reloadOriginalDocument;
 
 #endif
+
+- (void)performRightClick:(NSString*)IUID withEvent:(NSEvent*)event;
 @end

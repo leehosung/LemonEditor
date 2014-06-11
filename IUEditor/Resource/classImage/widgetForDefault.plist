@@ -3,6 +3,15 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>manual</key>
+		<array>
+			<dict>
+				<key>title</key>
+				<string>Scolling Animation</string>
+				<key>file</key>
+				<string>scrollingAnimation.pdf</string>
+			</dict>
+		</array>
 		<key>isWidget</key>
 		<true/>
 		<key>className</key>
@@ -35,6 +44,13 @@
 		<integer>0</integer>
 	</dict>
 	<dict>
+		<key>manual</key>
+		<array>
+			<dict>
+				<key>Setting Image</key>
+				<string>settingImage.pdf</string>
+			</dict>
+		</array>
 		<key>isWidget</key>
 		<true/>
 		<key>className</key>

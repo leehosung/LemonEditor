@@ -158,4 +158,6 @@
 
 - (void)confirm;
 
+- (NSArray *)helpDictionary;
+
 @end
