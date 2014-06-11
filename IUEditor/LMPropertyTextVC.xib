@@ -9,7 +9,7 @@
                 <outlet property="fontB" destination="Yle-zg-jre" id="3NT-fU-1xD"/>
                 <outlet property="fontColorWell" destination="EF9-cy-hVF" id="LtQ-n0-TiY"/>
                 <outlet property="fontListDC" destination="HyI-eC-WGG" id="aDA-tm-S9h"/>
-                <outlet property="fontSizeB" destination="nc6-kb-J7I" id="P78-EQ-Hrb"/>
+                <outlet property="fontSizeB" destination="ZNa-jN-U2r" id="1ow-bn-HU1"/>
                 <outlet property="fontSizeStepper" destination="G73-ed-fS4" id="MRx-n2-bZB"/>
                 <outlet property="fontStyleB" destination="uve-V4-Xm0" id="fuP-ac-K4F"/>
                 <outlet property="lineHeight" destination="T6Q-UK-fkM" id="8GY-DA-fMA"/>
@@ -209,7 +209,7 @@
                 <outlet property="contentV" destination="wwI-vY-XSo" id="ykd-0c-lQf"/>
                 <outlet property="titleV" destination="8Lc-u6-K0I" id="lsh-Ia-Z3D"/>
             </connections>
-            <point key="canvasLocation" x="140" y="298"/>
+            <point key="canvasLocation" x="198" y="223"/>
         </customView>
         <dictionaryController objectClassName="_NSControllerKeyValuePair" id="HyI-eC-WGG"/>
         <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="G73-ed-fS4">

@@ -10,7 +10,7 @@
                 <outlet property="bgImageContent" destination="0B5-ac-SUD" id="6A0-Mh-YWg"/>
                 <outlet property="bgImageTitle" destination="jNA-uX-Sm7" id="TjX-XB-s3H"/>
                 <outlet property="imageNameComboBox" destination="wTP-4i-7vG" id="ufj-UV-IR0"/>
-                <outlet property="repeatBtn" destination="dii-Ze-WwR" id="WCD-k2-qQy"/>
+                <outlet property="repeatBtn" destination="4d5-AX-qLx" id="33S-lb-xzb"/>
                 <outlet property="sizeSegementControl" destination="08X-X7-XQJ" id="H1Y-Lw-GTR"/>
                 <outlet property="view" destination="rYz-3Y-tDF" id="vjl-3C-tmX"/>
                 <outlet property="xPositionTF" destination="Iwu-ZS-Xkr" id="a11-rk-PmP"/>
