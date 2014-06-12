@@ -38,6 +38,7 @@
     if(document){
         NSURL *url = [self fileURLForNewDocumentOfType:typeName];
         if(url != nil){
+            [(IUProjectDocument *)document makeNewProjectAtURL:url];
             [document saveToURL:url ofType:typeName forSaveOperation:NSSaveOperation delegate:nil didSaveSelector:nil contextInfo:nil];
             isSaved = YES;
         }

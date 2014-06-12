@@ -88,7 +88,10 @@
 
     if ([JDFileUtil isImageFileExtension:[path pathExtension]]) {
         IUResourceGroup *imageGroup = _rootGroup.childrenFiles[0];
-        return [imageGroup addResourceFileWithContentOfPath:path];
+        IUResourceFile *imageFile = [imageGroup addResourceFileWithContentOfPath:path];
+        imageFile.originalFilePath = path;
+        [[[[NSApp mainWindow] windowController] document] saveDocument:self];
+        return imageFile;
         [[NSNotificationCenter defaultCenter] postNotificationName:IUImageResourceDidChange object:self];
     }
     

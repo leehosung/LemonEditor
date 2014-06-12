@@ -49,26 +49,33 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
 - (id)initWithType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
     self = [super initWithType:typeName error:outError];
     if(self){
-        NSDictionary *dict = @{IUProjectKeyGit: @(NO),
-                               IUProjectKeyHeroku: @(NO),
-                               };
-        
-        NSError *error;
-        IUProject *newProject = [[IUProject alloc] initWithCreation:dict error:&error];
-        if (error != nil) {
-            assert(0);
-        }
-        _project = newProject;
-        //        [super saveDocument:sender];
+
     }
     return self;
 }
 
+- (BOOL)makeNewProjectAtURL:(NSURL *)url{
+    NSDictionary *dict = @{IUProjectKeyGit: @(NO),
+                           IUProjectKeyHeroku: @(NO),
+                           };
+    
+    NSError *error;
+
+    IUProject *newProject = [[IUProject alloc] initWithCreation:dict error:&error];
+    if (error != nil) {
+        assert(0);
+    }
+    if(newProject){
+        _project = newProject;
+        [self changeProjectPath:url];
+        return YES;
+    }
+    return NO;
+}
 
 - (id)initWithContentsOfURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
     self = [super initWithContentsOfURL:url ofType:typeName error:outError];
     if(self){
-        isLoaded = YES;
     }
     return self;
 }
@@ -85,9 +92,24 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
     LMWC *wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
     [self addWindowController:wc];
     
-    
 }
 
+- (void)showWindows{
+    [super showWindows];
+    [self showLemonSheet];
+}
+
+- (void)showLemonSheet{
+    
+    if(isLoaded && [self lemonWindowController]){
+        [[self lemonWindowController] reloadCurrentDocument];
+    }
+    else if([self lemonWindowController]){
+        [[self lemonWindowController] selectFirstDocument];
+        isLoaded = YES;
+    }
+    
+}
 
 - (void)changeProjectPath:(NSURL *)fileURL{
     NSString *filePath = [fileURL relativePath];
@@ -99,12 +121,7 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
         _project.name = appName;
         _project.path = filePath;
         
-        if(isLoaded && [self lemonWindowController]){
-            [[self lemonWindowController] reloadCurrentDocument];
-        }
-        else{
-            [[self lemonWindowController] selectFirstDocument];
-        }
+        [self showLemonSheet];
         
     }
 
@@ -112,7 +129,6 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
 
 - (void)setFileURL:(NSURL *)fileURL{
     [self changeProjectPath:fileURL];
-    
     [super setFileURL:fileURL];
 }
 
