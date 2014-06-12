@@ -10,22 +10,42 @@
 #import "IUProjectDocument.h"
 
 @implementation IUProjectController{
+    BOOL isSaved;
 }
 
 - (void)awakeFromNib{
     
 }
 
+- (void)newDocument:(id)sender{
+    isSaved = NO;
+    [super newDocument:sender];
+}
+- (id)openUntitledDocumentAndDisplay:(BOOL)displayDocument error:(NSError *__autoreleasing *)outError{
+    id document = [self makeUntitledDocumentOfType:[self defaultType] error:outError];
+    [self addDocument:document];
+
+    if(isSaved){
+        [document makeWindowControllers];
+        [document showWindows];
+    }
+    return document;
+}
 
 - (id)makeUntitledDocumentOfType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
     id document = [super makeUntitledDocumentOfType:typeName error:outError];
     
-    NSURL *url = [[JDFileUtil util] openSavePanelWithAllowFileTypes:@[typeName] withTitle:@"IU New Project"];
-    [document saveToURL:url ofType:typeName forSaveOperation:NSSaveOperation delegate:nil didSaveSelector:nil contextInfo:nil];
+    if(document){
+        NSURL *url = [[JDFileUtil util] openSavePanelWithAllowFileTypes:@[typeName] withTitle:@"IU New Project"];
+        if(url != nil){
+            [document saveToURL:url ofType:typeName forSaveOperation:NSSaveOperation delegate:nil didSaveSelector:nil contextInfo:nil];
+            isSaved = YES;
+        }
+    }
+    
     return document;
     
 }
-
 
 
 @end

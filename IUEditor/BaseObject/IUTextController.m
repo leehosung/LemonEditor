@@ -48,8 +48,6 @@
         _cssDict = [[aDecoder decodeObjectForKey:@"cssDict"] mutableCopy];
         _rangeDict = [[aDecoder decodeObjectForKey:@"rangeDict"] mutableCopy];
 //        _newlineIndexSet = [NSMutableIndexSet indexSet];
-        [[NSUserDefaults standardUserDefaults] addObserver:self forKeyPath:@"textEditMode" options:NSKeyValueObservingOptionInitial context:nil];
-
 
     }
     return self;

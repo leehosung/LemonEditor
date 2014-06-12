@@ -75,7 +75,10 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
 
 
 - (LMWC *)lemonWindowController{
-    return [[self windowControllers] objectAtIndex:0];
+    if([[self windowControllers] count] > 0){
+        return [[self windowControllers] objectAtIndex:0];
+    }
+    return nil;
 }
 
 - (void)makeWindowControllers{
@@ -85,12 +88,6 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
     
 }
 
-
-- (void)showWindows{
-    [super showWindows];
-    //[[self lemonWindowController] selectFirstDocument];
-   
-}
 
 - (void)changeProjectPath:(NSURL *)fileURL{
     NSString *filePath = [fileURL relativePath];
@@ -272,7 +269,7 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
         _project = [NSKeyedUnarchiver unarchiveObjectWithData:iuData];
         
         if(_project){
-            _project.path = [[self fileURL] path];
+            [self changeProjectPath:[self fileURL]];
             readSuccess = YES;
         }
 
@@ -295,34 +292,6 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
 
     return readSuccess;
 
-}
-
-- (void)saveNewDocumentWithURL:(NSURL *)url{
-    [self saveToURL:url ofType:[self fileType] forSaveOperation:NSSaveOperation delegate:nil didSaveSelector:nil contextInfo:nil];
-}
-
-- (void)saveDocumentWithDelegate:(id)delegate didSaveSelector:(SEL)didSaveSelector contextInfo:(void *)contextInfo{
-    [super saveDocumentWithDelegate:delegate didSaveSelector:didSaveSelector contextInfo:contextInfo];
-}
-
-- (void)runModalSavePanelForSaveOperation:(NSSaveOperationType)saveOperation delegate:(id)delegate didSaveSelector:(SEL)didSaveSelector contextInfo:(void *)contextInfo{
-    [super runModalSavePanelForSaveOperation:saveOperation delegate:delegate didSaveSelector:didSaveSelector contextInfo:contextInfo];
-}
-
-- (NSArray *)writableTypesForSaveOperation:(NSSaveOperationType)saveOperation{
-    return [super writableTypesForSaveOperation:saveOperation];
-}
-
-- (BOOL)prepareSavePanel:(NSSavePanel *)savePanel{
-    return [super prepareSavePanel:savePanel];
-}
-
-- (BOOL)writeToURL:(NSURL *)url ofType:(NSString *)typeName forSaveOperation:(NSSaveOperationType)saveOperation originalContentsURL:(NSURL *)absoluteOriginalContentsURL error:(NSError *__autoreleasing *)outError{
-    return [super writeToURL:url ofType:typeName forSaveOperation:saveOperation originalContentsURL:absoluteOriginalContentsURL error:outError];
-}
-
-- (void)setFileModificationDate:(NSDate *)fileModificationDate{
-    [super setFileModificationDate:fileModificationDate];
 }
 
 + (BOOL)autosavesInPlace
