@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMProjectConvertWC">
@@ -19,7 +19,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="646" height="454"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="646" height="454"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -30,10 +30,11 @@
                         <tabViewItems>
                             <tabViewItem label="Convert to HTML" identifier="1" id="g0T-PV-kny">
                                 <view key="view" ambiguous="YES" id="1na-Wt-isA">
+                                    <rect key="frame" x="10" y="33" width="616" height="387"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <customView hidden="YES" fixedFrame="YES" alphaValue="0.99999999999999989" translatesAutoresizingMaskIntoConstraints="NO" id="4b3-Li-q9j">
-                                            <rect key="frame" x="8" y="-387" width="600" height="391"/>
+                                            <rect key="frame" x="8" y="0.0" width="600" height="391"/>
                                             <subviews>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mRd-Wl-U87">
                                                     <rect key="frame" x="150" y="189" width="298" height="22"/>
@@ -46,7 +47,7 @@
                                             </subviews>
                                         </customView>
                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="whA-kL-GHk">
-                                            <rect key="frame" x="8" y="-387" width="600" height="400"/>
+                                            <rect key="frame" x="8" y="0.0" width="600" height="400"/>
                                             <subviews>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Som-kK-nYW">
                                                     <rect key="frame" x="46" y="229" width="168" height="14"/>
@@ -429,7 +430,6 @@ Gw
                     </subviews>
                 </customView>
             </subviews>
-            <point key="canvasLocation" x="282" y="720.5"/>
         </view>
     </objects>
     <resources>

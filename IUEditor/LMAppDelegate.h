@@ -10,7 +10,5 @@
 
 @interface LMAppDelegate : NSObject <NSApplicationDelegate>
 
--(IBAction)newDocument:(id)sender;
--(void)newDjangoDocument:(id)sender;
-- (void)loadDocument:(NSString*)path;
+//- (void)loadDocument:(NSString*)path;
 @end

@@ -21,7 +21,6 @@
 @property NSString *name;
 @property id <IUResourcePathProtocol> parent;
 
-- (IUResourceFile*)addResourceFileWithData:(NSData*)data;
 - (IUResourceFile*)addResourceFileWithContentOfPath:(NSString*)filePath;
 - (IUResourceGroup *)addResourceGroupWithName:(NSString*)groupName;
 

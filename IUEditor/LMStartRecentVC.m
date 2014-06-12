@@ -48,11 +48,14 @@
 }
 
 - (void)pressNextB{
+    assert(0);
+    /*
     LMAppDelegate *appDelegate = [NSApp delegate];
     NSUInteger index = [self.selectedIndexes firstIndex];
     NSDictionary *selectedDictionary = [_recentDocs objectAtIndex:index];
     [appDelegate loadDocument:selectedDictionary[@"path"]];
     [self.view.window close];
+     */
 }
 
 -(NSMutableDictionary *)projectDictWithPath: (NSString*)path{

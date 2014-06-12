@@ -94,7 +94,6 @@
             
             
             //save image resourceNode
-            NSString *thumbImgPath = [NSString stringWithFormat:@"%@%@", imageAbsolutePath, thumbFileName];
             [_resourceManager insertResourceWithContentOfPath:imageAbsolutePath];
             
             

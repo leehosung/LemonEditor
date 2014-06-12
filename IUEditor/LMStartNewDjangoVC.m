@@ -38,7 +38,8 @@
 }
 
 - (void)pressNextB{
-    
+    assert(0);
+    /*
     NSDictionary *dictionary = @{IUProjectKeyGit: @(NO),
                                  IUProjectKeyAppName: @"gallery",
                                  IUProjectKeyHeroku: @(NO),
@@ -47,6 +48,7 @@
     LMAppDelegate *appDelegate = [NSApp delegate];
     [appDelegate loadDocument:project.path];
     [self.view.window close];
+     */
 }
 
 

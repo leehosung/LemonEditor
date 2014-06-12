@@ -24,7 +24,7 @@
 
 @property (nonatomic) IUBox *pastedNewIU;
 
-- (void)loadProject:(NSString*)path;
+
 - (void)selectFirstDocument;
 
 - (void)reloadCurrentDocument;

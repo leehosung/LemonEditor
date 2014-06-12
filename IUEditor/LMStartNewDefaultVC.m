@@ -32,7 +32,8 @@
 
 
 - (void)pressNextB{
-    
+    assert(0);
+    /*
     NSError *error;
     
     NSString *appName;
@@ -55,10 +56,10 @@
     
     LMWC *wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
     [wc showWindow:self];
-    [wc loadProject:project.path];
+//    [wc loadProject:project.path];
     
     [self.view.window close];
-    
+    */
 }
 
 
