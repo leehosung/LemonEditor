@@ -86,5 +86,36 @@
 }
 
 
+- (IBAction)performFitToImage:(id)sender { // Fit to Image button function
+    assert(_resourceManager);
+
+    //image filename
+    NSString *filename = _imageNameComboBox.stringValue;
+    
+    //getting path
+    IUResourceFile *file = [_resourceManager resourceFileWithName:filename];
+    NSString *path = file.absolutePath;
+    NSLog(@"%@", path);
+    
+    //getting size
+    NSArray * imageReps = [NSBitmapImageRep imageRepsWithContentsOfFile:path];
+    
+    NSInteger width = 0;
+    NSInteger height = 0;
+    
+    for (NSImageRep * imageRep in imageReps) {
+        if ([imageRep pixelsWide] > width) width = [imageRep pixelsWide];
+        if ([imageRep pixelsHigh] > height) height = [imageRep pixelsHigh];
+    }
+    
+    //setting size to IU
+    NSArray *selectedObjects = self.controller.selectedObjects;
+
+    for (IUBox *box in selectedObjects) {
+        [box.css setValue:@(width) forTag:IUCSSTagWidth];
+        [box.css setValue:@(height) forTag:IUCSSTagHeight];
+        [box updateCSSForEditViewPort];
+    }
+}
 
 @end
