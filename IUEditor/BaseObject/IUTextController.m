@@ -53,6 +53,10 @@
     return self;
 }
 
+- (void)dealloc{
+    [[NSUserDefaults standardUserDefaults] removeObserver:self forKeyPath:@"textEditMode"];
+}
+
 - (id)copyWithZone:(NSZone *)zone{
     IUTextController *textController = [[IUTextController allocWithZone:zone] init];
     textController.innerText = [self.innerText copy];
