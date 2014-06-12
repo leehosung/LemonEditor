@@ -915,12 +915,25 @@ static NSString * IUCompilerTagOption = @"tag";
 #pragma mark -
 #pragma mark normal CSS
     else {
-        if (obj.flow) {
-            [dict putTag:@"position" string:@"relative"];
-        }
-        if (obj.floatRight) {
-            [dict putTag:@"position" string:@"relative"];
-            [dict putTag:@"float" string:@"right"];
+        switch (obj.positionType) {
+            case IUPositionTypeAbsolute:
+                [dict putTag:@"position" string:@"absolute"];
+                break;
+            case IUPositionTypeRelative:
+            case IUPositionTypeRelativeCenter:
+                [dict putTag:@"position" string:@"relative"];
+                break;
+            case IUPositionTypeFloatLeft:
+                [dict putTag:@"position" string:@"relative"];
+                [dict putTag:@"float" string:@"left"];
+                break;
+            case IUPositionTypeFloatRight:
+                [dict putTag:@"position" string:@"relative"];
+                [dict putTag:@"float" string:@"right"];
+                break;
+                
+            default:
+                break;
         }
         if (obj.overflow) {
             [dict putTag:@"overflow" string:@"visible"];
@@ -941,14 +954,19 @@ static NSString * IUCompilerTagOption = @"tag";
                 value = cssTagDict[IUCSSTagX];
             }
             if(value){
-                if (obj.floatRight) {
-                    [dict putTag:@"margin-right" floatValue:[value floatValue] * (-1) ignoreZero:NO unit:unit];
-                }
-                else if (obj.flow) {
-                    [dict putTag:@"margin-left" floatValue:[value floatValue] ignoreZero:NO unit:unit];
-                }
-                else {
-                    [dict putTag:@"left" floatValue:[value floatValue] ignoreZero:NO unit:unit];
+                switch (obj.positionType) {
+                    case IUPositionTypeAbsolute:
+                        [dict putTag:@"left" floatValue:[value floatValue] ignoreZero:NO unit:unit];
+                        break;
+                    case IUPositionTypeRelative:
+                    case IUPositionTypeFloatLeft:
+                        [dict putTag:@"margin-left" floatValue:[value floatValue] ignoreZero:NO unit:unit];
+                        break;
+                    case IUPositionTypeFloatRight:
+                        [dict putTag:@"margin-right" floatValue:[value floatValue] * (-1) ignoreZero:NO unit:unit];
+                        break;
+                    default:
+                        break;
                 }
             }
         }
@@ -964,12 +982,14 @@ static NSString * IUCompilerTagOption = @"tag";
             }
             
             if(value){
-                if (obj.flow) {
-                    [dict putTag:@"margin-top" floatValue:[value floatValue] ignoreZero:NO unit:unit];
-                }
-                else {
-                    [dict putTag:@"top" floatValue:[value floatValue] ignoreZero:NO unit:unit];
-                    
+                switch (obj.positionType) {
+                    case IUPositionTypeAbsolute:
+                        [dict putTag:@"top" floatValue:[value floatValue] ignoreZero:NO unit:unit];
+                        break;
+                    default:
+                        [dict putTag:@"margin-top" floatValue:[value floatValue] ignoreZero:NO unit:unit];
+
+                        break;
                 }
             }
         }
@@ -1328,7 +1348,7 @@ static NSString * IUCompilerTagOption = @"tag";
     [className trim];
     [retString appendFormat:@" class='%@'", className];
     
-    if(iu.center){
+    if (iu.positionType == IUPositionTypeAbsoluteCenter || iu.positionType == IUPositionTypeRelativeCenter) {
         [retString appendString:@" horizontalCenter='1'"];
     }
     if (iu.opacityMove) {

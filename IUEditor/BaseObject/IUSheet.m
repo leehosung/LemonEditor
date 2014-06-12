@@ -25,17 +25,17 @@
 }
 
 
-- (BOOL)enableXUserInput{
+- (BOOL)canChangeXByUserInput{
     return NO;
 }
-- (BOOL)enableYUserInput{
+- (BOOL)canChangeYByUserInput{
     return NO;
 }
-- (BOOL)enableWidthUserInput{
+- (BOOL)canChangeWidthByUserInput{
     return NO;
 }
 
-- (BOOL)enableHeightUserInput{
+- (BOOL)canChangeHeightByUserInput{
     return NO;
 }
 

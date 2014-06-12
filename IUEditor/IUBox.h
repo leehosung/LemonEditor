@@ -43,6 +43,14 @@
 
 @end
 
+typedef enum _IUPositionType{
+    IUPositionTypeAbsolute,
+    IUPositionTypeAbsoluteCenter,
+    IUPositionTypeRelative,
+    IUPositionTypeRelativeCenter,
+    IUPositionTypeFloatLeft,
+    IUPositionTypeFloatRight,
+}IUPositionType;
 
 @class IUBox;
 @class IUSheet;
@@ -87,10 +95,10 @@
 -(NSString*)cssForWidth:(NSInteger)width isHover:(BOOL)isHover;
 
 //user interface status
-@property (readonly) BOOL enableXUserInput;
-@property (readonly) BOOL enableYUserInput;
-@property (readonly) BOOL enableWidthUserInput;
-@property (readonly) BOOL enableHeightUserInput;
+@property (readonly) BOOL canChangeXByUserInput;
+@property (readonly) BOOL canChangeYByUserInput;
+@property (readonly) BOOL canChangeWidthByUserInput;
+@property (readonly) BOOL canChangeHeightByUserInput;
 
 -(void)enableDelegate:(id)sender;
 -(void)disableDelegate:(id)sender;
@@ -134,14 +142,16 @@
 -(void)endGrouping;
 
 
-@property (nonatomic) BOOL flow;
-- (BOOL)flowChangeable;
+@property (nonatomic) IUPositionType positionType;
+- (BOOL)canChangePositionType;
 
-@property (nonatomic) BOOL floatRight;
-- (BOOL)floatRightChangeable;
+- (BOOL)canChangePositionAbsolute;
+- (BOOL)canChangePositionRelative;
+- (BOOL)canChangePositionFloatLeft;
+- (BOOL)canChangePositionFloatRight;
+- (BOOL)canChangePositionAbsoluteCenter;
+- (BOOL)canChangePositionRelativeCenter;
 
-@property (nonatomic) BOOL center;
-- (BOOL)centerChangeable;
 
 @property (nonatomic) BOOL overflow;
 - (BOOL)overflowChangeable;
@@ -150,6 +160,8 @@
 
 
 - (void)updateCSSForEditViewPort;
+- (void)updateCSSForMaxViewPort;
+- (void)updateHTML;
 
 @property float opacityMove;
 @property float xPosMove;

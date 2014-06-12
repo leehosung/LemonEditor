@@ -23,7 +23,7 @@
         [self.css setValue:@(0) forTag:IUCSSTagX forWidth:IUCSSMaxViewPortWidth];
         [self.css setValue:@(0) forTag:IUCSSTagY forWidth:IUCSSMaxViewPortWidth];
         
-        self.flow = YES;
+        self.positionType = IUPositionTypeRelative;
      }
     return self;
 }
@@ -43,17 +43,17 @@
 }
 
 
-- (BOOL)enableXUserInput{
+- (BOOL)canChangeXByUserInput{
     return NO;
 }
-- (BOOL)enableYUserInput{
+- (BOOL)canChangeYByUserInput{
     return NO;
 }
-- (BOOL)enableWidthUserInput{
+- (BOOL)canChangeWidthByUserInput{
     return NO;
 }
 
-- (BOOL)flowChangeable{
+- (BOOL)canChangePositionType{
     return NO;
 }
 

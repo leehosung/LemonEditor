@@ -80,10 +80,10 @@
 }
 
 
-- (BOOL)enableWidthUserInput{
+- (BOOL)canChangeWidthByUserInput{
     return NO;
 }
-- (BOOL)enableHeightUserInput{
+- (BOOL)canChangeHeightByUserInput{
     return NO;
 }
 

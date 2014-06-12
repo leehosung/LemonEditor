@@ -13,6 +13,7 @@
 -(id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
     self = [super initWithProject:project options:options];
     [self.css eradicateTag:IUCSSTagWidth];
+    self.positionType = IUPositionTypeRelative;
     return self;
 }
 
@@ -20,11 +21,7 @@
     return NO;
 }
 
-- (BOOL)flow{
-    return YES;
-}
-
-- (BOOL)flowChangeable{
+- (BOOL)canChangePositionType{
     return NO;
 }
 
@@ -40,19 +37,15 @@
     return NO;
 }
 
-- (BOOL)floatRightChangeable{
+- (BOOL)canChangeXByUserInput{
     return NO;
 }
 
-- (BOOL)enableXUserInput{
+- (BOOL)canChangeYByUserInput{
     return NO;
 }
 
-- (BOOL)enableYUserInput{
-    return NO;
-}
-
-- (BOOL)enableWidthUserInput{
+- (BOOL)canChangeWidthByUserInput{
     return NO;
 }
 @end

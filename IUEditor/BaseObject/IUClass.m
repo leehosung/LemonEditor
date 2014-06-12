@@ -34,11 +34,11 @@
     return nil;
 }
 
--(BOOL)enableWidthUserInput{
+-(BOOL)canChangeWidthByUserInput{
     return YES;
 }
 
--(BOOL)enableHeightUserInput{
+-(BOOL)canChangeHeightByUserInput{
     return YES;
 }
 

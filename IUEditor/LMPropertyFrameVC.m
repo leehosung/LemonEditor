@@ -15,9 +15,6 @@
 
 
 @interface LMPropertyFrameVC ()
-@property (weak) IBOutlet NSButton *flowB;
-@property (weak) IBOutlet NSButton *rightB;
-@property (weak) IBOutlet NSButton *centerB;
 
 //pixel TextField
 @property (weak) IBOutlet NSTextField *xTF;
@@ -80,16 +77,6 @@
     [_hTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagHeightUnit] options:IUBindingDictNotRaisesApplicable];
     [_phTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagHeightUnit] options:percentHiddeBindingOption];
 
-
-    [_flowB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"flow"] options:IUBindingDictNotRaisesApplicable];
-    [_flowB bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"flowChangeable"] options:IUBindingDictNotRaisesApplicable];
-    
-    [_rightB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"floatRight"] options:IUBindingDictNotRaisesApplicable];
-    [_rightB bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"floatRightChangeable"] options:IUBindingDictNotRaisesApplicable];
-
-    [_centerB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"center"] options:IUBindingDictNotRaisesApplicable];
-    [_centerB bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"centerChangeable"] options:IUBindingDictNotRaisesApplicable];
-
     [_overflowB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"overflow"] options:IUBindingDictNotRaisesApplicable];
     [_overflowB bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"overflowChangeable"] options:IUBindingDictNotRaisesApplicable];
     
@@ -122,21 +109,21 @@
     [_wUnitBtn bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"hasWidth"] options:bindingOption];
     [_hUnitBtn bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"hasHeight"] options:bindingOption];
     
-    [_xTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableXUserInput"] options:bindingOption];
-    [_yTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableYUserInput"] options:bindingOption];
-    [_wTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableWidthUserInput"] options:bindingOption];
-    [_hTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableHeightUserInput"] options:bindingOption];
+    [_xTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeXByUserInput"] options:bindingOption];
+    [_yTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeYByUserInput"] options:bindingOption];
+    [_wTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeWidthByUserInput"] options:bindingOption];
+    [_hTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeHeightByUserInput"] options:bindingOption];
     
-    [_pxTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableXUserInput"] options:bindingOption];
-    [_pyTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableYUserInput"] options:bindingOption];
-    [_pwTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableWidthUserInput"] options:bindingOption];
-    [_phTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableHeightUserInput"] options:bindingOption];
+    [_pxTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeXByUserInput"] options:bindingOption];
+    [_pyTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeYByUserInput"] options:bindingOption];
+    [_pwTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeWidthByUserInput"] options:bindingOption];
+    [_phTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeHeightByUserInput"] options:bindingOption];
 
     
-    [_xUnitBtn bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableXUserInput"] options:bindingOption];
-    [_yUnitBtn bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableYUserInput"] options:bindingOption];
-    [_wUnitBtn bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableWidthUserInput"] options:bindingOption];
-    [_hUnitBtn bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableHeightUserInput"] options:bindingOption];
+    [_xUnitBtn bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeXByUserInput"] options:bindingOption];
+    [_yUnitBtn bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeYByUserInput"] options:bindingOption];
+    [_wUnitBtn bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeWidthByUserInput"] options:bindingOption];
+    [_hUnitBtn bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeHeightByUserInput"] options:bindingOption];
     
     
     bindingOption = [NSDictionary

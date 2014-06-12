@@ -23,15 +23,11 @@
     return NO;
 }
 
-- (BOOL)flow{
-    return YES;
-}
-
 -(BOOL)shouldRemoveIU{
     return NO;
 }
 
-- (BOOL)flowChangeable{
+- (BOOL)canChangePositionType{
     return NO;
 }
 
@@ -39,21 +35,17 @@
     return NO;
 }
 
-- (BOOL)floatRightChangeable{
+- (BOOL)canChangeXByUserInput{
+    return NO;
+}
+- (BOOL)canChangeYByUserInput{
+    return NO;
+}
+- (BOOL)canChangeWidthByUserInput{
     return NO;
 }
 
-- (BOOL)enableXUserInput{
-    return NO;
-}
-- (BOOL)enableYUserInput{
-    return NO;
-}
-- (BOOL)enableWidthUserInput{
-    return NO;
-}
-
-- (BOOL)enableHeightUserInput{
+- (BOOL)canChangeHeightByUserInput{
     return NO;
 }
 

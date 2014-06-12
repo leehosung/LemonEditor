@@ -38,8 +38,6 @@ static NSString * IUEventTagFrameHeight   = @"eqFrameHeight";
 
 ///////CSSTag
 #define IUCSSTag NSString*
-static NSString * IUCSSTagPosition = @"position";
-static NSString * IUCSSTagFlow = @"flow";
 
 static NSString * IUCSSTagX = @"left";
 static NSString * IUCSSTagY = @"top";

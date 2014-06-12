@@ -287,7 +287,6 @@
     for (IUBox *child in iu.children) {
         [self.delegate IUClassIdentifier:child.cssID CSSUpdated:[child cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
     }
-    [self.project.identifierManager registerIUs:@[iu]];
     [iu bind:@"identifierManager" toObject:self withKeyPath:@"identifierManager" options:nil];
     
     return YES;
@@ -418,7 +417,7 @@
 - (void)movePosition:(NSPoint)point withParentSize:(NSSize)parentSize{
     
     //Set Pixel
-    if([self hasX] && [self enableXUserInput]){
+    if([self hasX] && [self canChangeXByUserInput]){
         NSInteger currentX = originalPoint.x + point.x;
         
         [_css setValue:@(currentX) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagX]];
@@ -434,7 +433,7 @@
         }
     }
     
-    if([self hasY] && [self enableYUserInput]){
+    if([self hasY] && [self canChangeYByUserInput]){
         
         NSInteger currentY = originalPoint.y + point.y;
         [_css setValue:@(currentY) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagY]];
@@ -452,12 +451,28 @@
     
 }
 
-- (void)updateCSSForEditViewPort{
-    [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:_css.editWidth isHover:NO] forWidth:_css.editWidth];
-    [self.delegate IUClassIdentifier:[self.cssID hoverIdentifier] CSSUpdated:[self cssForWidth:_css.editWidth isHover:YES] forWidth:_css.editWidth];
+- (void)updateCSSForMaxViewPort{
+    if (self.delegate) {
+        [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+        [self.delegate IUClassIdentifier:[self.cssID hoverIdentifier] CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:YES] forWidth:IUCSSMaxViewPortWidth];
+    }
 }
 
-/* 
+- (void)updateCSSForEditViewPort{
+    if (self.delegate) {
+        [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:_css.editWidth isHover:NO] forWidth:_css.editWidth];
+        [self.delegate IUClassIdentifier:[self.cssID hoverIdentifier] CSSUpdated:[self cssForWidth:_css.editWidth isHover:YES] forWidth:_css.editWidth];
+    }
+}
+
+- (void)updateHTML{
+    if (self.delegate) {
+        [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.htmlID];
+    }
+}
+
+
+/*
  drag 중간의 diff size로 하면 css에 의한 오차가 생김.
  drag session이 시작될때부터 위치에서의 diff size로 계산해야 오차가 발생 안함.
  drag session이 시작할때 그 때의 위치를 저장함.
@@ -480,14 +495,15 @@
     if([_css.assembledTagDictionary objectForKey:IUCSSTagY]){
         currentY = [_css.assembledTagDictionary[IUCSSTagY] integerValue];
     }
-    else if(self.flow == NO){
+    else if(self.positionType == IUPositionTypeRelative || self.positionType == IUPositionTypeFloatRight ||
+            self.positionType == IUPositionTypeFloatLeft){
         currentY = distancePoint.y;
     }
     originalPoint = NSMakePoint(currentX, currentY);
 }
 
 - (void)increaseSize:(NSSize)size withParentSize:(NSSize)parentSize{
-    if([self hasWidth] && [self enableWidthUserInput]){
+    if([self hasWidth] && [self canChangeWidthByUserInput]){
         NSInteger currentWidth = originalSize.width;
         currentWidth += size.width;
         [_css setValue:@(currentWidth) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagWidth]];
@@ -500,7 +516,7 @@
         
      
     }
-    if([self hasHeight] && [self enableHeightUserInput]){
+    if([self hasHeight] && [self canChangeHeightByUserInput]){
         NSInteger currentHeight = originalSize.height;
         currentHeight += size.height;
         [_css setValue:@(currentHeight) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagHeight]];
@@ -568,31 +584,6 @@
 
 #pragma mark -
 
-- (BOOL)flowChangeable{
-    return YES;
-}
-
-- (BOOL)floatRightChangeable{
-    return YES;
-}
-
-- (BOOL)overflowChangeable{
-    return YES;
-}
-
-- (void)setFloatRight:(BOOL)floatRight{
-    _floatRight = floatRight;
-    if (floatRight) {
-        if (self.flow == NO) {
-            self.flow = YES;
-        }
-        [self.css eradicateTag:IUCSSTagX];
-        [self.css eradicateTag:IUCSSTagY];
-    }
-    if (self.delegate) {
-        [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
-    }
-}
 
 - (void)setOverflow:(BOOL)overflow{
     _overflow = overflow;
@@ -605,29 +596,6 @@
     return YES;
 }
 
-- (void)setCenter:(BOOL)center{
-    _center = center;
-    if (center) {
-        [self.css eradicateTag:IUCSSTagX];
-    }
-    if (self.delegate) {
-        [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
-    }
-}
-
-
-- (void)setFlow:(BOOL)flow{
-    _flow = flow;
-    [self.css eradicateTag:IUCSSTagX];
-    [self.css eradicateTag:IUCSSTagY];
-    if (self.delegate) {
-        [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
-        //중간에 set된 flow가 있으면 제대로 맞추기 위해서 html reload
-        if(_flow){
-            [self.delegate IUHTMLIdentifier:self.parent.htmlID HTML:self.parent.html withParentID:self.parent.parent.htmlID];
-        }
-    }
-}
 
 //iucontroller & inspectorVC sync가 안맞는듯.
 - (id)valueForUndefinedKey:(NSString *)key{
@@ -638,16 +606,19 @@
 #pragma mark -
 #pragma mark user input
 
-- (BOOL)enableXUserInput{
+- (BOOL)canChangeXByUserInput{
+    if (self.positionType == IUPositionTypeAbsoluteCenter || self.positionType == IUPositionTypeRelativeCenter) {
+        return NO;
+    }
     return YES;
 }
-- (BOOL)enableYUserInput{
+- (BOOL)canChangeYByUserInput{
     return YES;
 }
-- (BOOL)enableWidthUserInput{
+- (BOOL)canChangeWidthByUserInput{
     return YES;
 }
-- (BOOL)enableHeightUserInput{
+- (BOOL)canChangeHeightByUserInput{
     return YES;
 }
 
@@ -659,6 +630,62 @@
 
 - (NSArray *)helpDictionary{
     return nil;
+}
+
+- (void)setPositionType:(IUPositionType)positionType{
+    BOOL isCurrentCenter = NO;
+    BOOL isAfterCenter = NO;
+    BOOL centerChanged = NO;
+    
+    if (_positionType == IUPositionTypeAbsoluteCenter || _positionType == IUPositionTypeRelativeCenter) {
+        isCurrentCenter = YES;
+    }
+    
+    if (positionType == IUPositionTypeAbsoluteCenter || positionType == IUPositionTypeRelativeCenter) {
+        isAfterCenter = YES;
+    }
+    
+    if ( (isCurrentCenter == NO && isAfterCenter == YES ) || (isCurrentCenter == YES && isAfterCenter == NO ) ) {
+        centerChanged = YES;
+    }
+    if (centerChanged) {
+        [self willChangeValueForKey:@"canChangeXByUserInput"];
+    }
+    
+    _positionType = positionType;
+    [self updateCSSForEditViewPort];
+    [self updateHTML];
+    if (centerChanged) {
+        [self didChangeValueForKey:@"canChangeXByUserInput"];
+    }
+}
+
+- (BOOL)canChangePositionType{
+    return YES;
+}
+
+- (BOOL)canChangePositionAbsolute{
+    return YES;
+}
+
+- (BOOL)canChangePositionRelative{
+    return YES;
+}
+
+- (BOOL)canChangePositionFloatLeft{
+    return YES;
+}
+
+- (BOOL)canChangePositionFloatRight{
+    return YES;
+}
+
+- (BOOL)canChangePositionAbsoluteCenter{
+    return YES;
+}
+
+- (BOOL)canChangePositionRelativeCenter{
+    return YES;
 }
 
 @end

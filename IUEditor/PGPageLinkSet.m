@@ -36,33 +36,22 @@
 
 - (void)setPageLinkAlign:(IUAlign)pageLinkAlign{
     _pageLinkAlign = pageLinkAlign;
-    if (self.delegate) {
-        [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
-    }
+    [self updateCSSForEditViewPort];
 }
 
 - (void)setSelectedButtonBGColor:(NSColor *)selectedButtonBGColor{
     _selectedButtonBGColor = selectedButtonBGColor;
-    if(self.delegate){
-        [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
-    }
-    
+    [self updateCSSForMaxViewPort];
 }
 
 - (void)setDefaultButtonBGColor:(NSColor *)defaultButtonBGColor{
     _defaultButtonBGColor = defaultButtonBGColor;
-    if (self.delegate){
-        [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
-    }
-    
+    [self updateCSSForMaxViewPort];
 }
 
 - (void)setButtonMargin:(float)buttonMargin{
     _buttonMargin = buttonMargin;
-    if (self.delegate){
-        [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
-    }
-    
+    [self updateCSSForMaxViewPort];
 }
 
 - (void)updateCSSForEditViewPort{

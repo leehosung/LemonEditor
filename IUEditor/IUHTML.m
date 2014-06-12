@@ -44,9 +44,7 @@
 -(void)setInnerHTML:(NSString *)aInnerHTML{
     _innerHTML = aInnerHTML;
     JDInfoLog(@"%@", aInnerHTML);
-    if (self.delegate) {
-        [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.htmlID];
-    }
+    [self updateHTML];
 }
 
 @end

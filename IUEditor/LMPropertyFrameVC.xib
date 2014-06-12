@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyFrameVC">
             <connections>
-                <outlet property="centerB" destination="zHx-Ob-5lO" id="cJ1-WO-yEj"/>
                 <outlet property="contentV" destination="lqf-yQ-SWP" id="y7w-mo-EcP"/>
-                <outlet property="flowB" destination="P5X-KI-ojA" id="kKv-1J-3q3"/>
                 <outlet property="hTF" destination="KEg-GU-M43" id="og4-MR-soJ"/>
                 <outlet property="hUnitBtn" destination="2id-bU-xHh" id="mhn-5R-Dh6"/>
                 <outlet property="overflowB" destination="xa2-Jd-iG8" id="YVG-P4-nLy"/>
@@ -16,7 +14,6 @@
                 <outlet property="pwTF" destination="bUx-4a-5bn" id="ccj-8P-V2e"/>
                 <outlet property="pxTF" destination="ze4-DS-FcM" id="beK-Dg-QQd"/>
                 <outlet property="pyTF" destination="AJN-a2-BIm" id="s8V-FG-462"/>
-                <outlet property="rightB" destination="n1h-zm-ovQ" id="F7V-Pp-UFi"/>
                 <outlet property="view" destination="W2Z-Yo-bpM" id="zqF-ET-qCV"/>
                 <outlet property="wTF" destination="dde-if-4FG" id="f9d-yf-Xcp"/>
                 <outlet property="wUnitBtn" destination="bza-57-yAn" id="V3J-Ki-H3E"/>
@@ -315,43 +312,45 @@
                                                 <constraint firstAttribute="width" constant="49" id="KWm-uW-TFi"/>
                                                 <constraint firstAttribute="height" constant="14" id="Sa0-NG-sPK"/>
                                             </constraints>
-                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Float" id="J8Q-x3-n6F">
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Position" id="J8Q-x3-n6F">
                                                 <font key="font" metaFont="smallSystemBold"/>
                                                 <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <button toolTip="Horizontal Center" translatesAutoresizingMaskIntoConstraints="NO" id="zHx-Ob-5lO">
-                                            <rect key="frame" x="166" y="5" width="89" height="20"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="84" id="DVw-Qs-GeP"/>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="84" id="WQD-Qc-jMZ"/>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="14" id="ep3-RW-nNG"/>
-                                                <constraint firstAttribute="height" constant="14" id="qtn-9A-J7l"/>
-                                            </constraints>
-                                            <buttonCell key="cell" type="check" title="Align Center" bezelStyle="regularSquare" imagePosition="left" controlSize="small" inset="2" id="Qmw-E3-iK4">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="smallSystem"/>
-                                            </buttonCell>
-                                        </button>
                                         <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="f6I-Kv-MOi">
-                                            <rect key="frame" x="75" y="5" width="79" height="19"/>
+                                            <rect key="frame" x="75" y="5" width="152" height="19"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="79" id="XAQ-4Y-LCe"/>
+                                                <constraint firstAttribute="width" constant="152" id="XAQ-4Y-LCe"/>
                                                 <constraint firstAttribute="height" constant="18" id="qsV-r1-XUW"/>
                                             </constraints>
-                                            <popUpButtonCell key="cell" type="roundRect" bezelStyle="roundedRect" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6oa-q2-pjp">
+                                            <popUpButtonCell key="cell" type="roundRect" title="Relative: Float right" bezelStyle="roundedRect" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="bkZ-oq-51W" id="6oa-q2-pjp">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system" size="10"/>
                                                 <menu key="menu" id="QeU-sw-xnN">
                                                     <items>
-                                                        <menuItem title="None" id="Akm-Nb-6a5"/>
-                                                        <menuItem title="Left" id="FIy-WO-wA4"/>
-                                                        <menuItem title="Right" id="bkZ-oq-51W"/>
+                                                        <menuItem title="Absolute" id="Akm-Nb-6a5"/>
+                                                        <menuItem title="Absolute: Center" id="FIy-WO-wA4"/>
+                                                        <menuItem title="Relative" id="uq0-LG-Hed"/>
+                                                        <menuItem title="Relative: Center" id="1S7-Tq-gVY"/>
+                                                        <menuItem title="Relative : Float left" id="NzN-Sw-wzB"/>
+                                                        <menuItem title="Relative: Float right" state="on" id="bkZ-oq-51W"/>
                                                     </items>
                                                 </menu>
                                             </popUpButtonCell>
+                                            <connections>
+                                                <binding destination="-2" name="enabled" keyPath="self.controller.selection.canChangePositionType" id="WY3-My-J9K"/>
+                                                <binding destination="-2" name="selectedIndex" keyPath="self.controller.selection.positionType" id="B2D-zU-4v0"/>
+                                            </connections>
                                         </popUpButton>
+                                        <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iLy-bj-p0C">
+                                            <rect key="frame" x="236" y="2" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PBi-dH-ltZ">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                            </buttonCell>
+                                        </button>
                                     </subviews>
                                 </view>
                                 <constraints>
@@ -386,7 +385,6 @@
                                     <constraint firstItem="f6I-Kv-MOi" firstAttribute="leading" secondItem="Ilz-MF-UBL" secondAttribute="trailing" constant="20" id="YwI-r0-MyM"/>
                                     <constraint firstItem="1AX-8F-rIh" firstAttribute="leading" secondItem="bza-57-yAn" secondAttribute="trailing" constant="2" id="bvz-f2-9vF"/>
                                     <constraint firstItem="z9a-iK-QZ6" firstAttribute="leading" secondItem="wit-4t-70U" secondAttribute="trailing" constant="4" id="cFc-8R-gEV"/>
-                                    <constraint firstItem="zHx-Ob-5lO" firstAttribute="top" secondItem="gsi-Ac-4ex" secondAttribute="bottom" constant="8" id="cfJ-Ka-aCy"/>
                                     <constraint firstItem="bUx-4a-5bn" firstAttribute="top" secondItem="ze4-DS-FcM" secondAttribute="bottom" constant="9" id="f5x-L6-atv"/>
                                     <constraint firstItem="2id-bU-xHh" firstAttribute="top" secondItem="NbJ-WM-MfU" secondAttribute="bottom" constant="9" id="gSk-Zy-dRn"/>
                                     <constraint firstItem="2Ur-uO-dSJ" firstAttribute="top" secondItem="qi4-uk-WUI" secondAttribute="top" constant="9" id="hb1-5Z-iCT"/>
@@ -398,7 +396,6 @@
                                     <constraint firstItem="bza-57-yAn" firstAttribute="top" secondItem="2Ur-uO-dSJ" secondAttribute="bottom" constant="9" id="qVr-4F-fgK"/>
                                     <constraint firstItem="gsi-Ac-4ex" firstAttribute="leading" secondItem="qi4-uk-WUI" secondAttribute="leading" constant="6" id="qX3-pw-mvy"/>
                                     <constraint firstItem="2id-bU-xHh" firstAttribute="leading" secondItem="wit-4t-70U" secondAttribute="trailing" constant="49" id="rbw-nL-uPJ"/>
-                                    <constraint firstItem="zHx-Ob-5lO" firstAttribute="leading" secondItem="f6I-Kv-MOi" secondAttribute="trailing" constant="15" id="rmj-Ci-bRW"/>
                                     <constraint firstItem="Uhs-VT-XpO" firstAttribute="leading" secondItem="2Ur-uO-dSJ" secondAttribute="trailing" constant="2" id="s5M-v5-7Pg"/>
                                     <constraint firstItem="7ez-uH-X3R" firstAttribute="top" secondItem="qi4-uk-WUI" secondAttribute="top" constant="9" id="uhc-aD-YVQ"/>
                                     <constraint firstItem="Sfe-ik-KYS" firstAttribute="leading" secondItem="qi4-uk-WUI" secondAttribute="leading" constant="6" id="umA-99-Uy2"/>
@@ -439,35 +436,6 @@
                 <outlet property="titleV" destination="JYh-TI-pEg" id="49T-LI-5Lm"/>
             </connections>
         </customView>
-        <button id="nxh-V5-eJK">
-            <rect key="frame" x="0.0" y="0.0" width="58" height="19"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <buttonCell key="cell" type="check" title="Auto" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="F6l-k0-ofK">
-                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                <font key="font" metaFont="smallSystem"/>
-            </buttonCell>
-        </button>
-        <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P5X-KI-ojA">
-            <rect key="frame" x="0.0" y="0.0" width="56" height="22"/>
-            <constraints>
-                <constraint firstAttribute="width" constant="52" id="IQy-YB-lzs"/>
-            </constraints>
-            <buttonCell key="cell" type="check" title="Flow" bezelStyle="regularSquare" imagePosition="left" inset="2" id="b9b-gO-SUX">
-                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                <font key="font" metaFont="smallSystem"/>
-            </buttonCell>
-        </button>
-        <button translatesAutoresizingMaskIntoConstraints="NO" id="n1h-zm-ovQ">
-            <rect key="frame" x="0.0" y="0.0" width="50" height="18"/>
-            <constraints>
-                <constraint firstAttribute="height" constant="14" id="J74-5p-3rV"/>
-                <constraint firstAttribute="width" constant="46" id="KbC-KP-K6l"/>
-            </constraints>
-            <buttonCell key="cell" type="check" title="Right" bezelStyle="regularSquare" imagePosition="left" inset="2" id="5Bf-Xz-Fsx">
-                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                <font key="font" metaFont="smallSystem"/>
-            </buttonCell>
-        </button>
         <customView id="2tQ-np-DZj" userLabel="Overflow">
             <rect key="frame" x="0.0" y="0.0" width="283" height="30"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
