@@ -58,6 +58,16 @@
     else {
         //paste to selection
         pasteTarget = [self.selectedObjects firstObject];
+        while (1) {
+            if (pasteTarget == nil) {
+                assert(0);
+                return;
+            }
+            if ([pasteTarget shouldAddIUByUserInput]) {
+                break;
+            }
+            pasteTarget = pasteTarget.parent;
+        }
         pasteTargetIsParent = NO;
     }
     
