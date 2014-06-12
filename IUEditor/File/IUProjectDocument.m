@@ -106,8 +106,6 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
             [[self lemonWindowController] selectFirstDocument];
         }
         
-        
-        //        [[self lemonWindowController].window setTitle:[NSString stringWithFormat:@"[%@] %@", [_project.className substringFromIndex:2], _project.path]];
     }
 
 }

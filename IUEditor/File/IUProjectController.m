@@ -36,7 +36,7 @@
     id document = [super makeUntitledDocumentOfType:typeName error:outError];
     
     if(document){
-        NSURL *url = [[JDFileUtil util] openSavePanelWithAllowFileTypes:@[typeName] withTitle:@"IU New Project"];
+        NSURL *url = [self fileURLForNewDocumentOfType:typeName];
         if(url != nil){
             [document saveToURL:url ofType:typeName forSaveOperation:NSSaveOperation delegate:nil didSaveSelector:nil contextInfo:nil];
             isSaved = YES;
@@ -44,6 +44,26 @@
     }
     
     return document;
+    
+}
+
+- (NSURL *)fileURLForNewDocumentOfType:(NSString *)typeName{
+    int i=0;
+    while(1){
+        NSURL *url = [[JDFileUtil util] openSavePanelWithAllowFileTypes:@[typeName] withTitle:@"IU New Project"];
+        id openedDocument = [self documentForURL:url];
+        if(openedDocument){
+            [JDLogUtil alert:@"Same File Name is Opened" title:@"Warning"];
+        }
+        else{
+            return url;
+        }
+        //safe escape code
+        if(i > 10000){
+            return nil;
+        }
+    }
+    return nil;
     
 }
 

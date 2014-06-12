@@ -69,7 +69,7 @@
     file.parent = self;
     [array addObject:file];
     
-    [[[NSApp mainWindow] windowController] saveDocument:self];
+//    [[[NSApp mainWindow] windowController] saveDocument:self];
 
     return file;
 }

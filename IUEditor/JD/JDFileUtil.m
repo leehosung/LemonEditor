@@ -124,6 +124,8 @@ static JDFileUtil *sharedJDFileUtill;
 
 - (NSURL *)openSavePanelWithAllowFileTypes:(NSArray *)fileTypes withTitle:(NSString *)title{
     NSSavePanel* savePanel = [NSSavePanel savePanel];
+    [savePanel setAllowsOtherFileTypes:NO];
+    [savePanel setCanSelectHiddenExtension:YES];
     [savePanel setAllowedFileTypes:fileTypes];
     [savePanel setCanCreateDirectories:YES];
     
