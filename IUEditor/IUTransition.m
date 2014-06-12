@@ -54,6 +54,9 @@
 
 }
 
+-(void) dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 -(void)selectionChanged:(NSNotification*)noti{
     NSMutableSet *set = [NSMutableSet setWithArray:self.children];

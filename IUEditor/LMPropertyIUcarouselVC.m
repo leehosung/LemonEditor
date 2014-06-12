@@ -61,6 +61,11 @@
 
 }
 
+- (void)dealloc{
+    //release 시점 확인용
+    assert(0);
+}
+
 -(void)imageContextDidChange:(NSDictionary *)change{
     self.imageArray = _resourceManager.imageFiles;
 }

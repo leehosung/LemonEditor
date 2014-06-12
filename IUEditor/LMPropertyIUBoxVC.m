@@ -42,6 +42,10 @@
     [self.controller addObserver:self forKeyPath:@"selection" options:NSKeyValueObservingOptionInitial context:nil];
 
 }
+- (void)dealloc{
+    //release 시점 확인용
+    assert(0);
+}
 
 - (BOOL)isPage:(NSString *)link{
     assert(0);

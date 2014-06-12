@@ -44,6 +44,13 @@
     [self addObserver:self forKeyPath:@"docController.project.runnable" options:NSKeyValueObservingOptionInitial context:nil];
 }
 
+-(void)dealloc{
+    //release 시점 확인용
+    assert(0);
+    
+    //[self removeObserver:self forKeyPath:@"docController.project.runnable"];
+}
+
 -(void)docController_project_runnableDidChange:(NSDictionary*)change{
     if (_docController.project.runnable == NO) {
         [_serverB setEnabled:NO];

@@ -72,7 +72,17 @@
     [_debugBtn setHidden:YES];
 #endif
 }
-
+-(void) dealloc{
+    //release 시점 확인용
+    assert(0);
+    /*
+    [self removeObserver:self forKeyPath:@"view.sizeView.sizeArray" ];
+    [self removeObserver:self forKeyPaths:@[@"sheet.ghostImageName",
+                                         @"sheet.ghostX",
+                                         @"sheet.ghostY",
+                                         @"sheet.ghostOpacity"]];
+     */
+}
 
 -(void)setController:(IUController *)controller{
     _controller = controller;

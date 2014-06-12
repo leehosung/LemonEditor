@@ -30,6 +30,11 @@
     [_classDocumentsArrayController addObserver:self forKeyPath:@"selection" options:0 context:nil];
 }
 
+- (void)dealloc{
+    //release 시점 확인용
+    assert(0);
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     NSString *prototypePath = [_controller keyPathFromControllerToProperty:@"prototypeClass"];
     IUClass* prototype = [self valueForKeyPath:prototypePath];

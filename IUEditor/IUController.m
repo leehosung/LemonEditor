@@ -37,7 +37,9 @@
     }
     return [super selection];
 }
-
+- (void) dealloc{
+    [self removeObserver:self forKeyPath:@"selectedObjects"];
+}
 -(void)copySelectedIUToPasteboard:(id)sender{
     pasteboard = [NSArray arrayWithArray:self.selectedObjects];
 }

@@ -50,10 +50,12 @@
     _fontController = [LMFontController sharedFontController];
     [_fontListDC bind:NSContentDictionaryBinding toObject:_fontController withKeyPath:@"fontDict" options:nil];
     [_fontB bind:NSContentBinding toObject:_fontListDC withKeyPath:@"arrangedObjects.key" options:IUBindingDictNotRaisesApplicable];
-
-    
 }
 
+- (void)dealloc{
+    //release 시점 확인용
+    assert(0);
+}
 - (void)unbindTextSpecificProperty{
     if([_fontB infoForBinding:NSValueBinding]){
         [_fontB unbind:NSValueBinding];

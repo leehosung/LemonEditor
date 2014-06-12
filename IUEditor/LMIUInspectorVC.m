@@ -170,6 +170,12 @@
     [_controller addObserver:self forKeyPath:@"selectedObjects" options:0 context:nil];
 }
 
+-(void)dealloc{
+    //release 시점 확인용
+    assert(0);
+    //[_controller removeObserver:self forKeyPath:@"selectedObjects"];
+}
+
 - (void)setResourceManager:(IUResourceManager *)resourceManager{
     _resourceManager = resourceManager;
     propertyIUImageVC.resourceManager = resourceManager;

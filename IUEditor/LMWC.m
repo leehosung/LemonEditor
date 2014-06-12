@@ -207,6 +207,11 @@
 
 }
 
+- (void)dealloc{
+    //release 시점 확인용
+    assert(0);
+}
+
 -(void)showLeftInspectorDidChange:(NSDictionary *)change{
     BOOL showLeftInspector = [[NSUserDefaults standardUserDefaults] boolForKey:@"showLeftInspector"];
     [_leftV setHidden:!showLeftInspector];

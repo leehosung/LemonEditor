@@ -40,6 +40,12 @@
     [_documentController bind:NSContentBinding toObject:self withKeyPath:@"project" options:nil];  
 }
 
+-(void)dealloc{
+    //release 시점 확인용
+    assert(0);
+    //[_documentController removeObserver:self forKeyPath:@"selection"];
+}
+
 -(void)selectionIndexPathsDidChange{
     JDTraceLog( @"selection");
 }

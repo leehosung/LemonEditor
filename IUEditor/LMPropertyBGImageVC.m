@@ -67,6 +67,12 @@
     
 }
 
+- (void)dealloc{
+    //release 시점 확인용
+    assert(0);
+  //  [self removeObserver:self forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagImage]];
+}
+
 - (void)controlTextDidChange:(NSNotification *)obj{
     for (IUImage *image in self.controller.selectedObjects) {
         if ([image isKindOfClass:[IUImage class]]) {

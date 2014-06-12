@@ -34,6 +34,9 @@
     [aCoder encodeFromObject:self withProperties:[[IUMovie class] properties]];
     
 }
+-(void)dealloc{
+    [self removeObserver:self forKeyPaths:@[@"enableControl", @"enableLoop", @"enableMute", @"enableAutoPlay",@"cover", @"altText", @"posterPath"]];
+}
 
 - (BOOL)shouldAddIUByUserInput{
     return NO;

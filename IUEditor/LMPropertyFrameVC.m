@@ -146,9 +146,11 @@
     [_xTF bind:@"enabled2" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"center"] options:bindingOption];
     [_pxTF bind:@"enabled2" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"center"] options:bindingOption];
     [_xUnitBtn bind:@"enabled2" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"center"] options:bindingOption];
-    
-    
+}
 
+- (void)dealloc{
+    //release 시점 확인용
+    assert(0);
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{

@@ -56,7 +56,9 @@
 }
 
 
-
+-(void)dealloc{
+    [self removeObserver:self forKeyPath:@"css.assembledTagDictionary.height"];
+}
 
 -(void)setCount:(NSInteger)count{
     

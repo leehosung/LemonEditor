@@ -46,6 +46,9 @@
     [aCoder encodeFromObject:self withProperties:[[IUFBLike class] properties]];
     
 }
+-(void) dealloc{
+    [self removeObserver:self forKeyPaths:@[@"showFriendsFace", @"likePage"]];
+}
 
 - (void)IUFBSourceContextDidChange:(NSDictionary *)change{
     NSString *showFaces;

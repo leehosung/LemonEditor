@@ -67,6 +67,11 @@
     [_leftInspectorBtn bind:@"state" toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"showLeftInspector" options:IUBindingDictNotRaisesApplicable];
     [_rightInspectorBtn bind:@"state" toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"showRightInspector" options:IUBindingDictNotRaisesApplicable];
 }
+-(void) dealloc{
+    //release 시점 확인용
+    assert(0);
+//    [self removeObserver:self forKeyPath:@"sheet.ghostImageName"];
+}
 
 - (void)document_ghostImageNameDidChange:(NSDictionary*)change{
     if ([[_ghostImageComboBox stringValue] isEqualToString:_sheet.ghostImageName] == NO) {
