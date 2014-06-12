@@ -87,12 +87,18 @@
     
 
     if ([JDFileUtil isImageFileExtension:[path pathExtension]]) {
-        IUResourceGroup *imageGroup = _rootGroup.childrenFiles[0];
-        IUResourceFile *imageFile = [imageGroup addResourceFileWithContentOfPath:path];
-        imageFile.originalFilePath = path;
+        [self willChangeValueForKey:@"imageAndVideoFiles"];
+        [self willChangeValueForKey:@"imageFiles"];
+        IUResourceGroup *group = _rootGroup.childrenFiles[0];
+        IUResourceFile *file = [group addResourceFileWithContentOfPath:path];
+        file.originalFilePath = path;
         [[[[NSApp mainWindow] windowController] document] saveDocument:self];
-        return imageFile;
-        [[NSNotificationCenter defaultCenter] postNotificationName:IUImageResourceDidChange object:self];
+
+        [self didChangeValueForKey:@"imageFiles"];
+        [self didChangeValueForKey:@"imageAndVideoFiles"];
+        
+
+        return file;
     }
     
     //if is is video,
@@ -100,9 +106,17 @@
     //send kvo message : videofiles
 
     else if ([JDFileUtil isMovieFileExtension:[path pathExtension]]) {
-        IUResourceGroup *movieGroup = _rootGroup.childrenFiles[1];
-        return [movieGroup addResourceFileWithContentOfPath:path];
-        [[NSNotificationCenter defaultCenter] postNotificationName:IUVideoResourceDidChange object:self];
+        [self willChangeValueForKey:@"imageAndVideoFiles"];
+        [self willChangeValueForKey:@"movieFiles"];
+        IUResourceGroup *group = _rootGroup.childrenFiles[1];
+        IUResourceFile *file = [group addResourceFileWithContentOfPath:path];
+        file.originalFilePath = path;
+        [self didChangeValueForKey:@"movieFiles"];
+        [self didChangeValueForKey:@"imageAndVideoFiles"];
+        
+        [[[[NSApp mainWindow] windowController] document] saveDocument:self];
+        
+        return file;
     }
     return nil;
 }

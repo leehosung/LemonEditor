@@ -12,6 +12,7 @@
 
 @implementation IUResourceFile{
     NSString *_name;
+    NSImage *_image;
 }
 
 
@@ -44,6 +45,7 @@
     if ([self.parent isKindOfClass:[IUProject class]]) {
         return [self.parent.absolutePath stringByAppendingPathComponent:_name];
     }
+    assert(self.parent.absolutePath);
     return [self.parent.absolutePath stringByAppendingPathComponent:_name];
 }
 
@@ -63,16 +65,27 @@
 }
 
 -(NSImage*)image{
-    NSImage *image;
-    NSString *pathExtension = [[_name pathExtension] lowercaseString];
-    if ([pathExtension isEqualToString:@"gif"] || [pathExtension isEqualToString:@"jpg"] ||
-        [pathExtension isEqualToString:@"png"] || [pathExtension isEqualToString:@"jpeg"]) {
-        image = [[NSImage alloc] initWithContentsOfFile:self.absolutePath];
+    if (_image == nil) {
+        NSImage *image;
+        NSString *pathExtension = [[_name pathExtension] lowercaseString];
+        if ([pathExtension isEqualToString:@"gif"] || [pathExtension isEqualToString:@"jpg"] ||
+            [pathExtension isEqualToString:@"png"] || [pathExtension isEqualToString:@"jpeg"]) {
+            if ([[NSFileManager defaultManager] fileExistsAtPath:self.absolutePath]) {
+                image = [[NSImage alloc] initWithContentsOfFile:self.absolutePath];
+            }
+            else {
+                image = [[NSImage alloc] initWithContentsOfFile:self.originalFilePath];
+            }
+        }
+        if ([pathExtension isEqualToString:@"mp4"]){
+            image = [NSImage imageNamed:@"tool_movie"];
+        }
+        _image = image;
+        return image;
     }
-    if ([pathExtension isEqualToString:@"mp4"]){
-        image = [NSImage imageNamed:@"tool_movie"];
+    else {
+        return _image;
     }
-    return image;
 }
 
 -(IUResourceType)type{
