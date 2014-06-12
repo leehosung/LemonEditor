@@ -10,7 +10,6 @@
 #import "IUProjectDocument.h"
 
 @implementation IUProjectController{
-    BOOL isNewProject;
 }
 
 - (void)awakeFromNib{
@@ -19,23 +18,14 @@
 
 
 - (id)makeUntitledDocumentOfType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
-    isNewProject = YES;
-    //NSURL *saveURL = [[JDFileUtil util] openSavePanelWithAllowFileTypes:@[typeName] withTitle:@"New IUProject"];
-//    id document = [super makeDocumentWithContentsOfURL:saveURL ofType:typeName error:nil];
     id document = [super makeUntitledDocumentOfType:typeName error:outError];
-    isNewProject = YES;
-//    [document saveDocument:self];
+    
+    NSURL *url = [[JDFileUtil util] openSavePanelWithAllowFileTypes:@[typeName] withTitle:@"IU New Project"];
+    [document saveToURL:url ofType:typeName forSaveOperation:NSSaveOperation delegate:nil didSaveSelector:nil contextInfo:nil];
     return document;
     
 }
 
-- (void)addDocument:(NSDocument *)document{
-    if(isNewProject){
-        [document saveDocument:self];
-        isNewProject = NO;
-    }
-    [super addDocument:document];
-}
 
 
 @end

@@ -92,7 +92,7 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
    
 }
 
-- (void)setFileURL:(NSURL *)fileURL{
+- (void)changeProjectPath:(NSURL *)fileURL{
     NSString *filePath = [fileURL relativePath];
     NSString *appName = [[fileURL lastPathComponent] stringByDeletingPathExtension];
     
@@ -102,16 +102,21 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
         _project.name = appName;
         _project.path = filePath;
         
-        if(isLoaded){
+        if(isLoaded && [self lemonWindowController]){
             [[self lemonWindowController] reloadCurrentDocument];
         }
         else{
             [[self lemonWindowController] selectFirstDocument];
         }
         
-
-//        [[self lemonWindowController].window setTitle:[NSString stringWithFormat:@"[%@] %@", [_project.className substringFromIndex:2], _project.path]];
+        
+        //        [[self lemonWindowController].window setTitle:[NSString stringWithFormat:@"[%@] %@", [_project.className substringFromIndex:2], _project.path]];
     }
+
+}
+
+- (void)setFileURL:(NSURL *)fileURL{
+    [self changeProjectPath:fileURL];
     
     [super setFileURL:fileURL];
 }
@@ -292,6 +297,9 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
 
 }
 
+- (void)saveNewDocumentWithURL:(NSURL *)url{
+    [self saveToURL:url ofType:[self fileType] forSaveOperation:NSSaveOperation delegate:nil didSaveSelector:nil contextInfo:nil];
+}
 
 - (void)saveDocumentWithDelegate:(id)delegate didSaveSelector:(SEL)didSaveSelector contextInfo:(void *)contextInfo{
     [super saveDocumentWithDelegate:delegate didSaveSelector:didSaveSelector contextInfo:contextInfo];
