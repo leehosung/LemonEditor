@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "IUController.h"
 
-@interface LMPropertyTextVC : NSViewController
+@interface LMPropertyTextVC : NSViewController <NSComboBoxDataSource>
 
 @property (nonatomic) _binding_ IUController      *controller;
 

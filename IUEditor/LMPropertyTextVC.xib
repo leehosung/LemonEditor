@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyTextVC">
@@ -10,6 +10,7 @@
                 <outlet property="fontColorWell" destination="EF9-cy-hVF" id="LtQ-n0-TiY"/>
                 <outlet property="fontListDC" destination="HyI-eC-WGG" id="aDA-tm-S9h"/>
                 <outlet property="fontSizeB" destination="nc6-kb-J7I" id="P78-EQ-Hrb"/>
+                <outlet property="fontSizeComboBox" destination="ZNa-jN-U2r" id="dzR-O6-asN"/>
                 <outlet property="fontSizeStepper" destination="G73-ed-fS4" id="MRx-n2-bZB"/>
                 <outlet property="fontStyleB" destination="uve-V4-Xm0" id="fuP-ac-K4F"/>
                 <outlet property="lineHeight" destination="T6Q-UK-fkM" id="8GY-DA-fMA"/>
@@ -197,16 +198,15 @@
                                     <constraint firstAttribute="width" constant="97" id="c9C-6G-Ngo"/>
                                     <constraint firstAttribute="height" constant="17" id="gas-vm-Kwn"/>
                                 </constraints>
-                                <comboBoxCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="12pt" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="oXY-lu-X4j">
+                                <comboBoxCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" usesDataSource="YES" numberOfVisibleItems="5" id="oXY-lu-X4j">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <objectValues>
-                                        <string>Item 1</string>
-                                        <string>Item 2</string>
-                                        <string>Item 3</string>
-                                    </objectValues>
                                 </comboBoxCell>
+                                <connections>
+                                    <outlet property="dataSource" destination="-2" id="9hE-Kp-fMi"/>
+                                    <outlet property="formatter" destination="2Xc-jP-M6t" id="Hcl-rX-xEo"/>
+                                </connections>
                             </comboBox>
                         </subviews>
                     </view>
@@ -268,6 +268,9 @@
                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
             </textFieldCell>
         </textField>
+        <numberFormatter formatterBehavior="custom10_4" positiveFormat="# 'pt'" numberStyle="currency" allowsFloats="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="309" decimalSeparator="." groupingSeparator="," id="2Xc-jP-M6t">
+            <real key="minimum" value="0.0"/>
+        </numberFormatter>
     </objects>
     <resources>
         <image name="align_center" width="10" height="7"/>

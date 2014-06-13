@@ -11,12 +11,12 @@
 #import "IUText.h"
 #import "LMFontController.h"
 
-
 @interface LMPropertyTextVC ()
 
 @property (weak) IBOutlet NSComboBox *fontB;
-@property (weak) IBOutlet NSTextField *fontSizeB;
-@property (weak) IBOutlet NSStepper *fontSizeStepper;
+//@property (weak) IBOutlet NSTextField *fontSizeB;
+//@property (weak) IBOutlet NSStepper *fontSizeStepper;
+@property (weak) IBOutlet NSComboBox *fontSizeComboBox;
 @property (weak) IBOutlet NSColorWell *fontColorWell;
 
 @property (weak) IBOutlet NSSegmentedControl *fontStyleB;
@@ -26,14 +26,20 @@
 @property LMFontController *fontController;
 @property (strong) IBOutlet NSDictionaryController *fontListDC;
 
+@property NSArray *fontDefaultSizes;
+
 @end
 
-@implementation LMPropertyTextVC
+@implementation LMPropertyTextVC{
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        self.fontDefaultSizes = @[@(6), @(8), @(9), @(10), @(11), @(12),
+                                  @(14), @(18), @(21), @(24), @(30), @(36), @(48), @(60), @(72)];
+        
     }
     return self;
 }
@@ -60,12 +66,17 @@
     if([_fontB infoForBinding:NSValueBinding]){
         [_fontB unbind:NSValueBinding];
     }
+    if([_fontSizeComboBox infoForBinding:NSValueBinding]){
+        [_fontSizeComboBox unbind:NSValueBinding];
+    }
+    /*
     if([_fontSizeB infoForBinding:NSValueBinding]){
         [_fontSizeB unbind:NSValueBinding];
     }
     if([_fontSizeStepper infoForBinding:NSValueBinding]){
         [_fontSizeStepper unbind:NSValueBinding];
     }
+     */
     if([_fontColorWell infoForBinding:NSValueBinding]){
         [_fontColorWell unbind:NSValueBinding];
     }
@@ -93,8 +104,7 @@
         [_fontStyleB setEnabled:YES];
 
         [_fontB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToTextCSSProperty:@"fontName"] options:IUBindingDictNotRaisesApplicable];
-        [_fontSizeB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToTextCSSProperty:@"fontSize"] options:IUBindingDictNotRaisesApplicable];
-        [_fontSizeStepper bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToTextCSSProperty:@"fontSize"] options:IUBindingDictNotRaisesApplicable];
+        [_fontSizeComboBox bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToTextCSSProperty:@"fontSize"] options:IUBindingDictNotRaisesApplicable];
         [_fontColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToTextCSSProperty:@"fontColor"] options:IUBindingDictNotRaisesApplicable];
         
         
@@ -115,8 +125,7 @@
         [_fontStyleB setEnabled:NO];
 
         [_fontB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagFontName] options:IUBindingDictNotRaisesApplicable];
-        [_fontSizeB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagFontSize] options:IUBindingDictNotRaisesApplicable];
-        [_fontSizeStepper bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagFontSize] options:IUBindingDictNotRaisesApplicable];
+        [_fontSizeComboBox bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagFontSize] options:IUBindingDictNotRaisesApplicable];
         [_fontColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagFontColor] options:IUBindingDictNotRaisesApplicable];
         
     }
@@ -135,6 +144,16 @@
     value = [sender isSelectedForSegment:2];
     [self setValue:@(value) forKeyPath:[_controller keyPathFromControllerToTextCSSProperty:@"underline"]];
     
+}
+
+#pragma mark -
+#pragma mark combobox dataSource
+
+- (NSInteger)numberOfItemsInComboBox:(NSComboBox *)aComboBox{
+    return _fontDefaultSizes.count;
+}
+- (id)comboBox:(NSComboBox *)categoryCombo objectValueForItemAtIndex:(NSInteger)row {
+    return [_fontDefaultSizes objectAtIndex:row];
 }
 
 @end
