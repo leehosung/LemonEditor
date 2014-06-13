@@ -113,6 +113,9 @@
                                         <string>2.0</string>
                                     </objectValues>
                                 </comboBoxCell>
+                                <connections>
+                                    <action selector="clickLineHeightComboBox:" target="-2" id="M2K-JH-q3F"/>
+                                </connections>
                             </comboBox>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uve-V4-Xm0">
                                 <rect key="frame" x="182" y="10" width="77" height="21"/>

@@ -20,6 +20,7 @@
     IUTextController *controller = [_textController copy];
     controller.textDelegate = textIU;
     textIU.textController = controller;
+    textIU.lineHeightAuto = _lineHeightAuto;
     
     return textIU;
 }
@@ -29,6 +30,7 @@
     if(self){
         _textController = [[IUTextController alloc] init];
         _textController.textDelegate = self;
+        _lineHeightAuto = YES;
 
     }
     return self;
@@ -39,6 +41,7 @@
     if(self){
         _textController = [aDecoder decodeObjectForKey:@"textController"];
         _textController.textDelegate = self;
+        _lineHeightAuto = [[aDecoder decodeObjectForKey:@"lineHeightAuto"] boolValue];
 
     }
     return self;
@@ -47,6 +50,7 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder{
     [super encodeWithCoder:aCoder];
     [aCoder encodeObject:self.textController forKey:@"textController"];
+    [aCoder encodeObject:@(self.lineHeightAuto) forKey:@"lineHeightAuto"];
 
 }
 
@@ -128,6 +132,11 @@
 
 - (NSString*)identifierForTextController{
     return self.htmlID;
+}
+
+- (void)setLineHeightAuto:(BOOL)lineHeightAuto{
+    _lineHeightAuto = lineHeightAuto;
+    [self updateHTML];
 }
 
 @end

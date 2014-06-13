@@ -145,6 +145,18 @@
     [self setValue:@(value) forKeyPath:[_controller keyPathFromControllerToTextCSSProperty:@"underline"]];
     
 }
+- (IBAction)clickLineHeightComboBox:(id)sender {
+    NSString *lineHeightStr = [sender stringValue];
+    if([_controller.selection respondsToSelector:@selector(setLineHeightAuto:)]){
+        
+        if([lineHeightStr isEqualToString:@"Auto"]){
+            [_controller.selection setLineHeightAuto:YES];
+        }
+        else{
+            [_controller.selection setLineHeightAuto:NO];
+        }
+    }
+}
 
 #pragma mark -
 #pragma mark combobox dataSource

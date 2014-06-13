@@ -1206,6 +1206,7 @@ static NSString * IUCompilerTagOption = @"tag";
             
             value = cssTagDict[IUCSSTagLineHeight];
             if(value){
+                /*
                 if([value isEqualToString:@"Auto"]== YES)
                 {
                     if([obj isKindOfClass:[IUText class]]){
@@ -1227,7 +1228,8 @@ static NSString * IUCompilerTagOption = @"tag";
 
                     }
                 }
-                else {
+                 */
+                if([value isEqualToString:@"Auto"]== NO){
                     [dict putTag:@"line-height" floatValue:[value floatValue] ignoreZero:YES unit:IUCSSUnitNone];
                 }
             }
@@ -1385,6 +1387,13 @@ static NSString * IUCompilerTagOption = @"tag";
                 [retString appendFormat:@" alt='%@'", iuImage.altText];
             }
         }
+    }
+#pragma mark IUText
+    if( [iu isKindOfClass:[IUText class]] ){
+        if(((IUText *)iu).lineHeightAuto){
+            [retString appendString:@" autoLineHeight='1'"];
+        }
+
     }
 #pragma mark IUWebMovie
     else if([iu isKindOfClass:[IUWebMovie class]]){
