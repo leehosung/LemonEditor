@@ -11,6 +11,7 @@
 
 @implementation IUProjectController{
     BOOL isSaved;
+    NSDictionary *newDocumentOption;
 }
 
 
@@ -18,9 +19,16 @@
     isSaved = NO;
     [super newDocument:sender];
 }
+
+- (void)newDocument:(id)sender withOption:(NSDictionary *)option{
+    newDocumentOption = option;
+    [self newDocument:sender];
+}
+
 - (void)openDocument:(id)sender{
     [super openDocument:sender];
 }
+
 - (id)openUntitledDocumentAndDisplay:(BOOL)displayDocument error:(NSError *__autoreleasing *)outError{
     id document = [self makeUntitledDocumentOfType:[self defaultType] error:outError];
     [self addDocument:document];
@@ -38,7 +46,8 @@
     if(document){
         NSURL *url = [self fileURLForNewDocumentOfType:typeName];
         if(url != nil){
-            [(IUProjectDocument *)document makeNewProjectAtURL:url];
+            [(IUProjectDocument *)document makeNewProjectWithOption:newDocumentOption URL:url];
+            newDocumentOption = nil;
             [document saveToURL:url ofType:typeName forSaveOperation:NSSaveOperation delegate:nil didSaveSelector:nil contextInfo:nil];
             isSaved = YES;
         }
@@ -66,6 +75,10 @@
     }
     return nil;
     
+}
+
+- (void)openDocumentWithContentsOfURL:(NSURL *)url display:(BOOL)displayDocument completionHandler:(void (^)(NSDocument *, BOOL, NSError *))completionHandler{
+    [super openDocumentWithContentsOfURL:url display:displayDocument completionHandler:completionHandler];
 }
 
 //TODO : open last Document

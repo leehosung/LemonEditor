@@ -10,6 +10,7 @@
 #import "JDFileUtil.h"
 #import "IUDjangoProject.h"
 #import "LMAppDelegate.h"
+#import "IUProjectController.h"
 
 @interface LMStartNewDjangoVC ()
 
@@ -38,17 +39,13 @@
 }
 
 - (void)pressNextB{
-    assert(0);
-    /*
-    NSDictionary *dictionary = @{IUProjectKeyGit: @(NO),
-                                 IUProjectKeyAppName: @"gallery",
+    
+    NSDictionary *options = @{   IUProjectKeyGit: @(NO),
                                  IUProjectKeyHeroku: @(NO),
-                                 IUProjectKeyDirectory: [@"~/IUProjTemp" stringByExpandingTildeInPath]};
-    IUProject *project = [IUDjangoProject createProject:dictionary error:nil];
-    LMAppDelegate *appDelegate = [NSApp delegate];
-//    [appDelegate loadDocument:project.path];
-    [self.view.window close];
-     */
+                                 IUProjectKeyType:@(IUProjectTypeDjango),
+                                 };
+    
+    [(IUProjectController *)[NSDocumentController sharedDocumentController] newDocument:self withOption:options];
 }
 
 

@@ -11,6 +11,7 @@
 #import "IUProject.h"
 #import "LMAppDelegate.h"
 #import "LMWC.h"
+#import "IUProjectController.h"
 
 @interface LMStartNewDefaultVC ()
 @property (weak) IBOutlet NSTextField *defaultNewAppName;
@@ -32,34 +33,14 @@
 
 
 - (void)pressNextB{
-    assert(0);
-    /*
-    NSError *error;
-    
-    NSString *appName;
-    appName = [_defaultNewAppName stringValue];
-    NSString *appDir = [[[JDFileUtil util] openDirectoryByNSOpenPanel:@"select directory for project"] path];
-    if(appDir == nil || [appName stringByTrim].length == 0){ //cancel
-        return;
-    }
-    //git, heroku는 막아놓음
-    NSDictionary *options = @{   IUProjectKeyGit: @(NO),
-                                 IUProjectKeyAppName: appName,
-                                 IUProjectKeyHeroku: @(NO),
-                                 IUProjectKeyDirectory: appDir};
-    
-    IUProject *project = [[IUProject alloc] initWithCreation:options error:&error];
-    
-    if (error != nil) {
-        assert(0);
-    }
-    
-    LMWC *wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
-    [wc showWindow:self];
-//    [wc loadProject:project.path];
-    
     [self.view.window close];
-    */
+    
+    NSDictionary *options = @{  IUProjectKeyGit: @(NO),
+                                IUProjectKeyHeroku: @(NO),
+                                IUProjectKeyType:@(IUProjectTypeDefault),
+                                };
+    
+    [(IUProjectController *)[NSDocumentController sharedDocumentController] newDocument:self withOption:options];
 }
 
 

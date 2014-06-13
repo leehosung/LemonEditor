@@ -111,6 +111,14 @@
     _compiler.resourceManager = _resourceManager;
     _identifierManager = [[IUIdentifierManager alloc] init];
     
+    assert(options[IUProjectKeyAppName]);
+    assert(options[IUProjectKeyPath]);
+    
+    self.name = [options objectForKey:IUProjectKeyAppName];
+    self.path = [options objectForKey:IUProjectKeyPath];
+    
+
+    
     _buildPath = @"build";
     _pageGroup = [[IUSheetGroup alloc] init];
     _pageGroup.name = @"Pages";
@@ -153,6 +161,23 @@
     IUProject *project = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
     project.path = path;
     return project;
+}
+
++ (NSString *)stringProjectType:(IUProjectType)type{
+    NSString *projectName ;
+    switch (type) {
+        case IUProjectTypeDefault:
+            projectName = @"IUProject";
+            break;
+        case IUProjectTypeDjango:
+            projectName = @"IUDjangoProject";
+            break;
+        case IUProjectTypePresentation:
+            projectName = @"IUPresentationProject";
+        default:
+            break;
+    }
+    return projectName;
 }
 
 - (NSString*)directoryPath{

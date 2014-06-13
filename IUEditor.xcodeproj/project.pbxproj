@@ -1425,6 +1425,34 @@
 			name = icon;
 			sourceTree = "<group>";
 		};
+		3D97D44E194ABF0100826280 /* StartProjectWindow */ = {
+			isa = PBXGroup;
+			children = (
+				690A8264190A23F500DDBA86 /* LMStartWC.h */,
+				690A8265190A23F500DDBA86 /* LMStartWC.m */,
+				690A8266190A23F500DDBA86 /* LMStartWC.xib */,
+				69D79B2B19138CB80020608D /* LMStartNewVC.h */,
+				69D79B2C19138CB80020608D /* LMStartNewVC.m */,
+				69D79B2D19138CB80020608D /* LMStartNewVC.xib */,
+				69D79B3A19138FC60020608D /* LMStartNewDefaultVC.h */,
+				69D79B3B19138FC60020608D /* LMStartNewDefaultVC.m */,
+				69D79B3C19138FC60020608D /* LMStartNewDefaultVC.xib */,
+				CB9BD6351914DC62002C9369 /* LMStartNewDjangoVC.h */,
+				CB9BD6361914DC62002C9369 /* LMStartNewDjangoVC.m */,
+				CB9BD6371914DC62002C9369 /* LMStartNewDjangoVC.xib */,
+				CB9BD63A1914DE23002C9369 /* LMStartNewPresentationVC.h */,
+				CB9BD63B1914DE23002C9369 /* LMStartNewPresentationVC.m */,
+				CB9BD63C1914DE23002C9369 /* LMStartNewPresentationVC.xib */,
+				69D79B3019138CC60020608D /* LMStartRecentVC.h */,
+				69D79B3119138CC60020608D /* LMStartRecentVC.m */,
+				69D79B3219138CC60020608D /* LMStartRecentVC.xib */,
+				69D79B3519138CDC0020608D /* LMStartTemplateVC.h */,
+				69D79B3619138CDC0020608D /* LMStartTemplateVC.m */,
+				69D79B3719138CDC0020608D /* LMStartTemplateVC.xib */,
+			);
+			name = StartProjectWindow;
+			sourceTree = "<group>";
+		};
 		3DA416BA1935AB9400559028 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -2197,6 +2225,7 @@
 		69C575B018D6F61E0016F050 /* IUEditor */ = {
 			isa = PBXGroup;
 			children = (
+				3D97D44E194ABF0100826280 /* StartProjectWindow */,
 				3D33BACC1935A4BF00DA4F4A /* Preference */,
 				3DB3ACE918EBEFCF0046DFB7 /* IULib */,
 				69757AD218D95BB10095CBAC /* JD */,
@@ -2210,27 +2239,6 @@
 				69C575C218D6F61E0016F050 /* Images.xcassets */,
 				69C575B118D6F61E0016F050 /* Supporting Files */,
 				69D5B69018F2675C00E9FB11 /* IUCompilerResourceSource.h */,
-				690A8264190A23F500DDBA86 /* LMStartWC.h */,
-				690A8265190A23F500DDBA86 /* LMStartWC.m */,
-				690A8266190A23F500DDBA86 /* LMStartWC.xib */,
-				69D79B2B19138CB80020608D /* LMStartNewVC.h */,
-				69D79B2C19138CB80020608D /* LMStartNewVC.m */,
-				69D79B2D19138CB80020608D /* LMStartNewVC.xib */,
-				69D79B3A19138FC60020608D /* LMStartNewDefaultVC.h */,
-				69D79B3B19138FC60020608D /* LMStartNewDefaultVC.m */,
-				69D79B3C19138FC60020608D /* LMStartNewDefaultVC.xib */,
-				CB9BD6351914DC62002C9369 /* LMStartNewDjangoVC.h */,
-				CB9BD6361914DC62002C9369 /* LMStartNewDjangoVC.m */,
-				CB9BD6371914DC62002C9369 /* LMStartNewDjangoVC.xib */,
-				CB9BD63A1914DE23002C9369 /* LMStartNewPresentationVC.h */,
-				CB9BD63B1914DE23002C9369 /* LMStartNewPresentationVC.m */,
-				CB9BD63C1914DE23002C9369 /* LMStartNewPresentationVC.xib */,
-				69D79B3019138CC60020608D /* LMStartRecentVC.h */,
-				69D79B3119138CC60020608D /* LMStartRecentVC.m */,
-				69D79B3219138CC60020608D /* LMStartRecentVC.xib */,
-				69D79B3519138CDC0020608D /* LMStartTemplateVC.h */,
-				69D79B3619138CDC0020608D /* LMStartTemplateVC.m */,
-				69D79B3719138CDC0020608D /* LMStartTemplateVC.xib */,
 			);
 			path = IUEditor;
 			sourceTree = "<group>";

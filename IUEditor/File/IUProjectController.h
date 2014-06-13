@@ -10,4 +10,7 @@
 
 @interface IUProjectController : NSDocumentController
 
+//option - project type & project option
+- (void)newDocument:(id)sender withOption:(NSDictionary *)option;
+
 @end

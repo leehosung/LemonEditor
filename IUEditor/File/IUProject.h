@@ -18,13 +18,19 @@ typedef enum _IUGitType{
     IUGitTypeOutput = 2
 } IUGitType;
 
+typedef enum {
+    IUProjectTypeDefault,
+    IUProjectTypeDjango,
+    IUProjectTypePresentation,
+} IUProjectType;
 
 
 //setting
+static NSString * IUProjectKeyType = @"projectType";
 static NSString * IUProjectKeyGit = @"git";
 static NSString * IUProjectKeyAppName = @"appName";
 static NSString * IUProjectKeyHeroku = @"heroku";
-static NSString * IUProjectKeyDirectory = @"dir";
+static NSString * IUProjectKeyPath= @"path";
 
 @interface IUProject : NSObject <IUFile, IUResourcePathProtocol>{
     IUSheetGroup *_pageGroup;
@@ -43,6 +49,7 @@ static NSString * IUProjectKeyDirectory = @"dir";
 
 //create project
 + (id)projectWithContentsOfPath:(NSString*)path;
++ (NSString *)stringProjectType:(IUProjectType)type;
 
 /**
  @breif create project

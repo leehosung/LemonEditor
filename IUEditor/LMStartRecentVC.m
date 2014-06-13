@@ -8,6 +8,7 @@
 
 #import "LMStartRecentVC.h"
 #import "LMAppDelegate.h"
+#import "IUProjectController.h"
 
 @interface LMStartRecentVC ()
 
@@ -48,14 +49,15 @@
 }
 
 - (void)pressNextB{
-    assert(0);
-    /*
-    LMAppDelegate *appDelegate = [NSApp delegate];
+    
+
+    
     NSUInteger index = [self.selectedIndexes firstIndex];
     NSDictionary *selectedDictionary = [_recentDocs objectAtIndex:index];
-//    [appDelegate loadDocument:selectedDictionary[@"path"]];
+    NSString *path = selectedDictionary[@"path"];
+    [(IUProjectController *)[NSDocumentController sharedDocumentController] openDocumentWithContentsOfURL:[NSURL fileURLWithPath:path] display:YES completionHandler:nil];
+    
     [self.view.window close];
-     */
 }
 
 -(NSMutableDictionary *)projectDictWithPath: (NSString*)path{

@@ -14,7 +14,7 @@
 
 @property IUProject *project;
 
-- (BOOL)makeNewProjectAtURL:(NSURL *)url;
+- (BOOL)makeNewProjectWithOption:(NSDictionary *)option URL:(NSURL *)url;
 - (LMWC *)lemonWindowController;
 
 @end

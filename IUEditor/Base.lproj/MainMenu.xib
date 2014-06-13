@@ -147,11 +147,6 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Project" id="lXh-Vg-hj8">
                         <items>
-                            <menuItem title="Create Project" keyEquivalent="n" id="oqD-6b-bKY">
-                                <connections>
-                                    <action selector="newDocument:" target="-1" id="K0d-Ct-Slv"/>
-                                </connections>
-                            </menuItem>
                             <menuItem title="Run Project" id="zNy-4M-j9o">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>

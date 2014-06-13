@@ -54,6 +54,7 @@
 }
 
 - (IBAction)convertDjango:(id)sender{
+    /*
     NSDictionary *setting = @{IUProjectKeyDirectory: _targetProjectDirectory};
     NSError *err;
     assert(_currentProject);
@@ -65,6 +66,7 @@
     else {
         assert(0);
     }
+     */
 }
 - (IBAction)pressSelectProjectDirectory:(id)sender {
     NSURL *url = [[JDFileUtil util] openDirectoryByNSOpenPanel];

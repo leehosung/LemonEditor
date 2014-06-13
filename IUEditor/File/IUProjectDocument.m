@@ -58,20 +58,36 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
     return self;
 }
 
-- (BOOL)makeNewProjectAtURL:(NSURL *)url{
-    NSDictionary *dict = @{IUProjectKeyGit: @(NO),
-                           IUProjectKeyHeroku: @(NO),
-                           };
+- (BOOL)makeNewProjectWithOption:(NSDictionary *)option URL:(NSURL *)url{
+    
+    NSMutableDictionary *projectDict;
+    IUProjectType projectType;
+    if(option){
+        projectDict = [option mutableCopy];
+        projectType = [[option objectForKey:IUProjectKeyType] intValue];
+        [projectDict removeObjectForKey:IUProjectKeyType];
+    }
+    else{
+        projectType = IUProjectTypeDefault;
+        projectDict = [NSMutableDictionary dictionary];
+        [projectDict setObject:@(NO) forKey:IUProjectKeyGit];
+        [projectDict setObject:@(NO) forKey:IUProjectKeyHeroku];
+    }
+    
+    NSString *filePath = [url relativePath];
+    NSString *appName = [[url lastPathComponent] stringByDeletingPathExtension];
+    
+    [projectDict setObject:filePath forKey:IUProjectKeyPath];
+    [projectDict setObject:appName forKey:IUProjectKeyAppName];
     
     NSError *error;
 
-    IUProject *newProject = [[IUProject alloc] initWithCreation:dict error:&error];
+    IUProject *newProject = [[NSClassFromString([IUProject stringProjectType:projectType]) alloc] initWithCreation:projectDict error:&error];
     if (error != nil) {
         assert(0);
     }
     if(newProject){
         _project = newProject;
-        [self changeProjectPath:url];
         return YES;
     }
     return NO;
