@@ -1260,7 +1260,7 @@ static NSString * IUCompilerTagOption = @"tag";
                         alignText = @"right";
                         break;
                     case IUAlignJustify:
-                        alignText = @"stretch";
+                        alignText = @"justify";
                         break;
                     default:
                         JDErrorLog(@"no align type");
