@@ -362,7 +362,7 @@
         [stackVC setSheet:_selectedNode];
         [canvasVC setSheet:_selectedNode];
         [bottomToolbarVC setSheet:_selectedNode];
-//        [topToolbarVC setDocumentNode:document];
+        [topToolbarVC setSheet:_selectedNode];
         
         //save for debug
         /*
