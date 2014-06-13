@@ -268,25 +268,24 @@
         
         [_project copyResourceForDebug];
         
-        
-        
-        // vc setting
-        //construct to file navi
-//        canvasVC.documentBasePath = _project.path;
-        canvasVC.resourceManager = _project.resourceManager;
-        fileNaviVC.project = _project;
-        assert(widgetLibraryVC.project == nil);
-        widgetLibraryVC.project = _project;
-        resourceVC.manager = _project.resourceManager;
-        appearanceVC.resourceManager = _project.resourceManager;
-        
+        //vc setting
         
         //construct widget library vc
-        [widgetLibraryVC setProject:_project];
         NSString *widgetFilePath = [[NSBundle mainBundle] pathForResource:@"widgetForDefault" ofType:@"plist"];
         NSArray *availableWidgetProperties = [NSArray arrayWithContentsOfFile:widgetFilePath];
         [widgetLibraryVC setWidgetProperties:availableWidgetProperties];
+        
+        //set project
+        fileNaviVC.project = _project;
+        widgetLibraryVC.project = _project;
+        [widgetLibraryVC setProject:_project];
+
+        //set ResourceManager
+        canvasVC.resourceManager = _project.resourceManager;
+        resourceVC.manager = _project.resourceManager;
+        appearanceVC.resourceManager = _project.resourceManager;
         iuInspectorVC.resourceManager = _project.resourceManager;
+        bottomToolbarVC.resourceManager = _project.resourceManager;
         
     }
 }
