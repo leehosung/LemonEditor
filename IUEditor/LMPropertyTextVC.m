@@ -71,11 +71,25 @@
     }
 }
 
+- (BOOL)isSelectedObjectText{
+    BOOL isText = YES;
+    
+    for(IUBox *box in _controller.selectedObjects){
+        if([box isKindOfClass:[IUText class]] == NO){
+            isText = NO;
+            break;
+        }
+    }
+    
+    return isText;
+    
+}
+
 - (void)selectionContextDidChange:(NSDictionary *)change{
     
     [self unbindTextSpecificProperty];
     
-    if( [_controller.selection isKindOfClass:[IUText class]]){
+    if([self isSelectedObjectText]){
         [_fontStyleB setEnabled:YES];
 
         [_fontB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToTextCSSProperty:@"fontName"] options:IUBindingDictNotRaisesApplicable];
@@ -84,14 +98,16 @@
         [_fontColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToTextCSSProperty:@"fontColor"] options:IUBindingDictNotRaisesApplicable];
         
         
-        BOOL weight = ((IUText *)_controller.selection).textController.bold;
-        [_fontStyleB setSelected:weight forSegment:0];
-        
-        BOOL italic = ((IUText *)_controller.selection).textController.italic;
-        [_fontStyleB setSelected:italic forSegment:1];
-        
-        BOOL underline = ((IUText *)_controller.selection).textController.underline;
-        [_fontStyleB setSelected:underline forSegment:2];
+        if([[_controller selectedObjects] count] ==1 ){
+            BOOL weight = ((IUText *)_controller.selection).textController.bold;
+            [_fontStyleB setSelected:weight forSegment:0];
+            
+            BOOL italic = ((IUText *)_controller.selection).textController.italic;
+            [_fontStyleB setSelected:italic forSegment:1];
+            
+            BOOL underline = ((IUText *)_controller.selection).textController.underline;
+            [_fontStyleB setSelected:underline forSegment:2];
+        }
 
     }
     else{
