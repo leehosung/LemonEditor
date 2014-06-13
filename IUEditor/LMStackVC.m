@@ -173,12 +173,13 @@
                     newIndex = 0 ;
                 }
                 [iu.parent removeIU:iu];
-                
+                [self.sheet.project.identifierManager registerIUs:@[iu]];                
                 //we remove position tag. if not, iu will be invisible to new position
                 [iu.css eradicateTag:IUCSSTagX];
                 [iu.css eradicateTag:IUCSSTagY];
                 
                 [newParent insertIU:iu atIndex:newIndex error:nil];
+
             }
         }
         [_IUController rearrangeObjects];

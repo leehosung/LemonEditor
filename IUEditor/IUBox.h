@@ -110,7 +110,18 @@ typedef enum _IUPositionType{
 
 -(BOOL)insertIU:(IUBox *)iu atIndex:(NSInteger)index  error:(NSError**)error;
 -(BOOL)addIU:(IUBox *)iu error:(NSError**)error;
+
+/**
+ removeIUAtIndex:
+ @note removeIUAtIndex: uses removeIU: as implementation.
+        unregister identifier automatically.
+ */
 -(BOOL)removeIUAtIndex:(NSUInteger)index;
+
+/**
+ removeIU:
+ @note unregister identifier automatically.
+ */
 -(BOOL)removeIU:(IUBox *)iu;
 -(BOOL)shouldRemoveIUByUserInput;
 -(BOOL)changeIUIndex:(IUBox*)iu to:(NSUInteger)index error:(NSError**)error;
