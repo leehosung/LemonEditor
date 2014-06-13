@@ -36,7 +36,7 @@
                                     <constraint firstAttribute="width" constant="157" id="p6e-lx-pfL"/>
                                     <constraint firstAttribute="height" constant="14" id="sQe-KZ-OfY"/>
                                 </constraints>
-                                <buttonCell key="cell" type="check" title="Change BG Image Position" bezelStyle="regularSquare" imagePosition="left" controlSize="small" inset="2" id="3iR-2x-uQb">
+                                <buttonCell key="cell" type="check" title="Change Image Position" bezelStyle="regularSquare" imagePosition="left" controlSize="small" inset="2" id="3iR-2x-uQb">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
@@ -67,7 +67,7 @@
                                     <constraint firstAttribute="width" constant="41" id="Al6-SW-sYg"/>
                                     <constraint firstAttribute="height" constant="17" id="pvg-G7-DFz"/>
                                 </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="bgX" id="7Nc-H5-G6s">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="X" id="7Nc-H5-G6s">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -99,7 +99,7 @@
                                     <constraint firstAttribute="width" constant="29" id="WKo-V0-uKG"/>
                                     <constraint firstAttribute="height" constant="17" id="agy-8d-atU"/>
                                 </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="bgY" id="fv2-vw-yHD">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Y" id="fv2-vw-yHD">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -111,7 +111,7 @@
                                     <constraint firstAttribute="width" constant="115" id="UQd-HF-aJ7"/>
                                     <constraint firstAttribute="height" constant="14" id="epa-IW-PVH"/>
                                 </constraints>
-                                <buttonCell key="cell" type="check" title="Change BG Color" bezelStyle="regularSquare" imagePosition="left" controlSize="small" inset="2" id="Uo9-5f-Jq8">
+                                <buttonCell key="cell" type="check" title="Change Color" bezelStyle="regularSquare" imagePosition="left" controlSize="small" inset="2" id="Uo9-5f-Jq8">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
