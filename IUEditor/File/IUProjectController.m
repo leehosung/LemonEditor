@@ -13,13 +13,13 @@
     BOOL isSaved;
 }
 
-- (void)awakeFromNib{
-    
-}
 
 - (void)newDocument:(id)sender{
     isSaved = NO;
     [super newDocument:sender];
+}
+- (void)openDocument:(id)sender{
+    [super openDocument:sender];
 }
 - (id)openUntitledDocumentAndDisplay:(BOOL)displayDocument error:(NSError *__autoreleasing *)outError{
     id document = [self makeUntitledDocumentOfType:[self defaultType] error:outError];
@@ -66,6 +66,16 @@
     }
     return nil;
     
+}
+
+//TODO : open last Document
+
+- (void)reopenDocumentForURL:(NSURL *)urlOrNil withContentsOfURL:(NSURL *)contentsURL display:(BOOL)displayDocument completionHandler:(void (^)(NSDocument *, BOOL, NSError *))completionHandler{
+    [super reopenDocumentForURL:urlOrNil withContentsOfURL:contentsURL display:displayDocument completionHandler:completionHandler];
+}
+
+- (id)makeDocumentForURL:(NSURL *)urlOrNil withContentsOfURL:(NSURL *)contentsURL ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
+    return [super makeDocumentForURL:urlOrNil withContentsOfURL:contentsURL ofType:typeName error:outError];
 }
 
 

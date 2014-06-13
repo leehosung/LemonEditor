@@ -46,7 +46,7 @@
                                  IUProjectKeyDirectory: [@"~/IUProjTemp" stringByExpandingTildeInPath]};
     IUProject *project = [IUDjangoProject createProject:dictionary error:nil];
     LMAppDelegate *appDelegate = [NSApp delegate];
-    [appDelegate loadDocument:project.path];
+//    [appDelegate loadDocument:project.path];
     [self.view.window close];
      */
 }

@@ -64,37 +64,14 @@
     [startWC showWindow:self];
 }
 
-#if 0
-- (void)openDocument:(id)sender{
-    NSString *value;
-    if ([sender isKindOfClass:[NSMenuItem class]]) {
-        value = [[[JDFileUtil util] openFileByNSOpenPanel] path];
-    }
-    else {
-        value = [[NSUserDefaults standardUserDefaults] valueForKey:@"lastDocument"];
-        if(value==nil){
-            //open new document
-            [self newDocument:self];
-            //return;
-        }
-    }
-    
-    LMWC *wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
-    [wc showWindow:self];
-    [wc loadProject:value];
-}
-
-- (void)loadDocument:(NSString*)path{
-    LMWC *wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
-    [wc showWindow:self];
-    [wc loadProject:path];
-}
-
-#endif
-
+/*
+ //사용하고 싶으면 openFile을  직접 열어줘야함.
+ 그냥 return 시키면 fileopen안됨.
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename{
+    [super application:theApplication openFile:(NSString *)filename];
     return YES;
 }
+*/
 
 - (IBAction)openPreference:(id)sender {
      preferenceWC = [[LMPreferenceWC alloc] initWithWindowNibName:@"LMPreferenceWC"];
@@ -143,6 +120,35 @@
     LMWC *wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
     [wc showWindow:self];
     [wc loadProject:project.path];
+}
+
+#endif
+
+
+#if 0
+- (void)openDocument:(id)sender{
+    NSString *value;
+    if ([sender isKindOfClass:[NSMenuItem class]]) {
+        value = [[[JDFileUtil util] openFileByNSOpenPanel] path];
+    }
+    else {
+        value = [[NSUserDefaults standardUserDefaults] valueForKey:@"lastDocument"];
+        if(value==nil){
+            //open new document
+            [self newDocument:self];
+            //return;
+        }
+    }
+    
+    LMWC *wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
+    [wc showWindow:self];
+    [wc loadProject:value];
+}
+
+- (void)loadDocument:(NSString*)path{
+    LMWC *wc = [[LMWC alloc] initWithWindowNibName:@"LMWC"];
+    [wc showWindow:self];
+    [wc loadProject:path];
 }
 
 #endif

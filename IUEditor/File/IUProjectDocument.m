@@ -45,6 +45,10 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
     return self;
 }
 
+- (id)initForURL:(NSURL *)urlOrNil withContentsOfURL:(NSURL *)contentsURL ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
+    return [super initForURL:urlOrNil withContentsOfURL:contentsURL ofType:typeName error:outError];
+}
+
 
 - (id)initWithType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
     self = [super initWithType:typeName error:outError];

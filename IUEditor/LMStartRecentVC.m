@@ -53,7 +53,7 @@
     LMAppDelegate *appDelegate = [NSApp delegate];
     NSUInteger index = [self.selectedIndexes firstIndex];
     NSDictionary *selectedDictionary = [_recentDocs objectAtIndex:index];
-    [appDelegate loadDocument:selectedDictionary[@"path"]];
+//    [appDelegate loadDocument:selectedDictionary[@"path"]];
     [self.view.window close];
      */
 }
