@@ -239,8 +239,12 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </comboBoxCell>
                             </comboBox>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1nV-NQ-xS0">
+                            <button toolTip="Fit box size to image" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1nV-NQ-xS0">
                                 <rect key="frame" x="241" y="4" width="19" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="19" id="3av-6q-DzE"/>
+                                    <constraint firstAttribute="height" constant="18" id="5qO-P8-Dtc"/>
+                                </constraints>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="auto_resize" imagePosition="overlaps" alignment="center" controlSize="small" imageScaling="proportionallyDown" inset="2" id="9fC-qG-K4A">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
@@ -255,8 +259,10 @@
                         <constraint firstItem="OGU-0F-UBr" firstAttribute="leading" secondItem="jNA-uX-Sm7" secondAttribute="leading" constant="6" id="4t8-5F-wBr"/>
                         <constraint firstItem="wTP-4i-7vG" firstAttribute="top" secondItem="OGU-0F-UBr" secondAttribute="bottom" constant="6" id="Clr-sT-JEA"/>
                         <constraint firstItem="wVm-sq-4DZ" firstAttribute="leading" secondItem="jNA-uX-Sm7" secondAttribute="leading" constant="6" id="TIp-zS-YbA"/>
+                        <constraint firstItem="1nV-NQ-xS0" firstAttribute="leading" secondItem="wTP-4i-7vG" secondAttribute="trailing" constant="5" id="TTU-dT-ZH7"/>
                         <constraint firstItem="wVm-sq-4DZ" firstAttribute="top" secondItem="OGU-0F-UBr" secondAttribute="bottom" constant="7" id="V9I-Ft-oaf"/>
                         <constraint firstItem="OGU-0F-UBr" firstAttribute="top" secondItem="jNA-uX-Sm7" secondAttribute="top" id="ctb-45-gDf"/>
+                        <constraint firstItem="1nV-NQ-xS0" firstAttribute="top" secondItem="OGU-0F-UBr" secondAttribute="bottom" constant="7" id="de7-ZB-anE"/>
                         <constraint firstAttribute="height" constant="30" id="hVx-qp-AnN"/>
                         <constraint firstItem="wTP-4i-7vG" firstAttribute="leading" secondItem="wVm-sq-4DZ" secondAttribute="trailing" constant="10" id="rZX-Zk-PFJ"/>
                     </constraints>

@@ -344,10 +344,10 @@
                                             </connections>
                                         </popUpButton>
                                         <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iLy-bj-p0C">
-                                            <rect key="frame" x="235" y="-3" width="30" height="30"/>
-                                            <buttonCell key="cell" type="round" title="?" bezelStyle="circular" imagePosition="overlaps" alignment="center" controlSize="mini" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PBi-dH-ltZ">
+                                            <rect key="frame" x="240" y="7" width="18" height="18"/>
+                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="help" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="PBi-dH-ltZ">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="miniSystemBold"/>
+                                                <font key="font" metaFont="system"/>
                                             </buttonCell>
                                         </button>
                                     </subviews>
@@ -483,4 +483,7 @@
             </constraints>
         </customView>
     </objects>
+    <resources>
+        <image name="help" width="18" height="18"/>
+    </resources>
 </document>
