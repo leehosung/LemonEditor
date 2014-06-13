@@ -334,18 +334,26 @@
         [css setObject:[[self cssContentForIUCarouselPager:iu hover:YES] string] forKey:[itemID cssActiveClass]];
     }
     
+    
+    NSString *leftArrowID = [NSString stringWithFormat:@".%@ .bx-wrapper .bx-controls-direction .bx-prev", iu.htmlID];
     if([iu.leftArrowImage isEqualToString:@"Default"] == NO){
         NSInteger currentHeight = [iu.css.assembledTagDictionary[IUCSSTagHeight] integerValue];
         
-        NSString *leftArrowID = [NSString stringWithFormat:@".%@ .bx-wrapper .bx-controls-direction .bx-prev", iu.htmlID];
         NSString *string = [self cssContentForIUCarouselArrow:iu hover:NO location:IUCarouselArrowLeft carouselHeight:currentHeight];
         [css setObject:string forKey:leftArrowID];
     }
+    else{
+        [css setObject:@"" forKey:leftArrowID];
+    }
+    
+    NSString *rightArrowID = [NSString stringWithFormat:@".%@ .bx-wrapper .bx-controls-direction .bx-next", iu.htmlID];
     if([iu.rightArrowImage isEqualToString:@"Default"] == NO){
         NSInteger currentHeight = [iu.css.assembledTagDictionary[IUCSSTagHeight] integerValue];
-        NSString *rightArrowID = [NSString stringWithFormat:@".%@ .bx-wrapper .bx-controls-direction .bx-next", iu.htmlID];
         NSString *string = [self cssContentForIUCarouselArrow:iu hover:NO location:IUCarouselArrowRight carouselHeight:currentHeight];
         [css setObject:string forKey:rightArrowID];
+    }
+    else{
+        [css setObject:@"" forKey:rightArrowID];
     }
 
     return css;

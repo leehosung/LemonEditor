@@ -56,8 +56,7 @@
     [_countTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"count"] options:IUBindingDictNotRaisesApplicable];
     
     
-    [self addObserver:self forKeyPath:@"resourceManager.imageNames" options:NSKeyValueObservingOptionInitial context:@"image"];
-    self.imageArray = [_resourceManager.imageFiles valueForKey:@"name"];
+    [self addObserver:self forKeyPath:@"resourceManager.imageFiles" options:NSKeyValueObservingOptionInitial context:@"image"];
 
 }
 
@@ -66,8 +65,9 @@
     assert(0);
 }
 
+//default Image 때문에 imageArray 사용 , resourceManager를 바로 호출하면 안됨.
 -(void)imageContextDidChange:(NSDictionary *)change{
-    self.imageArray = _resourceManager.imageFiles;
+    self.imageArray = [@[@"Default"] arrayByAddingObjectsFromArray:self.resourceManager.imageFiles];
 }
 
 @end
