@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMWidgetLibraryVC">
@@ -228,17 +228,17 @@
                                             </tabViewItem>
                                         </tabViewItems>
                                     </tabView>
-                                    <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="R5h-BH-sR0">
+                                    <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="R5h-BH-sR0">
                                         <rect key="frame" x="0.0" y="0.0" width="259" height="31"/>
                                         <view key="contentView">
-                                            <rect key="frame" x="1" y="1" width="257" height="29"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="259" height="31"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <button toolTip="Collection View" translatesAutoresizingMaskIntoConstraints="NO" id="BR5-iS-MYW" userLabel="iconBtn">
-                                                    <rect key="frame" x="30" y="0.0" width="29" height="28"/>
+                                                    <rect key="frame" x="228" y="2" width="29" height="28"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="29" id="DZ7-T0-Fxs"/>
-                                                        <constraint firstAttribute="height" constant="28" id="HiW-0d-uPX"/>
+                                                        <constraint firstAttribute="height" constant="28" id="Ee2-7e-Sig"/>
+                                                        <constraint firstAttribute="width" constant="29" id="Psd-dz-SsW"/>
                                                     </constraints>
                                                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="view_collection" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="cKn-3h-tMg">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -249,10 +249,10 @@
                                                     </connections>
                                                 </button>
                                                 <button toolTip="List View" translatesAutoresizingMaskIntoConstraints="NO" id="tsn-mg-JCz" userLabel="listBtn">
-                                                    <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
+                                                    <rect key="frame" x="202" y="2" width="28" height="28"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="28" id="N1b-2F-usX"/>
-                                                        <constraint firstAttribute="height" constant="28" id="Z4a-FP-KDz"/>
+                                                        <constraint firstAttribute="width" constant="28" id="BgD-5s-jhO"/>
+                                                        <constraint firstAttribute="height" constant="28" id="atl-Lz-QwE"/>
                                                     </constraints>
                                                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="view_list" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="fn8-nY-5gN">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -265,11 +265,11 @@
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="BR5-iS-MYW" secondAttribute="bottom" constant="1" id="BIK-Fh-vSe"/>
-                                            <constraint firstItem="BR5-iS-MYW" firstAttribute="leading" secondItem="tsn-mg-JCz" secondAttribute="trailing" constant="2" id="KRN-z5-BDj"/>
-                                            <constraint firstItem="tsn-mg-JCz" firstAttribute="leading" secondItem="R5h-BH-sR0" secondAttribute="leading" constant="1" id="bRO-Gn-662"/>
+                                            <constraint firstItem="tsn-mg-JCz" firstAttribute="top" secondItem="R5h-BH-sR0" secondAttribute="top" constant="1" id="81U-EZ-vdx"/>
+                                            <constraint firstAttribute="trailing" secondItem="BR5-iS-MYW" secondAttribute="trailing" constant="2" id="YZK-Mn-C7v"/>
                                             <constraint firstAttribute="height" constant="31" id="cvL-ER-gXU"/>
-                                            <constraint firstAttribute="bottom" secondItem="tsn-mg-JCz" secondAttribute="bottom" constant="1" id="eey-xf-oI4"/>
+                                            <constraint firstItem="BR5-iS-MYW" firstAttribute="top" secondItem="R5h-BH-sR0" secondAttribute="top" constant="1" id="dNY-6a-euG"/>
+                                            <constraint firstAttribute="trailing" secondItem="tsn-mg-JCz" secondAttribute="trailing" constant="29" id="pz8-LZ-Jhn"/>
                                         </constraints>
                                         <color key="borderColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="fillColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -403,14 +403,14 @@
                                             </tabViewItem>
                                         </tabViewItems>
                                     </tabView>
-                                    <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="NOD-ph-6yz">
+                                    <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="NOD-ph-6yz">
                                         <rect key="frame" x="0.0" y="0.0" width="259" height="31"/>
                                         <view key="contentView">
-                                            <rect key="frame" x="1" y="1" width="257" height="29"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="259" height="31"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <button translatesAutoresizingMaskIntoConstraints="NO" id="09H-fm-KUt" userLabel="iconBtn">
-                                                    <rect key="frame" x="30" y="0.0" width="29" height="28"/>
+                                                    <rect key="frame" x="228" y="2" width="29" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="29" id="bAk-U1-axx"/>
                                                         <constraint firstAttribute="height" constant="28" id="xdY-QJ-nrj"/>
@@ -424,7 +424,7 @@
                                                     </connections>
                                                 </button>
                                                 <button translatesAutoresizingMaskIntoConstraints="NO" id="Rfa-DJ-weo" userLabel="listBtn">
-                                                    <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
+                                                    <rect key="frame" x="202" y="2" width="28" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="28" id="C02-nc-T17"/>
                                                         <constraint firstAttribute="height" constant="28" id="eyt-o8-AkJ"/>
@@ -440,10 +440,10 @@
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="09H-fm-KUt" firstAttribute="leading" secondItem="Rfa-DJ-weo" secondAttribute="trailing" constant="2" id="966-59-v36"/>
-                                            <constraint firstAttribute="bottom" secondItem="09H-fm-KUt" secondAttribute="bottom" constant="1" id="EsT-CT-G9S"/>
-                                            <constraint firstAttribute="bottom" secondItem="Rfa-DJ-weo" secondAttribute="bottom" constant="1" id="hvc-6b-I9g"/>
-                                            <constraint firstItem="Rfa-DJ-weo" firstAttribute="leading" secondItem="NOD-ph-6yz" secondAttribute="leading" constant="1" id="jT4-aO-F1r"/>
+                                            <constraint firstItem="Rfa-DJ-weo" firstAttribute="top" secondItem="NOD-ph-6yz" secondAttribute="top" constant="1" id="Uws-6T-jve"/>
+                                            <constraint firstItem="09H-fm-KUt" firstAttribute="top" secondItem="NOD-ph-6yz" secondAttribute="top" constant="1" id="Y5b-2K-weL"/>
+                                            <constraint firstAttribute="trailing" secondItem="Rfa-DJ-weo" secondAttribute="trailing" constant="29" id="eW9-pu-4vR"/>
+                                            <constraint firstAttribute="trailing" secondItem="09H-fm-KUt" secondAttribute="trailing" constant="2" id="o9S-7R-H5r"/>
                                             <constraint firstAttribute="height" constant="31" id="whZ-wu-THN"/>
                                         </constraints>
                                         <color key="borderColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
@@ -579,14 +579,14 @@
                                             </tabViewItem>
                                         </tabViewItems>
                                     </tabView>
-                                    <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="emI-Le-RHg">
+                                    <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="emI-Le-RHg">
                                         <rect key="frame" x="0.0" y="0.0" width="259" height="31"/>
                                         <view key="contentView">
-                                            <rect key="frame" x="1" y="1" width="257" height="29"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="259" height="31"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <button translatesAutoresizingMaskIntoConstraints="NO" id="fzs-5r-xsv" userLabel="iconBtn">
-                                                    <rect key="frame" x="30" y="0.0" width="29" height="28"/>
+                                                    <rect key="frame" x="228" y="2" width="29" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="28" id="RYF-oV-hos"/>
                                                         <constraint firstAttribute="width" constant="29" id="iFb-cB-m7N"/>
@@ -600,7 +600,7 @@
                                                     </connections>
                                                 </button>
                                                 <button translatesAutoresizingMaskIntoConstraints="NO" id="toa-Xd-TbL" userLabel="listBtn">
-                                                    <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
+                                                    <rect key="frame" x="202" y="2" width="28" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="28" id="nMK-ls-7rB"/>
                                                         <constraint firstAttribute="width" constant="28" id="pft-Vq-iqh"/>
@@ -616,11 +616,11 @@
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="toa-Xd-TbL" secondAttribute="trailing" constant="29" id="40g-9j-HfO"/>
                                             <constraint firstAttribute="height" constant="31" id="Ldo-GH-d0H"/>
-                                            <constraint firstAttribute="bottom" secondItem="toa-Xd-TbL" secondAttribute="bottom" constant="1" id="Ndq-I2-loU"/>
-                                            <constraint firstItem="fzs-5r-xsv" firstAttribute="leading" secondItem="toa-Xd-TbL" secondAttribute="trailing" constant="2" id="Rhl-7l-Ldt"/>
-                                            <constraint firstItem="toa-Xd-TbL" firstAttribute="leading" secondItem="emI-Le-RHg" secondAttribute="leading" constant="1" id="Y5R-Dk-Hj7"/>
-                                            <constraint firstAttribute="bottom" secondItem="fzs-5r-xsv" secondAttribute="bottom" constant="1" id="qtr-kY-eVW"/>
+                                            <constraint firstAttribute="trailing" secondItem="fzs-5r-xsv" secondAttribute="trailing" constant="2" id="ZGN-R3-Kqo"/>
+                                            <constraint firstItem="fzs-5r-xsv" firstAttribute="top" secondItem="emI-Le-RHg" secondAttribute="top" constant="1" id="ynt-2L-I8g"/>
+                                            <constraint firstItem="toa-Xd-TbL" firstAttribute="top" secondItem="emI-Le-RHg" secondAttribute="top" constant="1" id="yyo-xm-nAK"/>
                                         </constraints>
                                         <color key="borderColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="fillColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -640,10 +640,23 @@
                         </tabViewItem>
                     </tabViewItems>
                 </tabView>
+                <box autoresizesSubviews="NO" verticalHuggingPriority="750" alphaValue="0.40000000000000002" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="sGn-bl-Kcs">
+                    <rect key="frame" x="0.0" y="28" width="300" height="5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="300" id="ld6-lF-0r3"/>
+                        <constraint firstAttribute="height" constant="1" id="tDC-ZG-t04"/>
+                    </constraints>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <font key="titleFont" metaFont="system"/>
+                </box>
             </subviews>
             <constraints>
                 <constraint firstItem="pPJ-ce-Fha" firstAttribute="leading" secondItem="vMJ-qe-EFg" secondAttribute="leading" constant="40" id="5bT-Ry-BE0"/>
                 <constraint firstAttribute="bottom" secondItem="Myo-YT-upo" secondAttribute="bottom" id="AUm-ac-6QL"/>
+                <constraint firstItem="sGn-bl-Kcs" firstAttribute="leading" secondItem="vMJ-qe-EFg" secondAttribute="leading" id="CIg-Gd-sKc"/>
+                <constraint firstAttribute="bottom" secondItem="sGn-bl-Kcs" secondAttribute="bottom" constant="30" id="LG5-st-2iE"/>
                 <constraint firstItem="Myo-YT-upo" firstAttribute="leading" secondItem="vMJ-qe-EFg" secondAttribute="leading" id="OLC-YM-P5d"/>
                 <constraint firstAttribute="trailing" secondItem="pPJ-ce-Fha" secondAttribute="trailing" id="Ufc-RA-5ed"/>
                 <constraint firstItem="Myo-YT-upo" firstAttribute="top" secondItem="vMJ-qe-EFg" secondAttribute="top" constant="-1" id="ch8-Sn-qkG"/>
