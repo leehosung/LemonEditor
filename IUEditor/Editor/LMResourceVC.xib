@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMResourceVC">
@@ -125,10 +125,10 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <searchField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YjH-N9-QL8">
-                                        <rect key="frame" x="7" y="5" width="170" height="19"/>
+                                        <rect key="frame" x="7" y="5" width="176" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="19" id="NQB-ud-P6C"/>
-                                            <constraint firstAttribute="width" constant="170" id="wYw-fE-yYP"/>
+                                            <constraint firstAttribute="width" constant="176" id="wYw-fE-yYP"/>
                                         </constraints>
                                         <searchFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="Ynw-pJ-wrH">
                                             <font key="font" metaFont="smallSystem"/>
@@ -165,12 +165,12 @@
                                         </connections>
                                     </button>
                                     <button toolTip="Import" translatesAutoresizingMaskIntoConstraints="NO" id="2K0-2Z-gF9" userLabel="addBtn">
-                                        <rect key="frame" x="185" y="0.0" width="30" height="31"/>
+                                        <rect key="frame" x="185" y="-1" width="30" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="GrO-oF-wBY"/>
                                             <constraint firstAttribute="height" constant="31" id="ZeM-Ko-Zhw"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="pND-Y3-4p8">
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="import" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="pND-Y3-4p8">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -197,15 +197,15 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="302" id="42n-di-CHe"/>
                                 <constraint firstItem="TwY-rm-TIF" firstAttribute="top" secondItem="jYn-7S-9Ff" secondAttribute="top" constant="-1" id="AMZ-vD-W4y"/>
-                                <constraint firstItem="2K0-2Z-gF9" firstAttribute="leading" secondItem="YjH-N9-QL8" secondAttribute="trailing" constant="8" id="JC6-bd-A0h"/>
+                                <constraint firstItem="2K0-2Z-gF9" firstAttribute="leading" secondItem="YjH-N9-QL8" secondAttribute="trailing" constant="2" id="JC6-bd-A0h"/>
                                 <constraint firstItem="YjH-N9-QL8" firstAttribute="top" secondItem="jYn-7S-9Ff" secondAttribute="top" constant="6" id="LuV-aW-d5S"/>
                                 <constraint firstItem="12v-kS-W80" firstAttribute="top" secondItem="jYn-7S-9Ff" secondAttribute="top" constant="1" id="Rcg-p6-NZy"/>
                                 <constraint firstItem="i50-VL-0Xr" firstAttribute="top" secondItem="jYn-7S-9Ff" secondAttribute="top" constant="1" id="Sj9-WE-fxF"/>
                                 <constraint firstItem="i50-VL-0Xr" firstAttribute="leading" secondItem="TwY-rm-TIF" secondAttribute="trailing" constant="24" id="eEb-Im-fvJ"/>
                                 <constraint firstItem="YjH-N9-QL8" firstAttribute="leading" secondItem="jYn-7S-9Ff" secondAttribute="leading" constant="8" id="gIs-ra-aEx"/>
-                                <constraint firstItem="TwY-rm-TIF" firstAttribute="leading" secondItem="YjH-N9-QL8" secondAttribute="trailing" constant="37" id="h47-dS-tki"/>
+                                <constraint firstItem="TwY-rm-TIF" firstAttribute="leading" secondItem="YjH-N9-QL8" secondAttribute="trailing" constant="31" id="h47-dS-tki"/>
                                 <constraint firstItem="12v-kS-W80" firstAttribute="leading" secondItem="2K0-2Z-gF9" secondAttribute="trailing" constant="27" id="qCj-Vx-yO3"/>
-                                <constraint firstItem="2K0-2Z-gF9" firstAttribute="top" secondItem="jYn-7S-9Ff" secondAttribute="top" constant="-1" id="tFp-rA-fu4"/>
+                                <constraint firstItem="2K0-2Z-gF9" firstAttribute="top" secondItem="jYn-7S-9Ff" secondAttribute="top" id="tFp-rA-fu4"/>
                                 <constraint firstAttribute="height" constant="31" id="yZV-oi-Rlx"/>
                             </constraints>
                             <color key="borderColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
@@ -277,9 +277,9 @@
         </customView>
     </objects>
     <resources>
-        <image name="NSAddTemplate" width="8" height="8"/>
         <image name="NSInfo" width="32" height="32"/>
         <image name="NSRefreshTemplate" width="10" height="12"/>
+        <image name="import" width="13" height="13"/>
         <image name="view_collection" width="10" height="10"/>
         <image name="view_list" width="12" height="10"/>
     </resources>
