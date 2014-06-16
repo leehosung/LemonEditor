@@ -220,14 +220,15 @@
 
 - (void)setValueForTag:(IUCSSTag)tag toTextfield:(NSTextField*)textfield toStepper:(NSStepper *)stepper{
     id value = [self valueForKeyPath:[_controller keyPathFromControllerToCSSTag:tag]];
-    if (value && [value isEqual:textfield.stringValue] == NO){
+   
+    if (value == nil || value == NSNoSelectionMarker || value == NSMultipleValuesMarker || value == NSNotApplicableMarker){
+        [textfield setStringValue:@"-"];
+        [stepper setEnabled:NO];
+    }
+    else if(value && [value isEqual:textfield.stringValue] == NO){
         [textfield setStringValue:value];
         [stepper setEnabled:YES];
         [stepper setIntegerValue:[value integerValue]];
-    }
-    else if (value == nil || value == NSNoSelectionMarker){
-        [textfield setStringValue:@"-"];
-        [stepper setEnabled:NO];
     }
 }
 
