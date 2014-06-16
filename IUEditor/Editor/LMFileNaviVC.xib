@@ -324,6 +324,7 @@
                                     </tableColumn>
                                 </tableColumns>
                                 <connections>
+                                    <action selector="outlineViewClicked:" target="-2" id="EIe-Xr-Cll"/>
                                     <binding destination="gdF-Dg-Xge" name="content" keyPath="arrangedObjects" id="e8c-Fq-8Hg"/>
                                     <binding destination="gdF-Dg-Xge" name="selectionIndexPaths" keyPath="selectionIndexPaths" previousBinding="e8c-Fq-8Hg" id="QJe-YV-dDQ"/>
                                     <outlet property="JDDataSource" destination="-2" id="IND-50-kdE"/>

@@ -179,6 +179,7 @@
                                     </tableColumn>
                                 </tableColumns>
                                 <connections>
+                                    <action selector="outlineViewClicked:" target="-2" id="7r9-90-837"/>
                                     <binding destination="S9Z-Oj-DDl" name="content" keyPath="arrangedObjects" id="jPx-Ge-p3H"/>
                                     <binding destination="S9Z-Oj-DDl" name="selectionIndexPaths" keyPath="selectionIndexPaths" previousBinding="jPx-Ge-p3H" id="Ag5-Mw-5RZ"/>
                                     <outlet property="dataSource" destination="-2" id="Qiz-Ue-5U4"/>
