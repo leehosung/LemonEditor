@@ -485,6 +485,9 @@
         [self.controller rearrangeObjects];
         [self.controller setSelectedObjectsByIdentifiers:@[identifier]];
     }
+    else if([iu isKindOfClass:[IUText class]]){
+        [(IUText *)iu updateAutoHeight];
+    }
     
 //    JDDebugLog(@"%@:%@", identifier, html);
 

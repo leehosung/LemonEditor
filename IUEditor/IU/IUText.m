@@ -112,6 +112,11 @@
     return NO;
 }
 
+- (void)updateHTML{
+    [super updateHTML];
+    [self updateAutoHeight];
+}
+
 - (void)updateTextHTML{
     [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
     [self updateAutoHeight];
@@ -135,6 +140,10 @@
 -(NSDictionary*)textCSSAttributesForWidth:(NSInteger)width textIdentifier:(NSString *)identifier{
     IUCSS *css = [_textController.cssDict objectForKey:identifier];
     return [css tagDictionaryForWidth:(int)width];
+}
+- (void)updateCSSForEditViewPort{
+    [super updateCSSForEditViewPort];
+    [self updateAutoHeight];
 }
 
 - (NSString*)identifierForTextController{

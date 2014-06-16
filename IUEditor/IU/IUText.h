@@ -22,5 +22,6 @@
 - (NSString*)textHTML;
 
 - (NSArray *)fontNameArray;
+- (void)updateAutoHeight;
 
 @end

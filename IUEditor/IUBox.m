@@ -281,9 +281,8 @@
             [self.delegate IUHTMLIdentifier:iu_htmlid HTML:replacedHTML withParentID:self_htmlID];
         }
     }
-    
+    [self.delegate IUClassIdentifier:iu.cssID CSSUpdated:[iu cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];    
     [self.delegate IUHTMLIdentifier:iu.htmlID HTML:iu.html withParentID:self.htmlID];
-    [self.delegate IUClassIdentifier:iu.cssID CSSUpdated:[iu cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
     for (IUBox *child in iu.children) {
         [self.delegate IUClassIdentifier:child.cssID CSSUpdated:[child cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
     }
