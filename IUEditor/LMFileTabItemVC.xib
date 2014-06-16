@@ -21,9 +21,9 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <box autoresizesSubviews="NO" fixedFrame="YES" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="hYo-7I-XXG">
-                        <rect key="frame" x="-2" y="-1" width="142" height="31"/>
+                        <rect key="frame" x="-2" y="-1" width="142" height="32"/>
                         <view key="contentView">
-                            <rect key="frame" x="1" y="1" width="140" height="29"/>
+                            <rect key="frame" x="1" y="1" width="140" height="30"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </view>
                         <color key="borderColor" red="0.50196081399917603" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
@@ -35,7 +35,7 @@
                             <constraint firstAttribute="width" constant="20" id="kEl-AQ-Rl8"/>
                         </constraints>
                         <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="tab_close" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="w7T-tV-qyf">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <behavior key="behavior" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
@@ -48,7 +48,7 @@
                             <constraint firstAttribute="width" constant="110" id="7Jv-Zg-d4g"/>
                         </constraints>
                         <buttonCell key="cell" type="bevel" title="Button" bezelStyle="rounded" alignment="left" imageScaling="proportionallyDown" inset="2" id="CkS-dZ-P5Y">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <behavior key="behavior" lightByContents="YES"/>
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
                         <connections>
