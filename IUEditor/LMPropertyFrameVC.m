@@ -28,6 +28,19 @@
 @property (weak) IBOutlet NSTextField *pwTF;
 @property (weak) IBOutlet NSTextField *phTF;
 
+//pixel stepper
+@property (weak) IBOutlet NSStepper *xStepper;
+@property (weak) IBOutlet NSStepper *yStepper;
+@property (weak) IBOutlet NSStepper *wStepper;
+@property (weak) IBOutlet NSStepper *hStepper;
+
+//percent stepper
+@property (weak) IBOutlet NSStepper *pxStepper;
+@property (weak) IBOutlet NSStepper *pyStepper;
+@property (weak) IBOutlet NSStepper *pwStepper;
+@property (weak) IBOutlet NSStepper *phStepper;
+
+
 @property (weak) IBOutlet NSButton *xUnitBtn;
 @property (weak) IBOutlet NSButton *yUnitBtn;
 @property (weak) IBOutlet NSButton *wUnitBtn;
@@ -69,13 +82,24 @@
     [self addObserver:self forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagPercentHeight] options:0 context:nil];
     
     [_xTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagXUnit] options:IUBindingDictNotRaisesApplicable];
+    [_xStepper bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagXUnit] options:IUBindingDictNotRaisesApplicable];
     [_pxTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagXUnit] options:percentHiddeBindingOption];
+    [_pxStepper bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagXUnit] options:percentHiddeBindingOption];
+    
     [_yTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagYUnit] options:IUBindingDictNotRaisesApplicable];
+    [_yStepper bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagYUnit] options:IUBindingDictNotRaisesApplicable];
     [_pyTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagYUnit] options:percentHiddeBindingOption];
+    [_pyStepper bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagYUnit] options:percentHiddeBindingOption];
+    
     [_wTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagWidthUnit] options:IUBindingDictNotRaisesApplicable];
+    [_wStepper bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagWidthUnit] options:IUBindingDictNotRaisesApplicable];
     [_pwTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagWidthUnit] options:percentHiddeBindingOption];
+    [_pwStepper bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagWidthUnit] options:percentHiddeBindingOption];
+    
     [_hTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagHeightUnit] options:IUBindingDictNotRaisesApplicable];
+    [_hStepper bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagHeightUnit] options:IUBindingDictNotRaisesApplicable];
     [_phTF bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagHeightUnit] options:percentHiddeBindingOption];
+    [_phStepper bind:NSHiddenBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagHeightUnit] options:percentHiddeBindingOption];
 
     [_overflowB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"overflow"] options:IUBindingDictNotRaisesApplicable];
     [_overflowB bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"overflowChangeable"] options:IUBindingDictNotRaisesApplicable];
@@ -109,6 +133,18 @@
     [_wUnitBtn bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"hasWidth"] options:bindingOption];
     [_hUnitBtn bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"hasHeight"] options:bindingOption];
     
+    [_xStepper bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"hasX"] options:bindingOption];
+    [_yStepper bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"hasY"] options:bindingOption];
+    [_wStepper bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"hasWidth"] options:bindingOption];
+    [_hStepper bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"hasHeight"] options:bindingOption];
+    
+    [_pxStepper bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"hasX"] options:bindingOption];
+    [_pyStepper bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"hasY"] options:bindingOption];
+    [_pwStepper bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"hasWidth"] options:bindingOption];
+    [_phStepper bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"hasHeight"] options:bindingOption];
+
+
+    
     [_xTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeXByUserInput"] options:bindingOption];
     [_yTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeYByUserInput"] options:bindingOption];
     [_wTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeWidthByUserInput"] options:bindingOption];
@@ -118,12 +154,22 @@
     [_pyTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeYByUserInput"] options:bindingOption];
     [_pwTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeWidthByUserInput"] options:bindingOption];
     [_phTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeHeightByUserInput"] options:bindingOption];
-
     
     [_xUnitBtn bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeXByUserInput"] options:bindingOption];
     [_yUnitBtn bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeYByUserInput"] options:bindingOption];
     [_wUnitBtn bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeWidthByUserInput"] options:bindingOption];
     [_hUnitBtn bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeHeightByUserInput"] options:bindingOption];
+    
+    [_xStepper bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeXByUserInput"] options:bindingOption];
+    [_yStepper bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeYByUserInput"] options:bindingOption];
+    [_wStepper bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeWidthByUserInput"] options:bindingOption];
+    [_hStepper bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeHeightByUserInput"] options:bindingOption];
+
+    [_pxStepper bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeXByUserInput"] options:bindingOption];
+    [_pyStepper bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeYByUserInput"] options:bindingOption];
+    [_pwStepper bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeWidthByUserInput"] options:bindingOption];
+    [_phStepper bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeHeightByUserInput"] options:bindingOption];
+
     
     
     bindingOption = [NSDictionary
@@ -133,6 +179,8 @@
     [_xTF bind:@"enabled2" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"center"] options:bindingOption];
     [_pxTF bind:@"enabled2" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"center"] options:bindingOption];
     [_xUnitBtn bind:@"enabled2" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"center"] options:bindingOption];
+    [_xStepper bind:@"enabled2" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"center"] options:bindingOption];
+    [_pxStepper bind:@"enabled2" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"center"] options:bindingOption];
 }
 
 - (void)dealloc{
@@ -142,41 +190,44 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     if ([[keyPath pathExtension] isSameTag:IUCSSTagX]) {
-        [self setValueForTag:IUCSSTagX toTextfield:_xTF];
+        [self setValueForTag:IUCSSTagX toTextfield:_xTF toStepper:_xStepper];
     }
     else if ([[keyPath pathExtension] isSameTag:IUCSSTagY]) {
-        [self setValueForTag:IUCSSTagY toTextfield:_yTF];
+        [self setValueForTag:IUCSSTagY toTextfield:_yTF toStepper:_yStepper];
     }
     else if ([[keyPath pathExtension] isSameTag:IUCSSTagWidth]) {
-        [self setValueForTag:IUCSSTagWidth toTextfield:_wTF];
+        [self setValueForTag:IUCSSTagWidth toTextfield:_wTF toStepper:_wStepper];
     }
     else if ([[keyPath pathExtension] isSameTag:IUCSSTagHeight]) {
-        [self setValueForTag:IUCSSTagHeight toTextfield:_hTF];
+        [self setValueForTag:IUCSSTagHeight toTextfield:_hTF toStepper:_hStepper];
     }
     else if ([[keyPath pathExtension] isSameTag:IUCSSTagPercentX]) {
-        [self setValueForTag:IUCSSTagPercentX toTextfield:_pxTF];
+        [self setValueForTag:IUCSSTagPercentX toTextfield:_pxTF toStepper:_pxStepper];
     }
     else if ([[keyPath pathExtension] isSameTag:IUCSSTagPercentY]) {
-        [self setValueForTag:IUCSSTagPercentY toTextfield:_pyTF];
+        [self setValueForTag:IUCSSTagPercentY toTextfield:_pyTF toStepper:_pyStepper];
     }
     else if ([[keyPath pathExtension] isSameTag:IUCSSTagPercentWidth]) {
-        [self setValueForTag:IUCSSTagPercentWidth toTextfield:_pwTF];
+        [self setValueForTag:IUCSSTagPercentWidth toTextfield:_pwTF toStepper:_pwStepper];
     }
     else if ([[keyPath pathExtension] isSameTag:IUCSSTagPercentHeight]) {
-        [self setValueForTag:IUCSSTagPercentHeight toTextfield:_phTF];
+        [self setValueForTag:IUCSSTagPercentHeight toTextfield:_phTF toStepper:_phStepper];
     }
     else {
         assert(0);
     }
 }
 
-- (void)setValueForTag:(IUCSSTag)tag toTextfield:(NSTextField*)textfield{
+- (void)setValueForTag:(IUCSSTag)tag toTextfield:(NSTextField*)textfield toStepper:(NSStepper *)stepper{
     id value = [self valueForKeyPath:[_controller keyPathFromControllerToCSSTag:tag]];
     if (value && [value isEqual:textfield.stringValue] == NO){
         [textfield setStringValue:value];
+        [stepper setEnabled:YES];
+        [stepper setIntegerValue:[value integerValue]];
     }
     else if (value == nil || value == NSNoSelectionMarker){
         [textfield setStringValue:@"-"];
+        [stepper setEnabled:NO];
     }
 }
 
@@ -207,18 +258,53 @@
         tag = IUCSSTagPercentHeight;
     }
     
-    if ([[control stringValue] isEqualToString:@"-"]) {
+    [self setCSSFrameValue:[control stringValue] forTag:tag];
+    
+    return YES;
+}
+- (IBAction)clickStepper:(id)sender {
+    IUCSSTag tag;
+
+    if (sender == _xStepper) {
+        tag = IUCSSTagX;
+    }
+    else if (sender == _pxStepper) {
+        tag = IUCSSTagPercentX;
+    }
+    else if (sender == _yStepper) {
+        tag = IUCSSTagY;
+    }
+    else if (sender == _pyStepper) {
+        tag = IUCSSTagPercentY;
+    }
+    else if (sender == _wStepper) {
+        tag = IUCSSTagWidth;
+    }
+    else if (sender == _pwStepper) {
+        tag = IUCSSTagPercentWidth;
+    }
+    else if (sender == _hStepper) {
+        tag = IUCSSTagHeight;
+    }
+    else if (sender == _phStepper) {
+        tag = IUCSSTagPercentHeight;
+    }
+    
+    [self setCSSFrameValue:[sender stringValue] forTag:tag];
+}
+
+- (void)setCSSFrameValue:(id)value forTag:(IUCSSTag)tag{
+    if ([value isEqualToString:@"-"]) {
         for (IUBox *box in _controller.selectedObjects) {
             [box.css eradicateTag:tag];
         }
     }
     else {
-        [self setValue:[control stringValue] forKeyPath:[_controller keyPathFromControllerToCSSTag:tag]];
+        [self setValue:value forKeyPath:[_controller keyPathFromControllerToCSSTag:tag]];
     }
     for (IUBox *iu in _controller.selectedObjects) {
         [iu updateCSSForEditViewPort];
     }
-    return YES;
 }
 
 - (void)setValue:(id)value forKeyPath:(NSString *)keyPath{
