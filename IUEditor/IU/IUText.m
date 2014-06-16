@@ -92,7 +92,13 @@
 - (void)updateNewLine:(NSRange)range htmlNode:(DOMHTMLElement *)node{
     [_textController selectTextRange:range htmlNode:node];
     [self updateCSSForEditViewPort];
- //   [_textController insertNewLine:range htmlNode:node];
+    [self updateAutoHeight];
+}
+
+- (void)updateAutoHeight{
+    if(self.delegate){
+        [self.delegate callWebScriptMethod:@"setTextAutoHeight" withArguments:nil];
+    }
 }
 
 
@@ -108,6 +114,7 @@
 
 - (void)updateTextHTML{
     [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
+    [self updateAutoHeight];
 }
 
 - (void)updateTextCSS:(IUCSS *)textCSS identifier:(NSString *)identifier{

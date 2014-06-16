@@ -43,6 +43,7 @@ $(document).ready(function(){
 	resizeCollection();
 	reframeCenter();
 	resizePageLinkSet();
+    setTextAutoHeight();
 
 /*INIT_JS_REPLACEMENT*/
             

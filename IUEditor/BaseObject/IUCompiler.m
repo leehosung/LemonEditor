@@ -1206,29 +1206,15 @@ static NSString * IUCompilerTagOption = @"tag";
             
             value = cssTagDict[IUCSSTagLineHeight];
             if(value){
-                /*
+                
                 if([value isEqualToString:@"Auto"]== YES)
                 {
-                    if([obj isKindOfClass:[IUText class]]){
-                        NSNumber *height = cssTagDict[IUCSSTagHeight];
-                        NSUInteger num = [[((IUText *)obj).textHTML componentsSeparatedByString:@"<br>"] count];
-              
-                        if(num > 0){
-                            num--;
-                        }
-                        if(num == 0){
-                            [dict putTag:@"line-height" floatValue:[height floatValue] ignoreZero:YES unit: IUCSSUnitPixel];
-                        }
-                        else{
-                            [dict putTag:@"line-height" floatValue:[height floatValue]/num ignoreZero:YES unit: IUCSSUnitPixel];
-                        }
-                    }
-                    else if ([obj isKindOfClass:[PGTextView class]]){
+                    if ([obj isKindOfClass:[PGTextView class]]){
                         [dict putTag:@"line-height" floatValue:1.3 ignoreZero:YES unit:IUCSSUnitNone];
 
                     }
                 }
-                 */
+                
                 if([value isEqualToString:@"Auto"]== NO){
                     [dict putTag:@"line-height" floatValue:[value floatValue] ignoreZero:YES unit:IUCSSUnitNone];
                 }

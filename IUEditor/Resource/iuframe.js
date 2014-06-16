@@ -73,6 +73,20 @@ function resizePageLinkSet(){
 	});
 }
 
+function setTextAutoHeight(){
+    var respc = $('[autolineheight="1"]').toArray();
+    $.each(respc, function(){
+           var brCount = $("br", $(this)).length
+           var height = $(this).height();
+           var lineheight = height;
+           if(brCount!=0){
+           lineheight = height/brCount;
+           }
+           $(this).css('line-height', lineheight+'px');
+           });
+}
+
+
 $(window).resize(function(){
                  console.log("resize window : iuframe.js");
                  resizePageContentHeight();
