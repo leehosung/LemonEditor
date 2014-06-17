@@ -20,11 +20,19 @@
                 <rect key="frame" x="0.0" y="0.0" width="140" height="30"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <box autoresizesSubviews="NO" fixedFrame="YES" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="hYo-7I-XXG">
-                        <rect key="frame" x="-2" y="-1" width="142" height="32"/>
+                    <box autoresizesSubviews="NO" fixedFrame="YES" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="hYo-7I-XXG">
+                        <rect key="frame" x="0.0" y="0.0" width="140" height="30"/>
                         <view key="contentView">
-                            <rect key="frame" x="1" y="1" width="140" height="30"/>
+                            <rect key="frame" x="0.0" y="0.0" width="140" height="30"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <box autoresizesSubviews="NO" horizontalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="0zR-IN-tW8">
+                                    <rect key="frame" x="137" y="0.0" width="5" height="30"/>
+                                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <font key="titleFont" metaFont="system"/>
+                                </box>
+                            </subviews>
                         </view>
                         <color key="borderColor" red="0.50196081399917603" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="fillColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -68,6 +76,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="UVh-NU-oKb"/>
             </connections>
+            <point key="canvasLocation" x="330" y="269"/>
         </box>
     </objects>
     <resources>
