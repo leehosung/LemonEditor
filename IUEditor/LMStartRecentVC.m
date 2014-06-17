@@ -24,13 +24,15 @@
     if (self) {
         _recentDocs = [NSMutableArray array];
         recentDocURLs = [[NSDocumentController sharedDocumentController] recentDocumentURLs];
-        
-        for (NSURL *url in recentDocURLs){            
-            [_recentDocs addObject:[@{@"image": [NSImage imageNamed:@"new_default"],
-                                     @"name" : [url lastPathComponent],
-                                      @"path": [url path],
-//                                     @"selection": @(NO),
-                                     } mutableCopy]];
+        NSUInteger i=0;
+        for (NSURL *url in recentDocURLs){
+            if (i++<8) {
+                [_recentDocs addObject:[@{@"image": [NSImage imageNamed:@"new_default"],
+                                          @"name" : [url lastPathComponent],
+                                          @"path": [url path],
+                                          //@"selection": @(NO),
+                                          } mutableCopy]];
+            }
         }
     }
     return self;
@@ -49,9 +51,6 @@
 }
 
 - (void)pressNextB{
-    
-
-    
     NSUInteger index = [self.selectedIndexes firstIndex];
     NSDictionary *selectedDictionary = [_recentDocs objectAtIndex:index];
     NSString *path = selectedDictionary[@"path"];

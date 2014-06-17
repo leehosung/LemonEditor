@@ -515,10 +515,10 @@
 		69FFB27F1950305600DA2783 /* LMIUPropertyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69FFB27D1950305600DA2783 /* LMIUPropertyVC.xib */; };
 		69FFB2831950309E00DA2783 /* LMInspectorLinkVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FFB2811950309E00DA2783 /* LMInspectorLinkVC.m */; };
 		69FFB2841950309E00DA2783 /* LMInspectorLinkVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69FFB2821950309E00DA2783 /* LMInspectorLinkVC.xib */; };
-		CB370E31192D93580074F3F8 /* gallary.zip in Resources */ = {isa = PBXBuildFile; fileRef = CB370E2F192D93580074F3F8 /* gallary.zip */; };
+		CB357336195031E700D2D203 /* Melissa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CB357335195031E700D2D203 /* Melissa.jpg */; };
+		CB3573381950408D00D2D203 /* Melissa.zip in Resources */ = {isa = PBXBuildFile; fileRef = CB3573371950408D00D2D203 /* Melissa.zip */; };
 		CB370E32192D93580074F3F8 /* iueditorHome.zip in Resources */ = {isa = PBXBuildFile; fileRef = CB370E30192D93580074F3F8 /* iueditorHome.zip */; };
 		CB370E35192D98CF0074F3F8 /* lemon.png in Resources */ = {isa = PBXBuildFile; fileRef = CB370E34192D98CF0074F3F8 /* lemon.png */; };
-		CB370E38192D98EB0074F3F8 /* django.png in Resources */ = {isa = PBXBuildFile; fileRef = CB370E37192D98EB0074F3F8 /* django.png */; };
 		CB9BD6381914DC62002C9369 /* LMStartNewDjangoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9BD6361914DC62002C9369 /* LMStartNewDjangoVC.m */; };
 		CB9BD6391914DC62002C9369 /* LMStartNewDjangoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9BD6371914DC62002C9369 /* LMStartNewDjangoVC.xib */; };
 		CB9BD63D1914DE23002C9369 /* LMStartNewPresentationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9BD63B1914DE23002C9369 /* LMStartNewPresentationVC.m */; };
@@ -1214,10 +1214,10 @@
 		69FFB2801950309E00DA2783 /* LMInspectorLinkVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMInspectorLinkVC.h; path = IUEditor/LMInspectorLinkVC.h; sourceTree = "<group>"; };
 		69FFB2811950309E00DA2783 /* LMInspectorLinkVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMInspectorLinkVC.m; path = IUEditor/LMInspectorLinkVC.m; sourceTree = "<group>"; };
 		69FFB2821950309E00DA2783 /* LMInspectorLinkVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMInspectorLinkVC.xib; path = IUEditor/LMInspectorLinkVC.xib; sourceTree = "<group>"; };
-		CB370E2F192D93580074F3F8 /* gallary.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = gallary.zip; sourceTree = "<group>"; };
+		CB357335195031E700D2D203 /* Melissa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Melissa.jpg; sourceTree = "<group>"; };
+		CB3573371950408D00D2D203 /* Melissa.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = Melissa.zip; sourceTree = "<group>"; };
 		CB370E30192D93580074F3F8 /* iueditorHome.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = iueditorHome.zip; sourceTree = "<group>"; };
 		CB370E34192D98CF0074F3F8 /* lemon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lemon.png; sourceTree = "<group>"; };
-		CB370E37192D98EB0074F3F8 /* django.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = django.png; sourceTree = "<group>"; };
 		CB9BD6351914DC62002C9369 /* LMStartNewDjangoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMStartNewDjangoVC.h; sourceTree = "<group>"; };
 		CB9BD6361914DC62002C9369 /* LMStartNewDjangoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMStartNewDjangoVC.m; sourceTree = "<group>"; };
 		CB9BD6371914DC62002C9369 /* LMStartNewDjangoVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMStartNewDjangoVC.xib; sourceTree = "<group>"; };
@@ -2405,19 +2405,19 @@
 			name = IUHome;
 			sourceTree = "<group>";
 		};
-		CB370E36192D98D70074F3F8 /* GallaryBasic */ = {
+		CB370E36192D98D70074F3F8 /* sample1_melissa */ = {
 			isa = PBXGroup;
 			children = (
-				CB370E37192D98EB0074F3F8 /* django.png */,
-				CB370E2F192D93580074F3F8 /* gallary.zip */,
+				CB3573371950408D00D2D203 /* Melissa.zip */,
+				CB357335195031E700D2D203 /* Melissa.jpg */,
 			);
-			name = GallaryBasic;
+			name = sample1_melissa;
 			sourceTree = "<group>";
 		};
 		CBFBE67C192A07A300F03F76 /* SampleTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				CB370E36192D98D70074F3F8 /* GallaryBasic */,
+				CB370E36192D98D70074F3F8 /* sample1_melissa */,
 				CB370E33192D97EF0074F3F8 /* IUHome */,
 				CBFBE684192AF32E00F03F76 /* sampleTemplate.plist */,
 			);
@@ -2650,6 +2650,7 @@
 				2672A0AC19120A740050043E /* tool_collection@2x.png in Resources */,
 				3DF8043D18FE62FC00913505 /* tool_fblike.png in Resources */,
 				3DF8044918FE62FC00913505 /* tool_textfield.png in Resources */,
+				CB3573381950408D00D2D203 /* Melissa.zip in Resources */,
 				2694CEFA193486760011E072 /* pause.png in Resources */,
 				3DF8043918FE62FC00913505 /* tool_movie.png in Resources */,
 				3DED27351904F13B001A1D67 /* ic_movie@2x.png in Resources */,
@@ -2710,6 +2711,7 @@
 				3DED26801900D329001A1D67 /* stack_fblike.png in Resources */,
 				69B9A39818E697F70007D6E2 /* iu.css in Resources */,
 				267CB1AE190F93370079E565 /* tab_tools_off@2x.png in Resources */,
+				CB357336195031E700D2D203 /* Melissa.jpg in Resources */,
 				3DF8041918FE62F200913505 /* view_border.png in Resources */,
 				69CFCAC318EAA21E00E3048A /* sample.jpg in Resources */,
 				3DF803E718FE62C900913505 /* ic_document.png in Resources */,
@@ -2755,7 +2757,6 @@
 				267CB1B9190F95750079E565 /* bg_center.png in Resources */,
 				3DF803DD18FE62C900913505 /* align_left.png in Resources */,
 				267CB193190F93370079E565 /* tab_appearance_off.png in Resources */,
-				CB370E38192D98EB0074F3F8 /* django.png in Resources */,
 				6979FC0818ED34E20060C3B4 /* LMPropertyFrameVC.xib in Resources */,
 				2628C9221919C8C800D9D8CD /* tab_secondary_on.png in Resources */,
 				69D79B3419138CC60020608D /* LMStartRecentVC.xib in Resources */,
@@ -2766,7 +2767,6 @@
 				2628C91C1919C8C800D9D8CD /* tab_primary_off.png in Resources */,
 				3DF8043E18FE62FC00913505 /* tool_carousel.png in Resources */,
 				3DED26661900D313001A1D67 /* ic_page@2x.png in Resources */,
-				CB370E31192D93580074F3F8 /* gallary.zip in Resources */,
 				267CB1A6190F93370079E565 /* tab_primary@2x.png in Resources */,
 				3DED268C1900D329001A1D67 /* stack_transition@2x.png in Resources */,
 				690A8277190A2CC200DDBA86 /* new_default.png in Resources */,

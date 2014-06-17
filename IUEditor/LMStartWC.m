@@ -67,6 +67,7 @@
             [_mainV addSubviewFullFrame:_templateVC.view];
             [_prevB setTarget:_templateVC];
             [_prevB setEnabled:NO];
+            [_prevB setHidden:YES];
             [_nextB setTarget:_templateVC];
             break;
         case 1:{

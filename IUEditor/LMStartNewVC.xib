@@ -29,7 +29,7 @@
                             <subviews>
                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="djW-nI-k7j" userLabel="Default">
                                     <rect key="frame" x="-2" y="0.0" width="180" height="120"/>
-                                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="new_default" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="XJs-6C-Nm1">
+                                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="new_default" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="XJs-6C-Nm1">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
@@ -108,11 +108,60 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <box autoresizesSubviews="NO" fixedFrame="YES" borderWidth="3" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="jnO-R2-Sqp">
+                        <rect key="frame" x="115" y="131" width="180" height="120"/>
+                        <view key="contentView">
+                            <rect key="frame" x="3" y="3" width="174" height="114"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        </view>
+                        <color key="borderColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <connections>
+                            <binding destination="-2" name="hidden" keyPath="self.typeDefaultB.state" id="8eN-OB-Plj">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </box>
+                    <box autoresizesSubviews="NO" fixedFrame="YES" borderWidth="3" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="nA2-S1-hl4">
+                        <rect key="frame" x="310" y="131" width="180" height="120"/>
+                        <view key="contentView">
+                            <rect key="frame" x="3" y="3" width="174" height="114"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        </view>
+                        <color key="borderColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <connections>
+                            <binding destination="-2" name="hidden" keyPath="self.typePresentationB.state" id="epL-eT-7xb">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </box>
+                    <box autoresizesSubviews="NO" fixedFrame="YES" borderWidth="3" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4ml-KH-vpG">
+                        <rect key="frame" x="505" y="131" width="180" height="120"/>
+                        <view key="contentView">
+                            <rect key="frame" x="3" y="3" width="174" height="114"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        </view>
+                        <color key="borderColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <connections>
+                            <binding destination="-2" name="hidden" keyPath="self.typeDjangoB.state" id="KfS-Xh-8eU">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </box>
                 </subviews>
             </view>
             <color key="borderColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
             <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
         </box>
+        <userDefaultsController representsSharedInstance="YES" id="ykX-I0-pY2"/>
     </objects>
     <resources>
         <image name="new_default" width="54" height="66"/>

@@ -86,23 +86,23 @@
                 <rect key="frame" x="0.0" y="0.0" width="190" height="160"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <box autoresizesSubviews="NO" borderWidth="5" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="dkH-Tt-4BZ" userLabel="selectedBox">
+                    <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="dkH-Tt-4BZ" userLabel="selectedBox">
                         <rect key="frame" x="5" y="30" width="180" height="120"/>
                         <view key="contentView">
-                            <rect key="frame" x="5" y="5" width="170" height="110"/>
+                            <rect key="frame" x="1" y="1" width="178" height="118"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pbt-21-WSz">
-                                    <rect key="frame" x="-118" y="68" width="180" height="120"/>
+                                    <rect key="frame" x="-118" y="76" width="180" height="120"/>
                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="DYr-lj-Mgd"/>
                                     <connections>
                                         <binding destination="bMn-1f-MGA" name="value" keyPath="representedObject.image" id="S5X-WF-3hJ"/>
                                     </connections>
                                 </imageView>
-                                <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="K5C-g3-nwK">
-                                    <rect key="frame" x="-5" y="-5" width="180" height="120"/>
+                                <box autoresizesSubviews="NO" misplaced="YES" borderWidth="0.0" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="K5C-g3-nwK">
+                                    <rect key="frame" x="0.0" y="8" width="180" height="120"/>
                                     <view key="contentView">
-                                        <rect key="frame" x="1" y="1" width="178" height="118"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="180" height="120"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </view>
                                     <color key="borderColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -118,15 +118,8 @@
                             <constraint firstAttribute="centerX" secondItem="K5C-g3-nwK" secondAttribute="centerX" id="xPc-a8-r9K"/>
                             <constraint firstItem="K5C-g3-nwK" firstAttribute="leading" secondItem="dkH-Tt-4BZ" secondAttribute="leading" id="yyD-pk-POv"/>
                         </constraints>
-                        <color key="borderColor" red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="borderColor" white="0.60999999999999999" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <connections>
-                            <binding destination="bMn-1f-MGA" name="hidden" keyPath="self.selected" id="1XK-ZD-Qu5">
-                                <dictionary key="options">
-                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                </dictionary>
-                            </binding>
-                        </connections>
                     </box>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ecD-cX-7pk">
                         <rect key="frame" x="3" y="8" width="184" height="14"/>
@@ -139,6 +132,22 @@
                             <binding destination="bMn-1f-MGA" name="value" keyPath="representedObject.name" id="ahM-WL-XWo"/>
                         </connections>
                     </textField>
+                    <box autoresizesSubviews="NO" fixedFrame="YES" borderWidth="3" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Ol9-Nx-nYf">
+                        <rect key="frame" x="5" y="30" width="180" height="120"/>
+                        <view key="contentView">
+                            <rect key="frame" x="3" y="3" width="174" height="114"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        </view>
+                        <color key="borderColor" white="0.60999999999999999" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <binding destination="bMn-1f-MGA" name="hidden" keyPath="self.selected" id="GwM-rA-H2H">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </box>
                 </subviews>
             </view>
             <constraints>

@@ -17,6 +17,7 @@
 @property NSButton  *nextB;
 @property (strong) IBOutlet NSArrayController *templateAC;
 @property (weak) IBOutlet NSCollectionView *templateCollectionV;
+@property (nonatomic) NSIndexSet   *selectedIndexes;
 
 -(void)show;
 

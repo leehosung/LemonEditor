@@ -3,8 +3,10 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>image</key>
+		<string>Melissa.jpg</string>
 		<key>name</key>
-		<string>sampleGallary</string>
+		<string>Melissa</string>
 		<key>type</key>
 		<string>IUDjango</string>
 		<key>projectFile</key>
@@ -17,10 +19,10 @@
 		<string>Django</string>
 		<key>images</key>
 		<array>
-			<string>django.png</string>
+			<string>Melissa.jpg</string>
 		</array>
 		<key>projectPackageFile</key>
-		<string>gallary.zip</string>
+		<string>Melissa.zip</string>
 	</dict>
 	<dict>
 		<key>name</key>

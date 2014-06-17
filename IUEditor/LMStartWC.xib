@@ -18,7 +18,7 @@
         <window title="New Project" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="ZCa-xE-sBx">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="197" y="448" width="800" height="456"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
             <view key="contentView" id="TfM-u2-u3D">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="456"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -37,7 +37,7 @@
                                 </buttonCell>
                                 <cells>
                                     <column>
-                                        <buttonCell type="recessed" title="Template Project" bezelStyle="recessed" image="85CCC155-1A3B-46BF-8BE9-CFC9E5C0874C" imagePosition="overlaps" alignment="center" borderStyle="border" tag="1" inset="2" id="q8f-Dl-DTd">
+                                        <buttonCell type="recessed" title="Template Project" bezelStyle="recessed" image="E87F73F3-7266-4E14-A53E-1CDA39E45CC7" imagePosition="overlaps" alignment="center" borderStyle="border" tag="1" inset="2" id="q8f-Dl-DTd">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                             <font key="font" metaFont="smallSystemBold"/>
                                         </buttonCell>
@@ -111,7 +111,7 @@
         </window>
     </objects>
     <resources>
-        <image name="85CCC155-1A3B-46BF-8BE9-CFC9E5C0874C" width="1" height="1">
+        <image name="E87F73F3-7266-4E14-A53E-1CDA39E45CC7" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
