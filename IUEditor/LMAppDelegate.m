@@ -18,6 +18,14 @@
     LMPreferenceWC *preferenceWC;
 }
 
++ (void)initialize{
+    //user default setting
+    NSString *defaultsFilename = [[NSBundle mainBundle] pathForResource:@"Defaults" ofType:@"plist"];
+    // initialize a dictionary with contents of it
+    NSDictionary *defaults = [NSDictionary dictionaryWithContentsOfFile:defaultsFilename];
+    // register the stuff
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
+}
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     NSZeroRange = NSMakeRange(0, 0);
@@ -29,7 +37,7 @@
 //    [JDLogUtil enableLogSection:IULogText];
     
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraints"];
-
+  
 
 #pragma mark -
 #pragma mark canvas test

@@ -144,6 +144,10 @@
 		3D8D4B2A19179F910002C871 /* LMPropertyIUTextViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8D4B2819179F910002C871 /* LMPropertyIUTextViewVC.m */; };
 		3D8D4B2B19179F910002C871 /* LMPropertyIUTextViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D8D4B2919179F910002C871 /* LMPropertyIUTextViewVC.xib */; };
 		3D973F091946F45100FB893F /* IUProjectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D973F081946F45100FB893F /* IUProjectController.m */; };
+		3D97D4571950251000826280 /* jssor.core.js in Resources */ = {isa = PBXBuildFile; fileRef = 3D97D4561950251000826280 /* jssor.core.js */; };
+		3D97D4591950254A00826280 /* jssor.slider.js in Resources */ = {isa = PBXBuildFile; fileRef = 3D97D4581950254A00826280 /* jssor.slider.js */; };
+		3D97D45B1950255200826280 /* jssor.utils.js in Resources */ = {isa = PBXBuildFile; fileRef = 3D97D45A1950255200826280 /* jssor.utils.js */; };
+		3D97D45D1950339500826280 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D97D45C1950339500826280 /* Defaults.plist */; };
 		3DA416B81935A6BE00559028 /* LMFontPreferenceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA416B61935A6BE00559028 /* LMFontPreferenceVC.m */; };
 		3DA416B91935A6BE00559028 /* LMFontPreferenceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DA416B71935A6BE00559028 /* LMFontPreferenceVC.xib */; };
 		3DA416BD1935ABB400559028 /* LMFontController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA416BC1935ABB400559028 /* LMFontController.m */; };
@@ -690,6 +694,10 @@
 		3D8D4B2919179F910002C871 /* LMPropertyIUTextViewVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyIUTextViewVC.xib; sourceTree = "<group>"; };
 		3D973F071946F45100FB893F /* IUProjectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUProjectController.h; sourceTree = "<group>"; };
 		3D973F081946F45100FB893F /* IUProjectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUProjectController.m; sourceTree = "<group>"; };
+		3D97D4561950251000826280 /* jssor.core.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jssor.core.js; sourceTree = "<group>"; };
+		3D97D4581950254A00826280 /* jssor.slider.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jssor.slider.js; sourceTree = "<group>"; };
+		3D97D45A1950255200826280 /* jssor.utils.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jssor.utils.js; sourceTree = "<group>"; };
+		3D97D45C1950339500826280 /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = "<group>"; };
 		3DA416B51935A6BE00559028 /* LMFontPreferenceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMFontPreferenceVC.h; path = Editor/Preference/LMFontPreferenceVC.h; sourceTree = "<group>"; };
 		3DA416B61935A6BE00559028 /* LMFontPreferenceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMFontPreferenceVC.m; path = Editor/Preference/LMFontPreferenceVC.m; sourceTree = "<group>"; };
 		3DA416B71935A6BE00559028 /* LMFontPreferenceVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMFontPreferenceVC.xib; path = Editor/Preference/LMFontPreferenceVC.xib; sourceTree = "<group>"; };
@@ -1457,6 +1465,16 @@
 			name = StartProjectWindow;
 			sourceTree = "<group>";
 		};
+		3D97D4551950250000826280 /* carousel */ = {
+			isa = PBXGroup;
+			children = (
+				3D97D45A1950255200826280 /* jssor.utils.js */,
+				3D97D4561950251000826280 /* jssor.core.js */,
+				3D97D4581950254A00826280 /* jssor.slider.js */,
+			);
+			name = carousel;
+			sourceTree = "<group>";
+		};
 		3DA416BA1935AB9400559028 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -1474,6 +1492,7 @@
 			children = (
 				690A40A418E17C5700095263 /* widgetForDefault.plist */,
 				3DA416C21935B29200559028 /* defaultFont.plist */,
+				3D97D45C1950339500826280 /* Defaults.plist */,
 			);
 			name = plist;
 			sourceTree = "<group>";
@@ -1869,6 +1888,7 @@
 		3DED275D190E388F001A1D67 /* JS */ = {
 			isa = PBXGroup;
 			children = (
+				3D97D4551950250000826280 /* carousel */,
 				3DED2768190E3956001A1D67 /* plugins */,
 				3DED2766190E38E5001A1D67 /* jquery.bxslider.min.js */,
 				3DED2762190E38C5001A1D67 /* jquery.bxslider.js */,
@@ -2672,6 +2692,7 @@
 				2628C92E191A31F600D9D8CD /* stack_form.png in Resources */,
 				261E5A8E19484F70002C286A /* tab_pg_off@2x.png in Resources */,
 				26378CDE194EC42A004B5001 /* import@2x.png in Resources */,
+				3D97D4591950254A00826280 /* jssor.slider.js in Resources */,
 				2628C9201919C8C800D9D8CD /* tab_secondary_off.png in Resources */,
 				3DED274F1907C4D0001A1D67 /* FBSampleImage.png in Resources */,
 				69B37F0E18DFDEE800DE620F /* LMFileNaviVC.xib in Resources */,
@@ -2697,6 +2718,7 @@
 				69317CB31947271F0065B6F4 /* LMHelpWC.xib in Resources */,
 				267CB1AF190F93370079E565 /* tab_tools_on.png in Resources */,
 				69FEC48E194845CA00483C11 /* scrollingAnimation.pdf in Resources */,
+				3D97D45D1950339500826280 /* Defaults.plist in Resources */,
 				3DED26641900D313001A1D67 /* ic_contents@2x.png in Resources */,
 				3DD47874193DCCF900639AB5 /* LMPropertyIUFormVC.xib in Resources */,
 				26620E4C19458A2100B728CD /* select_directory@2x.png in Resources */,
@@ -2709,6 +2731,7 @@
 				3DED26631900D313001A1D67 /* align_left@2x.png in Resources */,
 				3DF8045018FE62FC00913505 /* tool_transition@2x.png in Resources */,
 				262D4AB719481DA2006F5FBE /* tab_on_03@2x.png in Resources */,
+				3D97D4571950251000826280 /* jssor.core.js in Resources */,
 				2628C927191A30A300D9D8CD /* stack_section@2x.png in Resources */,
 				3D748C861921D1BD005665A3 /* stack_carousel_item@2x.png in Resources */,
 				3DED26AB1900F43F001A1D67 /* ic_js.png in Resources */,
@@ -2757,6 +2780,7 @@
 				3DED26911900D329001A1D67 /* stack_carousel@2x.png in Resources */,
 				2608C1DF193DE6BC00DD1B42 /* warning.png in Resources */,
 				2672A0A719120A650050043E /* stack_collection.png in Resources */,
+				3D97D45B1950255200826280 /* jssor.utils.js in Resources */,
 				3DED265C1900D313001A1D67 /* view_list@2x.png in Resources */,
 				26EFF41E194AECB900317C3E /* auto_resize@2x.png in Resources */,
 				2628C932191A360200D9D8CD /* stack_submit.png in Resources */,
