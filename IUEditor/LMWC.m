@@ -31,7 +31,7 @@
 
 #import "LMTopToolbarVC.h"
 #import "LMBottomToolbarVC.h"
-#import "LMIUInspectorVC.h"
+#import "LMIUPropertyVC.h"
 
 #import "IUDjangoProject.h"
 
@@ -90,7 +90,7 @@
     LMBottomToolbarVC     *bottomToolbarVC;
     
     //right top
-    LMIUInspectorVC  *iuInspectorVC;
+    LMIUPropertyVC  *iuInspectorVC;
     LMAppearanceVC  *appearanceVC;
     LMEventVC       *eventVC;
     
@@ -116,7 +116,7 @@
         widgetLibraryVC = [[LMWidgetLibraryVC alloc] initWithNibName:@"LMWidgetLibraryVC" bundle:nil];
         resourceVC = [[LMResourceVC alloc] initWithNibName:@"LMResourceVC" bundle:nil];
         appearanceVC = [[LMAppearanceVC alloc] initWithNibName:@"LMAppearanceVC" bundle:nil];
-        iuInspectorVC = [[LMIUInspectorVC alloc] initWithNibName:[LMIUInspectorVC class].className bundle:nil];
+        iuInspectorVC = [[LMIUPropertyVC alloc] initWithNibName:[LMIUPropertyVC class].className bundle:nil];
         eventVC = [[LMEventVC alloc] initWithNibName:@"LMEventVC" bundle:nil];
 
         

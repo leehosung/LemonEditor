@@ -6,15 +6,14 @@
 //  Copyright (c) 2014 JDLab. All rights reserved.
 //
 
-#import "LMIUInspectorVC.h"
+#import "LMIUPropertyVC.h"
 
 #import "JDOutlineCellView.h"
 
-#import "LMPropertyIUBoxVC.h"
+#import "LMInspectorLinkVC.h"
 #import "LMPropertyIUHTMLVC.h"
 #import "LMPropertyIUFBLikeVC.h"
 #import "LMPropertyIUcarouselVC.h"
-#import "LMPropertyIUImageVC.h"
 #import "LMPropertyIUMovieVC.h"
 #import "LMPropertyIUMailLinkVC.h"
 #import "LMPropertyIUTransitionVC.h"
@@ -30,10 +29,9 @@
 #import "PGSubmitButtonVC.h"
 
 
-@interface LMIUInspectorVC (){
+@interface LMIUPropertyVC (){
     
-    LMPropertyIUBoxVC   *propertyIUBoxVC;
-    LMPropertyIUImageVC *propertyIUImageVC;
+    LMInspectorLinkVC   *inspectorLinkVC;
     LMPropertyIUHTMLVC  *propertyIUHTMLVC;
     
     LMPropertyIUMovieVC *propertyIUMovieVC;
@@ -53,13 +51,16 @@
     LMPropertyIUPageVC * propertyIUPageVC;
     
     LMPropertyIUFormVC *propertyPGFormVC;
-    LMPropertyIUTextVC *textVC;
+    LMPropertyIUTextVC *propertyIUTextVC;
     
     PGSubmitButtonVC *propertyPGSubmitButtonVC;
     
-    NSArray *propertyVCArray;
-    NSInteger countOfAdvanced;
+    NSView *_noInspectorV;
+    __weak NSTableView *_tableV;
 }
+
+@property     NSArray *propertyVArray;
+
 
 @property (strong) IBOutlet NSBox *defaultTitleV;
 @property (strong) IBOutlet NSBox *advancedTitleV;
@@ -68,17 +69,18 @@
 @property (weak) IBOutlet NSOutlineView *outlineV;
 @property (weak) IBOutlet NSTextField *advancedTF;
 
+@property (weak) IBOutlet NSTableView *tableV;
+@property (strong) IBOutlet NSView *noInspectorV;
 @end
 
-@implementation LMIUInspectorVC
+@implementation LMIUPropertyVC
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
-        propertyIUBoxVC = [[LMPropertyIUBoxVC alloc] initWithNibName:[LMPropertyIUBoxVC class].className bundle:nil];
-        propertyIUImageVC = [[LMPropertyIUImageVC alloc] initWithNibName:[LMPropertyIUImageVC class].className bundle:nil];
+        inspectorLinkVC = [[LMInspectorLinkVC alloc] initWithNibName:[LMInspectorLinkVC class].className bundle:nil];
         propertyIUHTMLVC = [[LMPropertyIUHTMLVC alloc] initWithNibName:[LMPropertyIUHTMLVC class].className bundle:nil];
         
         propertyIUMovieVC = [[LMPropertyIUMovieVC alloc] initWithNibName:[LMPropertyIUMovieVC class].className bundle:nil];
@@ -99,11 +101,11 @@
         propertyIUPageVC = [[LMPropertyIUPageVC alloc] initWithNibName:[LMPropertyIUPageVC class].className bundle:nil];
         propertyPGFormVC = [[LMPropertyIUFormVC alloc] initWithNibName:[LMPropertyIUFormVC class].className bundle:nil];
         
-        textVC = [[LMPropertyIUTextVC alloc] initWithNibName:[LMPropertyIUTextVC class].className bundle:nil];
+        propertyIUTextVC = [[LMPropertyIUTextVC alloc] initWithNibName:[LMPropertyIUTextVC class].className bundle:nil];
         
         propertyPGSubmitButtonVC = [[PGSubmitButtonVC alloc] initWithNibName:[PGSubmitButtonVC class].className bundle:nil];
         
-        propertyVCArray = [NSArray arrayWithObjects:
+        self.propertyVArray = [NSArray arrayWithObjects:
                            @"propertyIUImageVC",
                            @"propertyIUHTMLVC",
                            @"propertyIUMovieVC",
@@ -123,13 +125,13 @@
                            @"propertyPGSubmitButtonVC",
                            nil];
         
+        [self loadView];
     }
     return self;
 }
 
 -(void)awakeFromNib{
-    [propertyIUBoxVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
-    [propertyIUImageVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+    [inspectorLinkVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     [propertyIUHTMLVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     
     [propertyIUMovieVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
@@ -151,18 +153,12 @@
     [propertyIUPageVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     
     [propertyPGFormVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
-    [textVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+    [propertyIUTextVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     
     [propertyPGSubmitButtonVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
 
     
 
-}
-
-- (void)setPageDocumentNodes:(NSArray *)pageDocumentNodes{
-    _pageDocumentNodes = pageDocumentNodes;
-    propertyIUBoxVC.pageDocumentNodes = pageDocumentNodes;
-    
 }
 
 -(void)setController:(IUController *)controller{
@@ -178,163 +174,77 @@
 
 - (void)setResourceManager:(IUResourceManager *)resourceManager{
     _resourceManager = resourceManager;
-    propertyIUImageVC.resourceManager = resourceManager;
     propertyIUCarouselVC.resourceManager = resourceManager;
     propertyIUMovieVC.resourceManager = resourceManager;
 }
 
-- (void)reloadSelectedIUArray{
-
-    NSArray *removeViewArray = [_advancedContentV.subviews copy];
-    for(NSView *childView in removeViewArray){
-        [childView removeFromSuperview];
-    }
-    
-    if(self.controller.selection == nil && self.controller.selectedObjects.count == 0){
-        return;
-    }
-    //change name
-    if(self.controller.selectedObjects.count ==1){
-        [_advancedTF setStringValue:[self.controller.selection className]];
-    }
-    else{
-        [_advancedTF setStringValue:@"Advanced Property"];
-    }
-    
-    //find current view
-    NSArray *classPedigree = [self.controller selectedPedigree];
-    NSMutableArray *viewArray = [NSMutableArray array];
-    for(NSString *className in classPedigree){
-        NSString *vcName = [NSString stringWithFormat:@"property%@VC", className];
-        if([propertyVCArray containsObject:vcName]){
-            NSViewController *iuVC = [self valueForKeyPath:vcName];
-            NSView *view;
-            if([iuVC.view isKindOfClass:[JDOutlineCellView class]]){
-                view = ((JDOutlineCellView *)iuVC.view).contentV;
-            }
-            else{
-                view = iuVC.view;
-            }
-            [viewArray addObject:view];
-        }
-    }
-    
-    //add textVC if has text
-    if(self.controller.selectedObjects.count == 1 && [((IUBox *)self.controller.selection) hasText]){
-        [viewArray insertObject:textVC.view atIndex:0];
-    }
-    
-    //make advanced view
-    CGFloat height=0;
-    NSView *bottomView;
-
-    for(int i=0; i<viewArray.count; i++){
-        NSView *view = [viewArray objectAtIndex:i];
-        height += view.frame.size.height;
-        if(i == 0){
-            [_advancedContentV addSubviewFullFrameAtBottom:view height:view.frame.size.height];
-        }
-        else if(i==viewArray.count -1){
-            [_advancedContentV addSubviewFullFrameAtTop:view height:view.frame.size.height toBottomView:bottomView];
-        }
-        else{
-            [_advancedContentV addSubviewFullFrame:view height:view.frame.size.height toBottomView:bottomView];
-        }
-        bottomView = view;
-        
-    }
-    [_advancedContentV setHeight:height];
-    countOfAdvanced = viewArray.count;
-}
-
 
 -(void)selectedObjectsDidChange:(NSDictionary *)change{
-    [self reloadSelectedIUArray];
-    [_outlineV reloadData];
+    NSString *classString = [[self.controller selectedPedigree] firstObject];
+    if ([classString isEqualToString:@"IUCarousel"]) {
+        self.propertyVArray = @[propertyIUCarouselVC.view];
+    }
+    else if ([classString isEqualToString:@"PGForm"]) {
+        self.propertyVArray = @[propertyPGFormVC.view];
+    }
+    else if ([classString isEqualToString:@"IUMovie"]) {
+        self.propertyVArray = @[propertyIUMovieVC.view];
+    }
+    else if ([classString isEqualToString:@"PGPageLinkSet"]) {
+        self.propertyVArray = @[propertyPGPageLinkSetVC.view];
+    }
+    else if ([classString isEqualToString:@"IUWebMovie"]) {
+        self.propertyVArray = @[propertyIUWebMovieVC.view, propertyIUHTMLVC.view];
+    }
+    else if ([classString isEqualToString:@"IUImport"]) {
+        self.propertyVArray = @[propertyIUImportVC.view];
+    }
+    else if ([classString isEqualToString:@"IUMailLink"]) {
+        self.propertyVArray = @[propertyIUMailLinkVC.view];
+    }
+    else if ([classString isEqualToString:@"IUTransition"]) {
+        self.propertyVArray = @[propertyIUTransitionVC.view];
+    }
+    else if ([classString isEqualToString:@"IUFBLike"]) {
+        self.propertyVArray = @[propertyIUFBLikeVC.view];
+    }
+    else if ([classString isEqualToString:@"PGTextField"]) {
+        self.propertyVArray = @[propertyPGTextFieldVC.view];
+    }
+    else if ([classString isEqualToString:@"IUText"]) {
+        self.propertyVArray = @[propertyIUTextVC.view, inspectorLinkVC.view];
+    }
+    else if ([classString isEqualToString:@"IUBox"] || [classString isEqualToString:@"IUImage"]) {
+        self.propertyVArray = @[inspectorLinkVC.view];
+    }
+    else {
+        self.propertyVArray = @[self.noInspectorV];
+    }
+    [_tableV reloadData];
 }
 
 
 #pragma mark -
-#pragma mark outlineView
+#pragma mark tableView
 
-//return number of child
-- (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(NSView *)item{
-    
-    if(item == nil){
-        return 2;
+- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
+    id v = [self.propertyVArray objectAtIndex:row];
+    if ([v isKindOfClass:[NSViewController class]]) {
+        return [(NSViewController*)v view];
     }
-    else
-    {
-        if([[item identifier] isEqualToString:@"defaultTitleV"]){
-            return 1;
-        }
-        else if([[item identifier] isEqualToString:@"advancedTitleV"] && countOfAdvanced > 0){
-            return 1;
-        }
+    return v;
+}
 
-        else{
-            return 0;
-        }
-    }
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView{
+    return [self.propertyVArray count];
+}
+
+- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row{
+    return [(NSView*)[self.propertyVArray objectAtIndex:row] frame].size.height;
 }
 
 
-- (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item{
-    if(item == nil){
-        if(index==0){
-            return _defaultTitleV;
-        }
-        else if(index == 1){
-            return _advancedTitleV;
-        }
-        else{
-            assert(0);
-            return nil;
-        }
-    }
-    else{
-        if([item isEqualTo:_defaultTitleV]){
-            return  propertyIUBoxVC.defaultView;
-            
-        }else if([item isEqualTo:_advancedTitleV]){
-            return _advancedContentV;
-        }
-        else{
-            assert(0);
-            return nil;
-        }
-    }
-}
-
-- (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item{
-    //root or title V
-    if([[item identifier] containsString:@"TitleV"]){
-        return YES;
-    }
-    
-    return NO;
-}
 
 
-- (id)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(id)item{
-    return item;
-}
-
-- (CGFloat)outlineView:(NSOutlineView *)outlineView heightOfRowByItem:(NSView *)item{
-    assert(item != nil);
-    CGFloat height = item.frame.size.height;
-    if(height <=0){
-        height = 0.1;
-    }
-    return height;
-    
-}
-
-- (IBAction)outlineViewClicked:(NSOutlineView *)sender{
-    id clickItem = [sender itemAtRow:[_outlineV clickedRow]];
-    
-    [sender isItemExpanded:clickItem] ?
-    [sender.animator collapseItem:clickItem] : [sender.animator expandItem:clickItem];
-}
 
 @end

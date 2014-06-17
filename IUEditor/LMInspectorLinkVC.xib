@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="LMInspectorLinkVC">
+            <connections>
+                <outlet property="divAC" destination="3SL-45-bh2" id="Usu-VP-JpW"/>
+                <outlet property="pageDocumentAC" destination="toG-DQ-ma4" id="EEt-zA-hiB"/>
+                <outlet property="view" destination="niB-NK-igw" id="2CC-E5-Vdv"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <arrayController id="toG-DQ-ma4" userLabel="DocumentArrayController"/>
+        <arrayController id="3SL-45-bh2" userLabel="DivArrayController"/>
+        <userDefaultsController representsSharedInstance="YES" id="nZS-8c-klJ"/>
+        <customView id="niB-NK-igw">
+            <rect key="frame" x="0.0" y="0.0" width="249" height="85"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1FF-4O-BWO">
+                    <rect key="frame" x="5" y="39" width="43" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="d0r-QO-XU1"/>
+                        <constraint firstAttribute="width" constant="66" id="s2q-Nn-dVy"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Page" id="Lkp-eS-mvg">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <comboBox verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hPO-0m-QSi" userLabel="Link">
+                    <rect key="frame" x="54" y="36" width="178" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="184" id="3Rj-up-XOA"/>
+                        <constraint firstAttribute="height" constant="17" id="tij-Kc-qh6"/>
+                    </constraints>
+                    <comboBoxCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="Fay-Q5-i7a">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </comboBoxCell>
+                    <connections>
+                        <action selector="clickLinkComboBox:" target="-2" id="b2e-sD-H8R"/>
+                        <binding destination="toG-DQ-ma4" name="content" keyPath="arrangedObjects.name" id="iI9-XM-sEE"/>
+                    </connections>
+                </comboBox>
+                <popUpButton verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m4X-wu-gew">
+                    <rect key="frame" x="51" y="11" width="179" height="22"/>
+                    <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" autoenablesItems="NO" altersStateOfSelectedItem="NO" selectedItem="box-fG-Upc" id="ZRc-RF-PLk">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" title="OtherViews" autoenablesItems="NO" id="egA-LZ-VBZ">
+                            <items>
+                                <menuItem title="Item 1" id="box-fG-Upc"/>
+                                <menuItem title="Item 2" id="Z5c-Yc-wFC"/>
+                                <menuItem title="Item 3" id="YHy-jA-MTx"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <binding destination="3SL-45-bh2" name="content" keyPath="arrangedObjects.htmlID" id="x5P-qW-of4"/>
+                    </connections>
+                </popUpButton>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="acu-TJ-o3H">
+                    <rect key="frame" x="6" y="64" width="31" height="14"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Link" id="P85-kX-VYj">
+                        <font key="font" size="11" name="LucidaGrande-Bold"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z6O-Im-bo0">
+                    <rect key="frame" x="5" y="14" width="43" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="66" id="HLr-O5-J1T"/>
+                        <constraint firstAttribute="height" constant="17" id="hGq-2S-T1N"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Div" id="E32-YH-1mR">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="hPO-0m-QSi" firstAttribute="leading" secondItem="1FF-4O-BWO" secondAttribute="trailing" constant="6" id="5bb-Mo-3I4"/>
+                <constraint firstItem="m4X-wu-gew" firstAttribute="top" secondItem="hPO-0m-QSi" secondAttribute="bottom" constant="8" id="IJv-ZP-Wqk"/>
+                <constraint firstItem="m4X-wu-gew" firstAttribute="trailing" secondItem="hPO-0m-QSi" secondAttribute="trailing" id="MPQ-fM-nAS"/>
+                <constraint firstItem="m4X-wu-gew" firstAttribute="leading" secondItem="hPO-0m-QSi" secondAttribute="leading" id="tTd-oW-81A"/>
+            </constraints>
+        </customView>
+    </objects>
+</document>

@@ -9,13 +9,13 @@
 #import <Cocoa/Cocoa.h>
 #import "IUController.h"
 #import "IUResourceManager.h"
-#import "LMPropertyIUBoxVC.h"
+#import "LMInspectorLinkVC.h"
 
-@interface LMIUInspectorVC : NSViewController <NSOutlineViewDataSource, NSOutlineViewDelegate>
+@interface LMIUPropertyVC : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
 
 @property (nonatomic) IUController *controller;
 @property (nonatomic) IUResourceManager     *resourceManager;
-@property (nonatomic) NSArray   *pageDocumentNodes;
+@property (nonatomic) NSArray   *pageDocuments;
 @property (nonatomic) NSArray   *classDocuments;
 
 @end

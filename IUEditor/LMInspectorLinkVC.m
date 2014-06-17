@@ -6,11 +6,11 @@
 //  Copyright (c) 2014년 JDLab. All rights reserved.
 //
 
-#import "LMPropertyIUBoxVC.h"
+#import "LMInspectorLinkVC.h"
 #import "IUSheetGroup.h"
 #import "IUSheet.h"
 
-@interface LMPropertyIUBoxVC ()
+@interface LMInspectorLinkVC ()
 
 @property (strong) IBOutlet NSArrayController *pageDocumentAC;
 @property (strong) IBOutlet NSArrayController *divAC;
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation LMPropertyIUBoxVC
+@implementation LMInspectorLinkVC
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

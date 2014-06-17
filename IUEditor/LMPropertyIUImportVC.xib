@@ -122,8 +122,8 @@
         <arrayController id="hfv-f8-xWI">
             <connections>
                 <binding destination="-2" name="contentArray" keyPath="classDocuments" id="3lx-FG-c3Q"/>
-                <binding destination="-2" name="contentArrayForMultipleSelection" keyPath="selectedObjs" previousBinding="3lx-FG-c3Q" id="OOR-c9-CtM"/>
                 <binding destination="-2" name="selectionIndexes" keyPath="selectedObjs" id="Jwp-NI-gri"/>
+                <binding destination="-2" name="contentArrayForMultipleSelection" keyPath="selectedObjs" previousBinding="3lx-FG-c3Q" id="OOR-c9-CtM"/>
             </connections>
         </arrayController>
     </objects>

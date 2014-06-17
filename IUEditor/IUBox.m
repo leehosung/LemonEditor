@@ -686,5 +686,8 @@
 - (BOOL)canChangePositionRelativeCenter{
     return YES;
 }
+- (BOOL)overflowChangeable{
+    return YES;
+}
 
 @end
