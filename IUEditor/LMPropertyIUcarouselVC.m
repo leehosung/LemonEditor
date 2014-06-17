@@ -7,8 +7,16 @@
 //
 
 #import "LMPropertyIUcarouselVC.h"
+#import "JDOutlineCellView.h"
 
 @interface LMPropertyIUcarouselVC ()
+
+//for outlineView
+@property (strong) IBOutlet JDOutlineCellView *carouselMainView;
+@property (strong) IBOutlet JDOutlineCellView *arrowView;
+@property (strong) IBOutlet JDOutlineCellView *controlView;
+
+//set attributes
 
 @property (weak) IBOutlet NSMatrix *autoplayMatrix;
 @property (weak) IBOutlet NSMatrix *arrowControlMatrix;
@@ -69,5 +77,79 @@
 -(void)imageContextDidChange:(NSDictionary *)change{
     self.imageArray = [@[@"Default"] arrayByAddingObjectsFromArray:self.resourceManager.imageFiles];
 }
+
+#pragma mark outlineview
+
+
+
+- (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item{
+    if(item == nil){
+        return 3;
+    }
+    else{
+        if([[item identifier] isEqualToString:@"title"]){
+            return 1;
+        }
+        return 0;
+    }
+}
+
+- (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item{
+    if(item == nil){
+        switch (index) {
+            case 0:
+                return _carouselMainView;
+            case 1:
+                return _arrowView.titleV;
+            case 2:
+                return _controlView.titleV;
+            default:
+                return nil;
+        }
+    }
+    else{
+        if([item isEqualTo:_arrowView.titleV]){
+            return _arrowView.contentV;
+        }
+        else if([item isEqualTo:_controlView.titleV]){
+            return _controlView.contentV;
+        }
+        else{
+            return nil;
+        }
+    }
+}
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item{
+    //root or title V
+    if(item == nil || [[item identifier] isEqualToString:@"title"]){
+        return YES;
+    }
+    
+    return NO;
+}
+
+
+- (id)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(id)item{
+    return item;
+}
+
+- (CGFloat)outlineView:(NSOutlineView *)outlineView heightOfRowByItem:(NSView *)item{
+    assert(item != nil);
+    CGFloat height = item.frame.size.height;
+    if(height <=0){
+        height = 0.1;
+    }
+    return height;
+    
+}
+
+- (IBAction)outlineViewClicked:(NSOutlineView *)sender{
+    id clickItem = [sender itemAtRow:[sender clickedRow]];
+    
+    [sender isItemExpanded:clickItem] ?
+    [sender.animator collapseItem:clickItem] : [sender.animator expandItem:clickItem];
+}
+
 
 @end
