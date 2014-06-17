@@ -10,8 +10,14 @@
                 <outlet property="autoplayMatrix" destination="3rt-7L-gMK" id="Hn6-bB-nF0"/>
                 <outlet property="carouselMainView" destination="Q3L-Eb-iN0" id="mrn-Sp-gMX"/>
                 <outlet property="controlView" destination="WK2-m3-ApR" id="74Q-9p-AHG"/>
+                <outlet property="controllerSegmentedControl" destination="dmL-Yx-PwR" id="tR5-Rh-kRX"/>
                 <outlet property="countStepper" destination="ZTZ-HQ-fz6" id="NLM-Qe-cRe"/>
                 <outlet property="countTF" destination="0dZ-l4-lpd" id="u6p-zN-mN4"/>
+                <outlet property="deselectColor" destination="jbM-LT-oCd" id="jfE-z7-LTC"/>
+                <outlet property="enableColor" destination="xcL-S6-xEV" id="Tfn-SJ-vr1"/>
+                <outlet property="leftImageComboBox" destination="cqH-ZZ-7G2" id="ho3-Gs-Ceu"/>
+                <outlet property="rightImageComboBox" destination="7B2-h5-v7q" id="O4q-HW-kCu"/>
+                <outlet property="selectColor" destination="nPy-Kw-dwf" id="PhH-K2-K1V"/>
                 <outlet property="view" destination="27K-2Z-Uln" id="6dB-og-et0"/>
             </connections>
         </customObject>
