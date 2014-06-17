@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMWidgetLibraryVC">
@@ -34,13 +34,13 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <box autoresizesSubviews="NO" fixedFrame="YES" borderWidth="0.0" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="jZo-ts-vu9">
-                    <rect key="frame" x="4" y="0.0" width="251" height="60"/>
+                    <rect key="frame" x="253" y="0.0" width="10" height="60"/>
                     <view key="contentView">
-                        <rect key="frame" x="0.0" y="0.0" width="251" height="60"/>
+                        <rect key="frame" x="0.0" y="0.0" width="10" height="60"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                    <color key="fillColor" white="0.75" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <color key="fillColor" red="0.21049014193790927" green="0.4354903381504372" blue="0.91941812782805432" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <binding destination="Y4D-g3-cxE" name="hidden" keyPath="self.selected" id="1mT-iQ-8Tk">
                             <dictionary key="options">
@@ -71,8 +71,8 @@
                         <binding destination="Y4D-g3-cxE" name="value" keyPath="representedObject.shortDesc" id="IKm-xO-DsP"/>
                     </connections>
                 </textField>
-                <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" alphaValue="0.5" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="v3c-Wx-kU0">
-                    <rect key="frame" x="4" y="-2" width="251" height="5"/>
+                <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" alphaValue="0.29999999999999999" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="v3c-Wx-kU0">
+                    <rect key="frame" x="6" y="-2" width="250" height="5"/>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="system"/>
@@ -135,28 +135,28 @@
                     <color key="fillColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
                 </box>
                 <tabView type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="pPJ-ce-Fha" userLabel="widgetCollection">
-                    <rect key="frame" x="40" y="0.0" width="259" height="379"/>
+                    <rect key="frame" x="39" y="0.0" width="260" height="379"/>
                     <font key="font" metaFont="system"/>
                     <tabViewItems>
                         <tabViewItem label="Tab" identifier="1" id="9Xb-qh-wbH" userLabel="Primary">
                             <view key="view" id="N8M-SM-YNq">
-                                <rect key="frame" x="0.0" y="0.0" width="259" height="379"/>
+                                <rect key="frame" x="0.0" y="0.0" width="260" height="379"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <tabView type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="uLh-jb-tV9" userLabel="simple">
-                                        <rect key="frame" x="0.0" y="31" width="259" height="348"/>
+                                        <rect key="frame" x="0.0" y="31" width="260" height="348"/>
                                         <font key="font" metaFont="system"/>
                                         <tabViewItems>
                                             <tabViewItem label="Tab" identifier="1" id="t2D-Mm-F3S" userLabel="list_simple">
                                                 <view key="view" id="M40-my-pRc">
-                                                    <rect key="frame" x="0.0" y="0.0" width="259" height="348"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="260" height="348"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="9QO-nv-ssd" userLabel="CollectionView">
-                                                            <rect key="frame" x="0.0" y="0.0" width="259" height="348"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="260" height="348"/>
                                                             <subviews>
                                                                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsW-LS-gZG">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="259" height="348"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="260" height="348"/>
                                                                     <clipView key="contentView" copiesOnScroll="NO" id="bCG-sx-bTC">
                                                                         <rect key="frame" x="0.0" y="0.0" width="259" height="348"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -245,9 +245,9 @@
                                         </tabViewItems>
                                     </tabView>
                                     <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="R5h-BH-sR0">
-                                        <rect key="frame" x="0.0" y="0.0" width="259" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="260" height="31"/>
                                         <view key="contentView">
-                                            <rect key="frame" x="0.0" y="0.0" width="259" height="31"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="260" height="31"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <button toolTip="Collection View" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BR5-iS-MYW" userLabel="iconBtn">
@@ -668,7 +668,7 @@
                 </box>
             </subviews>
             <constraints>
-                <constraint firstItem="pPJ-ce-Fha" firstAttribute="leading" secondItem="vMJ-qe-EFg" secondAttribute="leading" constant="40" id="5bT-Ry-BE0"/>
+                <constraint firstItem="pPJ-ce-Fha" firstAttribute="leading" secondItem="vMJ-qe-EFg" secondAttribute="leading" constant="39" id="5bT-Ry-BE0"/>
                 <constraint firstAttribute="bottom" secondItem="Myo-YT-upo" secondAttribute="bottom" id="AUm-ac-6QL"/>
                 <constraint firstItem="sGn-bl-Kcs" firstAttribute="leading" secondItem="vMJ-qe-EFg" secondAttribute="leading" id="CIg-Gd-sKc"/>
                 <constraint firstAttribute="bottom" secondItem="sGn-bl-Kcs" secondAttribute="bottom" constant="30" id="LG5-st-2iE"/>
