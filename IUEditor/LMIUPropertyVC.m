@@ -182,9 +182,16 @@
 -(void)selectedObjectsDidChange:(NSDictionary *)change{
     NSString *classString = [[self.controller selectedPedigree] firstObject];
     if ([classString isEqualToString:@"IUCarousel"]) {
-        self.propertyVArray = @[propertyIUCarouselVC.view];
+        self.propertyVArray = nil;
+        [_tableV setHidden:YES];
+        [self.view addSubviewFullFrame:propertyIUCarouselVC.view];
     }
-    else if ([classString isEqualToString:@"PGForm"]) {
+    else{
+        [propertyIUCarouselVC.view removeFromSuperview];
+        [_tableV setHidden:NO];
+    }
+    
+    if ([classString isEqualToString:@"PGForm"]) {
         self.propertyVArray = @[propertyPGFormVC.view];
     }
     else if ([classString isEqualToString:@"IUMovie"]) {

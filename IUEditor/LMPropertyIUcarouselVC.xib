@@ -322,9 +322,6 @@
                                         <string>Default</string>
                                     </objectValues>
                                 </comboBoxCell>
-                                <connections>
-                                    <binding destination="I8D-ge-169" name="content" keyPath="arrangedObjects.relativePath" id="VKB-j6-jJV"/>
-                                </connections>
                             </comboBox>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RED-eq-N5m">
                                 <rect key="frame" x="14" y="28" width="60" height="17"/>
@@ -490,6 +487,9 @@
                                         <string>Default</string>
                                     </objectValues>
                                 </comboBoxCell>
+                                <connections>
+                                    <binding destination="I8D-ge-169" name="content" keyPath="arrangedObjects" id="gB2-ZV-gVf"/>
+                                </connections>
                             </comboBox>
                             <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cqH-ZZ-7G2" userLabel="leftArrowImage">
                                 <rect key="frame" x="79" y="84" width="187" height="22"/>
@@ -506,7 +506,7 @@
                                     </objectValues>
                                 </comboBoxCell>
                                 <connections>
-                                    <binding destination="I8D-ge-169" name="content" keyPath="arrangedObjects.relativePath" id="lUx-43-fQr"/>
+                                    <binding destination="I8D-ge-169" name="content" keyPath="arrangedObjects" id="RHM-S0-wuM"/>
                                 </connections>
                             </comboBox>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SiO-2F-wwz">
@@ -782,19 +782,19 @@
             </connections>
         </customView>
         <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="27K-2Z-Uln">
-            <rect key="frame" x="0.0" y="0.0" width="240" height="135"/>
+            <rect key="frame" x="0.0" y="0.0" width="300" height="154"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <clipView key="contentView" id="5u4-ef-Yvr">
                 <rect key="frame" x="1" y="17" width="238" height="117"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="16" outlineTableColumn="z13-h4-km7" id="Cgy-I1-hMm">
+                    <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="16" outlineTableColumn="z13-h4-km7" id="Cgy-I1-hMm">
                         <autoresizingMask key="autoresizingMask"/>
                         <size key="intercellSpacing" width="3" height="2"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" name="controlHighlightColor" catalog="System" colorSpace="catalog"/>
                         <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                         <tableColumns>
-                            <tableColumn identifier="AutomaticTableColumnIdentifier.0" width="116" minWidth="40" maxWidth="1000" id="z13-h4-km7">
+                            <tableColumn identifier="" width="295" minWidth="40" maxWidth="1000" id="z13-h4-km7">
                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -808,7 +808,7 @@
                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                 <prototypeCellViews>
                                     <tableCellView id="FZ0-I6-aMe">
-                                        <rect key="frame" x="1" y="1" width="116" height="17"/>
+                                        <rect key="frame" x="1" y="1" width="235" height="17"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eNI-kc-rei">
@@ -834,7 +834,7 @@
                         </connections>
                     </outlineView>
                 </subviews>
-                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                <color key="backgroundColor" name="controlHighlightColor" catalog="System" colorSpace="catalog"/>
             </clipView>
             <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="tj7-kb-qBI">
                 <rect key="frame" x="1" y="119" width="223" height="15"/>
@@ -844,7 +844,7 @@
                 <rect key="frame" x="224" y="17" width="15" height="102"/>
                 <autoresizingMask key="autoresizingMask"/>
             </scroller>
-            <point key="canvasLocation" x="37" y="546.5"/>
+            <point key="canvasLocation" x="70.5" y="141"/>
         </scrollView>
     </objects>
     <resources>
