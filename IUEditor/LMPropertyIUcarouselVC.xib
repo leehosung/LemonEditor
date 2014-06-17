@@ -125,6 +125,32 @@
                                     </menu>
                                 </popUpButtonCell>
                             </popUpButton>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MMW-uf-235">
+                                <rect key="frame" x="198" y="68" width="40" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19" id="8Ad-aY-wOv"/>
+                                    <constraint firstAttribute="width" constant="40" id="rfc-Re-jg5"/>
+                                </constraints>
+                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="1xZ-Im-LS1">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ndm-yA-5M9">
+                                <rect key="frame" x="240" y="71" width="26" height="14"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="XTd-Xf-G58"/>
+                                    <constraint firstAttribute="height" constant="14" id="czp-Nn-Suf"/>
+                                </constraints>
+                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="sec" id="6Vz-FK-kWv">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <constraints>
@@ -132,12 +158,16 @@
                         <constraint firstItem="3rt-7L-gMK" firstAttribute="leading" secondItem="9iG-cH-GGl" secondAttribute="trailing" constant="5" id="0m3-fD-RRR"/>
                         <constraint firstItem="0dZ-l4-lpd" firstAttribute="leading" secondItem="S3Y-zE-fCR" secondAttribute="trailing" constant="7" id="3kW-QL-x76"/>
                         <constraint firstItem="tzr-Wq-Iva" firstAttribute="top" secondItem="S3Y-zE-fCR" secondAttribute="bottom" constant="15" id="QDr-Vj-t4e"/>
+                        <constraint firstItem="MMW-uf-235" firstAttribute="top" secondItem="2Ad-gK-MZK" secondAttribute="top" constant="3" id="RdR-vK-Wdm"/>
                         <constraint firstItem="tzr-Wq-Iva" firstAttribute="leading" secondItem="2Ad-gK-MZK" secondAttribute="leading" constant="19" id="V1q-oT-lQs"/>
                         <constraint firstItem="3rt-7L-gMK" firstAttribute="top" secondItem="2Ad-gK-MZK" secondAttribute="top" constant="3" id="V8r-ny-OJW"/>
                         <constraint firstItem="S3Y-zE-fCR" firstAttribute="top" secondItem="9iG-cH-GGl" secondAttribute="bottom" constant="10" id="X5z-rZ-BoR"/>
                         <constraint firstItem="iWe-Vn-oct" firstAttribute="top" secondItem="0dZ-l4-lpd" secondAttribute="bottom" constant="11" id="cgd-Rl-vF4"/>
                         <constraint firstItem="S3Y-zE-fCR" firstAttribute="leading" secondItem="2Ad-gK-MZK" secondAttribute="leading" constant="12" id="dvz-6E-Arf"/>
+                        <constraint firstItem="ndm-yA-5M9" firstAttribute="leading" secondItem="MMW-uf-235" secondAttribute="trailing" constant="4" id="eAn-sP-bqI"/>
+                        <constraint firstItem="ndm-yA-5M9" firstAttribute="top" secondItem="2Ad-gK-MZK" secondAttribute="top" constant="5" id="h6L-sM-UsK"/>
                         <constraint firstItem="9iG-cH-GGl" firstAttribute="top" secondItem="2Ad-gK-MZK" secondAttribute="top" constant="5" id="jYo-Bm-ndi"/>
+                        <constraint firstItem="MMW-uf-235" firstAttribute="leading" secondItem="9iG-cH-GGl" secondAttribute="trailing" constant="126" id="ke8-kH-Kyt"/>
                         <constraint firstItem="ZTZ-HQ-fz6" firstAttribute="top" secondItem="3rt-7L-gMK" secondAttribute="bottom" constant="12" id="nuw-BI-iVh"/>
                         <constraint firstItem="ZTZ-HQ-fz6" firstAttribute="leading" secondItem="0dZ-l4-lpd" secondAttribute="trailing" constant="2" id="uD2-7I-a6s"/>
                         <constraint firstItem="0dZ-l4-lpd" firstAttribute="top" secondItem="3rt-7L-gMK" secondAttribute="bottom" constant="10" id="vuw-Ah-EmW"/>
@@ -153,7 +183,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="MB1-PZ-wBA">
-                                <rect key="frame" x="0.0" y="28" width="1" height="4"/>
+                                <rect key="frame" x="0.0" y="28" width="0.0" height="4"/>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <font key="titleFont" metaFont="system"/>

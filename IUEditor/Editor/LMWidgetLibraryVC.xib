@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMWidgetLibraryVC">
@@ -34,13 +34,13 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <box autoresizesSubviews="NO" fixedFrame="YES" borderWidth="0.0" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="jZo-ts-vu9">
-                    <rect key="frame" x="4" y="2" width="250" height="60"/>
+                    <rect key="frame" x="4" y="0.0" width="251" height="60"/>
                     <view key="contentView">
-                        <rect key="frame" x="0.0" y="0.0" width="250" height="60"/>
+                        <rect key="frame" x="0.0" y="0.0" width="251" height="60"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                    <color key="fillColor" white="0.75" alpha="0.5" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.75" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <connections>
                         <binding destination="Y4D-g3-cxE" name="hidden" keyPath="self.selected" id="1mT-iQ-8Tk">
                             <dictionary key="options">
@@ -72,7 +72,7 @@
                     </connections>
                 </textField>
                 <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" alphaValue="0.5" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="v3c-Wx-kU0">
-                    <rect key="frame" x="12" y="0.0" width="236" height="5"/>
+                    <rect key="frame" x="4" y="-2" width="251" height="5"/>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="system"/>
@@ -250,8 +250,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="259" height="31"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <button toolTip="Collection View" translatesAutoresizingMaskIntoConstraints="NO" id="BR5-iS-MYW" userLabel="iconBtn">
-                                                    <rect key="frame" x="228" y="2" width="29" height="28"/>
+                                                <button toolTip="Collection View" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BR5-iS-MYW" userLabel="iconBtn">
+                                                    <rect key="frame" x="228" y="3" width="29" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="28" id="Ee2-7e-Sig"/>
                                                         <constraint firstAttribute="width" constant="29" id="Psd-dz-SsW"/>
@@ -264,8 +264,8 @@
                                                         <action selector="clickPrimaryIcon:" target="-2" id="nE4-WR-pwU"/>
                                                     </connections>
                                                 </button>
-                                                <button toolTip="List View" translatesAutoresizingMaskIntoConstraints="NO" id="tsn-mg-JCz" userLabel="listBtn">
-                                                    <rect key="frame" x="202" y="2" width="28" height="28"/>
+                                                <button toolTip="List View" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tsn-mg-JCz" userLabel="listBtn">
+                                                    <rect key="frame" x="202" y="3" width="28" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="28" id="BgD-5s-jhO"/>
                                                         <constraint firstAttribute="height" constant="28" id="atl-Lz-QwE"/>
@@ -425,8 +425,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="259" height="31"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <button translatesAutoresizingMaskIntoConstraints="NO" id="09H-fm-KUt" userLabel="iconBtn">
-                                                    <rect key="frame" x="228" y="2" width="29" height="28"/>
+                                                <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="09H-fm-KUt" userLabel="iconBtn">
+                                                    <rect key="frame" x="228" y="3" width="29" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="29" id="bAk-U1-axx"/>
                                                         <constraint firstAttribute="height" constant="28" id="xdY-QJ-nrj"/>
@@ -439,8 +439,8 @@
                                                         <action selector="clickSecondaryIcon:" target="-2" id="Pqb-gD-bbp"/>
                                                     </connections>
                                                 </button>
-                                                <button translatesAutoresizingMaskIntoConstraints="NO" id="Rfa-DJ-weo" userLabel="listBtn">
-                                                    <rect key="frame" x="202" y="2" width="28" height="28"/>
+                                                <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rfa-DJ-weo" userLabel="listBtn">
+                                                    <rect key="frame" x="202" y="3" width="28" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="28" id="C02-nc-T17"/>
                                                         <constraint firstAttribute="height" constant="28" id="eyt-o8-AkJ"/>
@@ -601,8 +601,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="259" height="31"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <button translatesAutoresizingMaskIntoConstraints="NO" id="fzs-5r-xsv" userLabel="iconBtn">
-                                                    <rect key="frame" x="228" y="2" width="29" height="28"/>
+                                                <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fzs-5r-xsv" userLabel="iconBtn">
+                                                    <rect key="frame" x="228" y="3" width="29" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="28" id="RYF-oV-hos"/>
                                                         <constraint firstAttribute="width" constant="29" id="iFb-cB-m7N"/>
@@ -615,8 +615,8 @@
                                                         <action selector="clickPGIcon:" target="-2" id="eZY-pS-p7U"/>
                                                     </connections>
                                                 </button>
-                                                <button translatesAutoresizingMaskIntoConstraints="NO" id="toa-Xd-TbL" userLabel="listBtn">
-                                                    <rect key="frame" x="202" y="2" width="28" height="28"/>
+                                                <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="toa-Xd-TbL" userLabel="listBtn">
+                                                    <rect key="frame" x="202" y="3" width="28" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="28" id="nMK-ls-7rB"/>
                                                         <constraint firstAttribute="width" constant="28" id="pft-Vq-iqh"/>
