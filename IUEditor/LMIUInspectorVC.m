@@ -108,7 +108,7 @@
                            @"propertyIUHTMLVC",
                            @"propertyIUMovieVC",
                            @"propertyIUFBLikeVC",
-                           @"propertyIUCarouselVC",
+//                           @"propertyIUCarouselVC",
                            @"propertyIUTransitionVC",
                            @"propertyIUWebMovieVC",
                            @"propertyIUImportVC",
