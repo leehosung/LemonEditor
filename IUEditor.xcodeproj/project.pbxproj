@@ -1208,9 +1208,9 @@
 		69FEC48D194845CA00483C11 /* scrollingAnimation.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = scrollingAnimation.pdf; sourceTree = "<group>"; };
 		69FEC48F19484DF000483C11 /* LMHelpMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMHelpMenuItem.h; sourceTree = "<group>"; };
 		69FEC49019484DF000483C11 /* LMHelpMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMHelpMenuItem.m; sourceTree = "<group>"; };
-		69FFB27B1950305600DA2783 /* LMIUPropertyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMIUPropertyVC.h; path = IUEditor/LMIUPropertyVC.h; sourceTree = "<group>"; };
-		69FFB27C1950305600DA2783 /* LMIUPropertyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMIUPropertyVC.m; path = IUEditor/LMIUPropertyVC.m; sourceTree = "<group>"; };
-		69FFB27D1950305600DA2783 /* LMIUPropertyVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMIUPropertyVC.xib; path = IUEditor/LMIUPropertyVC.xib; sourceTree = "<group>"; };
+		69FFB27B1950305600DA2783 /* LMIUPropertyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMIUPropertyVC.h; sourceTree = "<group>"; };
+		69FFB27C1950305600DA2783 /* LMIUPropertyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMIUPropertyVC.m; sourceTree = "<group>"; };
+		69FFB27D1950305600DA2783 /* LMIUPropertyVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMIUPropertyVC.xib; sourceTree = "<group>"; };
 		69FFB2801950309E00DA2783 /* LMInspectorLinkVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMInspectorLinkVC.h; path = IUEditor/LMInspectorLinkVC.h; sourceTree = "<group>"; };
 		69FFB2811950309E00DA2783 /* LMInspectorLinkVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMInspectorLinkVC.m; path = IUEditor/LMInspectorLinkVC.m; sourceTree = "<group>"; };
 		69FFB2821950309E00DA2783 /* LMInspectorLinkVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMInspectorLinkVC.xib; path = IUEditor/LMInspectorLinkVC.xib; sourceTree = "<group>"; };
@@ -1840,6 +1840,9 @@
 		3DED26D4190108B6001A1D67 /* RightIUInspector */ = {
 			isa = PBXGroup;
 			children = (
+				69FFB27B1950305600DA2783 /* LMIUPropertyVC.h */,
+				69FFB27C1950305600DA2783 /* LMIUPropertyVC.m */,
+				69FFB27D1950305600DA2783 /* LMIUPropertyVC.xib */,
 				3D4675F61929AA0F0036C64C /* IUPropertyVC */,
 			);
 			name = RightIUInspector;
@@ -2198,9 +2201,6 @@
 				69317CAF1947271F0065B6F4 /* LMHelpWC.h */,
 				69317CB01947271F0065B6F4 /* LMHelpWC.m */,
 				69317CB11947271F0065B6F4 /* LMHelpWC.xib */,
-				69FFB27B1950305600DA2783 /* LMIUPropertyVC.h */,
-				69FFB27C1950305600DA2783 /* LMIUPropertyVC.m */,
-				69FFB27D1950305600DA2783 /* LMIUPropertyVC.xib */,
 				69FFB2801950309E00DA2783 /* LMInspectorLinkVC.h */,
 				69FFB2811950309E00DA2783 /* LMInspectorLinkVC.m */,
 				69FFB2821950309E00DA2783 /* LMInspectorLinkVC.xib */,
