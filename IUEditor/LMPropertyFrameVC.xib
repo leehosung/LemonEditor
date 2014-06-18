@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyFrameVC">
@@ -423,25 +423,6 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                         </button>
-                                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ACL-PM-gHX">
-                                            <rect key="frame" x="-4" y="22" width="75" height="26"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="Vc7-BP-wLi">
-                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="menu"/>
-                                                <menu key="menu" title="OtherViews" id="lK8-kl-tLz">
-                                                    <items>
-                                                        <menuItem title="hidden" id="hfu-2N-0F4"/>
-                                                        <menuItem title="visible" id="9mb-U2-7iC"/>
-                                                        <menuItem title="scroll" id="Bcu-Sv-w4f"/>
-                                                    </items>
-                                                </menu>
-                                            </popUpButtonCell>
-                                            <connections>
-                                                <binding destination="-2" name="enabled" keyPath="self.controller.selection.canChangeOverflow" id="2ca-se-aeR"/>
-                                                <binding destination="-2" name="selectedIndex" keyPath="self.controller.selection.overflowType" id="M42-3M-ZrF"/>
-                                            </connections>
-                                        </popUpButton>
                                     </subviews>
                                 </view>
                                 <constraints>
@@ -568,26 +549,32 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button translatesAutoresizingMaskIntoConstraints="NO" id="xa2-Jd-iG8">
-                    <rect key="frame" x="77" y="6" width="57" height="18"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="14" id="Fia-xD-4nb"/>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="53" id="t9U-U9-Fva"/>
-                    </constraints>
-                    <buttonCell key="cell" type="check" title="Visible" bezelStyle="regularSquare" imagePosition="left" inset="2" id="BX2-Iq-gya">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                    </buttonCell>
-                </button>
+                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ACL-PM-gHX">
+                    <rect key="frame" x="75" y="5" width="185" height="19"/>
+                    <popUpButtonCell key="cell" type="roundRect" bezelStyle="roundedRect" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Vc7-BP-wLi">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system" size="10"/>
+                        <menu key="menu" title="OtherViews" id="lK8-kl-tLz">
+                            <items>
+                                <menuItem title="hidden" id="hfu-2N-0F4"/>
+                                <menuItem title="visible" id="9mb-U2-7iC"/>
+                                <menuItem title="scroll" id="Bcu-Sv-w4f"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <binding destination="-2" name="enabled" keyPath="self.controller.selection.canChangeOverflow" id="2ca-se-aeR"/>
+                        <binding destination="-2" name="selectedIndex" keyPath="self.controller.selection.overflowType" id="M42-3M-ZrF"/>
+                    </connections>
+                </popUpButton>
             </subviews>
             <constraints>
                 <constraint firstItem="Omc-kW-4u6" firstAttribute="leading" secondItem="2tQ-np-DZj" secondAttribute="leading" constant="6" id="Ew5-z3-pmY"/>
                 <constraint firstItem="Cbk-VQ-rJs" firstAttribute="leading" secondItem="2tQ-np-DZj" secondAttribute="leading" constant="6" id="JNW-1K-a3I"/>
                 <constraint firstItem="Omc-kW-4u6" firstAttribute="top" secondItem="Cbk-VQ-rJs" secondAttribute="bottom" constant="7" id="MXd-ig-RCl"/>
-                <constraint firstItem="xa2-Jd-iG8" firstAttribute="leading" secondItem="Omc-kW-4u6" secondAttribute="trailing" constant="14" id="RVn-8s-MZX"/>
-                <constraint firstItem="xa2-Jd-iG8" firstAttribute="top" secondItem="Cbk-VQ-rJs" secondAttribute="bottom" constant="7" id="hfl-br-XeH"/>
                 <constraint firstItem="Cbk-VQ-rJs" firstAttribute="top" secondItem="2tQ-np-DZj" secondAttribute="top" id="yG2-gc-R2m"/>
             </constraints>
+            <point key="canvasLocation" x="139.5" y="34"/>
         </customView>
     </objects>
     <resources>

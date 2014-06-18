@@ -37,7 +37,7 @@
                                 </buttonCell>
                                 <cells>
                                     <column>
-                                        <buttonCell type="recessed" title="Template Project" bezelStyle="recessed" image="B0C44CD3-736F-4A47-820B-C462B29EA0E5" imagePosition="overlaps" alignment="center" borderStyle="border" tag="1" inset="2" id="q8f-Dl-DTd">
+                                        <buttonCell type="recessed" title="Template Project" bezelStyle="recessed" image="12DDDE6D-43AF-4648-AC00-F9AA289F8AC7" imagePosition="overlaps" alignment="center" borderStyle="border" tag="1" inset="2" id="q8f-Dl-DTd">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                             <font key="font" metaFont="smallSystemBold"/>
                                         </buttonCell>
@@ -111,7 +111,7 @@
         </window>
     </objects>
     <resources>
-        <image name="B0C44CD3-736F-4A47-820B-C462B29EA0E5" width="1" height="1">
+        <image name="12DDDE6D-43AF-4648-AC00-F9AA289F8AC7" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
