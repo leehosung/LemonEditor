@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		069A0FE8195179D900476CFA /* LMPropertyOverflowVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 069A0FE6195179D800476CFA /* LMPropertyOverflowVC.m */; };
+		069A0FE9195179D900476CFA /* LMPropertyOverflowVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 069A0FE7195179D900476CFA /* LMPropertyOverflowVC.xib */; };
 		2608C1DF193DE6BC00DD1B42 /* warning.png in Resources */ = {isa = PBXBuildFile; fileRef = 2608C1DD193DE6BC00DD1B42 /* warning.png */; };
 		2608C1E0193DE6BC00DD1B42 /* warning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2608C1DE193DE6BC00DD1B42 /* warning@2x.png */; };
 		261E5A8D19484F70002C286A /* tab_pg_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 261E5A8919484F70002C286A /* tab_pg_off.png */; };
@@ -549,6 +551,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		069A0FE5195179D800476CFA /* LMPropertyOverflowVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyOverflowVC.h; sourceTree = "<group>"; };
+		069A0FE6195179D800476CFA /* LMPropertyOverflowVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyOverflowVC.m; sourceTree = "<group>"; };
+		069A0FE7195179D900476CFA /* LMPropertyOverflowVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyOverflowVC.xib; sourceTree = "<group>"; };
 		2608C1DD193DE6BC00DD1B42 /* warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = warning.png; sourceTree = "<group>"; };
 		2608C1DE193DE6BC00DD1B42 /* warning@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "warning@2x.png"; sourceTree = "<group>"; };
 		261E5A8919484F70002C286A /* tab_pg_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_pg_off.png; sourceTree = "<group>"; };
@@ -1383,6 +1388,9 @@
 				3DF8046718FF790400913505 /* LMPropertyShadowVC.h */,
 				3DF8046818FF790400913505 /* LMPropertyShadowVC.m */,
 				3DF8046918FF790400913505 /* LMPropertyShadowVC.xib */,
+				069A0FE5195179D800476CFA /* LMPropertyOverflowVC.h */,
+				069A0FE6195179D800476CFA /* LMPropertyOverflowVC.m */,
+				069A0FE7195179D900476CFA /* LMPropertyOverflowVC.xib */,
 			);
 			name = apperanceVC;
 			sourceTree = "<group>";
@@ -2775,6 +2783,7 @@
 				3DED26BB1900F450001A1D67 /* panel_left_on.png in Resources */,
 				267CB1B9190F95750079E565 /* bg_center.png in Resources */,
 				3DF803DD18FE62C900913505 /* align_left.png in Resources */,
+				069A0FE9195179D900476CFA /* LMPropertyOverflowVC.xib in Resources */,
 				267CB193190F93370079E565 /* tab_appearance_off.png in Resources */,
 				6979FC0818ED34E20060C3B4 /* LMPropertyFrameVC.xib in Resources */,
 				2628C9221919C8C800D9D8CD /* tab_secondary_on.png in Resources */,
@@ -3037,6 +3046,7 @@
 				3DB3ACE018EBEF5F0046DFB7 /* GuideLineLayer.m in Sources */,
 				69757B0B18D95BBC0095CBAC /* JDOutlineView.m in Sources */,
 				3DD4786E193DB33600639AB5 /* LMDebugSourceWC.m in Sources */,
+				069A0FE8195179D900476CFA /* LMPropertyOverflowVC.m in Sources */,
 				69CFCAB218E95A0C00E3048A /* LMResourceVC.m in Sources */,
 				69757B1518D95BBC0095CBAC /* NSTextField+DragAndDrop.m in Sources */,
 				3DED273A1904F271001A1D67 /* IUImageUtil.m in Sources */,

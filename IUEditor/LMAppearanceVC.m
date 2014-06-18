@@ -12,6 +12,7 @@
 #import "LMPropertyBGColorVC.h"
 #import "LMPropertyTextVC.h"
 #import "LMPropertyShadowVC.h"
+#import "LMPropertyOverflowVC.h"
 
 @interface LMAppearanceVC ()
 
@@ -23,6 +24,7 @@
     LMPropertyBGColorVC *propertyBGColorVC;
     LMPropertyTextVC    *propertyTextVC;
     LMPropertyShadowVC  *propertyShadowVC;
+    LMPropertyOverflowVC *propertyOverflowVC;
     
     NSMutableArray *outlineVOrderArray;
 }
@@ -54,6 +56,9 @@
 
         propertyShadowVC = [[LMPropertyShadowVC alloc] initWithNibName:@"LMPropertyShadowVC" bundle:nil];
         [propertyShadowVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+        
+        propertyOverflowVC = [[LMPropertyOverflowVC alloc] initWithNibName:@"LMPropertyOverflowVC" bundle:nil];
+        [propertyOverflowVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     }
     return self;
 }
@@ -67,6 +72,7 @@
     [outlineVOrderArray addObject:propertyTextVC.view];
     [outlineVOrderArray addObject:propertyShadowVC.view];
     [outlineVOrderArray addObject:propertyBorderVC.view];
+    [outlineVOrderArray addObject:propertyOverflowVC.view];
 }
 
 - (NSView *)contentViewOfTitleView:(NSView *)titleV{
@@ -80,10 +86,14 @@
 
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item{
     if(item == nil){
+        //root
         return outlineVOrderArray.count;
     }
     else{
         if([((JDOutlineCellView *)propertyFrameVC.view).titleV isEqualTo:item]){
+            return 0;
+        }
+        else if([((JDOutlineCellView *)propertyOverflowVC.view).titleV isEqualTo:item]){
             return 0;
         }
         else if([[item identifier] isEqualToString:@"title"]){
@@ -107,6 +117,10 @@
     if([((JDOutlineCellView *)propertyFrameVC.view).titleV isEqualTo:item]){
             return NO;
     }
+    else if([((JDOutlineCellView *)propertyOverflowVC.view).titleV isEqualTo:item]){
+        return 0;
+    }
+
     //root or title V
     else if(item == nil || [[item identifier] isEqualToString:@"title"]){
         return YES;

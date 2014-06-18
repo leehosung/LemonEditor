@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyFrameVC">
@@ -522,59 +522,6 @@
                 <outlet property="contentV" destination="lqf-yQ-SWP" id="4d9-5N-KFc"/>
                 <outlet property="titleV" destination="JYh-TI-pEg" id="49T-LI-5Lm"/>
             </connections>
-        </customView>
-        <customView id="2tQ-np-DZj" userLabel="Overflow">
-            <rect key="frame" x="0.0" y="0.0" width="283" height="30"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <subviews>
-                <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Cbk-VQ-rJs">
-                    <rect key="frame" x="6" y="27" width="254" height="5"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="254" id="85B-L2-jDv"/>
-                        <constraint firstAttribute="height" constant="1" id="Dq3-il-6sN"/>
-                    </constraints>
-                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <font key="titleFont" metaFont="system"/>
-                </box>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Omc-kW-4u6">
-                    <rect key="frame" x="4" y="8" width="63" height="14"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="14" id="Bfm-Cr-tie"/>
-                        <constraint firstAttribute="width" constant="59" id="efI-Ac-yCA"/>
-                    </constraints>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Overflow" id="ZQB-y6-f1S">
-                        <font key="font" metaFont="smallSystemBold"/>
-                        <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ACL-PM-gHX">
-                    <rect key="frame" x="75" y="5" width="185" height="19"/>
-                    <popUpButtonCell key="cell" type="roundRect" bezelStyle="roundedRect" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Vc7-BP-wLi">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system" size="10"/>
-                        <menu key="menu" title="OtherViews" id="lK8-kl-tLz">
-                            <items>
-                                <menuItem title="hidden" id="hfu-2N-0F4"/>
-                                <menuItem title="visible" id="9mb-U2-7iC"/>
-                                <menuItem title="scroll" id="Bcu-Sv-w4f"/>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                    <connections>
-                        <binding destination="-2" name="enabled" keyPath="self.controller.selection.canChangeOverflow" id="2ca-se-aeR"/>
-                        <binding destination="-2" name="selectedIndex" keyPath="self.controller.selection.overflowType" id="M42-3M-ZrF"/>
-                    </connections>
-                </popUpButton>
-            </subviews>
-            <constraints>
-                <constraint firstItem="Omc-kW-4u6" firstAttribute="leading" secondItem="2tQ-np-DZj" secondAttribute="leading" constant="6" id="Ew5-z3-pmY"/>
-                <constraint firstItem="Cbk-VQ-rJs" firstAttribute="leading" secondItem="2tQ-np-DZj" secondAttribute="leading" constant="6" id="JNW-1K-a3I"/>
-                <constraint firstItem="Omc-kW-4u6" firstAttribute="top" secondItem="Cbk-VQ-rJs" secondAttribute="bottom" constant="7" id="MXd-ig-RCl"/>
-                <constraint firstItem="Cbk-VQ-rJs" firstAttribute="top" secondItem="2tQ-np-DZj" secondAttribute="top" id="yG2-gc-R2m"/>
-            </constraints>
-            <point key="canvasLocation" x="139.5" y="34"/>
         </customView>
     </objects>
     <resources>
