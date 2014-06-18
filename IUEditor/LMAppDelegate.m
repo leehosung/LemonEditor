@@ -12,6 +12,7 @@
 #import "LMStartWC.h"
 #import "IUDjangoProject.h"
 #import "LMPreferenceWC.h"
+#import "IUProjectController.h"
 
 @implementation LMAppDelegate{
     LMStartWC *startWC;
@@ -77,6 +78,30 @@
 - (IBAction)openPreference:(id)sender {
      preferenceWC = [[LMPreferenceWC alloc] initWithWindowNibName:@"LMPreferenceWC"];
     [preferenceWC showWindow:self];
+}
+
+#pragma mark - application delegate
+
+
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag{
+#if DEBUG
+    //open last document
+    NSArray *recents = [[NSDocumentController sharedDocumentController] recentDocumentURLs];
+    if ([recents count]){
+        NSURL *lastURL = [recents objectAtIndex:0];
+        [(IUProjectController *)[NSDocumentController sharedDocumentController] openDocumentWithContentsOfURL:lastURL display:YES completionHandler:nil];
+
+    }
+
+    
+#else
+    //cmd + N 화면
+    //https://developer.apple.com/library/mac/documentation/cocoa/reference/NSApplicationDelegate_Protocol/Reference/Reference.html#//apple_ref/occ/intfm/NSApplicationDelegate/applicationOpenUntitledFile:
+
+    [self showStartWC:self];
+    
+#endif
+    return NO;
 }
 
 

@@ -45,6 +45,10 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
     return self;
 }
 
+- (id)initWithContentsOfURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
+    return [super initWithContentsOfURL:url ofType:typeName error:outError];
+}
+
 - (id)initForURL:(NSURL *)urlOrNil withContentsOfURL:(NSURL *)contentsURL ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
     return [super initForURL:urlOrNil withContentsOfURL:contentsURL ofType:typeName error:outError];
 }
@@ -92,13 +96,14 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
     }
     return NO;
 }
-
+/*
 - (id)initWithContentsOfURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
     self = [super initWithContentsOfURL:url ofType:typeName error:outError];
     if(self){
     }
     return self;
 }
+ */
 
 
 - (LMWC *)lemonWindowController{
