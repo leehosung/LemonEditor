@@ -583,13 +583,14 @@
 
 #pragma mark -
 
-
+/*
 - (void)setOverflow:(BOOL)overflow{
     _overflow = overflow;
     if (self.delegate) {
         [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
     }
 }
+*/
 
 - (BOOL)centerChangeable{
     return YES;
@@ -602,7 +603,7 @@
 }
 
 
-#pragma mark -
+#pragma mark -x5
 #pragma mark user input
 
 - (BOOL)canChangeXByUserInput{
@@ -686,7 +687,15 @@
 - (BOOL)canChangePositionRelativeCenter{
     return YES;
 }
-- (BOOL)overflowChangeable{
+
+- (void)setOverflowType:(IUOverflowType)overflowType{
+    _overflowType = overflowType;
+    [self updateCSSForEditViewPort];
+    [self updateHTML];
+}
+
+
+- (BOOL)canChangeOverflow{
     return YES;
 }
 

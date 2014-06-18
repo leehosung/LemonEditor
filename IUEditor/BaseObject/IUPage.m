@@ -36,8 +36,11 @@
     return NO;
 }
 
+- (BOOL)canChangePositionType{
+    return NO;
+}
 
-- (BOOL)overflowChangeable{
+- (BOOL)canChangeOverflow{
     return NO;
 }
 

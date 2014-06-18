@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyFrameVC">
@@ -10,7 +10,6 @@
                 <outlet property="hStepper" destination="Mtu-cf-B1n" id="38F-c7-Nms"/>
                 <outlet property="hTF" destination="KEg-GU-M43" id="og4-MR-soJ"/>
                 <outlet property="hUnitBtn" destination="2id-bU-xHh" id="mhn-5R-Dh6"/>
-                <outlet property="overflowB" destination="xa2-Jd-iG8" id="YVG-P4-nLy"/>
                 <outlet property="phStepper" destination="1qd-QH-DUM" id="mqH-O4-E5m"/>
                 <outlet property="phTF" destination="z9a-iK-QZ6" id="5W0-cz-XPl"/>
                 <outlet property="pwStepper" destination="y64-pA-dLY" id="wSo-t8-S38"/>
@@ -391,7 +390,7 @@
                                                 <constraint firstAttribute="width" constant="158" id="XAQ-4Y-LCe"/>
                                                 <constraint firstAttribute="height" constant="18" id="qsV-r1-XUW"/>
                                             </constraints>
-                                            <popUpButtonCell key="cell" type="roundRect" title="Relative: Float right" bezelStyle="roundedRect" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="bkZ-oq-51W" id="6oa-q2-pjp">
+                                            <popUpButtonCell key="cell" type="roundRect" bezelStyle="roundedRect" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6oa-q2-pjp">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system" size="10"/>
                                                 <menu key="menu" id="QeU-sw-xnN">
@@ -401,7 +400,10 @@
                                                         <menuItem title="Relative" id="uq0-LG-Hed"/>
                                                         <menuItem title="Relative: Center" id="1S7-Tq-gVY"/>
                                                         <menuItem title="Relative : Float left" id="NzN-Sw-wzB"/>
-                                                        <menuItem title="Relative: Float right" state="on" id="bkZ-oq-51W"/>
+                                                        <menuItem title="Relative: Float right" id="bkZ-oq-51W"/>
+                                                        <menuItem title="Fixed" id="NoK-6d-B2O">
+                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                        </menuItem>
                                                     </items>
                                                 </menu>
                                             </popUpButtonCell>
@@ -421,6 +423,25 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                         </button>
+                                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ACL-PM-gHX">
+                                            <rect key="frame" x="-4" y="22" width="75" height="26"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="Vc7-BP-wLi">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="menu"/>
+                                                <menu key="menu" title="OtherViews" id="lK8-kl-tLz">
+                                                    <items>
+                                                        <menuItem title="hidden" id="hfu-2N-0F4"/>
+                                                        <menuItem title="visible" id="9mb-U2-7iC"/>
+                                                        <menuItem title="scroll" id="Bcu-Sv-w4f"/>
+                                                    </items>
+                                                </menu>
+                                            </popUpButtonCell>
+                                            <connections>
+                                                <binding destination="-2" name="enabled" keyPath="self.controller.selection.canChangeOverflow" id="2ca-se-aeR"/>
+                                                <binding destination="-2" name="selectedIndex" keyPath="self.controller.selection.overflowType" id="M42-3M-ZrF"/>
+                                            </connections>
+                                        </popUpButton>
                                     </subviews>
                                 </view>
                                 <constraints>

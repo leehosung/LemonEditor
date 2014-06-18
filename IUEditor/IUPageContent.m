@@ -31,7 +31,7 @@
     return NO;
 }
 
-- (BOOL)overflowChangeable{
+- (BOOL)canChangeOverflow{
     return NO;
 }
 

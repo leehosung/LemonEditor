@@ -939,12 +939,26 @@ static NSString * IUCompilerTagOption = @"tag";
                 [dict putTag:@"position" string:@"relative"];
                 [dict putTag:@"float" string:@"right"];
                 break;
+            case IUPositionTypeFixed:
+                [dict putTag:@"position" string:@"fixed"];
+                break;
                 
             default:
                 break;
         }
-        if (obj.overflow) {
-            [dict putTag:@"overflow" string:@"visible"];
+        switch (obj.overflowType) {
+            case IUOverflowTypeHidden:
+                [dict putTag:@"overflow" string:@"hidden"];
+                break;
+            case IUOverflowTypeVisible:
+                [dict putTag:@"overflow" string:@"visible"];
+                break;
+            case IUOverflowTypeScroll:
+                [dict putTag:@"overflow" string:@"scroll"];
+                break;
+                
+            default:
+                break;
         }
         
         if ([obj isKindOfClass:[IUPageContent class]] || [obj isKindOfClass:[IUHeader class]]) {
@@ -973,6 +987,9 @@ static NSString * IUCompilerTagOption = @"tag";
                     case IUPositionTypeFloatRight:
                         [dict putTag:@"margin-right" floatValue:[value floatValue] * (-1) ignoreZero:NO unit:unit];
                         break;
+                    case IUPositionTypeFixed:
+                        [dict putTag:@"left" floatValue:[value floatValue] ignoreZero:NO unit:unit];
+                        break;
                     default:
                         break;
                 }
@@ -992,6 +1009,9 @@ static NSString * IUCompilerTagOption = @"tag";
             if(value){
                 switch (obj.positionType) {
                     case IUPositionTypeAbsolute:
+                        [dict putTag:@"top" floatValue:[value floatValue] ignoreZero:NO unit:unit];
+                        break;
+                    case IUPositionTypeFixed:
                         [dict putTag:@"top" floatValue:[value floatValue] ignoreZero:NO unit:unit];
                         break;
                     default:

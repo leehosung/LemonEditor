@@ -50,7 +50,14 @@ typedef enum _IUPositionType{
     IUPositionTypeRelativeCenter,
     IUPositionTypeFloatLeft,
     IUPositionTypeFloatRight,
+    IUPositionTypeFixed,
 }IUPositionType;
+
+typedef enum _IUOverflowType{
+    IUOverflowTypeHidden,
+    IUOverflowTypeVisible,
+    IUOverflowTypeScroll,
+}IUOverflowType;
 
 @class IUBox;
 @class IUSheet;
@@ -165,7 +172,9 @@ typedef enum _IUPositionType{
 
 
 @property (nonatomic) BOOL overflow;
-- (BOOL)overflowChangeable;
+- (BOOL)canChangeOverflow;
+
+@property (nonatomic) IUOverflowType overflowType;
 
 @property NSString *pgVisibleCondition;
 
