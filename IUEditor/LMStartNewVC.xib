@@ -26,18 +26,6 @@
                         <view key="contentView">
                             <rect key="frame" x="1" y="1" width="178" height="118"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="djW-nI-k7j" userLabel="Default">
-                                    <rect key="frame" x="-2" y="0.0" width="180" height="120"/>
-                                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="new_default" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="XJs-6C-Nm1">
-                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <action selector="pressProjectTypeB:" target="-2" id="GhE-f2-BxT"/>
-                                    </connections>
-                                </button>
-                            </subviews>
                         </view>
                         <color key="borderColor" red="0.60602678570000001" green="0.60602678570000001" blue="0.60602678570000001" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -55,18 +43,6 @@
                         <view key="contentView">
                             <rect key="frame" x="1" y="1" width="178" height="118"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dcY-27-3P1" userLabel="Presentation">
-                                    <rect key="frame" x="-1" y="-1" width="180" height="120"/>
-                                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="new_pt" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="OPt-aH-6pp">
-                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <action selector="pressProjectTypeB:" target="-2" id="k2m-9y-cE4"/>
-                                    </connections>
-                                </button>
-                            </subviews>
                         </view>
                         <color key="borderColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -84,18 +60,6 @@
                         <view key="contentView">
                             <rect key="frame" x="1" y="1" width="178" height="118"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WaC-1p-Quw" userLabel="Django">
-                                    <rect key="frame" x="-1" y="-1" width="180" height="120"/>
-                                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="new_django" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="Cii-Rk-WqY">
-                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <action selector="pressProjectTypeB:" target="-2" id="CqP-yZ-iZu"/>
-                                    </connections>
-                                </button>
-                            </subviews>
                         </view>
                         <color key="borderColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -108,14 +72,14 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <box autoresizesSubviews="NO" fixedFrame="YES" borderWidth="3" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="jnO-R2-Sqp">
+                    <box autoresizesSubviews="NO" fixedFrame="YES" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="jnO-R2-Sqp">
                         <rect key="frame" x="65" y="131" width="180" height="120"/>
                         <view key="contentView">
-                            <rect key="frame" x="3" y="3" width="174" height="114"/>
+                            <rect key="frame" x="1" y="1" width="178" height="118"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </view>
-                        <color key="borderColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="borderColor" red="0.29803922772407532" green="0.54509806632995605" blue="0.91372555494308472" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="fillColor" red="0.93725496530532837" green="0.98431378602981567" blue="1" alpha="1" colorSpace="deviceRGB"/>
                         <connections>
                             <binding destination="-2" name="hidden" keyPath="self.typeDefaultB.state" id="8eN-OB-Plj">
                                 <dictionary key="options">
@@ -124,14 +88,14 @@
                             </binding>
                         </connections>
                     </box>
-                    <box autoresizesSubviews="NO" fixedFrame="YES" borderWidth="3" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="nA2-S1-hl4">
+                    <box autoresizesSubviews="NO" fixedFrame="YES" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="nA2-S1-hl4">
                         <rect key="frame" x="260" y="131" width="180" height="120"/>
                         <view key="contentView">
-                            <rect key="frame" x="3" y="3" width="174" height="114"/>
+                            <rect key="frame" x="1" y="1" width="178" height="118"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </view>
-                        <color key="borderColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="borderColor" red="0.30980393290519714" green="0.55294120311737061" blue="0.90196084976196289" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="fillColor" red="0.93725496530532837" green="0.98431378602981567" blue="1" alpha="1" colorSpace="deviceRGB"/>
                         <connections>
                             <binding destination="-2" name="hidden" keyPath="self.typePresentationB.state" id="epL-eT-7xb">
                                 <dictionary key="options">
@@ -140,14 +104,14 @@
                             </binding>
                         </connections>
                     </box>
-                    <box autoresizesSubviews="NO" fixedFrame="YES" borderWidth="3" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4ml-KH-vpG">
+                    <box autoresizesSubviews="NO" fixedFrame="YES" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4ml-KH-vpG">
                         <rect key="frame" x="455" y="131" width="180" height="120"/>
                         <view key="contentView">
-                            <rect key="frame" x="3" y="3" width="174" height="114"/>
+                            <rect key="frame" x="1" y="1" width="178" height="118"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </view>
-                        <color key="borderColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="borderColor" red="0.32156863808631897" green="0.56078433990478516" blue="0.89019614458084106" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="fillColor" red="0.93725496530532837" green="0.98431378602981567" blue="1" alpha="1" colorSpace="deviceRGB"/>
                         <connections>
                             <binding destination="-2" name="hidden" keyPath="self.typeDjangoB.state" id="KfS-Xh-8eU">
                                 <dictionary key="options">
@@ -156,6 +120,36 @@
                             </binding>
                         </connections>
                     </box>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="djW-nI-k7j" userLabel="Default">
+                        <rect key="frame" x="65" y="131" width="180" height="120"/>
+                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="new_default" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="XJs-6C-Nm1">
+                            <behavior key="behavior" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="pressProjectTypeB:" target="-2" id="GhE-f2-BxT"/>
+                        </connections>
+                    </button>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dcY-27-3P1" userLabel="Presentation">
+                        <rect key="frame" x="260" y="131" width="180" height="120"/>
+                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="new_pt" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="OPt-aH-6pp">
+                            <behavior key="behavior" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="pressProjectTypeB:" target="-2" id="k2m-9y-cE4"/>
+                        </connections>
+                    </button>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WaC-1p-Quw" userLabel="Django">
+                        <rect key="frame" x="455" y="131" width="180" height="120"/>
+                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="new_django" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="Cii-Rk-WqY">
+                            <behavior key="behavior" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="pressProjectTypeB:" target="-2" id="CqP-yZ-iZu"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <color key="borderColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
