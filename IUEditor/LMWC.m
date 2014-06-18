@@ -134,9 +134,13 @@
         [topToolbarVC bind:@"sheetController" toObject:fileNaviVC withKeyPath:@"documentController" options:nil];
         
         
+        //project binding
+        [canvasVC bind:@"documentBasePath" toObject:self withKeyPath:@"document.project.path" options:nil];
+        [iuInspectorVC bind:@"classDocuments" toObject:self withKeyPath:@"document.project.classDocuments" options:nil];
     }
     return self;
 }
+
 
 
 - (void)windowDidLoad
@@ -246,7 +250,7 @@
     //document == nil means window will be closed
     if(document){
         _project = document.project;
-        [canvasVC bind:@"documentBasePath" toObject:_project withKeyPath:@"path" options:nil];
+        //[canvasVC bind:@"documentBasePath" toObject:_project withKeyPath:@"path" options:nil];
         NSError *error;
         assert(_project.pageDocuments);
         assert(_project.identifierManager);

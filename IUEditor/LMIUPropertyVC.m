@@ -105,6 +105,7 @@
         
         propertyPGSubmitButtonVC = [[PGSubmitButtonVC alloc] initWithNibName:[PGSubmitButtonVC class].className bundle:nil];
         
+        /*
         self.propertyVArray = [NSArray arrayWithObjects:
                            @"propertyIUImageVC",
                            @"propertyIUHTMLVC",
@@ -124,6 +125,7 @@
                            @"propertyIUBoxVC",
                            @"propertyPGSubmitButtonVC",
                            nil];
+         */
         
         [self loadView];
     }
@@ -247,6 +249,9 @@
 }
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row{
+    if([self.propertyVArray count] == 0){
+        return 0.1;
+    }
     return [(NSView*)[self.propertyVArray objectAtIndex:row] frame].size.height;
 }
 

@@ -8,6 +8,7 @@
 
 #import "IUSheetGroup.h"
 #import "IUSheet.h"
+#import "IUProject.h"
 
 @implementation IUSheetGroup{
     NSMutableArray *_children;
@@ -39,14 +40,18 @@
     return _project;
 }
 
-- (void)addSheet:(IUSheet*)sheet{
-    sheet.group = self;
-    [_children addObject:sheet];
+- (void)addSheet:(IUSheet*)sheet sender:(id)sender{
+    if([sender isKindOfClass:[IUProject class]]){
+        sheet.group = self;
+        [_children addObject:sheet];
+    }
 }
 
-- (void)removeSheet:(IUSheet *)sheet{
-    assert([_children containsObject:sheet]);
-    [_children removeObject:sheet];
+- (void)removeSheet:(IUSheet *)sheet sender:(id)sender{
+    if([sender isKindOfClass:[IUProject class]]){
+        assert([_children containsObject:sheet]);
+        [_children removeObject:sheet];
+    }
 }
 
 @end

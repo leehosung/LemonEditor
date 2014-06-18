@@ -99,4 +99,7 @@ static NSString * IUProjectKeyPath= @"path";
 - (IUSheetGroup*)backgroundGroup;
 - (IUSheetGroup*)classGroup;
 
+- (void)addSheet:(IUSheet *)sheet toSheetGroup:(IUSheetGroup *)sheetGroup;
+- (void)removeSheet:(IUSheet *)sheet toSheetGroup:(IUSheetGroup *)sheetGroup;
+
 @end

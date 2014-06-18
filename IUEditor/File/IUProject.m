@@ -135,18 +135,18 @@
     IUBackground *bg = [[IUBackground alloc] initWithProject:self options:nil];
     bg.name = @"Background";
     bg.htmlID = @"Background";
-    [_backgroundGroup addSheet:bg];
+    [self addSheet:bg toSheetGroup:_backgroundGroup];
 
     IUPage *pg = [[IUPage alloc] initWithProject:self options:nil];
     [pg setBackground:bg];
     pg.name = @"Index";
     pg.htmlID = @"Index";
-    [_pageGroup addSheet:pg];
+    [self addSheet:pg toSheetGroup:_pageGroup];
     
     IUClass *class = [[IUClass alloc] initWithProject:self options:nil];
     class.name = @"Class";
     class.htmlID = @"Class";
-    [_classGroup addSheet:class];
+    [self addSheet:class toSheetGroup:_classGroup];
     
     [self initializeResource];
     [_resourceManager setResourceGroup:_resourceGroup];
@@ -420,5 +420,75 @@
     return _classGroup;
 }
 
+- (void)addSheet:(IUSheet *)sheet toSheetGroup:(IUSheetGroup *)sheetGroup{
+    if([sheetGroup isEqualTo:_pageGroup]){
+        [self willChangeValueForKey:@"pageGroup"];
+        [self willChangeValueForKey:@"pageDocuments"];
+
+    }
+    else if([sheetGroup isEqualTo:_backgroundGroup]){
+        [self willChangeValueForKey:@"backgroundGroup"];
+        [self willChangeValueForKey:@"backgroundDocuments"];
+
+    }
+    else if([sheetGroup isEqualTo:_classGroup]){
+        [self willChangeValueForKey:@"classGroup"];
+        [self willChangeValueForKey:@"classDocuments"];
+
+    }
+    
+    [sheetGroup addSheet:sheet sender:self];
+    
+    if([sheetGroup isEqualTo:_pageGroup]){
+        [self didChangeValueForKey:@"pageGroup"];
+        [self didChangeValueForKey:@"pageDocuments"];
+
+    }
+    else if([sheetGroup isEqualTo:_backgroundGroup]){
+        [self didChangeValueForKey:@"backgroundGroup"];
+        [self didChangeValueForKey:@"backgroundDocuments"];
+
+    }
+    else if([sheetGroup isEqualTo:_classGroup]){
+        [self didChangeValueForKey:@"classGroup"];
+        [self didChangeValueForKey:@"classDocuments"];
+
+    }
+}
+
+- (void)removeSheet:(IUSheet *)sheet toSheetGroup:(IUSheetGroup *)sheetGroup{
+    if([sheetGroup isEqualTo:_pageGroup]){
+        [self willChangeValueForKey:@"pageGroup"];
+        [self willChangeValueForKey:@"pageDocuments"];
+        
+    }
+    else if([sheetGroup isEqualTo:_backgroundGroup]){
+        [self willChangeValueForKey:@"backgroundGroup"];
+        [self willChangeValueForKey:@"backgroundDocuments"];
+        
+    }
+    else if([sheetGroup isEqualTo:_classGroup]){
+        [self willChangeValueForKey:@"classGroup"];
+        [self willChangeValueForKey:@"classDocuments"];
+        
+    }
+    [sheetGroup removeSheet:sheet sender:self];
+    
+    if([sheetGroup isEqualTo:_pageGroup]){
+        [self didChangeValueForKey:@"pageGroup"];
+        [self didChangeValueForKey:@"pageDocuments"];
+        
+    }
+    else if([sheetGroup isEqualTo:_backgroundGroup]){
+        [self didChangeValueForKey:@"backgroundGroup"];
+        [self didChangeValueForKey:@"backgroundDocuments"];
+        
+    }
+    else if([sheetGroup isEqualTo:_classGroup]){
+        [self didChangeValueForKey:@"classGroup"];
+        [self didChangeValueForKey:@"classDocuments"];
+        
+    }
+}
 
 @end

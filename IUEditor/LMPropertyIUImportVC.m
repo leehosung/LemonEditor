@@ -28,7 +28,9 @@
 - (void)awakeFromNib{
     [self addObserver:self forKeyPath:[_controller keyPathFromControllerToProperty:@"prototypeClass"] options:0 context:nil];
     [_classDocumentsArrayController addObserver:self forKeyPath:@"selection" options:0 context:nil];
+
 }
+
 
 - (void)dealloc{
     //release 시점 확인용
@@ -36,12 +38,15 @@
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
-    NSString *prototypePath = [_controller keyPathFromControllerToProperty:@"prototypeClass"];
-    IUClass* prototype = [self valueForKeyPath:prototypePath];
-
     if ([keyPath isEqualToString:@"selection"]) {
         //selection changed
+        NSString *prototypePath = [_controller keyPathFromControllerToProperty:@"prototypeClass"];
+        IUClass* prototype = [self valueForKeyPath:prototypePath];
+
         [self setValue:prototype forKeyPath:prototypePath];
+    }
+    else{
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
 

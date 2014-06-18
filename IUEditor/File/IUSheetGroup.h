@@ -18,7 +18,7 @@
 @property NSString *name;
 
 - (NSArray*)childrenFiles;
-- (void)removeSheet:(IUSheet*)document;
-- (void)addSheet:(IUSheet*)document;
+- (void)addSheet:(IUSheet*)sheet sender:(id)sender;
+- (void)removeSheet:(IUSheet *)sheet sender:(id)sender;
 
 @end

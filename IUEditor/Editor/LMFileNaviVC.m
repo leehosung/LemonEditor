@@ -69,7 +69,7 @@
     switch (sender.tag) {
         case 1:{
             newDoc = [[IUPage alloc] initWithProject:self.project options:nil];
-            [self.project.pageGroup addSheet:newDoc];
+            [self.project addSheet:newDoc toSheetGroup:self.project.pageGroup];
             [self.project.identifierManager registerIUs:@[newDoc]];
             IUBackground *defaultBG = self.project.backgroundDocuments[0];
             [(IUPage*)newDoc setBackground:defaultBG];
@@ -81,7 +81,7 @@
             break;
         case 3:{
             newDoc = [[IUClass alloc] initWithProject:self.project options:nil];
-            [self.project.classGroup addSheet:newDoc];
+            [self.project addSheet:newDoc toSheetGroup:self.project.classGroup];
         }
             break;
             
@@ -219,7 +219,7 @@
     NSTreeNode *item = [_navOutlineView itemAtRow:sender.tag];
     IUSheet * node = [item representedObject];
     IUSheet * newNode = [node copy];
-    [node.group addSheet:newNode];
+    [self.project addSheet:newNode toSheetGroup:node.group];
     [self.documentController rearrangeObjects];
 }
 
@@ -232,7 +232,7 @@
         [JDUIUtil hudAlert:@"Each document folder should have at least one document" second:2];
         return;
     }
-    [node.group removeSheet:node];
+    [self.project removeSheet:node toSheetGroup:node.group];
     [_documentController rearrangeObjects];
 }
 
