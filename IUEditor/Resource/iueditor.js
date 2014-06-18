@@ -156,5 +156,6 @@ $(document).ready(function(){
             getIUUpdatedFrameThread();
             resizeBackgroundSize();
             reInsertCarousel();
+            setTextAutoHeight();
 
 });

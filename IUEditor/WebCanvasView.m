@@ -398,7 +398,7 @@
 - (void)setEditable:(BOOL)flag{
     [super setEditable:flag];
     
-    if(flag == YES){
+    if(flag == YES && [[NSUserDefaults standardUserDefaults] boolForKey:@"textEditMode"]==NO){
         [JDUIUtil hudAlert:@"Text Mode" second:2];
     }
     
