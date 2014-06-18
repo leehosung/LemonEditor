@@ -299,6 +299,9 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
     NSView *leftView = [superview.subviews objectAtIndex:index-1];
     NSView *rightView =[superview.subviews objectAtIndex:index+1];
     
+    [self removeConstraints:[self constraints]];
+    [self removeFromSuperview];
+
     
     NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:leftView
                                                                   attribute:NSLayoutAttributeRight
@@ -308,7 +311,6 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
                                                                  multiplier:1 constant:0];
     constraint.priority = NSLayoutPriorityRequired;
     [superview addConstraint:constraint];
-    
     
 }
 

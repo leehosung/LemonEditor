@@ -20,14 +20,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="140" height="30"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <box autoresizesSubviews="NO" fixedFrame="YES" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="hYo-7I-XXG">
+                    <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="hYo-7I-XXG">
                         <rect key="frame" x="0.0" y="0.0" width="140" height="30"/>
                         <view key="contentView">
                             <rect key="frame" x="0.0" y="0.0" width="140" height="30"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <box autoresizesSubviews="NO" horizontalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="0zR-IN-tW8">
-                                    <rect key="frame" x="137" y="0.0" width="5" height="30"/>
+                                    <rect key="frame" x="137" y="0.0" width="4" height="30"/>
                                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <font key="titleFont" metaFont="system"/>
@@ -66,8 +66,12 @@
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="hYo-7I-XXG" firstAttribute="top" secondItem="xf3-fX-2kM" secondAttribute="top" id="12G-2M-aR4"/>
                 <constraint firstItem="oMZ-tw-aO4" firstAttribute="leading" secondItem="bzh-bY-W6W" secondAttribute="trailing" constant="1" id="PWj-zT-IER"/>
                 <constraint firstAttribute="centerY" secondItem="bzh-bY-W6W" secondAttribute="centerY" id="VNG-NJ-bju"/>
+                <constraint firstItem="hYo-7I-XXG" firstAttribute="leading" secondItem="xf3-fX-2kM" secondAttribute="leading" id="VeO-NP-OTw"/>
+                <constraint firstAttribute="bottom" secondItem="hYo-7I-XXG" secondAttribute="bottom" id="c9H-aG-IOc"/>
+                <constraint firstAttribute="trailing" secondItem="hYo-7I-XXG" secondAttribute="trailing" id="cB4-Hi-psi"/>
                 <constraint firstAttribute="centerY" secondItem="oMZ-tw-aO4" secondAttribute="centerY" id="rM5-Mb-LPd"/>
                 <constraint firstAttribute="trailing" secondItem="oMZ-tw-aO4" secondAttribute="trailing" constant="3" id="yab-vz-FK0"/>
             </constraints>

@@ -175,11 +175,16 @@
     if(openTabDocuments.count == 1){
         return ;
     }
+    if (openTabDocuments.count == 0) {
+        assert(0);
+    }
     [tabItem.view removeFromSuperviewWithDirectionLeftToRight];
     
     
     NSInteger index = [openTabDocuments indexOfObject:tabItem.sheet]-1;
-    
+    if (index == NSNotFound) {
+        assert(0);
+    }
     assert(index < openTabDocuments.count);
     
     IUSheet *leftTabNode = [openTabDocuments objectAtIndex:index];
