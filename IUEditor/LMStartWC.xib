@@ -17,14 +17,14 @@
         <customObject id="-3" userLabel="Application"/>
         <window title="New Project" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="ZCa-xE-sBx">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <rect key="contentRect" x="197" y="448" width="800" height="456"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <rect key="contentRect" x="197" y="448" width="700" height="456"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
             <view key="contentView" id="TfM-u2-u3D">
-                <rect key="frame" x="0.0" y="0.0" width="800" height="456"/>
+                <rect key="frame" x="0.0" y="0.0" width="700" height="456"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view translatesAutoresizingMaskIntoConstraints="NO" id="aMk-dw-Qza" userLabel="New Project">
-                        <rect key="frame" x="0.0" y="-4" width="800" height="460"/>
+                        <rect key="frame" x="0.0" y="-4" width="700" height="460"/>
                         <subviews>
                             <matrix verticalHuggingPriority="750" allowsEmptySelection="NO" autosizesCells="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pye-wg-Yup">
                                 <rect key="frame" x="20" y="422" width="350" height="18"/>
@@ -37,7 +37,7 @@
                                 </buttonCell>
                                 <cells>
                                     <column>
-                                        <buttonCell type="recessed" title="Template Project" bezelStyle="recessed" image="E87F73F3-7266-4E14-A53E-1CDA39E45CC7" imagePosition="overlaps" alignment="center" borderStyle="border" tag="1" inset="2" id="q8f-Dl-DTd">
+                                        <buttonCell type="recessed" title="Template Project" bezelStyle="recessed" image="33656EA5-D651-440E-A2BD-A43A74056BCE" imagePosition="overlaps" alignment="center" borderStyle="border" tag="1" inset="2" id="q8f-Dl-DTd">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                             <font key="font" metaFont="smallSystemBold"/>
                                         </buttonCell>
@@ -60,7 +60,7 @@
                                 </connections>
                             </matrix>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Yqt-4w-wO8">
-                                <rect key="frame" x="690" y="11" width="100" height="19"/>
+                                <rect key="frame" x="590" y="11" width="100" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="iEt-et-tMC"/>
                                     <constraint firstAttribute="width" constant="100" id="rlN-CA-VyL"/>
@@ -71,7 +71,7 @@
                                 </buttonCell>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gRw-fL-bUR">
-                                <rect key="frame" x="582" y="11" width="100" height="19"/>
+                                <rect key="frame" x="482" y="11" width="100" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="RhC-2y-tCR"/>
                                 </constraints>
@@ -81,10 +81,10 @@
                                 </buttonCell>
                             </button>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="jcN-PD-pJu">
-                                <rect key="frame" x="-1" y="40" width="802" height="360"/>
+                                <rect key="frame" x="-1" y="40" width="702" height="360"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="360" id="fyi-aG-oqe"/>
-                                    <constraint firstAttribute="width" constant="802" id="zC9-GN-GE9"/>
+                                    <constraint firstAttribute="width" constant="702" id="zC9-GN-GE9"/>
                                 </constraints>
                             </customView>
                         </subviews>
@@ -109,9 +109,20 @@
                 </constraints>
             </view>
         </window>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="Qcw-Vn-oDb">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="283" y="305" width="491" height="350"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <view key="contentView" id="MTo-tR-v9y">
+                <rect key="frame" x="0.0" y="0.0" width="491" height="350"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </view>
+            <point key="canvasLocation" x="492.5" y="-386"/>
+        </window>
     </objects>
     <resources>
-        <image name="E87F73F3-7266-4E14-A53E-1CDA39E45CC7" width="1" height="1">
+        <image name="33656EA5-D651-440E-A2BD-A43A74056BCE" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
