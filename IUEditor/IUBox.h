@@ -177,7 +177,7 @@ typedef enum _IUOverflowType{
 @property (nonatomic) IUOverflowType overflowType;
 
 @property NSString *pgVisibleCondition;
-
+@property NSString *pgContent;
 
 - (void)updateCSSForEditViewPort;
 - (void)updateCSSForMaxViewPort;

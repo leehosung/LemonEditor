@@ -166,7 +166,6 @@
 
 
 -(void)receiveMouseEvent:(NSEvent *)theEvent{
-    
     NSPoint originalPoint = [theEvent locationInWindow];
     NSPoint convertedPoint = [self.mainView convertPoint:originalPoint fromView:nil];
     NSView *hitView = [self.gridView hitTest:convertedPoint];

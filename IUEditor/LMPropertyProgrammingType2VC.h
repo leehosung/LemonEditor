@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface LMPropertyProgrammingType2VC : NSViewController
+#import "IUController.h"
 
+@interface LMPropertyProgrammingType2VC : NSViewController
+@property IUController  *controller;
 @end

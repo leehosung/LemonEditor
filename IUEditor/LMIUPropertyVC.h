@@ -13,6 +13,7 @@
 
 @interface LMIUPropertyVC : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
 
+@property (nonatomic) IUProject     *project;
 @property (nonatomic) IUController *controller;
 @property (nonatomic) IUResourceManager     *resourceManager;
 @property (nonatomic) NSArray   *pageDocuments;

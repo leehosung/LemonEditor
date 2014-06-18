@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "IUController.h"
 @interface LMPropertyProgrammingType1VC : NSViewController
-
+@property (nonatomic) IUController      *controller;
 @end

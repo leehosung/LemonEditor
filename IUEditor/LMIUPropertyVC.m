@@ -28,6 +28,9 @@
 #import "LMPropertyIUTextVC.h"
 #import "PGSubmitButtonVC.h"
 
+#import "LMPropertyProgrammingType1VC.h"
+#import "LMPropertyProgrammingType2VC.h"
+
 
 @interface LMIUPropertyVC (){
     
@@ -54,6 +57,10 @@
     LMPropertyIUTextVC *propertyIUTextVC;
     
     PGSubmitButtonVC *propertyPGSubmitButtonVC;
+    
+    LMPropertyProgrammingType1VC *propertyPGType1VC;
+    LMPropertyProgrammingType2VC *propertyPGType2VC;
+
     
     NSView *_noInspectorV;
     __weak NSTableView *_tableV;
@@ -105,7 +112,11 @@
         
         propertyPGSubmitButtonVC = [[PGSubmitButtonVC alloc] initWithNibName:[PGSubmitButtonVC class].className bundle:nil];
         
-        /*
+        
+        propertyPGType1VC = [[LMPropertyProgrammingType1VC alloc] initWithNibName:[LMPropertyProgrammingType1VC class].className bundle:nil];
+        propertyPGType2VC = [[LMPropertyProgrammingType2VC alloc] initWithNibName:[LMPropertyProgrammingType2VC class].className bundle:nil];
+        
+        
         self.propertyVArray = [NSArray arrayWithObjects:
                            @"propertyIUImageVC",
                            @"propertyIUHTMLVC",
@@ -125,7 +136,6 @@
                            @"propertyIUBoxVC",
                            @"propertyPGSubmitButtonVC",
                            nil];
-         */
         
         [self loadView];
     }
@@ -194,7 +204,7 @@
     }
     
     if ([classString isEqualToString:@"PGForm"]) {
-        self.propertyVArray = @[propertyPGFormVC.view];
+        self.propertyVArray = @[propertyPGFormVC.view, propertyPGType2VC.view];
     }
     else if ([classString isEqualToString:@"IUMovie"]) {
         self.propertyVArray = @[propertyIUMovieVC.view];
@@ -206,7 +216,7 @@
         self.propertyVArray = @[propertyIUWebMovieVC.view, propertyIUHTMLVC.view];
     }
     else if ([classString isEqualToString:@"IUImport"]) {
-        self.propertyVArray = @[propertyIUImportVC.view];
+        self.propertyVArray = @[propertyIUImportVC.view, propertyPGType2VC.view];
     }
     else if ([classString isEqualToString:@"IUMailLink"]) {
         self.propertyVArray = @[propertyIUMailLinkVC.view];
@@ -218,17 +228,19 @@
         self.propertyVArray = @[propertyIUFBLikeVC.view];
     }
     else if ([classString isEqualToString:@"PGTextField"]) {
-        self.propertyVArray = @[propertyPGTextFieldVC.view];
+        self.propertyVArray = @[propertyPGTextFieldVC.view, propertyPGType2VC.view];
     }
     else if ([classString isEqualToString:@"IUText"]) {
-        self.propertyVArray = @[propertyIUTextVC.view, inspectorLinkVC.view];
+        self.propertyVArray = @[propertyIUTextVC.view, inspectorLinkVC.view, propertyPGType2VC.view];
     }
     else if ([classString isEqualToString:@"IUBox"] || [classString isEqualToString:@"IUImage"]) {
-        self.propertyVArray = @[inspectorLinkVC.view];
+        self.propertyVArray = @[inspectorLinkVC.view, propertyPGType1VC.view];
     }
     else {
         self.propertyVArray = @[self.noInspectorV];
     }
+    
+    
     [_tableV reloadData];
 }
 
