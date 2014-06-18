@@ -41,11 +41,11 @@
                                     <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1p5-j3-luq">
                                         <rect key="frame" x="0.0" y="-1" width="302" height="351"/>
                                         <clipView key="contentView" id="D5O-K6-fSb">
-                                            <rect key="frame" x="1" y="1" width="299" height="349"/>
+                                            <rect key="frame" x="1" y="1" width="300" height="349"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <collectionView selectable="YES" maxNumberOfColumns="1" id="IeW-g4-6nd">
-                                                    <rect key="frame" x="0.0" y="0.0" width="299" height="349"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="349"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     <connections>
@@ -81,11 +81,11 @@
                                     <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cit-5B-Q7I">
                                         <rect key="frame" x="0.0" y="-1" width="301" height="351"/>
                                         <clipView key="contentView" id="kJF-1i-Cif">
-                                            <rect key="frame" x="1" y="1" width="298" height="349"/>
+                                            <rect key="frame" x="1" y="1" width="299" height="349"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <collectionView selectable="YES" maxNumberOfColumns="4" id="PfT-En-tr1">
-                                                    <rect key="frame" x="0.0" y="0.0" width="298" height="349"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="299" height="349"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     <connections>
@@ -165,7 +165,7 @@
                                         </connections>
                                     </button>
                                     <button toolTip="Import" translatesAutoresizingMaskIntoConstraints="NO" id="2K0-2Z-gF9" userLabel="addBtn">
-                                        <rect key="frame" x="185" y="-1" width="30" height="31"/>
+                                        <rect key="frame" x="187" y="0.0" width="30" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="GrO-oF-wBY"/>
                                             <constraint firstAttribute="height" constant="31" id="ZeM-Ko-Zhw"/>
@@ -196,16 +196,16 @@
                             </view>
                             <constraints>
                                 <constraint firstAttribute="width" constant="302" id="42n-di-CHe"/>
+                                <constraint firstItem="2K0-2Z-gF9" firstAttribute="leading" secondItem="YjH-N9-QL8" secondAttribute="trailing" constant="4" id="A12-nz-E1l"/>
                                 <constraint firstItem="TwY-rm-TIF" firstAttribute="top" secondItem="jYn-7S-9Ff" secondAttribute="top" constant="-1" id="AMZ-vD-W4y"/>
-                                <constraint firstItem="2K0-2Z-gF9" firstAttribute="leading" secondItem="YjH-N9-QL8" secondAttribute="trailing" constant="2" id="JC6-bd-A0h"/>
                                 <constraint firstItem="YjH-N9-QL8" firstAttribute="top" secondItem="jYn-7S-9Ff" secondAttribute="top" constant="6" id="LuV-aW-d5S"/>
+                                <constraint firstItem="2K0-2Z-gF9" firstAttribute="top" secondItem="jYn-7S-9Ff" secondAttribute="top" constant="-1" id="R5V-ry-176"/>
                                 <constraint firstItem="12v-kS-W80" firstAttribute="top" secondItem="jYn-7S-9Ff" secondAttribute="top" constant="1" id="Rcg-p6-NZy"/>
                                 <constraint firstItem="i50-VL-0Xr" firstAttribute="top" secondItem="jYn-7S-9Ff" secondAttribute="top" constant="1" id="Sj9-WE-fxF"/>
                                 <constraint firstItem="i50-VL-0Xr" firstAttribute="leading" secondItem="TwY-rm-TIF" secondAttribute="trailing" constant="24" id="eEb-Im-fvJ"/>
                                 <constraint firstItem="YjH-N9-QL8" firstAttribute="leading" secondItem="jYn-7S-9Ff" secondAttribute="leading" constant="8" id="gIs-ra-aEx"/>
                                 <constraint firstItem="TwY-rm-TIF" firstAttribute="leading" secondItem="YjH-N9-QL8" secondAttribute="trailing" constant="31" id="h47-dS-tki"/>
-                                <constraint firstItem="12v-kS-W80" firstAttribute="leading" secondItem="2K0-2Z-gF9" secondAttribute="trailing" constant="27" id="qCj-Vx-yO3"/>
-                                <constraint firstItem="2K0-2Z-gF9" firstAttribute="top" secondItem="jYn-7S-9Ff" secondAttribute="top" id="tFp-rA-fu4"/>
+                                <constraint firstItem="12v-kS-W80" firstAttribute="leading" secondItem="2K0-2Z-gF9" secondAttribute="trailing" constant="25" id="wzG-Q4-2rU"/>
                                 <constraint firstAttribute="height" constant="31" id="yZV-oi-Rlx"/>
                             </constraints>
                             <color key="borderColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
@@ -306,7 +306,6 @@
                     </connections>
                 </imageView>
             </subviews>
-            <point key="canvasLocation" x="432" y="398"/>
         </customView>
         <box autoresizesSubviews="NO" borderWidth="0.0" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" id="go5-pz-x0P">
             <rect key="frame" x="253" y="0.0" width="10" height="60"/>
@@ -332,7 +331,7 @@
     <resources>
         <image name="NSInfo" width="32" height="32"/>
         <image name="NSRefreshTemplate" width="10" height="12"/>
-        <image name="import" width="13" height="13"/>
+        <image name="import" width="14" height="10"/>
         <image name="view_collection" width="10" height="10"/>
         <image name="view_list" width="12" height="10"/>
     </resources>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyIUFBLikeVC">
@@ -19,14 +19,12 @@
             <subviews>
                 <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="fa6-h6-J0o" userLabel="content">
                     <rect key="frame" x="0.0" y="0.0" width="276" height="60"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView">
                         <rect key="frame" x="0.0" y="0.0" width="276" height="60"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xxC-Rw-MPI">
                                 <rect key="frame" x="5" y="34" width="70" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="66" id="EFF-6d-VAq"/>
                                     <constraint firstAttribute="height" constant="17" id="dwn-22-5z8"/>
@@ -39,7 +37,6 @@
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LqK-tC-i3M">
                                 <rect key="frame" x="78" y="35" width="185" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="185" id="ZNg-pL-o7b"/>
                                     <constraint firstAttribute="height" constant="18" id="bOM-S6-uSD"/>
@@ -52,7 +49,6 @@
                             </textField>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="CWs-ot-nh0">
                                 <rect key="frame" x="76" y="9" width="127" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="Spp-Ao-HBt"/>
                                     <constraint firstAttribute="width" constant="122" id="acP-we-M0f"/>
@@ -78,14 +74,12 @@
                 </box>
                 <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="uei-fF-QZG" userLabel="title">
                     <rect key="frame" x="0.0" y="60" width="276" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView">
                         <rect key="frame" x="0.0" y="0.0" width="276" height="30"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="z8o-TR-ssY">
                                 <rect key="frame" x="6" y="0.0" width="260" height="5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="d2w-aI-mOe"/>
                                     <constraint firstAttribute="height" constant="1" id="z6T-bO-aPC"/>
@@ -96,7 +90,6 @@
                             </box>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lkB-F8-Dxl">
                                 <rect key="frame" x="4" y="7" width="104" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="4BO-Vh-gBT"/>
                                     <constraint firstAttribute="height" constant="17" id="iYl-VL-zEy"/>

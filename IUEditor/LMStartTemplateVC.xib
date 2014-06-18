@@ -14,49 +14,46 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application"/>
         <box autoresizesSubviews="NO" transparent="YES" borderWidth="0.0" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" id="mRB-QW-6nZ" userLabel="templateFile">
-            <rect key="frame" x="0.0" y="0.0" width="190" height="160"/>
+            <rect key="frame" x="0.0" y="0.0" width="230" height="180"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <view key="contentView">
-                <rect key="frame" x="0.0" y="0.0" width="190" height="160"/>
+                <rect key="frame" x="0.0" y="0.0" width="230" height="180"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="i2q-kK-JCI" userLabel="selectedBox">
-                        <rect key="frame" x="5" y="30" width="180" height="120"/>
+                    <box autoresizesSubviews="NO" fixedFrame="YES" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="i2q-kK-JCI" userLabel="selectedBox">
+                        <rect key="frame" x="9" y="30" width="220" height="140"/>
                         <view key="contentView">
-                            <rect key="frame" x="1" y="1" width="178" height="118"/>
+                            <rect key="frame" x="1" y="1" width="218" height="138"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <box autoresizesSubviews="NO" misplaced="YES" transparent="YES" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="lFh-Iu-ftX">
-                                    <rect key="frame" x="-5" y="3" width="180" height="120"/>
-                                    <view key="contentView">
-                                        <rect key="frame" x="1" y="1" width="178" height="118"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    </view>
-                                    <color key="borderColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </box>
-                            </subviews>
                         </view>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="lFh-Iu-ftX" secondAttribute="centerX" id="03C-I3-v2O"/>
-                            <constraint firstItem="lFh-Iu-ftX" firstAttribute="centerY" secondItem="i2q-kK-JCI" secondAttribute="centerY" id="Obk-Eh-Jk0"/>
-                            <constraint firstAttribute="centerX" secondItem="lFh-Iu-ftX" secondAttribute="centerX" id="XOm-ZE-fOz"/>
-                            <constraint firstAttribute="centerX" secondItem="lFh-Iu-ftX" secondAttribute="centerX" id="ZK9-Ow-Zb1"/>
-                            <constraint firstItem="lFh-Iu-ftX" firstAttribute="leading" secondItem="i2q-kK-JCI" secondAttribute="leading" id="k06-s1-Fhi"/>
-                            <constraint firstItem="lFh-Iu-ftX" firstAttribute="top" secondItem="i2q-kK-JCI" secondAttribute="top" id="zYy-pr-ci6"/>
-                        </constraints>
                         <color key="borderColor" white="0.60999999999999999" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </box>
+                    <box autoresizesSubviews="NO" fixedFrame="YES" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="eTc-JH-SkB">
+                        <rect key="frame" x="9" y="30" width="220" height="140"/>
+                        <view key="contentView">
+                            <rect key="frame" x="1" y="1" width="218" height="138"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        </view>
+                        <color key="borderColor" red="0.29803922772407532" green="0.54509806632995605" blue="0.91372555494308472" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="fillColor" red="0.93725496530532837" green="0.98431378602981567" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                        <connections>
+                            <binding destination="BkE-rX-9NW" name="hidden" keyPath="self.selected" id="AmJ-PX-PFE">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </box>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6ya-hP-9sH">
-                        <rect key="frame" x="5" y="30" width="180" height="120"/>
-                        <imageCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="4QY-hh-pyh"/>
+                        <rect key="frame" x="10" y="31" width="218" height="138"/>
+                        <imageCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="new_default" id="4QY-hh-pyh"/>
                         <connections>
                             <binding destination="BkE-rX-9NW" name="value" keyPath="representedObject.Image" id="jFM-wW-bKF"/>
                         </connections>
                     </imageView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9MS-dJ-AnT">
-                        <rect key="frame" x="3" y="8" width="184" height="14"/>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9MS-dJ-AnT">
+                        <rect key="frame" x="27" y="7" width="184" height="14"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Template File" id="vU1-6c-VRx">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -66,35 +63,11 @@
                             <binding destination="BkE-rX-9NW" name="value" keyPath="representedObject.name" id="Q7z-MV-MK5"/>
                         </connections>
                     </textField>
-                    <box autoresizesSubviews="NO" fixedFrame="YES" borderWidth="3" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="eTc-JH-SkB">
-                        <rect key="frame" x="5" y="30" width="180" height="120"/>
-                        <view key="contentView">
-                            <rect key="frame" x="3" y="3" width="174" height="114"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        </view>
-                        <color key="borderColor" white="0.59999999999999998" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <connections>
-                            <binding destination="BkE-rX-9NW" name="hidden" keyPath="self.selected" id="AmJ-PX-PFE">
-                                <dictionary key="options">
-                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                </dictionary>
-                            </binding>
-                        </connections>
-                    </box>
                 </subviews>
             </view>
-            <constraints>
-                <constraint firstItem="i2q-kK-JCI" firstAttribute="leading" secondItem="9MS-dJ-AnT" secondAttribute="leading" id="AbI-aP-VCu"/>
-                <constraint firstItem="i2q-kK-JCI" firstAttribute="top" secondItem="mRB-QW-6nZ" secondAttribute="top" constant="10" id="G8x-KV-SlZ"/>
-                <constraint firstItem="9MS-dJ-AnT" firstAttribute="top" secondItem="i2q-kK-JCI" secondAttribute="bottom" constant="8" symbolic="YES" id="TOj-s4-ikm"/>
-                <constraint firstItem="i2q-kK-JCI" firstAttribute="trailing" secondItem="9MS-dJ-AnT" secondAttribute="trailing" id="ZmD-7W-ats"/>
-                <constraint firstItem="i2q-kK-JCI" firstAttribute="centerX" secondItem="mRB-QW-6nZ" secondAttribute="centerX" id="a6E-yg-3DX"/>
-                <constraint firstItem="i2q-kK-JCI" firstAttribute="leading" secondItem="mRB-QW-6nZ" secondAttribute="leading" constant="5" id="qVB-TX-NTu"/>
-                <constraint firstAttribute="bottom" secondItem="i2q-kK-JCI" secondAttribute="bottom" constant="30" id="qzt-7s-Cax"/>
-            </constraints>
             <color key="borderColor" name="scrollBarColor" catalog="System" colorSpace="catalog"/>
             <color key="fillColor" red="1" green="0.97727272730000003" blue="0.97727272730000003" alpha="1" colorSpace="calibratedRGB"/>
+            <point key="canvasLocation" x="159" y="164"/>
         </box>
         <customView id="Pvo-Q4-dPA" userLabel="templateView">
             <rect key="frame" x="0.0" y="0.0" width="800" height="360"/>
@@ -162,5 +135,19 @@
                 <outlet property="view" destination="mRB-QW-6nZ" id="wG0-YH-BGB"/>
             </connections>
         </collectionViewItem>
+        <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" id="fBP-eg-M0w">
+            <rect key="frame" x="6" y="8" width="52" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <view key="contentView">
+                <rect key="frame" x="1" y="1" width="50" height="38"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            </view>
+            <color key="borderColor" red="0.2823529541" green="0.53725492949999998" blue="0.92549026010000002" alpha="1" colorSpace="deviceRGB"/>
+            <color key="fillColor" red="0.92156862750000001" green="0.98039215690000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <point key="canvasLocation" x="398" y="86"/>
+        </box>
     </objects>
+    <resources>
+        <image name="new_default" width="54" height="66"/>
+    </resources>
 </document>
