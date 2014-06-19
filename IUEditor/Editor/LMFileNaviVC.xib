@@ -71,7 +71,7 @@
                                                             <constraint firstAttribute="height" constant="20" id="rA1-v5-my0"/>
                                                         </constraints>
                                                         <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="add_section" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="YIT-YH-7Dt">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <behavior key="behavior" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                     </button>

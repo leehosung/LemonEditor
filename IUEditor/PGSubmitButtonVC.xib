@@ -101,6 +101,7 @@
                 <outlet property="contentV" destination="VHb-BK-Cik" id="kxd-Ao-zg7"/>
                 <outlet property="titleV" destination="al8-NP-pKm" id="t04-Oo-eZv"/>
             </connections>
+            <point key="canvasLocation" x="228" y="237"/>
         </customView>
     </objects>
 </document>

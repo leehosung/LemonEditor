@@ -116,7 +116,7 @@
                                                             <constraint firstAttribute="height" constant="20" id="UQm-d9-CLv"/>
                                                             <constraint firstAttribute="width" constant="20" id="imO-JF-W6R"/>
                                                         </constraints>
-                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="add_section" imagePosition="only" alignment="center" controlSize="small" imageScaling="proportionallyDown" inset="2" id="d6u-xi-WhB">
+                                                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="add_section" imagePosition="only" alignment="center" controlSize="small" imageScaling="proportionallyDown" inset="2" id="d6u-xi-WhB">
                                                             <behavior key="behavior" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>

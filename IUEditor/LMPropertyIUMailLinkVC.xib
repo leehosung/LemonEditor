@@ -97,7 +97,7 @@
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </box>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" ambiguous="YES" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G6i-Lp-a3P">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G6i-Lp-a3P">
                     <rect key="frame" x="4" y="60" width="104" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="2pU-ge-cfT"/>
@@ -116,8 +116,10 @@
                 <constraint firstAttribute="bottom" secondItem="XO4-SJ-xmN" secondAttribute="bottom" id="DAm-in-Jij"/>
                 <constraint firstItem="HNd-2E-OLu" firstAttribute="top" secondItem="cZu-er-x36" secondAttribute="top" id="Fw6-1H-V29"/>
                 <constraint firstItem="HNd-2E-OLu" firstAttribute="leading" secondItem="cZu-er-x36" secondAttribute="leading" id="IBQ-vS-FsC"/>
+                <constraint firstItem="G6i-Lp-a3P" firstAttribute="bottom" secondItem="HNd-2E-OLu" secondAttribute="bottom" id="Jdi-HU-1mN"/>
                 <constraint firstAttribute="trailing" secondItem="HNd-2E-OLu" secondAttribute="trailing" id="KnE-AS-KtK"/>
                 <constraint firstItem="XO4-SJ-xmN" firstAttribute="leading" secondItem="cZu-er-x36" secondAttribute="leading" id="Msw-eO-1HK"/>
+                <constraint firstItem="G6i-Lp-a3P" firstAttribute="leading" secondItem="cZu-er-x36" secondAttribute="leading" constant="6" id="pZp-GF-QCJ"/>
                 <constraint firstItem="XO4-SJ-xmN" firstAttribute="top" secondItem="HNd-2E-OLu" secondAttribute="bottom" id="vTT-88-fw8"/>
             </constraints>
             <connections>
