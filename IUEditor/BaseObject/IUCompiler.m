@@ -573,10 +573,18 @@ static NSString * IUCompilerTagOption = @"tag";
         }
         else{
             [code addCodeLineWithFormat:@"<div %@ >", [self HTMLAttributes:iu option:nil]];
-            if (textIU.textHTML) {
-                [code addCodeLineWithFormat:textIU.textHTML];
+            if (self.rule == IUCompileRuleDjango && textIU.pgContentVariable) {
+                if ([iu.sheet isKindOfClass:[IUClass class]]) {
+                    [code addCodeLineWithFormat:@"{{object.%@}}", textIU.pgContentVariable];
+                }
+                else {
+                    [code addCodeLineWithFormat:@"{{%@}}", textIU.pgContentVariable];
+                }
             }
-            [code addCodeLineWithFormat:@"</div>"];
+            else if (textIU.textHTML) {
+                [code addCodeLine:textIU.textHTML];
+            }
+            [code addCodeLine:@"</div>"];
         }
 
     }
