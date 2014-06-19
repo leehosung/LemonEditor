@@ -490,7 +490,7 @@
         [self didChangeValueForKey:@"classDocuments"];
         
     }
-    [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationStructureChanged object:self userInfo:@{IUNotificationStructureType: IUNotificationStructureTypeAdd, IUNotificationStructureTarget: sheet}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationStructureChanged object:self userInfo:@{IUNotificationStructureType: IUNotificationStructureTypeRemove, IUNotificationStructureTarget: sheet}];
 }
 
 @end

@@ -19,6 +19,7 @@
 
 -(void)IUClassIdentifier:(NSString *)identifier CSSUpdated:(NSString*)css forWidth:(NSInteger)width;
 -(void)IUClassIdentifier:(NSString *)identifier CSSRemovedforWidth:(NSInteger)width;
+-(void)removeAllCSSWithIdentifier:(NSString *)identifier;
 
 -(void)IUHTMLIdentifier:(NSString*)identifier textHTML:(NSString *)html withParentID:(NSString *)parentID nearestID:(NSString *)nID index:(NSUInteger)index;
 -(void)IUHTMLIdentifier:(NSString *)identifier HTML:(NSString *)html withParentID:(NSString *)parentID;

@@ -193,6 +193,8 @@
         if([existIDArray containsString:identifier] == NO){
             [_cssDict removeObjectForKey:identifier];
             [_rangeDict removeObjectForKey:identifier];
+            [self.textDelegate removeTextCSSIdentifier:identifier];
+
         }
     }
    

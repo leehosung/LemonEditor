@@ -624,12 +624,12 @@
     return innerCSSHTML;
 }
 
-- (void)removeCSSTextWithID:(NSString *)iuID{
+-(void)removeAllCSSWithIdentifier:(NSString *)identifier{
     DOMNodeList *styleList = [[self DOMDoc] getElementsByTagName:@"style"];
     //0 번째는 import sheet라서 건너뜀.
     for(int i=1; i<styleList.length; i++){
         DOMHTMLStyleElement *styleElement = (DOMHTMLStyleElement *)[styleList item:i];
-        [self removeCSSRuleInStyleSheet:styleElement withID:iuID];
+        [self removeCSSRuleInStyleSheet:styleElement withID:identifier];
     }
     
 }
@@ -895,12 +895,12 @@
     //removeCSS
     NSArray *cssIds = [iu cssIdentifierArray];
     for (NSString *identifier in cssIds){
-        [self removeCSSTextWithID:identifier];
+        [self removeAllCSSWithIdentifier:identifier];
     }
     for(IUBox *child in iu.allChildren){
         NSArray *childIds= [child cssIdentifierArray];
         for (NSString *identifier in childIds){
-            [self removeCSSTextWithID:identifier];
+            [self removeAllCSSWithIdentifier:identifier];
         }
     }
     

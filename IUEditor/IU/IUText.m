@@ -132,6 +132,10 @@
     [self.delegate updateTextRangeFromID:fromID toID:toID];
 }
 
+-(void)removeTextCSSIdentifier:(NSString *)identifier{
+    [self.delegate removeAllCSSWithIdentifier:identifier];
+}
+
 - (NSString*)textHTML{
     return _textController.textHTML;
 }
