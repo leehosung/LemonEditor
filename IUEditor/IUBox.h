@@ -163,6 +163,7 @@ typedef enum _IUOverflowType{
 
 @property (nonatomic) IUPositionType positionType;
 - (BOOL)canChangePositionType;
+- (BOOL)canChangeHelpMenu;
 
 - (BOOL)canChangePositionAbsolute;
 - (BOOL)canChangePositionRelative;
@@ -172,7 +173,7 @@ typedef enum _IUOverflowType{
 - (BOOL)canChangePositionRelativeCenter;
 
 
-@property (nonatomic) BOOL overflow;
+//@property (nonatomic) BOOL overflow;
 - (BOOL)canChangeOverflow;
 
 @property (nonatomic) IUOverflowType overflowType;

@@ -10,6 +10,7 @@
                 <outlet property="hStepper" destination="Mtu-cf-B1n" id="38F-c7-Nms"/>
                 <outlet property="hTF" destination="KEg-GU-M43" id="og4-MR-soJ"/>
                 <outlet property="hUnitBtn" destination="2id-bU-xHh" id="mhn-5R-Dh6"/>
+                <outlet property="helpMenu" destination="iLy-bj-p0C" id="ikA-xJ-fdH"/>
                 <outlet property="phStepper" destination="1qd-QH-DUM" id="mqH-O4-E5m"/>
                 <outlet property="phTF" destination="z9a-iK-QZ6" id="5W0-cz-XPl"/>
                 <outlet property="pwStepper" destination="y64-pA-dLY" id="wSo-t8-S38"/>
@@ -422,6 +423,9 @@
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="helpMenu:" target="-2" id="UTQ-Jk-Oqq"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </view>

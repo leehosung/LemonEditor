@@ -9,10 +9,8 @@
 #import "LMPropertyFrameVC.h"
 #import "IUBox.h"
 #import "IUCSS.h"
-
-
-
-
+#import "LMHelpMenuItem.h"
+#import "LMHelpWC.h"
 
 @interface LMPropertyFrameVC ()
 
@@ -47,6 +45,9 @@
 @property (weak) IBOutlet NSButton *hUnitBtn;
 
 
+@property (weak) IBOutlet NSButton *helpMenu;
+- (IBAction)helpMenu:(id)sender;
+
 @property (weak) IBOutlet NSButton *overflowB;
 
 @property (nonatomic) BOOL enablePercentX, enablePercentY, enablePercentW, enablePercentH;
@@ -55,7 +56,9 @@
 
 @end
 
-@implementation LMPropertyFrameVC
+@implementation LMPropertyFrameVC{
+    LMHelpWC *helpWC;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -181,6 +184,8 @@
     [_xUnitBtn bind:@"enabled2" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"center"] options:bindingOption];
     [_xStepper bind:@"enabled2" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"center"] options:bindingOption];
     [_pxStepper bind:@"enabled2" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"center"] options:bindingOption];
+    
+    [_helpMenu bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeHelpMenu"] options:IUBindingDictNotRaisesApplicable];
 }
 
 - (void)dealloc{
@@ -311,6 +316,14 @@
 - (void)setValue:(id)value forKeyPath:(NSString *)keyPath{
     NSLog([NSString stringWithFormat:@"LMPropertyFrame VC : %@, %@", keyPath, [value description]], nil);
     [super setValue:value forKeyPath:keyPath];
+}
+
+- (IBAction)helpMenu:(id)sender {
+    NSLog(@"this is help menu");
+    helpWC = [[LMHelpWC alloc] initWithWindowNibName:@"LMHelpWC"];
+    [helpWC setHelpDocument:@"positionProperty.pdf"];
+    [helpWC showWindow:nil];
+    [helpWC.window makeKeyAndOrderFront:self];
 }
 
 @end

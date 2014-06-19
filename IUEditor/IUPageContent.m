@@ -31,6 +31,10 @@
     return NO;
 }
 
+- (BOOL)canChangeHelpMenu{
+    return NO;
+}
+
 - (BOOL)canChangeOverflow{
     return NO;
 }

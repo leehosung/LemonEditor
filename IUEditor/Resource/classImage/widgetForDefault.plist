@@ -7,7 +7,7 @@
 		<array>
 			<dict>
 				<key>title</key>
-				<string>Scolling Animation</string>
+				<string>Scrolling Animation</string>
 				<key>file</key>
 				<string>scrollingAnimation.pdf</string>
 			</dict>
@@ -28,6 +28,15 @@
 		<integer>0</integer>
 	</dict>
 	<dict>
+		<key>manual</key>
+		<array>
+			<dict>
+				<key>title</key>
+				<string>Scrolling Animation</string>
+				<key>file</key>
+				<string>scrollingAnimation.pdf</string>
+			</dict>
+		</array>
 		<key>isWidget</key>
 		<true/>
 		<key>className</key>
