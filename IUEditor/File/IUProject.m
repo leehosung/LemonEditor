@@ -454,6 +454,7 @@
         [self didChangeValueForKey:@"classDocuments"];
 
     }
+    [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationStructureChanged object:self userInfo:@{IUNotificationStructureType: IUNotificationStructureTypeAdd, IUNotificationStructureTarget: sheet}];
 }
 
 - (void)removeSheet:(IUSheet *)sheet toSheetGroup:(IUSheetGroup *)sheetGroup{
@@ -489,6 +490,7 @@
         [self didChangeValueForKey:@"classDocuments"];
         
     }
+    [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationStructureChanged object:self userInfo:@{IUNotificationStructureType: IUNotificationStructureTypeAdd, IUNotificationStructureTarget: sheet}];
 }
 
 @end

@@ -8,7 +8,7 @@
 
 #import "IUImport.h"
 #import "IUBox.h"
-
+#import "IUClass.h"
 
 @implementation IUImport
 
@@ -24,17 +24,15 @@
 }
 
 - (void)setPrototypeClass:(IUClass *)prototypeClass{
-    [_m_children removeObject:_prototypeClass];
-    [prototypeClass.referenceImports addObject:self];
-//    [self.delegate IURemoved:_prototypeClass.htmlID];
-
-    [_m_children addObject:prototypeClass];
+    [_prototypeClass removeReference:self];
+    
     _prototypeClass = prototypeClass;
-    if (_prototypeClass) {
-        [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
-        for (IUBox *iu in [prototypeClass.allChildren arrayByAddingObject:prototypeClass]) {
-            [self.delegate IUClassIdentifier:iu.cssID CSSUpdated:[iu cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
-        }
+ 
+    [_prototypeClass addReference:self];
+    [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
+    
+    for (IUBox *iu in [prototypeClass.allChildren arrayByAddingObject:prototypeClass]) {
+        [self.delegate IUClassIdentifier:iu.cssID CSSUpdated:[iu cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
     }
 }
 

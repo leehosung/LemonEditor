@@ -31,8 +31,11 @@
 #import "LMPropertyProgrammingType1VC.h"
 #import "LMPropertyProgrammingType2VC.h"
 
+#import "IUProject.h"
+
 
 @interface LMIUPropertyVC (){
+    IUProject   *_project;
     
     LMInspectorLinkVC   *inspectorLinkVC;
     LMPropertyIUHTMLVC  *propertyIUHTMLVC;
@@ -154,7 +157,6 @@
     [propertyIUWebMovieVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
 
     [propertyIUImportVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
-    [propertyIUImportVC bind:@"classDocuments" toObject:self withKeyPath:@"classDocuments" options:nil];
     
     [propertyIUMailLinkVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     [propertyPGTextFieldVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
@@ -168,10 +170,15 @@
     [propertyIUTextVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     
     [propertyPGSubmitButtonVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
-
-    
-
 }
+
+-(void)setProject:(IUProject *)project{
+    _project = project;
+    [inspectorLinkVC setProject:project];
+    [propertyIUImportVC setProject:project];
+}
+
+
 
 -(void)setController:(IUController *)controller{
     _controller = controller;

@@ -8,8 +8,11 @@
 
 #import "IUSheet.h"
 
+@class IUImport;
+
 @interface IUClass : IUSheet
 
-@property NSMutableArray *referenceImports;
-
+- (void)addReference:(IUImport*)import;
+- (void)removeReference:(IUImport*)import;
+- (NSArray*)references;
 @end

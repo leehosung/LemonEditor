@@ -40,11 +40,29 @@
 
 #define IUBindingDictNotRaisesApplicable @{NSRaisesForNotApplicableKeysBindingOption:@(NO)}
 
-#define IUNotificationSelectionChanged @"IUNotificationSelectionChanged"
 
 #define IUVideoResourceDidChange @"VideoResourceDidChange"
 #define IUImageResourceDidChange @"ImageResourceDidChange"
 
+#pragma mark -
+#pragma mark Notifications
+
+
+#define IUNotificationSelectionChanged @"IUNotificationSelectionChanged" //called when selection is changed
+#define IUNotificationStructureChanged @"IUNotificationStructureChanged" //called when IUstructure changed, usually occured by addSheet, removeSheet, addIU, removeIU or changeIUIndex
+
+#define IUNotificationStructureType @"NotiType"  
+#define IUNotificationStructureTypeAdd @"Add"
+#define IUNotificationStructureTypeRemove @"Remove"
+#define IUNotificationStructureTypeReindex @"Reindex"
+
+#define IUNotificationStructureTarget @"Target"
+
+
+
+
+
+#define CalledByNoti void
 
 static NSRange NSZeroRange;
 #endif

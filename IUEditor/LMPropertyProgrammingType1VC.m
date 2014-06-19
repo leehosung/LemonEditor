@@ -7,12 +7,14 @@
 //
 
 #import "LMPropertyProgrammingType1VC.h"
+#import "IUIdentifierManager.h"
 
 @interface LMPropertyProgrammingType1VC ()
 
 @end
 
-@implementation LMPropertyProgrammingType1VC
+@implementation LMPropertyProgrammingType1VC{
+}
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -22,5 +24,6 @@
     }
     return self;
 }
+
 
 @end

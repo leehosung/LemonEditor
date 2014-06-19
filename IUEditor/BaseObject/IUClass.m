@@ -8,7 +8,9 @@
 
 #import "IUClass.h"
 
-@implementation IUClass
+@implementation IUClass{
+    NSMutableArray *_referenceImports;
+}
 
 -(id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
     self = [super initWithProject:project options:options];
@@ -30,16 +32,23 @@
 }
 
 
--(IUBox*)parent{
-    return nil;
-}
-
 -(BOOL)canChangeWidthByUserInput{
     return YES;
 }
 
 -(BOOL)canChangeHeightByUserInput{
     return YES;
+}
+
+- (void)addReference:(IUImport*)import{
+    [_referenceImports addObject:import];
+}
+- (void)removeReference:(IUImport*)import{
+    [_referenceImports removeObject:import];
+}
+
+- (NSArray*)references{
+    return [_referenceImports copy];
 }
 
 

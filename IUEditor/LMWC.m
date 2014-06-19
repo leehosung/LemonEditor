@@ -136,7 +136,6 @@
         
         //project binding
         [canvasVC bind:@"documentBasePath" toObject:self withKeyPath:@"document.project.path" options:nil];
-        [iuInspectorVC bind:@"classDocuments" toObject:self withKeyPath:@"document.project.classDocuments" options:nil];
     }
     return self;
 }
@@ -283,6 +282,7 @@
         fileNaviVC.project = _project;
         widgetLibraryVC.project = _project;
         [widgetLibraryVC setProject:_project];
+        iuInspectorVC.project = _project;
 
         //set ResourceManager
         canvasVC.resourceManager = _project.resourceManager;

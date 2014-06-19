@@ -9,81 +9,60 @@
 #import "LMInspectorLinkVC.h"
 #import "IUSheetGroup.h"
 #import "IUSheet.h"
+#import "IUPage.h"
+#import "IUProject.h"
 
 @interface LMInspectorLinkVC ()
-
-@property (strong) IBOutlet NSArrayController *pageDocumentAC;
-@property (strong) IBOutlet NSArrayController *divAC;
-
-@property (weak) IBOutlet NSComboBox *linkCB;
-@property (weak) IBOutlet NSPopUpButton *divPopupBtn;
-@property (weak) IBOutlet NSTextField *pgVisibleTF;
-
+@property (weak) IBOutlet NSComboBox *pageLinkCB;
+@property (weak) IBOutlet NSPopUpButton *divLinkPB; //not use for alpha 0.2 version
 
 @end
 
-@implementation LMInspectorLinkVC
+@implementation LMInspectorLinkVC{
+    IUProject *_project;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Initialization code here.
+        [self loadView];
     }
     return self;
 }
 
-- (void)awakeFromNib{
-    [_pageDocumentAC bind:NSContentArrayBinding toObject:self withKeyPath:@"pageDocumentNodes" options:nil];
-    [_linkCB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"link"] options:IUBindingDictNotRaisesApplicable];
-    [_divPopupBtn bind:NSSelectedValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"divLink"] options:IUBindingDictNotRaisesApplicable];
-    [_pgVisibleTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"pgVisibleCondition"] options:IUBindingDictNotRaisesApplicable];
 
-    [self.controller addObserver:self forKeyPath:@"selection" options:NSKeyValueObservingOptionInitial context:nil];
-
-}
-- (void)dealloc{
-    //release 시점 확인용
-    assert(0);
+- (void)setProject:(IUProject*)project{
+    _project = project;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(structureChanged:) name:IUNotificationStructureChanged object:project];
+    _pageLinkCB.delegate = self;
+    for (IUPage *page in [project pageDocuments]) {
+        [_pageLinkCB addItemWithObjectValue:page.name];
+    }
 }
 
-- (BOOL)isPage:(NSString *)link{
-    assert(0);
-    /*
-    for(IUDocumentGroup *node in _pageDocumentNodes){
-        if([node.name isEqualToString:link]){
-            return YES;
+- (CalledByNoti)structureChanged:(NSNotification*)noti{
+    NSDictionary *userInfo = noti.userInfo;
+    if ([userInfo[IUNotificationStructureTarget] isKindOfClass:[IUPage class]]) {
+        [_pageLinkCB removeAllItems];
+        for (IUPage *page in [_project pageDocuments]) {
+            [_pageLinkCB addItemWithObjectValue:page.name];
         }
     }
-     */
-    return NO;
-}
-- (IBAction)clickLinkComboBox:(id)sender {
-    [self setDivLink];
 }
 
-- (void)selectionDidChange:(NSDictionary *)change{
-    [self setDivLink];
+//called when combobox selection is changed by click
+- (void)comboBoxSelectionDidChange:(NSNotification *)notification{
+    NSString *link = [_pageLinkCB objectValueOfSelectedItem];
+    [self setValue:link forKeyPath:[_controller keyPathFromControllerToProperty:@"link"]];
 }
 
-- (void)setDivLink{
-    return;
-    assert(0);
-    /*
-    NSString *link = [[_linkCB selectedCell] stringValue];
-    [_divAC setContent:nil];
+//called when combobox selection is changed by string editing
+- (void)controlTextDidChange:(NSNotification *)obj{
+    NSString *link = [_pageLinkCB stringValue];
+    [self setValue:link forKeyPath:[_controller keyPathFromControllerToProperty:@"link"]];}
 
-    if([self isPage:link]){
-        IUDocumentGroup *node = [[_pageDocumentAC selectedObjects] objectAtIndex:0];
-        IUDocument *document = node.document;
-        [_divAC addObjects:document.allChildren];
-        [_divPopupBtn setEnabled:YES];
-    }
-    else{
-        [_divPopupBtn setEnabled:NO];
-    }
-     */
-}
 
 
 @end

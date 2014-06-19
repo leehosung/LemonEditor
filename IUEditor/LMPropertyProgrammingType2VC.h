@@ -11,5 +11,6 @@
 #import "IUController.h"
 
 @interface LMPropertyProgrammingType2VC : NSViewController
+
 @property IUController  *controller;
 @end

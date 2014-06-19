@@ -12,7 +12,7 @@
 @interface LMPropertyIUImportVC : NSViewController
 
 @property (nonatomic) IUController      *controller;
-@property NSArray   *classDocuments;
-@property NSArray   *selectedObjs;
+- (void)setProject:(IUProject*)project;
+
 @property IUSheet *selectedClass;
 @end

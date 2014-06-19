@@ -273,7 +273,7 @@
     iu.parent = self;
     
     if ([self.sheet isKindOfClass:[IUClass class]]) {
-        for (IUBox *import in [(IUClass*)self.sheet referenceImports]) {
+        for (IUBox *import in [(IUClass*)self.sheet references]) {
             NSString *self_htmlID = [import.htmlID stringByAppendingFormat:@"__%@", self.htmlID];
             NSString *iu_htmlid = [import.htmlID stringByAppendingFormat:@"__%@", iu.htmlID];
             NSString *originalHTML = iu.html;
@@ -287,7 +287,9 @@
         [self.delegate IUClassIdentifier:child.cssID CSSUpdated:[child cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
     }
     [iu bind:@"identifierManager" toObject:self withKeyPath:@"identifierManager" options:nil];
-    
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationStructureChanged object:self.project userInfo:@{IUNotificationStructureType: IUNotificationStructureTypeAdd, IUNotificationStructureTarget: iu}];
+
     return YES;
 }
 
@@ -313,6 +315,8 @@
         [self.project.identifierManager unregisterIUs:@[iu]];
         [self.delegate IURemoved:iu.htmlID withParentID:iu.parent.htmlID];
         [_m_children removeObject:iu];
+        [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationStructureChanged object:self.project userInfo:@{IUNotificationStructureType: IUNotificationStructureTypeRemove, IUNotificationStructureTarget: iu}];
+
         return YES;
     }
     return NO;
@@ -328,6 +332,7 @@
     [_m_children insertObject:iu atIndex:index];
     
     [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
+    [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationStructureChanged object:self.project userInfo:@{IUNotificationStructureType: IUNotificationStructureTypeReindex, IUNotificationStructureTarget: iu}];
 
     return YES;
 }

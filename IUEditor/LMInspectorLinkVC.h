@@ -9,11 +9,9 @@
 #import <Cocoa/Cocoa.h>
 #import "IUController.h"
 
-@interface LMInspectorLinkVC : NSViewController
+@interface LMInspectorLinkVC : NSViewController <NSComboBoxDelegate>
 
 @property (nonatomic) IUController      *controller;
-
-@property (strong) IBOutlet NSBox *defaultView;
-@property NSArray *pageDocumentNodes;
+- (void)setProject:(IUProject*)project;
 
 @end

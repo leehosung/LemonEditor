@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyIUImportVC">
             <connections>
-                <outlet property="classDocumentsArrayController" destination="hfv-f8-xWI" id="tkn-Tr-xBm"/>
-                <outlet property="prototypeB" destination="jQA-Nu-yUj" id="tB6-MH-iut"/>
+                <outlet property="prototypeB" destination="jQA-Nu-yUj" id="HUf-8t-8EL"/>
                 <outlet property="view" destination="uZe-KR-dBO" id="JUA-Zu-2BJ"/>
             </connections>
         </customObject>
@@ -35,8 +34,8 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jQA-Nu-yUj">
-                                <rect key="frame" x="78" y="11" width="190" height="22"/>
+                            <popUpButton verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jQA-Nu-yUj">
+                                <rect key="frame" x="78" y="18" width="190" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="184" id="ala-V8-qGB"/>
                                     <constraint firstAttribute="height" constant="18" id="axo-eR-zkm"/>
@@ -53,8 +52,7 @@
                                     </menu>
                                 </popUpButtonCell>
                                 <connections>
-                                    <binding destination="hfv-f8-xWI" name="content" keyPath="arrangedObjects.name" id="Jvf-Z9-knI"/>
-                                    <binding destination="hfv-f8-xWI" name="selectedIndex" keyPath="selectionIndex" previousBinding="Jvf-Z9-knI" id="5Rq-dH-8J3"/>
+                                    <action selector="performPrototypeChange:" target="-2" id="KOb-hF-iLI"/>
                                 </connections>
                             </popUpButton>
                         </subviews>
@@ -76,15 +74,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bYw-lS-h12">
-                                <rect key="frame" x="4" y="7" width="97" height="17"/>
+                                <rect key="frame" x="4" y="13" width="97" height="17"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="IUImport" id="UB4-am-Hkh">
                                     <font key="font" metaFont="smallSystemBold"/>
                                     <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ToB-GB-ms2">
-                                <rect key="frame" x="6" y="0.0" width="260" height="5"/>
+                            <box autoresizesSubviews="NO" verticalHuggingPriority="750" misplaced="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ToB-GB-ms2">
+                                <rect key="frame" x="6" y="25" width="260" height="5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="7k6-32-loF"/>
                                     <constraint firstAttribute="height" constant="1" id="zHX-5e-gmg"/>
@@ -119,12 +117,5 @@
             </connections>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="xsT-ec-CTa"/>
-        <arrayController id="hfv-f8-xWI">
-            <connections>
-                <binding destination="-2" name="contentArray" keyPath="classDocuments" id="3lx-FG-c3Q"/>
-                <binding destination="-2" name="selectionIndexes" keyPath="selectedObjs" id="Jwp-NI-gri"/>
-                <binding destination="-2" name="contentArrayForMultipleSelection" keyPath="selectedObjs" previousBinding="3lx-FG-c3Q" id="OOR-c9-CtM"/>
-            </connections>
-        </arrayController>
     </objects>
 </document>

@@ -12,7 +12,9 @@
 
 @end
 
-@implementation LMPropertyProgrammingType2VC
+@implementation LMPropertyProgrammingType2VC{
+    IUProject *_project;
+}
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -22,5 +24,6 @@
     }
     return self;
 }
+
 
 @end
