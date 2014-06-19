@@ -39,7 +39,7 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="value" keyPath="self.controller.selection.pgContent" id="LQf-Mb-Ag4"/>
+                        <binding destination="-2" name="value" keyPath="self.controller.selection.pgContentVariable" id="kgr-EL-oAw"/>
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RPe-sK-FsQ">
@@ -54,13 +54,9 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="md3-mL-qrB">
-                    <rect key="frame" x="257" y="62" width="20" height="20"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="20" id="64V-rT-625"/>
-                        <constraint firstAttribute="height" constant="20" id="DVo-48-l6X"/>
-                    </constraints>
-                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="help" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="eni-CI-zeT">
+                <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="md3-mL-qrB">
+                    <rect key="frame" x="248" y="58" width="25" height="25"/>
+                    <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eni-CI-zeT">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -77,7 +73,7 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="value" keyPath="self.controller.selection.pgVisibleCondition" id="gcd-XW-kiZ"/>
+                        <binding destination="-2" name="value" keyPath="self.controller.selection.pgVisibleConditionVariable" id="0jI-E8-qqL"/>
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wh1-aZ-2Cf">

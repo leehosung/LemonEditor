@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyIUFormVC">
+        <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyPGFormVC">
             <connections>
                 <outlet property="submitPageComboBox" destination="0QL-HQ-iMe" id="ylP-tj-FM6"/>
                 <outlet property="view" destination="vKx-n6-cpW" id="hey-e3-qyZ"/>

@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "IUController.h"
 
-@interface LMPropertyIUFormVC : NSViewController
+@interface LMPropertyPGFormVC : NSViewController
 
 @property (nonatomic) IUController      *controller;
 

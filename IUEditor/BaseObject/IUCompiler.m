@@ -410,8 +410,8 @@ static NSString * IUCompilerTagOption = @"tag";
         tag = @"h2";
     }
     JDCode *code = [[JDCode alloc] init];
-    if ([iu.pgVisibleCondition length] && _rule == IUCompileRuleDjango) {
-        [code addCodeLineWithFormat:@"{%%if %@%%}", iu.pgVisibleCondition];
+    if ([iu.pgVisibleConditionVariable length] && _rule == IUCompileRuleDjango) {
+        [code addCodeLineWithFormat:@"{%%if %@%%}", iu.pgVisibleConditionVariable];
     }
     [code addCodeLineWithFormat:@"<%@ %@>", tag, [self HTMLAttributes:iu option:nil]];
     if ([iu isKindOfClass:[PGForm class]]) {
@@ -431,7 +431,7 @@ static NSString * IUCompilerTagOption = @"tag";
         }
     }
     [code addCodeLineWithFormat:@"</%@>", tag];
-    if ([iu.pgVisibleCondition length] && _rule == IUCompileRuleDjango) {
+    if ([iu.pgVisibleConditionVariable length] && _rule == IUCompileRuleDjango) {
         [code addCodeLine:@"{% endif %}"];
     }
     return code;
@@ -1377,12 +1377,12 @@ static NSString * IUCompilerTagOption = @"tag";
 #pragma mark IUImage
     if ([iu isKindOfClass:[IUImage class]]) {
         IUImage *iuImage = (IUImage*)iu;
-        if (iuImage.variable && _rule == IUCompileRuleDjango) {
+        if (iuImage.pgContentVariable && _rule == IUCompileRuleDjango) {
             if ([iu.sheet isKindOfClass:[IUClass class]]) {
-                [retString appendFormat:@" src={{ object.%@ }}", iuImage.variable];
+                [retString appendFormat:@" src={{ object.%@ }}", iuImage.pgContentVariable];
             }
             else {
-                [retString appendFormat:@" src={{ %@ }}>", iuImage.variable];
+                [retString appendFormat:@" src={{ %@ }}>", iuImage.pgContentVariable];
             }
         }else{
             //image tag attributes

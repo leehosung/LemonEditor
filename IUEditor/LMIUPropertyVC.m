@@ -109,7 +109,7 @@
         
         propertyPGPageLinkSetVC = [[LMPropertyIUPageLinkSetVC alloc] initWithNibName:[LMPropertyIUPageLinkSetVC class].className bundle:nil];
         propertyIUPageVC = [[LMPropertyIUPageVC alloc] initWithNibName:[LMPropertyIUPageVC class].className bundle:nil];
-        propertyPGFormVC = [[LMPropertyPGFormVC alloc] initWithNibName:[LMPropertyIUFormVC class].className bundle:nil];
+        propertyPGFormVC = [[LMPropertyPGFormVC alloc] initWithNibName:[LMPropertyPGFormVC class].className bundle:nil];
         
         propertyIUTextVC = [[LMPropertyIUTextVC alloc] initWithNibName:[LMPropertyIUTextVC class].className bundle:nil];
         

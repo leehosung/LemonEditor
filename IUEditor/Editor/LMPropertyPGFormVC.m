@@ -6,14 +6,14 @@
 //  Copyright (c) 2014년 JDLab. All rights reserved.
 //
 
-#import "LMPropertyIUFormVC.h"
+#import "LMPropertyPGFormVC.h"
 
-@interface LMPropertyIUFormVC ()
+@interface LMPropertyPGFormVC ()
 @property (weak) IBOutlet NSComboBox *submitPageComboBox;
 
 @end
 
-@implementation LMPropertyIUFormVC
+@implementation LMPropertyPGFormVC
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
