@@ -376,7 +376,7 @@
         NSDictionary *textCSSDict = textIU.textController.cssDict;
         for(NSString *textIdentifier in textCSSDict.allKeys){
             NSString *textCSSStr = [self fontCSSContentFromAttributes:[textIU textCSSAttributesForWidth:width textIdentifier:textIdentifier]];
-            [dict setObject:textCSSStr forKey:[NSString stringWithFormat:@"#%@",textIdentifier]];
+            [dict setObject:textCSSStr forKey:[NSString stringWithFormat:@".%@",textIdentifier]];
         }
     }
     

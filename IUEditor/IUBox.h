@@ -192,4 +192,7 @@ typedef enum _IUOverflowType{
 
 - (NSArray *)helpDictionary;
 
+//css 전체를 지울 때 사용
+- (NSArray *)cssIdentifierArray;
+
 @end

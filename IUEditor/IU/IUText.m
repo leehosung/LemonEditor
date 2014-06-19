@@ -155,4 +155,14 @@
     [self updateHTML];
 }
 
+- (NSArray *)cssIdentifierArray{
+    NSMutableArray *array = [NSMutableArray arrayWithArray:[super cssIdentifierArray]];
+    
+    for(NSString *identifier in self.textController.cssDict.allKeys){
+        NSString *cssID = [NSString stringWithFormat:@".%@", identifier];
+        [array addObject:cssID];
+    }
+    return array;
+}
+
 @end

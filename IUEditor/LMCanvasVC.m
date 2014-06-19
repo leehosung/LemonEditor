@@ -503,7 +503,7 @@
 -(void)IUClassIdentifier:(NSString *)identifier CSSRemovedforWidth:(NSInteger)width{
     if(width == IUCSSMaxViewPortWidth){
         //default setting
-        [self removeCSSTextWithID:identifier];
+        [self removeCSSTextWithIDInDefault:identifier];
     }
     else{
         [self removeCSSTextWithID:identifier size:width];
@@ -625,6 +625,16 @@
 }
 
 - (void)removeCSSTextWithID:(NSString *)iuID{
+    DOMNodeList *styleList = [[self DOMDoc] getElementsByTagName:@"style"];
+    //0 번째는 import sheet라서 건너뜀.
+    for(int i=1; i<styleList.length; i++){
+        DOMHTMLStyleElement *styleElement = (DOMHTMLStyleElement *)[styleList item:i];
+        [self removeCSSRuleInStyleSheet:styleElement withID:iuID];
+    }
+    
+}
+
+- (void)removeCSSTextWithIDInDefault:(NSString *)iuID{
     DOMHTMLStyleElement *sheetElement = (DOMHTMLStyleElement *)[[self DOMDoc] getElementById:@"default"];
     [self removeCSSRuleInStyleSheet:sheetElement withID:iuID];
     
@@ -632,7 +642,7 @@
 - (void)removeCSSTextWithID:(NSString *)iuID size:(NSInteger)size{
     DOMHTMLStyleElement *sheetElement = (DOMHTMLStyleElement *)[[self DOMDoc] getElementById:[NSString stringWithFormat:@"style%ld", size]];
     if(sheetElement == nil){
-        sheetElement = [self makeNewStyleSheet:size];
+        return;
     }
     [self removeCSSRuleInStyleSheet:sheetElement withID:iuID];;
 }
@@ -882,6 +892,19 @@
         [[self gridView] removeLayerWithIUIdentifier:child.htmlID];
     }
     
+    //removeCSS
+    NSArray *cssIds = [iu cssIdentifierArray];
+    for (NSString *identifier in cssIds){
+        [self removeCSSTextWithID:identifier];
+    }
+    for(IUBox *child in iu.allChildren){
+        NSArray *childIds= [child cssIdentifierArray];
+        for (NSString *identifier in childIds){
+            [self removeCSSTextWithID:identifier];
+        }
+    }
+    
+    
     //remove HTML
     DOMHTMLElement *selectHTMLElement = [self getHTMLElementbyID:identifier];
     DOMHTMLElement *middleElement = selectHTMLElement;
@@ -903,6 +926,8 @@
     }
     
 //    assert(parentElement != nil);
+    
+    
     
     [parentElement removeChild:middleElement];
     
