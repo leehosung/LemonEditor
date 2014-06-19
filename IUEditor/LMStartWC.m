@@ -51,6 +51,7 @@
     _newVC.prevB = _prevB;
     _newVC.nextB = _nextB;
     [_nextB setAction:@selector(pressNextB)];
+    [_prevB setAction:@selector(pressPrevB)];
 }
 
 - (void)removeCurrentView{

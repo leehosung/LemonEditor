@@ -9,4 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @interface LMStartWC : NSWindowController
+
+- (void)removeCurrentView;
+
 @end

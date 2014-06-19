@@ -24,8 +24,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Initialization code here.
-     //   [_prevB setAction:@selector(pressPrevB)];
         [_nextB setAction:@selector(pressNextB)];
     }
     return self;
@@ -42,7 +40,5 @@
     
     [(IUProjectController *)[NSDocumentController sharedDocumentController] newDocument:self withOption:options];
 }
-
-
 
 @end

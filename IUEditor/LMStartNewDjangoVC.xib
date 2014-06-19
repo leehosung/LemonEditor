@@ -151,7 +151,7 @@
                         <constraint firstItem="Skl-eY-g4t" firstAttribute="leading" secondItem="a3P-9i-p5m" secondAttribute="leading" constant="77" id="wVX-Z8-FqT"/>
                     </constraints>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="smallSystemBold"/>
                 </box>
             </subviews>

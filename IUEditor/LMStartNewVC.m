@@ -8,7 +8,7 @@
 
 #import "LMStartNewVC.h"
 #import "LMAppDelegate.h"
-
+#import "LMStartWC.h"
 #import "LMStartNewDefaultVC.h"
 #import "LMStartNewDjangoVC.h"
 #import "LMStartNewPresentationVC.h"
@@ -46,6 +46,14 @@
     presentationVC.nextB = nextB;
 }
 
+- (void)setPrevB:(NSButton *)prevB{
+    _prevB = prevB;
+    defaultVC.nextB = prevB;
+    djangoVC.nextB = prevB;
+    presentationVC.nextB = prevB;
+    
+}
+
 - (IBAction)pressProjectTypeB:(NSButton*)sender {
     
     self.typeDefaultB.state = 0;
@@ -55,6 +63,7 @@
     sender.state = 1;
     
     [_prevB setAction:@selector(pressPrevB)];
+    [_nextB setAction:@selector(pressNextB)];
 }
 
 
@@ -63,13 +72,13 @@
         [self.view addSubview:defaultVC.view];
         [_nextB setTarget:defaultVC];
         defaultVC.nextB = _nextB;
-        [_prevB setTarget:defaultVC];
         [_prevB setEnabled:YES];
-        defaultVC.prevB = _prevB;
     }
     else if (_typePresentationB.state){
         [self.view addSubview:presentationVC.view];
         [_prevB setEnabled:YES];
+
+        
     }
     else if (_typeDjangoB.state){
         [self.view addSubview:djangoVC.view];
@@ -82,8 +91,11 @@
     [defaultVC.view removeFromSuperview];
     [djangoVC.view removeFromSuperview];
     [presentationVC.view removeFromSuperview];
+    [_nextB setTarget:self];
     [_nextB setEnabled:YES];
     [_prevB setEnabled:NO];
 }
+
+
 
 @end
