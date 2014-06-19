@@ -178,8 +178,8 @@
 		3DBC932F18F647EC00F217BD /* iu.js in Resources */ = {isa = PBXBuildFile; fileRef = 69B9A39A18E6B1860007D6E2 /* iu.js */; };
 		3DD4786E193DB33600639AB5 /* LMDebugSourceWC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD4786C193DB33600639AB5 /* LMDebugSourceWC.m */; };
 		3DD4786F193DB33600639AB5 /* LMDebugSourceWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD4786D193DB33600639AB5 /* LMDebugSourceWC.xib */; };
-		3DD47873193DCCF900639AB5 /* LMPropertyIUFormVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD47871193DCCF900639AB5 /* LMPropertyIUFormVC.m */; };
-		3DD47874193DCCF900639AB5 /* LMPropertyIUFormVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD47872193DCCF900639AB5 /* LMPropertyIUFormVC.xib */; };
+		3DD47873193DCCF900639AB5 /* LMPropertyPGFormVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD47871193DCCF900639AB5 /* LMPropertyPGFormVC.m */; };
+		3DD47874193DCCF900639AB5 /* LMPropertyPGFormVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD47872193DCCF900639AB5 /* LMPropertyPGFormVC.xib */; };
 		3DD47878193DCEB600639AB5 /* LMPropertyIUTextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD47876193DCEB600639AB5 /* LMPropertyIUTextVC.m */; };
 		3DD47879193DCEB600639AB5 /* LMPropertyIUTextVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD47877193DCEB600639AB5 /* LMPropertyIUTextVC.xib */; };
 		3DD4787D193DDCE100639AB5 /* LMPropertyScrollVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD4787B193DDCE100639AB5 /* LMPropertyScrollVC.m */; };
@@ -517,13 +517,12 @@
 		69FFB27F1950305600DA2783 /* LMIUPropertyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69FFB27D1950305600DA2783 /* LMIUPropertyVC.xib */; };
 		69FFB2831950309E00DA2783 /* LMInspectorLinkVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FFB2811950309E00DA2783 /* LMInspectorLinkVC.m */; };
 		69FFB2841950309E00DA2783 /* LMInspectorLinkVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69FFB2821950309E00DA2783 /* LMInspectorLinkVC.xib */; };
-		CB357336195031E700D2D203 /* Melissa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CB357335195031E700D2D203 /* Melissa.jpg */; };
-		CB3573381950408D00D2D203 /* Melissa.zip in Resources */ = {isa = PBXBuildFile; fileRef = CB3573371950408D00D2D203 /* Melissa.zip */; };
 		69FFB28B195041E500DA2783 /* LMPropertyProgrammingType1VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FFB286195041E500DA2783 /* LMPropertyProgrammingType1VC.m */; };
 		69FFB28C195041E500DA2783 /* LMPropertyProgrammingType1VC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69FFB287195041E500DA2783 /* LMPropertyProgrammingType1VC.xib */; };
 		69FFB28D195041E500DA2783 /* LMPropertyProgrammingType2VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FFB289195041E500DA2783 /* LMPropertyProgrammingType2VC.m */; };
 		69FFB28E195041E500DA2783 /* LMPropertyProgrammingType2VC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69FFB28A195041E500DA2783 /* LMPropertyProgrammingType2VC.xib */; };
-		CB370E31192D93580074F3F8 /* gallary.zip in Resources */ = {isa = PBXBuildFile; fileRef = CB370E2F192D93580074F3F8 /* gallary.zip */; };
+		CB357336195031E700D2D203 /* Melissa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CB357335195031E700D2D203 /* Melissa.jpg */; };
+		CB3573381950408D00D2D203 /* Melissa.zip in Resources */ = {isa = PBXBuildFile; fileRef = CB3573371950408D00D2D203 /* Melissa.zip */; };
 		CB370E32192D93580074F3F8 /* iueditorHome.zip in Resources */ = {isa = PBXBuildFile; fileRef = CB370E30192D93580074F3F8 /* iueditorHome.zip */; };
 		CB370E35192D98CF0074F3F8 /* lemon.png in Resources */ = {isa = PBXBuildFile; fileRef = CB370E34192D98CF0074F3F8 /* lemon.png */; };
 		CB9BD6381914DC62002C9369 /* LMStartNewDjangoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9BD6361914DC62002C9369 /* LMStartNewDjangoVC.m */; };
@@ -755,9 +754,9 @@
 		3DD4786B193DB33600639AB5 /* LMDebugSourceWC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMDebugSourceWC.h; path = Debug/LMDebugSourceWC.h; sourceTree = "<group>"; };
 		3DD4786C193DB33600639AB5 /* LMDebugSourceWC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMDebugSourceWC.m; path = Debug/LMDebugSourceWC.m; sourceTree = "<group>"; };
 		3DD4786D193DB33600639AB5 /* LMDebugSourceWC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMDebugSourceWC.xib; path = Debug/LMDebugSourceWC.xib; sourceTree = "<group>"; };
-		3DD47870193DCCF900639AB5 /* LMPropertyIUFormVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMPropertyIUFormVC.h; path = Editor/LMPropertyIUFormVC.h; sourceTree = "<group>"; };
-		3DD47871193DCCF900639AB5 /* LMPropertyIUFormVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMPropertyIUFormVC.m; path = Editor/LMPropertyIUFormVC.m; sourceTree = "<group>"; };
-		3DD47872193DCCF900639AB5 /* LMPropertyIUFormVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMPropertyIUFormVC.xib; path = Editor/LMPropertyIUFormVC.xib; sourceTree = "<group>"; };
+		3DD47870193DCCF900639AB5 /* LMPropertyPGFormVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMPropertyPGFormVC.h; path = Editor/LMPropertyPGFormVC.h; sourceTree = "<group>"; };
+		3DD47871193DCCF900639AB5 /* LMPropertyPGFormVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMPropertyPGFormVC.m; path = Editor/LMPropertyPGFormVC.m; sourceTree = "<group>"; };
+		3DD47872193DCCF900639AB5 /* LMPropertyPGFormVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMPropertyPGFormVC.xib; path = Editor/LMPropertyPGFormVC.xib; sourceTree = "<group>"; };
 		3DD47875193DCEB600639AB5 /* LMPropertyIUTextVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMPropertyIUTextVC.h; path = Editor/LMPropertyIUTextVC.h; sourceTree = "<group>"; };
 		3DD47876193DCEB600639AB5 /* LMPropertyIUTextVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMPropertyIUTextVC.m; path = Editor/LMPropertyIUTextVC.m; sourceTree = "<group>"; };
 		3DD47877193DCEB600639AB5 /* LMPropertyIUTextVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMPropertyIUTextVC.xib; path = Editor/LMPropertyIUTextVC.xib; sourceTree = "<group>"; };
@@ -1224,15 +1223,14 @@
 		69FFB2801950309E00DA2783 /* LMInspectorLinkVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMInspectorLinkVC.h; path = IUEditor/LMInspectorLinkVC.h; sourceTree = "<group>"; };
 		69FFB2811950309E00DA2783 /* LMInspectorLinkVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMInspectorLinkVC.m; path = IUEditor/LMInspectorLinkVC.m; sourceTree = "<group>"; };
 		69FFB2821950309E00DA2783 /* LMInspectorLinkVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMInspectorLinkVC.xib; path = IUEditor/LMInspectorLinkVC.xib; sourceTree = "<group>"; };
-		CB357335195031E700D2D203 /* Melissa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Melissa.jpg; sourceTree = "<group>"; };
-		CB3573371950408D00D2D203 /* Melissa.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = Melissa.zip; sourceTree = "<group>"; };
 		69FFB285195041E500DA2783 /* LMPropertyProgrammingType1VC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMPropertyProgrammingType1VC.h; path = IUEditor/LMPropertyProgrammingType1VC.h; sourceTree = "<group>"; };
 		69FFB286195041E500DA2783 /* LMPropertyProgrammingType1VC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMPropertyProgrammingType1VC.m; path = IUEditor/LMPropertyProgrammingType1VC.m; sourceTree = "<group>"; };
 		69FFB287195041E500DA2783 /* LMPropertyProgrammingType1VC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMPropertyProgrammingType1VC.xib; path = IUEditor/LMPropertyProgrammingType1VC.xib; sourceTree = "<group>"; };
 		69FFB288195041E500DA2783 /* LMPropertyProgrammingType2VC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMPropertyProgrammingType2VC.h; path = IUEditor/LMPropertyProgrammingType2VC.h; sourceTree = "<group>"; };
 		69FFB289195041E500DA2783 /* LMPropertyProgrammingType2VC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMPropertyProgrammingType2VC.m; path = IUEditor/LMPropertyProgrammingType2VC.m; sourceTree = "<group>"; };
 		69FFB28A195041E500DA2783 /* LMPropertyProgrammingType2VC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMPropertyProgrammingType2VC.xib; path = IUEditor/LMPropertyProgrammingType2VC.xib; sourceTree = "<group>"; };
-		CB370E2F192D93580074F3F8 /* gallary.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = gallary.zip; sourceTree = "<group>"; };
+		CB357335195031E700D2D203 /* Melissa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Melissa.jpg; sourceTree = "<group>"; };
+		CB3573371950408D00D2D203 /* Melissa.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = Melissa.zip; sourceTree = "<group>"; };
 		CB370E30192D93580074F3F8 /* iueditorHome.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = iueditorHome.zip; sourceTree = "<group>"; };
 		CB370E34192D98CF0074F3F8 /* lemon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lemon.png; sourceTree = "<group>"; };
 		CB9BD6351914DC62002C9369 /* LMStartNewDjangoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMStartNewDjangoVC.h; sourceTree = "<group>"; };
@@ -1314,9 +1312,9 @@
 		3D4675F61929AA0F0036C64C /* IUPropertyVC */ = {
 			isa = PBXGroup;
 			children = (
-				3DD47870193DCCF900639AB5 /* LMPropertyIUFormVC.h */,
-				3DD47871193DCCF900639AB5 /* LMPropertyIUFormVC.m */,
-				3DD47872193DCCF900639AB5 /* LMPropertyIUFormVC.xib */,
+				3DD47870193DCCF900639AB5 /* LMPropertyPGFormVC.h */,
+				3DD47871193DCCF900639AB5 /* LMPropertyPGFormVC.m */,
+				3DD47872193DCCF900639AB5 /* LMPropertyPGFormVC.xib */,
 				69CB92B5191B6A2600BEFBED /* LMPropertyIUPageLinkSetVC.h */,
 				69CB92B6191B6A2600BEFBED /* LMPropertyIUPageLinkSetVC.m */,
 				69CB92B7191B6A2600BEFBED /* LMPropertyIUPageLinkSetVC.xib */,
@@ -2749,7 +2747,7 @@
 				69FEC48E194845CA00483C11 /* scrollingAnimation.pdf in Resources */,
 				3D97D45D1950339500826280 /* Defaults.plist in Resources */,
 				3DED26641900D313001A1D67 /* ic_contents@2x.png in Resources */,
-				3DD47874193DCCF900639AB5 /* LMPropertyIUFormVC.xib in Resources */,
+				3DD47874193DCCF900639AB5 /* LMPropertyPGFormVC.xib in Resources */,
 				26620E4C19458A2100B728CD /* select_directory@2x.png in Resources */,
 				2640BCC01933194B004A1E4B /* tool_text.png in Resources */,
 				267CB1A3190F93370079E565 /* tab_library_on.png in Resources */,
@@ -3095,7 +3093,7 @@
 				69FFB28B195041E500DA2783 /* LMPropertyProgrammingType1VC.m in Sources */,
 				69FFB2831950309E00DA2783 /* LMInspectorLinkVC.m in Sources */,
 				3D33BAD01935A4F600DA4F4A /* LMPreferenceWC.m in Sources */,
-				3DD47873193DCCF900639AB5 /* LMPropertyIUFormVC.m in Sources */,
+				3DD47873193DCCF900639AB5 /* LMPropertyPGFormVC.m in Sources */,
 				69CFCAB818E972DA00E3048A /* IUPageContent.m in Sources */,
 				3DED27271904AE53001A1D67 /* LMPropertyVRFrameVC.m in Sources */,
 				69B9A39F18E6B7E50007D6E2 /* NSTreeController+JDExtension.m in Sources */,

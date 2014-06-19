@@ -24,7 +24,7 @@
 #import "LMPropertyIUTextViewVC.h"
 #import "LMPropertyIUPageLinkSetVC.h"
 #import "LMPropertyIUPageVC.h"
-#import "LMPropertyIUFormVC.h"
+#import "LMPropertyPGFormVC.h"
 #import "LMPropertyIUTextVC.h"
 #import "PGSubmitButtonVC.h"
 
@@ -56,7 +56,7 @@
     LMPropertyIUPageLinkSetVC *propertyPGPageLinkSetVC;
     LMPropertyIUPageVC * propertyIUPageVC;
     
-    LMPropertyIUFormVC *propertyPGFormVC;
+    LMPropertyPGFormVC *propertyPGFormVC;
     LMPropertyIUTextVC *propertyIUTextVC;
     
     PGSubmitButtonVC *propertyPGSubmitButtonVC;
@@ -109,7 +109,7 @@
         
         propertyPGPageLinkSetVC = [[LMPropertyIUPageLinkSetVC alloc] initWithNibName:[LMPropertyIUPageLinkSetVC class].className bundle:nil];
         propertyIUPageVC = [[LMPropertyIUPageVC alloc] initWithNibName:[LMPropertyIUPageVC class].className bundle:nil];
-        propertyPGFormVC = [[LMPropertyIUFormVC alloc] initWithNibName:[LMPropertyIUFormVC class].className bundle:nil];
+        propertyPGFormVC = [[LMPropertyPGFormVC alloc] initWithNibName:[LMPropertyIUFormVC class].className bundle:nil];
         
         propertyIUTextVC = [[LMPropertyIUTextVC alloc] initWithNibName:[LMPropertyIUTextVC class].className bundle:nil];
         
