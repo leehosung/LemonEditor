@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyOverflowVC">
@@ -18,13 +18,12 @@
             <subviews>
                 <box autoresizesSubviews="NO" borderWidth="0.0" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="5Oa-ZF-6ZZ" userLabel="titleBox">
                     <rect key="frame" x="0.0" y="0.0" width="276" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView">
                         <rect key="frame" x="0.0" y="0.0" width="276" height="30"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <box autoresizesSubviews="NO" verticalHuggingPriority="750" misplaced="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="l5W-gL-u2A">
-                                <rect key="frame" x="16" y="28" width="254" height="5"/>
+                            <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="l5W-gL-u2A">
+                                <rect key="frame" x="6" y="27" width="254" height="5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="254" id="qUA-3E-51k"/>
                                     <constraint firstAttribute="height" constant="1" id="wh4-Hj-obB"/>
@@ -34,13 +33,13 @@
                                 <font key="titleFont" metaFont="system"/>
                             </box>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xhg-uu-wJN">
-                                <rect key="frame" x="85" y="5" width="185" height="19"/>
-                                <popUpButtonCell key="cell" type="roundRect" title="hidden" bezelStyle="roundedRect" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iwt-q4-f2L">
+                                <rect key="frame" x="76" y="4" width="184" height="19"/>
+                                <popUpButtonCell key="cell" type="roundRect" bezelStyle="roundedRect" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iwt-q4-f2L">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system" size="10"/>
                                     <menu key="menu" title="OtherViews" id="ann-LT-JeU">
                                         <items>
-                                            <menuItem title="hidden" state="on" id="G3w-F0-zox"/>
+                                            <menuItem title="hidden" id="G3w-F0-zox"/>
                                             <menuItem title="visible" id="Kjn-TW-QPl"/>
                                             <menuItem title="scroll" id="T4F-82-X8B"/>
                                         </items>
@@ -48,7 +47,7 @@
                                 </popUpButtonCell>
                             </popUpButton>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JPN-PR-pNm">
-                                <rect key="frame" x="4" y="9" width="63" height="14"/>
+                                <rect key="frame" x="4" y="8" width="63" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="59" id="MNa-xa-QWh"/>
                                     <constraint firstAttribute="height" constant="14" id="fLE-O9-TcB"/>
@@ -64,11 +63,11 @@
                     <constraints>
                         <constraint firstItem="l5W-gL-u2A" firstAttribute="trailing" secondItem="xhg-uu-wJN" secondAttribute="trailing" id="573-8f-egX"/>
                         <constraint firstItem="JPN-PR-pNm" firstAttribute="leading" secondItem="5Oa-ZF-6ZZ" secondAttribute="leading" constant="6" id="IY7-45-hup"/>
-                        <constraint firstItem="l5W-gL-u2A" firstAttribute="leading" secondItem="5Oa-ZF-6ZZ" secondAttribute="leading" constant="16" id="YQV-ot-3Q2"/>
-                        <constraint firstItem="l5W-gL-u2A" firstAttribute="top" secondItem="5Oa-ZF-6ZZ" secondAttribute="top" constant="-3" id="cY3-6U-Lya"/>
-                        <constraint firstItem="xhg-uu-wJN" firstAttribute="top" secondItem="l5W-gL-u2A" secondAttribute="bottom" constant="8" symbolic="YES" id="hEv-1O-gfG"/>
+                        <constraint firstItem="l5W-gL-u2A" firstAttribute="leading" secondItem="5Oa-ZF-6ZZ" secondAttribute="leading" constant="6" id="YQV-ot-3Q2"/>
+                        <constraint firstItem="l5W-gL-u2A" firstAttribute="top" secondItem="5Oa-ZF-6ZZ" secondAttribute="top" id="cY3-6U-Lya"/>
+                        <constraint firstItem="xhg-uu-wJN" firstAttribute="top" secondItem="l5W-gL-u2A" secondAttribute="bottom" constant="6" id="hEv-1O-gfG"/>
                         <constraint firstItem="JPN-PR-pNm" firstAttribute="baseline" secondItem="xhg-uu-wJN" secondAttribute="baseline" id="r9b-G9-mQ3"/>
-                        <constraint firstItem="xhg-uu-wJN" firstAttribute="leading" secondItem="JPN-PR-pNm" secondAttribute="trailing" constant="20" id="sHZ-xO-vgi"/>
+                        <constraint firstItem="xhg-uu-wJN" firstAttribute="leading" secondItem="JPN-PR-pNm" secondAttribute="trailing" constant="11" id="sHZ-xO-vgi"/>
                     </constraints>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
