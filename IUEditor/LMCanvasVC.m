@@ -892,18 +892,6 @@
         [[self gridView] removeLayerWithIUIdentifier:child.htmlID];
     }
     
-    //removeCSS
-    NSArray *cssIds = [iu cssIdentifierArray];
-    for (NSString *identifier in cssIds){
-        [self removeAllCSSWithIdentifier:identifier];
-    }
-    for(IUBox *child in iu.allChildren){
-        NSArray *childIds= [child cssIdentifierArray];
-        for (NSString *identifier in childIds){
-            [self removeAllCSSWithIdentifier:identifier];
-        }
-    }
-    
     
     //remove HTML
     DOMHTMLElement *selectHTMLElement = [self getHTMLElementbyID:identifier];
@@ -934,7 +922,22 @@
     [self deselectedAllIUs];
     [frameDict.dict removeObjectForKey:identifier];
     [self.controller rearrangeObjects];
-}
+
+    
+    
+    //removeCSS
+    NSArray *cssIds = [iu cssIdentifierArray];
+    for (NSString *identifier in cssIds){
+        [self removeAllCSSWithIdentifier:identifier];
+    }
+    for(IUBox *child in iu.allChildren){
+        NSArray *childIds= [child cssIdentifierArray];
+        for (NSString *identifier in childIds){
+            [self removeAllCSSWithIdentifier:identifier];
+        }
+    }
+    
+    }
 
 
 
