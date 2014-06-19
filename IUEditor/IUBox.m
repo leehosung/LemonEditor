@@ -534,7 +534,8 @@
     }
 }
 
-- (void)insertImage:(NSString *)imageName{
+#pragma mark - image
+- (void)setImageName:(NSString *)imageName{
     NSDictionary *defaultTagDictionary = [_css tagDictionaryForWidth:IUCSSMaxViewPortWidth];
     if (defaultTagDictionary) {
         [_css setValue:imageName forTag:IUCSSTagImage forWidth:_css.editWidth];
@@ -542,6 +543,12 @@
     [_css setValue:imageName forTag:IUCSSTagImage forWidth:IUCSSMaxViewPortWidth];
 }
 
+- (NSString *)imageName{
+    return _css.assembledTagDictionary[IUCSSTagImage];
+}
+
+
+#pragma mark -frame
 - (BOOL)hasText{
     return NO;
 }

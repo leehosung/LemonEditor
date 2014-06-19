@@ -164,7 +164,7 @@
 
 -(void)insertImage:(NSString *)name atIU:(NSString *)identifier{
     IUBox *currentIU = [self.controller IUBoxByIdentifier:identifier];
-    [currentIU insertImage:name];
+    [currentIU setImageName:name];
 }
 
 #pragma mark -

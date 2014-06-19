@@ -142,8 +142,8 @@ typedef enum _IUOverflowType{
 - (void)movePosition:(NSPoint)point withParentSize:(NSSize)parentSize;
 - (void)startDragSession;
 - (void)increaseSize:(NSSize)size withParentSize:(NSSize)parentSize;
-- (void)insertImage:(NSString *)imageName;
-
+- (void)setImageName:(NSString *)imageName;
+- (NSString *)imageName;
 
 @property (nonatomic, copy) NSString *link, *divLink;
 @property (nonatomic, copy) NSString *textVariable;
