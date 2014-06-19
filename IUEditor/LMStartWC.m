@@ -74,8 +74,10 @@
         case 1:{
             [self removeCurrentView];
             [_mainV addSubview:_newVC.view];
-            [_prevB setTarget:_newVC];
             [_nextB setTarget:_newVC];
+            [_prevB setTarget:_newVC];
+            [_prevB setEnabled:YES];
+            [_prevB setHidden:NO];
             }
             break;
         case 2:{
