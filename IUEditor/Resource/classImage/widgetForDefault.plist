@@ -376,6 +376,14 @@
 		<key>isWidget</key>
 		<false/>
 		<key>className</key>
+		<string>IUClass</string>
+		<key>navImage</key>
+		<string>ic_comp</string>
+	</dict>
+	<dict>
+		<key>isWidget</key>
+		<false/>
+		<key>className</key>
 		<string>IUCarouselItem</string>
 		<key>navImage</key>
 		<string>stack_carousel_item</string>
