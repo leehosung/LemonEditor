@@ -243,6 +243,9 @@
     else if ([classString isEqualToString:@"IUBox"] || [classString isEqualToString:@"IUImage"]) {
         self.propertyVArray = @[inspectorLinkVC.view, propertyPGType1VC.view];
     }
+    else if ([classString isEqualToString:@"IUHTML"]){
+        self.propertyVArray = @[propertyIUHTMLVC.view];
+    }
     else {
         self.propertyVArray = @[self.noInspectorV];
     }
