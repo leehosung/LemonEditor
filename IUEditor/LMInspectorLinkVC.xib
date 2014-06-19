@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMInspectorLinkVC">
@@ -14,26 +14,14 @@
         <customObject id="-3" userLabel="Application"/>
         <userDefaultsController representsSharedInstance="YES" id="nZS-8c-klJ"/>
         <customView id="niB-NK-igw">
-            <rect key="frame" x="0.0" y="0.0" width="249" height="54"/>
+            <rect key="frame" x="0.0" y="0.0" width="300" height="54"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1FF-4O-BWO">
-                    <rect key="frame" x="5" y="9" width="43" height="17"/>
+                <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hPO-0m-QSi" userLabel="Link">
+                    <rect key="frame" x="92" y="5" width="187" height="22"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="17" id="d0r-QO-XU1"/>
-                        <constraint firstAttribute="width" constant="39" id="s2q-Nn-dVy"/>
-                    </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Page" id="Lkp-eS-mvg">
-                        <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <comboBox verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hPO-0m-QSi" userLabel="Link">
-                    <rect key="frame" x="54" y="5" width="178" height="22"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="175" id="3Rj-up-XOA"/>
-                        <constraint firstAttribute="height" constant="17" id="tij-Kc-qh6"/>
+                        <constraint firstAttribute="height" constant="17" id="oEZ-yA-Meq"/>
+                        <constraint firstAttribute="width" constant="184" id="yaY-2t-uUa"/>
                     </constraints>
                     <comboBoxCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="Fay-Q5-i7a">
                         <font key="font" metaFont="smallSystem"/>
@@ -44,17 +32,38 @@
                         <action selector="clickLinkComboBox:" target="-2" id="b2e-sD-H8R"/>
                     </connections>
                 </comboBox>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="acu-TJ-o3H">
-                    <rect key="frame" x="6" y="33" width="31" height="14"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="acu-TJ-o3H">
+                    <rect key="frame" x="20" y="32" width="31" height="14"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="14" id="Jg6-7p-e7E"/>
+                        <constraint firstAttribute="width" constant="27" id="uW6-ma-Van"/>
+                    </constraints>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Link" id="P85-kX-VYj">
-                        <font key="font" size="11" name="LucidaGrande-Bold"/>
+                        <font key="font" metaFont="smallSystemBold"/>
+                        <color key="textColor" white="0.20000000000000001" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1FF-4O-BWO">
+                    <rect key="frame" x="43" y="9" width="43" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="DhE-Xs-DbS"/>
+                        <constraint firstAttribute="width" constant="39" id="rpm-M6-jsN"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Page" id="Lkp-eS-mvg">
+                        <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
             </subviews>
             <constraints>
-                <constraint firstItem="hPO-0m-QSi" firstAttribute="leading" secondItem="1FF-4O-BWO" secondAttribute="trailing" constant="8" id="5bb-Mo-3I4"/>
+                <constraint firstItem="hPO-0m-QSi" firstAttribute="top" secondItem="niB-NK-igw" secondAttribute="top" constant="28" id="Dww-Zk-SoQ"/>
+                <constraint firstItem="1FF-4O-BWO" firstAttribute="leading" secondItem="niB-NK-igw" secondAttribute="leading" constant="45" id="FXk-cC-mlo"/>
+                <constraint firstItem="1FF-4O-BWO" firstAttribute="top" secondItem="acu-TJ-o3H" secondAttribute="bottom" constant="6" id="Tc4-O4-FNl"/>
+                <constraint firstItem="hPO-0m-QSi" firstAttribute="leading" secondItem="1FF-4O-BWO" secondAttribute="trailing" constant="8" id="VF8-5g-bae"/>
+                <constraint firstItem="acu-TJ-o3H" firstAttribute="leading" secondItem="niB-NK-igw" secondAttribute="leading" constant="22" id="Zyf-Pn-Tmy"/>
+                <constraint firstItem="acu-TJ-o3H" firstAttribute="top" secondItem="niB-NK-igw" secondAttribute="top" constant="8" id="mvX-om-XcB"/>
             </constraints>
         </customView>
     </objects>
