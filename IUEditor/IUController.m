@@ -170,33 +170,36 @@
     IUSheet *document = [self.content firstObject];
     
     NSString *firstIdentifier = [identifiers firstObject];
-    if ([firstIdentifier containsString:@"__"]) { // it's in import!
-        NSArray *IUChain = [firstIdentifier componentsSeparatedByString:@"__"];
-        NSString *documentIUIdentifier = [IUChain firstObject];
-
-        IUSheet *parentDoc = (IUSheet*)[self IUBoxByIdentifier:documentIUIdentifier];
-        NSIndexPath *documentPath = [self indexPathOfObject:parentDoc];
-
-        NSArray *allChildren = [[parentDoc allChildren] arrayByAddingObject:document];
+    if ([firstIdentifier containsString:@"ImportedBy_"]) { // it's imported!
+        NSArray *IUChain = [firstIdentifier componentsSeparatedByString:@"_"];
+        assert(IUChain.count == 3);
         
-        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUBox *iu, NSDictionary *bindings) {
-            for (NSString *identifier in identifiers) {
-                NSString *childIdentifier = [identifier substringFromIndex:[documentIUIdentifier length]+2];
-                if ([childIdentifier isEqualToString:iu.htmlID]) {
-                    return YES;
-                }
-            }
-            return NO;
-        }];
-        NSArray *selectedChildren = [allChildren filteredArrayUsingPredicate:predicate];
+        //get import class
+        NSString *importIdentifier = [IUChain objectAtIndex:1];
+        IUImport *import = [self IUBoxByIdentifier:importIdentifier];
+        
+        //get sheet
+        IUSheet *sheet = import.prototypeClass;
+        
+        //get all selected IUs
+        NSMutableArray *objIdentifiers = [NSMutableArray array];
+        for (NSString *identifier in identifiers) {
+            [objIdentifiers addObject:[[identifier componentsSeparatedByString:@"_"] objectAtIndex:2]];
+        }
+        
+        NSArray *selectedIUs = [self IUBoxesByIdentifiers:objIdentifiers];
+        
+        
+        //get all index paths of each selected iu
 
         NSMutableArray *indexPaths = [NSMutableArray array];
-        for (IUBox *selectedIU in selectedChildren) {
+        for (IUBox *selectedIU in selectedIUs) {
             [indexPaths addObjectsFromArray:[self indexPathsOfObject:selectedIU]];
         }
         
+        NSIndexPath *sheetPath = [self indexPathOfObject:sheet];
         NSPredicate *selectIndexPathPredicate = [NSPredicate predicateWithBlock:^BOOL(NSIndexPath *path, NSDictionary *bindings) {
-            if ([path containsIndexPath:documentPath]) {
+            if ([path containsIndexPath:sheetPath]) {
                 return YES;
             }
             return NO;
@@ -258,31 +261,30 @@
     }
 }
 
--(IUBox *)IUBoxByIdentifier:(NSString *)identifier{
-    IUSheet *document = [self.content firstObject];
-    NSArray *allChildren = [[document allChildren] arrayByAddingObject:document];
-    NSArray *identifierChain = [identifier componentsSeparatedByString:@"__"];
-    if ([identifierChain count] == 2) {
-        identifier = [identifierChain objectAtIndex:1];
-    }
-    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUBox *iu, NSDictionary *bindings) {
-        if ([identifier isEqualToString:iu.htmlID]) {
-            return YES;
-        }
-        return NO;
-    }];
-    NSArray *findIUs = [allChildren filteredArrayUsingPredicate:predicate];
-    if([NSSet setWithArray:findIUs].count  > 1){
-        JDErrorLog(@"Error : IUID can be unique");
-        return nil;
-    }
+-(id)IUBoxByIdentifier:(NSString *)identifier{
+    NSArray *findIUs = [self IUBoxesByIdentifiers:[NSArray arrayWithObject:identifier]];
     if(findIUs.count == 0){
         JDInfoLog(@"there is no IUID");
         return nil;
     }
-    
     return findIUs[0];
 }
+
+-(NSArray *)IUBoxesByIdentifiers:(NSArray *)identifiers{
+    IUSheet *document = [self.content firstObject];
+    NSArray *allChildren = [[document allChildren] arrayByAddingObject:document];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(IUBox *iu, NSDictionary *bindings) {
+        if ([identifiers containsString:iu.htmlID]) {
+            return YES;
+        }
+        return NO;
+    }];
+
+    NSArray *filteredChildren = [allChildren filteredArrayUsingPredicate:predicate];
+    return filteredChildren;
+}
+
 
 -(NSString*)keyPathFromControllerToTextCSSProperty:(NSString *)property{
     return [@"controller.selection.textController" stringByAppendingPathExtension:property];

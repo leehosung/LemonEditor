@@ -825,10 +825,11 @@ static NSString * IUCompilerTagOption = @"tag";
 
 #pragma mark IUImport
     else if ([iu isKindOfClass:[IUImport class]]) {
+        //add prefix, <ImportedBy_[IUName]_ to all id html (including chilren)
         [code addCodeLineWithFormat:@"<div %@ >", [self HTMLAttributes:iu option:nil]];
         JDCode *importCode = [self editorHTML:[(IUImport*)iu prototypeClass]];
-        NSString *codeString = [@" id=%@__" stringByAppendingString:iu.htmlID];
-        [importCode replaceCodeString:@" id=" toCodeString:codeString];
+        NSString *idReplacementString = [NSString stringWithFormat:@" id=ImportedBy_%@_", iu.htmlID];
+        [importCode replaceCodeString:@" id=" toCodeString:idReplacementString];
         [code addCode:importCode];
         [code addCodeLine:@"</div>"];
     }

@@ -16,6 +16,7 @@
 #import "IUBox.h"
 #import "IUClass.h"
 #import "IUProject.h"
+#import "IUImport.h"
 
 @interface IUBox()
 @end
@@ -263,6 +264,10 @@
 -(BOOL)insertIU:(IUBox *)iu atIndex:(NSInteger)index  error:(NSError**)error{
     
     assert(iu != self);
+    if ([iu isKindOfClass:[IUImport class]] && [[self sheet] isKindOfClass:[IUImport class]]) {
+        [JDUIUtil hudAlert:@"IUImport can't be inserted to IUImport" second:2];
+        return NO;
+    }
     
     [_m_children insertObject:iu atIndex:index];
     
@@ -274,17 +279,19 @@
     
     if ([self.sheet isKindOfClass:[IUClass class]]) {
         for (IUBox *import in [(IUClass*)self.sheet references]) {
-            NSString *self_htmlID = [import.htmlID stringByAppendingFormat:@"__%@", self.htmlID];
-            NSString *iu_htmlid = [import.htmlID stringByAppendingFormat:@"__%@", iu.htmlID];
-            NSString *originalHTML = iu.html;
-            NSString *replacedHTML = [originalHTML stringByReplacingOccurrencesOfString:@" id=" withString:[NSString stringWithFormat:@" id=%@__", import.htmlID]];
-            [self.delegate IUHTMLIdentifier:iu_htmlid HTML:replacedHTML withParentID:self_htmlID];
+            [self.delegate IUHTMLIdentifier:import.htmlID HTML:import.html withParentID:import.parent.htmlID];
+            [self.delegate IUClassIdentifier:iu.cssID CSSUpdated:[iu cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+            for (IUBox *child in iu.children) {
+                [self.delegate IUClassIdentifier:child.cssID CSSUpdated:[child cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+            }
         }
     }
-    [self.delegate IUClassIdentifier:iu.cssID CSSUpdated:[iu cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];    
-    [self.delegate IUHTMLIdentifier:iu.htmlID HTML:iu.html withParentID:self.htmlID];
-    for (IUBox *child in iu.children) {
-        [self.delegate IUClassIdentifier:child.cssID CSSUpdated:[child cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+    else {
+        [self.delegate IUHTMLIdentifier:iu.htmlID HTML:iu.html withParentID:self.htmlID];
+        [self.delegate IUClassIdentifier:iu.cssID CSSUpdated:[iu cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+        for (IUBox *child in iu.children) {
+            [self.delegate IUClassIdentifier:child.cssID CSSUpdated:[child cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+        }
     }
     [iu bind:@"identifierManager" toObject:self withKeyPath:@"identifierManager" options:nil];
 

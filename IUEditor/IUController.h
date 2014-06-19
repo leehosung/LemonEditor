@@ -27,7 +27,8 @@
 -(NSArray*)selectedIdentifiers;
 -(NSArray*)selectedIdentifiersWithImportIdentifier;
 
--(IUBox *)IUBoxByIdentifier:(NSString *)identifier;
+-(id)IUBoxByIdentifier:(NSString *)identifier;
+-(NSArray *)IUBoxesByIdentifiers:(NSArray *)identifiers;
 
 -(NSString*)keyPathFromControllerToCSSTag:(IUCSSTag)tag;
 -(NSString*)keyPathFromControllerToTextCSSProperty:(NSString *)property;

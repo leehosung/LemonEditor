@@ -168,10 +168,6 @@
                     [self.window makeFirstResponder:self];
                     return YES;
                 }
-                else {
-                    NSString *alertString = [NSString stringWithFormat: @"Please insert a child to IUBox type"];
-                    [JDUIUtil hudAlert:alertString second:2];
-                }
             }
             else {
                 [JDUIUtil hudAlert:@"No parent" second:2];

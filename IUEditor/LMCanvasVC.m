@@ -134,9 +134,14 @@
 
 
 - (BOOL)makeNewIUByDragAndDrop:(IUBox *)newIU atPoint:(NSPoint)point atIU:(NSString *)parentIUID{
-    
     IUBox *parentIU = [self.controller IUBoxByIdentifier:parentIUID];
+    if ([parentIUID containsString:@"ImportedBy_"]) {
+        NSString *realID = [[parentIUID componentsSeparatedByString:@"_"] objectAtIndex:2];
+        parentIU = [self.controller IUBoxByIdentifier:realID];
+    }
     if ([parentIU shouldAddIUByUserInput] == NO) {
+        NSString *alertString = [NSString stringWithFormat: @"Please insert a child to IUBox type"];
+        [JDUIUtil hudAlert:alertString second:2];
         return NO;
     }
     NSPoint position = [self distanceFromIU:parentIUID toPointFromWebView:point];
@@ -288,11 +293,6 @@
     /*
      Even it is selected object, still select it again.
      (IUClass is not shown selected until it is selected again)
-
-    NSArray *currentSelectinos = [[self.controller selectedObjects] valueForKeyPath:@"htmlID"];
-    if ([addArray isEqualToArray:currentSelectinos]) {
-        return;
-    }
      */
     [self.controller trySetSelectedObjectsByIdentifiers:addArray];
 
@@ -767,7 +767,7 @@
         
         NSSize parentSize;
         if (self.controller.importIUInSelectionChain){
-            NSString *modifiedHTMLID = [NSString stringWithFormat:@"%@__%@",self.controller.importIUInSelectionChain.htmlID, moveObj.htmlID];
+            NSString *modifiedHTMLID = [NSString stringWithFormat:@"ImportedBy_%@_%@",self.controller.importIUInSelectionChain.htmlID, moveObj.htmlID];
             parentSize = [[self webView] parentBlockElementSize:modifiedHTMLID];
         }
         else {
