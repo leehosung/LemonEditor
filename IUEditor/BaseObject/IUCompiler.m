@@ -414,7 +414,7 @@ static NSString * IUCompilerTagOption = @"tag";
         [code addCodeLineWithFormat:@"{%%if %@%%}", iu.pgVisibleConditionVariable];
     }
     [code addCodeLineWithFormat:@"<%@ %@>", tag, [self HTMLAttributes:iu option:nil]];
-    if ([iu isKindOfClass:[PGForm class]]) {
+    if ( self.rule == IUCompileRuleDjango && [iu isKindOfClass:[PGForm class]]) {
         [code addCodeLine:@"{% csrf_token %}"];
     }
     if (_rule == IUCompileRuleDjango && iu.textVariable) {
