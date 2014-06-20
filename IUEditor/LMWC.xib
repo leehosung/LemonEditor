@@ -34,7 +34,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="1420" height="887"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
             <view key="contentView" id="2">
                 <rect key="frame" x="0.0" y="0.0" width="1420" height="887"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -161,13 +161,13 @@
                                         </buttonCell>
                                         <cells>
                                             <column>
-                                                <buttonCell type="square" title="Widget" bezelStyle="shadowlessSquare" image="tab_off" imagePosition="overlaps" alignment="center" alternateImage="tab_on_01" state="on" toolTip="Widget" tag="1" inset="2" id="srz-8T-lQj">
+                                                <buttonCell type="square" title="Widget" bezelStyle="shadowlessSquare" image="tab2_off" imagePosition="overlaps" alignment="center" alternateImage="tab2_on_01" state="on" toolTip="Widget" tag="1" inset="2" id="srz-8T-lQj">
                                                     <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="smallSystemBold"/>
                                                 </buttonCell>
                                             </column>
                                             <column>
-                                                <buttonCell type="square" title="Resource" bezelStyle="shadowlessSquare" image="tab_off" imagePosition="overlaps" alignment="center" alternateImage="tab_on_02" toolTip="Library" inset="2" id="EXV-Pb-E2Z">
+                                                <buttonCell type="square" title="Resource" bezelStyle="shadowlessSquare" image="tab2_off" imagePosition="overlaps" alignment="center" alternateImage="tab2_on_02" toolTip="Library" inset="2" id="EXV-Pb-E2Z">
                                                     <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="smallSystemBold"/>
                                                 </buttonCell>
@@ -286,6 +286,9 @@
     </objects>
     <resources>
         <image name="shoveling" width="380" height="340"/>
+        <image name="tab2_off" width="150" height="30"/>
+        <image name="tab2_on_01" width="150" height="30"/>
+        <image name="tab2_on_02" width="150" height="30"/>
         <image name="tab_off" width="100" height="30"/>
         <image name="tab_on_01" width="100" height="30"/>
         <image name="tab_on_02" width="100" height="30"/>
