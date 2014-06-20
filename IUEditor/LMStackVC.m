@@ -16,7 +16,6 @@
 
 @implementation LMStackOutlineView
 
-
 - (void)keyDown:(NSEvent *)theEvent{
     unichar key = [[theEvent charactersIgnoringModifiers] characterAtIndex:0];
     if(key == NSDeleteCharacter && self.delegate)
@@ -41,6 +40,7 @@
 
 @implementation LMStackVC{
     NSArray *_draggingIndexPaths;
+    id _lastClickedItem;
 }
 
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
@@ -102,13 +102,17 @@
     return nil;
 }
 - (IBAction)outlineViewClicked:(NSOutlineView *)sender{
-    id clickItem = [sender itemAtRow:[sender clickedRow]];
+    NSTreeNode* clickItem = [sender itemAtRow:[sender clickedRow]];
+    BOOL extended = [sender isItemExpanded:clickItem];
     
-    [sender isItemExpanded:clickItem] ?
-    [sender.animator collapseItem:clickItem] : [sender.animator expandItem:clickItem];
-
+    if (extended == NO) {
+        [sender.animator expandItem:clickItem];
+    }
+    else if ( _lastClickedItem == clickItem){
+        [sender.animator collapseItem:clickItem];
+    }
+    _lastClickedItem = clickItem;
 }
-
 
 
 #pragma mark -
