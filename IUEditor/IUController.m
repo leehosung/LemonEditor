@@ -252,7 +252,7 @@
         NSMutableArray *retArray = [NSMutableArray array];
         NSArray *htmlIDs = [self.selectedObjects valueForKeyPath:@"htmlID"];
         for (NSString *htmlID in htmlIDs) {
-            [retArray addObject:[NSString stringWithFormat:@"%@__%@", import.htmlID, htmlID]];
+            [retArray addObject:[NSString stringWithFormat:@"ImportedBy_%@_%@", import.htmlID, htmlID]];
         }
         return retArray;
     }
