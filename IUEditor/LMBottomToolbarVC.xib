@@ -122,12 +122,12 @@
                                         </connections>
                                     </button>
                                     <button toolTip="Refresh" translatesAutoresizingMaskIntoConstraints="NO" id="ZgI-8w-DCs" userLabel="refreshBtn">
-                                        <rect key="frame" x="0.0" y="1" width="30" height="30"/>
+                                        <rect key="frame" x="0.0" y="2" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="cGd-pG-Viy"/>
                                             <constraint firstAttribute="height" constant="30" id="l9M-rr-Rdl"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRefreshTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="MBo-aD-uvg">
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="reload" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="MBo-aD-uvg">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -167,9 +167,9 @@
                                     <constraint firstAttribute="width" constant="150" id="EGP-Ly-V1x"/>
                                     <constraint firstAttribute="trailing" secondItem="Ic4-uz-kiy" secondAttribute="trailing" id="FrW-xH-lyj"/>
                                     <constraint firstAttribute="height" constant="31" id="GX7-bu-0Lj"/>
-                                    <constraint firstItem="Ic4-uz-kiy" firstAttribute="top" secondItem="ZgI-8w-DCs" secondAttribute="top" id="Odn-ao-NaC"/>
                                     <constraint firstItem="TnF-d8-4GY" firstAttribute="leading" secondItem="ZgI-8w-DCs" secondAttribute="trailing" id="PPp-GQ-xap"/>
                                     <constraint firstItem="Ic4-uz-kiy" firstAttribute="top" secondItem="fph-Bf-9zu" secondAttribute="top" id="ReP-Fu-Vel"/>
+                                    <constraint firstItem="ZgI-8w-DCs" firstAttribute="top" secondItem="fph-Bf-9zu" secondAttribute="top" constant="-1" id="SVU-sG-jUJ"/>
                                     <constraint firstItem="ekM-CH-Zbt" firstAttribute="leading" secondItem="TnF-d8-4GY" secondAttribute="trailing" id="Tth-Pr-pL2"/>
                                     <constraint firstItem="Ic4-uz-kiy" firstAttribute="top" secondItem="ekM-CH-Zbt" secondAttribute="top" id="cIi-PU-gXK"/>
                                     <constraint firstItem="TnF-d8-4GY" firstAttribute="leading" secondItem="ZgI-8w-DCs" secondAttribute="trailing" id="s4V-3g-Lho"/>
@@ -259,13 +259,13 @@
         </customView>
     </objects>
     <resources>
-        <image name="NSRefreshTemplate" width="10" height="12"/>
         <image name="add_ghost_off" width="12" height="12"/>
         <image name="add_ghost_on" width="12" height="12"/>
         <image name="panel_left_off" width="14" height="10"/>
         <image name="panel_left_on" width="14" height="10"/>
         <image name="panel_right_off" width="14" height="10"/>
         <image name="panel_right_on" width="14" height="10"/>
+        <image name="reload" width="11" height="13"/>
         <image name="send_mail" width="14" height="10"/>
         <image name="view_border_off" width="14" height="10"/>
         <image name="view_border_on" width="14" height="10"/>

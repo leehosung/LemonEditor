@@ -145,12 +145,12 @@
                                     <constraint firstAttribute="height" constant="18" id="BGx-Ij-G7P"/>
                                     <constraint firstAttribute="width" constant="184" id="KKU-OW-N1p"/>
                                 </constraints>
-                                <popUpButtonCell key="cell" type="push" title="Mouse On" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="P0P-YX-s35">
+                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="P0P-YX-s35">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                     <menu key="menu" title="OtherViews" id="eAT-ra-ipd">
                                         <items>
-                                            <menuItem title="Mouse On" state="on" id="om1-OJ-a7V"/>
+                                            <menuItem title="Mouse On" id="om1-OJ-a7V"/>
                                             <menuItem title="Click" id="f6c-T9-CR8"/>
                                         </items>
                                     </menu>
@@ -162,12 +162,12 @@
                                     <constraint firstAttribute="width" constant="184" id="XZf-nG-Lcr"/>
                                     <constraint firstAttribute="height" constant="18" id="huK-eu-RmG"/>
                                 </constraints>
-                                <popUpButtonCell key="cell" type="push" title="Overlap" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="BmA-8d-V5G">
+                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="BmA-8d-V5G">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                     <menu key="menu" title="OtherViews" id="UV6-yD-eid">
                                         <items>
-                                            <menuItem title="Overlap" state="on" id="Dne-6z-1c7"/>
+                                            <menuItem title="Overlap" id="Dne-6z-1c7"/>
                                             <menuItem title="Fly From Right Side" id="fgg-Mz-p8e"/>
                                         </items>
                                     </menu>
