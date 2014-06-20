@@ -25,10 +25,6 @@
     return NO;
 }
 
-- (BOOL)canChangeHelpMenu{
-    return NO;
-}
-
 - (BOOL)hasX{
     return NO;
 }

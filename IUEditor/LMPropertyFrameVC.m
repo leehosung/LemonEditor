@@ -184,8 +184,6 @@
     [_xUnitBtn bind:@"enabled2" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"center"] options:bindingOption];
     [_xStepper bind:@"enabled2" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"center"] options:bindingOption];
     [_pxStepper bind:@"enabled2" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"center"] options:bindingOption];
-    
-    [_helpMenu bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeHelpMenu"] options:IUBindingDictNotRaisesApplicable];
 }
 
 - (void)dealloc{

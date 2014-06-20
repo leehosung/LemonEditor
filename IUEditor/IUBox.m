@@ -683,10 +683,6 @@
     return YES;
 }
 
-- (BOOL)canChangeHelpMenu{
-    return YES;
-}
-
 - (BOOL)canChangePositionAbsolute{
     return YES;
 }

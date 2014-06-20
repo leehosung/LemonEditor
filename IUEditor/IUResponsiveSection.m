@@ -57,8 +57,4 @@
     return NO;
 }
 
-- (BOOL)canChangeHelpMenu{
-    return NO;
-}
-
 @end
