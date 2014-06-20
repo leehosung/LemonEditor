@@ -30,4 +30,8 @@
     return YES;
 }
 
+- (BOOL)canChangePositionType{
+    return NO;
+}
+
 @end
