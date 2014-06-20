@@ -44,7 +44,13 @@
     id document = [super makeUntitledDocumentOfType:typeName error:outError];
     
     if(document){
-        NSURL *url = [self fileURLForNewDocumentOfType:typeName];
+        //option으로 url이 넘어옴.
+        NSURL *url = [newDocumentOption objectForKey:IUProjectKeyProjectPath];
+        
+        //url이 없으면 새로 창을 띄워서 받음.
+        if(url == nil){
+            url = [self fileURLForNewDocumentOfType:typeName];
+        }
         if(url != nil){
             [(IUProjectDocument *)document makeNewProjectWithOption:newDocumentOption URL:url];
             newDocumentOption = nil;

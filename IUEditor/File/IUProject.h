@@ -28,9 +28,15 @@ typedef enum {
 //setting
 static NSString * IUProjectKeyType = @"projectType";
 static NSString * IUProjectKeyGit = @"git";
-static NSString * IUProjectKeyAppName = @"appName";
 static NSString * IUProjectKeyHeroku = @"heroku";
+
+//project.path : /~/~/abcd.iu
+static NSString * IUProjectKeyProjectPath = @"projectPath";
+//path : /~/~/
 static NSString * IUProjectKeyPath= @"path";
+//appname : abcd
+static NSString * IUProjectKeyAppName = @"appName";
+
 
 @interface IUProject : NSObject <IUFile, IUResourcePathProtocol>{
     IUSheetGroup *_pageGroup;
