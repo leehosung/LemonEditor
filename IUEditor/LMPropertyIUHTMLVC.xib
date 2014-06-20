@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyIUHTMLVC">
             <connections>
+                <outlet property="innerHTMLTextV" destination="CIh-dp-v4H" id="2gK-Nw-2sg"/>
                 <outlet property="view" destination="qpB-kg-3Gm" id="hIl-dT-vr3"/>
             </connections>
         </customObject>
@@ -25,10 +26,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="258" height="122"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="minSize" width="258" height="122"/>
+                                <size key="minSize" width="243" height="122"/>
                                 <size key="maxSize" width="463" height="10000000"/>
                                 <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="minSize" width="258" height="122"/>
+                                <size key="minSize" width="243" height="122"/>
                                 <size key="maxSize" width="463" height="10000000"/>
                             </textView>
                         </subviews>
