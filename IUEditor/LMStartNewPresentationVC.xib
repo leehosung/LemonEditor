@@ -21,20 +21,32 @@
                         <rect key="frame" x="1" y="1" width="699" height="358"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OYO-2o-2r6">
-                                <rect key="frame" x="216" y="104" width="267" height="150"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="267" id="CfL-Qo-Ssf"/>
-                                    <constraint firstAttribute="height" constant="150" id="XKB-dv-d9h"/>
-                                </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="shoveling" id="qmf-pu-o76"/>
-                            </imageView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uLd-VS-1rg">
+                                <rect key="frame" x="173" y="127" width="352" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Presentation mode is only available for special account." id="X6j-31-kWB">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lx5-VA-fEI">
+                                <rect key="frame" x="306" y="221" width="86" height="35"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Sorry!" id="krJ-3R-Zbq">
+                                    <font key="font" metaFont="system" size="29"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UYW-PO-7w7">
+                                <rect key="frame" x="268" y="102" width="162" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Please press prev button." id="vXW-O0-SQ9">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
-                    <constraints>
-                        <constraint firstAttribute="centerX" secondItem="OYO-2o-2r6" secondAttribute="centerX" id="Xvj-l3-0H4"/>
-                        <constraint firstAttribute="centerY" secondItem="OYO-2o-2r6" secondAttribute="centerY" id="u6H-uE-Nif"/>
-                    </constraints>
                     <color key="borderColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </box>
@@ -47,7 +59,4 @@
             </constraints>
         </customView>
     </objects>
-    <resources>
-        <image name="shoveling" width="380" height="340"/>
-    </resources>
 </document>
