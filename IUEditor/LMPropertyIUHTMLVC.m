@@ -29,7 +29,7 @@
                                    dictionaryWithObjects:@[[NSNumber numberWithBool:NO], [NSNumber numberWithBool:YES]]
                                    forKeys:@[NSRaisesForNotApplicableKeysBindingOption, NSContinuouslyUpdatesValueBindingOption]];
     [_innerHTMLTextV bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"innerHTML"]  options:bindingOption];
-
+    [_innerHTMLTextV setEnabledTextCheckingTypes:0];
 }
 
 @end

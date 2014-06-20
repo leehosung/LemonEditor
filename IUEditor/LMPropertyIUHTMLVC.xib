@@ -16,13 +16,37 @@
             <rect key="frame" x="0.0" y="0.0" width="300" height="184"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hId-ks-lNZ">
+                    <rect key="frame" x="20" y="162" width="104" height="14"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="14" id="dUk-gk-GPl"/>
+                        <constraint firstAttribute="width" constant="100" id="kH2-W3-d2q"/>
+                    </constraints>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="HTML" id="BD4-ir-ipc">
+                        <font key="font" metaFont="smallSystemBold"/>
+                        <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="axd-wr-SzZ">
+                    <rect key="frame" x="20" y="135" width="70" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="66" id="tmB-Cq-6bT"/>
+                        <constraint firstAttribute="height" constant="17" id="wHa-Tk-2C2"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Source" id="Fxo-ot-NyS">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
                 <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NXN-Ec-j68">
                     <rect key="frame" x="20" y="8" width="260" height="124"/>
                     <clipView key="contentView" id="EBx-bX-zVf">
                         <rect key="frame" x="1" y="1" width="258" height="122"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView importsGraphics="NO" richText="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="CIh-dp-v4H">
+                            <textView importsGraphics="NO" richText="NO" findStyle="panel" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" id="CIh-dp-v4H">
                                 <rect key="frame" x="0.0" y="0.0" width="258" height="122"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -48,30 +72,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hId-ks-lNZ">
-                    <rect key="frame" x="20" y="162" width="104" height="14"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="14" id="dUk-gk-GPl"/>
-                        <constraint firstAttribute="width" constant="100" id="kH2-W3-d2q"/>
-                    </constraints>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="HTML" id="BD4-ir-ipc">
-                        <font key="font" metaFont="smallSystemBold"/>
-                        <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="axd-wr-SzZ">
-                    <rect key="frame" x="20" y="135" width="70" height="17"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="66" id="tmB-Cq-6bT"/>
-                        <constraint firstAttribute="height" constant="17" id="wHa-Tk-2C2"/>
-                    </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Source" id="Fxo-ot-NyS">
-                        <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
             </subviews>
             <constraints>
                 <constraint firstItem="axd-wr-SzZ" firstAttribute="top" secondItem="hId-ks-lNZ" secondAttribute="bottom" constant="10" id="3n2-8J-orj"/>
