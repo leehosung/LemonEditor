@@ -28,7 +28,6 @@
     _pageContent = [aDecoder decodeObjectForKey:@"pageContent"];
     _background = [aDecoder decodeObjectForKey:@"background"];
     [_pageContent bind:@"delegate" toObject:self withKeyPath:@"delegate" options:nil];
-    [_background bind:@"delegate" toObject:self withKeyPath:@"delegate" options:nil];
     return self;
 }
 
@@ -56,16 +55,12 @@
 }
 
 -(IUBackground*)background{
-    for (IUBox *obj in self.children) {
-        if ([obj isKindOfClass:[IUBackground class]]) {
-            return (IUBackground*)obj;
-        }
-    }
-    return nil;
+    return _background;
 }
 
 -(void)setBackground:(IUBackground *)background{
     assert(background.children);
+    assert(background); // background can't be nil
     IUBackground *myBackground = self.background;
     
     if (myBackground == background) {
@@ -99,8 +94,17 @@
     }
     _background = background;
     _background.parent = self;
+    _background.delegate = self.delegate;
+    
     [_pageContent bind:@"delegate" toObject:self withKeyPath:@"delegate" options:nil];
-    [_background bind:@"delegate" toObject:self withKeyPath:@"delegate" options:nil];
+
+}
+
+- (void)setDelegate:(id<IUSourceDelegate>)delegate{
+    [super setDelegate:delegate];
+    if(_background){
+        _background.delegate = delegate;
+    }
 }
 
 - (NSArray*)children{
