@@ -438,7 +438,7 @@ static NSString * IUCompilerTagOption = @"tag";
 #if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
     if(iu.text && iu.text.length > 0){
         NSString *htmlText = [iu.text stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
-        [code addCodeLine:htmlText];
+        [code addCodeLineWithFormat:@"<p>%@</p>",htmlText];
     }
 #endif
     if (iu.children.count) {
@@ -666,7 +666,7 @@ static NSString * IUCompilerTagOption = @"tag";
 #if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
     if(iu.text && iu.text.length > 0){
         NSString *htmlText = [iu.text stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
-        [code addCodeLine:htmlText];
+        [code addCodeLineWithFormat:@"<p>%@</p>",htmlText];
     }
 #endif
     if (iu.children.count) {
