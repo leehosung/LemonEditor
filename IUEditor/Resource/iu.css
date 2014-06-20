@@ -42,6 +42,7 @@ a{
 .PGTextView {
     padding-left: 8px;
     padding-top : 4px;
+    overflow : auto;
 }
 
 .PGPageLinkSet > div > ul > a > li{
