@@ -24,12 +24,15 @@
     if (self) {
         _recentDocs = [NSMutableArray array];
         recentDocURLs = [[NSDocumentController sharedDocumentController] recentDocumentURLs];
- //       NSUInteger i=0;
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"MMM dd, yyyy, hh:mm a"];
+
      for (NSURL *url in recentDocURLs){
-   //         if (i++<8) {
-                [_recentDocs addObject:[@{@"image": [NSImage imageNamed:@"new_default"],
+         NSDate *date = [[[NSFileManager defaultManager] attributesOfItemAtPath:[url path] error:nil] fileModificationDate];
+         [_recentDocs addObject:[@{@"image": [NSImage imageNamed:@"new_default"],
                                           @"name" : [url lastPathComponent],
                                           @"path": [url path],
+                                          @"date": [dateFormat stringFromDate:date]
                                           //@"selection": @(NO),
                                           } mutableCopy]];
             }
