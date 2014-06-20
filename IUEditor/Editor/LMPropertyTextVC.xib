@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JCt-F7-wxr">
-                    <rect key="frame" x="20" y="13" width="254" height="200"/>
+                    <rect key="frame" x="22" y="13" width="254" height="200"/>
                     <clipView key="contentView" id="YBM-B8-mPL">
                         <rect key="frame" x="1" y="1" width="252" height="198"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -61,7 +61,7 @@
                     </textFieldCell>
                 </textField>
                 <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="r91-1S-Lyg">
-                    <rect key="frame" x="20" y="246" width="254" height="5"/>
+                    <rect key="frame" x="22" y="246" width="254" height="5"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="6Zx-l7-GfC"/>
                         <constraint firstAttribute="width" constant="254" id="7PV-oV-LPj"/>
@@ -72,12 +72,12 @@
                 </box>
             </subviews>
             <constraints>
-                <constraint firstItem="r91-1S-Lyg" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="BRS-C0-RQg"/>
+                <constraint firstItem="r91-1S-Lyg" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="22" id="BRS-C0-RQg"/>
                 <constraint firstItem="0tW-fg-K0n" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="22" id="Fjj-GK-2cQ"/>
                 <constraint firstItem="r91-1S-Lyg" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="1" id="JRx-ja-Ndk"/>
                 <constraint firstItem="JCt-F7-wxr" firstAttribute="top" secondItem="0tW-fg-K0n" secondAttribute="bottom" constant="8" id="Pme-Fr-SyI"/>
                 <constraint firstItem="0tW-fg-K0n" firstAttribute="top" secondItem="r91-1S-Lyg" secondAttribute="bottom" constant="13" id="Qft-Yx-vpu"/>
-                <constraint firstItem="JCt-F7-wxr" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="S2e-H7-fi1"/>
+                <constraint firstItem="JCt-F7-wxr" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="22" id="S2e-H7-fi1"/>
             </constraints>
         </customView>
     </objects>
