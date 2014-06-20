@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MJj-gK-usf">
-                                <rect key="frame" x="207" y="224" width="41" height="17"/>
+                                <rect key="frame" x="245" y="262" width="41" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Cloud" id="OYr-X6-gA3">
                                     <font key="font" metaFont="systemBold" size="12"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -30,21 +30,21 @@
                                 </textFieldCell>
                             </textField>
                             <matrix verticalHuggingPriority="750" fixedFrame="YES" allowsEmptySelection="NO" autorecalculatesCellSize="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6eT-6E-6MC">
-                                <rect key="frame" x="254" y="204" width="142" height="38"/>
+                                <rect key="frame" x="292" y="242" width="142" height="38"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 <size key="cellSize" width="142" height="18"/>
                                 <size key="intercellSpacing" width="4" height="2"/>
-                                <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" controlSize="small" inset="2" id="bPT-2G-ZIX">
+                                <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" controlSize="small" enabled="NO" inset="2" id="bPT-2G-ZIX">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
                                 <cells>
                                     <column>
-                                        <buttonCell type="radio" title="None" imagePosition="left" alignment="left" controlSize="small" state="on" tag="1" inset="2" id="ifI-08-E8o">
+                                        <buttonCell type="radio" title="None" imagePosition="left" alignment="left" controlSize="small" enabled="NO" state="on" tag="1" inset="2" id="ifI-08-E8o">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="smallSystem"/>
                                         </buttonCell>
-                                        <buttonCell type="radio" title="Heroku (Amazon AWS)" imagePosition="left" alignment="left" controlSize="small" inset="2" id="iA2-et-sO9">
+                                        <buttonCell type="radio" title="Heroku (Amazon AWS)" imagePosition="left" alignment="left" controlSize="small" enabled="NO" inset="2" id="iA2-et-sO9">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="smallSystem"/>
                                         </buttonCell>
@@ -52,7 +52,7 @@
                                 </cells>
                             </matrix>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ezY-3A-0VZ">
-                                <rect key="frame" x="402" y="203" width="18" height="17"/>
+                                <rect key="frame" x="440" y="241" width="18" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="ID" id="BrJ-AM-32W">
                                     <font key="font" metaFont="smallSystemBold"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -60,7 +60,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YOa-hT-LOH">
-                                <rect key="frame" x="419" y="203" width="75" height="17"/>
+                                <rect key="frame" x="457" y="241" width="75" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Not Logined" id="0xi-NR-rzV">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -68,7 +68,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="INf-qL-iRl">
-                                <rect key="frame" x="225" y="158" width="23" height="17"/>
+                                <rect key="frame" x="263" y="196" width="23" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Git" id="AOR-y9-ED6">
                                     <font key="font" metaFont="systemBold" size="12"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -76,31 +76,47 @@
                                 </textFieldCell>
                             </textField>
                             <matrix verticalHuggingPriority="750" fixedFrame="YES" allowsEmptySelection="NO" autorecalculatesCellSize="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5m3-ca-4EJ">
-                                <rect key="frame" x="254" y="117" width="58" height="58"/>
+                                <rect key="frame" x="292" y="155" width="58" height="58"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 <size key="cellSize" width="60" height="18"/>
                                 <size key="intercellSpacing" width="4" height="2"/>
-                                <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" controlSize="small" inset="2" id="Zam-0r-83B">
+                                <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" controlSize="small" enabled="NO" inset="2" id="Zam-0r-83B">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
                                 <cells>
                                     <column>
-                                        <buttonCell type="radio" title="None" imagePosition="left" alignment="left" controlSize="small" state="on" tag="1" inset="2" id="mJL-t8-d74">
+                                        <buttonCell type="radio" title="None" imagePosition="left" alignment="left" controlSize="small" enabled="NO" state="on" tag="1" inset="2" id="mJL-t8-d74">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="smallSystem"/>
                                         </buttonCell>
-                                        <buttonCell type="radio" title="Source" imagePosition="left" alignment="left" controlSize="small" inset="2" id="AhA-ie-1WT">
+                                        <buttonCell type="radio" title="Source" imagePosition="left" alignment="left" controlSize="small" enabled="NO" inset="2" id="AhA-ie-1WT">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="smallSystem"/>
                                         </buttonCell>
-                                        <buttonCell type="radio" title="Output" imagePosition="left" alignment="left" controlSize="small" inset="2" id="28S-sV-Bqe">
+                                        <buttonCell type="radio" title="Output" imagePosition="left" alignment="left" controlSize="small" enabled="NO" inset="2" id="28S-sV-Bqe">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="smallSystem"/>
                                         </buttonCell>
                                     </column>
                                 </cells>
                             </matrix>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S1m-PS-CgQ">
+                                <rect key="frame" x="207" y="96" width="286" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Cloud and Git is enabled for special account." id="WfM-im-mXW">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OXY-p8-3Xt">
+                                <rect key="frame" x="312" y="61" width="77" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="j@jdlab.org" id="4vK-qv-AdJ">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <color key="borderColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>

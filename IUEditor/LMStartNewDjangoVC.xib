@@ -31,6 +31,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="performProjectDirSelect:" target="-2" id="54L-dV-x9b"/>
+                                </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YH5-Zo-jgW">
                                 <rect key="frame" x="75" y="186" width="217" height="14"/>
@@ -67,6 +70,9 @@
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <binding destination="-2" name="value" keyPath="self.djangoTemplateDir" id="fbX-m3-rVq"/>
+                                </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g05-Nd-4kk">
                                 <rect key="frame" x="75" y="254" width="179" height="14"/>
@@ -90,6 +96,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="performTemplateDirSelect:" target="-2" id="af0-kH-sBm"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l6C-Hp-eah">
                                 <rect key="frame" x="480" y="153" width="160" height="28"/>
@@ -101,6 +110,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="performResourceDirSelect:" target="-2" id="bab-WS-5El"/>
+                                </connections>
                             </button>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Skl-eY-g4t">
                                 <rect key="frame" x="77" y="228" width="400" height="19"/>
@@ -108,11 +120,14 @@
                                     <constraint firstAttribute="height" constant="19" id="5d1-MR-JNv"/>
                                     <constraint firstAttribute="width" constant="400" id="8zU-Ms-syv"/>
                                 </constraints>
-                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="KvY-4R-yj4">
+                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="KvY-4R-yj4">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <binding destination="-2" name="value" keyPath="self.djangoProjectDir" id="BnV-gT-vxs"/>
+                                </connections>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="38o-uA-RvF">
                                 <rect key="frame" x="77" y="158" width="400" height="19"/>
@@ -125,6 +140,9 @@
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <binding destination="-2" name="value" keyPath="self.djangoResourceDir" id="GSD-uy-LLk"/>
+                                </connections>
                             </textField>
                         </subviews>
                     </view>
@@ -162,5 +180,6 @@
                 <constraint firstItem="a3P-9i-p5m" firstAttribute="top" secondItem="WFi-IS-cyr" secondAttribute="top" id="xkn-MF-X2K"/>
             </constraints>
         </customView>
+        <userDefaultsController representsSharedInstance="YES" id="d71-KB-H5b"/>
     </objects>
 </document>

@@ -12,25 +12,14 @@
 #import "LMAppDelegate.h"
 #import "LMWC.h"
 #import "IUProjectController.h"
+#import "LMStartNewVC.h"
 
 @interface LMStartNewDefaultVC ()
-@property (weak) IBOutlet NSTextField *defaultNewAppName;
-
 @end
 
 @implementation LMStartNewDefaultVC
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        [_nextB setAction:@selector(pressNextB)];
-    }
-    return self;
-}
-
-
-- (void)pressNextB{
+- (void)performNext{
     [self.view.window close];
     
     NSDictionary *options = @{  IUProjectKeyGit: @(NO),
@@ -39,6 +28,26 @@
                                 };
     
     [(IUProjectController *)[NSDocumentController sharedDocumentController] newDocument:self withOption:options];
+}
+
+- (void)performPrev{
+    assert(_parentVC);
+    [_parentVC show];
+}
+
+- (void)show{
+    assert(_parentVC);
+    assert(_nextB);
+    assert(_prevB);
+    assert(_nextB != _prevB);
+    
+    [_nextB setEnabled:YES];
+    [_prevB setEnabled:YES];
+    
+    _prevB.target = self;
+    _nextB.target = self;
+    [_prevB setAction:@selector(performPrev)];
+    [_nextB setAction:@selector(performNext)];
 }
 
 @end

@@ -21,10 +21,9 @@
 @end
 
 @implementation LMStartNewVC{
-    LMStartNewDefaultVC *defaultVC;
-    LMStartNewDjangoVC    *djangoVC;
-    LMStartNewPresentationVC *presentationVC;
-
+    LMStartNewDefaultVC         *defaultVC;
+    LMStartNewDjangoVC          *djangoVC;
+    LMStartNewPresentationVC    *presentationVC;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -34,11 +33,15 @@
         defaultVC = [[LMStartNewDefaultVC alloc] initWithNibName:@"LMStartNewDefaultVC" bundle:nil];
         djangoVC = [[LMStartNewDjangoVC alloc] initWithNibName:@"LMStartNewDjangoVC" bundle:nil];
         presentationVC = [[LMStartNewPresentationVC alloc] initWithNibName:@"LMStartNewPresentationVC" bundle:nil];
+        
+        defaultVC.parentVC = self;
+        djangoVC.parentVC = self;
+        presentationVC.parentVC = self;
     }
     return self;
 }
 
-
+/* share nextB with setupVs */
 - (void)setNextB:(NSButton *)nextB{
     _nextB = nextB;
     defaultVC.nextB = nextB;
@@ -46,56 +49,56 @@
     presentationVC.nextB = nextB;
 }
 
+/* share prevB with setupVs */
 - (void)setPrevB:(NSButton *)prevB{
     _prevB = prevB;
-    defaultVC.nextB = prevB;
-    djangoVC.nextB = prevB;
-    presentationVC.nextB = prevB;
-    
+    defaultVC.prevB = prevB;
+    djangoVC.prevB = prevB;
+    presentationVC.prevB = prevB;
 }
 
-- (IBAction)pressProjectTypeB:(NSButton*)sender {
-    
-    self.typeDefaultB.state = 0;
-    self.typePresentationB.state = 0;
-    self.typeDjangoB.state = 0;
-    
-    sender.state = 1;
-    
+- (void)show{
+    [_prevB setHidden:NO];
     [_prevB setAction:@selector(pressPrevB)];
     [_nextB setAction:@selector(pressNextB)];
-}
 
-
-- (void)pressNextB{
-    if (_typeDefaultB.state) {
-        [self.view addSubview:defaultVC.view];
-        [_nextB setTarget:defaultVC];
-        defaultVC.nextB = _nextB;
-        [_prevB setEnabled:YES];
-    }
-    else if (_typePresentationB.state){
-        [self.view addSubview:presentationVC.view];
-        [_prevB setEnabled:YES];
-
-        
-    }
-    else if (_typeDjangoB.state){
-        [self.view addSubview:djangoVC.view];
-        [_prevB setEnabled:YES];
-    }
-
-}
-
-- (void)pressPrevB{
     [defaultVC.view removeFromSuperview];
     [djangoVC.view removeFromSuperview];
     [presentationVC.view removeFromSuperview];
+    
     [_nextB setTarget:self];
     [_nextB setEnabled:YES];
     [_prevB setEnabled:NO];
 }
 
+- (IBAction)pressProjectTypeB:(NSButton*)sender {
+    self.typeDefaultB.state = 0;
+    self.typePresentationB.state = 0;
+    self.typeDjangoB.state = 0;
+    
+    sender.state = 1;
+}
+
+- (void)pressNextB{
+    if (_typeDefaultB.state) {
+        [self.view addSubview:defaultVC.view];
+        [defaultVC show];
+    }
+    else if (_typePresentationB.state){
+        [self.view addSubview:presentationVC.view];
+        [presentationVC show];
+    }
+    else if (_typeDjangoB.state){
+        [self.view addSubview:djangoVC.view];
+        [djangoVC show];
+    }
+}
+
+- (void)pressPrevB{
+    [_nextB setTarget:self];
+    [_nextB setEnabled:YES];
+    [_prevB setEnabled:NO];
+}
 
 
 @end

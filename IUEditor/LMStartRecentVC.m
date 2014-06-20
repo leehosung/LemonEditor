@@ -48,6 +48,9 @@
 
 - (void)show{
     [_prevB setEnabled:NO];
+    [_prevB setHidden:NO];
+    [_prevB setTarget:self];
+
     [_nextB setEnabled:YES];
     [_nextB setTarget:self];
     [_nextB setAction:@selector(pressNextB)];

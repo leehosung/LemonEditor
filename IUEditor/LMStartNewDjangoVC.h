@@ -8,13 +8,18 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class LMStartNewVC;
+
 @interface LMStartNewDjangoVC : NSViewController
 @property NSButton *nextB;
+@property NSButton *prevB;
+
 
 //Dir 설정
 @property   NSString    *appDirPath;
 @property   NSString    *imgDirPath;
 @property   NSString    *templateDirPath;
+@property   LMStartNewVC    *parentVC;
 
 - (void)show;
 

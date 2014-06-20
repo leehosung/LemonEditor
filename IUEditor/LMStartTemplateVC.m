@@ -43,7 +43,7 @@
 
 -(void)show{
     assert(_nextB);
-    [_prevB setEnabled:NO];
+    [_prevB setHidden:YES];
     [_nextB setTarget:self];
     [_nextB setEnabled:YES];
     [_nextB setAction:@selector(pressNextB)];

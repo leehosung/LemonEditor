@@ -12,4 +12,5 @@
 @property (nonatomic) NSButton  *prevB;
 @property (nonatomic) NSButton  *nextB;
 
+- (void)show;
 @end

@@ -8,9 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class LMStartNewVC;
+
 @interface LMStartNewPresentationVC : NSViewController
 @property NSButton *nextB;
+@property NSButton *prevB;
 
 - (void)show;
+@property   LMStartNewVC    *parentVC;
 
 @end

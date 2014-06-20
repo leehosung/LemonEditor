@@ -7,25 +7,27 @@
 //
 
 #import "LMStartNewPresentationVC.h"
-
+#import "LMStartNewVC.h"
 @interface LMStartNewPresentationVC ()
 
 @end
 
 @implementation LMStartNewPresentationVC
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Initialization code here.
-    }
-    return self;
-}
-
--(void)show{
+- (void)show{
+    assert(_parentVC);
     assert(_nextB);
     [_nextB setTarget:self];
     [_nextB setEnabled:NO];
+    
+    [_prevB setTarget:self];
+    [_prevB setEnabled:YES];
+    [_prevB setAction:@selector(performPrev)];
 }
+
+- (void)performPrev{
+    assert(_parentVC);
+    [_parentVC show];
+}
+
 @end
