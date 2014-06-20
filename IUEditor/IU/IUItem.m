@@ -32,6 +32,8 @@
 
 - (BOOL)canChangePositionType{
     return NO;
+}- (BOOL)shouldRemoveIUByUserInput{
+    return NO;
 }
 
 @end
