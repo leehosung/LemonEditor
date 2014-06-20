@@ -122,6 +122,11 @@
     [_css setValue:@(0) forTag:IUCSSTagWidthUnit forWidth:IUCSSMaxViewPortWidth];
     [_css setValue:@(0) forTag:IUCSSTagHeightUnit forWidth:IUCSSMaxViewPortWidth];
     
+#if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
+    _lineHeightAuto = YES;
+#endif
+
+    
     if (self.hasWidth) {
         [_css setValue:@(50+rand()%50) forTag:IUCSSTagWidth forWidth:IUCSSMaxViewPortWidth];
     }
@@ -147,8 +152,6 @@
     [_css setValue:[NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:1] forTag:IUCSSTagBorderBottomColor forWidth:IUCSSMaxViewPortWidth];
     
     //type
-    [_css setValue:@"Arial" forTag:IUCSSTagFontName forWidth:IUCSSMaxViewPortWidth];
-    [_css setValue:@(12) forTag:IUCSSTagFontSize forWidth:IUCSSMaxViewPortWidth];
     [_css setValue:@"Auto" forTag:IUCSSTagLineHeight forWidth:IUCSSMaxViewPortWidth];
     [_css setValue:@(IUAlignCenter) forTag:IUCSSTagTextAlign forWidth:IUCSSMaxViewPortWidth];
 
@@ -473,6 +476,10 @@
     if (self.delegate) {
         [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:_css.editWidth isHover:NO] forWidth:_css.editWidth];
         [self.delegate IUClassIdentifier:[self.cssID hoverIdentifier] CSSUpdated:[self cssForWidth:_css.editWidth isHover:YES] forWidth:_css.editWidth];
+        
+#if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
+        [self updateAutoHeight];
+#endif
     }
 }
 
@@ -721,5 +728,28 @@
 - (NSArray *)cssIdentifierArray{
     return @[self.cssID];
 }
+
+#if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
+- (void)setText:(NSString *)text{
+    _text = text;
+    [self updateHTML];
+    [self updateAutoHeight];
+}
+
+- (void)setLineHeightAuto:(BOOL)lineHeightAuto{
+    _lineHeightAuto = lineHeightAuto;
+    [self updateHTML];
+    [self updateAutoHeight];
+}
+
+
+- (void)updateAutoHeight{
+    if(_lineHeightAuto && self.delegate){
+        [self.delegate callWebScriptMethod:@"setTextAutoHeight" withArguments:nil];
+    }
+}
+
+
+#endif
 
 @end

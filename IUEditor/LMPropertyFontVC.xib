@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyTextVC">
+        <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyFontVC">
             <connections>
                 <outlet property="fontB" destination="Yle-zg-jre" id="3NT-fU-1xD"/>
                 <outlet property="fontColorWell" destination="EF9-cy-hVF" id="LtQ-n0-TiY"/>
@@ -54,6 +54,9 @@
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </comboBoxCell>
+                                <connections>
+                                    <action selector="clickFontNameBtn:" target="-2" id="K9T-sd-Rlg"/>
+                                </connections>
                             </comboBox>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RsX-9v-6Mo">
                                 <rect key="frame" x="4" y="8" width="30" height="14"/>
@@ -207,6 +210,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </comboBoxCell>
                                 <connections>
+                                    <action selector="clickFontSize:" target="-2" id="4wq-oe-rF9"/>
                                     <outlet property="dataSource" destination="-2" id="9hE-Kp-fMi"/>
                                     <outlet property="formatter" destination="2Xc-jP-M6t" id="Hcl-rX-xEo"/>
                                 </connections>

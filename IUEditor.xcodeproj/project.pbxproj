@@ -142,6 +142,8 @@
 		3D0D481318FFDC96000A5B53 /* LMFileTabItemVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D481118FFDC96000A5B53 /* LMFileTabItemVC.m */; };
 		3D0D481418FFDC96000A5B53 /* LMFileTabItemVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D0D481218FFDC96000A5B53 /* LMFileTabItemVC.xib */; };
 		3D14886318F6AE5700E8EE4C /* LMCenterClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D14886218F6AE5700E8EE4C /* LMCenterClipView.m */; };
+		3D14AE041953D06600E7C2E4 /* LMPropertyTextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D14AE021953D06600E7C2E4 /* LMPropertyTextVC.m */; };
+		3D14AE051953D06600E7C2E4 /* LMPropertyTextVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D14AE031953D06600E7C2E4 /* LMPropertyTextVC.xib */; };
 		3D1BACC919330240004C554F /* IUText.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1BACC819330240004C554F /* IUText.m */; };
 		3D33BAD01935A4F600DA4F4A /* LMPreferenceWC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D33BACE1935A4F600DA4F4A /* LMPreferenceWC.m */; };
 		3D33BAD11935A4F600DA4F4A /* LMPreferenceWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D33BACF1935A4F600DA4F4A /* LMPreferenceWC.xib */; };
@@ -379,8 +381,8 @@
 		3DF8045918FE874400913505 /* LMAppearanceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF8045718FE874400913505 /* LMAppearanceVC.xib */; };
 		3DF8046018FF75CF00913505 /* LMPropertyBGColorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8045E18FF75CF00913505 /* LMPropertyBGColorVC.m */; };
 		3DF8046118FF75CF00913505 /* LMPropertyBGColorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF8045F18FF75CF00913505 /* LMPropertyBGColorVC.xib */; };
-		3DF8046518FF784500913505 /* LMPropertyTextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8046318FF784500913505 /* LMPropertyTextVC.m */; };
-		3DF8046618FF784500913505 /* LMPropertyTextVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF8046418FF784500913505 /* LMPropertyTextVC.xib */; };
+		3DF8046518FF784500913505 /* LMPropertyFontVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8046318FF784500913505 /* LMPropertyFontVC.m */; };
+		3DF8046618FF784500913505 /* LMPropertyFontVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF8046418FF784500913505 /* LMPropertyFontVC.xib */; };
 		3DF8046A18FF790400913505 /* LMPropertyShadowVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8046818FF790400913505 /* LMPropertyShadowVC.m */; };
 		3DF8046B18FF790400913505 /* LMPropertyShadowVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF8046918FF790400913505 /* LMPropertyShadowVC.xib */; };
 		58FF6B8E1946EA2B009A86F9 /* PGSubmitButtonVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FF6B8C1946EA2B009A86F9 /* PGSubmitButtonVC.m */; };
@@ -702,6 +704,9 @@
 		3D0D481218FFDC96000A5B53 /* LMFileTabItemVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMFileTabItemVC.xib; sourceTree = "<group>"; };
 		3D14886118F6AE5700E8EE4C /* LMCenterClipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMCenterClipView.h; sourceTree = "<group>"; };
 		3D14886218F6AE5700E8EE4C /* LMCenterClipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMCenterClipView.m; sourceTree = "<group>"; };
+		3D14AE011953D06600E7C2E4 /* LMPropertyTextVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMPropertyTextVC.h; path = Editor/LMPropertyTextVC.h; sourceTree = "<group>"; };
+		3D14AE021953D06600E7C2E4 /* LMPropertyTextVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMPropertyTextVC.m; path = Editor/LMPropertyTextVC.m; sourceTree = "<group>"; };
+		3D14AE031953D06600E7C2E4 /* LMPropertyTextVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMPropertyTextVC.xib; path = Editor/LMPropertyTextVC.xib; sourceTree = "<group>"; };
 		3D1BACC719330240004C554F /* IUText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUText.h; path = IU/IUText.h; sourceTree = "<group>"; };
 		3D1BACC819330240004C554F /* IUText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IUText.m; path = IU/IUText.m; sourceTree = "<group>"; };
 		3D33BACD1935A4F600DA4F4A /* LMPreferenceWC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMPreferenceWC.h; path = Editor/Preference/LMPreferenceWC.h; sourceTree = "<group>"; };
@@ -999,9 +1004,9 @@
 		3DF8045D18FF75CF00913505 /* LMPropertyBGColorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyBGColorVC.h; sourceTree = "<group>"; };
 		3DF8045E18FF75CF00913505 /* LMPropertyBGColorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyBGColorVC.m; sourceTree = "<group>"; };
 		3DF8045F18FF75CF00913505 /* LMPropertyBGColorVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyBGColorVC.xib; sourceTree = "<group>"; };
-		3DF8046218FF784500913505 /* LMPropertyTextVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyTextVC.h; sourceTree = "<group>"; };
-		3DF8046318FF784500913505 /* LMPropertyTextVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyTextVC.m; sourceTree = "<group>"; };
-		3DF8046418FF784500913505 /* LMPropertyTextVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyTextVC.xib; sourceTree = "<group>"; };
+		3DF8046218FF784500913505 /* LMPropertyFontVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyFontVC.h; sourceTree = "<group>"; };
+		3DF8046318FF784500913505 /* LMPropertyFontVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyFontVC.m; sourceTree = "<group>"; };
+		3DF8046418FF784500913505 /* LMPropertyFontVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyFontVC.xib; sourceTree = "<group>"; };
 		3DF8046718FF790400913505 /* LMPropertyShadowVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyShadowVC.h; sourceTree = "<group>"; };
 		3DF8046818FF790400913505 /* LMPropertyShadowVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyShadowVC.m; sourceTree = "<group>"; };
 		3DF8046918FF790400913505 /* LMPropertyShadowVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyShadowVC.xib; sourceTree = "<group>"; };
@@ -1379,6 +1384,9 @@
 				58FF6B8B1946EA2B009A86F9 /* PGSubmitButtonVC.h */,
 				58FF6B8C1946EA2B009A86F9 /* PGSubmitButtonVC.m */,
 				58FF6B8D1946EA2B009A86F9 /* PGSubmitButtonVC.xib */,
+				3D14AE011953D06600E7C2E4 /* LMPropertyTextVC.h */,
+				3D14AE021953D06600E7C2E4 /* LMPropertyTextVC.m */,
+				3D14AE031953D06600E7C2E4 /* LMPropertyTextVC.xib */,
 			);
 			name = IUPropertyVC;
 			sourceTree = "<group>";
@@ -1398,9 +1406,9 @@
 				69A45DDD18F6702C00C551D9 /* LMPropertyBorderVC.h */,
 				69A45DDE18F6702C00C551D9 /* LMPropertyBorderVC.m */,
 				69A45DDF18F6702C00C551D9 /* LMPropertyBorderVC.xib */,
-				3DF8046218FF784500913505 /* LMPropertyTextVC.h */,
-				3DF8046318FF784500913505 /* LMPropertyTextVC.m */,
-				3DF8046418FF784500913505 /* LMPropertyTextVC.xib */,
+				3DF8046218FF784500913505 /* LMPropertyFontVC.h */,
+				3DF8046318FF784500913505 /* LMPropertyFontVC.m */,
+				3DF8046418FF784500913505 /* LMPropertyFontVC.xib */,
 				3DF8046718FF790400913505 /* LMPropertyShadowVC.h */,
 				3DF8046818FF790400913505 /* LMPropertyShadowVC.m */,
 				3DF8046918FF790400913505 /* LMPropertyShadowVC.xib */,
@@ -2710,7 +2718,7 @@
 				3DED27351904F13B001A1D67 /* ic_movie@2x.png in Resources */,
 				3DF8041518FE62F200913505 /* add_mediaquery@2x.png in Resources */,
 				265FCC021953D08F00BD9068 /* reload@2x.png in Resources */,
-				3DF8046618FF784500913505 /* LMPropertyTextVC.xib in Resources */,
+				3DF8046618FF784500913505 /* LMPropertyFontVC.xib in Resources */,
 				3DED26D919010A6D001A1D67 /* LMPropertyIUBoxVC.xib in Resources */,
 				2628C91D1919C8C800D9D8CD /* tab_primary_off@2x.png in Resources */,
 				3DF8044618FE62FC00913505 /* tool_html@2x.png in Resources */,
@@ -2953,6 +2961,7 @@
 				3DED26491900D2DE001A1D67 /* align_center@2x.png in Resources */,
 				69761BC418F04ECD00C4EDC6 /* LMPropertyBGImageVC.xib in Resources */,
 				3DD47879193DCEB600639AB5 /* LMPropertyIUTextVC.xib in Resources */,
+				3D14AE051953D06600E7C2E4 /* LMPropertyTextVC.xib in Resources */,
 				26C8565F192060DC00118CA5 /* stack_page_nav.png in Resources */,
 				3DED2763190E38C5001A1D67 /* bx_loader.gif in Resources */,
 				69346623192B805000F82DAF /* LMCommandVC.xib in Resources */,
@@ -3079,6 +3088,7 @@
 				69757B0418D95BBC0095CBAC /* JDEnvUtil.m in Sources */,
 				3DB3ACE018EBEF5F0046DFB7 /* GuideLineLayer.m in Sources */,
 				69757B0B18D95BBC0095CBAC /* JDOutlineView.m in Sources */,
+				3D14AE041953D06600E7C2E4 /* LMPropertyTextVC.m in Sources */,
 				3DD4786E193DB33600639AB5 /* LMDebugSourceWC.m in Sources */,
 				069A0FE8195179D900476CFA /* LMPropertyOverflowVC.m in Sources */,
 				69CFCAB218E95A0C00E3048A /* LMResourceVC.m in Sources */,
@@ -3141,7 +3151,7 @@
 				698E840019358C14002CE47B /* LMProjectConvertWC.m in Sources */,
 				69757B2818D98BEA0095CBAC /* NSView+JDExtension.m in Sources */,
 				3DED26E219010B6B001A1D67 /* LMPropertyIUcarouselVC.m in Sources */,
-				3DF8046518FF784500913505 /* LMPropertyTextVC.m in Sources */,
+				3DF8046518FF784500913505 /* LMPropertyFontVC.m in Sources */,
 				69C5761E18D7051C0016F050 /* IUProject.m in Sources */,
 				69B9A39618E5A2A30007D6E2 /* IUResourceFile.m in Sources */,
 				6905FB521925F17300E4DBC3 /* JDCode.m in Sources */,

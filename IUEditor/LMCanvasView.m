@@ -209,6 +209,7 @@
                 }
                 //change editable mode
                 if(theEvent.clickCount ==2){
+#if CURRENT_TEXT_VERSION >= TEXT_SELECTION_VERSION
                     if([((LMCanvasVC *)self.delegate) isEditable]){
                         [[self webView] setEditable:YES];
                         [[self webView] changeDOMRange:convertedPoint];
@@ -217,6 +218,7 @@
                         NSString *alertText= [currentIUID stringByAppendingString:@" is not text-editable\nPlease use IUText box"];
                         [JDUIUtil hudAlert:alertText second:5];
                     }
+#endif
                 }
             }
             else if (theEvent.type == NSRightMouseDown){

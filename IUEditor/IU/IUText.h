@@ -12,7 +12,9 @@
 @interface IUText : IUBox <IUTextControllerDelegate>
 
 @property IUTextController *textController;
+#if CURRENT_TEXT_VERSION >= TEXT_SELECTION_VERSION
 @property (nonatomic) BOOL lineHeightAuto;
+#endif
 
 /// text managing
 - (void)updateNewLine:(NSRange)range htmlNode:(DOMHTMLElement *)node;

@@ -93,6 +93,10 @@ typedef enum _IUOverflowType{
 @property (weak) IUBox    *parent;
 @property NSArray   *mutables;
 
+#if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
+@property (nonatomic) NSString *text;
+@property (nonatomic) BOOL lineHeightAuto;
+#endif
 
 -(NSString *)cssID;
 // followings are IU build setting;

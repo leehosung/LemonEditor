@@ -20,7 +20,7 @@
     IUTextController *controller = [_textController copy];
     controller.textDelegate = textIU;
     textIU.textController = controller;
-    textIU.lineHeightAuto = _lineHeightAuto;
+    textIU.lineHeightAuto = self.lineHeightAuto;
     
     return textIU;
 }
@@ -30,7 +30,7 @@
     if(self){
         _textController = [[IUTextController alloc] init];
         _textController.textDelegate = self;
-        _lineHeightAuto = YES;
+        self.lineHeightAuto = YES;
 
     }
     return self;
@@ -41,7 +41,7 @@
     if(self){
         _textController = [aDecoder decodeObjectForKey:@"textController"];
         _textController.textDelegate = self;
-        _lineHeightAuto = [[aDecoder decodeObjectForKey:@"lineHeightAuto"] boolValue];
+        self.lineHeightAuto = [[aDecoder decodeObjectForKey:@"lineHeightAuto"] boolValue];
 
     }
     return self;
@@ -154,10 +154,12 @@
     return self.htmlID;
 }
 
+#if CURRENT_TEXT_VERSION >= TEXT_SELECTION_VERSION
 - (void)setLineHeightAuto:(BOOL)lineHeightAuto{
     _lineHeightAuto = lineHeightAuto;
     [self updateHTML];
 }
+#endif
 
 - (NSArray *)cssIdentifierArray{
     NSMutableArray *array = [NSMutableArray arrayWithArray:[super cssIdentifierArray]];

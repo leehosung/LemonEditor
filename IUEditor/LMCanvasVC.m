@@ -19,7 +19,9 @@
 #import "InnerSizeBox.h"
 #import "IUResponsiveSection.h"
 #import "IUImport.h"
+#if CURRENT_TEXT_VERSION >= TEXT_SELECTION_VERSION
 #import "IUText.h"
+#endif
 
 #import "LMHelpMenuItem.h"
 #import "LMHelpWC.h"
@@ -215,12 +217,14 @@
     }
 }
 - (BOOL)isEditable{
+#if CURRENT_TEXT_VERSION >= TEXT_SELECTION_VERSION
     if([self countOfSelectedIUs] == 1){
         IUBox *currentIU = self.controller.selectedObjects[0];
         if([currentIU isKindOfClass:[IUText class]]){
             return YES;
         }
     }
+#endif
     return NO;
 }
 
@@ -313,6 +317,7 @@
 
 #pragma mark setText
 
+#if CURRENT_TEXT_VERSION >= TEXT_SELECTION_VERSION
 
 - (void)updateNewline:(NSRange)range identifier:(NSString *)identifier htmlNode:(DOMHTMLElement *)node{
     
@@ -335,6 +340,7 @@
     }
 
 }
+#endif
 
 /*
 //text
@@ -485,9 +491,11 @@
         [self.controller rearrangeObjects];
         [self.controller setSelectedObjectsByIdentifiers:@[identifier]];
     }
+#if CURRENT_TEXT_VERSION >= TEXT_SELECTION_VERSION
     else if([iu isKindOfClass:[IUText class]]){
         [(IUText *)iu updateAutoHeight];
     }
+#endif
     
 //    JDDebugLog(@"%@:%@", identifier, html);
 

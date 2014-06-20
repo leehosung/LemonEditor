@@ -27,6 +27,8 @@
 		<key>widgetClass</key>
 		<integer>0</integer>
 	</dict>
+	<!--
+	#if CURRENT_TEXT_VERSION >= TEXT_SELECTION_VERSION
 	<dict>
 		<key>manual</key>
 		<array>
@@ -52,6 +54,7 @@
 		<key>widgetClass</key>
 		<integer>0</integer>
 	</dict>
+		-->
 	<dict>
 		<key>manual</key>
 		<array>

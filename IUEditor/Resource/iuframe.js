@@ -76,7 +76,10 @@ function resizePageLinkSet(){
 function setTextAutoHeight(){
     var respc = $('[autolineheight="1"]').toArray();
     $.each(respc, function(){
-           var brCount = $("br", $(this)).length +1;
+           var brCount = $("br", $(this)).length;
+           if(brCount == 0){
+                brCount = 1;
+           }
            var height = $(this).height();
            var lineheight = height/brCount;
            $(this).css('line-height', lineheight+'px');

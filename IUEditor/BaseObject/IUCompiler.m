@@ -33,7 +33,11 @@
 #import "PGPageLinkSet.h"
 #import "IUTransition.h"
 #import "JDCode.h"
+
+#if CURRENT_TEXT_VERSION >= TEXT_SELECTION_VERSION
 #import "IUText.h"
+#endif
+
 #import "LMFontController.h"
 
 @implementation IUCompiler{
@@ -84,6 +88,7 @@
 
 -(JDCode *)webfontImportSourceForOutput:(IUPage *)page{
     NSMutableArray *fontNameArray = [NSMutableArray array];
+#if CURRENT_TEXT_VERSION >= TEXT_SELECTION_VERSION
     for (IUBox *box in page.allChildren){
         if([box isKindOfClass:[IUText class]]){
             for(NSString *fontName in [(IUText *)box fontNameArray]){
@@ -99,6 +104,7 @@
             }
         }
     }
+#endif
     JDCode *code = [[JDCode alloc] init];
     LMFontController *fontController = [LMFontController sharedFontController];
     
@@ -371,6 +377,8 @@
         [dict setObject:hoverCSS forKey:[NSString stringWithFormat:@".%@:hover", iu.htmlID]];
     }
     
+#if CURRENT_TEXT_VERSION >= TEXT_SELECTION_VERSION
+    
     if([iu isKindOfClass:[IUText class]]){
         IUText *textIU = (IUText *)iu;
         NSDictionary *textCSSDict = textIU.textController.cssDict;
@@ -380,6 +388,7 @@
         }
     }
     
+#endif
     
     if([iu isKindOfClass:[IUCarousel class]] && width == IUCSSMaxViewPortWidth){
         NSDictionary * carouselDict =[self cssDictionaryForIUCarousel:(IUCarousel *)iu];
@@ -425,6 +434,13 @@ static NSString * IUCompilerTagOption = @"tag";
             [code addCodeLineWithFormat:@"<p>{{ %@ }}</p>", iu.textVariable];
         }
     }
+    
+#if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
+    if(iu.text && iu.text.length > 0){
+        NSString *htmlText = [iu.text stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
+        [code addCodeLine:htmlText];
+    }
+#endif
     if (iu.children.count) {
         for (IUBox *child in iu.children) {
             [code addCode:[self outputHTML:child]];
@@ -564,6 +580,7 @@ static NSString * IUCompilerTagOption = @"tag";
         [code addCodeLineWithFormat:@"</div>"];
         
     }
+#if CURRENT_TEXT_VERSION >= TEXT_SELECTION_VERSION
 #pragma mark IUText
     else if([iu isKindOfClass:[IUText class]]){
         IUText *textIU = (IUText *)iu;
@@ -588,6 +605,7 @@ static NSString * IUCompilerTagOption = @"tag";
         }
 
     }
+#endif
 #pragma mark IUTextFeild
     
     else if ([iu isKindOfClass:[PGTextField class]]){
@@ -645,6 +663,12 @@ static NSString * IUCompilerTagOption = @"tag";
 - (JDCode*)editorHTMLAsBOX:(IUBox *)iu{
     JDCode *code = [[JDCode alloc] init];
     [code addCodeLineWithFormat:@"<div %@ >", [self HTMLAttributes:iu option:nil]];
+#if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
+    if(iu.text && iu.text.length > 0){
+        NSString *htmlText = [iu.text stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
+        [code addCodeLine:htmlText];
+    }
+#endif
     if (iu.children.count) {
         for (IUBox *child in iu.children) {
             [code addCode:[self editorHTML:child]];
@@ -808,6 +832,7 @@ static NSString * IUCompilerTagOption = @"tag";
         [code addCodeLineWithFormat:@"</div"];
     }
 #pragma mark IUText
+#if CURRENT_TEXT_VERSION >= TEXT_SELECTION_VERSION
     else if([iu isKindOfClass:[IUText class]]){
         IUText *textIU = (IUText *)iu;
         [code addCodeLineWithFormat:@"<div %@ >", [self HTMLAttributes:iu option:nil]];
@@ -818,6 +843,7 @@ static NSString * IUCompilerTagOption = @"tag";
         [code addCodeLineWithFormat:@"</div>"];
         
     }
+#endif
 #pragma mark IUTextFeild
     
     else if ([iu isKindOfClass:[PGTextField class]]){
@@ -1217,7 +1243,13 @@ static NSString * IUCompilerTagOption = @"tag";
 
         }
         
-        if([obj isKindOfClass:[IUText class]]|| [obj isKindOfClass:[PGTextField class]] || [obj isKindOfClass:[PGTextView class]] || [obj isKindOfClass:[PGPageLinkSet class]] || [obj isKindOfClass:[PGSubmitButton class]]){
+        if(
+#if CURRENT_TEXT_VERSION >= TEXT_SELECTION_VERSION
+           [obj isKindOfClass:[IUText class]]||
+#else
+           [obj isMemberOfClass:[IUBox class]] ||
+#endif
+           [obj isKindOfClass:[PGTextField class]] || [obj isKindOfClass:[PGTextView class]] || [obj isKindOfClass:[PGPageLinkSet class]] || [obj isKindOfClass:[PGSubmitButton class]]){
             
             value = cssTagDict[IUCSSTagFontName];
             if(value){
@@ -1382,6 +1414,20 @@ static NSString * IUCompilerTagOption = @"tag";
     if (iu.xPosMove) {
         [retString appendFormat:@" xPosMove='%.1f'", iu.xPosMove];
     }
+#if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
+    if([iu isMemberOfClass:[IUBox class]] && iu.lineHeightAuto){
+        [retString appendString:@" autoLineHeight='1'"];
+    }
+#else
+#pragma mark IUText
+    if( [iu isKindOfClass:[IUText class]] ){
+        if(((IUText *)iu).lineHeightAuto){
+            [retString appendString:@" autoLineHeight='1'"];
+        }
+        
+    }
+#endif
+    
 #pragma mark IUImage
     if ([iu isKindOfClass:[IUImage class]]) {
         IUImage *iuImage = (IUImage*)iu;
@@ -1403,13 +1449,7 @@ static NSString * IUCompilerTagOption = @"tag";
             }
         }
     }
-#pragma mark IUText
-    if( [iu isKindOfClass:[IUText class]] ){
-        if(((IUText *)iu).lineHeightAuto){
-            [retString appendString:@" autoLineHeight='1'"];
-        }
 
-    }
 #pragma mark IUWebMovie
     else if([iu isKindOfClass:[IUWebMovie class]]){
         IUWebMovie *iuWebMovie = (IUWebMovie *)iu;

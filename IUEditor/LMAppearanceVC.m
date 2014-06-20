@@ -10,7 +10,7 @@
 #import "LMPropertyFrameVC.h"
 #import "LMPropertyBorderVC.h"
 #import "LMPropertyBGColorVC.h"
-#import "LMPropertyTextVC.h"
+#import "LMPropertyFontVC.h"
 #import "LMPropertyShadowVC.h"
 #import "LMPropertyOverflowVC.h"
 
@@ -22,7 +22,7 @@
     LMPropertyFrameVC    *propertyFrameVC;
     LMPropertyBorderVC  *propertyBorderVC;
     LMPropertyBGColorVC *propertyBGColorVC;
-    LMPropertyTextVC    *propertyTextVC;
+    LMPropertyFontVC    *propertyFontVC;
     LMPropertyShadowVC  *propertyShadowVC;
     LMPropertyOverflowVC *propertyOverflowVC;
     
@@ -51,8 +51,8 @@
         propertyBGColorVC = [[LMPropertyBGColorVC alloc] initWithNibName:@"LMPropertyBGColorVC" bundle:nil];
         [propertyBGColorVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
         
-        propertyTextVC = [[LMPropertyTextVC alloc] initWithNibName:@"LMPropertyTextVC" bundle:nil];
-        [propertyTextVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+        propertyFontVC = [[LMPropertyFontVC alloc] initWithNibName:@"LMPropertyFontVC" bundle:nil];
+        [propertyFontVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
 
         propertyShadowVC = [[LMPropertyShadowVC alloc] initWithNibName:@"LMPropertyShadowVC" bundle:nil];
         [propertyShadowVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
@@ -69,7 +69,7 @@
     [outlineVOrderArray addObject:propertyFrameVC.view];
     [outlineVOrderArray addObject:propertyBGColorVC.view];
     [outlineVOrderArray addObject:self.propertyBGImageVC.view];
-    [outlineVOrderArray addObject:propertyTextVC.view];
+    [outlineVOrderArray addObject:propertyFontVC.view];
     [outlineVOrderArray addObject:propertyShadowVC.view];
     [outlineVOrderArray addObject:propertyBorderVC.view];
     [outlineVOrderArray addObject:propertyOverflowVC.view];
