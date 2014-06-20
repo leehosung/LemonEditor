@@ -210,9 +210,17 @@
         [_tableV setHidden:NO];
     }
     
+#pragma mark PG
     if ([classString isEqualToString:@"PGForm"]) {
-        self.propertyVArray = @[propertyPGFormVC.view, propertyPGType2VC.view];
+        self.propertyVArray = @[propertyPGFormVC.view];
     }
+    else if ([classString isEqualToString:@"PGTextView"]) {
+        self.propertyVArray = @[propertyPGFormVC.view];
+    }
+    else if ([classString isEqualToString:@"PGTextField"]) {
+        self.propertyVArray = @[propertyPGTextFieldVC.view, propertyPGType2VC.view];
+    }
+#pragma mark IU - Complex
     else if ([classString isEqualToString:@"IUMovie"]) {
         self.propertyVArray = @[propertyIUMovieVC.view];
     }
@@ -234,9 +242,7 @@
     else if ([classString isEqualToString:@"IUFBLike"]) {
         self.propertyVArray = @[propertyIUFBLikeVC.view];
     }
-    else if ([classString isEqualToString:@"PGTextField"]) {
-        self.propertyVArray = @[propertyPGTextFieldVC.view, propertyPGType2VC.view];
-    }
+#pragma mark IU-Simple
     else if ([classString isEqualToString:@"IUText"]) {
         self.propertyVArray = @[propertyIUTextVC.view, inspectorLinkVC.view, propertyPGType2VC.view];
     }
