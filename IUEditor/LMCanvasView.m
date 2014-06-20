@@ -121,6 +121,16 @@
     return YES;
 }
 
+//exclude top-botoom view
+-  (BOOL)pointInScrollView:(NSPoint)point{
+    NSRect frame = NSMakeRect(0, 0, self.bounds.size.width, self.mainScrollView.bounds.size.height);
+    if (NSPointInRect(point, frame)){
+        return YES;
+    }
+    return NO;
+}
+
+//include bottom view(including scroll heihgt)
 -  (BOOL)pointInMainView:(NSPoint)point{
     NSRect frame = NSMakeRect(0, 0, self.bounds.size.width, self.mainView.bounds.size.height);
     if (NSPointInRect(point, frame)){
@@ -168,10 +178,11 @@
 -(void)receiveMouseEvent:(NSEvent *)theEvent{
     NSPoint originalPoint = [theEvent locationInWindow];
     NSPoint convertedPoint = [self.mainView convertPoint:originalPoint fromView:nil];
+    NSPoint convertedScrollPoint = [self.mainScrollView convertPoint:originalPoint fromView:nil];
     NSView *hitView = [self.gridView hitTest:convertedPoint];
     
     if([hitView isKindOfClass:[GridView class]] == NO){
-        if( [self pointInMainView:convertedPoint]){
+        if( [self pointInScrollView:convertedScrollPoint]){
             if ( theEvent.type == NSLeftMouseDown){
                 JDTraceLog( @"mouse down");
                 isMouseDown = YES;
