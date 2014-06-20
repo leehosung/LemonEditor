@@ -220,6 +220,9 @@
     else if ([classString isEqualToString:@"PGTextField"]) {
         self.propertyVArray = @[propertyPGTextFieldVC.view, propertyPGType2VC.view];
     }
+    else if ([classString isEqualToString:@"PGSubmitButton"]){
+        self.propertyVArray = @[propertyPGSubmitButtonVC.view];
+    }
 #pragma mark IU - Complex
     else if ([classString isEqualToString:@"IUMovie"]) {
         self.propertyVArray = @[propertyIUMovieVC.view];
