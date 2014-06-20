@@ -10,19 +10,16 @@ $(document).ready(function(){
                   
 	//Initialize transition
 	$('.IUTransition').each(function(){
-		var eventType = $(this).attr('transitionevent');
-		var transitionanimation = $(this).attr('transitionanimation');
-                                          
-		if (eventType=='mouseOn'){
-			$(this).bind('mouseenter',window[transitionanimation]);
-			$(this).bind('mouseleave',window[transitionanimation]);
-		}
-		else {
-			$(this).bind(eventType, window[transitionanimation]);
-		}
-		if (transitionanimation == 'flyFromRight'){
-			$($(this).children()[1]).css('left', '100%');
-		}
+        var eventType = $(this).attr('transitionevent');
+                            
+        if (eventType=='mouseOn'){
+            $(this).bind('mouseenter',transitionAnimation);
+            $(this).bind('mouseleave',transitionAnimation);
+        }
+        else {
+            $(this).bind(eventType, transitionAnimation);
+        }
+                            
 	});
                   
 	//move : current viewport pc type

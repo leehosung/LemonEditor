@@ -6,6 +6,12 @@ document.sharedPercentFrameDict = {}
 $.fn.updatePixel = function(){
 	return this.each(function(){
                      var myName = this.id;
+                     
+                     var display = $(this).css('display');
+                     if(display == 'none'){
+                        return;
+                     }
+
                      if (this.position == undefined){
                      this.position = $(this).iuPosition();
                      if (document.sharedFrameDict[myName] == undefined){

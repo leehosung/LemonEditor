@@ -38,13 +38,13 @@
     self = [super initWithProject:project options:options];
     _firstItem = [[IUItem alloc] initWithProject:project options:options];
     _secondItem = [[IUItem alloc] initWithProject:project options:options];
-    [_secondItem.css setValue:@(YES) forTag:IUCSSTagHidden];
+    [_secondItem.css setValue:@(NO) forTag:IUCSSTagDisplay];
     
     [self addIU:_firstItem error:nil];
     [self addIU:_secondItem error:nil];
     self.currentEdit = 0;
     self.eventType = @"Click";
-    self.animation = @"Overlap";
+    self.animation = @"Blind";
     return self;
 }
 
@@ -85,12 +85,12 @@
 - (void)setCurrentEdit:(NSInteger)currentEdit{
     _currentEdit = currentEdit;
     if (currentEdit == 0) {
-        [_firstItem.css setValue:@(NO) forTag:IUCSSTagHidden];
-        [_secondItem.css setValue:@(YES) forTag:IUCSSTagHidden];
+        [_firstItem.css setValue:@(YES) forTag:IUCSSTagDisplay];
+        [_secondItem.css setValue:@(NO) forTag:IUCSSTagDisplay];
     }
     else {
-        [_firstItem.css setValue:@(YES) forTag:IUCSSTagHidden];
-        [_secondItem.css setValue:@(NO) forTag:IUCSSTagHidden];
+        [_firstItem.css setValue:@(NO) forTag:IUCSSTagDisplay];
+        [_secondItem.css setValue:@(YES) forTag:IUCSSTagDisplay];
     }
 }
 

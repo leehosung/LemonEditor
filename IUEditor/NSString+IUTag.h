@@ -120,7 +120,7 @@ static NSString * IUCSSTagShadowHorizontal = @"shadowHorizontal";
 static NSString * IUCSSTagShadowSpread = @"shadowSpread";
 static NSString * IUCSSTagShadowBlur = @"shadowBlur";
 
-static NSString * IUCSSTagHidden = @"hidden";
+static NSString * IUCSSTagDisplay = @"display";
 
 //hover CSS
 static NSString * IUCSSTagHoverBGImagePositionEnable = @"HoverBGImagePositionEnable";

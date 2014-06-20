@@ -9,10 +9,11 @@
 #import "LMPropertyIUTransitionVC.h"
 
 @interface LMPropertyIUTransitionVC ()
-@property (weak) IBOutlet NSPopUpButton *currentEditB;
 @property (weak) IBOutlet NSPopUpButton *eventB;
 @property (weak) IBOutlet NSPopUpButton *animationB;
-@property (weak) IBOutlet NSPopUpButton *opacityB;
+
+@property NSArray *typeArray;
+
 @end
 
 @implementation LMPropertyIUTransitionVC
@@ -27,9 +28,11 @@
 }
 
 - (void)awakeFromNib{
-    [_currentEditB bind:@"selectedIndex" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"currentEdit"] options:IUBindingDictNotRaisesApplicable];
-    [_eventB bind:@"selectedValue" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"eventType"] options:IUBindingDictNotRaisesApplicable];
-    [_animationB bind:@"selectedValue" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"animation"] options:IUBindingDictNotRaisesApplicable];
+    [_eventB bind:NSSelectedValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"eventType"] options:IUBindingDictNotRaisesApplicable];
+    [_animationB bind:NSSelectedValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"animation"] options:IUBindingDictNotRaisesApplicable];
+    _typeArray = [IUEvent visibleTypeArray];
+    
+    [_animationB bind:NSContentBinding toObject:self withKeyPath:@"typeArray" options:IUBindingDictNotRaisesApplicable];
 }
 
 @end

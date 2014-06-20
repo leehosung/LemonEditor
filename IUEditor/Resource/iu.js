@@ -21,43 +21,24 @@ function isMobile(){
 	}
 }
 
-function overlap(e){
-	if (typeof isEditor != 'undefined' && isEditor == true){
-		return;
-	}
-	console.log('com');
-	if ($(this).hasClass('selected')){
-		var secondObj = $(this).children()[1];
-		$(secondObj).css('visibility','hidden');
-		$(this).removeClass('selected');
-	}
-	else {
-		var secondObj = $(this).children()[1];
-		$(secondObj).css('visibility','visible');
-		$(this).addClass('selected');
-	}
-}
 
-
-function flyFromRight(eventObject){
-	if (typeof isEditor != 'undefined' && isEditor == true){
-		return;
-	}
+function transitionAnimation(eventObject){
+    if (typeof isEditor != 'undefined' && isEditor == true){
+        return;
+    }
+    var effect = $(this).attr('transitionanimation');
+    
+    console.log('com');
     if ($(this).hasClass('selected')){
-		var secondObj = $(this).children()[1];
-		$(secondObj).animate({
-			'left': '100%',
-		}, 200);
-		$(this).removeClass('selected');
-	}
-	else {
-		var secondObj = $(this).children()[1];
-		$(secondObj).css('left','100%');
-		$(secondObj).animate({
-			'left': '0%',			
-		}, 200);
-		$(this).addClass('selected');
-	}
+        var secondObj = $(this).children()[1];
+        $(secondObj).hide(effect);
+        $(this).removeClass('selected');
+    }
+    else {
+        var secondObj = $(this).children()[1];
+        $(secondObj).show(effect);
+        $(this).addClass('selected');
+    }
 }
 
 $(document).ready(function(){

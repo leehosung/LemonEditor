@@ -7,7 +7,6 @@
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyIUTransitionVC">
             <connections>
                 <outlet property="animationB" destination="qPD-tT-pbR" id="Pug-hQ-vPa"/>
-                <outlet property="currentEditB" destination="Bp8-Tq-aGd" id="LQU-F7-HaN"/>
                 <outlet property="eventB" destination="dTo-H4-a6n" id="S6C-A7-Gfo"/>
                 <outlet property="view" destination="uhF-ik-7pM" id="lAR-B2-KBi"/>
             </connections>
@@ -24,8 +23,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="300" height="90"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sBf-ZZ-8oY">
-                                <rect key="frame" x="19" y="39" width="70" height="17"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sBf-ZZ-8oY">
+                                <rect key="frame" x="14" y="68" width="70" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="66" id="hI9-sT-2Mg"/>
                                     <constraint firstAttribute="height" constant="17" id="odx-Uw-0fW"/>
@@ -36,8 +35,8 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YGN-LR-sFn">
-                                <rect key="frame" x="24" y="13" width="65" height="17"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YGN-LR-sFn">
+                                <rect key="frame" x="19" y="42" width="65" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="61" id="2x7-HT-yMS"/>
                                     <constraint firstAttribute="height" constant="17" id="NZb-1s-tS6"/>
@@ -48,8 +47,8 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dTo-H4-a6n">
-                                <rect key="frame" x="89" y="37" width="190" height="22"/>
+                            <popUpButton verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dTo-H4-a6n">
+                                <rect key="frame" x="84" y="66" width="190" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="184" id="bqG-93-jh6"/>
                                     <constraint firstAttribute="height" constant="18" id="thF-od-97B"/>
@@ -65,8 +64,8 @@
                                     </menu>
                                 </popUpButtonCell>
                             </popUpButton>
-                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qPD-tT-pbR">
-                                <rect key="frame" x="89" y="12" width="190" height="22"/>
+                            <popUpButton verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qPD-tT-pbR">
+                                <rect key="frame" x="84" y="41" width="190" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="THz-ze-rbd"/>
                                     <constraint firstAttribute="width" constant="184" id="dFb-ut-zZW"/>
@@ -74,58 +73,18 @@
                                 <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="SsP-ls-SWQ">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
-                                    <menu key="menu" title="OtherViews" id="2e2-wf-uFh">
-                                        <items>
-                                            <menuItem title="Overlap" id="2MN-50-tiW"/>
-                                            <menuItem title="Fly From Right Side" id="9Oq-St-p81"/>
-                                        </items>
-                                    </menu>
+                                    <menu key="menu" title="OtherViews" id="2e2-wf-uFh"/>
                                 </popUpButtonCell>
                             </popUpButton>
-                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bp8-Tq-aGd">
-                                <rect key="frame" x="89" y="62" width="190" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="18" id="Hl2-sU-nJm"/>
-                                    <constraint firstAttribute="width" constant="184" id="O8f-uc-QHV"/>
-                                </constraints>
-                                <popUpButtonCell key="cell" type="push" title="Primary View" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="QXP-EE-Qul" id="4gh-of-QVE">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="smallSystem"/>
-                                    <menu key="menu" title="OtherViews" id="Gar-BO-2Tx">
-                                        <items>
-                                            <menuItem title="Primary View" state="on" id="QXP-EE-Qul"/>
-                                            <menuItem title="Secondary View" id="8za-bD-cOc"/>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                            </popUpButton>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dVR-p9-MLE">
-                                <rect key="frame" x="18" y="65" width="70" height="17"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="66" id="Ala-OO-1GZ"/>
-                                    <constraint firstAttribute="height" constant="17" id="eLf-ie-SzT"/>
-                                </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Edit" id="fHV-Vt-Qj4">
-                                    <font key="font" metaFont="smallSystem"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                         </subviews>
                     </view>
                     <constraints>
                         <constraint firstItem="YGN-LR-sFn" firstAttribute="leading" secondItem="Df4-ls-jSP" secondAttribute="leading" constant="26" id="IZY-HU-FJ7"/>
                         <constraint firstItem="qPD-tT-pbR" firstAttribute="top" secondItem="dTo-H4-a6n" secondAttribute="bottom" constant="7" id="NEY-xG-MLH"/>
-                        <constraint firstItem="Bp8-Tq-aGd" firstAttribute="top" secondItem="Df4-ls-jSP" secondAttribute="top" constant="7" id="RCG-ue-pV5"/>
-                        <constraint firstItem="sBf-ZZ-8oY" firstAttribute="top" secondItem="dVR-p9-MLE" secondAttribute="bottom" constant="9" id="YqL-uz-SJv"/>
                         <constraint firstItem="YGN-LR-sFn" firstAttribute="top" secondItem="sBf-ZZ-8oY" secondAttribute="bottom" constant="9" id="h26-Bo-Pt5"/>
-                        <constraint firstItem="dVR-p9-MLE" firstAttribute="top" secondItem="Df4-ls-jSP" secondAttribute="top" constant="8" id="iYw-uX-A2P"/>
                         <constraint firstItem="qPD-tT-pbR" firstAttribute="leading" secondItem="YGN-LR-sFn" secondAttribute="trailing" constant="5" id="m9h-lK-x0K"/>
                         <constraint firstAttribute="height" constant="90" id="mQD-bj-gA8"/>
                         <constraint firstItem="dTo-H4-a6n" firstAttribute="leading" secondItem="sBf-ZZ-8oY" secondAttribute="trailing" constant="5" id="o2q-qY-iCp"/>
-                        <constraint firstItem="Bp8-Tq-aGd" firstAttribute="leading" secondItem="dVR-p9-MLE" secondAttribute="trailing" constant="6" id="oXo-Zs-P8F"/>
-                        <constraint firstItem="dVR-p9-MLE" firstAttribute="leading" secondItem="Df4-ls-jSP" secondAttribute="leading" constant="20" id="sTT-nZ-TxJ"/>
-                        <constraint firstItem="dTo-H4-a6n" firstAttribute="top" secondItem="Bp8-Tq-aGd" secondAttribute="bottom" constant="7" id="wvf-6Y-BQg"/>
                         <constraint firstItem="sBf-ZZ-8oY" firstAttribute="leading" secondItem="Df4-ls-jSP" secondAttribute="leading" constant="21" id="ybU-FG-qgM"/>
                     </constraints>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>

@@ -1103,9 +1103,9 @@ static NSString * IUCompilerTagOption = @"tag";
             
         }
         
-        value = cssTagDict[IUCSSTagHidden];
-        if ([value boolValue]) {
-            [dict putTag:@"visibility" string:@"hidden"];
+        value = cssTagDict[IUCSSTagDisplay];
+        if (value && [value boolValue] == NO) {
+            [dict putTag:@"display" string:@"none"];
         }
         
         
@@ -1554,15 +1554,7 @@ static NSString * IUCompilerTagOption = @"tag";
             }
         }
         if ([transitionIU.animation length]) {
-            if ([transitionIU.animation isEqualToString:kIUTransitionAnimationFlyFromRight]) {
-                [retString appendFormat:@" transitionAnimation=\"flyFromRight\""];
-            }
-            else if ([transitionIU.animation isEqualToString:kIUTransitionAnimationOverlap]){
-                [retString appendFormat:@" transitionAnimation=\"overlap\""];
-            }
-            else {
-                assert(0);
-            }
+            [retString appendFormat:@" transitionAnimation=\"%@\"", [transitionIU.animation lowercaseString]];
         }
     }
 

@@ -8,9 +8,6 @@
 
 #import "IUBox.h"
 
-static NSString * kIUTransitionAnimationOverlap = @"Overlap";
-static NSString * kIUTransitionAnimationFlyFromRight = @"Fly From Right Side";
-
 static NSString * kIUTransitionEventMouseOn = @"Mouse On";
 static NSString * kIUTransitionEventClick = @"Click";
 
