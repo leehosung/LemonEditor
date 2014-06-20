@@ -25,6 +25,7 @@
 @implementation LMFileNaviVC{
     BOOL    viewLoadedOK;
     BOOL    loaded;
+    id      _lastClickedItem;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -166,14 +167,19 @@
 }
 
 #pragma mark -
-- (IBAction)outlineViewClicked:(NSOutlineView *)sender{
-    id clickItem = [sender itemAtRow:[sender clickedRow]];
-    
-    [sender isItemExpanded:clickItem] ?
-    [sender.animator collapseItem:clickItem] : [sender.animator expandItem:clickItem];
-    
-}
 
+- (IBAction)outlineViewClicked:(NSOutlineView *)sender{
+    NSTreeNode* clickItem = [sender itemAtRow:[sender clickedRow]];
+    BOOL extended = [sender isItemExpanded:clickItem];
+    
+    if (extended == NO) {
+        [sender.animator expandItem:clickItem];
+    }
+    else if ( _lastClickedItem == clickItem){
+        [sender.animator collapseItem:clickItem];
+    }
+    _lastClickedItem = clickItem;
+}
 
 
 #pragma mark -
