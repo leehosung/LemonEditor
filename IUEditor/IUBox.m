@@ -486,6 +486,10 @@
 - (void)updateHTML{
     if (self.delegate) {
         [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.htmlID];
+        
+#if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
+        [self updateAutoHeight];
+#endif
     }
 }
 
@@ -735,13 +739,11 @@
 - (void)setText:(NSString *)text{
     _text = text;
     [self updateHTML];
-    [self updateAutoHeight];
 }
 
 - (void)setLineHeightAuto:(BOOL)lineHeightAuto{
     _lineHeightAuto = lineHeightAuto;
     [self updateHTML];
-    [self updateAutoHeight];
 }
 
 

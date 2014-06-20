@@ -93,7 +93,7 @@
         
 #if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
         NSString *fontName = [box.css valueForKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagFontName]];
-        if([fontNameArray containsString:fontName] == NO){
+        if(fontName && fontName.length >0 && [fontNameArray containsString:fontName] == NO){
             [fontNameArray addObject:fontName];
         }
 #else
