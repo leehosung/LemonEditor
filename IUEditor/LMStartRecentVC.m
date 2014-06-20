@@ -47,6 +47,9 @@
 }
 
 - (void)show{
+    assert(_prevB);
+    assert(_nextB);
+    
     [_prevB setEnabled:NO];
     [_prevB setHidden:NO];
     [_prevB setTarget:self];
