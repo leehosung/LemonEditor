@@ -1003,7 +1003,9 @@ static NSString * IUCompilerTagOption = @"tag";
             default:
                 break;
         }
-        
+        if ( [obj isKindOfClass:[IUHeader class]]) {
+            [dict putTag:@"z-index" string:@"10"];
+        }
         if ([obj isKindOfClass:[IUPageContent class]] || [obj isKindOfClass:[IUHeader class]]) {
             [dict putTag:@"position" string:@"relative"];
         }
