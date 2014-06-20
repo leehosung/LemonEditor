@@ -404,6 +404,14 @@
 		<key>isWidget</key>
 		<false/>
 		<key>className</key>
+		<string>IUItem</string>
+		<key>navImage</key>
+		<string>stack_carousel_item</string>
+	</dict>
+	<dict>
+		<key>isWidget</key>
+		<false/>
+		<key>className</key>
 		<string>IUPageContent</string>
 		<key>navImage</key>
 		<string>ic_contents</string>
