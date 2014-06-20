@@ -96,6 +96,7 @@ typedef enum _IUOverflowType{
 #if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
 @property (nonatomic) NSString *text;
 @property (nonatomic) BOOL lineHeightAuto;
+
 #endif
 
 -(NSString *)cssID;
@@ -199,5 +200,7 @@ typedef enum _IUOverflowType{
 
 //css 전체를 지울 때 사용
 - (NSArray *)cssIdentifierArray;
+
+
 
 @end

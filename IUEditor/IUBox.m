@@ -730,6 +730,8 @@
 }
 
 #if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
+
+
 - (void)setText:(NSString *)text{
     _text = text;
     [self updateHTML];

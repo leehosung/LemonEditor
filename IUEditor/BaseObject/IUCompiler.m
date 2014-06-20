@@ -88,8 +88,15 @@
 
 -(JDCode *)webfontImportSourceForOutput:(IUPage *)page{
     NSMutableArray *fontNameArray = [NSMutableArray array];
-#if CURRENT_TEXT_VERSION >= TEXT_SELECTION_VERSION
+
     for (IUBox *box in page.allChildren){
+        
+#if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
+        NSString *fontName = [box.css valueForKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagFontName]];
+        if([fontNameArray containsString:fontName] == NO){
+            [fontNameArray addObject:fontName];
+        }
+#else
         if([box isKindOfClass:[IUText class]]){
             for(NSString *fontName in [(IUText *)box fontNameArray]){
                 if([fontNameArray containsString:fontName] == NO){
@@ -103,8 +110,9 @@
                 [fontNameArray addObject:fontName];
             }
         }
-    }
 #endif
+    }
+
     JDCode *code = [[JDCode alloc] init];
     LMFontController *fontController = [LMFontController sharedFontController];
     
