@@ -31,10 +31,11 @@
     _prototypeClass.delegate = self.delegate;
  
     [_prototypeClass addReference:self];
-    [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
-    
-    for (IUBox *iu in [prototypeClass.allChildren arrayByAddingObject:prototypeClass]) {
-        [self.delegate IUClassIdentifier:iu.cssID CSSUpdated:[iu cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+    if (self.delegate) {
+        [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
+        for (IUBox *iu in [prototypeClass.allChildren arrayByAddingObject:prototypeClass]) {
+            [self.delegate IUClassIdentifier:iu.cssID CSSUpdated:[iu cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+        }
     }
 }
 
