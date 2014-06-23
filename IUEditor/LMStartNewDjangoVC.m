@@ -31,14 +31,25 @@
 }
 
 
--(void)appDirPathDidChange{
-    self.imgDirPath = [self.appDirPath stringByAppendingString:@"static"];
-    self.templateDirPath = [self.appDirPath stringByAppendingString:@"templates"];
-}
-
 - (void)performNext{
+    if ([_djangoProjectDir length] == 0 ) {
+        [JDLogUtil alert:@"Input project directory path"];
+        return;
+    }
+    if ([_djangoResourceDir length] == 0 ) {
+        [JDLogUtil alert:@"Input project resource directory path"];
+        return;
+    }
+    if ([_djangoTemplateDir length] == 0 ) {
+        [JDLogUtil alert:@"Input project template directory path"];
+        return;
+    }
+
+    NSString *fileName = [NSString stringWithFormat:@"%@.iu", [_djangoProjectDir lastPathComponent]];
     NSDictionary *options = @{   IUProjectKeyGit: @(NO),
                                  IUProjectKeyHeroku: @(NO),
+                                 IUProjectKeyAppName : [_djangoProjectDir lastPathComponent],
+                                 IUProjectKeyProjectPath : [_djangoProjectDir stringByAppendingPathComponent:fileName],
                                  IUProjectKeyType:@(IUProjectTypeDjango),
                                  };
     
