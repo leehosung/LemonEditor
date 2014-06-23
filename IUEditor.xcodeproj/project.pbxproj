@@ -413,9 +413,6 @@
 		69317CB31947271F0065B6F4 /* LMHelpWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69317CB11947271F0065B6F4 /* LMHelpWC.xib */; };
 		69346623192B805000F82DAF /* LMCommandVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69346622192B805000F82DAF /* LMCommandVC.xib */; };
 		693849E41914D711005C0546 /* NSIndexPath+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 693849E31914D711005C0546 /* NSIndexPath+JDExtension.m */; };
-		693C1A6319379F3F0035A91A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69C575AA18D6F61E0016F050 /* Cocoa.framework */; };
-		693C1A7D19379F400035A91A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69C575C918D6F61E0016F050 /* XCTest.framework */; };
-		693C1A7E19379F400035A91A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69C575AA18D6F61E0016F050 /* Cocoa.framework */; };
 		694E3CDB18FCF739005077B3 /* IUCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 694E3CDA18FCF739005077B3 /* IUCarousel.m */; };
 		694E3CE118FCFDA6005077B3 /* IUItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 694E3CE018FCFDA6005077B3 /* IUItem.m */; };
 		6953852E18ED6EC800CC42E5 /* IUController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6953852D18ED6EC800CC42E5 /* IUController.m */; };
@@ -545,13 +542,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		693C1A7F19379F400035A91A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 69C5759F18D6F61E0016F050 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 693C1A6119379F3F0035A91A;
-			remoteInfo = CommandEditor;
-		};
 		69C575CC18D6F61E0016F050 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 69C5759F18D6F61E0016F050 /* Project object */;
@@ -1051,8 +1041,6 @@
 		69346622192B805000F82DAF /* LMCommandVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMCommandVC.xib; sourceTree = "<group>"; };
 		693849E21914D711005C0546 /* NSIndexPath+JDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexPath+JDExtension.h"; sourceTree = "<group>"; };
 		693849E31914D711005C0546 /* NSIndexPath+JDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+JDExtension.m"; sourceTree = "<group>"; };
-		693C1A6219379F3F0035A91A /* CommandEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommandEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		693C1A7C19379F400035A91A /* CommandEditorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommandEditorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		694E3CD918FCF739005077B3 /* IUCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUCarousel.h; sourceTree = "<group>"; };
 		694E3CDA18FCF739005077B3 /* IUCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUCarousel.m; sourceTree = "<group>"; };
 		694E3CDF18FCFDA6005077B3 /* IUItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUItem.h; path = IU/IUItem.h; sourceTree = "<group>"; };
@@ -1268,23 +1256,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		693C1A5F19379F3F0035A91A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				693C1A6319379F3F0035A91A /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		693C1A7919379F400035A91A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				693C1A7E19379F400035A91A /* Cocoa.framework in Frameworks */,
-				693C1A7D19379F400035A91A /* XCTest.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		69C575A418D6F61E0016F050 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2283,8 +2254,6 @@
 			children = (
 				69C575A718D6F61E0016F050 /* IUEditor.app */,
 				69C575C818D6F61E0016F050 /* IUEditorTests.xctest */,
-				693C1A6219379F3F0035A91A /* CommandEditor.app */,
-				693C1A7C19379F400035A91A /* CommandEditorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2489,41 +2458,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		693C1A6119379F3F0035A91A /* CommandEditor */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 693C1A8D19379F400035A91A /* Build configuration list for PBXNativeTarget "CommandEditor" */;
-			buildPhases = (
-				693C1A5E19379F3F0035A91A /* Sources */,
-				693C1A5F19379F3F0035A91A /* Frameworks */,
-				693C1A6019379F3F0035A91A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = CommandEditor;
-			productName = CommandEditor;
-			productReference = 693C1A6219379F3F0035A91A /* CommandEditor.app */;
-			productType = "com.apple.product-type.application";
-		};
-		693C1A7B19379F400035A91A /* CommandEditorTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 693C1A8E19379F400035A91A /* Build configuration list for PBXNativeTarget "CommandEditorTests" */;
-			buildPhases = (
-				693C1A7819379F400035A91A /* Sources */,
-				693C1A7919379F400035A91A /* Frameworks */,
-				693C1A7A19379F400035A91A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				693C1A8019379F400035A91A /* PBXTargetDependency */,
-			);
-			name = CommandEditorTests;
-			productName = CommandEditorTests;
-			productReference = 693C1A7C19379F400035A91A /* CommandEditorTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		69C575A618D6F61E0016F050 /* IUEditor */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 69C575D818D6F61E0016F050 /* Build configuration list for PBXNativeTarget "IUEditor" */;
@@ -2570,9 +2504,6 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = JDLab;
 				TargetAttributes = {
-					693C1A7B19379F400035A91A = {
-						TestTargetID = 69C575A618D6F61E0016F050;
-					};
 					69C575C718D6F61E0016F050 = {
 						TestTargetID = 69C575A618D6F61E0016F050;
 					};
@@ -2593,27 +2524,11 @@
 			targets = (
 				69C575A618D6F61E0016F050 /* IUEditor */,
 				69C575C718D6F61E0016F050 /* IUEditorTests */,
-				693C1A6119379F3F0035A91A /* CommandEditor */,
-				693C1A7B19379F400035A91A /* CommandEditorTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		693C1A6019379F3F0035A91A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		693C1A7A19379F400035A91A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		69C575A518D6F61E0016F050 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3019,20 +2934,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		693C1A5E19379F3F0035A91A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		693C1A7819379F400035A91A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		69C575A318D6F61E0016F050 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3202,11 +3103,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		693C1A8019379F400035A91A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 693C1A6119379F3F0035A91A /* CommandEditor */;
-			targetProxy = 693C1A7F19379F400035A91A /* PBXContainerItemProxy */;
-		};
 		69C575CD18D6F61E0016F050 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 69C575A618D6F61E0016F050 /* IUEditor */;
@@ -3250,84 +3146,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		693C1A8919379F400035A91A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CommandEditor/CommandEditor-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = "CommandEditor/CommandEditor-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		693C1A8A19379F400035A91A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CommandEditor/CommandEditor-Prefix.pch";
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = "CommandEditor/CommandEditor-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		693C1A8B19379F400035A91A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/IUEditor.app/Contents/MacOS/IUEditor";
-				CLANG_ENABLE_MODULES = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CommandEditor/CommandEditor-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = "CommandEditorTests/CommandEditorTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		693C1A8C19379F400035A91A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/IUEditor.app/Contents/MacOS/IUEditor";
-				CLANG_ENABLE_MODULES = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CommandEditor/CommandEditor-Prefix.pch";
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = "CommandEditorTests/CommandEditorTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 		69C575D618D6F61E0016F050 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3471,24 +3289,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		693C1A8D19379F400035A91A /* Build configuration list for PBXNativeTarget "CommandEditor" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				693C1A8919379F400035A91A /* Debug */,
-				693C1A8A19379F400035A91A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		693C1A8E19379F400035A91A /* Build configuration list for PBXNativeTarget "CommandEditorTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				693C1A8B19379F400035A91A /* Debug */,
-				693C1A8C19379F400035A91A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		69C575A218D6F61E0016F050 /* Build configuration list for PBXProject "IUEditor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
