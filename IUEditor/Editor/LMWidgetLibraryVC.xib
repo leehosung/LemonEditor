@@ -34,7 +34,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <box autoresizesSubviews="NO" fixedFrame="YES" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="jZo-ts-vu9">
-                    <rect key="frame" x="6" y="6" width="250" height="50"/>
+                    <rect key="frame" x="10" y="6" width="250" height="50"/>
                     <view key="contentView">
                         <rect key="frame" x="1" y="1" width="248" height="48"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,7 +50,7 @@
                     </connections>
                 </box>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sVQ-VF-dvq">
-                    <rect key="frame" x="54" y="31" width="239" height="17"/>
+                    <rect key="frame" x="58" y="31" width="239" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Transition" id="T0n-Ba-ejf">
                         <font key="font" metaFont="systemBold" size="12"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -61,7 +61,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x7L-OK-xtJ">
-                    <rect key="frame" x="54" y="13" width="194" height="17"/>
+                    <rect key="frame" x="58" y="13" width="194" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="IU Transition View" id="6ah-Bl-vSl">
                         <font key="font" metaFont="system" size="10"/>
                         <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -72,13 +72,13 @@
                     </connections>
                 </textField>
                 <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" alphaValue="0.29999999999999999" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="v3c-Wx-kU0">
-                    <rect key="frame" x="6" y="-2" width="250" height="5"/>
+                    <rect key="frame" x="10" y="-2" width="250" height="5"/>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="system"/>
                 </box>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Na-AZ-8wz">
-                    <rect key="frame" x="15" y="21" width="30" height="22"/>
+                    <rect key="frame" x="19" y="21" width="30" height="22"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="tool_transition" id="j7x-lS-JWu"/>
                     <connections>
                         <binding destination="Y4D-g3-cxE" name="value" keyPath="representedObject.image" id="ooO-72-ri6"/>
