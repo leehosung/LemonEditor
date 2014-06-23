@@ -20,6 +20,12 @@ $(document).ready(function(){
             $(this).bind(eventType, transitionAnimation);
         }
                             
+        var firstObj = $(this).children()[0];
+        $(firstObj).css('display', 'block');
+        var secondObj = $(this).children()[1];
+        $(secondObj).css('display', 'none');
+
+                            
 	});
                   
 	//move : current viewport pc type
