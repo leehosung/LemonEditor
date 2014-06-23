@@ -42,9 +42,6 @@
 }
 
 
-
-
-
 - (BOOL)canChangeXByUserInput{
     return NO;
 }
