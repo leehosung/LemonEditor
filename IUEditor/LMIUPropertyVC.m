@@ -176,7 +176,9 @@
 }
 
 - (void)performDoubleClick:(NSNotification*)noti{
-    assert([doubleClickFocusVC respondsToSelector:@selector(performFocus:)]);
+    if (doubleClickFocusVC) {
+        assert([doubleClickFocusVC respondsToSelector:@selector(performFocus:)]);
+    }
     [doubleClickFocusVC performFocus:noti];
 }
 
