@@ -52,6 +52,25 @@
     }
 }
 
+- (void)setController:(IUController *)controller{
+    NSAssert(_controller == nil, @"duplicated initialize" );
+    _controller = controller;
+    [self addObserver:self forKeyPath:[controller keyPathFromControllerToProperty:@"link"] options:0 context:nil];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    id value = [self valueForKeyPath:[_controller keyPathFromControllerToProperty:@"link"]];
+    if (value == NSNoSelectionMarker || value == nil) {
+        [_pageLinkCB setStringValue:@""];
+    }
+    else if (value == NSMultipleValuesMarker) {
+        [_pageLinkCB setStringValue:@" - Multiple Value"];
+    }
+    else {
+        [_pageLinkCB setStringValue:value];
+    }
+}
+
 //called when combobox selection is changed by click
 - (void)comboBoxSelectionDidChange:(NSNotification *)notification{
     NSString *link = [_pageLinkCB objectValueOfSelectedItem];
