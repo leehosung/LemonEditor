@@ -463,6 +463,7 @@
 		69965421190F9F1D000379DA /* LMPropertyIUCollectionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6996541F190F9F1D000379DA /* LMPropertyIUCollectionVC.xib */; };
 		6999161D1919F05E000ECF57 /* PGSubmitButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6999161C1919F05E000ECF57 /* PGSubmitButton.m */; };
 		699916201919F090000ECF57 /* PGForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 6999161F1919F090000ECF57 /* PGForm.m */; };
+		699D12DB1957D17A0096B21C /* handArrow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 699D12DA1957D17A0096B21C /* handArrow.jpg */; };
 		69A45DE018F6702C00C551D9 /* LMPropertyBorderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A45DDE18F6702C00C551D9 /* LMPropertyBorderVC.m */; };
 		69A45DE118F6702C00C551D9 /* LMPropertyBorderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69A45DDF18F6702C00C551D9 /* LMPropertyBorderVC.xib */; };
 		69AB7EAC19062598009E5195 /* IUTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB7EAB19062598009E5195 /* IUTransition.m */; };
@@ -1137,6 +1138,7 @@
 		6999161C1919F05E000ECF57 /* PGSubmitButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSubmitButton.m; sourceTree = "<group>"; };
 		6999161E1919F090000ECF57 /* PGForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGForm.h; sourceTree = "<group>"; };
 		6999161F1919F090000ECF57 /* PGForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGForm.m; sourceTree = "<group>"; };
+		699D12DA1957D17A0096B21C /* handArrow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = handArrow.jpg; sourceTree = "<group>"; };
 		69A45DDD18F6702C00C551D9 /* LMPropertyBorderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyBorderVC.h; sourceTree = "<group>"; };
 		69A45DDE18F6702C00C551D9 /* LMPropertyBorderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyBorderVC.m; sourceTree = "<group>"; };
 		69A45DDF18F6702C00C551D9 /* LMPropertyBorderVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyBorderVC.xib; sourceTree = "<group>"; };
@@ -2265,6 +2267,7 @@
 				69FFB288195041E500DA2783 /* LMPropertyProgrammingType2VC.h */,
 				69FFB289195041E500DA2783 /* LMPropertyProgrammingType2VC.m */,
 				69FFB28A195041E500DA2783 /* LMPropertyProgrammingType2VC.xib */,
+				699D12DA1957D17A0096B21C /* handArrow.jpg */,
 				CBFBE67C192A07A300F03F76 /* SampleTemplate */,
 				690A409E18E170AC00095263 /* Resource */,
 				3DD4786A193DB2F900639AB5 /* IUDebug */,
@@ -2673,6 +2676,7 @@
 				696D1C9A18E5366400B4AB16 /* webTemplate.html in Resources */,
 				2628C93A191A396400D9D8CD /* add_section.png in Resources */,
 				3DF803DB18FE62C900913505 /* panel_right.png in Resources */,
+				699D12DB1957D17A0096B21C /* handArrow.jpg in Resources */,
 				CBFBE685192AF32E00F03F76 /* sampleTemplate.plist in Resources */,
 				265BC57A190FA9B600A1758F /* controller@2x.png in Resources */,
 				2608C1E0193DE6BC00DD1B42 /* warning@2x.png in Resources */,
