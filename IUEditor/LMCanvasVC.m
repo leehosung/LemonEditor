@@ -292,7 +292,19 @@
     if(identifier == nil){
         return;
     }
-    NSArray *addArray = [NSArray arrayWithObject:identifier];
+    
+    NSString *selectedID = identifier;
+    
+    IUBox *iu = [self.controller IUBoxByIdentifier:identifier];
+    if([iu isKindOfClass:[IUItem class]]){
+        IUBox *parentIU = iu.parent;
+        if([self.controller.selectedIdentifiers containsString:parentIU.htmlID] == NO &&
+           [self.controller.selectedIdentifiers containsString:identifier] == NO){
+            selectedID = parentIU.htmlID;
+        }
+    }
+    
+    NSArray *addArray = [NSArray arrayWithObject:selectedID];
     
     /*
      Even it is selected object, still select it again.
