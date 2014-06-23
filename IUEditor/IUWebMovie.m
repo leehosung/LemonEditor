@@ -21,7 +21,7 @@
     if(self){
         _thumbnail = NO;
         _type = @"webMovie";
-        _webMovieSource = @"<iframe width=\"560\" height=\"315\" src=\"//www.youtube.com/embed/9bZkp7q19f0?list=PLEC422D53B7588DC7\" frameborder=\"0\" allowfullscreen></iframe>";
+        self.webMovieSource = @"<iframe width=\"560\" height=\"315\" src=\"//www.youtube.com/embed/9bZkp7q19f0?list=PLEC422D53B7588DC7\" frameborder=\"0\" allowfullscreen></iframe>";
     }
     return self;
 }

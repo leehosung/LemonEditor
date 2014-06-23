@@ -523,7 +523,8 @@ static NSString * IUCompilerTagOption = @"tag";
     }
 #pragma mark IUMovie
     else if([iu isKindOfClass:[IUMovie class]]){
-        [code addCodeLineWithFormat:@"<video %@>", [self HTMLAttributes:iu option:nil]];
+        NSDictionary *option = [NSDictionary dictionaryWithObject:@(NO) forKey:@"editor"];
+        [code addCodeLineWithFormat:@"<video %@>", [self HTMLAttributes:iu option:option]];
         
         if(((IUMovie *)iu).videoPath){
             NSMutableString *compatibilitySrc = [NSMutableString stringWithString:@"\
