@@ -11,6 +11,14 @@
 
 @implementation IUSheet
 
+-(id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
+    self = [super initWithProject:project options:options];
+    if(self){
+        _ghostOpacity = 0.5;
+    }
+    return self;
+}
+
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
     if (self) {
@@ -23,6 +31,18 @@
     }
     return self;
 }
+
+-(void)encodeWithCoder:(NSCoder *)aCoder{
+    [super encodeWithCoder:aCoder];
+    [aCoder encodeFloat:_ghostX forKey:@"ghostX"];
+    [aCoder encodeFloat:_ghostY forKey:@"ghostY"];
+    [aCoder encodeFloat:_ghostOpacity forKey:@"ghostOpacity"];
+    [aCoder encodeObject:_ghostImageName forKey:@"ghostImageName"];
+    [aCoder encodeObject:_group forKey:@"group"];
+}
+
+
+
 
 
 - (BOOL)canChangeXByUserInput{
@@ -37,16 +57,6 @@
 
 - (BOOL)canChangeHeightByUserInput{
     return NO;
-}
-
-
--(void)encodeWithCoder:(NSCoder *)aCoder{
-    [super encodeWithCoder:aCoder];
-    [aCoder encodeFloat:_ghostX forKey:@"ghostX"];
-    [aCoder encodeFloat:_ghostY forKey:@"ghostY"];
-    [aCoder encodeFloat:_ghostOpacity forKey:@"ghostOpacity"];
-    [aCoder encodeObject:_ghostImageName forKey:@"ghostImageName"];
-    [aCoder encodeObject:_group forKey:@"group"];
 }
 
 

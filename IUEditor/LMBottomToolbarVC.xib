@@ -218,7 +218,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="108" id="weh-Y6-vDb"/>
                                 </constraints>
-                                <sliderCell key="cell" controlSize="mini" state="on" alignment="left" maxValue="1" doubleValue="0.25" tickMarkPosition="above" numberOfTickMarks="3" sliderType="linear" id="9Ca-8J-vnI"/>
+                                <sliderCell key="cell" controlSize="mini" state="on" alignment="left" maxValue="1" doubleValue="0.5" tickMarkPosition="above" numberOfTickMarks="3" sliderType="linear" id="9Ca-8J-vnI"/>
                             </slider>
                         </subviews>
                     </view>
