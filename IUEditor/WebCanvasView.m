@@ -450,6 +450,8 @@
    return NSMakeRange(totalRange.text.length , proposedRange.text.length);
 }
 
+/*
+ Disabling text edit mode
 - (BOOL)webView:(WebView *)webView shouldInsertText:(NSString *)text replacingDOMRange:(DOMRange *)range givenAction:(WebViewInsertAction)action{
     
     DOMHTMLElement *IUNode = [self IUNodeAtCurrentNode:range.startContainer];
@@ -483,16 +485,13 @@
     }
     //[self.VC insertString:text identifier:IUNode.idName withRange:iuRange];
     
-//b    [self.VC selectTextRange:iuRange identifier:IUNode.idName htmlNode:IUNode];
-    /*
+   [self.VC selectTextRange:iuRange identifier:IUNode.idName htmlNode:IUNode];
     if([text isEqualToString:@"\n"]){
         [self.VC insertNewline:iuRange identifier:IUNode.idName htmlNode:IUNode];
         return NO;
     }
-     */
-    
+ 
     JDInfoLog(@"insertText [IU:%@] : range(%ld, %ld) : %@ ", IUNode.idName, iuRange.location, iuRange.length, text);
-    
     
     return YES;
 }
@@ -557,6 +556,9 @@
 - (BOOL)webView:(WebView *)webView shouldApplyStyle:(DOMCSSStyleDeclaration *)style toElementsInDOMRange:(DOMRange *)range{
     return NO;
 }
+ 
+ */
+
 
 - (void)changeDOMRange:(NSPoint)point{
     DOMRange *range = [self editableDOMRangeForPoint:point];
