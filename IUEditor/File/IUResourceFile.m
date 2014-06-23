@@ -45,7 +45,7 @@
     if ([self.parent isKindOfClass:[IUProject class]]) {
         return [self.parent.absolutePath stringByAppendingPathComponent:_name];
     }
-    assert(self.parent.absolutePath);
+    NSAssert(self.parent.absolutePath, @"parent path");
     return [self.parent.absolutePath stringByAppendingPathComponent:_name];
 }
 

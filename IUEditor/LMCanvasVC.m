@@ -179,6 +179,9 @@
 
 - (void)setSheet:(IUSheet *)sheet{
     NSAssert(self.documentBasePath != nil, @"resourcePath is nil");
+    if (self.documentBasePath == nil) {
+        return;
+    }
     JDSectionInfoLog( IULogSource, @"resourcePath  : %@", self.documentBasePath);
     [[self gridView] clearAllLayer];
     [_sheet setDelegate:nil];
