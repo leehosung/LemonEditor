@@ -27,17 +27,17 @@ function transitionAnimation(eventObject){
         return;
     }
     var effect = $(this).attr('transitionanimation');
+    var isSelected= $(this).data('isSelected');
+    var secondObj = $(this).find('.Item2');
     
     console.log('com');
-    if ($(this).hasClass('selected')){
-        var secondObj = $(this).children()[1];
+    if (isSelected=='true'){
         $(secondObj).hide(effect);
-        $(this).removeClass('selected');
+        $(this).data('isSelected', 'false');
     }
     else {
-        var secondObj = $(this).children()[1];
         $(secondObj).show(effect);
-        $(this).addClass('selected');
+        $(this).data('isSelected', 'true');
     }
 }
 
