@@ -223,9 +223,7 @@
         
         
         //set Font size
-        NSUInteger iuFontSize;
         if([self valueForTag:IUCSSTagFontSize] == nil){
-            iuFontSize = currentFontSize;
             [self setValue:@(currentFontSize) forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagFontSize]];
         }
         
@@ -234,7 +232,7 @@
             
         }
         else{
-            iuFontSize = [[self valueForTag:IUCSSTagFontSize] integerValue];
+            NSUInteger iuFontSize = [[self valueForTag:IUCSSTagFontSize] integerValue];
             [_fontSizeComboBox setStringValue:[NSString stringWithFormat:@"%ld", iuFontSize]];
         }
         

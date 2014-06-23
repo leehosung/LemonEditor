@@ -296,7 +296,7 @@
     [[NSWorkspace sharedWorkspace] openFile:_project.directoryPath];
 }
 
-- (BOOL)keyDown:(NSEvent *)event{
+- (void)keyDown:(NSEvent *)event{
     if (event.keyCode == 36) { // enter key
 
         LMFileNaviCellView *cell = [self.navOutlineView selectedView];
@@ -304,6 +304,5 @@
         [self.navOutlineView.window makeFirstResponder:cell.textField];
         
     }
-    return YES;
 }
 @end
