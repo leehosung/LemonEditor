@@ -45,6 +45,10 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NBP-4a-bCX">
+                                <rect key="frame" x="519" y="3" width="48" height="48"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="handArrow" id="uGl-HN-x0O"/>
+                            </imageView>
                         </subviews>
                     </view>
                     <color key="borderColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -59,4 +63,7 @@
             </constraints>
         </customView>
     </objects>
+    <resources>
+        <image name="handArrow" width="120" height="120"/>
+    </resources>
 </document>
