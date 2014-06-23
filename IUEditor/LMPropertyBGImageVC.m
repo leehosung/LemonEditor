@@ -97,6 +97,9 @@
 
     //image filename
     NSString *filename = _imageNameComboBox.stringValue;
+    if(filename == nil || filename.length == 0){
+        return;
+    }
     
     //getting path
     IUResourceFile *file = [_resourceManager resourceFileWithName:filename];
