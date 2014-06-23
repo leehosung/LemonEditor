@@ -26,10 +26,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="252" height="198"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="minSize" width="252" height="198"/>
+                                <size key="minSize" width="237" height="198"/>
                                 <size key="maxSize" width="463" height="10000000"/>
                                 <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="minSize" width="252" height="198"/>
+                                <size key="minSize" width="237" height="198"/>
                                 <size key="maxSize" width="463" height="10000000"/>
                             </textView>
                         </subviews>
@@ -61,7 +61,7 @@
                     </textFieldCell>
                 </textField>
                 <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="r91-1S-Lyg">
-                    <rect key="frame" x="22" y="246" width="254" height="5"/>
+                    <rect key="frame" x="22" y="1" width="254" height="5"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="6Zx-l7-GfC"/>
                         <constraint firstAttribute="width" constant="254" id="7PV-oV-LPj"/>
@@ -74,9 +74,9 @@
             <constraints>
                 <constraint firstItem="r91-1S-Lyg" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="22" id="BRS-C0-RQg"/>
                 <constraint firstItem="0tW-fg-K0n" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="22" id="Fjj-GK-2cQ"/>
-                <constraint firstItem="r91-1S-Lyg" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="1" id="JRx-ja-Ndk"/>
+                <constraint firstItem="r91-1S-Lyg" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="246" id="JRx-ja-Ndk"/>
                 <constraint firstItem="JCt-F7-wxr" firstAttribute="top" secondItem="0tW-fg-K0n" secondAttribute="bottom" constant="8" id="Pme-Fr-SyI"/>
-                <constraint firstItem="0tW-fg-K0n" firstAttribute="top" secondItem="r91-1S-Lyg" secondAttribute="bottom" constant="13" id="Qft-Yx-vpu"/>
+                <constraint firstItem="0tW-fg-K0n" firstAttribute="top" secondItem="r91-1S-Lyg" secondAttribute="bottom" constant="-232" id="Qft-Yx-vpu"/>
                 <constraint firstItem="JCt-F7-wxr" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="22" id="S2e-H7-fi1"/>
             </constraints>
         </customView>
