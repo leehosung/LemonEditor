@@ -30,12 +30,17 @@
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
+
 - (IBAction)applyCurrentSource:(id)sender {
+#if DEBUG
     NSString *html = [_codeTextView string];
     [_canvasVC applyHtmlString:html];
+#endif
 }
 - (IBAction)reloadOriginalSource:(id)sender {
+#if DEBUG
     [_canvasVC reloadOriginalDocument];
+#endif
 }
 
 @end

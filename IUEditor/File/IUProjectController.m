@@ -98,7 +98,6 @@
 
 
 - (void)reopenDocumentForURL:(NSURL *)urlOrNil withContentsOfURL:(NSURL *)contentsURL display:(BOOL)displayDocument completionHandler:(void (^)(NSDocument *, BOOL, NSError *))completionHandler{
-    //display가 YES여야지 showWindow를 호출하면서 firstSelect를 함.
     [super reopenDocumentForURL:urlOrNil withContentsOfURL:contentsURL display:YES completionHandler:completionHandler];
 }
 

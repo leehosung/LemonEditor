@@ -49,8 +49,12 @@
 - (void)selectIUInRect:(NSRect)frame;
 
 //text
+#if CURRENT_TEXT_VERSION >= TEXT_SELECTION_VERSION
+
 - (void)updateNewline:(NSRange)range identifier:(NSString *)identifier htmlNode:(DOMHTMLElement *)node;
 - (void)selectTextRange:(NSRange)range identifier:(NSString *)identifier htmlNode:(DOMHTMLElement *)node;
+
+#endif
 /*
 - (void)selectTextRange:(NSRange)range identifier:(NSString *)identifier;
 - (void)insertString:(NSString *)string identifier:(NSString *)identifier withRange:(NSRange)range;

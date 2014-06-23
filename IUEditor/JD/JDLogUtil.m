@@ -11,7 +11,6 @@
 
 #import "JDLogUtil.h"
 
-#if JDLOGGING
 //set level!
 static JDLog_Level globalLogLevel = JDLog_Level_Trace;
 static BOOL addLevel;
@@ -38,7 +37,6 @@ const char *const _jd_level_short_names[] = {
 	"D",
 	"T"
 };
-#endif
 
 static NSMutableSet *enableLogSection;
 
@@ -187,7 +185,8 @@ static NSMutableSet *enableLogSection;
 }
 #else
 
-+(void)log:(int)atLevel fromFile:(NSString *)theFile fromFunction:(NSString *)theFunction fromLine:(int)theLine withMessage:(NSString *)theMessage, ... {}
++(void)log:(int)atLevel fromFile:(NSString *)theFile fromFunction:(const char [])theFunction fromLine:(int)theLine withMessage:(NSString *)theMessage{}
++(void)sectionLog:(NSString *)section level:(int)atLevel fromFile:(NSString *)theFile fromFunction:(const char [])theFunction fromLine:(int)theLine withMessage:(NSString *)theMessage{}
 
 +(void)enableLogSection:(NSString*)logSection{}
 +(void)log:(NSString*)logSection key:(NSString*)key string:(NSString*)log{}
@@ -195,6 +194,7 @@ static NSMutableSet *enableLogSection;
 +(void)log:(NSString*)logSection key:(NSString*)key size:(NSSize)size{}
 +(void)log:(NSString*)logSection key:(NSString*)key point:(NSPoint)point{}
 +(void)log:(NSString*)key err:(NSError*)err{}
++(void)log:(NSString*)key string:(NSString *)string{}
 
 +(void)alert:(NSString*)alertMsg{}
 +(void)alert:(NSString*)alertMsg title:(NSString*)title{}
