@@ -13,7 +13,9 @@
 @property (weak) IBOutlet NSTabView *tabView;
 @property (weak) IBOutlet NSCollectionView *collectionListV;
 @property (weak) IBOutlet NSCollectionView *collectionIconV;
-@property  NSArrayController *resourceArrayController;
+
+@property (strong) IBOutlet NSArrayController *resourceArrayController;
+
 @end
 
 @implementation LMResourceVC
@@ -22,20 +24,17 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        _resourceArrayController = [[NSArrayController alloc] init];
     }
     return self;
 }
 
 -(void)awakeFromNib{
-    [_collectionListV bind:@"content" toObject:_resourceArrayController withKeyPath:@"arrangedObjects" options:nil];
-    [_collectionIconV bind:@"content" toObject:_resourceArrayController withKeyPath:@"arrangedObjects" options:nil];
+    [_collectionListV bind:NSContentBinding toObject:_resourceArrayController withKeyPath:@"arrangedObjects" options:nil];
+    [_collectionIconV bind:NSContentBinding toObject:_resourceArrayController withKeyPath:@"arrangedObjects" options:nil];
+    [_resourceArrayController bind:NSContentArrayBinding toObject:self withKeyPath:@"manager.imageAndVideoFiles" options:nil];
+
 }
 
--(void)setManager:(IUResourceManager *)manager{
-    _manager = manager;
-    [_resourceArrayController bind:@"contentArray" toObject:manager withKeyPath:@"imageAndVideoFiles" options:nil];
-}
 
 - (BOOL)collectionView:(NSCollectionView *)collectionView writeItemsAtIndexes:(NSIndexSet *)indexes toPasteboard:(NSPasteboard *)pasteboard{
     NSUInteger index = [indexes firstIndex];

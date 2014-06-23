@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="collectionIconV" destination="PfT-En-tr1" id="oMk-6g-hvI"/>
                 <outlet property="collectionListV" destination="IeW-g4-6nd" id="30k-gx-2Xn"/>
+                <outlet property="resourceArrayController" destination="wOM-ER-3HZ" id="EKP-uR-SBO"/>
                 <outlet property="tabView" destination="g6L-7m-n83" id="Ebn-hl-gve"/>
                 <outlet property="view" destination="iGv-yg-ab5" id="Hla-o2-Cng"/>
             </connections>
@@ -24,6 +25,7 @@
                 <outlet property="view" destination="QKh-6Y-8ZC" id="pXe-jf-FPb"/>
             </connections>
         </collectionViewItem>
+        <arrayController id="wOM-ER-3HZ" userLabel="Resource Array Controller"/>
         <userDefaultsController representsSharedInstance="YES" id="Bh2-8w-sOn"/>
         <customView id="iGv-yg-ab5" userLabel="Library - list">
             <rect key="frame" x="0.0" y="0.0" width="300" height="380"/>
@@ -135,6 +137,14 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </searchFieldCell>
+                                        <connections>
+                                            <binding destination="wOM-ER-3HZ" name="predicate" keyPath="filterPredicate" id="SoI-Xi-Niz">
+                                                <dictionary key="options">
+                                                    <string key="NSDisplayName">predicate</string>
+                                                    <string key="NSPredicateFormat">name contains $value</string>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
                                     </searchField>
                                     <button toolTip="Collection View" translatesAutoresizingMaskIntoConstraints="NO" id="i50-VL-0Xr" userLabel="iconBtn">
                                         <rect key="frame" x="268" y="1" width="29" height="28"/>
@@ -271,7 +281,7 @@
                     </connections>
                 </textField>
                 <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" alphaValue="0.5" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="0Sd-Ov-Pwd">
-                    <rect key="frame" x="5" y="-2" width="290" height="5"/>
+                    <rect key="frame" x="5" y="-2" width="290" height="4"/>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="system"/>
