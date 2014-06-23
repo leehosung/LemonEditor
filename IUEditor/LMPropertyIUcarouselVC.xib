@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyIUcarouselVC">
             <connections>
+                <outlet property="arrowControlMatrix" destination="MbT-Dd-KU9" id="EZg-Jw-b1d"/>
                 <outlet property="arrowView" destination="pcJ-na-9Im" id="U8O-41-e90"/>
                 <outlet property="autoplayMatrix" destination="3rt-7L-gMK" id="Hn6-bB-nF0"/>
                 <outlet property="carouselMainView" destination="Q3L-Eb-iN0" id="mrn-Sp-gMX"/>
