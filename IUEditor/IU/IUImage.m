@@ -33,8 +33,7 @@
 
 - (void)setImageName:(NSString *)imageName{
     _imageName = imageName;
-    [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.htmlID];
-
+    [self updateHTML];
 }
 
 @end
