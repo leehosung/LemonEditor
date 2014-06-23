@@ -68,6 +68,56 @@
     return [_rootGroup.childrenFiles[0] absolutePath];
 }
 
+- (IUResourceFile *)overwriteResourceWithContentOfPath:(NSString *)path{
+    NSString *fileName = [path lastPathComponent];
+    
+    //double check duplicated name
+    //if name is duplicated, alert and return
+    
+    IUResourceFile *existedFile = [self resourceFileWithName:fileName];
+    if (existedFile == nil) {
+        [JDLogUtil alert:@"this file is empty"];
+        return nil;
+    }
+    
+    //get uti at path
+    //if it is image,
+    //add to resource image group
+    //send kvo message : imagefiles
+    
+    
+    if ([JDFileUtil isImageFileExtension:[path pathExtension]]) {
+        [self willChangeValueForKey:@"imageAndVideoFiles"];
+        [self willChangeValueForKey:@"imageFiles"];
+        existedFile.originalFilePath = path;
+        [[[[NSApp mainWindow] windowController] document] saveDocument:self];
+        
+        [self didChangeValueForKey:@"imageFiles"];
+        [self didChangeValueForKey:@"imageAndVideoFiles"];
+        
+        
+        return existedFile;
+    }
+    
+    //if is is video,
+    //add to video greoup
+    //send kvo message : videofiles
+    
+    else if ([JDFileUtil isMovieFileExtension:[path pathExtension]]) {
+        [self willChangeValueForKey:@"imageAndVideoFiles"];
+        [self willChangeValueForKey:@"movieFiles"];
+        existedFile.originalFilePath = path;
+        [self didChangeValueForKey:@"movieFiles"];
+        [self didChangeValueForKey:@"imageAndVideoFiles"];
+        
+        [[[[NSApp mainWindow] windowController] document] saveDocument:self];
+        
+        return existedFile;
+    }
+    return nil;
+  
+}
+
 - (IUResourceFile*)insertResourceWithContentOfPath:(NSString*)path{
     NSString *fileName = [path lastPathComponent];
 

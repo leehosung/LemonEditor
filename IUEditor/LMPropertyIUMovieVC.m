@@ -89,16 +89,23 @@
             NSString *videoname = [[videoFileName lastPathComponent] stringByDeletingPathExtension];
             NSString *thumbFileName = [[NSString alloc] initWithFormat:@"%@_thumbnail.png", videoname];
             
-            NSString *imageAbsolutePath = [NSString stringWithFormat:@"%@/", [self.resourceManager imageDirectory]];
-            thumbFileName = [IUImageUtil writeToFile:thumbnail filePath:imageAbsolutePath fileName:thumbFileName checkFileName:NO];
+//            NSString *imageAbsolutePath = [NSString stringWithFormat:@"%@/", [self.resourceManager imageDirectory]];
+            NSString *imageTmpAbsolutePath = NSTemporaryDirectory();
+
+            thumbFileName = [IUImageUtil writeToFile:thumbnail filePath:imageTmpAbsolutePath fileName:thumbFileName checkFileName:NO];
             
             
-            //save image resourceNode
-            [_resourceManager insertResourceWithContentOfPath:imageAbsolutePath];
-            
-            
-            NSString *posterPath = [NSString stringWithFormat:@"Images/%@", thumbFileName];
-            [self setValue:posterPath forKeyPath:[_controller keyPathFromControllerToProperty:@"posterPath"] ];
+            IUResourceFile *thumbFile = [_resourceManager resourceFileWithName:thumbFileName];
+            if(thumbFile == nil){
+                //save image resourceNode
+                thumbFile = [_resourceManager insertResourceWithContentOfPath:[imageTmpAbsolutePath stringByAppendingPathComponent:thumbFileName]];
+            }
+            else{
+                //overwirte image
+                thumbFile = [_resourceManager overwriteResourceWithContentOfPath:[imageTmpAbsolutePath stringByAppendingPathComponent:thumbFileName]];
+                
+            }
+            [self setValue:thumbFile.relativePath forKeyPath:[_controller keyPathFromControllerToProperty:@"posterPath"] ];
             
             
             [self setValue:@(thumbnail.size.width) forKeyPath:[self CSSBindingPath:IUCSSTagWidth]];

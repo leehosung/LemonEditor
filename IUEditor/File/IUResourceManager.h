@@ -15,6 +15,7 @@
 
 - (void)setResourceGroup:(IUResourceGroup*)resourceRootGroup;
 - (IUResourceFile*)insertResourceWithContentOfPath:(NSString*)path;
+- (IUResourceFile *)overwriteResourceWithContentOfPath:(NSString *)path;
 
 /**
  @breif Getting contents in image resource group
