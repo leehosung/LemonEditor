@@ -763,7 +763,14 @@ static NSString * IUCompilerTagOption = @"tag";
         else{
             thumbnailPath = [[NSBundle mainBundle] pathForResource:@"video_bg" ofType:@"png"];
         }
-        [code addCodeLineWithFormat:@"<img src = \"%@\" width='100%%' height='100%%' style='position:absolute; left:0; top:0'>", thumbnailPath];
+        
+        [code addCodeLineWithFormat:@"<div style=\"background-image:url('%@');\
+        background-size:contain;\
+        background-repeat:no-repeat; \
+        background-position:center; \
+        width:100%%; height:100%%; \
+        position:absolute; left:0; top:0\"></div>", thumbnailPath];
+        
         
         NSString *videoPlayImagePath = [[NSBundle mainBundle] pathForResource:@"video_play" ofType:@"png"];
         [code addCodeLineWithFormat:@"<div style=\"background-image:url('%@'); \
@@ -777,7 +784,7 @@ static NSString * IUCompilerTagOption = @"tag";
         if( ((IUMovie *)iu).altText){
             [code addCodeLine:((IUMovie *)iu).altText];
         }
-        [code addCodeLine:@"</video>"];
+        [code addCodeLine:@"</div>"];
     }
 #pragma mark IUWebMovie
     else if([iu isKindOfClass:[IUWebMovie class]]){
