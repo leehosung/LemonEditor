@@ -314,6 +314,33 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
     
 }
 
+-(void)removeFromSuperviewWithFirstLeftTab{
+    NSView *superview = [self superview];
+    NSInteger index = [superview.subviews indexOfObject:self];
+    
+    if(index + 1 >= superview.subviews.count){
+        [self removeFromSuperview];
+        return ;
+    }
+    
+    NSView *rightView =[superview.subviews objectAtIndex:index+1];
+    
+    [self removeConstraints:[self constraints]];
+    [self removeFromSuperview];
+    
+    
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:rightView
+                                                                  attribute:NSLayoutAttributeLeading
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:superview
+                                                                  attribute:NSLayoutAttributeLeading
+                                                                 multiplier:1 constant:0];
+    constraint.priority = NSLayoutPriorityRequired;
+    [superview addConstraint:constraint];
+    
+}
+
+
 -(id)addSubviewFullFrame:(NSView*)subview{
     if (subview == nil) {
         return nil;

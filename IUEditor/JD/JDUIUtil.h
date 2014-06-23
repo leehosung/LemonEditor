@@ -94,6 +94,7 @@ BOOL   isNSRectContainsRect(NSRect rect, NSRect subrect);
 
 -(id)addSubviewDirectionLeftToRight:(NSView *)subview width:(CGFloat)width;
 -(void)removeFromSuperviewWithDirectionLeftToRight;
+-(void)removeFromSuperviewWithFirstLeftTab;
 
 -(void)setX:(CGFloat)x;
 -(void)setY:(CGFloat)y;

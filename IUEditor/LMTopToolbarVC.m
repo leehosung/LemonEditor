@@ -199,19 +199,27 @@
     if (openTabDocuments.count == 0) {
         assert(0);
     }
-    [tabItem.view removeFromSuperviewWithDirectionLeftToRight];
     
-    
-    NSInteger index = [openTabDocuments indexOfObject:tabItem.sheet]-1;
+    NSInteger index = [openTabDocuments indexOfObject:tabItem.sheet];
     if (index == NSNotFound) {
         assert(0);
     }
     assert(index < openTabDocuments.count);
-    
-    IUSheet *leftTabNode = [openTabDocuments objectAtIndex:index];
-    [_sheetController setSelectedObject:leftTabNode];
-    
+
+    if(index > 0){
+        [tabItem.view removeFromSuperviewWithDirectionLeftToRight];
+        IUSheet *leftTabNode = [openTabDocuments objectAtIndex:index-1];
+        [_sheetController setSelectedObject:leftTabNode];
+    }
+    else{
+        [tabItem.view removeFromSuperviewWithFirstLeftTab];
+        IUSheet *rightTabNode = [openTabDocuments objectAtIndex:index+1];
+        [_sheetController setSelectedObject:rightTabNode];
+
+        
+    }
     [openTabDocuments removeObject:tabItem.sheet];
+        
     
     
 }
