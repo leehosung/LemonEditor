@@ -73,16 +73,22 @@
 //    [self removeObserver:self forKeyPath:@"sheet.ghostImageName"];
 }
 
-- (void)document_ghostImageNameDidChange:(NSDictionary*)change{
-    if ([[_ghostImageComboBox stringValue] isEqualToString:_sheet.ghostImageName] == NO) {
-        if (_sheet.ghostImageName == nil) {
-            [_ghostImageComboBox setStringValue:@""];
-        }
-        else {
-            [_ghostImageComboBox setStringValue:_sheet.ghostImageName];
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    if([keyPath isEqualToString:@"sheet.ghostImageName"]){
+        if ([[_ghostImageComboBox stringValue] isEqualToString:_sheet.ghostImageName] == NO) {
+            if (_sheet.ghostImageName == nil) {
+                [_ghostImageComboBox setStringValue:@""];
+            }
+            else {
+                [_ghostImageComboBox setStringValue:_sheet.ghostImageName];
+            }
         }
     }
+    else{
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
 }
+
 - (IBAction)clickGhostImageComboBox:(id)sender {
     NSString *fileName = [_ghostImageComboBox objectValueOfSelectedItem];
     self.sheet.ghostImageName = fileName;
