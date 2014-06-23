@@ -13,7 +13,6 @@
                 <outlet property="fontSizeComboBox" destination="ZNa-jN-U2r" id="dzR-O6-asN"/>
                 <outlet property="fontSizeStepper" destination="G73-ed-fS4" id="MRx-n2-bZB"/>
                 <outlet property="fontStyleB" destination="uve-V4-Xm0" id="fuP-ac-K4F"/>
-                <outlet property="lineHeight" destination="T6Q-UK-fkM" id="8GY-DA-fMA"/>
                 <outlet property="lineHeightB" destination="T6Q-UK-fkM" id="o0e-i4-YGe"/>
                 <outlet property="textAlign" destination="zW3-ml-lwr" id="f8i-DW-pox"/>
                 <outlet property="textAlignB" destination="FLi-Cj-znY" id="uTr-fN-yRw"/>

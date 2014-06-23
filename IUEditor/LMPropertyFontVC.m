@@ -10,12 +10,12 @@
 #import "IUCSS.h"
 #import "IUText.h"
 #import "LMFontController.h"
+#import "PGTextField.h"
+#import "PGTextView.h"
 
 @interface LMPropertyFontVC ()
 
 @property (weak) IBOutlet NSComboBox *fontB;
-//@property (weak) IBOutlet NSTextField *fontSizeB;
-//@property (weak) IBOutlet NSStepper *fontSizeStepper;
 @property (weak) IBOutlet NSComboBox *fontSizeComboBox;
 @property (weak) IBOutlet NSColorWell *fontColorWell;
 
@@ -65,6 +65,8 @@
     [_fontColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagFontColor] options:IUBindingDictNotRaisesApplicable];
 #endif 
     
+    
+    
 }
 
 - (void)dealloc{
@@ -91,10 +93,23 @@
 #endif
         
     }
-    
-    
     return isText;
+}
+
+- (BOOL)isSelectedObjectFontType{
+    BOOL isTextType = YES;
     
+    
+    for(IUBox *box in _controller.selectedObjects){
+        if([box isMemberOfClass:[IUBox class]] == NO &&
+           [box isKindOfClass:[PGTextField class]] == NO &&
+           [box isKindOfClass:[PGTextView class]] == NO){
+            isTextType = NO;
+            break;
+        }
+        
+    }
+    return isTextType;
 }
 
 #if CURRENT_TEXT_VERSION > TEXT_SELECTION_VERSION
@@ -172,56 +187,78 @@
 #else
 - (void)selectionContextDidChange:(NSDictionary *)change{
     
-    if([self isSelectedObjectText]){
-        [_fontStyleB setEnabled:YES];
+    if([self isSelectedObjectFontType]){
         
-        if([[_controller selectedObjects] count] ==1 ){
-            BOOL weight = [[_controller keyPathFromControllerToCSSTag:IUCSSTagFontWeight] boolValue];
-            [_fontStyleB setSelected:weight forSegment:0];
-            
-            BOOL italic = [[_controller keyPathFromControllerToCSSTag:IUCSSTagFontStyle] boolValue];
-            [_fontStyleB setSelected:italic forSegment:1];
-            
-            BOOL underline = [[_controller keyPathFromControllerToCSSTag:IUCSSTagTextDecoration] boolValue];
-            [_fontStyleB setSelected:underline forSegment:2];
+        if([self isSelectedObjectText]){
+            [_fontStyleB setEnabled:YES];
+            if([[_controller selectedObjects] count] ==1 ){
+                BOOL weight = [[_controller keyPathFromControllerToCSSTag:IUCSSTagFontWeight] boolValue];
+                [_fontStyleB setSelected:weight forSegment:0];
+                
+                BOOL italic = [[_controller keyPathFromControllerToCSSTag:IUCSSTagFontStyle] boolValue];
+                [_fontStyleB setSelected:italic forSegment:1];
+                
+                BOOL underline = [[_controller keyPathFromControllerToCSSTag:IUCSSTagTextDecoration] boolValue];
+                [_fontStyleB setSelected:underline forSegment:2];
+            }
         }
-    }
-    else{
-        //not text - text field / text view
-        [_fontStyleB setEnabled:NO];
+        else{
+            [_fontStyleB setEnabled:NO];
+        }
         
-    }
-    
-    //set font name
-    NSString *iuFontName = [self valueForTag:IUCSSTagFontName];
-    if(iuFontName == nil){
-        iuFontName = currentFontName;
-        [self setValue:currentFontName forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagFontName]];
-    }
-    if(iuFontName == NSMultipleValuesMarker){
-        [_fontB setStringValue:currentFontName];
+        
+        
+        //set font name
+        NSString *iuFontName = [self valueForTag:IUCSSTagFontName];
+        if(iuFontName == nil){
+            iuFontName = currentFontName;
+            [self setValue:currentFontName forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagFontName]];
+        }
+        if(iuFontName == NSMultipleValuesMarker){
+            [_fontB setStringValue:currentFontName];
+        }
+        else{
+            [_fontB setStringValue:iuFontName];
+        }
+        
+        
+        //set Font size
+        NSUInteger iuFontSize;
+        if([self valueForTag:IUCSSTagFontSize] == nil){
+            iuFontSize = currentFontSize;
+            [self setValue:@(currentFontSize) forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagFontSize]];
+        }
+        
+        if([self valueForTag:IUCSSTagFontSize] == NSMultipleValuesMarker){
+            [_fontSizeComboBox setStringValue:[NSString stringWithFormat:@"%ld", currentFontSize]];
+            
+        }
+        else{
+            iuFontSize = [[self valueForTag:IUCSSTagFontSize] integerValue];
+            [_fontSizeComboBox setStringValue:[NSString stringWithFormat:@"%ld", iuFontSize]];
+        }
+        
+        //enable font type box
+        [_fontB setEnabled:YES];
+        [_fontSizeComboBox setEnabled:YES];
+        [_fontSizeComboBox setEditable:YES];
+        [_fontColorWell setEnabled:YES];
+        [_lineHeightB setEnabled:YES];
+        [_lineHeightB setEditable:YES];
+        [_textAlignB setEnabled:YES];
+
     }
     else{
-        [_fontB setStringValue:iuFontName];
+        //disable font type box
+        [_fontB setEnabled:NO];
+        [_fontSizeComboBox setEnabled:NO];
+        [_fontSizeComboBox setEditable:NO];
+        [_fontColorWell setEnabled:NO];
+        [_lineHeightB setEnabled:NO];
+        [_lineHeightB setEditable:NO];
+        [_textAlignB setEnabled:NO];
+        [_fontStyleB setEnabled:NO];
     }
-
-    
-    //set Font size
-    NSUInteger iuFontSize;
-    if([self valueForTag:IUCSSTagFontSize] == nil){
-        iuFontSize = currentFontSize;
-        [self setValue:@(currentFontSize) forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagFontSize]];
-    }
-    
-    if([self valueForTag:IUCSSTagFontSize] == NSMultipleValuesMarker){
-        [_fontSizeComboBox setStringValue:[NSString stringWithFormat:@"%ld", currentFontSize]];
-
-    }
-    else{
-        iuFontSize = [[self valueForTag:IUCSSTagFontSize] integerValue];
-        [_fontSizeComboBox setStringValue:[NSString stringWithFormat:@"%ld", iuFontSize]];
-    }
-    
     
 }
 
