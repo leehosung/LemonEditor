@@ -45,15 +45,17 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
     return self;
 }
 
+//open document
 - (id)initWithContentsOfURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
     return [super initWithContentsOfURL:url ofType:typeName error:outError];
 }
 
+//open autosaving document
 - (id)initForURL:(NSURL *)urlOrNil withContentsOfURL:(NSURL *)contentsURL ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
     return [super initForURL:urlOrNil withContentsOfURL:contentsURL ofType:typeName error:outError];
 }
 
-
+//make new document
 - (id)initWithType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
     self = [super initWithType:typeName error:outError];
     if(self){

@@ -10,13 +10,11 @@
 #import "IUProjectDocument.h"
 
 @implementation IUProjectController{
-    BOOL isSaved;
     NSDictionary *newDocumentOption;
 }
 
 
 - (void)newDocument:(id)sender{
-    isSaved = NO;
     [super newDocument:sender];
 }
 
@@ -33,11 +31,17 @@
     id document = [self makeUntitledDocumentOfType:[self defaultType] error:outError];
     [self addDocument:document];
 
-    if(isSaved){
-        [document makeWindowControllers];
-        [document showWindows];
-    }
     return document;
+}
+
+- (void)newDocument:(NSDocument *)document didSave:(BOOL)didSaveSuccessfully  contextInfo:(void  *)contextInfo{
+    if(contextInfo){
+        BOOL isSaved = [(__bridge id)contextInfo boolValue];
+        if(isSaved){
+            [document makeWindowControllers];
+            [document showWindows];
+        }
+    }
 }
 
 - (id)makeUntitledDocumentOfType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
@@ -56,8 +60,7 @@
         if( url ){
             [(IUProjectDocument *)document makeNewProjectWithOption:newDocumentOption URL:url];
             newDocumentOption = nil;
-            [document saveToURL:url ofType:typeName forSaveOperation:NSSaveOperation delegate:nil didSaveSelector:nil contextInfo:nil];
-            isSaved = YES;
+            [document saveToURL:url ofType:typeName forSaveOperation:NSSaveOperation delegate:self didSaveSelector:@selector(newDocument:didSave:contextInfo:) contextInfo:(__bridge void *)([NSNumber numberWithBool:YES])];
         }
     }
     
