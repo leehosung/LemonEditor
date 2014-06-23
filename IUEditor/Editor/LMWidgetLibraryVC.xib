@@ -33,12 +33,16 @@
             <rect key="frame" x="0.0" y="0.0" width="264" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <box autoresizesSubviews="NO" fixedFrame="YES" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="jZo-ts-vu9">
-                    <rect key="frame" x="10" y="6" width="250" height="50"/>
+                <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="jZo-ts-vu9">
+                    <rect key="frame" x="6" y="6" width="250" height="50"/>
                     <view key="contentView">
                         <rect key="frame" x="1" y="1" width="248" height="48"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="21v-90-hmj"/>
+                        <constraint firstAttribute="width" constant="250" id="GCC-Nr-gMf"/>
+                    </constraints>
                     <color key="borderColor" red="0.28235295414924622" green="0.5372549295425415" blue="0.92549026012420654" alpha="1" colorSpace="deviceRGB"/>
                     <color key="fillColor" red="0.92156862745098034" green="0.98039215686274506" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
@@ -49,8 +53,12 @@
                         </binding>
                     </connections>
                 </box>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sVQ-VF-dvq">
-                    <rect key="frame" x="58" y="31" width="239" height="17"/>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="sVQ-VF-dvq">
+                    <rect key="frame" x="54" y="31" width="190" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="186" id="3B1-lJ-2Ft"/>
+                        <constraint firstAttribute="height" constant="17" id="K7w-OM-KBx"/>
+                    </constraints>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Transition" id="T0n-Ba-ejf">
                         <font key="font" metaFont="systemBold" size="12"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -60,8 +68,12 @@
                         <binding destination="Y4D-g3-cxE" name="value" keyPath="representedObject.title" id="h62-CD-IpC"/>
                     </connections>
                 </textField>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x7L-OK-xtJ">
-                    <rect key="frame" x="58" y="13" width="194" height="17"/>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="x7L-OK-xtJ">
+                    <rect key="frame" x="54" y="13" width="194" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="190" id="WLH-BT-cCY"/>
+                        <constraint firstAttribute="height" constant="17" id="dzq-w1-HRv"/>
+                    </constraints>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="IU Transition View" id="6ah-Bl-vSl">
                         <font key="font" metaFont="system" size="10"/>
                         <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -71,20 +83,40 @@
                         <binding destination="Y4D-g3-cxE" name="value" keyPath="representedObject.shortDesc" id="IKm-xO-DsP"/>
                     </connections>
                 </textField>
-                <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" alphaValue="0.29999999999999999" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="v3c-Wx-kU0">
-                    <rect key="frame" x="10" y="-2" width="250" height="5"/>
+                <box autoresizesSubviews="NO" verticalHuggingPriority="750" alphaValue="0.29999999999999999" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="v3c-Wx-kU0">
+                    <rect key="frame" x="6" y="-2" width="250" height="5"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="8fi-SF-ox6"/>
+                        <constraint firstAttribute="width" constant="250" id="X3y-J8-Usr"/>
+                    </constraints>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="system"/>
                 </box>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Na-AZ-8wz">
-                    <rect key="frame" x="19" y="21" width="30" height="22"/>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Na-AZ-8wz">
+                    <rect key="frame" x="15" y="21" width="30" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22" id="eF4-5z-y3O"/>
+                        <constraint firstAttribute="width" constant="30" id="mOi-Hn-pVR"/>
+                    </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="tool_transition" id="j7x-lS-JWu"/>
                     <connections>
                         <binding destination="Y4D-g3-cxE" name="value" keyPath="representedObject.image" id="ooO-72-ri6"/>
                     </connections>
                 </imageView>
             </subviews>
+            <constraints>
+                <constraint firstItem="8Na-AZ-8wz" firstAttribute="top" secondItem="D8H-iL-h9h" secondAttribute="top" constant="17" id="6pc-w3-4n6"/>
+                <constraint firstItem="sVQ-VF-dvq" firstAttribute="top" secondItem="D8H-iL-h9h" secondAttribute="top" constant="12" id="6qd-Un-yYa"/>
+                <constraint firstItem="sVQ-VF-dvq" firstAttribute="leading" secondItem="8Na-AZ-8wz" secondAttribute="trailing" constant="11" id="B7Y-CM-WY6"/>
+                <constraint firstItem="8Na-AZ-8wz" firstAttribute="leading" secondItem="D8H-iL-h9h" secondAttribute="leading" constant="15" id="L7A-Ys-cfC"/>
+                <constraint firstItem="x7L-OK-xtJ" firstAttribute="leading" secondItem="8Na-AZ-8wz" secondAttribute="trailing" constant="11" id="NIR-Ka-E4c"/>
+                <constraint firstItem="v3c-Wx-kU0" firstAttribute="leading" secondItem="D8H-iL-h9h" secondAttribute="leading" constant="6" id="OFv-U2-TyM"/>
+                <constraint firstItem="x7L-OK-xtJ" firstAttribute="top" secondItem="sVQ-VF-dvq" secondAttribute="bottom" constant="1" id="a8X-GL-4D7"/>
+                <constraint firstAttribute="bottom" secondItem="v3c-Wx-kU0" secondAttribute="bottom" id="isN-Eo-nt5"/>
+                <constraint firstItem="jZo-ts-vu9" firstAttribute="top" secondItem="D8H-iL-h9h" secondAttribute="top" constant="4" id="qno-xb-cGa"/>
+                <constraint firstItem="jZo-ts-vu9" firstAttribute="leading" secondItem="D8H-iL-h9h" secondAttribute="leading" constant="6" id="t6b-De-bow"/>
+            </constraints>
         </customView>
         <customView id="vMJ-qe-EFg" userLabel="Tools">
             <rect key="frame" x="0.0" y="0.0" width="299" height="379"/>
@@ -683,12 +715,16 @@
             <rect key="frame" x="0.0" y="0.0" width="65" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <box autoresizesSubviews="NO" fixedFrame="YES" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Ogb-wW-wHH">
+                <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Ogb-wW-wHH">
                     <rect key="frame" x="6" y="8" width="52" height="40"/>
                     <view key="contentView">
                         <rect key="frame" x="1" y="1" width="50" height="38"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="52" id="J5n-av-e6n"/>
+                        <constraint firstAttribute="height" constant="40" id="ufx-UX-LcQ"/>
+                    </constraints>
                     <color key="borderColor" red="0.28235295414924622" green="0.5372549295425415" blue="0.92549026012420654" alpha="1" colorSpace="deviceRGB"/>
                     <color key="fillColor" red="0.92156862745098034" green="0.98039215686274506" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
@@ -699,14 +735,24 @@
                         </binding>
                     </connections>
                 </box>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a2t-9n-AMx">
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a2t-9n-AMx">
                     <rect key="frame" x="17" y="17" width="30" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22" id="BcU-aV-aVm"/>
+                        <constraint firstAttribute="width" constant="30" id="WUs-U1-8cX"/>
+                    </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSInfo" id="72k-Q4-aS0"/>
                     <connections>
                         <binding destination="OIp-jv-t86" name="value" keyPath="representedObject.image" id="rIT-Ch-GZi"/>
                     </connections>
                 </imageView>
             </subviews>
+            <constraints>
+                <constraint firstItem="Ogb-wW-wHH" firstAttribute="leading" secondItem="A1b-d4-ykK" secondAttribute="leading" constant="6" id="FPl-sU-Bn7"/>
+                <constraint firstItem="Ogb-wW-wHH" firstAttribute="top" secondItem="A1b-d4-ykK" secondAttribute="top" constant="12" id="OD9-6a-hjq"/>
+                <constraint firstItem="a2t-9n-AMx" firstAttribute="leading" secondItem="A1b-d4-ykK" secondAttribute="leading" constant="17" id="RkB-gw-UIl"/>
+                <constraint firstItem="a2t-9n-AMx" firstAttribute="top" secondItem="A1b-d4-ykK" secondAttribute="top" constant="21" id="xUx-2b-NH1"/>
+            </constraints>
         </customView>
     </objects>
     <resources>
