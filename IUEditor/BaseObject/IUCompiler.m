@@ -915,6 +915,8 @@ static NSString * IUCompilerTagOption = @"tag";
     
     if(isDefaultWidth == NO){
         [cssStringDict removeObjectForKey:@"position"];
+        [cssStringDict removeObjectForKey:@"overflow"];
+        [cssStringDict removeObjectForKey:@"z-index"];
     }
     
     //convert css string dictionary to css line
