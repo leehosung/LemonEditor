@@ -100,26 +100,46 @@
     if(filename == nil || filename.length == 0){
         return;
     }
+
+    NSInteger   height;
+    NSInteger   width;
     
-    //getting path
-    IUResourceFile *file = [_resourceManager resourceFileWithName:filename];
-    NSString *path = file.absolutePath;
-    NSLog(@"%@", path);
-    
-    //getting size
-    NSArray * imageReps = [NSBitmapImageRep imageRepsWithContentsOfFile:path];
-    
-    NSInteger width = 0;
-    NSInteger height = 0;
-    
-    for (NSImageRep * imageRep in imageReps) {
-        if ([imageRep pixelsWide] > width) width = [imageRep pixelsWide];
-        if ([imageRep pixelsHigh] > height) height = [imageRep pixelsHigh];
+    //get image size
+    // when file is empty, image fit doesn't make any difference.
+    if([filename isHTTPURL]){
+        //setting size to IU
+        NSArray *selectedObjects = self.controller.selectedObjects;
+        for (IUBox *box in selectedObjects) {
+            width =  [[box.delegate callWebScriptMethod:@"getImageWidth" withArguments:@[filename]] integerValue];
+            height =  [[box.delegate callWebScriptMethod:@"getImageHeight" withArguments:@[filename]] integerValue];
+        }
     }
+    else if(filename != nil){
+    //getting path
+        IUResourceFile *file = [_resourceManager resourceFileWithName:filename];
+   
+        NSString *path = file.absolutePath;
+        NSLog(@"%@", path);
+        
+        NSArray * imageReps = [NSBitmapImageRep imageRepsWithContentsOfFile:path];
+        
+        width = 0;
+        height = 0;
+        
+        for (NSImageRep * imageRep in imageReps) {
+            if ([imageRep pixelsWide] > width){
+                width = [imageRep pixelsWide];
+            }
+            if ([imageRep pixelsHigh] > height){
+                height = [imageRep pixelsHigh];
+            }
+        }
+    }
+    
     
     //setting size to IU
     NSArray *selectedObjects = self.controller.selectedObjects;
-
+    
     for (IUBox *box in selectedObjects) {
         [box.css setValue:@(width) forTag:IUCSSTagWidth];
         [box.css setValue:@(height) forTag:IUCSSTagHeight];

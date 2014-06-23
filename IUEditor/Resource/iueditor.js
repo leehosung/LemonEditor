@@ -156,6 +156,24 @@ function reInsertCarousel(){
     });
 }
 
+function getImageHeight(imageSrc){
+    var theImage = new Image();
+    theImage.src = imageSrc;
+    
+    // Get accurate measurements from that.
+    var imageHeight = theImage.height;
+    return imageHeight;
+}
+
+function getImageWidth(imageSrc){
+    var theImage = new Image();
+    theImage.src = imageSrc;
+    
+    // Get accurate measurements from that.
+    var imageWidth = theImage.width;
+    return imageWidth;
+}
+
 $(document).ready(function(){
             console.log("ready : iueditor.js");
             resizePageContentHeightEditor();
