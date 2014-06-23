@@ -28,16 +28,20 @@ function transitionAnimation(eventObject){
     }
     var effect = $(this).attr('transitionanimation');
     var isSelected= $(this).data('isSelected');
+    
     var secondObj = $(this).find('.Item2');
     
-    console.log('com');
-    if (isSelected=='true'){
-        $(secondObj).hide(effect);
-        $(this).data('isSelected', 'false');
+   	if (isSelected=='true'){
+       	$(secondObj).hide(effect);
+       	$(this).data('isSelected', 'false');
     }
-    else {
-        $(secondObj).show(effect);
-        $(this).data('isSelected', 'true');
+   	else {
+        var isEndAnimation = $($(this).children()[1]).hasClass('Item2');
+        
+        if(isEndAnimation== true){
+            $(secondObj).show(effect);
+            $(this).data('isSelected', 'true');
+        }
     }
 }
 
