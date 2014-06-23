@@ -40,8 +40,12 @@
         if(isSaved){
             [document makeWindowControllers];
             [document showWindows];
+            return;
         }
     }
+    //new project를 만들다가 실패했을 경우에는 document controller에서 지움.
+    [self removeDocument:document];
+    
 }
 
 - (id)makeUntitledDocumentOfType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
@@ -92,14 +96,10 @@
     [super openDocumentWithContentsOfURL:url display:displayDocument completionHandler:completionHandler];
 }
 
-//TODO : open last Document
 
 - (void)reopenDocumentForURL:(NSURL *)urlOrNil withContentsOfURL:(NSURL *)contentsURL display:(BOOL)displayDocument completionHandler:(void (^)(NSDocument *, BOOL, NSError *))completionHandler{
-    [super reopenDocumentForURL:urlOrNil withContentsOfURL:contentsURL display:displayDocument completionHandler:completionHandler];
-}
-
-- (id)makeDocumentForURL:(NSURL *)urlOrNil withContentsOfURL:(NSURL *)contentsURL ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
-    return [super makeDocumentForURL:urlOrNil withContentsOfURL:contentsURL ofType:typeName error:outError];
+    //display가 YES여야지 showWindow를 호출하면서 firstSelect를 함.
+    [super reopenDocumentForURL:urlOrNil withContentsOfURL:contentsURL display:YES completionHandler:completionHandler];
 }
 
 
