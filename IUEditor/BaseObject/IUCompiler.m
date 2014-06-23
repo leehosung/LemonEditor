@@ -1451,8 +1451,15 @@ static NSString * IUCompilerTagOption = @"tag";
         }else{
             //image tag attributes
             if(iuImage.imageName){
-                IUResourceFile *file = [self.resourceManager resourceFileWithName:iuImage.imageName];
-                [retString appendFormat:@" src='%@'", file.relativePath];
+                
+                if([iuImage.imageName isHTTPURL]){
+                    [retString appendFormat:@" src='%@'", iuImage.imageName];
+                    
+                }
+                else{
+                    IUResourceFile *file = [self.resourceManager resourceFileWithName:iuImage.imageName];
+                    [retString appendFormat:@" src='%@'", file.relativePath];
+                }
             }
             if(iuImage.altText){
                 [retString appendFormat:@" alt='%@'", iuImage.altText];
