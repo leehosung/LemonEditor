@@ -40,6 +40,10 @@
     IUCSS *newCSS = [_css copy];
     IUEvent *newEvent = [_event copy];
     NSArray *children = [self.children deepCopy];
+#if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
+    box.text = [_text copy];
+    box.lineHeightAuto  = _lineHeightAuto;
+#endif
     //FIXME: connect textmanager
     box.css = newCSS;
     newCSS.delegate  = box;
@@ -296,6 +300,8 @@
             [self.delegate IUClassIdentifier:child.cssID CSSUpdated:[child cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
         }
     }
+    
+    [self.delegate runJSAfterInsertIU:iu];
     [iu bind:@"identifierManager" toObject:self withKeyPath:@"identifierManager" options:nil];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationStructureChanged object:self.project userInfo:@{IUNotificationStructureType: IUNotificationStructureTypeAdd, IUNotificationStructureTarget: iu}];
@@ -733,8 +739,9 @@
     return @[self.cssID];
 }
 
-#if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
 
+#if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
+#pragma mark -text
 
 - (void)setText:(NSString *)text{
     _text = text;
@@ -748,7 +755,7 @@
 
 
 - (void)updateAutoHeight{
-    if(_lineHeightAuto && self.delegate){
+    if(_lineHeightAuto && self.delegate && self.text.length > 0){
         [self.delegate callWebScriptMethod:@"setTextAutoHeight" withArguments:nil];
     }
 }

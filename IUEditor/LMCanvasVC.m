@@ -515,10 +515,18 @@
     
 //    JDDebugLog(@"%@:%@", identifier, html);
 
-    [[self webView] runJSAfterRefreshCSS];
-    [self.webView setNeedsDisplay:YES];
 }
 
+
+- (void)runJSAfterInsertIU:(IUBox *)iu{
+    [[self webView] runJSAfterRefreshCSS];
+#if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
+    if([iu isMemberOfClass:[IUBox class]]){
+        [iu updateAutoHeight];
+    }
+#endif
+    [self.webView setNeedsDisplay:YES];
+}
 
 
 #pragma mark -
