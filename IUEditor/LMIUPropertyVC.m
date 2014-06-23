@@ -162,6 +162,9 @@
     [propertyIUTextVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     
     [propertyPGSubmitButtonVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+    [propertyPGType1VC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+    [propertyPGType2VC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+    
     
 #if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
     [propertyTextVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];

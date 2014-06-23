@@ -61,7 +61,12 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="value" keyPath="self.controller.selection.pgVisibleCondition" id="Yfe-hx-OIQ"/>
+                        <binding destination="-2" name="value" keyPath="self.controller.selection.pgVisibleConditionVariable" id="Zdi-hw-8R1">
+                            <dictionary key="options">
+                                <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                <bool key="NSValidatesImmediately" value="YES"/>
+                            </dictionary>
+                        </binding>
                     </connections>
                 </textField>
             </subviews>
