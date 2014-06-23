@@ -45,13 +45,15 @@
     
     if(document){
         //option으로 url이 넘어옴.
-        NSURL *url = [newDocumentOption objectForKey:IUProjectKeyProjectPath];
-        
-        //url이 없으면 새로 창을 띄워서 받음.
-        if(url == nil){
+        NSURL *url;
+        if ([newDocumentOption objectForKey:IUProjectKeyPath]) {
+            url = [NSURL fileURLWithPath:[newDocumentOption objectForKey:IUProjectKeyProjectPath]];
+        }
+        else {
             url = [self fileURLForNewDocumentOfType:typeName];
         }
-        if(url != nil){
+        
+        if( url ){
             [(IUProjectDocument *)document makeNewProjectWithOption:newDocumentOption URL:url];
             newDocumentOption = nil;
             [document saveToURL:url ofType:typeName forSaveOperation:NSSaveOperation delegate:nil didSaveSelector:nil contextInfo:nil];
