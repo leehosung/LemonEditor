@@ -79,7 +79,7 @@
     __weak NSTableView *_tableV;
 }
 
-@property     NSMutableArray *propertyVArray;
+@property     NSArray *propertyVArray;
 
 
 @property (strong) IBOutlet NSBox *defaultTitleV;
@@ -99,9 +99,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
-        _propertyVArray = [NSMutableArray array];
-        
         inspectorLinkVC = [[LMInspectorLinkVC alloc] initWithNibName:[LMInspectorLinkVC class].className bundle:nil];
         propertyIUHTMLVC = [[LMPropertyIUHTMLVC alloc] initWithNibName:[LMPropertyIUHTMLVC class].className bundle:nil];
         
@@ -211,57 +208,54 @@
     
 #pragma mark PG
     if ([classString isEqualToString:@"PGForm"]) {
-        self.propertyVArray = [NSMutableArray arrayWithArray:@[propertyPGFormVC.view]];
+        self.propertyVArray = @[propertyPGFormVC.view];
     }
     else if ([classString isEqualToString:@"PGTextView"]) {
-        self.propertyVArray = [NSMutableArray arrayWithArray:@[propertyPGFormVC.view]];
+        self.propertyVArray = @[propertyPGFormVC.view];
     }
     else if ([classString isEqualToString:@"PGTextField"]) {
-        self.propertyVArray = [NSMutableArray arrayWithArray:@[propertyPGTextFieldVC.view, propertyPGType2VC.view]];
+        self.propertyVArray = @[propertyPGTextFieldVC.view, propertyPGType2VC.view];
     }
     else if ([classString isEqualToString:@"PGSubmitButton"]){
-        self.propertyVArray = [NSMutableArray arrayWithArray:@[propertyPGSubmitButtonVC.view]];
+        self.propertyVArray = @[propertyPGSubmitButtonVC.view];
     }
 #pragma mark IU - Complex
     else if ([classString isEqualToString:@"IUMovie"]) {
-        self.propertyVArray = [NSMutableArray arrayWithArray:@[propertyIUMovieVC.view]];
+        self.propertyVArray = @[propertyIUMovieVC.view];
     }
     else if ([classString isEqualToString:@"PGPageLinkSet"]) {
-        self.propertyVArray = [NSMutableArray arrayWithArray:@[propertyPGPageLinkSetVC.view]];
+        self.propertyVArray = @[propertyPGPageLinkSetVC.view];
     }
     else if ([classString isEqualToString:@"IUWebMovie"]) {
-        self.propertyVArray = [NSMutableArray arrayWithArray:@[propertyIUWebMovieVC.view, propertyIUHTMLVC.view]];
+        self.propertyVArray = @[propertyIUWebMovieVC.view, propertyIUHTMLVC.view];
     }
     else if ([classString isEqualToString:@"IUImport"]) {
-        self.propertyVArray = [NSMutableArray arrayWithArray:@[propertyIUImportVC.view, propertyPGType2VC.view]];
+        self.propertyVArray = @[propertyIUImportVC.view, propertyPGType2VC.view];
     }
     else if ([classString isEqualToString:@"IUMailLink"]) {
-        self.propertyVArray = [NSMutableArray arrayWithArray:@[propertyIUMailLinkVC.view]];
+        self.propertyVArray = @[propertyIUMailLinkVC.view];
     }
     else if ([classString isEqualToString:@"IUTransition"]) {
-        self.propertyVArray = [NSMutableArray arrayWithArray:@[propertyIUTransitionVC.view]];
+        self.propertyVArray = @[propertyIUTransitionVC.view];
     }
     else if ([classString isEqualToString:@"IUFBLike"]) {
-        self.propertyVArray = [NSMutableArray arrayWithArray:@[propertyIUFBLikeVC.view]];
+        self.propertyVArray = @[propertyIUFBLikeVC.view];
     }
 #pragma mark IU-Simple
     else if ([classString isEqualToString:@"PGTextField"]) {
-        self.propertyVArray = [NSMutableArray arrayWithArray:@[propertyPGTextFieldVC.view, propertyPGType2VC.view]];
+        self.propertyVArray = @[propertyPGTextFieldVC.view, propertyPGType2VC.view];
+    }
+    else if ([classString isEqualToString:@"IUImage"]){
+        self.propertyVArray = [NSMutableArray arrayWithArray:@[inspectorLinkVC.view, propertyPGType1VC.view]];
     }
     
-    else if ([classString isEqualToString:@"IUBox"] || [classString isEqualToString:@"IUImage"]) {
-        self.propertyVArray = [NSMutableArray arrayWithArray:@[inspectorLinkVC.view, propertyPGType1VC.view]];
+    else if ([classString isEqualToString:@"IUBox"]){
+        self.propertyVArray = [NSMutableArray arrayWithArray:@[propertyTextVC.view, inspectorLinkVC.view, propertyPGType1VC.view]];
+    }
+    
 #if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
-        if([classString isEqualToString:@"IUBox"]){
-            [self.propertyVArray addObject:propertyTextVC.view];
-        }
-        
-    }
 #else
-    }
-    else if ([classString isEqualToString:@"IUText"]) {
-        self.propertyVArray = [NSMutableArray arrayWithArray:@[propertyIUTextVC.view, inspectorLinkVC.view, propertyPGType2VC.view]];
-    }
+    assert(0);
 #endif
 
     else if ([classString isEqualToString:@"IUHTML"]){
