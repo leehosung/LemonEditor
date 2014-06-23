@@ -28,9 +28,6 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </comboBoxCell>
-                    <connections>
-                        <action selector="clickLinkComboBox:" target="-2" id="b2e-sD-H8R"/>
-                    </connections>
                 </comboBox>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="acu-TJ-o3H">
                     <rect key="frame" x="20" y="32" width="31" height="14"/>
