@@ -60,6 +60,7 @@
 #pragma mark be set by IU
 //load page
 - (void)setSheet:(IUSheet *)sheet;
+- (void)reloadSheet;
 
 #pragma mark -
 #pragma mark set IU

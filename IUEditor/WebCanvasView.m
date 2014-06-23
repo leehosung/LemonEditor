@@ -237,7 +237,7 @@
 /* Here is our Objective-C implementation for the JavaScript console.log() method.
  */
 - (void)doOutputToLog:(NSString*)theMessage {
-//    JDInfoLog(@"LOG: %@", theMessage);
+    //JDInfoLog(@"LOG: %@", theMessage);
 }
 
 

@@ -393,9 +393,7 @@
 }
 
 - (void)reloadCurrentDocument{
-    if ([_selectedNode isKindOfClass:[IUSheet class]]) {
-        [canvasVC setSheet:_selectedNode];
-    }
+    [canvasVC reloadSheet];
 }
 
 

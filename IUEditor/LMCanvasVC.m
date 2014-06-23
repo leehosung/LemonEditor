@@ -189,6 +189,10 @@
     [[[self webView] mainFrame] loadHTMLString:sheet.editorSource baseURL:[NSURL fileURLWithPath:self.documentBasePath]];
 }
 
+- (void)reloadSheet{
+    [[[self webView] mainFrame] reload];
+}
+
 - (void)ghostImageContextDidChange:(NSDictionary *)change{
     NSString *ghostImageName = _sheet.ghostImageName;
     IUResourceFile *resourceNode = [_resourceManager resourceFileWithName:ghostImageName];
