@@ -35,4 +35,8 @@
     [_typeMatrix bind:NSSelectedIndexBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"type"] options:IUBindingDictNotRaisesApplicable];
 }
 
+- (void)performFocus:(NSNotification *)noti{
+    [self.view.window makeFirstResponder:_valueTF];
+}
+
 @end

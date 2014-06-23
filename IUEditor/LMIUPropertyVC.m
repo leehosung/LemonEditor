@@ -74,7 +74,8 @@
     LMPropertyTextVC *propertyTextVC;
 #endif
 
-    
+
+    NSViewController <IUPropertyDoubleClickReceiver> *doubleClickFocusVC;
     NSView *_noInspectorV;
     __weak NSTableView *_tableV;
 }
@@ -131,7 +132,6 @@
 #if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
         propertyTextVC = [[LMPropertyTextVC alloc] initWithNibName:[LMPropertyTextVC class].className bundle:nil];
 #endif
-        
         [self loadView];
     }
     return self;
@@ -166,6 +166,7 @@
 #if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
     [propertyTextVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
 #endif
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(performDoubleClick:) name:IUCanvasDoublieClick object:self.view.window];
 }
 
 -(void)setProject:(IUProject *)project{
@@ -174,6 +175,10 @@
     [propertyIUImportVC setProject:project];
 }
 
+- (void)performDoubleClick:(NSNotification*)noti{
+    assert([doubleClickFocusVC respondsToSelector:@selector(performFocus:)]);
+    [doubleClickFocusVC performFocus:noti];
+}
 
 
 -(void)setController:(IUController *)controller{
@@ -212,12 +217,15 @@
     }
     else if ([classString isEqualToString:@"PGTextView"]) {
         self.propertyVArray = @[propertyPGFormVC.view];
+        doubleClickFocusVC = propertyPGFormVC;
     }
     else if ([classString isEqualToString:@"PGTextField"]) {
         self.propertyVArray = @[propertyPGTextFieldVC.view, propertyPGType2VC.view];
+        doubleClickFocusVC = propertyPGTextFieldVC;
     }
     else if ([classString isEqualToString:@"PGSubmitButton"]){
         self.propertyVArray = @[propertyPGSubmitButtonVC.view];
+        doubleClickFocusVC = propertyPGSubmitButtonVC;
     }
 #pragma mark IU - Complex
     else if ([classString isEqualToString:@"IUMovie"]) {
@@ -251,6 +259,7 @@
     
     else if ([classString isEqualToString:@"IUBox"]){
         self.propertyVArray = [NSMutableArray arrayWithArray:@[propertyTextVC.view, inspectorLinkVC.view, propertyPGType1VC.view]];
+        doubleClickFocusVC = propertyTextVC;
     }
     
 #if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
@@ -260,11 +269,12 @@
 
     else if ([classString isEqualToString:@"IUHTML"]){
         self.propertyVArray = [NSMutableArray arrayWithArray:@[propertyIUHTMLVC.view]];
+        doubleClickFocusVC = propertyIUHTMLVC;
     }
     else {
         self.propertyVArray = [NSMutableArray arrayWithArray:@[self.noInspectorV]];
+        doubleClickFocusVC = nil;
     }
-    
     
     [_tableV reloadData];
 }

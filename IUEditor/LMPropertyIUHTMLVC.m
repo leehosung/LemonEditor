@@ -32,4 +32,9 @@
     [_innerHTMLTextV setEnabledTextCheckingTypes:0];
 }
 
+- (void)performFocus:(NSNotification*)noti{
+    [self.view.window makeFirstResponder:_innerHTMLTextV];
+}
+
+
 @end

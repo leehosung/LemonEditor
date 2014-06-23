@@ -220,6 +220,7 @@
                 }
                 //change editable mode
                 if(theEvent.clickCount ==2){
+                    [[NSNotificationCenter defaultCenter] postNotificationName:IUCanvasDoublieClick object:self.window];
 #if CURRENT_TEXT_VERSION >= TEXT_SELECTION_VERSION
                     if([((LMCanvasVC *)self.delegate) isEditable]){
                         [[self webView] setEditable:YES];

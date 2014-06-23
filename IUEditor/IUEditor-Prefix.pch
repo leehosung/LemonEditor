@@ -57,7 +57,7 @@
 #define IUNotificationStructureTypeReindex @"Reindex"
 
 #define IUNotificationStructureTarget @"Target"
-
+#define IUCanvasDoublieClick @"IUCanvasDoublieClick"
 
 
 //for text modification 2.0version

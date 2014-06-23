@@ -9,7 +9,7 @@
 #import "PGSubmitButtonVC.h"
 
 @interface PGSubmitButtonVC ()
-@property (weak) IBOutlet NSTextField *textVariableTF;
+@property (weak) IBOutlet NSTextField *labelTF;
 
 @end
 
@@ -27,7 +27,11 @@
 
 - (void)awakeFromNib{
     NSString *keyPath = [_controller keyPathFromControllerToProperty:@"label"];
-    [_textVariableTF bind:NSValueBinding toObject:self withKeyPath:keyPath options:nil];
+    [_labelTF bind:NSValueBinding toObject:self withKeyPath:keyPath options:nil];
+}
+
+- (void)performFocus:(NSNotification *)noti{
+    [self.view.window makeFirstResponder:_labelTF];
 }
 
 @end

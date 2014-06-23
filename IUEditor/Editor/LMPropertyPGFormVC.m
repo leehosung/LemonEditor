@@ -24,4 +24,8 @@
     return self;
 }
 
+- (void)performFocus:(NSNotification *)noti{
+    [self.view.window makeFirstResponder:_submitPageComboBox];
+}
+
 @end

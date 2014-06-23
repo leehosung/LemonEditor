@@ -11,6 +11,12 @@
 #import "IUResourceManager.h"
 #import "LMInspectorLinkVC.h"
 
+@protocol IUPropertyDoubleClickReceiver <NSObject>
+@required
+- (void)performFocus:(NSNotification*)noti;
+
+@end
+
 @interface LMIUPropertyVC : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
 
 - (void)setProject:(IUProject*)project;

@@ -6,7 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PGSubmitButtonVC">
             <connections>
-                <outlet property="textVariableTF" destination="22e-xa-uJw" id="VPA-QA-GTn"/>
+                <outlet property="labelTF" destination="22e-xa-uJw" id="QUE-2v-z4l"/>
                 <outlet property="view" destination="kKc-hw-eNW" id="tNC-xX-ai1"/>
             </connections>
         </customObject>

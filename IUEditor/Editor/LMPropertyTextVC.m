@@ -34,4 +34,9 @@
 
     
 }
+
+- (void)performFocus:(NSNotification *)noti{
+    [self.view.window makeFirstResponder:_textView];
+}
+
 @end
