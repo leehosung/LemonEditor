@@ -79,6 +79,12 @@
 	padding-top: 20px;
 }
 
+.bx-default-pager {
+    position:absolute;
+    bottom:0px;
+    height:15px;
+}
+
 .bx-wrapper .bx-pager .bx-pager-item,
 .bx-wrapper .bx-controls-auto .bx-controls-auto-item {
 	display: inline-block;

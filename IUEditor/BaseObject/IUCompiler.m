@@ -1425,7 +1425,7 @@ static NSString * IUCompilerTagOption = @"tag";
         [retString appendFormat:@" xPosMove='%.1f'", iu.xPosMove];
     }
 #if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
-    if([iu isMemberOfClass:[IUBox class]] && iu.lineHeightAuto){
+    if([iu isMemberOfClass:[IUBox class]] && iu.lineHeightAuto && iu.text.length > 0){
         [retString appendString:@" autoLineHeight='1'"];
     }
 #else
