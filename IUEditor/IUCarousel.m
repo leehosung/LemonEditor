@@ -12,11 +12,13 @@
 #import "IUProject.h"
 
 @implementation IUCarousel{
+    BOOL initializing;
 }
 
 - (id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
     self = [super initWithProject:project options:options];
     if(self){
+        initializing = YES;
         self.count = 4;
         [self.css setValue:@(500) forTag:IUCSSTagWidth forWidth:IUCSSMaxViewPortWidth];
         [self.css setValue:@(300) forTag:IUCSSTagHeight forWidth:IUCSSMaxViewPortWidth];
@@ -25,6 +27,7 @@
         _deselectColor = [NSColor grayColor];
         _rightArrowImage = @"Default";
         _leftArrowImage = @"Default";
+        initializing = NO;
     }
     return self;
 }
@@ -62,7 +65,7 @@
 
 -(void)setCount:(NSInteger)count{
     
-    if (count == 0 || count > 30) {
+    if (count == 0 || count > 30 || count == self.children.count ) {
         return;
     }
     if( count < self.children.count ){
@@ -72,17 +75,18 @@
         }
     }
     else if(count > self.children.count) {
-        [self.project.identifierManager resetUnconfirmedIUs];
+        if (initializing == NO) {
+            [self.project.identifierManager resetUnconfirmedIUs];
+        }
 
         IUCarouselItem *item = [[IUCarouselItem alloc] initWithProject:self.project options:nil];
         item.name = item.htmlID;
         item.carousel = self;
         [self addIU:item error:nil];
         
-        [self.project.identifierManager confirm];
-    }
-    else{
-        return;
+        if (initializing == NO) {
+            [self.project.identifierManager confirm];
+        }
     }
     [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
     [self jsReloadForController];
