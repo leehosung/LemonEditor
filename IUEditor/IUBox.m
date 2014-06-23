@@ -44,7 +44,6 @@
     box.text = [_text copy];
     box.lineHeightAuto  = _lineHeightAuto;
 #endif
-    //FIXME: connect textmanager
     box.css = newCSS;
     newCSS.delegate  = box;
     box.event = newEvent;
