@@ -23,6 +23,13 @@
     
 }
 
+-(id)copyWithZone:(NSZone *)zone{
+    IUImage *image = [super copyWithZone:zone];
+    image.imageName = [_imageName copy];
+    image.altText = [_altText copy];
+    return image;
+}
+
 #pragma mark - 
 #pragma mark IUImage
 
