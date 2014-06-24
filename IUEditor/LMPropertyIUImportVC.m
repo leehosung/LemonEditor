@@ -29,6 +29,11 @@
     return self;
 }
 
+- (void)awakeFromNib{
+    [self addObserver:self forKeyPath:@"controller.selectedObjects"
+              options:0 context:@"selection"];
+
+}
 
 - (void)structureChanged:(NSNotification*)noti{
     [_prototypeB removeAllItems];
@@ -36,16 +41,18 @@
     [_prototypeB addItemsWithTitles:[[_project classDocuments] valueForKey:@"name"]];
 }
 
+- (void)setController:(IUController *)controller{
+    _controller = controller;
+    [self addObserver:self forKeyPath:[_controller keyPathFromControllerToProperty:@"prototypeClass"] options:0 context:nil];
+}
+
+
 - (void)setProject:(IUProject*)project{
     _project = project;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(structureChanged:) name:IUNotificationStructureChanged object:project];
     [self structureChanged:nil];
 }
 
-- (void)setController:(IUController *)controller{
-    _controller = controller;
-    [self addObserver:self forKeyPath:[_controller keyPathFromControllerToProperty:@"prototypeClass"] options:0 context:nil];
-}
 
 - (void)dealloc{
     //release 시점 확인용
@@ -58,6 +65,17 @@
     for (IUImport *iu in selectedIUs) {
         assert([iu isKindOfClass:[IUImport class]]);
         iu.prototypeClass = class;
+    }
+}
+
+- (void)selectionContextDidChange:(NSDictionary *)change{
+    id protoType = [self valueForKeyPath:[_controller keyPathFromControllerToProperty:@"prototypeClass"]];
+    
+    if(protoType == nil || protoType == NSNoSelectionMarker){
+        [_prototypeB selectItemWithTitle:@"None"];
+    }
+    else if(protoType){
+        [_prototypeB selectItemWithTitle:((IUClass *)protoType).name];
     }
 }
 

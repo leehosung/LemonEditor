@@ -24,6 +24,12 @@
     [aCoder encodeObject:_prototypeClass forKey:@"_prototypeClass"];
 }
 
+- (id)copyWithZone:(NSZone *)zone{
+    IUImport *iu = [super copyWithZone:zone];
+    iu.prototypeClass = _prototypeClass;
+    return iu;
+}
+
 - (void)setPrototypeClass:(IUClass *)prototypeClass{
     [_prototypeClass removeReference:self];
     
@@ -39,6 +45,7 @@
     }
 }
 
+
 - (void)setDelegate:(id<IUSourceDelegate>)delegate{
     [super setDelegate:delegate];
     _prototypeClass.delegate = delegate;
@@ -46,7 +53,7 @@
 
 - (NSArray*)children{
     if (_prototypeClass == nil) {
-        return nil;
+        return [NSArray array];
     }
     return @[_prototypeClass];
 }
