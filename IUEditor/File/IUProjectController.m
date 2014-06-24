@@ -54,7 +54,7 @@
     if(document){
         //option으로 url이 넘어옴.
         NSURL *url;
-        if ([newDocumentOption objectForKey:IUProjectKeyPath]) {
+        if ([newDocumentOption objectForKey:IUProjectKeyProjectPath]) {
             url = [NSURL fileURLWithPath:[newDocumentOption objectForKey:IUProjectKeyProjectPath]];
         }
         else {
