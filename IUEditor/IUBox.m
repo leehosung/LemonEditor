@@ -16,6 +16,7 @@
 #import "IUBox.h"
 #import "IUClass.h"
 #import "IUProject.h"
+#import "IUItem.h"
 #import "IUImport.h"
 
 @interface IUBox()

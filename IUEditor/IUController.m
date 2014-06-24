@@ -12,6 +12,7 @@
 #import "NSIndexPath+JDExtension.h"
 #import "IUImport.h"
 #import "IUProject.h"
+#import "IUItem.h"
 
 @implementation IUController{
     NSArray     *pasteboard;
@@ -74,6 +75,13 @@
     }
     
     NSMutableArray *copiedArray = [NSMutableArray array];
+
+    //item can be only copied to same parent
+    if ([[pasteboard firstObject] isKindOfClass:[IUItem class]] && pasteTargetIsParent == NO) {
+        NSBeep();
+        return;
+    }
+    
     
     for (IUBox *box in pasteboard) {
         NSError *err;
