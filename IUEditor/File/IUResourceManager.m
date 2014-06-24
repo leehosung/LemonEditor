@@ -127,7 +127,7 @@
     IUResourceFile *existedFile = [self resourceFileWithName:fileName];
     if (existedFile) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [JDLogUtil alert:@"Existed file"];
+            [JDLogUtil alert:[NSString stringWithFormat:@"'%@' file is already existed", fileName]];
         });
         return nil;
     }
