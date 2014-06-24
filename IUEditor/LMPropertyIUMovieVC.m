@@ -45,8 +45,20 @@
     [_coverBtn bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"cover"] options:IUBindingDictNotRaisesApplicable];
     [_muteBtn bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableMute"] options:IUBindingDictNotRaisesApplicable];
     
-    NSString *videoPath =[self valueForKeyPath:[_controller keyPathFromControllerToProperty:@"videoPath"]];
-    if(videoPath){
+    
+    [self addObserver:self forKeyPath:@"controller.selectedObjects"
+              options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew context:@"selection"];
+
+
+}
+
+- (void)selectionContextDidChange:(NSDictionary *)change{
+    id videoPath = [self valueForKeyPath:[_controller keyPathFromControllerToProperty:@"videoPath"]];
+    
+    if(videoPath == nil || videoPath == NSNoSelectionMarker){
+        [_fileNameComboBox setStringValue:@""];
+    }
+    else if(videoPath){
         NSString *videoFileName = [videoPath lastPathComponent];
         NSInteger index = [_fileNameComboBox indexOfItemWithObjectValue:videoFileName];
         if(index >= 0){
@@ -56,11 +68,6 @@
             [_fileNameComboBox setStringValue:videoPath];
         }
     }
-
-}
-
-- (NSString*)CSSBindingPath:(IUCSSTag)tag{
-    return [@"controller.selection.css.assembledTagDictionary." stringByAppendingString:tag];
 }
 
 - (IBAction)clickFileNameComboBox:(id)sender {
@@ -108,8 +115,8 @@
             [self setValue:thumbFile.relativePath forKeyPath:[_controller keyPathFromControllerToProperty:@"posterPath"] ];
             
             
-            [self setValue:@(thumbnail.size.width) forKeyPath:[self CSSBindingPath:IUCSSTagWidth]];
-            [self setValue:@(thumbnail.size.height) forKeyPath:[self CSSBindingPath:IUCSSTagHeight]];
+            [self setValue:@(thumbnail.size.width) forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagWidth]];
+            [self setValue:@(thumbnail.size.height) forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagHeight]];
         }
         
     }
