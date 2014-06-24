@@ -38,6 +38,15 @@
     return self;
 }
 
+- (id)copyWithZone:(NSZone *)zone{
+    IUCollection *iu = [super copyWithZone:zone];
+    iu.collectionVariable = [_collectionVariable copy];
+    iu.responsiveSupport = _responsiveSupport;
+    iu.responsiveSetting = [_responsiveSetting copy];
+    iu.defaultItemCount = _defaultItemCount;
+    return iu;
+}
+
 - (void)setResponsiveSupport:(BOOL)responsiveSupport{
     _responsiveSupport = responsiveSupport;
     NSArray *array = @[@{@"width":@"600",@"count":@(2)}];
