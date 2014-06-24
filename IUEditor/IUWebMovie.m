@@ -39,7 +39,15 @@
     [aCoder encodeFromObject:self withProperties:[[IUWebMovie class] properties]];
     
 }
-
+- (id)copyWithZone:(NSZone *)zone{
+    IUWebMovie *webMovie = [super copyWithZone:zone];
+    webMovie.thumbnail = self.thumbnail;
+    webMovie.type = [_type copy];
+    webMovie.thumbnailID = [_thumbnailID copy];
+    webMovie.thumbnailPath = [_thumbnailPath copy];
+    webMovie.webMovieSource = [_webMovieSource copy];
+    return webMovie;
+}
 
 - (BOOL)shouldAddIUByUserInput{
     return NO;

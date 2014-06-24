@@ -47,11 +47,13 @@
     box.css = newCSS;
     newCSS.delegate  = box;
     box.event = newEvent;
+    
+    box.delegate = self.delegate;
+    [box setTempProject:self.project];
+
     for (IUBox *iu in children) {
         assert([box addIU:iu error:nil]);
     }
-    box.delegate = self.delegate;
-    [box setTempProject:self.project];
     
     assert(self.project);
     [self.project.identifierManager resetUnconfirmedIUs];
