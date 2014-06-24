@@ -27,8 +27,6 @@
     return self;
 }
 
-
-
 - (void)encodeWithCoder:(NSCoder *)aCoder{
     [super encodeWithCoder:aCoder];
     [aCoder encodeFromObject:self withProperties:[IUTransition properties]];
@@ -48,6 +46,13 @@
     return self;
 }
 
+- (id)copyWithZone:(NSZone *)zone{
+    IUTransition *iu = [super copyWithZone:zone];
+    iu.currentEdit = _currentEdit;
+    iu.eventType = [_eventType copy];
+    iu.animation = [_animation copy];
+    return iu;
+}
 - (void)fetch{
     [super fetch];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectionChanged:) name:IUNotificationSelectionChanged object:nil];
