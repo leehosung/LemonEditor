@@ -34,6 +34,21 @@
     [aCoder encodeFromObject:self withProperties:[[IUMovie class] properties]];
     
 }
+
+-(id)copyWithZone:(NSZone *)zone{
+    IUMovie *movie = [super copyWithZone:zone];
+    movie.videoPath = [_videoPath copy];
+    movie.altText = [_altText copy];
+    movie.posterPath = [_posterPath copy];
+    
+    movie.enableAutoPlay = _enableAutoPlay;
+    movie.enableControl = _enableControl;
+    movie.enableLoop = _enableLoop;
+    movie.enableMute = _enableMute;
+    
+    return movie;
+}
+
 -(void)dealloc{
     [self removeObserver:self forKeyPaths:@[@"enableControl", @"enableLoop", @"enableMute", @"enableAutoPlay",@"cover", @"altText", @"posterPath"]];
 }
