@@ -281,6 +281,23 @@
 }
 
 
+- (BOOL)control:(NSControl *)control didFailToFormatString:(NSString *)string errorDescription:(NSString *)error{
+
+    if([control isEqualTo:_fontSizeComboBox]){
+        NSString *digit = [string stringByTrimmingCharactersInSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]];
+        if(digit){
+            [control setStringValue:digit];
+        }
+    }
+
+    return YES;
+}
+
+- (void)control:(NSControl *)control didFailToValidatePartialString:(NSString *)string errorDescription:(NSString *)error{
+    
+}
+
+
 - (IBAction)fontDecoBPressed:(id)sender {
     
     BOOL value;

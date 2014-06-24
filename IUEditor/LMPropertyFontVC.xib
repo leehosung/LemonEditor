@@ -211,6 +211,7 @@
                                 <connections>
                                     <action selector="clickFontSize:" target="-2" id="4wq-oe-rF9"/>
                                     <outlet property="dataSource" destination="-2" id="9hE-Kp-fMi"/>
+                                    <outlet property="delegate" destination="-2" id="Weg-er-hS6"/>
                                     <outlet property="formatter" destination="2Xc-jP-M6t" id="Hcl-rX-xEo"/>
                                 </connections>
                             </comboBox>
@@ -274,8 +275,11 @@
                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
             </textFieldCell>
         </textField>
-        <numberFormatter formatterBehavior="custom10_4" positiveFormat="# 'pt'" numberStyle="currency" allowsFloats="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="309" decimalSeparator="." groupingSeparator="," id="2Xc-jP-M6t">
+        <numberFormatter formatterBehavior="custom10_4" positiveFormat="# 'pt'" numberStyle="currency" allowsFloats="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="309" decimalSeparator="." id="2Xc-jP-M6t">
             <real key="minimum" value="0.0"/>
+            <metadata>
+                <real key="inspectorSampleValue" value="135"/>
+            </metadata>
         </numberFormatter>
     </objects>
     <resources>
