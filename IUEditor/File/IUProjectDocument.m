@@ -228,12 +228,20 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
     //add css resource
     [self fileWrapper:cssWrapper removeFileNotInArray:[_project.resourceManager namesWithFiles:_project.resourceManager.cssFiles]];
     for(IUResourceFile *resourceFile in _project.resourceManager.cssFiles){
+#if DEBUG
+        [self fileWrapper:cssWrapper overwriteResourceNode:resourceFile];
+#else
         [self fileWrapper:cssWrapper addResourceNode:resourceFile];
+#endif
     }
     
     [self fileWrapper:jsWrapper removeFileNotInArray:[_project.resourceManager namesWithFiles:_project.resourceManager.jsFiles]];
     for(IUResourceFile *resourceFile in _project.resourceManager.jsFiles){
+#if DEBUG
+        [self fileWrapper:jsWrapper overwriteResourceNode:resourceFile];
+#else
         [self fileWrapper:jsWrapper addResourceNode:resourceFile];
+#endif
     }
 
     [self fileWrapper:imageWrapper removeFileNotInArray:[_project.resourceManager namesWithFiles:_project.resourceManager.imageFiles]];
@@ -286,6 +294,21 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
     return i;
 }
 
+#if DEBUG
+- (NSString *)fileWrapper:(NSFileWrapper *)fileWrapper overwriteResourceNode:(IUResourceFile *)resource{
+    NSFileWrapper *oldFileWrapper = [[fileWrapper fileWrappers] objectForKey:resource.name];
+    if(oldFileWrapper){
+        NSString *fileName = [[oldFileWrapper preferredFilename] stringByDeletingPathExtension];
+        NSString *fileType = [[oldFileWrapper preferredFilename] pathExtension];
+        NSString *path =  [[NSBundle mainBundle] pathForResource:fileName ofType:fileType];
+        resource.originalFilePath = path;
+
+        [fileWrapper removeFileWrapper:oldFileWrapper];
+    }
+    return [self fileWrapper:fileWrapper addResourceNode:resource];
+
+}
+#endif
 
 - (NSString *)fileWrapper:(NSFileWrapper *)fileWrapper addResourceNode:(IUResourceFile *)resource{
     if([[fileWrapper fileWrappers] objectForKey:resource.name] == nil){
