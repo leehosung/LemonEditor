@@ -138,10 +138,10 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </searchFieldCell>
                                         <connections>
-                                            <binding destination="wOM-ER-3HZ" name="predicate" keyPath="filterPredicate" id="SoI-Xi-Niz">
+                                            <binding destination="wOM-ER-3HZ" name="predicate" keyPath="filterPredicate" id="06z-vI-zM1">
                                                 <dictionary key="options">
                                                     <string key="NSDisplayName">predicate</string>
-                                                    <string key="NSPredicateFormat">name contains $value</string>
+                                                    <string key="NSPredicateFormat">name contains[cd] $value</string>
                                                 </dictionary>
                                             </binding>
                                         </connections>
