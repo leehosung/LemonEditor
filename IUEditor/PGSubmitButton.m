@@ -29,6 +29,12 @@
     [aCoder encodeFromObject:self withProperties:[PGSubmitButton properties]];
 }
 
+- (id)copyWithZone:(NSZone *)zone{
+    PGSubmitButton *iu = [super copyWithZone:zone];
+    iu.label = [_label copy];
+    return iu;
+}
+
 
 - (void)setLabel:(NSString *)label{
     if (label == nil)

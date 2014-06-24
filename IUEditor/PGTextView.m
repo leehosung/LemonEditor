@@ -37,6 +37,14 @@
     
 }
 
+- (id)copyWithZone:(NSZone *)zone{
+    PGTextView *iu = [super copyWithZone:zone];
+    iu.formName = [_formName copy];
+    iu.placeholder = [_placeholder copy];
+    iu.inputValue = [_inputValue copy];
+    return iu;
+}
+
 - (BOOL)shouldAddIUByUserInput{
     return NO;
 }

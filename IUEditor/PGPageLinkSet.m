@@ -34,6 +34,17 @@
     return self;
 }
 
+
+- (id)copyWithZone:(NSZone *)zone{
+    PGPageLinkSet *iu = [super copyWithZone:zone];
+    iu.pageCountVariable = [_pageCountVariable copy];
+    iu.pageLinkAlign = _pageLinkAlign;
+    iu.selectedButtonBGColor = [_selectedButtonBGColor copy];
+    iu.defaultButtonBGColor = [_defaultButtonBGColor copy];
+    iu.buttonMargin = _buttonMargin;
+    return iu;
+}
+
 - (void)setPageLinkAlign:(IUAlign)pageLinkAlign{
     _pageLinkAlign = pageLinkAlign;
     [self updateCSSForEditViewPort];

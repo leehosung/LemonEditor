@@ -38,6 +38,16 @@
     
 }
 
+- (id)copyWithZone:(NSZone *)zone{
+    PGTextField *iu = [super copyWithZone:zone];
+    iu.formName = [_formName copy];
+    iu.placeholder = [_placeholder copy];
+    iu.inputValue = [_inputValue copy];
+    iu.type = _type;
+    return iu;
+}
+
+
 #pragma mark -
 #pragma mark should
 
