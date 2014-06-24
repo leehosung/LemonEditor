@@ -228,8 +228,10 @@
         [textfield setStringValue:@"-"];
         [stepper setEnabled:NO];
     }
-    else if(value && [value isEqual:textfield.stringValue] == NO){
-        [textfield setStringValue:value];
+    else{
+        if(value && [value isEqual:textfield.stringValue] == NO){
+            [textfield setStringValue:value];
+        }
         [stepper setEnabled:YES];
         [stepper setIntegerValue:[value integerValue]];
     }
