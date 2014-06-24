@@ -47,6 +47,16 @@
     [aCoder encodeFromObject:self withProperties:[[IUFBLike class] properties]];
     
 }
+
+- (id)copyWithZone:(NSZone *)zone{
+    IUFBLike *iu = [super copyWithZone:zone];
+    
+    iu.likePage = [_likePage copy];
+    iu.showFriendsFace = _showFriendsFace;
+    
+    return iu;
+}
+
 -(void) dealloc{
     [self removeObserver:self forKeyPaths:@[@"showFriendsFace", @"likePage"]];
 }

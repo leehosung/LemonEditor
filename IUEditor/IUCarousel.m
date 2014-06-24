@@ -58,6 +58,20 @@
     
 }
 
+- (id)copyWithZone:(NSZone *)zone{
+    IUCarousel *carousel = [super copyWithZone:zone];
+    carousel.autoplay = _autoplay;
+    carousel.enableColor = _enableColor;
+    carousel.disableArrowControl = _disableArrowControl;
+    carousel.controlType = _controlType;
+    carousel.selectColor = [_selectColor copy];
+    carousel.deselectColor = [_deselectColor copy];
+    carousel.leftArrowImage = [_leftArrowImage copy];
+    carousel.rightArrowImage = [_rightArrowImage copy];
+    carousel.count = [self count];
+    
+    return carousel;
+}
 
 -(void)dealloc{
     [self removeObserver:self forKeyPath:@"css.assembledTagDictionary.height"];
@@ -143,8 +157,12 @@
 
 - (void)heightContextDidChange:(NSDictionary *)change{
     //redraw arrowimage because of position
-    [self setLeftArrowImage:_leftArrowImage];
-    [self setRightArrowImage:_rightArrowImage];
+    if(_leftArrowImage){
+        [self setLeftArrowImage:_leftArrowImage];
+    }
+    if(_rightArrowImage){
+        [self setRightArrowImage:_rightArrowImage];
+    }
 }
 
 - (void)setLeftArrowImage:(NSString *)leftArrowImage{
