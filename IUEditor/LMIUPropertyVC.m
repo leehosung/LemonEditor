@@ -27,6 +27,7 @@
 #import "LMPropertyPGFormVC.h"
 #import "LMPropertyIUTextVC.h"
 #import "PGSubmitButtonVC.h"
+#import "LMInspectorAltTextVC.h"
 
 #if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
 
@@ -43,7 +44,11 @@
 @interface LMIUPropertyVC (){
     IUProject   *_project;
     
+    //default property
     LMInspectorLinkVC   *inspectorLinkVC;
+    LMInspectorAltTextVC *inspectorAltTextVC;
+    
+    //iubox property
     LMPropertyIUHTMLVC  *propertyIUHTMLVC;
     
     LMPropertyIUMovieVC *propertyIUMovieVC;
@@ -101,6 +106,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         inspectorLinkVC = [[LMInspectorLinkVC alloc] initWithNibName:[LMInspectorLinkVC class].className bundle:nil];
+        inspectorAltTextVC = [[LMInspectorAltTextVC alloc] initWithNibName:[LMInspectorAltTextVC class].className bundle:nil];
+        
         propertyIUHTMLVC = [[LMPropertyIUHTMLVC alloc] initWithNibName:[LMPropertyIUHTMLVC class].className bundle:nil];
         
         propertyIUMovieVC = [[LMPropertyIUMovieVC alloc] initWithNibName:[LMPropertyIUMovieVC class].className bundle:nil];
@@ -139,6 +146,7 @@
 
 -(void)awakeFromNib{
     [inspectorLinkVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+    [inspectorAltTextVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     [propertyIUHTMLVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     
     [propertyIUMovieVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
@@ -259,7 +267,7 @@
         self.propertyVArray = @[propertyPGTextFieldVC.view, propertyPGType2VC.view];
     }
     else if ([classString isEqualToString:@"IUImage"]){
-        self.propertyVArray = [NSMutableArray arrayWithArray:@[inspectorLinkVC.view, propertyPGType1VC.view]];
+        self.propertyVArray = [NSMutableArray arrayWithArray:@[inspectorAltTextVC.view, inspectorLinkVC.view, propertyPGType1VC.view]];
     }
     
     else if ([classString isEqualToString:@"IUBox"]){

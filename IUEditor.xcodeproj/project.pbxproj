@@ -154,6 +154,8 @@
 		3D748C82192095A1005665A3 /* LMPropertyIUPageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D748C80192095A1005665A3 /* LMPropertyIUPageVC.xib */; };
 		3D748C851921D1BD005665A3 /* stack_carousel_item.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D748C831921D1BD005665A3 /* stack_carousel_item.png */; };
 		3D748C861921D1BD005665A3 /* stack_carousel_item@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D748C841921D1BD005665A3 /* stack_carousel_item@2x.png */; };
+		3D825BC9195940E0001CC3C2 /* LMInspectorAltTextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D825BC7195940E0001CC3C2 /* LMInspectorAltTextVC.m */; };
+		3D825BCA195940E0001CC3C2 /* LMInspectorAltTextVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D825BC8195940E0001CC3C2 /* LMInspectorAltTextVC.xib */; };
 		3D8D4B2A19179F910002C871 /* LMPropertyIUTextViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8D4B2819179F910002C871 /* LMPropertyIUTextViewVC.m */; };
 		3D8D4B2B19179F910002C871 /* LMPropertyIUTextViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D8D4B2919179F910002C871 /* LMPropertyIUTextViewVC.xib */; };
 		3D973F091946F45100FB893F /* IUProjectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D973F081946F45100FB893F /* IUProjectController.m */; };
@@ -712,6 +714,9 @@
 		3D748C80192095A1005665A3 /* LMPropertyIUPageVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMPropertyIUPageVC.xib; path = IU/LMPropertyIUPageVC.xib; sourceTree = "<group>"; };
 		3D748C831921D1BD005665A3 /* stack_carousel_item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack_carousel_item.png; sourceTree = "<group>"; };
 		3D748C841921D1BD005665A3 /* stack_carousel_item@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stack_carousel_item@2x.png"; sourceTree = "<group>"; };
+		3D825BC6195940E0001CC3C2 /* LMInspectorAltTextVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMInspectorAltTextVC.h; path = Editor/LMInspectorAltTextVC.h; sourceTree = "<group>"; };
+		3D825BC7195940E0001CC3C2 /* LMInspectorAltTextVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMInspectorAltTextVC.m; path = Editor/LMInspectorAltTextVC.m; sourceTree = "<group>"; };
+		3D825BC8195940E0001CC3C2 /* LMInspectorAltTextVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMInspectorAltTextVC.xib; path = Editor/LMInspectorAltTextVC.xib; sourceTree = "<group>"; };
 		3D8D4B2719179F910002C871 /* LMPropertyIUTextViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyIUTextViewVC.h; sourceTree = "<group>"; };
 		3D8D4B2819179F910002C871 /* LMPropertyIUTextViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyIUTextViewVC.m; sourceTree = "<group>"; };
 		3D8D4B2919179F910002C871 /* LMPropertyIUTextViewVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyIUTextViewVC.xib; sourceTree = "<group>"; };
@@ -1233,9 +1238,9 @@
 		69FFB27B1950305600DA2783 /* LMIUPropertyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMIUPropertyVC.h; sourceTree = "<group>"; };
 		69FFB27C1950305600DA2783 /* LMIUPropertyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMIUPropertyVC.m; sourceTree = "<group>"; };
 		69FFB27D1950305600DA2783 /* LMIUPropertyVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMIUPropertyVC.xib; sourceTree = "<group>"; };
-		69FFB2801950309E00DA2783 /* LMInspectorLinkVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMInspectorLinkVC.h; path = IUEditor/LMInspectorLinkVC.h; sourceTree = "<group>"; };
-		69FFB2811950309E00DA2783 /* LMInspectorLinkVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMInspectorLinkVC.m; path = IUEditor/LMInspectorLinkVC.m; sourceTree = "<group>"; };
-		69FFB2821950309E00DA2783 /* LMInspectorLinkVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMInspectorLinkVC.xib; path = IUEditor/LMInspectorLinkVC.xib; sourceTree = "<group>"; };
+		69FFB2801950309E00DA2783 /* LMInspectorLinkVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMInspectorLinkVC.h; sourceTree = "<group>"; };
+		69FFB2811950309E00DA2783 /* LMInspectorLinkVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMInspectorLinkVC.m; sourceTree = "<group>"; };
+		69FFB2821950309E00DA2783 /* LMInspectorLinkVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMInspectorLinkVC.xib; sourceTree = "<group>"; };
 		69FFB285195041E500DA2783 /* LMPropertyProgrammingType1VC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMPropertyProgrammingType1VC.h; path = IUEditor/LMPropertyProgrammingType1VC.h; sourceTree = "<group>"; };
 		69FFB286195041E500DA2783 /* LMPropertyProgrammingType1VC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMPropertyProgrammingType1VC.m; path = IUEditor/LMPropertyProgrammingType1VC.m; sourceTree = "<group>"; };
 		69FFB287195041E500DA2783 /* LMPropertyProgrammingType1VC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMPropertyProgrammingType1VC.xib; path = IUEditor/LMPropertyProgrammingType1VC.xib; sourceTree = "<group>"; };
@@ -1452,6 +1457,19 @@
 				3D748C7A19207B7A005665A3 /* iueditor.iconset */,
 			);
 			name = icon;
+			sourceTree = "<group>";
+		};
+		3D825BC5195940C1001CC3C2 /* DefaultProperty */ = {
+			isa = PBXGroup;
+			children = (
+				69FFB2801950309E00DA2783 /* LMInspectorLinkVC.h */,
+				69FFB2811950309E00DA2783 /* LMInspectorLinkVC.m */,
+				69FFB2821950309E00DA2783 /* LMInspectorLinkVC.xib */,
+				3D825BC6195940E0001CC3C2 /* LMInspectorAltTextVC.h */,
+				3D825BC7195940E0001CC3C2 /* LMInspectorAltTextVC.m */,
+				3D825BC8195940E0001CC3C2 /* LMInspectorAltTextVC.xib */,
+			);
+			name = DefaultProperty;
 			sourceTree = "<group>";
 		};
 		3D97D44E194ABF0100826280 /* StartProjectWindow */ = {
@@ -1865,6 +1883,7 @@
 		3DED26D4190108B6001A1D67 /* RightIUInspector */ = {
 			isa = PBXGroup;
 			children = (
+				3D825BC5195940C1001CC3C2 /* DefaultProperty */,
 				69FFB27B1950305600DA2783 /* LMIUPropertyVC.h */,
 				69FFB27C1950305600DA2783 /* LMIUPropertyVC.m */,
 				69FFB27D1950305600DA2783 /* LMIUPropertyVC.xib */,
@@ -2226,9 +2245,6 @@
 				69317CAF1947271F0065B6F4 /* LMHelpWC.h */,
 				69317CB01947271F0065B6F4 /* LMHelpWC.m */,
 				69317CB11947271F0065B6F4 /* LMHelpWC.xib */,
-				69FFB2801950309E00DA2783 /* LMInspectorLinkVC.h */,
-				69FFB2811950309E00DA2783 /* LMInspectorLinkVC.m */,
-				69FFB2821950309E00DA2783 /* LMInspectorLinkVC.xib */,
 				698E83FD19358C14002CE47B /* LMProjectConvertWC.h */,
 				698E83FE19358C14002CE47B /* LMProjectConvertWC.m */,
 				698E83FF19358C14002CE47B /* LMProjectConvertWC.xib */,
@@ -2558,6 +2574,7 @@
 				267CB199190F93370079E565 /* tab_clipart_on.png in Resources */,
 				2628C91E1919C8C800D9D8CD /* tab_primary_on.png in Resources */,
 				69FFB2841950309E00DA2783 /* LMInspectorLinkVC.xib in Resources */,
+				3D825BCA195940E0001CC3C2 /* LMInspectorAltTextVC.xib in Resources */,
 				265FCC0A1953D3C000BD9068 /* tab2_off@2x.png in Resources */,
 				3DBC932F18F647EC00F217BD /* iu.js in Resources */,
 				3DF8041A18FE62F200913505 /* view_border@2x.png in Resources */,
@@ -3024,6 +3041,7 @@
 				3DB3ACF618EC1E120046DFB7 /* LMCanvasView.m in Sources */,
 				3DED26F119010BB0001A1D67 /* LMPropertyIUImportVC.m in Sources */,
 				69A45DE018F6702C00C551D9 /* LMPropertyBorderVC.m in Sources */,
+				3D825BC9195940E0001CC3C2 /* LMInspectorAltTextVC.m in Sources */,
 				6999161D1919F05E000ECF57 /* PGSubmitButton.m in Sources */,
 				6954812818D7640A00CA02F1 /* IUPage.m in Sources */,
 				69C5764018D729830016F050 /* IUSheetController.m in Sources */,
