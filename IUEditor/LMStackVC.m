@@ -13,6 +13,7 @@
 #import "IUResponsiveSection.h"
 #import "IUSheet.h"
 #import "LMWC.h"
+#import "IUPage.h"
 
 @implementation LMStackOutlineView
 
@@ -210,6 +211,21 @@
             if(newIndex < 0){
                 newIndex = 0 ;
             }
+            if([newParent isKindOfClass:[IUPage class]]){
+                newParent = (IUBox *)((IUPage *)newParent).pageContent;
+            }
+            
+            int i=0;
+            while([newParent shouldAddIUByUserInput] == NO){
+                newParent = newParent.parent;
+                
+                //safe code;
+                if(i>10000){
+                    [JDUIUtil hudAlert:@"Can't find parent node, you try it, again" second:2];
+                    return NO;
+                }
+            }
+            
             [newParent insertIU:newIU atIndex:newIndex error:nil];
             [_IUController rearrangeObjects];
             [_IUController setSelectedObjectsByIdentifiers:@[newIU.htmlID]];

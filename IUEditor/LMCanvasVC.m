@@ -32,6 +32,8 @@
 
 #endif
 
+#import "IUPage.h"
+
 @interface LMCanvasVC ()
 
 #pragma mark - debug window
@@ -141,12 +143,25 @@
         NSString *realID = [[parentIUID componentsSeparatedByString:@"_"] objectAtIndex:2];
         parentIU = [self.controller IUBoxByIdentifier:realID];
     }
-    if ([parentIU shouldAddIUByUserInput] == NO) {
-        NSString *alertString = [NSString stringWithFormat: @"Please insert a child to IUBox type"];
-        [JDUIUtil hudAlert:alertString second:2];
-        return NO;
+    
+    
+    //find parent IU
+    if([parentIU isKindOfClass:[IUPage class]]){
+        parentIU = (IUBox *)((IUPage *)parentIU).pageContent;
     }
-    NSPoint position = [self distanceFromIU:parentIUID toPointFromWebView:point];
+    
+    int i=0;
+    while([parentIU shouldAddIUByUserInput] == NO){
+        parentIU = parentIU.parent;
+        
+        //safe code;
+        if(i>10000){
+            [JDUIUtil hudAlert:@"Can't find parent node, you try it, again" second:2];
+            return NO;
+        }
+    }
+  
+    NSPoint position = [self distanceFromIU:parentIU.htmlID toPointFromWebView:point];
         
     //postion을 먼저 정한 후에 add 함
     [newIU setPosition:position];
