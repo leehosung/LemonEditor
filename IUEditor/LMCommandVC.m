@@ -8,6 +8,7 @@
 
 #import "LMCommandVC.h"
 #import "IUSheetGroup.h"
+#import "IUDjangoProject.h"
 
 @interface LMCommandVC ()
 @property (weak) IBOutlet NSButton *buildB;
@@ -93,7 +94,6 @@
 
 - (IBAction) runOrStopServer:(id)sender{
     //TODO: 제대로 동작안함
-#if 0
     if (runningState == 0) {
         // stop server
         serverTask = [[NSTask alloc] init];
@@ -109,7 +109,7 @@
         
         
         [serverTask setLaunchPath:@"/usr/bin/python"];
-        [serverTask setCurrentDirectoryPath:[_docController.project.directory stringByDeletingLastPathComponent]];
+        [serverTask setCurrentDirectoryPath:_docController.project.directoryPath];
         [serverTask setArguments:@[@"manage.py", @"runserver", @"8000"]];
         
         [serverTask launch];
@@ -124,7 +124,6 @@
         runningState = 0;
         [_serverB setTitle:@"||"];
     }
-#endif
 }
 
 - (IBAction)changeCompilerRule:(id)sender {

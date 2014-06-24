@@ -9,6 +9,6 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface LMFontPreferenceVC : NSViewController
+@interface LMPreferenceFontVC : NSViewController
 
 @end

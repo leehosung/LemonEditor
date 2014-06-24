@@ -37,6 +37,9 @@ static NSString * IUProjectKeyPath= @"path";
 //appname : abcd
 static NSString * IUProjectKeyAppName = @"appName";
 
+static NSString * IUProjectKeyResourcePath = @"resPath";
+static NSString * IUProjectKeyBuildPath = @"buildPath";
+
 
 @interface IUProject : NSObject <IUFile, IUResourcePathProtocol>{
     IUSheetGroup *_pageGroup;
@@ -49,6 +52,8 @@ static NSString * IUProjectKeyAppName = @"appName";
     IUIdentifierManager *_identifierManager;
     
     NSString *_buildPath;
+    NSString *_buildResourcePath;
+    
     NSString  *_path;
     NSMutableArray *_mqSizes;
 }
@@ -76,11 +81,12 @@ static NSString * IUProjectKeyAppName = @"appName";
  @ important
  name , path are set by IUProjectDocument
  */
-@property   NSString  *name;
-@property   NSString *path;
+@property   NSString    *name;
+@property   NSString    *path;
 
 - (NSString*)directoryPath;
 - (NSString*)buildPath;
+- (NSString*)buildResourcePath;
 
 //build
 - (IUCompiler *)compiler;

@@ -6,17 +6,17 @@
 //  Copyright (c) 2014년 JDLab. All rights reserved.
 //
 
-#import "LMFontPreferenceVC.h"
+#import "LMPreferenceFontVC.h"
 #import "LMFontController.h"
 
-@interface LMFontPreferenceVC ()
+@interface LMPreferenceFontVC ()
 
 @property LMFontController *fontController;
 @property (strong) IBOutlet NSDictionaryController *fontListDC;
 
 @end
 
-@implementation LMFontPreferenceVC
+@implementation LMPreferenceFontVC
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

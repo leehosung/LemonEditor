@@ -105,7 +105,13 @@
     self = [super init];
     
     _mqSizes = [NSMutableArray arrayWithArray:@[@(defaultFrameWidth), @700, @400]];
-    _buildPath = @"build";
+    
+    _buildPath = [options objectForKey:IUProjectKeyBuildPath];
+    if (_buildPath == nil) {
+        _buildPath = @"build";
+    }
+    _buildResourcePath = [options objectForKey:IUProjectKeyResourcePath];
+    
     _compiler = [[IUCompiler alloc] init];
     _resourceManager = [[IUResourceManager alloc] init];
     _compiler.resourceManager = _resourceManager;
@@ -117,9 +123,6 @@
     self.name = [options objectForKey:IUProjectKeyAppName];
     self.path = [options objectForKey:IUProjectKeyPath];
     
-
-    
-    _buildPath = @"build";
     _pageGroup = [[IUSheetGroup alloc] init];
     _pageGroup.name = @"Pages";
     _pageGroup.project = self;
@@ -186,6 +189,10 @@
 
 - (NSString*)buildPath{
     return _buildPath;
+}
+
+- (NSString*)buildResourcePath{
+    return _buildResourcePath;
 }
 
 - (BOOL)build:(NSError**)error{

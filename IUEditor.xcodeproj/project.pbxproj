@@ -163,8 +163,8 @@
 		3D97D4591950254A00826280 /* jssor.slider.js in Resources */ = {isa = PBXBuildFile; fileRef = 3D97D4581950254A00826280 /* jssor.slider.js */; };
 		3D97D45B1950255200826280 /* jssor.utils.js in Resources */ = {isa = PBXBuildFile; fileRef = 3D97D45A1950255200826280 /* jssor.utils.js */; };
 		3D97D45D1950339500826280 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D97D45C1950339500826280 /* Defaults.plist */; };
-		3DA416B81935A6BE00559028 /* LMFontPreferenceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA416B61935A6BE00559028 /* LMFontPreferenceVC.m */; };
-		3DA416B91935A6BE00559028 /* LMFontPreferenceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DA416B71935A6BE00559028 /* LMFontPreferenceVC.xib */; };
+		3DA416B81935A6BE00559028 /* LMPreferenceFontVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA416B61935A6BE00559028 /* LMPreferenceFontVC.m */; };
+		3DA416B91935A6BE00559028 /* LMPreferenceFontVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DA416B71935A6BE00559028 /* LMPreferenceFontVC.xib */; };
 		3DA416BD1935ABB400559028 /* LMFontController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA416BC1935ABB400559028 /* LMFontController.m */; };
 		3DA416C31935B29200559028 /* defaultFont.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DA416C21935B29200559028 /* defaultFont.plist */; };
 		3DA72903192B5ABC00203764 /* IUTextController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA72902192B5ABC00203764 /* IUTextController.m */; };
@@ -467,6 +467,9 @@
 		69A45DE118F6702C00C551D9 /* LMPropertyBorderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69A45DDF18F6702C00C551D9 /* LMPropertyBorderVC.xib */; };
 		69AB7EAC19062598009E5195 /* IUTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB7EAB19062598009E5195 /* IUTransition.m */; };
 		69ABB14A18D733ED0065D584 /* IUCompiler.m in Sources */ = {isa = PBXBuildFile; fileRef = 69ABB14918D733ED0065D584 /* IUCompiler.m */; };
+		69B260E719594E4F007D905C /* font.png in Resources */ = {isa = PBXBuildFile; fileRef = 69B260E619594E4F007D905C /* font.png */; };
+		69B260EB1959502A007D905C /* LMPreferenceDjangoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B260E91959502A007D905C /* LMPreferenceDjangoVC.m */; };
+		69B260EC1959502A007D905C /* LMPreferenceDjangoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69B260EA1959502A007D905C /* LMPreferenceDjangoVC.xib */; };
 		69B37F0D18DFDEE800DE620F /* LMFileNaviVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B37F0B18DFDEE800DE620F /* LMFileNaviVC.m */; };
 		69B37F0E18DFDEE800DE620F /* LMFileNaviVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69B37F0C18DFDEE800DE620F /* LMFileNaviVC.xib */; };
 		69B4D7FA192B5155008429B3 /* LMCommandVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B4D7F9192B5155008429B3 /* LMCommandVC.m */; };
@@ -726,9 +729,9 @@
 		3D97D4581950254A00826280 /* jssor.slider.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jssor.slider.js; sourceTree = "<group>"; };
 		3D97D45A1950255200826280 /* jssor.utils.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jssor.utils.js; sourceTree = "<group>"; };
 		3D97D45C1950339500826280 /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = "<group>"; };
-		3DA416B51935A6BE00559028 /* LMFontPreferenceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMFontPreferenceVC.h; path = Editor/Preference/LMFontPreferenceVC.h; sourceTree = "<group>"; };
-		3DA416B61935A6BE00559028 /* LMFontPreferenceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMFontPreferenceVC.m; path = Editor/Preference/LMFontPreferenceVC.m; sourceTree = "<group>"; };
-		3DA416B71935A6BE00559028 /* LMFontPreferenceVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMFontPreferenceVC.xib; path = Editor/Preference/LMFontPreferenceVC.xib; sourceTree = "<group>"; };
+		3DA416B51935A6BE00559028 /* LMPreferenceFontVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMPreferenceFontVC.h; path = Editor/Preference/LMPreferenceFontVC.h; sourceTree = "<group>"; };
+		3DA416B61935A6BE00559028 /* LMPreferenceFontVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMPreferenceFontVC.m; path = Editor/Preference/LMPreferenceFontVC.m; sourceTree = "<group>"; };
+		3DA416B71935A6BE00559028 /* LMPreferenceFontVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMPreferenceFontVC.xib; path = Editor/Preference/LMPreferenceFontVC.xib; sourceTree = "<group>"; };
 		3DA416BB1935ABB400559028 /* LMFontController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMFontController.h; sourceTree = "<group>"; };
 		3DA416BC1935ABB400559028 /* LMFontController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMFontController.m; sourceTree = "<group>"; };
 		3DA416C21935B29200559028 /* defaultFont.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaultFont.plist; sourceTree = "<group>"; };
@@ -1139,6 +1142,10 @@
 		69AB7EAB19062598009E5195 /* IUTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUTransition.m; sourceTree = "<group>"; };
 		69ABB14818D733ED0065D584 /* IUCompiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUCompiler.h; sourceTree = "<group>"; };
 		69ABB14918D733ED0065D584 /* IUCompiler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUCompiler.m; sourceTree = "<group>"; };
+		69B260E619594E4F007D905C /* font.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = font.png; sourceTree = "<group>"; };
+		69B260E81959502A007D905C /* LMPreferenceDjangoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPreferenceDjangoVC.h; sourceTree = "<group>"; };
+		69B260E91959502A007D905C /* LMPreferenceDjangoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPreferenceDjangoVC.m; sourceTree = "<group>"; };
+		69B260EA1959502A007D905C /* LMPreferenceDjangoVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPreferenceDjangoVC.xib; sourceTree = "<group>"; };
 		69B37F0A18DFDEE800DE620F /* LMFileNaviVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMFileNaviVC.h; path = Editor/LMFileNaviVC.h; sourceTree = "<group>"; };
 		69B37F0B18DFDEE800DE620F /* LMFileNaviVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMFileNaviVC.m; path = Editor/LMFileNaviVC.m; sourceTree = "<group>"; };
 		69B37F0C18DFDEE800DE620F /* LMFileNaviVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMFileNaviVC.xib; path = Editor/LMFileNaviVC.xib; sourceTree = "<group>"; };
@@ -1306,6 +1313,9 @@
 				3D33BACD1935A4F600DA4F4A /* LMPreferenceWC.h */,
 				3D33BACE1935A4F600DA4F4A /* LMPreferenceWC.m */,
 				3D33BACF1935A4F600DA4F4A /* LMPreferenceWC.xib */,
+				69B260E81959502A007D905C /* LMPreferenceDjangoVC.h */,
+				69B260E91959502A007D905C /* LMPreferenceDjangoVC.m */,
+				69B260EA1959502A007D905C /* LMPreferenceDjangoVC.xib */,
 			);
 			name = Preference;
 			sourceTree = "<group>";
@@ -1513,9 +1523,9 @@
 		3DA416BA1935AB9400559028 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				3DA416B51935A6BE00559028 /* LMFontPreferenceVC.h */,
-				3DA416B61935A6BE00559028 /* LMFontPreferenceVC.m */,
-				3DA416B71935A6BE00559028 /* LMFontPreferenceVC.xib */,
+				3DA416B51935A6BE00559028 /* LMPreferenceFontVC.h */,
+				3DA416B61935A6BE00559028 /* LMPreferenceFontVC.m */,
+				3DA416B71935A6BE00559028 /* LMPreferenceFontVC.xib */,
 				3DA416BB1935ABB400559028 /* LMFontController.h */,
 				3DA416BC1935ABB400559028 /* LMFontController.m */,
 			);
@@ -2254,6 +2264,7 @@
 				69FFB288195041E500DA2783 /* LMPropertyProgrammingType2VC.h */,
 				69FFB289195041E500DA2783 /* LMPropertyProgrammingType2VC.m */,
 				69FFB28A195041E500DA2783 /* LMPropertyProgrammingType2VC.xib */,
+				69B260E619594E4F007D905C /* font.png */,
 				699D12DA1957D17A0096B21C /* handArrow.jpg */,
 				CBFBE67C192A07A300F03F76 /* SampleTemplate */,
 				690A409E18E170AC00095263 /* Resource */,
@@ -2677,12 +2688,13 @@
 				26EFF421194AEF9E00317C3E /* help.png in Resources */,
 				3DED267E1900D329001A1D67 /* stack_textfield@2x.png in Resources */,
 				69CFCAB418E95A0C00E3048A /* LMResourceVC.xib in Resources */,
+				69B260E719594E4F007D905C /* font.png in Resources */,
 				69D15F7018E893170046FBB0 /* LMBottomToolbarVC.xib in Resources */,
 				3DED26891900D329001A1D67 /* stack_navi@2x.png in Resources */,
 				58FF6B8F1946EA2B009A86F9 /* PGSubmitButtonVC.xib in Resources */,
 				3D0D480A18FFAF24000A5B53 /* LMTopToolbarVC.xib in Resources */,
 				3DF803EA18FE62C900913505 /* ic_page.png in Resources */,
-				3DA416B91935A6BE00559028 /* LMFontPreferenceVC.xib in Resources */,
+				3DA416B91935A6BE00559028 /* LMPreferenceFontVC.xib in Resources */,
 				3DED265D1900D313001A1D67 /* view_list.png in Resources */,
 				262F50721946C06E003C1801 /* tab_off@2x.png in Resources */,
 				3DF803DA18FE62C900913505 /* panel_left.png in Resources */,
@@ -2720,6 +2732,7 @@
 				267CB1AF190F93370079E565 /* tab_tools_on.png in Resources */,
 				69FEC48E194845CA00483C11 /* scrollingAnimation.pdf in Resources */,
 				3D97D45D1950339500826280 /* Defaults.plist in Resources */,
+				69B260EC1959502A007D905C /* LMPreferenceDjangoVC.xib in Resources */,
 				3DED26641900D313001A1D67 /* ic_contents@2x.png in Resources */,
 				3DD47874193DCCF900639AB5 /* LMPropertyPGFormVC.xib in Resources */,
 				26620E4C19458A2100B728CD /* select_directory@2x.png in Resources */,
@@ -2968,6 +2981,7 @@
 				3DB3ACDE18EBEF5F0046DFB7 /* BorderLayer.m in Sources */,
 				3DB3ACD318EBEF4F0046DFB7 /* WebCanvasView.m in Sources */,
 				69D79B3D19138FC60020608D /* LMStartNewDefaultVC.m in Sources */,
+				69B260EB1959502A007D905C /* LMPreferenceDjangoVC.m in Sources */,
 				69757B1418D95BBC0095CBAC /* NSMenu_JDExtension.m in Sources */,
 				69C4AA1A1908E82900CF75E7 /* IUResponsiveSection.m in Sources */,
 				69ABB14A18D733ED0065D584 /* IUCompiler.m in Sources */,
@@ -3047,7 +3061,7 @@
 				69C5764018D729830016F050 /* IUSheetController.m in Sources */,
 				69AB7EAC19062598009E5195 /* IUTransition.m in Sources */,
 				58FF6B8E1946EA2B009A86F9 /* PGSubmitButtonVC.m in Sources */,
-				3DA416B81935A6BE00559028 /* LMFontPreferenceVC.m in Sources */,
+				3DA416B81935A6BE00559028 /* LMPreferenceFontVC.m in Sources */,
 				6983E71D18FFF54600D424B8 /* JDOutlineCellView.m in Sources */,
 				3DED270519010C71001A1D67 /* LMPropertyIUFBLikeVC.m in Sources */,
 				3DED270019010C55001A1D67 /* LMPropertyIUTransitionVC.m in Sources */,

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPreferenceWC">
             <connections>
-                <outlet property="fontV" destination="fcM-ju-8Bv" id="w10-Y1-MIu"/>
-                <outlet property="preferenceTabView" destination="cgS-b8-Im3" id="0ld-a9-fIm"/>
+                <outlet property="mainV" destination="se5-gp-TjO" id="UKp-rm-ZiK"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -17,80 +16,39 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="808" height="452"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="808" height="452"/>
                 <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <splitView dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aNF-La-9uN">
-                        <rect key="frame" x="0.0" y="0.0" width="808" height="452"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <subviews>
-                            <customView fixedFrame="YES" id="87k-lD-WSi">
-                                <rect key="frame" x="0.0" y="0.0" width="243" height="452"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <subviews>
-                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jmo-MG-A1K">
-                                        <rect key="frame" x="14" y="404" width="221" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="push" title="Font" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hsF-Sg-uWT">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="selectFontTabView:" target="-2" id="1EU-Ot-VT0"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </customView>
-                            <customView id="VD3-a2-2dg">
-                                <rect key="frame" x="244" y="0.0" width="564" height="452"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <subviews>
-                                    <tabView type="noTabsBezelBorder" translatesAutoresizingMaskIntoConstraints="NO" id="cgS-b8-Im3">
-                                        <rect key="frame" x="-4" y="-4" width="572" height="458"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                        <tabViewItems>
-                                            <tabViewItem label="FontVC" identifier="fontVC" id="GKE-7X-vuC">
-                                                <view key="view" id="fcM-ju-8Bv">
-                                                    <rect key="frame" x="10" y="7" width="552" height="438"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                </view>
-                                            </tabViewItem>
-                                            <tabViewItem label="View" identifier="2" id="gvO-6N-4OV">
-                                                <view key="view" id="EuL-qo-wGu">
-                                                    <rect key="frame" x="10" y="7" width="151" height="94"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                </view>
-                                            </tabViewItem>
-                                        </tabViewItems>
-                                    </tabView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="cgS-b8-Im3" secondAttribute="trailing" id="Bh7-ht-v72"/>
-                                    <constraint firstItem="cgS-b8-Im3" firstAttribute="leading" secondItem="VD3-a2-2dg" secondAttribute="leading" id="fja-jy-wds"/>
-                                    <constraint firstAttribute="bottom" secondItem="cgS-b8-Im3" secondAttribute="bottom" id="h3a-6l-AKE"/>
-                                    <constraint firstItem="cgS-b8-Im3" firstAttribute="top" secondItem="VD3-a2-2dg" secondAttribute="top" id="joA-yR-XTm"/>
-                                </constraints>
-                            </customView>
-                        </subviews>
-                        <holdingPriorities>
-                            <real value="250"/>
-                            <real value="250"/>
-                        </holdingPriorities>
-                    </splitView>
-                </subviews>
-                <constraints>
-                    <constraint firstAttribute="trailing" secondItem="aNF-La-9uN" secondAttribute="trailing" id="AAK-2C-75r"/>
-                    <constraint firstItem="aNF-La-9uN" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="jAB-TJ-3Iw"/>
-                    <constraint firstAttribute="bottom" secondItem="aNF-La-9uN" secondAttribute="bottom" id="sL8-qJ-vOl"/>
-                    <constraint firstItem="aNF-La-9uN" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="tCm-Wu-9kb"/>
-                </constraints>
             </view>
+            <toolbar key="toolbar" implicitIdentifier="B10CE55C-349C-4C0E-9707-D1DF2EBAA021" allowsUserCustomization="NO" displayMode="iconAndLabel" sizeMode="regular" id="TCQ-tg-YNI">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="z3Z-R2-dty"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="aGg-oL-1tR"/>
+                    <toolbarItem implicitItemIdentifier="E90A0214-A677-4CA4-BFDF-46DD4AC4F96B" explicitItemIdentifier="Font" label="Font" paletteLabel="Django" tag="-1" image="font" autovalidates="NO" selectable="YES" id="M3G-fY-0LZ">
+                        <connections>
+                            <action selector="performShowFont:" target="-2" id="6q7-He-Rvk"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="C9411CDD-4AA0-4394-934D-6A14FAC3907D" explicitItemIdentifier="Django" label="Django" paletteLabel="Django" tag="-1" image="iueditor" autovalidates="NO" selectable="YES" id="I4b-nA-g7R">
+                        <connections>
+                            <action selector="performShowDjango:" target="-2" id="K5j-nS-7dd"/>
+                        </connections>
+                    </toolbarItem>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="M3G-fY-0LZ"/>
+                    <toolbarItem reference="I4b-nA-g7R"/>
+                    <toolbarItem reference="aGg-oL-1tR"/>
+                </defaultToolbarItems>
+            </toolbar>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
         </window>
     </objects>
+    <resources>
+        <image name="font" width="39" height="32"/>
+        <image name="iueditor" width="512" height="512"/>
+    </resources>
 </document>

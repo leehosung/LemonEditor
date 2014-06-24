@@ -7,20 +7,20 @@
 //
 
 #import "LMPreferenceWC.h"
-#import "LMFontPreferenceVC.h"
+#import "LMPreferenceFontVC.h"
+#import "LMPreferenceDjangoVC.h"
 
 @interface LMPreferenceWC ()
 
-@property (weak) IBOutlet NSTabView *preferenceTabView;
-
 //FONT preference
-@property LMFontPreferenceVC *fontVC;
-@property (weak) IBOutlet NSView *fontV;
-
-
+@property (weak) IBOutlet NSView *mainV;
 @end
 
-@implementation LMPreferenceWC
+@implementation LMPreferenceWC{
+    NSViewController    *currentVC;
+    LMPreferenceFontVC  *fontVC;
+    LMPreferenceDjangoVC    *djangoVC;
+}
 
 - (id)initWithWindow:(NSWindow *)window
 {
@@ -33,14 +33,22 @@
 - (void)windowDidLoad
 {
     [super windowDidLoad];
-
-#pragma mark - font preference
-    _fontVC = [[LMFontPreferenceVC alloc] initWithNibName:[LMFontPreferenceVC class].className bundle:nil];
-    [_fontV addSubviewFullFrame:_fontVC.view];
+    fontVC = [[LMPreferenceFontVC alloc] initWithNibName:[LMPreferenceFontVC class].className bundle:nil];
+    djangoVC = [[LMPreferenceDjangoVC alloc] initWithNibName:[LMPreferenceDjangoVC class].className bundle:nil];
+    [self performShowFont:self];
 }
 
-- (IBAction)selectFontTabView:(id)sender {
-    [_preferenceTabView selectTabViewItemWithIdentifier:@"fontVC"];
+- (IBAction)performShowFont:(id)sender {
+    [currentVC.view removeFromSuperview];
+    currentVC = fontVC;
+    [_mainV addSubviewFullFrame:currentVC.view];
+}
+
+
+- (IBAction)performShowDjango:(id)sender {
+    [currentVC.view removeFromSuperview];
+    currentVC = djangoVC;
+    [_mainV addSubviewFullFrame:djangoVC.view];
 }
 
 @end
