@@ -215,9 +215,12 @@
             [self setValue:currentFontName forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagFontName]];
         }
         if(iuFontName == NSMultipleValuesMarker){
-            [_fontB setStringValue:currentFontName];
+            NSString *placeholder = [NSString stringWithValueMarker:NSMultipleValuesMarker];
+            [[_fontB cell] setPlaceholderString:placeholder];
+            [_fontB setStringValue:@""];
         }
         else{
+            [[_fontB cell] setPlaceholderString:@""];
             [_fontB setStringValue:iuFontName];
         }
         
@@ -228,11 +231,14 @@
         }
         
         if([self valueForTag:IUCSSTagFontSize] == NSMultipleValuesMarker){
-            [_fontSizeComboBox setStringValue:[NSString stringWithFormat:@"%ld", currentFontSize]];
+            NSString *placeholder = [NSString stringWithValueMarker:NSMultipleValuesMarker];
+            [[_fontSizeComboBox cell] setPlaceholderString:placeholder];
+            [_fontSizeComboBox setStringValue:@""];
             
         }
         else{
             NSUInteger iuFontSize = [[self valueForTag:IUCSSTagFontSize] integerValue];
+            [[_fontSizeComboBox cell] setPlaceholderString:@""];
             [_fontSizeComboBox setStringValue:[NSString stringWithFormat:@"%ld", iuFontSize]];
         }
         

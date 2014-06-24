@@ -10,6 +10,8 @@
 
 @interface NSString (JDExtension)
 
++ (NSString *)stringWithValueMarker:(id)marker;
+
 - (NSString*)JSEscape;
 - (BOOL)isHTTPURL;
 - (NSString*)CSSURLString;

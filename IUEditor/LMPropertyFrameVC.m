@@ -223,9 +223,21 @@
 
 - (void)setValueForTag:(IUCSSTag)tag toTextfield:(NSTextField*)textfield toStepper:(NSStepper *)stepper{
     id value = [self valueForKeyPath:[_controller keyPathFromControllerToCSSTag:tag]];
+    //default setting
+    [[textfield cell] setPlaceholderString:@""];
    
     if (value == nil || value == NSNoSelectionMarker || value == NSMultipleValuesMarker || value == NSNotApplicableMarker){
-        [textfield setStringValue:@"-"];
+        if(value){
+            
+            //placehoder setting
+            NSString *placeholder = [NSString stringWithValueMarker:value];
+            [[textfield cell] setPlaceholderString:placeholder];
+            [textfield setStringValue:@""];
+
+        }
+        else{
+            [textfield setStringValue:@"-"];
+        }
         [stepper setEnabled:NO];
     }
     else{

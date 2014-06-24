@@ -10,6 +10,19 @@
 
 @implementation NSString (JDExtension)
 
++(NSString *)stringWithValueMarker:(id)marker{
+    if(marker == NSNoSelectionMarker){
+        return @"No Selection";
+    }
+    else if(marker == NSMultipleValuesMarker){
+        return @"Multiple Values";
+    }
+    else if(marker == NSNotApplicableMarker){
+        return @"Not Applicable";
+    }
+    return nil;
+}
+
 -(NSString*)JSEscape{
     NSMutableString *str = [self mutableCopy];
     [str replaceOccurrencesOfString:@"\\" withString:@"\\\\" options:0    range:NSMakeRange(0, [str length])];
@@ -246,6 +259,7 @@
 - (NSRange)fullRange{
     return NSMakeRange(0, [self length]);
 }
+
 
 @end
 
