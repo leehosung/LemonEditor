@@ -502,6 +502,11 @@
     }
 }
 
+- (void)updateJS{
+    if(self.delegate){
+        [self.delegate runCSSJS];
+    }
+}
 
 /*
  drag 중간의 diff size로 하면 css에 의한 오차가 생김.
@@ -708,6 +713,7 @@
     _positionType = positionType;
     [self updateCSSForEditViewPort];
     [self updateHTML];
+    [self updateJS];
     if (centerChanged) {
         [self didChangeValueForKey:@"canChangeXByUserInput"];
     }

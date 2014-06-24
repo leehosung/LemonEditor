@@ -531,6 +531,10 @@
     [self.webView setNeedsDisplay:YES];
 }
 
+- (void)runCSSJS{
+    [[self webView] runJSAfterRefreshCSS];
+}
+
 
 #pragma mark -
 #pragma mark CSS

@@ -37,6 +37,7 @@
 - (void)changeIUPageHeight:(CGFloat)pageHeight;
 
 - (void)runJSAfterInsertIU:(IUBox *)iu;
+- (void)runCSSJS;
 /*
  argument에 들어가는 것중에 dict, array는 string으로 보내서
  javascript내부에서 새로 var를 만들어서 사용
