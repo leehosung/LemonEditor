@@ -29,14 +29,14 @@ function transitionAnimation(eventObject){
     var effect = $(this).attr('transitionanimation');
     var isSelected= $(this).data('isSelected');
     
-    var secondObj = $(this).find('.Item2');
+    var secondObj = $(this).find('.IUItem')[1];
     
    	if (isSelected=='true'){
        	$(secondObj).hide(effect);
        	$(this).data('isSelected', 'false');
     }
    	else {
-        var isEndAnimation = $($(this).children()[1]).hasClass('Item2');
+        var isEndAnimation = $($(this).children()[1]).hasClass('IUItem');
         
         if(isEndAnimation== true){
             $(secondObj).show(effect);
