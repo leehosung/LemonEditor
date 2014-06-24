@@ -32,6 +32,10 @@
     return self;
 }
 
+- (void)awakeFromNib{
+    [self addObserver:self forKeyPath:@"controller.selectedObjects"
+              options:0 context:@"selection"];
+}
 
 - (void)setProject:(IUProject*)project{
     _project = project;
@@ -80,7 +84,18 @@
 //called when combobox selection is changed by string editing
 - (void)controlTextDidChange:(NSNotification *)obj{
     NSString *link = [_pageLinkCB stringValue];
-    [self setValue:link forKeyPath:[_controller keyPathFromControllerToProperty:@"link"]];}
+    [self setValue:link forKeyPath:[_controller keyPathFromControllerToProperty:@"link"]];
+}
+- (void)selectionContextDidChange:(NSDictionary *)change{
+    id currentLink = [self valueForKeyPath:[_controller keyPathFromControllerToProperty:@"link"]];
+    
+    if(currentLink == nil || currentLink == NSNoSelectionMarker){
+        [_pageLinkCB setStringValue:@""];
+    }
+    else if(currentLink){
+        [_pageLinkCB setStringValue:currentLink];
+    }
+}
 
 
 

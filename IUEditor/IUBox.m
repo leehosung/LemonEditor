@@ -83,6 +83,9 @@
     [self addObserver:self forKeyPath:@"delegate.selectedFrameWidth" options:0 context:nil];
     [self addObserver:self forKeyPath:@"delegate.maxFrameWidth" options:0 context:nil];
     changedCSSWidths = [NSMutableSet set];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeLink:) name:IUNotificationPropertyChanged object:nil];
+
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
@@ -607,6 +610,20 @@
     _link = link;
 //    [self.delegate IU:self.htmlID setLink:link];
 }
+
+- (void)changeLink:(NSNotification *)notification{
+    NSDictionary *userInfo = notification.userInfo;
+    if([userInfo[IUNotificationPropertyType] isEqualToString:IUNotificationPropertySheetName]){
+        NSString *oldName = userInfo[IUNotificationPropertyOldName];
+        if([_link isEqualToString:oldName]){
+            IUSheet *sheet = [userInfo objectForKey:IUNotificationStructureTarget];
+            self.link = sheet.name;
+        }
+
+    }
+}
+
+
 -(void)setDivLink:(NSString *)divLink{
     _divLink = divLink;
 }

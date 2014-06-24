@@ -33,7 +33,7 @@
     return self;
 }
 - (void)awakeFromNib{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeSheet:) name:IUNotificationStructureChanged object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeSheet:) name:IUNotificationStructureChanged object:nil];    
 
 }
 
