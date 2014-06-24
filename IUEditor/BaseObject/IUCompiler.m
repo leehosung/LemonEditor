@@ -781,10 +781,6 @@ static NSString * IUCompilerTagOption = @"tag";
         
         [code addCodeLine:@"</div>"];
 
-        if( ((IUMovie *)iu).altText){
-            [code addCodeLine:((IUMovie *)iu).altText];
-        }
-        [code addCodeLine:@"</div>"];
     }
 #pragma mark IUWebMovie
     else if([iu isKindOfClass:[IUWebMovie class]]){
