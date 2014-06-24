@@ -48,6 +48,9 @@
 - (BOOL)canChangeHeightByUserInput{
     return NO;
 }
+- (BOOL)canCopy{
+    return NO;
+}
 
 
 -(NSDictionary*)CSSAttributesForWidth:(NSInteger)width{

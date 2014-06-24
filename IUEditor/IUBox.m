@@ -65,6 +65,10 @@
     return box;
 }
 
+- (BOOL)canCopy{
+    return YES;
+}
+
 - (void)setTempProject:(IUProject*)project{
     _tempProject = project;
 }

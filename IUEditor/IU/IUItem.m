@@ -36,5 +36,8 @@
 - (BOOL)shouldRemoveIUByUserInput{
     return NO;
 }
+- (BOOL)canCopy{
+    return NO;
+}
 
 @end

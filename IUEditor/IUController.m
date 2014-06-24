@@ -12,7 +12,7 @@
 #import "NSIndexPath+JDExtension.h"
 #import "IUImport.h"
 #import "IUProject.h"
-#import "IUItem.h"
+#import "IUPage.h"
 
 @implementation IUController{
     NSArray     *pasteboard;
@@ -48,6 +48,7 @@
 -(void)pasteToSelectedIU:(id)sender{
     IUBox *pasteTarget;
     BOOL pasteTargetIsParent;
+    //copy할 때 현재 select가 된 object 를 저장했다가 paste에서도 똑같으면 parent에 copy
     if ([self.selectedObjects isEqualToArray:pasteboard] || _pasteRepeatCount) {
         //paste to parent
         if (_pasteRepeatCount == 0) {
@@ -58,6 +59,8 @@
         }
         pasteTargetIsParent = YES;
     }
+    
+    //copy할때와 paste할때 selection이 달라졌으면 selection 밑에 add
     else {
         //paste to selection
         pasteTarget = [self.selectedObjects firstObject];
@@ -74,59 +77,60 @@
         pasteTargetIsParent = NO;
     }
     
-    NSMutableArray *copiedArray = [NSMutableArray array];
-
-    //item can be only copied to same parent
-    if ([[pasteboard firstObject] isKindOfClass:[IUItem class]] ) {
-        NSBeep();
-        return;
+    if([pasteTarget isKindOfClass:[IUPage class]]){
+        pasteTarget = (IUBox *)((IUPage *)pasteTarget).pageContent;
     }
     
-    
+    NSMutableArray *copiedArray = [NSMutableArray array];
+
     for (IUBox *box in pasteboard) {
         NSError *err;
-        IUBox *newBox = [box copy];
-        assert(newBox.children);
-        assert(newBox.htmlID);
-        newBox.name = newBox.htmlID;
-        
-        for (NSNumber *width in newBox.css.allEditWidth) {
-            NSDictionary *tagDictionary;
-            if (_pasteRepeatCount){
-                tagDictionary = [_lastPastedIU.css tagDictionaryForWidth:[width integerValue]];
-            }
-            else {
-                tagDictionary = [newBox.css tagDictionaryForWidth:[width integerValue]];
-            }
-            NSNumber *x = [tagDictionary valueForKey:IUCSSTagX];
+        if([box canCopy]){
+            IUBox *newBox = [box copy];
+            assert(newBox.children);
+            assert(newBox.htmlID);
+            newBox.name = newBox.htmlID;
             
-            if (x) {
-                if (pasteTargetIsParent) {
-                    NSNumber *newX = [NSNumber numberWithInteger:([x integerValue] + 10)];
-                    [newBox.css setValue:newX forTag:IUCSSTagX forWidth:[width integerValue]];
+            for (NSNumber *width in newBox.css.allEditWidth) {
+                NSDictionary *tagDictionary;
+                if (_pasteRepeatCount){
+                    tagDictionary = [_lastPastedIU.css tagDictionaryForWidth:[width integerValue]];
                 }
                 else {
-                    [newBox.css setValue:@(10) forTag:IUCSSTagX forWidth:[width integerValue]];
+                    tagDictionary = [newBox.css tagDictionaryForWidth:[width integerValue]];
                 }
+                NSNumber *x = [tagDictionary valueForKey:IUCSSTagX];
+                
+                if (x) {
+                    if (pasteTargetIsParent) {
+                        NSNumber *newX = [NSNumber numberWithInteger:([x integerValue] + 10)];
+                        [newBox.css setValue:newX forTag:IUCSSTagX forWidth:[width integerValue]];
+                    }
+                    else {
+                        [newBox.css setValue:@(10) forTag:IUCSSTagX forWidth:[width integerValue]];
+                    }
+                }
+                
+                NSNumber *y = [tagDictionary valueForKey:IUCSSTagY];
+                if (y) {
+                    if (pasteTargetIsParent) {
+                        NSNumber *newY = [NSNumber numberWithInteger:([y integerValue] + 10)];
+                        [newBox.css setValue:newY forTag:IUCSSTagY forWidth:[width integerValue]];
+                    }
+                    else {
+                        [newBox.css setValue:@(10) forTag:IUCSSTagY forWidth:[width integerValue]];
+                    }
+                }
+                
             }
+            BOOL result = [pasteTarget addIU:newBox error:&err];
+            _lastPastedIU = newBox;
+            [copiedArray addObject:newBox];
+            [self rearrangeObjects];
             
-            NSNumber *y = [tagDictionary valueForKey:IUCSSTagY];
-            if (y) {
-                if (pasteTargetIsParent) {
-                    NSNumber *newY = [NSNumber numberWithInteger:([y integerValue] + 10)];
-                    [newBox.css setValue:newY forTag:IUCSSTagY forWidth:[width integerValue]];
-                }
-                else {
-                    [newBox.css setValue:@(10) forTag:IUCSSTagY forWidth:[width integerValue]];
-                }
-            }
+            
+            assert(result);
         }
-        BOOL result = [pasteTarget addIU:newBox error:&err];
-        _lastPastedIU = newBox;
-        [copiedArray addObject:newBox];
-        [self rearrangeObjects];
-
-        assert(result);
     }
     [self _setSelectedObjects:copiedArray];
     _pasteRepeatCount ++;

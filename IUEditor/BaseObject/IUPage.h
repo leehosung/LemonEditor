@@ -11,7 +11,7 @@
 #import "IUSheet.h"
 
 @class IUBackground;
-
+@class IUPageContent;
 
 /**
   A page class for IU Framework.
@@ -28,5 +28,6 @@
 
 -(void)setBackground:(IUBackground*)background;
 -(IUBackground*)background;
+-(IUPageContent *)pageContent;
 
 @end

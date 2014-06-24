@@ -58,6 +58,10 @@
     return _background;
 }
 
+-(IUPageContent *)pageContent{
+    return _pageContent;
+}
+
 -(void)setBackground:(IUBackground *)background{
     assert(background.children);
     assert(background); // background can't be nil
@@ -95,8 +99,8 @@
     _background = background;
     _background.parent = self;
     _background.delegate = self.delegate;
+    _pageContent.delegate = self.delegate;
     
-    [_pageContent bind:@"delegate" toObject:self withKeyPath:@"delegate" options:nil];
 
 }
 
@@ -104,6 +108,9 @@
     [super setDelegate:delegate];
     if(_background){
         _background.delegate = delegate;
+    }
+    if(_pageContent){
+        _pageContent.delegate = delegate;
     }
 }
 
@@ -114,6 +121,10 @@
     else {
         return nil;
     }
+}
+
+- (BOOL)canCopy{
+    return NO;
 }
 
 - (BOOL)addIU:(IUBox *)iu error:(NSError *__autoreleasing *)error{

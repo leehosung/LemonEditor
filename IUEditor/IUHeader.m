@@ -48,4 +48,8 @@
 - (BOOL)canChangeWidthByUserInput{
     return NO;
 }
+
+- (BOOL)canCopy{
+    return NO;
+}
 @end

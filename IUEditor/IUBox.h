@@ -180,6 +180,8 @@ typedef enum _IUOverflowType{
 - (BOOL)canChangePositionRelativeCenter;
 
 
+- (BOOL)canCopy;
+
 //@property (nonatomic) BOOL overflow;
 - (BOOL)canChangeOverflow;
 
