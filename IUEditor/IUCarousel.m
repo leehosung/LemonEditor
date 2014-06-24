@@ -223,7 +223,8 @@
 - (void)jsReloadForController{
     NSString *jsArgs = [self carouselAttributes];
     if(jsArgs){
-        [self.delegate callWebScriptMethod:@"reloadCarousels" withArguments:@[self.htmlID, jsArgs]];
+        NSString *innerJSArgs = [jsArgs stringByReplacingOccurrencesOfString:@"auto:true" withString:@"auto:false"];
+        [self.delegate callWebScriptMethod:@"reloadCarousels" withArguments:@[self.htmlID, innerJSArgs]];
     }
 }
 @end
