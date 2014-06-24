@@ -559,6 +559,9 @@
  
  */
 
+- (BOOL)webView:(WebView *)webView shouldChangeSelectedDOMRange:(DOMRange *)currentRange toDOMRange:(DOMRange *)proposedRange affinity:(NSSelectionAffinity)selectionAffinity stillSelecting:(BOOL)flag{
+    return NO;
+}
 
 - (void)changeDOMRange:(NSPoint)point{
     DOMRange *range = [self editableDOMRangeForPoint:point];
