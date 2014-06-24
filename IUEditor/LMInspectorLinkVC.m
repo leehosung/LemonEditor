@@ -64,11 +64,14 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     id value = [self valueForKeyPath:[_controller keyPathFromControllerToProperty:@"link"]];
+    [[_pageLinkCB cell] setPlaceholderString:@""];
+    
     if (value == NSNoSelectionMarker || value == nil) {
         [_pageLinkCB setStringValue:@""];
     }
     else if (value == NSMultipleValuesMarker) {
-        [_pageLinkCB setStringValue:@" - Multiple Value"];
+        [[_pageLinkCB cell] setPlaceholderString:[NSString stringWithValueMarker:value]];
+        [_pageLinkCB setStringValue:@""];
     }
     else {
         [_pageLinkCB setStringValue:value];
