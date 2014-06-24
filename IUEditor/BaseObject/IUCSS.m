@@ -167,7 +167,9 @@
     int borderLeft = [[self.assembledTagDictionary objectForKey:IUCSSTagBorderLeftWidth] intValue];
     int borderRight = [[self.assembledTagDictionary objectForKey:IUCSSTagBorderRightWidth] intValue];
     
-    if(borderTop == borderBottom == borderLeft == borderRight){
+    if(borderTop == borderBottom &&
+       borderTop == borderLeft &&
+       borderTop == borderRight){
         return YES;
     }
     return NO;
@@ -178,7 +180,9 @@
     int borderBLRadius = [[self.assembledTagDictionary objectForKey:IUCSSTagBorderRadiusBottomLeft] intValue];
     int borderBRRadius = [[self.assembledTagDictionary objectForKey:IUCSSTagBorderRadiusBottomRight] intValue];
     
-    if(borderTLRadius == borderTRRadius == borderBLRadius == borderBRRadius){
+    if(borderTLRadius == borderTRRadius &&
+       borderTLRadius == borderBLRadius &&
+       borderTLRadius == borderBRRadius){
         return YES;
     }
     return NO;
