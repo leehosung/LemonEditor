@@ -77,7 +77,7 @@
     NSMutableArray *copiedArray = [NSMutableArray array];
 
     //item can be only copied to same parent
-    if ([[pasteboard firstObject] isKindOfClass:[IUItem class]] && pasteTargetIsParent == NO) {
+    if ([[pasteboard firstObject] isKindOfClass:[IUItem class]] ) {
         NSBeep();
         return;
     }
