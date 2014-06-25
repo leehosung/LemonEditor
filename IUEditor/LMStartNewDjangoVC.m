@@ -51,8 +51,8 @@
                                  IUProjectKeyAppName : [_djangoProjectDir lastPathComponent],
                                  IUProjectKeyProjectPath : [_djangoProjectDir stringByAppendingPathComponent:fileName],
                                  IUProjectKeyType:@(IUProjectTypeDjango),
-                                 IUProjectKeyResourcePath = _djangoResourceDir;
-                                 IUProjectKeyBuildPath = _djangoResourceDir;
+                                 IUProjectKeyResourcePath : _djangoResourceDir,
+                                 IUProjectKeyBuildPath : _djangoResourceDir
                                  };
     
     [(IUProjectController *)[NSDocumentController sharedDocumentController] newDocument:self withOption:options];
