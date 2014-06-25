@@ -33,7 +33,7 @@
                         <rect key="frame" x="1" y="1" width="220" height="466"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" emptySelection="NO" autosaveColumns="NO" rowHeight="26" viewBased="YES" indentationPerLevel="4" autosaveExpandedItems="YES" outlineTableColumn="PHW-2j-9jH" id="Oxr-EL-PIx" customClass="LMStackOutlineView">
+                            <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" emptySelection="NO" autosaveColumns="NO" rowHeight="26" viewBased="YES" indentationPerLevel="12" autosaveExpandedItems="YES" outlineTableColumn="PHW-2j-9jH" id="Oxr-EL-PIx" customClass="LMStackOutlineView">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" red="0.93725496529999996" green="0.93725496529999996" blue="0.93725496529999996" alpha="1" colorSpace="deviceRGB"/>
                                 <color key="gridColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
