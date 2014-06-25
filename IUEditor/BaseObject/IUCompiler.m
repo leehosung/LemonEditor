@@ -498,7 +498,7 @@ static NSString * IUCompilerTagOption = @"tag";
             [code addCodeLineWithFormat:@"</div>"];
         }
         else {
-            assert(0);
+            [code addCode:[self outputHTMLAsBox:iuCollection option:nil]];
         }
     }
 #pragma mark IUCarouselItem
