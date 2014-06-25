@@ -112,6 +112,7 @@ function resizePageContentHeightEditor(){
                                             minHeight = newValue;
                                             }});
         $('.IUPageContent').css('min-height', minHeight+'px');
+        $('.IUPageContent').css('height', minHeight+'px');
         console.log('pagecontentminheight :' + minHeight);
         
         var pageHeight=minHeight;
