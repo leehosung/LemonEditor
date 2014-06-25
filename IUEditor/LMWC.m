@@ -406,14 +406,6 @@
 }
 #endif
 
-- (void)addMQSize:(NSInteger)size{
-    [_project addMQSize:size];
-}
-
-- (void)removeMQSize:(NSInteger)size{
-    [_project removeMQSize:size];
-}
-
 
 #pragma mark -
 #pragma mark select TavView

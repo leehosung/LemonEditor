@@ -16,9 +16,9 @@
     _responsiveSetting = [aDecoder decodeObjectForKey:@"responsiveSetting"];
     _responsiveSupport = [aDecoder decodeIntegerForKey:@"responsiveSupport"];
     _defaultItemCount = [aDecoder decodeIntegerForKey:@"defaultItemCount"];
-    NSArray *array = @[@{@"width":@"600",@"count":@(2)}];
-    self.responsiveSetting = array;
-    self.defaultItemCount = 4;
+    
+    //template of array
+    //NSArray *array = @[@{@"width":@"600",@"count":@(2)}];
     return self;
 }
 
@@ -32,9 +32,8 @@
 
 - (id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
     self = [super initWithProject:project options:options];
-    NSArray *array = @[@{@"width":@"600",@"count":@(2)}];
     self.defaultItemCount = 4;
-    self.responsiveSetting = array;
+    self.responsiveSetting = [NSArray array];
     return self;
 }
 
@@ -49,8 +48,7 @@
 
 - (void)setResponsiveSupport:(BOOL)responsiveSupport{
     _responsiveSupport = responsiveSupport;
-    NSArray *array = @[@{@"width":@"600",@"count":@(2)}];
-    self.responsiveSetting = array;
+    self.responsiveSetting = [NSArray array];
 }
 
 @end

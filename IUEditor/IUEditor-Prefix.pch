@@ -50,7 +50,8 @@
 
 #define IUNotificationSelectionChanged @"IUNotificationSelectionChanged" //called when selection is changed
 #define IUNotificationStructureChanged @"IUNotificationStructureChanged" //called when IUstructure changed, usually occured by addSheet, removeSheet, addIU, removeIU or changeIUIndex
-#define IUNotificationPropertyChanged @"IUNotificationPropertyChanged" //called when iu properties are changed 
+#define IUNotificationPropertyChanged @"IUNotificationPropertyChanged" //called when iu properties are changed
+
 
 #define IUNotificationStructureType @"NotiType"  
 #define IUNotificationStructureTypeAdd @"Add"
@@ -63,6 +64,14 @@
 
 #define IUNotificationStructureTarget @"Target"
 #define IUCanvasDoublieClick @"IUCanvasDoublieClick"
+
+//called when media query is changed, usually occured by addsize, removesize, selectsize
+#define IUNotificationMQAdded @"MQAdded"
+#define IUNotificationMQRemoved @"MQRemoved"
+#define IUNotificationMQSelected @"MQSelected"
+#define IUNotificationMQSize @"MQSize"
+#define IUNotificationMQMaxSize @"MQMaxSize"
+
 
 
 //for text modification 2.0version

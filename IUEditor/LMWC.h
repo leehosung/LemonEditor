@@ -26,10 +26,6 @@
 
 
 - (void)selectFirstDocument;
-
 - (void)reloadCurrentDocument;
-
-- (void)addMQSize:(NSInteger)size;
-- (void)removeMQSize:(NSInteger)size;
 
 @end

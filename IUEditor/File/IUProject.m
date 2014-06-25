@@ -26,7 +26,7 @@
 @implementation IUProject{
 }
 
-
+#pragma mark - init
 - (void)encodeWithCoder:(NSCoder *)encoder{
     assert(_resourceGroup);
     [encoder encodeObject:_mqSizes forKey:@"mqSizes"];
@@ -58,49 +58,21 @@
         
         [_resourceManager setResourceGroup:_resourceGroup];
         [_identifierManager registerIUs:self.allDocuments];
+        
+        [self fetch];
     }
     return self;
 }
-
-- (IUCompileRule )compileRule{
-    return _compiler.rule;
-}
-
-- (void)addMQSize:(NSInteger)size{
-    assert(_mqSizes);
-    [_mqSizes addObject:@(size)];
-}
-
-- (void)removeMQSize:(NSInteger)size{
-    assert(_mqSizes);
-    [_mqSizes removeObject:@(size)];
-}
-
-
-- (void)setCompileRule:(IUCompileRule)compileRule{
-    _compiler.rule = compileRule;
-    assert(_compiler != nil);
-}
-
 - (id)init{
     self = [super init];
     if(self){
         _buildPath = @"build";
         _mqSizes = [NSMutableArray array];
         _compiler = [[IUCompiler alloc] init];
-        [self addMQSize:defaultFrameWidth];
-        [self addMQSize:700];
-        [self addMQSize:400];
     }
     return self;
 }
 
-- (NSArray*)mqSizes{
-    return _mqSizes;
-}
-
-
-// return value : project path
 -(id)initWithCreation:(NSDictionary*)options error:(NSError**)error{
     self = [super init];
     
@@ -134,12 +106,12 @@
     _classGroup = [[IUSheetGroup alloc] init];
     _classGroup.name = @"Classes";
     _classGroup.project = self;
-
+    
     IUBackground *bg = [[IUBackground alloc] initWithProject:self options:nil];
     bg.name = @"Background";
     bg.htmlID = @"Background";
     [self addSheet:bg toSheetGroup:_backgroundGroup];
-
+    
     IUPage *pg = [[IUPage alloc] initWithProject:self options:nil];
     [pg setBackground:bg];
     pg.name = @"Index";
@@ -154,10 +126,53 @@
     [self initializeResource];
     [_resourceManager setResourceGroup:_resourceGroup];
     [_identifierManager registerIUs:self.allDocuments];
-
-//    ReturnNilIfFalse([self save]);
+    
+    //    ReturnNilIfFalse([self save]);
+    [self fetch];
     return self;
 }
+
+
+-(void)fetch{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addMQSize:) name:IUNotificationMQAdded object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeMQSize:) name:IUNotificationMQRemoved object:nil];
+
+}
+
+#pragma mark - mq
+
+- (void)addMQSize:(NSNotification *)notification{
+    NSInteger size = [[notification.userInfo objectForKey:IUNotificationMQSize] integerValue];
+    assert(_mqSizes);
+    [_mqSizes addObject:@(size)];
+}
+
+- (void)removeMQSize:(NSNotification *)notification{
+    NSInteger size = [[notification.userInfo objectForKey:IUNotificationMQSize] integerValue];
+    assert(_mqSizes);
+    [_mqSizes removeObject:@(size)];
+}
+
+- (NSArray*)mqSizes{
+    return _mqSizes;
+}
+
+#pragma mark - compile
+- (IUCompileRule )compileRule{
+    return _compiler.rule;
+}
+
+
+
+- (void)setCompileRule:(IUCompileRule)compileRule{
+    _compiler.rule = compileRule;
+    assert(_compiler != nil);
+}
+
+
+
+
+// return value : project path
 
 
 + (id)projectWithContentsOfPath:(NSString*)path{

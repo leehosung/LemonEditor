@@ -55,6 +55,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         frameDict = [[IUFrameDictionary alloc] init];;
+        _maxFrameWidth = 0;
     }
     return self;
 }
@@ -67,6 +68,12 @@
                                          @"sheet.ghostY",
                                          @"sheet.ghostOpacity"]
               options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew context:@"ghostImage"];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectMQSize:) name:IUNotificationMQSelected object:[self sizeView]];
+
+    
+    
 #if DEBUG
     
     _debugWC = [[LMDebugSourceWC alloc] initWithWindowNibName:@"LMDebugSourceWC"];
@@ -110,6 +117,15 @@
 #pragma mark -
 #pragma mark call by sizeView
 
+- (void)selectMQSize:(NSNotification *)notification{
+    NSInteger selectedSize = [[notification.userInfo valueForKey:IUNotificationMQSize] integerValue];
+    
+    _selectedFrameWidth = selectedSize;
+    if(selectedSize > _maxFrameWidth){
+        _maxFrameWidth = selectedSize;
+    }
+    [self refreshGridFrameDictionary];
+}
 
 - (SizeView *)sizeView{
     return ((LMCanvasView *)(self.view)).sizeView;

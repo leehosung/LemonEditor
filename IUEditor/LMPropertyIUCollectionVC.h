@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "IUController.h"
 
-@interface LMPropertyIUCollectionVC : NSViewController
+@interface LMPropertyIUCollectionVC : NSViewController <NSTextFieldDelegate>
 
 @property (weak, nonatomic) IUController *controller;
 

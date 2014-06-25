@@ -139,10 +139,10 @@
         [self setColorBox:sizeBox];
         
     }
+    //notification
+    NSInteger maxSize = [[self sortedArray][0] integerValue];
+    [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationMQSelected object:self userInfo:@{IUNotificationMQSize:@(selectedWidth), IUNotificationMQMaxSize:@(maxSize)}];
     
-    [(LMCanvasView *)self.superview setWidthOfMainView:selectedWidth];
-    ((LMCanvasVC *)self.delegate).selectedFrameWidth = selectedWidth;
-    [((LMCanvasVC *)self.delegate) refreshGridFrameDictionary];
 }
 
 #pragma mark -
@@ -162,7 +162,6 @@
 - (void)setMaxWidth{
     InnerSizeBox *maxBox = (InnerSizeBox *)boxManageView.subviews[0];
     if(maxBox){
-        ((LMCanvasVC *)self.delegate).maxFrameWidth = maxBox.frameWidth;
         if(maxBox.frameWidth > boxManageView.frame.size.width){
             [boxManageView setWidth:maxBox.frameWidth];
         }
@@ -227,9 +226,8 @@
     //set maxWidth in case of removing maxWidth 
     [self setMaxWidth];
     
-    //save to project
-    LMWC *lmWC = [NSApp mainWindow].windowController;
-    [lmWC removeMQSize:width];
+    //notification
+     [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationMQRemoved object:self userInfo:@{IUNotificationMQSize:@(width)}];
 
 }
 
@@ -244,10 +242,10 @@
     [self addFrame:newWidth];
     [self.addFramePopover close];
     
-    //save to project
-    LMWC *lmWC = [NSApp mainWindow].windowController;
-    [lmWC addMQSize:newWidth];
-
+    
+    //notification
+    [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationMQAdded object:self userInfo:@{IUNotificationMQSize:@(newWidth)}];
+    
 }
 
 

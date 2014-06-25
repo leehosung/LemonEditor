@@ -21,8 +21,8 @@
 
 @property (nonatomic) IUController  *controller;
 
-@property _observing_ NSInteger selectedFrameWidth;
-@property _observing_ NSInteger maxFrameWidth;
+@property NSInteger selectedFrameWidth;
+@property NSInteger maxFrameWidth;
 
 - (void)addFrame:(NSInteger)frameSize;
 

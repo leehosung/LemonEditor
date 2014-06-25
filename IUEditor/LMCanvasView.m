@@ -36,7 +36,10 @@
     [self.mainView addObserver:self forKeyPath:@"frame" options:0 context:nil];
     
     [[self.mainScrollView contentView] setPostsBoundsChangedNotifications:YES];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(boundsDidChange:) name:NSViewBoundsDidChangeNotification object:[self.mainScrollView contentView]];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectMQSize:) name:IUNotificationMQSelected object:[self sizeView]];
+
 
 }
 
@@ -80,8 +83,9 @@
 }
 */
 
-- (void)setWidthOfMainView:(CGFloat)width{
-    [self.mainView setWidth:width];
+- (void)selectMQSize:(NSNotification *)notification{
+    NSInteger selectedSize = [[notification.userInfo valueForKey:IUNotificationMQSize] integerValue];
+    [self.mainView setWidth:selectedSize];
 }
 
 - (void)setHeightOfMainView:(CGFloat)height{

@@ -74,8 +74,6 @@ static NSString * IUProjectKeyBuildPath = @"buildPath";
 
 //project properties
 - (NSArray*)mqSizes;
-- (void)addMQSize:(NSInteger)size;
-- (void)removeMQSize:(NSInteger)size;
 
 /*
  @ important
