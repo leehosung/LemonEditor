@@ -192,6 +192,11 @@
     return self;
 }
 
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:IUNotificationMQMaxChanged object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:IUNotificationMQSelected object:nil];
+}
+
 #pragma mark - mq
 
 - (void)changeMQSelect:(NSNotification *)notification{
