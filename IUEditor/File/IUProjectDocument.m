@@ -98,15 +98,6 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
     }
     return NO;
 }
-/*
-- (id)initWithContentsOfURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
-    self = [super initWithContentsOfURL:url ofType:typeName error:outError];
-    if(self){
-    }
-    return self;
-}
- */
-
 
 - (LMWC *)lemonWindowController{
     if([[self windowControllers] count] > 0){

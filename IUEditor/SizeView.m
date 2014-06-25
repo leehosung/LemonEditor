@@ -164,6 +164,10 @@
     if(maxBox){
         if(maxBox.frameWidth > boxManageView.frame.size.width){
             [boxManageView setWidth:maxBox.frameWidth];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationMQMaxChanged object:self userInfo:@{IUNotificationMQSize:@(selectedWidth), IUNotificationMQMaxSize:@(maxBox.frameWidth)}];
+
+            
         }
     }
 }

@@ -357,6 +357,26 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
 
     return subview;
 }
+
+- (id)subview:(NSView *)subview changeConstraintTrailing:(CGFloat)trailing{
+    NSLayoutConstraint *removedConstraint;
+    
+    for(NSLayoutConstraint *constraint in [self constraints]){
+       if([[constraint secondItem] isEqualTo:subview]
+          && [[constraint firstItem] isEqualTo:self]
+          && [constraint relation] == NSLayoutRelationEqual
+          && [constraint firstAttribute] == NSLayoutAttributeTrailing
+          && [constraint secondAttribute] == NSLayoutAttributeTrailing){
+           removedConstraint = constraint;
+       }
+    }
+    if(removedConstraint){
+        [self removeConstraint:removedConstraint];
+        [self addConstraint:[self viewConstraint:subview toSuperview:self trailing:trailing]];
+    }
+
+    return subview;
+}
 -(NSView*)addSubviewFullFrame:(NSView*)subview atPosition:(NSWindowOrderingMode)place{
     [self addSubview:subview positioned:place relativeTo:nil];
     [subview setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -564,10 +584,10 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
 }
 
 -(NSLayoutConstraint *)viewConstraint:(NSView *)view toSuperview:(NSView *)superview trailing:(CGFloat)trailing{
-    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:view
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:superview
                                                                   attribute:NSLayoutAttributeTrailing
                                                                   relatedBy:NSLayoutRelationEqual
-                                                                     toItem:superview
+                                                                     toItem:view
                                                                   attribute:NSLayoutAttributeTrailing
                                                                  multiplier:1
                                                                    constant:trailing];

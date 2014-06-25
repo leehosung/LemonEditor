@@ -38,7 +38,10 @@
     [[self.mainScrollView contentView] setPostsBoundsChangedNotifications:YES];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(boundsDidChange:) name:NSViewBoundsDidChangeNotification object:[self.mainScrollView contentView]];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectMQSize:) name:IUNotificationMQSelected object:[self sizeView]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMQSelect:) name:IUNotificationMQSelected object:[self sizeView]];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMQMaxSize:) name:IUNotificationMQMaxChanged object:[self sizeView]];
 
 
 }
@@ -83,9 +86,29 @@
 }
 */
 
-- (void)selectMQSize:(NSNotification *)notification{
+- (void)changeMQSelect:(NSNotification *)notification{
     NSInteger selectedSize = [[notification.userInfo valueForKey:IUNotificationMQSize] integerValue];
-    [self.mainView setWidth:selectedSize];
+    NSInteger maxSize = [[notification.userInfo valueForKey:IUNotificationMQMaxSize] integerValue];
+
+    if([[self.mainView subviews] containsObject:self.webView]){
+        [self.mainView subview:self.webView changeConstraintTrailing:(maxSize -selectedSize)];
+    }
+    if([[self.mainView subviews] containsObject:self.gridView]){
+        [self.mainView subview:self.gridView changeConstraintTrailing:(maxSize -selectedSize)];
+    }
+}
+
+- (void)changeMQMaxSize:(NSNotification *)notification{
+    NSInteger selectedSize = [[notification.userInfo valueForKey:IUNotificationMQSize] integerValue];
+    NSInteger maxSize = [[notification.userInfo valueForKey:IUNotificationMQMaxSize] integerValue];
+    //extend to scroll size
+    [self.mainView setWidth:maxSize];
+    if([[self.mainView subviews] containsObject:self.webView]){
+        [self.mainView subview:self.webView changeConstraintTrailing:(maxSize -selectedSize)];
+    }
+    if([[self.mainView subviews] containsObject:self.gridView]){
+        [self.mainView subview:self.gridView changeConstraintTrailing:(maxSize -selectedSize)];
+    }
 }
 
 - (void)setHeightOfMainView:(CGFloat)height{
