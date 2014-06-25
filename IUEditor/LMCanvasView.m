@@ -215,6 +215,12 @@
                 isMouseDown = YES;
                 NSString *currentIUID = [self.webView IUAtPoint:convertedPoint];
                 
+                //webview에서 발견 못하면 gridView에서 한번더 체크
+                //media query 에서 보이지 않는 iu를 위해서 체크함.
+                if(currentIUID == nil){
+                    currentIUID = [self.gridView IUAtPoint:convertedPoint];
+                }
+                
                 if (theEvent.clickCount == 1){
                     if( [theEvent modifierFlags] & NSCommandKeyMask ){
                         //여러개 select 하는 순간 editing mode out

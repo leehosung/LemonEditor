@@ -49,4 +49,6 @@
 - (void)drawGuideLine:(NSArray *)array;
 - (void)clearGuideLine;
 
+
+- (NSString *)IUAtPoint:(NSPoint)point;
 @end

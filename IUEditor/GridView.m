@@ -173,6 +173,14 @@
 
 #pragma mark -
 #pragma mark selectIU
+- (NSString *)IUAtPoint:(NSPoint)point{
+    for(BorderLayer *bLayer in borderManagerLayer.sublayers){
+        if(NSPointInRect(point, bLayer.frame)){
+            return bLayer.iuID;
+        }
+    }
+    return nil;
+}
 
 - (void)updateLayerRect:(NSMutableDictionary *)frameDict{
     //framedict가 update될때마다 호출
