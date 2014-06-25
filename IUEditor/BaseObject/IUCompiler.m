@@ -1143,7 +1143,7 @@ static NSString * IUCompilerTagOption = @"tag";
                     [dict putTag:@"background-position" string:@"center"];
                     break;
                 case IUBGSizeTypeStretch:
-                    [dict putTag:@"background-size" string:@"100%% 100%%"];
+                    [dict putTag:@"background-size" string:@"100% 100%"];
                     break;
                 case IUBGSizeTypeContain:
                     [dict putTag:@"background-size" string:@"contain"];
@@ -1151,6 +1151,8 @@ static NSString * IUCompilerTagOption = @"tag";
                 case IUBGSizeTypeCover:
                     [dict putTag:@"background-size" string:@"cover"];
                     break;
+                //case IUBGSizeTypeFull:
+                //    [dict putTag:@"background-size" string:@"<#string#>"];
                 default:
                     break;
             }

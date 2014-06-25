@@ -65,6 +65,7 @@ typedef enum{
     IUBGSizeTypeContain,
     IUBGSizeTypeStretch,
     IUBGSizeTypeCenter,
+    IUBGSizeTypeFull,
 }IUBGSizeType;
 
 static NSString * IUCSSTagBGXPosition = @"bgX";
