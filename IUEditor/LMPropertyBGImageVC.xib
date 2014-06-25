@@ -9,6 +9,7 @@
                 <outlet property="backgroundImageV" destination="rYz-3Y-tDF" id="bSr-2H-r34"/>
                 <outlet property="bgImageContent" destination="0B5-ac-SUD" id="6A0-Mh-YWg"/>
                 <outlet property="bgImageTitle" destination="jNA-uX-Sm7" id="TjX-XB-s3H"/>
+                <outlet property="fitButton" destination="1nV-NQ-xS0" id="r2D-4Z-bUZ"/>
                 <outlet property="imageNameComboBox" destination="wTP-4i-7vG" id="ufj-UV-IR0"/>
                 <outlet property="repeatBtn" destination="4d5-AX-qLx" id="33S-lb-xzb"/>
                 <outlet property="sizeSegementControl" destination="08X-X7-XQJ" id="H1Y-Lw-GTR"/>

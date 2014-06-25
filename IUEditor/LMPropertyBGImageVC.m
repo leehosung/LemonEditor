@@ -20,6 +20,7 @@
 
 @property (weak) IBOutlet NSPopUpButton *sizeB;
 @property (weak) IBOutlet NSButton *repeatBtn;
+@property (weak) IBOutlet NSButton *fitButton;
 
 @end
 
@@ -62,7 +63,21 @@
     [_sizeSegementControl bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagImage] options:bgEnableBindingOption];
     [_repeatBtn bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagImage] options:bgEnableBindingOption];
     
+    
+    NSDictionary *percentDisableBindingOption = [NSDictionary
+                                               dictionaryWithObjects:@[[NSNumber numberWithBool:NO], NSNegateBooleanTransformerName]
+                                               forKeys:@[NSRaisesForNotApplicableKeysBindingOption, NSValueTransformerNameBindingOption]];
+
+    
+    [_fitButton bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagWidthUnit] options:percentDisableBindingOption];
+    [_fitButton bind:@"enabled2" toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagHeightUnit] options:percentDisableBindingOption];
+    [_fitButton bind:@"enabled3" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"hasWidth"] options:IUBindingDictNotRaisesApplicable];
+    [_fitButton bind:@"enabled4" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"hasHeight"] options:IUBindingDictNotRaisesApplicable];
+    
+
+    
     [self addObserver:self forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagImage] options:0 context:@"image"];
+    
     
     
 }
