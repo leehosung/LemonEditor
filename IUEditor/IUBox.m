@@ -775,11 +775,13 @@
 - (void)setText:(NSString *)text{
     _text = text;
     [self updateHTML];
+    [self updateJS];
 }
 
 - (void)setLineHeightAuto:(BOOL)lineHeightAuto{
     _lineHeightAuto = lineHeightAuto;
     [self updateHTML];
+    [self updateJS];
 }
 
 
