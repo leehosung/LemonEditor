@@ -11,6 +11,7 @@
 #import "IUCSS.h"
 #import "LMHelpMenuItem.h"
 #import "LMHelpWC.h"
+#import "IUPageContent.h"
 
 @interface LMPropertyFrameVC ()
 
@@ -46,12 +47,9 @@
 
 
 @property (weak) IBOutlet NSButton *helpMenu;
+@property (nonatomic) BOOL enablePercentH;
+
 - (IBAction)helpMenu:(id)sender;
-
-@property (weak) IBOutlet NSButton *overflowB;
-
-@property (nonatomic) BOOL enablePercentX, enablePercentY, enablePercentW, enablePercentH;
-
 
 
 @end
@@ -64,6 +62,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        _enablePercentH = YES;
     }
     return self;
 }
@@ -71,6 +70,12 @@
 
 -(void)awakeFromNib{
 
+    //observing
+    [self addObserver:self forKeyPath:@"controller.selectedObjects"
+              options:0 context:nil];
+
+
+    //binding
     NSDictionary *percentHiddeBindingOption = [NSDictionary
                                             dictionaryWithObjects:@[[NSNumber numberWithBool:NO], NSNegateBooleanTransformerName]
                                             forKeys:@[NSRaisesForNotApplicableKeysBindingOption, NSValueTransformerNameBindingOption]];
@@ -110,12 +115,8 @@
     [_yUnitBtn bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagYUnit] options:IUBindingDictNotRaisesApplicable];
     [_wUnitBtn bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagWidthUnit] options:IUBindingDictNotRaisesApplicable];
     [_hUnitBtn bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagHeightUnit] options:IUBindingDictNotRaisesApplicable];
-    [_overflowB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"overflow"] options:IUBindingDictNotRaisesApplicable];
 
     //enabled option 1
-    
-    [
-     _overflowB bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeOverflow"] options:IUBindingDictNotRaisesApplicable];
     [_xTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"hasX"] options:IUBindingDictNotRaisesApplicable];
     [_yTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"hasY"] options:IUBindingDictNotRaisesApplicable];
     [_wTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"hasWidth"] options:IUBindingDictNotRaisesApplicable];
@@ -180,6 +181,8 @@
     [_xUnitBtn bind:@"enabled3" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"center"] options:bindingOption];
     [_xStepper bind:@"enabled3" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"center"] options:bindingOption];
     [_pxStepper bind:@"enabled3" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"center"] options:bindingOption];
+
+    [_hUnitBtn bind:@"enabled3" toObject:self withKeyPath:@"enablePercentH" options:IUBindingDictNotRaisesApplicable];
 }
 
 - (void)dealloc{
@@ -212,9 +215,24 @@
     else if ([[keyPath pathExtension] isSameTag:IUCSSTagPercentHeight]) {
         [self setValueForTag:IUCSSTagPercentHeight toTextfield:_phTF toStepper:_phStepper];
     }
+    else if ([keyPath isEqualToString:@"controller.selectedObjects"]){
+        [self checkForIUPageContent];
+    }
     else {
         assert(0);
     }
+}
+
+- (void)checkForIUPageContent{
+    BOOL isPageContentChildren = NO;
+    for (IUBox *iu in _controller.selectedObjects) {
+        if([iu.parent isKindOfClass:[IUPageContent class]]){
+            isPageContentChildren = YES;
+            break;
+        }
+    }
+
+    self.enablePercentH = !isPageContentChildren;
 }
 
 - (void)setValueForTag:(IUCSSTag)tag toTextfield:(NSTextField*)textfield toStepper:(NSStepper *)stepper{
