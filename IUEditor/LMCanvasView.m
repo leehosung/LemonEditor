@@ -93,9 +93,9 @@
     if([[self.mainView subviews] containsObject:self.webView]){
         [self.mainView subview:self.webView changeConstraintTrailing:(maxSize -selectedSize)];
     }
-    if([[self.mainView subviews] containsObject:self.gridView]){
-        [self.mainView subview:self.gridView changeConstraintTrailing:(maxSize -selectedSize)];
-    }
+    
+//    [[self webView] updateFrameDict];
+    
 }
 
 - (void)changeMQMaxSize:(NSNotification *)notification{
@@ -106,9 +106,9 @@
     if([[self.mainView subviews] containsObject:self.webView]){
         [self.mainView subview:self.webView changeConstraintTrailing:(maxSize -selectedSize)];
     }
-    if([[self.mainView subviews] containsObject:self.gridView]){
-        [self.mainView subview:self.gridView changeConstraintTrailing:(maxSize -selectedSize)];
-    }
+    
+    [[self webView] updateFrameDict];
+    
 }
 
 - (void)setHeightOfMainView:(CGFloat)height{

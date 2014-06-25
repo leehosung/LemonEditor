@@ -14,8 +14,6 @@
 
 @protocol IUSourceDelegate <NSObject>
 @required
-@property _binding_ NSInteger selectedFrameWidth;
-@property _binding_ NSInteger maxFrameWidth;
 
 -(void)IUClassIdentifier:(NSString *)identifier CSSUpdated:(NSString*)css forWidth:(NSInteger)width;
 -(void)IUClassIdentifier:(NSString *)identifier CSSRemovedforWidth:(NSInteger)width;

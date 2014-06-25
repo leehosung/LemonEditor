@@ -175,6 +175,10 @@ function getImageWidth(imageSrc){
     return imageWidth;
 }
 
+$(window).resize(function(){
+            getIUUpdatedFrameThread();
+});
+
 $(document).ready(function(){
             console.log("ready : iueditor.js");
             resizePageContentHeightEditor();

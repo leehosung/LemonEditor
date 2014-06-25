@@ -28,8 +28,6 @@
 
 #pragma mark -
 #pragma mark call by sizeView
-
-- (void)refreshGridFrameDictionary;
 - (void)removeStyleSheet:(NSInteger)size;
 
 #pragma mark -

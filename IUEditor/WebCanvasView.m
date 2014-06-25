@@ -28,7 +28,6 @@
         [self setFrameLoadDelegate:self];
         [self setPolicyDelegate:self];
         [self setEditable:NO];
-        
         [[[self mainFrame] frameView] setAllowsScrolling:NO];
         
         [self registerForDraggedTypes:@[(id)kUTTypeIUType, (id)kUTTypeIUImageResource]];

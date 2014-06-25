@@ -54,19 +54,6 @@
 
 }
 
-- (void)delegate_selectedFrameWidthDidChange:(NSDictionary*)change{
-    if (self.delegate) {
-        if (self.delegate.maxFrameWidth == self.delegate.selectedFrameWidth) {
-            [self.css setEditWidth:IUCSSMaxViewPortWidth];
-            [_textController setEditWidth:IUCSSMaxViewPortWidth];
-        }
-        else {
-            [self.css setEditWidth:self.delegate.selectedFrameWidth];
-            [_textController setEditWidth:self.delegate.selectedFrameWidth];
-        }
-    }
-}
-
 - (NSArray *)fontNameArray{
     NSMutableArray *fontArray = [NSMutableArray array];
     

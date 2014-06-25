@@ -86,12 +86,12 @@
     assert(_css);
     assert(_event);
     delegateEnableLevel = 1;
-    [self addObserver:self forKeyPath:@"delegate.selectedFrameWidth" options:0 context:nil];
-    [self addObserver:self forKeyPath:@"delegate.maxFrameWidth" options:0 context:nil];
     changedCSSWidths = [NSMutableSet set];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeLink:) name:IUNotificationPropertyChanged object:nil];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMQSelect:) name:IUNotificationMQSelected object:nil];
+    
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
@@ -192,16 +192,23 @@
     return self;
 }
 
-- (void)delegate_selectedFrameWidthDidChange:(NSDictionary*)change{
-    if (self.delegate) {
-        if (self.delegate.maxFrameWidth == self.delegate.selectedFrameWidth) {
-            [_css setEditWidth:IUCSSMaxViewPortWidth];
-        }
-        else {
-            [_css setEditWidth:self.delegate.selectedFrameWidth];
-        }
+#pragma mark - mq
+
+- (void)changeMQSelect:(NSNotification *)notification{
+    NSInteger selectedSize = [[notification.userInfo valueForKey:IUNotificationMQSize] integerValue];
+    NSInteger maxSize = [[notification.userInfo valueForKey:IUNotificationMQMaxSize] integerValue];
+
+    if (selectedSize == maxSize) {
+        [_css setEditWidth:IUCSSMaxViewPortWidth];
     }
+    else {
+        [_css setEditWidth:selectedSize];
+    }
+    
 }
+
+
+#pragma mark -
 
 -(NSMutableArray*)allChildren{
     if (self.children) {
@@ -639,11 +646,6 @@
     _divLink = divLink;
 }
 
--(void)dealloc{
-    [self removeObserver:self forKeyPath:@"delegate.maxFrameWidth"];
-    [self removeObserver:self forKeyPath:@"delegate.selectedFrameWidth"];
-
-}
 
 #pragma mark -
 
