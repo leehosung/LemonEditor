@@ -26,7 +26,7 @@
 - (NSString*)stringByPathDiff:(NSString*)path;
 
 
-- (NSString*) relativePathTo: (NSString*) endPath;
+- (NSString*) relativePathFrom: (NSString*) endPath;
 - (BOOL) containsString:(NSString*)string;
 
 - (NSString*)nameWithoutExtensionAsFile;

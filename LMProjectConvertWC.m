@@ -77,7 +77,7 @@
     _targetProjectDirectory = targetProjectDirectory;
     self.iuProjectDirectory = [_targetProjectDirectory stringByAppendingPathComponent:@"IUProject"];
     self.buildProjectDirectory = [_targetProjectDirectory stringByAppendingPathComponent:@"templates"];
-    self.resourceProjectDirectory = [_targetProjectDirectory stringByAppendingPathComponent:@"IUProject/Resource"];
+    self.resourceProjectDirectory = [_targetProjectDirectory stringByAppendingPathComponent:@"IUProject/resource"];
 }
 
 - (IBAction)pressCancelB:(id)sender {

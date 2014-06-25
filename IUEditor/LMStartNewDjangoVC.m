@@ -52,7 +52,7 @@
                                  IUProjectKeyProjectPath : [_djangoProjectDir stringByAppendingPathComponent:fileName],
                                  IUProjectKeyType:@(IUProjectTypeDjango),
                                  IUProjectKeyResourcePath : _djangoResourceDir,
-                                 IUProjectKeyBuildPath : _djangoResourceDir
+                                 IUProjectKeyBuildPath : _djangoTemplateDir
                                  };
     
     [(IUProjectController *)[NSDocumentController sharedDocumentController] newDocument:self withOption:options];
@@ -65,12 +65,12 @@
 
 - (IBAction)performProjectDirSelect:(id)sender {
     self.djangoProjectDir = [[[JDFileUtil util] openDirectoryByNSOpenPanel:@"Select Django Project Directory"] path];
-    self.djangoResourceDir = [self.djangoProjectDir stringByAppendingPathComponent:@"templates/resources"];
+    self.djangoResourceDir = [self.djangoProjectDir stringByAppendingPathComponent:@"templates/resource"];
     self.djangoTemplateDir = [self.djangoProjectDir stringByAppendingPathComponent:@"templates"];
 }
 
 - (IBAction)performResourceDirSelect:(id)sender {
-    self.djangoProjectDir = [[[JDFileUtil util] openDirectoryByNSOpenPanel:@"Select Django Resource Directory"] path];
+    self.djangoProjectDir = [[[JDFileUtil util] openDirectoryByNSOpenPanel:@"Select Django resource Directory"] path];
 }
 
 - (IBAction)performTemplateDirSelect:(id)sender {

@@ -179,10 +179,10 @@
 
 // Assumes that self and endPath are absolute file paths.
 // Example: [ @"/a/b/c/d" relativePathTo: @"/a/e/f/g/h"] => @"../../e/f/g/h".
-- (NSString*) relativePathTo: (NSString*) endPath {
+- (NSString*) relativePathFrom: (NSString*) endPath {
     NSAssert( ! [self isEqual: endPath], @"illegal link to self");
-    NSArray* startComponents = [self pathComponents];
-    NSArray* endComponents = [endPath pathComponents];
+    NSArray* startComponents = [endPath pathComponents];
+    NSArray* endComponents = [self pathComponents];
     NSMutableArray* resultComponents = nil;
     int prefixCount = 0;
     if( ! [self isEqual: endPath] ){

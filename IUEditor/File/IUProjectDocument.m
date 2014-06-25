@@ -10,11 +10,11 @@
 #import "IUProjectController.h"
 
 static NSString *iuDataName = @"iuData";
-static NSString *resourcesName = @"Resource";
-static NSString *jsResourceName = @"JS";
-static NSString *imageResourceName = @"Image";
-static NSString *videoResourceName = @"Video";
-static NSString *cssResourceName = @"CSS";
+static NSString *resourcesName = @"resource";
+static NSString *jsResourceName = @"js";
+static NSString *imageResourceName = @"image";
+static NSString *videoResourceName = @"video";
+static NSString *cssResourceName = @"css";
 
 //set metadata
 static NSString *metaDataFileName = @"metaData.plist";

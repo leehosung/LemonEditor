@@ -105,17 +105,17 @@
         IUSheetGroup *doc = (IUSheetGroup*) item.representedObject;
         if ([doc isKindOfClass:[IUSheetGroup class]]) {
             [folder.addButton setHidden:NO];
-            if ([doc.name isEqualToString:@"Pages"]) {
+            if ([doc.name isEqualToString:@"page"]) {
                 folder.addButton.tag = 1;
             }
-            else if ([doc.name isEqualToString:@"Backgrounds"]) {
+            else if ([doc.name isEqualToString:@"backgrounds"]) {
                 [folder.addButton setHidden:YES];
             }
-            else if ([doc.name isEqualToString:@"Classes"]) {
+            else if ([doc.name isEqualToString:@"classes"]) {
                 folder.addButton.tag = 3;
             }
             else {
-                assert(0);
+//                assert(0);
             }
             [folder.addButton setTarget:self];
             [folder.addButton setAction:@selector(pressAddBtn:)];
@@ -130,16 +130,18 @@
         NSString *cellIdentifier;
         if ([[item representedObject] isKindOfClass:[IUSheet class]]){
             IUSheet *node = [item representedObject];
-            if([node.group.name isEqualToString:@"Pages"]){
+            if([node.group.name isEqualToString:@"page"]){
                 cellIdentifier = @"pageFile";
             }
-            else if([node.group.name isEqualToString:@"Backgrounds"]){
+            else if([node.group.name isEqualToString:@"background"]){
                 cellIdentifier = @"backgroundFile";
             }
-            else if ([node.group.name isEqualToString:@"Classes"]){
+            else if ([node.group.name isEqualToString:@"class"]){
                 cellIdentifier = @"classFile";
             }
-            assert(cellIdentifier);
+            else {
+                assert(0);
+            }
         }
         else if( [[item representedObject] isKindOfClass:[IUResourceFile class]] ){
             IUResourceFile *node = [item representedObject];
@@ -156,8 +158,10 @@
             else if(node.type == IUResourceTypeJS){
                 cellIdentifier = @"JSFile";
             }
+            else {
+                assert(0);
+            }
         }
-        assert(cellIdentifier != nil);
         
         LMFileNaviCellView *cell = [outlineView makeViewWithIdentifier:cellIdentifier owner:self];
         cell.project = _documentController.project;
@@ -256,13 +260,13 @@
     
     if([groupNode isKindOfClass:[IUDocumentGroupNode class]]){
         NSString *className;
-        if([groupNode.name isEqualToString:@"Pages"]){
+        if([groupNode.name isEqualToString:@"page"]){
             className = @"IUPage";
         }
         else if([groupNode.name isEqualToString:@"Backgrounds"]){
             className = @"IUBackground";
         }
-        else if ([groupNode.name isEqualToString:@"Classes"]){
+        else if ([groupNode.name isEqualToString:@"classes"]){
             className = @"IUClass";
         }
         
