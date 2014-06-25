@@ -28,25 +28,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="08X-X7-XQJ">
-                                <rect key="frame" x="77" y="108" width="182" height="20"/>
+                                <rect key="frame" x="77" y="107" width="184" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="18" id="Tco-g1-Zn7"/>
-                                    <constraint firstAttribute="width" constant="182" id="yoI-yO-2en"/>
+                                    <constraint firstAttribute="width" constant="184" id="XKI-y8-ZtL"/>
+                                    <constraint firstAttribute="height" constant="19" id="sNc-EY-von"/>
                                 </constraints>
                                 <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="smallSquare" trackingMode="selectOne" id="HzB-Y7-fs8">
                                     <font key="font" metaFont="smallSystem"/>
                                     <segments>
-                                        <segment label="Auto" width="36"/>
-                                        <segment image="bg_cover" width="35" selected="YES" tag="1">
+                                        <segment label="Auto" width="32"/>
+                                        <segment image="bg_cover" width="29" selected="YES" tag="1">
                                             <nil key="label"/>
                                         </segment>
-                                        <segment image="bg_contain" width="35">
+                                        <segment image="bg_contain" width="29">
                                             <nil key="label"/>
                                         </segment>
-                                        <segment image="bg_stretch" width="35">
+                                        <segment image="bg_stretch" width="29">
                                             <nil key="label"/>
                                         </segment>
-                                        <segment image="bg_center" width="35">
+                                        <segment image="bg_center" width="29">
+                                            <nil key="label"/>
+                                        </segment>
+                                        <segment image="bg_fullsize" width="29">
                                             <nil key="label"/>
                                         </segment>
                                     </segments>
@@ -89,7 +92,7 @@
                                 </textFieldCell>
                             </textField>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="4d5-AX-qLx">
-                                <rect key="frame" x="74" y="84" width="96" height="20"/>
+                                <rect key="frame" x="74" y="83" width="96" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="91" id="Tpq-Tj-sh9"/>
                                     <constraint firstAttribute="height" constant="14" id="sax-9I-yc1"/>
@@ -100,7 +103,7 @@
                                 </buttonCell>
                             </button>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="WOy-93-Xv0">
-                                <rect key="frame" x="74" y="30" width="119" height="20"/>
+                                <rect key="frame" x="74" y="29" width="119" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="S1w-dt-kTF"/>
                                     <constraint firstAttribute="width" constant="114" id="XiL-IH-BOR"/>
@@ -111,7 +114,7 @@
                                 </buttonCell>
                             </button>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wso-ZL-0kP">
-                                <rect key="frame" x="77" y="59" width="88" height="21"/>
+                                <rect key="frame" x="77" y="58" width="88" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="88" id="Evf-Jk-aC6"/>
                                     <constraint firstAttribute="height" constant="19" id="zUl-44-MXG"/>
@@ -132,7 +135,7 @@
                                 </segmentedCell>
                             </segmentedControl>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YeI-XQ-bvb">
-                                <rect key="frame" x="172" y="59" width="88" height="21"/>
+                                <rect key="frame" x="172" y="58" width="88" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="3Bg-ak-QMk"/>
                                     <constraint firstAttribute="width" constant="88" id="Imk-S1-5b1"/>
@@ -153,7 +156,7 @@
                                 </segmentedCell>
                             </segmentedControl>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Iwu-ZS-Xkr">
-                                <rect key="frame" x="90" y="8" width="50" height="18"/>
+                                <rect key="frame" x="90" y="7" width="50" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="1Sf-wa-uLs"/>
                                     <constraint firstAttribute="width" constant="50" id="b62-mU-m4U"/>
@@ -165,7 +168,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Orr-Sl-ZTZ">
-                                <rect key="frame" x="77" y="10" width="11" height="14"/>
+                                <rect key="frame" x="77" y="9" width="11" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="50v-eN-7Nr"/>
                                     <constraint firstAttribute="width" constant="7" id="vU9-zj-TGC"/>
@@ -177,7 +180,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oMj-cN-lUe">
-                                <rect key="frame" x="171" y="10" width="11" height="14"/>
+                                <rect key="frame" x="171" y="9" width="11" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="76j-sI-Yov"/>
                                     <constraint firstAttribute="width" constant="7" id="bbz-dS-ihC"/>
@@ -189,7 +192,7 @@
                                 </textFieldCell>
                             </textField>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="RT3-Ry-ebI">
-                                <rect key="frame" x="139" y="8" width="24" height="18"/>
+                                <rect key="frame" x="139" y="7" width="24" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="ZcW-L9-ktt"/>
                                     <constraint firstAttribute="height" constant="18" id="gI2-tn-Jlu"/>
@@ -200,7 +203,7 @@
                                 </buttonCell>
                             </button>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8XQ-9s-BZg">
-                                <rect key="frame" x="184" y="8" width="50" height="18"/>
+                                <rect key="frame" x="184" y="7" width="50" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="NFD-56-wEr"/>
                                     <constraint firstAttribute="height" constant="18" id="m4K-GF-pO1"/>
@@ -212,7 +215,7 @@
                                 </textFieldCell>
                             </textField>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="Xkq-9I-WQ6">
-                                <rect key="frame" x="233" y="8" width="24" height="18"/>
+                                <rect key="frame" x="233" y="7" width="24" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="CTT-kT-OBa"/>
                                     <constraint firstAttribute="width" constant="24" id="VYh-cF-pB6"/>
@@ -365,6 +368,7 @@
         <image name="bg_center" width="14" height="10"/>
         <image name="bg_contain" width="14" height="10"/>
         <image name="bg_cover" width="14" height="10"/>
+        <image name="bg_fullsize" width="14" height="10"/>
         <image name="bg_h_center" width="14" height="12"/>
         <image name="bg_h_left" width="14" height="12"/>
         <image name="bg_h_right" width="14" height="12"/>
