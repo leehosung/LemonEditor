@@ -152,7 +152,6 @@ typedef enum _IUOverflowType{
 - (NSString *)imageName;
 
 @property (nonatomic) id link, divLink;
-@property (nonatomic, copy) NSString *textVariable;
 
 -(BOOL)hasX;
 -(BOOL)hasY;

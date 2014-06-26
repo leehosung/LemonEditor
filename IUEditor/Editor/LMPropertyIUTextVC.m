@@ -26,7 +26,6 @@
 
 - (void)awakeFromNib{
     
-    [_textVariableTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"textVariable"] options:IUBindingDictNotRaisesApplicable];
     [_textTypeMatrix bind:NSSelectedIndexBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"textType"] options:IUBindingDictNotRaisesApplicable];
 }
 

@@ -434,20 +434,23 @@ static NSString * IUCompilerTagOption = @"tag";
     if ( self.rule == IUCompileRuleDjango && [iu isKindOfClass:[PGForm class]]) {
         [code addCodeLine:@"{% csrf_token %}"];
     }
-    if (_rule == IUCompileRuleDjango && iu.textVariable) {
-        if ([iu.sheet isKindOfClass:[IUClass class]]){
-            [code addCodeLineWithFormat:@"<p>{{ object.%@ }}</p>", iu.textVariable];
-        }
-        else {
-            [code addCodeLineWithFormat:@"<p>{{ %@ }}</p>", iu.textVariable];
-        }
-    }
+   
     
 #if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
     if(iu.text && iu.text.length > 0){
         NSString *htmlText = [iu.text stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
         [code addCodeLineWithFormat:@"<p>%@</p>",htmlText];
     }
+    
+    if (self.rule == IUCompileRuleDjango && iu.pgContentVariable) {
+        if ([iu.sheet isKindOfClass:[IUClass class]]) {
+            [code addCodeLineWithFormat:@"{{object.%@}}", iu.pgContentVariable];
+        }
+        else {
+            [code addCodeLineWithFormat:@"<p>{{%@}}</p>", iu.pgContentVariable];
+        }
+    }
+
 #endif
     if (iu.children.count) {
         for (IUBox *child in iu.children) {

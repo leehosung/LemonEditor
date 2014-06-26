@@ -113,7 +113,6 @@
         [serverTask setArguments:@[@"manage.py", @"runserver", @"8000"]];
         
         [serverTask launch];
-        [_serverB setTitle:@">"];
     }
     else {
         // run server
@@ -122,7 +121,6 @@
             [serverTask waitUntilExit];
         }
         runningState = 0;
-        [_serverB setTitle:@"||"];
     }
 }
 

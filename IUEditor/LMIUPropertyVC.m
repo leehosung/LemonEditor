@@ -270,11 +270,11 @@
         self.propertyVArray = @[propertyPGTextFieldVC.view, propertyPGType2VC.view];
     }
     else if ([classString isEqualToString:@"IUImage"]){
-        self.propertyVArray = [NSMutableArray arrayWithArray:@[inspectorAltTextVC.view, inspectorLinkVC.view, propertyPGType1VC.view]];
+        self.propertyVArray = [NSMutableArray arrayWithArray:@[inspectorAltTextVC.view, inspectorLinkVC.view, propertyPGType2VC.view]];
     }
     
     else if ([classString isEqualToString:@"IUBox"]){
-        self.propertyVArray = [NSMutableArray arrayWithArray:@[propertyTextVC.view, inspectorLinkVC.view, propertyPGType1VC.view]];
+        self.propertyVArray = [NSMutableArray arrayWithArray:@[propertyTextVC.view, inspectorLinkVC.view, propertyPGType2VC.view]];
         doubleClickFocusVC = propertyTextVC;
     }
     
