@@ -78,20 +78,18 @@
 #pragma mark tabview
 - (void)removeDocument:(IUSheet *)sheet{
     if([openTabDocuments containsObject:sheet]){
-        [openTabDocuments removeObject:sheet];
         LMFileTabItemVC *item = [self tabItemOfDocumentNode:sheet];
-        [item.view removeFromSuperviewWithDirectionLeftToRight];
+        [self closeTab:item];
+        
     }
     else if([hiddenTabDocuments containsObject:sheet]){
         [hiddenTabDocuments removeObject:sheet];
     }
 }
 
-- (void)removeOpenTabDocument:(IUSheet *)sheet{
-    [openTabDocuments removeObject:sheet];
-    
+- (void)removeOpenTabDocument:(IUSheet *)sheet{    
     LMFileTabItemVC *item = [self tabItemOfDocumentNode:sheet];
-    [item.view removeFromSuperviewWithDirectionLeftToRight];
+    [self closeTab:item];
 
     [hiddenTabDocuments addObject:sheet];
 }
