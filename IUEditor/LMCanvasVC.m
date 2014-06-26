@@ -898,7 +898,7 @@
         
         NSSize parentSize;
         if (self.controller.importIUInSelectionChain){
-            NSString *modifiedHTMLID = [NSString stringWithFormat:@"%@__%@",self.controller.importIUInSelectionChain.htmlID, moveObj.htmlID];
+            NSString *modifiedHTMLID = [NSString stringWithFormat:@"ImportedBy_%@_%@",self.controller.importIUInSelectionChain.htmlID, moveObj.htmlID];
             parentSize = [[self webView] parentBlockElementSize:modifiedHTMLID];
         }
         else {
