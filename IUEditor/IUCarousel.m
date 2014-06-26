@@ -32,8 +32,8 @@
     return self;
 }
 
-- (void)fetch{
-    [super fetch];
+- (void)connectWithEditor{
+    [super connectWithEditor];
     [self addObserver:self forKeyPath:@"css.assembledTagDictionary.height" options:0 context:
      @"height"];
 }

@@ -48,21 +48,23 @@
 #pragma mark Notifications
 
 
-#define IUNotificationSelectionChanged @"IUNotificationSelectionChanged" //called when selection is changed
-#define IUNotificationStructureChanged @"IUNotificationStructureChanged" //called when IUstructure changed, usually occured by addSheet, removeSheet, addIU, removeIU or changeIUIndex
-#define IUNotificationPropertyChanged @"IUNotificationPropertyChanged" //called when iu properties are changed
+#define IUNotificationSelectionDidChange @"IUNotificationSelectionDidChange" //called when selection is changed
 
 
-#define IUNotificationStructureType @"NotiType"  
-#define IUNotificationStructureTypeAdd @"Add"
-#define IUNotificationStructureTypeRemove @"Remove"
-#define IUNotificationStructureTypeReindex @"Reindex"
+#define IUNotificationStructureDidChange @"IUNotificationStructureDidChange" //called when IUstructure changed, usually occured by addSheet, removeSheet, addIU, removeIU or changeIUIndex, renaming
 
-#define IUNotificationPropertyType @"NotiType"
-#define IUNotificationPropertyOldName @"oldName"
-#define IUNotificationPropertySheetName @"sheetName"
+// followings are IUNotificationStructureDidChange notification userInfo
+#define IUNotificationStructureChangeType @"ChangeType"  
+#define IUNotificationStructureAdding @"Add"
+#define IUNotificationStructureChangeRemoving @"Remove"
+#define IUNotificationStructureChangeReindexing @"Reindex"
+#define IUNotificationStructureChangeTypeRenaming @"Rename"
 
-#define IUNotificationStructureTarget @"Target"
+
+#define IUNotificationStructureChangedIU @"ChangedIU"
+
+
+
 #define IUCanvasDoublieClick @"IUCanvasDoublieClick"
 
 //called when media query is changed, usually occured by addsize, removesize, selectsize

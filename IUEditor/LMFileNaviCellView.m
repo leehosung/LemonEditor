@@ -35,7 +35,6 @@
         NSString *oldName = doc.name;
         doc.name = textValue;
         doc.htmlID = textValue;
-        [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationPropertyChanged object:doc userInfo:@{IUNotificationStructureTarget: doc, IUNotificationPropertyType:IUNotificationPropertySheetName, IUNotificationPropertyOldName:oldName}];
     }
     
     return YES;

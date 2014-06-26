@@ -16,8 +16,8 @@
 
 @implementation IUMovie
 
-- (void)fetch{
-    [super fetch];
+- (void)connectWithEditor{
+    [super connectWithEditor];
     [self addObserver:self forKeyPaths:@[@"enableControl", @"enableLoop", @"enableMute", @"enableAutoPlay",@"cover", @"altText", @"posterPath"] options:0 context:@"attributes"];
 }
 

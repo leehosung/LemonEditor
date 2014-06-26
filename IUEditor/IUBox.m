@@ -29,6 +29,8 @@
     NSSize originalSize;
     NSSize originalPercentSize;
     IUProject *_tempProject;
+    
+    BOOL isConnectedWithEditor;
 }
 
 
@@ -82,16 +84,26 @@
 }
 
 
-- (void)fetch{
-    assert(_css);
-    assert(_event);
-    delegateEnableLevel = 1;
-    changedCSSWidths = [NSMutableSet set];
+- (void)connectWithEditor{
+    assert(self.project);
+    isConnectedWithEditor = YES;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeLink:) name:IUNotificationPropertyChanged object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMQSelect:) name:IUNotificationMQSelected object:self.project];
+    for (IUBox *box in self.children) {
+        [box connectWithEditor];
+    }
+}
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMQSelect:) name:IUNotificationMQSelected object:nil];
-    
+- (void)setName:(NSString *)name{
+    if (_name == nil) {
+        _name = name;
+    }
+    else {
+        _name = name;
+        [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationStructureDidChange object:self.project userInfo:
+                    @{IUNotificationStructureChangeType: IUNotificationStructureChangeTypeRenaming,
+                      IUNotificationStructureChangedIU: self}];
+    }
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
@@ -100,11 +112,10 @@
         [aDecoder decodeToObject:self withProperties:[[IUBox class] propertiesWithOutProperties:@[@"delegate"]]];
         _css = [aDecoder decodeObjectForKey:@"css"];
         _css.delegate = self;
-        
         _event = [aDecoder decodeObjectForKey:@"event"];
-        
         _m_children=[aDecoder decodeObjectForKey:@"children"];
-        [self fetch];
+        delegateEnableLevel = 1;
+        changedCSSWidths = [NSMutableSet set];
     }
     return self;
 }
@@ -169,7 +180,9 @@
     [_css setValue:@(IUAlignCenter) forTag:IUCSSTagTextAlign forWidth:IUCSSMaxViewPortWidth];
 
     
-    [self fetch];
+    delegateEnableLevel = 1;
+    changedCSSWidths = [NSMutableSet set];
+
     assert(project);
     assert(project.identifierManager);
     [project.identifierManager setNewIdentifierAndRegisterToTemp:self withKey:nil];
@@ -187,14 +200,16 @@
         _event = [[IUEvent alloc] init];
         _m_children = [NSMutableArray array];
 
-        [self fetch];
+        delegateEnableLevel = 1;
+        changedCSSWidths = [NSMutableSet set];
     }
     return self;
 }
 
 - (void)dealloc{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:IUNotificationMQMaxChanged object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:IUNotificationMQSelected object:nil];
+    if (isConnectedWithEditor) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:IUNotificationMQSelected object:nil];
+    }
 }
 
 #pragma mark - mq
@@ -326,7 +341,7 @@
     [self.delegate runJSAfterInsertIU:iu];
     [iu bind:@"identifierManager" toObject:self withKeyPath:@"identifierManager" options:nil];
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationStructureChanged object:self.project userInfo:@{IUNotificationStructureType: IUNotificationStructureTypeAdd, IUNotificationStructureTarget: iu}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationStructureDidChange object:self.project userInfo:@{IUNotificationStructureChangeType: IUNotificationStructureAdding, IUNotificationStructureChangedIU: iu}];
 
     return YES;
 }
@@ -353,7 +368,7 @@
         [self.project.identifierManager unregisterIUs:@[iu]];
         [self.delegate IURemoved:iu.htmlID withParentID:iu.parent.htmlID];
         [_m_children removeObject:iu];
-        [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationStructureChanged object:self.project userInfo:@{IUNotificationStructureType: IUNotificationStructureTypeRemove, IUNotificationStructureTarget: iu}];
+        [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationStructureDidChange object:self.project userInfo:@{IUNotificationStructureChangeType: IUNotificationStructureChangeRemoving, IUNotificationStructureChangedIU: iu}];
 
         return YES;
     }
@@ -371,8 +386,7 @@
     
     [self updateHTML];
     [self updateJS];
-    [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationStructureChanged object:self.project userInfo:@{IUNotificationStructureType: IUNotificationStructureTypeReindex, IUNotificationStructureTarget: iu}];
-
+    [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationStructureDidChange object:self.project userInfo:@{IUNotificationStructureChangeType: IUNotificationStructureChangeReindexing, IUNotificationStructureChangedIU: iu}];
     
     return YES;
 }
@@ -632,25 +646,12 @@
     }
 }
 
--(void)setLink:(NSString *)link{
+-(void)setLink:(id)link{
     _link = link;
 //    [self.delegate IU:self.htmlID setLink:link];
 }
 
-- (void)changeLink:(NSNotification *)notification{
-    NSDictionary *userInfo = notification.userInfo;
-    if([userInfo[IUNotificationPropertyType] isEqualToString:IUNotificationPropertySheetName]){
-        NSString *oldName = userInfo[IUNotificationPropertyOldName];
-        if([_link isEqualToString:oldName]){
-            IUSheet *sheet = [userInfo objectForKey:IUNotificationStructureTarget];
-            self.link = sheet.name;
-        }
-
-    }
-}
-
-
--(void)setDivLink:(NSString *)divLink{
+-(void)setDivLink:(id)divLink{
     _divLink = divLink;
 }
 

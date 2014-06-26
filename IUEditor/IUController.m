@@ -27,7 +27,7 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     if ([keyPath isEqualToString:@"selectedObjects"]) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationSelectionChanged object:self userInfo:@{@"selectedObjects": self.selectedObjects}];
+        [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationSelectionDidChange object:self userInfo:@{@"selectedObjects": self.selectedObjects}];
     }
     [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }

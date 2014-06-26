@@ -29,8 +29,8 @@
     return self;
 }
 
-- (void)fetch{
-    [super fetch];
+- (void)connectWithEditor{
+    [super connectWithEditor];
     [self addObserver:self forKeyPaths:@[@"showFriendsFace", @"likePage"] options:0 context:@"IUFBSource"];
 }
 

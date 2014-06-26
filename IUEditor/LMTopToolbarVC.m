@@ -33,7 +33,7 @@
     return self;
 }
 - (void)awakeFromNib{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeSheet:) name:IUNotificationStructureChanged object:nil];    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeSheet:) name:IUNotificationStructureDidChange object:nil];    
 
 }
 
@@ -66,8 +66,8 @@
 
 - (void)removeSheet:(NSNotification *)notification{
     NSDictionary *userInfo = notification.userInfo;
-    if ([userInfo[IUNotificationStructureType] isEqualToString:IUNotificationStructureTypeRemove] ){
-        IUSheet *sheet = [userInfo objectForKey:IUNotificationStructureTarget];
+    if ([userInfo[IUNotificationStructureChangeType] isEqualToString:IUNotificationStructureChangeRemoving] ){
+        IUSheet *sheet = [userInfo objectForKey:IUNotificationStructureChangedIU];
         if([sheet isKindOfClass:[IUSheet class]]){
             [self removeDocument:sheet];
         }

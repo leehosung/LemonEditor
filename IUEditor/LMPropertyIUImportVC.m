@@ -49,7 +49,7 @@
 
 - (void)setProject:(IUProject*)project{
     _project = project;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(structureChanged:) name:IUNotificationStructureChanged object:project];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(structureChanged:) name:IUNotificationStructureDidChange object:project];
     [self structureChanged:nil];
 }
 

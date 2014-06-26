@@ -71,7 +71,7 @@
         [_resourceManager setResourceGroup:_resourceGroup];
         [_identifierManager registerIUs:self.allDocuments];
         
-        [self fetch];
+        [self connectWithEditor];
     }
     return self;
 }
@@ -125,7 +125,7 @@
     [_resourceManager setResourceGroup:_resourceGroup];
     [_identifierManager registerIUs:self.allDocuments];
     
-    [self fetch];
+    [self connectWithEditor];
     return self;
 }
 
@@ -189,15 +189,18 @@
     [_identifierManager registerIUs:self.allDocuments];
     
     //    ReturnNilIfFalse([self save]);
-    [self fetch];
+    [self connectWithEditor];
     return self;
 }
 
 
--(void)fetch{
+- (void)connectWithEditor{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addMQSize:) name:IUNotificationMQAdded object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeMQSize:) name:IUNotificationMQRemoved object:nil];
-
+    
+    for (IUSheet *sheet in self.allDocuments) {
+        [sheet connectWithEditor];
+    }
 }
 
 #pragma mark - mq
@@ -555,7 +558,7 @@
         [self didChangeValueForKey:@"classDocuments"];
 
     }
-    [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationStructureChanged object:self userInfo:@{IUNotificationStructureType: IUNotificationStructureTypeAdd, IUNotificationStructureTarget: sheet}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationStructureDidChange object:self userInfo:@{IUNotificationStructureChangeType: IUNotificationStructureAdding, IUNotificationStructureChangedIU: sheet}];
 }
 
 - (void)removeSheet:(IUSheet *)sheet toSheetGroup:(IUSheetGroup *)sheetGroup{
@@ -591,7 +594,7 @@
         [self didChangeValueForKey:@"classDocuments"];
         
     }
-    [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationStructureChanged object:self userInfo:@{IUNotificationStructureType: IUNotificationStructureTypeRemove, IUNotificationStructureTarget: sheet}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationStructureDidChange object:self userInfo:@{IUNotificationStructureChangeType: IUNotificationStructureChangeRemoving, IUNotificationStructureChangedIU: sheet}];
 }
 
 @end

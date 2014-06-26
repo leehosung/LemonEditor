@@ -53,9 +53,9 @@
     iu.animation = [_animation copy];
     return iu;
 }
-- (void)fetch{
-    [super fetch];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectionChanged:) name:IUNotificationSelectionChanged object:nil];
+- (void)connectWithEditor{
+    [super connectWithEditor];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectionChanged:) name:IUNotificationSelectionDidChange object:nil];
 
 }
 

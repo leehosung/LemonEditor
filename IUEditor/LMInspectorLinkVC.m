@@ -39,7 +39,7 @@
 
 - (void)setProject:(IUProject*)project{
     _project = project;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(structureChanged:) name:IUNotificationStructureChanged object:project];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(structureChanged:) name:IUNotificationStructureDidChange object:project];
     _pageLinkCB.delegate = self;
     for (IUPage *page in [project pageDocuments]) {
         [_pageLinkCB addItemWithObjectValue:page.name];
@@ -48,7 +48,7 @@
 
 - (CalledByNoti)structureChanged:(NSNotification*)noti{
     NSDictionary *userInfo = noti.userInfo;
-    if ([userInfo[IUNotificationStructureTarget] isKindOfClass:[IUPage class]]) {
+    if ([userInfo[IUNotificationStructureChangedIU] isKindOfClass:[IUPage class]]) {
         [_pageLinkCB removeAllItems];
         for (IUPage *page in [_project pageDocuments]) {
             [_pageLinkCB addItemWithObjectValue:page.name];
