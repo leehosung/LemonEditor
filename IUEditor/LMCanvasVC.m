@@ -162,7 +162,7 @@
         parentIU = parentIU.parent;
     }
   
-    NSPoint position = [self distanceFromIU:parentIU.htmlID toPointFromWebView:point];
+    NSPoint position = [self distanceFromIU:parentIUID toPointFromWebView:point];
         
     //postion을 먼저 정한 후에 add 함
     [newIU setPosition:position];
