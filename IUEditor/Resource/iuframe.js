@@ -92,6 +92,7 @@ $(window).resize(function(){
                  resizeCollection();
                  reframeCenter();
 				 resizePageLinkSet();
+                 setTextAutoHeight();
                  });
 
 $(document).ready(function(){

@@ -13,6 +13,7 @@
                 <outlet property="helpMenu" destination="iLy-bj-p0C" id="ikA-xJ-fdH"/>
                 <outlet property="phStepper" destination="1qd-QH-DUM" id="mqH-O4-E5m"/>
                 <outlet property="phTF" destination="z9a-iK-QZ6" id="5W0-cz-XPl"/>
+                <outlet property="positionPopupBtn" destination="f6I-Kv-MOi" id="2ca-Hc-ncY"/>
                 <outlet property="pwStepper" destination="y64-pA-dLY" id="wSo-t8-S38"/>
                 <outlet property="pwTF" destination="bUx-4a-5bn" id="ccj-8P-V2e"/>
                 <outlet property="pxStepper" destination="Hsx-wZ-7Py" id="lJG-Ue-vbi"/>
@@ -408,10 +409,6 @@
                                                     </items>
                                                 </menu>
                                             </popUpButtonCell>
-                                            <connections>
-                                                <binding destination="-2" name="enabled" keyPath="self.controller.selection.canChangePositionType" id="WY3-My-J9K"/>
-                                                <binding destination="-2" name="selectedIndex" keyPath="self.controller.selection.positionType" id="B2D-zU-4v0"/>
-                                            </connections>
                                         </popUpButton>
                                         <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iLy-bj-p0C">
                                             <rect key="frame" x="242" y="7" width="18" height="18"/>

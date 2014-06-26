@@ -47,7 +47,9 @@
 
 
 @property (weak) IBOutlet NSButton *helpMenu;
-@property (nonatomic) BOOL enablePercentH;
+@property (weak) IBOutlet NSPopUpButton *positionPopupBtn;
+
+@property (nonatomic) BOOL enablePercentH, enablePosition;
 
 - (IBAction)helpMenu:(id)sender;
 
@@ -63,6 +65,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         _enablePercentH = YES;
+        _enablePosition = YES;
     }
     return self;
 }
@@ -71,6 +74,8 @@
 -(void)awakeFromNib{
 
     //observing
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMQSelect:) name:IUNotificationMQSelected object:nil];
+
     [self addObserver:self forKeyPath:@"controller.selectedObjects"
               options:0 context:nil];
 
@@ -115,6 +120,9 @@
     [_yUnitBtn bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagYUnit] options:IUBindingDictNotRaisesApplicable];
     [_wUnitBtn bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagWidthUnit] options:IUBindingDictNotRaisesApplicable];
     [_hUnitBtn bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagHeightUnit] options:IUBindingDictNotRaisesApplicable];
+    
+    [_positionPopupBtn bind:NSSelectedIndexBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"positionType"] options:IUBindingDictNotRaisesApplicable];
+    
 
     //enabled option 1
     [_xTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"hasX"] options:IUBindingDictNotRaisesApplicable];
@@ -142,6 +150,8 @@
     [_pwStepper bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"hasWidth"] options:IUBindingDictNotRaisesApplicable];
     [_phStepper bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"hasHeight"] options:IUBindingDictNotRaisesApplicable];
 
+    
+    [_positionPopupBtn bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangePositionType"] options:IUBindingDictNotRaisesApplicable];
     //enabled option 2
     
     [_xTF bind:@"enabled2" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeXByUserInput"] options:IUBindingDictNotRaisesApplicable];
@@ -168,6 +178,8 @@
     [_pyStepper bind:@"enabled2" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeYByUserInput"] options:IUBindingDictNotRaisesApplicable];
     [_pwStepper bind:@"enabled2" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeWidthByUserInput"] options:IUBindingDictNotRaisesApplicable];
     [_phStepper bind:@"enabled2" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeHeightByUserInput"] options:IUBindingDictNotRaisesApplicable];
+    
+    [_positionPopupBtn bind:@"enabled2" toObject:self withKeyPath:@"enablePosition" options:IUBindingDictNotRaisesApplicable];
 
     
     
@@ -188,6 +200,18 @@
 - (void)dealloc{
     //release 시점 확인용
     assert(0);
+}
+
+- (void)changeMQSelect:(NSNotification *)notification{
+    NSInteger selectedSize = [[notification.userInfo valueForKey:IUNotificationMQSize] integerValue];
+    NSInteger maxSize = [[notification.userInfo valueForKey:IUNotificationMQMaxSize] integerValue];
+    if(selectedSize == maxSize){
+        self.enablePosition = YES;
+    }
+    else{
+        self.enablePosition = NO;
+    }
+    
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
