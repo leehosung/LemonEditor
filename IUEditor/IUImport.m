@@ -31,6 +31,7 @@
 }
 
 - (void)setPrototypeClass:(IUClass *)prototypeClass{
+    [self willChangeValueForKey:@"children"];
     [_prototypeClass removeReference:self];
     
     _prototypeClass = prototypeClass;
@@ -43,6 +44,7 @@
             [self.delegate IUClassIdentifier:iu.cssID CSSUpdated:[iu cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
         }
     }
+    [self didChangeValueForKey:@"children"];
 }
 
 
