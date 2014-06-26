@@ -55,4 +55,8 @@
     return NO;
 }
 
+-(BOOL)shouldAddIUByUserInput{
+    return NO;
+}
+
 @end

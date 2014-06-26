@@ -33,6 +33,7 @@
 #endif
 
 #import "IUPage.h"
+#import "IUBackground.h"
 
 @interface LMCanvasVC ()
 
@@ -147,13 +148,18 @@
     
     int i=0;
     while([parentIU shouldAddIUByUserInput] == NO){
-        parentIU = parentIU.parent;
+        
+        if([parentIU isKindOfClass:[IUBackground class]]){
+            return NO;
+        }
         
         //safe code;
         if(i>10000){
             [JDUIUtil hudAlert:@"Can't find parent node, you try it, again" second:2];
             return NO;
         }
+        
+        parentIU = parentIU.parent;
     }
   
     NSPoint position = [self distanceFromIU:parentIU.htmlID toPointFromWebView:point];
