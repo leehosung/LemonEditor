@@ -208,7 +208,8 @@
 }
 
 - (void)reloadSheet{
-    [[[self webView] mainFrame] reload];
+    [self setSheet:_sheet];
+//    [[[self webView] mainFrame] reload];
 }
 
 - (void)ghostImageContextDidChange:(NSDictionary *)change{

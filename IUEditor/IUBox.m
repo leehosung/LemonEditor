@@ -369,9 +369,11 @@
     }
     [_m_children insertObject:iu atIndex:index];
     
-    [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
+    [self updateHTML];
+    [self updateJS];
     [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationStructureChanged object:self.project userInfo:@{IUNotificationStructureType: IUNotificationStructureTypeReindex, IUNotificationStructureTarget: iu}];
 
+    
     return YES;
 }
 
