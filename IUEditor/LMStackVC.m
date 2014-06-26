@@ -14,6 +14,7 @@
 #import "IUSheet.h"
 #import "LMWC.h"
 #import "IUPage.h"
+#import "IUClass.h"
 
 @implementation LMStackOutlineView
 
@@ -77,7 +78,9 @@
     if([representObject isKindOfClass:[IUPageContent class]]){
         cell= [outlineView makeViewWithIdentifier:@"pagecontentCell" owner:self];
     }
-    else if( item.indexPath.length < 3 ){
+    //세로로 긴 아이콘이 들어가야 하는 경우.
+    else if( item.indexPath.length < 3
+            || [representObject isKindOfClass:[IUClass class]]){
         cell= [outlineView makeViewWithIdentifier:@"cell" owner:self];
     }
     else{
