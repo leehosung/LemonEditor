@@ -974,6 +974,7 @@ static NSString * IUCompilerTagOption = @"tag";
     else {
         switch (obj.positionType) {
             case IUPositionTypeAbsolute:
+            case IUPositionTypeAbsoluteCenter:
                 [dict putTag:@"position" string:@"absolute"];
                 break;
             case IUPositionTypeRelative:
@@ -1029,6 +1030,7 @@ static NSString * IUCompilerTagOption = @"tag";
             if(value){
                 switch (obj.positionType) {
                     case IUPositionTypeAbsolute:
+                    case IUPositionTypeAbsoluteCenter:
                         [dict putTag:@"left" floatValue:[value floatValue] ignoreZero:NO unit:unit];
                         break;
                     case IUPositionTypeRelative:
@@ -1060,6 +1062,7 @@ static NSString * IUCompilerTagOption = @"tag";
             if(value){
                 switch (obj.positionType) {
                     case IUPositionTypeAbsolute:
+                    case IUPositionTypeAbsoluteCenter:
                         [dict putTag:@"top" floatValue:[value floatValue] ignoreZero:NO unit:unit];
                         break;
                     case IUPositionTypeFixed:
