@@ -15,8 +15,6 @@
 
 @interface IUSheet : IUBox
 
-@property NSArray *mqSizeArray;
-
 @property CGFloat ghostX, ghostY, ghostOpacity;
 @property NSString *ghostImageName;
 

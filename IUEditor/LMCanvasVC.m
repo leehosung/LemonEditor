@@ -119,10 +119,6 @@
     
 }
 
-- (void)mqCountContextDidChange:(NSDictionary *)change{
-    _sheet.mqSizeArray = [self sizeView].sortedArray;
-}
-
 #pragma mark -
 #pragma mark call by webView
 
@@ -200,7 +196,6 @@
     [[self gridView] clearAllLayer];
     [_sheet setDelegate:nil];
     _sheet = sheet;
-    _sheet.mqSizeArray = [self sizeView].sortedArray;
     [_sheet setDelegate:self];
     
     [[[self webView] mainFrame] loadHTMLString:sheet.editorSource baseURL:[NSURL fileURLWithPath:self.documentBasePath]];

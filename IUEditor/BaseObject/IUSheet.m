@@ -61,12 +61,12 @@
 
 -(NSString*)editorSource{
     assert(self.project.compiler);
-    return [self.project.compiler editorSource:self mqSizeArray:_mqSizeArray];
+    return [self.project.compiler editorSource:self mqSizeArray:self.project.mqSizes];
 }
 
 - (NSString*)outputSource{
     assert(self.project.compiler);
-    return [self.project.compiler outputSource:self mqSizeArray:_mqSizeArray];;
+    return [self.project.compiler outputSource:self mqSizeArray:self.project.mqSizes];;
 }
 
 - (NSString*)outputInitJSSource{
