@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "IUController.h"
 
-@interface LMInspectorLinkVC : NSViewController <NSComboBoxDelegate>
+@interface LMInspectorLinkVC : NSViewController 
 
 @property (nonatomic) IUController      *controller;
 - (void)setProject:(IUProject*)project;

@@ -88,7 +88,7 @@ typedef enum _IUOverflowType{
 
 // this is IU setting
 @property (copy) NSString *htmlID;
-@property (copy) NSString *name;
+@property (copy, nonatomic) NSString *name;
 @property (nonatomic, weak) id<IUSourceDelegate> delegate;
 @property (weak) IUBox    *parent;
 @property NSArray   *mutables;

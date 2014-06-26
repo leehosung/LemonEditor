@@ -11,8 +11,6 @@
 @class IUBox;
 @interface IUIdentifierManager : NSObject
 
--(void)resetUnconfirmedIUs;
--(void)confirm;
 
 -(void)registerIUs:(NSArray*)IUs;
 
@@ -26,6 +24,8 @@
  @note This function does not assign html id of children. Call this function for each child.
  */
 -(void)setNewIdentifierAndRegisterToTemp:(IUBox*)obj withKey:(NSString*)keyString;
+-(void)resetUnconfirmedIUs;
+-(void)confirm;
 
 
 /**

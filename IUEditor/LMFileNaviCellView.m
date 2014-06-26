@@ -32,9 +32,10 @@
 
     IUSheet *doc = self.objectValue;
     if([textValue isEqualToString:@"doc.name"] == NO){
-        NSString *oldName = doc.name;
-        doc.name = textValue;
+        [_project.identifierManager unregisterIUs:@[doc]];
+        [_project.identifierManager registerIUs:@[doc]];
         doc.htmlID = textValue;
+        doc.name = textValue;
     }
     
     return YES;

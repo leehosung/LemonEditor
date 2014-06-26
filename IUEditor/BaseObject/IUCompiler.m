@@ -646,22 +646,30 @@ static NSString * IUCompilerTagOption = @"tag";
     }
     
     if (iu.link && [iu isKindOfClass:[PGPageLinkSet class]] == NO) {
-        NSString *linkURL = iu.link;
-        if ([iu.link isHTTPURL] == NO) {
+        
+        NSString *linkStr;
+        if([iu.link isKindOfClass:[NSString class]]){
+            linkStr = iu.link;
+        }
+        else if([iu.link isKindOfClass:[IUBox class]]){
+            linkStr = ((IUBox *)iu.link).htmlID;
+        }
+        NSString *linkURL = linkStr;
+        if ([linkStr isHTTPURL] == NO) {
             if (_rule == IUCompileRuleDjango) {
                 if(iu.divLink){
-                    linkURL = [NSString stringWithFormat:@"/%@#%@", [iu.link lowercaseString], iu.divLink];
+                    linkURL = [NSString stringWithFormat:@"/%@#%@", [linkStr lowercaseString], ((IUBox *)iu.divLink).htmlID];
                 }
                 else{
-                    linkURL = [NSString stringWithFormat:@"/%@", [iu.link lowercaseString]];
+                    linkURL = [NSString stringWithFormat:@"/%@", [linkStr lowercaseString]];
                 }
             }
             else {
                 if(iu.divLink){
-                    linkURL = [NSString stringWithFormat:@"./%@.html#%@", iu.link, iu.divLink];
+                    linkURL = [NSString stringWithFormat:@"./%@.html#%@", linkStr, ((IUBox *)iu.divLink).htmlID];
                 }
                 else{
-                    linkURL = [NSString stringWithFormat:@"./%@.html", iu.link];
+                    linkURL = [NSString stringWithFormat:@"./%@.html", linkStr];
                 }
             }
         }

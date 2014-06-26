@@ -28,32 +28,39 @@
     if (self) {
         // Initialization code here.
         [self loadView];
+
     }
     return self;
 }
 
 - (void)awakeFromNib{
+    [_divLinkPB setEnabled:NO];
+    
     [self addObserver:self forKeyPath:@"controller.selectedObjects"
-              options:0 context:@"selection"];
+              options:0 context:@""];
 }
+
 
 - (void)setProject:(IUProject*)project{
     _project = project;
+    [self updateLinkComboBoxItems];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(structureChanged:) name:IUNotificationStructureDidChange object:project];
-    _pageLinkCB.delegate = self;
-    for (IUPage *page in [project pageDocuments]) {
-        [_pageLinkCB addItemWithObjectValue:page.name];
-    }
 }
+
 
 - (CalledByNoti)structureChanged:(NSNotification*)noti{
     NSDictionary *userInfo = noti.userInfo;
     if ([userInfo[IUNotificationStructureChangedIU] isKindOfClass:[IUPage class]]) {
-        [_pageLinkCB removeAllItems];
-        for (IUPage *page in [_project pageDocuments]) {
-            [_pageLinkCB addItemWithObjectValue:page.name];
-        }
+        [self updateLinkComboBoxItems];
     }
+}
+- (void)updateLinkComboBoxItems{
+    [_pageLinkCB removeAllItems];
+    for (IUPage *page in [_project pageDocuments]) {
+        [_pageLinkCB addItemWithObjectValue:[page.name copy]];
+    }
+
 }
 
 - (void)setController:(IUController *)controller{
@@ -63,43 +70,86 @@
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
-    id value = [self valueForKeyPath:[_controller keyPathFromControllerToProperty:@"link"]];
-    [[_pageLinkCB cell] setPlaceholderString:@""];
     
-    if (value == NSNoSelectionMarker || value == nil) {
-        [_pageLinkCB setStringValue:@""];
-    }
-    else if (value == NSMultipleValuesMarker) {
-        [[_pageLinkCB cell] setPlaceholderString:[NSString stringWithValueMarker:value]];
-        [_pageLinkCB setStringValue:@""];
-    }
-    else {
-        [_pageLinkCB setStringValue:value];
+    if([keyPath isEqualToString:@"controller.selectedObjects"]){
+        
+        [_divLinkPB setEnabled:NO];
+#pragma mark - set link
+        id value = [self valueForKeyPath:[_controller keyPathFromControllerToProperty:@"link"]];
+        [[_pageLinkCB cell] setPlaceholderString:@""];
+        
+        if (value == NSNoSelectionMarker || value == nil) {
+            [_pageLinkCB setStringValue:@""];
+        }
+        else if (value == NSMultipleValuesMarker) {
+            [[_pageLinkCB cell] setPlaceholderString:[NSString stringWithValueMarker:value]];
+            [_pageLinkCB setStringValue:@""];
+        }
+        else {
+            if([value isKindOfClass:[IUBox class]]){
+                [_pageLinkCB setStringValue:((IUBox *)value).name];
+                [self updateDivLink:value];
+            }
+            else{
+                [_pageLinkCB setStringValue:value];
+            }
+        }
+#pragma mark - set div link
+        value = [self valueForKeyPath:[_controller keyPathFromControllerToProperty:@"divLink"]];
+
+        if([value isKindOfClass:[IUBox class]]){
+            [_divLinkPB selectItemWithTitle:((IUBox *)value).name];
+        }
+        else{
+            [_divLinkPB selectItemAtIndex:0];
+        }
     }
 }
 
-//called when combobox selection is changed by click
-- (void)comboBoxSelectionDidChange:(NSNotification *)notification{
-    NSString *link = [_pageLinkCB objectValueOfSelectedItem];
-    [self setValue:link forKeyPath:[_controller keyPathFromControllerToProperty:@"link"]];
-}
-
-//called when combobox selection is changed by string editing
-- (void)controlTextDidChange:(NSNotification *)obj{
+- (IBAction)clickLinkComboBox:(id)sender {
     NSString *link = [_pageLinkCB stringValue];
-    [self setValue:link forKeyPath:[_controller keyPathFromControllerToProperty:@"link"]];
-}
-- (void)selectionContextDidChange:(NSDictionary *)change{
-    id currentLink = [self valueForKeyPath:[_controller keyPathFromControllerToProperty:@"link"]];
+    if(_project){
+        IUBox *box = [_project.identifierManager IUWithIdentifier:link];
+        if(box){
+            [self setValue:box forKeyPath:[_controller keyPathFromControllerToProperty:@"link"]];
+            [self updateDivLink:(IUPage *)box];
+        }
+        else{
+            [self setValue:link forKeyPath:[_controller keyPathFromControllerToProperty:@"link"]];
+        }
+    }
     
-    if(currentLink == nil || currentLink == NSNoSelectionMarker){
-        [_pageLinkCB setStringValue:@""];
-    }
-    else if(currentLink){
-        [_pageLinkCB setStringValue:currentLink];
-    }
 }
 
+#pragma mark - div link
 
+- (void)updateDivLink:(IUPage *)page{
+    assert([page isKindOfClass:[IUPage class]]);
+    [_divLinkPB setEnabled:YES];
+    [_divLinkPB removeAllItems];
+    [_divLinkPB addItemWithTitle:@"None"];
+    for(IUBox *box in page.allChildren){
+        [_divLinkPB addItemWithTitle:box.name];
+    }
+    
+    
+}
+- (IBAction)clickDivLinkPopupBtn:(id)sender {
+    
+    if([[_divLinkPB selectedItem] isEqualTo:[_divLinkPB itemAtIndex:0]]){
+        [self setValue:nil forKeyPath:[_controller keyPathFromControllerToProperty:@"divLink"]];
+        return;
+    }
+    
+    NSString *link = [[_divLinkPB selectedItem] title];
+    
+    if(_project){
+        IUBox *box = [_project.identifierManager IUWithIdentifier:link];
+        if(box){
+            [self setValue:box forKeyPath:[_controller keyPathFromControllerToProperty:@"divLink"]];
+        }
+    }
+ 
+}
 
 @end
