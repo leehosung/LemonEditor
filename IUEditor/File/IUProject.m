@@ -110,9 +110,15 @@
         _buildResourcePath = @"build/resource";
     }
     
-    _pageGroup = project.pageGroup;
-    _backgroundGroup = project.backgroundGroup;
-    _classGroup = project.classGroup;
+    _pageGroup = [project.pageGroup copy];
+    _pageGroup.project = self;
+    
+    _backgroundGroup = [project.backgroundGroup copy];
+    _backgroundGroup.project = self;
+    
+    _classGroup = [project.classGroup copy];
+    _classGroup.project = self;
+    
     _resourceGroup = [project.resourceGroup copy];
     _resourceGroup.parent = self;
 
@@ -532,7 +538,7 @@
 
     }
     
-    [sheetGroup addSheet:sheet sender:self];
+    [sheetGroup addSheet:sheet];
     
     if([sheetGroup isEqualTo:_pageGroup]){
         [self didChangeValueForKey:@"pageGroup"];
@@ -568,7 +574,7 @@
         [self willChangeValueForKey:@"classDocuments"];
         
     }
-    [sheetGroup removeSheet:sheet sender:self];
+    [sheetGroup removeSheet:sheet];
     
     if([sheetGroup isEqualTo:_pageGroup]){
         [self didChangeValueForKey:@"pageGroup"];

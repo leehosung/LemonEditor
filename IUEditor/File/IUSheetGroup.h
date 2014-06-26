@@ -12,13 +12,13 @@
 @class IUProject;
 @class IUSheet;
 
-@interface IUSheetGroup : NSObject < NSCoding>
+@interface IUSheetGroup : NSObject < NSCoding, NSCopying>
 
 @property IUProject *project;
 @property NSString *name;
 
 - (NSArray*)childrenFiles;
-- (void)addSheet:(IUSheet*)sheet sender:(id)sender;
-- (void)removeSheet:(IUSheet *)sheet sender:(id)sender;
+- (void)addSheet:(IUSheet*)sheet;
+- (void)removeSheet:(IUSheet *)sheet;
 
 @end

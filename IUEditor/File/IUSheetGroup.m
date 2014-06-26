@@ -20,6 +20,20 @@
     return self;
 }
 
+- (id)copyWithZone:(NSZone *)zone{
+    IUSheetGroup *group = [[IUSheetGroup allocWithZone:zone] init];
+    for (IUSheet *sheet in self.childrenFiles) {
+        [group addSheet:sheet];
+    }
+    group.project = self.project;
+    group.name = self.name;
+    return group;
+}
+
+- (void)setChildren:(NSArray*)children{
+    _children = [children mutableCopy];
+}
+
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [self init];
     [aDecoder decodeToObject:self withProperties:[IUSheetGroup properties]];
@@ -40,18 +54,14 @@
     return _project;
 }
 
-- (void)addSheet:(IUSheet*)sheet sender:(id)sender{
-    if([sender isKindOfClass:[IUProject class]]){
-        sheet.group = self;
-        [_children addObject:sheet];
-    }
+- (void)addSheet:(IUSheet*)sheet{
+    sheet.group = self;
+    [_children addObject:sheet];
 }
 
-- (void)removeSheet:(IUSheet *)sheet sender:(id)sender{
-    if([sender isKindOfClass:[IUProject class]]){
-        assert([_children containsObject:sheet]);
-        [_children removeObject:sheet];
-    }
+- (void)removeSheet:(IUSheet *)sheet{
+    assert([_children containsObject:sheet]);
+    [_children removeObject:sheet];
 }
 
 @end
