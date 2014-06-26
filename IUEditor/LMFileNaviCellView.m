@@ -15,12 +15,20 @@
     //set focus
     [self.textField setEditable:YES];
     [self.textField becomeFirstResponder];
-
+    
 }
 
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor{
-    NSString *textValue = fieldEditor.string;
     assert(_project.identifierManager);
+    
+    NSString *textValue = fieldEditor.string;
+    
+    NSCharacterSet *characterSet = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
+    if([textValue rangeOfCharacterFromSet:characterSet].location != NSNotFound){
+        [JDUIUtil hudAlert:@"Name should be alphabet or digit" second:1];
+        return NO;
+    }
+    
     IUBox *box = [_project.identifierManager IUWithIdentifier:textValue];
     if (box != nil) {
         [JDUIUtil hudAlert:@"IU with same name exists" second:1];
@@ -29,7 +37,7 @@
     if (textValue.length == 0) {
         return NO;
     }
-
+    
     IUSheet *doc = self.objectValue;
     if([textValue isEqualToString:@"doc.name"] == NO){
         [_project.identifierManager unregisterIUs:@[doc]];
