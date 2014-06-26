@@ -121,7 +121,7 @@
                                                 <constraint firstAttribute="height" constant="15" id="Nap-kD-7iT"/>
                                                 <constraint firstAttribute="width" constant="9" id="dNL-iH-JJu"/>
                                             </constraints>
-                                            <stepperCell key="cell" controlSize="mini" continuous="YES" alignment="left" maxValue="10000" id="yiT-2P-4tK"/>
+                                            <stepperCell key="cell" controlSize="mini" continuous="YES" alignment="left" minValue="-10000" maxValue="10000" id="yiT-2P-4tK"/>
                                             <connections>
                                                 <action selector="clickStepper:" target="-2" id="YPR-Y7-ENC"/>
                                             </connections>
@@ -194,7 +194,7 @@
                                                 <constraint firstAttribute="height" constant="15" id="6Ch-3a-jJ5"/>
                                                 <constraint firstAttribute="width" constant="9" id="pTQ-dG-Tn1"/>
                                             </constraints>
-                                            <stepperCell key="cell" controlSize="mini" continuous="YES" alignment="left" maxValue="10000" id="Tf5-8w-1d3"/>
+                                            <stepperCell key="cell" controlSize="mini" continuous="YES" alignment="left" minValue="-10000" maxValue="10000" id="Tf5-8w-1d3"/>
                                             <connections>
                                                 <action selector="clickStepper:" target="-2" id="LPR-wI-KU3"/>
                                             </connections>
