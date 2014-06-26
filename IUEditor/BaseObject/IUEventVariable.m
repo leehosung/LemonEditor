@@ -180,7 +180,7 @@
                         
                         NSMutableString *innerJS = [NSMutableString string];
                         [innerJS appendFormat:@"$(\"#%@\").show(", visibleID];
-                        [innerJS appendFormat:@"\"%@\", %ld);\n",typeStr, duration*100];
+                        [innerJS appendFormat:@"%ld, \"%@\");\n", duration*100, typeStr];
                         [innerJS appendFormat:@"$(\"#%@\").data(\"run%@\", 1);\n", visibleID, fnName];
                         
                         [fnStr appendString:[innerJS stringByAddingTab]];
