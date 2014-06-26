@@ -28,6 +28,12 @@
     return nil;
 }
 
+- (id)copyWithZone:(NSZone *)zone{
+    IUResourceFile *file = [[IUResourceFile allocWithZone:zone] initWithName:_name];
+    file.originalFilePath = self.absolutePath;
+    [file setParent:self.parent];
+    return file;
+}
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];

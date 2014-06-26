@@ -85,6 +85,44 @@
     return self;
 }
 
+-(id)initWithProject:(IUProject*)project options:(NSDictionary*)options error:(NSError**)error{
+    _mqSizes = [NSMutableArray arrayWithArray:@[@(defaultFrameWidth), @700, @400]];
+    
+    
+    _compiler = [[IUCompiler alloc] init];
+    _resourceManager = [[IUResourceManager alloc] init];
+    _compiler.resourceManager = _resourceManager;
+    _identifierManager = [[IUIdentifierManager alloc] init];
+    
+    assert(options[IUProjectKeyAppName]);
+    assert(options[IUProjectKeyProjectPath]);
+    
+    self.name = [options objectForKey:IUProjectKeyAppName];
+    self.path = [options objectForKey:IUProjectKeyProjectPath];
+    
+    _buildPath = [[options objectForKey:IUProjectKeyBuildPath] relativePathFrom:self.path];
+    if (_buildPath == nil) {
+        _buildPath = @"build";
+    }
+    
+    _buildResourcePath = [[options objectForKey:IUProjectKeyResourcePath] relativePathFrom:self.path];
+    if (_buildResourcePath == nil) {
+        _buildResourcePath = @"build/resource";
+    }
+    
+    _pageGroup = project.pageGroup;
+    _backgroundGroup = project.backgroundGroup;
+    _classGroup = project.classGroup;
+    _resourceGroup = [project.resourceGroup copy];
+    _resourceGroup.parent = self;
+
+    [_resourceManager setResourceGroup:_resourceGroup];
+    [_identifierManager registerIUs:self.allDocuments];
+    
+    [self fetch];
+    return self;
+}
+
 -(id)initWithCreation:(NSDictionary*)options error:(NSError**)error{
     self = [super init];
     
@@ -97,10 +135,10 @@
     _identifierManager = [[IUIdentifierManager alloc] init];
     
     assert(options[IUProjectKeyAppName]);
-    assert(options[IUProjectKeyPath]);
+    assert(options[IUProjectKeyProjectPath]);
     
     self.name = [options objectForKey:IUProjectKeyAppName];
-    self.path = [options objectForKey:IUProjectKeyPath];
+    self.path = [options objectForKey:IUProjectKeyProjectPath];
 
     _buildPath = [[options objectForKey:IUProjectKeyBuildPath] relativePathFrom:self.path];
     if (_buildPath == nil) {
@@ -327,10 +365,23 @@
     _resourceGroup.name = @"resource";
     _resourceGroup.parent = self;
     
-    IUResourceGroup *imageGroup = [_resourceGroup addResourceGroupWithName:@"image"];
-    IUResourceGroup *videoGroup = [_resourceGroup addResourceGroupWithName:@"video"];
-    IUResourceGroup *JSGroup = [_resourceGroup addResourceGroupWithName:@"js"];
-    IUResourceGroup *CSSGroup = [_resourceGroup addResourceGroupWithName:@"css"];
+    
+    IUResourceGroup *imageGroup = [[IUResourceGroup alloc] init];
+    imageGroup.name = @"image";
+    [_resourceGroup addResourceGroup:imageGroup];
+    
+    IUResourceGroup *videoGroup = [[IUResourceGroup alloc] init];
+    videoGroup.name = @"video";
+    [_resourceGroup addResourceGroup:videoGroup];
+    
+    IUResourceGroup *JSGroup = [[IUResourceGroup alloc] init];
+    JSGroup.name = @"js";
+    [_resourceGroup addResourceGroup:JSGroup];
+    
+    IUResourceGroup *CSSGroup = [[IUResourceGroup alloc] init];
+    CSSGroup.name = @"css";
+    [_resourceGroup addResourceGroup:CSSGroup];
+    
     
     //images resource copy
     NSString *sampleImgPath = [[NSBundle mainBundle] pathForResource:@"sample" ofType:@"jpg"];
@@ -459,6 +510,9 @@
 }
 - (IUSheetGroup*)classGroup{
     return _classGroup;
+}
+- (IUResourceGroup*)resourceGroup{
+    return _resourceGroup;
 }
 
 - (void)addSheet:(IUSheet *)sheet toSheetGroup:(IUSheetGroup *)sheetGroup{

@@ -21,6 +21,26 @@
     return self;
 }
 
+- (void)setArray:(NSArray*)_array{
+    array = [[_array deepCopy] mutableCopy];
+}
+
+- (id)copyWithZone:(NSZone *)zone{
+    IUResourceGroup *returnGroup = [[IUResourceGroup allocWithZone:zone] init];
+    returnGroup.name = self.name;
+    [returnGroup setArray:array];
+    for (id obj in returnGroup.childrenFiles) {
+        [obj setParent:returnGroup];
+    }
+    return returnGroup;
+}
+
+- (BOOL)addResourceGroup:(IUResourceGroup*)group{
+    [array addObject:group];
+    group.parent = self;
+    return YES;
+}
+
 - (void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeObject:array forKey:@"array"];
     [aCoder encodeObject:_name forKey:@"_name"];
@@ -53,14 +73,6 @@
 
 - (NSArray*)childrenFiles{
     return array;
-}
-
--(IUResourceGroup *)addResourceGroupWithName:(NSString*)groupName{
-    IUResourceGroup *group = [[IUResourceGroup alloc] init];
-    [array addObject:group];
-    group.name = groupName;
-    group.parent = self;
-    return group;
 }
 
 -(IUResourceFile*)addResourceFileWithContentOfPath:(NSString*)filePath{

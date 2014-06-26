@@ -431,7 +431,14 @@
     pcWC.currentProject = _project;
     
     [self.window beginSheet:pcWC.window completionHandler:^(NSModalResponse returnCode) {
-        
+        switch (returnCode) {
+            case NSModalResponseOK:
+                [self close];
+                break;
+            case NSModalResponseAbort:
+            default:
+                break;
+        }
     }];
 }
 

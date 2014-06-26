@@ -12,12 +12,8 @@
 
 @interface LMProjectConvertWC : NSWindowController
 
-@property (nonatomic) NSString *targetProjectDirectory;
-@property NSString *iuProjectDirectory;
-@property NSString *buildProjectDirectory;
-@property NSString *resourceProjectDirectory;
 
-@property (nonatomic) IUProject *currentProject;
+- (void)setCurrentProject:(IUProject*)project;
 
 
 - (NSString *)outputFilePath;

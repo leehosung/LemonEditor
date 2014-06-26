@@ -17,11 +17,11 @@
 
 @class IUResourceFile;
 
-@interface IUResourceGroup : NSObject <IUFile, IUResourcePathProtocol, NSCoding>
+@interface IUResourceGroup : NSObject <IUFile, IUResourcePathProtocol, NSCoding, NSCopying>
 @property NSString *name;
 @property id <IUResourcePathProtocol> parent;
 
 - (IUResourceFile*)addResourceFileWithContentOfPath:(NSString*)filePath;
-- (IUResourceGroup *)addResourceGroupWithName:(NSString*)groupName;
+- (BOOL)addResourceGroup:(IUResourceGroup*)group;
 
 @end

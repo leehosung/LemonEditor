@@ -65,38 +65,52 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
 }
 
 - (BOOL)makeNewProjectWithOption:(NSDictionary *)option URL:(NSURL *)url{
-    
-    NSMutableDictionary *projectDict;
-    IUProjectType projectType;
-    if(option){
-        projectDict = [option mutableCopy];
-        projectType = [[option objectForKey:IUProjectKeyType] intValue];
-        [projectDict removeObjectForKey:IUProjectKeyType];
-    }
-    else{
-        projectType = IUProjectTypeDefault;
-        projectDict = [NSMutableDictionary dictionary];
-        [projectDict setObject:@(NO) forKey:IUProjectKeyGit];
-        [projectDict setObject:@(NO) forKey:IUProjectKeyHeroku];
-    }
-    
-    NSString *filePath = [url relativePath];
-    NSString *appName = [[url lastPathComponent] stringByDeletingPathExtension];
-    
-    [projectDict setObject:filePath forKey:IUProjectKeyPath];
-    [projectDict setObject:appName forKey:IUProjectKeyAppName];
-    
-    NSError *error;
-
-    IUProject *newProject = [[NSClassFromString([IUProject stringProjectType:projectType]) alloc] initWithCreation:projectDict error:&error];
-    if (error != nil) {
-        assert(0);
-    }
-    if(newProject){
+    if ([option objectForKey:IUProjectKeyConversion]) {
+        IUProjectType projectType = [[option objectForKey:IUProjectKeyType] intValue];
+        Class projectFactory = NSClassFromString([IUProject stringProjectType:projectType]);
+        
+        NSError *error;
+        IUProject *newProject = [(IUProject*)[projectFactory alloc] initWithProject:[option objectForKey:IUProjectKeyConversion] options:option error:&error];
+        if (error != nil) {
+            assert(0);
+        }
         _project = newProject;
         return YES;
     }
-    return NO;
+    
+    else {
+        NSMutableDictionary *projectDict;
+        IUProjectType projectType;
+        if(option){
+            projectDict = [option mutableCopy];
+            projectType = [[option objectForKey:IUProjectKeyType] intValue];
+            [projectDict removeObjectForKey:IUProjectKeyType];
+        }
+        else{
+            projectType = IUProjectTypeDefault;
+            projectDict = [NSMutableDictionary dictionary];
+            [projectDict setObject:@(NO) forKey:IUProjectKeyGit];
+            [projectDict setObject:@(NO) forKey:IUProjectKeyHeroku];
+        }
+        
+        NSString *filePath = [url relativePath];
+        NSString *appName = [[url lastPathComponent] stringByDeletingPathExtension];
+        
+        [projectDict setObject:filePath forKey:IUProjectKeyProjectPath];
+        [projectDict setObject:appName forKey:IUProjectKeyAppName];
+        
+        NSError *error;
+        
+        IUProject *newProject = [[NSClassFromString([IUProject stringProjectType:projectType]) alloc] initWithCreation:projectDict error:&error];
+        if (error != nil) {
+            assert(0);
+        }
+        if(newProject){
+            _project = newProject;
+            return YES;
+        }
+        return NO;
+    }
 }
 
 - (LMWC *)lemonWindowController{

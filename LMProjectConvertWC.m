@@ -8,17 +8,27 @@
 
 #import "LMProjectConvertWC.h"
 #import "IUDjangoProject.h"
-
+#import "IUProjectController.h"
 
 @interface LMProjectConvertWC ()
+@property (weak) IBOutlet NSView *htmlTabV;
+@property (weak) IBOutlet NSView *djangoTabV;
+
 @property (weak) IBOutlet NSView *htmlConvertV;
 @property (weak) IBOutlet NSView *htmlRemainV;
+
 @property (weak) IBOutlet NSView *djangoConvertV;
 @property (weak) IBOutlet NSView *djangoRemainV;
+
+@property (nonatomic) NSString *targetProjectDirectory;
+@property NSString *buildProjectDirectory;
+@property NSString *resourceProjectDirectory;
+
 @end
 
 @implementation LMProjectConvertWC{
     NSString *outputFilePath;
+    IUProject *_project;
 }
 
 - (id)initWithWindow:(NSWindow *)window
@@ -30,43 +40,42 @@
     return self;
 }
 
-- (void)windowDidLoad
-{
-    [super windowDidLoad];
-    
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-}
-
-- (void)awakeFromNib{
-    [self setCurrentProject:_currentProject];
-}
 
 - (void)setCurrentProject:(IUProject *)currentProject{
-    _currentProject = currentProject;
+    _project = currentProject;
+    //load nib
+    [self window];
+    [self setTargetProjectDirectory:@"/Users/jd/Desktop"];
     if ([[currentProject className] isEqualToString:@"IUProject"]) {
-        [_htmlConvertV setHidden:YES];
-        [_djangoRemainV setHidden:YES];
+        [_djangoTabV addSubview:_djangoConvertV];
+        [_htmlTabV addSubview:_htmlRemainV];
     }
     else {
-        [_htmlRemainV setHidden:YES];
-        [_djangoConvertV setHidden:YES];
+        [_htmlTabV addSubview:_htmlConvertV];
+        [_djangoTabV addSubview:_htmlRemainV];
     }
 }
 
 - (IBAction)convertDjango:(id)sender{
-    /*
-    NSDictionary *setting = @{IUProjectKeyDirectory: _targetProjectDirectory};
-    NSError *err;
-    assert(_currentProject);
-    IUDjangoProject *newProject = [IUDjangoProject convertProject:_currentProject setting:setting error:&err];
-    if (newProject) {
-        outputFilePath = newProject.path;
-        [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseOK];
+    if (_targetProjectDirectory == nil || _buildProjectDirectory == nil || _resourceProjectDirectory == nil) {
+        [JDLogUtil alert:@"Please fill all fields"];
+        return;
     }
-    else {
-        assert(0);
-    }
-     */
+    
+    NSString *projectPath = [_targetProjectDirectory stringByAppendingFormat:@"/%@.iu", [_targetProjectDirectory lastPathComponent]];
+    NSDictionary *options = @{   IUProjectKeyGit: @(NO),
+                                 IUProjectKeyHeroku: @(NO),
+                                 IUProjectKeyAppName : [_targetProjectDirectory lastPathComponent],
+                                 IUProjectKeyProjectPath : projectPath,
+                                 IUProjectKeyType:@(IUProjectTypeDjango),
+                                 IUProjectKeyResourcePath : _resourceProjectDirectory,
+                                 IUProjectKeyBuildPath : _buildProjectDirectory,
+                                 IUProjectKeyConversion :
+                                     _project
+                                 };
+    
+    [(IUProjectController *)[NSDocumentController sharedDocumentController] newDocument:self withOption:options];
+    [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseOK];
 }
 - (IBAction)pressSelectProjectDirectory:(id)sender {
     NSURL *url = [[JDFileUtil util] openDirectoryByNSOpenPanel];
@@ -75,9 +84,8 @@
 
 - (void)setTargetProjectDirectory:(NSString *)targetProjectDirectory{
     _targetProjectDirectory = targetProjectDirectory;
-    self.iuProjectDirectory = [_targetProjectDirectory stringByAppendingPathComponent:@"IUProject"];
     self.buildProjectDirectory = [_targetProjectDirectory stringByAppendingPathComponent:@"templates"];
-    self.resourceProjectDirectory = [_targetProjectDirectory stringByAppendingPathComponent:@"IUProject/resource"];
+    self.resourceProjectDirectory = [_targetProjectDirectory stringByAppendingPathComponent:@"templates/resource"];
 }
 
 - (IBAction)pressCancelB:(id)sender {

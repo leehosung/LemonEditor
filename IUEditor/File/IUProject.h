@@ -32,13 +32,14 @@ static NSString * IUProjectKeyHeroku = @"heroku";
 
 //project.path : /~/~/abcd.iu
 static NSString * IUProjectKeyProjectPath = @"projectPath";
-//path : /~/~/
-static NSString * IUProjectKeyPath= @"path";
+
 //appname : abcd
 static NSString * IUProjectKeyAppName = @"appName";
 
 static NSString * IUProjectKeyResourcePath = @"resPath";
 static NSString * IUProjectKeyBuildPath = @"buildPath";
+
+static NSString * IUProjectKeyConversion = @"conversion";
 
 
 @interface IUProject : NSObject <IUFile, IUResourcePathProtocol>{
@@ -67,6 +68,14 @@ static NSString * IUProjectKeyBuildPath = @"buildPath";
  @param setting a dictionary which has IUProjectKeyAppName and IUProjectKeyDirectory
  */
 -(id)initWithCreation:(NSDictionary*)options error:(NSError**)error;
+
+/**
+ @breif create project from other project (conversion)
+ @param setting a dictionary which has IUProjectKeyAppName and IUProjectKeyDirectory
+ */
+-(id)initWithProject:(IUProject*)project options:(NSDictionary*)options error:(NSError**)error;
+
+
 - (void)initializeResource;
 
 //save project
@@ -108,6 +117,7 @@ static NSString * IUProjectKeyBuildPath = @"buildPath";
 - (IUSheetGroup*)pageGroup;
 - (IUSheetGroup*)backgroundGroup;
 - (IUSheetGroup*)classGroup;
+- (IUResourceGroup *)resourceGroup;
 
 - (void)addSheet:(IUSheet *)sheet toSheetGroup:(IUSheetGroup *)sheetGroup;
 - (void)removeSheet:(IUSheet *)sheet toSheetGroup:(IUSheetGroup *)sheetGroup;

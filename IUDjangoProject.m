@@ -19,12 +19,6 @@
     return self;
 }
 
-+(IUDjangoProject*)createProject:(NSDictionary*)setting error:(NSError**)error{
-    return nil;
-}
-+(IUDjangoProject*)convertProject:(IUProject*)project setting:(NSDictionary*)setting error:(NSError**)error{
-    return nil;
-}
 
 - (BOOL)runnable{
     return YES;
