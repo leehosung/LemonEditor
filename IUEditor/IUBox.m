@@ -88,7 +88,7 @@
     assert(self.project);
     isConnectedWithEditor = YES;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMQSelect:) name:IUNotificationMQSelected object:self.project];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMQSelect:) name:IUNotificationMQSelected object:nil];
     for (IUBox *box in self.children) {
         [box connectWithEditor];
     }
