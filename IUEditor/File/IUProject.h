@@ -38,8 +38,19 @@ static NSString * IUProjectKeyAppName = @"appName";
 
 static NSString * IUProjectKeyResourcePath = @"resPath";
 static NSString * IUProjectKeyBuildPath = @"buildPath";
-
 static NSString * IUProjectKeyConversion = @"conversion";
+
+//resource groupname
+static NSString *IUResourceGroupName = @"resource";
+static NSString *IUJSResourceGroupName = @"js";
+static NSString *IUImageResourceGroupName = @"image";
+static NSString *IUVideoResourceGroupName = @"video";
+static NSString *IUCSSResourceGroupName = @"css";
+
+//iupage groupname
+static NSString *IUPageGroupName = @"page";
+static NSString *IUBackgroundGroupName = @"background";
+static NSString *IUClassGroupName = @"class";
 
 
 @interface IUProject : NSObject <IUFile, IUResourcePathProtocol>{

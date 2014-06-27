@@ -10,11 +10,6 @@
 #import "IUProjectController.h"
 
 static NSString *iuDataName = @"iuData";
-static NSString *resourcesName = @"resource";
-static NSString *jsResourceName = @"js";
-static NSString *imageResourceName = @"image";
-static NSString *videoResourceName = @"video";
-static NSString *cssResourceName = @"css";
 
 //set metadata
 static NSString *metaDataFileName = @"metaData.plist";
@@ -192,41 +187,41 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
     }
 
     //save resource files
-    NSFileWrapper *resourceWrapper = [fileWrappers objectForKey:resourcesName];
+    NSFileWrapper *resourceWrapper = [fileWrappers objectForKey:IUResourceGroupName];
     if (resourceWrapper== nil){
         resourceWrapper = [[NSFileWrapper alloc] initDirectoryWithFileWrappers:nil];
-        [resourceWrapper setPreferredFilename:resourcesName];
+        [resourceWrapper setPreferredFilename:IUResourceGroupName];
         [[self documentFileWrapper] addFileWrapper:resourceWrapper];
 
     }
     
     
-    NSFileWrapper *cssWrapper = [[resourceWrapper fileWrappers] objectForKey:cssResourceName];
-    NSFileWrapper *jsWrapper = [[resourceWrapper fileWrappers] objectForKey:jsResourceName];
-    NSFileWrapper *imageWrapper = [[resourceWrapper fileWrappers] objectForKey:imageResourceName];
-    NSFileWrapper *videoWrapper = [[resourceWrapper fileWrappers] objectForKey:videoResourceName];
+    NSFileWrapper *cssWrapper = [[resourceWrapper fileWrappers] objectForKey:IUCSSResourceGroupName];
+    NSFileWrapper *jsWrapper = [[resourceWrapper fileWrappers] objectForKey:IUJSResourceGroupName];
+    NSFileWrapper *imageWrapper = [[resourceWrapper fileWrappers] objectForKey:IUImageResourceGroupName];
+    NSFileWrapper *videoWrapper = [[resourceWrapper fileWrappers] objectForKey:IUVideoResourceGroupName];
 
     
     if(cssWrapper == nil){
         cssWrapper = [[NSFileWrapper alloc] initDirectoryWithFileWrappers:nil];
-        [cssWrapper setPreferredFilename:cssResourceName];
+        [cssWrapper setPreferredFilename:IUCSSResourceGroupName];
         [resourceWrapper addFileWrapper:cssWrapper];
     }
     if(jsWrapper == nil){
         jsWrapper = [[NSFileWrapper alloc] initDirectoryWithFileWrappers:nil];
-        [jsWrapper setPreferredFilename:jsResourceName];
+        [jsWrapper setPreferredFilename:IUJSResourceGroupName];
         [resourceWrapper addFileWrapper:jsWrapper];
 
     }
     if(imageWrapper == nil){
         imageWrapper = [[NSFileWrapper alloc] initDirectoryWithFileWrappers:nil];
-        [imageWrapper setPreferredFilename:imageResourceName];
+        [imageWrapper setPreferredFilename:IUImageResourceGroupName];
         [resourceWrapper addFileWrapper:imageWrapper];
 
     }
     if(videoWrapper == nil){
         videoWrapper = [[NSFileWrapper alloc] initDirectoryWithFileWrappers:nil];
-        [videoWrapper setPreferredFilename:videoResourceName];
+        [videoWrapper setPreferredFilename:IUVideoResourceGroupName];
         [resourceWrapper addFileWrapper:videoWrapper];
     }
     

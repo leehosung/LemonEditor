@@ -60,13 +60,13 @@
         
         //version code
         if ([[_pageGroup.name lowercaseString] isEqualToString:@"pages"]){
-            _pageGroup.name = @"page";
+            _pageGroup.name = IUPageGroupName;
         }
         if ([[_classGroup.name lowercaseString] isEqualToString:@"classes"]) {
-            _classGroup.name = @"class";
+            _classGroup.name = IUClassGroupName;
         }
         if ([[_backgroundGroup.name lowercaseString] isEqualToString:@"backgrounds"]) {
-            _backgroundGroup.name = @"background";
+            _backgroundGroup.name = IUBackgroundGroupName;
         }
         [_resourceManager setResourceGroup:_resourceGroup];
         [_identifierManager registerIUs:self.allDocuments];
@@ -157,15 +157,15 @@
     }
 
     _pageGroup = [[IUSheetGroup alloc] init];
-    _pageGroup.name = @"page";
+    _pageGroup.name = IUPageGroupName;
     _pageGroup.project = self;
     
     _backgroundGroup = [[IUSheetGroup alloc] init];
-    _backgroundGroup.name = @"background";
+    _backgroundGroup.name = IUBackgroundGroupName;
     _backgroundGroup.project = self;
     
     _classGroup = [[IUSheetGroup alloc] init];
-    _classGroup.name = @"class";
+    _classGroup.name = IUClassGroupName;
     _classGroup.project = self;
     
     IUBackground *bg = [[IUBackground alloc] initWithProject:self options:nil];
@@ -371,24 +371,24 @@
     JDInfoLog(@"initilizeResource");
     
     _resourceGroup = [[IUResourceGroup alloc] init];
-    _resourceGroup.name = @"resource";
+    _resourceGroup.name = IUResourceGroupName;
     _resourceGroup.parent = self;
     
     
     IUResourceGroup *imageGroup = [[IUResourceGroup alloc] init];
-    imageGroup.name = @"image";
+    imageGroup.name = IUImageResourceGroupName;
     [_resourceGroup addResourceGroup:imageGroup];
     
     IUResourceGroup *videoGroup = [[IUResourceGroup alloc] init];
-    videoGroup.name = @"video";
+    videoGroup.name = IUVideoResourceGroupName;
     [_resourceGroup addResourceGroup:videoGroup];
     
     IUResourceGroup *JSGroup = [[IUResourceGroup alloc] init];
-    JSGroup.name = @"js";
+    JSGroup.name = IUJSResourceGroupName;
     [_resourceGroup addResourceGroup:JSGroup];
     
     IUResourceGroup *CSSGroup = [[IUResourceGroup alloc] init];
-    CSSGroup.name = @"css";
+    CSSGroup.name = IUCSSResourceGroupName;
     [_resourceGroup addResourceGroup:CSSGroup];
     
     

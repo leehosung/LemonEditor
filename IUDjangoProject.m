@@ -92,15 +92,15 @@
     
     //create document dir
     IUDocumentGroupNode *pageDir = [[IUDocumentGroupNode alloc] init];
-    pageDir.name = @"page";
+    pageDir.name = IUPageGroupName;
     [project addNode:pageDir];
     
     IUDocumentGroupNode *backgroundGroup = [[IUDocumentGroupNode alloc] init];
-    backgroundGroup.name = @"background";
+    backgroundGroup.name = IUBackgroundGroupName;
     [project addNode:backgroundGroup];
     
     IUDocumentGroupNode *classGroup = [[IUDocumentGroupNode alloc] init];
-    classGroup.name = @"class";
+    classGroup.name = IUClassGroupName;
     [project addNode:classGroup];
     
     //create document

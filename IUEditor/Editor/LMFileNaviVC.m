@@ -105,16 +105,16 @@
         IUSheetGroup *doc = (IUSheetGroup*) item.representedObject;
         if ([doc isKindOfClass:[IUSheetGroup class]]) {
             
-            if ([doc.name isEqualToString:@"page"]) {
+            if ([doc.name isEqualToString:IUPageGroupName]) {
                 folder.addButton.tag = 1;
                 [folder.addButton setHidden:NO];
             }
             
-            else if ([doc.name isEqualToString:@"background"]) {
+            else if ([doc.name isEqualToString:IUBackgroundGroupName]) {
                 [folder.addButton setHidden:YES];
             }
             
-            else if ([doc.name isEqualToString:@"class"]) {
+            else if ([doc.name isEqualToString:IUClassGroupName]) {
                 folder.addButton.tag = 3;
                 [folder.addButton setHidden:NO];
             }
@@ -135,13 +135,13 @@
         NSString *cellIdentifier;
         if ([[item representedObject] isKindOfClass:[IUSheet class]]){
             IUSheet *node = [item representedObject];
-            if([node.group.name isEqualToString:@"page"]){
+            if([node.group.name isEqualToString:IUPageGroupName]){
                 cellIdentifier = @"pageFile";
             }
-            else if([node.group.name isEqualToString:@"background"]){
+            else if([node.group.name isEqualToString:IUBackgroundGroupName]){
                 cellIdentifier = @"backgroundFile";
             }
-            else if ([node.group.name isEqualToString:@"class"]){
+            else if ([node.group.name isEqualToString:IUClassGroupName]){
                 cellIdentifier = @"classFile";
             }
             else {
@@ -265,7 +265,7 @@
     
     if([groupNode isKindOfClass:[IUDocumentGroupNode class]]){
         NSString *className;
-        if([groupNode.name isEqualToString:@"page"]){
+        if([groupNode.name isEqualToString:IUPageGroupName]){
             className = @"IUPage";
         }
         else if([groupNode.name isEqualToString:@"Backgrounds"]){
