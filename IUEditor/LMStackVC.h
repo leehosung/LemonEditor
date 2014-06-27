@@ -16,6 +16,6 @@
 
 @interface LMStackVC : NSViewController <NSOutlineViewDataSource, NSOutlineViewDelegate>
 
-@property  IUSheet    *sheet;
+@property  IUSheet    *sheet; //set by lmwc
 @property (strong) IBOutlet IUController *IUController;
 @end

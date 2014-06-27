@@ -70,9 +70,6 @@
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
-                                                        <connections>
-                                                            <binding destination="cin-w1-yMO" name="value" keyPath="objectValue.name" id="Li9-9i-o4O"/>
-                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -106,9 +103,6 @@
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
-                                                        <connections>
-                                                            <binding destination="VyE-0e-l9J" name="value" keyPath="objectValue.name" id="q2o-zi-VrX"/>
-                                                        </connections>
                                                     </textField>
                                                     <button toolTip="Add Responsive Section" translatesAutoresizingMaskIntoConstraints="NO" id="ynI-mD-FdK">
                                                         <rect key="frame" x="192" y="3" width="20" height="20"/>
@@ -158,9 +152,6 @@
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
-                                                        <connections>
-                                                            <binding destination="8em-YS-mRf" name="value" keyPath="objectValue.name" id="ObO-hD-pTf"/>
-                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>

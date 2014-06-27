@@ -41,9 +41,10 @@
     IUSheet *doc = self.objectValue;
     if([textValue isEqualToString:@"doc.name"] == NO){
         [_project.identifierManager unregisterIUs:@[doc]];
-        [_project.identifierManager registerIUs:@[doc]];
         doc.htmlID = textValue;
+        [_project.identifierManager registerIUs:@[doc]];
         doc.name = textValue;
+
     }
     
     return YES;

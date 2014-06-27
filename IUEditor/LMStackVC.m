@@ -55,6 +55,13 @@
 -(void)awakeFromNib{
     _outlineV.delegate = self;
     [_outlineV registerForDraggedTypes:@[@"stackVC", (id)kUTTypeIUType]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(structureChanged:) name:IUNotificationStructureDidChange object:nil];
+
+}
+
+- (void)structureChanged:(NSNotification *)notification{
+    [_outlineV reloadData];
 }
 
 -(void)keyDown:(NSEvent *)theEvent{
@@ -86,6 +93,7 @@
     else{
         cell= [outlineView makeViewWithIdentifier:@"node" owner:self];
     }
+    [cell.textField setStringValue:((IUBox *)representObject).name];
     [cell.imageView setImage:classImage];
     [cell.imageView setImageScaling:NSImageScaleProportionallyDown];
 
