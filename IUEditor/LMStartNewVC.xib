@@ -132,7 +132,7 @@
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dcY-27-3P1" userLabel="Presentation">
                         <rect key="frame" x="260" y="131" width="180" height="120"/>
-                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="new_pt" imagePosition="only" alignment="center" enabled="NO" imageScaling="proportionallyDown" inset="2" id="OPt-aH-6pp">
+                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="new_pt" imagePosition="overlaps" alignment="center" enabled="NO" imageScaling="proportionallyDown" inset="2" id="OPt-aH-6pp">
                             <behavior key="behavior" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -150,6 +150,14 @@
                             <action selector="pressProjectTypeB:" target="-2" id="CqP-yZ-iZu"/>
                         </connections>
                     </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VtK-Wh-qJp">
+                        <rect key="frame" x="240" y="42" width="220" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Presentation will be available very soon" id="VN7-tm-nMm">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
             <color key="borderColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
