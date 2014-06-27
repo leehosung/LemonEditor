@@ -263,7 +263,7 @@
         self.propertyVArray = @[propertyIUFBLikeVC.view];
     }
     else if ([classString isEqualToString:@"IUCollection"]){
-        self.propertyVArray = @[propertyIUCollectionVC.view];
+        self.propertyVArray = @[propertyIUCollectionVC.view, propertyIUImportVC.view];
     }
 #pragma mark IU-Simple
     else if ([classString isEqualToString:@"PGTextField"]) {

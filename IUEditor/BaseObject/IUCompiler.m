@@ -437,11 +437,6 @@ static NSString * IUCompilerTagOption = @"tag";
    
     
 #if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
-    if(iu.text && iu.text.length > 0){
-        NSString *htmlText = [iu.text stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
-        [code addCodeLineWithFormat:@"<p>%@</p>",htmlText];
-    }
-    
     if (self.rule == IUCompileRuleDjango && iu.pgContentVariable) {
         if ([iu.sheet isKindOfClass:[IUClass class]]) {
             [code addCodeLineWithFormat:@"{{object.%@}}", iu.pgContentVariable];
@@ -450,6 +445,11 @@ static NSString * IUCompilerTagOption = @"tag";
             [code addCodeLineWithFormat:@"<p>{{%@}}</p>", iu.pgContentVariable];
         }
     }
+    else if(iu.text && iu.text.length > 0){
+        NSString *htmlText = [iu.text stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
+        [code addCodeLineWithFormat:@"<p>%@</p>",htmlText];
+    }
+
 
 #endif
     if (iu.children.count) {
@@ -1534,8 +1534,10 @@ static NSString * IUCompilerTagOption = @"tag";
     else if ([iu isKindOfClass:[IUCollection class]]){
         IUCollection *iuCollection = (IUCollection*)iu;
 
-        NSData *data = [NSJSONSerialization dataWithJSONObject:iuCollection.responsiveSetting options:0 error:nil];
-        [retString appendFormat:@" responsive=%@ defaultItemCount=%ld",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding], iuCollection.defaultItemCount];
+        if(iuCollection.responsiveSetting){
+            NSData *data = [NSJSONSerialization dataWithJSONObject:iuCollection.responsiveSetting options:0 error:nil];
+            [retString appendFormat:@" responsive=%@ defaultItemCount=%ld",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding], iuCollection.defaultItemCount];
+        }
     }
 #pragma mark PGTextField
     else if ([iu isKindOfClass:[PGTextField class]]){

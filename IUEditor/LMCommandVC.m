@@ -93,7 +93,8 @@
 }
 
 - (IBAction) runOrStopServer:(id)sender{
-    //TODO: 제대로 동작안함
+    //FIXME: 제대로 동작안함
+    /*
     if (runningState == 0) {
         // stop server
         serverTask = [[NSTask alloc] init];
@@ -122,6 +123,7 @@
         }
         runningState = 0;
     }
+     */
 }
 
 - (IBAction)changeCompilerRule:(id)sender {

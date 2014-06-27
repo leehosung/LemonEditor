@@ -104,16 +104,21 @@
         
         IUSheetGroup *doc = (IUSheetGroup*) item.representedObject;
         if ([doc isKindOfClass:[IUSheetGroup class]]) {
-            [folder.addButton setHidden:NO];
+            
             if ([doc.name isEqualToString:@"page"]) {
                 folder.addButton.tag = 1;
+                [folder.addButton setHidden:NO];
             }
-            else if ([doc.name isEqualToString:@"backgrounds"]) {
+            
+            else if ([doc.name isEqualToString:@"background"]) {
                 [folder.addButton setHidden:YES];
             }
-            else if ([doc.name isEqualToString:@"classes"]) {
+            
+            else if ([doc.name isEqualToString:@"class"]) {
                 folder.addButton.tag = 3;
+                [folder.addButton setHidden:NO];
             }
+            
             else {
 //                assert(0);
             }

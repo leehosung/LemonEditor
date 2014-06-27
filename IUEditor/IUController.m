@@ -77,7 +77,7 @@
         pasteTargetIsParent = NO;
     }
     
-    if([pasteTarget isKindOfClass:[IUPage class]]){
+    if([pasteTarget isMemberOfClass:[IUPage class]]){
         pasteTarget = (IUBox *)((IUPage *)pasteTarget).pageContent;
     }
     
