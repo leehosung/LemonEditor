@@ -87,6 +87,13 @@
             assert(0);
         }
         IUSheet *node = [[_docController selectedObjects] firstObject];
+        
+        //project or IUGroup
+        if([node isKindOfClass:[IUSheet class]] == NO){
+            node = [project.pageDocuments firstObject];
+        }
+        
+        
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat: @"http://127.0.0.1:8000/%@", [node.name lowercaseString]]];
         [[NSWorkspace sharedWorkspace] openURL:url];
     }
