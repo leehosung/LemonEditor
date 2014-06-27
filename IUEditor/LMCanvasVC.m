@@ -941,13 +941,6 @@
 -(void)IURemoved:(NSString*)identifier withParentID:(NSString *)parentID{
     
     
-    [[self gridView] removeLayerWithIUIdentifier:identifier];
-    IUBox *iu = [_controller IUBoxByIdentifier:identifier];
-    for(IUBox *child in iu.allChildren){
-        [[self gridView] removeLayerWithIUIdentifier:child.htmlID];
-    }
-    
-    
     //remove HTML
     DOMHTMLElement *selectHTMLElement = [self getHTMLElementbyID:identifier];
     DOMHTMLElement *middleElement = selectHTMLElement;
@@ -970,14 +963,16 @@
     
 //    assert(parentElement != nil);
     
-    
-    
     [parentElement removeChild:middleElement];
     
     [self deselectedAllIUs];
-    [frameDict.dict removeObjectForKey:identifier];
     [self.controller rearrangeObjects];
 
+    //remove layer
+    [[self gridView] removeLayerWithIUIdentifier:identifier];
+    [frameDict.dict removeObjectForKey:identifier];
+    
+    IUBox *iu = [_controller IUBoxByIdentifier:identifier];
     
     
     //removeCSS
@@ -985,14 +980,37 @@
     for (NSString *identifier in cssIds){
         [self removeAllCSSWithIdentifier:identifier];
     }
-    for(IUBox *child in iu.allChildren){
-        NSArray *childIds= [child cssIdentifierArray];
-        for (NSString *identifier in childIds){
-            [self removeAllCSSWithIdentifier:identifier];
+    
+    
+    //remove layer for children
+    if ([iu isKindOfClass:[IUImport class]]){
+        for(IUBox *child in iu.allChildren){
+            NSString *modifiedHTMLID = [NSString stringWithFormat:@"ImportedBy_%@_%@",iu.htmlID, child.htmlID];
+            [[self gridView] removeLayerWithIUIdentifier:modifiedHTMLID];
+            [frameDict.dict removeObjectForKey:modifiedHTMLID];
+            
+            //FIXME: IMPORT css id??
+            [self removeAllCSSWithIdentifier:modifiedHTMLID];
+
+        }
+        
+    }
+    else{
+        for(IUBox *child in iu.allChildren){
+            
+            [[self gridView] removeLayerWithIUIdentifier:child.htmlID];
+            [frameDict.dict removeObjectForKey:child.htmlID];
+            
+            NSArray *childIds= [child cssIdentifierArray];
+            for (NSString *identifier in childIds){
+                [self removeAllCSSWithIdentifier:identifier];
+            }
+
         }
     }
     
-    }
+    
+}
 
 
 
