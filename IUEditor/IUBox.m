@@ -63,6 +63,8 @@
     [self.project.identifierManager setNewIdentifierAndRegisterToTemp:box withKey:@"copy"];
     box.name = box.htmlID;
     [box.project.identifierManager confirm];
+    
+    [box connectWithEditor];
 
     return box;
 }
@@ -116,6 +118,7 @@
         _m_children=[aDecoder decodeObjectForKey:@"children"];
         delegateEnableLevel = 1;
         changedCSSWidths = [NSMutableSet set];
+        
     }
     return self;
 }
@@ -128,6 +131,8 @@
     [aCoder encodeObject:self.css forKey:@"css"];
     [aCoder encodeObject:self.event forKey:@"event"];
     [aCoder encodeObject:_m_children forKey:@"children"];
+    
+
 }
 
 
@@ -187,6 +192,8 @@
     assert(project.identifierManager);
     [project.identifierManager setNewIdentifierAndRegisterToTemp:self withKey:nil];
     self.name = self.htmlID;
+    
+    
     return self;
 }
 
@@ -318,7 +325,9 @@
     if (iu.delegate == nil) {
         iu.delegate = self.delegate;
     }
+    
     iu.parent = self;
+    [iu connectWithEditor];
     
     if ([self.sheet isKindOfClass:[IUClass class]]) {
         for (IUBox *import in [(IUClass*)self.sheet references]) {
@@ -330,6 +339,7 @@
             }
         }
     }
+    
     
     [self.delegate IUHTMLIdentifier:iu.htmlID HTML:iu.html withParentID:self.htmlID];
     [self.delegate IUClassIdentifier:iu.cssID CSSUpdated:[iu cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
