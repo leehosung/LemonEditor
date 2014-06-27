@@ -65,26 +65,29 @@
        && [mainView hasSubview:(NSView *)currentResponder]){
     
         if(theEvent.type == NSKeyDown){
-            unichar key = [[theEvent charactersIgnoringModifiers] characterAtIndex:0];
+            unsigned short keyCode = theEvent.keyCode;//keyCode is hardware-independent
             
             if([theEvent modifierFlags] & NSCommandKeyMask){
                 //select all
+                /*
                 if(key == 'A' || key == 'a'){
                     [self selectWholeRangeOfCurrentCursor];
                     return YES;
                 }
-                if (key == 'c') {
-                    //copy
+                 */
+                
+                // 'C'
+                if (keyCode == 8) {
                     [self.VC copy:self];
                     return YES;
                 }
-                if (key == 'v') {
+                // 'V'
+                if (keyCode == 9) {
                     [self.VC paste:self];
                     return YES;
                 }
             }
             else{
-                unsigned short keyCode = theEvent.keyCode;
 
                 if([self isEditable]){
                     //ESC key
