@@ -14,8 +14,6 @@
 
 
 - (void)setCurrentProject:(IUProject*)project;
-
-
 - (NSString *)outputFilePath;
 
 @end

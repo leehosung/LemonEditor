@@ -203,6 +203,8 @@
 		3DB3ACFE18EC1F700046DFB7 /* LMCanvasVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB3ACFC18EC1F700046DFB7 /* LMCanvasVC.xib */; };
 		3DBC932E18F24FE000F217BD /* NSFlippedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBC932D18F24FE000F217BD /* NSFlippedView.m */; };
 		3DBC932F18F647EC00F217BD /* iu.js in Resources */ = {isa = PBXBuildFile; fileRef = 69B9A39A18E6B1860007D6E2 /* iu.js */; };
+		3DBD7C19195D61B5003E386C /* LMCloseWC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD7C17195D61B5003E386C /* LMCloseWC.m */; };
+		3DBD7C1A195D61B5003E386C /* LMCloseWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DBD7C18195D61B5003E386C /* LMCloseWC.xib */; };
 		3DD4786E193DB33600639AB5 /* LMDebugSourceWC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD4786C193DB33600639AB5 /* LMDebugSourceWC.m */; };
 		3DD4786F193DB33600639AB5 /* LMDebugSourceWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD4786D193DB33600639AB5 /* LMDebugSourceWC.xib */; };
 		3DD47873193DCCF900639AB5 /* LMPropertyPGFormVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD47871193DCCF900639AB5 /* LMPropertyPGFormVC.m */; };
@@ -801,6 +803,9 @@
 		3DB3ACFC18EC1F700046DFB7 /* LMCanvasVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMCanvasVC.xib; sourceTree = "<group>"; };
 		3DBC932C18F24FE000F217BD /* NSFlippedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSFlippedView.h; sourceTree = "<group>"; };
 		3DBC932D18F24FE000F217BD /* NSFlippedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSFlippedView.m; sourceTree = "<group>"; };
+		3DBD7C16195D61B5003E386C /* LMCloseWC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMCloseWC.h; path = Editor/LMCloseWC.h; sourceTree = "<group>"; };
+		3DBD7C17195D61B5003E386C /* LMCloseWC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMCloseWC.m; path = Editor/LMCloseWC.m; sourceTree = "<group>"; };
+		3DBD7C18195D61B5003E386C /* LMCloseWC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMCloseWC.xib; path = Editor/LMCloseWC.xib; sourceTree = "<group>"; };
 		3DD4786B193DB33600639AB5 /* LMDebugSourceWC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMDebugSourceWC.h; path = Debug/LMDebugSourceWC.h; sourceTree = "<group>"; };
 		3DD4786C193DB33600639AB5 /* LMDebugSourceWC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMDebugSourceWC.m; path = Debug/LMDebugSourceWC.m; sourceTree = "<group>"; };
 		3DD4786D193DB33600639AB5 /* LMDebugSourceWC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMDebugSourceWC.xib; path = Debug/LMDebugSourceWC.xib; sourceTree = "<group>"; };
@@ -1664,6 +1669,21 @@
 			name = InnerCanvasView;
 			sourceTree = "<group>";
 		};
+		3DBD7C14195D6189003E386C /* window */ = {
+			isa = PBXGroup;
+			children = (
+				3DB3ACC318EBEF180046DFB7 /* LMWindow.h */,
+				3DB3ACC418EBEF180046DFB7 /* LMWindow.m */,
+				69C5762918D70B850016F050 /* LMWC.h */,
+				69C5762A18D70B850016F050 /* LMWC.m */,
+				69C5762B18D70B850016F050 /* LMWC.xib */,
+				3DBD7C16195D61B5003E386C /* LMCloseWC.h */,
+				3DBD7C17195D61B5003E386C /* LMCloseWC.m */,
+				3DBD7C18195D61B5003E386C /* LMCloseWC.xib */,
+			);
+			name = window;
+			sourceTree = "<group>";
+		};
 		3DD4786A193DB2F900639AB5 /* IUDebug */ = {
 			isa = PBXGroup;
 			children = (
@@ -2456,6 +2476,7 @@
 		69C5762218D70A9D0016F050 /* Editor */ = {
 			isa = PBXGroup;
 			children = (
+				3DBD7C14195D6189003E386C /* window */,
 				690A409718E1665E00095263 /* LMGeneralObject.h */,
 				690A409818E1665E00095263 /* LMGeneralObject.m */,
 				3DF8046C18FF7ADB00913505 /* LeftFileNavigation */,
@@ -2463,11 +2484,6 @@
 				3DF8045118FE7F6E00913505 /* RightAppearance */,
 				3DED26D4190108B6001A1D67 /* RightIUInspector */,
 				3D0D480518FF9767000A5B53 /* RightWidget */,
-				3DB3ACC318EBEF180046DFB7 /* LMWindow.h */,
-				3DB3ACC418EBEF180046DFB7 /* LMWindow.m */,
-				69C5762918D70B850016F050 /* LMWC.h */,
-				69C5762A18D70B850016F050 /* LMWC.m */,
-				69C5762B18D70B850016F050 /* LMWC.xib */,
 				3DB3ACE118EBEF640046DFB7 /* ToolBar */,
 				3DB3ACC218EBEEFA0046DFB7 /* Canvas */,
 				69B4D7F8192B5155008429B3 /* LMCommandVC.h */,
@@ -2735,6 +2751,7 @@
 				26EFF421194AEF9E00317C3E /* help.png in Resources */,
 				3DED267E1900D329001A1D67 /* stack_textfield@2x.png in Resources */,
 				69CFCAB418E95A0C00E3048A /* LMResourceVC.xib in Resources */,
+				3DBD7C1A195D61B5003E386C /* LMCloseWC.xib in Resources */,
 				69B260E719594E4F007D905C /* font.png in Resources */,
 				69D15F7018E893170046FBB0 /* LMBottomToolbarVC.xib in Resources */,
 				3DED26891900D329001A1D67 /* stack_navi@2x.png in Resources */,
@@ -3175,6 +3192,7 @@
 				6919204A18DCFED000F8522B /* NSObject+JDExtension.m in Sources */,
 				3DED2773190E4148001A1D67 /* IUCarouselItem.m in Sources */,
 				6953852E18ED6EC800CC42E5 /* IUController.m in Sources */,
+				3DBD7C19195D61B5003E386C /* LMCloseWC.m in Sources */,
 				690A82591909EB2500DDBA86 /* PGTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

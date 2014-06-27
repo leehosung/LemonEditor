@@ -74,7 +74,6 @@
 }
 
 
-
 - (IBAction)openPreference:(id)sender {
      preferenceWC = [[LMPreferenceWC alloc] initWithWindowNibName:@"LMPreferenceWC"];
     [preferenceWC showWindow:self];

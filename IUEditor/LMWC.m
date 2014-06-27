@@ -38,6 +38,7 @@
 #import "LMProjectConvertWC.h"
 #import "IUProjectDocument.h"
 
+
 @interface LMWC ()
 
 //toolbar
@@ -176,8 +177,9 @@
 #pragma mark - inspector view
     [[NSUserDefaults standardUserDefaults] addObserver:self forKeyPath:@"showLeftInspector" options:NSKeyValueObservingOptionInitial context:nil];
     [[NSUserDefaults standardUserDefaults] addObserver:self forKeyPath:@"showRightInspector" options:NSKeyValueObservingOptionInitial context:nil];
-        
+
 }
+
 
 
 - (void)awakeFromNib{
@@ -440,6 +442,10 @@
                 break;
         }
     }];
+}
+
+- (NSString *)projectName{
+    return _project.name;
 }
 
 

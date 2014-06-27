@@ -27,5 +27,6 @@
 
 - (void)selectFirstDocument;
 - (void)reloadCurrentDocument;
+- (NSString *)projectName;
 
 @end

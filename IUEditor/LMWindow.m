@@ -10,12 +10,21 @@
 #import "LMWC.h"
 #import "JDUIUtil.h"
 #import "JDLogUtil.h"
+#import "LMCloseWC.h"
 
-@implementation LMWindow
+
+@implementation LMWindow{
+    LMCloseWC *closeWC;
+}
 
 
 #pragma mark -
 #pragma mark mouse
+
+- (void)awakeFromNib{
+     closeWC = [[LMCloseWC alloc] initWithWindowNibName:[LMCloseWC class].className];
+
+}
 
 - (BOOL)isMouseEvent:(NSEvent *)theEvent{
     if(theEvent.type == NSLeftMouseDown ||
@@ -58,5 +67,32 @@
     }
 
 }
+
+
+#pragma mark - close
+
+- (void)performClose:(id)sender{
+    
+    [closeWC setProjectName:[(LMWC *)[self windowController] projectName]];
+    [self setAlphaValue:0.9];
+    [self setIgnoresMouseEvents:YES];
+    
+    [self beginCriticalSheet:closeWC.window completionHandler:^(NSModalResponse returnCode) {
+        switch (returnCode) {
+                [closeWC.window orderOut:nil];
+            case NSModalResponseOK:
+                [self close];
+                break;
+            case NSModalResponseCancel:
+                [self setIgnoresMouseEvents:NO];
+                [self setAlphaValue:1.0];
+            default:
+                break;
+        }
+    }];
+        
+}
+
+
 
 @end

@@ -21,7 +21,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="646" height="454"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="646" height="454"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -32,6 +32,7 @@
                         <tabViewItems>
                             <tabViewItem label="Convert to HTML" identifier="1" id="g0T-PV-kny">
                                 <view key="view" ambiguous="YES" id="1na-Wt-isA">
+                                    <rect key="frame" x="10" y="33" width="616" height="387"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                             </tabViewItem>
