@@ -132,7 +132,7 @@
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dcY-27-3P1" userLabel="Presentation">
                         <rect key="frame" x="260" y="131" width="180" height="120"/>
-                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="new_pt" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="OPt-aH-6pp">
+                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="new_pt" imagePosition="only" alignment="center" enabled="NO" imageScaling="proportionallyDown" inset="2" id="OPt-aH-6pp">
                             <behavior key="behavior" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
