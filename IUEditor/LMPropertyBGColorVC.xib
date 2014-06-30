@@ -60,6 +60,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="clickEnableGradient:" target="-2" id="Ai4-7f-aex"/>
+                                </connections>
                             </button>
                         </subviews>
                     </view>
