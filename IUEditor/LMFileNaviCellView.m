@@ -23,6 +23,11 @@
     
     NSString *textValue = fieldEditor.string;
     
+    if([textValue isEqualToString:((IUSheet *)[self objectValue]).name]){
+        return YES;
+    }
+
+    
     if(textValue.length == 0){
         [JDUIUtil hudAlert:@"Name should not be empty" second:1];
         return NO;

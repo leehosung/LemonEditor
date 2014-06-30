@@ -105,13 +105,12 @@
                                                     </imageView>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Dw3-VS-Njg">
                                                         <rect key="frame" x="23" y="6" width="195" height="14"/>
-                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="index.pgiu" id="X36-9M-OGa">
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="index.pgiu" id="X36-9M-OGa">
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
-                                                            <binding destination="5zw-S7-8PC" name="value" keyPath="objectValue.name" id="u7E-A9-pcI"/>
                                                             <outlet property="delegate" destination="5zw-S7-8PC" id="l0h-bd-2OF"/>
                                                         </connections>
                                                     </textField>
@@ -128,38 +127,6 @@
                                                     <outlet property="textField" destination="Dw3-VS-Njg" id="SrR-vB-6Sr"/>
                                                 </connections>
                                             </tableCellView>
-                                            <tableCellView identifier="backgroundFile" autoresizesSubviews="NO" id="LdS-gs-NuF" userLabel="master file" customClass="LMFileNaviCellView">
-                                                <rect key="frame" x="0.0" y="52" width="219" height="26"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AUw-qz-03g">
-                                                        <rect key="frame" x="8" y="4" width="14" height="18"/>
-                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ic_background" id="4Me-Hi-DVC"/>
-                                                    </imageView>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="q7g-kV-gNd">
-                                                        <rect key="frame" x="23" y="6" width="195" height="14"/>
-                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="master" id="xxF-yW-1Xa">
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                        <connections>
-                                                            <binding destination="LdS-gs-NuF" name="value" keyPath="objectValue.name" id="Z8H-Is-plh"/>
-                                                        </connections>
-                                                    </textField>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="centerY" secondItem="q7g-kV-gNd" secondAttribute="centerY" id="9WG-a6-47R"/>
-                                                    <constraint firstAttribute="trailing" secondItem="q7g-kV-gNd" secondAttribute="trailing" constant="3" id="Pza-mX-FFO"/>
-                                                    <constraint firstAttribute="centerY" secondItem="AUw-qz-03g" secondAttribute="centerY" id="Wqn-Nf-0yS"/>
-                                                    <constraint firstItem="AUw-qz-03g" firstAttribute="leading" secondItem="LdS-gs-NuF" secondAttribute="leading" constant="8" id="caw-n4-LR8"/>
-                                                    <constraint firstItem="q7g-kV-gNd" firstAttribute="leading" secondItem="AUw-qz-03g" secondAttribute="trailing" constant="3" id="mJa-o1-Vxz"/>
-                                                </constraints>
-                                                <connections>
-                                                    <outlet property="imageView" destination="AUw-qz-03g" id="4Hd-lH-sin"/>
-                                                    <outlet property="textField" destination="q7g-kV-gNd" id="FG8-4c-i0W"/>
-                                                </connections>
-                                            </tableCellView>
                                             <tableCellView identifier="classFile" autoresizesSubviews="NO" id="05k-SR-JPG" userLabel="class file" customClass="LMFileNaviCellView">
                                                 <rect key="frame" x="0.0" y="78" width="219" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -170,14 +137,11 @@
                                                     </imageView>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Ln7-nC-PoA">
                                                         <rect key="frame" x="23" y="6" width="195" height="14"/>
-                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="master" id="BJh-uz-sc7">
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="master" id="BJh-uz-sc7">
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
-                                                        <connections>
-                                                            <binding destination="05k-SR-JPG" name="value" keyPath="objectValue.name" id="Hiz-iT-ukc"/>
-                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -190,6 +154,35 @@
                                                 <connections>
                                                     <outlet property="imageView" destination="HHQ-QB-U4H" id="rLH-Qo-185"/>
                                                     <outlet property="textField" destination="Ln7-nC-PoA" id="bnA-jC-5nx"/>
+                                                </connections>
+                                            </tableCellView>
+                                            <tableCellView identifier="backgroundFile" autoresizesSubviews="NO" id="LdS-gs-NuF" userLabel="master file" customClass="LMFileNaviCellView">
+                                                <rect key="frame" x="0.0" y="52" width="219" height="26"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AUw-qz-03g">
+                                                        <rect key="frame" x="8" y="4" width="14" height="18"/>
+                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ic_background" id="4Me-Hi-DVC"/>
+                                                    </imageView>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="q7g-kV-gNd">
+                                                        <rect key="frame" x="23" y="6" width="195" height="14"/>
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="master" id="xxF-yW-1Xa">
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="centerY" secondItem="q7g-kV-gNd" secondAttribute="centerY" id="9WG-a6-47R"/>
+                                                    <constraint firstAttribute="trailing" secondItem="q7g-kV-gNd" secondAttribute="trailing" constant="3" id="Pza-mX-FFO"/>
+                                                    <constraint firstAttribute="centerY" secondItem="AUw-qz-03g" secondAttribute="centerY" id="Wqn-Nf-0yS"/>
+                                                    <constraint firstItem="AUw-qz-03g" firstAttribute="leading" secondItem="LdS-gs-NuF" secondAttribute="leading" constant="8" id="caw-n4-LR8"/>
+                                                    <constraint firstItem="q7g-kV-gNd" firstAttribute="leading" secondItem="AUw-qz-03g" secondAttribute="trailing" constant="3" id="mJa-o1-Vxz"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="imageView" destination="AUw-qz-03g" id="4Hd-lH-sin"/>
+                                                    <outlet property="textField" destination="q7g-kV-gNd" id="FG8-4c-i0W"/>
                                                 </connections>
                                             </tableCellView>
                                             <tableCellView identifier="imageFile" autoresizesSubviews="NO" id="uu9-qM-3y2" userLabel="image" customClass="LMFileNaviCellView">
@@ -207,9 +200,6 @@
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
-                                                        <connections>
-                                                            <binding destination="uu9-qM-3y2" name="value" keyPath="objectValue.name" id="KwD-j3-Mgo"/>
-                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -239,9 +229,6 @@
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
-                                                        <connections>
-                                                            <binding destination="Mjq-0T-CVg" name="value" keyPath="objectValue.name" id="QIy-Bg-Erl"/>
-                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -271,9 +258,6 @@
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
-                                                        <connections>
-                                                            <binding destination="amj-x3-yZx" name="value" keyPath="objectValue.name" id="FdN-Ek-DTU"/>
-                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -288,7 +272,7 @@
                                                     <outlet property="textField" destination="Xwe-zu-n9A" id="Lxm-P9-Run"/>
                                                 </connections>
                                             </tableCellView>
-                                            <tableCellView identifier="JSFile" autoresizesSubviews="NO" id="LF9-oT-gcv" userLabel="comp file" customClass="LMFileNaviCellView">
+                                            <tableCellView identifier="JSFile" autoresizesSubviews="NO" id="LF9-oT-gcv" userLabel="js file" customClass="LMFileNaviCellView">
                                                 <rect key="frame" x="0.0" y="182" width="219" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
@@ -303,9 +287,6 @@
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
-                                                        <connections>
-                                                            <binding destination="LF9-oT-gcv" name="value" keyPath="objectValue.name" id="REG-Rf-Cov"/>
-                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>

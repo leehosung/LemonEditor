@@ -132,7 +132,7 @@
     }
     //file
     else{
-        NSString *cellIdentifier;
+        NSString *cellIdentifier, *nodeName;
         if ([[item representedObject] isKindOfClass:[IUSheet class]]){
             IUSheet *node = [item representedObject];
             if([node.group.name isEqualToString:IUPageGroupName]){
@@ -147,6 +147,7 @@
             else {
                 assert(0);
             }
+            nodeName = node.name;
         }
         else if( [[item representedObject] isKindOfClass:[IUResourceFile class]] ){
             IUResourceFile *node = [item representedObject];
@@ -166,10 +167,13 @@
             else {
                 assert(0);
             }
+            nodeName = node.name;
         }
         
         LMFileNaviCellView *cell = [outlineView makeViewWithIdentifier:cellIdentifier owner:self];
         cell.project = _documentController.project;
+        [cell.textField setStringValue:nodeName];
+
         return cell;
     }
     return nil;
@@ -305,14 +309,4 @@
     [[NSWorkspace sharedWorkspace] openFile:_project.directoryPath];
 }
 
-- (BOOL)keyDown:(NSEvent *)event{
-    if (event.keyCode == 36) { // enter key
-
-        LMFileNaviCellView *cell = [self.navOutlineView selectedView];
-        [cell.textField setEditable:YES];
-        [self.navOutlineView.window makeFirstResponder:cell.textField];
-        
-    }
-    return YES;
-}
 @end
