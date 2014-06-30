@@ -181,10 +181,11 @@ $(window).resize(function(){
 
 $(document).ready(function(){
             console.log("ready : iueditor.js");
-            resizePageContentHeightEditor();
-            getIUUpdatedFrameThread();
             resizeBackgroundSize();
             reInsertCarousel();
             setTextAutoHeight();
+            reframeCenter();
+            getIUUpdatedFrameThread();
+            console.log("endof : iueditor.js");
 
 });
