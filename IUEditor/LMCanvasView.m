@@ -244,7 +244,7 @@
                         }
                          */
                         
-                        if([((LMCanvasVC *)self.delegate) containsIU:currentIUID] == NO){
+                        if([((LMCanvasVC *)self.delegate) containsIU:currentIUID] == NO || [(LMCanvasVC *)self.delegate countOfSelectedIUs] == 1){
                             [((LMCanvasVC *)self.delegate) setSelectedIU:currentIUID];
                         }
                     }

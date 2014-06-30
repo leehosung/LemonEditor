@@ -56,6 +56,7 @@
                                  };
     
     [(IUProjectController *)[NSDocumentController sharedDocumentController] newDocument:self withOption:options];
+    [self.view.window close];
 }
 
 - (void)performPrev{
