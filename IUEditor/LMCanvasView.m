@@ -243,7 +243,10 @@
                             
                         }
                          */
-                        [((LMCanvasVC *)self.delegate) setSelectedIU:currentIUID];
+                        
+                        if([((LMCanvasVC *)self.delegate) containsIU:currentIUID] == NO){
+                            [((LMCanvasVC *)self.delegate) setSelectedIU:currentIUID];
+                        }
                     }
                     
                     if([self.webView isDOMTextAtPoint:convertedPoint] == NO
