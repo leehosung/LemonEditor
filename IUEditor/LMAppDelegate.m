@@ -13,10 +13,12 @@
 #import "IUDjangoProject.h"
 #import "LMPreferenceWC.h"
 #import "IUProjectController.h"
+#import "LMNotiManager.h"
 
 @implementation LMAppDelegate{
     LMStartWC *startWC;
     LMPreferenceWC *preferenceWC;
+    LMNotiManager *notiManager;
 }
 
 + (void)initialize{
@@ -63,6 +65,10 @@
         [self newDocument:self];
     }
 #endif
+    
+    notiManager = [[LMNotiManager alloc] init];
+    [notiManager connectWithServer];
+    
 }
 
 

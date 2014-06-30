@@ -547,6 +547,11 @@
 		69D79B3919138CDC0020608D /* LMStartTemplateVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69D79B3719138CDC0020608D /* LMStartTemplateVC.xib */; };
 		69D79B3D19138FC60020608D /* LMStartNewDefaultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D79B3B19138FC60020608D /* LMStartNewDefaultVC.m */; };
 		69D79B3E19138FC60020608D /* LMStartNewDefaultVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69D79B3C19138FC60020608D /* LMStartNewDefaultVC.xib */; };
+		69DE5CCE1961430E0050D020 /* LMNotiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DE5CCC1961430E0050D020 /* LMNotiManager.m */; };
+		69DE5CDD19614D420050D020 /* LMNotiDownloadWC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DE5CDB19614D420050D020 /* LMNotiDownloadWC.m */; };
+		69DE5CDE19614D420050D020 /* LMNotiDownloadWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69DE5CDC19614D420050D020 /* LMNotiDownloadWC.xib */; };
+		69DE5CE219614D880050D020 /* LMNotiMessageWC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DE5CE019614D880050D020 /* LMNotiMessageWC.m */; };
+		69DE5CE319614D880050D020 /* LMNotiMessageWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69DE5CE119614D880050D020 /* LMNotiMessageWC.xib */; };
 		69E725B81934D478006EA827 /* LMFileNaviCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E725B71934D478006EA827 /* LMFileNaviCellView.m */; };
 		69F1A37518E0624E004C5B30 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69F1A37418E0624E004C5B30 /* WebKit.framework */; };
 		69FEC48A19483D6D00483C11 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69FEC48919483D6D00483C11 /* Quartz.framework */; };
@@ -1285,6 +1290,14 @@
 		69D79B3A19138FC60020608D /* LMStartNewDefaultVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMStartNewDefaultVC.h; sourceTree = "<group>"; };
 		69D79B3B19138FC60020608D /* LMStartNewDefaultVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMStartNewDefaultVC.m; sourceTree = "<group>"; };
 		69D79B3C19138FC60020608D /* LMStartNewDefaultVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMStartNewDefaultVC.xib; sourceTree = "<group>"; };
+		69DE5CCB1961430E0050D020 /* LMNotiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMNotiManager.h; sourceTree = "<group>"; };
+		69DE5CCC1961430E0050D020 /* LMNotiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMNotiManager.m; sourceTree = "<group>"; };
+		69DE5CDA19614D420050D020 /* LMNotiDownloadWC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMNotiDownloadWC.h; sourceTree = "<group>"; };
+		69DE5CDB19614D420050D020 /* LMNotiDownloadWC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMNotiDownloadWC.m; sourceTree = "<group>"; };
+		69DE5CDC19614D420050D020 /* LMNotiDownloadWC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMNotiDownloadWC.xib; sourceTree = "<group>"; };
+		69DE5CDF19614D880050D020 /* LMNotiMessageWC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMNotiMessageWC.h; sourceTree = "<group>"; };
+		69DE5CE019614D880050D020 /* LMNotiMessageWC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMNotiMessageWC.m; sourceTree = "<group>"; };
+		69DE5CE119614D880050D020 /* LMNotiMessageWC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMNotiMessageWC.xib; sourceTree = "<group>"; };
 		69E725B61934D478006EA827 /* LMFileNaviCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMFileNaviCellView.h; sourceTree = "<group>"; };
 		69E725B71934D478006EA827 /* LMFileNaviCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMFileNaviCellView.m; sourceTree = "<group>"; };
 		69F1A37418E0624E004C5B30 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -2358,6 +2371,7 @@
 		69C5759E18D6F61E0016F050 = {
 			isa = PBXGroup;
 			children = (
+				69DE5CE419614E2B0050D020 /* Server */,
 				69FEC48B194845B600483C11 /* Help */,
 				69317CAF1947271F0065B6F4 /* LMHelpWC.h */,
 				69317CB01947271F0065B6F4 /* LMHelpWC.m */,
@@ -2536,6 +2550,21 @@
 				69B4D7F9192B5155008429B3 /* LMCommandVC.m */,
 			);
 			name = Editor;
+			sourceTree = "<group>";
+		};
+		69DE5CE419614E2B0050D020 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				69DE5CDF19614D880050D020 /* LMNotiMessageWC.h */,
+				69DE5CE019614D880050D020 /* LMNotiMessageWC.m */,
+				69DE5CE119614D880050D020 /* LMNotiMessageWC.xib */,
+				69DE5CDA19614D420050D020 /* LMNotiDownloadWC.h */,
+				69DE5CDB19614D420050D020 /* LMNotiDownloadWC.m */,
+				69DE5CDC19614D420050D020 /* LMNotiDownloadWC.xib */,
+				69DE5CCB1961430E0050D020 /* LMNotiManager.h */,
+				69DE5CCC1961430E0050D020 /* LMNotiManager.m */,
+			);
+			name = Server;
 			sourceTree = "<group>";
 		};
 		69FEC48B194845B600483C11 /* Help */ = {
@@ -2801,6 +2830,7 @@
 				3DBD7C1A195D61B5003E386C /* LMCloseWC.xib in Resources */,
 				69B260E719594E4F007D905C /* font.png in Resources */,
 				69D15F7018E893170046FBB0 /* LMBottomToolbarVC.xib in Resources */,
+				69DE5CE319614D880050D020 /* LMNotiMessageWC.xib in Resources */,
 				3DED26891900D329001A1D67 /* stack_navi@2x.png in Resources */,
 				58FF6B8F1946EA2B009A86F9 /* PGSubmitButtonVC.xib in Resources */,
 				3D0D480A18FFAF24000A5B53 /* LMTopToolbarVC.xib in Resources */,
@@ -2959,6 +2989,7 @@
 				3DED26DE19010B56001A1D67 /* LMPropertyIUHTMLVC.xib in Resources */,
 				3DED268F1900D329001A1D67 /* stack_image@2x.png in Resources */,
 				267CB1A9190F93370079E565 /* tab_property_on.png in Resources */,
+				69DE5CDE19614D420050D020 /* LMNotiDownloadWC.xib in Resources */,
 				69C575BB18D6F61E0016F050 /* Credits.rtf in Resources */,
 				2672A0A1191207710050043E /* stack_textview.png in Resources */,
 				3DBD7C2519612107003E386C /* LMStartPreviewWC.xib in Resources */,
@@ -3105,6 +3136,7 @@
 				3DB3ACD318EBEF4F0046DFB7 /* WebCanvasView.m in Sources */,
 				69D79B3D19138FC60020608D /* LMStartNewDefaultVC.m in Sources */,
 				69B260EB1959502A007D905C /* LMPreferenceDjangoVC.m in Sources */,
+				69DE5CCE1961430E0050D020 /* LMNotiManager.m in Sources */,
 				69757B1418D95BBC0095CBAC /* NSMenu_JDExtension.m in Sources */,
 				69C4AA1A1908E82900CF75E7 /* IUResponsiveSection.m in Sources */,
 				69ABB14A18D733ED0065D584 /* IUCompiler.m in Sources */,
@@ -3125,6 +3157,7 @@
 				3D14886318F6AE5700E8EE4C /* LMCenterClipView.m in Sources */,
 				69D15F6F18E893170046FBB0 /* LMBottomToolbarVC.m in Sources */,
 				694E3CDB18FCF739005077B3 /* IUCarousel.m in Sources */,
+				69DE5CDD19614D420050D020 /* LMNotiDownloadWC.m in Sources */,
 				69C575B718D6F61E0016F050 /* main.m in Sources */,
 				69757B1C18D95C980095CBAC /* NSArray+JDExtension.m in Sources */,
 				3DBD7C2819612755003E386C /* LMStartItem.m in Sources */,
@@ -3244,6 +3277,7 @@
 				6919204A18DCFED000F8522B /* NSObject+JDExtension.m in Sources */,
 				3DED2773190E4148001A1D67 /* IUCarouselItem.m in Sources */,
 				6953852E18ED6EC800CC42E5 /* IUController.m in Sources */,
+				69DE5CE219614D880050D020 /* LMNotiMessageWC.m in Sources */,
 				3DBD7C19195D61B5003E386C /* LMCloseWC.m in Sources */,
 				690A82591909EB2500DDBA86 /* PGTextView.m in Sources */,
 			);
