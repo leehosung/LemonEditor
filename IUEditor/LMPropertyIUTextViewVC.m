@@ -11,7 +11,6 @@
 @interface LMPropertyIUTextViewVC ()
 @property (weak) IBOutlet NSTextField *placeholderTF;
 @property (weak) IBOutlet NSTextField *valueTF;
-@property (weak) IBOutlet NSTextField *formNameTF;
 
 @end
 
@@ -29,7 +28,9 @@
 - (void)awakeFromNib{
     [_placeholderTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"placeholder"] options:IUBindingDictNotRaisesApplicable];
     [_valueTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"inputValue"] options:IUBindingDictNotRaisesApplicable];
-    [_formNameTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"formName"] options:IUBindingDictNotRaisesApplicable];
 }
 
+- (void)performFocus:(NSNotification *)noti{
+    [self.view.window makeFirstResponder:_valueTF];
+}
 @end

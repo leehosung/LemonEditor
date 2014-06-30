@@ -229,8 +229,8 @@
         self.propertyVArray = @[propertyPGFormVC.view];
     }
     else if ([classString isEqualToString:@"PGTextView"]) {
-        self.propertyVArray = @[propertyPGFormVC.view];
-        doubleClickFocusVC = propertyPGFormVC;
+        self.propertyVArray = @[propertyPGTextViewVC.view, propertyPGType2VC.view];
+        doubleClickFocusVC = propertyPGTextViewVC;
     }
     else if ([classString isEqualToString:@"PGTextField"]) {
         self.propertyVArray = @[propertyPGTextFieldVC.view, propertyPGType2VC.view];

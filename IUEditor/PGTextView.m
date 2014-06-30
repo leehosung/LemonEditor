@@ -14,7 +14,7 @@
     self = [super initWithProject:project options:options];
     if(self){
         _placeholder = @"placeholder";
-        _inputValue = @"value example";
+        _inputValue = @"Sample Text";
         
         [self.css setValue:@(130) forTag:IUCSSTagWidth forWidth:IUCSSMaxViewPortWidth];
         [self.css setValue:@(50) forTag:IUCSSTagHeight forWidth:IUCSSMaxViewPortWidth];
@@ -39,7 +39,6 @@
 
 - (id)copyWithZone:(NSZone *)zone{
     PGTextView *iu = [super copyWithZone:zone];
-    iu.formName = [_formName copy];
     iu.placeholder = [_placeholder copy];
     iu.inputValue = [_inputValue copy];
     return iu;
@@ -54,6 +53,9 @@
     if(self.delegate){
         [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.htmlID];
     }
+    
+    [self updateHTML];
+    [self updateJS];
 }
 
 - (void)setInputValue:(NSString *)inputValue{
@@ -61,6 +63,9 @@
     if(self.delegate){
         [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.htmlID];
     }
+    
+    [self updateHTML];
+    [self updateJS];
 }
 
 - (BOOL)hasText{
