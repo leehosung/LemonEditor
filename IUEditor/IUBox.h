@@ -190,6 +190,7 @@ typedef enum _IUOverflowType{
 - (void)updateCSSForEditViewPort;
 - (void)updateCSSForMaxViewPort;
 - (void)updateHTML;
+- (void)updateJS;
 
 @property float opacityMove;
 @property float xPosMove;

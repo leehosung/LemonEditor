@@ -64,20 +64,24 @@
 - (void)setFormName:(NSString *)formName{
     _formName = formName;
     [self updateHTML];
+    [self updateJS];
 }
 
 - (void)setPlaceholder:(NSString *)placeholder{
     _placeholder = placeholder;
     [self updateHTML];
+    [self updateJS];
 }
 
 - (void)setInputValue:(NSString *)inputValue{
     _inputValue = inputValue;
     [self updateHTML];
+    [self updateJS];
 }
 - (void)setType:(IUTextFieldType)type{
     _type = type;
     [self updateHTML];
+    [self updateJS];
 }
 
 @end
