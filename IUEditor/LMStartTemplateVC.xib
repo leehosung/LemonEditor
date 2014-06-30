@@ -49,45 +49,47 @@
                                         <binding destination="BkE-rX-9NW" name="value" keyPath="representedObject.thumbnail" id="4IK-gR-MVu"/>
                                     </connections>
                                 </imageView>
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="59q-5U-2rh">
+                                    <rect key="frame" x="188" y="-1" width="31" height="31"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="31" id="bNh-33-gxb"/>
+                                        <constraint firstAttribute="width" constant="31" id="xf8-x3-rgT"/>
+                                    </constraints>
+                                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="preview" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="mTx-Hc-Wgi">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <binding destination="BkE-rX-9NW" name="argument" keyPath="representedObject" id="BpR-bI-Yvn">
+                                            <dictionary key="options">
+                                                <string key="NSSelectorName">pressPreviewBtn:</string>
+                                            </dictionary>
+                                        </binding>
+                                        <binding destination="-2" name="target" keyPath="self" previousBinding="BpR-bI-Yvn" id="jAe-Zc-OHL">
+                                            <dictionary key="options">
+                                                <string key="NSSelectorName">pressPreviewBtn:</string>
+                                            </dictionary>
+                                        </binding>
+                                    </connections>
+                                </button>
                             </subviews>
                         </view>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="59q-5U-2rh" secondAttribute="trailing" id="CM8-vP-A0s"/>
                             <constraint firstItem="6ya-hP-9sH" firstAttribute="top" secondItem="eTc-JH-SkB" secondAttribute="top" id="Jdd-Pz-hwD"/>
                             <constraint firstAttribute="trailing" secondItem="6ya-hP-9sH" secondAttribute="trailing" id="aYZ-Tn-TRY"/>
                             <constraint firstItem="6ya-hP-9sH" firstAttribute="leading" secondItem="eTc-JH-SkB" secondAttribute="leading" id="enM-0r-gqv"/>
                             <constraint firstAttribute="bottom" secondItem="6ya-hP-9sH" secondAttribute="bottom" id="nPR-cn-MNN"/>
                             <constraint firstAttribute="height" constant="140" id="oJu-88-TYA"/>
+                            <constraint firstAttribute="bottom" secondItem="59q-5U-2rh" secondAttribute="bottom" id="xZX-48-tVJ"/>
                         </constraints>
                         <color key="borderColor" red="0.29803922772407532" green="0.54509806632995605" blue="0.91372555494308472" alpha="1" colorSpace="deviceRGB"/>
                         <color key="fillColor" red="0.93725496530532837" green="0.98431378602981567" blue="1" alpha="1" colorSpace="deviceRGB"/>
                     </box>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="59q-5U-2rh">
-                        <rect key="frame" x="125" y="5" width="100" height="19"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="18" id="bNh-33-gxb"/>
-                            <constraint firstAttribute="width" constant="100" id="xf8-x3-rgT"/>
-                        </constraints>
-                        <buttonCell key="cell" type="roundRect" title="Preview" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mTx-Hc-Wgi">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="smallSystem"/>
-                        </buttonCell>
-                        <connections>
-                            <binding destination="BkE-rX-9NW" name="argument" keyPath="representedObject" id="BpR-bI-Yvn">
-                                <dictionary key="options">
-                                    <string key="NSSelectorName">pressPreviewBtn:</string>
-                                </dictionary>
-                            </binding>
-                            <binding destination="-2" name="target" keyPath="self" previousBinding="BpR-bI-Yvn" id="jAe-Zc-OHL">
-                                <dictionary key="options">
-                                    <string key="NSSelectorName">pressPreviewBtn:</string>
-                                </dictionary>
-                            </binding>
-                        </connections>
-                    </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9MS-dJ-AnT">
-                        <rect key="frame" x="3" y="8" width="124" height="14"/>
+                        <rect key="frame" x="3" y="9" width="224" height="14"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="120" id="38D-Xe-EMP"/>
+                            <constraint firstAttribute="width" constant="220" id="38D-Xe-EMP"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Template File" id="vU1-6c-VRx">
                             <font key="font" metaFont="smallSystem"/>
@@ -101,13 +103,11 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="59q-5U-2rh" firstAttribute="centerY" secondItem="9MS-dJ-AnT" secondAttribute="centerY" id="9IH-fU-pfP"/>
                 <constraint firstItem="i2q-kK-JCI" firstAttribute="top" secondItem="eTc-JH-SkB" secondAttribute="top" id="D0p-WQ-FIL"/>
                 <constraint firstItem="i2q-kK-JCI" firstAttribute="bottom" secondItem="eTc-JH-SkB" secondAttribute="bottom" id="Nro-qi-Tii"/>
-                <constraint firstItem="eTc-JH-SkB" firstAttribute="trailing" secondItem="59q-5U-2rh" secondAttribute="trailing" id="PQK-Eg-JIz"/>
                 <constraint firstItem="i2q-kK-JCI" firstAttribute="leading" secondItem="eTc-JH-SkB" secondAttribute="leading" id="ZWc-8B-EK0"/>
                 <constraint firstItem="eTc-JH-SkB" firstAttribute="leading" secondItem="9MS-dJ-AnT" secondAttribute="leading" id="amj-wo-4nR"/>
-                <constraint firstItem="9MS-dJ-AnT" firstAttribute="top" secondItem="eTc-JH-SkB" secondAttribute="bottom" constant="8" id="fx1-c2-GIj"/>
+                <constraint firstItem="9MS-dJ-AnT" firstAttribute="top" secondItem="eTc-JH-SkB" secondAttribute="bottom" constant="7" id="fx1-c2-GIj"/>
                 <constraint firstItem="eTc-JH-SkB" firstAttribute="top" secondItem="mRB-QW-6nZ" secondAttribute="top" constant="10" id="jaP-XA-nUe"/>
                 <constraint firstAttribute="trailing" secondItem="eTc-JH-SkB" secondAttribute="trailing" constant="5" id="jcE-0n-xld"/>
                 <constraint firstItem="i2q-kK-JCI" firstAttribute="trailing" secondItem="eTc-JH-SkB" secondAttribute="trailing" id="xTV-YT-Ue8"/>
@@ -115,7 +115,7 @@
             </constraints>
             <color key="borderColor" name="scrollBarColor" catalog="System" colorSpace="catalog"/>
             <color key="fillColor" red="1" green="0.97727272730000003" blue="0.97727272730000003" alpha="1" colorSpace="calibratedRGB"/>
-            <point key="canvasLocation" x="159" y="164"/>
+            <point key="canvasLocation" x="-179" y="19"/>
         </box>
         <customView id="3bo-U3-a47" userLabel="templateView">
             <rect key="frame" x="0.0" y="0.0" width="702" height="395"/>
@@ -205,5 +205,6 @@
     </objects>
     <resources>
         <image name="new_default" width="54" height="66"/>
+        <image name="preview" width="31" height="31"/>
     </resources>
 </document>
