@@ -35,6 +35,7 @@
 
 - (IBAction)performDoNotShow:(NSButton*)sender {
     [[NSUserDefaults standardUserDefaults] setBool:sender.state forKey:self.idString];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 
