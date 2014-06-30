@@ -29,11 +29,6 @@
     NSDictionary *defaults = [NSDictionary dictionaryWithContentsOfFile:defaultsFilename];
     // register the stuff
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
-    
-    if ([JDEnvUtil isFirstExecution:@"IUEditor"]){
-        //nsuserdefault setting
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"DjangoDebugLoopback"];
-    }
 }
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
