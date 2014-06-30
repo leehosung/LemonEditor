@@ -108,6 +108,19 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
     }
 }
 
+#pragma mark - menu
+
+- (BOOL)validateMenuItem:(NSMenuItem *)menuItem{
+    
+    if(menuItem.action == @selector(duplicateDocument:)){
+        return NO;
+    }
+    
+    return [super validateMenuItem:menuItem];
+}
+
+#pragma mark -
+
 - (LMWC *)lemonWindowController{
     if([[self windowControllers] count] > 0){
         return [[self windowControllers] objectAtIndex:0];

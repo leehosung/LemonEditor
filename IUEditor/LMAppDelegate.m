@@ -65,10 +65,8 @@
 #endif
 }
 
+
 - (IBAction)showStartWC:(id)sender{
-    for (NSWindow *window in [NSApp windows]){
-        [window close];
-    }
     startWC = [LMStartWC sharedStartWindow];
     [startWC showWindow:self];
 }
