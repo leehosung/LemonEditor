@@ -24,6 +24,8 @@
 @property NSString *buildProjectDirectory;
 @property NSString *resourceProjectDirectory;
 
+@property (weak) IBOutlet NSTabView *tabView;
+
 @end
 
 @implementation LMProjectConvertWC{
@@ -40,19 +42,24 @@
     return self;
 }
 
+- (void)awakeFromNib{
+    //cover to django
+    [_tabView selectTabViewItemAtIndex:1];
+}
+
 
 - (void)setCurrentProject:(IUProject *)currentProject{
     _project = currentProject;
     //load nib
     [self window];
-    [self setTargetProjectDirectory:@"/Users/jd/Desktop"];
+//    [self setTargetProjectDirectory:@"/Users/jd/Desktop"];
     if ([[currentProject className] isEqualToString:@"IUProject"]) {
         [_djangoTabV addSubview:_djangoConvertV];
         [_htmlTabV addSubview:_htmlRemainV];
     }
     else {
         [_htmlTabV addSubview:_htmlConvertV];
-        [_djangoTabV addSubview:_htmlRemainV];
+        [_djangoTabV addSubview:_djangoRemainV];
     }
 }
 

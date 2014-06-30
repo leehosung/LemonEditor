@@ -12,6 +12,7 @@
                 <outlet property="htmlConvertV" destination="whA-kL-GHk" id="4SY-s4-OrV"/>
                 <outlet property="htmlRemainV" destination="4b3-Li-q9j" id="6kb-Vj-J4k"/>
                 <outlet property="htmlTabV" destination="1na-Wt-isA" id="fp1-dw-tc4"/>
+                <outlet property="tabView" destination="O3K-cP-Rw3" id="r4m-xU-b5U"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -26,12 +27,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="646" height="454"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <tabView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O3K-cP-Rw3">
-                        <rect key="frame" x="5" y="15" width="636" height="433"/>
+                    <tabView fixedFrame="YES" type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="O3K-cP-Rw3">
+                        <rect key="frame" x="12" y="25" width="622" height="417"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Convert to HTML" identifier="1" id="g0T-PV-kny">
                                 <view key="view" ambiguous="YES" id="1na-Wt-isA">
+                                    <rect key="frame" x="0.0" y="0.0" width="622" height="417"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                             </tabViewItem>
@@ -51,7 +53,7 @@
             <point key="canvasLocation" x="186" y="-617"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="k6i-ne-cSI"/>
-        <customView id="oBe-UW-0bq">
+        <customView id="oBe-UW-0bq" userLabel="djangoToHTML">
             <rect key="frame" x="8" y="0.0" width="600" height="400"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -119,7 +121,7 @@ Gw
                 </textField>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kry-Lx-uTp">
                     <rect key="frame" x="230" y="141" width="269" height="19"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="jYY-36-wSE">
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="jYY-36-wSE">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -140,7 +142,7 @@ Gw
                 </button>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dzI-Jr-jYZ">
                     <rect key="frame" x="230" y="181" width="269" height="19"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="6rI-LL-xSv">
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="6rI-LL-xSv">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -152,7 +154,7 @@ Gw
             </subviews>
             <point key="canvasLocation" x="-496" y="-175"/>
         </customView>
-        <customView id="whA-kL-GHk">
+        <customView id="whA-kL-GHk" userLabel="HTMLToDjango">
             <rect key="frame" x="8" y="0.0" width="600" height="400"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -268,7 +270,7 @@ Gw
             </subviews>
             <point key="canvasLocation" x="181" y="-102"/>
         </customView>
-        <customView alphaValue="0.99999999999999989" id="4b3-Li-q9j">
+        <customView alphaValue="0.99999999999999989" id="4b3-Li-q9j" userLabel="current Page-HTML">
             <rect key="frame" x="8" y="0.0" width="600" height="391"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -283,7 +285,7 @@ Gw
             </subviews>
             <point key="canvasLocation" x="-469" y="-617.5"/>
         </customView>
-        <customView alphaValue="0.99999999999999989" id="zcI-Yu-dV7">
+        <customView alphaValue="0.99999999999999989" id="zcI-Yu-dV7" userLabel="current Page-Django">
             <rect key="frame" x="8" y="0.0" width="600" height="391"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
