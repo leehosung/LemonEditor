@@ -48,7 +48,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ByA-nk-5yX">
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ByA-nk-5yX">
                                 <rect key="frame" x="94" y="13" width="50" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="UIq-3G-FaB"/>
@@ -75,8 +75,8 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OAb-rU-zlM">
-                                <rect key="frame" x="150" y="16" width="13" height="15"/>
+                            <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OAb-rU-zlM">
+                                <rect key="frame" x="145" y="15" width="13" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="9" id="ad0-hg-dkU"/>
                                     <constraint firstAttribute="height" constant="15" id="uS7-Ri-ZEG"/>
@@ -95,6 +95,7 @@
                         <constraint firstItem="0Yu-0C-wAF" firstAttribute="leading" secondItem="Hg9-Si-SkJ" secondAttribute="trailing" constant="6" id="ZkY-R5-x2Y"/>
                         <constraint firstItem="Hg9-Si-SkJ" firstAttribute="top" secondItem="Ggu-Sa-r05" secondAttribute="top" constant="3" id="cI4-ld-poD"/>
                         <constraint firstItem="OAb-rU-zlM" firstAttribute="leading" secondItem="ByA-nk-5yX" secondAttribute="trailing" constant="3" id="gbD-Sj-Ll9"/>
+                        <constraint firstItem="ByA-nk-5yX" firstAttribute="leading" secondItem="0Yu-0C-wAF" secondAttribute="leading" id="gdR-eh-KC7"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="gua-Zv-tk2"/>
                         <constraint firstItem="OAb-rU-zlM" firstAttribute="top" secondItem="0Yu-0C-wAF" secondAttribute="bottom" constant="11" id="m5x-dv-kCk"/>
                         <constraint firstItem="ByA-nk-5yX" firstAttribute="top" secondItem="0Yu-0C-wAF" secondAttribute="bottom" constant="9" id="psU-T2-m96"/>
@@ -102,6 +103,16 @@
                     </constraints>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </box>
+                <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="rj5-lw-DoE">
+                    <rect key="frame" x="22" y="-2" width="254" height="5"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="vch-rT-5ZV"/>
+                        <constraint firstAttribute="width" constant="254" id="z9n-fI-UUd"/>
+                    </constraints>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <font key="titleFont" metaFont="system"/>
                 </box>
                 <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="3My-fc-s8G" userLabel="title">
                     <rect key="frame" x="0.0" y="60" width="300" height="30"/>
@@ -137,7 +148,9 @@
                 <constraint firstAttribute="trailing" secondItem="3My-fc-s8G" secondAttribute="trailing" id="O2m-7c-jXD"/>
                 <constraint firstAttribute="trailing" secondItem="Ggu-Sa-r05" secondAttribute="trailing" id="P47-fT-6ns"/>
                 <constraint firstItem="Ggu-Sa-r05" firstAttribute="leading" secondItem="RUh-wj-JxE" secondAttribute="leading" id="QIF-N1-2wL"/>
+                <constraint firstItem="rj5-lw-DoE" firstAttribute="leading" secondItem="RUh-wj-JxE" secondAttribute="leading" constant="22" id="UbE-38-zY2"/>
                 <constraint firstItem="Ggu-Sa-r05" firstAttribute="top" secondItem="3My-fc-s8G" secondAttribute="bottom" id="VYO-5b-yvz"/>
+                <constraint firstItem="rj5-lw-DoE" firstAttribute="bottom" secondItem="Ggu-Sa-r05" secondAttribute="bottom" id="Yz8-go-7oT"/>
                 <constraint firstItem="3My-fc-s8G" firstAttribute="leading" secondItem="RUh-wj-JxE" secondAttribute="leading" id="mW8-3g-ybs"/>
                 <constraint firstAttribute="bottom" secondItem="Ggu-Sa-r05" secondAttribute="bottom" id="tP8-95-K6b"/>
                 <constraint firstItem="Ggu-Sa-r05" firstAttribute="top" secondItem="3My-fc-s8G" secondAttribute="bottom" id="ue6-qb-pUU"/>
