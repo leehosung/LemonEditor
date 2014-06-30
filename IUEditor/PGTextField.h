@@ -15,7 +15,7 @@ typedef enum{
 
 @interface PGTextField : IUBox
 
-@property (nonatomic) NSString  *formName;
+@property (nonatomic) NSString  *inputName;
 @property (nonatomic) NSString  *placeholder;
 @property (nonatomic) NSString  *inputValue;
 @property (nonatomic) IUTextFieldType type;

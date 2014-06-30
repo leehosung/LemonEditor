@@ -1583,8 +1583,8 @@ static NSString * IUCompilerTagOption = @"tag";
 #pragma mark PGTextField
     else if ([iu isKindOfClass:[PGTextField class]]){
         PGTextField *pgTextField = (PGTextField *)iu;
-        if(pgTextField.formName){
-            [retString appendFormat:@" name=\"%@\"",pgTextField.formName];
+        if(pgTextField.inputName){
+            [retString appendFormat:@" name=\"%@\"",pgTextField.inputName];
         }
         if(pgTextField.placeholder){
             [retString appendFormat:@" placeholder=\"%@\"",pgTextField.placeholder];
@@ -1622,8 +1622,8 @@ static NSString * IUCompilerTagOption = @"tag";
         if(pgTextView.placeholder){
             [retString appendFormat:@" placeholder=\"%@\"",pgTextView.placeholder];
         }
-        if(pgTextView.formName){
-            [retString appendFormat:@" name=\"%@\"",pgTextView.formName];
+        if(pgTextView.inputName){
+            [retString appendFormat:@" name=\"%@\"",pgTextView.inputName];
         }
     }
 #pragma mark IUTransition

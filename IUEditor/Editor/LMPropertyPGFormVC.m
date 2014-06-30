@@ -9,6 +9,8 @@
 #import "LMPropertyPGFormVC.h"
 #import "IUPage.h"
 #import "IUProject.h"
+#import "IUBox.h"
+#import "PGForm.h"
 
 @interface LMPropertyPGFormVC ()
 @property (weak) IBOutlet NSComboBox *submitPageComboBox;
@@ -62,6 +64,15 @@
 }
 
 - (IBAction)clickPageComboBox:(id)sender {
+
+    //FIXME: selectedobjectchange에서 호출됨
+    for(IUBox *box in [_controller selectedObjects]){
+        if([box isKindOfClass:[PGForm class]] == NO){
+            return;
+        }
+    }
+    
+    
     NSString *target = [_submitPageComboBox stringValue];
     if(_project){
         IUBox *box = [_project.identifierManager IUWithIdentifier:target];

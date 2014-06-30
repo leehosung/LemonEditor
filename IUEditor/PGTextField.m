@@ -40,7 +40,7 @@
 
 - (id)copyWithZone:(NSZone *)zone{
     PGTextField *iu = [super copyWithZone:zone];
-    iu.formName = [_formName copy];
+    iu.inputName = [_inputName copy];
     iu.placeholder = [_placeholder copy];
     iu.inputValue = [_inputValue copy];
     iu.type = _type;
@@ -61,8 +61,8 @@
     return YES;
 }
 
-- (void)setFormName:(NSString *)formName{
-    _formName = formName;
+- (void)setInputName:(NSString *)inputName{
+    _inputName = inputName;
     [self updateHTML];
     [self updateJS];
 }

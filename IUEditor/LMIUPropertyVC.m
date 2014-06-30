@@ -37,7 +37,7 @@
 
 #import "LMPropertyProgrammingType1VC.h"
 #import "LMPropertyProgrammingType2VC.h"
-
+#import "LMPropertyWebProgrammingVC.h"
 #import "IUProject.h"
 
 
@@ -78,6 +78,8 @@
 #if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
     LMPropertyTextVC *propertyTextVC;
 #endif
+    
+    LMPropertyWebProgrammingVC *propertyWebProgramming;
 
 
     NSViewController <IUPropertyDoubleClickReceiver> *doubleClickFocusVC;
@@ -139,6 +141,9 @@
 #if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
         propertyTextVC = [[LMPropertyTextVC alloc] initWithNibName:[LMPropertyTextVC class].className bundle:nil];
 #endif
+        propertyWebProgramming = [[LMPropertyWebProgrammingVC alloc] initWithNibName:[LMPropertyWebProgrammingVC class].className bundle:nil];
+        
+        
         [self loadView];
     }
     return self;
@@ -172,7 +177,9 @@
     [propertyPGSubmitButtonVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     [propertyPGType1VC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     [propertyPGType2VC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
-    
+
+    [propertyWebProgramming bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+
     
 #if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
     [propertyTextVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
@@ -230,11 +237,11 @@
         self.propertyVArray = @[propertyPGFormVC.view];
     }
     else if ([classString isEqualToString:@"PGTextView"]) {
-        self.propertyVArray = @[propertyPGTextViewVC.view, propertyPGType2VC.view];
+        self.propertyVArray = @[propertyPGTextViewVC.view, propertyPGType2VC.view, propertyWebProgramming.view];
         doubleClickFocusVC = propertyPGTextViewVC;
     }
     else if ([classString isEqualToString:@"PGTextField"]) {
-        self.propertyVArray = @[propertyPGTextFieldVC.view, propertyPGType2VC.view];
+        self.propertyVArray = @[propertyPGTextFieldVC.view, propertyPGType2VC.view, propertyWebProgramming.view];
         doubleClickFocusVC = propertyPGTextFieldVC;
     }
     else if ([classString isEqualToString:@"PGSubmitButton"]){
@@ -267,9 +274,6 @@
         self.propertyVArray = @[propertyIUCollectionVC.view, propertyIUImportVC.view];
     }
 #pragma mark IU-Simple
-    else if ([classString isEqualToString:@"PGTextField"]) {
-        self.propertyVArray = @[propertyPGTextFieldVC.view, propertyPGType2VC.view];
-    }
     else if ([classString isEqualToString:@"IUImage"]){
         self.propertyVArray = [NSMutableArray arrayWithArray:@[inspectorAltTextVC.view, inspectorLinkVC.view, propertyPGType2VC.view]];
     }

@@ -12,6 +12,6 @@
 
 @property (nonatomic) NSString  *placeholder;
 @property (nonatomic) NSString  *inputValue;
-@property (nonatomic) NSString  *formName;
+@property (nonatomic) NSString  *inputName;
 
 @end
