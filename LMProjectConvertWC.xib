@@ -32,7 +32,6 @@
                         <tabViewItems>
                             <tabViewItem label="Convert to HTML" identifier="1" id="g0T-PV-kny">
                                 <view key="view" ambiguous="YES" id="1na-Wt-isA">
-                                    <rect key="frame" x="10" y="33" width="616" height="387"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                             </tabViewItem>

@@ -69,7 +69,7 @@
     for (NSWindow *window in [NSApp windows]){
         [window close];
     }
-    startWC = [[LMStartWC alloc] initWithWindowNibName:@"LMStartWC"];
+    startWC = [LMStartWC sharedStartWindow];
     [startWC showWindow:self];
 }
 

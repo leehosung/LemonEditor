@@ -12,6 +12,9 @@
 
 @interface LMStartRecentVC ()
 
+@property (weak) IBOutlet NSButton *prevB;
+@property (weak) IBOutlet NSButton *nextB;
+
 @end
 
 @implementation LMStartRecentVC{
@@ -46,27 +49,6 @@
     
 }
 
-- (void)show{
-    assert(_prevB);
-    assert(_nextB);
-    
-    [_prevB setEnabled:NO];
-    [_prevB setHidden:NO];
-    [_prevB setTarget:self];
-
-    [_nextB setEnabled:YES];
-    [_nextB setTarget:self];
-    [_nextB setAction:@selector(pressNextB)];
-}
-
-- (void)pressNextB{
-    NSUInteger index = [self.selectedIndexes firstIndex];
-    NSDictionary *selectedDictionary = [_recentDocs objectAtIndex:index];
-    NSString *path = selectedDictionary[@"path"];
-    [(IUProjectController *)[NSDocumentController sharedDocumentController] openDocumentWithContentsOfURL:[NSURL fileURLWithPath:path] display:YES completionHandler:nil];
-    
-    [self.view.window close];
-}
 
 -(NSMutableDictionary *)projectDictWithPath: (NSString*)path{
     NSData *data = [NSData dataWithContentsOfFile:path];
@@ -91,5 +73,17 @@
 //    NSLog([selectedIndexes description]);
     
 }
- 
+- (IBAction)pressPreviewBtn:(id)sender {
+    //not yet
+}
+
+- (IBAction)pressSelectBtn:(id)sender {
+    
+    NSUInteger index = [self.selectedIndexes firstIndex];
+    NSDictionary *selectedDictionary = [_recentDocs objectAtIndex:index];
+    NSString *path = selectedDictionary[@"path"];
+    [(IUProjectController *)[NSDocumentController sharedDocumentController] openDocumentWithContentsOfURL:[NSURL fileURLWithPath:path] display:YES completionHandler:nil];
+    
+    [self.view.window close];
+}
 @end

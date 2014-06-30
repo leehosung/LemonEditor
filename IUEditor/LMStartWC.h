@@ -10,6 +10,6 @@
 
 @interface LMStartWC : NSWindowController
 
-- (void)removeCurrentView;
++ (LMStartWC *)sharedStartWindow;
 
 @end

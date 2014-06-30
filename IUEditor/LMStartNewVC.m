@@ -18,6 +18,11 @@
 @property (weak) IBOutlet NSButton *typePresentationB;
 @property (weak) IBOutlet NSButton *typeDjangoB;
 
+@property (weak) IBOutlet NSView *contentV;
+
+@property (weak) IBOutlet NSButton *prevB;
+@property (weak) IBOutlet NSButton *nextB;
+
 @end
 
 @implementation LMStartNewVC{
@@ -41,27 +46,23 @@
     return self;
 }
 
-/* share nextB with setupVs */
-- (void)setNextB:(NSButton *)nextB{
-    _nextB = nextB;
-    defaultVC.nextB = nextB;
-    djangoVC.nextB = nextB;
-    presentationVC.nextB = nextB;
-}
+- (void)awakeFromNib{
+    defaultVC.prevB = _prevB;
+    djangoVC.prevB = _prevB;
+    presentationVC.prevB = _prevB;
+    
+    defaultVC.nextB = _nextB;
+    djangoVC.nextB = _nextB;
+    presentationVC.nextB = _nextB;
 
-/* share prevB with setupVs */
-- (void)setPrevB:(NSButton *)prevB{
-    _prevB = prevB;
-    defaultVC.prevB = prevB;
-    djangoVC.prevB = prevB;
-    presentationVC.prevB = prevB;
+    [self show];
 }
 
 - (void)show{
     [_prevB setHidden:NO];
-    [_prevB setAction:@selector(pressPrevB)];
-    [_nextB setAction:@selector(pressNextB)];
-
+    [_prevB setAction:@selector(pressPrevBtn)];
+    [_nextB setAction:@selector(pressNextBtn)];
+    
     [defaultVC.view removeFromSuperview];
     [djangoVC.view removeFromSuperview];
     [presentationVC.view removeFromSuperview];
@@ -78,23 +79,23 @@
     
     sender.state = 1;
 }
+- (void)pressNextBtn{
 
-- (void)pressNextB{
     if (_typeDefaultB.state) {
-        [self.view addSubview:defaultVC.view];
+        [self.contentV addSubview:defaultVC.view];
         [defaultVC show];
     }
     else if (_typePresentationB.state){
-        [self.view addSubview:presentationVC.view];
+        [self.contentV addSubview:presentationVC.view];
         [presentationVC show];
     }
     else if (_typeDjangoB.state){
-        [self.view addSubview:djangoVC.view];
+        [self.contentV addSubview:djangoVC.view];
         [djangoVC show];
     }
 }
+- (void)pressPrevBtn{
 
-- (void)pressPrevB{
     [_nextB setTarget:self];
     [_nextB setEnabled:YES];
     [_prevB setEnabled:NO];

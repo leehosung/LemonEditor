@@ -13,17 +13,30 @@
 #import "LMStartRecentVC.h"
 #import "LMStartTemplateVC.h"
 
+static LMStartWC *gStartWindow = nil;
+
 @interface LMStartWC ()
-@property (weak) IBOutlet NSView *mainV;
+@property (weak) IBOutlet NSTabView *tabView;
+
+@property (weak) IBOutlet NSView *templateV;
+@property (weak) IBOutlet NSView *projectV;
+@property (weak) IBOutlet NSView *recentV;
+
+
 @property (weak) IBOutlet NSMatrix *menuSelectB;
-@property (weak) IBOutlet NSButton *nextB;
-@property (weak) IBOutlet NSButton *prevB;
 @end
 
 @implementation LMStartWC{
     LMStartNewVC    *_newVC;
     LMStartRecentVC *_recentVC;
     LMStartTemplateVC *_templateVC;
+}
+
++ (LMStartWC *)sharedStartWindow{
+    if(gStartWindow == nil){
+        gStartWindow = [[LMStartWC alloc] initWithWindowNibName:@"LMStartWC"];
+    }
+    return gStartWindow;
 }
 
 - (id)initWithWindow:(NSWindow *)window
@@ -45,53 +58,15 @@
 }
 
 - (void)awakeFromNib{
-    [_mainV addSubview:_newVC.view];
-
-    _templateVC.prevB = _prevB;
-    _templateVC.nextB = _nextB;
-
-    _newVC.prevB = _prevB;
-    _newVC.nextB = _nextB;
     
-    _recentVC.prevB = _prevB;
-    _recentVC.nextB = _nextB;
+    [_templateV addSubviewFullFrame:_templateVC.view];
+    [_recentV addSubviewFullFrame:_recentVC.view];
+    [_projectV addSubviewFullFrame:_newVC.view];
     
-    [_newVC show];
-}
-
-- (void)removeCurrentView{
-    for(NSView *view in _mainV.subviews){
-        [view removeFromSuperview];
-    }
 }
 
 - (IBAction)pressMenuSelectB:(id)sender {
     NSUInteger selectedIndex = [_menuSelectB selectedColumn];
-    switch (selectedIndex) {
-        case 0:
-            [self removeCurrentView];
-            [_mainV addSubviewFullFrame:_templateVC.view];
-            [_templateVC show];
-            break;
-        case 1:{
-            [self removeCurrentView];
-            [_mainV addSubview:_newVC.view];
-            [_newVC show];
-            }
-            break;
-        case 2:{
-            [self removeCurrentView];
-            [_mainV addSubview:_recentVC.view];
-            [_recentVC show];
-
-        }
-            break;
-    }
-}
-- (void)pressNextB{
-    assert(0);
-}
-- (void)pressPrevB{
-    assert(0);
+    [_tabView selectTabViewItemAtIndex:selectedIndex];
 }
 @end

@@ -3,40 +3,38 @@
 <plist version="1.0">
 <array>
 	<dict>
-		<key>image</key>
-		<string>Melissa.jpg</string>
-		<key>name</key>
-		<string>Melissa</string>
-		<key>type</key>
-		<string>IUDjango</string>
-		<key>projectFile</key>
-		<string></string>
-		<key>desc</key>
-		<string>Sample Gallary for Django</string>
-		<key>pageSize</key>
-		<string>960</string>
 		<key>feature</key>
-		<string>Django</string>
-		<key>images</key>
+		<string>Responsive</string>
+		<key>isReady</key>
+		<true/>
+		<key>thumbnail</key>
+		<string>iueditor_thumbnail</string>
+		<key>name</key>
+		<string>IUEditor</string>
+		<key>type</key>
+		<real>0</real>
+		<key>desc</key>
+		<string>IUEditor Sample page</string>
+		<key>pageSize</key>
+		<string>960 / 320</string>
+		<key>previewImages</key>
 		<array>
-			<string>Melissa.jpg</string>
+			<string>iueditor_preview.png</string>
 		</array>
 		<key>projectPackageFile</key>
-		<string>Melissa.zip</string>
+		<string>iueditor.iu.zip</string>
 	</dict>
 	<dict>
+		<key>isReady</key>
+		<false/>
 		<key>name</key>
 		<string>IUHome</string>
 		<key>type</key>
-		<string>IUProject</string>
-		<key>projectFile</key>
-		<string></string>
+		<real>0</real>
 		<key>desc</key>
 		<string>One Page Basic Homepage for IU beginers</string>
 		<key>pageSize</key>
 		<string>960 / 360</string>
-		<key>feature</key>
-		<string>Reponsive</string>
 		<key>images</key>
 		<array>
 			<string>lemon.png</string>

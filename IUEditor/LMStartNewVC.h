@@ -9,8 +9,5 @@
 #import <Cocoa/Cocoa.h>
 
 @interface LMStartNewVC : NSViewController
-@property (nonatomic) NSButton  *prevB;
-@property (nonatomic) NSButton  *nextB;
-
 - (void)show;
 @end
