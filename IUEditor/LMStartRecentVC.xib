@@ -105,8 +105,8 @@
                                                     <binding destination="79e-C5-HBB" name="value" keyPath="representedObject.path" id="yhc-KT-NIx"/>
                                                 </connections>
                                             </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BGi-Ek-la5">
-                                                <rect key="frame" x="516" y="22" width="150" height="14"/>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BGi-Ek-la5">
+                                                <rect key="frame" x="516" y="22" width="150" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="146" id="03e-RM-yHT"/>
                                                     <constraint firstAttribute="height" constant="17" id="mqV-Mg-iqJ"/>
@@ -158,6 +158,7 @@
             </constraints>
             <color key="borderColor" name="scrollBarColor" catalog="System" colorSpace="catalog"/>
             <color key="fillColor" red="1" green="0.97727272727272729" blue="0.97727272727272729" alpha="1" colorSpace="calibratedRGB"/>
+            <point key="canvasLocation" x="-881" y="332"/>
         </box>
         <collectionViewItem id="bMn-1f-MGA">
             <connections>
@@ -173,8 +174,8 @@
             <rect key="frame" x="0.0" y="0.0" width="702" height="395"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gQF-tn-9HN">
-                    <rect key="frame" x="602" y="7" width="100" height="19"/>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gQF-tn-9HN">
+                    <rect key="frame" x="592" y="7" width="100" height="19"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="8al-eE-e8f"/>
                         <constraint firstAttribute="height" constant="18" id="Q4O-ay-stA"/>
@@ -187,8 +188,8 @@
                         <action selector="pressSelectBtn:" target="-2" id="x6H-2i-9Uw"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GtR-IS-hqH">
-                    <rect key="frame" x="494" y="7" width="100" height="19"/>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GtR-IS-hqH">
+                    <rect key="frame" x="484" y="7" width="100" height="19"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="Xcf-Rw-32K"/>
                     </constraints>
@@ -200,10 +201,10 @@
                         <action selector="pressPreviewBtn:" target="-2" id="Wgk-S1-wxu"/>
                     </connections>
                 </button>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qsq-MZ-Sf7">
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="Qsq-MZ-Sf7">
                     <rect key="frame" x="0.0" y="34" width="702" height="361"/>
                     <subviews>
-                        <customView ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY" userLabel="RecentView">
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY" userLabel="RecentView">
                             <rect key="frame" x="0.0" y="0.0" width="702" height="360"/>
                             <subviews>
                                 <box autoresizesSubviews="NO" transparent="YES" borderWidth="0.0" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ACt-Jj-6i7">
@@ -263,11 +264,21 @@
                             </constraints>
                         </customView>
                     </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Hz6-mo-xeY" secondAttribute="trailing" id="OLh-mm-rLQ"/>
+                        <constraint firstItem="Hz6-mo-xeY" firstAttribute="leading" secondItem="Qsq-MZ-Sf7" secondAttribute="leading" id="QFD-up-CMZ"/>
+                        <constraint firstItem="Hz6-mo-xeY" firstAttribute="centerY" secondItem="Qsq-MZ-Sf7" secondAttribute="centerY" id="ZFC-Qw-k0S"/>
+                        <constraint firstAttribute="bottom" secondItem="Hz6-mo-xeY" secondAttribute="bottom" id="xDH-qu-8Hh"/>
+                    </constraints>
                 </customView>
             </subviews>
             <constraints>
+                <constraint firstItem="Qsq-MZ-Sf7" firstAttribute="leading" secondItem="4Nw-xP-HQH" secondAttribute="leading" id="2ks-cf-RE4"/>
                 <constraint firstItem="GtR-IS-hqH" firstAttribute="baseline" secondItem="gQF-tn-9HN" secondAttribute="baseline" id="MAQ-XA-PML"/>
+                <constraint firstItem="GtR-IS-hqH" firstAttribute="top" secondItem="Qsq-MZ-Sf7" secondAttribute="bottom" constant="8" symbolic="YES" id="har-Kf-Anw"/>
+                <constraint firstItem="Qsq-MZ-Sf7" firstAttribute="trailing" secondItem="gQF-tn-9HN" secondAttribute="trailing" constant="10" id="iLu-7J-Afq"/>
                 <constraint firstItem="gQF-tn-9HN" firstAttribute="leading" secondItem="GtR-IS-hqH" secondAttribute="trailing" constant="8" symbolic="YES" id="keY-YR-6Rp"/>
+                <constraint firstItem="Qsq-MZ-Sf7" firstAttribute="top" secondItem="4Nw-xP-HQH" secondAttribute="top" id="lm1-KZ-pX5"/>
             </constraints>
             <point key="canvasLocation" x="-929" y="54.5"/>
         </customView>

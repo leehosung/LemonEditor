@@ -66,7 +66,6 @@ static LMStartPreviewWC *gStartPreviewWindow = nil;
 - (void)updateWindowValue{
     if(currentItem){
         
-        [_imageView setImage:currentItem.thumbnail];
         [_nameTF setStringValue:currentItem.name];
         [_descTF setStringValue:currentItem.desc];
         
@@ -105,7 +104,7 @@ static LMStartPreviewWC *gStartPreviewWindow = nil;
 
 }
 - (IBAction)clickNextImageBtn:(id)sender {
-    if(currentCount < currentItem.previewImageArray.count+1){
+    if(currentCount < currentItem.previewImageArray.count){
         currentCount++;
     }
     [self updateImageValue];
@@ -120,14 +119,12 @@ static LMStartPreviewWC *gStartPreviewWindow = nil;
 
 - (void)updateImageValue{
     
-    [_imageCountTF setStringValue:[NSString stringWithFormat:@"%ld/%ld", currentCount, currentItem.previewImageArray.count+1]];
-    if(currentCount == 1){
-        [_imageView setImage:currentItem.thumbnail];
-    }
-    else{
-        NSImage *image = [NSImage imageNamed:currentItem.previewImageArray[currentCount-2]];
+    if(currentItem.previewImageArray.count > 0){
+        [_imageCountTF setStringValue:[NSString stringWithFormat:@"%ld/%ld", currentCount, currentItem.previewImageArray.count]];
+        NSImage *image = [NSImage imageNamed:currentItem.previewImageArray[currentCount-1]];
         [_imageView setImage:image];
     }
+
 }
 
 

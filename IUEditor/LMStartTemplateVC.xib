@@ -73,11 +73,11 @@
             <rect key="frame" x="0.0" y="0.0" width="702" height="395"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tVM-o5-qK4">
-                    <rect key="frame" x="602" y="7" width="100" height="19"/>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tVM-o5-qK4">
+                    <rect key="frame" x="592" y="8" width="100" height="19"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="100" id="dyG-KS-g6d"/>
-                        <constraint firstAttribute="height" constant="18" id="qON-gH-7ja"/>
+                        <constraint firstAttribute="height" constant="18" id="Oxy-Fq-5eb"/>
+                        <constraint firstAttribute="width" constant="100" id="XEQ-DW-81f"/>
                     </constraints>
                     <buttonCell key="cell" type="roundRect" title="Select" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MnM-gf-R7P">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -87,76 +87,74 @@
                         <action selector="pressSelectBtn:" target="-2" id="vZX-mx-O7i"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="59q-5U-2rh">
-                    <rect key="frame" x="494" y="7" width="100" height="19"/>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="59q-5U-2rh">
+                    <rect key="frame" x="484" y="8" width="100" height="19"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="100" id="MdR-mO-yZ1"/>
+                        <constraint firstAttribute="height" constant="18" id="bNh-33-gxb"/>
+                        <constraint firstAttribute="width" constant="100" id="xf8-x3-rgT"/>
                     </constraints>
                     <buttonCell key="cell" type="roundRect" title="Preview" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mTx-Hc-Wgi">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="cellTitle"/>
+                        <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
                         <action selector="pressPreviewBtn:" target="-2" id="JIf-FP-x4r"/>
                     </connections>
                 </button>
-                <customView ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pvo-Q4-dPA" userLabel="templateView">
-                    <rect key="frame" x="-49" y="34" width="800" height="360"/>
-                    <subviews>
-                        <box autoresizesSubviews="NO" ambiguous="YES" misplaced="YES" transparent="YES" borderWidth="0.0" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="YFy-Ms-VIK">
-                            <rect key="frame" x="-1" y="-1" width="802" height="362"/>
-                            <view key="contentView">
-                                <rect key="frame" x="0.0" y="0.0" width="802" height="362"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </view>
-                            <color key="borderColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <color key="fillColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                        </box>
-                        <scrollView ambiguous="YES" misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gst-df-sDO" userLabel="recentV">
-                            <rect key="frame" x="0.0" y="0.0" width="800" height="360"/>
-                            <clipView key="contentView" ambiguous="YES" misplaced="YES" id="nAg-Ht-UGI">
-                                <rect key="frame" x="1" y="1" width="798" height="358"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <collectionView focusRingType="none" ambiguous="YES" selectable="YES" id="FNX-sH-U2d">
-                                        <rect key="frame" x="0.0" y="0.0" width="798" height="358"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        <connections>
-                                            <binding destination="RVG-Eq-af1" name="content" keyPath="arrangedObjects" id="3Jb-CY-VBk"/>
-                                            <binding destination="RVG-Eq-af1" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="3Jb-CY-VBk" id="lpO-WD-h2p"/>
-                                            <outlet property="itemPrototype" destination="BkE-rX-9NW" id="klV-Mr-mv3"/>
-                                        </connections>
-                                    </collectionView>
-                                </subviews>
-                            </clipView>
-                            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="TH0-cz-Yp9">
-                                <rect key="frame" x="1" y="144" width="233" height="15"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </scroller>
-                            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="hvV-89-BBB">
-                                <rect key="frame" x="234" y="1" width="15" height="143"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </scroller>
-                        </scrollView>
-                    </subviews>
+                <box autoresizesSubviews="NO" transparent="YES" borderWidth="0.0" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="YFy-Ms-VIK">
+                    <rect key="frame" x="0.0" y="35" width="702" height="360"/>
+                    <view key="contentView">
+                        <rect key="frame" x="0.0" y="0.0" width="702" height="360"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gst-df-sDO" userLabel="recentV">
+                                <rect key="frame" x="0.0" y="0.0" width="702" height="360"/>
+                                <clipView key="contentView" id="nAg-Ht-UGI">
+                                    <rect key="frame" x="1" y="1" width="798" height="358"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <collectionView focusRingType="none" selectable="YES" id="FNX-sH-U2d">
+                                            <rect key="frame" x="0.0" y="0.0" width="798" height="358"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <binding destination="RVG-Eq-af1" name="content" keyPath="arrangedObjects" id="3Jb-CY-VBk"/>
+                                                <binding destination="RVG-Eq-af1" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="3Jb-CY-VBk" id="lpO-WD-h2p"/>
+                                                <outlet property="itemPrototype" destination="BkE-rX-9NW" id="klV-Mr-mv3"/>
+                                            </connections>
+                                        </collectionView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="TH0-cz-Yp9">
+                                    <rect key="frame" x="1" y="144" width="233" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="hvV-89-BBB">
+                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                    </view>
                     <constraints>
-                        <constraint firstItem="YFy-Ms-VIK" firstAttribute="centerY" secondItem="Gst-df-sDO" secondAttribute="centerY" id="APv-8p-Vp7"/>
-                        <constraint firstAttribute="centerY" secondItem="YFy-Ms-VIK" secondAttribute="centerY" id="MVR-Kb-8kp"/>
-                        <constraint firstAttribute="centerY" secondItem="Gst-df-sDO" secondAttribute="centerY" id="O77-ws-jAy"/>
-                        <constraint firstItem="Gst-df-sDO" firstAttribute="leading" secondItem="Pvo-Q4-dPA" secondAttribute="leading" id="QaL-QN-i3K"/>
-                        <constraint firstAttribute="centerX" secondItem="Gst-df-sDO" secondAttribute="centerX" id="Qed-zm-kwA"/>
-                        <constraint firstItem="YFy-Ms-VIK" firstAttribute="leading" secondItem="Pvo-Q4-dPA" secondAttribute="leading" constant="-1" id="VRf-8f-T8i"/>
-                        <constraint firstItem="Gst-df-sDO" firstAttribute="top" secondItem="Pvo-Q4-dPA" secondAttribute="top" id="gyi-H1-ghA"/>
-                        <constraint firstItem="YFy-Ms-VIK" firstAttribute="centerX" secondItem="Gst-df-sDO" secondAttribute="centerX" id="h7v-mL-eOp"/>
-                        <constraint firstItem="YFy-Ms-VIK" firstAttribute="top" secondItem="Pvo-Q4-dPA" secondAttribute="top" constant="-1" id="hEt-uD-iKt"/>
-                        <constraint firstAttribute="centerX" secondItem="YFy-Ms-VIK" secondAttribute="centerX" id="sat-7a-2HY"/>
+                        <constraint firstAttribute="trailing" secondItem="Gst-df-sDO" secondAttribute="trailing" id="EDD-yu-Orq"/>
+                        <constraint firstItem="Gst-df-sDO" firstAttribute="top" secondItem="YFy-Ms-VIK" secondAttribute="top" id="Kro-27-6cC"/>
+                        <constraint firstAttribute="bottom" secondItem="Gst-df-sDO" secondAttribute="bottom" id="Y1g-GK-8ou"/>
+                        <constraint firstItem="Gst-df-sDO" firstAttribute="leading" secondItem="YFy-Ms-VIK" secondAttribute="leading" id="YBe-3g-rt3"/>
+                        <constraint firstAttribute="height" constant="360" id="tay-MM-tM4"/>
                     </constraints>
-                </customView>
+                    <color key="borderColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="fillColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                </box>
             </subviews>
             <constraints>
-                <constraint firstItem="59q-5U-2rh" firstAttribute="baseline" secondItem="tVM-o5-qK4" secondAttribute="baseline" id="H2U-bo-9B2"/>
-                <constraint firstItem="tVM-o5-qK4" firstAttribute="leading" secondItem="59q-5U-2rh" secondAttribute="trailing" constant="8" symbolic="YES" id="h4n-7g-7oS"/>
+                <constraint firstItem="59q-5U-2rh" firstAttribute="centerY" secondItem="tVM-o5-qK4" secondAttribute="centerY" id="DeP-uI-0DK"/>
+                <constraint firstItem="tVM-o5-qK4" firstAttribute="top" secondItem="YFy-Ms-VIK" secondAttribute="bottom" constant="8" id="Jhe-B5-6mZ"/>
+                <constraint firstAttribute="trailing" secondItem="tVM-o5-qK4" secondAttribute="trailing" constant="10" id="SqB-hp-Dk1"/>
+                <constraint firstItem="YFy-Ms-VIK" firstAttribute="top" secondItem="3bo-U3-a47" secondAttribute="top" id="T0N-zl-Y4p"/>
+                <constraint firstItem="tVM-o5-qK4" firstAttribute="leading" secondItem="59q-5U-2rh" secondAttribute="trailing" constant="8" id="e9q-E9-cfu"/>
+                <constraint firstAttribute="trailing" secondItem="YFy-Ms-VIK" secondAttribute="trailing" id="fLd-oi-ds3"/>
+                <constraint firstItem="YFy-Ms-VIK" firstAttribute="leading" secondItem="3bo-U3-a47" secondAttribute="leading" id="hwc-F8-5y0"/>
             </constraints>
             <point key="canvasLocation" x="-929" y="54.5"/>
         </customView>
