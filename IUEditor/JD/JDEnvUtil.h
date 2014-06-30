@@ -13,6 +13,6 @@
 
 @interface JDEnvUtil : NSObject
 
--(BOOL) isFirstExecution:(NSString*)tag;
++(BOOL) isFirstExecution:(NSString*)tag;
 
 @end

@@ -93,9 +93,19 @@
             node = [project.pageDocuments firstObject];
         }
         
-        
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat: @"http://127.0.0.1:8000/%@", [node.name lowercaseString]]];
-        [[NSWorkspace sharedWorkspace] openURL:url];
+        BOOL runningLocal = [[NSUserDefaults standardUserDefaults] boolForKey:@"DjangoDebugLoopback"];
+        if (runningLocal) {
+            NSString *port = [[NSUserDefaults standardUserDefaults] objectForKey:@"DjangoDebugPort"];
+            if (port == nil) {
+                port = @"8000";
+            }
+            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat: @"http://127.0.0.1:%@/%@",port, [node.name lowercaseString]]];
+            [[NSWorkspace sharedWorkspace] openURL:url];
+        }
+        else {
+            NSString *firstPath = [project.directoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@.html",project.buildPath, [node.name lowercaseString]] ];
+            [[NSWorkspace sharedWorkspace] openFile:firstPath];
+        }
     }
 }
 

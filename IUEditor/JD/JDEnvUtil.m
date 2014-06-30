@@ -12,14 +12,17 @@
 #import "JDEnvUtil.h"
 
 @implementation JDEnvUtil
--(BOOL) isFirstExecution:(NSString *)tag{
++(BOOL) isFirstExecution:(NSString *)tag{
     
     NSString *testTag = [NSString stringWithFormat:@"firstExcutionTestTag%@", tag];
     
-    if  ([[NSUserDefaults standardUserDefaults] objectForKey:testTag] == nil){
-        [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:testTag];
+    if  ([[NSUserDefaults standardUserDefaults] boolForKey:testTag] == NO){
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:testTag];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        return YES;
+    }
+    else {
         return NO;
     }
-    return YES;
 }
 @end
