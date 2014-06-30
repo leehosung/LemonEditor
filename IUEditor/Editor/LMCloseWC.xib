@@ -23,7 +23,7 @@
                 <subviews>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aJR-CW-nEO">
                         <rect key="frame" x="21" y="52" width="93" height="63"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="lemon" id="ycj-xB-byG"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="iueditor" id="ycj-xB-byG"/>
                     </imageView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N8g-ve-Viw">
                         <rect key="frame" x="124" y="58" width="308" height="17"/>
@@ -83,6 +83,6 @@ Gw
         </window>
     </objects>
     <resources>
-        <image name="lemon" width="226" height="200"/>
+        <image name="iueditor" width="512" height="512"/>
     </resources>
 </document>
