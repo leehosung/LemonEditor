@@ -3461,6 +3461,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "IUEditor/IUEditor-Info.plist";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -3475,6 +3476,7 @@
 				GCC_PREFIX_HEADER = "IUEditor/IUEditor-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "IUEditor/IUEditor-Info.plist";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

@@ -39,7 +39,11 @@
     [JDLogUtil enableLogSection:IULogAction];
 //    [JDLogUtil enableLogSection:IULogText];
     
+#if DEBUG
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraints"];
+#else
+    [self showStartWC:self];
+#endif
   
 
 #pragma mark -
