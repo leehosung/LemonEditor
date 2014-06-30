@@ -85,5 +85,7 @@
 
 #define CalledByNoti void
 
-static NSRange NSZeroRange;
+#define IUEmail @"mailto:iu@jdlab.org?subject=[IUEditor]&body="
+
+
 #endif

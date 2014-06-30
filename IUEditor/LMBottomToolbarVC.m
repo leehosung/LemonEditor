@@ -129,5 +129,11 @@
     [[NSUserDefaults standardUserDefaults] setBool:!showRightInspector forKey:@"showRightInspector"];
 }
 
+#pragma mark - mail
+- (IBAction)clickEmailBtn:(id)sender {
+    NSString *url = [IUEmail stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [[NSWorkspace sharedWorkspace]  openURL:[NSURL URLWithString:url]];
+}
+
 
 @end

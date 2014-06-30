@@ -156,9 +156,12 @@
                                             <constraint firstAttribute="height" constant="30" id="sTh-h9-F20"/>
                                         </constraints>
                                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="send_mail" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="ceo-fD-6Eo">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="clickEmailBtn:" target="-2" id="Rmy-ad-zEk"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
