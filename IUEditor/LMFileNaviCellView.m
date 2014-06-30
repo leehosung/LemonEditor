@@ -23,6 +23,11 @@
     
     NSString *textValue = fieldEditor.string;
     
+    if(textValue.length == 0){
+        [JDUIUtil hudAlert:@"Name should not be empty" second:1];
+        return NO;
+    }
+    
     NSCharacterSet *characterSet = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
     if([textValue rangeOfCharacterFromSet:characterSet].location != NSNotFound){
         [JDUIUtil hudAlert:@"Name should be alphabet or digit" second:1];
@@ -32,9 +37,6 @@
     IUBox *box = [_project.identifierManager IUWithIdentifier:textValue];
     if (box != nil) {
         [JDUIUtil hudAlert:@"IU with same name exists" second:1];
-        return NO;
-    }
-    if (textValue.length == 0) {
         return NO;
     }
     

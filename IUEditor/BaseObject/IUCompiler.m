@@ -1173,13 +1173,52 @@ static NSString * IUCompilerTagOption = @"tag";
                     break;
             }
             
-            id bgValue = cssTagDict[IUCSSTagBGXPosition];
-            [dict putTag:@"background-position-x" intValue:[bgValue intValue] ignoreZero:YES unit:IUCSSUnitPixel];
+            BOOL digitBGPosition = [cssTagDict[IUCSSTagBGEnableDigitPosition] boolValue];
+            if(digitBGPosition){
+                id bgValue = cssTagDict[IUCSSTagBGXPosition];
+                [dict putTag:@"background-position-x" intValue:[bgValue intValue] ignoreZero:YES unit:IUCSSUnitPixel];
+                
+                bgValue = cssTagDict[IUCSSTagBGYPosition];
+                [dict putTag:@"background-position-y" intValue:[bgValue intValue] ignoreZero:YES unit:IUCSSUnitPixel];
+            }
+            else{
+                NSString *vString, *hString;
+                IUCSSBGVPostion vPosition = [cssTagDict[IUCSSTagBGVPosition] intValue];
+                switch (vPosition) {
+                    case IUCSSBGVPostionTop:
+                        vString = @"top";
+                        break;
+                    case IUCSSBGVPostionCenter:
+                        vString = @"center";
+                        break;
+                    case IUCSSBGVPostionBottom:
+                        vString = @"bottom";
+                        break;
+                    default:
+                        assert(0);
+                        break;
+                }
+                
+                IUCSSBGHPostion hPosition = [cssTagDict[IUCSSTagBGHPosition] intValue];
+                switch (hPosition) {
+                    case IUCSSBGHPostionLeft:
+                        hString = @"left";
+                        break;
+                    case IUCSSBGHPostionCenter:
+                        hString = @"center";
+                        break;
+                    case IUCSSBGHPostionRight:
+                        hString= @"right";
+                        break;
+                    default:
+                        assert(0);
+                        break;
+                }
+                [dict putTag:@"background-position" string:[NSString stringWithFormat:@"%@ %@", vString, hString]];
+                
+            }
             
-            bgValue = cssTagDict[IUCSSTagBGYPosition];
-            [dict putTag:@"background-position-y" intValue:[bgValue intValue] ignoreZero:YES unit:IUCSSUnitPixel];
-            
-            bgValue = cssTagDict[IUCSSTagBGRepeat];
+            id bgValue = cssTagDict[IUCSSTagBGRepeat];
             BOOL repeat = [bgValue boolValue];
             if(repeat){
                 [dict putTag:@"background-repeat" string:@"repeat"];

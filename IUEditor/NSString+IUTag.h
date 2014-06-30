@@ -68,13 +68,27 @@ typedef enum{
     IUBGSizeTypeFull,
 }IUBGSizeType;
 
-static NSString * IUCSSTagBGXPosition = @"bgX";
-static NSString * IUCSSTagBGYPosition = @"bgY";
 static NSString * IUCSSTagBGColor = @"background-color";
 static NSString * IUCSSTagBGGradient = @"bg-gradient";
 static NSString * IUCSSTagBGGradientStartColor = @"bg-gradient-start";
 static NSString * IUCSSTagBGGradientEndColor = @"bg-gradient-end";
 static NSString * IUCSSTagBGRepeat    = @"bacground-repeat";
+static NSString * IUCSSTagBGVPosition = @"bgV-position";
+static NSString * IUCSSTagBGHPosition = @"bgH-position";
+typedef enum{
+    IUCSSBGVPostionTop,
+    IUCSSBGVPostionCenter,
+    IUCSSBGVPostionBottom,
+}IUCSSBGVPostion;
+typedef enum{
+    IUCSSBGHPostionLeft,
+    IUCSSBGHPostionCenter,
+    IUCSSBGHPostionRight,
+}IUCSSBGHPostion;
+
+static NSString * IUCSSTagBGEnableDigitPosition = @"enableDigitPosition";
+static NSString * IUCSSTagBGXPosition = @"bgX";
+static NSString * IUCSSTagBGYPosition = @"bgY";
 
 
 static NSString * IUCSSTagBorderWidth = @"borderWeight";

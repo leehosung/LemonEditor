@@ -39,6 +39,7 @@
 #define IULogText @"Text"
 
 #define IUBindingDictNotRaisesApplicable @{NSRaisesForNotApplicableKeysBindingOption:@(NO)}
+#define IUBindingNegationAndNotRaise  @{NSRaisesForNotApplicableKeysBindingOption:@(NO),NSValueTransformerNameBindingOption:NSNegateBooleanTransformerName}
 
 
 #define IUVideoResourceDidChange @"VideoResourceDidChange"
