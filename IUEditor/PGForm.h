@@ -10,4 +10,6 @@
 
 @interface PGForm : IUBox
 
+@property id target;
+
 @end

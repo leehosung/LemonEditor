@@ -184,6 +184,7 @@
     _project = project;
     [inspectorLinkVC setProject:project];
     [propertyIUImportVC setProject:project];
+    [propertyPGFormVC setProject:project];
 }
 
 - (void)performDoubleClick:(NSNotification*)noti{

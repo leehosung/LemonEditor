@@ -1605,7 +1605,16 @@ static NSString * IUCompilerTagOption = @"tag";
     }
 #pragma mark PGForm
     else if ([iu isKindOfClass:[PGForm class]]){
-        [retString appendString:@" method=\"post\" action=\"#\""];
+        
+        NSString *targetStr;
+        if([((PGForm *)iu).target isKindOfClass:[NSString class]]){
+            targetStr = ((PGForm *)iu).target;
+        }
+        else if([((PGForm *)iu).target isKindOfClass:[IUBox class]]){
+            targetStr = ((IUBox *)((PGForm *)iu).target).htmlID;
+        }
+        
+        [retString appendFormat:@" method=\"post\" action=\"%@\"", targetStr];
     }
 #pragma mark PGTextView
     else if([iu isKindOfClass:[PGTextView class]]){

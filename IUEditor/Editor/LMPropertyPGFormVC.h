@@ -14,5 +14,6 @@
 
 @property (nonatomic) IUController      *controller;
 
+- (void)setProject:(IUProject*)project;
 
 @end
