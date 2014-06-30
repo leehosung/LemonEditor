@@ -12,6 +12,7 @@
 #import "LMFontController.h"
 #import "PGTextField.h"
 #import "PGTextView.h"
+#import "PGSubmitButton.h"
 
 @interface LMPropertyFontVC ()
 
@@ -103,7 +104,7 @@
     for(IUBox *box in _controller.selectedObjects){
         if([box isMemberOfClass:[IUBox class]] == NO &&
            [box isKindOfClass:[PGTextField class]] == NO &&
-           [box isKindOfClass:[PGTextView class]] == NO){
+           [box isKindOfClass:[PGTextView class]] == NO && [box isKindOfClass:[PGSubmitButton class]] == NO){
             isTextType = NO;
             break;
         }

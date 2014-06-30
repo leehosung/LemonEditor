@@ -43,6 +43,9 @@
         _label = label;
     
     [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
+    
+    [self updateHTML];
+    [self updateJS];
 }
 
 
