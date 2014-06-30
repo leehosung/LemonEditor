@@ -57,10 +57,11 @@ static LMStartPreviewWC *gStartPreviewWindow = nil;
     
     [_imageScrollView setDocumentView:_imageView];
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    [self updateWindowValue];
 }
 
 - (void)awakeFromNib{
-    [self updateWindowValue];
+
 }
 
 - (void)updateWindowValue{
@@ -109,12 +110,21 @@ static LMStartPreviewWC *gStartPreviewWindow = nil;
     }
     [self updateImageValue];
 }
+
 - (IBAction)clickPrevImageBtn:(id)sender {
     if(currentCount > 1){
         currentCount--;
     }
     [self updateImageValue];
     
+}
+
+- (void)showWindow:(id)sender{
+    [super showWindow:sender];
+    
+    [[_imageScrollView contentView] scrollToPoint:NSMakePoint(0, [[_imageView image] size].height)];
+    [_imageScrollView reflectScrolledClipView:[_imageScrollView contentView]];
+
 }
 
 - (void)updateImageValue{

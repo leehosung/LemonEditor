@@ -47,6 +47,9 @@
     [self.templateAC setSelectionIndex:0];
 }
 - (IBAction)pressSelectBtn:(id)sender {
+    
+    LMStartPreviewWC *preview = [LMStartPreviewWC sharedStartPreviewWindow];
+    [preview close];
 
     if(self.templateAC.selectedObjects.count <=0){
      return;
@@ -60,6 +63,7 @@
         return;
     }
     
+    
     NSURL *targetURL = [url URLByAppendingPathComponent:item.name];
     NSString *targetPath = [targetURL path];
     [[JDFileUtil util] unzipResource:item.packagePath toDirectory:targetPath createDirectory:YES];
@@ -70,9 +74,9 @@
 
  }
 
-- (IBAction)pressPreviewBtn:(id)sender {
+- (void)pressPreviewBtn:(LMStartItem *)clickedItem {
     LMStartPreviewWC *preview = [LMStartPreviewWC sharedStartPreviewWindow];
-    BOOL loaded = [preview loadStartItem:self.templateAC.selectedObjects[0]];
+    BOOL loaded = [preview loadStartItem:clickedItem];
     if(loaded){
         [preview showWindow:self];
     }
