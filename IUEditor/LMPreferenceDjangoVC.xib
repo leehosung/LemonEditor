@@ -57,7 +57,7 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="2no-2Y-iac" name="value" keyPath="values.djangoPort" id="eYs-Ya-QK8">
+                        <binding destination="2no-2Y-iac" name="value" keyPath="values.DjangoDebugPort" id="o6x-rP-Yoo">
                             <dictionary key="options">
                                 <string key="NSNullPlaceholder">8000</string>
                             </dictionary>
