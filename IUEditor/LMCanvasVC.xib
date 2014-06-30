@@ -81,7 +81,7 @@ DQ
                         </button>
                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IGf-fA-uop">
                             <rect key="frame" x="25" y="-2" width="82" height="32"/>
-                            <buttonCell key="cell" type="push" title="debug" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="b6w-Mc-HIg">
+                            <buttonCell key="cell" type="push" title="debug" bezelStyle="rounded" alignment="center" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="b6w-Mc-HIg">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
