@@ -225,7 +225,7 @@
                 if (theEvent.clickCount == 1){
                     if( [theEvent modifierFlags] & NSCommandKeyMask ){
                         //여러개 select 하는 순간 editing mode out
-                        [[self webView] setEditable:NO];
+                        //[[self webView] setEditable:NO];
                         
                         //이미 select되어 있으면 deselect
                         if( [((LMCanvasVC *)self.delegate) containsIU:currentIUID] ){
@@ -237,10 +237,12 @@
                     }
                     else{
                         //다른 iu를 선택하는 순간 editing mode out
+                        /*
                         if([self isDifferentIU:currentIUID]){
                             [[self webView] setEditable:NO];
                             
                         }
+                         */
                         [((LMCanvasVC *)self.delegate) setSelectedIU:currentIUID];
                     }
                     
