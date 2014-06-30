@@ -89,6 +89,10 @@
 
 #pragma mark - application delegate
 
+- (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender{
+    return NO;
+}
+
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag{
     if(flag == NO) {
@@ -109,9 +113,11 @@
         [self showStartWC:self];
         
 #endif
+        return NO;
     }
-    return NO;
+    return YES;
 }
+
 
 
 @end
