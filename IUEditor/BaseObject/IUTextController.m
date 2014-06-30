@@ -429,7 +429,7 @@
     //부분적용
     NSString *startId, *endId;
     NSRange minRange = NSMakeRange(_innerText.length, _innerText.length);
-    NSRange maxRange = NSZeroRange;
+    NSRange maxRange = NSMakeRange(0, 0);
     NSArray *selectedArray = [self cssArraysOfCurrentRange];
     for(NSString *identifier in selectedArray){
         IUCSS *css = [_cssDict objectForKey:identifier];

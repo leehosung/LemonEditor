@@ -162,7 +162,7 @@
 
 - (BOOL)setSelectionIndexPaths:(NSArray *)indexPaths{
     [self willChangeValueForKey:@"selectedTextRange"];
-    _selectedTextRange = NSZeroRange;
+    _selectedTextRange = NSMakeRange(0, 0);
     BOOL result = [super setSelectionIndexPaths:indexPaths];
     [self didChangeValueForKey:@"selectedTextRange"];
     return result;
@@ -170,7 +170,7 @@
 
 - (BOOL)setSelectionIndexPath:(NSIndexPath *)indexPath{
     [self willChangeValueForKey:@"selectedTextRange"];
-    _selectedTextRange = NSZeroRange;
+    _selectedTextRange = NSMakeRange(0, 0);
     BOOL result = [super setSelectionIndexPath:indexPath];
     [self didChangeValueForKey:@"selectedTextRange"];
     return result;
