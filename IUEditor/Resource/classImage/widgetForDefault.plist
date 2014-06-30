@@ -96,7 +96,7 @@
 	</dict>
 	<dict>
 		<key>isWidget</key>
-		<true/>
+		<false/>
 		<key>className</key>
 		<string>PGPageLinkSet</string>
 		<key>classImage</key>

@@ -147,10 +147,10 @@
         [sourceCode removeBlock:@"IUEditor.JS"];
         
         //insert event.js
-        NSString *eventJs = @"<script type=\"text/javascript\" src=\"resource/JS/iuevent.js\"></script>";
+        NSString *eventJs = @"<script type=\"text/javascript\" src=\"resource/js/iuevent.js\"></script>";
         [sourceCode replaceCodeString:@"<!-- IUEvent.JS -->" toCodeString:eventJs];
         
-        NSString *initJS = @"<script type=\"text/javascript\" src=\"resource/JS/iuinit.js\"></script>";
+        NSString *initJS = @"<script type=\"text/javascript\" src=\"resource/js/iuinit.js\"></script>";
         [sourceCode replaceCodeString:@"<!-- IUInit.JS -->" toCodeString:initJS];
         
         
