@@ -31,6 +31,23 @@
     return self;
 }
 
+
+- (id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
+    self = [super initWithProject:project options:options];
+    if(self){
+        
+        [self.css setValue:[NSColor whiteColor] forTag:IUCSSTagBGColor forWidth:IUCSSMaxViewPortWidth];
+        
+        
+        [self.css eradicateTag:IUCSSTagX];
+        [self.css eradicateTag:IUCSSTagY];
+        [self.css eradicateTag:IUCSSTagWidth];
+        [self.css eradicateTag:IUCSSTagHeight];
+    }
+    return self;
+}
+
+
 - (BOOL)floatRightChangeable{
     return NO;
 }
@@ -43,16 +60,6 @@
     return NO;
 }
 
-- (id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
-    self = [super initWithProject:project options:options];
-    if(self){
-        [self.css eradicateTag:IUCSSTagX];
-        [self.css eradicateTag:IUCSSTagY];
-        [self.css eradicateTag:IUCSSTagWidth];
-        [self.css eradicateTag:IUCSSTagHeight];
-    }
-    return self;
-}
 
 -(IUBackground*)background{
     return _background;

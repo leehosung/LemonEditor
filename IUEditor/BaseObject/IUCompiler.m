@@ -1234,10 +1234,10 @@ static NSString * IUCompilerTagOption = @"tag";
             
             if(enableGraident){
                 if(bgColor2 == nil){
-                    bgColor2 = [NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:1];
+                    bgColor2 = [NSColor rgbColorRed:0 green:0 blue:0 alpha:1];
                 }
                 if(bgColor1 == nil){
-                    bgColor1 = [NSColor colorWithDeviceRed:0 green:0 blue:0 alpha:1];
+                    bgColor1 = [NSColor rgbColorRed:0 green:0 blue:0 alpha:1];
                 }
                 [dict putTag:@"background-color" color:bgColor1 ignoreClearColor:YES];
                 

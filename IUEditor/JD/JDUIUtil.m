@@ -932,6 +932,10 @@ static NSWindowController *hudWC;
         return [self rgbString];
     }
 }
+
++ (NSColor *)rgbColorRed:(int)red green:(int)green blue:(int)blue alpha:(float)alpha{
+    return [NSColor colorWithCalibratedRed:(float)((float)red/256) green:(float)((float)green/256) blue:(float)((float)blue/256) alpha:alpha];
+}
 + (NSColor *)randomColor {
     static int seeded;
     if (seeded == 0) {

@@ -71,6 +71,7 @@ BOOL   isNSRectContainsRect(NSRect rect, NSRect subrect);
 -(NSString *)rgbStringWithTransparent;
 - (NSString *)cssBGString;
 -(NSColor*) complementaryColor;
++ (NSColor *)rgbColorRed:(int)red green:(int)green blue:(int)blue alpha:(float)alpha;
 @end
 
 @interface NSString(JDExtenstion2)

@@ -1327,12 +1327,12 @@
 		69FFB2801950309E00DA2783 /* LMInspectorLinkVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMInspectorLinkVC.h; sourceTree = "<group>"; };
 		69FFB2811950309E00DA2783 /* LMInspectorLinkVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMInspectorLinkVC.m; sourceTree = "<group>"; };
 		69FFB2821950309E00DA2783 /* LMInspectorLinkVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMInspectorLinkVC.xib; sourceTree = "<group>"; };
-		69FFB285195041E500DA2783 /* LMPropertyProgrammingType1VC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMPropertyProgrammingType1VC.h; path = IUEditor/LMPropertyProgrammingType1VC.h; sourceTree = "<group>"; };
-		69FFB286195041E500DA2783 /* LMPropertyProgrammingType1VC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMPropertyProgrammingType1VC.m; path = IUEditor/LMPropertyProgrammingType1VC.m; sourceTree = "<group>"; };
-		69FFB287195041E500DA2783 /* LMPropertyProgrammingType1VC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMPropertyProgrammingType1VC.xib; path = IUEditor/LMPropertyProgrammingType1VC.xib; sourceTree = "<group>"; };
-		69FFB288195041E500DA2783 /* LMPropertyProgrammingType2VC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMPropertyProgrammingType2VC.h; path = IUEditor/LMPropertyProgrammingType2VC.h; sourceTree = "<group>"; };
-		69FFB289195041E500DA2783 /* LMPropertyProgrammingType2VC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMPropertyProgrammingType2VC.m; path = IUEditor/LMPropertyProgrammingType2VC.m; sourceTree = "<group>"; };
-		69FFB28A195041E500DA2783 /* LMPropertyProgrammingType2VC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMPropertyProgrammingType2VC.xib; path = IUEditor/LMPropertyProgrammingType2VC.xib; sourceTree = "<group>"; };
+		69FFB285195041E500DA2783 /* LMPropertyProgrammingType1VC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyProgrammingType1VC.h; sourceTree = "<group>"; };
+		69FFB286195041E500DA2783 /* LMPropertyProgrammingType1VC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyProgrammingType1VC.m; sourceTree = "<group>"; };
+		69FFB287195041E500DA2783 /* LMPropertyProgrammingType1VC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyProgrammingType1VC.xib; sourceTree = "<group>"; };
+		69FFB288195041E500DA2783 /* LMPropertyProgrammingType2VC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyProgrammingType2VC.h; sourceTree = "<group>"; };
+		69FFB289195041E500DA2783 /* LMPropertyProgrammingType2VC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyProgrammingType2VC.m; sourceTree = "<group>"; };
+		69FFB28A195041E500DA2783 /* LMPropertyProgrammingType2VC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyProgrammingType2VC.xib; sourceTree = "<group>"; };
 		CB357335195031E700D2D203 /* Melissa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Melissa.jpg; sourceTree = "<group>"; };
 		CB3573371950408D00D2D203 /* Melissa.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = Melissa.zip; sourceTree = "<group>"; };
 		CB370E30192D93580074F3F8 /* iueditorHome.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = iueditorHome.zip; sourceTree = "<group>"; };
@@ -1504,6 +1504,12 @@
 		3D825BC5195940C1001CC3C2 /* DefaultProperty */ = {
 			isa = PBXGroup;
 			children = (
+				69FFB285195041E500DA2783 /* LMPropertyProgrammingType1VC.h */,
+				69FFB286195041E500DA2783 /* LMPropertyProgrammingType1VC.m */,
+				69FFB287195041E500DA2783 /* LMPropertyProgrammingType1VC.xib */,
+				69FFB288195041E500DA2783 /* LMPropertyProgrammingType2VC.h */,
+				69FFB289195041E500DA2783 /* LMPropertyProgrammingType2VC.m */,
+				69FFB28A195041E500DA2783 /* LMPropertyProgrammingType2VC.xib */,
 				69FFB2801950309E00DA2783 /* LMInspectorLinkVC.h */,
 				69FFB2811950309E00DA2783 /* LMInspectorLinkVC.m */,
 				69FFB2821950309E00DA2783 /* LMInspectorLinkVC.xib */,
@@ -2418,18 +2424,9 @@
 			children = (
 				69DE5CE419614E2B0050D020 /* Server */,
 				69FEC48B194845B600483C11 /* Help */,
-				69317CAF1947271F0065B6F4 /* LMHelpWC.h */,
-				69317CB01947271F0065B6F4 /* LMHelpWC.m */,
-				69317CB11947271F0065B6F4 /* LMHelpWC.xib */,
 				698E83FD19358C14002CE47B /* LMProjectConvertWC.h */,
 				698E83FE19358C14002CE47B /* LMProjectConvertWC.m */,
 				698E83FF19358C14002CE47B /* LMProjectConvertWC.xib */,
-				69FFB285195041E500DA2783 /* LMPropertyProgrammingType1VC.h */,
-				69FFB286195041E500DA2783 /* LMPropertyProgrammingType1VC.m */,
-				69FFB287195041E500DA2783 /* LMPropertyProgrammingType1VC.xib */,
-				69FFB288195041E500DA2783 /* LMPropertyProgrammingType2VC.h */,
-				69FFB289195041E500DA2783 /* LMPropertyProgrammingType2VC.m */,
-				69FFB28A195041E500DA2783 /* LMPropertyProgrammingType2VC.xib */,
 				69B260E619594E4F007D905C /* font.png */,
 				699D12DA1957D17A0096B21C /* handArrow.jpg */,
 				CBFBE67C192A07A300F03F76 /* SampleTemplate */,
@@ -2615,9 +2612,12 @@
 		69FEC48B194845B600483C11 /* Help */ = {
 			isa = PBXGroup;
 			children = (
-				69FEC48C194845BD00483C11 /* PDF */,
+				69317CAF1947271F0065B6F4 /* LMHelpWC.h */,
+				69317CB01947271F0065B6F4 /* LMHelpWC.m */,
+				69317CB11947271F0065B6F4 /* LMHelpWC.xib */,
 				69FEC48F19484DF000483C11 /* LMHelpMenuItem.h */,
 				69FEC49019484DF000483C11 /* LMHelpMenuItem.m */,
+				69FEC48C194845BD00483C11 /* PDF */,
 			);
 			name = Help;
 			sourceTree = "<group>";
