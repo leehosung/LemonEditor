@@ -189,6 +189,7 @@
 		3DA416B91935A6BE00559028 /* LMPreferenceFontVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DA416B71935A6BE00559028 /* LMPreferenceFontVC.xib */; };
 		3DA416BD1935ABB400559028 /* LMFontController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA416BC1935ABB400559028 /* LMFontController.m */; };
 		3DA416C31935B29200559028 /* defaultFont.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DA416C21935B29200559028 /* defaultFont.plist */; };
+		3DA6F2EB1962AE33004DF0AA /* iueditor.iu.zip in Resources */ = {isa = PBXBuildFile; fileRef = 3DA6F2EA1962AE33004DF0AA /* iueditor.iu.zip */; };
 		3DA72903192B5ABC00203764 /* IUTextController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA72902192B5ABC00203764 /* IUTextController.m */; };
 		3DAEEDFD1938537700196A81 /* image_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DAEEDFC1938537700196A81 /* image_default.png */; };
 		3DAEEE00193C3D2500196A81 /* iuinit.js in Resources */ = {isa = PBXBuildFile; fileRef = 3DAEEDFE193C36E600196A81 /* iuinit.js */; };
@@ -213,7 +214,6 @@
 		3DBC932F18F647EC00F217BD /* iu.js in Resources */ = {isa = PBXBuildFile; fileRef = 69B9A39A18E6B1860007D6E2 /* iu.js */; };
 		3DBD7C19195D61B5003E386C /* LMCloseWC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD7C17195D61B5003E386C /* LMCloseWC.m */; };
 		3DBD7C1A195D61B5003E386C /* LMCloseWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DBD7C18195D61B5003E386C /* LMCloseWC.xib */; };
-		3DBD7C2019610D17003E386C /* iueditor.iu.zip in Resources */ = {isa = PBXBuildFile; fileRef = 3DBD7C1F19610D17003E386C /* iueditor.iu.zip */; };
 		3DBD7C2419612107003E386C /* LMStartPreviewWC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD7C2219612107003E386C /* LMStartPreviewWC.m */; };
 		3DBD7C2519612107003E386C /* LMStartPreviewWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DBD7C2319612107003E386C /* LMStartPreviewWC.xib */; };
 		3DBD7C2819612755003E386C /* LMStartItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD7C2719612755003E386C /* LMStartItem.m */; };
@@ -791,6 +791,7 @@
 		3DA416BB1935ABB400559028 /* LMFontController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMFontController.h; sourceTree = "<group>"; };
 		3DA416BC1935ABB400559028 /* LMFontController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMFontController.m; sourceTree = "<group>"; };
 		3DA416C21935B29200559028 /* defaultFont.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaultFont.plist; sourceTree = "<group>"; };
+		3DA6F2EA1962AE33004DF0AA /* iueditor.iu.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = iueditor.iu.zip; sourceTree = "<group>"; };
 		3DA72901192B5ABC00203764 /* IUTextController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUTextController.h; sourceTree = "<group>"; };
 		3DA72902192B5ABC00203764 /* IUTextController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUTextController.m; sourceTree = "<group>"; };
 		3DAEEDFC1938537700196A81 /* image_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_default.png; sourceTree = "<group>"; };
@@ -832,7 +833,6 @@
 		3DBD7C16195D61B5003E386C /* LMCloseWC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMCloseWC.h; path = Editor/LMCloseWC.h; sourceTree = "<group>"; };
 		3DBD7C17195D61B5003E386C /* LMCloseWC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMCloseWC.m; path = Editor/LMCloseWC.m; sourceTree = "<group>"; };
 		3DBD7C18195D61B5003E386C /* LMCloseWC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMCloseWC.xib; path = Editor/LMCloseWC.xib; sourceTree = "<group>"; };
-		3DBD7C1F19610D17003E386C /* iueditor.iu.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = iueditor.iu.zip; sourceTree = "<group>"; };
 		3DBD7C2119612107003E386C /* LMStartPreviewWC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMStartPreviewWC.h; path = Editor/LMStartPreviewWC.h; sourceTree = "<group>"; };
 		3DBD7C2219612107003E386C /* LMStartPreviewWC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMStartPreviewWC.m; path = Editor/LMStartPreviewWC.m; sourceTree = "<group>"; };
 		3DBD7C2319612107003E386C /* LMStartPreviewWC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMStartPreviewWC.xib; path = Editor/LMStartPreviewWC.xib; sourceTree = "<group>"; };
@@ -1692,10 +1692,10 @@
 		3DBD7C1B19610CD0003E386C /* Sample1 */ = {
 			isa = PBXGroup;
 			children = (
+				3DA6F2EA1962AE33004DF0AA /* iueditor.iu.zip */,
 				3DBD7C2919612FEC003E386C /* iueditor_preview.png */,
 				3DBD7C2A19612FEC003E386C /* iueditor_thumbnail.png */,
 				3DBD7C2B19612FEC003E386C /* iueditor_thumbnail@2x.png */,
-				3DBD7C1F19610D17003E386C /* iueditor.iu.zip */,
 			);
 			name = Sample1;
 			sourceTree = "<group>";
@@ -2924,7 +2924,6 @@
 				3D748C82192095A1005665A3 /* LMPropertyIUPageVC.xib in Resources */,
 				262D4AA71947FB05006F5FBE /* radius_icon_02@2x.png in Resources */,
 				267CB1A5190F93370079E565 /* tab_primary.png in Resources */,
-				3DBD7C2019610D17003E386C /* iueditor.iu.zip in Resources */,
 				3DED26631900D313001A1D67 /* align_left@2x.png in Resources */,
 				3DF8045018FE62FC00913505 /* tool_transition@2x.png in Resources */,
 				262D4AB719481DA2006F5FBE /* tab_on_03@2x.png in Resources */,
@@ -3086,6 +3085,7 @@
 				262D4AB419481DA2006F5FBE /* tab_on_02.png in Resources */,
 				3DED27441907898A001A1D67 /* video_play.png in Resources */,
 				3DF8044818FE62FC00913505 /* tool_mail@2x.png in Resources */,
+				3DA6F2EB1962AE33004DF0AA /* iueditor.iu.zip in Resources */,
 				3DED26E819010B82001A1D67 /* LMPropertyIUMovieVC.xib in Resources */,
 				262D4AB619481DA2006F5FBE /* tab_on_03.png in Resources */,
 				3DED267D1900D329001A1D67 /* stack_textfield.png in Resources */,

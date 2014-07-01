@@ -114,7 +114,7 @@
     self = [super init];
     if (self) {
         [aDecoder decodeToObject:self withProperties:[[IUBox class] propertiesWithOutProperties:@[@"delegate", @"textType"]]];
-        
+
         _textType = [aDecoder decodeInt32ForKey:@"textType"] ;
         _css = [aDecoder decodeObjectForKey:@"css"];
         _css.delegate = self;
