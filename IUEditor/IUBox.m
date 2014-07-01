@@ -113,7 +113,9 @@
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];
     if (self) {
-        [aDecoder decodeToObject:self withProperties:[[IUBox class] propertiesWithOutProperties:@[@"delegate"]]];
+        [aDecoder decodeToObject:self withProperties:[[IUBox class] propertiesWithOutProperties:@[@"delegate", @"textType"]]];
+        
+        _textType = [aDecoder decodeInt32ForKey:@"textType"] ;
         _css = [aDecoder decodeObjectForKey:@"css"];
         _css.delegate = self;
         _event = [aDecoder decodeObjectForKey:@"event"];
@@ -783,7 +785,6 @@
 - (BOOL)canChangeOverflow{
     return YES;
 }
-
 
 #if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
 #pragma mark -text

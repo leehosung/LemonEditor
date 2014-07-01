@@ -224,8 +224,6 @@
 		3DD4786F193DB33600639AB5 /* LMDebugSourceWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD4786D193DB33600639AB5 /* LMDebugSourceWC.xib */; };
 		3DD47873193DCCF900639AB5 /* LMPropertyPGFormVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD47871193DCCF900639AB5 /* LMPropertyPGFormVC.m */; };
 		3DD47874193DCCF900639AB5 /* LMPropertyPGFormVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD47872193DCCF900639AB5 /* LMPropertyPGFormVC.xib */; };
-		3DD47878193DCEB600639AB5 /* LMPropertyIUTextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD47876193DCEB600639AB5 /* LMPropertyIUTextVC.m */; };
-		3DD47879193DCEB600639AB5 /* LMPropertyIUTextVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD47877193DCEB600639AB5 /* LMPropertyIUTextVC.xib */; };
 		3DD4787D193DDCE100639AB5 /* LMPropertyScrollVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD4787B193DDCE100639AB5 /* LMPropertyScrollVC.m */; };
 		3DD4787E193DDCE100639AB5 /* LMPropertyScrollVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD4787C193DDCE100639AB5 /* LMPropertyScrollVC.xib */; };
 		3DD478811945850E00639AB5 /* IUProjectDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD478801945850E00639AB5 /* IUProjectDocument.m */; };
@@ -849,9 +847,6 @@
 		3DD47870193DCCF900639AB5 /* LMPropertyPGFormVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMPropertyPGFormVC.h; path = Editor/LMPropertyPGFormVC.h; sourceTree = "<group>"; };
 		3DD47871193DCCF900639AB5 /* LMPropertyPGFormVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMPropertyPGFormVC.m; path = Editor/LMPropertyPGFormVC.m; sourceTree = "<group>"; };
 		3DD47872193DCCF900639AB5 /* LMPropertyPGFormVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMPropertyPGFormVC.xib; path = Editor/LMPropertyPGFormVC.xib; sourceTree = "<group>"; };
-		3DD47875193DCEB600639AB5 /* LMPropertyIUTextVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMPropertyIUTextVC.h; path = Editor/LMPropertyIUTextVC.h; sourceTree = "<group>"; };
-		3DD47876193DCEB600639AB5 /* LMPropertyIUTextVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMPropertyIUTextVC.m; path = Editor/LMPropertyIUTextVC.m; sourceTree = "<group>"; };
-		3DD47877193DCEB600639AB5 /* LMPropertyIUTextVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMPropertyIUTextVC.xib; path = Editor/LMPropertyIUTextVC.xib; sourceTree = "<group>"; };
 		3DD4787A193DDCE100639AB5 /* LMPropertyScrollVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMPropertyScrollVC.h; path = Editor/LMPropertyScrollVC.h; sourceTree = "<group>"; };
 		3DD4787B193DDCE100639AB5 /* LMPropertyScrollVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMPropertyScrollVC.m; path = Editor/LMPropertyScrollVC.m; sourceTree = "<group>"; };
 		3DD4787C193DDCE100639AB5 /* LMPropertyScrollVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMPropertyScrollVC.xib; path = Editor/LMPropertyScrollVC.xib; sourceTree = "<group>"; };
@@ -2188,9 +2183,6 @@
 				3D748C7E192095A1005665A3 /* LMPropertyIUPageVC.h */,
 				3D748C7F192095A1005665A3 /* LMPropertyIUPageVC.m */,
 				3D748C80192095A1005665A3 /* LMPropertyIUPageVC.xib */,
-				3DD47875193DCEB600639AB5 /* LMPropertyIUTextVC.h */,
-				3DD47876193DCEB600639AB5 /* LMPropertyIUTextVC.m */,
-				3DD47877193DCEB600639AB5 /* LMPropertyIUTextVC.xib */,
 				3D14AE011953D06600E7C2E4 /* LMPropertyTextVC.h */,
 				3D14AE021953D06600E7C2E4 /* LMPropertyTextVC.m */,
 				3D14AE031953D06600E7C2E4 /* LMPropertyTextVC.xib */,
@@ -3115,7 +3107,6 @@
 				3DED274919078991001A1D67 /* clear_color.png in Resources */,
 				3DED26491900D2DE001A1D67 /* align_center@2x.png in Resources */,
 				69761BC418F04ECD00C4EDC6 /* LMPropertyBGImageVC.xib in Resources */,
-				3DD47879193DCEB600639AB5 /* LMPropertyIUTextVC.xib in Resources */,
 				3D14AE051953D06600E7C2E4 /* LMPropertyTextVC.xib in Resources */,
 				26C8565F192060DC00118CA5 /* stack_page_nav.png in Resources */,
 				3DED2763190E38C5001A1D67 /* bx_loader.gif in Resources */,
@@ -3205,7 +3196,6 @@
 				6985CBA018E31558008DBF50 /* IUSheetGroup.m in Sources */,
 				3DB3ACFD18EC1F700046DFB7 /* LMCanvasVC.m in Sources */,
 				6979FC0718ED34E20060C3B4 /* LMPropertyFrameVC.m in Sources */,
-				3DD47878193DCEB600639AB5 /* LMPropertyIUTextVC.m in Sources */,
 				3D14886318F6AE5700E8EE4C /* LMCenterClipView.m in Sources */,
 				69D15F6F18E893170046FBB0 /* LMBottomToolbarVC.m in Sources */,
 				694E3CDB18FCF739005077B3 /* IUCarousel.m in Sources */,

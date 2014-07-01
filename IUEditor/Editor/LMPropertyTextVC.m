@@ -11,6 +11,8 @@
 @interface LMPropertyTextVC ()
 
 @property (unsafe_unretained) IBOutlet NSTextView *textView;
+@property (weak) IBOutlet NSMatrix *textTypeMatrix;
+
 
 @end
 
@@ -31,6 +33,8 @@
                                    forKeys:@[NSRaisesForNotApplicableKeysBindingOption, NSContinuouslyUpdatesValueBindingOption]];
 
     [_textView bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"text"] options:bindingOption];
+
+    [_textTypeMatrix bind:NSSelectedIndexBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"textType"] options:IUBindingDictNotRaisesApplicable];
 
     
 }

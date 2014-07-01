@@ -54,6 +54,12 @@ typedef enum _IUPositionType{
     IUPositionTypeFixed,
 }IUPositionType;
 
+typedef enum{
+    IUTextTypeDefault,
+    IUTextTypeH1,
+    IUTextTypeH2,
+}IUTextType;
+
 typedef enum _IUOverflowType{
     IUOverflowTypeHidden,
     IUOverflowTypeVisible,
@@ -188,7 +194,7 @@ typedef enum _IUOverflowType{
 @property float opacityMove;
 @property float xPosMove;
 //0 for default, 1 for H1, 2 for H2
-@property NSUInteger textType;
+@property IUTextType textType;
 
 - (void)confirm;
 

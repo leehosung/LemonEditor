@@ -25,7 +25,6 @@
 #import "LMPropertyIUPageLinkSetVC.h"
 #import "LMPropertyIUPageVC.h"
 #import "LMPropertyPGFormVC.h"
-#import "LMPropertyIUTextVC.h"
 #import "PGSubmitButtonVC.h"
 #import "LMInspectorAltTextVC.h"
 
@@ -68,7 +67,6 @@
     LMPropertyIUPageVC * propertyIUPageVC;
     
     LMPropertyPGFormVC *propertyPGFormVC;
-    LMPropertyIUTextVC *propertyIUTextVC;
     
     PGSubmitButtonVC *propertyPGSubmitButtonVC;
     
@@ -130,8 +128,6 @@
         propertyIUPageVC = [[LMPropertyIUPageVC alloc] initWithNibName:[LMPropertyIUPageVC class].className bundle:nil];
         propertyPGFormVC = [[LMPropertyPGFormVC alloc] initWithNibName:[LMPropertyPGFormVC class].className bundle:nil];
         
-        propertyIUTextVC = [[LMPropertyIUTextVC alloc] initWithNibName:[LMPropertyIUTextVC class].className bundle:nil];
-        
         propertyPGSubmitButtonVC = [[PGSubmitButtonVC alloc] initWithNibName:[PGSubmitButtonVC class].className bundle:nil];
         
         
@@ -172,14 +168,11 @@
     [propertyIUPageVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     
     [propertyPGFormVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
-    [propertyIUTextVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
-    
     [propertyPGSubmitButtonVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     [propertyPGType1VC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
     [propertyPGType2VC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
 
     [propertyWebProgramming bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
-
     
 #if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
     [propertyTextVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
@@ -278,7 +271,7 @@
     }
     
     else if ([classString isEqualToString:@"IUBox"]){
-        self.propertyVArray = [NSMutableArray arrayWithArray:@[propertyTextVC.view, inspectorLinkVC.view, propertyPGType2VC.view]];
+        self.propertyVArray = [NSMutableArray arrayWithArray:@[propertyTextVC.view, ainspectorLinkVC.view, propertyPGType2VC.view]];
         doubleClickFocusVC = propertyTextVC;
     }
     

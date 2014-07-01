@@ -13,6 +13,8 @@
 #import "JDCode.h"
 #import "IUResourceManager.h"
 
+static NSString * IUCompilerTagOption = @"tag";
+
 @class IUSheet;
 @class IUResourceManager;
 

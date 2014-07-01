@@ -414,16 +414,17 @@
     return dict;
 }
 
-static NSString * IUCompilerTagOption = @"tag";
+
+
 -(JDCode*)outputHTMLAsBox:(IUBox*)iu option:(NSDictionary*)option{
     NSString *tag = @"div";
     if ([iu isKindOfClass:[PGForm class]]) {
         tag = @"form";
     }
-    else if (iu.textType == 1){
+    else if (iu.textType == IUTextTypeH1){
         tag = @"h1";
     }
-    else if (iu.textType == 2){
+    else if (iu.textType == IUTextTypeH2){
         tag = @"h2";
     }
     JDCode *code = [[JDCode alloc] init];

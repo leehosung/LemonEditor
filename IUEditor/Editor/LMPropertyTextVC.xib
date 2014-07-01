@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyTextVC">
             <connections>
+                <outlet property="textTypeMatrix" destination="3DW-U9-DKt" id="Pqq-E4-qLZ"/>
                 <outlet property="textView" destination="SZP-VW-SGu" id="CIO-sj-APX"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -26,10 +27,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="252" height="198"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="minSize" width="252" height="198"/>
+                                <size key="minSize" width="237" height="198"/>
                                 <size key="maxSize" width="463" height="10000000"/>
                                 <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="minSize" width="252" height="198"/>
+                                <size key="minSize" width="237" height="198"/>
                                 <size key="maxSize" width="463" height="10000000"/>
                             </textView>
                         </subviews>
@@ -70,6 +71,40 @@
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="system"/>
                 </box>
+                <matrix verticalHuggingPriority="750" allowsEmptySelection="NO" autorecalculatesCellSize="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3DW-U9-DKt">
+                    <rect key="frame" x="136" y="219" width="140" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="140" id="0iK-we-9wC"/>
+                        <constraint firstAttribute="height" constant="18" id="mcu-sY-Okh"/>
+                    </constraints>
+                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    <size key="cellSize" width="44" height="18"/>
+                    <size key="intercellSpacing" width="4" height="2"/>
+                    <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" controlSize="small" inset="2" id="8au-aH-ofR">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                    <cells>
+                        <column>
+                            <buttonCell type="radio" title="Text" imagePosition="left" alignment="left" controlSize="small" state="on" tag="1" inset="2" id="Mqg-j7-sM2">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="smallSystem"/>
+                            </buttonCell>
+                        </column>
+                        <column>
+                            <buttonCell type="radio" title="H1" imagePosition="left" alignment="left" controlSize="small" inset="2" id="Rtz-5Y-kBX">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="smallSystem"/>
+                            </buttonCell>
+                        </column>
+                        <column>
+                            <buttonCell type="radio" title="H2" imagePosition="left" alignment="left" controlSize="small" inset="2" id="4lT-Vn-Ex1">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="smallSystem"/>
+                            </buttonCell>
+                        </column>
+                    </cells>
+                </matrix>
             </subviews>
             <constraints>
                 <constraint firstItem="r91-1S-Lyg" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="22" id="BRS-C0-RQg"/>
@@ -78,6 +113,8 @@
                 <constraint firstItem="JCt-F7-wxr" firstAttribute="top" secondItem="0tW-fg-K0n" secondAttribute="bottom" constant="8" id="Pme-Fr-SyI"/>
                 <constraint firstItem="0tW-fg-K0n" firstAttribute="top" secondItem="r91-1S-Lyg" secondAttribute="bottom" constant="-232" id="Qft-Yx-vpu"/>
                 <constraint firstItem="JCt-F7-wxr" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="22" id="S2e-H7-fi1"/>
+                <constraint firstItem="3DW-U9-DKt" firstAttribute="trailing" secondItem="JCt-F7-wxr" secondAttribute="trailing" id="eny-7v-5D4"/>
+                <constraint firstItem="0tW-fg-K0n" firstAttribute="centerY" secondItem="3DW-U9-DKt" secondAttribute="centerY" id="rTu-TU-zkt"/>
             </constraints>
         </customView>
     </objects>
