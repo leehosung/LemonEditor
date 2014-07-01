@@ -171,19 +171,22 @@
         NSMenuItem *openItem = [[NSMenuItem alloc] initWithTitle:@"Show in Finder" action:@selector(openProject:) keyEquivalent:@""];
         openItem.tag = row;
         openItem.target = self;
+        [menu addItem:openItem];
+        
 
         NSMenuItem *removeItem = [[NSMenuItem alloc] initWithTitle:@"Remove Document" action:@selector(removeDocument:) keyEquivalent:@""];
         removeItem.tag = row;
         removeItem.target = self;
-        
-        NSMenuItem *copyItem = [[NSMenuItem alloc] initWithTitle:@"Copy Document" action:@selector(copyDocument:) keyEquivalent:@""];
-        copyItem.tag = row;
-        copyItem.target = self;
-        
-        [menu addItem:openItem];
         [menu addItem:removeItem];
+        
+        if([node isKindOfClass:[IUClass class]]){
+            NSMenuItem *copyItem = [[NSMenuItem alloc] initWithTitle:@"Copy Document" action:@selector(copyDocument:) keyEquivalent:@""];
+            copyItem.tag = row;
+            copyItem.target = self;
+            [menu addItem:copyItem];
+        }
 
-        [menu addItem:copyItem];
+
         return menu;
     }
 

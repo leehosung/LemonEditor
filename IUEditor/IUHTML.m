@@ -30,6 +30,14 @@
 
 }
 
+- (id)copyWithZone:(NSZone *)zone{
+    IUHTML *html = [super copyWithZone:zone];
+    if(html){
+        html.innerHTML = [_innerHTML copy];
+    }
+    return html;
+}
+
 -(BOOL)shouldAddIUByUserInput{
     return NO;
 }
