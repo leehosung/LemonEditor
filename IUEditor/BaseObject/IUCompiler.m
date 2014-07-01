@@ -1659,7 +1659,7 @@
         IUCarousel *carouselIU = (IUCarousel *)iu;
         [argStr appendString:@"{"];
         if(carouselIU.autoplay){
-            [argStr appendString:@"auto:true, "];
+            [argStr appendString:@"auto:true, autoStart:true, "];
         }
         else{
             [argStr appendString:@"auto:false, "];
@@ -1675,7 +1675,7 @@
                 [argStr appendString:@"pager:false"];
                 break;
             case IUCarouselControlBottom:
-                [argStr appendString:@"autoControls:false"];
+                [argStr appendString:@"pager:true"];
                 break;
         }
         [argStr appendString:@"}"];
