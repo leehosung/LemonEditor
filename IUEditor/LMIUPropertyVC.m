@@ -184,7 +184,6 @@
 #if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
     [propertyTextVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
 #endif
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(performDoubleClick:) name:IUCanvasDoublieClick object:self.view.window];
 }
 
 -(void)setProject:(IUProject *)project{
@@ -194,11 +193,11 @@
     [propertyPGFormVC setProject:project];
 }
 
-- (void)performDoubleClick:(NSNotification*)noti{
+- (void)setFocusForDoubleClickAction{
     if (doubleClickFocusVC) {
         assert([doubleClickFocusVC respondsToSelector:@selector(performFocus:)]);
     }
-    [doubleClickFocusVC performFocus:noti];
+    [doubleClickFocusVC performFocus:nil];
 }
 
 

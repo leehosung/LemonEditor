@@ -58,7 +58,7 @@
 
 //Right-top
 @property (weak) IBOutlet NSTabView *propertyTabV;
-
+@property (weak) IBOutlet NSMatrix *propertyMatrix;
 @property (weak) IBOutlet NSView *propertyV;
 @property (weak) IBOutlet NSView *appearanceV;
 @property (weak) IBOutlet NSView *eventV;
@@ -71,7 +71,6 @@
 
 //canvas
 @property (weak) IBOutlet NSView *centerV;
-@property (weak) IBOutlet NSMatrix *propertyMatrix;
 @property (weak) IBOutlet NSMatrix *widgetMatrix;
 
 @end
@@ -178,8 +177,18 @@
     [[NSUserDefaults standardUserDefaults] addObserver:self forKeyPath:@"showLeftInspector" options:NSKeyValueObservingOptionInitial context:nil];
     [[NSUserDefaults standardUserDefaults] addObserver:self forKeyPath:@"showRightInspector" options:NSKeyValueObservingOptionInitial context:nil];
 
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(performDoubleClick:) name:IUNotificationDoubleClickCanvas object:self.window];
 }
 
+
+- (void)performDoubleClick:(NSNotification*)noti{
+    [_propertyTabV selectTabViewItemAtIndex:1];
+    [_propertyMatrix selectCellAtRow:0 column:1];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [iuInspectorVC setFocusForDoubleClickAction];
+    });
+}
 
 
 - (void)awakeFromNib{
@@ -299,68 +308,6 @@
 - (void)selectFirstDocument{
     [fileNaviVC selectFirstDocument];
 }
-
-#if 0
--(void)loadProject:(NSString*)path{
-    if (path == nil) {
-        return;
-    }
-    //create project class
-    _project = [IUProject projectWithContentsOfPath:path];
-    NSError *error;
-    assert(_project.path);
-    assert(_project.pageDocuments);
-    assert(_project.identifierManager);
-    assert(_project.resourceManager);
-    
-    if (error) {
-        assert(0);
-        return;
-    }
-    if (_project == nil) {
-        return;
-    }
-    
-    //load sizeView
-    for(NSNumber *number in _project.mqSizes){
-        NSInteger frameSize = [number integerValue];
-        [canvasVC addFrame:frameSize];
-    }
-    
-    [_project copyResourceForDebug];
-    
-    
-    
-    // vc setting
-    //construct to file navi
-    canvasVC.documentBasePath = _project.path;
-    canvasVC.resourceManager = _project.resourceManager;
-    fileNaviVC.project = _project;
-    assert(widgetLibraryVC.project == nil);
-    widgetLibraryVC.project = _project;
-    resourceVC.manager = _project.resourceManager;
-    appearanceVC.resourceManager = _project.resourceManager;
-    topToolbarVC.documentController = _documentController;
-    
-    
-    //construct widget library vc
-    [widgetLibraryVC setProject:_project];
-    NSString *widgetFilePath = [[NSBundle mainBundle] pathForResource:@"widgetForDefault" ofType:@"plist"];
-    NSArray *availableWidgetProperties = [NSArray arrayWithContentsOfFile:widgetFilePath];
-    [widgetLibraryVC setWidgetProperties:availableWidgetProperties];
-    iuInspectorVC.resourceManager = _project.resourceManager;
-    
-
-    [[NSDocumentController sharedDocumentController] noteNewRecentDocumentURL:[NSURL fileURLWithPath:path]];
-    
-    [[NSUserDefaults standardUserDefaults] setValue:path forKey:@"lastDocument"];
-    [self.window setTitleWithRepresentedFilename:path];
-    [self.window setTitle:[NSString stringWithFormat:@"[%@] %@", [_project.className substringFromIndex:2], _project.path]];
-    
-    //finished. load file
-    [fileNaviVC selectFirstDocument];
-}
-#endif
 
 -(void)setSelectedNode:(NSObject*)selectedNode{
     _selectedNode = (IUSheet*) selectedNode;

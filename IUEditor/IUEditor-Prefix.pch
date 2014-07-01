@@ -66,7 +66,7 @@
 
 
 
-#define IUCanvasDoublieClick @"IUCanvasDoublieClick"
+#define IUNotificationDoubleClickCanvas @"IUNotificationDoubleClickCanvas"
 
 //called when media query is changed, usually occured by addsize, removesize, selectsize
 #define IUNotificationMQAdded @"MQAdded"

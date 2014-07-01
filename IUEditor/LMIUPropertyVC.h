@@ -20,6 +20,8 @@
 @interface LMIUPropertyVC : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
 
 - (void)setProject:(IUProject*)project;
+- (void)setFocusForDoubleClickAction;
+
 @property (nonatomic) IUController *controller;
 @property (nonatomic) IUResourceManager     *resourceManager;
 
