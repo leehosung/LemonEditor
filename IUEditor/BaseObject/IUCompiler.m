@@ -448,7 +448,7 @@
     }
     else if(iu.text && iu.text.length > 0){
         NSString *htmlText = [iu.text stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
-        htmlText = [htmlText stringByReplacingOccurrencesOfString:@" " withString:@"&nbsp;"];
+        htmlText = [htmlText stringByReplacingOccurrencesOfString:@"  " withString:@" &nbsp;"];
         [code addCodeLineWithFormat:@"<p>%@</p>",htmlText];
     }
 
@@ -688,7 +688,7 @@
 #if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
     if(iu.text && iu.text.length > 0){
         NSString *htmlText = [iu.text stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
-        htmlText = [htmlText stringByReplacingOccurrencesOfString:@" " withString:@"&nbsp;"];
+        htmlText = [htmlText stringByReplacingOccurrencesOfString:@"  " withString:@" &nbsp;"];
         [code addCodeLineWithFormat:@"<p>%@</p>",htmlText];
     }
 #endif
