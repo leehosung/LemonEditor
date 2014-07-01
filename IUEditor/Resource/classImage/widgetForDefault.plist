@@ -21,40 +21,12 @@
 		<key>navImage</key>
 		<string>stack_view</string>
 		<key>shortDesc</key>
-		<string>Box Object</string>
+		<string>Box Object : &lt;div&gt;, &lt;h1&gt; or &lt;h2&gt; </string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
 		<integer>0</integer>
 	</dict>
-	<!--
-	#if CURRENT_TEXT_VERSION >= TEXT_SELECTION_VERSION
-	<dict>
-		<key>manual</key>
-		<array>
-			<dict>
-				<key>title</key>
-				<string>Scrolling Animation</string>
-				<key>file</key>
-				<string>scrollingAnimation.pdf</string>
-			</dict>
-		</array>
-		<key>isWidget</key>
-		<true/>
-		<key>className</key>
-		<string>IUText</string>
-		<key>classImage</key>
-		<string>tool_text</string>
-		<key>navImage</key>
-		<string>stack_text</string>
-		<key>shortDesc</key>
-		<string>Text Object</string>
-		<key>longDesc</key>
-		<string></string>
-		<key>widgetClass</key>
-		<integer>0</integer>
-	</dict>
-		-->
 	<dict>
 		<key>manual</key>
 		<array>
@@ -72,7 +44,7 @@
 		<key>navImage</key>
 		<string>stack_image</string>
 		<key>shortDesc</key>
-		<string>Image Object</string>
+		<string>Image Object &lt;img&gt;</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
@@ -88,7 +60,7 @@
 		<key>navImage</key>
 		<string>stack_textfield</string>
 		<key>shortDesc</key>
-		<string>Input text object from user</string>
+		<string>Input text &lt;input type=&apos;text&apos;&gt;</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
@@ -120,7 +92,7 @@
 		<key>navImage</key>
 		<string>stack_submit</string>
 		<key>shortDesc</key>
-		<string>Input text object from user</string>
+		<string>Submit button &lt;input type=&quot;submit&quot;&gt;</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
@@ -168,7 +140,7 @@
 		<key>navImage</key>
 		<string>stack_movie</string>
 		<key>shortDesc</key>
-		<string>Video clip from library</string>
+		<string>Video clip from library &lt;video&gt;</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
@@ -200,7 +172,7 @@
 		<key>navImage</key>
 		<string>stack_webmovie</string>
 		<key>shortDesc</key>
-		<string>Object for Web Movie code</string>
+		<string>Embed Vimeo or Youtube</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
