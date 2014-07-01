@@ -7,11 +7,17 @@
         <customObject id="-2" userLabel="File's Owner" customClass="LMWidgetLibraryVC">
             <connections>
                 <outlet property="PGCollectionV" destination="SvR-gg-FJ0" id="br5-If-PNJ"/>
+                <outlet property="PGIconB" destination="fzs-5r-xsv" id="PtN-nb-PXv"/>
+                <outlet property="PGListB" destination="uHP-dz-LZL" id="lmu-ok-Dzd"/>
                 <outlet property="PGTabView" destination="UKc-w3-qOR" id="8ud-lg-Yos"/>
                 <outlet property="collectionTabV" destination="pPJ-ce-Fha" id="Ub6-PL-2JT"/>
                 <outlet property="primaryCollectionV" destination="aib-bx-OKK" id="5TF-v0-dSC"/>
+                <outlet property="primaryIconB" destination="BR5-iS-MYW" id="VnL-bg-Wyf"/>
+                <outlet property="primaryListB" destination="tsn-mg-JCz" id="120-VV-OcB"/>
                 <outlet property="primaryTabView" destination="uLh-jb-tV9" id="Gs5-C5-gTD"/>
                 <outlet property="secondaryCollectionV" destination="tDY-cT-l9N" id="cHO-nt-BOW"/>
+                <outlet property="secondaryIconB" destination="09H-fm-KUt" id="V13-3a-8mJ"/>
+                <outlet property="secondaryListB" destination="Rfa-DJ-weo" id="KzV-Cn-ugw"/>
                 <outlet property="secondaryTabView" destination="bhA-QV-KRV" id="AUS-gK-0xp"/>
                 <outlet property="view" destination="vMJ-qe-EFg" id="htO-To-TcY"/>
             </connections>
@@ -190,11 +196,11 @@
                                                                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsW-LS-gZG">
                                                                     <rect key="frame" x="0.0" y="0.0" width="260" height="348"/>
                                                                     <clipView key="contentView" copiesOnScroll="NO" id="bCG-sx-bTC">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="259" height="348"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="260" height="348"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <subviews>
                                                                             <collectionView selectable="YES" maxNumberOfColumns="1" id="aib-bx-OKK">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="259" height="348"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="260" height="348"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                 <connections>
@@ -282,28 +288,28 @@
                                             <rect key="frame" x="0.0" y="0.0" width="260" height="31"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <button toolTip="Collection View" translatesAutoresizingMaskIntoConstraints="NO" id="BR5-iS-MYW" userLabel="iconBtn">
-                                                    <rect key="frame" x="229" y="2" width="29" height="28"/>
+                                                <button toolTip="Collection View" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BR5-iS-MYW" userLabel="iconBtn">
+                                                    <rect key="frame" x="229" y="3" width="29" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="28" id="Ee2-7e-Sig"/>
                                                         <constraint firstAttribute="width" constant="29" id="Psd-dz-SsW"/>
                                                     </constraints>
                                                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="view_collection" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="cKn-3h-tMg">
-                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                     <connections>
                                                         <action selector="clickPrimaryIcon:" target="-2" id="nE4-WR-pwU"/>
                                                     </connections>
                                                 </button>
-                                                <button toolTip="List View" translatesAutoresizingMaskIntoConstraints="NO" id="tsn-mg-JCz" userLabel="listBtn">
-                                                    <rect key="frame" x="203" y="2" width="28" height="28"/>
+                                                <button toolTip="List View" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tsn-mg-JCz" userLabel="listBtn">
+                                                    <rect key="frame" x="203" y="3" width="27" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="28" id="BgD-5s-jhO"/>
                                                         <constraint firstAttribute="height" constant="28" id="atl-Lz-QwE"/>
                                                     </constraints>
                                                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="view_list" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="fn8-nY-5gN">
-                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                     <connections>
@@ -354,11 +360,11 @@
                                                                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0L-kq-2Tn">
                                                                     <rect key="frame" x="0.0" y="0.0" width="260" height="348"/>
                                                                     <clipView key="contentView" copiesOnScroll="NO" id="dtn-Fd-Zeh">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="259" height="348"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="260" height="348"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <subviews>
                                                                             <collectionView selectable="YES" maxNumberOfColumns="1" id="tDY-cT-l9N">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="259" height="348"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="260" height="348"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                 <connections>
@@ -398,7 +404,7 @@
                                             </tabViewItem>
                                             <tabViewItem label="View" identifier="2" id="4BV-Fa-x9k" userLabel="icon_secondary">
                                                 <view key="view" id="2GB-0l-ues">
-                                                    <rect key="frame" x="0.0" y="0.0" width="259" height="348"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="260" height="348"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="7X7-J0-dZJ" userLabel="CollectionView">
@@ -457,8 +463,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="260" height="31"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <button translatesAutoresizingMaskIntoConstraints="NO" id="09H-fm-KUt" userLabel="iconBtn">
-                                                    <rect key="frame" x="229" y="2" width="29" height="28"/>
+                                                <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="09H-fm-KUt" userLabel="iconBtn">
+                                                    <rect key="frame" x="229" y="3" width="29" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="29" id="bAk-U1-axx"/>
                                                         <constraint firstAttribute="height" constant="28" id="xdY-QJ-nrj"/>
@@ -471,8 +477,8 @@
                                                         <action selector="clickSecondaryIcon:" target="-2" id="Pqb-gD-bbp"/>
                                                     </connections>
                                                 </button>
-                                                <button translatesAutoresizingMaskIntoConstraints="NO" id="Rfa-DJ-weo" userLabel="listBtn">
-                                                    <rect key="frame" x="203" y="2" width="28" height="28"/>
+                                                <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rfa-DJ-weo" userLabel="listBtn">
+                                                    <rect key="frame" x="203" y="3" width="28" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="28" id="C02-nc-T17"/>
                                                         <constraint firstAttribute="height" constant="28" id="eyt-o8-AkJ"/>
@@ -530,11 +536,11 @@
                                                                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0FO-zY-L39">
                                                                     <rect key="frame" x="0.0" y="0.0" width="260" height="348"/>
                                                                     <clipView key="contentView" copiesOnScroll="NO" id="rgl-W7-Nyn">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="259" height="348"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="260" height="348"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <subviews>
                                                                             <collectionView selectable="YES" maxNumberOfColumns="1" id="SvR-gg-FJ0">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="259" height="348"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="260" height="348"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                 <connections>
@@ -633,8 +639,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="260" height="31"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <button translatesAutoresizingMaskIntoConstraints="NO" id="fzs-5r-xsv" userLabel="iconBtn">
-                                                    <rect key="frame" x="229" y="2" width="29" height="28"/>
+                                                <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fzs-5r-xsv" userLabel="iconBtn">
+                                                    <rect key="frame" x="229" y="3" width="29" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="28" id="RYF-oV-hos"/>
                                                         <constraint firstAttribute="width" constant="29" id="iFb-cB-m7N"/>
@@ -647,8 +653,8 @@
                                                         <action selector="clickPGIcon:" target="-2" id="eZY-pS-p7U"/>
                                                     </connections>
                                                 </button>
-                                                <button translatesAutoresizingMaskIntoConstraints="NO" id="toa-Xd-TbL" userLabel="listBtn">
-                                                    <rect key="frame" x="203" y="2" width="28" height="28"/>
+                                                <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="toa-Xd-TbL" userLabel="listBtn">
+                                                    <rect key="frame" x="203" y="3" width="28" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="28" id="nMK-ls-7rB"/>
                                                         <constraint firstAttribute="width" constant="28" id="pft-Vq-iqh"/>

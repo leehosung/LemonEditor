@@ -14,7 +14,12 @@
 @property (weak) IBOutlet NSCollectionView *collectionListV;
 @property (weak) IBOutlet NSCollectionView *collectionIconV;
 
+@property (weak) IBOutlet NSButton *resourceListB;
+@property (weak) IBOutlet NSButton *resourceIconB;
+
 @property (strong) IBOutlet NSArrayController *resourceArrayController;
+
+
 
 @end
 
@@ -67,9 +72,13 @@
 #pragma mark click BTN
 - (IBAction)clickListBtn:(id)sender {
     [_tabView selectTabViewItemAtIndex:0];
+    [_resourceListB setEnabled:NO];
+    [_resourceIconB setEnabled:YES];
 }
 - (IBAction)clickIconBtn:(id)sender {
     [_tabView selectTabViewItemAtIndex:1];
+    [_resourceListB setEnabled:YES];
+    [_resourceIconB setEnabled:NO];
 }
 
 - (IBAction)clickAddResourceBtn:(id)sender {

@@ -9,6 +9,8 @@
                 <outlet property="collectionIconV" destination="PfT-En-tr1" id="oMk-6g-hvI"/>
                 <outlet property="collectionListV" destination="IeW-g4-6nd" id="30k-gx-2Xn"/>
                 <outlet property="resourceArrayController" destination="wOM-ER-3HZ" id="EKP-uR-SBO"/>
+                <outlet property="resourceIconB" destination="i50-VL-0Xr" id="VM4-wn-o8N"/>
+                <outlet property="resourceListB" destination="12v-kS-W80" id="bGj-Zd-L3M"/>
                 <outlet property="tabView" destination="g6L-7m-n83" id="Ebn-hl-gve"/>
                 <outlet property="view" destination="iGv-yg-ab5" id="Hla-o2-Cng"/>
             </connections>

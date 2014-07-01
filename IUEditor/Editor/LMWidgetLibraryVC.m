@@ -23,6 +23,13 @@
 @property (weak) IBOutlet NSTabView *secondaryTabView;
 @property (weak) IBOutlet NSTabView *PGTabView;
 
+@property (weak) IBOutlet NSButton *primaryListB;
+@property (weak) IBOutlet NSButton *primaryIconB;
+@property (weak) IBOutlet NSButton *secondaryListB;
+@property (weak) IBOutlet NSButton *secondaryIconB;
+@property (weak) IBOutlet NSButtonCell *PGListB;
+@property (weak) IBOutlet NSButton *PGIconB;
+
 @end
 
 @implementation LMWidgetLibraryVC{
@@ -127,22 +134,35 @@
 
 - (IBAction)clickPrimaryList:(id)sender {
     [_primaryTabView selectTabViewItemAtIndex:0];
+    [_primaryListB setEnabled:NO];
+    [_primaryIconB setEnabled:YES];
 }
 - (IBAction)clickPrimaryIcon:(id)sender {
     [_primaryTabView selectTabViewItemAtIndex:1];
+    [_primaryIconB setEnabled:NO];
+    [_primaryListB setEnabled:YES];
 }
 
 - (IBAction)clickSecondaryList:(id)sender {
     [_secondaryTabView selectTabViewItemAtIndex:0];
+    [_secondaryListB setEnabled:NO];
+    [_secondaryIconB setEnabled:YES];
 }
 - (IBAction)clickSecondaryIcon:(id)sender {
     [_secondaryTabView selectTabViewItemAtIndex:1];
+    [_secondaryListB setEnabled:YES];
+    [_secondaryIconB setEnabled:NO];
 }
 
 - (IBAction)clickPGList:(id)sender {
     [_PGTabView selectTabViewItemAtIndex:0];
+    [_PGListB setEnabled:NO];
+    [_PGIconB setEnabled:YES];
+
 }
 - (IBAction)clickPGIcon:(id)sender {
     [_PGTabView selectTabViewItemAtIndex:1];
+    [_PGListB setEnabled:YES];
+    [_PGIconB setEnabled:NO];
 }
 @end
