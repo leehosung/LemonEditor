@@ -105,6 +105,8 @@
     itemVC.delegate = self;
     
     [_fileTabView addSubviewDirectionLeftToRight:itemVC.view width:140];
+    
+    [itemVC setDeselectColor];
 }
 
 
@@ -190,6 +192,9 @@
 
 - (void)moveOpenTabToHiddenTab{
     IUSheet *lastOpenedDocument = [openTabDocuments lastObject];
+    if([lastOpenedDocument isEqualTo:_sheet]){
+        lastOpenedDocument = [openTabDocuments objectBeforeObject:lastOpenedDocument];
+    }
     LMFileTabItemVC *item = [self tabItemOfDocumentNode:lastOpenedDocument];
     [self closeTab:item sender:self];
     
@@ -269,6 +274,7 @@
     }
     
     NSInteger index = [openTabDocuments indexOfObject:tabItem.sheet];
+    IUSheet *selectNode;
     if (index == NSNotFound) {
         assert(0);
     }
@@ -276,13 +282,11 @@
 
     if(index > 0){
         [tabItem.view removeFromSuperviewWithDirectionLeftToRight];
-        IUSheet *leftTabNode = [openTabDocuments objectAtIndex:index-1];
-        [_sheetController setSelectedObject:leftTabNode];
+         selectNode = [openTabDocuments objectAtIndex:index-1];
     }
     else{
         [tabItem.view removeFromSuperviewWithFirstLeftTab];
-        IUSheet *rightTabNode = [openTabDocuments objectAtIndex:index+1];
-        [_sheetController setSelectedObject:rightTabNode];
+         selectNode = [openTabDocuments objectAtIndex:index+1];
 
         
     }
@@ -292,6 +296,10 @@
     //call by tabview
     if([sender isNotEqualTo:self]){
         [self moveHiddenTabToOpenTab];
+        if(selectNode){
+            [_sheetController setSelectedObject:selectNode];
+        }
+
     }
     
 }

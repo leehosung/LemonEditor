@@ -28,14 +28,9 @@
 
 - (BOOL)isMouseEvent:(NSEvent *)theEvent{
     if(theEvent.type == NSLeftMouseDown ||
-       theEvent.type == NSLeftMouseUp   ||
-       theEvent.type ==  NSRightMouseDown ||
-       theEvent.type == NSRightMouseUp ||
-       theEvent.type == NSMouseMoved ||
+       theEvent.type == NSRightMouseDown ||
        theEvent.type == NSLeftMouseDragged ||
-       theEvent.type == NSRightMouseDragged ||
-       theEvent.type == NSMouseEntered ||
-       theEvent.type == NSMouseExited
+       theEvent.type == NSLeftMouseUp
        ){
         return YES;
     }
@@ -43,9 +38,7 @@
 }
 
 - (BOOL)isKeyEvent:(NSEvent *)theEvent{
-    if(theEvent.type == NSKeyDown ||
-       theEvent.type == NSKeyUp
-       ){
+    if(theEvent.type == NSKeyDown){
         return YES;
     }
     return NO;
