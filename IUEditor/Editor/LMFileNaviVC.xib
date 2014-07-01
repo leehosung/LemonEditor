@@ -198,7 +198,7 @@
                                                     </imageView>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="q7g-kV-gNd">
                                                         <rect key="frame" x="23" y="6" width="195" height="14"/>
-                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="master" id="xxF-yW-1Xa">
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" title="master" id="xxF-yW-1Xa">
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
