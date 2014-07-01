@@ -89,10 +89,10 @@
         
         if ([tag isFrameTag] == NO) {
             if ([tag isHoverTag]) {
-                [self.delegate CSSUpdated:tag forWidth:width isHover:YES];
+                [self.delegate CSSUpdatedForWidth:width isHover:YES];
             }
             else {
-                [self.delegate CSSUpdated:tag forWidth:width isHover:NO];
+                [self.delegate CSSUpdatedForWidth:width isHover:NO];
             }
         }
         
@@ -106,7 +106,7 @@
         [cssDict removeObjectForKey:tag];
     }
     [self updateAssembledTagDictionary];
-    [self.delegate CSSUpdated:tag forWidth:IUCSSMaxViewPortWidth isHover:NO];
+    [self.delegate CSSUpdatedForWidth:IUCSSMaxViewPortWidth isHover:NO];
 }
 
 

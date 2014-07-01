@@ -17,13 +17,17 @@
 
 -(id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
     self = [super initWithProject:project options:options];
-    NSNumber *num = [options objectForKey:kIUBackgroundOptionEmpty];
-    if ([num intValue] == NO) {
-        _header = [[IUHeader alloc] initWithProject:project options:nil];
-        _header.htmlID = @"Header";
-        [self addIU:_header error:nil];
+    if(self){
+        [self.css setValue:nil forTag:IUCSSTagBGColor forWidth:IUCSSMaxViewPortWidth];
+        
+        NSNumber *num = [options objectForKey:kIUBackgroundOptionEmpty];
+        if ([num intValue] == NO) {
+            _header = [[IUHeader alloc] initWithProject:project options:nil];
+            _header.htmlID = @"Header";
+            [self addIU:_header error:nil];
+        }
+        assert(self.children);
     }
-    assert(self.children);
     return self;
 }
 

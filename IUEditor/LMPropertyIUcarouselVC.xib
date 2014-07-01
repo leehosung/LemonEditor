@@ -129,6 +129,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="MB1-PZ-wBA">
+                                <rect key="frame" x="0.0" y="-2" width="1" height="4"/>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <font key="titleFont" metaFont="system"/>
@@ -177,7 +178,7 @@
             </connections>
         </arrayController>
         <userDefaultsController representsSharedInstance="YES" id="p6f-Mf-SPS"/>
-        <customView identifier="iucarousel" id="WK2-m3-ApR" userLabel="IUCarousel-Controller" customClass="JDOutlineCellView">
+        <customView identifier="iucarousel_controller" id="WK2-m3-ApR" userLabel="IUCarousel-Controller" customClass="JDOutlineCellView">
             <rect key="frame" x="0.0" y="0.0" width="275" height="114"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -334,7 +335,7 @@
             </connections>
             <point key="canvasLocation" x="65.5" y="161"/>
         </customView>
-        <customView identifier="iucarousel" id="pcJ-na-9Im" userLabel="IUCarousel-Arrow" customClass="JDOutlineCellView">
+        <customView identifier="iucarousel_arrow" id="pcJ-na-9Im" userLabel="IUCarousel-Arrow" customClass="JDOutlineCellView">
             <rect key="frame" x="0.0" y="0.0" width="276" height="86"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -567,7 +568,7 @@
             </scroller>
             <point key="canvasLocation" x="829" y="137"/>
         </scrollView>
-        <customView identifier="iucarousel" id="mHb-70-qxl" userLabel="IUCarousel-Controller-future" customClass="JDOutlineCellView">
+        <customView identifier="controller_future" id="mHb-70-qxl" userLabel="IUCarousel-Controller-future" customClass="JDOutlineCellView">
             <rect key="frame" x="0.0" y="0.0" width="276" height="184"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -799,7 +800,7 @@
             </connections>
             <point key="canvasLocation" x="500" y="210"/>
         </customView>
-        <customView identifier="iucarousel" id="1Sj-an-FcE" userLabel="IUCarousel-Arrow-future" customClass="JDOutlineCellView">
+        <customView identifier="arrow_future" id="1Sj-an-FcE" userLabel="IUCarousel-Arrow-future" customClass="JDOutlineCellView">
             <rect key="frame" x="0.0" y="0.0" width="276" height="140"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -1118,7 +1119,7 @@
             </connections>
             <point key="canvasLocation" x="869" y="174"/>
         </customView>
-        <customView identifier="iucarousel" id="QEr-Uo-JAK" userLabel="IUCarousel-future">
+        <customView identifier="iucarousel_future" id="QEr-Uo-JAK" userLabel="IUCarousel-future">
             <rect key="frame" x="0.0" y="0.0" width="276" height="120"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>

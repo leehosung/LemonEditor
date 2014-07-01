@@ -376,13 +376,8 @@
     return YES;
 }
 
--(void)startGrouping{
-    
-}
--(void)CSSUpdated:(IUCSSTag)tag forWidth:(NSInteger)width isHover:(BOOL)isHover{
-    
-}
--(void)endGrouping{
+
+-(void)CSSUpdatedForWidth:(NSInteger)width isHover:(BOOL)isHover{
     
 }
 

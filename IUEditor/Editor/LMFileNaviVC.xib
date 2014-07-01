@@ -7,7 +7,6 @@
         <customObject id="-2" userLabel="File's Owner" customClass="LMFileNaviVC">
             <connections>
                 <outlet property="documentController" destination="gdF-Dg-Xge" id="1P1-Tc-mgg"/>
-                <outlet property="fileAddBtn" destination="ssp-pU-djD" id="vkd-il-s1D"/>
                 <outlet property="outlineV" destination="1aw-gA-pJZ" id="pCa-r3-W3Q"/>
                 <outlet property="view" destination="2vD-fN-bWc" id="SVK-bX-riZ"/>
             </connections>

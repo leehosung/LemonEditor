@@ -107,7 +107,7 @@ DQ
                         <rect key="frame" x="0.0" y="0.0" width="835" height="779"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view translatesAutoresizingMaskIntoConstraints="NO" id="X7N-l5-iSJ" customClass="NSFlippedView">
+                            <view misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X7N-l5-iSJ" customClass="NSFlippedView">
                                 <rect key="frame" x="0.0" y="0.0" width="835" height="779"/>
                             </view>
                         </subviews>
@@ -123,7 +123,7 @@ DQ
                         <rect key="frame" x="0.0" y="763" width="835" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="0.5" horizontal="NO" id="2yM-8c-esj">
+                    <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="2yM-8c-esj">
                         <rect key="frame" x="819" y="0.0" width="16" height="779"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>

@@ -23,7 +23,6 @@
 @end
 
 @implementation IUBox{
-    int delegateEnableLevel;
     NSMutableSet *changedCSSWidths;
     NSPoint originalPoint;
     NSSize originalSize;
@@ -37,6 +36,7 @@
 /* Note
  IUText is not programmed.
  */
+#pragma mark initialize
 
 - (id)copyWithZone:(NSZone *)zone{
     IUBox *box = [[[self class] allocWithZone: zone] init];
@@ -118,7 +118,6 @@
         _css.delegate = self;
         _event = [aDecoder decodeObjectForKey:@"event"];
         _m_children=[aDecoder decodeObjectForKey:@"children"];
-        delegateEnableLevel = 1;
         changedCSSWidths = [NSMutableSet set];
         
     }
@@ -187,7 +186,6 @@
     [_css setValue:@(IUAlignCenter) forTag:IUCSSTagTextAlign forWidth:IUCSSMaxViewPortWidth];
 
     
-    delegateEnableLevel = 1;
     changedCSSWidths = [NSMutableSet set];
 
     assert(project);
@@ -209,7 +207,6 @@
         _event = [[IUEvent alloc] init];
         _m_children = [NSMutableArray array];
 
-        delegateEnableLevel = 1;
         changedCSSWidths = [NSMutableSet set];
     }
     return self;
@@ -253,24 +250,49 @@
 
 
 
+#pragma mark JS
+
+- (void)updateJS{
+    if(self.delegate){
+        [self.delegate runCSSJS];
+    }
+}
+
+//source
+#pragma mark HTML
+
+-(NSString*)html{
+    return [self.project.compiler editorHTML:self].string;
+}
+
+
+- (void)updateHTML{
+    if (self.delegate) {
+        [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.htmlID];
+        
+#if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
+        [self updateAutoHeight];
+#endif
+    }
+}
+
+
+#pragma mark css
+
 -(NSDictionary*)CSSAttributesForWidth:(NSInteger)width{
     return [_css tagDictionaryForWidth:(int)width];
 }
 
-//source
--(NSString*)html{
-    return [self.project.compiler editorHTML:self].string;
-}
 
 -(NSString*)cssForWidth:(NSInteger)width isHover:(BOOL)isHover{
     BOOL isDefaultWidth = (width == IUCSSMaxViewPortWidth) ? YES : NO;
     return [self.project.compiler CSSContentFromAttributes:[self CSSAttributesForWidth:width] ofClass:self isHover:isHover isDefaultWidth:isDefaultWidth];
 }
 
--(void)CSSUpdated:(NSDictionary*)tagDictionary forWidth:(NSInteger)width isHover:(BOOL)isHover{
-    if (delegateEnableLevel == 1) {
+//delegate from IUCSS
+-(void)CSSUpdatedForWidth:(NSInteger)width isHover:(BOOL)isHover{
+    if(self.delegate){
         NSString *css = [self cssForWidth:width isHover:isHover];
-
         if (isHover) {
             [self.delegate IUClassIdentifier:[self.cssID hoverIdentifier] CSSUpdated:css forWidth:width];
         }
@@ -278,28 +300,43 @@
             [self.delegate IUClassIdentifier:self.cssID CSSUpdated:css forWidth:width];
         }
     }
-    else {
-        [changedCSSWidths addObject:@(width)];
-    }
 }
+
+- (NSArray *)cssIdentifierArray{
+    return @[self.cssID];
+}
+
 
 - (NSString *)cssID{
     return [NSString stringWithFormat:@".%@", self.htmlID];
 }
 
 
--(void)enableDelegate:(id)sender{
-    delegateEnableLevel ++;
+- (void)updateCSSForMaxViewPort{
+    if (self.delegate) {
+        [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
+        [self.delegate IUClassIdentifier:[self.cssID hoverIdentifier] CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:YES] forWidth:IUCSSMaxViewPortWidth];
+    }
 }
 
--(void)disableDelegate:(id)sender{
-    delegateEnableLevel --;
+- (void)updateCSSForEditViewPort{
+    if (self.delegate) {
+        [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:_css.editWidth isHover:NO] forWidth:_css.editWidth];
+        [self.delegate IUClassIdentifier:[self.cssID hoverIdentifier] CSSUpdated:[self cssForWidth:_css.editWidth isHover:YES] forWidth:_css.editWidth];
+        
+#if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
+        [self updateAutoHeight];
+#endif
+    }
 }
 
 //delegation
 -(BOOL)CSSShouldChangeValue:(id)value forTag:(IUCSSTag)tag forWidth:(NSInteger)width{
     return YES;
 }
+
+#pragma mark insertIU
+
 
 -(BOOL)shouldAddIUByUserInput{
     return YES;
@@ -413,6 +450,8 @@
     return [_m_children copy];
 }
 
+#pragma mark -
+
 -(void)setDelegate:(id<IUSourceDelegate>)delegate{
     _delegate = delegate;
     for (IUBox *obj in _m_children) {
@@ -446,6 +485,7 @@
     return [[super description] stringByAppendingFormat:@" %@", self.htmlID];
 }
 
+#pragma mark - position
 
 - (void)setPosition:(NSPoint)position{
     [_css setValue:@(position.x) forKeyPath:[@"assembledTagDictionary" stringByAppendingPathExtension:IUCSSTagX]];
@@ -521,39 +561,6 @@
     
 }
 
-- (void)updateCSSForMaxViewPort{
-    if (self.delegate) {
-        [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:NO] forWidth:IUCSSMaxViewPortWidth];
-        [self.delegate IUClassIdentifier:[self.cssID hoverIdentifier] CSSUpdated:[self cssForWidth:IUCSSMaxViewPortWidth isHover:YES] forWidth:IUCSSMaxViewPortWidth];
-    }
-}
-
-- (void)updateCSSForEditViewPort{
-    if (self.delegate) {
-        [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:_css.editWidth isHover:NO] forWidth:_css.editWidth];
-        [self.delegate IUClassIdentifier:[self.cssID hoverIdentifier] CSSUpdated:[self cssForWidth:_css.editWidth isHover:YES] forWidth:_css.editWidth];
-        
-#if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
-        [self updateAutoHeight];
-#endif
-    }
-}
-
-- (void)updateHTML{
-    if (self.delegate) {
-        [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.htmlID];
-        
-#if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
-        [self updateAutoHeight];
-#endif
-    }
-}
-
-- (void)updateJS{
-    if(self.delegate){
-        [self.delegate runCSSJS];
-    }
-}
 
 /*
  drag 중간의 diff size로 하면 css에 의한 오차가 생김.
@@ -613,19 +620,6 @@
     }
 }
 
-#pragma mark - image
-- (void)setImageName:(NSString *)imageName{
-    NSDictionary *defaultTagDictionary = [_css tagDictionaryForWidth:IUCSSMaxViewPortWidth];
-    if (defaultTagDictionary) {
-        [_css setValue:imageName forTag:IUCSSTagImage forWidth:_css.editWidth];
-    }
-    [_css setValue:imageName forTag:IUCSSTagImage forWidth:IUCSSMaxViewPortWidth];
-}
-
-- (NSString *)imageName{
-    return _css.assembledTagDictionary[IUCSSTagImage];
-}
-
 
 #pragma mark -frame
 - (BOOL)hasText{
@@ -646,18 +640,6 @@
 }
 
 
--(void)startGrouping{
-    delegateEnableLevel --;
-}
-
--(void)endGrouping{
-    delegateEnableLevel ++;
-    for (NSNumber *number in changedCSSWidths) {
-        [self.delegate IUClassIdentifier:self.cssID CSSUpdated:[self cssForWidth:[number intValue] isHover:NO] forWidth:[number intValue]];
-        [self.delegate IUClassIdentifier:[self.cssID hoverIdentifier] CSSUpdated:[self cssForWidth:[number intValue] isHover:YES] forWidth:[number intValue]];
-    }
-}
-
 -(void)setLink:(id)link{
     _link = link;
 //    [self.delegate IU:self.htmlID setLink:link];
@@ -669,6 +651,21 @@
 
 
 #pragma mark -
+
+
+#pragma mark - image
+- (void)setImageName:(NSString *)imageName{
+    NSDictionary *defaultTagDictionary = [_css tagDictionaryForWidth:IUCSSMaxViewPortWidth];
+    if (defaultTagDictionary) {
+        [_css setValue:imageName forTag:IUCSSTagImage forWidth:_css.editWidth];
+    }
+    [_css setValue:imageName forTag:IUCSSTagImage forWidth:IUCSSMaxViewPortWidth];
+}
+
+- (NSString *)imageName{
+    return _css.assembledTagDictionary[IUCSSTagImage];
+}
+
 
 /*
 - (void)setOverflow:(BOOL)overflow{
@@ -690,7 +687,7 @@
 }
 
 
-#pragma mark -x5
+#pragma mark -
 #pragma mark user input
 
 - (BOOL)canChangeXByUserInput{
@@ -785,10 +782,6 @@
 
 - (BOOL)canChangeOverflow{
     return YES;
-}
-
-- (NSArray *)cssIdentifierArray{
-    return @[self.cssID];
 }
 
 

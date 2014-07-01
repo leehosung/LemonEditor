@@ -193,6 +193,22 @@
 #pragma mark -
 #pragma mark call by Document
 
+
+- (void)updateSheetHeight{
+    //not page class
+    //page will be set report from javscript
+    if([_sheet isKindOfClass:[IUClass class]]){
+        CGFloat currentHeight =  [[_sheet.css assembledTagDictionary][IUCSSTagHeight] floatValue];
+        [(LMCanvasView *)self.view setHeightOfMainView:currentHeight];
+    }
+    else if([_sheet isKindOfClass:[IUBackground class]]){
+        IUBackground *background = (IUBackground *)_sheet;
+        CGFloat currentHeight = [[background.header.css assembledTagDictionary][IUCSSTagHeight] floatValue];
+        [(LMCanvasView *)self.view setHeightOfMainView:currentHeight];
+    }
+    
+}
+
 - (void)setSheet:(IUSheet *)sheet{
     NSAssert(self.documentBasePath != nil, @"resourcePath is nil");
     if (self.documentBasePath == nil) {
@@ -205,6 +221,9 @@
     [_sheet setDelegate:self];
     
     [[[self webView] mainFrame] loadHTMLString:sheet.editorSource baseURL:[NSURL fileURLWithPath:self.documentBasePath]];
+    
+    
+    [self updateSheetHeight];
 }
 
 - (void)reloadSheet{
@@ -565,6 +584,23 @@
         
     }
     [self.webView setNeedsDisplay:YES];
+    
+}
+
+- (BOOL)isSheetHeightChanged:(NSString *)identifier{
+    if([identifier isEqualToString:[@"." stringByAppendingString:_sheet.htmlID]]
+       && [_sheet isKindOfClass:[IUClass class]]){
+        return YES;
+    }
+    else if([_sheet isKindOfClass:[IUBackground class]]){
+        IUHeader *header = ((IUBackground *)_sheet).header;
+        if([identifier isEqualToString:[@"." stringByAppendingString:header.htmlID]]){
+            return YES;
+        }
+        
+    }
+    
+    return NO;
 }
 
 
@@ -588,7 +624,14 @@
 //        [self.webView setNeedsDisplay:YES];
     }
     
+    if([self isSheetHeightChanged:identifier]){
+        //CLASS에서 WEBCANVASVIEW의 높이 변화를 위해서
+        [self updateSheetHeight];
+    }
+    
 }
+
+
 
 - (void)removeStyleSheet:(NSInteger)size{
     DOMElement *cssNode = [[self DOMDoc] getElementById:[NSString stringWithFormat:@"style%ld", size]];

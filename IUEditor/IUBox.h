@@ -114,9 +114,6 @@ typedef enum _IUOverflowType{
 @property (readonly) BOOL canChangeWidthByUserInput;
 @property (readonly) BOOL canChangeHeightByUserInput;
 
--(void)enableDelegate:(id)sender;
--(void)disableDelegate:(id)sender;
-
 
 -(NSArray*)children;
 @property (readonly) NSMutableArray *referenceChildren;
@@ -160,10 +157,6 @@ typedef enum _IUOverflowType{
 - (BOOL)hasText;
 
 -(BOOL)shouldAddIUByUserInput;
-
-
--(void)startGrouping;
--(void)endGrouping;
 
 
 @property (nonatomic) IUPositionType positionType;

@@ -11,6 +11,9 @@ $.fn.updatePixel = function(){
                      if(display == 'none'){
                         return;
                      }
+                     if($(this).hasClass("IUBackground")){
+                        return;
+                     }
 
                      if (this.position == undefined){
                      this.position = $(this).iuPosition();
@@ -99,7 +102,8 @@ function getDictionaryKeys(dictionary){
 
 function resizePageContentHeightEditor(){
 	//make page content height
-    if ($('.IUPage') == null){
+    if($('.IUPageContent').length == 0)
+    {
         //if it is not page file, return
         return;
     }
