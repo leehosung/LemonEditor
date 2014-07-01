@@ -33,17 +33,40 @@
             <rect key="frame" x="0.0" y="0.0" width="300" height="380"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
+                <box autoresizesSubviews="NO" fixedFrame="YES" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="qjr-yb-YyB">
+                    <rect key="frame" x="0.0" y="337" width="301" height="44"/>
+                    <view key="contentView">
+                        <rect key="frame" x="1" y="1" width="299" height="42"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <color key="borderColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </box>
+                <button toolTip="Import" translatesAutoresizingMaskIntoConstraints="NO" id="2K0-2Z-gF9" userLabel="addBtn">
+                    <rect key="frame" x="7" y="338" width="288" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="288" id="GrO-oF-wBY"/>
+                        <constraint firstAttribute="height" constant="36" id="ZeM-Ko-Zhw"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="import_large" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="pND-Y3-4p8">
+                        <behavior key="behavior" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="clickAddResourceBtn:" target="-2" id="OCU-uV-ilw"/>
+                    </connections>
+                </button>
                 <tabView type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="g6L-7m-n83">
-                    <rect key="frame" x="0.0" y="31" width="300" height="349"/>
+                    <rect key="frame" x="0.0" y="31" width="300" height="307"/>
                     <font key="font" metaFont="system"/>
                     <tabViewItems>
                         <tabViewItem label="Tab" identifier="1" id="EYd-5I-8MP" userLabel="Tab View Item - list">
                             <view key="view" id="hcH-Dn-gzM">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="349"/>
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="307"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1p5-j3-luq">
-                                        <rect key="frame" x="0.0" y="-1" width="302" height="351"/>
+                                        <rect key="frame" x="0.0" y="-1" width="302" height="309"/>
                                         <clipView key="contentView" id="D5O-K6-fSb">
                                             <rect key="frame" x="1" y="1" width="300" height="349"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -129,10 +152,10 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <searchField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YjH-N9-QL8">
-                                        <rect key="frame" x="7" y="5" width="176" height="19"/>
+                                        <rect key="frame" x="7" y="5" width="205" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="19" id="NQB-ud-P6C"/>
-                                            <constraint firstAttribute="width" constant="176" id="wYw-fE-yYP"/>
+                                            <constraint firstAttribute="width" constant="205" id="wYw-fE-yYP"/>
                                         </constraints>
                                         <searchFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="Ynw-pJ-wrH">
                                             <font key="font" metaFont="smallSystem"/>
@@ -176,20 +199,6 @@
                                             <action selector="clickListBtn:" target="-2" id="cYg-GM-ud8"/>
                                         </connections>
                                     </button>
-                                    <button toolTip="Import" translatesAutoresizingMaskIntoConstraints="NO" id="2K0-2Z-gF9" userLabel="addBtn">
-                                        <rect key="frame" x="187" y="0.0" width="30" height="31"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="GrO-oF-wBY"/>
-                                            <constraint firstAttribute="height" constant="31" id="ZeM-Ko-Zhw"/>
-                                        </constraints>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="import" imagePosition="only" alignment="center" alternateImage="import_on" imageScaling="proportionallyDown" inset="2" id="pND-Y3-4p8">
-                                            <behavior key="behavior" lightByContents="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="clickAddResourceBtn:" target="-2" id="OCU-uV-ilw"/>
-                                        </connections>
-                                    </button>
                                     <button toolTip="Refresh" translatesAutoresizingMaskIntoConstraints="NO" id="TwY-rm-TIF" userLabel="refreshBtn">
                                         <rect key="frame" x="214" y="0.0" width="30" height="31"/>
                                         <constraints>
@@ -208,16 +217,14 @@
                             </view>
                             <constraints>
                                 <constraint firstAttribute="width" constant="302" id="42n-di-CHe"/>
-                                <constraint firstItem="2K0-2Z-gF9" firstAttribute="leading" secondItem="YjH-N9-QL8" secondAttribute="trailing" constant="4" id="A12-nz-E1l"/>
                                 <constraint firstItem="TwY-rm-TIF" firstAttribute="top" secondItem="jYn-7S-9Ff" secondAttribute="top" constant="-1" id="AMZ-vD-W4y"/>
                                 <constraint firstItem="YjH-N9-QL8" firstAttribute="top" secondItem="jYn-7S-9Ff" secondAttribute="top" constant="6" id="LuV-aW-d5S"/>
-                                <constraint firstItem="2K0-2Z-gF9" firstAttribute="top" secondItem="jYn-7S-9Ff" secondAttribute="top" constant="-1" id="R5V-ry-176"/>
                                 <constraint firstItem="12v-kS-W80" firstAttribute="top" secondItem="jYn-7S-9Ff" secondAttribute="top" constant="1" id="Rcg-p6-NZy"/>
                                 <constraint firstItem="i50-VL-0Xr" firstAttribute="top" secondItem="jYn-7S-9Ff" secondAttribute="top" constant="1" id="Sj9-WE-fxF"/>
                                 <constraint firstItem="i50-VL-0Xr" firstAttribute="leading" secondItem="TwY-rm-TIF" secondAttribute="trailing" constant="24" id="eEb-Im-fvJ"/>
                                 <constraint firstItem="YjH-N9-QL8" firstAttribute="leading" secondItem="jYn-7S-9Ff" secondAttribute="leading" constant="8" id="gIs-ra-aEx"/>
-                                <constraint firstItem="TwY-rm-TIF" firstAttribute="leading" secondItem="YjH-N9-QL8" secondAttribute="trailing" constant="31" id="h47-dS-tki"/>
-                                <constraint firstItem="12v-kS-W80" firstAttribute="leading" secondItem="2K0-2Z-gF9" secondAttribute="trailing" constant="25" id="wzG-Q4-2rU"/>
+                                <constraint firstItem="TwY-rm-TIF" firstAttribute="leading" secondItem="YjH-N9-QL8" secondAttribute="trailing" constant="2" id="h47-dS-tki"/>
+                                <constraint firstItem="12v-kS-W80" firstAttribute="leading" secondItem="YjH-N9-QL8" secondAttribute="trailing" constant="30" id="urd-1S-yIV"/>
                                 <constraint firstAttribute="height" constant="31" id="yZV-oi-Rlx"/>
                             </constraints>
                             <color key="borderColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
@@ -236,7 +243,9 @@
             </subviews>
             <constraints>
                 <constraint firstItem="x7y-Oy-DDd" firstAttribute="top" secondItem="g6L-7m-n83" secondAttribute="bottom" id="1om-gf-Sk4"/>
-                <constraint firstItem="g6L-7m-n83" firstAttribute="top" secondItem="iGv-yg-ab5" secondAttribute="top" id="eCV-0n-xuD"/>
+                <constraint firstItem="2K0-2Z-gF9" firstAttribute="leading" secondItem="iGv-yg-ab5" secondAttribute="leading" constant="7" id="GTe-AA-ukq"/>
+                <constraint firstItem="g6L-7m-n83" firstAttribute="top" secondItem="2K0-2Z-gF9" secondAttribute="bottom" id="NXh-IG-XZN"/>
+                <constraint firstItem="g6L-7m-n83" firstAttribute="top" secondItem="iGv-yg-ab5" secondAttribute="top" constant="42" id="eCV-0n-xuD"/>
                 <constraint firstItem="g6L-7m-n83" firstAttribute="trailing" secondItem="x7y-Oy-DDd" secondAttribute="trailing" id="fUe-aF-5WN"/>
                 <constraint firstItem="g6L-7m-n83" firstAttribute="leading" secondItem="x7y-Oy-DDd" secondAttribute="leading" id="jbg-1v-MD2"/>
                 <constraint firstItem="x7y-Oy-DDd" firstAttribute="leading" secondItem="iGv-yg-ab5" secondAttribute="leading" id="lKY-EN-aKi"/>
@@ -368,8 +377,7 @@
     </objects>
     <resources>
         <image name="NSInfo" width="32" height="32"/>
-        <image name="import" width="14" height="10"/>
-        <image name="import_on" width="14" height="10"/>
+        <image name="import_large" width="290" height="36"/>
         <image name="reload" width="11" height="13"/>
         <image name="reload_off" width="11" height="13"/>
         <image name="view_collection" width="10" height="10"/>
