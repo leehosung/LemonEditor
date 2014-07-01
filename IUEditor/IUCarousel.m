@@ -19,7 +19,7 @@
     self = [super initWithProject:project options:options];
     if(self){
         initializing = YES;
-        self.count = 4;
+        self.count = 3;
         [self.css setValue:@(500) forTag:IUCSSTagWidth forWidth:IUCSSMaxViewPortWidth];
         [self.css setValue:@(300) forTag:IUCSSTagHeight forWidth:IUCSSMaxViewPortWidth];
         [self.css setValue:[NSColor clearColor] forTag:IUCSSTagBGColor forWidth:IUCSSMaxViewPortWidth];
@@ -93,10 +93,12 @@
             [self.project.identifierManager resetUnconfirmedIUs];
         }
 
-        IUCarouselItem *item = [[IUCarouselItem alloc] initWithProject:self.project options:nil];
-        item.name = item.htmlID;
-        item.carousel = self;
-        [self addIU:item error:nil];
+        for(NSInteger i=self.children.count; i <count; i++){
+            IUCarouselItem *item = [[IUCarouselItem alloc] initWithProject:self.project options:nil];
+            item.name = item.htmlID;
+            item.carousel = self;
+            [self addIU:item error:nil];
+        }
         
         if (initializing == NO) {
             [self.project.identifierManager confirm];
