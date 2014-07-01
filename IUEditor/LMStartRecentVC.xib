@@ -91,12 +91,12 @@
                                                 </connections>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zO5-yr-EkP">
-                                                <rect key="frame" x="10" y="11" width="340" height="17"/>
+                                                <rect key="frame" x="10" y="11" width="480" height="17"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="336" id="HEt-vX-2jW"/>
+                                                    <constraint firstAttribute="width" constant="476" id="HEt-vX-2jW"/>
                                                     <constraint firstAttribute="height" constant="17" id="Sum-WU-Ha1"/>
                                                 </constraints>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="folder/folder/folder/folder/" id="xXo-LO-Izt">
+                                                <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" title="folder/folder/folder/folder/" usesSingleLineMode="YES" id="xXo-LO-Izt">
                                                     <font key="font" metaFont="smallSystem"/>
                                                     <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
