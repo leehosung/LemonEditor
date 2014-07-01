@@ -180,7 +180,7 @@
                                             <constraint firstAttribute="width" constant="30" id="GrO-oF-wBY"/>
                                             <constraint firstAttribute="height" constant="31" id="ZeM-Ko-Zhw"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="import" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="pND-Y3-4p8">
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="import" imagePosition="only" alignment="center" alternateImage="import_on" imageScaling="proportionallyDown" inset="2" id="pND-Y3-4p8">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -194,7 +194,7 @@
                                             <constraint firstAttribute="width" constant="30" id="Cxw-VP-ICc"/>
                                             <constraint firstAttribute="height" constant="31" id="PTf-T6-nit"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRefreshTemplate" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="XIQ-SX-TV2">
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="reload_off" imagePosition="overlaps" alignment="center" alternateImage="reload" imageScaling="proportionallyDown" inset="2" id="XIQ-SX-TV2">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -366,8 +366,10 @@
     </objects>
     <resources>
         <image name="NSInfo" width="32" height="32"/>
-        <image name="NSRefreshTemplate" width="10" height="12"/>
         <image name="import" width="14" height="10"/>
+        <image name="import_on" width="14" height="10"/>
+        <image name="reload" width="11" height="13"/>
+        <image name="reload_off" width="11" height="13"/>
         <image name="view_collection" width="10" height="10"/>
         <image name="view_list" width="12" height="10"/>
     </resources>

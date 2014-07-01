@@ -127,7 +127,7 @@
                                             <constraint firstAttribute="width" constant="30" id="cGd-pG-Viy"/>
                                             <constraint firstAttribute="height" constant="30" id="l9M-rr-Rdl"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="reload" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="MBo-aD-uvg">
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="reload_off" imagePosition="only" alignment="center" alternateImage="reload" imageScaling="proportionallyDown" inset="2" id="MBo-aD-uvg">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -269,6 +269,7 @@
         <image name="panel_right_off" width="14" height="10"/>
         <image name="panel_right_on" width="14" height="10"/>
         <image name="reload" width="11" height="13"/>
+        <image name="reload_off" width="11" height="13"/>
         <image name="send_mail" width="14" height="10"/>
         <image name="view_border_off" width="14" height="10"/>
         <image name="view_border_on" width="14" height="10"/>
