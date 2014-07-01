@@ -57,7 +57,7 @@
         [contentBox.css setValue:@"Helvetica" forTag:IUCSSTagFontName forWidth:IUCSSMaxViewPortWidth];
         
         contentBox.positionType = IUPositionTypeAbsoluteCenter;
-        contentBox.text = @"Double-click to edit text\nThis box is absolute-centered.\nFor free movement, see the position at the right.";
+        contentBox.text = @"Double-click to edit text\n\nThis box has absolute-center position.\nFor free movement, see the position at the right.";
         
         [section addIU:contentBox error:nil];
         

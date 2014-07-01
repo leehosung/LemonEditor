@@ -13,7 +13,7 @@
 -(id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
     self = [super initWithProject:project options:options];
     if(self){
-        _innerHTML = @"<div>test IUHTML</div>";
+        _innerHTML = @"<div style=\"text-align:center;\"> Edit HTML Code at property tab. </div>";
     }
     return self;
 }
