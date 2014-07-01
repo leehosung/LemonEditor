@@ -29,18 +29,22 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
+        [self loadView];
     }
     return self;
 }
 -(void)awakeFromNib{
+}
+
+- (void)setDocumentController:(IUSheetController *)documentController{
+    _documentController = documentController;
     [_documentController addObserver:self forKeyPath:@"selection" options:0 context:nil];
-    [_documentController bind:NSContentBinding toObject:self withKeyPath:@"project" options:nil];  
+    [_documentController bind:NSContentBinding toObject:self withKeyPath:@"project" options:nil];
 }
 
 -(void)dealloc{
     //release 시점 확인용
-    assert(0);
+    NSAssert(0, @"dealloc");
     //[_documentController removeObserver:self forKeyPath:@"selection"];
 }
 

@@ -48,6 +48,7 @@
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if(self){
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(structureChanged:) name:IUNotificationStructureDidChange object:nil];
     }
     return self;
 }
@@ -56,7 +57,6 @@
     _outlineV.delegate = self;
     [_outlineV registerForDraggedTypes:@[@"stackVC", (id)kUTTypeIUType]];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(structureChanged:) name:IUNotificationStructureDidChange object:nil];
 
 }
 
