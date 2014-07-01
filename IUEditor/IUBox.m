@@ -161,7 +161,7 @@
         [_css setValue:@(100) forTag:IUCSSTagWidth forWidth:IUCSSMaxViewPortWidth];
     }
     if (self.hasHeight) {
-        [_css setValue:@(100) forTag:IUCSSTagHeight forWidth:IUCSSMaxViewPortWidth];
+        [_css setValue:@(60) forTag:IUCSSTagHeight forWidth:IUCSSMaxViewPortWidth];
     }
     
     //background
