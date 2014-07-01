@@ -97,9 +97,11 @@
 }
 
 - (void)setName:(NSString *)name{
+    //loading - not called rename notification
     if (_name == nil) {
         _name = name;
     }
+    //rename precedure
     else {
         _name = name;
         [[NSNotificationCenter defaultCenter] postNotificationName:IUNotificationStructureDidChange object:self.project userInfo:

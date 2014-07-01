@@ -556,7 +556,6 @@
 		69DE5CDE19614D420050D020 /* LMNotiDownloadWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69DE5CDC19614D420050D020 /* LMNotiDownloadWC.xib */; };
 		69DE5CE219614D880050D020 /* LMNotiMessageWC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DE5CE019614D880050D020 /* LMNotiMessageWC.m */; };
 		69DE5CE319614D880050D020 /* LMNotiMessageWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69DE5CE119614D880050D020 /* LMNotiMessageWC.xib */; };
-		69E725B81934D478006EA827 /* LMFileNaviCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E725B71934D478006EA827 /* LMFileNaviCellView.m */; };
 		69F1A37518E0624E004C5B30 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69F1A37418E0624E004C5B30 /* WebKit.framework */; };
 		69FEC48A19483D6D00483C11 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69FEC48919483D6D00483C11 /* Quartz.framework */; };
 		69FEC48E194845CA00483C11 /* scrollingAnimation.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 69FEC48D194845CA00483C11 /* scrollingAnimation.pdf */; };
@@ -1307,8 +1306,6 @@
 		69DE5CDF19614D880050D020 /* LMNotiMessageWC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMNotiMessageWC.h; sourceTree = "<group>"; };
 		69DE5CE019614D880050D020 /* LMNotiMessageWC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMNotiMessageWC.m; sourceTree = "<group>"; };
 		69DE5CE119614D880050D020 /* LMNotiMessageWC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMNotiMessageWC.xib; sourceTree = "<group>"; };
-		69E725B61934D478006EA827 /* LMFileNaviCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMFileNaviCellView.h; sourceTree = "<group>"; };
-		69E725B71934D478006EA827 /* LMFileNaviCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMFileNaviCellView.m; sourceTree = "<group>"; };
 		69F1A37418E0624E004C5B30 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		69F1A37618E06262004C5B30 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		69F1A37818E0627A004C5B30 /* AppleScriptKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptKit.framework; path = System/Library/Frameworks/AppleScriptKit.framework; sourceTree = SDKROOT; };
@@ -2128,8 +2125,6 @@
 				69B37F0A18DFDEE800DE620F /* LMFileNaviVC.h */,
 				69B37F0B18DFDEE800DE620F /* LMFileNaviVC.m */,
 				69B37F0C18DFDEE800DE620F /* LMFileNaviVC.xib */,
-				69E725B61934D478006EA827 /* LMFileNaviCellView.h */,
-				69E725B71934D478006EA827 /* LMFileNaviCellView.m */,
 			);
 			name = LeftFileNavigation;
 			sourceTree = "<group>";
@@ -3281,7 +3276,6 @@
 				3DED27271904AE53001A1D67 /* LMPropertyVRFrameVC.m in Sources */,
 				69B9A39F18E6B7E50007D6E2 /* NSTreeController+JDExtension.m in Sources */,
 				69D79B2E19138CB90020608D /* LMStartNewVC.m in Sources */,
-				69E725B81934D478006EA827 /* LMFileNaviCellView.m in Sources */,
 				69757B1318D95BBC0095CBAC /* JDWebUtil.m in Sources */,
 				69FFB28D195041E500DA2783 /* LMPropertyProgrammingType2VC.m in Sources */,
 				69C5760C18D6FE020016F050 /* IUCSS.m in Sources */,

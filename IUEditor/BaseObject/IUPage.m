@@ -127,11 +127,6 @@
     return NO;
 }
 
-- (BOOL)addIU:(IUBox *)iu error:(NSError *__autoreleasing *)error{
-    assert(0);
-    return YES;
-}
-
 -(void)CSSUpdated:(IUCSSTag)tag forWidth:(NSInteger)width isHover:(BOOL)isHover{
     [super CSSUpdated:tag forWidth:width isHover:isHover];
     if([tag  isEqual: IUCSSTagHeight]){

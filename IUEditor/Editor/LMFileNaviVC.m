@@ -14,12 +14,9 @@
 #import "IUBackground.h"
 #import "IUClass.h"
 #import "LMWC.h"
-#import "LMFileNaviCellView.h"
 
 @interface LMFileNaviVC ()
-
-@property (weak) IBOutlet JDOutlineView *navOutlineView;
-
+@property (weak) IBOutlet NSOutlineView *outlineV;
 @end
 
 @implementation LMFileNaviVC{
@@ -47,12 +44,11 @@
     //[_documentController removeObserver:self forKeyPath:@"selection"];
 }
 
+#pragma mark -selection
+
 -(void)selectionIndexPathsDidChange{
     JDTraceLog( @"selection");
 }
-
-
-
 
 -(void)selectionDidChange:(NSDictionary*)dict{
     [self willChangeValueForKey:@"selection"];
@@ -65,69 +61,37 @@
     [_documentController setSelectedObject:_project.pageDocuments.firstObject];
 }
 
-- (void)pressAddBtn:(NSButton*)sender{
-    IUSheet *newDoc;
-    switch (sender.tag) {
-        case 1:{
-            newDoc = [[IUPage alloc] initWithProject:self.project options:nil];
-            [self.project addSheet:newDoc toSheetGroup:self.project.pageGroup];
-            [self.project.identifierManager registerIUs:@[newDoc]];
-            IUBackground *defaultBG = self.project.backgroundDocuments[0];
-            [(IUPage*)newDoc setBackground:defaultBG];
-        }
-            break;
-        case 2:{
-            assert(0);
-        }
-            break;
-        case 3:{
-            newDoc = [[IUClass alloc] initWithProject:self.project options:nil];
-            [self.project addSheet:newDoc toSheetGroup:self.project.classGroup];
-        }
-            break;
-            
-        default:
-            assert(0);
-            break;
-    }
-    [self.documentController rearrangeObjects];
-    [self.documentController setSelectedObject:newDoc];
-}
 
+#pragma mark - outlineView
 
 - (NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(NSTreeNode*)item {
     //folder
     if ( [item.representedObject isKindOfClass:[IUProject class]] ||
-        [item.representedObject isKindOfClass:[IUSheetGroup class]] ||
         [item.representedObject isKindOfClass:[IUResourceGroup class]]){
-        LMFileNaviCellView *folder = [outlineView makeViewWithIdentifier:@"folder" owner:self];
+        
+        IUSheetGroup *doc = (IUSheetGroup*) item.representedObject;
+        NSTableCellView *folder = [outlineView makeViewWithIdentifier:@"folderNoAdd" owner:self];
+        [folder.textField setStringValue:doc.name];
+        
+        return folder;
+    }
+    else if ([item.representedObject isKindOfClass:[IUSheetGroup class]])
+    {
+        NSTableCellView *folder;
         
         IUSheetGroup *doc = (IUSheetGroup*) item.representedObject;
         if ([doc isKindOfClass:[IUSheetGroup class]]) {
             
-            if ([doc.name isEqualToString:IUPageGroupName]) {
-                folder.addButton.tag = 1;
-                [folder.addButton setHidden:NO];
+            if ([doc.name isEqualToString:IUBackgroundGroupName]) {
+                folder = [outlineView makeViewWithIdentifier:@"folderNoAdd" owner:self];
             }
-            
-            else if ([doc.name isEqualToString:IUBackgroundGroupName]) {
-                [folder.addButton setHidden:YES];
+            else{
+                folder = [outlineView makeViewWithIdentifier:@"folder" owner:self];
+
             }
-            
-            else if ([doc.name isEqualToString:IUClassGroupName]) {
-                folder.addButton.tag = 3;
-                [folder.addButton setHidden:NO];
-            }
-            
-            else {
-//                assert(0);
-            }
-            [folder.addButton setTarget:self];
-            [folder.addButton setAction:@selector(pressAddBtn:)];
         }
-        else {
-            [folder.addButton setHidden:YES];
-        }
+    
+        [folder.textField setStringValue:doc.name];
         return folder;
     }
     //file
@@ -170,8 +134,7 @@
             nodeName = node.name;
         }
         
-        LMFileNaviCellView *cell = [outlineView makeViewWithIdentifier:cellIdentifier owner:self];
-        cell.project = _documentController.project;
+        NSTableCellView *cell = [outlineView makeViewWithIdentifier:cellIdentifier owner:self];
         [cell.textField setStringValue:nodeName];
 
         return cell;
@@ -197,13 +160,15 @@
 
 #pragma mark -
 #pragma mark rightmenu
+
+
 - (NSMenu *)defaultMenuForRow:(NSInteger)row{
-    NSTreeNode *item = [_navOutlineView itemAtRow:row];
+    NSTreeNode *item = [_outlineV itemAtRow:row];
     id node = [item representedObject];
 
     if( [node isKindOfClass:[IUSheet class]]){
         NSMenu *menu = [[NSMenu alloc] initWithTitle:@"Document"];
-        NSMenuItem *openItem = [[NSMenuItem alloc] initWithTitle:@"Open Project Folder" action:@selector(openProject:) keyEquivalent:@""];
+        NSMenuItem *openItem = [[NSMenuItem alloc] initWithTitle:@"Show in Finder" action:@selector(openProject:) keyEquivalent:@""];
         openItem.tag = row;
         openItem.target = self;
 
@@ -228,23 +193,21 @@
     
 }
 
-- (IBAction)clickShowInFinder:(id)sender {
-    NSURL *url = [NSURL fileURLWithPath:_project.path];
-    [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[url]];
-    
+
+- (void)openProject:(id)sender {
+    [[NSWorkspace sharedWorkspace] openFile:_project.directoryPath];
 }
 
 - (void)copyDocument:(NSMenuItem*)sender{
-    NSTreeNode *item = [_navOutlineView itemAtRow:sender.tag];
+    NSTreeNode *item = [_outlineV itemAtRow:sender.tag];
     IUSheet * node = [item representedObject];
     IUSheet * newNode = [node copy];
     [self.project addSheet:newNode toSheetGroup:node.group];
     [self.documentController rearrangeObjects];
 }
 
-
 - (void)removeDocument:(NSMenuItem*)sender{
-    NSTreeNode *item = [_navOutlineView itemAtRow:sender.tag];
+    NSTreeNode *item = [_outlineV itemAtRow:sender.tag];
     IUSheet * node = [item representedObject];
     if (node.group.childrenFiles.count == 1) {
         NSBeep();
@@ -255,58 +218,79 @@
     [_documentController rearrangeObjects];
 }
 
-- (IBAction)clickMenuAddFile:(id)sender {
-    assert(0);
-    /*
-    NSTreeNode *node = [_navOutlineView itemAtRow:_navOutlineView.rightClickedIndex];
-    IUGroupNode *groupNode;
-    if([self isFolder:node]){
-        groupNode = [node representedObject];
-    }
-    else{
-        groupNode = [node.parentNode representedObject];
-    }
-    
-    if([groupNode isKindOfClass:[IUDocumentGroupNode class]]){
-        NSString *className;
-        if([groupNode.name isEqualToString:IUPageGroupName]){
-            className = @"IUPage";
-        }
-        else if([groupNode.name isEqualToString:@"Backgrounds"]){
-            className = @"IUBackground";
-        }
-        else if ([groupNode.name isEqualToString:@"classes"]){
-            className = @"IUClass";
-        }
-        
-        IUBox *obj = [[NSClassFromString(className) alloc] initWithIdentifierManager:_identifierManager option:nil];
-        if (obj == nil) {
-            assert(0);
-        }
-        
-        [_identifierManager setNewIdentifierAndRegisterToTemp:obj withKey:nil];
-        obj.name = obj.htmlID;
-        
-        
-        if ([obj isKindOfClass:[IUPage class]]) {
-            IUBackground *bg = [[_documentController.project backgroundDocuments] firstObject];
-            [(IUPage*)obj setBackground:bg];
-        }
-        
-        IUDocumentGroup *fileNode = [[IUDocumentGroup alloc] init];
-        fileNode.document = obj;
-        fileNode.name = obj.name;
-        
-        [groupNode addNode:fileNode];
 
-        [fileNode.document setIdentifierManager:_identifierManager];
-        [_identifierManager registerIU:obj];
+#pragma mark - cell specivfic action (add, name editing)
+
+- (IBAction)pressAddBtn:(id)sender{
+    if([sender isKindOfClass:[NSButton class]]){
+        
+        NSTableCellView *cellView = (NSTableCellView *)[sender superview];
+        NSString *groupName =  cellView.textField.stringValue;
+        IUSheet *newDoc;
+        
+        if([groupName isEqualToString:IUPageGroupName]){
+            
+            newDoc = [[IUPage alloc] initWithProject:self.project options:nil];
+            [self.project addSheet:newDoc toSheetGroup:self.project.pageGroup];
+            [self.project.identifierManager registerIUs:@[newDoc]];
+            IUBackground *defaultBG = self.project.backgroundDocuments[0];
+            [(IUPage*)newDoc setBackground:defaultBG];
+        }
+        else if([groupName isEqualToString:IUClassGroupName]){
+            newDoc = [[IUClass alloc] initWithProject:self.project options:nil];
+            [self.project addSheet:newDoc toSheetGroup:self.project.classGroup];
+        }
+        
+        if(newDoc){
+            [self.documentController rearrangeObjects];
+            [self.documentController setSelectedObject:newDoc];
+        }
     }
-     */
 }
 
-- (void)openProject:(id)sender {
-    [[NSWorkspace sharedWorkspace] openFile:_project.directoryPath];
+
+
+- (IBAction)fileNameEndEditing:(id)sender{
+    assert(_project.identifierManager);
+    
+    NSTextField *textField = (NSTextField *)sender;
+    
+    IUSheet *sheet = (IUSheet *)self.selection;
+    NSString *modifiedName = textField.stringValue;
+    
+    if([modifiedName isEqualToString:sheet.name]){
+        [textField setStringValue:sheet.name];
+        return;
+    }
+    
+    if(modifiedName.length == 0){
+        [JDUIUtil hudAlert:@"Name should not be empty" second:1];
+        [textField setStringValue:sheet.name];
+        return;
+    }
+    
+    NSCharacterSet *characterSet = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
+    if([modifiedName rangeOfCharacterFromSet:characterSet].location != NSNotFound){
+        [JDUIUtil hudAlert:@"Name should be alphabet or digit" second:1];
+        [textField setStringValue:sheet.name];
+        return;
+    }
+    
+    IUBox *box = [_project.identifierManager IUWithIdentifier:modifiedName];
+    if (box != nil) {
+        [JDUIUtil hudAlert:@"IU with same name exists" second:1];
+        [textField setStringValue:sheet.name];
+        return;
+    }
+    
+    if([modifiedName isEqualToString:@"doc.name"] == NO){
+        [_project.identifierManager unregisterIUs:@[sheet]];
+        sheet.htmlID = modifiedName;
+        [_project.identifierManager registerIUs:@[sheet]];
+        sheet.name = modifiedName;
+        
+    }
+    
 }
 
 @end
