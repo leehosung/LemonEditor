@@ -7,6 +7,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="LMTopToolbarVC">
             <connections>
                 <outlet property="fileTabView" destination="IIW-4c-pEg" id="Rfh-Zm-BDj"/>
+                <outlet property="hiddenTabBtn" destination="Mnq-Yt-P1D" id="3gO-U8-KyF"/>
                 <outlet property="view" destination="Lyx-P5-2VK" id="W5V-N6-Jku"/>
             </connections>
         </customObject>

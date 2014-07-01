@@ -28,6 +28,6 @@ typedef enum{
 
 //tabItem delegate
 - (void)selectTab:(IUSheet *)documentNode;
-- (void)closeTab:(LMFileTabItemVC *)documentNode;
+- (void)closeTab:(LMFileTabItemVC *)tabItem sender:(id)sender;
 
 @end

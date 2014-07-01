@@ -17,6 +17,7 @@
 }
 
 @property (weak) IBOutlet NSView *fileTabView;
+@property (weak) IBOutlet NSButton *hiddenTabBtn;
 
 @end
 
@@ -33,9 +34,13 @@
     return self;
 }
 - (void)awakeFromNib{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeSheet:) name:IUNotificationStructureDidChange object:nil];    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeSheet:) name:IUNotificationStructureDidChange object:nil];
+    
+    [self.view addObserver:self forKeyPath:@"frame" options:0 context:nil];
 
 }
+
+
 
 //set from lmwc
 -(void)setSheet:(IUSheet *)sheet{
@@ -50,8 +55,7 @@
         case LMTabDocumentTypeNone:
             //1. check enough size -> ignore or move one to hidden tab
             if([self hasEnoughSize] == NO){
-                IUSheet *lastOpenedDocument = [openTabDocuments objectAtIndex:[openTabDocuments count] -1];
-                [self removeOpenTabDocument:lastOpenedDocument];
+                [self moveOpenTabToHiddenTab];
             }
             
             //2. add opentabdocuments
@@ -62,6 +66,8 @@
         default:
             break;
     }
+    
+    [self updateHiddenTabBtn];
 }
 
 - (void)removeSheet:(NSNotification *)notification{
@@ -76,23 +82,19 @@
 }
 #pragma mark -
 #pragma mark tabview
+
 - (void)removeDocument:(IUSheet *)sheet{
     if([openTabDocuments containsObject:sheet]){
         LMFileTabItemVC *item = [self tabItemOfDocumentNode:sheet];
-        [self closeTab:item];
+        [self closeTab:item sender:sheet];
         
     }
     else if([hiddenTabDocuments containsObject:sheet]){
         [hiddenTabDocuments removeObject:sheet];
+        [self updateHiddenTabBtn];
     }
 }
 
-- (void)removeOpenTabDocument:(IUSheet *)sheet{    
-    LMFileTabItemVC *item = [self tabItemOfDocumentNode:sheet];
-    [self closeTab:item];
-
-    [hiddenTabDocuments addObject:sheet];
-}
 
 
 - (void)addOpenTabDocuments:(IUSheet *)sheet{
@@ -129,6 +131,16 @@
     }
 }
 
+- (BOOL)isFloodOpenTab{
+    CGFloat size = _fileTabView.frame.size.width - 140 * openTabDocuments.count;
+    if(size  < 0){
+        return YES;
+    }
+    else{
+        return NO;
+    }
+}
+
 
 - (LMTabDocumentType)stateOfDocumnet:(IUSheet *)sheet{
     if([openTabDocuments containsObject:sheet]){
@@ -144,6 +156,15 @@
 
 - (BOOL)isAddToOpenTab{
     return YES;
+}
+
+- (void)updateHiddenTabBtn{
+    if(hiddenTabDocuments.count == 0){
+        [_hiddenTabBtn setTransparent:YES];
+    }
+    else{
+        [_hiddenTabBtn setTransparent:NO];
+    }
 }
 
 - (IBAction)selectHiddenDocument:(id)sender{
@@ -163,6 +184,55 @@
     }
     
     [NSMenu popUpContextMenu:theMenu withEvent:[NSApp currentEvent] forView:self.view];
+}
+
+#pragma mark - change to open and hidden
+
+- (void)moveOpenTabToHiddenTab{
+    IUSheet *lastOpenedDocument = [openTabDocuments lastObject];
+    LMFileTabItemVC *item = [self tabItemOfDocumentNode:lastOpenedDocument];
+    [self closeTab:item sender:self];
+    
+    [hiddenTabDocuments addObject:lastOpenedDocument];
+    [self updateHiddenTabBtn];
+}
+
+
+- (void)moveHiddenTabToOpenTab{
+    IUSheet *sheet = [hiddenTabDocuments lastObject];
+    if(sheet){
+        [hiddenTabDocuments removeLastObject];
+        [self addOpenTabDocuments:sheet];
+        [self updateHiddenTabBtn];
+    }
+}
+
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if (object == self.view && [keyPath isEqualToString:@"frame"]) {
+        
+        //방어코드
+        int i=0;
+        //window가 커졌을 때 hiddenTab을 openTab으로 옮김
+        while([self hasEnoughSize] && hiddenTabDocuments.count > 0){
+            [self moveHiddenTabToOpenTab];
+            i++;
+            if(i>10000){
+                break;
+            }
+        }
+        
+        i=0;
+        //window가 작아졌을때 openTab을 hiddenTab으로
+        while([self isFloodOpenTab]){
+            [self moveOpenTabToHiddenTab];
+            i++;
+            if(i>10000){
+                break;
+            }
+        }
+    }
 }
 
 
@@ -190,7 +260,7 @@
     
 }
 
-- (void)closeTab:(LMFileTabItemVC *)tabItem{
+- (void)closeTab:(LMFileTabItemVC *)tabItem sender:(id)sender{
     if(openTabDocuments.count == 1){
         return ;
     }
@@ -217,8 +287,12 @@
         
     }
     [openTabDocuments removeObject:tabItem.sheet];
-        
     
+    
+    //call by tabview
+    if([sender isNotEqualTo:self]){
+        [self moveHiddenTabToOpenTab];
+    }
     
 }
 

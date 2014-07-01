@@ -39,7 +39,7 @@
     [self.delegate selectTab:_sheet];
 }
 - (IBAction)clickCloseFile:(id)sender {
-    [self.delegate closeTab:self];
+    [self.delegate closeTab:self sender:self];
 }
 
 - (void)setDeselectColor{
