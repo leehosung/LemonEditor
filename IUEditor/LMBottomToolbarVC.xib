@@ -128,7 +128,7 @@
                                             <constraint firstAttribute="height" constant="30" id="l9M-rr-Rdl"/>
                                         </constraints>
                                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="reload_off" imagePosition="only" alignment="center" alternateImage="reload" imageScaling="proportionallyDown" inset="2" id="MBo-aD-uvg">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <behavior key="behavior" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
