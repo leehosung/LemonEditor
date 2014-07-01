@@ -471,6 +471,16 @@ BOOL isSameColor(NSColor *color1, NSColor *color2){
 
 }
 
+- (void)addSubviewFullFrameAtTop:(NSView *)aView height:(CGFloat)height{
+    [self addSubview:aView];
+    [aView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    [self addConstraint:[self viewConstraint:aView equalToHeight:height]];
+    [self addConstraint:[self viewConstraint:aView toSuperview:self top:0]];
+    [self addConstraint:[self viewConstraint:aView toSuperview:self leading:0]];
+    [self addConstraint:[self viewConstraint:aView toSuperview:self trailing:0]];
+}
+
 - (void)addSubviewFullFrame:(NSView *)aView height:(CGFloat)height toBottomView:(NSView *)bottomView{
     [self addSubview:aView];
     [aView setTranslatesAutoresizingMaskIntoConstraints:NO];

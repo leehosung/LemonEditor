@@ -206,6 +206,7 @@
     IUSheet * node = [item representedObject];
     IUSheet * newNode = [node copy];
     [self.project addSheet:newNode toSheetGroup:node.group];
+    [self.project.identifierManager registerIUs:@[newNode]];
     [self.documentController rearrangeObjects];
 }
 
@@ -218,6 +219,7 @@
         return;
     }
     [self.project removeSheet:node toSheetGroup:node.group];
+    [self.project.identifierManager unregisterIUs:@[node]];
     [_documentController rearrangeObjects];
 }
 
@@ -242,6 +244,7 @@
         else if([groupName isEqualToString:IUClassGroupName]){
             newDoc = [[IUClass alloc] initWithProject:self.project options:nil];
             [self.project addSheet:newDoc toSheetGroup:self.project.classGroup];
+            [self.project.identifierManager registerIUs:@[newDoc]];
         }
         
         if(newDoc){

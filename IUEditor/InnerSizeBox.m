@@ -12,6 +12,7 @@
 
 @implementation InnerSizeBox{
     NSInteger width;
+    NSBox *selectedBox;
     SizeTextField *leftTF;
     SizeTextField *rightTF;
 }
@@ -24,8 +25,8 @@
         [self setTitlePosition:NSNoTitle];
         [self setBoxType:NSBoxCustom];
         [self setBorderType:NSLineBorder];
-        [self setBorderWidth:0.5];
         [self setBorderColor:[NSColor grayColor]];
+        [self setContentViewMargins:NSZeroSize];
         
         NSString *tfTitle = [NSString stringWithFormat:@"%ld", aWidth];
         
@@ -35,6 +36,7 @@
         [rightTF setStringValue:tfTitle];
         [self addSubview:rightTF];
         
+
         //For center
         /*
         leftTF = [[SizeTextField alloc] initWithFrame:NSMakeRect(0, 4, 40, 11)];
@@ -43,6 +45,15 @@
         [leftTF setStringValue:tfTitle];
         [self addSubview:leftTF];
          */
+        
+        selectedBox = [[NSBox alloc] initWithFrame:NSMakeRect(0, 0, self.frameWidth, 3.0)];
+        [selectedBox setTitlePosition:NSNoTitle];
+        [selectedBox setBoxType:NSBoxCustom];
+        [selectedBox setBorderType:NSNoBorder];
+        [selectedBox setFillColor:[NSColor rgbColorRed:50 green:150 blue:220 alpha:1]];
+        
+        [self addSubviewFullFrameAtTop:selectedBox height:3.0];
+
         
     }
     return self;
@@ -93,10 +104,12 @@
 
 - (void)setSmallerColor{
     [self setFillColor:[NSColor whiteColor]];
+    [selectedBox setFillColor:[NSColor rgbColorRed:50 green:150 blue:220 alpha:1]];
 }
 
 - (void)setLargerColor{
     [self setFillColor:[NSColor secondarySelectedControlColor]];
+    [selectedBox setFillColor:[NSColor clearColor]];
 }
 
 @end
