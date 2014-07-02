@@ -32,12 +32,14 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Initialization code here.
+        [self loadView];
     }
     return self;
 }
 
-- (void)awakeFromNib{
+- (void)setController:(IUController *)controller{
+    _controller = controller;
+
     NSDictionary *bgEnableBindingOption = [NSDictionary
                                            dictionaryWithObjects:@[NSIsNotNilTransformerName]
                                            forKeys:@[NSValueTransformerNameBindingOption]];

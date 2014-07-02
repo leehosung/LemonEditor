@@ -21,12 +21,13 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        [self loadView];
     }
     return self;
 }
 
-
--(void)awakeFromNib{
+- (void)setController:(IUController *)controller{
+    _controller = controller;
     [_overflowPopupBtn bind:NSSelectedIndexBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"overflowType"] options:nil];
  //   [_overflowB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"overflow"] options:IUBindingDictNotRaisesApplicable];
     [_overflowPopupBtn bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"canChangeOverflow"] options:IUBindingDictNotRaisesApplicable];

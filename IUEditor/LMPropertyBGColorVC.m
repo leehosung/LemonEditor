@@ -23,13 +23,13 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Initialization code here.
+        [self loadView];
     }
     return self;
 }
 
-- (void)awakeFromNib{
-//    [[NSColorPanel sharedColorPanel] setShowsAlpha:YES];
+- (void)setController:(IUController *)controller{
+    _controller = controller;
     [NSColor setIgnoresAlpha:NO];
 
     [_bgColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBGColor] options:IUBindingDictNotRaisesApplicable];

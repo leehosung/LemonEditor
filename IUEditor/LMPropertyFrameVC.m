@@ -66,13 +66,14 @@
     if (self) {
         _enablePercentH = YES;
         _enablePosition = YES;
+        [self loadView];
     }
     return self;
 }
 
 
--(void)awakeFromNib{
-
+- (void)setController:(IUController *)controller{
+    _controller = controller;
     //observing
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMQSelect:) name:IUNotificationMQSelected object:nil];
 

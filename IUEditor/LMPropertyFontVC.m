@@ -44,13 +44,14 @@
         currentFontSize = 12;
         self.fontDefaultSizes = @[@(6), @(8), @(9), @(10), @(11), @(12),
                                   @(14), @(18), @(21), @(24), @(30), @(36), @(48), @(60), @(72)];
-        
+        [self loadView];
     }
     return self;
 }
 
 
-- (void)awakeFromNib{
+- (void)setController:(IUController *)controller{
+    _controller = controller;
     
     [_lineHeightB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagLineHeight] options:IUBindingDictNotRaisesApplicable];
     [_textAlignB bind:NSSelectedIndexBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagTextAlign] options:IUBindingDictNotRaisesApplicable];

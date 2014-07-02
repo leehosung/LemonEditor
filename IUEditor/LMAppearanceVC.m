@@ -15,6 +15,7 @@
 #import "LMPropertyOverflowVC.h"
 
 @interface LMAppearanceVC ()
+@property (weak) IBOutlet NSOutlineView *outlineV;
 
 @end
 
@@ -59,6 +60,21 @@
         
         propertyOverflowVC = [[LMPropertyOverflowVC alloc] initWithNibName:@"LMPropertyOverflowVC" bundle:nil];
         [propertyOverflowVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
+        
+        [self loadView];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            NSLog([self.outlineV description], nil );
+            id item = [self.outlineV itemAtRow:1];
+            [self.outlineV expandItem:item];
+            item = [self.outlineV itemAtRow:3];
+            [self.outlineV expandItem:item];
+            item = [self.outlineV itemAtRow:5];
+            [self.outlineV expandItem:item];
+            item = [self.outlineV itemAtRow:7];
+            [self.outlineV expandItem:item];
+            item = [self.outlineV itemAtRow:9];
+            [self.outlineV expandItem:item];
+        });
     }
     return self;
 }

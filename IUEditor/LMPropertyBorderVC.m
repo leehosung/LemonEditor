@@ -51,13 +51,13 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        [self loadView];
     }
     return self;
 }
 
--(void)awakeFromNib{
-    
-    
+- (void)setController:(IUController *)controller{
+    _controller = controller;
     NSDictionary *bindingOption = [NSDictionary
                                    dictionaryWithObjects:@[[NSNumber numberWithBool:NO], @"JDNilToZeroTransformer"]
                                    forKeys:@[NSRaisesForNotApplicableKeysBindingOption,  NSValueTransformerNameBindingOption]];
