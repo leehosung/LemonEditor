@@ -73,6 +73,9 @@
 @property (weak) IBOutlet NSView *centerV;
 @property (weak) IBOutlet NSMatrix *widgetMatrix;
 
+//log
+@property (weak) IBOutlet WebView *logWebView;
+
 @end
 
 @implementation LMWC{
@@ -219,6 +222,10 @@
     [self.clickWidgetTabMatrix setToolTip:@"Secondary Widget" forCell:cell8];
     
 
+#if DEBUG
+#else
+    [[_logWebView mainFrame] loadRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://server.iueditor.org/log.html"]]];
+#endif
 }
 
 - (void)dealloc{
