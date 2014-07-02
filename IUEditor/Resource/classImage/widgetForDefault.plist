@@ -108,7 +108,7 @@
 		<key>navImage</key>
 		<string>stack_form</string>
 		<key>shortDesc</key>
-		<string>Component Object</string>
+		<string>Insert input fields to here. &lt;form&gt;</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
@@ -124,7 +124,7 @@
 		<key>navImage</key>
 		<string>stack_render</string>
 		<key>shortDesc</key>
-		<string>Component Object</string>
+		<string>Import IUClass object</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
@@ -172,7 +172,7 @@
 		<key>navImage</key>
 		<string>stack_webmovie</string>
 		<key>shortDesc</key>
-		<string>Embed Vimeo or Youtube</string>
+		<string>Vimeo or Youtube &lt;embed&gt;</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
@@ -204,7 +204,7 @@
 		<key>navImage</key>
 		<string>stack_collection</string>
 		<key>shortDesc</key>
-		<string>IU Collection view</string>
+		<string>[Only for Django] for-loop for array object</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
@@ -252,7 +252,7 @@
 		<key>navImage</key>
 		<string>stack_textfield</string>
 		<key>shortDesc</key>
-		<string>Input text Object</string>
+		<string>Input text &lt;input type=&quot;text&quot;&gt;</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
@@ -268,7 +268,7 @@
 		<key>navImage</key>
 		<string>stack_textview</string>
 		<key>shortDesc</key>
-		<string>Textarea Object</string>
+		<string>Input paragraph text &lt;textarea&gt;</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
@@ -284,7 +284,7 @@
 		<key>navImage</key>
 		<string>stack_transition</string>
 		<key>shortDesc</key>
-		<string>IU Transition View</string>
+		<string>[Animated] Two IUs in one object</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
@@ -316,7 +316,7 @@
 		<key>navImage</key>
 		<string>stack_carousel</string>
 		<key>shortDesc</key>
-		<string>IU Carousel</string>
+		<string>[Animated] Carousel</string>
 		<key>longDesc</key>
 		<string></string>
 		<key>widgetClass</key>
