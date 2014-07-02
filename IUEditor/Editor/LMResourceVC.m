@@ -8,6 +8,7 @@
 
 #import "LMResourceVC.h"
 #import "IUResourceFile.h"
+#import "LMHelpPopover.h"
 
 @interface LMResourceVC ()
 @property (weak) IBOutlet NSTabView *tabView;
@@ -110,11 +111,33 @@
     [_resourceArrayController rearrangeObjects];
 }
 
+
 #pragma mark - 
 #pragma mark addResource
 
 - (void)addResource:(NSURL *)url type:(IUResourceType)type{
     [_manager insertResourceWithContentOfPath:[url relativePath]];
+}
+
+- (void)doubleClick:(id)sender{
+    
+    NSView *targetView = (id)sender;
+    NSCollectionView *currentCollectionView = (NSCollectionView *)[targetView superview];
+    if([currentCollectionView isKindOfClass:[NSCollectionView class]]){
+        
+        NSUInteger index = [[currentCollectionView selectionIndexes] firstIndex];
+        IUResourceFile *resourceFile = [[currentCollectionView itemAtIndex:index] representedObject];
+        
+        
+        LMHelpPopover *popover = [LMHelpPopover sharedHelpPopover];
+        [popover setType:LMPopoverTypeText];
+        [popover setTitle:resourceFile.name rtfFileName:nil];
+        [popover showRelativeToRect:[targetView bounds] ofView:sender preferredEdge:NSMaxYEdge];
+    }
+    else{
+        assert(0);
+    }
+    
 }
 
 

@@ -253,12 +253,12 @@
                 <constraint firstAttribute="trailing" secondItem="x7y-Oy-DDd" secondAttribute="trailing" id="rmH-r9-zEl"/>
             </constraints>
         </customView>
-        <customView id="Vy0-Hh-AxB" userLabel="ItemView-list">
-            <rect key="frame" x="0.0" y="0.0" width="300" height="35"/>
+        <customView id="Vy0-Hh-AxB" userLabel="ItemView-list" customClass="LMCollectionItemView">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="31"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ghh-0W-mvF">
-                    <rect key="frame" x="5" y="4" width="290" height="28"/>
+                    <rect key="frame" x="5" y="0.0" width="290" height="28"/>
                     <view key="contentView">
                         <rect key="frame" x="1" y="1" width="288" height="26"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -278,7 +278,7 @@
                     </connections>
                 </box>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="18s-g7-Xti">
-                    <rect key="frame" x="9" y="8" width="20" height="20"/>
+                    <rect key="frame" x="9" y="4" width="20" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="20" id="AFl-sA-KWn"/>
                         <constraint firstAttribute="height" constant="20" id="Lfo-gu-JMz"/>
@@ -289,7 +289,7 @@
                     </connections>
                 </imageView>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="24X-V2-Q8w">
-                    <rect key="frame" x="31" y="8" width="254" height="17"/>
+                    <rect key="frame" x="31" y="4" width="254" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="U6B-3u-UN4"/>
                         <constraint firstAttribute="width" constant="250" id="qD8-cQ-LnJ"/>
@@ -324,8 +324,12 @@
                 <constraint firstItem="24X-V2-Q8w" firstAttribute="top" secondItem="Vy0-Hh-AxB" secondAttribute="top" constant="10" id="saj-NI-kHa"/>
                 <constraint firstItem="ghh-0W-mvF" firstAttribute="leading" secondItem="Vy0-Hh-AxB" secondAttribute="leading" constant="5" id="vel-SH-rxm"/>
             </constraints>
+            <connections>
+                <outlet property="delegate" destination="-2" id="FQa-pb-wGd"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="156.5"/>
         </customView>
-        <customView id="QKh-6Y-8ZC" userLabel="ItemView-icon">
+        <customView id="QKh-6Y-8ZC" userLabel="ItemView-icon" customClass="LMCollectionItemView">
             <rect key="frame" x="0.0" y="0.0" width="74" height="74"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -353,27 +357,10 @@
                     </connections>
                 </imageView>
             </subviews>
+            <connections>
+                <outlet property="delegate" destination="-2" id="ohh-n8-T08"/>
+            </connections>
         </customView>
-        <box autoresizesSubviews="NO" borderWidth="0.0" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" id="go5-pz-x0P">
-            <rect key="frame" x="253" y="0.0" width="10" height="60"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <view key="contentView">
-                <rect key="frame" x="0.0" y="0.0" width="10" height="60"/>
-                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            </view>
-            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-            <color key="fillColor" red="0.21049014190000001" green="0.43549033819999999" blue="0.91941812779999998" alpha="1" colorSpace="calibratedRGB"/>
-        </box>
-        <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" id="7ah-wf-J5M">
-            <rect key="frame" x="6" y="6" width="250" height="50"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <view key="contentView">
-                <rect key="frame" x="1" y="1" width="248" height="48"/>
-                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            </view>
-            <color key="borderColor" red="0.2823529541" green="0.53725492949999998" blue="0.92549026010000002" alpha="1" colorSpace="deviceRGB"/>
-            <color key="fillColor" red="0.92156862750000001" green="0.98039215690000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-        </box>
     </objects>
     <resources>
         <image name="NSInfo" width="32" height="32"/>
