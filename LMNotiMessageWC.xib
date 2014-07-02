@@ -14,62 +14,73 @@
         <window title="Message from IU" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="442" height="271"/>
+            <rect key="contentRect" x="196" y="240" width="420" height="320"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="442" height="271"/>
+                <rect key="frame" x="0.0" y="0.0" width="420" height="320"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cyx-4h-uhL">
-                        <rect key="frame" x="18" y="229" width="189" height="22"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Hello World!" id="F8c-F6-RZU">
-                            <font key="font" metaFont="system" size="18"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <binding destination="-2" name="value" keyPath="self.title" id="tG9-Rg-rCi"/>
-                        </connections>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zFa-pj-mRg">
-                        <rect key="frame" x="20" y="49" width="410" height="161"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="M1M-Yf-sSV">
-                            <font key="font" metaFont="system"/>
-                            <string key="title">Label LabelLabelLabelLabelLabelLabelLabel LabelLabelLabel LabelLabelLabelLabelLabelLabelLabel LabelLabelLabel LabelLabelLabelLabelLabelLabelLabel LabelLabelLabel LabelLabelLabelLabelLabelLabelLabel LabelLabelLabel LabelLabelLabelLabelLabelLabelLabel LabelLabelLabel Label</string>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <binding destination="-2" name="value" keyPath="self.content" id="JiZ-xi-gyn"/>
-                        </connections>
-                    </textField>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rhq-k3-YMm">
-                        <rect key="frame" x="352" y="13" width="82" height="32"/>
-                        <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7RW-Ts-pnF">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
+                    <box autoresizesSubviews="NO" fixedFrame="YES" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="WXE-8G-VgL">
+                        <rect key="frame" x="0.0" y="0.0" width="420" height="320"/>
+                        <view key="contentView">
+                            <rect key="frame" x="0.0" y="0.0" width="420" height="320"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pdx-ab-KjA">
+                                    <rect key="frame" x="13" y="13" width="255" height="20"/>
+                                    <buttonCell key="cell" type="check" title="Don't show again" bezelStyle="regularSquare" imagePosition="left" controlSize="small" inset="2" id="osr-Zg-vkn">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="smallSystem"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="performDoNotShow:" target="-2" id="Y4F-eD-CIr"/>
+                                    </connections>
+                                </button>
+                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rhq-k3-YMm">
+                                    <rect key="frame" x="328" y="9" width="82" height="32"/>
+                                    <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7RW-Ts-pnF">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="cellTitle"/>
+                                        <string key="keyEquivalent" base64-UTF8="YES">
 DQ
 </string>
-                        </buttonCell>
-                        <connections>
-                            <action selector="performOK:" target="-2" id="QAK-bC-cXz"/>
-                        </connections>
-                    </button>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pdx-ab-KjA">
-                        <rect key="frame" x="12" y="25" width="254" height="18"/>
-                        <buttonCell key="cell" type="check" title="Don't show again" bezelStyle="regularSquare" imagePosition="left" inset="2" id="osr-Zg-vkn">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="performDoNotShow:" target="-2" id="Y4F-eD-CIr"/>
-                        </connections>
-                    </button>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="performOK:" target="-2" id="QAK-bC-cXz"/>
+                                    </connections>
+                                </button>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zFa-pj-mRg">
+                                    <rect key="frame" x="18" y="79" width="384" height="120"/>
+                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="M1M-Yf-sSV">
+                                        <font key="font" metaFont="cellTitle"/>
+                                        <string key="title">Label LabelLabelLabelLabelLabelLabelLabel LabelLabelLabel LabelLabelLabelLabelLabelLabelLabel LabelLabelLabel LabelLabelLabelLabelLabelLabelLabel LabelLabelLabel LabelLabelLabelLabelLabelLabelLabel LabelLabelLabel LabelLabelLabelLabelLabelLabelLabel LabelLabelLabel Label</string>
+                                        <color key="textColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <binding destination="-2" name="value" keyPath="self.content" id="JiZ-xi-gyn"/>
+                                    </connections>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cyx-4h-uhL">
+                                    <rect key="frame" x="18" y="251" width="380" height="22"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Hello World!" id="F8c-F6-RZU">
+                                        <font key="font" metaFont="system" size="16"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <binding destination="-2" name="value" keyPath="self.title" id="tG9-Rg-rCi"/>
+                                    </connections>
+                                </textField>
+                            </subviews>
+                        </view>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </box>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KQY-Lm-noM">
-                        <rect key="frame" x="333" y="234" width="78" height="17"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="2014. 6. 30" id="Qjl-aw-o7l">
-                            <font key="font" metaFont="system"/>
+                        <rect key="frame" x="171" y="230" width="78" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="2014. 6. 30" id="Qjl-aw-o7l">
+                            <font key="font" metaFont="system" size="10"/>
                             <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -82,6 +93,7 @@ DQ
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
+            <point key="canvasLocation" x="250" y="123"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="Ui6-fK-lXF"/>
     </objects>
