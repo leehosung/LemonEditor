@@ -26,6 +26,8 @@
 		<string></string>
 		<key>widgetClass</key>
 		<integer>0</integer>
+		<key>rtfName</key>
+		<string>iubox.rtf</string>
 	</dict>
 	<dict>
 		<key>manual</key>

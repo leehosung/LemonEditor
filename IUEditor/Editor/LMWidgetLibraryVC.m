@@ -63,6 +63,7 @@
             obj.image = [NSImage imageNamed:imageName];
             obj.shortDesc = dict[@"shortDesc"];
             obj.longDesc = dict[@"longDesc"];
+            obj.rtfName = dict[@"rtfName"];
             int widgetClass = [dict[@"widgetClass"] intValue];
             if(widgetClass == WidgetClassTypePrimary){
                 [primaryArray addObject:obj];
@@ -184,7 +185,7 @@
         
         LMHelpPopover *popover = [LMHelpPopover sharedHelpPopover];
         [popover setType:LMPopoverTypeTextAndImage];
-        [popover setImage:object.image title:object.title rtfFileName:nil];
+        [popover setImage:object.image title:object.title rtfFileName:object.rtfName];
         [popover showRelativeToRect:[targetView bounds] ofView:sender preferredEdge:NSMaxYEdge];
     }
     else{

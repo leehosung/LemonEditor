@@ -20,5 +20,6 @@
 @property   NSString    *shortDesc;
 @property   NSString    *longDesc;
 @property   NSMutableDictionary *dict;
+@property   NSString *rtfName;
 
 @end
