@@ -25,22 +25,27 @@
 		<string>iueditor.iu.zip</string>
 	</dict>
 	<dict>
+		<key>feature</key>
+		<string>Responsive, Carousel</string>
 		<key>isReady</key>
-		<false/>
+		<true/>
+		<key>thumbnail</key>
+		<string>agency_thumbnail</string>
 		<key>name</key>
-		<string>IUHome</string>
+		<string>Agency</string>
 		<key>type</key>
 		<real>0</real>
 		<key>desc</key>
-		<string>One Page Basic Homepage for IU beginers</string>
+		<string>Agency Sample page</string>
 		<key>pageSize</key>
-		<string>960 / 360</string>
-		<key>images</key>
+		<string>960 / 320</string>
+		<key>previewImages</key>
 		<array>
-			<string>lemon.png</string>
+			<string>agency_preview.png</string>
 		</array>
 		<key>projectPackageFile</key>
-		<string>iueditorHome.zip</string>
+		<string>agency.iu.zip</string>
 	</dict>
+	
 </array>
 </plist>
