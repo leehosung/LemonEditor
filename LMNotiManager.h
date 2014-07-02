@@ -9,5 +9,5 @@
 #import <Cocoa/Cocoa.h>
 
 @interface LMNotiManager : NSObject
-- (void)connectWithServer;
+- (void)connectWithServerAfterDelay:(NSInteger)delay;
 @end

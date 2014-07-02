@@ -71,7 +71,7 @@
 #endif
     
     notiManager = [[LMNotiManager alloc] init];
-    [notiManager connectWithServer];
+    [notiManager connectWithServerAfterDelay:3];
     
 }
 
