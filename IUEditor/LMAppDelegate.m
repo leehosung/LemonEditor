@@ -15,11 +15,13 @@
 #import "IUProjectController.h"
 #import "LMNotiManager.h"
 #import "JDEnvUtil.h"
+#import "LMTutorialWC.h"
 
 @implementation LMAppDelegate{
     LMStartWC *startWC;
     LMPreferenceWC *preferenceWC;
     LMNotiManager *notiManager;
+    LMTutorialWC *tutorialWC;
 }
 
 + (void)initialize{
@@ -39,10 +41,24 @@
     [JDLogUtil enableLogSection:IULogAction];
 //    [JDLogUtil enableLogSection:IULogText];
     
+
+    
+    
 #if DEBUG
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraints"];
 #else
     [self showStartWC:self];
+    
+    notiManager = [[LMNotiManager alloc] init];
+    [notiManager connectWithServerAfterDelay:0];
+    
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"iututorial"] == NO) {
+        tutorialWC = [[LMTutorialWC alloc] initWithWindowNibName:@"LMTutorialWC"];
+        [tutorialWC showWindow:self];
+    }
+    
+    
 #endif
   
 
@@ -69,9 +85,6 @@
         [self newDocument:self];
     }
 #endif
-    
-    notiManager = [[LMNotiManager alloc] init];
-    [notiManager connectWithServerAfterDelay:3];
     
 }
 

@@ -594,6 +594,21 @@
 		CB9BD6391914DC62002C9369 /* LMStartNewDjangoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9BD6371914DC62002C9369 /* LMStartNewDjangoVC.xib */; };
 		CB9BD63D1914DE23002C9369 /* LMStartNewPresentationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9BD63B1914DE23002C9369 /* LMStartNewPresentationVC.m */; };
 		CB9BD63E1914DE23002C9369 /* LMStartNewPresentationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9BD63C1914DE23002C9369 /* LMStartNewPresentationVC.xib */; };
+		CBA877EA1963D0F400075294 /* LMTutorialWC.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA877E81963D0F400075294 /* LMTutorialWC.m */; };
+		CBA877EB1963D0F400075294 /* LMTutorialWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA877E91963D0F400075294 /* LMTutorialWC.xib */; };
+		CBA877FC1963D3CF00075294 /* Tutorial00.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA877F11963D3CF00075294 /* Tutorial00.png */; };
+		CBA877FD1963D3CF00075294 /* Tutorial01_en.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA877F21963D3CF00075294 /* Tutorial01_en.png */; };
+		CBA877FE1963D3CF00075294 /* Tutorial01_kr.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA877F31963D3CF00075294 /* Tutorial01_kr.png */; };
+		CBA877FF1963D3CF00075294 /* Tutorial02_en.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA877F41963D3CF00075294 /* Tutorial02_en.png */; };
+		CBA878001963D3CF00075294 /* Tutorial02_kr.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA877F51963D3CF00075294 /* Tutorial02_kr.png */; };
+		CBA878011963D3CF00075294 /* Tutorial03_en.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA877F61963D3CF00075294 /* Tutorial03_en.png */; };
+		CBA878021963D3CF00075294 /* Tutorial03_kr.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA877F71963D3CF00075294 /* Tutorial03_kr.png */; };
+		CBA878031963D3CF00075294 /* Tutorial04_en.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA877F81963D3CF00075294 /* Tutorial04_en.png */; };
+		CBA878041963D3CF00075294 /* Tutorial04_kr.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA877F91963D3CF00075294 /* Tutorial04_kr.png */; };
+		CBA878051963D3CF00075294 /* Tutorial05_en.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA877FA1963D3CF00075294 /* Tutorial05_en.png */; };
+		CBA878061963D3CF00075294 /* Tutorial05_kr.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA877FB1963D3CF00075294 /* Tutorial05_kr.png */; };
+		CBA878081963DCF300075294 /* tutorialList.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBA878071963DCF300075294 /* tutorialList.plist */; };
+		CBA8780A1963FE6D00075294 /* Tutorial06.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA878091963FE6D00075294 /* Tutorial06.png */; };
 		CBFBE685192AF32E00F03F76 /* sampleTemplate.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBFBE684192AF32E00F03F76 /* sampleTemplate.plist */; };
 /* End PBXBuildFile section */
 
@@ -1378,6 +1393,22 @@
 		CB9BD63A1914DE23002C9369 /* LMStartNewPresentationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMStartNewPresentationVC.h; sourceTree = "<group>"; };
 		CB9BD63B1914DE23002C9369 /* LMStartNewPresentationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMStartNewPresentationVC.m; sourceTree = "<group>"; };
 		CB9BD63C1914DE23002C9369 /* LMStartNewPresentationVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMStartNewPresentationVC.xib; sourceTree = "<group>"; };
+		CBA877E71963D0F400075294 /* LMTutorialWC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMTutorialWC.h; sourceTree = "<group>"; };
+		CBA877E81963D0F400075294 /* LMTutorialWC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMTutorialWC.m; sourceTree = "<group>"; };
+		CBA877E91963D0F400075294 /* LMTutorialWC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMTutorialWC.xib; sourceTree = "<group>"; };
+		CBA877F11963D3CF00075294 /* Tutorial00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tutorial00.png; sourceTree = "<group>"; };
+		CBA877F21963D3CF00075294 /* Tutorial01_en.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tutorial01_en.png; sourceTree = "<group>"; };
+		CBA877F31963D3CF00075294 /* Tutorial01_kr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tutorial01_kr.png; sourceTree = "<group>"; };
+		CBA877F41963D3CF00075294 /* Tutorial02_en.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tutorial02_en.png; sourceTree = "<group>"; };
+		CBA877F51963D3CF00075294 /* Tutorial02_kr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tutorial02_kr.png; sourceTree = "<group>"; };
+		CBA877F61963D3CF00075294 /* Tutorial03_en.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tutorial03_en.png; sourceTree = "<group>"; };
+		CBA877F71963D3CF00075294 /* Tutorial03_kr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tutorial03_kr.png; sourceTree = "<group>"; };
+		CBA877F81963D3CF00075294 /* Tutorial04_en.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tutorial04_en.png; sourceTree = "<group>"; };
+		CBA877F91963D3CF00075294 /* Tutorial04_kr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tutorial04_kr.png; sourceTree = "<group>"; };
+		CBA877FA1963D3CF00075294 /* Tutorial05_en.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tutorial05_en.png; sourceTree = "<group>"; };
+		CBA877FB1963D3CF00075294 /* Tutorial05_kr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tutorial05_kr.png; sourceTree = "<group>"; };
+		CBA878071963DCF300075294 /* tutorialList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tutorialList.plist; sourceTree = "<group>"; };
+		CBA878091963FE6D00075294 /* Tutorial06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tutorial06.png; sourceTree = "<group>"; };
 		CBFBE684192AF32E00F03F76 /* sampleTemplate.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sampleTemplate.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1432,15 +1463,6 @@
 				3DA6F3111963BC6E004DF0AA /* LMCollectionItemView.m */,
 			);
 			name = RightWidget;
-			sourceTree = "<group>";
-		};
-		3D2E6B871963D72500AC7DE5 /* help */ = {
-			isa = PBXGroup;
-			children = (
-				3D2E6B891963D74100AC7DE5 /* rtf */,
-				69FEC48C194845BD00483C11 /* PDF */,
-			);
-			name = help;
 			sourceTree = "<group>";
 		};
 		3D2E6B881963D73500AC7DE5 /* popover */ = {
@@ -2309,7 +2331,7 @@
 		690A409E18E170AC00095263 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				3D2E6B871963D72500AC7DE5 /* help */,
+				CBA877EC1963D1A300075294 /* helpResource */,
 				3DA416C11935B26F00559028 /* plist */,
 				3D748C7819207B6B005665A3 /* icon */,
 				3D54D64718ED5D1B00B5FEC2 /* Image */,
@@ -2704,6 +2726,7 @@
 			isa = PBXGroup;
 			children = (
 				3D2E6B881963D73500AC7DE5 /* popover */,
+				CBA877E61963D04A00075294 /* Tutorial */,
 				69317CAF1947271F0065B6F4 /* LMHelpWC.h */,
 				69317CB01947271F0065B6F4 /* LMHelpWC.m */,
 				69317CB11947271F0065B6F4 /* LMHelpWC.xib */,
@@ -2721,6 +2744,45 @@
 			);
 			name = PDF;
 			path = ../..;
+			sourceTree = "<group>";
+		};
+		CBA877E61963D04A00075294 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				CBA877E71963D0F400075294 /* LMTutorialWC.h */,
+				CBA877E81963D0F400075294 /* LMTutorialWC.m */,
+				CBA877E91963D0F400075294 /* LMTutorialWC.xib */,
+			);
+			name = Tutorial;
+			sourceTree = "<group>";
+		};
+		CBA877EC1963D1A300075294 /* helpResource */ = {
+			isa = PBXGroup;
+			children = (
+				CBA877F01963D36200075294 /* PNG */,
+				69FEC48C194845BD00483C11 /* PDF */,
+			);
+			name = helpResource;
+			sourceTree = "<group>";
+		};
+		CBA877F01963D36200075294 /* PNG */ = {
+			isa = PBXGroup;
+			children = (
+				CBA877F11963D3CF00075294 /* Tutorial00.png */,
+				CBA877F21963D3CF00075294 /* Tutorial01_en.png */,
+				CBA877F31963D3CF00075294 /* Tutorial01_kr.png */,
+				CBA877F41963D3CF00075294 /* Tutorial02_en.png */,
+				CBA877F51963D3CF00075294 /* Tutorial02_kr.png */,
+				CBA877F61963D3CF00075294 /* Tutorial03_en.png */,
+				CBA877F71963D3CF00075294 /* Tutorial03_kr.png */,
+				CBA877F81963D3CF00075294 /* Tutorial04_en.png */,
+				CBA877F91963D3CF00075294 /* Tutorial04_kr.png */,
+				CBA877FA1963D3CF00075294 /* Tutorial05_en.png */,
+				CBA877FB1963D3CF00075294 /* Tutorial05_kr.png */,
+				CBA878091963FE6D00075294 /* Tutorial06.png */,
+				CBA878071963DCF300075294 /* tutorialList.plist */,
+			);
+			name = PNG;
 			sourceTree = "<group>";
 		};
 		CBFBE67C192A07A300F03F76 /* SampleTemplate */ = {
@@ -2833,8 +2895,10 @@
 				3DED2764190E38C5001A1D67 /* controls.png in Resources */,
 				262D4A961947FAF0006F5FBE /* border_icon_02.png in Resources */,
 				3DED269F1900D33A001A1D67 /* ic_contents.png in Resources */,
+				CBA877FC1963D3CF00075294 /* Tutorial00.png in Resources */,
 				3DED27191904AD7D001A1D67 /* LMPropertyMouseEventVC.xib in Resources */,
 				265FCC091953D3C000BD9068 /* tab2_off.png in Resources */,
+				CBA878041963D3CF00075294 /* Tutorial04_kr.png in Resources */,
 				267CB199190F93370079E565 /* tab_clipart_on.png in Resources */,
 				2628C91E1919C8C800D9D8CD /* tab_primary_on.png in Resources */,
 				69FFB2841950309E00DA2783 /* LMInspectorLinkVC.xib in Resources */,
@@ -2904,6 +2968,7 @@
 				3DED26BF1900F450001A1D67 /* panel_right_on.png in Resources */,
 				262D4AAA1947FB05006F5FBE /* radius_icon_04.png in Resources */,
 				3DF803DF18FE62C900913505 /* align_right.png in Resources */,
+				CBA877FF1963D3CF00075294 /* Tutorial02_en.png in Resources */,
 				3DED27281904AE53001A1D67 /* LMPropertyVRFrameVC.xib in Resources */,
 				3D2E6B8B1963D77400AC7DE5 /* iubox.rtf in Resources */,
 				267CB19C190F93370079E565 /* tab_close@2x.png in Resources */,
@@ -2952,6 +3017,7 @@
 				267CB19B190F93370079E565 /* tab_close.png in Resources */,
 				3DA6F30F1963B810004DF0AA /* LMHelpVideoPopoverVC.xib in Resources */,
 				690A409618E1645B00095263 /* LMWidgetLibraryVC.xib in Resources */,
+				CBA878061963D3CF00075294 /* Tutorial05_kr.png in Resources */,
 				26EFF421194AEF9E00317C3E /* help.png in Resources */,
 				3DED267E1900D329001A1D67 /* stack_textfield@2x.png in Resources */,
 				69CFCAB418E95A0C00E3048A /* LMResourceVC.xib in Resources */,
@@ -2970,6 +3036,7 @@
 				3DF8044718FE62FC00913505 /* tool_mail.png in Resources */,
 				3DED268D1900D329001A1D67 /* stack_render@2x.png in Resources */,
 				2640BCBC19331936004A1E4B /* stack_text.png in Resources */,
+				CBA878081963DCF300075294 /* tutorialList.plist in Resources */,
 				2628C92E191A31F600D9D8CD /* stack_form.png in Resources */,
 				261E5A8E19484F70002C286A /* tab_pg_off@2x.png in Resources */,
 				26378CDE194EC42A004B5001 /* import@2x.png in Resources */,
@@ -2998,6 +3065,7 @@
 				3DF803E718FE62C900913505 /* ic_document.png in Resources */,
 				26378CDD194EC42A004B5001 /* import.png in Resources */,
 				265BC579190FA9B600A1758F /* controller.png in Resources */,
+				CBA877FD1963D3CF00075294 /* Tutorial01_en.png in Resources */,
 				69317CB31947271F0065B6F4 /* LMHelpWC.xib in Resources */,
 				267CB1AF190F93370079E565 /* tab_tools_on.png in Resources */,
 				69FEC48E194845CA00483C11 /* scrollingAnimation.pdf in Resources */,
@@ -3007,6 +3075,7 @@
 				3DD47874193DCCF900639AB5 /* LMPropertyPGFormVC.xib in Resources */,
 				26620E4C19458A2100B728CD /* select_directory@2x.png in Resources */,
 				2640BCC01933194B004A1E4B /* tool_text.png in Resources */,
+				CBA877EB1963D0F400075294 /* LMTutorialWC.xib in Resources */,
 				267CB1A3190F93370079E565 /* tab_library_on.png in Resources */,
 				3DED26AC1900F43F001A1D67 /* ic_js@2x.png in Resources */,
 				3D748C82192095A1005665A3 /* LMPropertyIUPageVC.xib in Resources */,
@@ -3047,6 +3116,7 @@
 				69D79B3419138CC60020608D /* LMStartRecentVC.xib in Resources */,
 				3DF803E918FE62C900913505 /* ic_comp.png in Resources */,
 				265FCC0D1953D3C000BD9068 /* tab2_on_02.png in Resources */,
+				CBA878001963D3CF00075294 /* Tutorial02_kr.png in Resources */,
 				3DF8046118FF75CF00913505 /* LMPropertyBGColorVC.xib in Resources */,
 				265BC577190FA9B600A1758F /* controller_comb.png in Resources */,
 				3DED26821900D329001A1D67 /* stack_twitter.png in Resources */,
@@ -3056,6 +3126,7 @@
 				267CB1A6190F93370079E565 /* tab_primary@2x.png in Resources */,
 				3DED268C1900D329001A1D67 /* stack_transition@2x.png in Resources */,
 				265FCC0B1953D3C000BD9068 /* tab2_on_01.png in Resources */,
+				CBA878011963D3CF00075294 /* Tutorial03_en.png in Resources */,
 				690A8277190A2CC200DDBA86 /* new_default.png in Resources */,
 				3DED27141904AC8A001A1D67 /* LMEventVC.xib in Resources */,
 				262D4AA61947FB05006F5FBE /* radius_icon_02.png in Resources */,
@@ -3085,6 +3156,7 @@
 				3DF8044B18FE62FC00913505 /* tool_view.png in Resources */,
 				263284691963E519006CDB7D /* agency_preview.png in Resources */,
 				3DF803E018FE62C900913505 /* align_center.png in Resources */,
+				CBA878031963D3CF00075294 /* Tutorial04_en.png in Resources */,
 				3DF803E318FE62C900913505 /* stack_carousel.png in Resources */,
 				3DF803E418FE62C900913505 /* stack_movie.png in Resources */,
 				3DED26D11900FD75001A1D67 /* add_ghost_off@2x.png in Resources */,
@@ -3108,6 +3180,7 @@
 				262D4AAB1947FB05006F5FBE /* radius_icon_04@2x.png in Resources */,
 				3DED26611900D313001A1D67 /* ic_folder@2x.png in Resources */,
 				262F50711946C06E003C1801 /* tab_off.png in Resources */,
+				CBA877FE1963D3CF00075294 /* Tutorial01_kr.png in Resources */,
 				3DF803E818FE62C900913505 /* ic_template.png in Resources */,
 				69D79B3E19138FC60020608D /* LMStartNewDefaultVC.xib in Resources */,
 				3DF8044518FE62FC00913505 /* tool_html.png in Resources */,
@@ -3117,6 +3190,7 @@
 				267CB19A190F93370079E565 /* tab_clipart_on@2x.png in Resources */,
 				26120AB119629AD600EF3703 /* reload_off.png in Resources */,
 				3DED26DE19010B56001A1D67 /* LMPropertyIUHTMLVC.xib in Resources */,
+				CBA8780A1963FE6D00075294 /* Tutorial06.png in Resources */,
 				3DED268F1900D329001A1D67 /* stack_image@2x.png in Resources */,
 				267CB1A9190F93370079E565 /* tab_property_on.png in Resources */,
 				69DE5CDE19614D420050D020 /* LMNotiDownloadWC.xib in Resources */,
@@ -3153,6 +3227,7 @@
 				26120AAE19629ACC00EF3703 /* import_on@2x.png in Resources */,
 				3DED26ED19010B94001A1D67 /* LMPropertyIUWebMovieVC.xib in Resources */,
 				3DF8044E18FE62FC00913505 /* tool_render@2x.png in Resources */,
+				CBA878021963D3CF00075294 /* Tutorial03_kr.png in Resources */,
 				69C575C118D6F61E0016F050 /* MainMenu.xib in Resources */,
 				690A8275190A2CC200DDBA86 /* new_django.png in Resources */,
 				3DF8044418FE62FC00913505 /* tool_twitter@2x.png in Resources */,
@@ -3168,6 +3243,7 @@
 				262D4AB319481DA2006F5FBE /* tab_on_01@2x.png in Resources */,
 				3DED271E1904ADD9001A1D67 /* LMPropertyVTriggerVC.xib in Resources */,
 				265BC578190FA9B600A1758F /* controller_comb@2x.png in Resources */,
+				CBA878051963D3CF00075294 /* Tutorial05_en.png in Resources */,
 				267CB1A0190F93370079E565 /* tab_event_on@2x.png in Resources */,
 				3DED26881900D329001A1D67 /* stack_html.png in Resources */,
 				2628C937191A361800D9D8CD /* tool_submit@2x.png in Resources */,
@@ -3323,6 +3399,7 @@
 				3D14AE041953D06600E7C2E4 /* LMPropertyTextVC.m in Sources */,
 				3DD4786E193DB33600639AB5 /* LMDebugSourceWC.m in Sources */,
 				069A0FE8195179D900476CFA /* LMPropertyOverflowVC.m in Sources */,
+				CBA877EA1963D0F400075294 /* LMTutorialWC.m in Sources */,
 				69CFCAB218E95A0C00E3048A /* LMResourceVC.m in Sources */,
 				69757B1518D95BBC0095CBAC /* NSTextField+DragAndDrop.m in Sources */,
 				3DED273A1904F271001A1D67 /* IUImageUtil.m in Sources */,

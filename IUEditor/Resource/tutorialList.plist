@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>English</key>
+	<array>
+		<string>Tutorial00</string>
+		<string>Tutorial01_en</string>
+		<string>Tutorial02_en</string>
+		<string>Tutorial03_en</string>
+		<string>Tutorial04_en</string>
+		<string>Tutorial05_en</string>
+		<string>Tutorial06</string>
+	</array>
+	<key>Korean</key>
+	<array>
+		<string>Tutorial00</string>
+		<string>Tutorial01_kr</string>
+		<string>Tutorial02_kr</string>
+		<string>Tutorial03_kr</string>
+		<string>Tutorial04_kr</string>
+		<string>Tutorial05_kr</string>
+		<string>Tutorial06</string>
+	</array>
+</dict>
+</plist>
