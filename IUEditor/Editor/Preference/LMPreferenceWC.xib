@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPreferenceWC">
@@ -16,7 +16,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="808" height="452"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="808" height="452"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -25,7 +25,7 @@
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="z3Z-R2-dty"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="aGg-oL-1tR"/>
-                    <toolbarItem implicitItemIdentifier="E90A0214-A677-4CA4-BFDF-46DD4AC4F96B" explicitItemIdentifier="Font" label="Font" paletteLabel="Django" tag="-1" image="font" autovalidates="NO" selectable="YES" id="M3G-fY-0LZ">
+                    <toolbarItem implicitItemIdentifier="E90A0214-A677-4CA4-BFDF-46DD4AC4F96B" explicitItemIdentifier="Font" label="Font" paletteLabel="Font" tag="-1" image="font" autovalidates="NO" selectable="YES" id="M3G-fY-0LZ">
                         <connections>
                             <action selector="performShowFont:" target="-2" id="6q7-He-Rvk"/>
                         </connections>
@@ -35,10 +35,16 @@
                             <action selector="performShowDjango:" target="-2" id="K5j-nS-7dd"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="777F5293-FDAF-40D4-A435-7C2710BEEBB2" explicitItemIdentifier="Help" label="Help" paletteLabel="Help" tag="-1" image="help" autovalidates="NO" selectable="YES" id="Pey-QP-6BO">
+                        <connections>
+                            <action selector="performShowHelp:" target="-2" id="NMt-KO-eZ6"/>
+                        </connections>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="M3G-fY-0LZ"/>
                     <toolbarItem reference="I4b-nA-g7R"/>
+                    <toolbarItem reference="Pey-QP-6BO"/>
                     <toolbarItem reference="aGg-oL-1tR"/>
                 </defaultToolbarItems>
             </toolbar>
@@ -49,6 +55,7 @@
     </objects>
     <resources>
         <image name="font" width="39" height="32"/>
+        <image name="help" width="18" height="18"/>
         <image name="iueditor" width="512" height="512"/>
     </resources>
 </document>

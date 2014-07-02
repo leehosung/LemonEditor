@@ -553,6 +553,9 @@
 		69CFCAC018EA8D1700E3048A /* IUImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CFCABF18EA8D1700E3048A /* IUImage.m */; };
 		69CFCAC318EAA21E00E3048A /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69CFCAC218EAA21E00E3048A /* sample.jpg */; };
 		69CFCAC418EAA21E00E3048A /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69CFCAC218EAA21E00E3048A /* sample.jpg */; };
+		69CFDF111963B40400341B07 /* LMPreferenceHelpVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CFDF0F1963B40400341B07 /* LMPreferenceHelpVC.m */; };
+		69CFDF121963B40400341B07 /* LMPreferenceHelpVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69CFDF101963B40400341B07 /* LMPreferenceHelpVC.xib */; };
+		69CFDF161963D48900341B07 /* LMTutorialManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CFDF151963D48900341B07 /* LMTutorialManager.m */; };
 		69D15F6B18E73E690046FBB0 /* NSString+IUTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D15F6A18E73E690046FBB0 /* NSString+IUTag.m */; };
 		69D15F6F18E893170046FBB0 /* LMBottomToolbarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D15F6D18E893170046FBB0 /* LMBottomToolbarVC.m */; };
 		69D15F7018E893170046FBB0 /* LMBottomToolbarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69D15F6E18E893170046FBB0 /* LMBottomToolbarVC.xib */; };
@@ -1309,6 +1312,11 @@
 		69CFCABE18EA8D1700E3048A /* IUImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUImage.h; path = IU/IUImage.h; sourceTree = "<group>"; };
 		69CFCABF18EA8D1700E3048A /* IUImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IUImage.m; path = IU/IUImage.m; sourceTree = "<group>"; };
 		69CFCAC218EAA21E00E3048A /* sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample.jpg; sourceTree = "<group>"; };
+		69CFDF0E1963B40400341B07 /* LMPreferenceHelpVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPreferenceHelpVC.h; sourceTree = "<group>"; };
+		69CFDF0F1963B40400341B07 /* LMPreferenceHelpVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPreferenceHelpVC.m; sourceTree = "<group>"; };
+		69CFDF101963B40400341B07 /* LMPreferenceHelpVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPreferenceHelpVC.xib; sourceTree = "<group>"; };
+		69CFDF141963D48900341B07 /* LMTutorialManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMTutorialManager.h; sourceTree = "<group>"; };
+		69CFDF151963D48900341B07 /* LMTutorialManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMTutorialManager.m; sourceTree = "<group>"; };
 		69D15F6918E73E690046FBB0 /* NSString+IUTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+IUTag.h"; sourceTree = "<group>"; };
 		69D15F6A18E73E690046FBB0 /* NSString+IUTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+IUTag.m"; sourceTree = "<group>"; };
 		69D15F6C18E893170046FBB0 /* LMBottomToolbarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMBottomToolbarVC.h; sourceTree = "<group>"; };
@@ -1453,6 +1461,9 @@
 				3D33BACD1935A4F600DA4F4A /* LMPreferenceWC.h */,
 				3D33BACE1935A4F600DA4F4A /* LMPreferenceWC.m */,
 				3D33BACF1935A4F600DA4F4A /* LMPreferenceWC.xib */,
+				69CFDF0E1963B40400341B07 /* LMPreferenceHelpVC.h */,
+				69CFDF0F1963B40400341B07 /* LMPreferenceHelpVC.m */,
+				69CFDF101963B40400341B07 /* LMPreferenceHelpVC.xib */,
 				69B260E81959502A007D905C /* LMPreferenceDjangoVC.h */,
 				69B260E91959502A007D905C /* LMPreferenceDjangoVC.m */,
 				69B260EA1959502A007D905C /* LMPreferenceDjangoVC.xib */,
@@ -2484,6 +2495,7 @@
 		69C5759E18D6F61E0016F050 = {
 			isa = PBXGroup;
 			children = (
+				69CFDF131963D47100341B07 /* Tutorial */,
 				69DE5CE419614E2B0050D020 /* Server */,
 				69FEC48B194845B600483C11 /* Help */,
 				698E83FD19358C14002CE47B /* LMProjectConvertWC.h */,
@@ -2655,6 +2667,15 @@
 				69B4D7F9192B5155008429B3 /* LMCommandVC.m */,
 			);
 			name = Editor;
+			sourceTree = "<group>";
+		};
+		69CFDF131963D47100341B07 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				69CFDF141963D48900341B07 /* LMTutorialManager.h */,
+				69CFDF151963D48900341B07 /* LMTutorialManager.m */,
+			);
+			name = Tutorial;
 			sourceTree = "<group>";
 		};
 		69DE5CE419614E2B0050D020 /* Server */ = {
@@ -3100,6 +3121,7 @@
 				69D79B3E19138FC60020608D /* LMStartNewDefaultVC.xib in Resources */,
 				3DF8044518FE62FC00913505 /* tool_html.png in Resources */,
 				2672A0A2191207710050043E /* stack_textview@2x.png in Resources */,
+				69CFDF121963B40400341B07 /* LMPreferenceHelpVC.xib in Resources */,
 				3DED26FC19010BD6001A1D67 /* LMPropertyIUMailLinkVC.xib in Resources */,
 				267CB19A190F93370079E565 /* tab_clipart_on@2x.png in Resources */,
 				26120AB119629AD600EF3703 /* reload_off.png in Resources */,
@@ -3264,6 +3286,7 @@
 				3DB3ACDF18EBEF5F0046DFB7 /* PointTextLayer.m in Sources */,
 				69B4D7FA192B5155008429B3 /* LMCommandVC.m in Sources */,
 				6919204718DCFC8200F8522B /* NSCoder+JDExtension.m in Sources */,
+				69CFDF111963B40400341B07 /* LMPreferenceHelpVC.m in Sources */,
 				69C5760D18D6FE020016F050 /* IUSheet.m in Sources */,
 				3DB3ACC518EBEF180046DFB7 /* LMWindow.m in Sources */,
 				3DA6F3021963A6B9004DF0AA /* LMHelpPopover.m in Sources */,
@@ -3273,6 +3296,7 @@
 				3DED26DD19010B56001A1D67 /* LMPropertyIUHTMLVC.m in Sources */,
 				69757B0018D95BBC0095CBAC /* CALayer+JDExtension.m in Sources */,
 				69757B0718D95BBC0095CBAC /* JDHerokuUtil.m in Sources */,
+				69CFDF161963D48900341B07 /* LMTutorialManager.m in Sources */,
 				6985CBA018E31558008DBF50 /* IUSheetGroup.m in Sources */,
 				3DB3ACFD18EC1F700046DFB7 /* LMCanvasVC.m in Sources */,
 				6979FC0718ED34E20060C3B4 /* LMPropertyFrameVC.m in Sources */,

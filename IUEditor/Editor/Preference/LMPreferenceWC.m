@@ -9,6 +9,7 @@
 #import "LMPreferenceWC.h"
 #import "LMPreferenceFontVC.h"
 #import "LMPreferenceDjangoVC.h"
+#import "LMPreferenceHelpVC.h"
 
 @interface LMPreferenceWC ()
 
@@ -20,6 +21,7 @@
     NSViewController    *currentVC;
     LMPreferenceFontVC  *fontVC;
     LMPreferenceDjangoVC    *djangoVC;
+    LMPreferenceHelpVC  *helpVC;
 }
 
 - (id)initWithWindow:(NSWindow *)window
@@ -35,6 +37,7 @@
     [super windowDidLoad];
     fontVC = [[LMPreferenceFontVC alloc] initWithNibName:[LMPreferenceFontVC class].className bundle:nil];
     djangoVC = [[LMPreferenceDjangoVC alloc] initWithNibName:[LMPreferenceDjangoVC class].className bundle:nil];
+    helpVC = [[LMPreferenceHelpVC alloc] initWithNibName:[LMPreferenceHelpVC class].className bundle:nil];
     [self performShowFont:self];
 }
 
@@ -49,6 +52,12 @@
     [currentVC.view removeFromSuperview];
     currentVC = djangoVC;
     [_mainV addSubviewFullFrame:djangoVC.view];
+}
+
+- (IBAction)performShowHelp:(id)sender {
+    [currentVC.view removeFromSuperview];
+    currentVC = helpVC;
+    [_mainV addSubviewFullFrame:helpVC.view];
 }
 
 @end
