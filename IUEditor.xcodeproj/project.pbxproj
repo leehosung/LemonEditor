@@ -556,6 +556,7 @@
 		69CFDF111963B40400341B07 /* LMPreferenceHelpVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CFDF0F1963B40400341B07 /* LMPreferenceHelpVC.m */; };
 		69CFDF121963B40400341B07 /* LMPreferenceHelpVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69CFDF101963B40400341B07 /* LMPreferenceHelpVC.xib */; };
 		69CFDF161963D48900341B07 /* LMTutorialManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CFDF151963D48900341B07 /* LMTutorialManager.m */; };
+		69CFDF1D1963E09400341B07 /* ghost.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 69CFDF1C1963E09400341B07 /* ghost.rtf */; };
 		69D15F6B18E73E690046FBB0 /* NSString+IUTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D15F6A18E73E690046FBB0 /* NSString+IUTag.m */; };
 		69D15F6F18E893170046FBB0 /* LMBottomToolbarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D15F6D18E893170046FBB0 /* LMBottomToolbarVC.m */; };
 		69D15F7018E893170046FBB0 /* LMBottomToolbarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69D15F6E18E893170046FBB0 /* LMBottomToolbarVC.xib */; };
@@ -1317,6 +1318,7 @@
 		69CFDF101963B40400341B07 /* LMPreferenceHelpVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPreferenceHelpVC.xib; sourceTree = "<group>"; };
 		69CFDF141963D48900341B07 /* LMTutorialManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMTutorialManager.h; sourceTree = "<group>"; };
 		69CFDF151963D48900341B07 /* LMTutorialManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMTutorialManager.m; sourceTree = "<group>"; };
+		69CFDF1C1963E09400341B07 /* ghost.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = ghost.rtf; sourceTree = "<group>"; };
 		69D15F6918E73E690046FBB0 /* NSString+IUTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+IUTag.h"; sourceTree = "<group>"; };
 		69D15F6A18E73E690046FBB0 /* NSString+IUTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+IUTag.m"; sourceTree = "<group>"; };
 		69D15F6C18E893170046FBB0 /* LMBottomToolbarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMBottomToolbarVC.h; sourceTree = "<group>"; };
@@ -1450,6 +1452,7 @@
 			isa = PBXGroup;
 			children = (
 				3D2E6B8A1963D77400AC7DE5 /* iubox.rtf */,
+				69CFDF1C1963E09400341B07 /* ghost.rtf */,
 			);
 			name = rtf;
 			sourceTree = "<group>";
@@ -2909,6 +2912,7 @@
 				262D4A9B1947FAF0006F5FBE /* border_icon_04@2x.png in Resources */,
 				267CB1A7190F93370079E565 /* tab_property_off.png in Resources */,
 				3DED268B1900D329001A1D67 /* stack_view@2x.png in Resources */,
+				69CFDF1D1963E09400341B07 /* ghost.rtf in Resources */,
 				3DED26BF1900F450001A1D67 /* panel_right_on.png in Resources */,
 				262D4AAA1947FB05006F5FBE /* radius_icon_04.png in Resources */,
 				3DF803DF18FE62C900913505 /* align_right.png in Resources */,
