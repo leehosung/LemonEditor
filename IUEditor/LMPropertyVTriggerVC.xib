@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13E28" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPropertyVTriggerVC">
             <connections>
-                <outlet property="actionTypeComboBox" destination="ius-Yx-Ulf" id="0eI-ze-F7k"/>
+                <outlet property="actionTypePopupButton" destination="p21-gl-Ksy" id="eVo-dg-42q"/>
                 <outlet property="initailValueTF" destination="JrN-4m-TD7" id="CXv-5t-pEX"/>
                 <outlet property="initialValueStepper" destination="1QX-df-Hoc" id="ULK-pc-stg"/>
                 <outlet property="maxValueStepper" destination="jzP-TX-qeu" id="dYA-Ez-ymu"/>
@@ -127,25 +127,19 @@
                                 </constraints>
                                 <stepperCell key="cell" controlSize="mini" continuous="YES" alignment="left" maxValue="100" id="GFa-cA-dMx"/>
                             </stepper>
-                            <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ius-Yx-Ulf">
-                                <rect key="frame" x="80" y="9" width="90" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="17" id="SCg-Jd-hEV"/>
-                                    <constraint firstAttribute="width" constant="87" id="rnZ-3S-ozm"/>
-                                </constraints>
-                                <comboBoxCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="2" id="t2k-bd-GXZ">
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p21-gl-Ksy">
+                                <rect key="frame" x="77" y="8" width="76" height="22"/>
+                                <popUpButtonCell key="cell" type="push" title="Click" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="xNG-Fs-lWr" id="BXk-Ih-rti">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <objectValues>
-                                        <string>Click</string>
-                                        <string>Hover</string>
-                                    </objectValues>
-                                </comboBoxCell>
-                                <connections>
-                                    <action selector="clickActionTypeComboBox:" target="-2" id="SXE-su-y35"/>
-                                </connections>
-                            </comboBox>
+                                    <menu key="menu" id="HPa-Xd-bO3">
+                                        <items>
+                                            <menuItem title="Click" state="on" id="xNG-Fs-lWr" userLabel="Click"/>
+                                            <menuItem title="Hover" id="FpC-4S-7zt" userLabel="Hover"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                            </popUpButton>
                         </subviews>
                     </view>
                     <constraints>
@@ -157,8 +151,6 @@
                         <constraint firstItem="5sn-BG-E19" firstAttribute="leading" secondItem="Nbh-RY-ZTn" secondAttribute="trailing" constant="7" id="U1S-wr-Izu"/>
                         <constraint firstItem="Tpn-Gy-zl2" firstAttribute="leading" secondItem="Ug7-J9-oVD" secondAttribute="leading" constant="16" id="UE8-BT-vrm"/>
                         <constraint firstItem="JrN-4m-TD7" firstAttribute="leading" secondItem="YCU-57-jjJ" secondAttribute="trailing" constant="7" id="XdK-Bw-MrJ"/>
-                        <constraint firstAttribute="bottom" secondItem="ius-Yx-Ulf" secondAttribute="bottom" constant="13" id="bJR-a3-Cr5"/>
-                        <constraint firstItem="ius-Yx-Ulf" firstAttribute="leading" secondItem="Tpn-Gy-zl2" secondAttribute="trailing" constant="7" id="fGM-1g-gN4"/>
                         <constraint firstItem="JrN-4m-TD7" firstAttribute="top" secondItem="xHJ-wz-Vut" secondAttribute="bottom" constant="8" id="jex-Df-FyR"/>
                         <constraint firstItem="jzP-TX-qeu" firstAttribute="top" secondItem="1QX-df-Hoc" secondAttribute="bottom" constant="11" id="o6i-4n-aei"/>
                         <constraint firstItem="PKc-3L-Fx9" firstAttribute="top" secondItem="Ug7-J9-oVD" secondAttribute="top" constant="9" id="qcF-pV-pSk"/>

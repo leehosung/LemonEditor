@@ -15,9 +15,7 @@
 @property (weak) IBOutlet NSStepper *initialValueStepper;
 @property (weak) IBOutlet NSTextField *maxValueTF;
 @property (weak) IBOutlet NSStepper *maxValueStepper;
-
-@property (weak) IBOutlet NSComboBox *actionTypeComboBox;
-
+@property (weak) IBOutlet NSPopUpButton *actionTypePopupButton;
 @end
 
 @implementation LMPropertyVTriggerVC
@@ -40,14 +38,9 @@
     [_maxValueTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagMaxValue] options:IUBindingDictNotRaisesApplicable];
     [_maxValueStepper bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagMaxValue] options:IUBindingDictNotRaisesApplicable];
     
-    [_actionTypeComboBox bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagActionType] options:IUBindingDictNotRaisesApplicable];
+    [_actionTypePopupButton bind:NSSelectedIndexBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagActionType] options:IUBindingDictNotRaisesApplicable];
     
 }
-- (IBAction)clickActionTypeComboBox:(id)sender {
-    NSInteger selectedIndex = [_actionTypeComboBox indexOfSelectedItem];
-    [self setValue:@(selectedIndex) forKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagActionType]];
-}
-
 
 
 @end
