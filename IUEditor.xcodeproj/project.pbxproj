@@ -610,6 +610,7 @@
 		CBA8780A1963FE6D00075294 /* Tutorial06.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA878091963FE6D00075294 /* Tutorial06.png */; };
 		CBA8780E1964084700075294 /* ghost.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CBA8780C1964084700075294 /* ghost.rtf */; };
 		CBA8780F1964084700075294 /* iubox.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CBA8780D1964084700075294 /* iubox.rtf */; };
+		CBA878111964184300075294 /* iuimage.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CBA878101964184300075294 /* iuimage.rtf */; };
 		CBFBE685192AF32E00F03F76 /* sampleTemplate.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBFBE684192AF32E00F03F76 /* sampleTemplate.plist */; };
 /* End PBXBuildFile section */
 
@@ -1412,6 +1413,7 @@
 		CBA878091963FE6D00075294 /* Tutorial06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tutorial06.png; sourceTree = "<group>"; };
 		CBA8780C1964084700075294 /* ghost.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = ghost.rtf; sourceTree = "<group>"; };
 		CBA8780D1964084700075294 /* iubox.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = iubox.rtf; sourceTree = "<group>"; };
+		CBA878101964184300075294 /* iuimage.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = iuimage.rtf; sourceTree = "<group>"; };
 		CBFBE684192AF32E00F03F76 /* sampleTemplate.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sampleTemplate.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2787,6 +2789,7 @@
 			children = (
 				CBA8780C1964084700075294 /* ghost.rtf */,
 				CBA8780D1964084700075294 /* iubox.rtf */,
+				CBA878101964184300075294 /* iuimage.rtf */,
 			);
 			name = rtf;
 			sourceTree = "<group>";
@@ -3149,6 +3152,7 @@
 				3DED265C1900D313001A1D67 /* view_list@2x.png in Resources */,
 				26EFF41E194AECB900317C3E /* auto_resize@2x.png in Resources */,
 				2628C932191A360200D9D8CD /* stack_submit.png in Resources */,
+				CBA878111964184300075294 /* iuimage.rtf in Resources */,
 				3DED26C71900F65C001A1D67 /* ic_image@2x.png in Resources */,
 				262D4A941947FAF0006F5FBE /* border_icon_01.png in Resources */,
 				265FCC011953D08F00BD9068 /* reload.png in Resources */,
