@@ -43,8 +43,16 @@
 - (void)awakeFromNib{
 
 #pragma mark bgX,Y
+    
+    NSDictionary *bgEnableBindingOption = [NSDictionary
+                                           dictionaryWithObjects:@[NSIsNotNilTransformerName]
+                                           forKeys:@[NSValueTransformerNameBindingOption]];
+    
+    
+    [_changeBGImagePositionB bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagImage] options:bgEnableBindingOption];
     [_changeBGImagePositionB bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagHoverBGImagePositionEnable] options:IUBindingDictNotRaisesApplicable];
     
+ 
     [_bgXTF bind:NSEnabledBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagHoverBGImagePositionEnable] options:IUBindingDictNotRaisesApplicable];
     [_bgXTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagHoverBGImageX] options:@{NSNullPlaceholderBindingOption:@(0)}];
 
