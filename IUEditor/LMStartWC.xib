@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMStartWC">
@@ -19,7 +19,7 @@
         <window title="New Project" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="ZCa-xE-sBx">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <rect key="contentRect" x="197" y="448" width="700" height="456"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
             <view key="contentView" id="TfM-u2-u3D">
                 <rect key="frame" x="0.0" y="0.0" width="700" height="456"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -38,13 +38,13 @@
                                 </buttonCell>
                                 <cells>
                                     <column>
-                                        <buttonCell type="recessed" title="Template Project" bezelStyle="recessed" image="3D9CCCC6-1D25-479A-99D2-123832C1C70E" imagePosition="overlaps" alignment="center" borderStyle="border" tag="1" inset="2" id="q8f-Dl-DTd">
+                                        <buttonCell type="recessed" title="Template Project" bezelStyle="recessed" image="07FDE1AD-2C69-4922-8DE9-797D417A09D1" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" tag="1" inset="2" id="q8f-Dl-DTd">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                             <font key="font" metaFont="smallSystemBold"/>
                                         </buttonCell>
                                     </column>
                                     <column>
-                                        <buttonCell type="recessed" title="New Project" bezelStyle="recessed" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" inset="2" id="kQb-db-3Bc">
+                                        <buttonCell type="recessed" title="New Project" bezelStyle="recessed" imagePosition="overlaps" alignment="center" borderStyle="border" inset="2" id="kQb-db-3Bc">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                             <font key="font" metaFont="smallSystemBold"/>
                                         </buttonCell>
@@ -60,7 +60,7 @@
                                     <action selector="pressMenuSelectB:" target="-2" id="Wx4-Oa-G6E"/>
                                 </connections>
                             </matrix>
-                            <tabView type="noTabsNoBorder" initialItem="WWV-sC-dzD" translatesAutoresizingMaskIntoConstraints="NO" id="iG3-dq-HWY">
+                            <tabView type="noTabsNoBorder" initialItem="egN-v3-laq" translatesAutoresizingMaskIntoConstraints="NO" id="iG3-dq-HWY">
                                 <rect key="frame" x="0.0" y="0.0" width="702" height="396"/>
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
@@ -102,11 +102,10 @@
                     <constraint firstAttribute="trailing" secondItem="aMk-dw-Qza" secondAttribute="trailing" constant="-1" id="mVS-gZ-o5a"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="85" y="296"/>
         </window>
     </objects>
     <resources>
-        <image name="3D9CCCC6-1D25-479A-99D2-123832C1C70E" width="1" height="1">
+        <image name="07FDE1AD-2C69-4922-8DE9-797D417A09D1" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
