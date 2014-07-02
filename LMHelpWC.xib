@@ -16,14 +16,14 @@
         <window title="Help" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" frameAutosaveName="Help" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="461" height="407"/>
+            <rect key="contentRect" x="196" y="240" width="461" height="516"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="461" height="407"/>
+                <rect key="frame" x="0.0" y="0.0" width="461" height="516"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <pdfView autoresizesSubviews="NO" wantsLayer="YES" autoScales="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s0Z-s0-9lR">
-                        <rect key="frame" x="0.0" y="0.0" width="461" height="407"/>
+                        <rect key="frame" x="0.0" y="0.0" width="461" height="516"/>
                     </pdfView>
                 </subviews>
                 <constraints>
@@ -36,7 +36,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="-290.5" y="381.5"/>
+            <point key="canvasLocation" x="-290.5" y="327"/>
         </window>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="RGv-pC-kmx">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>

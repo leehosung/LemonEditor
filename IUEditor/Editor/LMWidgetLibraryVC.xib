@@ -35,7 +35,7 @@
             </connections>
         </collectionViewItem>
         <userDefaultsController representsSharedInstance="YES" id="hgn-Pb-v35"/>
-        <customView id="D8H-iL-h9h" userLabel="ItemView-list">
+        <customView id="D8H-iL-h9h" userLabel="ItemView-list" customClass="LMCollectionItemView">
             <rect key="frame" x="0.0" y="0.0" width="264" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -123,6 +123,9 @@
                 <constraint firstItem="jZo-ts-vu9" firstAttribute="top" secondItem="D8H-iL-h9h" secondAttribute="top" constant="4" id="qno-xb-cGa"/>
                 <constraint firstItem="jZo-ts-vu9" firstAttribute="leading" secondItem="D8H-iL-h9h" secondAttribute="leading" constant="6" id="t6b-De-bow"/>
             </constraints>
+            <connections>
+                <outlet property="delegate" destination="-2" id="5sP-kc-82b"/>
+            </connections>
         </customView>
         <customView id="vMJ-qe-EFg" userLabel="Tools">
             <rect key="frame" x="0.0" y="0.0" width="299" height="379"/>
@@ -407,12 +410,12 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="260" height="348"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="7X7-J0-dZJ" userLabel="CollectionView">
+                                                        <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7X7-J0-dZJ" userLabel="CollectionView">
                                                             <rect key="frame" x="0.0" y="0.0" width="259" height="348"/>
                                                             <subviews>
-                                                                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztV-wR-8ly">
+                                                                <scrollView misplaced="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztV-wR-8ly">
                                                                     <rect key="frame" x="0.0" y="0.0" width="259" height="348"/>
-                                                                    <clipView key="contentView" copiesOnScroll="NO" id="MTr-TL-cpa">
+                                                                    <clipView key="contentView" misplaced="YES" copiesOnScroll="NO" id="MTr-TL-cpa">
                                                                         <rect key="frame" x="0.0" y="0.0" width="259" height="348"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <subviews>
@@ -717,7 +720,7 @@
                 <constraint firstAttribute="bottom" secondItem="pPJ-ce-Fha" secondAttribute="bottom" id="js3-9W-yF0"/>
             </constraints>
         </customView>
-        <customView id="A1b-d4-ykK" userLabel="ItemView-icon">
+        <customView id="A1b-d4-ykK" userLabel="ItemView-icon" customClass="LMCollectionItemView">
             <rect key="frame" x="0.0" y="0.0" width="65" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -759,6 +762,10 @@
                 <constraint firstItem="a2t-9n-AMx" firstAttribute="leading" secondItem="A1b-d4-ykK" secondAttribute="leading" constant="17" id="RkB-gw-UIl"/>
                 <constraint firstItem="a2t-9n-AMx" firstAttribute="top" secondItem="A1b-d4-ykK" secondAttribute="top" constant="21" id="xUx-2b-NH1"/>
             </constraints>
+            <connections>
+                <outlet property="delegate" destination="-2" id="iei-LS-11j"/>
+            </connections>
+            <point key="canvasLocation" x="278.5" y="454"/>
         </customView>
     </objects>
     <resources>

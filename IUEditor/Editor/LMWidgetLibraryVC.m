@@ -10,6 +10,7 @@
 #import "LMGeneralObject.h"
 #import "IUBox.h"
 #import "LMWC.h"
+#import "LMHelpPopover.h"
 
 @interface LMWidgetLibraryVC ()
 
@@ -46,6 +47,49 @@
     return self;
 }
 
+#pragma mark -init with LMWC
+
+-(void)setWidgetProperties:(NSArray*)array{
+    NSMutableArray *primaryArray = [NSMutableArray array];
+    NSMutableArray *secondaryArray = [NSMutableArray array];
+    NSMutableArray *PGArray = [NSMutableArray array];
+    for (NSDictionary *dict in array) {
+        
+        BOOL isWidget = [dict[@"isWidget"] boolValue];
+        if (isWidget){
+            LMGeneralObject *obj = [[LMGeneralObject alloc] init];
+            obj.title = dict[@"className"];
+            NSString *imageName = dict[@"classImage"];
+            obj.image = [NSImage imageNamed:imageName];
+            obj.shortDesc = dict[@"shortDesc"];
+            obj.longDesc = dict[@"longDesc"];
+            int widgetClass = [dict[@"widgetClass"] intValue];
+            if(widgetClass == WidgetClassTypePrimary){
+                [primaryArray addObject:obj];
+            }
+            else if(widgetClass == WidgetClassTypeSecondary){
+                [secondaryArray addObject:obj];
+            }
+            else if(widgetClass == WidgetClassTypePG){
+                [PGArray addObject:obj];
+            }
+        }
+    }
+    [self willChangeValueForKey:@"primaryWidgets"];
+    _primaryWidgets = primaryArray;
+    [self didChangeValueForKey:@"primaryWidgets"];
+    
+    [self willChangeValueForKey:@"secondaryWidgets"];
+    _secondaryWidgets = secondaryArray;
+    [self didChangeValueForKey:@"secondaryWidgets"];
+    
+    [self willChangeValueForKey:@"PGWidgets"];
+    _PGWidgets = PGArray;
+    [self didChangeValueForKey:@"PGWidgets"];
+}
+
+
+#pragma mark collectionview -drag
 - (BOOL)collectionView:(NSCollectionView *)collectionView writeItemsAtIndexes:(NSIndexSet *)indexes toPasteboard:(NSPasteboard *)pasteboard{
     assert(_project);
     [_project.identifierManager resetUnconfirmedIUs];
@@ -84,50 +128,6 @@
 }
 
 
--(void)setWidgetProperties:(NSArray*)array{
-    NSMutableArray *primaryArray = [NSMutableArray array];
-    NSMutableArray *secondaryArray = [NSMutableArray array];
-    NSMutableArray *PGArray = [NSMutableArray array];
-    for (NSDictionary *dict in array) {
-        
-        BOOL isWidget = [dict[@"isWidget"] boolValue];
-        if (isWidget){
-            LMGeneralObject *obj = [[LMGeneralObject alloc] init];
-            obj.title = dict[@"className"];
-            NSString *imageName = dict[@"classImage"];
-            obj.image = [NSImage imageNamed:imageName];
-            obj.shortDesc = dict[@"shortDesc"];
-            obj.longDesc = dict[@"longDesc"];
-            int widgetClass = [dict[@"widgetClass"] intValue];
-            if(widgetClass == WidgetClassTypePrimary){
-                [primaryArray addObject:obj];
-            }
-            else if(widgetClass == WidgetClassTypeSecondary){
-                [secondaryArray addObject:obj];
-            }
-            else if(widgetClass == WidgetClassTypePG){
-                [PGArray addObject:obj];
-            }
-        }
-    }
-    [self willChangeValueForKey:@"primaryWidgets"];
-    _primaryWidgets = primaryArray;
-    [self didChangeValueForKey:@"primaryWidgets"];
-
-    [self willChangeValueForKey:@"secondaryWidgets"];
-    _secondaryWidgets = secondaryArray;
-    [self didChangeValueForKey:@"secondaryWidgets"];
-    
-    [self willChangeValueForKey:@"PGWidgets"];
-    _PGWidgets = PGArray;
-    [self didChangeValueForKey:@"PGWidgets"];
-}
-
-- (IBAction)clickWidgetTabMatrix:(id)sender {
-    NSInteger selectedIndex = [sender selectedRow];
-    [_collectionTabV selectTabViewItemAtIndex:selectedIndex];
-    
-}
 
 #pragma mark -
 #pragma mark widget list - icon 
@@ -164,5 +164,32 @@
     [_PGTabView selectTabViewItemAtIndex:1];
     [_PGListB setEnabled:YES];
     [_PGIconB setEnabled:NO];
+}
+
+
+- (IBAction)clickWidgetTabMatrix:(id)sender {
+    NSInteger selectedIndex = [sender selectedRow];
+    [_collectionTabV selectTabViewItemAtIndex:selectedIndex];
+}
+
+- (void)doubleClick:(id)sender{
+    
+    NSView *targetView = (id)sender;
+    NSCollectionView *currentCollectionView = (NSCollectionView *)[targetView superview];
+    if([currentCollectionView isKindOfClass:[NSCollectionView class]]){
+        
+        NSUInteger index = [[currentCollectionView selectionIndexes] firstIndex];
+        LMGeneralObject *object = [[currentCollectionView itemAtIndex:index] representedObject];
+
+        
+        LMHelpPopover *popover = [LMHelpPopover sharedHelpPopover];
+        [popover setType:LMPopoverTypeTextAndImage];
+        [popover setImage:object.image title:object.title rtfFileName:nil];
+        [popover showRelativeToRect:[targetView bounds] ofView:sender preferredEdge:NSMaxYEdge];
+    }
+    else{
+        assert(0);
+    }
+    
 }
 @end

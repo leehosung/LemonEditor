@@ -38,10 +38,11 @@
 
 - (void)setHelpDocument:(NSString*)fileName{
     documentFileName = fileName;
-    assert([[fileName pathExtension] isEqualToString:@"pdf"]);
-    NSURL *url = [[NSBundle mainBundle] URLForResource:[fileName stringByDeletingPathExtension] withExtension:@"pdf"];
-    PDFDocument *doc = [[PDFDocument alloc] initWithURL:url];
-    [self.pdfV setDocument:doc];
+    if([[fileName pathExtension] isEqualToString:@"pdf"]){
+        NSURL *url = [[NSBundle mainBundle] URLForResource:[fileName stringByDeletingPathExtension] withExtension:@"pdf"];
+        PDFDocument *doc = [[PDFDocument alloc] initWithURL:url];
+        [self.pdfV setDocument:doc];
+    }
 }
 
 

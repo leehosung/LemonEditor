@@ -192,6 +192,15 @@
 		3DA416BD1935ABB400559028 /* LMFontController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA416BC1935ABB400559028 /* LMFontController.m */; };
 		3DA416C31935B29200559028 /* defaultFont.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DA416C21935B29200559028 /* defaultFont.plist */; };
 		3DA6F2EB1962AE33004DF0AA /* iueditor.iu.zip in Resources */ = {isa = PBXBuildFile; fileRef = 3DA6F2EA1962AE33004DF0AA /* iueditor.iu.zip */; };
+		3DA6F2F919639E81004DF0AA /* LMHelpImagePopoverVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA6F2F719639E81004DF0AA /* LMHelpImagePopoverVC.m */; };
+		3DA6F2FA19639E81004DF0AA /* LMHelpImagePopoverVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DA6F2F819639E81004DF0AA /* LMHelpImagePopoverVC.xib */; };
+		3DA6F2FE1963A676004DF0AA /* LMHelpTextPopoverVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA6F2FC1963A676004DF0AA /* LMHelpTextPopoverVC.m */; };
+		3DA6F2FF1963A676004DF0AA /* LMHelpTextPopoverVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DA6F2FD1963A676004DF0AA /* LMHelpTextPopoverVC.xib */; };
+		3DA6F3021963A6B9004DF0AA /* LMHelpPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA6F3011963A6B9004DF0AA /* LMHelpPopover.m */; };
+		3DA6F30A1963B7DC004DF0AA /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA6F3091963B7DC004DF0AA /* AVKit.framework */; };
+		3DA6F30E1963B810004DF0AA /* LMHelpVideoPopoverVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA6F30C1963B810004DF0AA /* LMHelpVideoPopoverVC.m */; };
+		3DA6F30F1963B810004DF0AA /* LMHelpVideoPopoverVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DA6F30D1963B810004DF0AA /* LMHelpVideoPopoverVC.xib */; };
+		3DA6F3121963BC6E004DF0AA /* LMCollectionItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA6F3111963BC6E004DF0AA /* LMCollectionItemView.m */; };
 		3DA72903192B5ABC00203764 /* IUTextController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA72902192B5ABC00203764 /* IUTextController.m */; };
 		3DAEEDFD1938537700196A81 /* image_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DAEEDFC1938537700196A81 /* image_default.png */; };
 		3DAEEE00193C3D2500196A81 /* iuinit.js in Resources */ = {isa = PBXBuildFile; fileRef = 3DAEEDFE193C36E600196A81 /* iuinit.js */; };
@@ -796,6 +805,20 @@
 		3DA416BC1935ABB400559028 /* LMFontController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMFontController.m; sourceTree = "<group>"; };
 		3DA416C21935B29200559028 /* defaultFont.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaultFont.plist; sourceTree = "<group>"; };
 		3DA6F2EA1962AE33004DF0AA /* iueditor.iu.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = iueditor.iu.zip; sourceTree = "<group>"; };
+		3DA6F2F619639E81004DF0AA /* LMHelpImagePopoverVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMHelpImagePopoverVC.h; path = IUEditor/Editor/LMHelpImagePopoverVC.h; sourceTree = "<group>"; };
+		3DA6F2F719639E81004DF0AA /* LMHelpImagePopoverVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMHelpImagePopoverVC.m; path = IUEditor/Editor/LMHelpImagePopoverVC.m; sourceTree = "<group>"; };
+		3DA6F2F819639E81004DF0AA /* LMHelpImagePopoverVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMHelpImagePopoverVC.xib; path = IUEditor/Editor/LMHelpImagePopoverVC.xib; sourceTree = "<group>"; };
+		3DA6F2FB1963A676004DF0AA /* LMHelpTextPopoverVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMHelpTextPopoverVC.h; path = IUEditor/Editor/LMHelpTextPopoverVC.h; sourceTree = "<group>"; };
+		3DA6F2FC1963A676004DF0AA /* LMHelpTextPopoverVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMHelpTextPopoverVC.m; path = IUEditor/Editor/LMHelpTextPopoverVC.m; sourceTree = "<group>"; };
+		3DA6F2FD1963A676004DF0AA /* LMHelpTextPopoverVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMHelpTextPopoverVC.xib; path = IUEditor/Editor/LMHelpTextPopoverVC.xib; sourceTree = "<group>"; };
+		3DA6F3001963A6B9004DF0AA /* LMHelpPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMHelpPopover.h; path = IUEditor/Editor/Help/LMHelpPopover.h; sourceTree = "<group>"; };
+		3DA6F3011963A6B9004DF0AA /* LMHelpPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMHelpPopover.m; path = IUEditor/Editor/Help/LMHelpPopover.m; sourceTree = "<group>"; };
+		3DA6F3091963B7DC004DF0AA /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		3DA6F30B1963B810004DF0AA /* LMHelpVideoPopoverVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMHelpVideoPopoverVC.h; path = IUEditor/Editor/Help/LMHelpVideoPopoverVC.h; sourceTree = "<group>"; };
+		3DA6F30C1963B810004DF0AA /* LMHelpVideoPopoverVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMHelpVideoPopoverVC.m; path = IUEditor/Editor/Help/LMHelpVideoPopoverVC.m; sourceTree = "<group>"; };
+		3DA6F30D1963B810004DF0AA /* LMHelpVideoPopoverVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMHelpVideoPopoverVC.xib; path = IUEditor/Editor/Help/LMHelpVideoPopoverVC.xib; sourceTree = "<group>"; };
+		3DA6F3101963BC6E004DF0AA /* LMCollectionItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMCollectionItemView.h; path = Editor/Widget/LMCollectionItemView.h; sourceTree = "<group>"; };
+		3DA6F3111963BC6E004DF0AA /* LMCollectionItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMCollectionItemView.m; path = Editor/Widget/LMCollectionItemView.m; sourceTree = "<group>"; };
 		3DA72901192B5ABC00203764 /* IUTextController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUTextController.h; sourceTree = "<group>"; };
 		3DA72902192B5ABC00203764 /* IUTextController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUTextController.m; sourceTree = "<group>"; };
 		3DAEEDFC1938537700196A81 /* image_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_default.png; sourceTree = "<group>"; };
@@ -1349,6 +1372,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DA6F30A1963B7DC004DF0AA /* AVKit.framework in Frameworks */,
 				69FEC48A19483D6D00483C11 /* Quartz.framework in Frameworks */,
 				3DED273C1904F9E0001A1D67 /* CoreMedia.framework in Frameworks */,
 				3DED27371904F240001A1D67 /* AVFoundation.framework in Frameworks */,
@@ -1379,6 +1403,8 @@
 				69CFCAAF18E95A0C00E3048A /* LMResourceVC.h */,
 				69CFCAB018E95A0C00E3048A /* LMResourceVC.m */,
 				69CFCAB118E95A0C00E3048A /* LMResourceVC.xib */,
+				3DA6F3101963BC6E004DF0AA /* LMCollectionItemView.h */,
+				3DA6F3111963BC6E004DF0AA /* LMCollectionItemView.m */,
 			);
 			name = RightWidget;
 			sourceTree = "<group>";
@@ -2449,6 +2475,7 @@
 		69C575A918D6F61E0016F050 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3DA6F3091963B7DC004DF0AA /* AVKit.framework */,
 				69FEC48919483D6D00483C11 /* Quartz.framework */,
 				3DED273B1904F9E0001A1D67 /* CoreMedia.framework */,
 				3DED27361904F240001A1D67 /* AVFoundation.framework */,
@@ -2616,6 +2643,17 @@
 				69FEC48F19484DF000483C11 /* LMHelpMenuItem.h */,
 				69FEC49019484DF000483C11 /* LMHelpMenuItem.m */,
 				69FEC48C194845BD00483C11 /* PDF */,
+				3DA6F2F619639E81004DF0AA /* LMHelpImagePopoverVC.h */,
+				3DA6F2F719639E81004DF0AA /* LMHelpImagePopoverVC.m */,
+				3DA6F2F819639E81004DF0AA /* LMHelpImagePopoverVC.xib */,
+				3DA6F2FB1963A676004DF0AA /* LMHelpTextPopoverVC.h */,
+				3DA6F2FC1963A676004DF0AA /* LMHelpTextPopoverVC.m */,
+				3DA6F2FD1963A676004DF0AA /* LMHelpTextPopoverVC.xib */,
+				3DA6F30B1963B810004DF0AA /* LMHelpVideoPopoverVC.h */,
+				3DA6F30C1963B810004DF0AA /* LMHelpVideoPopoverVC.m */,
+				3DA6F30D1963B810004DF0AA /* LMHelpVideoPopoverVC.xib */,
+				3DA6F3001963A6B9004DF0AA /* LMHelpPopover.h */,
+				3DA6F3011963A6B9004DF0AA /* LMHelpPopover.m */,
 			);
 			name = Help;
 			sourceTree = "<group>";
@@ -2785,6 +2823,7 @@
 				26620E4B19458A2100B728CD /* select_directory.png in Resources */,
 				3DED27231904AE1A001A1D67 /* LMPropertyVisibleVC.xib in Resources */,
 				267CB1BD190F95750079E565 /* bg_cover.png in Resources */,
+				3DA6F2FF1963A676004DF0AA /* LMHelpTextPopoverVC.xib in Resources */,
 				2628C92A191A313C00D9D8CD /* tool_form.png in Resources */,
 				3DB3ACF318EBFDE20046DFB7 /* iuframe.js in Resources */,
 				265592D5196147E800F0C316 /* blue_arrow@2x.png in Resources */,
@@ -2869,6 +2908,7 @@
 				262D4A991947FAF0006F5FBE /* border_icon_03@2x.png in Resources */,
 				3DED26B91900F450001A1D67 /* panel_left_off.png in Resources */,
 				267CB19B190F93370079E565 /* tab_close.png in Resources */,
+				3DA6F30F1963B810004DF0AA /* LMHelpVideoPopoverVC.xib in Resources */,
 				690A409618E1645B00095263 /* LMWidgetLibraryVC.xib in Resources */,
 				26EFF421194AEF9E00317C3E /* help.png in Resources */,
 				3DED267E1900D329001A1D67 /* stack_textfield@2x.png in Resources */,
@@ -3111,6 +3151,7 @@
 				269BABD81934509F0087703C /* documentIcon.icns in Resources */,
 				267CB1A4190F93370079E565 /* tab_library_on@2x.png in Resources */,
 				3DED26C21900F450001A1D67 /* view_border_off@2x.png in Resources */,
+				3DA6F2FA19639E81004DF0AA /* LMHelpImagePopoverVC.xib in Resources */,
 				3DED274919078991001A1D67 /* clear_color.png in Resources */,
 				3DED26491900D2DE001A1D67 /* align_center@2x.png in Resources */,
 				69761BC418F04ECD00C4EDC6 /* LMPropertyBGImageVC.xib in Resources */,
@@ -3196,8 +3237,10 @@
 				6919204718DCFC8200F8522B /* NSCoder+JDExtension.m in Sources */,
 				69C5760D18D6FE020016F050 /* IUSheet.m in Sources */,
 				3DB3ACC518EBEF180046DFB7 /* LMWindow.m in Sources */,
+				3DA6F3021963A6B9004DF0AA /* LMHelpPopover.m in Sources */,
 				69757B0918D95BBC0095CBAC /* JDLogUtil.m in Sources */,
 				69757B0318D95BBC0095CBAC /* JDDateTimeUtil.m in Sources */,
+				3DA6F2FE1963A676004DF0AA /* LMHelpTextPopoverVC.m in Sources */,
 				3DED26DD19010B56001A1D67 /* LMPropertyIUHTMLVC.m in Sources */,
 				69757B0018D95BBC0095CBAC /* CALayer+JDExtension.m in Sources */,
 				69757B0718D95BBC0095CBAC /* JDHerokuUtil.m in Sources */,
@@ -3243,7 +3286,9 @@
 				3D748C81192095A1005665A3 /* LMPropertyIUPageVC.m in Sources */,
 				3DED271D1904ADD9001A1D67 /* LMPropertyVTriggerVC.m in Sources */,
 				694E3CE118FCFDA6005077B3 /* IUItem.m in Sources */,
+				3DA6F3121963BC6E004DF0AA /* LMCollectionItemView.m in Sources */,
 				690A826B190A25D500DDBA86 /* IUDjangoProject.m in Sources */,
+				3DA6F30E1963B810004DF0AA /* LMHelpVideoPopoverVC.m in Sources */,
 				CB9BD6381914DC62002C9369 /* LMStartNewDjangoVC.m in Sources */,
 				690A825D190A047300DDBA86 /* LMPropertyIUTextFieldVC.m in Sources */,
 				6967425318F7D077008B7111 /* IUIdentifierManager.m in Sources */,
@@ -3252,6 +3297,7 @@
 				69FFB27E1950305600DA2783 /* LMIUPropertyVC.m in Sources */,
 				69CB92B4191B5F6800BEFBED /* PGPageLinkSet.m in Sources */,
 				69757B1118D95BBC0095CBAC /* JDUIUtil.m in Sources */,
+				3DA6F2F919639E81004DF0AA /* LMHelpImagePopoverVC.m in Sources */,
 				3DB3ACE718EBEF9D0046DFB7 /* CursorRect.m in Sources */,
 				69C4AA1D1908E96F00CF75E7 /* IUImport.m in Sources */,
 				69D79B3319138CC60020608D /* LMStartRecentVC.m in Sources */,

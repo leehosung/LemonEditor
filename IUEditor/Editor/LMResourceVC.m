@@ -41,6 +41,8 @@
 }
 
 
+#pragma mark - collectionView Drag
+
 - (BOOL)collectionView:(NSCollectionView *)collectionView writeItemsAtIndexes:(NSIndexSet *)indexes toPasteboard:(NSPasteboard *)pasteboard{
     NSUInteger index = [indexes firstIndex];
     IUResourceFile *node = [[_resourceArrayController arrangedObjects] objectAtIndex:index];
@@ -50,7 +52,7 @@
     }
     
     else if (node.type == IUResourceTypeVideo){
-        [JDUIUtil hudAlert:@"Only image is draggable" second:2];
+        [JDUIUtil hudAlert:@"Only image files can be draggable as a bacground or image type " second:2];
     }
     else {
         assert(0);
@@ -70,6 +72,7 @@
 
 #pragma mark -
 #pragma mark click BTN
+
 - (IBAction)clickListBtn:(id)sender {
     [_tabView selectTabViewItemAtIndex:0];
     [_resourceListB setEnabled:NO];
