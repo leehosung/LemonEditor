@@ -133,13 +133,13 @@
             LMHelpPopover *popover = [LMHelpPopover sharedHelpPopover];
             [popover setType:LMPopoverTypeText];
             [popover setTitle:resourceFile.name rtfFileName:nil];
-            [popover showRelativeToRect:[targetView bounds] ofView:sender preferredEdge:NSMinYEdge];
+            [popover showRelativeToRect:[targetView bounds] ofView:sender preferredEdge:NSMinXEdge];
         }
         else if(resourceFile.type == IUResourceTypeVideo){
             LMHelpPopover *popover = [LMHelpPopover sharedHelpPopover];
             [popover setType:LMPopoverTypeTextAndVideo];
             [popover setVideoName:resourceFile.name title:resourceFile.name rtfFileName:nil];
-            [popover showRelativeToRect:[targetView bounds] ofView:sender preferredEdge:NSMinYEdge];
+            [popover showRelativeToRect:[targetView bounds] ofView:sender preferredEdge:NSMinXEdge];
 
         }
     }

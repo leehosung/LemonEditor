@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13E28" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.AVKitIBPlugin" version="6154.17"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
@@ -19,33 +19,45 @@
             <rect key="frame" x="0.0" y="0.0" width="306" height="352"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <box autoresizesSubviews="NO" fixedFrame="YES" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="rbg-6X-byw">
+                <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="rbg-6X-byw">
                     <rect key="frame" x="3" y="3" width="300" height="346"/>
                     <view key="contentView">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="346"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="346" id="1DQ-QW-ao3"/>
+                        <constraint firstAttribute="width" constant="300" id="QZl-Ia-qjF"/>
+                    </constraints>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </box>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kBk-bM-uXG">
-                    <rect key="frame" x="13" y="109" width="280" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kBk-bM-uXG">
+                    <rect key="frame" x="13" y="119" width="280" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="276" id="jyk-Tu-3m1"/>
+                        <constraint firstAttribute="height" constant="17" id="yqE-nG-fKI"/>
+                    </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="tfz-rJ-mBZ">
                         <font key="font" metaFont="systemBold" size="12"/>
                         <color key="textColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <avPlayerView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gyk-g5-1EA">
-                    <rect key="frame" x="3" y="139" width="300" height="210"/>
+                <avPlayerView controlsStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Gyk-g5-1EA">
+                    <rect key="frame" x="3" y="149" width="300" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="76q-wi-71h"/>
+                        <constraint firstAttribute="width" constant="300" id="xIw-Io-MFJ"/>
+                    </constraints>
                 </avPlayerView>
-                <scrollView fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AV6-KB-dJl">
+                <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AV6-KB-dJl">
                     <rect key="frame" x="3" y="3" width="300" height="100"/>
-                    <clipView key="contentView" ambiguous="YES" misplaced="YES" id="d6o-4G-pUu">
+                    <clipView key="contentView" id="d6o-4G-pUu">
                         <rect key="frame" x="1" y="1" width="238" height="133"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView ambiguous="YES" editable="NO" selectable="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="C0d-xi-r4e">
+                            <textView editable="NO" selectable="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="C0d-xi-r4e">
                                 <rect key="frame" x="0.0" y="0.0" width="238" height="154"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -58,6 +70,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </clipView>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="JLG-mJ-AJO"/>
+                        <constraint firstAttribute="width" constant="300" id="iYk-oI-aRd"/>
+                    </constraints>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="fK2-nK-KXn">
                         <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -68,6 +84,21 @@
                     </scroller>
                 </scrollView>
             </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="AV6-KB-dJl" secondAttribute="trailing" constant="3" id="3yl-bZ-Ba5"/>
+                <constraint firstItem="AV6-KB-dJl" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="3" id="Iqs-t6-KdM"/>
+                <constraint firstItem="Gyk-g5-1EA" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="3" id="KgA-Vc-SU5"/>
+                <constraint firstItem="rbg-6X-byw" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="3" id="Q1n-YM-FFo"/>
+                <constraint firstAttribute="trailing" secondItem="Gyk-g5-1EA" secondAttribute="trailing" constant="3" id="RWo-6X-jlz"/>
+                <constraint firstAttribute="trailing" secondItem="kBk-bM-uXG" secondAttribute="trailing" constant="15" id="Sfp-8q-gPF"/>
+                <constraint firstAttribute="bottom" secondItem="rbg-6X-byw" secondAttribute="bottom" constant="3" id="UvL-RA-ruC"/>
+                <constraint firstItem="kBk-bM-uXG" firstAttribute="top" secondItem="Gyk-g5-1EA" secondAttribute="bottom" constant="13" id="WYG-mu-8Ix"/>
+                <constraint firstItem="rbg-6X-byw" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="3" id="XQU-6h-Lvj"/>
+                <constraint firstAttribute="bottom" secondItem="AV6-KB-dJl" secondAttribute="bottom" constant="3" id="acv-qQ-FSV"/>
+                <constraint firstItem="kBk-bM-uXG" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="15" id="eMC-aQ-jys"/>
+                <constraint firstAttribute="trailing" secondItem="rbg-6X-byw" secondAttribute="trailing" constant="3" id="id1-b0-X7a"/>
+                <constraint firstItem="Gyk-g5-1EA" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="3" id="uEv-Sx-lTI"/>
+            </constraints>
             <point key="canvasLocation" x="273" y="539"/>
         </customView>
     </objects>
