@@ -185,8 +185,8 @@
         
         LMHelpPopover *popover = [LMHelpPopover sharedHelpPopover];
         [popover setType:LMPopoverTypeTextAndImage];
-        [popover setImage:object.image title:object.title rtfFileName:object.rtfName];
-        [popover showRelativeToRect:[targetView bounds] ofView:sender preferredEdge:NSMaxYEdge];
+        [popover setImage:object.image title:object.title subTitle:object.shortDesc rtfFileName:object.rtfName];
+        [popover showRelativeToRect:[targetView bounds] ofView:sender preferredEdge:NSMinXEdge];
     }
     else{
         assert(0);

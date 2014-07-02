@@ -10,6 +10,7 @@
 
 @interface LMHelpImagePopoverVC : NSViewController
 
-- (void)setImage:(NSImage *)image title:(NSString *)title rtfPath:(NSString *)rtfPath;
+- (void)setImage:(NSImage *)image title:(NSString *)title subTitle:(NSString *)subTitle rtfPath:(NSString *)rtfPath;
+- (void)setImage:(NSImage *)image title:(NSString *)title subTitle:(NSString *)subTitle text:(NSString *)text;
 
 @end

@@ -129,10 +129,19 @@
         IUResourceFile *resourceFile = [[currentCollectionView itemAtIndex:index] representedObject];
         
         
-        LMHelpPopover *popover = [LMHelpPopover sharedHelpPopover];
-        [popover setType:LMPopoverTypeText];
-        [popover setTitle:resourceFile.name rtfFileName:nil];
-        [popover showRelativeToRect:[targetView bounds] ofView:sender preferredEdge:NSMaxYEdge];
+        if(resourceFile.type == IUResourceTypeImage){
+            LMHelpPopover *popover = [LMHelpPopover sharedHelpPopover];
+            [popover setType:LMPopoverTypeText];
+            [popover setTitle:resourceFile.name rtfFileName:nil];
+            [popover showRelativeToRect:[targetView bounds] ofView:sender preferredEdge:NSMinYEdge];
+        }
+        else if(resourceFile.type == IUResourceTypeVideo){
+            LMHelpPopover *popover = [LMHelpPopover sharedHelpPopover];
+            [popover setType:LMPopoverTypeTextAndVideo];
+            [popover setVideoName:resourceFile.name title:resourceFile.name rtfFileName:nil];
+            [popover showRelativeToRect:[targetView bounds] ofView:sender preferredEdge:NSMinYEdge];
+
+        }
     }
     else{
         assert(0);

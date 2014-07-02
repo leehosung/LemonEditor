@@ -21,13 +21,16 @@ typedef enum{
 +(LMHelpPopover *)sharedHelpPopover;
 
 //function to set content
-
 //type : LMPopoverTypeTextAndVideo
 - (void)setVideoName:(NSString *)imageName title:(NSString *)title rtfFileName:(NSString *)rtfFileName;
 //type : LMPopoverTextAndImage
-- (void)setImage:(NSImage *)image title:(NSString *)title rtfFileName:(NSString *)rtfFileName;
+- (void)setImage:(NSImage *)image title:(NSString *)title subTitle:(NSString *)subTitle rtfFileName:(NSString *)rtfFileName;
+- (void)setImage:(NSImage *)image title:(NSString *)title subTitle:(NSString *)subTitle text:(NSString *)text;
 //type : LMPopoverText
 - (void)setTitle:(NSString *)title rtfFileName:(NSString *)rtfFileName;
+
+
+
 
 /*** How To Use Popover ***
  

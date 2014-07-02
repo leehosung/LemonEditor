@@ -17,6 +17,7 @@ static LMHelpPopover *gHelpPopover = nil;
     LMHelpImagePopoverVC    *imagePopoverVC;
     LMHelpTextPopoverVC     *textPopoverVC;
     LMHelpVideoPopoverVC    *videoPopoverVC;
+    BOOL isSetting;
 }
 
 +(LMHelpPopover *)sharedHelpPopover{
@@ -36,6 +37,7 @@ static LMHelpPopover *gHelpPopover = nil;
         
         imagePopoverVC = [[LMHelpImagePopoverVC alloc] initWithNibName:[LMHelpImagePopoverVC class].className bundle:nil];
         textPopoverVC = [[LMHelpTextPopoverVC alloc] initWithNibName:[LMHelpTextPopoverVC class].className bundle:nil];
+        videoPopoverVC = [[LMHelpVideoPopoverVC alloc] initWithNibName:[LMHelpVideoPopoverVC class].className bundle:nil];
         
         self.contentViewController = textPopoverVC;
         
@@ -60,6 +62,7 @@ static LMHelpPopover *gHelpPopover = nil;
             break;
     }
 }
+#pragma mark - Video
 
 - (void)setVideoName:(NSString *)videoName title:(NSString *)title rtfFileName:(NSString *)rtfFileName{
     if(_type == LMPopoverTypeTextAndVideo){
@@ -73,10 +76,14 @@ static LMHelpPopover *gHelpPopover = nil;
         }
         
         [videoPopoverVC setVideoPath:videoPath title:title rtfPath:rtfPath];
+        
+        isSetting = YES;
     }
 }
 
-- (void)setImage:(NSImage *)image title:(NSString *)title rtfFileName:(NSString *)rtfFileName{
+#pragma mark - Image
+
+- (void)setImage:(NSImage *)image title:(NSString *)title subTitle:(NSString *)subTitle rtfFileName:(NSString *)rtfFileName{
     if(_type == LMPopoverTypeTextAndImage){
         NSString *rtfPath;
         
@@ -84,10 +91,21 @@ static LMHelpPopover *gHelpPopover = nil;
             rtfPath= [[NSBundle mainBundle] pathForResource:[rtfFileName stringByDeletingPathExtension] ofType:[rtfFileName pathExtension]];
         }
         
-        [imagePopoverVC setImage:image title:title rtfPath:rtfPath];
+        [imagePopoverVC setImage:image title:title subTitle:subTitle rtfPath:rtfPath];
+        isSetting = YES;
     }
     
 }
+- (void)setImage:(NSImage *)image title:(NSString *)title subTitle:(NSString *)subTitle text:(NSString *)text{
+    if(_type == LMPopoverTypeTextAndImage){
+        [imagePopoverVC setImage:image title:title subTitle:subTitle text:text];
+        isSetting = YES;
+    }
+    
+}
+
+#pragma mark - Text
+
 - (void)setTitle:(NSString *)title rtfFileName:(NSString *)rtfFileName{
     if(_type == LMPopoverTypeText){
         NSString *rtfPath;
@@ -96,7 +114,21 @@ static LMHelpPopover *gHelpPopover = nil;
             rtfPath = [[NSBundle mainBundle] pathForResource:[rtfFileName stringByDeletingPathExtension] ofType:[rtfFileName pathExtension]];
         }
         [textPopoverVC setTitle:title rtfPath:rtfPath];
+        isSetting = YES;
     }
+}
+
+#pragma mark override popover
+- (void)showRelativeToRect:(NSRect)positioningRect ofView:(NSView *)positioningView preferredEdge:(NSRectEdge)preferredEdge{
+    if(isSetting){
+        [super showRelativeToRect:positioningRect ofView:positioningView preferredEdge:preferredEdge];
+    }
+}
+
+- (void)close{
+    isSetting = NO;
+    [super close];
+    
 }
 
 
