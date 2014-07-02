@@ -282,7 +282,7 @@
 -(void)selectedObjectsDidChange:(NSDictionary*)change{
     [JDLogUtil log:IULogAction key:@"CanvasVC:observed" string:[self.controller.selectedIdentifiers description]];
     
-    [[self gridView] removeAllRedPointLayer];
+    [[self gridView] removeAllSelectionLayers];
     [[self gridView] removeAllTextPointLayer];
     
 
@@ -296,7 +296,7 @@
     for(NSString *IUID in self.controller.selectedIdentifiersWithImportIdentifier){
         if([frameDict.dict objectForKey:IUID]){
             NSRect frame = [[frameDict.dict objectForKey:IUID] rectValue];
-            [[self gridView] addRedPointLayer:IUID withFrame:frame];
+            [[self gridView] addSelectionLayerWithIdentifier:IUID withFrame:frame];
             [[self gridView] addTextPointLayer:IUID withFrame:frame];
             [[self webView] changeDOMRange:frame.origin];
         }

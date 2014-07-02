@@ -14,7 +14,7 @@
 #import "JDUIUtil.h"
 #import "PointTextLayer.h"
 #import "LMCanvasVC.h"
-
+#import "SelectionBorderLayer.h"
 
 @implementation GridView
 
@@ -34,6 +34,9 @@
         [pointManagerLayer disableAction];
         [self.layer addSubLayerFullFrame:pointManagerLayer];
 
+        selectLineManagerLayer = [CALayer layer];
+        [selectLineManagerLayer disableAction];
+        [self.layer insertSubLayerFullFrame:selectLineManagerLayer below:pointManagerLayer];
         
         //initialize textPoint Manager
         textManageLayer = [CALayer layer];
@@ -194,12 +197,22 @@
         }
     }
     
+    
     //textLayer update
     for(PointTextLayer *tLayer in textManageLayer.sublayers){
         NSValue *value = [frameDict objectForKey:tLayer.iuID];
         if(value){
             NSRect currentRect = [value rectValue];
             [tLayer updateFrame:currentRect];
+        }
+    }
+    
+    //selection border layer
+    for(SelectionBorderLayer *sLayer in selectLineManagerLayer.sublayers){
+        NSValue *value = [frameDict objectForKey:sLayer.iuID];
+        if(value){
+            NSRect currentRect =[value rectValue];
+            [sLayer setFrame:currentRect];
         }
     }
     
@@ -235,6 +248,12 @@
         [pLayer removeFromSuperlayer];
     }
     
+    //selectionborderLayer
+    layers = [selectLineManagerLayer.sublayers mutableCopy];
+    for(SelectionBorderLayer *sLayer in layers){
+        [sLayer removeFromSuperlayer];
+    }
+    
     //textLayer
     layers = [textManageLayer.sublayers mutableCopy];
     for(PointTextLayer *tLayer in layers){
@@ -256,6 +275,19 @@
     for(PointLayer *pLayer in pointManagerLayer.sublayers){
         if([pLayer.iuID isEqualToString:identifier]){
             removeLayer = pLayer;
+            found = true;
+            break;
+        }
+    }
+    if(found){
+        [removeLayer removeFromSuperlayer];
+        found = false;
+    }
+    
+    //selectionBorerLayer
+    for(SelectionBorderLayer *sLayer in selectLineManagerLayer.sublayers){
+        if([sLayer.iuID isEqualToString:identifier]){
+            removeLayer = sLayer;
             found = true;
             break;
         }
@@ -295,20 +327,29 @@
 
 #pragma mark red Point layer
 
-- (void)addRedPointLayer:(NSString *)iuID withFrame:(NSRect)frame{
+- (void)addSelectionLayerWithIdentifier:(NSString *)iuID withFrame:(NSRect)frame{
     PointLayer *pointLayer = [[PointLayer alloc] initWithIUID:iuID withFrame:frame];
     [pointManagerLayer addSubLayerFullFrame:pointLayer];
+    
+    SelectionBorderLayer *sLayer = [[SelectionBorderLayer alloc] initWithIUID:iuID withFrame:frame];
+    [selectLineManagerLayer addSublayer:sLayer];
     
     //reset cursor
     [[self window] invalidateCursorRectsForView:self];
     
 }
 
-- (void)removeAllRedPointLayer{
+- (void)removeAllSelectionLayers{
     //delete current layer
     NSArray *pointLayers = [NSArray arrayWithArray:pointManagerLayer.sublayers];
 
     for(CALayer *layer in pointLayers){
+        [layer removeFromSuperlayer];
+    }
+    
+    
+    NSArray *lineLayers = [NSArray arrayWithArray:selectLineManagerLayer.sublayers];
+    for(CALayer *layer in lineLayers){
         [layer removeFromSuperlayer];
     }
     
@@ -318,15 +359,15 @@
 }
 
 //dict[IUID] = frame
-- (void)makeRedPointLayer:(NSDictionary *)selectedIUDict{
+- (void)makeSelectionLayersWithDictionary:(NSDictionary *)selectedIUDict{
     
-    [self removeAllRedPointLayer];
+    [self removeAllSelectionLayers];
     
     NSArray *keys = [selectedIUDict allKeys];
     //add new selected layer
     for(NSString *iuID in keys){
         NSRect frame = [[selectedIUDict objectForKey:iuID] rectValue];
-        [self addRedPointLayer:iuID withFrame:frame];
+        [self addSelectionLayerWithIdentifier:iuID withFrame:frame];
     }
     
 }

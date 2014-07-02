@@ -173,6 +173,7 @@
 		3D14AE041953D06600E7C2E4 /* LMPropertyTextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D14AE021953D06600E7C2E4 /* LMPropertyTextVC.m */; };
 		3D14AE051953D06600E7C2E4 /* LMPropertyTextVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D14AE031953D06600E7C2E4 /* LMPropertyTextVC.xib */; };
 		3D1BACC919330240004C554F /* IUText.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1BACC819330240004C554F /* IUText.m */; };
+		3D2E6B8E19640DED00AC7DE5 /* SelectionBorderLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E6B8D19640DED00AC7DE5 /* SelectionBorderLayer.m */; };
 		3D33BAD01935A4F600DA4F4A /* LMPreferenceWC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D33BACE1935A4F600DA4F4A /* LMPreferenceWC.m */; };
 		3D33BAD11935A4F600DA4F4A /* LMPreferenceWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D33BACF1935A4F600DA4F4A /* LMPreferenceWC.xib */; };
 		3D54D64B18ED5D2E00B5FEC2 /* ResizeNE-SW.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3D54D64918ED5D2E00B5FEC2 /* ResizeNE-SW.tiff */; };
@@ -799,6 +800,8 @@
 		3D14AE031953D06600E7C2E4 /* LMPropertyTextVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMPropertyTextVC.xib; path = Editor/LMPropertyTextVC.xib; sourceTree = "<group>"; };
 		3D1BACC719330240004C554F /* IUText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUText.h; path = IU/IUText.h; sourceTree = "<group>"; };
 		3D1BACC819330240004C554F /* IUText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IUText.m; path = IU/IUText.m; sourceTree = "<group>"; };
+		3D2E6B8C19640DED00AC7DE5 /* SelectionBorderLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectionBorderLayer.h; path = Editor/SelectionBorderLayer.h; sourceTree = "<group>"; };
+		3D2E6B8D19640DED00AC7DE5 /* SelectionBorderLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectionBorderLayer.m; path = Editor/SelectionBorderLayer.m; sourceTree = "<group>"; };
 		3D33BACD1935A4F600DA4F4A /* LMPreferenceWC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMPreferenceWC.h; path = Editor/Preference/LMPreferenceWC.h; sourceTree = "<group>"; };
 		3D33BACE1935A4F600DA4F4A /* LMPreferenceWC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMPreferenceWC.m; path = Editor/Preference/LMPreferenceWC.m; sourceTree = "<group>"; };
 		3D33BACF1935A4F600DA4F4A /* LMPreferenceWC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMPreferenceWC.xib; path = Editor/Preference/LMPreferenceWC.xib; sourceTree = "<group>"; };
@@ -1726,6 +1729,8 @@
 				3DB3ACDA18EBEF5F0046DFB7 /* PointTextLayer.m */,
 				3DB3ACDB18EBEF5F0046DFB7 /* GuideLineLayer.h */,
 				3DB3ACDC18EBEF5F0046DFB7 /* GuideLineLayer.m */,
+				3D2E6B8C19640DED00AC7DE5 /* SelectionBorderLayer.h */,
+				3D2E6B8D19640DED00AC7DE5 /* SelectionBorderLayer.m */,
 			);
 			name = GridLayers;
 			sourceTree = "<group>";
@@ -3352,6 +3357,7 @@
 				69757B1418D95BBC0095CBAC /* NSMenu_JDExtension.m in Sources */,
 				69C4AA1A1908E82900CF75E7 /* IUResponsiveSection.m in Sources */,
 				69ABB14A18D733ED0065D584 /* IUCompiler.m in Sources */,
+				3D2E6B8E19640DED00AC7DE5 /* SelectionBorderLayer.m in Sources */,
 				3DB3ACDF18EBEF5F0046DFB7 /* PointTextLayer.m in Sources */,
 				69B4D7FA192B5155008429B3 /* LMCommandVC.m in Sources */,
 				6919204718DCFC8200F8522B /* NSCoder+JDExtension.m in Sources */,

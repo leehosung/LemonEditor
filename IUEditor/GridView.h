@@ -14,6 +14,7 @@
     CALayer *selectionLayer, *ghostLayer;
     CALayer *borderManagerLayer;
     CALayer *textManageLayer, *pointManagerLayer;
+    CALayer *selectLineManagerLayer;
     GuideLineLayer *guideLayer;
     
     //for dragging - change width, height ofIU
@@ -27,8 +28,8 @@
 
 @property id delegate;
 
-- (void)addRedPointLayer:(NSString *)iuID withFrame:(NSRect)frame;
-- (void)removeAllRedPointLayer;
+- (void)addSelectionLayerWithIdentifier:(NSString *)iuID withFrame:(NSRect)frame;
+- (void)removeAllSelectionLayers;
 
 - (void)addTextPointLayer:(NSString *)iuID withFrame:(NSRect)frame;
 - (void)removeAllTextPointLayer;
