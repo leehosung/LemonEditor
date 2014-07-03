@@ -8,18 +8,16 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class LMDragAndDropImageV;
+@class LMDragAndDropButton;
 
 @protocol LMDragAndDropImageVDelegate <NSObject>
-- (void)draggingDropedForDragAndDropImageV:(LMDragAndDropImageV*)v item:(id)item;
+- (void)draggingDropedForDragAndDropImageV:(LMDragAndDropButton*)v item:(id)item;
 @end
 
-@interface LMDragAndDropImageV : NSImageView
+@interface LMDragAndDropButton : NSButton
 
 - (void)registerForDraggedType:(NSString *)type;
 
-@property NSImage *originalImage;
-@property NSImage *highlightedImage;
 @property IBOutlet id < LMDragAndDropImageVDelegate > delegate;
 
 @end

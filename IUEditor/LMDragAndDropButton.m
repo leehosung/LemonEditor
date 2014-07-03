@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 JDLab. All rights reserved.
 //
 
-#import "LMDragAndDropImageV.h"
+#import "LMDragAndDropButton.h"
 
-@implementation LMDragAndDropImageV{
+@implementation LMDragAndDropButton{
     NSString *draggedType;
 }
 
@@ -36,16 +36,12 @@
 
 -(NSDragOperation)draggingEntered:(id<NSDraggingInfo>)sender {
     NSLog(@"draggingEntered");
-    if (self.highlightedImage) {
-        [self setImage:self.highlightedImage];
-    }
+    [self setState:YES];
     return NSDragOperationEvery;
 }
 
 - (void)draggingExited:(id <NSDraggingInfo>)sender{
-    if (self.highlightedImage) {
-        [self setImage:self.originalImage];
-    }
+    [self setState:NO];
     return;
 }
 
@@ -54,14 +50,9 @@
     NSPasteboard *pBoard = [sender draggingPasteboard];
     id item = [pBoard stringForType:draggedType];
     [self.delegate draggingDropedForDragAndDropImageV:self item:item];
-    if (self.highlightedImage) {
-        [self setImage:self.originalImage];
-    }
+    [self setState:NO];
     return;
 }
 
-- (void)mouseDown:(NSEvent *)theEvent{
-    [self.delegate ]
-}
 
 @end
