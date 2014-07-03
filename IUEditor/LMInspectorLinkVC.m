@@ -59,6 +59,7 @@
 }
 - (void)updateLinkPopupButtonItems{
     [_pageLinkPopupButton removeAllItems];
+    [_pageLinkPopupButton addItemWithTitle:@"None"];
     for (IUPage *page in [_project pageDocuments]) {
         [_pageLinkPopupButton addItemWithTitle:page.name];
     }
@@ -81,23 +82,25 @@
         id value = [self valueForKeyPath:[_controller keyPathFromControllerToProperty:@"link"]];
         
         if (value == NSNoSelectionMarker || value == nil) {
-            [_pageLinkPopupButton setStringValue:@""];
-            [_urlTF setStringValue:@""];
+            [_pageLinkPopupButton selectItemWithTitle:@"None"];
+            [_urlTF setStringValue:@"Empty"];
 
         }
         else if (value == NSMultipleValuesMarker) {
-            [_pageLinkPopupButton setStringValue:@""];
-            [_urlTF setStringValue:@""];
+            [_pageLinkPopupButton selectItemWithTitle:@"None"];
+            [_urlTF setStringValue:@"multiple"];
         }
         else {
             if([value isKindOfClass:[IUBox class]]){
-                [_pageLinkPopupButton setStringValue:((IUBox *)value).name];
+                [_pageLinkPopupButton selectItemWithTitle:((IUBox *)value).name];
                 [_urlCheckButton setState:0];
+                [_urlTF setStringValue:@""];
                 [self updateDivLink:value];
             }
             else{
                 [_urlCheckButton setState:1];
                 [_urlTF setStringValue:value];
+                [_pageLinkPopupButton selectItemWithTitle:@"None"];
             }
         }
         [self updateLinkEnableState];
@@ -131,7 +134,10 @@
 }
 
 - (IBAction)clickLinkPopupButton:(id)sender {
-    NSString *link = [_pageLinkPopupButton stringValue];
+    NSString *link = [[_pageLinkPopupButton selectedItem] title];
+    if([link isEqualToString:@"None"]){
+        return;
+    }
     if(_project){
         IUBox *box = [_project.identifierManager IUWithIdentifier:link];
         if(box){
