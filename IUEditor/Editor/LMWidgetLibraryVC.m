@@ -63,7 +63,6 @@
             obj.image = [NSImage imageNamed:imageName];
             obj.shortDesc = dict[@"shortDesc"];
             obj.longDesc = dict[@"longDesc"];
-            obj.rtfName = dict[@"rtfName"];
             int widgetClass = [dict[@"widgetClass"] intValue];
             if(widgetClass == WidgetClassTypePrimary){
                 [primaryArray addObject:obj];
@@ -184,8 +183,16 @@
 
         
         LMHelpPopover *popover = [LMHelpPopover sharedHelpPopover];
-        [popover setType:LMPopoverTypeTextAndImage];
-        [popover setImage:object.image title:object.title subTitle:object.shortDesc rtfFileName:object.rtfName];
+        
+        NSString *moviePath = [[NSBundle mainBundle] pathForResource:object.title ofType:@"mp4"];
+        if(moviePath){
+            [popover setType:LMPopoverTypeTextAndVideo];
+            [popover setVideoName:[object.title stringByAppendingPathExtension:@"mp4"] title:object.title rtfFileName:[object.title stringByAppendingPathExtension:@"rtf"]];
+        }
+        else{
+            [popover setType:LMPopoverTypeTextAndImage];
+            [popover setImage:object.image title:object.title subTitle:object.shortDesc rtfFileName:[object.title stringByAppendingPathExtension:@"rtf"]];
+         }
         [popover showRelativeToRect:[targetView bounds] ofView:sender preferredEdge:NSMinXEdge];
     }
     else{

@@ -7,6 +7,7 @@
 //
 
 #import "LMPropertyMouseEventVC.h"
+#import "LMHelpPopover.h"
 
 @interface LMPropertyMouseEventVC ()
 
@@ -73,6 +74,12 @@
     [_changeTextColorBtn bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagHoverTextColorEnable] options:IUBindingDictNotRaisesApplicable];
     [_textColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagHoverTextColor] options:IUBindingDictNotRaisesApplicable];
    
+}
+- (IBAction)clickHelpButton:(NSButton *)sender {
+    LMHelpPopover *popover = [LMHelpPopover sharedHelpPopover];
+    [popover setType:LMPopoverTypeTextAndVideo];
+    [popover setVideoName:@"EventVariableComplex.mp4" title:@"Variable Event" rtfFileName:nil];
+    [popover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMinXEdge];
 }
 
 @end

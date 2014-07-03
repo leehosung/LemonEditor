@@ -7,6 +7,7 @@
 //
 
 #import "LMPropertyScrollVC.h"
+#import "LMHelpPopover.h"
 
 @interface LMPropertyScrollVC ()
 
@@ -32,5 +33,11 @@
     [_opacityMoveTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"opacityMove"] options:IUBindingDictNotRaisesApplicable];
     [_xPosMoveTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"xPosMove"] options:IUBindingDictNotRaisesApplicable];
 
+}
+- (IBAction)clickHelpButton:(NSButton *)sender {
+    LMHelpPopover *popover = [LMHelpPopover sharedHelpPopover];
+    [popover setType:LMPopoverTypeTextAndVideo];
+    [popover setVideoName:@"EventScrollAnimation.mp4" title:@"Scroll Event" rtfFileName:nil];
+    [popover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMinXEdge];
 }
 @end

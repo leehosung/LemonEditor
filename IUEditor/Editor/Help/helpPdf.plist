@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>positionProperty</key>
+	<dict>
+		<key>title</key>
+		<string>Position Property</string>
+		<key>pdf</key>
+		<string>positionProperty.pdf</string>
+	</dict>
+	<key>scrollingAnimation</key>
+	<dict>
+		<key>title</key>
+		<string>Scrolling Animation</string>
+		<key>pdf</key>
+		<string>scrollingAnimation.pdf</string>
+	</dict>
+</dict>
+</plist>

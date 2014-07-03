@@ -194,6 +194,20 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ckX-1g-x0f">
+                                <rect key="frame" x="248" y="6" width="18" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="18" id="Uyr-xH-R6j"/>
+                                    <constraint firstAttribute="height" constant="18" id="W1r-Uu-hLM"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="help" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="sQm-1f-Cjw">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="clickHelpButton:" target="-2" id="t2i-Y8-bSK"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <constraints>
@@ -201,7 +215,9 @@
                         <constraint firstAttribute="bottom" secondItem="CCT-Gd-zTf" secondAttribute="bottom" id="EUW-wQ-LjE"/>
                         <constraint firstItem="CCT-Gd-zTf" firstAttribute="leading" secondItem="D5D-uP-k2L" secondAttribute="leading" constant="6" id="OvR-mc-vTb"/>
                         <constraint firstItem="ngp-o2-MHT" firstAttribute="top" secondItem="D5D-uP-k2L" secondAttribute="top" constant="7" id="Ucp-bm-PvP"/>
+                        <constraint firstAttribute="trailing" secondItem="ckX-1g-x0f" secondAttribute="trailing" constant="10" id="WsV-0E-psv"/>
                         <constraint firstItem="ngp-o2-MHT" firstAttribute="leading" secondItem="D5D-uP-k2L" secondAttribute="leading" constant="6" id="swZ-EA-57N"/>
+                        <constraint firstItem="ngp-o2-MHT" firstAttribute="baseline" secondItem="ckX-1g-x0f" secondAttribute="baseline" id="tz9-v3-BcW"/>
                     </constraints>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -223,4 +239,7 @@
             </connections>
         </customView>
     </objects>
+    <resources>
+        <image name="help" width="18" height="18"/>
+    </resources>
 </document>

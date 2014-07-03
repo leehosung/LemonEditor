@@ -7,6 +7,7 @@
 //
 
 #import "LMPropertyVTriggerVC.h"
+#import "LMHelpPopover.h"
 
 @interface LMPropertyVTriggerVC ()
 @property (weak) IBOutlet NSTextField *variableTF;
@@ -42,5 +43,11 @@
     
 }
 
+- (IBAction)clickHelpButton:(NSButton *)sender {
+    LMHelpPopover *popover = [LMHelpPopover sharedHelpPopover];
+    [popover setType:LMPopoverTypeTextAndVideo];
+    [popover setVideoName:@"EventVariableComplex.mp4" title:@"Variable Event" rtfFileName:nil];
+    [popover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMinXEdge];
+}
 
 @end

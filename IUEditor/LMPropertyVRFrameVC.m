@@ -7,6 +7,7 @@
 //
 
 #import "LMPropertyVRFrameVC.h"
+#import "LMHelpPopover.h"
 
 @interface LMPropertyVRFrameVC ()
 @property (weak) IBOutlet NSTextField *equationTF;
@@ -40,6 +41,12 @@
 
 }
 
+- (IBAction)clickHelpButton:(NSButton *)sender {
+    LMHelpPopover *popover = [LMHelpPopover sharedHelpPopover];
+    [popover setType:LMPopoverTypeTextAndVideo];
+    [popover setVideoName:@"EventVariableComplex.mp4" title:@"Variable Event" rtfFileName:nil];
+    [popover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMinXEdge];
+}
 
 
 @end

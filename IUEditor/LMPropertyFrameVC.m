@@ -9,7 +9,6 @@
 #import "LMPropertyFrameVC.h"
 #import "IUBox.h"
 #import "IUCSS.h"
-#import "LMHelpMenuItem.h"
 #import "LMHelpWC.h"
 #import "IUPageContent.h"
 
@@ -372,7 +371,7 @@
 - (IBAction)helpMenu:(id)sender {
     NSLog(@"this is help menu");
     helpWC = [[LMHelpWC alloc] initWithWindowNibName:@"LMHelpWC"];
-    [helpWC setHelpDocument:@"positionProperty.pdf"];
+    [helpWC setHelpDocumentWithKey:@"positionProperty" ];
     [helpWC showWindow:nil];
     [helpWC.window makeKeyAndOrderFront:self];
 }

@@ -7,6 +7,7 @@
 //
 
 #import "LMPropertyVisibleVC.h"
+#import "LMHelpPopover.h"
 
 @interface LMPropertyVisibleVC ()
 @property (weak) IBOutlet NSTextField *equationTF;
@@ -40,5 +41,11 @@
     [_visibleTypePopupBtn bind:NSSelectedIndexBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagVisibleType] options:IUBindingDictNotRaisesApplicable];
 }
 
+- (IBAction)clickHelpButton:(NSButton *)sender {
+    LMHelpPopover *popover = [LMHelpPopover sharedHelpPopover];
+    [popover setType:LMPopoverTypeTextAndVideo];
+    [popover setVideoName:@"EventVariableComplex.mp4" title:@"Variable Event" rtfFileName:nil];
+    [popover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMinXEdge];
+}
 
 @end

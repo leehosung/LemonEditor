@@ -9,5 +9,8 @@
 #import <Cocoa/Cocoa.h>
 
 @interface LMHelpWC : NSWindowController
-- (void)setHelpDocument:(NSString*)fileName;
+
+- (void)setHelpDocumentWithKey:(NSString *)key;
+- (void)setHelpDocument:(NSString*)fileName title:(NSString *)title;
+
 @end

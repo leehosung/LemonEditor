@@ -23,7 +23,6 @@
 #import "IUText.h"
 #endif
 
-#import "LMHelpMenuItem.h"
 #import "LMHelpWC.h"
 
 #pragma mark - debug
@@ -1107,14 +1106,19 @@
     IUBox *selectedIU = [self.controller IUBoxByIdentifier:IUID];
     NSString *className = [selectedIU className];
     
+    //pdf list
+    NSString *pdfFilePath = [[NSBundle mainBundle] pathForResource:@"helpPdf" ofType:@"plist"];
+    NSDictionary *pdfDict = [NSDictionary dictionaryWithContentsOfFile:pdfFilePath];
+    
+    //widget manual list
     NSString *widgetFilePath = [[NSBundle mainBundle] pathForResource:@"widgetForDefault" ofType:@"plist"];
     NSArray *availableWidgetProperties = [NSArray arrayWithContentsOfFile:widgetFilePath];
     NSDictionary *widget = [availableWidgetProperties objectWithKey:@"className" value:className];
     NSArray *helpArray = [widget objectForKey:@"manual"];
-    for (NSDictionary *helpContent in helpArray) {
-        LMHelpMenuItem *item = [[LMHelpMenuItem alloc] init];
-        item.title = helpContent[@"title"];
-        item.fileName = helpContent[@"file"];
+    for (NSString *pdfKey in helpArray) {
+        NSMenuItem *item = [[NSMenuItem alloc] init];
+        item.representedObject = [pdfDict objectForKey:pdfKey][@"pdf"];
+        item.title = [pdfDict objectForKey:pdfKey][@"title"];
         [helpMenu addItem:item];
         item.target = self;
         [item setAction:@selector(performHelp:)];
@@ -1124,9 +1128,9 @@
     [NSMenu popUpContextMenu:menu withEvent:event forView:self.view];
 }
 
-- (void)performHelp:(LMHelpMenuItem*)sender{
+- (void)performHelp:(NSMenuItem *)sender{
     helpWC = [[LMHelpWC alloc] initWithWindowNibName:@"LMHelpWC"];
-    [helpWC setHelpDocument:sender.fileName];
+    [helpWC setHelpDocument:sender.representedObject title:sender.title];
     [helpWC showWindow:nil];
     [helpWC.window makeKeyAndOrderFront:self];
 }

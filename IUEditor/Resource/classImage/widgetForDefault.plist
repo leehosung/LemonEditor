@@ -5,12 +5,7 @@
 	<dict>
 		<key>manual</key>
 		<array>
-			<dict>
-				<key>title</key>
-				<string>Scrolling Animation</string>
-				<key>file</key>
-				<string>scrollingAnimation.pdf</string>
-			</dict>
+			<string>scrollingAnimation</string>
 		</array>
 		<key>isWidget</key>
 		<true/>
@@ -26,8 +21,6 @@
 		<string></string>
 		<key>widgetClass</key>
 		<integer>0</integer>
-		<key>rtfName</key>
-		<string>iubox.rtf</string>
 	</dict>
 	<dict>
 		<key>manual</key>
@@ -51,8 +44,6 @@
 		<string></string>
 		<key>widgetClass</key>
 		<integer>0</integer>
-		<key>rtfName</key>
-		<string>iuimage.rtf</string>
 	</dict>
 	<dict>
 		<key>isWidget</key>
@@ -133,8 +124,6 @@
 		<string></string>
 		<key>widgetClass</key>
 		<integer>1</integer>
-		<key>rtfName</key>
-		<string>iuimport.rtf</string>
 	</dict>
 	<dict>
 		<key>isWidget</key>
@@ -151,8 +140,6 @@
 		<string></string>
 		<key>widgetClass</key>
 		<integer>0</integer>
-		<key>rtfName</key>
-		<string>iumovie.rtf</string>
 	</dict>
 	<dict>
 		<key>isWidget</key>
@@ -169,8 +156,6 @@
 		<string></string>
 		<key>widgetClass</key>
 		<integer>0</integer>
-		<key>rtfName</key>
-		<string>iuhtml.rtf</string>
 	</dict>
 	<dict>
 		<key>isWidget</key>
@@ -187,8 +172,6 @@
 		<string></string>
 		<key>widgetClass</key>
 		<integer>1</integer>
-		<key>rtfName</key>
-		<string>iuwebmovie.rtf</string>
 	</dict>
 	<dict>
 		<key>isWidget</key>
@@ -205,8 +188,6 @@
 		<string></string>
 		<key>widgetClass</key>
 		<integer>1</integer>
-		<key>rtfName</key>
-		<string>iufblike.rtf</string>
 	</dict>
 	<dict>
 		<key>isWidget</key>
