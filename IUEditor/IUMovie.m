@@ -60,7 +60,9 @@
 
 - (void)setVideoPath:(NSString *)videoPath{
     _videoPath = videoPath;
-    [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
+    if (self.delegate) {
+        [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
+    }
 }
 
 - (void)attributesContextDidChange:(NSDictionary *)change{
