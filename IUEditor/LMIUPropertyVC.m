@@ -286,6 +286,9 @@
         self.propertyVArray = [NSMutableArray arrayWithArray:@[propertyIUHTMLVC.view]];
         doubleClickFocusVC = propertyIUHTMLVC;
     }
+    else if ([classString isEqualToString:@"IUItem"]){
+        self.propertyVArray = [NSMutableArray arrayWithArray:@[propertyTextVC.view, inspectorLinkVC.view]];
+    }
     else {
         self.propertyVArray = [NSMutableArray arrayWithArray:@[self.noInspectorV]];
         doubleClickFocusVC = nil;
