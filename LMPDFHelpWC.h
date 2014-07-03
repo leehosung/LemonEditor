@@ -8,9 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface LMHelpWC : NSWindowController
+@interface LMPDFHelpWC : NSWindowController
 
++ (LMPDFHelpWC *)sharedPDFHelpWC;
 - (void)setHelpDocumentWithKey:(NSString *)key;
-- (void)setHelpDocument:(NSString*)fileName title:(NSString *)title;
 
 @end

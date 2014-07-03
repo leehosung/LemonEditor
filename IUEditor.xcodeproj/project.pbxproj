@@ -464,8 +464,8 @@
 		690A8277190A2CC200DDBA86 /* new_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 690A8271190A2CC200DDBA86 /* new_default.png */; };
 		6919204718DCFC8200F8522B /* NSCoder+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6919204618DCFC8200F8522B /* NSCoder+JDExtension.m */; };
 		6919204A18DCFED000F8522B /* NSObject+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6919204918DCFED000F8522B /* NSObject+JDExtension.m */; };
-		69317CB21947271F0065B6F4 /* LMHelpWC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69317CB01947271F0065B6F4 /* LMHelpWC.m */; };
-		69317CB31947271F0065B6F4 /* LMHelpWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69317CB11947271F0065B6F4 /* LMHelpWC.xib */; };
+		69317CB21947271F0065B6F4 /* LMPDFHelpWC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69317CB01947271F0065B6F4 /* LMPDFHelpWC.m */; };
+		69317CB31947271F0065B6F4 /* LMPDFHelpWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69317CB11947271F0065B6F4 /* LMPDFHelpWC.xib */; };
 		69346623192B805000F82DAF /* LMCommandVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69346622192B805000F82DAF /* LMCommandVC.xib */; };
 		693849E41914D711005C0546 /* NSIndexPath+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 693849E31914D711005C0546 /* NSIndexPath+JDExtension.m */; };
 		694E3CDB18FCF739005077B3 /* IUCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 694E3CDA18FCF739005077B3 /* IUCarousel.m */; };
@@ -1183,9 +1183,9 @@
 		6919204618DCFC8200F8522B /* NSCoder+JDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSCoder+JDExtension.m"; path = "JD/NSCoder+JDExtension.m"; sourceTree = "<group>"; };
 		6919204818DCFED000F8522B /* NSObject+JDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JDExtension.h"; sourceTree = "<group>"; };
 		6919204918DCFED000F8522B /* NSObject+JDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JDExtension.m"; sourceTree = "<group>"; };
-		69317CAF1947271F0065B6F4 /* LMHelpWC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMHelpWC.h; sourceTree = "<group>"; };
-		69317CB01947271F0065B6F4 /* LMHelpWC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMHelpWC.m; sourceTree = "<group>"; };
-		69317CB11947271F0065B6F4 /* LMHelpWC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMHelpWC.xib; sourceTree = "<group>"; };
+		69317CAF1947271F0065B6F4 /* LMPDFHelpWC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPDFHelpWC.h; sourceTree = "<group>"; };
+		69317CB01947271F0065B6F4 /* LMPDFHelpWC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPDFHelpWC.m; sourceTree = "<group>"; };
+		69317CB11947271F0065B6F4 /* LMPDFHelpWC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPDFHelpWC.xib; sourceTree = "<group>"; };
 		69346622192B805000F82DAF /* LMCommandVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMCommandVC.xib; sourceTree = "<group>"; };
 		693849E21914D711005C0546 /* NSIndexPath+JDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexPath+JDExtension.h"; sourceTree = "<group>"; };
 		693849E31914D711005C0546 /* NSIndexPath+JDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+JDExtension.m"; sourceTree = "<group>"; };
@@ -2762,9 +2762,9 @@
 			children = (
 				3D2E6B881963D73500AC7DE5 /* popover */,
 				CBA877E61963D04A00075294 /* Tutorial */,
-				69317CAF1947271F0065B6F4 /* LMHelpWC.h */,
-				69317CB01947271F0065B6F4 /* LMHelpWC.m */,
-				69317CB11947271F0065B6F4 /* LMHelpWC.xib */,
+				69317CAF1947271F0065B6F4 /* LMPDFHelpWC.h */,
+				69317CB01947271F0065B6F4 /* LMPDFHelpWC.m */,
+				69317CB11947271F0065B6F4 /* LMPDFHelpWC.xib */,
 			);
 			name = Help;
 			sourceTree = "<group>";
@@ -3124,7 +3124,7 @@
 				26378CDD194EC42A004B5001 /* import.png in Resources */,
 				265BC579190FA9B600A1758F /* controller.png in Resources */,
 				CBA877FD1963D3CF00075294 /* Tutorial01_en.png in Resources */,
-				69317CB31947271F0065B6F4 /* LMHelpWC.xib in Resources */,
+				69317CB31947271F0065B6F4 /* LMPDFHelpWC.xib in Resources */,
 				267CB1AF190F93370079E565 /* tab_tools_on.png in Resources */,
 				69FEC48E194845CA00483C11 /* scrollingAnimation.pdf in Resources */,
 				3D97D45D1950339500826280 /* Defaults.plist in Resources */,
@@ -3539,7 +3539,7 @@
 				690A409518E1645B00095263 /* LMWidgetLibraryVC.m in Sources */,
 				3D973F091946F45100FB893F /* IUProjectController.m in Sources */,
 				3DED275C190A2630001A1D67 /* IUEventVariable.m in Sources */,
-				69317CB21947271F0065B6F4 /* LMHelpWC.m in Sources */,
+				69317CB21947271F0065B6F4 /* LMPDFHelpWC.m in Sources */,
 				69757B1F18D95F1E0095CBAC /* NSDictionary+JDExtension.m in Sources */,
 				3DED272E1904E17E001A1D67 /* IUMovie.m in Sources */,
 				69757B0818D95BBC0095CBAC /* JDKeyDelegatedTableView.m in Sources */,

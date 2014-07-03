@@ -23,7 +23,7 @@
 #import "IUText.h"
 #endif
 
-#import "LMHelpWC.h"
+#import "LMPDFHelpWC.h"
 
 #pragma mark - debug
 #if DEBUG
@@ -47,7 +47,7 @@
 
 @implementation LMCanvasVC{
     IUFrameDictionary *frameDict;
-    LMHelpWC *helpWC;
+    LMPDFHelpWC *helpWC;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -1117,7 +1117,7 @@
     NSArray *helpArray = [widget objectForKey:@"manual"];
     for (NSString *pdfKey in helpArray) {
         NSMenuItem *item = [[NSMenuItem alloc] init];
-        item.representedObject = [pdfDict objectForKey:pdfKey][@"pdf"];
+        item.representedObject = pdfKey;
         item.title = [pdfDict objectForKey:pdfKey][@"title"];
         [helpMenu addItem:item];
         item.target = self;
@@ -1129,8 +1129,8 @@
 }
 
 - (void)performHelp:(NSMenuItem *)sender{
-    helpWC = [[LMHelpWC alloc] initWithWindowNibName:@"LMHelpWC"];
-    [helpWC setHelpDocument:sender.representedObject title:sender.title];
+    helpWC = [LMPDFHelpWC sharedPDFHelpWC];
+    [helpWC setHelpDocumentWithKey:sender.representedObject];
     [helpWC showWindow:nil];
     [helpWC.window makeKeyAndOrderFront:self];
 }

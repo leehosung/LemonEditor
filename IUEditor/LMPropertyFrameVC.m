@@ -9,7 +9,7 @@
 #import "LMPropertyFrameVC.h"
 #import "IUBox.h"
 #import "IUCSS.h"
-#import "LMHelpWC.h"
+#import "LMPDFHelpWC.h"
 #import "IUPageContent.h"
 
 @interface LMPropertyFrameVC ()
@@ -56,7 +56,7 @@
 @end
 
 @implementation LMPropertyFrameVC{
-    LMHelpWC *helpWC;
+    LMPDFHelpWC *helpWC;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -370,8 +370,8 @@
 
 - (IBAction)helpMenu:(id)sender {
     NSLog(@"this is help menu");
-    helpWC = [[LMHelpWC alloc] initWithWindowNibName:@"LMHelpWC"];
-    [helpWC setHelpDocumentWithKey:@"positionProperty" ];
+    helpWC = [LMPDFHelpWC sharedPDFHelpWC];
+    [helpWC setHelpDocumentWithKey:@"positionProperty"];
     [helpWC showWindow:nil];
     [helpWC.window makeKeyAndOrderFront:self];
 }
