@@ -78,7 +78,7 @@
 - (IBAction)clickHelpButton:(NSButton *)sender {
     LMHelpPopover *popover = [LMHelpPopover sharedHelpPopover];
     [popover setType:LMPopoverTypeTextAndVideo];
-    [popover setVideoName:@"EventVariableComplex.mp4" title:@"Variable Event" rtfFileName:nil];
+    [popover setVideoName:@"EventMouseOn.mp4" title:@"Mouse On Event" rtfFileName:nil];
     [popover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMinXEdge];
 }
 

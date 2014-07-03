@@ -176,12 +176,10 @@
 		3D2E6B8E19640DED00AC7DE5 /* SelectionBorderLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E6B8D19640DED00AC7DE5 /* SelectionBorderLayer.m */; };
 		3D2E6B991965119D00AC7DE5 /* IUCarousel.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3D2E6B9219650FAE00AC7DE5 /* IUCarousel.mp4 */; };
 		3D2E6B9A196511AA00AC7DE5 /* EventFrame.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3D2E6B9319650FBA00AC7DE5 /* EventFrame.mp4 */; };
-		3D2E6B9B196511AA00AC7DE5 /* EventMouseBGImageColor.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3D2E6B9419650FBA00AC7DE5 /* EventMouseBGImageColor.mp4 */; };
-		3D2E6B9C196511AA00AC7DE5 /* EventMouseBGPosition.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3D2E6B9519650FBA00AC7DE5 /* EventMouseBGPosition.mp4 */; };
-		3D2E6B9D196511AA00AC7DE5 /* EventMouseTextColor.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3D2E6B9619650FBA00AC7DE5 /* EventMouseTextColor.mp4 */; };
 		3D2E6B9E196511AA00AC7DE5 /* EventScrollAnimation.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3D2E6B9719650FBA00AC7DE5 /* EventScrollAnimation.mp4 */; };
 		3D2E6B9F196511AA00AC7DE5 /* EventVariableComplex.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3D2E6B9819650FBA00AC7DE5 /* EventVariableComplex.mp4 */; };
 		3D2E6BA11965212700AC7DE5 /* helpPdf.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D2E6BA01965212700AC7DE5 /* helpPdf.plist */; };
+		3D2E6BA3196525B200AC7DE5 /* EventMouseOn.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3D2E6BA2196525B200AC7DE5 /* EventMouseOn.mp4 */; };
 		3D33BAD01935A4F600DA4F4A /* LMPreferenceWC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D33BACE1935A4F600DA4F4A /* LMPreferenceWC.m */; };
 		3D33BAD11935A4F600DA4F4A /* LMPreferenceWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D33BACF1935A4F600DA4F4A /* LMPreferenceWC.xib */; };
 		3D54D64B18ED5D2E00B5FEC2 /* ResizeNE-SW.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3D54D64918ED5D2E00B5FEC2 /* ResizeNE-SW.tiff */; };
@@ -817,12 +815,10 @@
 		3D2E6B8D19640DED00AC7DE5 /* SelectionBorderLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectionBorderLayer.m; path = Editor/SelectionBorderLayer.m; sourceTree = "<group>"; };
 		3D2E6B9219650FAE00AC7DE5 /* IUCarousel.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = IUCarousel.mp4; sourceTree = "<group>"; };
 		3D2E6B9319650FBA00AC7DE5 /* EventFrame.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = EventFrame.mp4; sourceTree = "<group>"; };
-		3D2E6B9419650FBA00AC7DE5 /* EventMouseBGImageColor.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = EventMouseBGImageColor.mp4; sourceTree = "<group>"; };
-		3D2E6B9519650FBA00AC7DE5 /* EventMouseBGPosition.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = EventMouseBGPosition.mp4; sourceTree = "<group>"; };
-		3D2E6B9619650FBA00AC7DE5 /* EventMouseTextColor.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = EventMouseTextColor.mp4; sourceTree = "<group>"; };
 		3D2E6B9719650FBA00AC7DE5 /* EventScrollAnimation.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = EventScrollAnimation.mp4; sourceTree = "<group>"; };
 		3D2E6B9819650FBA00AC7DE5 /* EventVariableComplex.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = EventVariableComplex.mp4; sourceTree = "<group>"; };
 		3D2E6BA01965212700AC7DE5 /* helpPdf.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = helpPdf.plist; path = IUEditor/Editor/Help/helpPdf.plist; sourceTree = "<group>"; };
+		3D2E6BA2196525B200AC7DE5 /* EventMouseOn.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = EventMouseOn.mp4; sourceTree = "<group>"; };
 		3D33BACD1935A4F600DA4F4A /* LMPreferenceWC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMPreferenceWC.h; path = Editor/Preference/LMPreferenceWC.h; sourceTree = "<group>"; };
 		3D33BACE1935A4F600DA4F4A /* LMPreferenceWC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMPreferenceWC.m; path = Editor/Preference/LMPreferenceWC.m; sourceTree = "<group>"; };
 		3D33BACF1935A4F600DA4F4A /* LMPreferenceWC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMPreferenceWC.xib; path = Editor/Preference/LMPreferenceWC.xib; sourceTree = "<group>"; };
@@ -1531,10 +1527,8 @@
 		3D2E6B9119650FA500AC7DE5 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				3D2E6BA2196525B200AC7DE5 /* EventMouseOn.mp4 */,
 				3D2E6B9319650FBA00AC7DE5 /* EventFrame.mp4 */,
-				3D2E6B9419650FBA00AC7DE5 /* EventMouseBGImageColor.mp4 */,
-				3D2E6B9519650FBA00AC7DE5 /* EventMouseBGPosition.mp4 */,
-				3D2E6B9619650FBA00AC7DE5 /* EventMouseTextColor.mp4 */,
 				3D2E6B9719650FBA00AC7DE5 /* EventScrollAnimation.mp4 */,
 				3D2E6B9819650FBA00AC7DE5 /* EventVariableComplex.mp4 */,
 			);
@@ -2933,9 +2927,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D2E6B9A196511AA00AC7DE5 /* EventFrame.mp4 in Resources */,
-				3D2E6B9B196511AA00AC7DE5 /* EventMouseBGImageColor.mp4 in Resources */,
-				3D2E6B9C196511AA00AC7DE5 /* EventMouseBGPosition.mp4 in Resources */,
-				3D2E6B9D196511AA00AC7DE5 /* EventMouseTextColor.mp4 in Resources */,
 				3D2E6B9E196511AA00AC7DE5 /* EventScrollAnimation.mp4 in Resources */,
 				3D2E6B9F196511AA00AC7DE5 /* EventVariableComplex.mp4 in Resources */,
 				3D2E6B991965119D00AC7DE5 /* IUCarousel.mp4 in Resources */,
@@ -3043,6 +3034,7 @@
 				69C5762D18D70B850016F050 /* LMWC.xib in Resources */,
 				3DF8044318FE62FC00913505 /* tool_twitter.png in Resources */,
 				3D54D64B18ED5D2E00B5FEC2 /* ResizeNE-SW.tiff in Resources */,
+				3D2E6BA3196525B200AC7DE5 /* EventMouseOn.mp4 in Resources */,
 				3DED27431907898A001A1D67 /* video_bg.png in Resources */,
 				3DED264B1900D2EE001A1D67 /* align_full@2x.png in Resources */,
 				26120AB61962E5ED00EF3703 /* import_large@2x.png in Resources */,
