@@ -177,7 +177,13 @@
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                            <allowedInputSourceLocales>
+                                                                <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                            </allowedInputSourceLocales>
                                                         </textFieldCell>
+                                                        <connections>
+                                                            <action selector="fileNameEndEditing:" target="-2" id="Zqw-k5-a99"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
