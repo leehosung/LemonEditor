@@ -174,12 +174,16 @@
 		3D14AE051953D06600E7C2E4 /* LMPropertyTextVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D14AE031953D06600E7C2E4 /* LMPropertyTextVC.xib */; };
 		3D1BACC919330240004C554F /* IUText.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1BACC819330240004C554F /* IUText.m */; };
 		3D2E6B8E19640DED00AC7DE5 /* SelectionBorderLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E6B8D19640DED00AC7DE5 /* SelectionBorderLayer.m */; };
-		3D2E6B991965119D00AC7DE5 /* IUCarousel.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3D2E6B9219650FAE00AC7DE5 /* IUCarousel.mp4 */; };
-		3D2E6B9A196511AA00AC7DE5 /* EventFrame.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3D2E6B9319650FBA00AC7DE5 /* EventFrame.mp4 */; };
-		3D2E6B9E196511AA00AC7DE5 /* EventScrollAnimation.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3D2E6B9719650FBA00AC7DE5 /* EventScrollAnimation.mp4 */; };
-		3D2E6B9F196511AA00AC7DE5 /* EventVariableComplex.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3D2E6B9819650FBA00AC7DE5 /* EventVariableComplex.mp4 */; };
 		3D2E6BA11965212700AC7DE5 /* helpPdf.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D2E6BA01965212700AC7DE5 /* helpPdf.plist */; };
-		3D2E6BA3196525B200AC7DE5 /* EventMouseOn.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3D2E6BA2196525B200AC7DE5 /* EventMouseOn.mp4 */; };
+		3D2E6BA919653F3A00AC7DE5 /* EventFrame.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3D2E6BA419653F3A00AC7DE5 /* EventFrame.mp4 */; };
+		3D2E6BAA19653F3A00AC7DE5 /* EventMouseOn.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3D2E6BA519653F3A00AC7DE5 /* EventMouseOn.mp4 */; };
+		3D2E6BAB19653F3A00AC7DE5 /* EventScrollAnimation.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3D2E6BA619653F3A00AC7DE5 /* EventScrollAnimation.mp4 */; };
+		3D2E6BAC19653F3A00AC7DE5 /* EventVariableComplex.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3D2E6BA719653F3A00AC7DE5 /* EventVariableComplex.mp4 */; };
+		3D2E6BAD19653F3A00AC7DE5 /* EventVisible.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3D2E6BA819653F3A00AC7DE5 /* EventVisible.mp4 */; };
+		3D2E6BB219653F5800AC7DE5 /* IUCarousel.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3D2E6BAE19653F5800AC7DE5 /* IUCarousel.mp4 */; };
+		3D2E6BB319653F5800AC7DE5 /* IUImport.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3D2E6BAF19653F5800AC7DE5 /* IUImport.mp4 */; };
+		3D2E6BB419653F5800AC7DE5 /* IUResponsive.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3D2E6BB019653F5800AC7DE5 /* IUResponsive.mp4 */; };
+		3D2E6BB519653F5800AC7DE5 /* IUTransition.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3D2E6BB119653F5800AC7DE5 /* IUTransition.mp4 */; };
 		3D33BAD01935A4F600DA4F4A /* LMPreferenceWC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D33BACE1935A4F600DA4F4A /* LMPreferenceWC.m */; };
 		3D33BAD11935A4F600DA4F4A /* LMPreferenceWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D33BACF1935A4F600DA4F4A /* LMPreferenceWC.xib */; };
 		3D54D64B18ED5D2E00B5FEC2 /* ResizeNE-SW.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3D54D64918ED5D2E00B5FEC2 /* ResizeNE-SW.tiff */; };
@@ -813,12 +817,16 @@
 		3D1BACC819330240004C554F /* IUText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IUText.m; path = IU/IUText.m; sourceTree = "<group>"; };
 		3D2E6B8C19640DED00AC7DE5 /* SelectionBorderLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectionBorderLayer.h; path = Editor/SelectionBorderLayer.h; sourceTree = "<group>"; };
 		3D2E6B8D19640DED00AC7DE5 /* SelectionBorderLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectionBorderLayer.m; path = Editor/SelectionBorderLayer.m; sourceTree = "<group>"; };
-		3D2E6B9219650FAE00AC7DE5 /* IUCarousel.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = IUCarousel.mp4; sourceTree = "<group>"; };
-		3D2E6B9319650FBA00AC7DE5 /* EventFrame.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = EventFrame.mp4; sourceTree = "<group>"; };
-		3D2E6B9719650FBA00AC7DE5 /* EventScrollAnimation.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = EventScrollAnimation.mp4; sourceTree = "<group>"; };
-		3D2E6B9819650FBA00AC7DE5 /* EventVariableComplex.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = EventVariableComplex.mp4; sourceTree = "<group>"; };
 		3D2E6BA01965212700AC7DE5 /* helpPdf.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = helpPdf.plist; path = IUEditor/Editor/Help/helpPdf.plist; sourceTree = "<group>"; };
-		3D2E6BA2196525B200AC7DE5 /* EventMouseOn.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = EventMouseOn.mp4; sourceTree = "<group>"; };
+		3D2E6BA419653F3A00AC7DE5 /* EventFrame.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = EventFrame.mp4; sourceTree = "<group>"; };
+		3D2E6BA519653F3A00AC7DE5 /* EventMouseOn.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = EventMouseOn.mp4; sourceTree = "<group>"; };
+		3D2E6BA619653F3A00AC7DE5 /* EventScrollAnimation.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = EventScrollAnimation.mp4; sourceTree = "<group>"; };
+		3D2E6BA719653F3A00AC7DE5 /* EventVariableComplex.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = EventVariableComplex.mp4; sourceTree = "<group>"; };
+		3D2E6BA819653F3A00AC7DE5 /* EventVisible.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = EventVisible.mp4; sourceTree = "<group>"; };
+		3D2E6BAE19653F5800AC7DE5 /* IUCarousel.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = IUCarousel.mp4; sourceTree = "<group>"; };
+		3D2E6BAF19653F5800AC7DE5 /* IUImport.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = IUImport.mp4; sourceTree = "<group>"; };
+		3D2E6BB019653F5800AC7DE5 /* IUResponsive.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = IUResponsive.mp4; sourceTree = "<group>"; };
+		3D2E6BB119653F5800AC7DE5 /* IUTransition.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = IUTransition.mp4; sourceTree = "<group>"; };
 		3D33BACD1935A4F600DA4F4A /* LMPreferenceWC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMPreferenceWC.h; path = Editor/Preference/LMPreferenceWC.h; sourceTree = "<group>"; };
 		3D33BACE1935A4F600DA4F4A /* LMPreferenceWC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMPreferenceWC.m; path = Editor/Preference/LMPreferenceWC.m; sourceTree = "<group>"; };
 		3D33BACF1935A4F600DA4F4A /* LMPreferenceWC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMPreferenceWC.xib; path = Editor/Preference/LMPreferenceWC.xib; sourceTree = "<group>"; };
@@ -1519,7 +1527,10 @@
 		3D2E6B9019650F9600AC7DE5 /* IU */ = {
 			isa = PBXGroup;
 			children = (
-				3D2E6B9219650FAE00AC7DE5 /* IUCarousel.mp4 */,
+				3D2E6BAE19653F5800AC7DE5 /* IUCarousel.mp4 */,
+				3D2E6BAF19653F5800AC7DE5 /* IUImport.mp4 */,
+				3D2E6BB019653F5800AC7DE5 /* IUResponsive.mp4 */,
+				3D2E6BB119653F5800AC7DE5 /* IUTransition.mp4 */,
 			);
 			name = IU;
 			sourceTree = "<group>";
@@ -1527,10 +1538,11 @@
 		3D2E6B9119650FA500AC7DE5 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				3D2E6BA2196525B200AC7DE5 /* EventMouseOn.mp4 */,
-				3D2E6B9319650FBA00AC7DE5 /* EventFrame.mp4 */,
-				3D2E6B9719650FBA00AC7DE5 /* EventScrollAnimation.mp4 */,
-				3D2E6B9819650FBA00AC7DE5 /* EventVariableComplex.mp4 */,
+				3D2E6BA419653F3A00AC7DE5 /* EventFrame.mp4 */,
+				3D2E6BA519653F3A00AC7DE5 /* EventMouseOn.mp4 */,
+				3D2E6BA619653F3A00AC7DE5 /* EventScrollAnimation.mp4 */,
+				3D2E6BA719653F3A00AC7DE5 /* EventVariableComplex.mp4 */,
+				3D2E6BA819653F3A00AC7DE5 /* EventVisible.mp4 */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -2926,10 +2938,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D2E6B9A196511AA00AC7DE5 /* EventFrame.mp4 in Resources */,
-				3D2E6B9E196511AA00AC7DE5 /* EventScrollAnimation.mp4 in Resources */,
-				3D2E6B9F196511AA00AC7DE5 /* EventVariableComplex.mp4 in Resources */,
-				3D2E6B991965119D00AC7DE5 /* IUCarousel.mp4 in Resources */,
 				3DAEEE00193C3D2500196A81 /* iuinit.js in Resources */,
 				69D79B2F19138CB90020608D /* LMStartNewVC.xib in Resources */,
 				3DD9E97219123B3E0076BF4E /* iueditor.js in Resources */,
@@ -2969,6 +2977,7 @@
 				2641F456195A72FF00DDF1C3 /* bg_v_center.png in Resources */,
 				3DED267F1900D329001A1D67 /* stack_fblike@2x.png in Resources */,
 				267CB1AC190F93370079E565 /* tab_secondary@2x.png in Resources */,
+				3D2E6BAA19653F3A00AC7DE5 /* EventMouseOn.mp4 in Resources */,
 				69FFB28E195041E500DA2783 /* LMPropertyProgrammingType2VC.xib in Resources */,
 				3DF8043818FE62FC00913505 /* tool_image@2x.png in Resources */,
 				3DED26851900D329001A1D67 /* stack_mail@2x.png in Resources */,
@@ -2996,12 +3005,14 @@
 				2640BCC11933194B004A1E4B /* tool_text@2x.png in Resources */,
 				262D4AA41947FB05006F5FBE /* radius_icon_01.png in Resources */,
 				2628C91F1919C8C800D9D8CD /* tab_primary_on@2x.png in Resources */,
+				3D2E6BB519653F5800AC7DE5 /* IUTransition.mp4 in Resources */,
 				262D4AB519481DA2006F5FBE /* tab_on_02@2x.png in Resources */,
 				696D1C9A18E5366400B4AB16 /* webTemplate.html in Resources */,
 				2628C93A191A396400D9D8CD /* add_section.png in Resources */,
 				3DF803DB18FE62C900913505 /* panel_right.png in Resources */,
 				699D12DB1957D17A0096B21C /* handArrow.jpg in Resources */,
 				CBFBE685192AF32E00F03F76 /* sampleTemplate.plist in Resources */,
+				3D2E6BB219653F5800AC7DE5 /* IUCarousel.mp4 in Resources */,
 				265BC57A190FA9B600A1758F /* controller@2x.png in Resources */,
 				2608C1E0193DE6BC00DD1B42 /* warning@2x.png in Resources */,
 				3DF803EE18FE62C900913505 /* grid.png in Resources */,
@@ -3034,7 +3045,6 @@
 				69C5762D18D70B850016F050 /* LMWC.xib in Resources */,
 				3DF8044318FE62FC00913505 /* tool_twitter.png in Resources */,
 				3D54D64B18ED5D2E00B5FEC2 /* ResizeNE-SW.tiff in Resources */,
-				3D2E6BA3196525B200AC7DE5 /* EventMouseOn.mp4 in Resources */,
 				3DED27431907898A001A1D67 /* video_bg.png in Resources */,
 				3DED264B1900D2EE001A1D67 /* align_full@2x.png in Resources */,
 				26120AB61962E5ED00EF3703 /* import_large@2x.png in Resources */,
@@ -3046,6 +3056,7 @@
 				3DF8043D18FE62FC00913505 /* tool_fblike.png in Resources */,
 				3DF8044918FE62FC00913505 /* tool_textfield.png in Resources */,
 				2694CEFA193486760011E072 /* pause.png in Resources */,
+				3D2E6BB419653F5800AC7DE5 /* IUResponsive.mp4 in Resources */,
 				3DF8043918FE62FC00913505 /* tool_movie.png in Resources */,
 				3DED27351904F13B001A1D67 /* ic_movie@2x.png in Resources */,
 				3DF8041518FE62F200913505 /* add_mediaquery@2x.png in Resources */,
@@ -3122,6 +3133,7 @@
 				69CFCAC318EAA21E00E3048A /* sample.jpg in Resources */,
 				3DF803E718FE62C900913505 /* ic_document.png in Resources */,
 				26378CDD194EC42A004B5001 /* import.png in Resources */,
+				3D2E6BAB19653F3A00AC7DE5 /* EventScrollAnimation.mp4 in Resources */,
 				265BC579190FA9B600A1758F /* controller.png in Resources */,
 				CBA877FD1963D3CF00075294 /* Tutorial01_en.png in Resources */,
 				69317CB31947271F0065B6F4 /* LMPDFHelpWC.xib in Resources */,
@@ -3198,6 +3210,7 @@
 				265FCC0E1953D3C000BD9068 /* tab2_on_02@2x.png in Resources */,
 				3DED26911900D329001A1D67 /* stack_carousel@2x.png in Resources */,
 				2608C1DF193DE6BC00DD1B42 /* warning.png in Resources */,
+				3D2E6BAC19653F3A00AC7DE5 /* EventVariableComplex.mp4 in Resources */,
 				2672A0A719120A650050043E /* stack_collection.png in Resources */,
 				3D97D45B1950255200826280 /* jssor.utils.js in Resources */,
 				3DED265C1900D313001A1D67 /* view_list@2x.png in Resources */,
@@ -3207,6 +3220,7 @@
 				3DED26C71900F65C001A1D67 /* ic_image@2x.png in Resources */,
 				262D4A941947FAF0006F5FBE /* border_icon_01.png in Resources */,
 				265FCC011953D08F00BD9068 /* reload.png in Resources */,
+				3D2E6BA919653F3A00AC7DE5 /* EventFrame.mp4 in Resources */,
 				3DED26E319010B6B001A1D67 /* LMPropertyIUcarouselVC.xib in Resources */,
 				3DF803DE18FE62C900913505 /* align_full.png in Resources */,
 				CBA8781919643F4900075294 /* IUWebmovie.rtf in Resources */,
@@ -3277,6 +3291,7 @@
 				696D1C9E18E5778400B4AB16 /* reset.css in Resources */,
 				3DED26C41900F450001A1D67 /* view_border_on@2x.png in Resources */,
 				3DED26841900D329001A1D67 /* stack_webmovie.png in Resources */,
+				3D2E6BB319653F5800AC7DE5 /* IUImport.mp4 in Resources */,
 				2641F453195A72FF00DDF1C3 /* bg_h_right@2x.png in Resources */,
 				2641F458195A72FF00DDF1C3 /* bg_v_top.png in Resources */,
 				69A45DE118F6702C00C551D9 /* LMPropertyBorderVC.xib in Resources */,
@@ -3329,6 +3344,7 @@
 				2628C93B191A396400D9D8CD /* add_section@2x.png in Resources */,
 				2672A0AB19120A740050043E /* tool_collection.png in Resources */,
 				3DF803D918FE62C900913505 /* start_reference.png in Resources */,
+				3D2E6BAD19653F3A00AC7DE5 /* EventVisible.mp4 in Resources */,
 				3DF803EB18FE62C900913505 /* stack_view.png in Resources */,
 				3DF8044018FE62FC00913505 /* tool_fblike@2x.png in Resources */,
 				269BABD81934509F0087703C /* documentIcon.icns in Resources */,
