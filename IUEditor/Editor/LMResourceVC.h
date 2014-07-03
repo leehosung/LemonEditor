@@ -8,8 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 #import "IUResourceManager.h"
-
-@interface LMResourceVC : NSViewController
+#import "LMDragAndDropImageV.h"
+@interface LMResourceVC : NSViewController <LMDragAndDropImageVDelegate>
 
 @property (nonatomic) IUResourceManager *manager;
 

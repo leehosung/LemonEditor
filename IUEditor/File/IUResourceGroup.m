@@ -55,6 +55,15 @@
     return self;
 }
 
+- (BOOL)removeResourceFile:(IUResourceFile*)file{
+    if ([array containsObject:file] == NO) {
+        NSAssert(0, @"Can not file resource file");
+    }
+    file.parent = nil;
+    [array removeObject:file];
+    return YES;
+}
+
 
 -(NSString*)relativePath{
     if ([self.parent isKindOfClass:[IUProject class]]) {

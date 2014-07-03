@@ -574,6 +574,8 @@
 		69D15F6F18E893170046FBB0 /* LMBottomToolbarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D15F6D18E893170046FBB0 /* LMBottomToolbarVC.m */; };
 		69D15F7018E893170046FBB0 /* LMBottomToolbarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69D15F6E18E893170046FBB0 /* LMBottomToolbarVC.xib */; };
 		69D15F7318E898B10046FBB0 /* IUBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D15F7218E898B10046FBB0 /* IUBackground.m */; };
+		69D4EE6219654C2C00BAF8C1 /* trash.png in Resources */ = {isa = PBXBuildFile; fileRef = 69D4EE6119654C2C00BAF8C1 /* trash.png */; };
+		69D4EE6519654D9A00BAF8C1 /* LMDragAndDropImageV.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D4EE6419654D9A00BAF8C1 /* LMDragAndDropImageV.m */; };
 		69D79B2E19138CB90020608D /* LMStartNewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D79B2C19138CB80020608D /* LMStartNewVC.m */; };
 		69D79B2F19138CB90020608D /* LMStartNewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69D79B2D19138CB80020608D /* LMStartNewVC.xib */; };
 		69D79B3319138CC60020608D /* LMStartRecentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D79B3119138CC60020608D /* LMStartRecentVC.m */; };
@@ -1372,6 +1374,9 @@
 		69D15F6E18E893170046FBB0 /* LMBottomToolbarVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMBottomToolbarVC.xib; sourceTree = "<group>"; };
 		69D15F7118E898B10046FBB0 /* IUBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUBackground.h; path = File/IUBackground.h; sourceTree = "<group>"; };
 		69D15F7218E898B10046FBB0 /* IUBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IUBackground.m; path = File/IUBackground.m; sourceTree = "<group>"; };
+		69D4EE6119654C2C00BAF8C1 /* trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trash.png; sourceTree = "<group>"; };
+		69D4EE6319654D9A00BAF8C1 /* LMDragAndDropImageV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMDragAndDropImageV.h; sourceTree = "<group>"; };
+		69D4EE6419654D9A00BAF8C1 /* LMDragAndDropImageV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMDragAndDropImageV.m; sourceTree = "<group>"; };
 		69D5B68F18F247C100E9FB11 /* LMCompilerResourceSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMCompilerResourceSource.h; sourceTree = "<group>"; };
 		69D5B69018F2675C00E9FB11 /* IUCompilerResourceSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IUCompilerResourceSource.h; sourceTree = "<group>"; };
 		69D79B2B19138CB80020608D /* LMStartNewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMStartNewVC.h; sourceTree = "<group>"; };
@@ -1493,6 +1498,8 @@
 				69CFCAB118E95A0C00E3048A /* LMResourceVC.xib */,
 				3DA6F3101963BC6E004DF0AA /* LMCollectionItemView.h */,
 				3DA6F3111963BC6E004DF0AA /* LMCollectionItemView.m */,
+				69D4EE6319654D9A00BAF8C1 /* LMDragAndDropImageV.h */,
+				69D4EE6419654D9A00BAF8C1 /* LMDragAndDropImageV.m */,
 			);
 			name = RightWidget;
 			sourceTree = "<group>";
@@ -2818,6 +2825,7 @@
 		CBA877F01963D36200075294 /* PNG */ = {
 			isa = PBXGroup;
 			children = (
+				69D4EE6119654C2C00BAF8C1 /* trash.png */,
 				CBA877F11963D3CF00075294 /* Tutorial00.png */,
 				CBA877F21963D3CF00075294 /* Tutorial01_en.png */,
 				CBA877F31963D3CF00075294 /* Tutorial01_kr.png */,
@@ -2997,6 +3005,7 @@
 				2628C92A191A313C00D9D8CD /* tool_form.png in Resources */,
 				3DB3ACF318EBFDE20046DFB7 /* iuframe.js in Resources */,
 				265592D5196147E800F0C316 /* blue_arrow@2x.png in Resources */,
+				69D4EE6219654C2C00BAF8C1 /* trash.png in Resources */,
 				3DED26901900D329001A1D67 /* stack_header@2x.png in Resources */,
 				3DED276E190E3976001A1D67 /* jquery.bxslider.css in Resources */,
 				3DED2780190F85E0001A1D67 /* bg_contain@2x.png in Resources */,
@@ -3536,6 +3545,7 @@
 				3D33BAD01935A4F600DA4F4A /* LMPreferenceWC.m in Sources */,
 				3DD47873193DCCF900639AB5 /* LMPropertyPGFormVC.m in Sources */,
 				69CFCAB818E972DA00E3048A /* IUPageContent.m in Sources */,
+				69D4EE6519654D9A00BAF8C1 /* LMDragAndDropImageV.m in Sources */,
 				3DED27271904AE53001A1D67 /* LMPropertyVRFrameVC.m in Sources */,
 				69B9A39F18E6B7E50007D6E2 /* NSTreeController+JDExtension.m in Sources */,
 				69D79B2E19138CB90020608D /* LMStartNewVC.m in Sources */,

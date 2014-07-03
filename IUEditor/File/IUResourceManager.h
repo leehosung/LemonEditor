@@ -40,6 +40,9 @@
  */
 -(NSArray*)imageAndVideoFiles;
 
+
+- (void)removeResourceFile:(IUResourceFile*)file;
+
 //For saving
 -(NSArray *)jsFiles;
 -(NSArray *)cssFiles;

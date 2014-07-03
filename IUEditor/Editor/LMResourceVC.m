@@ -21,6 +21,7 @@
 @property (strong) IBOutlet NSArrayController *resourceArrayController;
 
 
+@property (weak) IBOutlet LMDragAndDropImageV *trashV;
 
 @end
 
@@ -39,7 +40,19 @@
     [_collectionIconV bind:NSContentBinding toObject:_resourceArrayController withKeyPath:@"arrangedObjects" options:nil];
     [_resourceArrayController bind:NSContentArrayBinding toObject:self withKeyPath:@"manager.imageAndVideoFiles" options:nil];
 
+    _trashV.delegate = self;
+    [_trashV registerForDraggedType:kUTTypeIUImageResource];
+    [_trashV setOriginalImage:[NSImage imageNamed:@"trash.png"]];
+    [_trashV setHighlightedImage:[NSImage imageNamed:@"warning.png"]];
 }
+
+#pragma mark - trash delegate
+- (void)draggingDropedForDragAndDropImageV:(LMDragAndDropImageV *)v item:(id)item{
+    IUResourceFile *file = [_manager resourceFileWithName:item];
+    [self.manager removeResourceFile:file];
+}
+
+
 
 
 #pragma mark - collectionView Drag

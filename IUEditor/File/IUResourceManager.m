@@ -118,6 +118,27 @@
   
 }
 
+- (void)removeResourceFile:(IUResourceFile*)file{
+    if (file.type == IUResourceTypeImage ) {
+        [self willChangeValueForKey:@"imageAndVideoFiles"];
+        [self willChangeValueForKey:@"imageFiles"];
+    }
+    else if (file.type == IUResourceTypeVideo){
+        [self willChangeValueForKey:@"imageAndVideoFiles"];
+        [self willChangeValueForKey:@"videoFiles"];
+    }
+    
+    [file.parent removeResourceFile:file];
+    
+    if (file.type == IUResourceTypeImage ) {
+        [self didChangeValueForKey:@"imageAndVideoFiles"];
+        [self didChangeValueForKey:@"imageFiles"];
+    }
+    else if (file.type == IUResourceTypeVideo){
+        [self didChangeValueForKey:@"imageAndVideoFiles"];
+        [self didChangeValueForKey:@"videoFiles"];
+    }
+}
 - (IUResourceFile*)insertResourceWithContentOfPath:(NSString*)path{
     NSString *fileName = [path lastPathComponent];
 
