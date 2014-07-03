@@ -270,7 +270,7 @@
 
 - (void)updateHTML{
     if (self.delegate) {
-        [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.htmlID];
+        [self.delegate IUHTMLIdentifier:self.htmlID HTML:self.html withParentID:self.parent.htmlID];
         
 #if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
         [self updateAutoHeight];
