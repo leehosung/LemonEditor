@@ -12,6 +12,7 @@
                 <outlet property="resourceIconB" destination="i50-VL-0Xr" id="VM4-wn-o8N"/>
                 <outlet property="resourceListB" destination="12v-kS-W80" id="bGj-Zd-L3M"/>
                 <outlet property="tabView" destination="g6L-7m-n83" id="Ebn-hl-gve"/>
+                <outlet property="trashV" destination="b3B-4g-cu1" id="xAg-Wy-0Vf"/>
                 <outlet property="view" destination="iGv-yg-ab5" id="Hla-o2-Cng"/>
             </connections>
         </customObject>
@@ -71,7 +72,7 @@
                                             <rect key="frame" x="1" y="1" width="300" height="307"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <collectionView selectable="YES" allowsMultipleSelection="YES" maxNumberOfColumns="1" id="IeW-g4-6nd">
+                                                <collectionView selectable="YES" maxNumberOfColumns="1" id="IeW-g4-6nd">
                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="307"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -111,7 +112,7 @@
                                             <rect key="frame" x="1" y="1" width="299" height="349"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <collectionView selectable="YES" allowsMultipleSelection="YES" maxNumberOfColumns="4" id="PfT-En-tr1">
+                                                <collectionView selectable="YES" maxNumberOfColumns="4" id="PfT-En-tr1">
                                                     <rect key="frame" x="0.0" y="0.0" width="299" height="349"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -199,24 +200,29 @@
                                             <action selector="clickListBtn:" target="-2" id="cYg-GM-ud8"/>
                                         </connections>
                                     </button>
-                                    <button toolTip="List View" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b3B-4g-cu1" userLabel="listBtn">
-                                        <rect key="frame" x="215" y="0.0" width="28" height="28"/>
+                                    <button toolTip="List View" translatesAutoresizingMaskIntoConstraints="NO" id="b3B-4g-cu1" userLabel="listBtn" customClass="LMDragAndDropButton">
+                                        <rect key="frame" x="212" y="1" width="28" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="66F-PO-NJw"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="28" id="ILc-fm-d5p"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="i62-da-e7s"/>
                                             <constraint firstAttribute="width" constant="28" id="vbc-cs-tOq"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="view_list" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="6H7-VI-tm8">
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="trash_off" imagePosition="only" alignment="center" alternateImage="trash_on" imageScaling="proportionallyDown" inset="2" id="6H7-VI-tm8">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="clickListBtn:" target="-2" id="A2n-km-TfN"/>
+                                            <action selector="clickTrashBtn:" target="-2" id="P1M-Pb-CfT"/>
+                                            <outlet property="delegate" destination="-2" id="kPZ-QA-2Wc"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </view>
                             <constraints>
+                                <constraint firstItem="b3B-4g-cu1" firstAttribute="top" secondItem="jYn-7S-9Ff" secondAttribute="top" constant="1" id="1Zk-ZC-FDY"/>
                                 <constraint firstAttribute="width" constant="302" id="42n-di-CHe"/>
+                                <constraint firstItem="12v-kS-W80" firstAttribute="leading" secondItem="b3B-4g-cu1" secondAttribute="trailing" constant="2" id="7va-0W-0ir"/>
                                 <constraint firstItem="YjH-N9-QL8" firstAttribute="top" secondItem="jYn-7S-9Ff" secondAttribute="top" constant="6" id="LuV-aW-d5S"/>
                                 <constraint firstItem="12v-kS-W80" firstAttribute="top" secondItem="jYn-7S-9Ff" secondAttribute="top" constant="1" id="Rcg-p6-NZy"/>
                                 <constraint firstItem="i50-VL-0Xr" firstAttribute="top" secondItem="jYn-7S-9Ff" secondAttribute="top" constant="1" id="Sj9-WE-fxF"/>
@@ -361,6 +367,8 @@
     <resources>
         <image name="NSInfo" width="32" height="32"/>
         <image name="import_large" width="290" height="36"/>
+        <image name="trash_off" width="11" height="13"/>
+        <image name="trash_on" width="11" height="13"/>
         <image name="view_collection" width="10" height="10"/>
         <image name="view_list" width="12" height="10"/>
     </resources>

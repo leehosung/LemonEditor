@@ -16,5 +16,12 @@
 		<key>pdf</key>
 		<string>scrollingAnimation.pdf</string>
 	</dict>
+    <key>settingImage</key>
+    <dict>
+        <key>title</key>
+        <string>Setting Image</string>
+        <key>pdf</key>
+        <string>settingImage.pdf</string>
+    </dict>
 </dict>
 </plist>

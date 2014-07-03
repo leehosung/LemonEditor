@@ -25,10 +25,7 @@
 	<dict>
 		<key>manual</key>
 		<array>
-			<dict>
-				<key>Setting Image</key>
-				<string>settingImage.pdf</string>
-			</dict>
+            <string>settingImage</string>
 		</array>
 		<key>isWidget</key>
 		<true/>

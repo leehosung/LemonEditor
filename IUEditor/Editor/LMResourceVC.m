@@ -19,7 +19,7 @@
 @property (weak) IBOutlet NSButton *resourceIconB;
 @property (strong) IBOutlet NSArrayController *resourceArrayController;
 
-@property (weak) IBOutlet LMDragAndDropImageV *trashV;
+@property (weak) IBOutlet LMDragAndDropButton *trashV;
 
 @end
 
@@ -40,12 +40,10 @@
 
     _trashV.delegate = self;
     [_trashV registerForDraggedType:kUTTypeIUImageResource];
-    [_trashV setOriginalImage:[NSImage imageNamed:@"trash.png"]];
-    [_trashV setHighlightedImage:[NSImage imageNamed:@"warning.png"]];
 }
 
 #pragma mark - trash delegate
-- (void)draggingDropedForDragAndDropImageV:(LMDragAndDropImageV *)v item:(id)item{
+- (void)draggingDropedForDragAndDropImageV:(LMDragAndDropButton *)v item:(id)item{
     IUResourceFile *file = [_manager resourceFileWithName:item];
     [self.manager removeResourceFile:file];
 }
@@ -74,18 +72,6 @@
 
     return NO;
 }
-
-- (NSImage *)collectionView:(NSCollectionView *)collectionView draggingImageForItemsAtIndexes:(NSIndexSet *)indexes withEvent:(NSEvent *)event offset:(NSPointPointer)dragImageOffset{
-    if([indexes count] == 1){
-        
-        NSUInteger index = [indexes firstIndex];
-        IUResourceFile *node = [[_resourceArrayController arrangedObjects] objectAtIndex:index];
-        
-        return node.image;
-    }
-    return nil;
-}
-
 
 #pragma mark -
 #pragma mark click BTN
@@ -133,9 +119,11 @@
         
         NSMutableArray *removedFiles = [NSMutableArray array];
         NSUInteger index = [[collectionV selectionIndexes] firstIndex];
-        while(index != NSNotFound){
+        NSUInteger lastIndex = index;
+        while(index != NSNotFound && index < [collectionV content].count){
             IUResourceFile *resourceFile = [[collectionV itemAtIndex:index] representedObject];
             [removedFiles addObject:resourceFile];
+            lastIndex = index;
             index = [[collectionV selectionIndexes] indexGreaterThanIndex:index];
             
         }
@@ -143,7 +131,10 @@
         for(IUResourceFile *resourceFile in removedFiles){
             [self.manager removeResourceFile:resourceFile];
         }
-        
+        if(lastIndex > 0 && lastIndex-1 < [collectionV content].count){
+            [collectionV setSelectionIndexes:[NSIndexSet indexSetWithIndex:lastIndex-1]];
+        }
+    
     }
 
 }
