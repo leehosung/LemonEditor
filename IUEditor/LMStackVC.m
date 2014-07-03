@@ -240,6 +240,8 @@
             [newParent insertIU:newIU atIndex:newIndex error:nil];
             [_IUController rearrangeObjects];
             [_IUController setSelectedObjectsByIdentifiers:@[newIU.htmlID]];
+            
+            [newIU confirm];
 
             return YES;
         }

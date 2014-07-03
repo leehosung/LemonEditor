@@ -803,7 +803,7 @@
 
 
 - (void)updateAutoHeight{
-    if(_lineHeightAuto && self.delegate && self.text.length > 0){
+    if(self.delegate){
         [self.delegate callWebScriptMethod:@"setTextAutoHeight" withArguments:nil];
     }
 }
