@@ -725,7 +725,7 @@
 -(void)removeAllCSSWithIdentifier:(NSString *)identifier{
     DOMNodeList *styleList = [[self DOMDoc] getElementsByTagName:@"style"];
     //0 번째는 import sheet라서 건너뜀.
-    for(int i=1; i<styleList.length; i++){
+    for(int i=0; i<styleList.length; i++){
         DOMHTMLStyleElement *styleElement = (DOMHTMLStyleElement *)[styleList item:i];
         [self removeCSSRuleInStyleSheet:styleElement withID:identifier];
     }
@@ -1022,6 +1022,7 @@
     NSArray *cssIds = [iu cssIdentifierArray];
     for (NSString *identifier in cssIds){
         [self removeAllCSSWithIdentifier:identifier];
+        [self removeAllCSSWithIdentifier:[identifier stringByAppendingString:@":hover"]];
     }
     
     
