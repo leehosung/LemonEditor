@@ -37,11 +37,21 @@
 
 - (void)mouseDown:(NSEvent *)theEvent{
     [super mouseDown:theEvent];
-    
     // check for click count above one, which we assume means it's a double click
     if([theEvent clickCount] > 1) {
         if(_delegate && [_delegate respondsToSelector:@selector(doubleClick:)]) {
             [_delegate performSelector:@selector(doubleClick:) withObject:self];
+        }
+    }
+   
+}
+
+- (void)rightMouseDown:(NSEvent *)theEvent{
+    [super rightMouseDown:theEvent];
+    // rightMouseDown
+    if([theEvent type] == NSRightMouseDown) {
+        if(_delegate && [_delegate respondsToSelector:@selector(rightMouseDown:theEvent:)]) {
+            [_delegate performSelector:@selector(rightMouseDown:theEvent:) withObject:self withObject:theEvent];
         }
     }
 }

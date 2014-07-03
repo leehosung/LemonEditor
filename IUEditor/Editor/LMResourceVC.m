@@ -165,5 +165,31 @@
     
 }
 
+- (void)rightMouseDown:(id)sender theEvent:(NSEvent *)theEvent{
+    NSView *targetView = (id)sender;
+    NSCollectionView *currentCollectionView = (NSCollectionView *)[targetView superview];
+    if([currentCollectionView isKindOfClass:[NSCollectionView class]]){
+        
+        NSMenu *collectionMenu = [[NSMenu alloc] initWithTitle:@"collectionMenu"];
+        NSMenuItem *removeMenu = [[NSMenuItem alloc] initWithTitle:@"Remove" action:@selector(removeResourceItem:) keyEquivalent:@""];
+        [collectionMenu addItem:removeMenu];
+        removeMenu.target = self;
+        NSUInteger index = [[currentCollectionView selectionIndexes] firstIndex];
+        IUResourceFile *resourceFile = [[currentCollectionView itemAtIndex:index] representedObject];
+        removeMenu.representedObject = resourceFile;
+        
+        [NSMenu popUpContextMenu:collectionMenu withEvent:theEvent forView:sender];
+
+       
+    }
+    else{
+        assert(0);
+    }
+}
+
+- (void)removeResourceItem:(NSMenuItem *)sender{
+    IUResourceFile *resourceFile = sender.representedObject;
+    [self.manager removeResourceFile:resourceFile];
+}
 
 @end
