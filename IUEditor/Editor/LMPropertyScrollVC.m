@@ -32,8 +32,23 @@
     
     [_opacityMoveTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"opacityMove"] options:IUBindingDictNotRaisesApplicable];
     [_xPosMoveTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"xPosMove"] options:IUBindingDictNotRaisesApplicable];
-
+    [self addObserver:self forKeyPath:[_controller keyPathFromControllerToProperty:@"opacityMove"]  options:0 context:nil];
 }
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    id opacityMove = [self valueForKeyPath:[_controller keyPathFromControllerToProperty:@"opacityMove"]];
+    NSArray *selectedObj = [_controller selectedObjects ];
+    if ([opacityMove isKindOfClass:[NSNumber class]]) {
+        if ([opacityMove floatValue] > 1) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                for (IUBox *iu in selectedObj) {
+                    iu.opacityMove = 1;
+                }
+            });
+        }
+    }
+}
+
 - (IBAction)clickHelpButton:(NSButton *)sender {
     LMHelpPopover *popover = [LMHelpPopover sharedHelpPopover];
     [popover setType:LMPopoverTypeTextAndVideo];
