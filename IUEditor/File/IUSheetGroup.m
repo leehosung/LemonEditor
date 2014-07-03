@@ -64,4 +64,9 @@
     [_children removeObject:sheet];
 }
 
+- (void)changeIndex:(IUSheet *)sheet toIndex:(NSUInteger)newIndex{
+    [_children removeObject:sheet];
+    [_children insertObject:sheet atIndex:newIndex];
+}
+
 @end

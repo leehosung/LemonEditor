@@ -14,6 +14,7 @@
 #import "IUBackground.h"
 #import "IUClass.h"
 #import "LMWC.h"
+#import "IUProject.h"
 
 @interface LMFileNaviVC ()
 @property (weak) IBOutlet NSOutlineView *outlineV;
@@ -23,6 +24,8 @@
     BOOL    viewLoadedOK;
     BOOL    loaded;
     id      _lastClickedItem;
+    NSArray *_draggingIndexPaths;
+    IUSheet  *_draggingItem;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -34,6 +37,7 @@
     return self;
 }
 -(void)awakeFromNib{
+    [_outlineV registerForDraggedTypes:@[@"IUFileNavi"]];
 }
 
 - (void)setDocumentController:(IUSheetController *)documentController{
@@ -96,6 +100,7 @@
         }
     
         [folder.textField setStringValue:doc.name];
+        
         return folder;
     }
     //file
@@ -302,5 +307,42 @@
     }
     
 }
+
+#pragma mark -
+#pragma mark drag and drop
+- (BOOL)outlineView:(NSOutlineView *)outlineView writeItems:(NSArray *)items toPasteboard:(NSPasteboard *)pboard{
+    id item = [items firstObject];
+    if ([[item representedObject] isKindOfClass:[IUSheet class]]){
+        [pboard declareTypes:@[@"IUFileNavi"] owner:self];
+        _draggingIndexPaths = [_documentController selectionIndexPaths];
+        _draggingItem = [[_documentController selectedObjects] firstObject];
+        return YES;
+    }
+    return NO;
+}
+
+- (NSDragOperation)outlineView:(NSOutlineView *)ov validateDrop:(id <NSDraggingInfo>)info proposedItem:(NSTreeNode*)item proposedChildIndex:(NSInteger)childIndex {
+    id itemRepresented = [item representedObject];
+    if ([itemRepresented isKindOfClass:[IUSheetGroup class]]) {
+        if ((IUSheetGroup*)itemRepresented == [_draggingItem group] ) {
+            return NSDragOperationMove;
+        }
+    }
+    return NO;
+}
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView acceptDrop:(id < NSDraggingInfo >)info item:(id)item childIndex:(NSInteger)index{
+    //rearrange
+    IUSheetGroup *group = [item representedObject];
+    NSIndexPath *originalIndexPath = [_draggingIndexPaths lastObject];
+    NSInteger lastIndexPath = [originalIndexPath indexAtPosition:originalIndexPath.length-1];
+    if (index > lastIndexPath) {
+        index --;
+    }
+    [group changeIndex:_draggingItem toIndex:index];
+    [_documentController rearrangeObjects];
+    return YES;
+}
+
 
 @end

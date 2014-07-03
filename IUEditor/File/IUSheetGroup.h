@@ -20,5 +20,6 @@
 - (NSArray*)childrenFiles;
 - (void)addSheet:(IUSheet*)sheet;
 - (void)removeSheet:(IUSheet *)sheet;
+- (void)changeIndex:(IUSheet *)sheet toIndex:(NSUInteger)newIndex;
 
 @end

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMFileNaviVC">
@@ -24,6 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="26" viewBased="YES" indentationPerLevel="4" outlineTableColumn="IcS-xl-hS5" id="1aw-gA-pJZ" customClass="JDOutlineView">
+                                <rect key="frame" x="0.0" y="0.0" width="219" height="240"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -91,7 +92,7 @@
                                                 </connections>
                                             </tableCellView>
                                             <tableCellView identifier="folderNoAdd" autoresizesSubviews="NO" id="uxv-kC-3rO" userLabel="folder">
-                                                <rect key="frame" x="0.0" y="0.0" width="219" height="26"/>
+                                                <rect key="frame" x="0.0" y="26" width="219" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TUA-uJ-ZBU">
@@ -124,7 +125,7 @@
                                                 </connections>
                                             </tableCellView>
                                             <tableCellView identifier="pageFile" autoresizesSubviews="NO" id="5zw-S7-8PC" userLabel="page file">
-                                                <rect key="frame" x="0.0" y="26" width="219" height="26"/>
+                                                <rect key="frame" x="0.0" y="52" width="219" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mM7-gX-W1U">
@@ -192,7 +193,7 @@
                                                 </connections>
                                             </tableCellView>
                                             <tableCellView identifier="backgroundFile" autoresizesSubviews="NO" id="LdS-gs-NuF" userLabel="master file">
-                                                <rect key="frame" x="0.0" y="52" width="219" height="26"/>
+                                                <rect key="frame" x="0.0" y="104" width="219" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AUw-qz-03g">
@@ -224,7 +225,7 @@
                                                 </connections>
                                             </tableCellView>
                                             <tableCellView identifier="imageFile" autoresizesSubviews="NO" id="uu9-qM-3y2" userLabel="image">
-                                                <rect key="frame" x="0.0" y="104" width="219" height="26"/>
+                                                <rect key="frame" x="0.0" y="130" width="219" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EeA-UN-IXX">
@@ -253,7 +254,7 @@
                                                 </connections>
                                             </tableCellView>
                                             <tableCellView identifier="videoFile" autoresizesSubviews="NO" id="Mjq-0T-CVg" userLabel="video">
-                                                <rect key="frame" x="0.0" y="130" width="219" height="26"/>
+                                                <rect key="frame" x="0.0" y="156" width="219" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d32-js-1v1">
@@ -282,7 +283,7 @@
                                                 </connections>
                                             </tableCellView>
                                             <tableCellView identifier="cssFile" autoresizesSubviews="NO" id="amj-x3-yZx" userLabel="css file">
-                                                <rect key="frame" x="0.0" y="156" width="219" height="26"/>
+                                                <rect key="frame" x="0.0" y="182" width="219" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NPt-8b-0nz">
@@ -311,7 +312,7 @@
                                                 </connections>
                                             </tableCellView>
                                             <tableCellView identifier="JSFile" autoresizesSubviews="NO" id="LF9-oT-gcv" userLabel="js file">
-                                                <rect key="frame" x="0.0" y="182" width="219" height="26"/>
+                                                <rect key="frame" x="0.0" y="208" width="219" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zqW-gx-UL3">
@@ -347,6 +348,7 @@
                                     <binding destination="gdF-Dg-Xge" name="content" keyPath="arrangedObjects" id="bw6-6R-niu"/>
                                     <binding destination="gdF-Dg-Xge" name="selectionIndexPaths" keyPath="selectionIndexPaths" previousBinding="bw6-6R-niu" id="pmN-It-TvF"/>
                                     <outlet property="JDDataSource" destination="-2" id="WiH-c7-DNv"/>
+                                    <outlet property="dataSource" destination="-2" id="7MM-LE-Qiq"/>
                                     <outlet property="delegate" destination="-2" id="e1R-k2-aOp"/>
                                 </connections>
                             </outlineView>
