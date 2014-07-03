@@ -298,13 +298,11 @@
         return;
     }
     
-    if([modifiedName isEqualToString:@"doc.name"] == NO){
-        [_project.identifierManager unregisterIUs:@[sheet]];
-        sheet.htmlID = modifiedName;
-        [_project.identifierManager registerIUs:@[sheet]];
-        sheet.name = modifiedName;
-        
-    }
+    [_project.identifierManager unregisterIUs:@[sheet]];
+    sheet.htmlID = modifiedName;
+    [_project.identifierManager registerIUs:@[sheet]];
+    sheet.name = modifiedName;
+    
     
 }
 

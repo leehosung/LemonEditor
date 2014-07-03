@@ -248,6 +248,8 @@
     
 }
 
+#pragma mark - button
+
 - (IBAction)addSectionBtn:(id)sender {
     IUBox *parent;
     
@@ -273,6 +275,45 @@
     [_IUController rearrangeObjects];
     [_IUController setSelectedObjectsByIdentifiers:@[newIU.htmlID]];
 
+}
+
+#pragma mark - name change
+
+- (IBAction)fileNameEndEditing:(id)sender{
+    
+    assert(_sheet.project.identifierManager);
+    
+    NSTextField *textField = (NSTextField *)sender;
+    
+    IUBox *currentBox = (IUBox *)_IUController.selection;
+    NSString *modifiedName = textField.stringValue;
+    
+    if([modifiedName isEqualToString:currentBox.name]){
+        [textField setStringValue:currentBox.name];
+        return;
+    }
+    
+    if(modifiedName.length == 0){
+        [JDUIUtil hudAlert:@"Name should not be empty" second:1];
+        [textField setStringValue:currentBox.name];
+        return;
+    }
+    
+    NSCharacterSet *characterSet = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
+    if([modifiedName rangeOfCharacterFromSet:characterSet].location != NSNotFound){
+        [JDUIUtil hudAlert:@"Name should be alphabet or digit" second:1];
+        [textField setStringValue:currentBox.name];
+        return;
+    }
+    
+    IUBox *box = [_sheet.project.identifierManager IUWithIdentifier:modifiedName];
+    if (box != nil) {
+        [JDUIUtil hudAlert:@"IU with same name exists" second:1];
+        [textField setStringValue:currentBox.name];
+        return;
+    }
+    
+    currentBox.name = modifiedName;
 }
 
 @end
