@@ -62,7 +62,7 @@
         [propertyOverflowVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
         
         [self loadView];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             NSLog([self.outlineV description], nil );
             id item = [self.outlineV itemAtRow:1];
             [self.outlineV expandItem:item];
