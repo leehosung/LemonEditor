@@ -134,6 +134,9 @@
         if(lastIndex > 0 && lastIndex-1 < [collectionV content].count){
             [collectionV setSelectionIndexes:[NSIndexSet indexSetWithIndex:lastIndex-1]];
         }
+        else if(lastIndex == 0 && [collectionV content].count > 0){
+            [collectionV setSelectionIndexes:[NSIndexSet indexSetWithIndex:lastIndex]];
+        }
     
     }
 
