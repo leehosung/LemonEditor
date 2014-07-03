@@ -181,7 +181,7 @@
         NSUInteger index = [[currentCollectionView selectionIndexes] firstIndex];
         LMGeneralObject *object = [[currentCollectionView itemAtIndex:index] representedObject];
 
-        
+            
         LMHelpPopover *popover = [LMHelpPopover sharedHelpPopover];
         
         NSString *moviePath = [[NSBundle mainBundle] pathForResource:object.title ofType:@"mp4"];
