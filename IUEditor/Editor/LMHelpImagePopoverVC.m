@@ -38,6 +38,9 @@
     if(rtfPath){
         [_contentTextV readRTFDFromFile:rtfPath];
     }
+    else{
+        [_contentTextV setString:@""];
+    }
 }
 
 - (void)setImage:(NSImage *)image title:(NSString *)title subTitle:(NSString *)subTitle text:(NSString *)text{

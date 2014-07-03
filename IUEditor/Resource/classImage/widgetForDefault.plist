@@ -51,6 +51,8 @@
 		<string></string>
 		<key>widgetClass</key>
 		<integer>0</integer>
+		<key>rtfName</key>
+		<string>iuimage.rtf</string>
 	</dict>
 	<dict>
 		<key>isWidget</key>
@@ -131,6 +133,8 @@
 		<string></string>
 		<key>widgetClass</key>
 		<integer>1</integer>
+		<key>rtfName</key>
+		<string>iuimport.rtf</string>
 	</dict>
 	<dict>
 		<key>isWidget</key>
@@ -147,6 +151,8 @@
 		<string></string>
 		<key>widgetClass</key>
 		<integer>0</integer>
+		<key>rtfName</key>
+		<string>iumovie.rtf</string>
 	</dict>
 	<dict>
 		<key>isWidget</key>
@@ -163,6 +169,8 @@
 		<string></string>
 		<key>widgetClass</key>
 		<integer>0</integer>
+		<key>rtfName</key>
+		<string>iuhtml.rtf</string>
 	</dict>
 	<dict>
 		<key>isWidget</key>
@@ -179,6 +187,8 @@
 		<string></string>
 		<key>widgetClass</key>
 		<integer>1</integer>
+		<key>rtfName</key>
+		<string>iuwebmovie.rtf</string>
 	</dict>
 	<dict>
 		<key>isWidget</key>
@@ -195,6 +205,8 @@
 		<string></string>
 		<key>widgetClass</key>
 		<integer>1</integer>
+		<key>rtfName</key>
+		<string>iufblike.rtf</string>
 	</dict>
 	<dict>
 		<key>isWidget</key>

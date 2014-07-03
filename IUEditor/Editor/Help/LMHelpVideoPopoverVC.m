@@ -32,6 +32,10 @@
     if(rtfPath){
         [_textV readRTFDFromFile:rtfPath];
     }
+    else{
+        [_textV setString:@""];
+    }
+
     
     if(videoPath){
         NSURL *url = [NSURL fileURLWithPath:videoPath];

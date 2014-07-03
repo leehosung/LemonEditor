@@ -32,6 +32,9 @@
     if(rtfPath){
         [_contentTextV readRTFDFromFile:rtfPath];
     }
+    else{
+        [_contentTextV setString:@""];
+    }
 }
 
 @end
