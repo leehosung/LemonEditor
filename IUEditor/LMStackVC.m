@@ -10,7 +10,7 @@
 #import "IUController.h"
 #import "IUItem.h"
 #import "IUPageContent.h"
-#import "IUResponsiveSection.h"
+#import "IUSection.h"
 #import "IUSheet.h"
 #import "LMWC.h"
 #import "IUPage.h"
@@ -265,7 +265,7 @@
     }
 
     [_sheet.project.identifierManager resetUnconfirmedIUs];
-    IUResponsiveSection *newIU = [[IUResponsiveSection alloc]  initWithProject:_sheet.project options:nil];
+    IUSection *newIU = [[IUSection alloc]  initWithProject:_sheet.project options:nil];
     [_sheet.project.identifierManager confirm];
     if (newIU == nil) {
         assert(0);

@@ -8,10 +8,6 @@
 
 #import "IUBox.h"
 
-/** 
- Depreacted
- */
-
-@interface IUResponsiveSection : IUBox
+@interface IUSection : IUBox
 
 @end

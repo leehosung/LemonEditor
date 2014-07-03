@@ -7,7 +7,7 @@
 //
 
 #import "IUPageContent.h"
-#import "IUResponsiveSection.h"
+#import "IUSection.h"
 
 @implementation IUPageContent
 
@@ -25,7 +25,7 @@
     if(self){
         [self.css setValue:[NSColor whiteColor] forTag:IUCSSTagBGColor forWidth:IUCSSMaxViewPortWidth];
         
-        IUResponsiveSection *section = [[IUResponsiveSection alloc] initWithProject:project options:options];
+        IUSection *section = [[IUSection alloc] initWithProject:project options:options];
         [section.css setValue:nil forTag:IUCSSTagBGColor forWidth:IUCSSMaxViewPortWidth];
         [section.css setValue:@(720) forTag:IUCSSTagHeight forWidth:IUCSSMaxViewPortWidth];
 

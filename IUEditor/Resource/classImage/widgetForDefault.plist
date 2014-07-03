@@ -25,7 +25,7 @@
 	<dict>
 		<key>manual</key>
 		<array>
-            <string>settingImage</string>
+			<string>settingImage</string>
 		</array>
 		<key>isWidget</key>
 		<true/>
@@ -318,7 +318,7 @@
 		<key>isWidget</key>
 		<false/>
 		<key>className</key>
-		<string>IUResponsiveSection</string>
+		<string>IUSection</string>
 		<key>classImage</key>
 		<string>tool_collection</string>
 		<key>navImage</key>

@@ -520,6 +520,7 @@
 		6985CBA018E31558008DBF50 /* IUSheetGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 6985CB9F18E31558008DBF50 /* IUSheetGroup.m */; };
 		698E840019358C14002CE47B /* LMProjectConvertWC.m in Sources */ = {isa = PBXBuildFile; fileRef = 698E83FE19358C14002CE47B /* LMProjectConvertWC.m */; };
 		698E840119358C14002CE47B /* LMProjectConvertWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 698E83FF19358C14002CE47B /* LMProjectConvertWC.xib */; };
+		69917A8619658880001D42C6 /* IUResponsiveSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 69917A8519658880001D42C6 /* IUResponsiveSection.m */; };
 		69965420190F9F1D000379DA /* LMPropertyIUCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6996541E190F9F1D000379DA /* LMPropertyIUCollectionVC.m */; };
 		69965421190F9F1D000379DA /* LMPropertyIUCollectionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6996541F190F9F1D000379DA /* LMPropertyIUCollectionVC.xib */; };
 		6999161D1919F05E000ECF57 /* PGSubmitButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6999161C1919F05E000ECF57 /* PGSubmitButton.m */; };
@@ -539,7 +540,7 @@
 		69B9A39818E697F70007D6E2 /* iu.css in Resources */ = {isa = PBXBuildFile; fileRef = 69B9A39718E697F70007D6E2 /* iu.css */; };
 		69B9A39918E697F70007D6E2 /* iu.css in Resources */ = {isa = PBXBuildFile; fileRef = 69B9A39718E697F70007D6E2 /* iu.css */; };
 		69B9A39F18E6B7E50007D6E2 /* NSTreeController+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B9A39E18E6B7E50007D6E2 /* NSTreeController+JDExtension.m */; };
-		69C4AA1A1908E82900CF75E7 /* IUResponsiveSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C4AA191908E82900CF75E7 /* IUResponsiveSection.m */; };
+		69C4AA1A1908E82900CF75E7 /* IUSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C4AA191908E82900CF75E7 /* IUSection.m */; };
 		69C4AA1D1908E96F00CF75E7 /* IUImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C4AA1C1908E96F00CF75E7 /* IUImport.m */; };
 		69C4AA231909905500CF75E7 /* IUCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C4AA221909905500CF75E7 /* IUCollection.m */; };
 		69C575AB18D6F61E0016F050 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69C575AA18D6F61E0016F050 /* Cocoa.framework */; };
@@ -1287,6 +1288,8 @@
 		698E83FE19358C14002CE47B /* LMProjectConvertWC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMProjectConvertWC.m; sourceTree = "<group>"; };
 		698E83FF19358C14002CE47B /* LMProjectConvertWC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMProjectConvertWC.xib; sourceTree = "<group>"; };
 		698E8447193664E0002CE47B /* IUFileProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IUFileProtocol.h; sourceTree = "<group>"; };
+		69917A8419658880001D42C6 /* IUResponsiveSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUResponsiveSection.h; path = IUEditor/IUResponsiveSection.h; sourceTree = "<group>"; };
+		69917A8519658880001D42C6 /* IUResponsiveSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IUResponsiveSection.m; path = IUEditor/IUResponsiveSection.m; sourceTree = "<group>"; };
 		6996541D190F9F1D000379DA /* LMPropertyIUCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyIUCollectionVC.h; sourceTree = "<group>"; };
 		6996541E190F9F1D000379DA /* LMPropertyIUCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyIUCollectionVC.m; sourceTree = "<group>"; };
 		6996541F190F9F1D000379DA /* LMPropertyIUCollectionVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyIUCollectionVC.xib; sourceTree = "<group>"; };
@@ -1317,8 +1320,8 @@
 		69B9A39A18E6B1860007D6E2 /* iu.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = iu.js; sourceTree = "<group>"; };
 		69B9A39D18E6B7E50007D6E2 /* NSTreeController+JDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTreeController+JDExtension.h"; sourceTree = "<group>"; };
 		69B9A39E18E6B7E50007D6E2 /* NSTreeController+JDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTreeController+JDExtension.m"; sourceTree = "<group>"; };
-		69C4AA181908E82900CF75E7 /* IUResponsiveSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUResponsiveSection.h; sourceTree = "<group>"; };
-		69C4AA191908E82900CF75E7 /* IUResponsiveSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUResponsiveSection.m; sourceTree = "<group>"; };
+		69C4AA181908E82900CF75E7 /* IUSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUSection.h; sourceTree = "<group>"; };
+		69C4AA191908E82900CF75E7 /* IUSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUSection.m; sourceTree = "<group>"; };
 		69C4AA1B1908E96F00CF75E7 /* IUImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUImport.h; sourceTree = "<group>"; };
 		69C4AA1C1908E96F00CF75E7 /* IUImport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUImport.m; sourceTree = "<group>"; };
 		69C4AA211909905500CF75E7 /* IUCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUCollection.h; sourceTree = "<group>"; };
@@ -2496,8 +2499,8 @@
 				3DED272D1904E17E001A1D67 /* IUMovie.m */,
 				69AB7EAA19062598009E5195 /* IUTransition.h */,
 				69AB7EAB19062598009E5195 /* IUTransition.m */,
-				69C4AA181908E82900CF75E7 /* IUResponsiveSection.h */,
-				69C4AA191908E82900CF75E7 /* IUResponsiveSection.m */,
+				69C4AA181908E82900CF75E7 /* IUSection.h */,
+				69C4AA191908E82900CF75E7 /* IUSection.m */,
 				69C575FE18D6FE020016F050 /* IUClass.h */,
 				69C575FF18D6FE020016F050 /* IUClass.m */,
 				69C4AA1B1908E96F00CF75E7 /* IUImport.h */,
@@ -2601,6 +2604,8 @@
 		69C5759E18D6F61E0016F050 = {
 			isa = PBXGroup;
 			children = (
+				69917A8419658880001D42C6 /* IUResponsiveSection.h */,
+				69917A8519658880001D42C6 /* IUResponsiveSection.m */,
 				CBFBE67C192A07A300F03F76 /* SampleTemplate */,
 				690A409E18E170AC00095263 /* Resource */,
 				69DE5CE419614E2B0050D020 /* Server */,
@@ -3459,7 +3464,7 @@
 				69B260EB1959502A007D905C /* LMPreferenceDjangoVC.m in Sources */,
 				69DE5CCE1961430E0050D020 /* LMNotiManager.m in Sources */,
 				69757B1418D95BBC0095CBAC /* NSMenu_JDExtension.m in Sources */,
-				69C4AA1A1908E82900CF75E7 /* IUResponsiveSection.m in Sources */,
+				69C4AA1A1908E82900CF75E7 /* IUSection.m in Sources */,
 				69ABB14A18D733ED0065D584 /* IUCompiler.m in Sources */,
 				3D2E6B8E19640DED00AC7DE5 /* SelectionBorderLayer.m in Sources */,
 				3DB3ACDF18EBEF5F0046DFB7 /* PointTextLayer.m in Sources */,
@@ -3561,6 +3566,7 @@
 				3DED2759190A1DA6001A1D67 /* IUEvent.m in Sources */,
 				69CFCA9B18E9396C00E3048A /* IUHeader.m in Sources */,
 				69FFB28B195041E500DA2783 /* LMPropertyProgrammingType1VC.m in Sources */,
+				69917A8619658880001D42C6 /* IUResponsiveSection.m in Sources */,
 				69FFB2831950309E00DA2783 /* LMInspectorLinkVC.m in Sources */,
 				3D33BAD01935A4F600DA4F4A /* LMPreferenceWC.m in Sources */,
 				3DD47873193DCCF900639AB5 /* LMPropertyPGFormVC.m in Sources */,

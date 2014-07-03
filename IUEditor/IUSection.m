@@ -6,10 +6,9 @@
 //  Copyright (c) 2014 JDLab. All rights reserved.
 //
 
-#import "IUResponsiveSection.h"
 #import "IUSection.h"
 
-@implementation IUResponsiveSection
+@implementation IUSection
 
 - (id)initWithProject:(IUProject *)project options:(NSDictionary *)options{
     self = [super initWithProject:project options:options];
@@ -31,24 +30,15 @@
 
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
-    IUSection *section = [[IUSection alloc] initWithCoder:aDecoder];
-    
-    [aDecoder decodeToObject:section withProperties:[[IUSection class] properties]];
-    /*
-     Version control
-     
-     since no IUResponsiveSection is allocated, check child and assign it to 'section'
-     */
-    for (IUBox *box in section.children) {
-        box.parent = section;
+    self =  [super initWithCoder:aDecoder];
+    if(self){
+        [aDecoder decodeToObject:self withProperties:[[IUSection class] properties]];
     }
-    return (IUResponsiveSection*)section;
+    return self;
 }
-
-
 -(void)encodeWithCoder:(NSCoder *)aCoder{
     [super encodeWithCoder:aCoder];
-    [aCoder encodeFromObject:self withProperties:[[IUResponsiveSection class] properties]];
+    [aCoder encodeFromObject:self withProperties:[[IUSection class] properties]];
     
 }
 

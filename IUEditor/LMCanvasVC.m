@@ -17,7 +17,7 @@
 #import "IUCarousel.h"
 #import "IUCarouselItem.h"
 #import "InnerSizeBox.h"
-#import "IUResponsiveSection.h"
+#import "IUSection.h"
 #import "IUImport.h"
 #if CURRENT_TEXT_VERSION >= TEXT_SELECTION_VERSION
 #import "IUText.h"
