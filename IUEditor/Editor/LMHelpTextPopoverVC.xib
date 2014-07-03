@@ -24,28 +24,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7q-jh-Iqv">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                <rect key="frame" x="20" y="0.0" width="260" height="277"/>
                                 <clipView key="contentView" id="JyV-oi-DO6">
                                     <rect key="frame" x="1" y="1" width="238" height="133"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView editable="NO" selectable="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Qeg-qa-Rw8">
-                                            <rect key="frame" x="0.0" y="0.0" width="238" height="210"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="238" height="300"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="300" height="300"/>
+                                            <size key="minSize" width="260" height="277"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                             <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="300" height="300"/>
+                                            <size key="minSize" width="260" height="277"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                         </textView>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </clipView>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="t9X-eA-Un9"/>
-                                    <constraint firstAttribute="width" constant="300" id="yMT-Bb-qmn"/>
-                                </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="2hU-yW-s0n">
                                     <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                                     <autoresizingMask key="autoresizingMask"/>
@@ -61,7 +57,7 @@
                                     <constraint firstAttribute="width" constant="286" id="8jr-UD-L4m"/>
                                     <constraint firstAttribute="height" constant="17" id="DBS-fg-UaF"/>
                                 </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Title" id="fc9-I8-urL">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Title" id="fc9-I8-urL">
                                     <font key="font" metaFont="systemBold" size="12"/>
                                     <color key="textColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -70,11 +66,11 @@
                         </subviews>
                     </view>
                     <constraints>
-                        <constraint firstItem="g7q-jh-Iqv" firstAttribute="leading" secondItem="rA9-O3-j5H" secondAttribute="leading" id="5nd-L0-dbw"/>
-                        <constraint firstAttribute="trailing" secondItem="g7q-jh-Iqv" secondAttribute="trailing" id="8h1-Cc-06D"/>
+                        <constraint firstItem="g7q-jh-Iqv" firstAttribute="leading" secondItem="rA9-O3-j5H" secondAttribute="leading" constant="20" id="5nd-L0-dbw"/>
+                        <constraint firstAttribute="trailing" secondItem="g7q-jh-Iqv" secondAttribute="trailing" constant="20" id="8h1-Cc-06D"/>
                         <constraint firstAttribute="bottom" secondItem="g7q-jh-Iqv" secondAttribute="bottom" id="GnH-XH-3uM"/>
                         <constraint firstItem="cFg-gB-yJI" firstAttribute="leading" secondItem="rA9-O3-j5H" secondAttribute="leading" constant="6" id="WBu-g9-IFh"/>
-                        <constraint firstAttribute="width" constant="300" id="rfb-11-Qfd"/>
+                        <constraint firstItem="g7q-jh-Iqv" firstAttribute="top" secondItem="cFg-gB-yJI" secondAttribute="bottom" constant="20" id="lwZ-3u-fdK"/>
                         <constraint firstItem="cFg-gB-yJI" firstAttribute="top" secondItem="rA9-O3-j5H" secondAttribute="top" constant="6" id="zjg-uf-Z4x"/>
                     </constraints>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>

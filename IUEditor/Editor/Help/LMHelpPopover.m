@@ -118,6 +118,14 @@ static LMHelpPopover *gHelpPopover = nil;
     }
 }
 
+- (void)setTitle:(NSString *)title text:(NSString *)text{
+    if(_type == LMPopoverTypeText){
+        [textPopoverVC setTitle:title string:text];
+        isSetting = YES;
+    }
+}
+
+
 #pragma mark override popover
 - (void)showRelativeToRect:(NSRect)positioningRect ofView:(NSView *)positioningView preferredEdge:(NSRectEdge)preferredEdge{
     if(isSetting){

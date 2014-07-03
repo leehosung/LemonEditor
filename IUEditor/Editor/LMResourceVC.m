@@ -130,9 +130,12 @@
         
         
         if(resourceFile.type == IUResourceTypeImage){
+            
+            
             LMHelpPopover *popover = [LMHelpPopover sharedHelpPopover];
             [popover setType:LMPopoverTypeText];
-            [popover setTitle:resourceFile.name rtfFileName:nil];
+            NSString *imageSize = [NSString stringWithFormat:@"Size : %.1f x %.1f", resourceFile.image.size.width, resourceFile.image.size.height];
+            [popover setTitle:resourceFile.name text:imageSize];
             [popover showRelativeToRect:[targetView bounds] ofView:sender preferredEdge:NSMinXEdge];
         }
         else if(resourceFile.type == IUResourceTypeVideo){

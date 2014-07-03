@@ -33,7 +33,7 @@
                     <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </box>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kBk-bM-uXG">
-                    <rect key="frame" x="13" y="99" width="280" height="17"/>
+                    <rect key="frame" x="13" y="107" width="280" height="17"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="276" id="jyk-Tu-3m1"/>
                         <constraint firstAttribute="height" constant="17" id="yqE-nG-fKI"/>
@@ -92,7 +92,7 @@
                 <constraint firstAttribute="trailing" secondItem="Gyk-g5-1EA" secondAttribute="trailing" constant="3" id="RWo-6X-jlz"/>
                 <constraint firstAttribute="trailing" secondItem="kBk-bM-uXG" secondAttribute="trailing" constant="15" id="Sfp-8q-gPF"/>
                 <constraint firstAttribute="bottom" secondItem="rbg-6X-byw" secondAttribute="bottom" constant="3" id="UvL-RA-ruC"/>
-                <constraint firstItem="kBk-bM-uXG" firstAttribute="top" secondItem="Gyk-g5-1EA" secondAttribute="bottom" constant="13" id="WYG-mu-8Ix"/>
+                <constraint firstItem="kBk-bM-uXG" firstAttribute="top" secondItem="Gyk-g5-1EA" secondAttribute="bottom" constant="5" id="WYG-mu-8Ix"/>
                 <constraint firstItem="rbg-6X-byw" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="3" id="XQU-6h-Lvj"/>
                 <constraint firstAttribute="bottom" secondItem="AV6-KB-dJl" secondAttribute="bottom" constant="3" id="acv-qQ-FSV"/>
                 <constraint firstItem="kBk-bM-uXG" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="15" id="eMC-aQ-jys"/>

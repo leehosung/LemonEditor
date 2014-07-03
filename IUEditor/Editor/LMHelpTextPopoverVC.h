@@ -11,5 +11,6 @@
 @interface LMHelpTextPopoverVC : NSViewController
 
 - (void)setTitle:(NSString *)title rtfPath:(NSString *)rtfPath;
+- (void)setTitle:(NSString *)title string:(NSString *)string;
 
 @end

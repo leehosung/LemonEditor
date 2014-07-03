@@ -37,4 +37,10 @@
     }
 }
 
+- (void)setTitle:(NSString *)title string:(NSString *)string{
+    [_titleTF setStringValue:title];
+    if(string){
+        [_contentTextV setString:string];
+    }
+}
 @end

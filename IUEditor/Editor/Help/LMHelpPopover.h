@@ -37,4 +37,5 @@ typedef enum{
 - (void)setImage:(NSImage *)image title:(NSString *)title subTitle:(NSString *)subTitle text:(NSString *)text;
 //type : LMPopoverText
 - (void)setTitle:(NSString *)title rtfFileName:(NSString *)rtfFileName;
+- (void)setTitle:(NSString *)title text:(NSString *)text;
 @end
