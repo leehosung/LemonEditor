@@ -17,9 +17,7 @@
 
 @property (weak) IBOutlet NSButton *resourceListB;
 @property (weak) IBOutlet NSButton *resourceIconB;
-
 @property (strong) IBOutlet NSArrayController *resourceArrayController;
-
 
 @property (weak) IBOutlet LMDragAndDropImageV *trashV;
 
@@ -58,29 +56,34 @@
 #pragma mark - collectionView Drag
 
 - (BOOL)collectionView:(NSCollectionView *)collectionView writeItemsAtIndexes:(NSIndexSet *)indexes toPasteboard:(NSPasteboard *)pasteboard{
-    NSUInteger index = [indexes firstIndex];
-    IUResourceFile *node = [[_resourceArrayController arrangedObjects] objectAtIndex:index];
-    if(node.type == IUResourceTypeImage){
-        [pasteboard setString:node.name forType:kUTTypeIUImageResource];
-        return YES;
-    }
-    
-    else if (node.type == IUResourceTypeVideo){
-        [JDUIUtil hudAlert:@"Only image files can be draggable as a bacground or image type " second:2];
-    }
-    else {
-        assert(0);
+    if([indexes count] == 1){
+        NSUInteger index = [indexes firstIndex];
+        IUResourceFile *node = [[_resourceArrayController arrangedObjects] objectAtIndex:index];
+        if(node.type == IUResourceTypeImage){
+            [pasteboard setString:node.name forType:kUTTypeIUImageResource];
+            return YES;
+        }
+        
+        else if (node.type == IUResourceTypeVideo){
+            [JDUIUtil hudAlert:@"Only image files can be draggable as a bacground or image type " second:2];
+        }
+        else {
+            assert(0);
+        }
     }
 
     return NO;
 }
 
 - (NSImage *)collectionView:(NSCollectionView *)collectionView draggingImageForItemsAtIndexes:(NSIndexSet *)indexes withEvent:(NSEvent *)event offset:(NSPointPointer)dragImageOffset{
-    
-    NSUInteger index = [indexes firstIndex];
-    IUResourceFile *node = [[_resourceArrayController arrangedObjects] objectAtIndex:index];
-    
-    return node.image;
+    if([indexes count] == 1){
+        
+        NSUInteger index = [indexes firstIndex];
+        IUResourceFile *node = [[_resourceArrayController arrangedObjects] objectAtIndex:index];
+        
+        return node.image;
+    }
+    return nil;
 }
 
 
@@ -124,6 +127,39 @@
     [_resourceArrayController rearrangeObjects];
 }
 
+- (IBAction)clickTrashBtn:(id)sender {
+    NSCollectionView *collectionV = [self currentCollectionView];
+    if(collectionV){
+        
+        NSMutableArray *removedFiles = [NSMutableArray array];
+        NSUInteger index = [[collectionV selectionIndexes] firstIndex];
+        while(index != NSNotFound){
+            IUResourceFile *resourceFile = [[collectionV itemAtIndex:index] representedObject];
+            [removedFiles addObject:resourceFile];
+            index = [[collectionV selectionIndexes] indexGreaterThanIndex:index];
+            
+        }
+        
+        for(IUResourceFile *resourceFile in removedFiles){
+            [self.manager removeResourceFile:resourceFile];
+        }
+        
+    }
+
+}
+
+- (NSCollectionView *)currentCollectionView{
+    NSInteger selectedIndex = [_tabView indexOfTabViewItem:[_tabView selectedTabViewItem]];
+    
+    if(selectedIndex == 0){
+        return _collectionListV;
+    }
+    else if(selectedIndex ==1){
+        return _collectionIconV;
+    }
+    return nil;
+}
+
 
 #pragma mark - 
 #pragma mark addResource
@@ -131,6 +167,8 @@
 - (void)addResource:(NSURL *)url type:(IUResourceType)type{
     [_manager insertResourceWithContentOfPath:[url relativePath]];
 }
+
+#pragma mark - mouse Event
 
 - (void)doubleClick:(id)sender{
     

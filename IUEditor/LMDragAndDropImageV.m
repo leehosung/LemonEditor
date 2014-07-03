@@ -60,5 +60,8 @@
     return;
 }
 
+- (void)mouseDown:(NSEvent *)theEvent{
+    [self.delegate ]
+}
 
 @end
