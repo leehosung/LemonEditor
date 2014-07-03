@@ -323,7 +323,6 @@
 		3DED26D11900FD75001A1D67 /* add_ghost_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26CD1900FD75001A1D67 /* add_ghost_off@2x.png */; };
 		3DED26D21900FD75001A1D67 /* add_ghost_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26CE1900FD75001A1D67 /* add_ghost_on.png */; };
 		3DED26D31900FD75001A1D67 /* add_ghost_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26CF1900FD75001A1D67 /* add_ghost_on@2x.png */; };
-		3DED26D919010A6D001A1D67 /* LMPropertyIUBoxVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26D719010A6D001A1D67 /* LMPropertyIUBoxVC.xib */; };
 		3DED26DD19010B56001A1D67 /* LMPropertyIUHTMLVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED26DB19010B56001A1D67 /* LMPropertyIUHTMLVC.m */; };
 		3DED26DE19010B56001A1D67 /* LMPropertyIUHTMLVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26DC19010B56001A1D67 /* LMPropertyIUHTMLVC.xib */; };
 		3DED26E219010B6B001A1D67 /* LMPropertyIUcarouselVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED26E019010B6B001A1D67 /* LMPropertyIUcarouselVC.m */; };
@@ -1010,7 +1009,6 @@
 		3DED26CD1900FD75001A1D67 /* add_ghost_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_ghost_off@2x.png"; sourceTree = "<group>"; };
 		3DED26CE1900FD75001A1D67 /* add_ghost_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_ghost_on.png; sourceTree = "<group>"; };
 		3DED26CF1900FD75001A1D67 /* add_ghost_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_ghost_on@2x.png"; sourceTree = "<group>"; };
-		3DED26D719010A6D001A1D67 /* LMPropertyIUBoxVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyIUBoxVC.xib; sourceTree = "<group>"; };
 		3DED26DA19010B56001A1D67 /* LMPropertyIUHTMLVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyIUHTMLVC.h; sourceTree = "<group>"; };
 		3DED26DB19010B56001A1D67 /* LMPropertyIUHTMLVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyIUHTMLVC.m; sourceTree = "<group>"; };
 		3DED26DC19010B56001A1D67 /* LMPropertyIUHTMLVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyIUHTMLVC.xib; sourceTree = "<group>"; };
@@ -2362,7 +2360,6 @@
 		3DFB8643196161F000A20960 /* DefaultGroup */ = {
 			isa = PBXGroup;
 			children = (
-				3DED26D719010A6D001A1D67 /* LMPropertyIUBoxVC.xib */,
 				3DED26DA19010B56001A1D67 /* LMPropertyIUHTMLVC.h */,
 				3DED26DB19010B56001A1D67 /* LMPropertyIUHTMLVC.m */,
 				3DED26DC19010B56001A1D67 /* LMPropertyIUHTMLVC.xib */,
@@ -3090,7 +3087,6 @@
 				3DF8041518FE62F200913505 /* add_mediaquery@2x.png in Resources */,
 				265FCC021953D08F00BD9068 /* reload@2x.png in Resources */,
 				3DF8046618FF784500913505 /* LMPropertyFontVC.xib in Resources */,
-				3DED26D919010A6D001A1D67 /* LMPropertyIUBoxVC.xib in Resources */,
 				2628C91D1919C8C800D9D8CD /* tab_primary_off@2x.png in Resources */,
 				3DF8044618FE62FC00913505 /* tool_html@2x.png in Resources */,
 				2632846D1963E527006CDB7D /* agency.iu.zip in Resources */,
