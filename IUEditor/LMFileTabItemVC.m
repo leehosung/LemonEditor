@@ -31,7 +31,7 @@
 }
 
 - (void)awakeFromNib{
-    [_fileNameBtn bind:@"title" toObject:self withKeyPath:@"sheet.name" options:IUBindingDictNotRaisesApplicable];
+    [_fileNameBtn bind:@"title" toObject:self withKeyPath:@"sheet.name" options:IUBindingDictNotRaisesApplicableAndContinuousUpdate];
 }
 
 

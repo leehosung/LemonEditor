@@ -58,10 +58,8 @@
 
 - (void)setController:(IUController *)controller{
     _controller = controller;
-    NSDictionary *bindingOption = [NSDictionary
-                                   dictionaryWithObjects:@[[NSNumber numberWithBool:NO], @"JDNilToZeroTransformer"]
-                                   forKeys:@[NSRaisesForNotApplicableKeysBindingOption,  NSValueTransformerNameBindingOption]];
-
+    NSDictionary *bindingOption = @{NSRaisesForNotApplicableKeysBindingOption: @(YES), NSValueTransformerNameBindingOption:@"JDNilToZeroTransformer", NSContinuouslyUpdatesValueBindingOption: @(YES)};
+ 
     [_borderColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderColor] options:IUBindingDictNotRaisesApplicable];
     [_borderTopColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderTopColor]  options:IUBindingDictNotRaisesApplicable];
     [_borderLeftColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBorderLeftColor] options:IUBindingDictNotRaisesApplicable];

@@ -57,9 +57,9 @@
     [_shadowSpreadText setFormatter:formatter];
     [_shadowBlurText setFormatter:formatter];
 
-    [_shadowVText bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagShadowVertical] options:@{NSNullPlaceholderBindingOption: @(0)}];
-    [_shadowHText bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagShadowHorizontal] options:@{NSNullPlaceholderBindingOption: @(0)}];
-    [_shadowSpreadText bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagShadowSpread] options:@{NSNullPlaceholderBindingOption: @(0)}];
-    [_shadowBlurText bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagShadowBlur] options:@{NSNullPlaceholderBindingOption: @(0)}];
+    [_shadowVText bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagShadowVertical] options:@{NSNullPlaceholderBindingOption: @(0), NSContinuouslyUpdatesValueBindingOption: @(YES)}];
+    [_shadowHText bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagShadowHorizontal] options:@{NSNullPlaceholderBindingOption: @(0), NSContinuouslyUpdatesValueBindingOption: @(YES)}];
+    [_shadowSpreadText bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagShadowSpread] options:@{NSNullPlaceholderBindingOption: @(0), NSContinuouslyUpdatesValueBindingOption: @(YES)}];
+    [_shadowBlurText bind:@"value" toObject:self withKeyPath:[self CSSBindingPath:IUCSSTagShadowBlur] options:@{NSNullPlaceholderBindingOption: @(0), NSContinuouslyUpdatesValueBindingOption: @(YES)}];
 }
 @end

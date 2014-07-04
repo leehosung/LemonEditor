@@ -35,7 +35,7 @@
 }
 
 - (void)awakeFromNib{
-    [_variableTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"collectionVariable"] options:nil];
+    [_variableTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"collectionVariable"] options:IUBindingDictNotRaisesApplicableAndContinuousUpdate];
     
     //observing
     [self addObserver:self forKeyPath:@"controller.selectedObjects"
