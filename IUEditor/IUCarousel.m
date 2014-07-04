@@ -142,17 +142,19 @@
     NSString *hoverItemID = [NSString stringWithFormat:@"%@:hover", itemID];
     NSString *activeItemID = [NSString stringWithFormat:@"%@.active", itemID];
     
-    if(self.enableColor){
-        [self.delegate IUClassIdentifier:itemID CSSUpdated:[[self.project.compiler cssContentForIUCarouselPager:self hover:NO] string] forWidth:IUCSSMaxViewPortWidth];
-        
-        [self.delegate IUClassIdentifier:hoverItemID CSSUpdated:[[self.project.compiler cssContentForIUCarouselPager:self hover:YES] string] forWidth:IUCSSMaxViewPortWidth];
-        
-        [self.delegate IUClassIdentifier:activeItemID CSSUpdated:[[self.project.compiler cssContentForIUCarouselPager:self hover:YES] string] forWidth:IUCSSMaxViewPortWidth];
-    }
-    else{
-        [self.delegate IUClassIdentifier:itemID CSSRemovedforWidth:IUCSSMaxViewPortWidth];
-        [self.delegate IUClassIdentifier:hoverItemID CSSRemovedforWidth:IUCSSMaxViewPortWidth];
-        [self.delegate IUClassIdentifier:activeItemID CSSRemovedforWidth:IUCSSMaxViewPortWidth];
+    if (self.delegate) {
+        if(self.enableColor){
+            [self.delegate IUClassIdentifier:itemID CSSUpdated:[[self.project.compiler cssContentForIUCarouselPager:self hover:NO] string] forWidth:IUCSSMaxViewPortWidth];
+            
+            [self.delegate IUClassIdentifier:hoverItemID CSSUpdated:[[self.project.compiler cssContentForIUCarouselPager:self hover:YES] string] forWidth:IUCSSMaxViewPortWidth];
+            
+            [self.delegate IUClassIdentifier:activeItemID CSSUpdated:[[self.project.compiler cssContentForIUCarouselPager:self hover:YES] string] forWidth:IUCSSMaxViewPortWidth];
+        }
+        else{
+            [self.delegate IUClassIdentifier:itemID CSSRemovedforWidth:IUCSSMaxViewPortWidth];
+            [self.delegate IUClassIdentifier:hoverItemID CSSRemovedforWidth:IUCSSMaxViewPortWidth];
+            [self.delegate IUClassIdentifier:activeItemID CSSRemovedforWidth:IUCSSMaxViewPortWidth];
+        }
     }
     
 }
