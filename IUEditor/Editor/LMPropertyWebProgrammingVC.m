@@ -26,7 +26,7 @@
 }
 
 - (void)awakeFromNib{
-    [_nameTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"inputName"] options:nil];
+    [_nameTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"inputName"] options:IUBindingDictNotRaisesApplicableAndContinuousUpdate];
 
 }
 
