@@ -16,6 +16,7 @@
 #import "LMNotiManager.h"
 #import "JDEnvUtil.h"
 #import "LMTutorialWC.h"
+#import "LMHelpWC.h"
 
 @implementation LMAppDelegate{
     LMStartWC *startWC;
@@ -131,6 +132,11 @@
     return YES;
 }
 
-
+- (void)performHelpAboutProject:(id)sender{
+    LMHelpWC *hWC = [LMHelpWC sharedHelpWC];
+    [hWC showWindow:nil];
+    [hWC setHelpWebURL:[NSURL URLWithString:@"http://jdlaborg.github.io/LemonEditor/"]];
+    [hWC.window makeKeyAndOrderFront:self];
+}
 
 @end

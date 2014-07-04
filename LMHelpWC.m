@@ -6,13 +6,17 @@
 //  Copyright (c) 2014 JDLab. All rights reserved.
 //
 
-#import "LMPDFHelpWC.h"
+#import "LMHelpWC.h"
 #import <Quartz/Quartz.h>
+#import <WebKit/WebKit.h>
 
-static LMPDFHelpWC *gHelpWC = nil;
+static LMHelpWC *gHelpWC = nil;
 
-@interface LMPDFHelpWC ()
+@interface LMHelpWC ()
 
+@property (weak) IBOutlet NSView *pdfEmbedV;
+@property (weak) IBOutlet NSView *webEmbedV;
+@property (weak) IBOutlet WebView *webV;
 @property (weak) IBOutlet PDFView *pdfV;
 @property (weak) IBOutlet PDFThumbnailView *pdfThumbnailV;
 @property (weak) IBOutlet NSTableView *pdfListTableView;
@@ -22,15 +26,28 @@ static LMPDFHelpWC *gHelpWC = nil;
 
 @end
 
-@implementation LMPDFHelpWC{
+@implementation LMHelpWC{
+    BOOL windowLoaded;
 }
 
-+ (LMPDFHelpWC *)sharedPDFHelpWC{
++ (LMHelpWC *)sharedHelpWC{
     if(gHelpWC == nil){
-        gHelpWC = [[LMPDFHelpWC alloc] initWithWindowNibName:[LMPDFHelpWC class].className];
+        gHelpWC = [[LMHelpWC alloc] initWithWindowNibName:[LMHelpWC class].className];
     }
     return gHelpWC;
 }
+
+- (void)setHelpWebURL:(NSURL*)url{
+    if (windowLoaded ==  NO) {
+        assert(0);
+    }
+
+    [_pdfEmbedV setHidden:YES];
+    [_webEmbedV setHidden:NO];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [[self.webV mainFrame] loadRequest:request];
+}
+
 
 - (id)initWithWindow:(NSWindow *)window
 {
@@ -39,7 +56,6 @@ static LMPDFHelpWC *gHelpWC = nil;
         [self loadWindow];
         NSString *pdfFilePath = [[NSBundle mainBundle] pathForResource:@"helpPdf" ofType:@"plist"];
         _pdfListDictionary = [NSDictionary dictionaryWithContentsOfFile:pdfFilePath];
-
     }
     return self;
 }
@@ -52,10 +68,12 @@ static LMPDFHelpWC *gHelpWC = nil;
     
     [_pdfThumbnailV setMaximumNumberOfColumns:1];
     [_pdfThumbnailV setThumbnailSize:NSMakeSize(150, 100)];
-    
+    windowLoaded = YES;
 }
 
 - (void)setHelpDocument:(NSString*)fileName title:(NSString *)title{
+    [_webEmbedV setHidden:YES];
+    [_pdfEmbedV setHidden:NO];
     if([[fileName pathExtension] isEqualToString:@"pdf"]){
         NSURL *url = [[NSBundle mainBundle] URLForResource:[fileName stringByDeletingPathExtension] withExtension:@"pdf"];
         PDFDocument *doc = [[PDFDocument alloc] initWithURL:url];
@@ -72,7 +90,6 @@ static LMPDFHelpWC *gHelpWC = nil;
 }
 
 - (void)setHelpDocumentWithKey:(NSString *)key{
-    
     NSString *currentKey = [_pdfListDictController.selectedObjects[0] key];
     //FIXME: selection tableView
     

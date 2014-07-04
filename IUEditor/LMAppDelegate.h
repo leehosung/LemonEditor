@@ -10,4 +10,5 @@
 
 @interface LMAppDelegate : NSObject <NSApplicationDelegate>
 
+- (void)performHelpAboutProject:(id)sender;
 @end

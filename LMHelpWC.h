@@ -8,9 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface LMPDFHelpWC : NSWindowController
+@interface LMHelpWC : NSWindowController
 
-+ (LMPDFHelpWC *)sharedPDFHelpWC;
++ (LMHelpWC *)sharedHelpWC;
 - (void)setHelpDocumentWithKey:(NSString *)key;
-
+- (void)setHelpWebURL:(NSURL*)url;
 @end
