@@ -479,6 +479,9 @@
 		690A8277190A2CC200DDBA86 /* new_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 690A8271190A2CC200DDBA86 /* new_default.png */; };
 		6919204718DCFC8200F8522B /* NSCoder+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6919204618DCFC8200F8522B /* NSCoder+JDExtension.m */; };
 		6919204A18DCFED000F8522B /* NSObject+JDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6919204918DCFED000F8522B /* NSObject+JDExtension.m */; };
+		692C4DC21966A13600EAB2E7 /* PositionProperty.pages in Resources */ = {isa = PBXBuildFile; fileRef = 692C4DC11966A13600EAB2E7 /* PositionProperty.pages */; };
+		692C4DC41966A15400EAB2E7 /* tracingOverview.pages in Resources */ = {isa = PBXBuildFile; fileRef = 692C4DC31966A15400EAB2E7 /* tracingOverview.pages */; };
+		692C4DC61966A22D00EAB2E7 /* tracingOverview.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 692C4DC51966A22D00EAB2E7 /* tracingOverview.pdf */; };
 		69317CB21947271F0065B6F4 /* LMHelpWC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69317CB01947271F0065B6F4 /* LMHelpWC.m */; };
 		69317CB31947271F0065B6F4 /* LMHelpWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69317CB11947271F0065B6F4 /* LMHelpWC.xib */; };
 		69346623192B805000F82DAF /* LMCommandVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69346622192B805000F82DAF /* LMCommandVC.xib */; };
@@ -1226,6 +1229,9 @@
 		6919204618DCFC8200F8522B /* NSCoder+JDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSCoder+JDExtension.m"; path = "JD/NSCoder+JDExtension.m"; sourceTree = "<group>"; };
 		6919204818DCFED000F8522B /* NSObject+JDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JDExtension.h"; sourceTree = "<group>"; };
 		6919204918DCFED000F8522B /* NSObject+JDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JDExtension.m"; sourceTree = "<group>"; };
+		692C4DC11966A13600EAB2E7 /* PositionProperty.pages */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PositionProperty.pages; sourceTree = "<group>"; };
+		692C4DC31966A15400EAB2E7 /* tracingOverview.pages */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = tracingOverview.pages; sourceTree = "<group>"; };
+		692C4DC51966A22D00EAB2E7 /* tracingOverview.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = tracingOverview.pdf; sourceTree = "<group>"; };
 		69317CAF1947271F0065B6F4 /* LMHelpWC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMHelpWC.h; sourceTree = "<group>"; };
 		69317CB01947271F0065B6F4 /* LMHelpWC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMHelpWC.m; sourceTree = "<group>"; };
 		69317CB11947271F0065B6F4 /* LMHelpWC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMHelpWC.xib; sourceTree = "<group>"; };
@@ -2512,6 +2518,18 @@
 			path = classImage;
 			sourceTree = "<group>";
 		};
+		692C4DC01966A04300EAB2E7 /* ManualPages */ = {
+			isa = PBXGroup;
+			children = (
+				69FEC48D194845CA00483C11 /* scrollingAnimation.pdf */,
+				062EFBDD19663C43007ECFD0 /* positionProperty.pdf */,
+				692C4DC51966A22D00EAB2E7 /* tracingOverview.pdf */,
+				692C4DC11966A13600EAB2E7 /* PositionProperty.pages */,
+				692C4DC31966A15400EAB2E7 /* tracingOverview.pages */,
+			);
+			name = ManualPages;
+			sourceTree = "<group>";
+		};
 		694233A118D7E1A500C96A92 /* IU */ = {
 			isa = PBXGroup;
 			children = (
@@ -2845,6 +2863,7 @@
 		69FEC48B194845B600483C11 /* Help */ = {
 			isa = PBXGroup;
 			children = (
+				692C4DC01966A04300EAB2E7 /* ManualPages */,
 				3D2E6B881963D73500AC7DE5 /* popover */,
 				CBA877E61963D04A00075294 /* Tutorial */,
 				69317CAF1947271F0065B6F4 /* LMHelpWC.h */,
@@ -2857,8 +2876,6 @@
 		69FEC48C194845BD00483C11 /* PDF */ = {
 			isa = PBXGroup;
 			children = (
-				69FEC48D194845CA00483C11 /* scrollingAnimation.pdf */,
-				062EFBDD19663C43007ECFD0 /* positionProperty.pdf */,
 				3D2E6BA01965212700AC7DE5 /* helpPdf.plist */,
 			);
 			name = PDF;
@@ -3121,6 +3138,7 @@
 				267CB19C190F93370079E565 /* tab_close@2x.png in Resources */,
 				3DF803E118FE62C900913505 /* ic_folder.png in Resources */,
 				3DED2783190F85E0001A1D67 /* bg_stretch.png in Resources */,
+				692C4DC61966A22D00EAB2E7 /* tracingOverview.pdf in Resources */,
 				262D4AA91947FB05006F5FBE /* radius_icon_03@2x.png in Resources */,
 				690A8268190A23F500DDBA86 /* LMStartWC.xib in Resources */,
 				69C5762D18D70B850016F050 /* LMWC.xib in Resources */,
@@ -3169,6 +3187,7 @@
 				26EFF421194AEF9E00317C3E /* help.png in Resources */,
 				3DED267E1900D329001A1D67 /* stack_textfield@2x.png in Resources */,
 				69CFCAB418E95A0C00E3048A /* LMResourceVC.xib in Resources */,
+				692C4DC21966A13600EAB2E7 /* PositionProperty.pages in Resources */,
 				3DBD7C1A195D61B5003E386C /* LMCloseWC.xib in Resources */,
 				69B260E719594E4F007D905C /* font.png in Resources */,
 				69D15F7018E893170046FBB0 /* LMBottomToolbarVC.xib in Resources */,
@@ -3214,6 +3233,7 @@
 				2641F454195A72FF00DDF1C3 /* bg_v_bottom.png in Resources */,
 				3DF8041918FE62F200913505 /* view_border.png in Resources */,
 				69CFCAC318EAA21E00E3048A /* sample.jpg in Resources */,
+				692C4DC41966A15400EAB2E7 /* tracingOverview.pages in Resources */,
 				3DF803E718FE62C900913505 /* ic_document.png in Resources */,
 				26378CDD194EC42A004B5001 /* import.png in Resources */,
 				3D2E6BAB19653F3A00AC7DE5 /* EventScrollAnimation.mp4 in Resources */,

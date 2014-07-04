@@ -37,15 +37,18 @@ static LMHelpWC *gHelpWC = nil;
     return gHelpWC;
 }
 
-- (void)setHelpWebURL:(NSURL*)url{
-    if (windowLoaded ==  NO) {
-        assert(0);
+- (void)showHelpWebURL:(NSURL*)url withTitle:(NSString *)title{
+    if (self.window == nil) {
+        [self window];
     }
 
+    self.window.title = title;
+    
     [_pdfEmbedV setHidden:YES];
     [_webEmbedV setHidden:NO];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [[self.webV mainFrame] loadRequest:request];
+    [self.window makeKeyAndOrderFront:nil];
 }
 
 
@@ -71,7 +74,11 @@ static LMHelpWC *gHelpWC = nil;
     windowLoaded = YES;
 }
 
-- (void)setHelpDocument:(NSString*)fileName title:(NSString *)title{
+- (void)showHelpDocument:(NSString*)fileName title:(NSString *)title{
+    if (self.window == nil) {
+        [self window];
+    }
+    
     [_webEmbedV setHidden:YES];
     [_pdfEmbedV setHidden:NO];
     if([[fileName pathExtension] isEqualToString:@"pdf"]){
@@ -89,8 +96,8 @@ static LMHelpWC *gHelpWC = nil;
     
 }
 
-- (void)setHelpDocumentWithKey:(NSString *)key{
-    NSString *currentKey = [_pdfListDictController.selectedObjects[0] key];
+- (void)showHelpDocumentWithKey:(NSString *)key{
+   // NSString *currentKey = [_pdfListDictController.selectedObjects[0] key];
     //FIXME: selection tableView
     
 /*    if([key isEqualToString:currentKey] == NO){
@@ -100,17 +107,24 @@ static LMHelpWC *gHelpWC = nil;
  */
     
     //pdf list
+    
+    if (self.window == nil) {
+        [self window];
+    }
+
     NSString *fileName = [_pdfListDictionary objectForKey:key][@"pdf"];
     NSString *title= [_pdfListDictionary objectForKey:key][@"title"];
     
-    [self setHelpDocument:fileName title:title];
+    [self showHelpDocument:fileName title:title];
+
+    [self.window makeKeyAndOrderFront:nil];
 
 }
-
+/*
 - (void)tableViewSelectionDidChange:(NSNotification *)notification{
     NSString *key = [[_pdfListDictController selectedObjects][0] key];
-    [self setHelpDocumentWithKey:key];
+    [self showHelpDocumentWithKey:key];
 }
-
+*/
 
 @end

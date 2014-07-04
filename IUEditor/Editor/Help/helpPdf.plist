@@ -9,19 +9,12 @@
 		<key>pdf</key>
 		<string>positionProperty.pdf</string>
 	</dict>
-	<key>scrollingAnimation</key>
+	<key>tracing</key>
 	<dict>
 		<key>title</key>
-		<string>Scrolling Animation</string>
+		<string>Tracing Overview</string>
 		<key>pdf</key>
-		<string>scrollingAnimation.pdf</string>
+		<string>tracingOverview.pdf</string>
 	</dict>
-    <key>settingImage</key>
-    <dict>
-        <key>title</key>
-        <string>Setting Image</string>
-        <key>pdf</key>
-        <string>settingImage.pdf</string>
-    </dict>
 </dict>
 </plist>

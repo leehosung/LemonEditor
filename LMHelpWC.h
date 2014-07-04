@@ -11,6 +11,6 @@
 @interface LMHelpWC : NSWindowController
 
 + (LMHelpWC *)sharedHelpWC;
-- (void)setHelpDocumentWithKey:(NSString *)key;
-- (void)setHelpWebURL:(NSURL*)url;
+- (void)showHelpDocumentWithKey:(NSString *)key;
+- (void)showHelpWebURL:(NSURL*)url withTitle:(NSString*)title;
 @end

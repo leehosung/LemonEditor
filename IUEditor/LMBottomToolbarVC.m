@@ -10,6 +10,7 @@
 #import "LMTutorialManager.h"
 #import "LMHelpPopover.h"
 #import "LMWC.h"
+#import "LMHelpWC.h"
 
 @interface LMBottomToolbarVC ()
 
@@ -145,5 +146,9 @@
     [[NSWorkspace sharedWorkspace]  openURL:[NSURL URLWithString:url]];
 }
 
+- (IBAction)helpTracing:(id)sender {
+    LMHelpWC *hWC = [LMHelpWC sharedHelpWC];
+    [hWC showHelpDocumentWithKey:@"tracing"];
+}
 
 @end

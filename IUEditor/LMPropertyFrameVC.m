@@ -371,9 +371,7 @@
 - (IBAction)helpMenu:(id)sender {
     NSLog(@"this is help menu");
     helpWC = [LMHelpWC sharedHelpWC];
-    [helpWC setHelpDocumentWithKey:@"positionProperty"];
-    [helpWC showWindow:nil];
-    [helpWC.window makeKeyAndOrderFront:self];
+    [helpWC showHelpDocumentWithKey:@"positionProperty"];
 }
 
 @end

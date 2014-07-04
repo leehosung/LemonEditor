@@ -1130,8 +1130,6 @@
 
 - (void)performHelp:(NSMenuItem *)sender{
     helpWC = [LMHelpWC sharedHelpWC];
-    [helpWC setHelpDocumentWithKey:sender.representedObject];
-    [helpWC showWindow:nil];
-    [helpWC.window makeKeyAndOrderFront:self];
+    [helpWC showHelpDocumentWithKey:sender.representedObject];
 }
 @end

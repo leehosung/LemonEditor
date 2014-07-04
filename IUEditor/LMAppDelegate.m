@@ -134,9 +134,7 @@
 
 - (void)performHelpAboutProject:(id)sender{
     LMHelpWC *hWC = [LMHelpWC sharedHelpWC];
-    [hWC showWindow:nil];
-    [hWC setHelpWebURL:[NSURL URLWithString:@"http://jdlaborg.github.io/LemonEditor/"]];
-    [hWC.window makeKeyAndOrderFront:self];
+    [hWC showHelpWebURL:[NSURL URLWithString:@"http://jdlaborg.github.io/LemonEditor/"] withTitle:@"About Project"];
 }
 
 @end
