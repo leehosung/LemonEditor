@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13E28" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
     </dependencies>
@@ -75,19 +75,19 @@ IU beginner</string>
                                     </textFieldCell>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fyZ-Px-fQG">
-                                    <rect key="frame" x="232" y="52" width="41" height="17"/>
+                                    <rect key="frame" x="232" y="52" width="81" height="17"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="17" id="4Dt-aa-xfH"/>
-                                        <constraint firstAttribute="width" constant="37" id="ubm-tc-2w7"/>
+                                        <constraint firstAttribute="width" constant="77" id="ubm-tc-2w7"/>
                                     </constraints>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Size" id="WbN-Am-Nah">
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Media Query" id="WbN-Am-Nah">
                                         <font key="font" metaFont="smallSystemBold"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zmg-yt-bWF">
-                                    <rect key="frame" x="289" y="72" width="154" height="17"/>
+                                    <rect key="frame" x="329" y="72" width="154" height="17"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="17" id="luy-pZ-7Z9"/>
                                         <constraint firstAttribute="width" constant="150" id="x8J-jr-NrH"/>
@@ -99,12 +99,12 @@ IU beginner</string>
                                     </textFieldCell>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rba-Z4-pnn">
-                                    <rect key="frame" x="289" y="52" width="100" height="17"/>
+                                    <rect key="frame" x="329" y="52" width="404" height="17"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="17" id="B6V-op-Wr9"/>
-                                        <constraint firstAttribute="width" constant="96" id="NKP-Z8-ejf"/>
+                                        <constraint firstAttribute="width" constant="400" id="NKP-Z8-ejf"/>
                                     </constraints>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1024 x 980" id="6SN-Ww-uD3">
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="960, 320 (Support PC, Mobile)" id="6SN-Ww-uD3">
                                         <font key="font" metaFont="smallSystem"/>
                                         <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -119,18 +119,6 @@ IU beginner</string>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Feature" id="4u5-iE-Moz">
                                         <font key="font" metaFont="smallSystemBold"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                </textField>
-                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GBS-sg-OL4">
-                                    <rect key="frame" x="289" y="21" width="480" height="28"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="476" id="6RL-AZ-u80"/>
-                                        <constraint firstAttribute="height" constant="28" id="jAb-gc-xGd"/>
-                                    </constraints>
-                                    <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="Responsive, TransitionImage" id="SOb-q3-WI3">
-                                        <font key="font" metaFont="smallSystem"/>
-                                        <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
@@ -174,6 +162,18 @@ IU beginner</string>
                                         <action selector="clickPrevImageBtn:" target="-2" id="Z3I-m4-eiM"/>
                                     </connections>
                                 </button>
+                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GBS-sg-OL4">
+                                    <rect key="frame" x="329" y="21" width="480" height="28"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="476" id="6RL-AZ-u80"/>
+                                        <constraint firstAttribute="height" constant="28" id="jAb-gc-xGd"/>
+                                    </constraints>
+                                    <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="Responsive, TransitionImage" id="SOb-q3-WI3">
+                                        <font key="font" metaFont="smallSystem"/>
+                                        <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
                             </subviews>
                         </view>
                         <constraints>
@@ -196,8 +196,8 @@ IU beginner</string>
                             <constraint firstItem="w1o-0c-Rlf" firstAttribute="leading" secondItem="ZYL-fL-elc" secondAttribute="leading" constant="30" id="e3y-vO-1yL"/>
                             <constraint firstItem="xrW-Xk-Hd4" firstAttribute="leading" secondItem="w1o-0c-Rlf" secondAttribute="trailing" constant="44" id="g6T-Q9-Owf"/>
                             <constraint firstItem="4Hj-Sd-jgN" firstAttribute="leading" secondItem="fyZ-Px-fQG" secondAttribute="leading" id="gJ7-wD-JW3"/>
-                            <constraint firstItem="GBS-sg-OL4" firstAttribute="leading" secondItem="4Hj-Sd-jgN" secondAttribute="trailing" constant="14" id="gQW-sC-xwB"/>
-                            <constraint firstItem="Zmg-yt-bWF" firstAttribute="leading" secondItem="xrW-Xk-Hd4" secondAttribute="trailing" constant="20" id="ieO-UH-qmq"/>
+                            <constraint firstItem="GBS-sg-OL4" firstAttribute="leading" secondItem="4Hj-Sd-jgN" secondAttribute="trailing" constant="54" id="gQW-sC-xwB"/>
+                            <constraint firstItem="Zmg-yt-bWF" firstAttribute="leading" secondItem="xrW-Xk-Hd4" secondAttribute="trailing" constant="60" id="ieO-UH-qmq"/>
                             <constraint firstAttribute="height" constant="120" id="kes-QN-tNO"/>
                             <constraint firstItem="rba-Z4-pnn" firstAttribute="top" secondItem="Zmg-yt-bWF" secondAttribute="bottom" constant="3" id="yRR-t4-rcv"/>
                         </constraints>
@@ -212,15 +212,14 @@ IU beginner</string>
                             <subviews>
                                 <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUf-Ft-HhW">
                                     <rect key="frame" x="0.0" y="0.0" width="960" height="480"/>
-                                    <clipView key="contentView" id="WBV-An-4AD">
+                                    <clipView key="contentView" id="WBV-An-4AD" customClass="LMCenterClipView">
                                         <rect key="frame" x="1" y="1" width="166" height="79"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <view fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YmJ-mS-2Og">
-                                                <rect key="frame" x="0.0" y="0.0" width="166" height="79"/>
+                                                <rect key="frame" x="45" y="32" width="194" height="2"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MFW-Yy-Kx1">
-                                                        <rect key="frame" x="59" y="15" width="48" height="48"/>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="kus-yJ-SA5"/>
                                                     </imageView>
                                                 </subviews>
