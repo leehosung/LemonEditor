@@ -63,6 +63,7 @@ static LMHelpPopover *gHelpPopover = nil;
             break;
         case LMPopoverTypeTextAndLargeVideo:
             self.contentViewController = largeVideoPopoverVC;
+            break;
         default:
             assert(0);
             break;
@@ -83,7 +84,6 @@ static LMHelpPopover *gHelpPopover = nil;
         
         [videoPopoverVC setVideoPath:videoPath title:title rtfPath:rtfPath];
         [largeVideoPopoverVC setVideoPath:videoPath title:title rtfPath:rtfPath];
-
         
         isSetting = YES;
     }

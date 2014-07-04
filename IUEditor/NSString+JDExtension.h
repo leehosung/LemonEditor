@@ -18,6 +18,8 @@
 
 - (NSString*)lastLine;
 
+- (BOOL)isStartWithPrefix:(NSString *)prefix;
+
 
 - (NSString*)changeFileNameWithExtensionUntouched:(NSString*)fileName;
 - (NSString*)stringByAppendFileNameWithExtensionUntouched:(NSString*)appendingString;

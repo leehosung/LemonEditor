@@ -82,6 +82,13 @@
     return [NSString stringWithString:val];
 }
 
+- (BOOL)isStartWithPrefix:(NSString *)prefix{
+    NSString *myPrefix = [self substringWithRange:NSMakeRange(0, prefix.length)];
+    if([prefix isEqualToString:myPrefix]){
+        return YES;
+    }
+    return NO;
+}
 
 - (BOOL)isHTTPURL{
     if ([self length] > 7) {

@@ -10,6 +10,7 @@
                 <outlet property="textV" destination="BK9-by-udC" id="E6c-Sy-LGG"/>
                 <outlet property="titleTF" destination="vJl-U9-Kwk" id="2bY-FZ-5RS"/>
                 <outlet property="videoView" destination="sIW-W2-j0D" id="JOm-TK-ebP"/>
+                <outlet property="view" destination="m4Z-uK-qln" id="nhf-jW-g8n"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -46,7 +47,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView editable="NO" selectable="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="BK9-by-udC">
-                                            <rect key="frame" x="0.0" y="0.0" width="238" height="154"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="238" height="180"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <size key="minSize" width="600" height="180"/>
