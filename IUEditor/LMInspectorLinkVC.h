@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "IUController.h"
 
-@interface LMInspectorLinkVC : NSViewController 
+@interface LMInspectorLinkVC : NSViewController <NSTextFieldDelegate>
 
 @property (nonatomic) IUController      *controller;
 - (void)setProject:(IUProject*)project;
