@@ -213,6 +213,18 @@
 
 
 -(void)selectedObjectsDidChange:(NSDictionary *)change{
+//FIXME: FIX FOR MANY SELECTION
+    if ([[self.controller selectedObjects] count] > 1) {
+        self.propertyVArray = [NSMutableArray arrayWithArray:@[self.noInspectorV]];
+        doubleClickFocusVC = nil;
+        [_tableV reloadData];
+
+        return;
+    }
+    
+    doubleClickFocusVC = nil;
+
+    
     NSString *classString = [[self.controller selectedPedigree] firstObject];
     if ([classString isEqualToString:@"IUCarousel"]) {
         self.propertyVArray = nil;
