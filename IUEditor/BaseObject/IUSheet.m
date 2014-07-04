@@ -87,4 +87,8 @@
     return nil;
 }
 
+-(IUBox*)parent{
+    return nil;
+}
+
 @end
