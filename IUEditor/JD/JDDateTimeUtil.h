@@ -28,7 +28,8 @@ typedef enum _JDDateStringType {
     JDDateStringKorType2, //YYYY.M.d (수)
     JDDateStringKorType3, //10월 3일 (목)
     JDDateStringBasicType, //20100521
-    JDDateStringTimestampType	//2011-01-03 13:23:25
+    JDDateStringTimestampType,	//2011-01-03 13:23:25
+    JDDateStringTimestampType2	//2011-01-03  at 13.23.25 PM
 } JDDateStringType;
 
 @interface JDDateTimeUtil : NSObject {

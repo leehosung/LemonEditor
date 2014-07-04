@@ -196,11 +196,22 @@
 		case JDDateStringKorType3:
 			[dateFormat setDateFormat:@"M월 d일 "];
 			break;
+        case JDDateStringTimestampType2://2011-01-03  at 13.23.25 PM
+            [dateFormat setDateFormat:@"YYYY-MM-dd at HH.mm.ss a"];
+            break;
+        default:
+            NSAssert(0, @"not handled");
 	}
 	NSMutableString *dateString =[NSMutableString stringWithString: [dateFormat stringFromDate:date]];
 	if (option==JDDateStringKorType2 || option==JDDateStringKorType3) {
 		[dateString appendString:[NSString stringWithFormat:@"(%@)", [self weekDayStr:date]]];
 	}
+    if (option == JDDateStringTimestampType2) {
+        [dateString appendString:@" at "];
+        [dateFormat setTimeStyle:NSDateFormatterMediumStyle];
+        NSString *timeString = [dateFormat stringFromDate:date];
+        [dateString appendString:[timeString stringByReplacingOccurrencesOfString:@":" withString:@"."]];
+    }
 
 	return dateString;
 }

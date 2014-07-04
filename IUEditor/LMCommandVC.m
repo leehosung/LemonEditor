@@ -9,11 +9,14 @@
 #import "LMCommandVC.h"
 #import "IUSheetGroup.h"
 #import "IUDjangoProject.h"
+#import "JDScreenRecorder.h"
+#import "JDDateTimeUtil.h"
 
 @interface LMCommandVC ()
 @property (weak) IBOutlet NSButton *buildB;
 @property (weak) IBOutlet NSButton *serverB;
 @property (weak) IBOutlet NSPopUpButton *compilerB;
+@property (weak) IBOutlet NSButton *recordingB;
 @end
 
 @implementation LMCommandVC {
@@ -30,6 +33,8 @@
     NSFileHandle *stdOutputHandle;
     NSFileHandle *stdErrorHandle;
 
+    JDScreenRecorder *screenRecorder;
+    BOOL recording;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -150,5 +155,24 @@
 - (IBAction)sync:(id)sender {
     
 }
+
+- (IBAction)toggleRecording:(id)sender{
+    if (recording == NO) {
+        recording = YES;
+        [_recordingB setImage:[NSImage imageNamed:@"record_stop"]];
+        [JDUIUtil hudAlert:@"Recording Start" second:3];
+        screenRecorder = [[JDScreenRecorder alloc] init];
+        
+        NSString *fileName = [NSString stringWithFormat:@"%@/Desktop/%@.mp4", NSHomeDirectory(), [JDDateTimeUtil stringForDate:[NSDate date] option:JDDateStringTimestampType2]];
+        [screenRecorder startRecord:[NSURL fileURLWithPath:fileName]];
+    }
+    else {
+        recording = NO;
+        [_recordingB setImage:[NSImage imageNamed:@"record"]];
+        [screenRecorder finishRecord];
+        [JDUIUtil hudAlert:@"Recording saved at Desktop" second:3];
+    }
+}
+
 
 @end

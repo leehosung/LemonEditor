@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="buildB" destination="mVA-rO-Kzp" id="WCW-lp-Wre"/>
                 <outlet property="compilerB" destination="Xvx-WQ-92o" id="HSL-tM-OjF"/>
+                <outlet property="recordingB" destination="fvF-6I-Zso" id="OH5-GS-Ugh"/>
                 <outlet property="serverB" destination="5iw-6s-TJH" id="Ikk-tb-hcU"/>
                 <outlet property="view" destination="c22-O7-iKe" id="97Q-ig-2HN"/>
             </connections>
@@ -24,8 +25,15 @@
                         <rect key="frame" x="1" y="1" width="220" height="58"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <box autoresizesSubviews="NO" horizontalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ZNB-sK-xrh">
+                                <rect key="frame" x="146" y="16" width="9" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <font key="titleFont" metaFont="system"/>
+                            </box>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xvx-WQ-92o">
-                                <rect key="frame" x="117" y="18" width="79" height="22"/>
+                                <rect key="frame" x="52" y="15" width="79" height="22"/>
                                 <popUpButtonCell key="cell" type="recessed" bezelStyle="recessed" imagePosition="left" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" inset="2" id="o8V-jw-X48">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
@@ -51,13 +59,24 @@
                                 </connections>
                             </button>
                             <button toolTip="Build" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mVA-rO-Kzp">
-                                <rect key="frame" x="21" y="14" width="32" height="31"/>
+                                <rect key="frame" x="21" y="13" width="32" height="31"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="export" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="TbZ-Pd-o9p">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="build:" target="-2" id="1sR-hP-hEq"/>
+                                </connections>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvF-6I-Zso">
+                                <rect key="frame" x="162" y="9" width="43" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="record" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="3c3-bN-WgR">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="toggleRecording:" target="-2" id="zjv-Cp-F1D"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -72,5 +91,6 @@
     <resources>
         <image name="export" width="18" height="22"/>
         <image name="pause" width="15" height="18"/>
+        <image name="record" width="24" height="24"/>
     </resources>
 </document>

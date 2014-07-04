@@ -13,5 +13,5 @@
 @interface LMCommandVC : NSViewController
 
 @property IUSheetController      *docController;
-
+- (IBAction)toggleRecording:(id)sender;
 @end
