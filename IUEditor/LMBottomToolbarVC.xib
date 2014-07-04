@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMBottomToolbarVC">
@@ -220,10 +220,13 @@
                                 </constraints>
                                 <sliderCell key="cell" controlSize="mini" state="on" alignment="left" maxValue="1" doubleValue="0.5" tickMarkPosition="above" numberOfTickMarks="3" sliderType="linear" id="9Ca-8J-vnI"/>
                             </slider>
-                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uz0-Tc-A8d">
-                                <rect key="frame" x="478" y="2" width="25" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pT6-gG-Cfd">
+                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uz0-Tc-A8d">
+                                <rect key="frame" x="473" y="3" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="21J-Rh-9NM"/>
+                                    <constraint firstAttribute="width" constant="25" id="DHt-aq-SLz"/>
+                                </constraints>
+                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="help" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="pT6-gG-Cfd">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -244,6 +247,8 @@
                         <constraint firstAttribute="trailing" secondItem="fph-Bf-9zu" secondAttribute="trailing" id="9Bd-Ha-vSN"/>
                         <constraint firstItem="jCa-EW-A3v" firstAttribute="leading" secondItem="Ybl-bH-hL5" secondAttribute="trailing" constant="3" id="9Tg-Vf-gG2"/>
                         <constraint firstItem="bMV-OU-7aW" firstAttribute="top" secondItem="GO3-gA-Qc1" secondAttribute="top" constant="8" id="Ag7-hA-iAb"/>
+                        <constraint firstItem="uz0-Tc-A8d" firstAttribute="top" secondItem="GO3-gA-Qc1" secondAttribute="top" constant="2" id="D5h-9T-fKm"/>
+                        <constraint firstItem="uz0-Tc-A8d" firstAttribute="leading" secondItem="Q3k-Jt-7QC" secondAttribute="trailing" constant="5" id="GNh-da-dDg"/>
                         <constraint firstItem="Ybl-bH-hL5" firstAttribute="top" secondItem="GO3-gA-Qc1" secondAttribute="top" constant="6" id="KfU-s1-Yhu"/>
                         <constraint firstItem="dbv-8G-uEg" firstAttribute="leading" secondItem="jCa-EW-A3v" secondAttribute="trailing" constant="13" id="M65-wl-BjK"/>
                         <constraint firstItem="7kz-xZ-eTb" firstAttribute="top" secondItem="GO3-gA-Qc1" secondAttribute="top" id="Swz-F3-uWj"/>
@@ -272,6 +277,7 @@
     <resources>
         <image name="add_ghost_off" width="12" height="12"/>
         <image name="add_ghost_on" width="12" height="12"/>
+        <image name="help" width="18" height="18"/>
         <image name="panel_left_off" width="14" height="10"/>
         <image name="panel_left_on" width="14" height="10"/>
         <image name="panel_right_off" width="14" height="10"/>
