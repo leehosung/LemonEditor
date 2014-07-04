@@ -104,16 +104,6 @@
     [_xPositionTF bind:@"enabled2" toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBGEnableDigitPosition] options:IUBindingDictNotRaisesApplicable];
     [_yPositionTF bind:@"enabled2" toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagBGEnableDigitPosition] options:IUBindingDictNotRaisesApplicable];
     
-    
-    
-    
-    
-
-
-    
-    
-    
-    
 }
 
 - (void)dealloc{

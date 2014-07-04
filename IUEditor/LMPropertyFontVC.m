@@ -67,7 +67,11 @@
     [_fontColorWell bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagFontColor] options:IUBindingDictNotRaisesApplicable];
 #endif 
     
-    
+    //combobox delegate
+    _fontB.delegate = self;
+    _fontSizeComboBox.delegate = self;
+    _fontSizeComboBox.dataSource = self;
+    _lineHeightB.delegate = self;
     
 }
 
@@ -278,15 +282,57 @@
                 
 }
 
-- (IBAction)clickFontNameBtn:(id)sender {
-    currentFontName = [_fontB stringValue];
+- (void)controlTextDidChange:(NSNotification *)obj{
+    NSComboBox *currentComboBox = obj.object;
+    if([currentComboBox isEqualTo:_fontB]){
+        [self updateFontName:[_fontB stringValue]];
+    }
+    else if([currentComboBox isEqualTo:_fontSizeComboBox]){
+        [self updateFontSize:[_fontB integerValue]];
+    }
+    else if([_lineHeightB isEqualTo:_lineHeightB]){
+        [self updateLineHeight:[_lineHeightB stringValue]];
+    }
+}
+
+
+- (void)comboBoxSelectionDidChange:(NSNotification *)notification{
+    NSComboBox *currentComboBox = notification.object;
+    if([currentComboBox isEqualTo:_fontB]){
+        [self updateFontName:[_fontB objectValueOfSelectedItem]];
+    }
+    else if([currentComboBox isEqualTo:_fontSizeComboBox]){
+        NSInteger index = [_fontSizeComboBox indexOfSelectedItem];
+        NSInteger size = [[_fontDefaultSizes objectAtIndex:index] integerValue];
+        [self updateFontSize:size];
+    }
+    else if([_lineHeightB isEqualTo:_lineHeightB]){
+        [self updateLineHeight:[_lineHeightB objectValueOfSelectedItem]];
+    }
+}
+
+- (void)updateFontName:(NSString *)fontName{
+    currentFontName = fontName;
     [self setValue:currentFontName forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagFontName]];
 }
 
-- (IBAction)clickFontSize:(id)sender {
-    currentFontSize = [_fontSizeComboBox integerValue];
+- (void)updateFontSize:(NSInteger)fontSize;{
+    currentFontSize = fontSize;
     [self setValue:@(currentFontSize) forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagFontSize]];
 }
+
+- (void)updateLineHeight:(NSString *)lineHeightStr{
+    if([_controller.selection respondsToSelector:@selector(setLineHeightAuto:)]){
+        
+        if([lineHeightStr isEqualToString:@"Auto"]){
+            [_controller.selection setLineHeightAuto:YES];
+        }
+        else{
+            [_controller.selection setLineHeightAuto:NO];
+        }
+    }
+}
+
 
 
 - (BOOL)control:(NSControl *)control didFailToFormatString:(NSString *)string errorDescription:(NSString *)error{
@@ -299,10 +345,6 @@
     }
 
     return YES;
-}
-
-- (void)control:(NSControl *)control didFailToValidatePartialString:(NSString *)string errorDescription:(NSString *)error{
-    
 }
 
 
@@ -324,18 +366,7 @@
 
 
 
-- (IBAction)clickLineHeightComboBox:(id)sender {
-    NSString *lineHeightStr = [sender stringValue];
-    if([_controller.selection respondsToSelector:@selector(setLineHeightAuto:)]){
-        
-        if([lineHeightStr isEqualToString:@"Auto"]){
-            [_controller.selection setLineHeightAuto:YES];
-        }
-        else{
-            [_controller.selection setLineHeightAuto:NO];
-        }
-    }
-}
+
 
 #pragma mark -
 #pragma mark combobox dataSource

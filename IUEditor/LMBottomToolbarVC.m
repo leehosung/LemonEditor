@@ -42,6 +42,8 @@
 
 - (void)awakeFromNib{
 #pragma mark ghost
+    
+    _ghostImageComboBox.delegate = self;
     [_ghostBtn bind:@"state" toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"showGhost" options:nil];
     
     [_ghostImageComboBox bind:NSEnabledBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"showGhost" options:IUBindingDictNotRaisesApplicable];
@@ -91,7 +93,7 @@
     }
 }
 
-- (IBAction)clickGhostImageComboBox:(id)sender {
+- (void)comboBoxSelectionDidChange:(NSNotification *)notification{
     NSString *fileName = [_ghostImageComboBox objectValueOfSelectedItem];
     self.sheet.ghostImageName = fileName;
 }

@@ -1,3 +1,4 @@
+
 //
 //  LMPropertyIUMovieVC.m
 //  IUEditor
@@ -45,6 +46,7 @@
     [_coverBtn bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"cover"] options:IUBindingDictNotRaisesApplicable];
     [_muteBtn bind:@"value" toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"enableMute"] options:IUBindingDictNotRaisesApplicable];
     
+    _fileNameComboBox.delegate = self;
     
     [self addObserver:self forKeyPath:@"controller.selectedObjects"
               options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew context:@"selection"];
@@ -70,10 +72,28 @@
     }
 }
 
-- (IBAction)clickFileNameComboBox:(id)sender {
-   NSString *videoFileName =  [[self.fileNameComboBox selectedCell] stringValue];
+
+- (void)controlTextDidChange:(NSNotification *)obj{
+    NSComboBox *currentComboBox = obj.object;
+    if([currentComboBox isEqualTo:_fileNameComboBox]){
+        [self updateVideoFileName:[_fileNameComboBox stringValue]];
+    }
+}
+
+
+- (void)comboBoxSelectionDidChange:(NSNotification *)notification{
+    NSComboBox *currentComboBox = notification.object;
+    if([currentComboBox isEqualTo:_fileNameComboBox]){
+        [self updateVideoFileName:[_fileNameComboBox objectValueOfSelectedItem]];
+    }
+}
+- (void)updateVideoFileName:(NSString *)videoFileName{
     gettingInfo = YES;
-    if(videoFileName && videoFileName.length > 0){
+    if(videoFileName.length == 0){
+        [self setValue:nil forKeyPath:[_controller keyPathFromControllerToProperty:@"posterPath"] ];
+        [self setValue:nil forKeyPath:[_controller keyPathFromControllerToProperty:@"videoPath"] ];
+    }
+    else if(videoFileName && videoFileName.length > 0){
         
         //get thumbnail from video file
         NSURL *moviefileURL;

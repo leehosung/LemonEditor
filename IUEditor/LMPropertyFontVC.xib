@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13E28" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
     </dependencies>
@@ -48,14 +48,11 @@
                                     <constraint firstAttribute="width" constant="183" id="GvL-Lg-3yM"/>
                                     <constraint firstAttribute="height" constant="17" id="QSh-UU-GhK"/>
                                 </constraints>
-                                <comboBoxCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="Ks2-Pd-wc2">
+                                <comboBoxCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="Ks2-Pd-wc2">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </comboBoxCell>
-                                <connections>
-                                    <action selector="clickFontNameBtn:" target="-2" id="K9T-sd-Rlg"/>
-                                </connections>
                             </comboBox>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RsX-9v-6Mo">
                                 <rect key="frame" x="4" y="8" width="30" height="14"/>
@@ -103,7 +100,7 @@
                                     <constraint firstAttribute="height" constant="17" id="aEn-3J-rg3"/>
                                     <constraint firstAttribute="width" constant="78" id="i0K-cP-1yt"/>
                                 </constraints>
-                                <comboBoxCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Auto" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="woc-yV-A3J" userLabel="Combo Box Cell - Automobile">
+                                <comboBoxCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" title="Auto" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="woc-yV-A3J" userLabel="Combo Box Cell - Automobile">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -115,9 +112,6 @@
                                         <string>2.0</string>
                                     </objectValues>
                                 </comboBoxCell>
-                                <connections>
-                                    <action selector="clickLineHeightComboBox:" target="-2" id="M2K-JH-q3F"/>
-                                </connections>
                             </comboBox>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uve-V4-Xm0">
                                 <rect key="frame" x="182" y="10" width="77" height="21"/>
@@ -203,15 +197,12 @@
                                     <constraint firstAttribute="width" constant="97" id="c9C-6G-Ngo"/>
                                     <constraint firstAttribute="height" constant="17" id="gas-vm-Kwn"/>
                                 </constraints>
-                                <comboBoxCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" usesDataSource="YES" numberOfVisibleItems="5" id="oXY-lu-X4j">
+                                <comboBoxCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" usesDataSource="YES" numberOfVisibleItems="5" id="oXY-lu-X4j">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </comboBoxCell>
                                 <connections>
-                                    <action selector="clickFontSize:" target="-2" id="4wq-oe-rF9"/>
-                                    <outlet property="dataSource" destination="-2" id="9hE-Kp-fMi"/>
-                                    <outlet property="delegate" destination="-2" id="Weg-er-hS6"/>
                                     <outlet property="formatter" destination="2Xc-jP-M6t" id="Hcl-rX-xEo"/>
                                 </connections>
                             </comboBox>

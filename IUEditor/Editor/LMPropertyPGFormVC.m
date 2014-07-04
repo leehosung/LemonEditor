@@ -32,7 +32,8 @@
 }
 
 - (void)awakeFromNib{
- [self addObserver:self forKeyPath:@"controller.selectedObjects"
+    _submitPageComboBox.delegate = self;
+    [self addObserver:self forKeyPath:@"controller.selectedObjects"
               options:0 context:@""];
 
 }
@@ -43,7 +44,7 @@
 
 - (void)setProject:(IUProject *)project{
     _project = project;
-    [self updatePageComboBox];
+    [self updatePageComboBoxContents];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(structureChanged:) name:IUNotificationStructureDidChange object:project];
 
@@ -52,28 +53,34 @@
 - (CalledByNoti)structureChanged:(NSNotification*)noti{
     NSDictionary *userInfo = noti.userInfo;
     if ([userInfo[IUNotificationStructureChangedIU] isKindOfClass:[IUPage class]]) {
-        [self updatePageComboBox];
+        [self updatePageComboBoxContents];
     }
 }
 
-- (void)updatePageComboBox{
+- (void)updatePageComboBoxContents{
     [_submitPageComboBox removeAllItems];
     for (IUPage *page in [_project pageDocuments]) {
         [_submitPageComboBox addItemWithObjectValue:[page.name copy]];
     }
 }
 
-- (IBAction)clickPageComboBox:(id)sender {
-
-    //FIXME: selectedobjectchange에서 호출됨
-    for(IUBox *box in [_controller selectedObjects]){
-        if([box isKindOfClass:[PGForm class]] == NO){
-            return;
-        }
+- (void)controlTextDidChange:(NSNotification *)obj{
+    NSComboBox *currentComboBox = obj.object;
+    if([currentComboBox isEqualTo:_submitPageComboBox]){
+        [self updatePageComboBox:[_submitPageComboBox stringValue]];
     }
+}
+
+
+- (void)comboBoxSelectionDidChange:(NSNotification *)notification{
+    NSComboBox *currentComboBox = notification.object;
+    if([currentComboBox isEqualTo:_submitPageComboBox]){
+        [self updatePageComboBox:[_submitPageComboBox objectValueOfSelectedItem]];
+    }
+}
+
+- (void)updatePageComboBox:(NSString *)target {
     
-    
-    NSString *target = [_submitPageComboBox stringValue];
     if(_project){
         IUBox *box = [_project.identifierManager IUWithIdentifier:target];
         if(box){

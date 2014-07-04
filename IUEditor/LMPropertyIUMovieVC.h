@@ -10,7 +10,7 @@
 #import "IUController.h"
 #import "IUResourceManager.h"
 
-@interface LMPropertyIUMovieVC : NSViewController
+@interface LMPropertyIUMovieVC : NSViewController <NSComboBoxDelegate>
 
 @property (nonatomic) IUResourceManager *resourceManager;
 @property (nonatomic) IUController      *controller;

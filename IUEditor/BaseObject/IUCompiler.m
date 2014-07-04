@@ -770,9 +770,9 @@
         [code addCodeLineWithFormat:@"<div %@ >", [self HTMLAttributes:iu option:dict]];
         
         IUMovie *iuMovie = (IUMovie *)iu;
-        
+    
         NSString *thumbnailPath;
-        if(iuMovie.posterPath){
+        if(iuMovie.videoPath && iuMovie.posterPath){
             thumbnailPath = [NSString stringWithString:iuMovie.posterPath];
         }
         else{
