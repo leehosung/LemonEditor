@@ -1,5 +1,5 @@
 //
-//  LMPropertyVRFrameVC.h
+//  LMPropertyVTriggerVC.h
 //  IUEditor
 //
 //  Created by ChoiSeungme on 2014. 4. 21..
@@ -9,9 +9,8 @@
 #import <Cocoa/Cocoa.h>
 #import "IUController.h"
 
-@interface LMPropertyVRFrameVC : NSViewController
+@interface LMEventVariableTrigger : NSViewController
 
 @property (nonatomic) IUController  *controller;
-
 
 @end

@@ -6,10 +6,10 @@
 //  Copyright (c) 2014년 JDLab. All rights reserved.
 //
 
-#import "LMPropertyVisibleVC.h"
+#import "LMEventVariableReceiverVC.h"
 #import "LMHelpPopover.h"
 
-@interface LMPropertyVisibleVC ()
+@interface LMEventVariableReceiverVC ()
 @property (weak) IBOutlet NSTextField *equationTF;
 @property (weak) IBOutlet NSTextField *durationTF;
 @property (weak) IBOutlet NSStepper *durationStepper;
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation LMPropertyVisibleVC{
+@implementation LMEventVariableReceiverVC{
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -32,10 +32,10 @@
 
 - (void)awakeFromNib{
     
-    NSDictionary *numberBindingOption = @{NSRaisesForNotApplicableKeysBindingOption:@(NO),NSValueTransformerNameBindingOption:@"JDNilToZeroTransformer"};
+    NSDictionary *numberBindingOption = @{NSRaisesForNotApplicableKeysBindingOption:@(NO),NSValueTransformerNameBindingOption:@"JDNilToZeroTransformer", NSContinuouslyUpdatesValueBindingOption : @(YES)};
 
     
-    [_equationTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagVisibleEquation] options:IUBindingDictNotRaisesApplicable];
+    [_equationTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagVisibleEquation] options:IUBindingDictNotRaisesApplicableAndContinuousUpdate];
     [_durationTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagVisibleDuration] options:numberBindingOption];
     [_durationStepper bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagVisibleDuration] options:numberBindingOption];
     _typeArray = [IUEvent visibleTypeArray];

@@ -257,8 +257,8 @@
 		3DD4786F193DB33600639AB5 /* LMDebugSourceWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD4786D193DB33600639AB5 /* LMDebugSourceWC.xib */; };
 		3DD47873193DCCF900639AB5 /* LMPropertyPGFormVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD47871193DCCF900639AB5 /* LMPropertyPGFormVC.m */; };
 		3DD47874193DCCF900639AB5 /* LMPropertyPGFormVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD47872193DCCF900639AB5 /* LMPropertyPGFormVC.xib */; };
-		3DD4787D193DDCE100639AB5 /* LMPropertyScrollVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD4787B193DDCE100639AB5 /* LMPropertyScrollVC.m */; };
-		3DD4787E193DDCE100639AB5 /* LMPropertyScrollVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD4787C193DDCE100639AB5 /* LMPropertyScrollVC.xib */; };
+		3DD4787D193DDCE100639AB5 /* LMEventScrollAnimationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD4787B193DDCE100639AB5 /* LMEventScrollAnimationVC.m */; };
+		3DD4787E193DDCE100639AB5 /* LMEventScrollAnimationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD4787C193DDCE100639AB5 /* LMEventScrollAnimationVC.xib */; };
 		3DD478811945850E00639AB5 /* IUProjectDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD478801945850E00639AB5 /* IUProjectDocument.m */; };
 		3DD9E97219123B3E0076BF4E /* iueditor.js in Resources */ = {isa = PBXBuildFile; fileRef = 3DD9E97019122EAB0076BF4E /* iueditor.js */; };
 		3DE9C448193C7D0C00CCE374 /* jquery.backgroundSize.js in Resources */ = {isa = PBXBuildFile; fileRef = 3DE9C447193C7D0C00CCE374 /* jquery.backgroundSize.js */; };
@@ -345,14 +345,14 @@
 		3DED270D19012788001A1D67 /* LMRulerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED270C19012788001A1D67 /* LMRulerView.m */; };
 		3DED27131904AC8A001A1D67 /* LMEventVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED27111904AC8A001A1D67 /* LMEventVC.m */; };
 		3DED27141904AC8A001A1D67 /* LMEventVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED27121904AC8A001A1D67 /* LMEventVC.xib */; };
-		3DED27181904AD7D001A1D67 /* LMPropertyMouseEventVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED27161904AD7D001A1D67 /* LMPropertyMouseEventVC.m */; };
-		3DED27191904AD7D001A1D67 /* LMPropertyMouseEventVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED27171904AD7D001A1D67 /* LMPropertyMouseEventVC.xib */; };
-		3DED271D1904ADD9001A1D67 /* LMPropertyVTriggerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED271B1904ADD9001A1D67 /* LMPropertyVTriggerVC.m */; };
-		3DED271E1904ADD9001A1D67 /* LMPropertyVTriggerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED271C1904ADD9001A1D67 /* LMPropertyVTriggerVC.xib */; };
-		3DED27221904AE1A001A1D67 /* LMPropertyVisibleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED27201904AE1A001A1D67 /* LMPropertyVisibleVC.m */; };
-		3DED27231904AE1A001A1D67 /* LMPropertyVisibleVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED27211904AE1A001A1D67 /* LMPropertyVisibleVC.xib */; };
-		3DED27271904AE53001A1D67 /* LMPropertyVRFrameVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED27251904AE53001A1D67 /* LMPropertyVRFrameVC.m */; };
-		3DED27281904AE53001A1D67 /* LMPropertyVRFrameVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED27261904AE53001A1D67 /* LMPropertyVRFrameVC.xib */; };
+		3DED27181904AD7D001A1D67 /* LMEventMouseOnVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED27161904AD7D001A1D67 /* LMEventMouseOnVC.m */; };
+		3DED27191904AD7D001A1D67 /* LMEventMouseOnVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED27171904AD7D001A1D67 /* LMEventMouseOnVC.xib */; };
+		3DED271D1904ADD9001A1D67 /* LMEventVariableTrigger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED271B1904ADD9001A1D67 /* LMEventVariableTrigger.m */; };
+		3DED271E1904ADD9001A1D67 /* LMEventVariableTrigger.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED271C1904ADD9001A1D67 /* LMEventVariableTrigger.xib */; };
+		3DED27221904AE1A001A1D67 /* LMEventVariableReceiverVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED27201904AE1A001A1D67 /* LMEventVariableReceiverVC.m */; };
+		3DED27231904AE1A001A1D67 /* LMEventVariableReceiverVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED27211904AE1A001A1D67 /* LMEventVariableReceiverVC.xib */; };
+		3DED27271904AE53001A1D67 /* LMEventVariableReceiverFrameVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED27251904AE53001A1D67 /* LMEventVariableReceiverFrameVC.m */; };
+		3DED27281904AE53001A1D67 /* LMEventVariableReceiverFrameVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED27261904AE53001A1D67 /* LMEventVariableReceiverFrameVC.xib */; };
 		3DED272B1904DFD1001A1D67 /* IUInput.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED272A1904DFD1001A1D67 /* IUInput.m */; };
 		3DED272E1904E17E001A1D67 /* IUMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED272D1904E17E001A1D67 /* IUMovie.m */; };
 		3DED27311904EDF0001A1D67 /* movie.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3DED27301904ED15001A1D67 /* movie.mp4 */; };
@@ -948,9 +948,9 @@
 		3DD47870193DCCF900639AB5 /* LMPropertyPGFormVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMPropertyPGFormVC.h; path = Editor/LMPropertyPGFormVC.h; sourceTree = "<group>"; };
 		3DD47871193DCCF900639AB5 /* LMPropertyPGFormVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMPropertyPGFormVC.m; path = Editor/LMPropertyPGFormVC.m; sourceTree = "<group>"; };
 		3DD47872193DCCF900639AB5 /* LMPropertyPGFormVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMPropertyPGFormVC.xib; path = Editor/LMPropertyPGFormVC.xib; sourceTree = "<group>"; };
-		3DD4787A193DDCE100639AB5 /* LMPropertyScrollVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMPropertyScrollVC.h; path = Editor/LMPropertyScrollVC.h; sourceTree = "<group>"; };
-		3DD4787B193DDCE100639AB5 /* LMPropertyScrollVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMPropertyScrollVC.m; path = Editor/LMPropertyScrollVC.m; sourceTree = "<group>"; };
-		3DD4787C193DDCE100639AB5 /* LMPropertyScrollVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMPropertyScrollVC.xib; path = Editor/LMPropertyScrollVC.xib; sourceTree = "<group>"; };
+		3DD4787A193DDCE100639AB5 /* LMEventScrollAnimationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMEventScrollAnimationVC.h; path = Editor/LMEventScrollAnimationVC.h; sourceTree = "<group>"; };
+		3DD4787B193DDCE100639AB5 /* LMEventScrollAnimationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMEventScrollAnimationVC.m; path = Editor/LMEventScrollAnimationVC.m; sourceTree = "<group>"; };
+		3DD4787C193DDCE100639AB5 /* LMEventScrollAnimationVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMEventScrollAnimationVC.xib; path = Editor/LMEventScrollAnimationVC.xib; sourceTree = "<group>"; };
 		3DD4787F1945850E00639AB5 /* IUProjectDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUProjectDocument.h; sourceTree = "<group>"; };
 		3DD478801945850E00639AB5 /* IUProjectDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUProjectDocument.m; sourceTree = "<group>"; };
 		3DD9E97019122EAB0076BF4E /* iueditor.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = iueditor.js; sourceTree = "<group>"; };
@@ -1048,18 +1048,18 @@
 		3DED27101904AC8A001A1D67 /* LMEventVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMEventVC.h; sourceTree = "<group>"; };
 		3DED27111904AC8A001A1D67 /* LMEventVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMEventVC.m; sourceTree = "<group>"; };
 		3DED27121904AC8A001A1D67 /* LMEventVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMEventVC.xib; sourceTree = "<group>"; };
-		3DED27151904AD7D001A1D67 /* LMPropertyMouseEventVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyMouseEventVC.h; sourceTree = "<group>"; };
-		3DED27161904AD7D001A1D67 /* LMPropertyMouseEventVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyMouseEventVC.m; sourceTree = "<group>"; };
-		3DED27171904AD7D001A1D67 /* LMPropertyMouseEventVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyMouseEventVC.xib; sourceTree = "<group>"; };
-		3DED271A1904ADD9001A1D67 /* LMPropertyVTriggerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyVTriggerVC.h; sourceTree = "<group>"; };
-		3DED271B1904ADD9001A1D67 /* LMPropertyVTriggerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyVTriggerVC.m; sourceTree = "<group>"; };
-		3DED271C1904ADD9001A1D67 /* LMPropertyVTriggerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyVTriggerVC.xib; sourceTree = "<group>"; };
-		3DED271F1904AE1A001A1D67 /* LMPropertyVisibleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyVisibleVC.h; sourceTree = "<group>"; };
-		3DED27201904AE1A001A1D67 /* LMPropertyVisibleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyVisibleVC.m; sourceTree = "<group>"; };
-		3DED27211904AE1A001A1D67 /* LMPropertyVisibleVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyVisibleVC.xib; sourceTree = "<group>"; };
-		3DED27241904AE53001A1D67 /* LMPropertyVRFrameVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPropertyVRFrameVC.h; sourceTree = "<group>"; };
-		3DED27251904AE53001A1D67 /* LMPropertyVRFrameVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPropertyVRFrameVC.m; sourceTree = "<group>"; };
-		3DED27261904AE53001A1D67 /* LMPropertyVRFrameVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMPropertyVRFrameVC.xib; sourceTree = "<group>"; };
+		3DED27151904AD7D001A1D67 /* LMEventMouseOnVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMEventMouseOnVC.h; sourceTree = "<group>"; };
+		3DED27161904AD7D001A1D67 /* LMEventMouseOnVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMEventMouseOnVC.m; sourceTree = "<group>"; };
+		3DED27171904AD7D001A1D67 /* LMEventMouseOnVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMEventMouseOnVC.xib; sourceTree = "<group>"; };
+		3DED271A1904ADD9001A1D67 /* LMEventVariableTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMEventVariableTrigger.h; sourceTree = "<group>"; };
+		3DED271B1904ADD9001A1D67 /* LMEventVariableTrigger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMEventVariableTrigger.m; sourceTree = "<group>"; };
+		3DED271C1904ADD9001A1D67 /* LMEventVariableTrigger.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMEventVariableTrigger.xib; sourceTree = "<group>"; };
+		3DED271F1904AE1A001A1D67 /* LMEventVariableReceiverVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMEventVariableReceiverVC.h; sourceTree = "<group>"; };
+		3DED27201904AE1A001A1D67 /* LMEventVariableReceiverVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMEventVariableReceiverVC.m; sourceTree = "<group>"; };
+		3DED27211904AE1A001A1D67 /* LMEventVariableReceiverVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMEventVariableReceiverVC.xib; sourceTree = "<group>"; };
+		3DED27241904AE53001A1D67 /* LMEventVariableReceiverFrameVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMEventVariableReceiverFrameVC.h; sourceTree = "<group>"; };
+		3DED27251904AE53001A1D67 /* LMEventVariableReceiverFrameVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMEventVariableReceiverFrameVC.m; sourceTree = "<group>"; };
+		3DED27261904AE53001A1D67 /* LMEventVariableReceiverFrameVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMEventVariableReceiverFrameVC.xib; sourceTree = "<group>"; };
 		3DED27291904DFD1001A1D67 /* IUInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUInput.h; sourceTree = "<group>"; };
 		3DED272A1904DFD1001A1D67 /* IUInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUInput.m; sourceTree = "<group>"; };
 		3DED272C1904E17E001A1D67 /* IUMovie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUMovie.h; sourceTree = "<group>"; };
@@ -1641,21 +1641,21 @@
 		3D4675F81929B9D40036C64C /* eventVC */ = {
 			isa = PBXGroup;
 			children = (
-				3DED27151904AD7D001A1D67 /* LMPropertyMouseEventVC.h */,
-				3DED27161904AD7D001A1D67 /* LMPropertyMouseEventVC.m */,
-				3DED27171904AD7D001A1D67 /* LMPropertyMouseEventVC.xib */,
-				3DED271A1904ADD9001A1D67 /* LMPropertyVTriggerVC.h */,
-				3DED271B1904ADD9001A1D67 /* LMPropertyVTriggerVC.m */,
-				3DED271C1904ADD9001A1D67 /* LMPropertyVTriggerVC.xib */,
-				3DED271F1904AE1A001A1D67 /* LMPropertyVisibleVC.h */,
-				3DED27201904AE1A001A1D67 /* LMPropertyVisibleVC.m */,
-				3DED27211904AE1A001A1D67 /* LMPropertyVisibleVC.xib */,
-				3DED27241904AE53001A1D67 /* LMPropertyVRFrameVC.h */,
-				3DED27251904AE53001A1D67 /* LMPropertyVRFrameVC.m */,
-				3DED27261904AE53001A1D67 /* LMPropertyVRFrameVC.xib */,
-				3DD4787A193DDCE100639AB5 /* LMPropertyScrollVC.h */,
-				3DD4787B193DDCE100639AB5 /* LMPropertyScrollVC.m */,
-				3DD4787C193DDCE100639AB5 /* LMPropertyScrollVC.xib */,
+				3DED27151904AD7D001A1D67 /* LMEventMouseOnVC.h */,
+				3DED27161904AD7D001A1D67 /* LMEventMouseOnVC.m */,
+				3DED27171904AD7D001A1D67 /* LMEventMouseOnVC.xib */,
+				3DED271A1904ADD9001A1D67 /* LMEventVariableTrigger.h */,
+				3DED271B1904ADD9001A1D67 /* LMEventVariableTrigger.m */,
+				3DED271C1904ADD9001A1D67 /* LMEventVariableTrigger.xib */,
+				3DED271F1904AE1A001A1D67 /* LMEventVariableReceiverVC.h */,
+				3DED27201904AE1A001A1D67 /* LMEventVariableReceiverVC.m */,
+				3DED27211904AE1A001A1D67 /* LMEventVariableReceiverVC.xib */,
+				3DED27241904AE53001A1D67 /* LMEventVariableReceiverFrameVC.h */,
+				3DED27251904AE53001A1D67 /* LMEventVariableReceiverFrameVC.m */,
+				3DED27261904AE53001A1D67 /* LMEventVariableReceiverFrameVC.xib */,
+				3DD4787A193DDCE100639AB5 /* LMEventScrollAnimationVC.h */,
+				3DD4787B193DDCE100639AB5 /* LMEventScrollAnimationVC.m */,
+				3DD4787C193DDCE100639AB5 /* LMEventScrollAnimationVC.xib */,
 			);
 			name = eventVC;
 			sourceTree = "<group>";
@@ -2997,7 +2997,7 @@
 				3DED27311904EDF0001A1D67 /* movie.mp4 in Resources */,
 				267CB19D190F93370079E565 /* tab_event_off.png in Resources */,
 				3DED26BA1900F450001A1D67 /* panel_left_off@2x.png in Resources */,
-				3DD4787E193DDCE100639AB5 /* LMPropertyScrollVC.xib in Resources */,
+				3DD4787E193DDCE100639AB5 /* LMEventScrollAnimationVC.xib in Resources */,
 				3DED26651900D313001A1D67 /* ic_background@2x.png in Resources */,
 				2632846A1963E519006CDB7D /* agency_thumbnail.png in Resources */,
 				CB9BD63E1914DE23002C9369 /* LMStartNewPresentationVC.xib in Resources */,
@@ -3010,7 +3010,7 @@
 				262D4A961947FAF0006F5FBE /* border_icon_02.png in Resources */,
 				3DED269F1900D33A001A1D67 /* ic_contents.png in Resources */,
 				CBA877FC1963D3CF00075294 /* Tutorial00.png in Resources */,
-				3DED27191904AD7D001A1D67 /* LMPropertyMouseEventVC.xib in Resources */,
+				3DED27191904AD7D001A1D67 /* LMEventMouseOnVC.xib in Resources */,
 				265FCC091953D3C000BD9068 /* tab2_off.png in Resources */,
 				CBA878041963D3CF00075294 /* Tutorial04_kr.png in Resources */,
 				267CB199190F93370079E565 /* tab_clipart_on.png in Resources */,
@@ -3040,7 +3040,7 @@
 				2641F457195A72FF00DDF1C3 /* bg_v_center@2x.png in Resources */,
 				267CB198190F93370079E565 /* tab_clipart_off@2x.png in Resources */,
 				26620E4B19458A2100B728CD /* select_directory.png in Resources */,
-				3DED27231904AE1A001A1D67 /* LMPropertyVisibleVC.xib in Resources */,
+				3DED27231904AE1A001A1D67 /* LMEventVariableReceiverVC.xib in Resources */,
 				267CB1BD190F95750079E565 /* bg_cover.png in Resources */,
 				3DA6F2FF1963A676004DF0AA /* LMHelpTextPopoverVC.xib in Resources */,
 				2628C92A191A313C00D9D8CD /* tool_form.png in Resources */,
@@ -3087,7 +3087,7 @@
 				262D4AAA1947FB05006F5FBE /* radius_icon_04.png in Resources */,
 				3DF803DF18FE62C900913505 /* align_right.png in Resources */,
 				CBA877FF1963D3CF00075294 /* Tutorial02_en.png in Resources */,
-				3DED27281904AE53001A1D67 /* LMPropertyVRFrameVC.xib in Resources */,
+				3DED27281904AE53001A1D67 /* LMEventVariableReceiverFrameVC.xib in Resources */,
 				267CB19C190F93370079E565 /* tab_close@2x.png in Resources */,
 				3DF803E118FE62C900913505 /* ic_folder.png in Resources */,
 				3DED2783190F85E0001A1D67 /* bg_stretch.png in Resources */,
@@ -3377,7 +3377,7 @@
 				690A8272190A2CC200DDBA86 /* new_default@2x.png in Resources */,
 				3D748C7C19207B7A005665A3 /* iueditor.iconset in Resources */,
 				262D4AB319481DA2006F5FBE /* tab_on_01@2x.png in Resources */,
-				3DED271E1904ADD9001A1D67 /* LMPropertyVTriggerVC.xib in Resources */,
+				3DED271E1904ADD9001A1D67 /* LMEventVariableTrigger.xib in Resources */,
 				265BC578190FA9B600A1758F /* controller_comb@2x.png in Resources */,
 				CBA878051963D3CF00075294 /* Tutorial05_en.png in Resources */,
 				267CB1A0190F93370079E565 /* tab_event_on@2x.png in Resources */,
@@ -3548,7 +3548,7 @@
 				69C5760B18D6FE020016F050 /* IUClass.m in Sources */,
 				3DA416BD1935ABB400559028 /* LMFontController.m in Sources */,
 				3D748C81192095A1005665A3 /* LMPropertyIUPageVC.m in Sources */,
-				3DED271D1904ADD9001A1D67 /* LMPropertyVTriggerVC.m in Sources */,
+				3DED271D1904ADD9001A1D67 /* LMEventVariableTrigger.m in Sources */,
 				694E3CE118FCFDA6005077B3 /* IUItem.m in Sources */,
 				3DA6F3121963BC6E004DF0AA /* LMCollectionItemView.m in Sources */,
 				690A826B190A25D500DDBA86 /* IUDjangoProject.m in Sources */,
@@ -3582,7 +3582,7 @@
 				6983E71D18FFF54600D424B8 /* JDOutlineCellView.m in Sources */,
 				3DED270519010C71001A1D67 /* LMPropertyIUFBLikeVC.m in Sources */,
 				3DED270019010C55001A1D67 /* LMPropertyIUTransitionVC.m in Sources */,
-				3DD4787D193DDCE100639AB5 /* LMPropertyScrollVC.m in Sources */,
+				3DD4787D193DDCE100639AB5 /* LMEventScrollAnimationVC.m in Sources */,
 				3DBD7C2419612107003E386C /* LMStartPreviewWC.m in Sources */,
 				3DED27131904AC8A001A1D67 /* LMEventVC.m in Sources */,
 				693849E41914D711005C0546 /* NSIndexPath+JDExtension.m in Sources */,
@@ -3598,7 +3598,7 @@
 				3DD47873193DCCF900639AB5 /* LMPropertyPGFormVC.m in Sources */,
 				69CFCAB818E972DA00E3048A /* IUPageContent.m in Sources */,
 				69D4EE6519654D9A00BAF8C1 /* LMDragAndDropButton.m in Sources */,
-				3DED27271904AE53001A1D67 /* LMPropertyVRFrameVC.m in Sources */,
+				3DED27271904AE53001A1D67 /* LMEventVariableReceiverFrameVC.m in Sources */,
 				69B9A39F18E6B7E50007D6E2 /* NSTreeController+JDExtension.m in Sources */,
 				69D79B2E19138CB90020608D /* LMStartNewVC.m in Sources */,
 				69757B1318D95BBC0095CBAC /* JDWebUtil.m in Sources */,
@@ -3611,7 +3611,7 @@
 				69C5761E18D7051C0016F050 /* IUProject.m in Sources */,
 				69B9A39618E5A2A30007D6E2 /* IUResourceFile.m in Sources */,
 				6905FB521925F17300E4DBC3 /* JDCode.m in Sources */,
-				3DED27221904AE1A001A1D67 /* LMPropertyVisibleVC.m in Sources */,
+				3DED27221904AE1A001A1D67 /* LMEventVariableReceiverVC.m in Sources */,
 				69B37F0D18DFDEE800DE620F /* LMFileNaviVC.m in Sources */,
 				690A82561909EB1B00DDBA86 /* PGTextField.m in Sources */,
 				690A409518E1645B00095263 /* LMWidgetLibraryVC.m in Sources */,
@@ -3623,7 +3623,7 @@
 				69757B0818D95BBC0095CBAC /* JDKeyDelegatedTableView.m in Sources */,
 				69757B0618D95BBC0095CBAC /* JDGitUtil.m in Sources */,
 				3DD478811945850E00639AB5 /* IUProjectDocument.m in Sources */,
-				3DED27181904AD7D001A1D67 /* LMPropertyMouseEventVC.m in Sources */,
+				3DED27181904AD7D001A1D67 /* LMEventMouseOnVC.m in Sources */,
 				3DB3ACD218EBEF4F0046DFB7 /* GridView.m in Sources */,
 				699916201919F090000ECF57 /* PGForm.m in Sources */,
 				3D0D481318FFDC96000A5B53 /* LMFileTabItemVC.m in Sources */,

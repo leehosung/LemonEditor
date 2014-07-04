@@ -10,7 +10,7 @@
 #import "IUController.h"
 
 
-@interface LMPropertyScrollVC : NSViewController
+@interface LMEventScrollAnimationVC : NSViewController
 
 @property (nonatomic) IUController  *controller;
 

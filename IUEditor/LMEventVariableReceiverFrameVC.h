@@ -1,5 +1,5 @@
 //
-//  LMPropertyVisibleVC.h
+//  LMPropertyVRFrameVC.h
 //  IUEditor
 //
 //  Created by ChoiSeungme on 2014. 4. 21..
@@ -9,8 +9,9 @@
 #import <Cocoa/Cocoa.h>
 #import "IUController.h"
 
-@interface LMPropertyVisibleVC : NSViewController
+@interface LMEventVariableReceiverFrameVC : NSViewController
 
 @property (nonatomic) IUController  *controller;
+
 
 @end

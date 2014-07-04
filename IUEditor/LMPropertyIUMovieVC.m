@@ -88,6 +88,8 @@
     }
 }
 - (void)updateVideoFileName:(NSString *)videoFileName{
+    //FIXME: check video file name if not accurate
+    
     gettingInfo = YES;
     if(videoFileName.length == 0){
         [self setValue:nil forKeyPath:[_controller keyPathFromControllerToProperty:@"posterPath"] ];
@@ -103,6 +105,10 @@
         }
         else{
             IUResourceFile *videoFile = [self.resourceManager resourceFileWithName:videoFileName];
+            if (videoFile == nil) {
+                [self setValue:nil forKeyPath:[_controller keyPathFromControllerToProperty:@"videoPath"] ];
+                return;
+            }
             moviefileURL = [NSURL fileURLWithPath:videoFile.absolutePath];
             
             NSString *relativePath = videoFile.relativePath;

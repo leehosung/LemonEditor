@@ -10,22 +10,22 @@
 
 #import "JDOutlineCellView.h"
 
-#import "LMPropertyMouseEventVC.h"
-#import "LMPropertyVTriggerVC.h"
-#import "LMPropertyVisibleVC.h"
-#import "LMPropertyVRFrameVC.h"
-#import "LMPropertyScrollVC.h"
+#import "LMEventMouseOnVC.h"
+#import "LMEventVariableTrigger.h"
+#import "LMEventVariableReceiverVC.h"
+#import "LMEventVariableReceiverFrameVC.h"
+#import "LMEventScrollAnimationVC.h"
 
 @interface LMEventVC ()
 
 @end
 
 @implementation LMEventVC{
-    LMPropertyMouseEventVC *propertyMouseEventVC;
-    LMPropertyVTriggerVC    *propertyTriggerVC;
-    LMPropertyVisibleVC     *propertyVisibleVC;
-    LMPropertyVRFrameVC     *propertyFrameVC;
-    LMPropertyScrollVC  *propertyScrollVC;
+    LMEventMouseOnVC *propertyMouseEventVC;
+    LMEventVariableTrigger    *propertyTriggerVC;
+    LMEventVariableReceiverVC     *propertyVisibleVC;
+    LMEventVariableReceiverFrameVC     *propertyFrameVC;
+    LMEventScrollAnimationVC  *propertyScrollVC;
     
     NSArray *eventOutlineVOrderArray;
 }
@@ -36,11 +36,11 @@
     if (self) {
     
         //alloc outline cell view
-        propertyMouseEventVC = [[LMPropertyMouseEventVC alloc] initWithNibName:@"LMPropertyMouseEventVC" bundle:nil];
-        propertyTriggerVC = [[LMPropertyVTriggerVC alloc] initWithNibName:@"LMPropertyVTriggerVC" bundle:nil];
-        propertyVisibleVC = [[LMPropertyVisibleVC alloc] initWithNibName:@"LMPropertyVisibleVC" bundle:nil];
-        propertyFrameVC = [[LMPropertyVRFrameVC alloc] initWithNibName:@"LMPropertyVRFrameVC" bundle:nil];
-        propertyScrollVC = [[LMPropertyScrollVC alloc] initWithNibName:[LMPropertyScrollVC class].className bundle:nil];
+        propertyMouseEventVC = [[LMEventMouseOnVC alloc] initWithNibName:@"LMEventMouseOnVC" bundle:nil];
+        propertyTriggerVC = [[LMEventVariableTrigger alloc] initWithNibName:@"LMEventVariableTrigger" bundle:nil];
+        propertyVisibleVC = [[LMEventVariableReceiverVC alloc] initWithNibName:@"LMEventVariableReceiverVC" bundle:nil];
+        propertyFrameVC = [[LMEventVariableReceiverFrameVC alloc] initWithNibName:@"LMEventVariableReceiverFrameVC" bundle:nil];
+        propertyScrollVC = [[LMEventScrollAnimationVC alloc] initWithNibName:[LMEventScrollAnimationVC class].className bundle:nil];
         
         [propertyMouseEventVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];
         [propertyTriggerVC bind:@"controller" toObject:self withKeyPath:@"controller" options:nil];

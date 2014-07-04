@@ -6,10 +6,10 @@
 //  Copyright (c) 2014년 JDLab. All rights reserved.
 //
 
-#import "LMPropertyVTriggerVC.h"
+#import "LMEventVariableTrigger.h"
 #import "LMHelpPopover.h"
 
-@interface LMPropertyVTriggerVC ()
+@interface LMEventVariableTrigger ()
 @property (weak) IBOutlet NSTextField *variableTF;
 
 @property (weak) IBOutlet NSTextField *initailValueTF;
@@ -19,7 +19,7 @@
 @property (weak) IBOutlet NSPopUpButton *actionTypePopupButton;
 @end
 
-@implementation LMPropertyVTriggerVC
+@implementation LMEventVariableTrigger
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,12 +31,12 @@
 }
 
 - (void)awakeFromNib{
-    [_variableTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagVariable] options:IUBindingDictNotRaisesApplicable];
+    [_variableTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagVariable] options:IUBindingDictNotRaisesApplicableAndContinuousUpdate];
     
-    [_initailValueTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagInitialValue] options:IUBindingDictNotRaisesApplicable];
+    [_initailValueTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagInitialValue] options:IUBindingDictNotRaisesApplicableAndContinuousUpdate];
     [_initialValueStepper bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagInitialValue] options:IUBindingDictNotRaisesApplicable];
     
-    [_maxValueTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagMaxValue] options:IUBindingDictNotRaisesApplicable];
+    [_maxValueTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagMaxValue] options:IUBindingDictNotRaisesApplicableAndContinuousUpdate];
     [_maxValueStepper bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagMaxValue] options:IUBindingDictNotRaisesApplicable];
     
     [_actionTypePopupButton bind:NSSelectedIndexBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagActionType] options:IUBindingDictNotRaisesApplicable];

@@ -27,7 +27,7 @@
 }
 
 - (void)awakeFromNib{
-    [_likePageTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"likePage"] options:IUBindingDictNotRaisesApplicable];
+    [_likePageTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"likePage"] options:IUBindingDictNotRaisesApplicableAndContinuousUpdate];
     [_friendFaceBtn bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"showFriendsFace"] options:IUBindingDictNotRaisesApplicable];
 
     //enable

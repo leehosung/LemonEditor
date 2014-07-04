@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13E28" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMInspectorLinkVC">
@@ -72,11 +72,14 @@
                 </popUpButton>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hFF-Ft-P2S">
                     <rect key="frame" x="87" y="16" width="184" height="19"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="8Ao-Ja-qA9">
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="http://www.google.com" drawsBackground="YES" id="8Ao-Ja-qA9">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="delegate" destination="-2" id="uAb-hs-Rr2"/>
+                    </connections>
                 </textField>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="jRs-ai-7ge">
                     <rect key="frame" x="43" y="16" width="43" height="21"/>
@@ -125,7 +128,6 @@
                 <constraint firstItem="nGG-OI-Jvb" firstAttribute="leading" secondItem="N6o-Zq-VkT" secondAttribute="leading" id="wi7-G2-tzG"/>
                 <constraint firstItem="jRs-ai-7ge" firstAttribute="trailing" secondItem="gbF-b4-UKw" secondAttribute="trailing" id="xfr-GM-x2v"/>
             </constraints>
-            <point key="canvasLocation" x="225" y="456"/>
         </customView>
     </objects>
 </document>

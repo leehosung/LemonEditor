@@ -6,10 +6,10 @@
 //  Copyright (c) 2014년 JDLab. All rights reserved.
 //
 
-#import "LMPropertyScrollVC.h"
+#import "LMEventScrollAnimationVC.h"
 #import "LMHelpPopover.h"
 
-@interface LMPropertyScrollVC ()
+@interface LMEventScrollAnimationVC ()
 
 @property (weak) IBOutlet NSTextField *opacityMoveTF;
 @property (weak) IBOutlet NSTextField *xPosMoveTF;
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation LMPropertyScrollVC
+@implementation LMEventScrollAnimationVC
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,8 +30,8 @@
 
 - (void)awakeFromNib{
     
-    [_opacityMoveTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"opacityMove"] options:IUBindingDictNotRaisesApplicable];
-    [_xPosMoveTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"xPosMove"] options:IUBindingDictNotRaisesApplicable];
+    [_opacityMoveTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"opacityMove"] options:IUBindingDictNotRaisesApplicableAndContinuousUpdate];
+    [_xPosMoveTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"xPosMove"] options:IUBindingDictNotRaisesApplicableAndContinuousUpdate];
     [self addObserver:self forKeyPath:[_controller keyPathFromControllerToProperty:@"opacityMove"]  options:0 context:nil];
 }
 

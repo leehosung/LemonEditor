@@ -1,5 +1,5 @@
 //
-//  LMPropertyVTriggerVC.h
+//  LMPropertyMouseEventVC.h
 //  IUEditor
 //
 //  Created by ChoiSeungme on 2014. 4. 21..
@@ -9,8 +9,9 @@
 #import <Cocoa/Cocoa.h>
 #import "IUController.h"
 
-@interface LMPropertyVTriggerVC : NSViewController
+@interface LMEventMouseOnVC : NSViewController
 
 @property (nonatomic) IUController  *controller;
+
 
 @end
