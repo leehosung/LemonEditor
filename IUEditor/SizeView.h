@@ -8,6 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 #import "InnerSizeBox.h"
+
+@interface SizeImageView : NSImageView
+
+@end
 @interface SizeTextField : NSTextField
 
 @end

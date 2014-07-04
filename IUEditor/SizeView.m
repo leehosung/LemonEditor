@@ -13,6 +13,21 @@
 #import "LMRulerView.h"
 #import "LMWC.h"
 
+@implementation SizeImageView : NSImageView
+-(id)init{
+    self = [super init];
+    if(self){
+        self.imageScaling = NSImageScaleProportionallyUpOrDown;
+    }
+    return self;
+}
+
+- (NSView *)hitTest:(NSPoint)aPoint{
+    return nil;
+}
+
+@end
+
 @implementation SizeTextField : NSTextField
 - (id)init{
     self = [super init];

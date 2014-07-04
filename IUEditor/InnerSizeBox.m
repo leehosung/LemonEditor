@@ -15,6 +15,7 @@
     NSBox *selectedBox;
     SizeTextField *leftTF;
     SizeTextField *rightTF;
+    SizeImageView *imageView;
 }
 
 - (id)initWithFrame:(NSRect)frame width:(NSInteger)aWidth{
@@ -30,12 +31,23 @@
         
         NSString *tfTitle = [NSString stringWithFormat:@"%ld", aWidth];
         
-        rightTF = [[SizeTextField alloc] initWithFrame:NSMakeRect(aWidth-50, 4, 40, 11)];
+        rightTF = [[SizeTextField alloc] initWithFrame:NSMakeRect(aWidth-62, 8, 40, 11)];
         [rightTF setFont:[NSFont systemFontOfSize:9]];
         [rightTF setAlignment:NSRightTextAlignment];
         [rightTF setStringValue:tfTitle];
         [self addSubview:rightTF];
         
+        imageView = [[SizeImageView alloc] initWithFrame:NSMakeRect(aWidth-20, 6, 15, 15)];
+        if(aWidth < 650){
+            [imageView setImage:[NSImage imageNamed:@"width_mobile"]];
+        }
+        else if(aWidth < 770){
+            //imageView setImage:[NSImage imageNamed:@""];
+        }
+        else{
+            [imageView setImage:[NSImage imageNamed:@"width_pc"]];
+        }
+        [self addSubview:imageView];
 
         //For center
         /*
