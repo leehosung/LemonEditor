@@ -30,14 +30,15 @@
 }
 
 -(void)awakeFromNib{
-    
+
+    NSDictionary *numberBindingOption = @{NSRaisesForNotApplicableKeysBindingOption:@(NO),NSValueTransformerNameBindingOption:@"JDNilToZeroTransformer"};
     
     [_equationTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagFrameEquation] options:IUBindingDictNotRaisesApplicable];
-    [_durationTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagFrameDuration] options:IUBindingDictNotRaisesApplicable];
-    [_durationStepper bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagFrameDuration] options:IUBindingDictNotRaisesApplicable];
+    [_durationTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagFrameDuration] options:numberBindingOption];
+    [_durationStepper bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagFrameDuration] options:numberBindingOption];
     
-    [_widthTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagFrameWidth] options:IUBindingDictNotRaisesApplicable];
-    [_heightTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagFrameHeight] options:IUBindingDictNotRaisesApplicable];
+    [_widthTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagFrameWidth] options:numberBindingOption];
+    [_heightTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagFrameHeight] options:numberBindingOption];
 
 }
 

@@ -10,7 +10,7 @@
 #import "IUController.h"
 #import "LMIUPropertyVC.h"
 
-@interface LMPropertyPGFormVC : NSViewController <IUPropertyDoubleClickReceiver>
+@interface LMPropertyPGFormVC : NSViewController <NSComboBoxDelegate, IUPropertyDoubleClickReceiver>
 
 @property (nonatomic) IUController      *controller;
 

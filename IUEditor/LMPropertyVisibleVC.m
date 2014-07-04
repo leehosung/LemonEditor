@@ -32,9 +32,12 @@
 
 - (void)awakeFromNib{
     
+    NSDictionary *numberBindingOption = @{NSRaisesForNotApplicableKeysBindingOption:@(NO),NSValueTransformerNameBindingOption:@"JDNilToZeroTransformer"};
+
+    
     [_equationTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagVisibleEquation] options:IUBindingDictNotRaisesApplicable];
-    [_durationTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagVisibleDuration] options:IUBindingDictNotRaisesApplicable];
-    [_durationStepper bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagVisibleDuration] options:IUBindingDictNotRaisesApplicable];
+    [_durationTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagVisibleDuration] options:numberBindingOption];
+    [_durationStepper bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToEventTag:IUEventTagVisibleDuration] options:numberBindingOption];
     _typeArray = [IUEvent visibleTypeArray];
     [_visibleTypePopupBtn bind:NSContentBinding toObject:self withKeyPath:@"typeArray" options:IUBindingDictNotRaisesApplicable];
     

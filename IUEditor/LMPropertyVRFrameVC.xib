@@ -228,6 +228,7 @@
                 <outlet property="titleV" destination="25N-fk-Kyl" id="nyB-Hg-xlM"/>
             </connections>
         </customView>
+        <userDefaultsController representsSharedInstance="YES" id="RFT-rZ-wCA"/>
     </objects>
     <resources>
         <image name="help" width="18" height="18"/>
