@@ -60,8 +60,11 @@
     [_leftImageComboBox bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"leftArrowImage"] options:IUBindingDictNotRaisesApplicable];
     [_rightImageComboBox bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"rightArrowImage"] options:IUBindingDictNotRaisesApplicable];
     
-    [_countStepper bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"count"] options:IUBindingDictNotRaisesApplicable];
-    [_countTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"count"] options:IUBindingDictNotRaisesApplicable];
+    
+    NSDictionary *numberBindingOption = @{NSRaisesForNotApplicableKeysBindingOption:@(NO),NSValueTransformerNameBindingOption:@"JDNilToZeroTransformer"};
+    
+    [_countStepper bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"count"] options:numberBindingOption];
+    [_countTF bind:NSValueBinding toObject:self withKeyPath:[_controller keyPathFromControllerToProperty:@"count"] options:numberBindingOption];
     
     
     [self addObserver:self forKeyPath:@"resourceManager.imageFiles" options:NSKeyValueObservingOptionInitial context:@"image"];
