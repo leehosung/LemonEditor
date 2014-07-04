@@ -42,7 +42,7 @@
             [imageView setImage:[NSImage imageNamed:@"width_mobile"]];
         }
         else if(aWidth < 770){
-            //imageView setImage:[NSImage imageNamed:@""];
+            [imageView setImage:[NSImage imageNamed:@"width_tablet"]];
         }
         else{
             [imageView setImage:[NSImage imageNamed:@"width_pc"]];

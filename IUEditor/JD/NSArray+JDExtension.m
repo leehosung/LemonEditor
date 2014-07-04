@@ -51,6 +51,16 @@
     return NO;
 }
 
+- (BOOL)containsPrefix:(NSString *)string{
+    for (NSString *arrayStr in self) {
+        NSString *prefix = [string substringWithRange:NSMakeRange(0, arrayStr.length)];
+        if ([arrayStr isEqualToString:prefix]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 -(id)objectBeforeObject:(id)obj{
     NSUInteger index = [self indexOfObject:obj];
     if (index == 0) {

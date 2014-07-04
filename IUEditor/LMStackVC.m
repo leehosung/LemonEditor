@@ -294,6 +294,13 @@
         [textField setStringValue:currentBox.name];
         return;
     }
+    if([definedIdentifers containsString:modifiedName]
+       || [definedPrefixIdentifiers containsPrefix:modifiedName]){
+        [JDUIUtil hudAlert:@"This name is a program keyword" second:1];
+        [textField setStringValue:currentBox.name];
+        return;
+    }
+    
     
     if(modifiedName.length == 0){
         [JDUIUtil hudAlert:@"Name should not be empty" second:1];

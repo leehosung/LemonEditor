@@ -263,6 +263,8 @@
 		3DD9E97219123B3E0076BF4E /* iueditor.js in Resources */ = {isa = PBXBuildFile; fileRef = 3DD9E97019122EAB0076BF4E /* iueditor.js */; };
 		3DE201F119667F6E00976EBC /* LMHelpLargeVideoPopoverVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE201EF19667F6E00976EBC /* LMHelpLargeVideoPopoverVC.m */; };
 		3DE201F219667F6E00976EBC /* LMHelpLargeVideoPopoverVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DE201F019667F6E00976EBC /* LMHelpLargeVideoPopoverVC.xib */; };
+		3DE201F51966893E00976EBC /* width_tablet.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE201F31966893E00976EBC /* width_tablet.png */; };
+		3DE201F61966893E00976EBC /* width_tablet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE201F41966893E00976EBC /* width_tablet@2x.png */; };
 		3DE9C448193C7D0C00CCE374 /* jquery.backgroundSize.js in Resources */ = {isa = PBXBuildFile; fileRef = 3DE9C447193C7D0C00CCE374 /* jquery.backgroundSize.js */; };
 		3DED26491900D2DE001A1D67 /* align_center@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26481900D2DE001A1D67 /* align_center@2x.png */; };
 		3DED264B1900D2EE001A1D67 /* align_full@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED264A1900D2EE001A1D67 /* align_full@2x.png */; };
@@ -963,6 +965,8 @@
 		3DE201EE19667F6E00976EBC /* LMHelpLargeVideoPopoverVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMHelpLargeVideoPopoverVC.h; sourceTree = "<group>"; };
 		3DE201EF19667F6E00976EBC /* LMHelpLargeVideoPopoverVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMHelpLargeVideoPopoverVC.m; sourceTree = "<group>"; };
 		3DE201F019667F6E00976EBC /* LMHelpLargeVideoPopoverVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMHelpLargeVideoPopoverVC.xib; sourceTree = "<group>"; };
+		3DE201F31966893E00976EBC /* width_tablet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = width_tablet.png; sourceTree = "<group>"; };
+		3DE201F41966893E00976EBC /* width_tablet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "width_tablet@2x.png"; sourceTree = "<group>"; };
 		3DE9C447193C7D0C00CCE374 /* jquery.backgroundSize.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.backgroundSize.js; sourceTree = "<group>"; };
 		3DED26481900D2DE001A1D67 /* align_center@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "align_center@2x.png"; sourceTree = "<group>"; };
 		3DED264A1900D2EE001A1D67 /* align_full@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "align_full@2x.png"; sourceTree = "<group>"; };
@@ -1679,6 +1683,8 @@
 		3D54D64718ED5D1B00B5FEC2 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				3DE201F31966893E00976EBC /* width_tablet.png */,
+				3DE201F41966893E00976EBC /* width_tablet@2x.png */,
 				698BEAA019667D140019C1C3 /* width_mobile.png */,
 				698BEAA219667D1C0019C1C3 /* width_mobile@2x.png */,
 				698BEAA419667D230019C1C3 /* width_pc.png */,
@@ -3008,6 +3014,7 @@
 			files = (
 				698BEA9F19664CD20019C1C3 /* record_stop@2x.png in Resources */,
 				3DAEEE00193C3D2500196A81 /* iuinit.js in Resources */,
+				3DE201F51966893E00976EBC /* width_tablet.png in Resources */,
 				69D79B2F19138CB90020608D /* LMStartNewVC.xib in Resources */,
 				3DD9E97219123B3E0076BF4E /* iueditor.js in Resources */,
 				3DE9C448193C7D0C00CCE374 /* jquery.backgroundSize.js in Resources */,
@@ -3426,6 +3433,7 @@
 				2628C93B191A396400D9D8CD /* add_section@2x.png in Resources */,
 				2672A0AB19120A740050043E /* tool_collection.png in Resources */,
 				3DF803D918FE62C900913505 /* start_reference.png in Resources */,
+				3DE201F61966893E00976EBC /* width_tablet@2x.png in Resources */,
 				3D2E6BAD19653F3A00AC7DE5 /* EventVisible.mp4 in Resources */,
 				3DF803EB18FE62C900913505 /* stack_view.png in Resources */,
 				3DF8044018FE62FC00913505 /* tool_fblike@2x.png in Resources */,

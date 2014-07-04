@@ -15,6 +15,7 @@
 
 - (id)objectAtIndexOrNil:(NSUInteger)index;
 - (BOOL)containsString:(NSString*)string;
+- (BOOL)containsPrefix:(NSString *)string;
 
 - (id)objectBeforeObject:(id)obj;
 - (id)objectAfterObject:(id)obj;

@@ -284,6 +284,13 @@
         return;
     }
     
+    if([definedIdentifers containsString:modifiedName]
+       || [definedPrefixIdentifiers containsPrefix:modifiedName]){
+        [JDUIUtil hudAlert:@"This name is a program keyword" second:1];
+        [textField setStringValue:sheet.name];
+        return;
+    }
+    
     NSCharacterSet *characterSet = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
     if([modifiedName rangeOfCharacterFromSet:characterSet].location != NSNotFound){
         [JDUIUtil hudAlert:@"Name should be alphabet or digit" second:1];
