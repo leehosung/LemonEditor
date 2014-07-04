@@ -96,7 +96,7 @@
         for(NSInteger i=self.children.count; i <count; i++){
             IUCarouselItem *item = [[IUCarouselItem alloc] initWithProject:self.project options:nil];
             item.name = item.htmlID;
-            item.carousel = self;
+//            item.carousel = self;
             [self addIU:item error:nil];
         }
         

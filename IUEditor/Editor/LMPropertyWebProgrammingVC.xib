@@ -76,12 +76,24 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="AAk-Yu-Jbx">
+                                <rect key="frame" x="22" y="26" width="254" height="5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="254" id="IJu-79-H2j"/>
+                                    <constraint firstAttribute="height" constant="1" id="Ld2-UA-grd"/>
+                                </constraints>
+                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <font key="titleFont" metaFont="system"/>
+                            </box>
                         </subviews>
                     </view>
                     <constraints>
+                        <constraint firstItem="AAk-Yu-Jbx" firstAttribute="leading" secondItem="1Fk-2L-yQa" secondAttribute="leading" constant="22" id="8tI-6W-CSL"/>
                         <constraint firstItem="eOE-Mx-CKX" firstAttribute="top" secondItem="1Fk-2L-yQa" secondAttribute="top" constant="8" id="9U7-6u-OHz"/>
                         <constraint firstAttribute="height" constant="30" id="EsK-b8-WlG"/>
                         <constraint firstItem="eOE-Mx-CKX" firstAttribute="leading" secondItem="1Fk-2L-yQa" secondAttribute="leading" constant="22" id="F7a-VK-SNK"/>
+                        <constraint firstItem="AAk-Yu-Jbx" firstAttribute="top" secondItem="1Fk-2L-yQa" secondAttribute="top" constant="1" id="PH4-q2-oi4"/>
                     </constraints>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
