@@ -3777,6 +3777,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"JDLOGGING=1",
+					"CA_DEBUG_TRANSACTIONS=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "IUEditor/IUEditor-Info.plist";

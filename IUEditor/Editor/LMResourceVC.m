@@ -82,29 +82,7 @@
     [_resourceIconB setEnabled:NO];
 }
 
-- (IBAction)clickAddResourceBtn:(id)sender {
-    
-    NSOpenPanel* openDlg = [NSOpenPanel openPanel];
-    [openDlg setCanChooseFiles:YES];
-    [openDlg setCanChooseDirectories:NO];
-    [openDlg setAllowsMultipleSelection:YES];
 
-    
-    if([openDlg runModal]){
-        // Get an array containing the full filenames of all
-        // files and directories selected.
-        NSArray* files = [openDlg URLs];
-        
-        // Loop through all the files and process them.
-        for(int i = 0; i < [files count]; i++ )
-        {
-            NSURL* filePath = [files objectAtIndex:i];
-            [_manager insertResourceWithContentOfPath:[filePath path]];
-        }
-    }
-    
-    [_resourceArrayController rearrangeObjects];
-}
 - (IBAction)clickRefreshBtn:(id)sender {
     [_resourceArrayController rearrangeObjects];
 }
@@ -154,8 +132,42 @@
 #pragma mark - 
 #pragma mark addResource
 
+- (IBAction)clickAddResourceBtn:(id)sender {
+    
+    NSOpenPanel* openDlg = [NSOpenPanel openPanel];
+    [openDlg setCanChooseFiles:YES];
+    [openDlg setCanChooseDirectories:NO];
+    [openDlg setAllowsMultipleSelection:YES];
+    openDlg.delegate = self;
+    
+    //FIXME : speed up!!!
+    if([openDlg runModal]){
+        // Get an array containing the full filenames of all
+        // files and directories selected.
+        NSArray* files = [openDlg URLs];
+        
+        for(int i = 0; i < [files count]; i++ )
+        {
+            NSURL* filePath = [files objectAtIndex:i];
+            [_manager insertResourceWithContentOfPath:[filePath path]];
+        }
+    }
+    
+    [_resourceArrayController rearrangeObjects];
+}
+
 - (void)addResource:(NSURL *)url type:(IUResourceType)type{
     [_manager insertResourceWithContentOfPath:[url relativePath]];
+}
+
+#pragma mark - openpanel delegate
+- (BOOL)panel:(id)sender shouldEnableURL:(NSURL *)url {
+    NSString *fileName = [url lastPathComponent];
+    IUResourceFile *existedFile = [_manager resourceFileWithName:fileName];
+    if (existedFile) {
+        return NO;
+    }
+    return YES;
 }
 
 #pragma mark - mouse Event

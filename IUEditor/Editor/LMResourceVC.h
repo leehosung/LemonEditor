@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "IUResourceManager.h"
 #import "LMDragAndDropButton.h"
-@interface LMResourceVC : NSViewController
+@interface LMResourceVC : NSViewController <NSOpenSavePanelDelegate>
 
 @property (nonatomic) IUResourceManager *manager;
 
