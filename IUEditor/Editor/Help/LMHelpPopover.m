@@ -10,6 +10,8 @@
 #import "LMHelpImagePopoverVC.h"
 #import "LMHelpTextPopoverVC.h"
 #import "LMHelpVideoPopoverVC.h"
+#import "LMHelpLargeVideoPopoverVC.h"
+
 
 static LMHelpPopover *gHelpPopover = nil;
 
@@ -17,6 +19,7 @@ static LMHelpPopover *gHelpPopover = nil;
     LMHelpImagePopoverVC    *imagePopoverVC;
     LMHelpTextPopoverVC     *textPopoverVC;
     LMHelpVideoPopoverVC    *videoPopoverVC;
+    LMHelpLargeVideoPopoverVC *largeVideoPopoverVC;
     BOOL isSetting;
 }
 
@@ -38,6 +41,7 @@ static LMHelpPopover *gHelpPopover = nil;
         imagePopoverVC = [[LMHelpImagePopoverVC alloc] initWithNibName:[LMHelpImagePopoverVC class].className bundle:nil];
         textPopoverVC = [[LMHelpTextPopoverVC alloc] initWithNibName:[LMHelpTextPopoverVC class].className bundle:nil];
         videoPopoverVC = [[LMHelpVideoPopoverVC alloc] initWithNibName:[LMHelpVideoPopoverVC class].className bundle:nil];
+        largeVideoPopoverVC = [[LMHelpLargeVideoPopoverVC alloc] initWithNibName:[LMHelpLargeVideoPopoverVC class].className bundle:nil];
         
         self.contentViewController = textPopoverVC;
         
@@ -57,6 +61,8 @@ static LMHelpPopover *gHelpPopover = nil;
         case LMPopoverTypeTextAndVideo:
             self.contentViewController = videoPopoverVC;
             break;
+        case LMPopoverTypeTextAndLargeVideo:
+            self.contentViewController = largeVideoPopoverVC;
         default:
             assert(0);
             break;
@@ -65,7 +71,7 @@ static LMHelpPopover *gHelpPopover = nil;
 #pragma mark - Video
 
 - (void)setVideoName:(NSString *)videoName title:(NSString *)title rtfFileName:(NSString *)rtfFileName{
-    if(_type == LMPopoverTypeTextAndVideo){
+    if(_type == LMPopoverTypeTextAndVideo || _type == LMPopoverTypeTextAndLargeVideo){
         NSString *rtfPath, *videoPath;
         
         if(rtfFileName){
@@ -76,6 +82,8 @@ static LMHelpPopover *gHelpPopover = nil;
         }
         
         [videoPopoverVC setVideoPath:videoPath title:title rtfPath:rtfPath];
+        [largeVideoPopoverVC setVideoPath:videoPath title:title rtfPath:rtfPath];
+
         
         isSetting = YES;
     }

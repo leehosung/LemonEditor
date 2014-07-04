@@ -12,6 +12,7 @@ typedef enum{
     LMPopoverTypeText,
     LMPopoverTypeTextAndImage,
     LMPopoverTypeTextAndVideo,
+    LMPopoverTypeTextAndLargeVideo
 }LMPopoverType;
 
 @interface LMHelpPopover : NSPopover

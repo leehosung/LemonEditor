@@ -261,6 +261,8 @@
 		3DD4787E193DDCE100639AB5 /* LMEventScrollAnimationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD4787C193DDCE100639AB5 /* LMEventScrollAnimationVC.xib */; };
 		3DD478811945850E00639AB5 /* IUProjectDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD478801945850E00639AB5 /* IUProjectDocument.m */; };
 		3DD9E97219123B3E0076BF4E /* iueditor.js in Resources */ = {isa = PBXBuildFile; fileRef = 3DD9E97019122EAB0076BF4E /* iueditor.js */; };
+		3DE201F119667F6E00976EBC /* LMHelpLargeVideoPopoverVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE201EF19667F6E00976EBC /* LMHelpLargeVideoPopoverVC.m */; };
+		3DE201F219667F6E00976EBC /* LMHelpLargeVideoPopoverVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DE201F019667F6E00976EBC /* LMHelpLargeVideoPopoverVC.xib */; };
 		3DE9C448193C7D0C00CCE374 /* jquery.backgroundSize.js in Resources */ = {isa = PBXBuildFile; fileRef = 3DE9C447193C7D0C00CCE374 /* jquery.backgroundSize.js */; };
 		3DED26491900D2DE001A1D67 /* align_center@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED26481900D2DE001A1D67 /* align_center@2x.png */; };
 		3DED264B1900D2EE001A1D67 /* align_full@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DED264A1900D2EE001A1D67 /* align_full@2x.png */; };
@@ -958,6 +960,9 @@
 		3DD4787F1945850E00639AB5 /* IUProjectDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUProjectDocument.h; sourceTree = "<group>"; };
 		3DD478801945850E00639AB5 /* IUProjectDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IUProjectDocument.m; sourceTree = "<group>"; };
 		3DD9E97019122EAB0076BF4E /* iueditor.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = iueditor.js; sourceTree = "<group>"; };
+		3DE201EE19667F6E00976EBC /* LMHelpLargeVideoPopoverVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMHelpLargeVideoPopoverVC.h; sourceTree = "<group>"; };
+		3DE201EF19667F6E00976EBC /* LMHelpLargeVideoPopoverVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMHelpLargeVideoPopoverVC.m; sourceTree = "<group>"; };
+		3DE201F019667F6E00976EBC /* LMHelpLargeVideoPopoverVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMHelpLargeVideoPopoverVC.xib; sourceTree = "<group>"; };
 		3DE9C447193C7D0C00CCE374 /* jquery.backgroundSize.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.backgroundSize.js; sourceTree = "<group>"; };
 		3DED26481900D2DE001A1D67 /* align_center@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "align_center@2x.png"; sourceTree = "<group>"; };
 		3DED264A1900D2EE001A1D67 /* align_full@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "align_full@2x.png"; sourceTree = "<group>"; };
@@ -1550,6 +1555,9 @@
 				3DA6F30B1963B810004DF0AA /* LMHelpVideoPopoverVC.h */,
 				3DA6F30C1963B810004DF0AA /* LMHelpVideoPopoverVC.m */,
 				3DA6F30D1963B810004DF0AA /* LMHelpVideoPopoverVC.xib */,
+				3DE201EE19667F6E00976EBC /* LMHelpLargeVideoPopoverVC.h */,
+				3DE201EF19667F6E00976EBC /* LMHelpLargeVideoPopoverVC.m */,
+				3DE201F019667F6E00976EBC /* LMHelpLargeVideoPopoverVC.xib */,
 				3DA6F3001963A6B9004DF0AA /* LMHelpPopover.h */,
 				3DA6F3011963A6B9004DF0AA /* LMHelpPopover.m */,
 			);
@@ -3320,6 +3328,7 @@
 				3DED26C81900F65C001A1D67 /* ic_image.png in Resources */,
 				3DF8044F18FE62FC00913505 /* tool_transition.png in Resources */,
 				3DF8041418FE62F200913505 /* add_ghost.png in Resources */,
+				3DE201F219667F6E00976EBC /* LMHelpLargeVideoPopoverVC.xib in Resources */,
 				3D748C851921D1BD005665A3 /* stack_carousel_item.png in Resources */,
 				262D4AAB1947FB05006F5FBE /* radius_icon_04@2x.png in Resources */,
 				3DED26611900D313001A1D67 /* ic_folder@2x.png in Resources */,
@@ -3589,6 +3598,7 @@
 				3DED26F119010BB0001A1D67 /* LMPropertyIUImportVC.m in Sources */,
 				69A45DE018F6702C00C551D9 /* LMPropertyBorderVC.m in Sources */,
 				3D825BC9195940E0001CC3C2 /* LMInspectorAltTextVC.m in Sources */,
+				3DE201F119667F6E00976EBC /* LMHelpLargeVideoPopoverVC.m in Sources */,
 				6999161D1919F05E000ECF57 /* PGSubmitButton.m in Sources */,
 				6954812818D7640A00CA02F1 /* IUPage.m in Sources */,
 				69C5764018D729830016F050 /* IUSheetController.m in Sources */,
