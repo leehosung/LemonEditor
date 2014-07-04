@@ -36,6 +36,7 @@
 }
 
 - (void)awakeFromNib{
+    _urlTF.delegate = self;
     [_divLinkPB setEnabled:NO];
     
     [self addObserver:self forKeyPath:@"controller.selectedObjects"
@@ -148,12 +149,15 @@
     }
     
 }
-- (IBAction)endURLLinkTF:(id)sender {
-    NSString *link = [_urlTF stringValue];
-    [self setValue:link forKeyPath:[_controller keyPathFromControllerToProperty:@"link"]];
-    
-}
 
+
+- (void)controlTextDidChange:(NSNotification *)obj{
+    NSTextField *textField = obj.object;
+    if([textField isEqualTo:_urlTF]){
+        NSString *link = [_urlTF stringValue];
+        [self setValue:link forKeyPath:[_controller keyPathFromControllerToProperty:@"link"]];
+    }
+}
 
 #pragma mark - div link
 

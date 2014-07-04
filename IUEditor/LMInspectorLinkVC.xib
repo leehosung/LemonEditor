@@ -77,9 +77,6 @@
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
-                    <connections>
-                        <action selector="endURLLinkTF:" target="-2" id="74g-DS-sxP"/>
-                    </connections>
                 </textField>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="jRs-ai-7ge">
                     <rect key="frame" x="43" y="16" width="43" height="21"/>

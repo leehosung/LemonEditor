@@ -19,8 +19,6 @@
 @property (weak) IBOutlet NSButton *resourceIconB;
 @property (strong) IBOutlet NSArrayController *resourceArrayController;
 
-@property (weak) IBOutlet LMDragAndDropButton *trashV;
-
 @end
 
 @implementation LMResourceVC
@@ -37,18 +35,15 @@
     [_collectionListV bind:NSContentBinding toObject:_resourceArrayController withKeyPath:@"arrangedObjects" options:nil];
     [_collectionIconV bind:NSContentBinding toObject:_resourceArrayController withKeyPath:@"arrangedObjects" options:nil];
     [_resourceArrayController bind:NSContentArrayBinding toObject:self withKeyPath:@"manager.imageAndVideoFiles" options:nil];
-
-    _trashV.delegate = self;
-    [_trashV registerForDraggedType:kUTTypeIUImageResource];
 }
 
 #pragma mark - trash delegate
+#if 0
 - (void)draggingDropedForDragAndDropImageV:(LMDragAndDropButton *)v item:(id)item{
     IUResourceFile *file = [_manager resourceFileWithName:item];
     [self.manager removeResourceFile:file];
 }
-
-
+#endif
 
 
 #pragma mark - collectionView Drag
@@ -93,6 +88,7 @@
     [openDlg setCanChooseFiles:YES];
     [openDlg setCanChooseDirectories:NO];
     [openDlg setAllowsMultipleSelection:YES];
+
     
     if([openDlg runModal]){
         // Get an array containing the full filenames of all
