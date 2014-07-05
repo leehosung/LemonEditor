@@ -132,9 +132,27 @@
     return YES;
 }
 
-- (void)performHelpAboutProject:(id)sender{
+- (IBAction)performHelp:(NSMenuItem *)sender{
     LMHelpWC *hWC = [LMHelpWC sharedHelpWC];
-    [hWC showHelpWebURL:[NSURL URLWithString:@"http://jdlaborg.github.io/LemonEditor/"] withTitle:@"About Project"];
+    if (sender.tag == 0) {
+        [hWC showHelpWebURL:[NSURL URLWithString:@"http://jdlaborg.github.io/LemonEditor/"] withTitle:@"About Project"];
+    }
+    else {
+        switch (sender.tag) {
+            case 1:
+                [hWC showHelpDocumentWithKey:@"RunningAProject"];
+                break;
+            case 2:
+                [hWC showHelpDocumentWithKey:@"tracing"];
+                break;
+            case 3:
+                [hWC showHelpDocumentWithKey:@"positionProperty"];
+                break;
+                
+            default:
+                break;
+        }
+    }
 }
 
 @end

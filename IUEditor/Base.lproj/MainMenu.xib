@@ -157,7 +157,25 @@
                             <menuItem title="About Project" id="jHa-Jg-mkb">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="performHelpAboutProject:" target="-1" id="EBy-g5-blG"/>
+                                    <action selector="performHelp:" target="494" id="Wrc-ry-YJb"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Running a project" tag="1" id="KCO-EM-J4m">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="performHelp:" target="494" id="o95-eX-ArK"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Tracing overview" tag="2" id="GwS-XB-5dZ">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="performHelp:" target="494" id="ei0-Pn-3CE"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Positioning" tag="3" id="q0Y-4a-xgB">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="performHelp:" target="494" id="fui-Zv-erI"/>
                                 </connections>
                             </menuItem>
                         </items>
