@@ -71,7 +71,8 @@
 - (void)selectionContextDidChange:(NSDictionary *)change{
     id protoType = [self valueForKeyPath:[_controller keyPathFromControllerToProperty:@"prototypeClass"]];
     
-    if(protoType == nil || protoType == NSNoSelectionMarker){
+    if(protoType == nil || protoType == NSNoSelectionMarker
+       || protoType == NSMultipleValuesMarker || protoType == NSNotApplicableMarker){
         [_prototypeB selectItemWithTitle:@"None"];
     }
     else if(protoType){

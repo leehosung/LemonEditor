@@ -86,8 +86,7 @@
         
         if (value == NSNoSelectionMarker || value == nil) {
             [_pageLinkPopupButton selectItemWithTitle:@"None"];
-            [_urlTF setStringValue:@"Empty"];
-
+            [_urlTF setStringValue:@""];
         }
         else if (value == NSMultipleValuesMarker) {
             [_pageLinkPopupButton selectItemWithTitle:@"None"];

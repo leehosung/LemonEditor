@@ -26,7 +26,7 @@
             self[tag] = [NSString stringWithFormat:@"%dpx", intValue];
             break;
         default:
-            NSAssert(0, "");
+            NSAssert(0, @"");
             break;
     }
 }
