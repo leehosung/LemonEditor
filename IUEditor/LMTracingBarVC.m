@@ -130,11 +130,6 @@
 }
 - (IBAction)clickGhostBtn:(NSButton*)sender {
     //show tutorial if needed
-    if ([LMTutorialManager shouldShowTutorial:@"Ghost"]) {
-        [[LMHelpPopover sharedHelpPopover] setType:LMPopoverTypeTextAndVideo];
-        [[LMHelpPopover sharedHelpPopover] setVideoName:@"movie.mp4" title:@"How to use Ghose" rtfFileName:@"ghost.rtf"];
-        [[LMHelpPopover sharedHelpPopover] showRelativeToRect:sender.frame ofView:self.view preferredEdge:NSMaxYEdge];
-    }
     BOOL showGhost = [[NSUserDefaults standardUserDefaults] boolForKey:@"showGhost"];
     [[NSUserDefaults standardUserDefaults] setBool:!showGhost forKey:@"showGhost"];
 }

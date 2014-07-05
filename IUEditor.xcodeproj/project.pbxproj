@@ -495,6 +495,8 @@
 		692C4DC21966A13600EAB2E7 /* PositionProperty.pages in Resources */ = {isa = PBXBuildFile; fileRef = 692C4DC11966A13600EAB2E7 /* PositionProperty.pages */; };
 		692C4DC41966A15400EAB2E7 /* tracingOverview.pages in Resources */ = {isa = PBXBuildFile; fileRef = 692C4DC31966A15400EAB2E7 /* tracingOverview.pages */; };
 		692C4DC61966A22D00EAB2E7 /* tracingOverview.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 692C4DC51966A22D00EAB2E7 /* tracingOverview.pdf */; };
+		692C4DC91967D10300EAB2E7 /* RunningAProject.pages in Resources */ = {isa = PBXBuildFile; fileRef = 692C4DC71967D10300EAB2E7 /* RunningAProject.pages */; };
+		692C4DCA1967D10300EAB2E7 /* RunningAProject.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 692C4DC81967D10300EAB2E7 /* RunningAProject.pdf */; };
 		69317CB21947271F0065B6F4 /* LMHelpWC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69317CB01947271F0065B6F4 /* LMHelpWC.m */; };
 		69317CB31947271F0065B6F4 /* LMHelpWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69317CB11947271F0065B6F4 /* LMHelpWC.xib */; };
 		69346623192B805000F82DAF /* LMCommandVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69346622192B805000F82DAF /* LMCommandVC.xib */; };
@@ -1258,6 +1260,8 @@
 		692C4DC11966A13600EAB2E7 /* PositionProperty.pages */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PositionProperty.pages; sourceTree = "<group>"; };
 		692C4DC31966A15400EAB2E7 /* tracingOverview.pages */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = tracingOverview.pages; sourceTree = "<group>"; };
 		692C4DC51966A22D00EAB2E7 /* tracingOverview.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = tracingOverview.pdf; sourceTree = "<group>"; };
+		692C4DC71967D10300EAB2E7 /* RunningAProject.pages */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RunningAProject.pages; sourceTree = "<group>"; };
+		692C4DC81967D10300EAB2E7 /* RunningAProject.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = RunningAProject.pdf; sourceTree = "<group>"; };
 		69317CAF1947271F0065B6F4 /* LMHelpWC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMHelpWC.h; sourceTree = "<group>"; };
 		69317CB01947271F0065B6F4 /* LMHelpWC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMHelpWC.m; sourceTree = "<group>"; };
 		69317CB11947271F0065B6F4 /* LMHelpWC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMHelpWC.xib; sourceTree = "<group>"; };
@@ -2570,6 +2574,8 @@
 				69FEC48D194845CA00483C11 /* scrollingAnimation.pdf */,
 				062EFBDD19663C43007ECFD0 /* positionProperty.pdf */,
 				692C4DC51966A22D00EAB2E7 /* tracingOverview.pdf */,
+				692C4DC71967D10300EAB2E7 /* RunningAProject.pages */,
+				692C4DC81967D10300EAB2E7 /* RunningAProject.pdf */,
 				692C4DC11966A13600EAB2E7 /* PositionProperty.pages */,
 				692C4DC31966A15400EAB2E7 /* tracingOverview.pages */,
 			);
@@ -3243,6 +3249,7 @@
 				69DE5CE319614D880050D020 /* LMNotiMessageWC.xib in Resources */,
 				3DED26891900D329001A1D67 /* stack_navi@2x.png in Resources */,
 				58FF6B8F1946EA2B009A86F9 /* PGSubmitButtonVC.xib in Resources */,
+				692C4DCA1967D10300EAB2E7 /* RunningAProject.pdf in Resources */,
 				3D0D480A18FFAF24000A5B53 /* LMTopToolbarVC.xib in Resources */,
 				3DF803EA18FE62C900913505 /* ic_page.png in Resources */,
 				3DA416B91935A6BE00559028 /* LMPreferenceFontVC.xib in Resources */,
@@ -3548,6 +3555,7 @@
 				26C85664192060E500118CA5 /* tool_page_nav@2x.png in Resources */,
 				3DED26F219010BB0001A1D67 /* LMPropertyIUImportVC.xib in Resources */,
 				CBA8780E1964084700075294 /* ghost.rtf in Resources */,
+				692C4DC91967D10300EAB2E7 /* RunningAProject.pages in Resources */,
 				3DF8043A18FE62FC00913505 /* tool_movie@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
