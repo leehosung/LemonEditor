@@ -117,11 +117,9 @@
     }
     
     //show tutorial if needed
-    //    if ([LMTutorialManager shouldShowTutorial:@"run"]) {
-    [[LMHelpWC sharedHelpWC] showHelpDocumentWithKey:@"RunningAProject"];
-    //    }
-    
-
+    if ([LMTutorialManager shouldShowTutorial:@"run"]) {
+        [[LMHelpWC sharedHelpWC] showHelpDocumentWithKey:@"RunningAProject"];
+    }
 }
 
 - (IBAction) runOrStopServer:(id)sender{
