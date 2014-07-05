@@ -14,7 +14,7 @@
 @property (weak) IBOutlet NSButton *nextB;
 
 @property   NSArray *tutorial, *tutorialEng, *tutorialKor;
-@property   NSInteger index;
+@property   NSUInteger index;
 
 
 @end
@@ -43,10 +43,14 @@
     [_tutorialImageV setImage:[NSImage imageNamed:@"Tutorial00.png"]];
 }
 
-- (void) setButtonOrder{
+- (void)setButtonOrder{
     [_prevB setTitle:@"Previous"];
     [_nextB setTitle:@"Next"];
-    
+}
+
+- (void)setButtonLast{
+    [_prevB setTitle:@"Previous"];
+    [_nextB setTitle:@"Close"];
 }
 - (void) setButtonIntro{
     [_prevB setTitle:@"English"];
@@ -57,27 +61,31 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 
 }
-- (IBAction)pushPrevB:(id)sender {
 
+- (void)updateImageAndButton{
+    if (_index== 0) {
+        [self setButtonIntro];
+    }
+    else if(_index < _tutorial.count -1 ){
+        [self setButtonOrder];
+    }
+    else{
+        [self setButtonLast];
+    }
+    [_tutorialImageV setImage:[NSImage imageNamed:_tutorial[_index]]];
+}
+- (IBAction)pushPrevB:(id)sender {
     if (_index== 0) {
         //select English
         NSArray *array = _tutorialEng;
         _tutorial = array;
         _index++;
-        [_tutorialImageV setImage:[NSImage imageNamed:_tutorial[_index]]];
-        [self setButtonOrder];
-    }
-    else if (_index < 6 && _index >0 ) {
-        //prev tutorial
-        _index--;
-        [_tutorialImageV setImage:[NSImage imageNamed:_tutorial[_index]]];
-        if (_index==0) {
-            [self setButtonIntro];
-        }
     }
     else{
-        assert(0);
+        //prev tutorial
+        _index--;
     }
+    [self updateImageAndButton];
 }
 - (IBAction)pushNextB:(id)sender {
     if (_index == 0) {
@@ -85,22 +93,19 @@
         NSArray *array = _tutorialKor;
         _tutorial = array;
         _index++;
-        [_tutorialImageV setImage:[NSImage imageNamed:_tutorial[_index]]];
-        [self setButtonOrder];
     }
-       else if (_index < 6 && _index >0 ) {
+    else if (_index < _tutorial.count -1 && _index >0 ) {
         //next tutorial
         _index++;
-        [_tutorialImageV setImage:[NSImage imageNamed:_tutorial[_index]]];
     }
-    else if (_index == 6) {
-           [self.window close];
-       }
-
     else{
-        assert(0);
+        [self.window close];
     }
+    [self updateImageAndButton];
+
 }
+
+
 
 
 @end
