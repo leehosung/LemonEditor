@@ -94,10 +94,23 @@
     }
 }
 
+
 - (void)comboBoxSelectionDidChange:(NSNotification *)notification{
-    NSString *fileName = [_ghostImageComboBox objectValueOfSelectedItem];
-    self.sheet.ghostImageName = fileName;
+    
+    NSComboBox *comboBox = notification.object;
+    if([comboBox isEqualTo:_ghostImageComboBox]){
+        
+        NSString *fileName = [_ghostImageComboBox objectValueOfSelectedItem];
+        if(fileName == nil){
+            [_ghostImageComboBox selectItemWithObjectValue:self.sheet.ghostImageName];
+        }
+        else{
+            self.sheet.ghostImageName = fileName;
+        }
+    }
 }
+
+
 
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor{
     NSString *fileName = [control stringValue];
