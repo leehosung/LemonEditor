@@ -340,4 +340,13 @@
     }
     return retArray;
 }
+
+-(IUBox*)firstDeepestBox{
+    IUBox *box = [[self content] firstObject];
+    while ([box.children count] > 0) {
+        box = [box.children objectAtIndex:0];
+    }
+    return box;
+}
+
 @end

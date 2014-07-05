@@ -8,8 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "IUBox.h"
-
-
+#import "NSTreeController+JDExtension.h"
 
 @class IUSheet;
 @class IUImport;
@@ -39,6 +38,8 @@
 
 -(void)copySelectedIUToPasteboard:(id)sender;
 -(void)pasteToSelectedIU:(id)sender;
+
+-(IUBox*)firstDeepestBox;
 
 @property _binding_ NSRange selectedTextRange;
 
