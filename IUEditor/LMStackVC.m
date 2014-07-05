@@ -174,9 +174,10 @@
         return NSDragOperationMove;
     }
     //newIU
+    //FIXME: page위로 갈때?? 접혀있을 때?? newParent가 nil이됨.
     NSData *iuData = [pBoard dataForType:(id)kUTTypeIUType];
     if(iuData){
-        return NSDragOperationEvery;
+        return NSDragOperationNone;
     }
     
     return NSDragOperationNone;
@@ -215,6 +216,9 @@
         [_IUController rearrangeObjects];
         return YES;
     }
+    
+    return NO;
+    //FIXME: page위로 갈때?? 접혀있을 때?? newParent가 nil이됨.
     
     //type1) newIU
     NSData *iuData = [pBoard dataForType:(id)kUTTypeIUType];
