@@ -27,7 +27,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fl9-oN-dA4">
+                <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fl9-oN-dA4">
                     <rect key="frame" x="93" y="38" width="184" height="19"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="184" id="Cyj-qT-jxQ"/>
@@ -58,7 +58,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pDr-gy-0JD">
+                <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pDr-gy-0JD">
                     <rect key="frame" x="93" y="12" width="184" height="19"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="184" id="EbJ-gq-EPr"/>
@@ -99,17 +99,6 @@
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="system"/>
                 </box>
-                <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="md3-mL-qrB">
-                    <rect key="frame" x="257" y="62" width="20" height="20"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="20" id="ZuJ-lW-Mjd"/>
-                        <constraint firstAttribute="height" constant="20" id="tRB-d9-8wP"/>
-                    </constraints>
-                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="help" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="eni-CI-zeT">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="ykE-RK-QhC" firstAttribute="top" secondItem="GQf-nq-rRJ" secondAttribute="top" constant="1" id="2RA-aQ-Vgd"/>
@@ -117,20 +106,14 @@
                 <constraint firstItem="RPe-sK-FsQ" firstAttribute="top" secondItem="nsw-3u-eUR" secondAttribute="bottom" constant="10" id="47U-sO-Dei"/>
                 <constraint firstItem="ykE-RK-QhC" firstAttribute="leading" secondItem="GQf-nq-rRJ" secondAttribute="leading" constant="22" id="5Zr-DR-TQ5"/>
                 <constraint firstItem="Wh1-aZ-2Cf" firstAttribute="leading" secondItem="GQf-nq-rRJ" secondAttribute="leading" constant="4" id="8hR-Lu-O0n"/>
-                <constraint firstItem="md3-mL-qrB" firstAttribute="leading" secondItem="nsw-3u-eUR" secondAttribute="trailing" constant="149" id="9lm-sv-Nec"/>
                 <constraint firstItem="Wh1-aZ-2Cf" firstAttribute="top" secondItem="RPe-sK-FsQ" secondAttribute="bottom" constant="12" id="a4P-zw-Mew"/>
                 <constraint firstItem="nsw-3u-eUR" firstAttribute="leading" secondItem="GQf-nq-rRJ" secondAttribute="leading" constant="22" id="gC6-Xw-tzA"/>
                 <constraint firstItem="fl9-oN-dA4" firstAttribute="leading" secondItem="RPe-sK-FsQ" secondAttribute="trailing" constant="6" id="jf8-bp-FCP"/>
-                <constraint firstItem="fl9-oN-dA4" firstAttribute="top" secondItem="md3-mL-qrB" secondAttribute="bottom" constant="5" id="jwB-yn-qec"/>
                 <constraint firstItem="pDr-gy-0JD" firstAttribute="leading" secondItem="Wh1-aZ-2Cf" secondAttribute="trailing" constant="6" id="qi4-3q-QsY"/>
                 <constraint firstItem="nsw-3u-eUR" firstAttribute="top" secondItem="ykE-RK-QhC" secondAttribute="bottom" constant="8" id="sCJ-LF-sO0"/>
                 <constraint firstItem="pDr-gy-0JD" firstAttribute="top" secondItem="fl9-oN-dA4" secondAttribute="bottom" constant="7" id="uDV-ca-p3c"/>
-                <constraint firstItem="md3-mL-qrB" firstAttribute="top" secondItem="ykE-RK-QhC" secondAttribute="bottom" constant="4" id="uWa-aY-0NF"/>
             </constraints>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="o0m-nj-z4l"/>
     </objects>
-    <resources>
-        <image name="help" width="18" height="18"/>
-    </resources>
 </document>
