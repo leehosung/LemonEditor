@@ -8,7 +8,6 @@
         <customObject id="-2" userLabel="File's Owner" customClass="LMWC">
             <connections>
                 <outlet property="appearanceV" destination="209-eo-kDy" id="Vjs-mp-RBg"/>
-                <outlet property="bottomToolbarV" destination="YTs-oo-nxs" id="Had-lh-RkA"/>
                 <outlet property="centerV" destination="LCo-BM-DQN" id="a81-Fm-UQ1"/>
                 <outlet property="commandV" destination="Nwr-vk-YZ2" id="0Yv-OA-2p6"/>
                 <outlet property="eventV" destination="cND-E8-FNH" id="L2T-JZ-w7f"/>
@@ -24,6 +23,7 @@
                 <outlet property="rightV" destination="Ci0-yr-ElZ" id="l8s-Lp-bUW"/>
                 <outlet property="rightVConstraint" destination="cR7-qD-bfW" id="fxY-5D-ZvE"/>
                 <outlet property="topToolbarV" destination="4es-7h-bcl" id="SBG-S6-dhA"/>
+                <outlet property="tracingV" destination="YTs-oo-nxs" id="Uxa-Kn-Fbf"/>
                 <outlet property="widgetMatrix" destination="vUX-uW-fTu" id="dU9-aL-EAr"/>
                 <outlet property="widgetTabV" destination="Rvr-f8-CYQ" id="rJr-Fz-ouO"/>
                 <outlet property="widgetV" destination="CwY-UY-xV5" id="Jrf-Fl-b8L"/>
@@ -252,7 +252,9 @@
                             <webView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Gw-Nv-6C2" userLabel="LogWebView">
                                 <rect key="frame" x="0.0" y="-2" width="2" height="2"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12"/>
+                                <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12">
+                                    <nil key="identifier"/>
+                                </webPreferences>
                             </webView>
                         </subviews>
                         <constraints>

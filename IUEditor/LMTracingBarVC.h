@@ -10,7 +10,7 @@
 #import "IUResourceManager.h"
 #import "IUSheet.h"
 
-@interface LMBottomToolbarVC : NSViewController <NSComboBoxDelegate>
+@interface LMTracingBarVC : NSViewController <NSComboBoxDelegate>
 
 @property (nonatomic) IUResourceManager     *resourceManager;
 @property (nonatomic) IUSheet    *sheet;

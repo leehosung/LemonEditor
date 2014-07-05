@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 JDLab. All rights reserved.
 //
 
-#import "LMBottomToolbarVC.h"
+#import "LMTracingBarVC.h"
 #import "LMTutorialManager.h"
 #import "LMHelpPopover.h"
 #import "LMWC.h"
 #import "LMHelpWC.h"
 
-@interface LMBottomToolbarVC ()
+@interface LMTracingBarVC ()
 
 @property (weak) IBOutlet NSComboBox *ghostImageComboBox;
 @property (weak) IBOutlet NSButton *ghostBtn;
@@ -30,7 +30,7 @@
 
 @end
 
-@implementation LMBottomToolbarVC
+@implementation LMTracingBarVC
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

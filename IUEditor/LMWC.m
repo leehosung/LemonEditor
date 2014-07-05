@@ -30,7 +30,7 @@
 #import "LMCommandVC.h"
 
 #import "LMTopToolbarVC.h"
-#import "LMBottomToolbarVC.h"
+#import "LMTracingBarVC.h"
 #import "LMIUPropertyVC.h"
 
 #import "IUDjangoProject.h"
@@ -43,7 +43,7 @@
 
 //toolbar
 @property (weak) IBOutlet NSView *topToolbarV;
-@property (weak) IBOutlet NSView *bottomToolbarV;
+@property (weak) IBOutlet NSView *tracingV;
 
 //Left
 @property (weak) IBOutlet NSLayoutConstraint *leftVConstraint;
@@ -90,7 +90,7 @@
     //center
     LMCanvasVC *canvasVC;
     LMTopToolbarVC  *topToolbarVC;
-    LMBottomToolbarVC     *bottomToolbarVC;
+    LMTracingBarVC     *tracingbarVC;
     
     //right top
     LMIUPropertyVC  *iuInspectorVC;
@@ -115,7 +115,7 @@
         commandVC = [[LMCommandVC alloc] initWithNibName:@"LMCommandVC" bundle:nil];
         canvasVC = [[LMCanvasVC alloc] initWithNibName:@"LMCanvasVC" bundle:nil];
         topToolbarVC = [[LMTopToolbarVC alloc] initWithNibName:@"LMTopToolbarVC" bundle:nil];
-        bottomToolbarVC = [[LMBottomToolbarVC alloc] initWithNibName:@"LMBottomToolbarVC" bundle:nil];
+        tracingbarVC = [[LMTracingBarVC alloc] initWithNibName:@"LMTracingBarVC" bundle:nil];
         widgetLibraryVC = [[LMWidgetLibraryVC alloc] initWithNibName:@"LMWidgetLibraryVC" bundle:nil];
         resourceVC = [[LMResourceVC alloc] initWithNibName:@"LMResourceVC" bundle:nil];
         appearanceVC = [[LMAppearanceVC alloc] initWithNibName:@"LMAppearanceVC" bundle:nil];
@@ -158,7 +158,7 @@
     ((LMWindow*)(self.window)).canvasView =  (LMCanvasView *)canvasVC.view;
     
     [_topToolbarV addSubviewFullFrame:topToolbarVC.view];
-    [_bottomToolbarV addSubviewFullFrame:bottomToolbarVC.view];
+    [_tracingV addSubviewFullFrame:tracingbarVC.view];
     
     
     ////////////////right view/////////////////////////
@@ -307,7 +307,7 @@
         resourceVC.manager = _project.resourceManager;
         appearanceVC.resourceManager = _project.resourceManager;
         iuInspectorVC.resourceManager = _project.resourceManager;
-        bottomToolbarVC.resourceManager = _project.resourceManager;
+        tracingbarVC.resourceManager = _project.resourceManager;
         
     }
 }
@@ -321,7 +321,7 @@
     if ([selectedNode isKindOfClass:[IUSheet class]]) {
         [stackVC setSheet:_selectedNode];
         [canvasVC setSheet:_selectedNode];
-        [bottomToolbarVC setSheet:_selectedNode];
+        [tracingbarVC setSheet:_selectedNode];
         [topToolbarVC setSheet:_selectedNode];
         
         //save for debug

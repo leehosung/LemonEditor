@@ -608,8 +608,8 @@
 		69CFDF121963B40400341B07 /* LMPreferenceHelpVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69CFDF101963B40400341B07 /* LMPreferenceHelpVC.xib */; };
 		69CFDF161963D48900341B07 /* LMTutorialManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CFDF151963D48900341B07 /* LMTutorialManager.m */; };
 		69D15F6B18E73E690046FBB0 /* NSString+IUTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D15F6A18E73E690046FBB0 /* NSString+IUTag.m */; };
-		69D15F6F18E893170046FBB0 /* LMBottomToolbarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D15F6D18E893170046FBB0 /* LMBottomToolbarVC.m */; };
-		69D15F7018E893170046FBB0 /* LMBottomToolbarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69D15F6E18E893170046FBB0 /* LMBottomToolbarVC.xib */; };
+		69D15F6F18E893170046FBB0 /* LMTracingBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D15F6D18E893170046FBB0 /* LMTracingBarVC.m */; };
+		69D15F7018E893170046FBB0 /* LMTracingBarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69D15F6E18E893170046FBB0 /* LMTracingBarVC.xib */; };
 		69D15F7318E898B10046FBB0 /* IUBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D15F7218E898B10046FBB0 /* IUBackground.m */; };
 		69D4EE6219654C2C00BAF8C1 /* trash.png in Resources */ = {isa = PBXBuildFile; fileRef = 69D4EE6119654C2C00BAF8C1 /* trash.png */; };
 		69D4EE6519654D9A00BAF8C1 /* LMDragAndDropButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D4EE6419654D9A00BAF8C1 /* LMDragAndDropButton.m */; };
@@ -1446,9 +1446,9 @@
 		69CFDF151963D48900341B07 /* LMTutorialManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMTutorialManager.m; sourceTree = "<group>"; };
 		69D15F6918E73E690046FBB0 /* NSString+IUTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+IUTag.h"; sourceTree = "<group>"; };
 		69D15F6A18E73E690046FBB0 /* NSString+IUTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+IUTag.m"; sourceTree = "<group>"; };
-		69D15F6C18E893170046FBB0 /* LMBottomToolbarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMBottomToolbarVC.h; sourceTree = "<group>"; };
-		69D15F6D18E893170046FBB0 /* LMBottomToolbarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMBottomToolbarVC.m; sourceTree = "<group>"; };
-		69D15F6E18E893170046FBB0 /* LMBottomToolbarVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMBottomToolbarVC.xib; sourceTree = "<group>"; };
+		69D15F6C18E893170046FBB0 /* LMTracingBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMTracingBarVC.h; sourceTree = "<group>"; };
+		69D15F6D18E893170046FBB0 /* LMTracingBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMTracingBarVC.m; sourceTree = "<group>"; };
+		69D15F6E18E893170046FBB0 /* LMTracingBarVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMTracingBarVC.xib; sourceTree = "<group>"; };
 		69D15F7118E898B10046FBB0 /* IUBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IUBackground.h; path = File/IUBackground.h; sourceTree = "<group>"; };
 		69D15F7218E898B10046FBB0 /* IUBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IUBackground.m; path = File/IUBackground.m; sourceTree = "<group>"; };
 		69D4EE6119654C2C00BAF8C1 /* trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trash.png; sourceTree = "<group>"; };
@@ -1902,9 +1902,9 @@
 		3DB3ACE118EBEF640046DFB7 /* ToolBar */ = {
 			isa = PBXGroup;
 			children = (
-				69D15F6C18E893170046FBB0 /* LMBottomToolbarVC.h */,
-				69D15F6D18E893170046FBB0 /* LMBottomToolbarVC.m */,
-				69D15F6E18E893170046FBB0 /* LMBottomToolbarVC.xib */,
+				69D15F6C18E893170046FBB0 /* LMTracingBarVC.h */,
+				69D15F6D18E893170046FBB0 /* LMTracingBarVC.m */,
+				69D15F6E18E893170046FBB0 /* LMTracingBarVC.xib */,
 				3D0D480618FFAF24000A5B53 /* LMTopToolbarVC.h */,
 				3D0D480718FFAF24000A5B53 /* LMTopToolbarVC.m */,
 				3D0D480818FFAF24000A5B53 /* LMTopToolbarVC.xib */,
@@ -3239,7 +3239,7 @@
 				692C4DC21966A13600EAB2E7 /* PositionProperty.pages in Resources */,
 				3DBD7C1A195D61B5003E386C /* LMCloseWC.xib in Resources */,
 				69B260E719594E4F007D905C /* font.png in Resources */,
-				69D15F7018E893170046FBB0 /* LMBottomToolbarVC.xib in Resources */,
+				69D15F7018E893170046FBB0 /* LMTracingBarVC.xib in Resources */,
 				69DE5CE319614D880050D020 /* LMNotiMessageWC.xib in Resources */,
 				3DED26891900D329001A1D67 /* stack_navi@2x.png in Resources */,
 				58FF6B8F1946EA2B009A86F9 /* PGSubmitButtonVC.xib in Resources */,
@@ -3628,7 +3628,7 @@
 				3DB3ACFD18EC1F700046DFB7 /* LMCanvasVC.m in Sources */,
 				6979FC0718ED34E20060C3B4 /* LMPropertyFrameVC.m in Sources */,
 				3D14886318F6AE5700E8EE4C /* LMCenterClipView.m in Sources */,
-				69D15F6F18E893170046FBB0 /* LMBottomToolbarVC.m in Sources */,
+				69D15F6F18E893170046FBB0 /* LMTracingBarVC.m in Sources */,
 				694E3CDB18FCF739005077B3 /* IUCarousel.m in Sources */,
 				69DE5CDD19614D420050D020 /* LMNotiDownloadWC.m in Sources */,
 				69C575B718D6F61E0016F050 /* main.m in Sources */,
