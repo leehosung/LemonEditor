@@ -2,6 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>RunningAProject</key>
+    <dict>
+    <key>title</key>
+    <string>Running A Project</string>
+    <key>pdf</key>
+    <string>RunningAProject.pdf</string>
+	</dict>
 	<key>positionProperty</key>
 	<dict>
 		<key>title</key>

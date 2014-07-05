@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13E28" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMPreferenceHelpVC">
@@ -16,45 +16,44 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="twb-Qr-lMq">
-                    <rect key="frame" x="18" y="235" width="33" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Help" id="vJ7-qg-gJT">
-                        <font key="font" metaFont="system"/>
+                    <rect key="frame" x="18" y="238" width="33" height="14"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Help" id="vJ7-qg-gJT">
+                        <font key="font" metaFont="smallSystemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bqL-9q-vCD">
-                    <rect key="frame" x="287" y="195" width="45" height="18"/>
-                    <buttonCell key="cell" type="check" title="YES" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="U8c-en-WSq">
+                    <rect key="frame" x="286" y="194" width="46" height="20"/>
+                    <buttonCell key="cell" type="check" title="YES" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="U8c-en-WSq">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
                         <binding destination="gFV-bn-if6" name="value" keyPath="values.tutorialIgnore" id="bdd-Ld-3yT"/>
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NlM-qS-4nF">
-                    <rect key="frame" x="42" y="152" width="69" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Reset help" id="QPZ-vD-xxY">
-                        <font key="font" metaFont="system"/>
+                    <rect key="frame" x="42" y="173" width="69" height="14"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Reset help" id="QPZ-vD-xxY">
+                        <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yuy-90-api">
-                    <rect key="frame" x="42" y="196" width="120" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Ignore all tutorials" id="oQ2-6l-gf7">
-                        <font key="font" metaFont="system"/>
+                    <rect key="frame" x="42" y="196" width="120" height="14"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Ignore all tutorials" id="oQ2-6l-gf7">
+                        <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bfW-NI-blp">
-                    <rect key="frame" x="283" y="143" width="107" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Reset Help" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ahv-nx-kXU">
+                    <rect key="frame" x="284" y="165" width="105" height="28"/>
+                    <buttonCell key="cell" type="push" title="Reset Help" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ahv-nx-kXU">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
                         <action selector="performResetHelp:" target="-2" id="Bzg-eM-icV"/>

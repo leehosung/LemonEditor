@@ -11,6 +11,8 @@
 #import "IUDjangoProject.h"
 #import "JDScreenRecorder.h"
 #import "JDDateTimeUtil.h"
+#import "LMTutorialManager.h"
+#import "LMHelpWC.h"
 
 @interface LMCommandVC ()
 @property (weak) IBOutlet NSButton *buildB;
@@ -71,6 +73,7 @@
 }
 
 - (IBAction)build:(id)sender {
+    
     IUCompileRule rule = _docController.project.compiler.rule;
     if (rule == IUCompileRuleDefault) {
         IUProject *project = _docController.project;
@@ -112,6 +115,13 @@
             [[NSWorkspace sharedWorkspace] openFile:firstPath];
         }
     }
+    
+    //show tutorial if needed
+    //    if ([LMTutorialManager shouldShowTutorial:@"run"]) {
+    [[LMHelpWC sharedHelpWC] showHelpDocumentWithKey:@"RunningAProject"];
+    //    }
+    
+
 }
 
 - (IBAction) runOrStopServer:(id)sender{

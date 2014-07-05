@@ -13,6 +13,7 @@
 
 @interface LMPreferenceWC ()
 
+@property (weak) IBOutlet NSToolbar *toolbar;
 //FONT preference
 @property (weak) IBOutlet NSView *mainV;
 @end
@@ -38,7 +39,12 @@
     fontVC = [[LMPreferenceFontVC alloc] initWithNibName:[LMPreferenceFontVC class].className bundle:nil];
     djangoVC = [[LMPreferenceDjangoVC alloc] initWithNibName:[LMPreferenceDjangoVC class].className bundle:nil];
     helpVC = [[LMPreferenceHelpVC alloc] initWithNibName:[LMPreferenceHelpVC class].className bundle:nil];
+    
+    //initialize to font
+    [_toolbar setSelectedItemIdentifier:@"Font"];
     [self performShowFont:self];
+    
+    
 }
 
 - (IBAction)performShowFont:(id)sender {
