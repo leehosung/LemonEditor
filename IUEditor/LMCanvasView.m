@@ -253,7 +253,7 @@
                        && currentIUID){
                         isSelected = YES;
                     }
-                    [((LMCanvasVC *)(self.delegate)) startDragSession];
+                    [((LMCanvasVC *)(self.delegate)) startDragSession:self];
                     startDragPoint = convertedPoint;
                     middleDragPoint = startDragPoint;
                 }
@@ -310,6 +310,11 @@
 
 #pragma mark -
 #pragma mark handle mouse event
+
+- (void)startDraggingFromGridView{
+    //turn off canvas view dragging.
+    isMouseDown = NO;
+}
 
 - (void)moveIUByDragging{
     isDragged = YES;

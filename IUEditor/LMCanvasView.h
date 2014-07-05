@@ -29,4 +29,6 @@
 
 - (void)setHeightOfMainView:(CGFloat)height;
 
+- (void)startDraggingFromGridView;
+
 @end

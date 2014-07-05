@@ -129,7 +129,7 @@
             break;
     }
     
-    [self.VC startDragSession];
+    [self.VC startDragSession:self];
     [self.VC moveIUToDiffPoint:diffPoint totalDiffPoint:diffPoint];
 }
 

@@ -917,7 +917,10 @@
     return  NO;
 }
 
-- (void)startDragSession{
+- (void)startDragSession:(id)sender{
+    if([sender isKindOfClass:[GridView class]]){
+        [((LMCanvasView *)[self view]) startDraggingFromGridView];
+    }
     for(IUBox *obj in self.controller.selectedObjects){
         if([self isParentMove:obj]){
             [obj.parent startDragSession];

@@ -117,7 +117,7 @@
     startPoint = convertedPoint;
     middlePoint = convertedPoint;
     
-    [((LMCanvasVC *)(self.delegate)) startDragSession];
+    [((LMCanvasVC *)(self.delegate)) startDragSession:self];
 
 }
 
