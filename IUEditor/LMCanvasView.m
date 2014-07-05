@@ -314,6 +314,7 @@
 - (void)startDraggingFromGridView{
     //turn off canvas view dragging.
     isMouseDown = NO;
+    isSelected = NO;
 }
 
 - (void)moveIUByDragging{
