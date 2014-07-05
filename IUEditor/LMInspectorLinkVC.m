@@ -62,7 +62,9 @@
     [_pageLinkPopupButton removeAllItems];
     [_pageLinkPopupButton addItemWithTitle:@"None"];
     for (IUPage *page in [_project pageDocuments]) {
-        [_pageLinkPopupButton addItemWithTitle:page.name];
+        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:page.name action:nil keyEquivalent:@""];
+        item.representedObject = page;
+        [[_pageLinkPopupButton menu] addItem:item];
     }
 
 }
@@ -155,7 +157,12 @@
     NSTextField *textField = obj.object;
     if([textField isEqualTo:_urlTF]){
         NSString *link = [_urlTF stringValue];
-        [self setValue:link forKeyPath:[_controller keyPathFromControllerToProperty:@"link"]];
+        if(link && link.length > 0){
+            [self setValue:link forKeyPath:[_controller keyPathFromControllerToProperty:@"link"]];
+        }
+        else if(link.length == 0){
+            [self setValue:nil forKeyPath:[_controller keyPathFromControllerToProperty:@"link"]];
+        }
     }
 }
 
@@ -167,9 +174,10 @@
     [_divLinkPB removeAllItems];
     [_divLinkPB addItemWithTitle:@"None"];
     for(IUBox *box in page.allChildren){
-        [_divLinkPB addItemWithTitle:box.name];
+        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:box.name action:nil keyEquivalent:@""];
+        item.representedObject = box;
+        [[_divLinkPB menu] addItem:item];
     }
-    
     
 }
 - (IBAction)clickDivLinkPopupBtn:(id)sender {
@@ -182,7 +190,7 @@
     NSString *link = [[_divLinkPB selectedItem] title];
     
     if(_project){
-        IUBox *box = [_project.identifierManager IUWithIdentifier:link];
+        IUBox *box = [sender selectedItem].representedObject;
         if(box){
             [self setValue:box forKeyPath:[_controller keyPathFromControllerToProperty:@"divLink"]];
         }
