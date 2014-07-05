@@ -104,7 +104,7 @@
 //        [self insertIU:background atIndex:0 error:nil];
     }
     _background = background;
-    _background.parent = self;
+//    _background.parent = self;
     _background.delegate = self.delegate;
     _pageContent.delegate = self.delegate;
     

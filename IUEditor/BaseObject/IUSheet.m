@@ -91,4 +91,10 @@
     return nil;
 }
 
+-(void)setParent:(IUBox *)parent{
+#if DEBUG
+//    assert(0);
+#endif
+}
+
 @end
