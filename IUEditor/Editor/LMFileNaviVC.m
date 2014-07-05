@@ -279,21 +279,21 @@
     }
     
     if(modifiedName.length == 0){
-        [JDUIUtil hudAlert:@"Name should not be empty" second:1];
+        [JDUIUtil hudAlert:@"Name should not be empty" second:2];
         [textField setStringValue:sheet.name];
         return;
     }
     
     if([definedIdentifers containsString:modifiedName]
        || [definedPrefixIdentifiers containsPrefix:modifiedName]){
-        [JDUIUtil hudAlert:@"This name is a program keyword" second:1];
+        [JDUIUtil hudAlert:@"This name is a program keyword" second:2];
         [textField setStringValue:sheet.name];
         return;
     }
     
     NSCharacterSet *characterSet = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
     if([modifiedName rangeOfCharacterFromSet:characterSet].location != NSNotFound){
-        [JDUIUtil hudAlert:@"Name should be alphabet or digit" second:1];
+        [JDUIUtil hudAlert:@"Name should be alphabet or digit" second:2];
         [textField setStringValue:sheet.name];
         return;
     }
