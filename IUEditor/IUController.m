@@ -66,7 +66,7 @@
         pasteTarget = [self.selectedObjects firstObject];
         while (1) {
             if (pasteTarget == nil) {
-                assert(0);
+                NSAssert(0, @"pasteTarget");
                 return;
             }
             if ([pasteTarget shouldAddIUByUserInput]) {
@@ -87,8 +87,6 @@
         NSError *err;
         if([box canCopy]){
             IUBox *newBox = [box copy];
-            assert(newBox.children);
-            assert(newBox.htmlID);
             newBox.name = newBox.htmlID;
             
             for (NSNumber *width in newBox.css.allEditWidth) {
@@ -127,9 +125,7 @@
             _lastPastedIU = newBox;
             [copiedArray addObject:newBox];
             [self rearrangeObjects];
-            
-            
-            assert(result);
+            NSAssert(result, @"Add");
         }
     }
     [self _setSelectedObjects:copiedArray];
@@ -184,7 +180,7 @@
     NSString *firstIdentifier = [identifiers firstObject];
     if ([firstIdentifier containsString:@"ImportedBy_"]) { // it's imported!
         NSArray *IUChain = [firstIdentifier componentsSeparatedByString:@"_"];
-        assert(IUChain.count == 3);
+        NSAssert(IUChain.count == 3, @"import in import");
         
         //get import class
         NSString *importIdentifier = [IUChain objectAtIndex:1];

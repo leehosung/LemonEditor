@@ -97,7 +97,7 @@
     }
     
     obj.htmlID = [self newIdentifierWithKey:key];
-    assert(obj.htmlID);
+    NSAssert(obj.htmlID, @"identifier");
     
     unconfirmed[obj.htmlID] = obj;
 }

@@ -230,7 +230,7 @@
 
 - (void)dealloc{
     //release 시점 확인용
-    assert(0);
+    NSAssert(0, @"");
 }
 
 -(void)showLeftInspectorDidChange:(NSDictionary *)change{
@@ -269,12 +269,12 @@
         _project = document.project;
         //[canvasVC bind:@"documentBasePath" toObject:_project withKeyPath:@"path" options:nil];
         NSError *error;
-        assert(_project.pageDocuments);
-        assert(_project.identifierManager);
-        assert(_project.resourceManager);
+        NSAssert(_project.pageDocuments, @"");
+        NSAssert(_project.identifierManager, @"");
+        NSAssert(_project.resourceManager, @"");
         
         if (error) {
-            assert(0);
+            NSAssert(0, @"");
             return;
         }
         if (_project == nil) {

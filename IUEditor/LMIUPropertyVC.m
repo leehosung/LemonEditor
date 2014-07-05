@@ -188,7 +188,7 @@
 
 - (void)setFocusForDoubleClickAction{
     if (doubleClickFocusVC) {
-        assert([doubleClickFocusVC respondsToSelector:@selector(performFocus:)]);
+        NSAssert([doubleClickFocusVC respondsToSelector:@selector(performFocus:)], @"");
     }
     [doubleClickFocusVC performFocus:nil];
 }
@@ -201,7 +201,7 @@
 
 -(void)dealloc{
     //release 시점 확인용
-    assert(0);
+    NSAssert(0, @"");
     //[_controller removeObserver:self forKeyPath:@"selectedObjects"];
 }
 
@@ -291,7 +291,7 @@
     
 #if CURRENT_TEXT_VERSION < TEXT_SELECTION_VERSION
 #else
-    assert(0);
+    NSAssert(0, @"");
 #endif
 
     else if ([classString isEqualToString:@"IUHTML"]){

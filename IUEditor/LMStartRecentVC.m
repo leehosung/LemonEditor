@@ -56,7 +56,7 @@
     NSMutableDictionary *contentDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&err] ;
     if (err) {
         [JDLogUtil log:@"load project" err:err];
-        assert(0);
+        NSAssert(0, @"");
     }
     return contentDict;
 

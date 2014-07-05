@@ -109,7 +109,7 @@
 }
 
 - (CGFloat)outlineView:(NSOutlineView *)outlineView heightOfRowByItem:(NSView *)item{
-    assert(item != nil);
+    NSAssert(item != nil, @"");
     CGFloat height = item.frame.size.height;
     if(height <=0){
         height = 0.1;

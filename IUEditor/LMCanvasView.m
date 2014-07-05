@@ -48,7 +48,7 @@
 
 -(void) dealloc{
     //release 시점 확인용
-    assert(0);
+    NSAssert(0, @"");
   //  [self.mainView removeObserver:self forKeyPath:@"frame"];
   //  [[NSNotificationCenter defaultCenter] removeObserver:self name:NSViewBoundsDidChangeNotification object:[self.mainScrollView contentView]];
 }

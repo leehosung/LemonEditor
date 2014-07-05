@@ -108,7 +108,7 @@
 
 - (void)dealloc{
     //release 시점 확인용
-    assert(0);
+    NSAssert(0, @"");
   //  [self removeObserver:self forKeyPath:[_controller keyPathFromControllerToCSSTag:IUCSSTagImage]];
 }
 
@@ -132,7 +132,7 @@
 
 
 - (IBAction)performFitToImage:(id)sender { // Fit to Image button function
-    assert(_resourceManager);
+    NSAssert(_resourceManager, @"");
 
     //image filename
     NSString *filename = _imageNameComboBox.stringValue;

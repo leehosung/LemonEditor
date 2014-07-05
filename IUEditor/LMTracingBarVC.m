@@ -74,7 +74,7 @@
 }
 -(void) dealloc{
     //release 시점 확인용
-    assert(0);
+    NSAssert(0, @"");
 //    [self removeObserver:self forKeyPath:@"sheet.ghostImageName"];
 }
 

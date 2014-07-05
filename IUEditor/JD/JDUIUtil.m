@@ -996,7 +996,7 @@ static NSWindowController *hudWC;
                            alpha:(CGFloat)[[arr objectAtIndex:3] floatValue]];
         return result;
     }
-    assert(0);
+    NSAssert(0, @"");
     return nil;
 }
 @end

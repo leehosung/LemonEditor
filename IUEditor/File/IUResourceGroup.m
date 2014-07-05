@@ -100,7 +100,7 @@
     IUResourceFile *file = [[IUResourceFile alloc] init];
     [array addObject:file];
     file.parent = self;
-    assert([[NSFileManager defaultManager] createFileAtPath:file.absolutePath contents:data attributes:nil]);
+    NSAssert([[NSFileManager defaultManager] createFileAtPath:file.absolutePath contents:data attributes:nil]);
     return file;
 }
  */

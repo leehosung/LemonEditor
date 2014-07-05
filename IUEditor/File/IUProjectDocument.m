@@ -67,7 +67,7 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
         NSError *error;
         IUProject *newProject = [(IUProject*)[projectFactory alloc] initWithProject:[option objectForKey:IUProjectKeyConversion] options:option error:&error];
         if (error != nil) {
-            assert(0);
+            NSAssert(0, @"");
         }
         _project = newProject;
         return YES;
@@ -98,7 +98,7 @@ static NSString *MetaDataKey = @"value2";            // special string value in 
         
         IUProject *newProject = [[NSClassFromString([IUProject stringProjectType:projectType]) alloc] initWithCreation:projectDict error:&error];
         if (error != nil) {
-            assert(0);
+            NSAssert(0, @"");
         }
         if(newProject){
             _project = newProject;

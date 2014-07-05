@@ -113,7 +113,7 @@
 
 - (LMFileTabItemVC *)tabItemOfDocumentNode:(IUSheet *)sheet{
     for(LMTabBox *item in _fileTabView.subviews){
-        assert([item isKindOfClass:[LMTabBox class]]);
+        NSAssert([item isKindOfClass:[LMTabBox class]], @"");
         LMFileTabItemVC *itemVC = ((LMFileTabItemVC *)item.delegate);
         if([itemVC.sheet isEqualTo:sheet]){
             return itemVC;
@@ -252,7 +252,7 @@
     
     //tabcolor
     for(LMTabBox *item in _fileTabView.subviews){
-        assert([item isKindOfClass:[LMTabBox class]]);
+        NSAssert([item isKindOfClass:[LMTabBox class]], @"");
         LMFileTabItemVC *itemVC = ((LMFileTabItemVC *)item.delegate);
         
         if([itemVC.sheet isEqualTo:sheet]){
@@ -270,15 +270,15 @@
         return ;
     }
     if (openTabDocuments.count == 0) {
-        assert(0);
+        NSAssert(0, @"");
     }
     
     NSInteger index = [openTabDocuments indexOfObject:tabItem.sheet];
     IUSheet *selectNode;
     if (index == NSNotFound) {
-        assert(0);
+        NSAssert(0, @"");
     }
-    assert(index < openTabDocuments.count);
+    NSAssert(index < openTabDocuments.count, @"");
 
     if(index > 0){
         [tabItem.view removeFromSuperviewWithDirectionLeftToRight];

@@ -15,8 +15,8 @@
 @implementation LMStartNewPresentationVC
 
 - (void)show{
-    assert(_parentVC);
-    assert(_nextB);
+    NSAssert(_parentVC, @"");
+    NSAssert(_nextB, @"");
     [_nextB setTarget:self];
     [_nextB setEnabled:NO];
     
@@ -26,7 +26,7 @@
 }
 
 - (void)performPrev{
-    assert(_parentVC);
+    NSAssert(_parentVC, @"");
     [_parentVC show];
 }
 

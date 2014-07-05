@@ -26,7 +26,7 @@
             _header.htmlID = @"Header";
             [self addIU:_header error:nil];
         }
-        assert(self.children);
+        NSAssert(self.children, @"");
     }
     return self;
 }

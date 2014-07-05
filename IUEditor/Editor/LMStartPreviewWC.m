@@ -81,7 +81,7 @@ static LMStartPreviewWC *gStartPreviewWindow = nil;
                 [_projectTypeTF setStringValue:@"Presentation"];
                 break;
             default:
-                assert(0);
+                NSAssert(0, @"");
                 break;
         }
         

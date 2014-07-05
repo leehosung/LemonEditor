@@ -18,7 +18,7 @@
     NSMutableArray *indexPaths = [NSMutableArray array];
     for (id anObject in objects) {
         id obj = [self indexPathOfObject:anObject];
-        assert(obj);
+        NSAssert(obj, @"");
         [indexPaths addObject:obj];
     }
     [self setSelectionIndexPaths:indexPaths];

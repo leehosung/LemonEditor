@@ -277,7 +277,7 @@
     IUSection *newIU = [[IUSection alloc]  initWithProject:_sheet.project options:nil];
     [_sheet.project.identifierManager confirm];
     if (newIU == nil) {
-        assert(0);
+        NSAssert(0, @"");
     }
     
     newIU.name = newIU.htmlID;
@@ -292,7 +292,7 @@
 
 - (IBAction)fileNameEndEditing:(id)sender{
     
-    assert(_sheet.project.identifierManager);
+    NSAssert(_sheet.project.identifierManager, @"");
     
     NSTextField *textField = (NSTextField *)sender;
     

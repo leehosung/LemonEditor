@@ -118,7 +118,7 @@
                 cellIdentifier = @"classFile";
             }
             else {
-                assert(0);
+                NSAssert(0, @"");
             }
             nodeName = node.name;
         }
@@ -138,7 +138,7 @@
                 cellIdentifier = @"JSFile";
             }
             else {
-                assert(0);
+                NSAssert(0, @"");
             }
             nodeName = node.name;
         }
@@ -266,7 +266,7 @@
 
 
 - (IBAction)fileNameEndEditing:(id)sender{
-    assert(_project.identifierManager);
+    NSAssert(_project.identifierManager, @"");
     
     NSTextField *textField = (NSTextField *)sender;
     

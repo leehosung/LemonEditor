@@ -65,7 +65,7 @@ static LMHelpPopover *gHelpPopover = nil;
             self.contentViewController = largeVideoPopoverVC;
             break;
         default:
-            assert(0);
+            NSAssert(0, @"");
             break;
     }
 }

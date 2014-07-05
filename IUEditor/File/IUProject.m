@@ -28,7 +28,7 @@
 
 #pragma mark - init
 - (void)encodeWithCoder:(NSCoder *)encoder{
-    assert(_resourceGroup);
+    NSAssert(_resourceGroup, @"no resource");
     [encoder encodeObject:_mqSizes forKey:@"mqSizes"];
     [encoder encodeObject:_buildPath forKey:@"_buildPath"];
     [encoder encodeObject:_buildResourcePath forKey:@"_buildResourcePath"];
@@ -96,8 +96,8 @@
     _compiler.resourceManager = _resourceManager;
     _identifierManager = [[IUIdentifierManager alloc] init];
     
-    assert(options[IUProjectKeyAppName]);
-    assert(options[IUProjectKeyProjectPath]);
+    NSAssert(options[IUProjectKeyAppName], @"appName");
+    NSAssert(options[IUProjectKeyProjectPath], @"path");
     
     self.name = [options objectForKey:IUProjectKeyAppName];
     self.path = [options objectForKey:IUProjectKeyProjectPath];
@@ -142,8 +142,8 @@
     _compiler.resourceManager = _resourceManager;
     _identifierManager = [[IUIdentifierManager alloc] init];
     
-    assert(options[IUProjectKeyAppName]);
-    assert(options[IUProjectKeyProjectPath]);
+    NSAssert(options[IUProjectKeyAppName], @"app Name");
+    NSAssert(options[IUProjectKeyProjectPath], @"path");
     
     self.name = [options objectForKey:IUProjectKeyAppName];
     self.path = [options objectForKey:IUProjectKeyProjectPath];
@@ -209,13 +209,13 @@
 
 - (void)addMQSize:(NSNotification *)notification{
     NSInteger size = [[notification.userInfo objectForKey:IUNotificationMQSize] integerValue];
-    assert(_mqSizes);
+    NSAssert(_mqSizes, @"mqsize");
     [_mqSizes addObject:@(size)];
 }
 
 - (void)removeMQSize:(NSNotification *)notification{
     NSInteger size = [[notification.userInfo objectForKey:IUNotificationMQSize] integerValue];
-    assert(_mqSizes);
+    NSAssert(_mqSizes, @"mqsize");
     [_mqSizes removeObject:@(size)];
 }
 
@@ -232,7 +232,7 @@
 
 - (void)setCompileRule:(IUCompileRule)compileRule{
     _compiler.rule = compileRule;
-    assert(_compiler != nil);
+    NSAssert(_compiler != nil, @"");
 }
 
 
@@ -277,7 +277,7 @@
 }
 
 - (BOOL)build:(NSError**)error{
-    assert(_buildPath != nil);
+    NSAssert(_buildPath != nil, @"");
     NSString *buildPath = [self.directoryPath stringByAppendingPathComponent:self.buildPath];
     NSString *buildResourcePath = [self.directoryPath stringByAppendingPathComponent:self.buildResourcePath];
 
@@ -298,7 +298,7 @@
         
         NSString *filePath = [[buildPath stringByAppendingPathComponent:[doc.name lowercaseString]] stringByAppendingPathExtension:@"html"];
         if ([outputString writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:error] == NO){
-            assert(0);
+            NSAssert(0, @"write fail");
         }
         
         [eventVariable makeEventDictionary:doc];
@@ -321,7 +321,7 @@
     NSString *initializeJSPath = [[resourceJSPath stringByAppendingPathComponent:@"iuinit"] stringByAppendingPathExtension:@"js"];
     NSError *myError;
     if ([sourceCode.string writeToFile:initializeJSPath atomically:YES encoding:NSUTF8StringEncoding error:&myError] == NO){
-        assert(0);
+        NSAssert(0, @"write fail");
     }
 
     
@@ -329,7 +329,7 @@
     NSString *eventJSString = [eventVariable outputEventJSSource];
     NSString *eventJSFilePath = [[resourceJSPath stringByAppendingPathComponent:@"iuevent"] stringByAppendingPathExtension:@"js"];
     if ([eventJSString writeToFile:eventJSFilePath atomically:YES encoding:NSUTF8StringEncoding error:error] == NO){
-        assert(0);
+        NSAssert(0, @"write fail");
     }
     
     [JDUIUtil hudAlert:@"Build Success" second:2];
@@ -344,7 +344,7 @@
 
 
 - (void)addImageResource:(NSImage*)image{
-    assert(0);
+    NSAssert(0, @"write fail");
 }
 
 -(NSArray*)allIUs{
@@ -487,7 +487,7 @@
     return array;
 }
 - (NSArray*)pageDocuments{
-    assert(_pageGroup);
+    NSAssert(_pageGroup, @"pg");
     return _pageGroup.childrenFiles;
 }
 - (NSArray*)backgroundDocuments{

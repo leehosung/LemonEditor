@@ -59,7 +59,7 @@
             isID = YES;
         }
         else {
-            assert(0);
+            NSAssert(0, @"");
         }
     }
     return self;

@@ -60,7 +60,7 @@
 }
 
 - (void)performPrev{
-    assert(_parentVC);
+    NSAssert(_parentVC, @"");
     [_parentVC show];
 }
 
@@ -79,8 +79,8 @@
 }
 
 - (void)show{
-    assert(_nextB);
-    assert(_prevB);
+    NSAssert(_nextB, @"");
+    NSAssert(_prevB, @"");
     
     _nextB.target = self;
     _prevB.target = self;

@@ -33,21 +33,21 @@
 }
 
 -(NSArray*)videoFiles{
-    assert(_rootGroup.childrenFiles[1]);
+    NSAssert(_rootGroup.childrenFiles[1], @"no video");
     return [_rootGroup.childrenFiles[1] childrenFiles];
 }
 
 -(NSArray*)imageFiles{
-    assert(_rootGroup.childrenFiles[0]);
+    NSAssert(_rootGroup.childrenFiles[0], @"no children");
     return [_rootGroup.childrenFiles[0] childrenFiles];
 }
 
 -(NSArray *)jsFiles{
-    assert(_rootGroup.childrenFiles[2]);
+    NSAssert(_rootGroup.childrenFiles[2], @"nochildren");
     return [_rootGroup.childrenFiles[2] childrenFiles];
 }
 -(NSArray *)cssFiles{
-    assert(_rootGroup.childrenFiles[3]);
+    NSAssert(_rootGroup.childrenFiles[3], @"no children");
     return [_rootGroup.childrenFiles[3] childrenFiles];
 }
 

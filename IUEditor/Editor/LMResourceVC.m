@@ -61,7 +61,7 @@
             [JDUIUtil hudAlert:@"Only image files can be draggable as a bacground or image type " second:2];
         }
         else {
-            assert(0);
+            NSAssert(0, @"");
         }
     }
 
@@ -200,7 +200,7 @@
         }
     }
     else{
-        assert(0);
+        NSAssert(0, @"");
     }
     
 }
@@ -223,7 +223,7 @@
        
     }
     else{
-        assert(0);
+        NSAssert(0, @"");
     }
 }
 

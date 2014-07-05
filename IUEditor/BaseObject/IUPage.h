@@ -15,7 +15,7 @@
 
 /**
   A page class for IU Framework.
- @note IUPage has no children. Do not use 'addIU' function. Program assert failure would be occured immediatly.
+ @note IUPage has no children. Do not use 'addIU' function. Program NSAssert failure would be occured immediatly.
        If background is not set, IUPage would never return children.
  */
 @interface IUPage : IUSheet

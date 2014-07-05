@@ -54,7 +54,7 @@
 
 -(void)dealloc{
     //release 시점 확인용
-    assert(0);
+    NSAssert(0, @"");
     
     //[self removeObserver:self forKeyPath:@"docController.project.runnable"];
 }
@@ -79,7 +79,7 @@
         IUProject *project = _docController.project;
         BOOL result = [project build:nil];
         if (result == NO) {
-            assert(0);
+            NSAssert(0, @"");
         }
         IUSheet *doc = [[_docController selectedObjects] firstObject];
         NSString *firstPath = [project.directoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@.html",project.buildPath, [doc.name lowercaseString]] ];
@@ -92,7 +92,7 @@
         IUProject *project = _docController.project;
         BOOL result = [project build:nil];
         if (result == NO) {
-            assert(0);
+            NSAssert(0, @"");
         }
         IUSheet *node = [[_docController selectedObjects] firstObject];
         

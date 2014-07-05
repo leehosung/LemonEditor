@@ -798,7 +798,7 @@
 }
 
 - (DOMHTMLDivElement *)divParentElementOfElement:(DOMElement *)element{
-    assert(element != nil);
+    NSAssert(element != nil, @"");
     if([element isKindOfClass:[DOMHTMLDivElement class]]){
         return (DOMHTMLDivElement *)element;
     }

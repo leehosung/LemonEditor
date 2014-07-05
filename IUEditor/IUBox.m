@@ -55,10 +55,11 @@
     [box setTempProject:self.project];
 
     for (IUBox *iu in children) {
-        assert([box addIU:iu error:nil]);
+        BOOL result = [box addIU:iu error:nil];
+        NSAssert(result == YES, @"copy");
     }
     
-    assert(self.project);
+    NSAssert(self.project, @"project");
     [self.project.identifierManager resetUnconfirmedIUs];
     [self.project.identifierManager setNewIdentifierAndRegisterToTemp:box withKey:@"copy"];
     box.name = box.htmlID;
@@ -87,7 +88,7 @@
 
 
 - (void)connectWithEditor{
-    assert(self.project);
+    NSAssert(self.project, @"");
     isConnectedWithEditor = YES;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMQSelect:) name:IUNotificationMQSelected object:nil];
@@ -128,7 +129,7 @@
 
 -(void)encodeWithCoder:(NSCoder *)aCoder{
     if ([self.htmlID length] == 0) {
-        assert(0);
+        NSAssert(0, @"");
     }
     [aCoder encodeFromObject:self withProperties:[[IUBox class] propertiesWithOutProperties:@[@"identifierManager", @"textController"]]];
     [aCoder encodeObject:self.css forKey:@"css"];
@@ -190,8 +191,6 @@
     
     changedCSSWidths = [NSMutableSet set];
 
-    assert(project);
-    assert(project.identifierManager);
     [project.identifierManager setNewIdentifierAndRegisterToTemp:self withKey:nil];
     self.name = self.htmlID;
     
@@ -345,16 +344,12 @@
 }
 
 -(BOOL)addIU:(IUBox *)iu error:(NSError**)error{
-    assert(iu != self);
-    
     NSInteger index = [_m_children count];
     return [self insertIU:iu atIndex:index error:error];
 }
 
 
 -(BOOL)insertIU:(IUBox *)iu atIndex:(NSInteger)index  error:(NSError**)error{
-    
-    assert(iu != self);
     if ([iu isKindOfClass:[IUImport class]] && [[self sheet] isKindOfClass:[IUImport class]]) {
         [JDUIUtil hudAlert:@"IUImport can't be inserted to IUImport" second:2];
         return NO;
@@ -479,7 +474,7 @@
         //not assigned to document
         return _tempProject;
     }
-    assert(0);
+    NSAssert(0, @"project");
     return nil;
 }
 
@@ -710,7 +705,6 @@
 
 
 - (void)confirm{
-    assert(self.project.identifierManager);
     [self.project.identifierManager confirm];
 }
 

@@ -42,7 +42,7 @@
         }
 
         else{
-            assert(0);
+            NSAssert(0, "");
         }
     }
 }
@@ -81,7 +81,7 @@
             [obj setValue:[NSValue valueWithRect:[self decodeRectForKey:property.name]] forKey:property.name];
         }
         else{
-            assert(0);
+            NSAssert(0, "");
         }
     }
 }

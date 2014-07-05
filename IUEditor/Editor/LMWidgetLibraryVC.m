@@ -91,7 +91,7 @@
 
 #pragma mark collectionview -drag
 - (BOOL)collectionView:(NSCollectionView *)collectionView writeItemsAtIndexes:(NSIndexSet *)indexes toPasteboard:(NSPasteboard *)pasteboard{
-    assert(_project);
+    NSAssert(_project, @"");
     [_project.identifierManager resetUnconfirmedIUs];
     NSUInteger index = [indexes firstIndex];
     LMGeneralObject *object = [[collectionView itemAtIndex:index] representedObject];
@@ -99,7 +99,7 @@
     
     IUBox *obj = [[NSClassFromString(className) alloc] initWithProject:_project options:nil];
     if (obj == nil) {
-    //    assert(0);
+    //    NSAssert(0, @"");
         NSLog(@"objISNil");
     }
     
@@ -204,7 +204,7 @@
         [popover showRelativeToRect:[targetView bounds] ofView:sender preferredEdge:NSMinXEdge];
     }
     else{
-        assert(0);
+        NSAssert(0, @"");
     }
     
 }

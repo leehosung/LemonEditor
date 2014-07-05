@@ -26,7 +26,7 @@
             self[tag] = [NSString stringWithFormat:@"%dpx", intValue];
             break;
         default:
-            assert(0);
+            NSAssert(0, "");
             break;
     }
 }
@@ -46,7 +46,7 @@
             self[tag] = [[NSString stringWithFormat:@"%.4fpx", floatValue] stringByReplacingOccurrencesOfString:@".0000" withString:@""];
             break;
         default:
-            assert(0);
+            NSAssert(0, @"");
             break;
     }
 }

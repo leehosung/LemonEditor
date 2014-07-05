@@ -31,15 +31,15 @@
 }
 
 - (void)performPrev{
-    assert(_parentVC);
+    NSAssert(_parentVC, @"");
     [_parentVC show];
 }
 
 - (void)show{
-    assert(_parentVC);
-    assert(_nextB);
-    assert(_prevB);
-    assert(_nextB != _prevB);
+    NSAssert(_parentVC, @"");
+    NSAssert(_nextB, @"");
+    NSAssert(_prevB, @"");
+    NSAssert(_nextB != _prevB, @"");
     
     [_nextB setEnabled:YES];
     [_prevB setEnabled:YES];

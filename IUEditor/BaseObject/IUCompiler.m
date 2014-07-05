@@ -179,7 +179,6 @@
 }
 
 -(NSString*)editorSource:(IUSheet*)document mqSizeArray:(NSArray *)mqSizeArray{
-    assert(mqSizeArray.count > 0);
     NSString *templateFilePath = [[NSBundle mainBundle] pathForResource:@"webTemplate" ofType:@"html"];
     
     
@@ -949,9 +948,6 @@
 
 
 -(IUCSSStringDictionary*)cssStringDictionaryWithCSSTagDictionary:(NSDictionary*)cssTagDict ofClass:(IUBox*)obj isHover:(BOOL)isHover{
-    if (_resourceManager == nil) {
-        assert(0);
-    }
     IUCSSStringDictionary *dict = [IUCSSStringDictionary dictionary];
     id value;
     
@@ -1197,7 +1193,6 @@
                         vString = @"bottom";
                         break;
                     default:
-                        assert(0);
                         break;
                 }
                 
@@ -1213,7 +1208,6 @@
                         hString= @"right";
                         break;
                     default:
-                        assert(0);
                         break;
                 }
                 [dict putTag:@"background-position" string:[NSString stringWithFormat:@"%@ %@", vString, hString]];
@@ -1639,7 +1633,7 @@
                 [retString appendFormat:@" transitionEvent=\"mouseOn\""];
             }
             else {
-                assert(0);
+                NSAssert(0, @"Missing Code");
             }
         }
         if ([transitionIU.animation length]) {

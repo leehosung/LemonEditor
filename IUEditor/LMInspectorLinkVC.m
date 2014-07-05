@@ -169,7 +169,7 @@
 #pragma mark - div link
 
 - (void)updateDivLink:(IUPage *)page{
-    assert([page isKindOfClass:[IUPage class]]);
+    NSAssert([page isKindOfClass:[IUPage class]], @"");
     [_divLinkPB setEnabled:YES];
     [_divLinkPB removeAllItems];
     [_divLinkPB addItemWithTitle:@"None"];

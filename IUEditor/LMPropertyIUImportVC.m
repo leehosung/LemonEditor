@@ -56,14 +56,14 @@
 
 - (void)dealloc{
     //release 시점 확인용
-    assert(0);
+    NSAssert(0, @"");
 }
 
 - (IBAction)performPrototypeChange:(NSPopUpButton *)sender {
     IUClass *class = [[_project classDocuments] objectWithKey:@"name" value:sender.selectedItem.title];
     NSArray *selectedIUs = _controller.selectedObjects;
     for (IUImport *iu in selectedIUs) {
-        assert([iu isKindOfClass:[IUImport class]]);
+        NSAssert([iu isKindOfClass:[IUImport class]], @"");
         iu.prototypeClass = class;
     }
 }

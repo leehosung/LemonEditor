@@ -70,8 +70,8 @@
 }
 
 -(void)setBackground:(IUBackground *)background{
-    assert(background.children);
-    assert(background); // background can't be nil
+    NSAssert(background.children, @"no children");
+    NSAssert(background, @"no background"); // background can't be nil
     IUBackground *myBackground = self.background;
     
     if (myBackground == background) {

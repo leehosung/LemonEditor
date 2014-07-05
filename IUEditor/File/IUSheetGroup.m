@@ -60,7 +60,7 @@
 }
 
 - (void)removeSheet:(IUSheet *)sheet{
-    assert([_children containsObject:sheet]);
+    NSAssert([_children containsObject:sheet], @"");
     [_children removeObject:sheet];
 }
 

@@ -81,7 +81,7 @@
 }
 -(void) dealloc{
     //release 시점 확인용
-    assert(0);
+    NSAssert(0, @"");
     /*
     [self removeObserver:self forKeyPath:@"view.sizeView.sizeArray" ];
     [self removeObserver:self forKeyPaths:@[@"sheet.ghostImageName",
@@ -375,7 +375,7 @@
 - (void)updateNewline:(NSRange)range identifier:(NSString *)identifier htmlNode:(DOMHTMLElement *)node{
     
     IUBox *iu = [self.controller IUBoxByIdentifier:identifier];
-    assert(iu != nil);
+    NSAssert(iu != nil);
     if([iu isKindOfClass:[IUText class]]){
         IUText *textIU = (IUText *)iu;
         [textIU updateNewLine:range htmlNode:node];
@@ -386,7 +386,7 @@
 - (void)selectTextRange:(NSRange)range identifier:(NSString *)identifier htmlNode:(DOMHTMLElement *)node{
 
     IUBox *iu = [self.controller IUBoxByIdentifier:identifier];
-    assert(iu != nil);
+    NSAssert(iu != nil);
     if([iu isKindOfClass:[IUText class]]){
         IUText *textIU = (IUText *)iu;
         [textIU selectTextRange:range htmlNode:node];
@@ -404,7 +404,7 @@
 - (void)insertString:(NSString *)string identifier:(NSString *)identifier withRange:(NSRange)range{
     [JDLogUtil log:IULogText string:[NSString stringWithFormat:@"insert - %@ , (%lu, %lu)", string, range.location, range.length]];
     IUBox *iu = [self.controller IUBoxByIdentifier:identifier];
-    assert(iu != nil);
+    NSAssert(iu != nil);
     [iu insertText:string withRange:range];
 }
 
@@ -1006,7 +1006,7 @@
         middleElement = parentElement;
     }
     
-//    assert(parentElement != nil);
+//    NSAssert(parentElement != nil);
     
     [parentElement removeChild:middleElement];
     

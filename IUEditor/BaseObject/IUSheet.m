@@ -66,12 +66,12 @@
 
 
 -(NSString*)editorSource{
-    assert(self.project.compiler);
+    NSAssert(self.project.compiler, @"compiler");
     return [self.project.compiler editorSource:self mqSizeArray:self.project.mqSizes];
 }
 
 - (NSString*)outputSource{
-    assert(self.project.compiler);
+    NSAssert(self.project.compiler, @"compiler");
     return [self.project.compiler outputSource:self mqSizeArray:self.project.mqSizes];;
 }
 
@@ -93,7 +93,7 @@
 
 -(void)setParent:(IUBox *)parent{
 #if DEBUG
-//    assert(0);
+//    NSAssert(0, @"");
 #endif
 }
 

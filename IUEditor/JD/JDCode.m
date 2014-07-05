@@ -23,7 +23,7 @@
 }
 - (void)decreaseIndentLevelForEdit{
     indentLevel --;
-    assert(indentLevel >= 0);
+    NSAssert(indentLevel >= 0, @"indent");
     whiteSpace = [NSMutableString string];
     [whiteSpace appendString:@" " multipleTimes:indentLevel*4];
 }
