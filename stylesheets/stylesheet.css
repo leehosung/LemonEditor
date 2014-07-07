@@ -341,7 +341,7 @@ Full-Width Styles
 }
 
 .iu_download_link:hover {
- background: url(../images/download_github.png) no-repeat top;
+ background: url(../images/download_github.png) no-repeat bottom;
 }
 
 .iu_website_link:hover {
