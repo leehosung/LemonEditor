@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Arial</key>
+	<dict>
+		<key>name</key>
+		<string>Arial</string>
+		<key>link</key>
+		<string></string>
+		<key>css</key>
+		<string>Arial</string>
+		<key>editable</key>
+		<false/>
+		<key>isLoadable</key>
+		<false/>
+	</dict>
+	<key>Helvetica</key>
+	<dict>
+		<key>name</key>
+		<string>Helvetica</string>
+		<key>link</key>
+		<string></string>
+		<key>css</key>
+		<string>Helvetica</string>
+		<key>editable</key>
+		<false/>
+		<key>isLoadable</key>
+		<false/>
+	</dict>
+	<key>Roboto</key>
+	<dict>
+		<key>name</key>
+		<string>Roboto</string>
+		<key>link</key>
+		<string>&lt;link href=&apos;http://fonts.googleapis.com/css?family=Roboto&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos;&gt;</string>
+		<key>css</key>
+		<string>&apos;Roboto&apos;, sans-serif</string>
+		<key>editable</key>
+		<false/>
+		<key>isLoadable</key>
+		<true/>
+	</dict>
+	<key>Roboto Condensed</key>
+	<dict>
+		<key>name</key>
+		<string>Roboto Condensed</string>
+		<key>link</key>
+		<string>&lt;link href=&apos;http://fonts.googleapis.com/css?family=Roboto+Condensed&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos;&gt;</string>
+		<key>css</key>
+		<string>&apos;Roboto Condensed&apos;, sans-serif</string>
+		<key>editable</key>
+		<false/>
+		<key>isLoadable</key>
+		<true/>
+	</dict>
+	<key>Roboto Slab</key>
+	<dict>
+		<key>name</key>
+		<string>Roboto Slab</string>
+		<key>link</key>
+		<string>&lt;link href=&apos;http://fonts.googleapis.com/css?family=Roboto+Slab&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos;&gt;</string>
+		<key>css</key>
+		<string>&apos;Roboto Slab&apos;, sans-serif</string>
+		<key>editable</key>
+		<false/>
+		<key>isLoadable</key>
+		<true/>
+	</dict>
+	<key>Montserrat</key>
+	<dict>
+		<key>name</key>
+		<string>Montserrat</string>
+		<key>link</key>
+		<string>&lt;link href=&apos;http://fonts.googleapis.com/css?family=Montserrat&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos;&gt;</string>
+		<key>css</key>
+		<string>&apos;Montserrat&apos;, sans-serif</string>
+		<key>editable</key>
+		<false/>
+		<key>isLoadable</key>
+		<true/>
+	</dict>
+	<key>Montserrat Alternates</key>
+	<dict>
+		<key>name</key>
+		<string>Montserrat Alternates</string>
+		<key>link</key>
+		<string>&lt;link href=&apos;http://fonts.googleapis.com/css?family=Montserrat+Alternates&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos;&gt;</string>
+		<key>css</key>
+		<string>&apos;Montserrat Alternates&apos;, sans-serif</string>
+		<key>editable</key>
+		<false/>
+		<key>isLoadable</key>
+		<true/>
+	</dict>
+	<key>Montserrat Subrayada</key>
+	<dict>
+		<key>name</key>
+		<string>Montserrat Subrayada</string>
+		<key>link</key>
+		<string>&lt;link href=&apos;http://fonts.googleapis.com/css?family=Montserrat+Subrayada&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos;&gt;</string>
+		<key>css</key>
+		<string>&apos;Montserrat Subrayada&apos;, sans-serif</string>
+		<key>editable</key>
+		<false/>
+		<key>isLoadable</key>
+		<true/>
+	</dict>
+	<key>Raleway</key>
+	<dict>
+		<key>name</key>
+		<string>Raleway</string>
+		<key>link</key>
+		<string>&lt;link href=&apos;http://fonts.googleapis.com/css?family=Raleway&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos;&gt;</string>
+		<key>css</key>
+		<string>&apos;Raleway&apos;, sans-serif</string>
+		<key>editable</key>
+		<false/>
+		<key>isLoadable</key>
+		<true/>
+	</dict>
+	<key>Raleway Dots</key>
+	<dict>
+		<key>name</key>
+		<string>Raleway Dots</string>
+		<key>link</key>
+		<string>&lt;link href=&apos;http://fonts.googleapis.com/css?family=Raleway+Dots&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos;&gt;</string>
+		<key>css</key>
+		<string>&apos;Raleway Dots&apos;, cursive</string>
+		<key>editable</key>
+		<false/>
+		<key>isLoadable</key>
+		<true/>
+	</dict>
+	<key>Hanna</key>
+	<dict>
+		<key>name</key>
+		<string>Hanna</string>
+		<key>link</key>
+		<string>&lt;link href=&apos;http://fonts.googleapis.com/earlyaccess/hanna.css&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos;&gt;</string>
+		<key>css</key>
+		<string>&apos;Hanna&apos;, serif</string>
+		<key>editable</key>
+		<false/>
+		<key>isLoadable</key>
+		<true/>
+	</dict>
+	<key>Jeju Gothic</key>
+	<dict>
+		<key>name</key>
+		<string>Jeju Gothic</string>
+		<key>link</key>
+		<string>&lt;link href=&apos;http://fonts.googleapis.com/earlyaccess/jejugothic.css&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos;&gt;</string>
+		<key>css</key>
+		<string>&apos;Jeju Gothic&apos;, serif</string>
+		<key>editable</key>
+		<false/>
+		<key>isLoadable</key>
+		<true/>
+	</dict>
+	<key>Jeju Hallasan</key>
+	<dict>
+		<key>name</key>
+		<string>Jeju Hallasan</string>
+		<key>link</key>
+		<string>&lt;link href=&apos;http://fonts.googleapis.com/earlyaccess/jejuhallasan.css&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos;&gt;</string>
+		<key>css</key>
+		<string>&apos;Jeju Hallasan&apos;, serif</string>
+		<key>editable</key>
+		<false/>
+		<key>isLoadable</key>
+		<true/>
+	</dict>
+	<key>Jeju Myeongjo</key>
+	<dict>
+		<key>name</key>
+		<string>Jeju Myeongjo</string>
+		<key>link</key>
+		<string>&lt;link href=&apos;http://fonts.googleapis.com/earlyaccess/jejumyeongjo.css&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos;&gt;</string>
+		<key>css</key>
+		<string>&apos;Jeju Myeongjo&apos;, serif</string>
+		<key>editable</key>
+		<false/>
+		<key>isLoadable</key>
+		<true/>
+	</dict>
+	<key>KoPub Batang</key>
+	<dict>
+		<key>name</key>
+		<string>KoPub Batang</string>
+		<key>link</key>
+		<string>&lt;link href=&apos;http://fonts.googleapis.com/earlyaccess/kopubbatang.css&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos;&gt;</string>
+		<key>css</key>
+		<string>&apos;KoPub Batang&apos;, serif</string>
+		<key>editable</key>
+		<false/>
+		<key>isLoadable</key>
+		<true/>
+	</dict>
+	<key>Nanum Brush Script</key>
+	<dict>
+		<key>name</key>
+		<string>Nanum Brush Script</string>
+		<key>link</key>
+		<string>&lt;link href=&apos;http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos;&gt;</string>
+		<key>css</key>
+		<string>&apos;Nanum Brush Script&apos;, cursive</string>
+		<key>editable</key>
+		<false/>
+		<key>isLoadable</key>
+		<true/>
+	</dict>
+	<key>Nanum Gothic</key>
+	<dict>
+		<key>name</key>
+		<string>Nanum Gothic</string>
+		<key>link</key>
+		<string>&lt;link href=&apos;http://fonts.googleapis.com/earlyaccess/nanumgothic.css&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos;&gt;</string>
+		<key>css</key>
+		<string>&apos;Nanum Gothic&apos;, sans-serif</string>
+		<key>editable</key>
+		<false/>
+		<key>isLoadable</key>
+		<true/>
+	</dict>
+	<key>Nanum Gothic Coding</key>
+	<dict>
+		<key>name</key>
+		<string>Nanum Gothic Coding</string>
+		<key>link</key>
+		<string>&lt;link href=&apos;http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos;&gt;</string>
+		<key>css</key>
+		<string>&apos;Nanum Gothic Coding&apos;, monospace</string>
+		<key>editable</key>
+		<false/>
+		<key>isLoadable</key>
+		<true/>
+	</dict>
+	<key>Nanum Myeongjo</key>
+	<dict>
+		<key>name</key>
+		<string>Nanum Myeongjo</string>
+		<key>link</key>
+		<string>&lt;link href=&apos;http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos;&gt;</string>
+		<key>css</key>
+		<string>&apos;Nanum Myeongjo&apos;, serif</string>
+		<key>editable</key>
+		<false/>
+		<key>isLoadable</key>
+		<true/>
+	</dict>
+	<key>Nanum Pen Script</key>
+	<dict>
+		<key>name</key>
+		<string>Nanum Pen Script</string>
+		<key>link</key>
+		<string>&lt;link href=&apos;http://fonts.googleapis.com/earlyaccess/nanumpenscript.css&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos;&gt;</string>
+		<key>css</key>
+		<string>&apos;Nanum Pen Script&apos;, cursive</string>
+		<key>editable</key>
+		<false/>
+		<key>isLoadable</key>
+		<true/>
+	</dict>
+</dict>
+</plist>

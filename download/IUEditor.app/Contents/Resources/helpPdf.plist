@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>RunningAProject</key>
+    <dict>
+    <key>title</key>
+    <string>Running A Project</string>
+    <key>pdf</key>
+    <string>RunningAProject.pdf</string>
+	</dict>
+	<key>positionProperty</key>
+	<dict>
+		<key>title</key>
+		<string>Position Property</string>
+		<key>pdf</key>
+		<string>positionProperty.pdf</string>
+	</dict>
+	<key>tracing</key>
+	<dict>
+		<key>title</key>
+		<string>Tracing Overview</string>
+		<key>pdf</key>
+		<string>tracingOverview.pdf</string>
+	</dict>
+</dict>
+</plist>

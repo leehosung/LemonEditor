@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>feature</key>
+		<string>Responsive, Event (Mouse hover, click, scroll)</string>
+		<key>isReady</key>
+		<true/>
+		<key>thumbnail</key>
+		<string>iueditor_thumbnail</string>
+		<key>name</key>
+		<string>IUEditor</string>
+		<key>type</key>
+		<real>0</real>
+		<key>desc</key>
+		<string>IUEditor Sample page</string>
+		<key>pageSize</key>
+		<string>960 / 320 (Support PC, Mobile)</string>
+		<key>previewImages</key>
+		<array>
+			<string>iueditor_preview.png</string>
+			<string>iueditor_preview_mobile.png</string>
+		</array>
+		<key>projectPackageFile</key>
+		<string>iueditor.iu.zip</string>
+	</dict>
+	<dict>
+		<key>feature</key>
+		<string>Responsive, Carousel</string>
+		<key>isReady</key>
+		<true/>
+		<key>thumbnail</key>
+		<string>agency_thumbnail</string>
+		<key>name</key>
+		<string>Agency</string>
+		<key>type</key>
+		<real>0</real>
+		<key>desc</key>
+		<string>Agency Sample page</string>
+		<key>pageSize</key>
+		<string>960 / 320 (Support PC, Mobile)</string>
+		<key>previewImages</key>
+		<array>
+			<string>agency_preview.png</string>
+			<string>agency_preview02.png</string>
+			<string>agency_preview03.png</string>
+			<string>agency_preview_mobile01.png</string>
+			<string>agency_preview_mobile02.png</string>
+			<string>agency_preview_mobile03.png</string>
+		</array>
+		<key>projectPackageFile</key>
+		<string>agency.iu.zip</string>
+	</dict>
+	<dict>
+		<key>feature</key>
+		<string>Django (including Django Project), Responsive, Transition</string>
+		<key>isReady</key>
+		<true/>
+		<key>thumbnail</key>
+		<string>gallery_thumb</string>
+		<key>name</key>
+		<string>Gallery</string>
+		<key>type</key>
+		<real>1</real>
+		<key>desc</key>
+		<string>Gallery Sample page</string>
+		<key>pageSize</key>
+		<string>960 / 320 (Support PC, Mobile)</string>
+		<key>previewImages</key>
+		<array>
+			<string>gallery_preview.png</string>
+			<string>gallery_preview02.png</string>
+			<string>gallery_preview_mobile01.png</string>
+			<string>gallery_preview_mobile02.png</string>
+		</array>
+		<key>projectPackageFile</key>
+		<string>gallery.zip</string>
+	</dict>
+	
+</array>
+</plist>
