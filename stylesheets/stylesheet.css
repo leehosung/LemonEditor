@@ -72,6 +72,7 @@ h1 {
 }
 
 h2 {
+	margin-top: 40px;
   padding-bottom: 10px;
   font-size: 32px;
   background: url('../images/bg_hr.png') repeat-x bottom;
@@ -79,6 +80,7 @@ h2 {
 
 h3 {
   font-size: 24px;
+  margin-top: 40px;
 }
 
 h4 {
@@ -94,7 +96,7 @@ h6 {
 }
 
 p {
-  margin: 10px 0 15px 0;
+  margin: 10px 0 0 14px;
 }
 
 footer p {
@@ -137,20 +139,13 @@ img {
   position: relative;
   margin: 0 auto;
   max-width: 739px;
-  padding: 5px;
+  padding: 5px 5px 5px 14px;
   margin: 10px 0 10px 0;
-  border: 1px solid #ebebeb;
-
-  box-shadow: 0 0 5px #ebebeb;
-  -webkit-box-shadow: 0 0 5px #ebebeb;
-  -moz-box-shadow: 0 0 5px #ebebeb;
-  -o-box-shadow: 0 0 5px #ebebeb;
-  -ms-box-shadow: 0 0 5px #ebebeb;
 }
 
 p img {
   display: inline;
-  margin: 0;
+  margin: 0 ;
   padding: 0;
   vertical-align: middle;
   text-align: center;
@@ -209,6 +204,8 @@ ol {
   list-style: decimal inside;
   padding-left: 20px;
 }
+
+li {line-height: 180%;}
 
 dl dt {
   font-weight: bold;
@@ -315,42 +312,62 @@ Full-Width Styles
 
 #downloads {
   position: absolute;
-  width: 210px;
+  width: 320px;
   z-index: 10;
   bottom: -40px;
-  right: 0;
+  right: 10;
   height: 70px;
-  background: url('../images/icon_download.png') no-repeat 0% 90%;
 }
 
-.zip_download_link {
+.iu_download_link {
   display: block;
   float: right;
-  width: 90px;
-  height:70px;
+  width: 150px;
+  height:50px;
   text-indent: -5000px;
   overflow: hidden;
-  background: url(../images/sprite_download.png) no-repeat bottom left;
+  background: url(../images/download_github.png) no-repeat top;
 }
 
-.tar_download_link {
+.iu_website_link {
   display: block;
   float: right;
-  width: 90px;
-  height:70px;
+  width: 150px;
+  height:50px;
   text-indent: -5000px;
   overflow: hidden;
-  background: url(../images/sprite_download.png) no-repeat bottom right;
+  background: url(../images/go_iu.png) no-repeat top;
   margin-left: 10px;
 }
 
-.zip_download_link:hover {
-  background: url(../images/sprite_download.png) no-repeat top left;
+.iu_download_link:hover {
+  background: url(../images/download_github.png) no-repeat bottom;
 }
 
-.tar_download_link:hover {
-  background: url(../images/sprite_download.png) no-repeat top right;
+.iu_website_link:hover {
+  background: url(../images/go_iu.png) no-repeat bottom;
 }
+
+.django {
+	background-image: url(../images/django.png);
+	width: 154px;
+	height: 90px;
+	background-repeat: no-repeat;
+	display: inline-block;
+	margin-right: 10px;
+	margin-left: 14px;}
+	
+.django-p {
+	display: inline-block;
+	vertical-align: top;
+	padding-top: 40px;
+}
+
+.title_debug {
+	color:#007edf;
+}
+
+
 
 #main_content_wrap {
   background: #f2f2f2;
@@ -366,7 +383,7 @@ Full-Width Styles
   background: #212121;
 }
 
-
+.copyright {font-size:10pt; letter-spacing: 1px;}
 
 /*******************************************************************************
 Small Device Styles
