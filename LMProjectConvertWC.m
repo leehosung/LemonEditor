@@ -70,6 +70,13 @@
     }
     
     NSString *projectPath = [_targetProjectDirectory stringByAppendingFormat:@"/%@.iu", [_targetProjectDirectory lastPathComponent]];
+    
+    // if file exist in project path, alert and return
+    if ([[NSFileManager defaultManager] fileExistsAtPath:projectPath]) {
+        [JDLogUtil alert:[NSString stringWithFormat:@"File exist in %@", projectPath] title:@"Sorry, File exist in path"];
+        return;
+    }
+    
     NSDictionary *options = @{   IUProjectKeyGit: @(NO),
                                  IUProjectKeyHeroku: @(NO),
                                  IUProjectKeyAppName : [_targetProjectDirectory lastPathComponent],
@@ -80,7 +87,7 @@
                                  IUProjectKeyConversion :
                                      _project
                                  };
-    
+
     [(IUProjectController *)[NSDocumentController sharedDocumentController] newDocument:self withOption:options];
     [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseOK];
 }
