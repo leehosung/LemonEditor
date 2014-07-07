@@ -341,11 +341,13 @@ Full-Width Styles
 }
 
 .iu_download_link:hover {
-  background: no-repeat bottom;
+  background-repeat : no-repeat;
+  background-position : bottom;
 }
 
 .iu_website_link:hover {
-  background: no-repeat bottom;
+  background-repeat : no-repeat;
+  background-position : bottom;
 }
 
 .django {
