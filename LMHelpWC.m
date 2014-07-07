@@ -157,6 +157,7 @@ static LMHelpWC *gHelpWC = nil;
      */
     NSDictionary *actionDict = [actionInformation objectForKey:WebActionElementKey];
     if(actionDict){
+        [[NSWorkspace sharedWorkspace] openURL:actionDict[@"WebElementLinkURL"]];
         [listener ignore];
     }
     else{
