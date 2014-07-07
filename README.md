@@ -1,6 +1,8 @@
 LemonEditor
 ===========
 
-IUEditor v0.1
+<h2>IUEditor v0.2-beta release</h2>
 
-Press 'new project'
+* HomePage :  http://www.iueditor.org/
+* Download page : http://jdlaborg.github.io/LemonEditor/
+
