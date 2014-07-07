@@ -8,7 +8,6 @@
 
 #import "LMHelpWC.h"
 #import <Quartz/Quartz.h>
-#import <WebKit/WebKit.h>
 
 static LMHelpWC *gHelpWC = nil;
 
@@ -71,7 +70,11 @@ static LMHelpWC *gHelpWC = nil;
     
     [_pdfThumbnailV setMaximumNumberOfColumns:1];
     [_pdfThumbnailV setThumbnailSize:NSMakeSize(150, 100)];
+    
+    [_webV setPolicyDelegate:self];
+
     windowLoaded = YES;
+    
 }
 
 - (void)showHelpDocument:(NSString*)fileName title:(NSString *)title{
@@ -126,5 +129,52 @@ static LMHelpWC *gHelpWC = nil;
     [self showHelpDocumentWithKey:key];
 }
 */
+
+#pragma mark -policy delegate
+
+
+- (void)webView:(WebView *)webView decidePolicyForNavigationAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request frame:(WebFrame *)frame decisionListener:(id < WebPolicyDecisionListener >)listener
+{
+    /*
+     web에서 링크를 클릭했을 때 들어오는 actionInformation Dict
+     WebActionButtonKey = 0;
+     WebActionElementKey =     {
+     WebElementDOMNode = "<DOMHTMLParagraphElement [P]: 0x10917c5a0 ''>";
+     WebElementFrame = "<WebFrame: 0x60800001b520>";
+     WebElementIsContentEditableKey = 0;
+     WebElementIsInScrollBar = 0;
+     WebElementIsSelected = 0;
+     WebElementLinkIsLive = 1;
+     WebElementLinkLabel = Recruit;
+     WebElementLinkURL = "file:///Users/choiseungmi/IUProjTemp/myApp.iuproject/Index.html";
+     WebElementTargetFrame = "<WebFrame: 0x60800001b520>";
+     };
+     WebActionModifierFlagsKey = 0;
+     WebActionNavigationTypeKey = 0;
+     WebActionOriginalURLKey = "file:///Users/choiseungmi/IUProjTemp/myApp.iuproject/Index.html"
+     ;
+     
+     */
+    NSDictionary *actionDict = [actionInformation objectForKey:WebActionElementKey];
+    if(actionDict){
+        [listener ignore];
+    }
+    else{
+        [listener use];
+    }
+}
+
+- (void)webView:(WebView *)webView decidePolicyForNewWindowAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request newFrameName:(NSString *)frameName decisionListener:(id < WebPolicyDecisionListener >)listener
+{
+    NSDictionary *actionDict = [actionInformation objectForKey:WebActionElementKey];
+    if(actionDict){
+        [listener ignore];
+    }
+    else{
+        [listener use];
+    }
+}
+
+
 
 @end

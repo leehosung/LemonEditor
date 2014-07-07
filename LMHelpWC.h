@@ -7,8 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <WebKit/WebKit.h>
 
-@interface LMHelpWC : NSWindowController
+@interface LMHelpWC : NSWindowController 
 
 + (LMHelpWC *)sharedHelpWC;
 - (void)showHelpDocumentWithKey:(NSString *)key;
