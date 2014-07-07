@@ -341,11 +341,11 @@ Full-Width Styles
 }
 
 .iu_download_link:hover {
-  background: url(../images/download_github.png) no-repeat bottom;
+  background: no-repeat bottom;
 }
 
 .iu_website_link:hover {
-  background: url(../images/go_iu.png) no-repeat bottom;
+  background: no-repeat bottom;
 }
 
 .django {
