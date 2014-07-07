@@ -241,7 +241,7 @@
         NSTableCellView *cellView = (NSTableCellView *)[sender superview];
         NSString *groupName =  cellView.textField.stringValue;
         IUSheet *newDoc;
-        
+        [[self.project identifierManager] resetUnconfirmedIUs];
         if([groupName isEqualToString:IUPageGroupName]){
             
             newDoc = [[IUPage alloc] initWithProject:self.project options:nil];
@@ -260,6 +260,7 @@
             [self.documentController rearrangeObjects];
             [self.documentController setSelectedObject:newDoc];
         }
+        [[self.project identifierManager] confirm];
     }
 }
 
